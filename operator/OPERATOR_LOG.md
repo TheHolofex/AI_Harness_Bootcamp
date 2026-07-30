@@ -1,7 +1,7 @@
 # Operator Log
 
 Standing operator file. Same project as the Direction Brief.  
-Written only in the **`Operator — Direction & Log`** thread — **after** the mission run.
+Written only in the **`Operator — Direction & Log`** chat — **after** the mission run.
 
 **How it gets written:** you and the AI produce each entry **interactively**. The AI helps reconstruct what happened and stress-tests your evidence. **You** assign the verdict. The AI may argue; it does not grade you.
 
@@ -18,7 +18,7 @@ Five fields. Target: under five minutes of dialogue. Append one entry per block;
 | **3. Verdict** | `ACCEPT` / `REJECT` / `ACCEPT WITH FIXES` |
 | **4. Evidence** | What you checked (path, test, citation, rerun). Not “looked good.” |
 | **5. I still own** | Judgment, next action, or risk the machine must not carry alone. |
-| **6. Adversarial** | Paste final line: `ADVERSARIAL: stood / wounded / failed — …` (from review thread). |
+| **6. Adversarial** | Paste final line: `ADVERSARIAL: stood / wounded / failed — …` (from review chat). |
 
 ---
 
@@ -125,7 +125,7 @@ Five fields. Target: under five minutes of dialogue. Append one entry per block;
 
 ---
 
-## Operator-thread starter (paste after the mission)
+## Operator-chat starter (paste after the mission)
 
 ```text
 We are writing the Operator Log entry for this block together.

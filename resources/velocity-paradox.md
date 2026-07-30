@@ -93,8 +93,8 @@ If any block is missing, you are still in Phase A — even if the model is alrea
 | Paradox move | Bootcamp instrument |
 |--------------|---------------------|
 | Name success before code | Pass Bars · Direction Brief |
-| Keep judgment out of build chat | Operator threads (brief/log vs mission) |
-| Attack your own certainty | Adversarial review in a **new** thread |
+| Keep judgment out of build chat | Operator chats (brief/log vs mission) |
+| Attack your own certainty | Adversarial review in a **new** chat |
 | Prove learning transferred | Transfer 30-60-90 · Transfer gates |
 | Evidence over vibes | Measurement spine · P2 Dyno |
 | Fair engine compare | P3 Frozen brief (same brief, two engines) |
@@ -112,7 +112,7 @@ If any block is missing, you are still in Phase A — even if the model is alrea
 | One mega-prompt for the system | Partial blob; cannot localize failure |
 | Giant diffs | Unreviewable; twin-engine compare becomes theater |
 | No pass bar | You cannot tell progress from motion |
-| Same thread forever | Context poison + commitment bias |
+| Same chat forever | Context poison + commitment bias |
 | Optimize only lines/minute | Verification debt compounds; delivery flatlines |
 | Treat green demo as done | Integration and ops were never in the window |
 
@@ -126,7 +126,7 @@ If any block is missing, you are still in Phase A — even if the model is alrea
 - [ ] Verification command or manual check exists  
 - [ ] Context pack is lean (paths + invariants, not a dump)  
 - [ ] Batch size is one vertical slice  
-- [ ] Engine choice noted (Codex / OpenCode / both)  
+- [ ] Engine choice noted (Codex app / OpenCode / both)  
 - [ ] Plan for adversarial or twin-engine check if the stake is high  
 
 Only then spend tokens on volume.

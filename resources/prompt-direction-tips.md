@@ -2,7 +2,7 @@
 
 > You do not need to be a programmer to direct a harness well. You need clear intent, the right context in the window, and a way to know when the answer is good enough. This handout is the standing reference outside the block workflow.
 
-Course tie-in: use these habits with your **Direction Brief**, **Operator Log**, **Pass Bars**, and twin-engine stack (**Codex** home + **OpenCode** required; Claude Code optional).
+Course tie-in: use these habits with your **Direction Brief**, **Operator Log**, **Pass Bars**, and twin-engine stack (**Codex app** home + **OpenCode** required; Claude Code optional).
 
 ---
 
@@ -78,7 +78,7 @@ I was on the OpenCode session against the local repo. What does this mean and ho
 
 **Why it works:** Tracebacks carry file, line, and failure mode. Harnesses are strong at that shape. You do not need to understand the error first — you need to deliver it complete.
 
-**Tips:** Full traceback · nearby log lines · exact command · what changed last · which engine (Codex vs OpenCode).
+**Tips:** Full traceback · nearby log lines · exact command · what changed last · which engine (Codex app vs OpenCode).
 
 ---
 
@@ -125,12 +125,12 @@ This is the same physics as the [Velocity paradox](./velocity-paradox.md): frict
 - Window is long, slow, and unfocused  
 - Mission changed; old context is dead weight  
 
-**Before you leave the thread:** save working diffs, last error, and a short "works / broken / next" note for the new session.
+**Before you leave the chat:** save working diffs, last error, and a short "works / broken / next" note for the new session.
 
 **Fresh start pattern:**
 > "New session. Working tree is at [path]. Done: [bullets]. Broken: [error or behavior]. Non-goals: [list]. First task: [one slice]. Review the tree, then propose a plan before editing."
 
-**Adversarial (course Move):** for judgment calls, open a **new thread** with a frozen attack prompt against your artifact. Do not argue with the same chat that built it — that chat is contaminated by commitment.
+**Adversarial (course Move):** for judgment calls, open a **new chat** with a frozen attack prompt against your artifact. Do not argue with the same chat that built it — that chat is contaminated by commitment.
 
 ---
 
@@ -151,16 +151,25 @@ This is the same physics as the [Velocity paradox](./velocity-paradox.md): frict
 
 ## 8. Harness tips for this bootcamp stack
 
-### Codex (home engine)
-- Keep **build** work in the mission thread; keep **brief / log / pass bars** in the Operator threads (see Operator pack).
-- Prefer plan-then-edit on non-trivial work; freeze the brief before multi-file changes.
-- Pin project conventions in a short standing file the app will load every session.
+### Codex app (home engine)
+- Keep **build** work in the mission chat; keep **brief / log / pass bars** in the Operator chats (see Operator pack). Name and pin chats so you can find them a day later.
+- **`/plan` before you edit** on anything non-trivial. It investigates and proposes an approach without touching files, which is the machine-readable version of freezing your brief.
+- **Steer, don't restart.** A follow-up message joins the run in progress; queue it instead when it should wait for the next one. Killing a run to retype the prompt loses the context you already paid for.
+- **`/review` your own work** before you accept it — against a base branch or over uncommitted changes. It reports findings without touching your tree, and inline comments on specific lines are treated as direction.
+- **Set the permission mode deliberately.** *Ask for approval* keeps the workspace boundary and pauses at the edge. *Approve for me* keeps the same boundary but sends the escalation to an automatic reviewer instead of to you. Neither widens the sandbox — they change **who reviews**, which is a different decision from what is allowed.
+- **Use a worktree when you want two things running at once.** Parallel chats in one folder will fight over the same files; a worktree gives each an isolated checkout, and *Hand off* moves a session between the worktree and your working copy without the Git argument.
+- **Put standing conventions in `AGENTS.md`** at the project root. It loads every session, so it is the difference between a rule you re-type and a rule the machine already has. Add a line only after you have watched the same correction twice.
+- **Ask for subagents explicitly** when work is read-heavy and separable — "spawn two agents to survey X and Y." They return summaries rather than raw output, which keeps the main chat readable. Be wary of pointing several at the same files to write.
+- **Know what the app loaded before you call a run evidence.** `AGENTS.md` from the project root, `~/.codex/AGENTS.md`, discovered skills, and memories if you enabled them all arrive without appearing in your prompt. That is the whole point on a build day and a problem on a comparison day: run a frozen brief inside your P2 project and Codex is carrying your craft while the other engine runs bare. Run it clean or declare what was live.
 
-### OpenCode (required second engine)
-- Use for twin-engine comparison (especially P3) and Grok/staff-pinned model work.
-- `opencode run "…"` for one-shot terminal asks; interactive session for multi-step repair.
-- Configure model + MCP deliberately (`opencode` config) — wrong model choice is a context problem dressed as a prompt problem.
-- Local/compatible models matter when you practice hold-and-degrade (P8).
+### OpenCode (second harness)
+- **Treat it as a harness, not a second chat box.** Standing conventions go in `AGENTS.md` at the project root — same move as the Codex section above, and `/init` will draft one from the repo. Agents, permissions, and custom tools live in `.opencode/` beside it. Directing a second harness is the point of P3; running a second brand is not.
+- **Keep it independent whenever the run is evidence.** OpenCode reads `~/.claude/CLAUDE.md` and `.claude/skills` when it finds them, so two engines can quietly share one memory file and agree for the wrong reason. `OPENCODE_DISABLE_CLAUDE_CODE=1` is set in pre-work; add `--pure` to skip installed plugins on any run you intend to compare or log.
+- **`opencode run "…"`** for one-shot terminal asks; an interactive session for multi-step repair. Pin the model per run with `-m` — model resolution otherwise falls back to whichever you used last, which is state you can't see in the transcript.
+- **Permission rules are last-match-wins.** A later `allow` overrides an earlier `deny`, which is the opposite of the instinct most people bring from other tools. Write broad rules first and exceptions after, and read your own config bottom-up when you're asking why something was permitted.
+- **Wrong model choice is a context problem wearing a prompt problem's clothes.** `opencode models <provider> --refresh` before you rewrite the brief.
+- **`/undo` reverts the file changes, not just the message.** It needs a Git repo to do it. Know that before you reach for it mid-repair.
+- Custom providers and local endpoints are configured under `provider` in `opencode.json` — that seam is what you re-point during hold-and-degrade (P8).
 
 ### Optional: Claude Code
 - Strong when you want a second adjudicator; not required for the core path.
@@ -168,6 +177,8 @@ This is the same physics as the [Velocity paradox](./velocity-paradox.md): frict
 
 ### Twin-engine habit
 Same frozen brief → both engines → compare on **evidence**, not vibes. Log the delta in the Operator Log.
+
+Before the delta means anything, check what each side was carrying: instruction files, skills, memories, plugins, and which model actually answered. Both engines load context you didn't type, and neither announces it. One engine plus your notes is not two engines — run clean, or declare what was live.
 
 ---
 
@@ -187,7 +198,7 @@ Error while [command / action]:
 
 [full traceback or log]
 
-Engine: [Codex | OpenCode]. Last change: [one line].
+Engine: [Codex app | OpenCode]. Last change: [one line].
 Fix the failure with minimal diff; add a check so it cannot silently return.
 ```
 
@@ -197,7 +208,7 @@ List gaps only. Do not rewrite yet.
 ```
 
 ```
-New adversarial thread. Artifact under test: [path or paste].
+New adversarial chat. Artifact under test: [path or paste].
 Attack prompt: [frozen].
 Return: findings ranked by severity, with a one-line fix hypothesis each. No pep talk.
 ```

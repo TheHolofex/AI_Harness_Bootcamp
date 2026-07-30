@@ -13,7 +13,7 @@ Clearable the same day with serious work. Not clearable by watching a demo, acce
 | **Not yet** | Capability not demonstrated. Fix and re-log. No soft pass. |
 
 **Always required (Move 1):** full LIVE Direction Brief (all five fields) before the run · Operator Log after with verdict, evidence, and what you still own.  
-**Always required (adversarial):** new thread + `ADVERSARIAL_REVIEW.md` prompt after log/pass-bar draft; `ADVERSARIAL:` line in the log. MVP items marked met must **survive** or be marked wounded/fixed.  
+**Always required (adversarial):** new chat + `ADVERSARIAL_REVIEW.md` prompt after log/pass-bar draft; `ADVERSARIAL:` line in the log. MVP items marked met must **survive** or be marked wounded/fixed.  
 A block without brief/log/adversarial is **not yet**, regardless of artifacts.
 
 **Primary use:** student + AI in `Operator — Direction & Log` after the log. The AI stress-tests claims; you do not get to grade your own vibes unchallenged.
@@ -59,13 +59,13 @@ Acceptable: paths, commands, diffs, test output, dyno rows, opened citation trai
 **Mastery claim:** You can direct a thinking machine from operational mess to a working instrument, and you know how you’ll know it’s right.
 
 ### MVP
-- [ ] **Pre-work gate:** health check GREEN/YELLOW with setup log present (student-installed stack — not a lab image)
+- [ ] **Install clinic / pre-work verifies:** setup log present; per-step verifies done; four-agent smoke files on disk (student-owned stack — not a lab image). YELLOW only with a written workaround
 - [ ] **Full LIVE brief** (all five fields) — outcome is an instrument, not “explore the data”
-- [ ] Four-tool write proof confirmed in class (or re-run): Codex, **OpenCode**, Pi, goose each touch the smoke folder (Claude optional)
+- [ ] Four-tool write proof confirmed in class (or re-run): Codex app, **OpenCode**, Pi, goose each touch the smoke folder (Claude optional)
 - [ ] Instrument works on the real messy folder: map loads; timeline **and** filters both do something observable
 - [ ] **Negative check:** at least one “done looks like / must not” that you verified (bad data, empty state, or wrong filter result)
 - [ ] **Update proof:** add or drop a file and show the instrument reflects it *or* document the exact break and the redirect you issued
-- [ ] In the operator thread, explain the harness loop using *this* run (goal → act → observe → correct → accept) — AI may challenge hand-waving
+- [ ] In the operator chat, explain the harness loop using *this* run (goal → act → observe → correct → accept) — AI may challenge hand-waving
 - [ ] Log: verdict + evidence pointers + what judgment you still own (e.g. whether the map is mission-true)
 
 ### Stretch
@@ -76,7 +76,7 @@ Acceptable: paths, commands, diffs, test output, dyno rows, opened citation trai
 - [ ] Second instrument from the same folder under a new LIVE brief (dashboard or alert list) — prove direction skill transfers across product shape
 
 ### Not yet if
-No pre-work proof, demo-only success, thin brief, no negative check, or loop explanation is generic slogans.
+No clinic/pre-work proof, demo-only success, thin brief, no negative check, or loop explanation is generic slogans.
 
 ---
 
@@ -112,13 +112,13 @@ Paste job, citations unchecked, no delta, or silent failure on broken sources.
 - [ ] ≥2 harness changes across distinct layers (e.g. instructions *and* tests, or memory *and* skill) — not one lucky prompt tweak
 - [ ] Each change has before/after measurement on the dyno (numeric or strict pass/fail counts)
 - [ ] ≥2 machine-checkable tests **you authored**; at least one fails on the stock harness and passes after the change (or equivalent red→green story)
-- [ ] Durability proof: **new thread or restart** still carries instructions/memory/skill; re-run a dyno item cold
+- [ ] Durability proof: **new chat or restart** still carries instructions/memory/skill; re-run a dyno item cold. Each wall must point at a real artifact — `AGENTS.md` for instructions, a `SKILL.md` folder for skills, memory explicitly enabled — not a habit you promise to keep
 - [ ] Written claim: which wall improved (instructions / tests / memory / skills) and what still fails
 - [ ] Log cites dyno rows and test names — “feels smarter” is automatic not yet
 - [ ] **30-day seed:** one concrete habit for keeping a harness at work (feeds Move 3)
 
 ### Stretch
-- [ ] Skill fires unprompted or via a minimal trigger on a realistic task
+- [ ] Skill fires unprompted or via a minimal trigger on a realistic task — the `description` line in `SKILL.md` is what decides this, so tune it as trigger conditions rather than a title
 - [ ] Dyno includes a hostility or ambiguity case, not only happy path
 
 ### Side-quest
@@ -134,6 +134,7 @@ Single unmeasured tweak, no red→green test, or nothing survives restart.
 
 ### MVP
 - [ ] Course frozen brief `BRIEF-v1` + track corpus in `instruments/p3_frozen_brief` run unchanged on **Codex app** and **OpenCode**
+- [ ] **Run identity declared for both engines** — model id, version, folder, and which instruction files/skills/memories were live. Clean folder, or the loaded context written down. An undeclared advantage invalidates the comparison
 - [ ] Deterministic join/watchlist path where required — model does not “decide” the join key
 - [ ] Comparator artifact: side-by-side fields/claims table (not vibes)
 - [ ] ≥3 material disagreement rows **or**, if fewer, a written proof you searched for disagreement and why the task was low-separation
@@ -187,7 +188,8 @@ Chat answers with fake or unopened cites, or vault is dump-shaped.
 - [ ] **Field contradiction** caught the same way — not “I noticed”
 - [ ] **Hostile instruction** caught; prove **absence of effect** in trusted vault/notes/outputs (show where it would have landed and that it didn’t)
 - [ ] All three logged with time order: detect → isolate → verify clean
-- [ ] Permission-mode comparison (Codex vs Claude): what each tool actually enforces vs what remains procedure
+- [ ] Permission-mode comparison (**Codex app vs OpenCode**): what each tool actually enforces vs what remains procedure. In the Codex app, name the two controls separately — the **sandbox** sets what is reachable, **approvals** set when it pauses — and state which of your three catches a mode would have stopped and which needed your judgment
+- [ ] **Read an OpenCode rule set and predict what it permits before running it.** Its rules resolve **last-match-wins**, so a later `allow` overrides an earlier `deny` and rule order carries the meaning. A wrong prediction you wrote down beats a right one you assumed
 - [ ] Written rule you’ll reuse: “I never accept intake into trusted knowledge until ___”
 - [ ] Log verdict = containment proof; anything less is not yet
 
@@ -206,26 +208,32 @@ Missed class without containment, or “we told the model to be careful.”
 ## P6 — Watch officer · Cap 7  
 **Mastery claim:** Work continues under a contract you wrote. Your job is command, exceptions, and stop authority.
 
+goose is the vehicle: local agent platform (CLI default; Desktop optional) whose **tool-enforced** column is real levers — recipe, extensions/tool surface, `GOOSE_MODE`, `max_turns`, retry checks, schedule — not brochure safety. Pack: `mission_flesh/p6/` (`watch_officer.yaml`, `goose_recipe_notes.md`, `feeder/`). Docs: <https://goose-docs.ai>
+
 ### MVP
-- [ ] goose recipe **adapted** (not stock demo only) to the local feeder; successful run evidenced
-- [ ] Autonomy contract with **both columns populated**: tool-enforced limits vs procedure-enforced limits — ≥3 rows each
+- [ ] goose recipe **adapted** from `watch_officer.yaml` (not stock demo only) to the local feeder; successful run evidenced (`out/watch_summary.md` on disk)
+- [ ] Autonomy contract with **both columns populated**: tool-enforced vs procedure-enforced — ≥3 rows each
+- [ ] **≥3 tool-enforced rows name real goose levers** (e.g. extensions allowlist, `GOOSE_MODE`, `settings.max_turns`, retry success check, scheduler) — “be safe” prose alone is not a tool row
 - [ ] Mapping: each serious risk on this feeder appears in one column (no orphan risks)
-- [ ] **Stop proof** under realistic conditions; **restart proof** without losing the contract frame
+- [ ] **Stop proof** under realistic conditions; **restart proof** without losing the contract frame (same recipe/mode; prior good lines retained)
 - [ ] Unattended/scheduled attempt **or** blocked-with-reason + what would be required to enable it (honest)
-- [ ] Pi bare-loop contrast: list rails present in goose/contract and absent in Pi — from observation, not brochure
-- [ ] Exception drill: one out-of-bounds condition → behavior matches contract
-- [ ] Log points at contract version, run log, stop/restart, exception drill
+- [ ] **Pi bound proved from evidence:** same task run with and without `pi --tools …`, and you can point at the session file showing the write tools were **absent from the model's schema** — not offered and declined
+- [ ] **Every contract row labelled** *contract* (capability removed) / *tripwire* (catches drift, defeatable by what it polices) / *boundary* (container). Any row you first called tool-enforced that is really a tripwire is named as such in the log
+- [ ] Exception drill on `feeder/event_04` (OUT_OF_BOUNDS) → quarantine / no hostile effect; matches contract
+- [ ] Log points at recipe path/version, mode, max_turns, run evidence, stop/restart, exception drill, schedule note
 - [ ] **60-day seed:** one real work process you’d put under contract (Move 3)
 
 ### Stretch
 - [ ] Contract reviewed aloud with a peer as “supervisor”; they find a hole you fix
-- [ ] Dual-bound demo: tighten tool-enforced limit and show the refuse
+- [ ] Dual-bound demo: tighten one tool-enforced limit (mode, max_turns, or extension cut) and show the refuse
+- [ ] **Tripwire written and defeated:** your own `tool_call` gate in Pi blocking writes outside the mission folder, then beaten with a `../` path, then fixed by resolving against `ctx.cwd`. State where you put the gate and why that location changes what it guarantees
+- [ ] Enable one deeper goose control (Adversary Mode, extra allowlisted tool, or structured `response` schema) and show what it changes on the feeder
 
 ### Side-quest
 - [ ] Same feeder, two contracts (loose vs strict); measure what each allows/refuses on one scenario pack
 
 ### Not yet if
-Stock recipe only, one-column “be safe” contract, or stop never demonstrated.
+Stock recipe only, one-column “be safe” contract, tool column with no real goose settings, or stop never demonstrated.
 
 ---
 
@@ -280,7 +288,7 @@ Policy after the fact, vibe degrade (“it’s fine”), empty 30-60-90, or no r
 
 ---
 
-## Operator-thread closer (paste after the log)
+## Operator-chat closer (paste after the log)
 
 ```text
 Deep mastery self-check against operator/PASS_BARS.md for this block.

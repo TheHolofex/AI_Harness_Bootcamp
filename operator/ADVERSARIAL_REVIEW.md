@@ -2,12 +2,12 @@
 
 **Mandate:** deep operator mastery requires verdicts that survive attack — not only self-check.
 
-In class, the reliable challenger is a **fresh AI thread with a frozen adversarial prompt**, run **every block** after you have results.  
+In class, the reliable challenger is a **fresh AI chat with a frozen adversarial prompt**, run **every block** after you have results.  
 That is the logistical peer. A human who can challenge verdicts remains a **transfer** target for the job (see `TRANSFER_30_60_90.md`); it is not required to staff every exercise.
 
 ```text
 You own the verdict.
-This thread’s job is to try to take it away — with evidence rules, not vibes.
+This chat’s job is to try to take it away — with evidence rules, not vibes.
 ```
 
 ---
@@ -15,17 +15,17 @@ This thread’s job is to try to take it away — with evidence rules, not vibes
 ## Where it sits in the half-day pulse
 
 ```text
-1. Direction Brief     →  thread: Operator — Direction & Log
-2. Mission             →  build thread(s)
+1. Direction Brief     →  chat: Operator — Direction & Log
+2. Mission             →  build chat(s)
 3. Operator Log
    + PASS_BARS draft   →  Direction & Log
-4. Adversarial review  →  NEW thread every time (below)   ← you are here
+4. Adversarial review  →  NEW chat every time (below)   ← you are here
 5. Fix or stand firm   →  update Log / bars if the attack lands
 6. Measurement spine   →  MEASUREMENT_SPINE.md row (four headlines)
-7. Transfer pulse      →  thread: Operator — Transfer 30-60-90
+7. Transfer pulse      →  chat: Operator — Transfer 30-60-90
 ```
 
-**Why a new thread each time:** clean context. No build-thread cheerleading, no log-thread collusion. Paste artifacts in; the reviewer never “helped you succeed” five minutes ago.
+**Why a new chat each time:** clean context. No build-chat cheerleading, no log-chat collusion. Paste artifacts in; the reviewer never “helped you succeed” five minutes ago.
 
 ---
 
@@ -33,29 +33,29 @@ This thread’s job is to try to take it away — with evidence rules, not vibes
 
 | Do | Don’t |
 |---|---|
-| New chat every block (title below) | Reuse the build thread for “review” |
+| New chat every block (title below) | Reuse the build chat for “review” |
 | Paste **outputs + paths + your provisional verdict** | Ask “does this look good?” |
 | Require the model to argue **not yet** hard | Accept praise or summary-only feedback |
 | Change the log if the attack is valid | Performatively “take notes” and change nothing |
 | Keep human peer as **job** outer-loop name | Pretend AI review replaces institutional challenge forever |
 
-**Cross-engine stretch (recommended when feasible):** if the mission ran in Codex, run adversarial review in **OpenCode** (or the other way around). Optional: add Claude Code as a third pass. Correlated blind spots shrink. Same frozen prompt either way.
+**Cross-engine stretch (recommended when feasible):** if the mission ran in the Codex app, run adversarial review in **OpenCode** (or the other way around). Optional: add Claude Code as a third pass. Correlated blind spots shrink. Same frozen prompt either way.
 
 ---
 
-## Thread title pattern
+## Chat title pattern
 
 `Adversarial — [block] — [date]`  
 
 Example: `Adversarial — P3 Twin-engine — 2026-03-18`
 
-One block · one thread · then archive. Do not keep a single season-long adversarial chat.
+One block · one chat · then archive. Do not keep a single season-long adversarial chat.
 
 ---
 
 ## What you bring (paste pack)
 
-Minimum paste into the new thread:
+Minimum paste into the new chat:
 
 1. Block name + one-line mission outcome  
 2. Link/paths to key artifacts (brief path, outputs, comparator, vault notes, contract, etc.)  
@@ -126,8 +126,8 @@ Outer loop should not inherit unchallenged fantasy.
 
 | Setting | Challenger |
 |---|---|
-| **Every block in course** | Adversarial AI thread (this file) |
-| **Stretch / distinction** | Cross-engine adversarial (Codex work reviewed in Claude or reverse) |
+| **Every block in course** | Adversarial AI chat (this file) |
+| **Stretch / distinction** | Cross-engine adversarial (Codex app work reviewed in Claude or reverse) |
 | **Pair moments (optional)** | Human peer uses the same frozen prompt on your paste pack |
 | **After course (transfer seed)** | Named human who can challenge verdicts on the job |
 
@@ -138,7 +138,7 @@ Human challenge on the desk trains *institutional* honesty. Both matter; only th
 
 ## Facilitator notes
 
-- Spot-check adversarial threads: if the model is polite, students under-pasted or used the build thread.  
+- Spot-check adversarial chats: if the model is polite, students under-pasted or used the build chat.  
 - Time box: **5–8 minutes** standard; P3/P5/P8 may need 10.  
 - Rescue: narrower artifact paste, not a softer prompt.  
 - Never replace PASS_BARS with “the AI said it’s fine.” Bars still need evidence pointers.
@@ -146,4 +146,4 @@ Human challenge on the desk trains *institutional* honesty. Both matter; only th
 ## Identity lock
 
 If adversarial review becomes “ask the same chat if we’re good,” the school has collapsed into vibe with extra steps.  
-**New thread. Frozen prompt. Evidence. Log the scar.**
+**New chat. Frozen prompt. Evidence. Log the scar.**

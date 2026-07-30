@@ -1,7 +1,7 @@
 # Direction Brief
 
-Standing operator file in the Codex project.  
-Maintained only in the **`Operator — Direction & Log`** thread — not in build threads.
+Standing operator file in the Codex app project.  
+Maintained only in the **`Operator — Direction & Log`** chat — not in build chats.
 
 **How it gets written:** you and the AI produce this **interactively**. The AI interviews, drafts, and challenges vagueness. **You** accept or rewrite every field. The machine does not run the mission until you say the brief is live.
 
@@ -47,7 +47,7 @@ When the machine stops and returns control — failure modes, time box, or “as
 
 ---
 
-## Operator-thread starter (paste this to begin)
+## Operator-chat starter (paste this to begin)
 
 ```text
 We are writing the Direction Brief for this block together.
@@ -62,11 +62,11 @@ For each field:
 4. Wait for me to accept or correct before moving on.
 
 When all five fields are accepted, write them into this file, set Status to LIVE,
-and remind me to run the mission in a separate build thread — not here.
+and remind me to run the mission in a separate build chat — not here.
 
-After the mission, we will write the Operator Log in this same thread.
+After the mission, we will write the Operator Log in this same chat.
 ```
 
 ## Transfer
 
-Same interactive pattern at work: open a short direction thread, produce five fields, freeze the brief, then run.
+Same interactive pattern at work: open a short direction chat, produce five fields, freeze the brief, then run.

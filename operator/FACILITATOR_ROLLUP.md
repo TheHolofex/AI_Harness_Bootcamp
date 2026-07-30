@@ -26,7 +26,7 @@ From each student spine **Running totals** + flags:
 | `M` | Narrow data/scope; keep pass-bar standard |
 | `Q` | Sit with evidence pack; re-run adversarial with fuller paste |
 | `T` only, quality OK | Leave it — mastery &gt; speed |
-| All green, empty transfer | Enforce Transfer thread before dismissal |
+| All green, empty transfer | Enforce Transfer chat before dismissal |
 
 ## Cohort health (one glance)
 

@@ -24,7 +24,7 @@
     <div class="callout">
       <strong>Course tie-in.</strong>
       Use these habits with your Direction Brief, Operator Log, Pass Bars, and twin-engine stack
-      (Codex home + OpenCode required; Claude Code optional). Companion:
+      (Codex app home + OpenCode required; Claude Code optional). Companion:
       <a href="./velocity-paradox.html">The velocity paradox</a>.
     </div>
 
@@ -78,7 +78,7 @@ AttributeError: 'NoneType' object has no attribute 'query'
 
 I was on the OpenCode session against the local repo.
 What does this mean and how do we fix it without changing unrelated files?</pre></div>
-    <p><strong>Tips:</strong> full traceback · nearby log lines · exact command · last change · which engine (Codex vs OpenCode).</p>
+    <p><strong>Tips:</strong> full traceback · nearby log lines · exact command · last change · which engine (Codex app vs OpenCode).</p>
 
     <h2>4. Iterate — small batches, testable steps</h2>
     <p>Do not ask for the whole system in one shot. Scaffold → one runnable vertical slice → next feature → polish only after green.</p>
@@ -102,7 +102,7 @@ What does this mean and how do we fix it without changing unrelated files?</pre>
     <div class="diagram"><pre>New session. Working tree is at [path]. Done: [bullets]. Broken: [error].
 Non-goals: [list]. First task: [one slice].
 Review the tree, then propose a plan before editing.</pre></div>
-    <p><strong>Adversarial (course move):</strong> for judgment calls, open a <strong>new thread</strong> with a frozen attack prompt. Do not argue with the same chat that built the artifact — that chat is contaminated by commitment.</p>
+    <p><strong>Adversarial (course move):</strong> for judgment calls, open a <strong>new chat</strong> with a frozen attack prompt. Do not argue with the same chat that built the artifact — that chat is contaminated by commitment.</p>
 
     <h2>7. Common mistakes</h2>
     <table>
@@ -119,21 +119,31 @@ Review the tree, then propose a plan before editing.</pre></div>
     </table>
 
     <h2>8. Harness tips for this stack</h2>
-    <h3>Codex (home)</h3>
+    <h3>Codex app (home)</h3>
     <ul>
-      <li>Build in the mission thread; brief / log / pass bars in Operator threads.</li>
-      <li>Plan-then-edit on non-trivial work; freeze the brief before multi-file changes.</li>
-      <li>Pin conventions in a short standing file loaded every session.</li>
+      <li>Build in the mission chat; brief / log / pass bars in Operator chats. Name and pin chats so you can find them a day later.</li>
+      <li><strong><code>/plan</code> before you edit</strong> on anything non-trivial — it proposes an approach without touching files, which is the machine-readable version of freezing your brief.</li>
+      <li><strong>Steer, don't restart.</strong> A follow-up joins the run in progress; queue it instead when it should wait. Killing a run to retype loses context you already paid for.</li>
+      <li><strong><code>/review</code> your own work</strong> before accepting it — against a base branch or over uncommitted changes. Inline comments on specific lines count as direction.</li>
+      <li><strong>Set the permission mode deliberately.</strong> <em>Ask for approval</em> pauses at the workspace boundary; <em>Approve for me</em> keeps the same boundary but sends the escalation to an automatic reviewer. Neither widens the sandbox — they change <strong>who reviews</strong>.</li>
+      <li><strong>Use a worktree to run two things at once.</strong> Parallel chats in one folder fight over the same files; a worktree isolates each, and <em>Hand off</em> moves a session back without the Git argument.</li>
+      <li><strong>Put standing conventions in <code>AGENTS.md</code></strong> at the project root — it loads every session. Add a line only after you've watched the same correction twice.</li>
+      <li><strong>Ask for subagents explicitly</strong> when work is read-heavy and separable. They return summaries rather than raw output. Be wary of pointing several at the same files to write.</li>
+      <li><strong>Know what the app loaded before you call a run evidence.</strong> <code>AGENTS.md</code> from the project root, <code>~/.codex/AGENTS.md</code>, discovered skills, and memories if you enabled them all arrive without appearing in your prompt. That is the point on a build day and a problem on a comparison day — run a frozen brief inside your P2 project and Codex carries your craft while the other engine runs bare.</li>
     </ul>
-    <h3>OpenCode (required second engine)</h3>
+    <h3>OpenCode (second harness)</h3>
     <ul>
-      <li>Twin-engine comparison (especially P3) and Grok / staff-pinned model work.</li>
-      <li><code>opencode run "…"</code> for one-shots; interactive session for multi-step repair.</li>
-      <li>Configure model + MCP deliberately — wrong model is often a context problem.</li>
-      <li>Local-capable setups matter for hold-and-degrade (P8).</li>
+      <li><strong>Treat it as a harness, not a second chat box.</strong> Standing conventions go in <code>AGENTS.md</code> at the project root — the same filename Codex reads, and <code>/init</code> will draft one. Agents, permissions, and custom tools live in <code>.opencode/</code> beside it.</li>
+      <li><strong>Keep it independent whenever the run is evidence.</strong> OpenCode reads <code>~/.claude/CLAUDE.md</code> and <code>.claude/skills</code> when it finds them, so two engines can quietly share one memory file and agree for the wrong reason. <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set in pre-work; add <code>--pure</code> to skip installed plugins on any run you intend to compare or log.</li>
+      <li><code>opencode run "…"</code> for one-shots; interactive session for multi-step repair. Pin the model per run with <code>-m</code> — otherwise resolution falls back to whichever you used last, which is state you can't see in the transcript.</li>
+      <li><strong>Permission rules are last-match-wins.</strong> A later <code>allow</code> overrides an earlier <code>deny</code>, the opposite of the instinct most people bring. Write broad rules first and exceptions after, and read your own config bottom-up when you're asking why something was permitted.</li>
+      <li><strong>Wrong model choice is a context problem wearing a prompt problem's clothes.</strong> <code>opencode models &lt;provider&gt; --refresh</code> before you rewrite the brief.</li>
+      <li><strong><code>/undo</code> reverts the file changes, not just the message</strong> — and it needs a Git repo to do it. Know that before you reach for it mid-repair.</li>
+      <li>Custom providers and local endpoints sit under <code>provider</code> in <code>opencode.json</code> — that seam is what you re-point during hold-and-degrade (P8).</li>
     </ul>
     <h3>Optional Claude Code · Twin-engine habit</h3>
     <p>Same rules: small batch, full errors, explicit pass bar. Same frozen brief → both engines → compare on evidence. Log the delta in the Operator Log.</p>
+    <p>Before the delta means anything, check what each side was carrying: instruction files, skills, memories, plugins, and which model actually answered. Both engines load context you didn't type, and neither announces it. One engine plus your notes is not two engines — run clean, or declare what was live.</p>
 
     <h2>9. Direction starters</h2>
     <div class="diagram"><pre>I have a [stack] project at [path] that [mission in one sentence].
@@ -149,7 +159,7 @@ Error while [command]:
 
 [full traceback]
 
-Engine: [Codex | OpenCode]. Last change: [one line].
+Engine: [Codex app | OpenCode]. Last change: [one line].
 Fix with minimal diff; add a check so it cannot silently return.
 
 ---
@@ -159,7 +169,7 @@ List gaps only. Do not rewrite yet.
 
 ---
 
-New adversarial thread. Artifact: [path or paste].
+New adversarial chat. Artifact: [path or paste].
 Attack prompt: [frozen].
 Findings ranked by severity + one-line fix hypothesis each. No pep talk.</pre></div>
 

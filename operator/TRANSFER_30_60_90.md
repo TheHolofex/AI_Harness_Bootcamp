@@ -19,20 +19,20 @@ Without this file sealed, P8 is a camp demo. With it, P8 is induction into opera
 
 | Rule | Detail |
 |---|---|
-| **Where** | Standing file in the Codex project |
-| **Thread** | **Own Codex thread:** `Operator — Transfer 30-60-90` — **not** the build thread, **not** the Direction & Log thread |
+| **Where** | Standing file in the Codex app project |
+| **Chat** | **Own Codex app chat:** `Operator — Transfer 30-60-90` — **not** the build chat, **not** the Direction & Log chat |
 | **How written** | **Interactively with the AI after every morning and every afternoon block** |
 | **When** | End of each session (B0 AM, P1 PM, P2 AM, … through P8). No skipping “quiet” blocks. |
 | **Owner** | You. AI interviews, drafts, attacks fantasy and vagueness. You accept every line. |
 | **Standard** | Specific to your work, checkable, bound. “Use AI more” is void. |
 
-### Three threads (do not collapse)
+### Three chats (do not collapse)
 
-| Thread | Job |
+| Chat | Job |
 |---|---|
 | `Operator — Direction & Log` | LIVE brief before mission · log + pass-bar check after |
 | **`Operator — Transfer 30-60-90`** | Outer loop — map today’s mastery onto the real desk |
-| Build / mission threads | Execute the block |
+| Build / mission chats | Execute the block |
 
 Direction/log is *this mission*.  
 Transfer is *my job after Friday*.  
@@ -49,13 +49,13 @@ Mixing them produces either thin briefs or poster-quality 30-60-90s.
 
 ## Cadence — after every AM and PM
 
-**When:** after Operator Log + pass-bar draft, adversarial review, **and** measurement spine row for that block. Then open this Transfer thread.  
+**When:** after Operator Log + pass-bar draft, adversarial review, **and** measurement spine row for that block. Then open this Transfer chat.  
 **Duration:** ~5–10 minutes dialogue most blocks; longer when a major seed lands or at seal.  
 **Rule:** every block leaves a fingerprint on this file — even if the fingerprint is “no new seed; reinforced bound X / still blocked on naming workload Y.”
 
 ### What “after every session” means in practice
 
-| Block just finished | Transfer-thread job (minimum) |
+| Block just finished | Transfer-chat job (minimum) |
 |---|---|
 | **B0** | Open file · capture desk hints · note first instrument instinct for *work* · status → Living |
 | **P1** | Judgment product at work that should become a machine · regenerate habit sketch |
@@ -278,7 +278,7 @@ Outer circuit closed when:
 
 ## Seal checklist (P8 — required for MVP)
 
-Interactive in the **Transfer** thread. **SEALED** only when all hold.
+Interactive in the **Transfer** chat. **SEALED** only when all hold.
 
 - [ ] Session log shows entries across the week (not a single Friday dump)
 - [ ] Identity is **my** desk, not bootcamp fanfic  
@@ -294,7 +294,7 @@ Interactive in the **Transfer** thread. **SEALED** only when all hold.
 
 ---
 
-## Transfer-thread prompts
+## Transfer-chat prompts
 
 ### Every AM/PM (paste after log + pass-bar)
 
@@ -302,7 +302,7 @@ Interactive in the **Transfer** thread. **SEALED** only when all hold.
 Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
 
 Block I just finished: [B0/P1/…].
-I have finished Direction/Log and pass-bar check in the other operator thread.
+I have finished Direction/Log and pass-bar check in the other operator chat.
 
 Run a short interactive update:
 1. What mastery did this block actually prove (one sentence, no theater)?
@@ -315,7 +315,7 @@ Do not seal. Do not invent a full plan from zero on a light block.
 Challenge vagueness. I own every accept.
 ```
 
-### Heavier gates (still in Transfer thread; same day as block)
+### Heavier gates (still in Transfer chat; same day as block)
 
 Use the every-session prompt first, then:
 
@@ -338,8 +338,8 @@ Smallest revision to keep the outer circuit closed. I own accepts.
 
 | Artifact | Relationship |
 |---|---|
-| Direction & Log thread | Inner mission pulse — finishes before adversarial + transfer |
-| `ADVERSARIAL_REVIEW.md` | Every-block verdict attack in a **new** thread — required before measurement/transfer |
+| Direction & Log chat | Inner mission pulse — finishes before adversarial + transfer |
+| `ADVERSARIAL_REVIEW.md` | Every-block verdict attack in a **new** chat — required before measurement/transfer |
 | `MEASUREMENT_SPINE.md` | Four headlines after adversarial — ritual · mission · quality · time |
 | `PASS_BARS.md` | Evidence that transfer claims are earned |
 | P8 matrix + AUP | Method can move; this file says where it moves *to* |
@@ -348,4 +348,4 @@ Smallest revision to keep the outer circuit closed. I own accepts.
 ## Identity lock
 
 If transfer is only touched at “big gates” or dumped on Friday, the outer loop is fake.  
-**Every morning and afternoon session ends in the Transfer thread** — interactive, adversarial, short, cumulative — until P8 seals it.
+**Every morning and afternoon session ends in the Transfer chat** — interactive, adversarial, short, cumulative — until P8 seals it.

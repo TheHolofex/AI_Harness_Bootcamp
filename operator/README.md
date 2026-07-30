@@ -2,7 +2,7 @@
 
 **Deep operator mastery of AI direction and cothinking** is practiced here, every block.
 
-The Brief and Log are **not** blank homework. They are **produced interactively** with the AI in a dedicated operator thread. That *is* cothinking: the machine helps you think clearly about direction and evidence; you keep mission ownership and verdict.
+The Brief and Log are **not** blank homework. They are **produced interactively** with the AI in a dedicated operator chat. That *is* cothinking: the machine helps you think clearly about direction and evidence; you keep mission ownership and verdict.
 
 ## What lives here
 
@@ -11,9 +11,9 @@ The Brief and Log are **not** blank homework. They are **produced interactively*
 | `DIRECTION_BRIEF.md` | **Before** the mission | AI interviews + drafts; operator accepts → status **LIVE** |
 | `OPERATOR_LOG.md` | **After** the mission | AI interviews + stress-tests evidence; operator assigns verdict |
 | `PASS_BARS.md` | After the log | MVP / stretch / side-quest self-check — Move 2 |
-| `TRANSFER_30_60_90.md` | **Every AM + PM** (own thread) | Living transfer plan — outer circuit — Move 3 |
+| `TRANSFER_30_60_90.md` | **Every AM + PM** (own chat) | Living transfer plan — outer circuit — Move 3 |
 | `TRANSFER_GATES.md` | Facilitator | When to seed/draft/seal |
-| `ADVERSARIAL_REVIEW.md` | **Every block** (new thread) | Frozen-prompt verdict/MVP attack — in-course peer |
+| `ADVERSARIAL_REVIEW.md` | **Every block** (new chat) | Frozen-prompt verdict/MVP attack — in-course peer |
 | `MEASUREMENT_SPINE.md` | **Every block** (after adversarial) | Four headlines — Move 4 |
 | `FACILITATOR_ROLLUP.md` | Facilitator | Thin cohort scan |
 
@@ -21,17 +21,17 @@ Stable template all week. Ultra-light: ≤5 minutes dialogue pre, ≤5 post.
 
 ## Where it lives for students
 
-1. These standing files inside the **Codex project**.
-2. A **separate** chat thread: `Operator — Direction & Log`.
+1. These standing files inside the **Codex app project**.
+2. A **separate** chat: `Operator — Direction & Log`.
 3. Student pastes the starter prompt from each file and works the dialogue.
-4. Mission/build work happens in **other** threads. Never collapse judgment into the build chat.
+4. Mission/build work happens in **other** chats. Never collapse judgment into the build chat.
 
 ## Ritual (every block)
 
 ```
-Operator thread: co-write Brief → status LIVE
-    → Build thread: run mission against the Brief
-    → Operator thread: co-write Log entry (verdict + evidence)
+Operator chat: co-write Brief → status LIVE
+    → Build chat: run mission against the Brief
+    → Operator chat: co-write Log entry (verdict + evidence)
 ```
 
 ## What the AI is allowed to do here
@@ -45,27 +45,27 @@ Operator thread: co-write Brief → status LIVE
 
 - Declare the brief LIVE without operator acceptance
 - Assign ACCEPT/REJECT for the operator
-- Run the mission inside the operator thread
+- Run the mission inside the operator chat
 - Accept “looks good” or model self-praise as evidence
 
 ## Facilitation notes
 
-- Teach the thread split on Monday (Block 0). First Light can use a thin brief; still co-written.
-- If students skip the operator thread and only build, interrupt: that is chat labor, not this school.
+- Teach the chat split on Monday (Block 0). First Light can use a thin brief; still co-written.
+- If students skip the operator chat and only build, interrupt: that is chat labor, not this school.
 - REJECT with evidence is success.
 - After log: self-check MVP against `PASS_BARS.md` with the AI (no inflation).
-- After every AM/PM: Transfer thread pulse on `TRANSFER_30_60_90.md`; seal at P8.
+- After every AM/PM: Transfer chat pulse on `TRANSFER_30_60_90.md`; seal at P8.
 - Measurement spine after every adversarial (Move 4).
 
 ## Pre-work
 
-Workstation install is **student-owned** before Monday (`../prework/`). No golden image default. Block 0 verifies health check, then missions begin.
+Workstation install is **student-owned** before Monday (`../prework/`), verify-as-you-go. No golden image default. Monday AM is install clinic then First Light, then missions continue.
 
 ## Identity lock
 
 See `../MEMORY.md`. If Brief/Log become solo forms or instructor worksheets, the design has regressed.
 
-## Threads
+## Chats
 
 1. `Operator — Direction & Log` — brief · log · pass bars  
 2. `Adversarial — [block]` — **new every block** · frozen prompt · verdict/MVP attack  
@@ -73,5 +73,5 @@ See `../MEMORY.md`. If Brief/Log become solo forms or instructor worksheets, the
 4. `Operator — Transfer 30-60-90` — outer loop after measurement  
 5. Build/mission — execution only  
 
-In-course “peer who challenges verdicts” = adversarial AI thread.  
+In-course “peer who challenges verdicts” = adversarial AI chat.  
 Named human challenger = transfer seed for the job.

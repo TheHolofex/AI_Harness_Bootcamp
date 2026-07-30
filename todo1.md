@@ -66,7 +66,7 @@ So: **yes — as designed, the arc forms a closed cognitive circuit.** The raise
 | Axis | Covered? | Where |
 |---|---|---|
 | Direction craft | Strong | Brief ritual + B0/P1 |
-| Cothinking with trails | Strong | Operator thread + P4 |
+| Cothinking with trails | Strong | Operator chat + P4 |
 | Evidence / anti-vibe | Strong | Log, bars, school-wide evidence rule |
 | Harness craft (instructions/tests/memory/skills) | Strong | P2 |
 | Epistemics under disagreement | Strong | P3 |

@@ -1,6 +1,6 @@
 # Measurement spine — Move 4
 
-**Ultra-light week scoreboard.** Living Markdown in the Codex project.  
+**Ultra-light week scoreboard.** Living Markdown in the Codex app project.  
 Updated **once per block, after adversarial review** — before the Transfer pulse.
 
 Not a second curriculum. Not a metrics religion.  
@@ -26,8 +26,8 @@ Ritual health · Mission accomplishment · Work quality · Time to result
 
 | Rule | Detail |
 |---|---|
-| **Where** | `operator/MEASUREMENT_SPINE.md` in the Codex project |
-| **Thread** | Prefer short update in `Operator — Direction & Log` after adversarial (or a dedicated `Operator — Measurement` thread if the log thread is crowded) |
+| **Where** | `operator/MEASUREMENT_SPINE.md` in the Codex app project |
+| **Chat** | Prefer short update in `Operator — Direction & Log` after adversarial (or a dedicated `Operator — Measurement` chat if the log chat is crowded) |
 | **When** | **End of every block only**, after `ADVERSARIAL:` line exists |
 | **How** | Interactive with AI: you report facts; AI challenges inflated quality scores and missing times |
 | **Weight** | 3–5 fields. If it takes more than ~3–5 minutes, you’re over-measuring |
@@ -36,7 +36,7 @@ Ritual health · Mission accomplishment · Work quality · Time to result
 
 ```text
 Brief → Mission → Log + PASS_BARS draft
-  → Adversarial (new thread)
+  → Adversarial (new chat)
   → Measurement spine row (this file)
   → Transfer pulse
 ```
@@ -53,7 +53,7 @@ Score **0–3** (one point each, no partials):
 |---|---|
 | +1 Brief | LIVE Direction Brief (all five fields) before mission |
 | +1 Log | Operator Log complete including provisional verdict + evidence pointers |
-| +1 Adversarial | New adversarial thread run; `ADVERSARIAL: stood/wounded/failed` line in log |
+| +1 Adversarial | New adversarial chat run; `ADVERSARIAL: stood/wounded/failed` line in log |
 
 **Ritual = 3** is the floor for claiming the block was operated, not merely attended.
 

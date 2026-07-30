@@ -4,29 +4,29 @@
 
 The living 30-60-90 is the **outer half of the circuit**. It must be trained like the inner half: **rhythm**, not a special occasion.
 
-**Required:** after **every morning and every afternoon** block, student opens the dedicated Codex thread **`Operator — Transfer 30-60-90`** and co-writes interactively with the AI (~5–10 min; longer at P2/P7/P8).
+**Required:** after **every morning and every afternoon** block, student opens the dedicated Codex app chat **`Operator — Transfer 30-60-90`** and co-writes interactively with the AI (~5–10 min; longer at P2/P7/P8).
 
 Do **not** park transfer only on selected gates. Gates are *depth* markers inside a daily pulse.
 
-## Thread split (enforce)
+## Chat split (enforce)
 
-| Thread | When |
+| Chat | When |
 |---|---|
 | `Operator — Direction & Log` | Before mission (brief) · after mission (log + pass bars) |
-| `Adversarial — [block]` | **After** log/pass-bar draft · **new thread every block** |
+| `Adversarial — [block]` | **After** log/pass-bar draft · **new chat every block** |
 | `Operator — Transfer 30-60-90` | **After** adversarial · every AM · every PM |
-| Build threads | During mission only |
+| Build chats | During mission only |
 
-If students update transfer inside the log thread, stop and split — different cognitive job.
+If students update transfer inside the log chat, stop and split — different cognitive job.
 
 ## Half-day pulse
 
 ```text
-Brief (Log thread) → Mission (build) → Log + PASS_BARS draft (Log thread)
-    → Adversarial review (NEW thread + frozen prompt)
+Brief (Log chat) → Mission (build) → Log + PASS_BARS draft (Log chat)
+    → Adversarial review (NEW chat + frozen prompt)
     → Fix log/bars if wounded
     → Measurement spine row (MEASUREMENT_SPINE.md)
-    → Transfer session (Transfer thread) → leave
+    → Transfer session (Transfer chat) → leave
 ```
 
 | Block | Depth inside the pulse |
