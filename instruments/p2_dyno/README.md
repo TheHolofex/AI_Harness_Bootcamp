@@ -7,10 +7,10 @@
 ## Student flow
 
 1. Confirm track folder.
-2. Run suite **baseline** on stock harness (new thread/session recommended).
+2. Run suite **baseline** on stock harness (new chat/session recommended).
 3. Record D01–D05 on `SCORE_SHEET.md` (PASS/FAIL + note).
 4. Make harness changes (instructions/tests/memory/skills per block MVP).
-5. Run suite **after** cold (new thread if possible).
+5. Run suite **after** cold (new chat if possible).
 6. Record after scores; compute delta.
 7. Deep mark on measurement spine: `Dyno: baseline n/5 → after n/5`.
 

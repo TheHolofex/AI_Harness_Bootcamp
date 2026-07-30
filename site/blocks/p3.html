@@ -36,25 +36,25 @@
 
 <div class="lead-box">
   <p class="eyebrow">Lead operate-along</p>
-  <p>Share this block page on screen. Co-write the brief live. Run the mission in a build thread students can see. Narrate accepts/rejects. Use a side AI thread to diagram a concept when eyes glaze — then return to the artifact.</p>
+  <p>Share this block page on screen. Co-write the brief live. Run the mission in a build chat students can see. Narrate accepts/rejects. Use a side AI chat to diagram a concept when eyes glaze — then return to the artifact.</p>
 </div>
 
 <h2>Why this block exists</h2>
 <p>Models are callable components. When they disagree, that disagreement is a <strong>sensor</strong>. Your job is adjudication with evidence outside either model’s confidence.</p>
 <h2>What you will leave with</h2>
-<ul><li>Run BRIEF-v1 unchanged on Codex and OpenCode</li><li>Comparator table; ≥3 material disagreements or proof of search</li><li>Kill at least one model-asserted claim</li><li>Supervisor-readable adjudication note</li><li>Transfer P3 seed; full pulse</li></ul>
+<ul><li>Run BRIEF-v1 unchanged on the Codex app and OpenCode</li><li>Run identity declared for both engines — model, version, folder, context loaded</li><li>Comparator table; ≥3 material disagreements or proof of search</li><li>Kill at least one model-asserted claim</li><li>Supervisor-readable adjudication note</li><li>Transfer P3 seed; full pulse</li></ul>
 <h2>Before you start</h2>
 <ul><li>Same track as P2</li><li>Both apps signed in</li></ul>
 
 <div class="callout"><strong>Every block ends with the operator pulse</strong>
-Direction Brief (LIVE) → Mission → Log + pass-bar draft → <em>new</em> Adversarial thread → Measurement spine row → Transfer pulse.
-See <a href="../pulse.html">Pulse &amp; threads</a> for paste-ready prompts.
+Direction Brief (LIVE) → Mission → Log + pass-bar draft → <em>new</em> Adversarial chat → Measurement spine row → Transfer pulse.
+See <a href="../pulse.html">Pulse &amp; chats</a> for paste-ready prompts.
 </div>
 
 <h2>Run of exercise</h2>
 <ol class="steps"><li><h3>Open the chair</h3>
-<p>Open your Codex project. Confirm operator templates are present (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>, etc.).</p>
-<p>Open thread <strong>Operator — Direction &amp; Log</strong>. Paste the Direction Brief starter from the operator pack.</p>
+<p>Open your Codex app project. Confirm operator templates are present (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>, etc.).</p>
+<p>Open chat <strong>Operator — Direction &amp; Log</strong>. Paste the Direction Brief starter from the operator pack.</p>
 </li>
 <li><h3>Co-write the Direction Brief until LIVE</h3>
 <p>Work the five fields with the AI: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back.</p>
@@ -65,25 +65,27 @@ See <a href="../pulse.html">Pulse &amp; threads</a> for paste-ready prompts.
 <ol>
 <li>Read <code>BRIEF-v1.md</code> — do not edit.</li>
 <li>Point both engines at your track <code>corpus/</code>.</li>
+<li><strong>Settle what each engine is carrying before either one runs.</strong> Both load context you never typed and neither announces it: the Codex app picks up <code>AGENTS.md</code>, skills, and memories from wherever you launch it — including the harness you hot-rodded in P2 — and OpenCode reads <code>~/.claude/CLAUDE.md</code> and <code>.claude/skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set. Run from a clean folder holding only the frozen corpus, or write down exactly what was live on each side. One engine plus your notes is not two engines.</li>
 <li>Run BRIEF-v1 on <strong>Codex</strong> → save <code>output_codex.md</code>.</li>
-<li>Run BRIEF-v1 on <strong>OpenCode</strong> → save <code>output_opencode.md</code>.</li>
-<li>Fill <code>COMPARATOR.md</code>. Kill at least one bad claim. Write adjudication note.</li>
+<li>Run BRIEF-v1 on <strong>OpenCode</strong> (<code>--pure</code>, model pinned with <code>-m</code>) → save <code>output_opencode.md</code>.</li>
+<li>Fill the run-identity table in <code>COMPARATOR.md</code> — model id, version, folder, context loaded — then the side-by-side. Kill at least one bad claim. Write adjudication note.</li>
 </ol>
 <p>Joins use <code>watchlist.csv</code> IDs only — models do not invent join keys.</p>
+<p>An advantage you didn't declare looks exactly like a capability you don't have. If the two sides ran with different context, that is a finding about your setup — not a disagreement between models.</p>
 </li>
 <li><h3>Operator Log + pass-bar draft</h3>
 <p>Back in Direction &amp; Log, paste the log starter. Record verdict, evidence, what you still own.</p>
 <p>Self-check against <a href="../../operator/PASS_BARS.md">PASS_BARS.md</a> for P3 — met / not yet with pointers. No inflation.</p>
 </li>
-<li><h3>Adversarial review (new thread)</h3>
-<p>Open a <strong>new</strong> thread titled <code>Adversarial — P3</code>. Paste the frozen prompt from the operator pack plus your artifacts and provisional verdict.</p>
+<li><h3>Adversarial review (new chat)</h3>
+<p>Open a <strong>new</strong> chat titled <code>Adversarial — P3</code>. Paste the frozen prompt from the operator pack plus your artifacts and provisional verdict.</p>
 <p>Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed — …</code>. Fix if wounded.</p>
 </li>
 <li><h3>Measurement spine</h3>
 <p>Update <code>MEASUREMENT_SPINE.md</code>: ritual 0–3, mission HIT/PARTIAL/MISS, quality STRONG/ADEQUATE/WEAK, time to result (minutes).</p>
 </li>
 <li><h3>Transfer pulse</h3>
-<p>Thread <strong>Operator — Transfer 30-60-90</strong>. Paste the every-session transfer prompt. Leave a session-log row even if the seed is small today.</p>
+<p>Chat <strong>Operator — Transfer 30-60-90</strong>. Paste the every-session transfer prompt. Leave a session-log row even if the seed is small today.</p>
 </li></ol>
 <h2>Pass bar (mastery floor)</h2>
 <p>Full checklist: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md</a> · section P3. MVP is not “it ran.” Evidence must survive adversarial review.</p>

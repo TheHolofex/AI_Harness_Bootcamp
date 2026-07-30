@@ -50,7 +50,7 @@
   function buildNav(prefix, current) {
     var p = prefix;
     var modules = [
-      ["block-b0", p + "/blocks/b0.html", "B0 · First Light"],
+["block-b0", p + "/blocks/b0.html", "B0 · Clinic + First Light"],
       ["block-p1", p + "/blocks/p1.html", "P1 · Daily Status Brief"],
       ["block-p2", p + "/blocks/p2.html", "P2 · Hot-rod"],
       ["block-p3", p + "/blocks/p3.html", "P3 · Twin-engine"],
@@ -62,11 +62,11 @@
       ["week", p + "/week.html", "Week map"],
       ["checklists-index", p + "/checklists/index.html", "Exercise checklists"]
     ];
-    var prework = [
+var prework = [
       ["prework", p + "/prework.html", "Pre-work hub"],
       ["keys", p + "/keys.html", "Your API keys"],
-      ["prework-install", p + "/checklists/prework-install.html", "Install checklist"],
-      ["prework-health", p + "/checklists/prework-health.html", "Health check gate"]
+      ["prework-install", p + "/checklists/prework-install.html", "Install + verify"],
+      ["block-b0", p + "/blocks/b0.html", "Monday clinic + First Light"]
     ];
     var instructor = [
       ["lead", p + "/lead.html", "Operate-along guide"],
