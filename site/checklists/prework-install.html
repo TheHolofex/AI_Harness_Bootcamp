@@ -32,6 +32,9 @@
 <div class="callout"><strong>Everything runs on API keys</strong>
 Staff issue you three keys — OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly plan during this course. Several tools below offer a subscription login and an API key option on the same screen; always take the API key path. Keep <a href="../keys.html">Your API keys</a> open in another tab while you work.</div>
 
+<div class="callout"><strong>You only need one shell: PowerShell</strong>
+Every command in this guide is typed into PowerShell. You will also install Git Bash, which is a different kind of terminal — but that is a dependency other tools reach for on their own, not a second thing for you to learn. Step 9 shows how to tell at a glance which window you are looking at, because pasting a command into the wrong one produces errors that never say so.</div>
+
 <div class="checklist-toolbar">
   <p>Check each step when <strong>you</strong> finish it — not when you've read it. Progress saves in this browser only. Keep a setup log as you go; what broke and how you fixed it is the evidence you bring Monday.</p>
   <div class="btn-row">
@@ -88,6 +91,7 @@ Staff issue you three keys — OpenAI, xAI, and Anthropic. You will never sign i
     <span class="check-title">Know the shape of what you're building</span>
   </label>
   <div class="check-detail"><p>Foundations first: a terminal, a package manager, Git, then Node and Python. Then your three keys. Then six tools that use them.</p>
+  <p>All of it is driven from one window — a PowerShell terminal. You'll open it in step 9 and stay there for the rest of this guide.</p>
   <p><strong>Codex</strong> is your home for the week. <strong>OpenCode</strong> is the second engine you'll run the same brief through on Wednesday. <strong>Pi</strong> shows you a bare agent loop with nothing smoothed over. <strong>goose</strong> runs bounded, repeatable work. <strong>Obsidian</strong> holds a knowledge base and <strong>n8n</strong> builds a fixed pipeline. Claude Code is optional.</p></div>
 </li>
 </ol></section>
@@ -154,7 +158,25 @@ Staff issue you three keys — OpenAI, xAI, and Anthropic. You will never sign i
     <span class="check-title">Open Windows Terminal as your normal user</span>
   </label>
   <div class="check-detail"><p>Press <kbd>Win</kbd>, type <code>Terminal</code>, press Enter. Do <em>not</em> choose "Run as administrator" — the installers below ask for elevation individually when they genuinely need it, and running the whole session elevated can put things in the wrong place.</p>
-  <p>Avoid the Start menu entry labelled <strong>Windows PowerShell (x86)</strong>. That's a 32-bit host, and some installers refuse to run in it even on a 64-bit machine.</p></div>
+  <p>Avoid the Start menu entry labelled <strong>Windows PowerShell (x86)</strong>. That's a 32-bit host, and some installers refuse to run in it even on a 64-bit machine.</p>
+  <p><strong>This window is where every command in this guide goes.</strong> Windows ships three terminals that look similar, and commands are not interchangeable between them. Tell them apart by the prompt:</p>
+  <table>
+    <thead><tr><th>Window</th><th>Prompt looks like</th><th>Use it for</th></tr></thead>
+    <tbody>
+      <tr><td><strong>PowerShell</strong></td><td><code>PS C:\Users\you&gt;</code> — note the <code>PS</code></td><td>Everything in this guide</td></tr>
+      <tr><td>Command Prompt</td><td><code>C:\Users\you&gt;</code> — no <code>PS</code></td><td>Nothing here, unless a rescue step says so</td></tr>
+      <tr><td>Git Bash</td><td><code>you@machine ~ $</code> — a <code>$</code>, and <code>/</code> in paths</td><td>One goose fallback in step 52</td></tr>
+    </tbody>
+  </table>
+  <p>Confirm you're in the right one:</p>
+  <pre><code>$PSVersionTable.PSVersion</code></pre>
+  <p>A version number means PowerShell. An error means you're somewhere else — close it and open Terminal again.</p>
+  <p>Three errors later in this guide mean "wrong window" rather than "broken install", and they're worth recognising now:</p>
+  <ul>
+    <li><code>'irm' is not recognized</code> — you're in Command Prompt, not PowerShell.</li>
+    <li><code>The token '&amp;&amp;' is not a valid statement separator</code> — a Command Prompt or Git Bash style command pasted into PowerShell.</li>
+    <li><code>A parameter cannot be found that matches parameter name 'fsSL'</code> — a Mac or Linux <code>curl</code> command pasted into PowerShell, where <code>curl</code> means something different. This is exactly what happens if you try OpenCode's website installer.</li>
+  </ul></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -1009,8 +1031,20 @@ Get-Content .\from-claude-optional.txt</code></pre>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-r-scripts" data-check-id="r-scripts" />
+    <input type="checkbox" id="ahb-prework-install-r-window" data-check-id="r-window" />
     <span class="check-num">73</span>
+    <span class="check-title">A command that should work doesn't — check which window you're in</span>
+  </label>
+  <div class="check-detail"><p>Before assuming an install is broken, confirm the terminal:</p>
+  <pre><code>$PSVersionTable.PSVersion</code></pre>
+  <p>A version number means PowerShell, which is what every command here expects. An error means you're in Command Prompt or Git Bash, and the command was never going to work.</p>
+  <p>See the table in step 9 for the prompt each one shows, and the three error messages that specifically mean "wrong window."</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-r-scripts" data-check-id="r-scripts" />
+    <span class="check-num">74</span>
     <span class="check-title">"running scripts is disabled on this system"</span>
   </label>
   <div class="check-detail"><p>That's the execution policy from step 11. Re-run it, then check <code>Get-ExecutionPolicy -List</code>.</p>
@@ -1020,7 +1054,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-auth" data-check-id="r-auth" />
-    <span class="check-num">74</span>
+    <span class="check-num">75</span>
     <span class="check-title">A tool won't authenticate</span>
   </label>
   <div class="check-detail"><p>Work through these in order. Is the key set in <em>this</em> window (step 27)? Does it start with the right prefix for that provider? Is it the right key for that tool — <code>XAI_API_KEY</code> for OpenCode, <code>OPENAI_API_KEY</code> for Codex?</p>
@@ -1031,7 +1065,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-noclaim" data-check-id="r-noclaim" />
-    <span class="check-num">75</span>
+    <span class="check-num">76</span>
     <span class="check-title">The tool says it wrote a file that isn't there</span>
   </label>
   <div class="check-detail"><p>Believe the folder, not the chat. Check you're where you think you are with <code>Get-Location</code>, and list it with <code>Get-ChildItem</code>.</p>
@@ -1041,7 +1075,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-stuck" data-check-id="r-stuck" />
-    <span class="check-num">76</span>
+    <span class="check-num">77</span>
     <span class="check-title">You've been stuck on one step for 30 minutes</span>
   </label>
   <div class="check-detail"><p>Stop and post in the pre-work channel with the step number, the exact error text, and what you've already tried. Move on to the next section while you wait — most of these are independent, so one blocked tool doesn't block the rest.</p>

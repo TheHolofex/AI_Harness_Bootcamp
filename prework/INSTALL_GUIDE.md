@@ -32,7 +32,31 @@ $env:PROCESSOR_ARCHITECTURE             # must be AMD64
 
 ## 1. Terminal and PowerShell
 
+**You only need one shell: PowerShell.** Every command in this guide is typed into it. You will also install Git Bash, which is a different kind of terminal — but that is a dependency other tools reach for on their own, not a second thing for you to learn.
+
 Open Windows Terminal as your **normal user** — not as administrator. Avoid the Start menu entry labelled *Windows PowerShell (x86)*; it is a 32-bit host and some installers refuse to run in it.
+
+Windows ships three terminals that look similar, and commands are not interchangeable between them. Tell them apart by the prompt:
+
+| Window | Prompt looks like | Use it for |
+|---|---|---|
+| **PowerShell** | `PS C:\Users\you>` — note the `PS` | Everything in this guide |
+| Command Prompt | `C:\Users\you>` — no `PS` | Nothing here, unless a rescue step says so |
+| Git Bash | `you@machine ~ $` — a `$`, and `/` in paths | One goose fallback in section 10 |
+
+Confirm you are in the right one — a version number means PowerShell, an error means you are somewhere else:
+
+```powershell
+$PSVersionTable.PSVersion
+```
+
+Three errors later in this guide mean "wrong window" rather than "broken install":
+
+| Error | Means |
+|---|---|
+| `'irm' is not recognized` | You are in Command Prompt, not PowerShell |
+| `The token '&&' is not a valid statement separator` | A Command Prompt or Git Bash style command pasted into PowerShell |
+| `A parameter cannot be found that matches parameter name 'fsSL'` | A Mac/Linux `curl` command pasted into PowerShell, where `curl` means something different. This is exactly what happens if you try OpenCode's website installer. |
 
 ```powershell
 $PSVersionTable.PSVersion
@@ -501,6 +525,7 @@ Then work `HEALTH_CHECK.md` or `site/checklists/prework-health.html` end to end 
 
 | Symptom | Cause | Fix |
 |---|---|---|
+| A command that should work doesn't | Wrong terminal | Run `$PSVersionTable.PSVersion`. A version means PowerShell; an error means Command Prompt or Git Bash. See the table in section 1. |
 | `'x' is not recognized` after a clean install | Terminal read PATH when it opened | Close **every** terminal, open a new one. Nine times in ten this is it. |
 | Still not recognized after two new windows | Installer didn't update PATH | Add the tool's folder (usually `%USERPROFILE%\.local\bin`) to User PATH |
 | `running scripts is disabled on this system` | Execution policy | Section 1. If `MachinePolicy`/`UserPolicy` are set, IT owns it — ticket them. Stopgap: `cmd /c npm install n8n -g` |

@@ -69,7 +69,10 @@ This gate exists to tell you the truth about your machine. A checkbox you ticked
     <span class="check-num">2</span>
     <span class="check-title">Start from a freshly opened terminal</span>
   </label>
-  <div class="check-detail"><p>Close everything and open one new PowerShell window. A window that has been open since you were installing may be carrying variables that won't exist on Monday, which would let a broken setup pass.</p></div>
+  <div class="check-detail"><p>Close everything and open one new PowerShell window. A window that has been open since you were installing may be carrying variables that won't exist on Monday, which would let a broken setup pass.</p>
+  <p>Confirm it is PowerShell and not Command Prompt or Git Bash — every command below assumes it:</p>
+  <pre><code>$PSVersionTable.PSVersion</code></pre>
+  <p>A version number means you're in the right window. An error means you're somewhere else.</p></div>
 </li>
 
 <li class="check-item" data-check-item>

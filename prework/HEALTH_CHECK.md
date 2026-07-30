@@ -7,7 +7,13 @@ Allow about thirty minutes. Bring the result to Block 0.
 
 Mark each line **PASS** / **FAIL**. A FAIL without a written unblock is not ready — and saying so now is a complete answer.
 
-> Start from a new terminal window. A window left open since installing may carry variables that won't exist on Monday, which would let a broken setup pass.
+> Start from a new **PowerShell** window. A window left open since installing may carry variables that won't exist on Monday, which would let a broken setup pass.
+>
+> Confirm it is PowerShell and not Command Prompt or Git Bash — a version number means you are in the right window, an error means you are somewhere else:
+>
+> ```powershell
+> $PSVersionTable.PSVersion
+> ```
 
 ---
 
