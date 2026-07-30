@@ -83,19 +83,20 @@ LOCAL PIN: Ollama · qwen2.5-coder:7b · min free RAM 10 GB · verified tool-cal
 
 Students do **not** freestyle model shopping.
 
-Set the tag once in this window (same pattern as pre-work keys — paste when prompted, or assign from the pin line):
+Set the tag once, the same way pre-work set the cloud model ids. Persist it as well as setting it here — Part 1 has you open a **new** PowerShell, and a session-only value does not survive that:
 
 ```powershell
 $env:HB_LOCAL_MODEL = 'paste the tag from the LOCAL PIN line'
-# optional: persist for the day
-# [Environment]::SetEnvironmentVariable('HB_LOCAL_MODEL', $env:HB_LOCAL_MODEL, 'User')
+[Environment]::SetEnvironmentVariable('HB_LOCAL_MODEL', $env:HB_LOCAL_MODEL, 'User')
 ```
 
-Also keep your course cloud model name handy:
+Your cloud model id is already set from pre-work, so you do not need to retype it. Confirm it is there rather than overwriting it:
 
 ```powershell
-$env:HB_OPENAI_MODEL = 'paste staff cloud model id'
+$env:HB_OPENAI_MODEL
 ```
+
+If that comes back empty, set it the same way as the local tag, using the cloud model id staff pinned. Part 10 uses it to flip back.
 
 ---
 
@@ -225,9 +226,10 @@ If cloud summary is missing, re-run cloud **once** before local. The stretch is 
 
 ```powershell
 $env:GOOSE_MODE = "approve"
-# optional: copy prior cloud summary aside if the recipe overwrites the same path
-if (Test-Path .\out\watch_summary.md) {
-  Copy-Item .\out\watch_summary.md .\out\watch_summary.cloud.md -Force
+# Set the cloud copy aside ONCE. After a local run, watch_summary.md holds the
+# local result, so an unguarded copy here would overwrite your cloud baseline.
+if ((Test-Path .\out\watch_summary.md) -and -not (Test-Path .\out\watch_summary.cloud.md)) {
+  Copy-Item .\out\watch_summary.md .\out\watch_summary.cloud.md
 }
 goose run --recipe .\watch_officer.yaml
 # preserve local result under a distinct name
@@ -237,6 +239,8 @@ if (Test-Path .\out\watch_summary.md) {
 ```
 
 If your recipe writes only one path, the copy steps are what make the pair honest. Explorer must show **both** `.cloud.md` and `.local.md` (or documented paths).
+
+You will likely run this block more than once — a weak tool-caller failing is a degrade worth scoring and retrying. That is exactly when the cloud baseline is at risk, which is why the first copy refuses to fire a second time. Before you re-run, open `watch_summary.cloud.md` and confirm it still reads like the cloud result. If it ever looks local, the pair is broken: re-run cloud once to rebuild it before scoring anything.
 
 ---
 

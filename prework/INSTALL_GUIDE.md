@@ -619,7 +619,7 @@ Staff will post a **model pin** (tag + minimum RAM). Do not freestyle large down
    [Environment]::SetEnvironmentVariable('HB_LOCAL_MODEL', $env:HB_LOCAL_MODEL, 'User')
    ollama pull $env:HB_LOCAL_MODEL
    ```
-4. Smoke: `ollama run MODEL_TAG "Reply with exactly: local-brain-ok"`.
+4. Smoke: `ollama run $env:HB_LOCAL_MODEL "Reply with exactly: local-brain-ok"`.
 5. Note free RAM and whether the smoke worked in your setup log.
 
 If pull fails or the machine thrashes, stop and write YELLOW. Cloud goose remains the Thursday floor.
