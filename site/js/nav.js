@@ -71,8 +71,20 @@
       ["lead", p + "/lead.html", "Operate-along guide"],
       ["pulse", p + "/pulse.html", "Pulse & threads"],
       ["operator", p + "/operator.html", "Operator pack"],
-      ["instruments", p + "/instruments.html", "Course instruments"],
-      ["week", p + "/week.html", "Week map"]
+      ["instruments", p + "/instruments.html", "Course instruments"]
+    ];
+
+    // Repo-root docs: one level above site/ from root pages, two from blocks/checklists
+    var root = p === ".." ? "../.." : "..";
+    var resources = [
+      ["resources", p + "/resources.html", "Resources hub"],
+      ["resources-day", root + "/DAY_PROJECT_TABLE.md", "Day / project table"],
+      ["resources-diagrams", root + "/diagrams/README.md", "Diagrams"],
+      ["resources-pass", root + "/operator/PASS_BARS.md", "Pass bars"],
+      ["resources-measure", root + "/operator/MEASUREMENT_SPINE.md", "Measurement spine"],
+      ["resources-transfer", root + "/operator/TRANSFER_30_60_90.md", "Transfer 30-60-90"],
+      ["resources-memory", root + "/MEMORY.md", "Project memory"],
+      ["resources-start", root + "/START_HERE.md", "START_HERE"]
     ];
 
     function dropdown(id, label, items, groupKeys) {
@@ -92,12 +104,14 @@
     var moduleKeys = modules.map(function (m) { return m[0]; });
     var preworkKeys = prework.map(function (m) { return m[0]; });
     var instructorKeys = instructor.map(function (m) { return m[0]; });
+    var resourceKeys = resources.map(function (m) { return m[0]; });
 
     var html = "";
     html += link(p + "/index.html", "Home", "index", current);
     html += dropdown("nav-prework", "Pre-work", prework, preworkKeys);
     html += dropdown("nav-modules", "Modules", modules, moduleKeys);
     html += dropdown("nav-instructor", "Instructor", instructor, instructorKeys);
+    html += dropdown("nav-resources", "Resources", resources, resourceKeys);
     return html;
   }
 
