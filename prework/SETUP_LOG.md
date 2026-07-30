@@ -21,14 +21,16 @@ This is operator evidence: what broke, what you did about it, and what still ris
 | Node (22.22–24.x) | | | | |
 | Python | | | | |
 | API keys set and verified | | | | |
-| Codex install | | | | |
-| Codex `login --with-api-key` | | | | |
-| Codex sandbox setup | | | | |
+| Codex app install (ChatGPT desktop app) | | | | |
+| Codex app API-key sign-in | | | | |
+| Codex app permission mode + sandbox | | | | |
 | OpenCode install | | | | |
 | OpenCode model list | | | | |
+| OpenCode independence (`OPENCODE_DISABLE_CLAUDE_CODE=1`) | | | | |
 | Pi install | | | | |
 | Pi bash check | | | | |
-| goose install | | | | |
+| goose install (aaif-goose CLI; not winget) | | | | |
+| goose provider/model + mode note | | | | |
 | Obsidian | | | | |
 | n8n | | | | |
 | Course repo / operator pack | | | | |
@@ -42,6 +44,7 @@ Copy error text **exactly** rather than paraphrasing. The precise wording is usu
 Monday asks for these by name.
 
 - OpenCode version:
+- `OPENCODE_DISABLE_CLAUDE_CODE` set (y/n):
 - Codex sandbox mode (elevated / unelevated):
 - Node version:
 - Pinned models used (OpenAI / xAI):
@@ -77,9 +80,11 @@ What you learned from it:
 1.
 2.
 
-## Gate result
+## Ready for Monday clinic?
 
-GREEN / YELLOW / RED:
+Ready / mostly (yellow — list open items) / not ready:
+
+Open items for clinic:
 
 Folder or link to proof:
 

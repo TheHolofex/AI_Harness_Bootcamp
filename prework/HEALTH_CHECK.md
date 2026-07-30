@@ -1,9 +1,11 @@
-# Health check — pre-work gate
+# Health check — optional rescue re-test
 
-Run on the laptop you are **bringing Monday**, from a **freshly opened terminal**, **before Monday**.
-Allow about thirty minutes. Bring the result to Block 0.
+**Not the primary pre-work path.** Install already ends each section with its own verify. Use this sheet only when you need a full cold re-test (after a machine rebuild, a long gap, or clinic triage).
 
-**Primary path:** `site/checklists/prework-health.html`
+Run on the laptop you are **bringing Monday**, from a **freshly opened terminal**.
+Allow about thirty minutes if you truly need the whole sheet.
+
+**Primary path:** `site/checklists/prework-install.html` (verify as you go) · Monday AM install clinic.
 
 Mark each line **PASS** / **FAIL**. A FAIL without a written unblock is not ready — and saying so now is a complete answer.
 
@@ -80,10 +82,9 @@ cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
 Remove-Item from-*.txt -ErrorAction SilentlyContinue
 ```
 
-Re-run the four write commands from `INSTALL_GUIDE.md` sections 7–10, then:
+Re-run the four writes from `INSTALL_GUIDE.md` sections 7–10. Codex is the one you ask in the app — open the smoke folder as a project and request the file in plain language. The other three are commands. Then:
 
 ```powershell
-codex login status
 opencode --version
 goose info -v
 Get-ChildItem from-*.txt
@@ -91,9 +92,9 @@ Get-ChildItem from-*.txt
 
 | Tool | File | PASS/FAIL | Also confirm |
 |---|---|---|---|
-| Codex | `from-codex.txt` | | `codex login status` reports **API key**, not a ChatGPT account |
-| **OpenCode** | `from-opencode.txt` | | version recorded — Monday asks by name |
-| Pi | `from-pi.txt` | | `bash-check.txt` also present (proves it reaches Git Bash) |
+| Codex app | `from-codex.txt` | | profile menu reports **API key**, not a ChatGPT account · permission mode shows **Ask for approval** |
+| **OpenCode** | `from-opencode.txt` | | version recorded — Monday asks by name · `$env:OPENCODE_DISABLE_CLAUDE_CODE` returns `1` in a fresh window |
+| Pi | `from-pi.txt` | | `bash-check.txt` also present (proves it reaches Git Bash) · you can state that Pi has no sandbox and no working-directory fence |
 | goose | `from-goose.txt` | | `goose info -v` shows the intended provider and model |
 
 **PASS only if all four files exist on disk** — not "the chat said it did". Open the folder in Explorer and look.
@@ -131,8 +132,9 @@ Get-ChildItem -Force "$env:USERPROFILE\Documents\HarnessBootcamp\vault"
 | Check | PASS/FAIL |
 |---|---|
 | `operator/` templates are **in your working project**, and you can name them | |
-| You can state the twin-engine pair: **Codex** (OpenAI key) + **OpenCode** (xAI key) | |
-| You know what to do if a key leaks — tell staff, then re-run `codex login --with-api-key` after reissue | |
+| You can state the twin-engine pair: **Codex app** (OpenAI key) + **OpenCode** (xAI key) | |
+| You can say what each engine loads without being told — `AGENTS.md`, skills, and memories on the Codex side; `~/.claude/CLAUDE.md` and `.claude/skills` on the OpenCode side unless disabled | |
+| You know what to do if a key leaks — tell staff, then sign the Codex app in again with the reissued key via *Sign in another way* | |
 | Setup log holds at least one real failure and its fix | |
 
 If genuinely nothing broke, write that, and note the one step you would least want to repeat from memory. A blank log is the one answer that doesn't hold up.

@@ -28,6 +28,8 @@ The lead does **not** abstract into a distant lecturer. The lead **runs the exer
 | **Live operate** | Instructor does the block work on-screen (brief, mission, log, adversarial, measure, transfer) so the room sees real direction and cothinking |
 | **Talk-through** | Continuous narration: why this accept/reject, what evidence counts, where the harness is weak, what they’d do at work |
 | **Side lectures** | Short, experience-grounded asides — only when they sharpen the exercise, not as a separate slide course |
+| **Harness case talks** | Tue/Wed/Thu AM before lunch: 30 min real problem solved with harnesses + 15 min discussion — scars and evidence, not product pitch |
+| **Browser → deck lead demo** | Thursday **after lunch**, 30 min, before P7: staff Windows machine only — `@Browser` on scoped public pages → short slideshow → verify one claim → stop; students watch; **no** Chrome extension, **no** student setup (`lead/COMPUTER_USE_DEMO.md`) |
 | **AI as depth instrument** | Instructor interacts with the AI **in real time** to go deeper: explain, challenge, diagram, unpack concepts while the room watches the cothinking |
 | **Students still own the chair** | Watching is not substituting; students run their own pulse and artifacts. Demo is model + insight, not “copy my output” |
 
@@ -103,41 +105,66 @@ Staff issue **three keys per student**, one per provider, each project/workspace
 
 | Key | Variable | Drives |
 |---|---|---|
-| OpenAI (`sk-proj-`) | `OPENAI_API_KEY` | Codex (home), n8n LLM step |
+| OpenAI (`sk-proj-`) | `OPENAI_API_KEY` | Codex app (home), n8n LLM step |
 | xAI (`xai-`) | `XAI_API_KEY` | OpenCode (second engine, Grok) |
 | Anthropic (`sk-ant-api03-`) | `ANTHROPIC_API_KEY` | Claude Code (optional), alternate provider for Pi and goose |
 
 Consequences that must survive into every learner-facing page:
 
 - Several tools offer a subscription login and an API key option on the same screen. Materials always name the API key path explicitly.
-- **Codex cloud/web is unavailable** — it requires ChatGPT sign-in. CLI, IDE extension, and the GUI inside the **ChatGPT desktop app** all accept a bare key.
+- **The Codex app is the one tool that ignores its environment variable.** It authenticates from the key pasted into *Sign in another way* on its signed-out screen, not from `OPENAI_API_KEY`. Pin with `forced_login_method = "api"` in `%USERPROFILE%\.codex\config.toml`.
 - **The Claude desktop app's Code tab is unavailable** — subscription only. Claude Code means the CLI.
 - A capped key fails as a `429`/quota error that reads like an auth failure. Every troubleshooting path must name this, or students will reinstall instead of asking.
+
+### What an API key buys inside the Codex app
+
+Verified against OpenAI's plan feature matrix 2026-07-30. This is the boundary the curriculum must stay inside — everything the week teaches is on the left.
+
+| Available on the key | Needs a ChatGPT subscription |
+|---|---|
+| Desktop app for local chats · GPT-5.6 (Sol/Terra/Luna) · Fast mode | Codex cloud · ChatGPT Work on the web |
+| Permission modes · sandboxing · **auto-review** | Sites · voice · Chronicle |
+| **Worktrees** and built-in Git tools · local environments and actions | GitHub / Slack / Linear delegation and PR review |
+| Local `/review` · scheduled tasks · **subagents and custom agents** | Connectors · plugin sharing · Codex-Spark |
+| `AGENTS.md` · skills · MCP · web search · appshots · built-in browser | Analytics, RBAC, SSO, compliance APIs |
+
+Computer Use, plugins, and memories are *limited* on a key rather than absent — treat them as stretch, never as MVP. **Curriculum home:** Thursday after-lunch **lead demo** (`lead/COMPUTER_USE_DEMO.md`) — default path is built-in browser research → short deck → verify → stop; optional Computer Use only for PowerPoint. Not pre-work, not GREEN, not student Chrome extension setup. `@Chrome` stays out of course setup.
 
 ## Required tool stack (Windows 11, 64-bit — no WSL, no ARM64)
 
 | Role | Tool | Required? |
 |---|---|---|
-| Primary home all week | **Codex** (CLI; GUI via ChatGPT desktop app) | Required |
+| Primary home all week | **Codex app** — Codex mode in the **ChatGPT desktop app** (no CLI) | Required |
 | Second engine (twin-engine, compares) | **OpenCode** with **Grok** on the xAI key | Required |
-| Bare loop demo | **Pi** | Required |
-| Bound autonomy / recipes | **goose** | Required |
+| Harness you extend · bounds you build | **Pi** | Required |
+| Bound autonomy (recipe · extensions · mode · schedule) | **goose** | Required |
 | Knowledge UI | **Obsidian** | Required (Wed) |
 | Pipeline UI | **n8n** | Required (Thu) |
 | Alternate second / third engine | **Claude Code** (CLI only) | **Optional** |
 
-Twin-engine pedagogy (P3) uses **Codex + OpenCode**. Students may add Claude as an extra comparator; it is not required for GREEN pre-work or course pass.
+Twin-engine pedagogy (P3) uses **Codex app + OpenCode**. Students may add Claude as an extra comparator; it is not required for GREEN pre-work or course pass.
+
+**Independence is a taught check, not an assumption.** Both engines load context the operator never typed and neither announces it, so P3 requires run identity declared on both sides — model id, version, folder, and which instruction files, skills, and memories were live. An undeclared advantage reads as a capability. See the two OpenCode entries under stack facts.
+
+**"Codex app" is course shorthand**, defined once in pre-work section 7: Codex mode inside the ChatGPT desktop app, alongside Chat and Work. There is no separate product by that name. The desktop app is the **only** Codex surface the course teaches — the CLI was removed from pre-work so students never touch a terminal for Codex, and the `--with-api-key` footgun disappears with it. The app and CLI share `%USERPROFILE%\.codex`, so `config.toml` settings still apply.
 
 ### Stack facts that rot fast — re-verify before each cohort
 
 Checked 2026-07-30. These are the ones that silently break a room:
 
-- **goose moved** to `aaif-goose/goose` (Agentic AI Foundation); docs at `goose-docs.ai`. Old `block/goose` URLs are stale. **No winget package** — the winget `goose` is an unrelated database tool.
-- **OpenCode Windows support regresses between releases.** Staff must pin and smoke-test a version per cohort. Its `curl` installer is bash-only; no PowerShell equivalent exists.
-- **`codex login --api-key` is retired** — use `--with-api-key` (reads stdin). `OPENAI_API_KEY` alone does *not* authenticate Codex; it only pre-fills the setup screen. Pin with `forced_login_method = "api"`.
+- **goose moved** to `aaif-goose/goose` (Agentic AI Foundation); docs at `goose-docs.ai`. Old `block/goose` URLs are stale. **No winget package** — the winget `goose` is an unrelated database tool. Product shape for teaching: **recipe + extensions/tool surface + `GOOSE_MODE`/max turns + schedule/retry** — not “CLI chat only.” Course default is CLI; Desktop optional. P6 pack: `mission_flesh/p6/watch_officer.yaml` + `goose_recipe_notes.md`. Subscription providers in goose’s list stay off-limits (API keys only).
+- **OpenCode Windows support regresses between releases.** Staff must pin and smoke-test a version per cohort. Its `curl` installer is bash-only; no PowerShell equivalent exists. The winget id remains **`SST.opencode`** even though the project moved from SST to **Anomaly** (repo `anomalyco/opencode`, Homebrew tap `anomalyco/tap`, images `ghcr.io/anomalyco/opencode`) — the winget package is current under the old name, so do not "fix" it. winget is not a channel OpenCode's own docs list; documented Windows paths are choco, scoop, npm (`opencode-ai`), mise, docker.
+- **OpenCode reads Claude Code's files by default** — `~/.claude/CLAUDE.md` and `.claude/skills`. Kill switches: `OPENCODE_DISABLE_CLAUDE_CODE`, `..._PROMPT`, `..._SKILLS`. This silently breaks P3's independence for any student who installs the optional Claude Code, so pre-work sets `OPENCODE_DISABLE_CLAUDE_CODE=1` as a user variable and clinic checks it. **The symmetric exposure is on the Codex side** — the app loads `AGENTS.md` (including the P2-hot-rodded one), skills, and memories from wherever it launches, so P3 must run from a clean folder or declare what was live on each side. `--pure` additionally skips installed plugins on any run treated as evidence.
+- **OpenCode permission rules resolve last-match-wins** — a later `allow` overrides an earlier `deny`, which inverts the usual instinct. The shipped defaults demonstrate it: `read *` allow → `*.env` deny → `*.env.example` allow. This is the concrete substance of the P5 bounds comparison; pasting a deny list at the top of the array silently does nothing.
+- **Codex is a mode in the ChatGPT desktop app, not a product you can download by name.** Docs moved from `developers.openai.com/codex` to `learn.chatgpt.com/docs` (append `.md` to any page URL for clean Markdown). Model family is **GPT-5.6 Sol / Terra / Luna**; `gpt-5-codex` is gone. Permission modes are **Ask for approval / Approve for me (auto-review) / Full access**, enabled in Settings > General > Permissions and selected beneath the composer.
+- **The Windows app ships only as a Store-signed package** — `winget install --id 9PLM9XGG6VKS -s msstore`, or the web installer. There is no MSI or standalone EXE. Managed laptops that block Microsoft app distribution need the direct MSIX (`ChatGPT-x64.msix`); this is the one install in the stack with no second vendor path, so screen for it before a cohort starts.
+- **On Windows the sandbox only engages when the permission mode is set.** `elevated` is preferred and needs an admin prompt; `unelevated` is the fallback (`[windows] sandbox = "unelevated"`), still the right answer for Windows error `1385`.
 - **Node must be `OpenJS.NodeJS.LTS`**, landing in 22.22–24.x. Plain `OpenJS.NodeJS` installs a release too new for n8n.
 - **xAI keys are deny-by-default** — a new key does nothing until ACLs are attached. Verify one end to end before issuing.
 - **Model ids rotate.** Never hardcode them in handouts; staff post the cohort pin.
+- **Pi is a minimal *harness*, not a thin demo — do not let materials regress to "bare loop."** Small default (7 tools, 4 active) on a large seam surface: 33-event extension API, `registerTool`, tree-shaped JSONL sessions with branch/fork, replaceable compaction, `ResourceLoader` for hermetic runs, 4 run modes (interactive/print-JSON/RPC/SDK), 15+ providers with mid-session switching, and cross-harness skill reuse (`~/.claude/skills`, `~/.codex/skills`). The absent features (approval gates, plan mode, sub-agents) are **construction exercises**, and the repo ships working examples of each.
+- **Pi's teaching spine is the three-layer bound** — used at P6 and referenced wherever autonomy is discussed: **contract** (`--tools`, filters the registry *above* the extension layer — the banned tool never enters the model's schema; provable from the session file) · **tripwire** (a `tool_call` gate returning `{block:true}`; fails closed, but defeatable by what it polices) · **boundary** (a container; the only real one). A tripwire mistaken for a boundary is the specific error the block exists to prevent.
+- **Pi has no sandbox and — the part people miss — no working-directory fence.** Absolute paths and `~` pass straight through; no default bash timeout; `AGENTS.md`/`CLAUDE.md` load regardless of project trust (a 90-second prompt-injection demo for P5). Vendor states this is deliberate. `/share` uploads the full session incl. system prompt to a public-by-URL gist — **ban it**. Third-party `pi install` runs arbitrary code — staff-named packages only. **Classroom containment is the course's job, not Pi's.**
 
 ## North star
 
@@ -149,13 +176,16 @@ When building curriculum, materials, images, scripts, or docs:
 
 - Keep the **operator’s school** frame in every learner-facing line.
 - Prefer **mastery** language over productivity slogans, hype, or tool worship.
-- Design for **vanilla Windows 11** (64-bit, no WSL, no ARM64), mixed backgrounds, **API keys only — never a subscription login** (Codex home; **OpenCode + Grok** as required second engine; Pi; goose). **Claude Code (CLI) is optional** alternate/third engine.
-- **Student-owned install** via `prework/` module before contact week — **no golden image** as the default path. Block 0 verifies the gate, then First Light.
+- Design for **vanilla Windows 11** (64-bit, no WSL, no ARM64), mixed backgrounds, **API keys only — never a subscription login** (Codex app home; **OpenCode + Grok** as required second engine; Pi; goose). **Claude Code (CLI) is optional** alternate/third engine.
+- **Use the app's own vocabulary in learner-facing text:** *project* (a folder opened in the app), *chat* (a named, pinnable conversation), *worktree*, *permission mode*, *subagent*. Do not write "thread" — the app has no such object, and the mismatch costs students time hunting for it.
+- **Student-owned install** via `prework/` module before contact week — **no golden image** as the default path. Verify **at the end of each setup step** (no separate health-check pass). Monday AM **install clinic** (~2 hr expected, soft boundary) closes gaps, then First Light.
+- **Harness case talks** Tue/Wed/Thu AM before lunch: 30 min real problem the lead solved with harnesses + 15 min discussion (`lead/HARNESS_CASE_TALKS.md`).
+- **Browser → deck lead demo** Thursday after lunch (30 min) before P7: staff machine, watch-only (`lead/COMPUTER_USE_DEMO.md`); cold-smoke `@Browser`→`slideshow.html` at lunch; fallback if browser tool dead — never student install clinic work.
 - Every project must force **direction + evidence + judgment**, not passive watching.
 - Honor **MVP pass bars** in `operator/PASS_BARS.md`; do not dilute them for convenience.
-- **Every block:** new adversarial review thread using `operator/ADVERSARIAL_REVIEW.md` (frozen prompt); log stood/wounded/failed before transfer.
+- **Every block:** new adversarial review chat using `operator/ADVERSARIAL_REVIEW.md` (frozen prompt); log stood/wounded/failed before transfer.
 - **Every block after adversarial:** update `operator/MEASUREMENT_SPINE.md` (ritual · mission · quality · time); then transfer pulse.
-- After **every AM and PM** block: interactive transfer session in thread `Operator — Transfer 30-60-90` (`operator/TRANSFER_30_60_90.md`); seal at P8 — never invent cold on Friday.
+- After **every AM and PM** block: interactive transfer session in chat `Operator — Transfer 30-60-90` (`operator/TRANSFER_30_60_90.md`); seal at P8 — never invent cold on Friday.
 - Protect the spine: First Light → machine-that-makes-the-answer → hot-rod craft → twin-engine verdict → knowledge → poison → autonomy contract → pipeline contrast → transferable method.
 - MVP and stretch lanes are allowed; watering down the operator standard is not.
 - Epic is the feeling after a real dyno win — not an adjective on the syllabus.
@@ -176,15 +206,15 @@ When building curriculum, materials, images, scripts, or docs:
 
 ## Operator ritual (every block)
 
-Standing files in `operator/` (copied into the student Codex project):
+Standing files in `operator/` (copied into the student's Codex app project):
 
 - `operator/DIRECTION_BRIEF.md` — five fields, **before** the run
 - `operator/OPERATOR_LOG.md` — five fields, **after** the run
 
-Produced **interactively** in Codex thread `Operator — Direction & Log`.  
+Produced **interactively** in a Codex chat named `Operator — Direction & Log`, pinned in the project.  
 The AI interviews, drafts, and challenges vagueness or weak evidence; the operator accepts wording and assigns the verdict.  
-Build/mission work stays in other threads. Ultra-light: under five minutes dialogue pre, under five post.  
-**After** log/pass-bar each AM and PM: open a **new** `Adversarial — [block]` thread with `operator/ADVERSARIAL_REVIEW.md` frozen prompt; update log if the attack lands.  
+Build/mission work stays in separate chats. Ultra-light: under five minutes dialogue pre, under five post.  
+**After** log/pass-bar each AM and PM: open a **new** chat `Adversarial — [block]` with `operator/ADVERSARIAL_REVIEW.md` frozen prompt; update log if the attack lands.  
 **Then** update `MEASUREMENT_SPINE.md` (four headlines). **Then** `Operator — Transfer 30-60-90` outer-loop pulse (Move 3).  
 One stable brief/log template all week — cothinking muscle memory; adversarial review is the in-course verdict challenger; transfer file carries the job half of the circuit.
 
@@ -192,14 +222,14 @@ One stable brief/log template all week — cothinking muscle memory; adversarial
 
 MVP vs stretch/side-quest live in `operator/PASS_BARS.md`, mapped 1:1 to the nine graduate capabilities.  
 MVP is the **mastery floor** — the least that still proves the capability (direction, evidence, owned verdict). Not “it ran.”  
-Same-day clearable with serious work; not clearable by demo-watching or vibe. Student + AI stress-test claims in the operator thread after the log.  
+Same-day clearable with serious work; not clearable by demo-watching or vibe. Student + AI stress-test claims in the operator chat after the log.  
 Course floor = MVP on all nine with peer-auditable log evidence. Distinction = floor + stretch or side-quest on ≥4 blocks including P2, P5, P8.
 
 ## Transfer outer loop (living 30-60-90)
 
 The week’s inner circuit ends incomplete unless transfer runs after Friday.  
 `operator/TRANSFER_30_60_90.md` is the **outer half of the circuit**.  
-Maintained **interactively with the AI in its own Codex thread** (`Operator — Transfer 30-60-90`) **after every morning and every afternoon block** — not collapsed into Direction/Log, not a Friday worksheet.  
+Maintained **interactively with the AI in its own Codex chat** (`Operator — Transfer 30-60-90`, pinned) **after every morning and every afternoon block** — not collapsed into Direction/Log, not a Friday worksheet.  
 Session log proves the pulse; major seeds deepen on P2/P3/P5/P6/P7; **SEALED** only at P8. Monthly review keeps the loop closed on the job.
 
 ## Measurement spine (every block)

@@ -48,7 +48,7 @@
     <table>
       <thead><tr><th>Key</th><th>Starts with</th><th>Variable name</th><th>Drives</th></tr></thead>
       <tbody>
-        <tr><td>OpenAI</td><td><code>sk-proj-</code></td><td><code>OPENAI_API_KEY</code></td><td>Codex (your home tool all week), plus the LLM step in n8n</td></tr>
+        <tr><td>OpenAI</td><td><code>sk-proj-</code></td><td><code>OPENAI_API_KEY</code></td><td>The Codex app (your home tool all week), plus the LLM step in n8n</td></tr>
         <tr><td>xAI</td><td><code>xai-</code></td><td><code>XAI_API_KEY</code></td><td>OpenCode, your second engine for the twin-engine work</td></tr>
         <tr><td>Anthropic</td><td><code>sk-ant-api03-</code></td><td><code>ANTHROPIC_API_KEY</code></td><td>Claude Code, and an alternate provider for Pi and goose</td></tr>
       </tbody>
@@ -103,18 +103,22 @@ $key = $null</code></pre>
       <tbody>
         <tr><td><strong>OpenCode</strong></td><td>Reads <code>XAI_API_KEY</code> from the environment and enables the provider on its own. Nothing to configure.</td></tr>
         <tr><td><strong>Pi</strong></td><td>Reads all three from the environment. Because it sees more than one, you name the model explicitly when you run it.</td></tr>
-        <tr><td><strong>goose</strong></td><td>Reads the provider key from the environment, but also wants <code>GOOSE_PROVIDER</code> and <code>GOOSE_MODEL</code> set so it knows which one to use.</td></tr>
+<tr><td><strong>goose</strong></td><td>Reads the provider key from the environment, and needs <code>GOOSE_PROVIDER</code> and <code>GOOSE_MODEL</code> so it knows which one to use. Thursday also uses <code>GOOSE_MODE</code> (approve vs auto) as a real autonomy dial — not only the key.</td></tr>
         <tr><td><strong>Claude Code</strong></td><td>Reads <code>ANTHROPIC_API_KEY</code> and asks you to approve it once on first launch.</td></tr>
-        <tr><td><strong>Codex</strong></td><td>Needs a one-time login step that hands it the key. Setting the variable alone is not enough — see below.</td></tr>
+        <tr><td><strong>Codex app</strong></td><td>Doesn't read the environment at all. You paste the key into its sign-in screen once — see below.</td></tr>
         <tr><td><strong>n8n</strong></td><td>Doesn't read the environment. You paste the OpenAI key into a credential inside its browser UI during Thursday's exercise.</td></tr>
       </tbody>
     </table>
 
-    <p>Codex is the exception worth reading twice, because it surprises people. Setting <code>OPENAI_API_KEY</code> does not by itself authenticate Codex — the variable only pre-fills the box on its sign-in screen. You hand Codex the key once with a login command, and it stores it from then on:</p>
+    <p>The Codex app is the exception worth reading twice, because it surprises people. It is a window rather than a command line, and it never looks at <code>OPENAI_API_KEY</code>. Setting the variable does nothing for it.</p>
 
-<pre><code>$env:OPENAI_API_KEY | codex login --with-api-key</code></pre>
+    <p>Instead, on the app's signed-out screen you choose <strong>Sign in another way</strong>, paste the key, and select <strong>Continue</strong>. It stores the key from then on. The large button beside that option offers to sign in with a ChatGPT account — that is the subscription path, and it is not the one you have.</p>
 
-    <p>The key is piped in rather than typed as an argument, again so it never lands in your shell history. Note the flag carefully: it is <code>--with-api-key</code>. An older flag spelled <code>--api-key</code> appears in most third-party write-ups and has been retired — if you use it, Codex exits with a message pointing you back here.</p>
+    <p>You can confirm which path took hold from the profile menu, which reports either an API key or an account name. If it shows an account, log out there and sign in again the other way.</p>
+
+    <p>One line of configuration makes that mistake impossible to repeat, and the install guide has you write it: <code>forced_login_method = "api"</code> in <code>%USERPROFILE%\.codex\config.toml</code>. After that, an accidental account sign-in fails politely instead of stranding you on a screen you can't complete.</p>
+
+    <p>What the key buys you there is all of the app's local work — projects, worktrees, code review, skills, scheduled tasks, its built-in browser. What it doesn't buy is the cloud half of the product: Codex cloud, Sites, GitHub and Slack delegation, and voice all require a ChatGPT subscription. Nothing this week needs them, but it explains why an online tutorial may point at a button you don't have.</p>
 
     <h2>Spending, and why your key might stop working</h2>
 
@@ -122,7 +126,7 @@ $key = $null</code></pre>
 
     <p>The signature is an <strong>HTTP 429</strong> response, sometimes worded as <em>insufficient quota</em> or <em>spend limit exceeded</em>. If a tool that worked yesterday starts failing today and nothing else changed, check that before you start reinstalling anything. Message staff with which key and roughly what you were running; a cap raise takes moments.</p>
 
-    <p>The habits that keep you well inside the cap are the same ones that make you a better operator, which is not a coincidence. Bound the work in your Direction Brief so the machine isn't looping on an unclear goal. Stop a run that has plainly lost the thread rather than watching it spend. Point at the folder that matters instead of the whole disk.</p>
+    <p>The habits that keep you well inside the cap are the same ones that make you a better operator, which is not a coincidence. Bound the work in your Direction Brief so the machine isn't looping on an unclear goal. Stop a run that has plainly lost the chat rather than watching it spend. Point at the folder that matters instead of the whole disk.</p>
 
     <h2>Keeping keys out of your repository</h2>
 
@@ -141,14 +145,14 @@ auth.json</code></pre>
 
     <p>If a key is exposed — pasted into the wrong window, committed, shared on a screen, or you simply aren't sure — revoke it. A revoked key stops working immediately and everywhere, and staff can issue a replacement in a couple of minutes. Tell staff which key and roughly when; they own the consoles and will handle the revocation and reissue.</p>
 
-    <p>Once you have the replacement, set it exactly as you did the first time, then open a new PowerShell window so your tools pick it up. Codex needs its login command run again, since it stored the old key rather than reading the variable each time.</p>
+    <p>Once you have the replacement, set it exactly as you did the first time, then open a new PowerShell window so your tools pick it up. The Codex app needs signing in again through <em>Sign in another way</em>, since it stored the old key rather than reading the variable each time.</p>
 
     <div class="callout"><strong>Reporting a leak is the correct move, always</strong>
     A key that is quietly still exposed is a real problem. A key that was exposed and revoked within the hour is a non-event. Operators keep trails and raise things early — that is the same instinct this whole course is built around, applied to your own credentials.</div>
 
-    <p class="btn-row">
+<p class="btn-row">
       <a class="btn" href="checklists/prework-install.html">Install checklist</a>
-      <a class="btn btn-secondary" href="checklists/prework-health.html">Health check</a>
+      <a class="btn btn-secondary" href="blocks/b0.html">Monday clinic</a>
       <a class="btn btn-secondary" href="prework.html">Pre-work hub</a>
     </p>
   </main>

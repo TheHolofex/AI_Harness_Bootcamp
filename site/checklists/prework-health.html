@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pre-work · Health check gate · Pre-work · Starzl</title>
+  <title>Pre-work · Optional rescue re-test gate · Pre-work · Starzl</title>
   <link rel="stylesheet" href="../css/course.css" />
   <link rel="stylesheet" href="../css/checklist.css" />
 </head>
@@ -19,6 +19,7 @@
   </header>
   <main class="site-main checklist-page">
     <p class="eyebrow">The gate · run this on the laptop you'll bring</p>
+    <div class="callout"><strong>Not the primary path</strong> Install already verifies at the end of each section. Use this page only for a full cold re-test (rebuild, long gap, or clinic triage). Primary: <a href="prework-install.html">install checklist</a> · Monday: <a href="../blocks/b0.html">install clinic</a>.</div>
     <h1>Pre-work · Health check gate</h1>
     <p class="lede">This re-tests everything you installed, independently, and ends with you declaring a colour. Allow about thirty minutes. The point isn't to pass — it's to find out now, while there's still time to fix things, rather than on Monday morning.</p>
 <figure class="section-diagram">
@@ -26,7 +27,7 @@
 </figure>
 
 <div class="meta-grid">
-  <div><span class="k">Required agents</span><span class="v">Codex · OpenCode · Pi · goose</span></div>
+  <div><span class="k">Required agents</span><span class="v">Codex app app · OpenCode · Pi · goose</span></div>
   <div><span class="k">Proof standard</span><span class="v">Files on disk</span></div>
   <div><span class="k">Time</span><span class="v">~30 minutes</span></div>
   <div><span class="k">Progress</span><span class="v"><span data-progress-for="ahb-prework-health">0%</span></span></div>
@@ -205,10 +206,11 @@ Remove-Item from-*.txt -ErrorAction SilentlyContinue</code></pre>
     <span class="check-num">12</span>
     <span class="check-title">Codex wrote from-codex.txt</span>
   </label>
-  <div class="check-detail"><p>Confirm the credential first, then the file:</p>
-  <pre><code>codex login status
-Get-Content .\from-codex.txt</code></pre>
-  <p>It must report API-key authentication, not a ChatGPT account. If it names an account, the course path isn't set up — redo install step 32.</p></div>
+  <div class="check-detail"><p>This one you ask for in the app rather than typing a command. Open the smoke folder as a project, then request the file in plain language:</p>
+  <pre><code>Create a file named from-codex.txt in this folder containing exactly the text: codex works</code></pre>
+  <p>Then confirm it landed:</p>
+  <pre><code>Get-Content .\from-codex.txt</code></pre>
+  <p>Check two things in the app while you're there. The profile menu must report API-key authentication, not a ChatGPT account — if it names an account, the course path isn't set up, so redo install step 31. And the permissions control beneath the message box should read <strong>Ask for approval</strong>, which is what keeps the sandbox on.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -218,8 +220,10 @@ Get-Content .\from-codex.txt</code></pre>
     <span class="check-title">OpenCode wrote from-opencode.txt</span>
   </label>
   <div class="check-detail"><pre><code>opencode --version
+$env:OPENCODE_DISABLE_CLAUDE_CODE
 Get-Content .\from-opencode.txt</code></pre>
-  <p>Record the version in your log — Monday asks for it by name, because Wednesday's twin-engine comparison only means something if you know which build produced it.</p>
+  <p>Record the version in your log — Monday asks for it by name, because Tuesday's twin-engine comparison only means something if you know which build produced it.</p>
+  <p>The middle line should return <code>1</code>. That is what stops OpenCode reading <code>~/.claude/CLAUDE.md</code> and <code>.claude/skills</code> and running Tuesday's comparison on the other engine's notes. A blank line means re-set it from install step 43.</p>
   <p>If OpenCode claims success but no file appears, that's the known Windows defect. Log the version and exact wording and tell staff; don't keep retrying.</p></div>
 </li>
 
@@ -231,7 +235,8 @@ Get-Content .\from-opencode.txt</code></pre>
   </label>
   <div class="check-detail"><pre><code>Get-Content .\from-pi.txt
 Get-Content .\bash-check.txt</code></pre>
-  <p>Both files matter. The first proves Pi authenticated and wrote; the second proves it can reach Git Bash. Pi only looks for a shell at the moment it needs one, so without this second check a missing shell stays hidden until it breaks an exercise.</p></div>
+  <p>Both files matter. The first proves Pi authenticated and wrote; the second proves it can reach Git Bash. Pi only looks for a shell at the moment it needs one, so without this second check a missing shell stays hidden until it breaks an exercise.</p>
+  <p>Also confirm you can state Pi's posture in your own words: <strong>no sandbox, no approval prompt, and no working-directory fence.</strong> Staying inside the smoke folder is a convention you keep, not a boundary Pi enforces. You'll build the bounds yourself later in the week — knowing what isn't there yet is the starting point.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -328,7 +333,8 @@ Get-Content .\from-goose.txt</code></pre>
     <span class="check-num">22</span>
     <span class="check-title">You can state the twin-engine pair</span>
   </label>
-  <div class="check-detail"><p><strong>Codex</strong> on your OpenAI key and <strong>OpenCode</strong> on your xAI key. Claude Code, if you installed it, is an optional third opinion rather than a substitute for either.</p></div>
+  <div class="check-detail"><p>The <strong>Codex app</strong> on your OpenAI key and <strong>OpenCode</strong> on your xAI key. Claude Code, if you installed it, is an optional third opinion rather than a substitute for either.</p>
+  <p>Say what each one loads before you type anything: the Codex app takes <code>AGENTS.md</code>, skills, and memories from wherever you launch it; OpenCode takes <code>~/.claude/CLAUDE.md</code> and <code>.claude/skills</code> unless you've disabled that. Neither one tells you. Knowing this is what makes a comparison between them worth running.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -337,7 +343,7 @@ Get-Content .\from-goose.txt</code></pre>
     <span class="check-num">23</span>
     <span class="check-title">You know what to do if a key leaks</span>
   </label>
-  <div class="check-detail"><p>Tell staff immediately; they revoke and reissue. Then set the new key and run <code>codex login --with-api-key</code> again, since Codex stored the old one rather than reading the variable each time.</p>
+  <div class="check-detail"><p>Tell staff immediately; they revoke and reissue. Then set the new key, and sign the Codex app in again through <em>Sign in another way</em> — it stored the old key rather than reading the variable each time, so it won't pick up the replacement on its own.</p>
   <p>Knowing this now is what makes reporting it fast later, and speed is the entire difference between a non-event and a problem.</p></div>
 </li>
 
@@ -376,7 +382,7 @@ Get-Content .\from-goose.txt</code></pre>
     <span class="check-num">26</span>
     <span class="check-title">Record the details that identify this run</span>
   </label>
-  <div class="check-detail"><p>In your setup log: your name, the machine, the date and time you reached this colour, your OpenCode version, and your Codex sandbox mode (elevated or unelevated).</p>
+  <div class="check-detail"><p>In your setup log: your name, the machine, the date and time you reached this colour, your OpenCode version, and your Codex app sandbox mode (elevated or unelevated).</p>
   <p>Those last two are the ones staff ask for most, because they're what differs between machines when something behaves oddly in class.</p></div>
 </li>
 
@@ -397,7 +403,7 @@ Not whether your laptop is tidy — whether you can tell a working system from o
   </main>
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <div>AI Harness Bootcamp · Pre-work · Codex + OpenCode + Pi + goose</div>
+      <div>AI Harness Bootcamp · Pre-work · Codex app + OpenCode + Pi + goose</div>
       <div>inquiries@starzl.com · starzl.com</div>
     </div>
   </footer>

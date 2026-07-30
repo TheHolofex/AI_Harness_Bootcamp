@@ -33,8 +33,9 @@ http://localhost:8080/site/checklists/
 Each block (B0–P8) has a full step-by-step checklist with checkboxes. Progress uses browser localStorage.
 
 
-## Pre-work interactive checklists
+## Pre-work
 
-- http://localhost:8080/site/checklists/prework-install.html
-- http://localhost:8080/site/checklists/prework-health.html
+- Install + verify as you go: http://localhost:8080/site/checklists/prework-install.html
 - Hub: http://localhost:8080/site/prework.html
+- Monday clinic + First Light: http://localhost:8080/site/blocks/b0.html
+- Optional rescue re-test only: `prework/HEALTH_CHECK.md`

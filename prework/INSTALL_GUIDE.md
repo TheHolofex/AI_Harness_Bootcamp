@@ -5,7 +5,7 @@ Authentication: **API keys only.** You will never sign into ChatGPT, Claude, or 
 
 **Primary path:** the interactive checklist at `site/checklists/prework-install.html`. This file is the same content in printable form.
 
-Plan two to four hours. Work in order — later sections depend on earlier ones. Keep `SETUP_LOG.md` open and record what broke and what fixed it.
+Plan two to four hours. Work in order — later sections depend on earlier ones. **Verify at the end of each section before you move on** (fresh terminal after anything that changes PATH). There is no separate health-check pass afterward. Keep `SETUP_LOG.md` open and record what broke and what fixed it. Monday’s install clinic re-runs these same verifies under staff eyes.
 
 > Staff issue you three API keys: OpenAI (`sk-proj-…`), xAI (`xai-…`), and Anthropic (`sk-ant-api03-…`).
 > Sections 0–4 need no keys, so start installing even if your keys haven't arrived yet.
@@ -57,10 +57,6 @@ Three errors later in this guide mean "wrong window" rather than "broken install
 | `'irm' is not recognized` | You are in Command Prompt, not PowerShell |
 | `The token '&&' is not a valid statement separator` | A Command Prompt or Git Bash style command pasted into PowerShell |
 | `A parameter cannot be found that matches parameter name 'fsSL'` | A Mac/Linux `curl` command pasted into PowerShell, where `curl` means something different. This is exactly what happens if you try OpenCode's website installer. |
-
-```powershell
-$PSVersionTable.PSVersion
-```
 
 Stock Windows 11 reports 5.1, which is enough for everything here. PowerShell 7 is optional; if you want it, force the MSI build:
 
@@ -207,60 +203,76 @@ Every tool below writes one uniquely named file here. **Chat output is a claim; 
 
 ## 7. Codex — home tool
 
-```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
-```
+Codex is not a separate download. It is a mode inside the **ChatGPT desktop app**, alongside Chat and Work. When the course says **"the Codex app,"** that is what it means: the ChatGPT desktop app, switched to Codex. You work in a window all week — no terminal for Codex at all.
 
-Alternative if that is blocked and Node is present — use one method, never both:
+Install it with the web installer at **get.microsoft.com/installer/download/9PLM9XGG6VKS**, or from PowerShell:
 
 ```powershell
-npm install -g @openai/codex
+winget install --id 9PLM9XGG6VKS -s msstore
 ```
 
-New terminal, then `codex --version`.
+The package is Store-signed, so Store components may flash past during install. You do not need to browse the Store yourself or sign into a Microsoft account. If your laptop blocks Microsoft's distribution service outright, there is a direct package — see the rescue table at the end.
 
-**Setting `OPENAI_API_KEY` is not enough on its own for Codex.** The variable only pre-fills its sign-in screen. Hand Codex the key once:
+Launch it. You land on a signed-out screen offering to sign in with a ChatGPT account — which you do not have and will not use.
 
-```powershell
-$env:OPENAI_API_KEY | codex login --with-api-key
-codex login status
-```
+**Choose *Sign in another way* instead**, paste your OpenAI key, and select *Continue*. That is the whole authentication step. Unlike most tools in this stack, setting `OPENAI_API_KEY` does nothing for the app; it reads the key you paste, not the variable.
 
-The flag is `--with-api-key`. The older `--api-key` form appears in most guides online and has been retired.
+Confirm it took: open the profile menu, which should report that you are on an API key rather than an account.
 
-Lock out ChatGPT sign-in so you can never be bounced to a screen you can't complete:
+Now lock the door behind you, so a stray click can never bounce you to a ChatGPT login you cannot complete:
 
 ```powershell
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex" | Out-Null
 Add-Content -Path "$env:USERPROFILE\.codex\config.toml" -Value 'forced_login_method = "api"'
 ```
 
-Run `codex` once to set up its sandbox and approve the elevation prompt. If your laptop blocks it (error `1385`), add to the same `config.toml`:
+Restart the app after writing that line.
+
+### Point it at your smoke folder
+
+Open the smoke folder you made in section 6 as a project — *Open project*, then pick `Documents\HarnessBootcamp\prework-smoke`.
+
+The folder you open is the boundary. Codex reads and writes inside it and asks permission before reaching anywhere else, which is the whole idea you will spend the week learning to control.
+
+### Set the permission mode
+
+Beneath the message box is a permissions control. Set it to **Ask for approval**.
+
+This is the setting that turns the Windows sandbox on, so do not skip it. On first use the app builds that sandbox and asks for an administrator prompt. Approve it — this is the strong `elevated` sandbox, and it is the one you want.
+
+If your laptop refuses the elevation, or you see an error mentioning `1385`, Codex can fall back to weaker but workable boundaries. Add this to the same `config.toml`:
 
 ```toml
 [windows]
 sandbox = "unelevated"
 ```
 
-Write proof:
+Write down which mode you ended up on. It is one of the two details staff ask for when a machine behaves oddly mid-week.
 
-```powershell
-cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
-codex exec --sandbox workspace-write -a never "Create a file named from-codex.txt containing exactly the text: codex works"
-Get-Content .\from-codex.txt
+### Write proof
+
+In the chat box, ask for the file in plain language:
+
+```text
+Create a file named from-codex.txt in this folder containing exactly the text: codex works
 ```
 
-- [ ] `codex login status` reports API-key auth, not a ChatGPT account
+Approve the write when it asks. Then look in Explorer.
+
+**Chat output is a claim; the file in Explorer is the evidence.** A confident "I've created that for you" with no file on disk is a fail, and catching that difference is the first operator habit this course builds.
+
+- [ ] Profile menu reports API-key sign-in, not a ChatGPT account
+- [ ] Permission mode set to **Ask for approval**
 - [ ] Sandbox mode logged (elevated or unelevated)
 - [ ] `from-codex.txt` exists on disk
 
-**Optional GUI:** the Codex graphical interface ships inside the **ChatGPT desktop app** for Windows — there is no separate product called "Codex app" to search for. On its signed-out screen choose *Sign in another way* and paste the key. Course instructions assume the command-line tool.
+**What your key does not buy.** An API key runs the app's local work — projects, worktrees, code review, skills, scheduled tasks, the built-in browser. It does not unlock the cloud half of the product: Codex cloud, Sites, GitHub and Slack delegation, and voice all need a ChatGPT subscription. Nothing in this course needs them.
 
 ---
 
 ## 8. OpenCode — required second engine
 
-P3 runs the **same frozen brief** through Codex and OpenCode, then you adjudicate. OpenCode runs on **Grok** via your xAI key. Without it, P3 has nothing to compare.
+P3 runs the **same frozen brief** through Codex and OpenCode, then you adjudicate. P5 uses it again to compare how a second harness expresses permissions. OpenCode runs on **Grok** via your xAI key, so the two engines differ underneath and not just in name. Without it, P3 has nothing to compare.
 
 **Use the version staff pinned for your cohort.** OpenCode ships fast and its Windows support sometimes regresses between releases; staff test a build and pin it.
 
@@ -285,6 +297,20 @@ opencode models xai --refresh
 
 OpenCode reads `XAI_API_KEY` from the environment automatically — there is no login step. An empty model list means this window can't see the key.
 
+**Keep this engine independent.** When OpenCode finds Claude Code's files it reads them: `~/.claude/CLAUDE.md` and any `.claude/skills` folder. If you add Claude Code in step 14, your second engine quietly starts working from the first one's notes, and two engines sharing one memory file will agree more than they should. Turn that off once as a user variable, so every window you open from now on inherits it:
+
+```powershell
+[Environment]::SetEnvironmentVariable("OPENCODE_DISABLE_CLAUDE_CODE", "1", "User")
+```
+
+New terminal, then check it took:
+
+```powershell
+$env:OPENCODE_DISABLE_CLAUDE_CODE
+```
+
+You want `1` back. A blank line means it didn't stick — set it again and note it in your log.
+
 Write proof — substitute the pinned model for `MODEL`:
 
 ```powershell
@@ -294,15 +320,24 @@ Get-Content .\from-opencode.txt
 ```
 
 - [ ] Version recorded in your log (Monday asks for it by name)
+- [ ] `$env:OPENCODE_DISABLE_CLAUDE_CODE` returns `1` in a new terminal
 - [ ] `from-opencode.txt` exists on disk
 
 If OpenCode reports success but no file appears, that is the known Windows defect. Record the version and exact wording and tell staff.
 
 ---
 
-## 9. Pi — bare loop
+## 9. Pi — the harness you extend
 
-Pi reads, writes, edits files and runs shell commands, and little else. You use it to watch a harness loop with nothing hidden. **It asks no permission before acting**, so keep it pointed at the smoke folder.
+[Pi](https://pi.dev) is a **minimal agent harness**: a small default configuration sitting on a large set of seams you can open. Out of the box it is read, write, edit, bash and a clean terminal UI — you can see the whole loop. Underneath sit skills, prompt templates, TypeScript extensions with a 33-event lifecycle, tree-shaped sessions you can branch, 15+ providers with mid-session model switching, and four run modes (interactive, print/JSON, RPC, embedded SDK).
+
+The features you might expect to find missing — approval gates, plan mode, sub-agents — are missing on purpose, because they are yours to build. That is why Pi is in this course: every other tool asks you to configure a harness someone else designed, and this one hands you the parts. You will build some of them during the week.
+
+**It has no guardrails out of the box, and the detail people get wrong matters.** Pi runs with exactly your permissions: no sandbox, no approval prompt, and **no working-directory fence**. Being "in" the smoke folder is a convention you keep, not a boundary Pi enforces — an absolute path or a `~` reaches anything your Windows account can reach, including SSH keys and saved credentials. Shell commands have no default timeout either.
+
+Pi's docs say so plainly and explain why: a partial in-process sandbox *"would be easy to misunderstand as a security boundary while still depending on the host shell, filesystem, package managers, credentials, and extension code."* Real isolation has to come from the OS or a container. That is a sharper lesson about security theatre than most security training.
+
+For pre-work: small, specific tasks inside the smoke folder; read what it proposes; don't leave it unattended. Do not use `/share` on work material — it uploads the whole session, system prompt and tool results included, to a public-by-URL gist. Do not install third-party Pi packages this week unless staff name them; package code runs with full access to your machine.
 
 ```powershell
 powershell -c "irm https://pi.dev/install.ps1 | iex"
@@ -342,7 +377,15 @@ Doubled backslashes are required.
 
 ---
 
-## 10. goose — bounded, repeatable work
+## 10. goose — local agent with recipe, tools, mode, and schedule
+
+[goose](https://goose-docs.ai) is a **local-first agent platform** (CLI required for this course; Desktop optional). Thursday you will use it as the vehicle for an autonomy contract. The product is larger than “a chat that can write files.” Keep this shape in mind:
+
+```text
+goose = loop + packaged recipe + tool surface (extensions) + autonomy dial (mode / max turns) + unattended path (schedule / retry)
+```
+
+Pre-work only proves install and one write. The four levers — recipe, extensions, `GOOSE_MODE`, schedule — are what fill the **tool-enforced** column of Thursday’s contract. Docs: <https://goose-docs.ai>. Course default is the **CLI**; Desktop adds a recipe library and Scheduler UI if you want it later.
 
 **Do not install goose with winget.** A winget package named *goose* is an unrelated database tool that shares the name. It installs cleanly and is the wrong program.
 
@@ -396,7 +439,7 @@ goose --version
 goose info -v
 ```
 
-Write proof:
+Write proof. `GOOSE_MODE=auto` skips per-action approval so the smoke test can finish unattended — on Thursday you will deliberately dial this (often to `approve`) as a **tool-enforced** contract row:
 
 ```powershell
 cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
@@ -407,6 +450,7 @@ Get-Content .\from-goose.txt
 
 - [ ] `goose info -v` shows the provider and model you intended
 - [ ] `from-goose.txt` exists on disk
+- [ ] You know Thursday’s pack lives at `mission_flesh/p6/` (`watch_officer.yaml` + recipe notes) once the course repo is cloned
 
 ---
 
@@ -486,6 +530,8 @@ Then run `git status` and confirm none of those appear.
 
 **Optional.** Skipping it does not affect your gate. OpenCode is the required second engine.
 
+If you do install it, the `OPENCODE_DISABLE_CLAUDE_CODE` variable from step 8 is what keeps the two apart. Claude Code writes a `CLAUDE.md` that OpenCode would otherwise read as its own standing instructions.
+
 ```powershell
 irm https://claude.ai/install.ps1 | iex
 ```
@@ -509,15 +555,20 @@ Use the command-line tool, **not** the Claude desktop app — the desktop app's 
 
 ---
 
-## 15. Health check gate
+## 15. Pack for Monday (final roll-up)
+
+You already verified each tool when you installed it. This section only gathers the evidence in one place for the Monday clinic.
 
 ```powershell
 Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"
 ```
 
-- [ ] `from-codex.txt`, `from-opencode.txt`, `from-pi.txt`, `from-goose.txt` all present
+- [ ] `from-codex.txt`, `from-opencode.txt`, `from-pi.txt`, `from-goose.txt` all present in Explorer
+- [ ] Setup log has at least one real failure and fix
+- [ ] OpenCode version and Codex sandbox mode written in the log
+- [ ] You know which step, if any, is still yellow — and what you will try in clinic
 
-Then work `HEALTH_CHECK.md` or `site/checklists/prework-health.html` end to end and declare GREEN, YELLOW, or RED.
+There is **no separate health-check checklist** to run. If something fails later, re-run that section’s verify. Optional full re-test sheet (rescue only): `HEALTH_CHECK.md`.
 
 ---
 
@@ -529,7 +580,9 @@ Then work `HEALTH_CHECK.md` or `site/checklists/prework-health.html` end to end 
 | `'x' is not recognized` after a clean install | Terminal read PATH when it opened | Close **every** terminal, open a new one. Nine times in ten this is it. |
 | Still not recognized after two new windows | Installer didn't update PATH | Add the tool's folder (usually `%USERPROFILE%\.local\bin`) to User PATH |
 | `running scripts is disabled on this system` | Execution policy | Section 1. If `MachinePolicy`/`UserPolicy` are set, IT owns it — ticket them. Stopgap: `cmd /c npm install n8n -g` |
-| Tool won't authenticate | Key missing in this window, wrong prefix, or wrong key for that tool | Re-run the section 5 check; confirm prefix; Codex additionally needs `codex login --with-api-key` |
+| Tool won't authenticate | Key missing in this window, wrong prefix, or wrong key for that tool | Re-run the section 5 check; confirm prefix. The Codex app is the exception — it ignores the variable entirely and uses the key you pasted into *Sign in another way*. |
+| Codex app keeps asking you to sign in with ChatGPT | It was signed in to an account, or the key was never accepted | Profile menu → log out, then sign back in via *Sign in another way*. Confirm `forced_login_method = "api"` is in `%USERPROFILE%\.codex\config.toml` and restart the app. |
+| Codex app won't install — Store or `winget ... msstore` blocked | Group Policy blocks Microsoft app distribution | Download the Store-signed package directly: `https://persistent.oaistatic.com/codex-app-prod/ChatGPT-x64.msix`, then `Add-AppxPackage .\ChatGPT-x64.msix`. There is no plain MSI or EXE. If that is blocked too, it is an IT ticket. |
 | Worked yesterday, now `429` / quota / spend limit | Key hit its cap | Staff fix, not a reinstall. Message them with the key and what you ran. |
 | Tool claims it wrote a file that isn't there | Believe the folder, not the chat | `Get-Location`, `Get-ChildItem`. On OpenCode this is a known Windows defect — report version and exact wording. |
 | goose installed but is a database tool | winget package name collision | Uninstall it; use the `aaif-goose` installer in section 10 |
