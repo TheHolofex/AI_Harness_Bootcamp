@@ -18,12 +18,12 @@ Crisp, script-free SVG diagrams for the AI Harness Bootcamp install and health-c
 | `install-07-codex.svg` | Install pre-work: 7 · Codex — your home for the week |
 | `install-08-opencode.svg` | Install pre-work: 8 · OpenCode — your second engine |
 | `install-09-pi.svg` | Install pre-work: 9 · Pi — the bare loop |
-| `install-10-goose.svg` | Install pre-work: 10 · goose — bounded, repeatable work |
+| `install-10-goose.svg` | Install pre-work: 10 · goose — recipe, tools, mode, schedule |
 | `install-11-obsidian.svg` | Install pre-work: 11 · Obsidian |
 | `install-12-n8n.svg` | Install pre-work: 12 · n8n |
 | `install-13-repo.svg` | Install pre-work: 13 · Course repo and operator pack |
 | `install-14-claude-optional.svg` | Install pre-work: 14 · Claude Code — optional third engine |
-| `install-15-health-gate.svg` | Install pre-work: 15 · Health check gate |
+| `install-15-health-gate.svg` | Install pre-work: 15 · Pack for Monday |
 | `install-when-something-breaks.svg` | Install pre-work: When something breaks |
 | `health-overview.svg` | Health-gate journey overview |
 | `health-how-to-run.svg` | Health gate: How to run this gate |
