@@ -31,3 +31,10 @@ This snapshot is teachable end-to-end for iterate-to-final. Placeholders remain 
 http://localhost:8080/site/checklists/
 
 Each block (B0–P8) has a full step-by-step checklist with checkboxes. Progress uses browser localStorage.
+
+
+## Pre-work interactive checklists
+
+- http://localhost:8080/site/checklists/prework-install.html
+- http://localhost:8080/site/checklists/prework-health.html
+- Hub: http://localhost:8080/site/prework.html

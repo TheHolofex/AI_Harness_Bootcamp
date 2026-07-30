@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pre-work · Install guide · Pre-work · Starzl</title>
+  <link rel="stylesheet" href="../css/course.css" />
+  <link rel="stylesheet" href="../css/checklist.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../week.html">Week</a>
+        <a href="../checklists/index.html">Checklists</a>
+        <a href="../prework.html" aria-current="page">Pre-work</a>
+        <a href="../operator.html">Operator</a>
+        <a href="../pulse.html">Pulse</a>
+        <a href="../lead.html">Lead</a>
+      </nav>
+    </div>
+  </header>
+  <main class="site-main checklist-page">
+    <p class="eyebrow">Interactive checklist · student-owned Windows setup</p>
+    <h1>Pre-work · Install guide</h1>
+    <p class="lede">This checklist is the full install guide as clickable steps. Work top to bottom on your Windows 11 laptop. When you finish, continue into the Health Check checklist.</p>
+
+<div class="meta-grid">
+  <div><span class="k">Module</span><span class="v">Pre-work</span></div>
+  <div><span class="k">Platform</span><span class="v">Windows 11 · no WSL</span></div>
+  <div><span class="k">Plan</span><span class="v">Often 2–4 hours</span></div>
+  <div><span class="k">Progress</span><span class="v"><span data-progress-for="ahb-prework-install">0%</span></span></div>
+  
+</div>
+
+
+<div class="checklist-toolbar">
+  <p>Check each step when <strong>you</strong> finish it on your laptop. Progress saves in <strong>this browser</strong> only. Keep a setup log of failures and fixes as you go — that log is part of being an operator.</p>
+  <div class="btn-row">
+    <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a>
+    <button type="button" class="btn btn-secondary" data-checklist-expand>Expand all</button>
+    <button type="button" class="btn btn-secondary" data-checklist-collapse>Collapse all</button>
+    <button type="button" class="btn btn-secondary" data-checklist-reset data-storage-key="ahb-prework-install">Reset checks</button>
+  </div>
+  <div class="progress-bar" aria-hidden="true"><span data-progress-bar-for="ahb-prework-install"></span></div>
+</div>
+
+<form class="checklist-form" data-checklist data-storage-key="ahb-prework-install">
+<section class="checklist-section" data-section="intro">
+<h2>Before you begin</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-i-time" name="i-time" data-check-id="i-time" />
+    <span class="check-num">1</span>
+    <span class="check-title">Block time on your calendar before Monday morning</span>
+  </label>
+  <div class="check-detail"><p>Complete this <strong>before Monday Block 0</strong>. Monday morning is for First Light, not install. Plan a focused evening or weekend block — often about <strong>2–4 hours</strong>, depending on your machine and accounts.</p>
+<p>Seat credentials (ChatGPT/Codex, Claude, any class API keys) come from the course. Install the apps even if sign-in waits on seats — finish login as soon as seats land.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-i-log" name="i-log" data-check-id="i-log" />
+    <span class="check-num">2</span>
+    <span class="check-title">Open a setup log (notes file) you will keep open the whole time</span>
+  </label>
+  <div class="check-detail"><p>Create a notes file on your machine (or copy <code>prework/SETUP_LOG.md</code> from the repo). After each major step, write:</p>
+<ul>
+<li>Result (ok / failed)</li>
+<li>Any error text</li>
+<li>What you tried</li>
+<li>Rough time spent</li>
+</ul>
+<p>You will bring this log Monday. At least one real failure + fix should appear in it.</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="baseline">
+<h2>0. Baseline machine</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-b-win11" name="b-win11" data-check-id="b-win11" />
+    <span class="check-num">3</span>
+    <span class="check-title">Confirm Windows 11 and update status</span>
+  </label>
+  <div class="check-detail"><p>Press <code>Win + R</code>, type <code>winver</code>, Enter. You want <strong>Windows 11</strong>.</p>
+<p>Run Windows Update and install pending updates if you can. Record the version string in your setup log.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-b-disk" name="b-disk" data-check-id="b-disk" />
+    <span class="check-num">4</span>
+    <span class="check-title">Confirm free disk space (aim for ≥25 GB free)</span>
+  </label>
+  <div class="check-detail"><p>Open File Explorer → This PC. Check free space on your system drive. Agent tools, Node, and caches add up. If you are tight on space, free some before continuing.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-b-admin" name="b-admin" data-check-id="b-admin" />
+    <span class="check-num">5</span>
+    <span class="check-title">Confirm you can install software (admin rights as needed)</span>
+  </label>
+  <div class="check-detail"><p>You need enough rights to run installers. If this is a corporate-locked laptop, escalate to IT/support <strong>now</strong> — do not wait until Sunday night.</p>
+<p>In your log: admin yes/no · corporate managed yes/no.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-b-browser" name="b-browser" data-check-id="b-browser" />
+    <span class="check-num">6</span>
+    <span class="check-title">Confirm browser works for OAuth sign-in</span>
+  </label>
+  <div class="check-detail"><p>Open your usual browser. You will complete sign-in flows for Codex and Claude. If the browser is blocked from accounts, fix that before installing apps.</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="powershell">
+<h2>1. PowerShell readiness</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-ps-open" name="ps-open" data-check-id="ps-open" />
+    <span class="check-num">7</span>
+    <span class="check-title">Open PowerShell as your normal user</span>
+  </label>
+  <div class="check-detail"><p>Start menu → type <strong>PowerShell</strong> → open Windows PowerShell (user session is fine). You should see a prompt like <code>PS C:\Users\YourName></code>.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-ps-policy" name="ps-policy" data-check-id="ps-policy" />
+    <span class="check-num">8</span>
+    <span class="check-title">Check and set execution policy (CurrentUser)</span>
+  </label>
+  <div class="check-detail"><p>Paste and run:</p>
+<pre><code>Get-ExecutionPolicy -List
+
+# If scripts are blocked, prefer user scope (not machine-wide):
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+</code></pre>
+<p>Then confirm:</p>
+<pre><code>Get-ExecutionPolicy -Scope CurrentUser</code></pre>
+<p>You want <code>RemoteSigned</code> or less restrictive.</p>
+<p><strong>If group policy blocks this:</strong> copy the error into your setup log and contact support before Monday. Do not keep pushing blindly.</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="git">
+<h2>2. Git for Windows</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-git-install" name="git-install" data-check-id="git-install" />
+    <span class="check-num">9</span>
+    <span class="check-title">Install Git with winget</span>
+  </label>
+  <div class="check-detail"><p>In PowerShell:</p>
+<pre><code>winget install --id Git.Git -e --source winget</code></pre>
+<p>If <code>winget</code> is missing: update <strong>App Installer</strong> from the Microsoft Store, or install Git from the official Git for Windows site and note that path in your log.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-git-restart" name="git-restart" data-check-id="git-restart" />
+    <span class="check-num">10</span>
+    <span class="check-title">Close and reopen PowerShell</span>
+  </label>
+  <div class="check-detail"><p>PATH changes apply to <strong>new</strong> terminals. Close PowerShell completely, open a new window.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-git-verify" name="git-verify" data-check-id="git-verify" />
+    <span class="check-num">11</span>
+    <span class="check-title">Verify git and Git Bash</span>
+  </label>
+  <div class="check-detail"><p>Run:</p>
+<pre><code>git --version
+Test-Path "C:\Program Files\Git\bin\bash.exe"</code></pre>
+<p>You want a version line from <code>git</code>, and preferably <code>True</code> for the bash path. If bash is elsewhere, write the real path in your log — you will need it for Pi.</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="nodepy">
+<h2>3. Node LTS + Python</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-np-install" name="np-install" data-check-id="np-install" />
+    <span class="check-num">12</span>
+    <span class="check-title">Install Node LTS and Python 3.12 via winget</span>
+  </label>
+  <div class="check-detail"><pre><code>winget install --id OpenJS.NodeJS.LTS -e --source winget
+winget install --id Python.Python.3.12 -e --source winget</code></pre>
+<p>Accept installer prompts. If Python offers “Add to PATH,” enable it.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-np-restart" name="np-restart" data-check-id="np-restart" />
+    <span class="check-num">13</span>
+    <span class="check-title">Open a new terminal after install</span>
+  </label>
+  <div class="check-detail"><p>Close and reopen PowerShell so PATH updates.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-np-verify" name="np-verify" data-check-id="np-verify" />
+    <span class="check-num">14</span>
+    <span class="check-title">Verify node, npm, python, pip</span>
+  </label>
+  <div class="check-detail"><pre><code>node -v
+npm -v
+python --version
+pip --version</code></pre>
+<p>If <code>python</code> fails, try:</p>
+<pre><code>py -3 --version</code></pre>
+<p>Record versions in your setup log. All four should respond (or py launcher equivalent for Python).</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="codex">
+<h2>4. OpenAI Codex app (primary home)</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cx-install" name="cx-install" data-check-id="cx-install" />
+    <span class="check-num">15</span>
+    <span class="check-title">Install the Codex / ChatGPT Windows app</span>
+  </label>
+  <div class="check-detail"><p>Install via the official Windows path for your course date (Microsoft Store and/or OpenAI’s current Windows app instructions).</p>
+<p>What you want: the app launches from the Start menu.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cx-signin" name="cx-signin" data-check-id="cx-signin" />
+    <span class="check-num">16</span>
+    <span class="check-title">Sign in with your course-issued seat</span>
+  </label>
+  <div class="check-detail"><p>Use the ChatGPT/Codex seat staff issued. If seats are not ready yet, leave the app installed and return to this step when credentials arrive — then check this box.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cx-folder" name="cx-folder" data-check-id="cx-folder" />
+    <span class="check-num">17</span>
+    <span class="check-title">Create the smoke-test folder</span>
+  </label>
+  <div class="check-detail"><p>Create:</p>
+<pre><code>Documents\HarnessBootcamp\prework-smoke</code></pre>
+<p>You will reuse this folder for all four agents.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cx-native" name="cx-native" data-check-id="cx-native" />
+    <span class="check-num">18</span>
+    <span class="check-title">Confirm native Windows agent (not WSL-required)</span>
+  </label>
+  <div class="check-detail"><p>This course targets <strong>vanilla Windows without WSL</strong>. In app settings, prefer the Windows-native agent path. Note sandbox/approval mode (Ask vs higher access) in your log so you know what you clicked.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cx-write" name="cx-write" data-check-id="cx-write" />
+    <span class="check-num">19</span>
+    <span class="check-title">Prove write: create hello.txt via the agent</span>
+  </label>
+  <div class="check-detail"><p>Open the <code>prework-smoke</code> project/folder in Codex. Ask the agent to create <code>hello.txt</code> with a short line of text. Approve the action if prompted.</p>
+<p><strong>Pass only if the file exists in Explorer</strong> — not only if the chat says it did.</p>
+<p>Optional rename later to <code>from-codex.txt</code> for the health check naming scheme.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cx-log" name="cx-log" data-check-id="cx-log" />
+    <span class="check-num">20</span>
+    <span class="check-title">Log sandbox issues if any</span>
+  </label>
+  <div class="check-detail"><p>If elevated sandbox fails, try unelevated / document the error. You still need folder write proof. Put the workaround in your setup log.</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="claude">
+<h2>5. Claude Desktop + Code tab (second engine)</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cl-install" name="cl-install" data-check-id="cl-install" />
+    <span class="check-num">21</span>
+    <span class="check-title">Install Claude Desktop for Windows</span>
+  </label>
+  <div class="check-detail"><p>Download from the official Claude / Anthropic Windows download page used by the course. Run the installer. Launch Claude from the Start menu.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cl-signin" name="cl-signin" data-check-id="cl-signin" />
+    <span class="check-num">22</span>
+    <span class="check-title">Sign in with course-issued seat</span>
+  </label>
+  <div class="check-detail"><p>Complete browser sign-in. If you see upgrade/403 on Code, your seat tier or login is wrong — fix with staff before Monday.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cl-code" name="cl-code" data-check-id="cl-code" />
+    <span class="check-num">23</span>
+    <span class="check-title">Open the Code tab</span>
+  </label>
+  <div class="check-detail"><p>In Claude Desktop, open <strong>Code</strong> (not only Chat). This is the second engine for twin-engine day.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cl-git" name="cl-git" data-check-id="cl-git" />
+    <span class="check-num">24</span>
+    <span class="check-title">Confirm Git is detected; restart after Git install if needed</span>
+  </label>
+  <div class="check-detail"><p>If you installed Git after Claude, fully quit Claude and reopen. Local Code sessions expect Git for Windows on this course path.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cl-local" name="cl-local" data-check-id="cl-local" />
+    <span class="check-num">25</span>
+    <span class="check-title">Start a Local session on prework-smoke</span>
+  </label>
+  <div class="check-detail"><p>Environment: <strong>Local</strong>. Select folder <code>Documents\HarnessBootcamp\prework-smoke</code>. Notice permission mode (Manual / Accept edits / etc.).</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cl-write" name="cl-write" data-check-id="cl-write" />
+    <span class="check-num">26</span>
+    <span class="check-title">Prove write in the test folder</span>
+  </label>
+  <div class="check-detail"><p>Ask Claude Code to create <code>from-claude.txt</code> (or any uniquely named file). Approve as needed. Confirm the file in Explorer.</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="pi">
+<h2>6. Pi (bare-loop tool)</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-pi-docs" name="pi-docs" data-check-id="pi-docs" />
+    <span class="check-num">27</span>
+    <span class="check-title">Skim Pi Windows docs (bash required)</span>
+  </label>
+  <div class="check-detail"><p>Pi on Windows expects a bash shell. For most people that is <strong>Git Bash</strong>.</p>
+<p>Docs: <a href="https://pi.dev/docs/latest/windows" target="_blank" rel="noopener">pi.dev Windows setup</a>.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-pi-install" name="pi-install" data-check-id="pi-install" />
+    <span class="check-num">28</span>
+    <span class="check-title">Install Pi using the current official method</span>
+  </label>
+  <div class="check-detail"><p>Follow the install steps on pi.dev for Windows. Record the exact method in your setup log (installer name / command).</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-pi-bash" name="pi-bash" data-check-id="pi-bash" />
+    <span class="check-num">29</span>
+    <span class="check-title">Point Pi at Git Bash if it does not auto-detect</span>
+  </label>
+  <div class="check-detail"><p>If Pi cannot find bash, set <code>shellPath</code> (or equivalent) to:</p>
+<pre><code>C:\Program Files\Git\bin\bash.exe</code></pre>
+<p>Use your real path if Git is installed elsewhere (from your earlier Test-Path / locate step).</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-pi-run" name="pi-run" data-check-id="pi-run" />
+    <span class="check-num">30</span>
+    <span class="check-title">Start Pi and run a trivial command in prework-smoke</span>
+  </label>
+  <div class="check-detail"><p>Open the project directory and run a harmless command (for example list files, or create <code>from-pi.txt</code>). Confirm Pi starts cleanly.</p>
+<p>Write proof in Explorer when you create a file.</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="goose">
+<h2>7. goose</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-gs-install" name="gs-install" data-check-id="gs-install" />
+    <span class="check-num">31</span>
+    <span class="check-title">Install goose (Windows desktop and/or CLI)</span>
+  </label>
+  <div class="check-detail"><p>Use current goose docs for Windows (desktop installer and/or PowerShell/Git Bash CLI install). Record desktop vs CLI in your log.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-gs-launch" name="gs-launch" data-check-id="gs-launch" />
+    <span class="check-num">32</span>
+    <span class="check-title">Launch goose successfully</span>
+  </label>
+  <div class="check-detail"><p>App starts from Start menu, or <code>goose</code> responds in the terminal.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-gs-provider" name="gs-provider" data-check-id="gs-provider" />
+    <span class="check-num">33</span>
+    <span class="check-title">Configure provider with course-approved credentials</span>
+  </label>
+  <div class="check-detail"><p>On first run, goose asks for provider setup. Use the provider/seat staff specified for class.</p>
+<p>If you hit keyring errors on Windows, follow goose’s Windows notes (env var / disable keyring) and log the workaround.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-gs-sample" name="gs-sample" data-check-id="gs-sample" />
+    <span class="check-num">34</span>
+    <span class="check-title">Run one sample recipe or session once</span>
+  </label>
+  <div class="check-detail"><p>Complete one trivial successful session or sample recipe. Then create <code>from-goose.txt</code> in <code>prework-smoke</code> (via goose or manually after a successful tool write) so health check naming is consistent — <strong>prefer a real goose write</strong> when the tool can touch the folder.</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="obs_n8n">
+<h2>8. Obsidian + n8n</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-ob-install" name="ob-install" data-check-id="ob-install" />
+    <span class="check-num">35</span>
+    <span class="check-title">Install Obsidian</span>
+  </label>
+  <div class="check-detail"><p>Download from the official Obsidian site. Install and launch. Create any local vault to prove it opens (class vault arrives Wednesday).</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-n8n-install" name="n8n-install" data-check-id="n8n-install" />
+    <span class="check-num">36</span>
+    <span class="check-title">Install n8n via course-approved method</span>
+  </label>
+  <div class="check-detail"><p>Use the method staff specify for your cohort (local npm global, desktop build, or other docker-free path). If npm-based, a common pattern looks like:</p>
+<pre><code>npm install -g n8n</code></pre>
+<p>Only use commands staff confirm for your cohort — versions change.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-n8n-ui" name="n8n-ui" data-check-id="n8n-ui" />
+    <span class="check-num">37</span>
+    <span class="check-title">Start n8n once and load the UI</span>
+  </label>
+  <div class="check-detail"><p>Start n8n, open the local URL it prints (often localhost with a port). Confirm the editor loads. Know how to stop it (terminal Ctrl+C or app quit).</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="repo">
+<h2>9. Course repo / operator pack</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-rp-get" name="rp-get" data-check-id="rp-get" />
+    <span class="check-num">38</span>
+    <span class="check-title">Clone or download the AI_Harness_Bootcamp materials</span>
+  </label>
+  <div class="check-detail"><p>When staff share the link, get the repo onto your machine (GitHub clone or zip). Example:</p>
+<pre><code>git clone https://github.com/TheHolofex/AI_Harness_Bootcamp.git
+cd AI_Harness_Bootcamp</code></pre></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-rp-operator" name="rp-operator" data-check-id="rp-operator" />
+    <span class="check-num">39</span>
+    <span class="check-title">Copy operator/ templates into your Codex working project</span>
+  </label>
+  <div class="check-detail"><p>Copy the standing files from <code>operator/</code> (Direction Brief, Operator Log, Pass bars, Adversarial, Measurement, Transfer) into the project folder you will use in Codex all week.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-rp-skim" name="rp-skim" data-check-id="rp-skim" />
+    <span class="check-num">40</span>
+    <span class="check-title">Skim student pack + site so Monday is not a surprise</span>
+  </label>
+  <div class="check-detail"><p>Read <code>student_pack/README.md</code> and open the local course site:</p>
+<pre><code>python3 -m http.server 8080
+</code></pre>
+<p>Then visit <code>http://localhost:8080/site/</code> (from repo root). Note thread names: Direction &amp; Log · Adversarial · Transfer.</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="gate">
+<h2>10. Finish through health check</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-g-health" name="g-health" data-check-id="g-health" />
+    <span class="check-num">41</span>
+    <span class="check-title">Complete the interactive Health Check checklist</span>
+  </label>
+  <div class="check-detail"><p>Open <a href="prework-health.html"><strong>Health Check checklist</strong></a> and run it end-to-end on this machine.</p>
+<p>You are not done until the health check is <strong>GREEN</strong>, or <strong>YELLOW</strong> with a staff-approved workaround documented — or explicitly waived in writing.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-g-proof" name="g-proof" data-check-id="g-proof" />
+    <span class="check-num">42</span>
+    <span class="check-title">Save proof into your setup log</span>
+  </label>
+  <div class="check-detail"><p>Screenshots or notes: four agent files in Explorer, versions, seat sign-in, gate color (GREEN/YELLOW/RED). Pack laptop + log for Monday.</p></div>
+</li>
+</ol></section>
+<section class="checklist-section" data-section="rescue">
+<h2>Rescue paths (only if something failed)</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-r-winget" name="r-winget" data-check-id="r-winget" />
+    <span class="check-num">43</span>
+    <span class="check-title">If winget is missing — use fallback install path</span>
+  </label>
+  <div class="check-detail"><p>Update App Installer from Microsoft Store, or install Git/Node/Python from official .exe installers. Log which path you used.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-r-policy" name="r-policy" data-check-id="r-policy" />
+    <span class="check-num">44</span>
+    <span class="check-title">If execution policy is GPO-blocked — stop and ticket</span>
+  </label>
+  <div class="check-detail"><p>User-scope RemoteSigned is the preferred fix. If corporate policy blocks it, escalate early with the error text.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-r-sandbox" name="r-sandbox" data-check-id="r-sandbox" />
+    <span class="check-num">45</span>
+    <span class="check-title">If Codex sandbox fails elevated — try unelevated / document</span>
+  </label>
+  <div class="check-detail"><p>Still prove folder write. Put the exact error and workaround in your log.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-r-claude403" name="r-claude403" data-check-id="r-claude403" />
+    <span class="check-num">46</span>
+    <span class="check-title">If Claude Code is 403 / missing — fix seat, restart after Git</span>
+  </label>
+  <div class="check-detail"><p>Confirm seat tier and login. Fully quit and reopen Claude after installing Git.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-r-pi-bash" name="r-pi-bash" data-check-id="r-pi-bash" />
+    <span class="check-num">47</span>
+    <span class="check-title">If Pi cannot find bash — set shell path explicitly</span>
+  </label>
+  <div class="check-detail"><pre><code>C:\Program Files\Git\bin\bash.exe</code></pre></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-r-goose-key" name="r-goose-key" data-check-id="r-goose-key" />
+    <span class="check-num">48</span>
+    <span class="check-title">If goose keyring errors — use Windows-safe secret path</span>
+  </label>
+  <div class="check-detail"><p>Follow current goose Windows notes (environment variable or disable keyring). Log the fix.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-r-admin" name="r-admin" data-check-id="r-admin" />
+    <span class="check-num">49</span>
+    <span class="check-title">If no admin rights — early ticket, do not wait for Monday AM</span>
+  </label>
+  <div class="check-detail"><p>Imaging is not the default rescue. Owning the install is the point — but locked machines need staff/IT early.</p></div>
+</li>
+</ol></section>
+</form>
+
+<p class="btn-row">
+  <a class="btn" href="prework-health.html">Continue to Health Check checklist</a>
+  <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a>
+  <a class="btn btn-secondary" href="index.html">Exercise checklists</a>
+</p>
+
+
+<div class="callout"><strong>Identity lock</strong>
+The goal is not a pretty install. The goal is: you can rebuild this chair, and you have a trail of what broke. A precisely recorded failure is useful evidence — not a personal failing.</div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Pre-work checklists · progress saved in this browser</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+  <script src="../js/course.js"></script>
+  <script src="../js/checklist.js"></script>
+</body>
+</html>

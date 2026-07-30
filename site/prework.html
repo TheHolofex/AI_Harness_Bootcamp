@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pre-work · Mission workstation · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="./css/course.css" />
+  <link rel="stylesheet" href="./css/checklist.css" />
 </head>
 <body>
   <header class="site-header">
@@ -15,58 +16,82 @@
       </a>
       <nav class="nav" aria-label="Primary">
         <a href="./index.html">Home</a>
-<a href="./week.html">Week</a>
-<a href="./prework.html" aria-current="page">Pre-work</a>
-<a href="./operator.html">Operator</a>
-<a href="./instruments.html">Instruments</a>
-<a href="./pulse.html">Pulse</a>
-<a href="./lead.html">Lead</a>
+        <a href="./week.html">Week</a>
+        <a href="./checklists/index.html">Checklists</a>
+        <a href="./prework.html" aria-current="page">Pre-work</a>
+        <a href="./operator.html">Operator</a>
+        <a href="./pulse.html">Pulse</a>
+        <a href="./lead.html">Lead</a>
       </nav>
     </div>
   </header>
   <main class="site-main">
     <p class="eyebrow">Before Monday · Student-owned install</p>
     <h1>Pre-work · Mission workstation</h1>
-    
-<p class="lede">This module gets your Windows laptop ready for the bootcamp. You install the tools yourself — there is no golden image. Plan a focused evening or weekend block (often about 2–4 hours).</p>
-<div class="callout"><strong>Why you install</strong>
-At work you will own the chair the thinking machine sits in. Pre-work is Cap 0: stand up the workstation before mission week. Monday verifies your gate, then we build — we do not spend First Light on winget for the whole room.</div>
-<h2>Done means</h2>
-<ol>
-<li>Required tools installed and signed in (seats from staff).</li>
-<li>Health check GREEN or YELLOW with a written workaround.</li>
-<li>All four agents created a file in a smoke-test folder.</li>
-<li>You have a setup log with at least one real failure and fix.</li>
-</ol>
-<h2>Open the pack</h2>
-<p>Full guides live in the repo (open beside this site):</p>
-<ul>
-<li><a href="../prework/README.md">prework/README.md</a> — overview</li>
-<li><a href="../prework/INSTALL_GUIDE.md">INSTALL_GUIDE.md</a> — step by step</li>
-<li><a href="../prework/HEALTH_CHECK.md">HEALTH_CHECK.md</a> — gate</li>
-<li><a href="../prework/SETUP_LOG.md">SETUP_LOG.md</a> — your trail</li>
-</ul>
-<h2>Stack (vanilla Windows 11, no WSL required)</h2>
-<table>
-<thead><tr><th>#</th><th>Component</th><th>Notes</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>Windows 11</td><td>Updated</td></tr>
-<tr><td>2</td><td>Git for Windows</td><td>Git Bash on PATH</td></tr>
-<tr><td>3</td><td>Node LTS + Python</td><td>winget or official installers</td></tr>
-<tr><td>4</td><td>PowerShell RemoteSigned</td><td>CurrentUser scope preferred</td></tr>
-<tr><td>5</td><td>OpenAI Codex app</td><td>Home tool all week</td></tr>
-<tr><td>6</td><td>Claude Desktop + Code</td><td>Second engine</td></tr>
-<tr><td>7</td><td>Pi</td><td>Against Git Bash</td></tr>
-<tr><td>8</td><td>goose</td><td>One sample run</td></tr>
-<tr><td>9</td><td>Obsidian + n8n</td><td>Wed/Thu</td></tr>
-</tbody>
-</table>
-<h2>Four-agent smoke proof</h2>
-<p>Folder: <code>Documents\HarnessBootcamp\prework-smoke\</code></p>
-<p>Each tool must create a real file you can see in Explorer: <code>from-codex.txt</code>, <code>from-claude.txt</code>, <code>from-pi.txt</code>, <code>from-goose.txt</code>.</p>
-<div class="callout"><strong>Monday</strong>
-Bring laptop + setup log. Block 0 verifies the gate, then First Light. RED without a plan goes to rescue — not to redefine the school as imaging.</div>
 
+    <p class="lede">This module gets your Windows laptop ready for the bootcamp. You install the tools yourself — there is no golden image. Plan a focused evening or weekend block (often about 2–4 hours).</p>
+    <div class="callout"><strong>Why you install</strong>
+    At work you will own the chair the thinking machine sits in. Pre-work is Cap 0: stand up the workstation before mission week. Monday verifies your gate, then we build — we do not spend First Light on winget for the whole room.</div>
+
+    <h2>Do these interactive checklists in order</h2>
+    <p>Each guide is now a full step-by-step web checklist. Check items off as you execute them. Progress saves in this browser.</p>
+    <div class="card-grid">
+      <a class="card" href="checklists/prework-install.html" data-checklist-card data-storage-key="ahb-prework-install" data-total="49">
+        <p class="eyebrow">1 · Install</p>
+        <h3>Install guide checklist</h3>
+        <p>Baseline → PowerShell → Git → Node/Python → Codex → Claude → Pi → goose → Obsidian/n8n → repo → gate.</p>
+        <p><span class="card-progress">0/49</span> steps checked</p>
+      </a>
+      <a class="card" href="checklists/prework-health.html" data-checklist-card data-storage-key="ahb-prework-health" data-total="25">
+        <p class="eyebrow">2 · Gate</p>
+        <h3>Health check checklist</h3>
+        <p>Baseline proofs · four agent files on disk · seats/modes · operator awareness · GREEN/YELLOW/RED.</p>
+        <p><span class="card-progress">0/25</span> steps checked</p>
+      </a>
+    </div>
+    <p class="btn-row">
+      <a class="btn" href="checklists/prework-install.html">Start install checklist</a>
+      <a class="btn btn-secondary" href="checklists/prework-health.html">Open health check</a>
+    </p>
+
+    <h2>Done means</h2>
+    <ol>
+      <li>Required tools installed and signed in (seats from staff).</li>
+      <li>Health check <strong>GREEN</strong> or <strong>YELLOW</strong> with a written workaround.</li>
+      <li>All four agents created a file in <code>Documents\HarnessBootcamp\prework-smoke\</code> that you can see in Explorer.</li>
+      <li>You have a setup log with at least one real failure and fix.</li>
+    </ol>
+
+    <h2>Setup log (keep beside the checklists)</h2>
+    <p>While you work, keep a running log (copy <a href="../prework/SETUP_LOG.md">prework/SETUP_LOG.md</a> or any notes file). For each major step record result, errors, fix, and time. Monday asks for this trail.</p>
+
+    <h2>Stack at a glance</h2>
+    <table>
+      <thead><tr><th>#</th><th>Component</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Windows 11</td><td>Updated</td></tr>
+        <tr><td>2</td><td>Git for Windows</td><td>Git Bash on PATH</td></tr>
+        <tr><td>3</td><td>Node LTS + Python</td><td>winget or official installers</td></tr>
+        <tr><td>4</td><td>PowerShell RemoteSigned</td><td>CurrentUser scope preferred</td></tr>
+        <tr><td>5</td><td>OpenAI Codex app</td><td>Home tool all week</td></tr>
+        <tr><td>6</td><td>Claude Desktop + Code</td><td>Second engine</td></tr>
+        <tr><td>7</td><td>Pi</td><td>Against Git Bash</td></tr>
+        <tr><td>8</td><td>goose</td><td>One sample run</td></tr>
+        <tr><td>9</td><td>Obsidian + n8n</td><td>Wed/Thu</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Markdown sources (reference)</h2>
+    <p>The interactive checklists are the primary path. Raw markdown remains available if you want a printable copy:</p>
+    <ul>
+      <li><a href="../prework/INSTALL_GUIDE.md">INSTALL_GUIDE.md</a></li>
+      <li><a href="../prework/HEALTH_CHECK.md">HEALTH_CHECK.md</a></li>
+      <li><a href="../prework/SETUP_LOG.md">SETUP_LOG.md</a></li>
+      <li><a href="../prework/README.md">README.md</a></li>
+    </ul>
+
+    <div class="callout"><strong>Monday</strong>
+    Bring laptop + setup log. Block 0 verifies the gate, then First Light. RED without a plan goes to rescue — not to redefine the school as imaging.</div>
   </main>
   <footer class="site-footer">
     <div class="site-footer-inner">
@@ -75,5 +100,6 @@ Bring laptop + setup log. Block 0 verifies the gate, then First Light. RED witho
     </div>
   </footer>
   <script src="./js/course.js"></script>
+  <script src="./js/checklist.js"></script>
 </body>
 </html>
