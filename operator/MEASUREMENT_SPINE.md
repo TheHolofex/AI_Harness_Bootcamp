@@ -123,11 +123,11 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 
 | Block | Deep mark (one line) |
 |---|---|
-| **P2** | Dyno: baseline → after on fixed suite (`n/N` or scores) |
-| **P3** | Comparator: disagreements logged · kills · verdict id |
+| **P2** | Dyno: baseline → after on `instruments/p2_dyno` D01–D05 (`n/5`) |
+| **P3** | Comparator on `BRIEF-v1`: disagreements · kills · verdict |
 | **P5** | Containment: 3/3 catches · absence-of-effect proof pointer |
 | **P6** | Contract: stop/restart · exception drill pass/fail |
-| **P8** | Hold/degrade: open vs bar (`n/N`) · policy refuse yes/no · transfer SEALED yes/no |
+| **P8** | Hold/degrade D01–D05 open vs home (`n/5`) · policy refuse · transfer SEALED |
 
 These feed quality and transfer; they do **not** replace the four headlines.
 

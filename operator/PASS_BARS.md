@@ -53,6 +53,8 @@ Acceptable: paths, commands, diffs, test output, dyno rows, opened citation trai
 
 ---
 
+> **Course instruments:** shared kits in `instruments/` (P2 dyno, P3 frozen brief, P8 hold/degrade). Two tracks: `engineering`, `mission_ops`. Pick one track for the week. P8 reuses P2 case IDs D01–D05. These are class instruments — not personal portable evals.
+
 ## B0 — First Light · Cap 1  
 **Mastery claim:** You can direct a thinking machine from operational mess to a working instrument, and you know how you’ll know it’s right.
 
@@ -106,7 +108,7 @@ Paste job, citations unchecked, no delta, or silent failure on broken sources.
 **Mastery claim:** Loop quality is something you can change on purpose and prove — craft compounds instead of resetting every session.
 
 ### MVP
-- [ ] Dyno sheet with **baseline** on a fixed task suite (same prompts/tasks before and after)
+- [ ] Dyno sheet with **baseline** on course suite `instruments/p2_dyno` (D01–D05, chosen track) before and after
 - [ ] ≥2 harness changes across distinct layers (e.g. instructions *and* tests, or memory *and* skill) — not one lucky prompt tweak
 - [ ] Each change has before/after measurement on the dyno (numeric or strict pass/fail counts)
 - [ ] ≥2 machine-checkable tests **you authored**; at least one fails on the stock harness and passes after the change (or equivalent red→green story)
@@ -131,7 +133,7 @@ Single unmeasured tweak, no red→green test, or nothing survives restart.
 **Mastery claim:** You treat models as callable components. Disagreement is a sensor. The verdict is yours.
 
 ### MVP
-- [ ] One **frozen** extraction brief (versioned text) run unchanged on Codex app and Claude Code app
+- [ ] Course frozen brief `BRIEF-v1` + track corpus in `instruments/p3_frozen_brief` run unchanged on Codex app and Claude Code app
 - [ ] Deterministic join/watchlist path where required — model does not “decide” the join key
 - [ ] Comparator artifact: side-by-side fields/claims table (not vibes)
 - [ ] ≥3 material disagreement rows **or**, if fewer, a written proof you searched for disagreement and why the task was low-separation
@@ -258,7 +260,7 @@ Happy-path only, no human gate, or “automation is always better” with no dis
 ### MVP
 - [ ] **AUP/endpoint policy written and accepted before** any re-point (no retroactive policy)
 - [ ] Re-point pack + frozen suite to hosted open model; config diff or settings evidence retained
-- [ ] **Hold/degrade matrix** on the frozen suite: per case pass/fail or score — commercial baseline vs open (or open vs stated bar)
+- [ ] **Hold/degrade matrix** on P2 IDs D01–D05 via `instruments/p8_hold_degrade` — commercial/home vs open (numbers)
 - [ ] Layered read of failures: model vs instructions vs tests vs environment vs operator brief (label each fail)
 - [ ] Legitimate task **refused under your policy** with recorded reason; contrast with a allowed task that still runs
 - [ ] Loop still closes on a core path you care about — or you document which walls must change for it to close

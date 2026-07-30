@@ -102,6 +102,7 @@ Student scoreboard + thin facilitator rollup (`operator/FACILITATOR_ROLLUP.md`).
 
 - `DAY_PROJECT_TABLE.md` — day spine, projects, tool rotation
 - `prework/` — student-owned workstation install module + health check (before Monday)
+- `instruments/` — shared course kits: P2 dyno, P3 frozen brief, P8 hold/degrade (engineering + mission_ops tracks)
 - `todo1.md` — circuit completeness analysis (outer loops to close)
 - `operator/` — Direction Brief + Log (Move 1) · Pass bars (Move 2) · Transfer 30-60-90 (Move 3)
 - This file — course identity and operator standard for anyone (human or agent) working here
