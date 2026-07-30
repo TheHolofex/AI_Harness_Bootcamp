@@ -1,0 +1,153 @@
+/**
+ * Single primary navigation for the whole course site.
+ * Depth is inferred from the path so links stay correct from /, /blocks/, /checklists/.
+ */
+(function () {
+  function depthPrefix() {
+    var path = (location.pathname || "").replace(/\\/g, "/");
+    if (path.indexOf("/blocks/") !== -1 || path.indexOf("/checklists/") !== -1) {
+      return "..";
+    }
+    // site root pages (index, week, prework, …)
+    if (path.indexOf("/site/") !== -1 || /\/site$/.test(path.replace(/\/$/, ""))) {
+      return ".";
+    }
+    // file:// or odd hosts: prefer relative from known script location
+    var scripts = document.getElementsByTagName("script");
+    for (var i = 0; i < scripts.length; i++) {
+      var src = scripts[i].src || "";
+      if (src.indexOf("/js/nav.js") !== -1) {
+        if (src.indexOf("/blocks/") !== -1 || src.indexOf("/checklists/") !== -1) return "../..";
+        // script is site/js/nav.js → pages in site/ use .
+        return ".";
+      }
+    }
+    return ".";
+  }
+
+  function pageKey() {
+    var path = (location.pathname || "").replace(/\\/g, "/");
+    var file = path.split("/").pop() || "index.html";
+    if (!file || file === "site") file = "index.html";
+    if (path.indexOf("/checklists/") !== -1) {
+      if (file === "index.html") return "checklists-index";
+      if (file.indexOf("prework-install") === 0) return "prework-install";
+      if (file.indexOf("prework-health") === 0) return "prework-health";
+      return "checklist-" + file.replace(".html", "");
+    }
+    if (path.indexOf("/blocks/") !== -1) {
+      return "block-" + file.replace(".html", "");
+    }
+    return file.replace(".html", "") || "index";
+  }
+
+  function link(href, label, key, current, extraClass) {
+    var cur = key && key === current ? ' aria-current="page"' : "";
+    var cls = extraClass ? ' class="' + extraClass + '"' : "";
+    return '<a href="' + href + '"' + cls + cur + ">" + label + "</a>";
+  }
+
+  function buildNav(prefix, current) {
+    var p = prefix;
+    var modules = [
+      ["block-b0", p + "/blocks/b0.html", "B0 · First Light"],
+      ["block-p1", p + "/blocks/p1.html", "P1 · Daily Status Brief"],
+      ["block-p2", p + "/blocks/p2.html", "P2 · Hot-rod"],
+      ["block-p3", p + "/blocks/p3.html", "P3 · Twin-engine"],
+      ["block-p4", p + "/blocks/p4.html", "P4 · Second brain"],
+      ["block-p5", p + "/blocks/p5.html", "P5 · Poisoned corpus"],
+      ["block-p6", p + "/blocks/p6.html", "P6 · Watch officer"],
+      ["block-p7", p + "/blocks/p7.html", "P7 · Automation line"],
+      ["block-p8", p + "/blocks/p8.html", "P8 · Open model"],
+      ["week", p + "/week.html", "Week map"],
+      ["checklists-index", p + "/checklists/index.html", "Exercise checklists"]
+    ];
+    var prework = [
+      ["prework", p + "/prework.html", "Pre-work hub"],
+      ["prework-install", p + "/checklists/prework-install.html", "Install checklist"],
+      ["prework-health", p + "/checklists/prework-health.html", "Health check gate"]
+    ];
+    var instructor = [
+      ["lead", p + "/lead.html", "Operate-along guide"],
+      ["pulse", p + "/pulse.html", "Pulse & threads"],
+      ["operator", p + "/operator.html", "Operator pack"],
+      ["instruments", p + "/instruments.html", "Course instruments"],
+      ["week", p + "/week.html", "Week map"]
+    ];
+
+    function dropdown(id, label, items, groupKeys) {
+      var open = groupKeys.indexOf(current) !== -1;
+      var btnCurrent = open ? ' aria-current="true"' : "";
+      var html = '<div class="nav-drop' + (open ? " is-active" : "") + '" data-nav-drop>';
+      html += '<button type="button" class="nav-drop-btn" aria-expanded="' + (open ? "true" : "false") + '" aria-controls="' + id + '"' + btnCurrent + ">" + label + " <span class=\"caret\" aria-hidden=\"true\">▾</span></button>";
+      html += '<div class="nav-drop-panel" id="' + id + '" hidden>';
+      for (var i = 0; i < items.length; i++) {
+        var it = items[i];
+        html += link(it[1], it[2], it[0], current, "nav-drop-link");
+      }
+      html += "</div></div>";
+      return html;
+    }
+
+    var moduleKeys = modules.map(function (m) { return m[0]; });
+    var preworkKeys = prework.map(function (m) { return m[0]; });
+    var instructorKeys = instructor.map(function (m) { return m[0]; });
+
+    var html = "";
+    html += link(p + "/index.html", "Home", "index", current);
+    html += dropdown("nav-prework", "Pre-work", prework, preworkKeys);
+    html += dropdown("nav-modules", "Modules", modules, moduleKeys);
+    html += dropdown("nav-instructor", "Instructor", instructor, instructorKeys);
+    return html;
+  }
+
+  function wireDropdowns(root) {
+    var drops = root.querySelectorAll("[data-nav-drop]");
+    drops.forEach(function (drop) {
+      var btn = drop.querySelector(".nav-drop-btn");
+      var panel = drop.querySelector(".nav-drop-panel");
+      if (!btn || !panel) return;
+      // show active section panel state via CSS; keep closed until click/hover
+      panel.hidden = false; // use CSS visibility; remove hidden for hover UX
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = drop.classList.contains("is-open");
+        root.querySelectorAll("[data-nav-drop]").forEach(function (d) {
+          d.classList.remove("is-open");
+          var b = d.querySelector(".nav-drop-btn");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+        if (!open) {
+          drop.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+    document.addEventListener("click", function () {
+      root.querySelectorAll("[data-nav-drop]").forEach(function (d) {
+        d.classList.remove("is-open");
+        var b = d.querySelector(".nav-drop-btn");
+        if (b) b.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  function init() {
+    var nav = document.querySelector("nav.nav, nav#primary-nav");
+    if (!nav) return;
+    var prefix = depthPrefix();
+    // When page is site/checklists/x and script is ../js, prefix .. is correct.
+    // When opened as file://.../site/index.html, prefix .
+    var current = pageKey();
+    nav.setAttribute("aria-label", "Primary");
+    nav.classList.add("nav", "nav-unified");
+    nav.innerHTML = buildNav(prefix, current);
+    wireDropdowns(nav);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
