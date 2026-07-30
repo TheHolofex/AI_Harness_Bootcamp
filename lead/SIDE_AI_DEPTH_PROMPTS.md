@@ -1,5 +1,5 @@
-# Side-thread depth prompts (lead)
-Use a separate AI thread students can see when a concept needs a diagram or deeper explanation.
+# Side-chat depth prompts (lead)
+Use a separate AI chat students can see when a concept needs a diagram or deeper explanation.
 
 ## Harness loop
 Draw act → observe → correct → accept with where humans bind the loop. One concrete example from today's mission.
