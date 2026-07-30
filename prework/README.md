@@ -33,7 +33,7 @@ Monday Block 0 **verifies** this gate, then moves to First Light. It does not in
 | # | Component | Notes |
 |---|---|---|
 | 1 | Windows 11, 64-bit | **Not ARM64** — OpenCode and goose have no working ARM build |
-| 2 | Git for Windows | Provides Git Bash, which Pi requires |
+| 2 | Git for Windows | Provides Git Bash, which Pi requires. Students still work in **PowerShell** — Git Bash is a dependency, not a second shell to learn |
 | 3 | Node.js **LTS** | Use the `OpenJS.NodeJS.LTS` package id — must land in 22.22–24.x |
 | 4 | Python 3.x | |
 | 5 | PowerShell execution policy | `RemoteSigned` for CurrentUser, and no Group Policy override |

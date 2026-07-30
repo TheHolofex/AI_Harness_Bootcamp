@@ -240,7 +240,8 @@ Repair-WinGetPackageManager -Force -Latest</code></pre>
     <span class="check-num">15</span>
     <span class="check-title">Install Git</span>
   </label>
-  <div class="check-detail"><p>Git tracks changes to files, and you'll use it to fetch the course repository. It also installs <strong>Git Bash</strong>, a Unix-style shell that Pi requires and that Codex and goose can use — which is the real reason it comes this early.</p>
+  <div class="check-detail"><p>Git tracks changes to files, and you'll use it to fetch the course repository. It also installs <strong>Git Bash</strong>, a second kind of terminal that some tools reach for behind the scenes — which is the real reason Git comes this early.</p>
+  <p>To be clear about what you have to learn: <strong>you type everything in PowerShell.</strong> Git Bash is a dependency, not a second shell to get fluent in. Pi is the one tool that genuinely can't run without it, and it calls it for you. The only time you'd open Git Bash yourself is one goose fallback in step 52.</p>
   <pre><code>winget install --id Git.Git -e --source winget --scope machine --accept-source-agreements --accept-package-agreements</code></pre>
   <p>Approve the elevation prompt. <code>--scope machine</code> puts Git at a predictable path other tools know to look in; without it Git can land somewhere they won't find. If winget isn't available, download from <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com/download/win</a> and accept the installer defaults.</p></div>
 </li>
