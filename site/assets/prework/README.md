@@ -7,32 +7,32 @@ Crisp, script-free SVG diagrams for the AI Harness Bootcamp install and health-c
 | File | Placement |
 |---|---|
 | `install-overview.svg` | Install journey overview for the pre-work hub |
-| `install-before-you-begin.svg` | Before you begin |
-| `install-00-baseline.svg` | 0 · Baseline machine |
-| `install-01-terminal.svg` | 1 · Terminal and PowerShell |
-| `install-02-winget.svg` | 2 · winget, the package manager |
-| `install-03-git.svg` | 3 · Git for Windows |
-| `install-04-runtime.svg` | 4 · Node.js and Python |
-| `install-05-keys.svg` | 5 · Your three API keys |
-| `install-06-smoke.svg` | 6 · Your smoke folder |
-| `install-07-codex.svg` | 7 · Codex — your home for the week |
-| `install-08-opencode.svg` | 8 · OpenCode — your second engine |
-| `install-09-pi.svg` | 9 · Pi — the bare loop |
-| `install-10-goose.svg` | 10 · goose — bounded, repeatable work |
-| `install-11-obsidian.svg` | 11 · Obsidian |
-| `install-12-n8n.svg` | 12 · n8n |
-| `install-13-repo.svg` | 13 · Course repo and operator pack |
-| `install-14-claude-optional.svg` | 14 · Claude Code — optional third engine |
-| `install-15-health-gate.svg` | 15 · Health check gate |
-| `install-when-something-breaks.svg` | When something breaks |
+| `install-before-you-begin.svg` | Install pre-work: Before you begin |
+| `install-00-baseline.svg` | Install pre-work: 0 · Baseline machine |
+| `install-01-terminal.svg` | Install pre-work: 1 · Terminal and PowerShell |
+| `install-02-winget.svg` | Install pre-work: 2 · winget, the package manager |
+| `install-03-git.svg` | Install pre-work: 3 · Git for Windows |
+| `install-04-runtime.svg` | Install pre-work: 4 · Node.js and Python |
+| `install-05-keys.svg` | Install pre-work: 5 · Your three API keys |
+| `install-06-smoke.svg` | Install pre-work: 6 · Your smoke folder |
+| `install-07-codex.svg` | Install pre-work: 7 · Codex — your home for the week |
+| `install-08-opencode.svg` | Install pre-work: 8 · OpenCode — your second engine |
+| `install-09-pi.svg` | Install pre-work: 9 · Pi — the bare loop |
+| `install-10-goose.svg` | Install pre-work: 10 · goose — bounded, repeatable work |
+| `install-11-obsidian.svg` | Install pre-work: 11 · Obsidian |
+| `install-12-n8n.svg` | Install pre-work: 12 · n8n |
+| `install-13-repo.svg` | Install pre-work: 13 · Course repo and operator pack |
+| `install-14-claude-optional.svg` | Install pre-work: 14 · Claude Code — optional third engine |
+| `install-15-health-gate.svg` | Install pre-work: 15 · Health check gate |
+| `install-when-something-breaks.svg` | Install pre-work: When something breaks |
 | `health-overview.svg` | Health-gate journey overview |
-| `health-how-to-run.svg` | How to run this gate |
-| `health-a-foundations.svg` | A · Foundations |
-| `health-b-keys.svg` | B · Your three keys |
-| `health-c-agents.svg` | C · Four required agents — files on disk |
-| `health-d-support.svg` | D · Supporting tools |
-| `health-e-ready.svg` | E · Operator readiness |
-| `health-result.svg` | Gate result |
+| `health-how-to-run.svg` | Health gate: How to run this gate |
+| `health-a-foundations.svg` | Health gate: A · Foundations |
+| `health-b-keys.svg` | Health gate: B · Your three keys |
+| `health-c-agents.svg` | Health gate: C · Four required agents — files on disk |
+| `health-d-support.svg` | Health gate: D · Supporting tools |
+| `health-e-ready.svg` | Health gate: E · Operator readiness |
+| `health-result.svg` | Health gate: Gate result |
 
 ## Usage
 

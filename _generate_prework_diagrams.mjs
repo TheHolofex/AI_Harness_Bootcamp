@@ -97,7 +97,7 @@ function svgOpen(title, height) {
 function ribbon(kind, current, { overview = false, crosscut = false } = {}) {
   const install = kind === "install";
   const stages = install ? installStages : healthStages;
-  const label = install ? "PRE-WORK · INSTALL PATH" : "PRE-WORK · HEALTH GATE";
+  const label = install ? "PRE-WORK · GETTING SET UP" : "PRE-WORK · HEALTH CHECK";
   const start = install ? 24 : 28;
   const width = install ? 58 : 138;
   const gap = install ? 5 : 18;
@@ -105,9 +105,9 @@ function ribbon(kind, current, { overview = false, crosscut = false } = {}) {
   const h = 24;
   const end = start + (stages.length - 1) * (width + gap) + width;
   const progress = crosscut
-    ? "RECOVERY · ANY STAGE"
+    ? "REPAIR · ANY POINT"
     : overview
-      ? "FULL JOURNEY"
+      ? "WHOLE PATH"
       : `STAGE ${String(current + 1).padStart(2, "0")} OF ${String(stages.length).padStart(2, "0")}`;
   let result = `  <rect x="0" y="0" width="1120" height="56" fill="${C.warm}"/>
   <text x="24" y="13" class="micro muted">${label}</text>
@@ -158,7 +158,7 @@ function chips(items, accent = C.ink) {
   const gap = 8;
   const width = (right - left - gap * (items.length - 1)) / items.length;
   let result = `  <rect x="0" y="164" width="1120" height="56" fill="${C.warm}"/>
-  <text x="24" y="175" class="micro muted">SECTION RUN</text>
+  <text x="24" y="175" class="micro muted">IN THIS SECTION</text>
 `;
   items.forEach((item, index) => {
     const x = left + index * (width + gap);
@@ -172,12 +172,12 @@ function chips(items, accent = C.ink) {
 }
 
 function middleHeader(stage, purpose, kind, optional = false) {
-  const eyebrow = kind === "install" ? "INSTALL STAGE" : "HEALTH STAGE";
+  const eyebrow = kind === "install" ? "INSTALL CHECKLIST" : "HEALTH CHECK";
   return `  <text x="24" y="76" class="micro ${optional ? "gold" : "red"}">${eyebrow}</text>
   <text x="24" y="103" class="title">${esc(stage)}</text>
   <text x="24" y="123" class="purpose">${esc(purpose)}</text>
   <path d="M480 69V151" class="hair"/>
-  <text x="512" y="76" class="micro muted">STAGE VIEW</text>
+  <text x="512" y="76" class="micro muted">WHAT THIS LOOKS LIKE</text>
 `;
 }
 
@@ -187,7 +187,7 @@ function sectionSvg(kind, config) {
 `;
 }
 
-const metaphor = {
+const metaphors = {
   begin: `  <g aria-label="Calendar, setup log, and three key marks">
     <rect x="540" y="86" width="92" height="57" rx="2" fill="${C.panel}" stroke="${C.strong}"/>
     <path d="M540 101H632M558 82V93M614 82V93" class="line"/>
@@ -478,7 +478,7 @@ const metaphor = {
     <rect x="1042" y="94" width="40" height="44" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
     <path d="M1051 107H1073M1051 116H1073M1051 125H1066" class="hair"/>
     <path d="M542 156H1081" class="hair"/>
-    <text x="811" y="160" class="tiny muted" text-anchor="middle">GREEN · AMBER · RED — DECLARE WHAT IS TRUE</text>
+    <text x="811" y="160" class="tiny muted" text-anchor="middle">GREEN · YELLOW · RED — pick the colour that is true</text>
   </g>
 `,
   repair: `  <g aria-label="Repair loop from error to paste to fix to log">
@@ -618,291 +618,291 @@ const metaphor = {
     <text x="996" y="112" class="micro red" text-anchor="middle">RED</text>
     <text x="996" y="130" class="tiny muted" text-anchor="middle">RESCUE PLAN NEEDED</text>
     <path d="M535 156H1068" class="hair"/>
-    <text x="801.5" y="161" class="tiny muted" text-anchor="middle">DECLARE · RECORD · PACK FOR MONDAY</text>
+    <text x="801.5" y="161" class="tiny muted" text-anchor="middle">Mark the colour · write it down · pack for Monday</text>
   </g>
 `,
 };
 
 const installSections = [
   {
-    filename: "install-before-you-begin.svg",
-    heading: "Before you begin",
+    file: "install-before-you-begin.svg",
     current: 0,
-    stage: "BEFORE YOU BEGIN",
-    purpose: "Reserve time, keep a log, and bring the three keys.",
-    steps: ["TIME BLOCK", "OPEN SETUP LOG", "CONFIRM 3 KEYS", "SEE THE PATH"],
-    metaphor: metaphor.begin,
+    stage: "Before you begin",
+    purpose: "Block real time, open a setup log, and have your three keys ready.",
+    steps: ["BLOCK TIME", "OPEN A LOG", "HAVE THREE KEYS", "KNOW THE SHAPE"],
+    metaphor: metaphors.begin,
+    svgTitle: "Before you begin",
   },
   {
-    filename: "install-00-baseline.svg",
-    heading: "0 · Baseline machine",
+    file: "install-00-baseline.svg",
     current: 1,
-    stage: "VERIFY THE MACHINE",
-    purpose: "Establish a supported Windows 11 operator baseline.",
-    steps: ["WIN 11 · 64-BIT", "CHECK AMD64", "FREE 25+ GB", "CONFIRM INSTALL RIGHTS"],
-    metaphor: metaphor.baseline,
+    stage: "Check the laptop",
+    purpose: "Confirm Windows 11, 64-bit, enough disk, and that you can install software.",
+    steps: ["WINDOWS 11", "NOT ARM", "FREE DISK", "CAN INSTALL"],
+    metaphor: metaphors.baseline,
+    svgTitle: "0 · Baseline machine",
   },
   {
-    filename: "install-01-terminal.svg",
-    heading: "1 · Terminal and PowerShell",
+    file: "install-01-terminal.svg",
     current: 2,
-    stage: "OPEN THE CONTROL SURFACE",
-    purpose: "Start clean, identify PowerShell, and allow user scripts.",
-    steps: ["OPEN TERMINAL", "CHECK SHELL", "SET REMOTESIGNED"],
-    metaphor: metaphor.terminal,
+    stage: "Open the terminal",
+    purpose: "Use Windows Terminal, check PowerShell, and allow scripts for your user.",
+    steps: ["OPEN TERMINAL", "CHECK POWERSHELL", "ALLOW SCRIPTS"],
+    metaphor: metaphors.terminal,
+    svgTitle: "1 · Terminal and PowerShell",
   },
   {
-    filename: "install-02-winget.svg",
-    heading: "2 · winget, the package manager",
+    file: "install-02-winget.svg",
     current: 3,
-    stage: "MAKE INSTALLS REPEATABLE",
-    purpose: "Verify the package conveyor before loading tools.",
-    steps: ["FIND WINGET", "REPAIR IF MISSING", "ACCEPT SOURCE TERMS"],
-    metaphor: metaphor.winget,
+    stage: "Get the installer ready",
+    purpose: "Make sure winget works so the rest of the installs are one command each.",
+    steps: ["FIND WINGET", "REPAIR IF NEEDED", "ACCEPT PROMPTS"],
+    metaphor: metaphors.winget,
+    svgTitle: "2 · winget, the package manager",
   },
   {
-    filename: "install-03-git.svg",
-    heading: "3 · Git for Windows",
+    file: "install-03-git.svg",
     current: 4,
-    stage: "PLACE THE VERSION RAIL",
-    purpose: "Install Git and expose Git Bash to the toolchain.",
-    steps: ["INSTALL GIT", "REOPEN TERMINAL", "VERIFY + FIND BASH"],
-    metaphor: metaphor.git,
+    stage: "Install Git",
+    purpose: "Install Git for the course repo. Git Bash comes along for tools that need it — you still work in PowerShell.",
+    steps: ["INSTALL GIT", "NEW TERMINAL", "FIND GIT BASH"],
+    metaphor: metaphors.git,
+    svgTitle: "3 · Git for Windows",
   },
   {
-    filename: "install-04-runtime.svg",
-    heading: "4 · Node.js and Python",
+    file: "install-04-runtime.svg",
     current: 5,
-    stage: "STAND UP THE RUNTIMES",
-    purpose: "Put Node LTS and real Python on a fresh PATH.",
-    steps: ["NODE.JS LTS", "PYTHON", "REOPEN TERMINAL", "VERIFY 3 COMMANDS", "CHECK REAL PYTHON"],
-    metaphor: metaphor.runtime,
+    stage: "Install Node and Python",
+    purpose: "Put Node LTS and real Python on your PATH, then open a fresh terminal to check.",
+    steps: ["NODE LTS", "PYTHON", "NEW TERMINAL", "VERIFY BOTH"],
+    metaphor: metaphors.runtime,
+    svgTitle: "4 · Node.js and Python",
   },
   {
-    filename: "install-05-keys.svg",
-    heading: "5 · Your three API keys",
+    file: "install-05-keys.svg",
     current: 6,
-    stage: "LOAD THREE CREDENTIALS",
-    purpose: "Save each provider key at user scope, then re-read them.",
-    steps: ["READ KEY GUIDE", "SET OPENAI", "SET XAI", "SET ANTHROPIC", "VERIFY NEW WINDOW"],
-    metaphor: metaphor.keys,
+    stage: "Save your three keys",
+    purpose: "Store OpenAI, xAI, and Anthropic as Windows user variables, then verify in a new window.",
+    steps: ["READ KEYS PAGE", "OPENAI", "XAI", "ANTHROPIC", "VERIFY FRESH"],
+    metaphor: metaphors.keys,
+    svgTitle: "5 · Your three API keys",
   },
   {
-    filename: "install-06-smoke.svg",
-    heading: "6 · Your smoke folder",
+    file: "install-06-smoke.svg",
     current: 7,
-    stage: "CREATE THE PROOF BAY",
-    purpose: "Give every agent one shared folder for visible proof.",
-    steps: ["CREATE SMOKE FOLDER", "USE FILES AS PROOF"],
-    metaphor: metaphor.smoke,
+    stage: "Make a smoke folder",
+    purpose: "Create one shared folder where every tool will drop a proof file you can see in Explorer.",
+    steps: ["CREATE FOLDER", "WHY FILES MATTER"],
+    metaphor: metaphors.smoke,
+    svgTitle: "6 · Your smoke folder",
   },
   {
-    filename: "install-07-codex.svg",
-    heading: "7 · Codex — your home for the week",
+    file: "install-07-codex.svg",
     current: 8,
-    stage: "ESTABLISH HOME BASE",
-    purpose: "Install, key-lock, sandbox, and prove the primary engine.",
-    steps: ["INSTALL + VERIFY", "API-KEY SIGN-IN", "LOCK AUTH", "SET SANDBOX", "WRITE FROM-CODEX", "DESKTOP APP*"],
-    metaphor: metaphor.codex,
+    stage: "Set up Codex (home)",
+    purpose: "Install your home engine for the week, sign in with the API key, and write from-codex.txt.",
+    steps: ["INSTALL", "API-KEY SIGN-IN", "LOCK AUTH", "SANDBOX", "WRITE PROOF"],
+    metaphor: metaphors.codex,
+    svgTitle: "7 · Codex — your home for the week",
   },
   {
-    filename: "install-08-opencode.svg",
-    heading: "8 · OpenCode — your second engine",
+    file: "install-08-opencode.svg",
     current: 9,
-    stage: "BRING UP ENGINE TWO",
-    purpose: "Install the cohort-pinned xAI engine and write proof.",
-    steps: ["KNOW THE ROLE", "GET COHORT PIN", "INSTALL + REOPEN", "VERIFY XAI", "WRITE PROOF"],
-    metaphor: metaphor.opencode,
+    stage: "Set up OpenCode (second engine)",
+    purpose: "Install the cohort-pinned OpenCode build on your xAI key and write from-opencode.txt.",
+    steps: ["INSTALL PINNED", "POINT AT XAI", "WRITE PROOF"],
+    metaphor: metaphors.opencode,
+    svgTitle: "8 · OpenCode — your second engine",
   },
   {
-    filename: "install-09-pi.svg",
-    heading: "9 · Pi — the bare loop",
+    file: "install-09-pi.svg",
     current: 10,
-    stage: "EXPOSE THE BARE LOOP",
-    purpose: "Install the minimal agent loop and prove shell reach.",
-    steps: ["KNOW THE ROLE", "INSTALL PI", "REOPEN + VERIFY", "WRITE PROOF", "REACH SHELL"],
-    metaphor: metaphor.pi,
+    stage: "Set up Pi",
+    purpose: "Install the bare loop, pin a model, and confirm it can reach a shell and write from-pi.txt.",
+    steps: ["INSTALL PI", "PIN MODEL", "SHELL REACH", "WRITE PROOF"],
+    metaphor: metaphors.pi,
+    svgTitle: "9 · Pi — the bare loop",
   },
   {
-    filename: "install-10-goose.svg",
-    heading: "10 · goose — bounded, repeatable work",
+    file: "install-10-goose.svg",
     current: 11,
-    stage: "BOUND THE RECIPE",
-    purpose: "Configure provider, model, path, and repeatable proof.",
-    steps: ["NO WINGET", "KEYRING OFF", "PROVIDER + MODEL", "INSTALL + PATH", "VERIFY", "WRITE PROOF"],
-    metaphor: metaphor.goose,
+    stage: "Set up goose",
+    purpose: "Install goose the right way (not winget), set provider and model, and write from-goose.txt.",
+    steps: ["INSTALL AAIF", "PROVIDER + MODEL", "WRITE PROOF"],
+    metaphor: metaphors.goose,
+    svgTitle: "10 · goose — bounded, repeatable work",
   },
   {
-    filename: "install-11-obsidian.svg",
-    heading: "11 · Obsidian",
+    file: "install-11-obsidian.svg",
     current: 12,
-    stage: "OPEN THE VAULT",
-    purpose: "Create the local knowledge vault used in class.",
-    steps: ["INSTALL OBSIDIAN", "CREATE + OPEN VAULT"],
-    metaphor: metaphor.obsidian,
+    stage: "Open Obsidian",
+    purpose: "Install Obsidian and open the local vault you will use in class.",
+    steps: ["INSTALL", "OPEN VAULT"],
+    metaphor: metaphors.obsidian,
+    svgTitle: "11 · Obsidian",
   },
   {
-    filename: "install-12-n8n.svg",
-    heading: "12 · n8n",
+    file: "install-12-n8n.svg",
     current: 13,
-    stage: "WIRE THE LOCAL FLOW",
-    purpose: "Install a compatible editor and learn its lifecycle.",
-    steps: ["CHECK NODE", "INSTALL N8N", "START + OPEN", "CREATE LOCAL OWNER", "STOP CLEANLY"],
-    metaphor: metaphor.n8n,
+    stage: "Start n8n once",
+    purpose: "Install a compatible n8n, start it locally, open the page, then stop it cleanly.",
+    steps: ["INSTALL", "START", "OPEN PAGE", "STOP"],
+    metaphor: metaphors.n8n,
+    svgTitle: "12 · n8n",
   },
   {
-    filename: "install-13-repo.svg",
-    heading: "13 · Course repo and operator pack",
+    file: "install-13-repo.svg",
     current: 14,
-    stage: "LOAD THE OPERATOR PACK",
-    purpose: "Clone the course, copy templates, and serve safely.",
-    steps: ["CLONE REPO", "COPY TEMPLATES", "SERVE SITE", "PROTECT KEYS"],
-    metaphor: metaphor.repo,
+    stage: "Get the course repo",
+    purpose: "Clone the course, copy the operator templates into your working project, and serve the site once.",
+    steps: ["CLONE REPO", "COPY TEMPLATES", "SERVE SITE"],
+    metaphor: metaphors.repo,
+    svgTitle: "13 · Course repo and operator pack",
   },
   {
-    filename: "install-14-claude-optional.svg",
-    heading: "14 · Claude Code — optional third engine",
+    file: "install-14-claude-optional.svg",
     current: 15,
-    stage: "ADD ENGINE THREE — OPTIONAL",
-    purpose: "Decide deliberately; install only if it is useful.",
-    steps: ["DECIDE", "INSTALL + WRITE PROOF"],
-    metaphor: metaphor.claude,
+    stage: "Claude Code (optional)",
+    purpose: "Only if you want a third engine. Skip this and you can still go GREEN.",
+    steps: ["DECIDE", "INSTALL CLI", "OPTIONAL PROOF"],
+    metaphor: metaphors.claude,
+    svgTitle: "14 · Claude Code — optional third engine",
     optional: true,
   },
   {
-    filename: "install-15-health-gate.svg",
-    heading: "15 · Health check gate",
+    file: "install-15-health-gate.svg",
     current: 16,
-    stage: "PASS THE INSTALL GATE",
-    purpose: "Re-run proof, declare status, and pack for Monday.",
-    steps: ["CONFIRM FOUR FILES", "RUN HEALTH GATE", "PACK FOR MONDAY"],
-    metaphor: metaphor.gate,
+    stage: "Run the health check",
+    purpose: "Re-test from a fresh terminal, mark GREEN / YELLOW / RED, and pack what you need for Monday.",
+    steps: ["FRESH TERMINAL", "RE-TEST", "MARK COLOUR", "PACK"],
+    metaphor: metaphors.gate,
+    svgTitle: "15 · Health check gate",
   },
   {
-    filename: "install-when-something-breaks.svg",
-    heading: "When something breaks",
+    file: "install-when-something-breaks.svg",
     current: -1,
-    stage: "RUN THE REPAIR LOOP",
-    purpose: "Capture the exact failure, fix the environment, and log it.",
-    steps: ["COMMAND MISSING", "SCRIPTS BLOCKED", "AUTH FAILS", "FILE MISSING", "ESCALATE AT 30 MIN"],
-    metaphor: metaphor.repair,
+    stage: "When something breaks",
+    purpose: "Copy the full error, fix the environment, and write what worked in your setup log.",
+    steps: ["COPY ERROR", "FIX ENV", "RE-TEST", "LOG IT"],
+    metaphor: metaphors.repair,
+    svgTitle: "When something breaks",
     crosscut: true,
   },
 ];
 
 const healthSections = [
   {
-    filename: "health-how-to-run.svg",
-    heading: "How to run this gate",
+    file: "health-how-to-run.svg",
     current: 0,
-    stage: "START A CLEAN RUN",
-    purpose: "Use the Monday laptop, a fresh terminal, and your setup log.",
-    steps: ["THIS LAPTOP", "FRESH TERMINAL", "OPEN SETUP LOG"],
-    metaphor: metaphor.healthRun,
+    stage: "How to run this gate",
+    purpose: "Use the laptop you are bringing Monday. Start from a freshly opened terminal with your setup log beside you.",
+    steps: ["BRING THIS LAPTOP", "FRESH TERMINAL", "LOG BESIDE YOU"],
+    metaphor: metaphors.healthRun,
+    svgTitle: "How to run this gate",
   },
   {
-    filename: "health-a-foundations.svg",
-    heading: "A · Foundations",
+    file: "health-a-foundations.svg",
     current: 1,
-    stage: "PROVE THE FOUNDATION",
-    purpose: "Re-test the OS, tools, Bash, policy, and real Python.",
-    steps: ["WIN 11 · AMD64", "GIT · NODE · PY", "FIND GIT BASH", "SCRIPT POLICY", "REAL PYTHON"],
-    metaphor: metaphor.foundations,
+    stage: "A · Foundations",
+    purpose: "Confirm Windows, Git, Node, Python, PowerShell policy, and that python is the real Python.",
+    steps: ["WINDOWS", "GIT NODE PYTHON", "GIT BASH PATH", "SCRIPTS OK", "REAL PYTHON"],
+    metaphor: metaphors.foundations,
+    svgTitle: "A · Foundations",
   },
   {
-    filename: "health-b-keys.svg",
-    heading: "B · Your three keys",
+    file: "health-b-keys.svg",
     current: 2,
-    stage: "CHECK CREDENTIAL HEADROOM",
-    purpose: "Confirm all three keys are saved and have room to spend.",
-    steps: ["THREE KEYS SAVED", "SPEND ROOM"],
-    metaphor: metaphor.keyHeadroom,
+    stage: "B · Your three keys",
+    purpose: "All three keys still load for your user account, and they still have room to spend.",
+    steps: ["THREE KEYS SAVED", "ROOM TO SPEND"],
+    metaphor: metaphors.keyHeadroom,
+    svgTitle: "B · Your three keys",
   },
   {
-    filename: "health-c-agents.svg",
-    heading: "C · Four required agents — files on disk",
+    file: "health-c-agents.svg",
     current: 3,
-    stage: "REGENERATE FOUR PROOFS",
-    purpose: "Make each required agent write again into one folder.",
-    steps: ["CLEAR OLD FILES", "CODEX", "OPENCODE", "PI + SHELL", "GOOSE", "SEE FOUR · CLAUDE*"],
-    metaphor: metaphor.agents,
+    stage: "C · Four required agents",
+    purpose: "Clear old proof files, regenerate all four, and see them together in Explorer.",
+    steps: ["CLEAR OLD", "CODEX FILE", "OPENCODE FILE", "PI FILE", "GOOSE FILE", "SEE ALL FOUR"],
+    metaphor: metaphors.agents,
+    svgTitle: "C · Four required agents — files on disk",
   },
   {
-    filename: "health-d-support.svg",
-    heading: "D · Supporting tools",
+    file: "health-d-support.svg",
     current: 4,
-    stage: "PROVE SUPPORTING TOOLS",
-    purpose: "Open the vault, cycle n8n, and serve the course site.",
-    steps: ["OBSIDIAN VAULT", "N8N START · STOP", "REPO + SITE"],
-    metaphor: metaphor.support,
+    stage: "D · Supporting tools",
+    purpose: "Obsidian opens your vault, n8n starts and stops, and the course site serves.",
+    steps: ["OBSIDIAN", "N8N LIFECYCLE", "COURSE SITE"],
+    metaphor: metaphors.support,
+    svgTitle: "D · Supporting tools",
   },
   {
-    filename: "health-e-ready.svg",
-    heading: "E · Operator readiness",
+    file: "health-e-ready.svg",
     current: 5,
-    stage: "CONFIRM OPERATOR READINESS",
-    purpose: "Show the pack, pair, leak plan, and one real repair.",
-    steps: ["TEMPLATES", "NAME TWIN ENGINES", "KEY LEAK PLAN", "LOG FAILURE + FIX"],
-    metaphor: metaphor.ready,
+    stage: "E · Operator readiness",
+    purpose: "Templates are in place, you can name the twin-engine pair, and your log has one real fix.",
+    steps: ["TEMPLATES", "TWIN-ENGINE PAIR", "KEY LEAK PLAN", "ONE REAL FIX"],
+    metaphor: metaphors.ready,
+    svgTitle: "E · Operator readiness",
   },
   {
-    filename: "health-result.svg",
-    heading: "Gate result",
+    file: "health-result.svg",
     current: 6,
-    stage: "DECLARE THE GATE",
-    purpose: "Name the honest colour, record the run, and pack.",
-    steps: ["DECLARE COLOUR", "RECORD THIS RUN", "PACK FOR MONDAY"],
-    metaphor: metaphor.result,
+    stage: "Gate result",
+    purpose: "Mark GREEN, YELLOW, or RED honestly, write down this run, and pack for Monday.",
+    steps: ["MARK COLOUR", "RECORD THE RUN", "PACK FOR MONDAY"],
+    metaphor: metaphors.result,
+    svgTitle: "Gate result",
   },
 ];
 
 for (const section of installSections) {
-  section.svgTitle = `Install pre-work: ${section.heading}`;
-  fs.writeFileSync(path.join(OUT, section.filename), sectionSvg("install", section));
+  section.svgTitle = `Install pre-work: ${section.svgTitle}`;
+  fs.writeFileSync(path.join(OUT, section.file), sectionSvg("install", section));
 }
 
 for (const section of healthSections) {
-  section.svgTitle = `Health gate: ${section.heading}`;
-  fs.writeFileSync(path.join(OUT, section.filename), sectionSvg("health", section));
+  section.svgTitle = `Health gate: ${section.svgTitle}`;
+  fs.writeFileSync(path.join(OUT, section.file), sectionSvg("health", section));
 }
 
 function installOverview() {
   return `${svgOpen("Install pre-work journey overview", 280)}${ribbon("install", 0, { overview: true })}
-  <text x="24" y="82" class="micro red">MISSION WORKSTATION · FULL PATH</text>
-  <text x="24" y="111" class="title">BUILD THE CHAIR. PROVE THE ENGINES.</text>
-  <text x="24" y="132" class="purpose">Foundations first; credentials next; every required agent leaves proof on disk.</text>
+  <text x="24" y="82" class="micro red">BEFORE MONDAY · YOUR LAPTOP</text>
+  <text x="24" y="111" class="title">Get the tools on your machine. Prove they work.</text>
+  <text x="24" y="132" class="purpose">Start with the basics, save your three keys, then make each required tool leave a file you can see.</text>
   <path d="M24 153H1096" class="hair"/>
   <g aria-label="Five install phases">
     <rect x="24" y="166" width="194" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
     <rect x="24" y="166" width="7" height="40" fill="${C.mark}"/>
-    <text x="42" y="182" class="micro muted">01 · FOUNDATION</text>
-    <text x="42" y="197" class="tiny muted">BYB → RUNTIMES</text>
+    <text x="42" y="182" class="micro muted">01 · BASICS</text>
+    <text x="42" y="197" class="tiny muted">START → NODE/PYTHON</text>
     <path d="M218 186H240" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="250" y="166" width="148" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
     <text x="268" y="182" class="micro muted">02 · KEYS</text>
-    <text x="268" y="197" class="tiny muted">THREE PROVIDERS</text>
+    <text x="268" y="197" class="tiny muted">OPENAI · XAI · ANTHROPIC</text>
     <path d="M398 186H420" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="430" y="166" width="244" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
     <text x="448" y="182" class="micro muted">03 · AGENTS + TOOLS</text>
-    <text x="448" y="197" class="tiny muted">SMOKE → N8N</text>
+    <text x="448" y="197" class="tiny muted">SMOKE FOLDER → N8N</text>
     <path d="M674 186H696" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="706" y="166" width="188" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="724" y="182" class="micro muted">04 · COURSE KIT</text>
-    <text x="724" y="197" class="tiny muted">REPO · CLAUDE*</text>
+    <text x="724" y="182" class="micro muted">04 · COURSE FILES</text>
+    <text x="724" y="197" class="tiny muted">REPO · CLAUDE OPTIONAL</text>
     <path d="M894 186H916" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="926" y="166" width="170" height="40" rx="2" fill="${C.ink}"/>
-    <text x="944" y="182" class="micro white">05 · HEALTH GATE</text>
-    <text x="944" y="197" class="tiny white">DECLARE WHAT IS TRUE</text>
+    <text x="944" y="182" class="micro white">05 · HEALTH CHECK</text>
+    <text x="944" y="197" class="tiny white">Mark what is true</text>
   </g>
   <rect x="0" y="220" width="1120" height="60" fill="${C.warm}"/>
   <rect x="24" y="232" width="515" height="36" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
   <circle cx="48" cy="250" r="7" fill="${C.ink}"/>
-  <text x="68" y="247" class="micro muted">TWIN-ENGINE READY</text>
+  <text x="68" y="247" class="micro muted">TWIN ENGINES READY</text>
   <text x="68" y="260" class="caption">CODEX · OPENCODE</text>
   <rect x="557" y="232" width="539" height="36" rx="2" fill="${C.paper}" stroke="${C.mark}" stroke-width="1.5"/>
   <circle cx="581" cy="250" r="7" fill="${C.mark}"/>
   <path d="M577 250l3 3 6-7" fill="none" stroke="${C.paper}" stroke-width="1.4"/>
-  <text x="603" y="247" class="micro red">GREEN · FOUR FILES</text>
+  <text x="603" y="247" class="micro red">GREEN = FOUR FILES</text>
   <text x="603" y="260" class="caption">FROM-CODEX · FROM-OPENCODE · FROM-PI · FROM-GOOSE</text>
 </svg>
 `;
@@ -910,9 +910,9 @@ function installOverview() {
 
 function healthOverview() {
   return `${svgOpen("Health gate journey overview", 240)}${ribbon("health", 0, { overview: true })}
-  <text x="24" y="80" class="micro red">THIRTY-MINUTE TRUTH TEST</text>
-  <text x="24" y="107" class="title">RE-RUN THE MACHINE. DECLARE THE RESULT.</text>
-  <text x="24" y="127" class="purpose">Fresh terminal in; verified foundations, keys, four agent files, and support tools out.</text>
+  <text x="24" y="80" class="micro red">ABOUT HALF AN HOUR · BE HONEST</text>
+  <text x="24" y="107" class="title">Open a fresh terminal. Check everything. Say how it went.</text>
+  <text x="24" y="127" class="purpose">Start from a new terminal. Confirm foundations, keys, four agent files, and the supporting tools — then mark GREEN, YELLOW, or RED.</text>
   <path d="M24 145H1096" class="hair"/>
   <g aria-label="Health gate flow">
     <rect x="24" y="158" width="151" height="34" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
@@ -956,9 +956,9 @@ fs.writeFileSync(path.join(OUT, "health-overview.svg"), healthOverview());
 
 const allFiles = [
   ["install-overview.svg", "Install journey overview for the pre-work hub"],
-  ...installSections.map((section) => [section.filename, section.heading]),
+  ...installSections.map((section) => [section.file, section.svgTitle]),
   ["health-overview.svg", "Health-gate journey overview"],
-  ...healthSections.map((section) => [section.filename, section.heading]),
+  ...healthSections.map((section) => [section.file, section.svgTitle]),
 ];
 
 const readme = `# Pre-work section diagrams
@@ -989,10 +989,10 @@ Claude Code is encoded with the gold optional treatment. Completed stages use a 
 fs.writeFileSync(path.join(OUT, "README.md"), readme);
 
 const installRows = installSections
-  .map((section) => `| \`${section.heading}\` | \`${section.filename}\` |`)
+  .map((section) => `| \`${section.svgTitle}\` | \`${section.file}\` |`)
   .join("\n");
 const healthRows = healthSections
-  .map((section) => `| \`${section.heading}\` | \`${section.filename}\` |`)
+  .map((section) => `| \`${section.svgTitle}\` | \`${section.file}\` |`)
   .join("\n");
 
 const integrate = `# Pre-work diagram integration
@@ -1062,12 +1062,14 @@ function figureHtml(src, alt, height) {
 function integrateSections(file, sections) {
   let html = fs.readFileSync(file, "utf8");
   for (const section of sections) {
-    const heading = `<h2>${section.heading}</h2>`;
-    const figure = figureHtml(`../assets/prework/${section.filename}`, section.heading, 220);
+    const heading = `<h2>${section.svgTitle}</h2>`;
+    const figure = figureHtml(`../assets/prework/${section.file}`, section.svgTitle, 220);
+    // Already wired for this asset — leave the page alone.
+    if (html.includes(`assets/prework/${section.file}`)) continue;
     if (html.includes(`${heading}${figure}`) || html.includes(`${heading}\n${figure}`)) continue;
     const occurrences = html.split(heading).length - 1;
     if (occurrences !== 1) {
-      throw new Error(`Expected one heading in ${file}: ${section.heading}; found ${occurrences}`);
+      throw new Error(`Expected one heading in ${file}: ${section.svgTitle}; found ${occurrences}`);
     }
     html = html.replace(heading, `${heading}\n${figure}`);
   }
