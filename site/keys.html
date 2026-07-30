@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your API keys · AI Harness Bootcamp · Starzl</title>
+  <link rel="stylesheet" href="./css/course.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="./index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
+    </div>
+  </header>
+  <main class="site-main">
+    <p class="eyebrow">Reference · keep this open during install</p>
+    <h1>Your API keys</h1>
+
+    <p class="lede">Three keys run your whole week. This page explains what they are, where to put them on your laptop, how to check they work, and how to kill one if it leaks. Setting them takes about ten minutes.</p>
+    <figure class="section-diagram">
+      <img src="./assets/prework/install-05-keys.svg" alt="Diagram: Your three API keys in the pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+    </figure>
+
+    <div class="meta-grid">
+      <div><span class="k">Keys</span><span class="v">OpenAI · xAI · Anthropic</span></div>
+      <div><span class="k">Issued by</span><span class="v">Course staff</span></div>
+      <div><span class="k">Stored as</span><span class="v">Windows user variables</span></div>
+      <div><span class="k">Time</span><span class="v">~10 minutes</span></div>
+    </div>
+
+    <h2>What an API key is</h2>
+
+    <p>An <strong>API key</strong> is a long secret string that identifies you to an AI provider's servers. When one of your tools sends a request to OpenAI, xAI, or Anthropic, it attaches the key, and the provider bills that request to whoever owns the key.</p>
+
+    <p>This is a different door than the one most people use. Consumer apps like ChatGPT or Claude.ai are reached by signing in with an email and password against a monthly plan. A key skips all of that and talks straight to the provider's platform, metered per request. You will never sign into a consumer subscription anywhere in this course.</p>
+
+    <p>That distinction matters at the keyboard, because several tools you're about to install offer both doors on the same screen. When a tool asks how you want to authenticate, you always choose the API key path — never "Sign in with ChatGPT," "Sign in with Claude," or a browser login.</p>
+
+    <div class="callout"><strong>A key is a credential, not a setting</strong>
+    Anyone holding your key can spend against it. Treat it the way you would treat a password: never paste one into a chat window, a shared document, a screenshot, a support ticket, or a git commit. If a key does end up somewhere it shouldn't, revoking it takes about thirty seconds — the steps are at the bottom of this page, and using them is routine rather than embarrassing.</div>
+
+    <h2>The three keys and what each one drives</h2>
+
+    <table>
+      <thead><tr><th>Key</th><th>Starts with</th><th>Variable name</th><th>Drives</th></tr></thead>
+      <tbody>
+        <tr><td>OpenAI</td><td><code>sk-proj-</code></td><td><code>OPENAI_API_KEY</code></td><td>Codex (your home tool all week), plus the LLM step in n8n</td></tr>
+        <tr><td>xAI</td><td><code>xai-</code></td><td><code>XAI_API_KEY</code></td><td>OpenCode, your second engine for the twin-engine work</td></tr>
+        <tr><td>Anthropic</td><td><code>sk-ant-api03-</code></td><td><code>ANTHROPIC_API_KEY</code></td><td>Claude Code, and an alternate provider for Pi and goose</td></tr>
+      </tbody>
+    </table>
+
+    <p>Pi and goose are deliberately provider-agnostic: each one talks to any of the three, and you choose which by naming a model when you run it. That flexibility is the point — part of what this course teaches is running the same demand through different engines and owning the verdict when they disagree.</p>
+
+    <p>The prefixes are worth memorising. When a tool refuses to authenticate, the first thing to check is whether the string you pasted starts with the right characters for that provider. Pasting an OpenAI key where a tool expects an xAI one is the most common setup failure there is, and it produces an error message that rarely says so.</p>
+
+    <h2>Where the keys live on your laptop</h2>
+
+    <p>You'll store each key once as a <strong>Windows user environment variable</strong> — a named value that Windows hands to every program you launch. Set it once and every tool finds it, which is why you won't be pasting keys into individual apps all week.</p>
+
+    <p>"User" is the scope that matters here. It means the value belongs to your Windows account, persists across restarts, and needs no administrator rights to set.</p>
+
+    <h3>Set a key</h3>
+
+    <p>Open PowerShell and run this, one key at a time. It prompts you to paste the key rather than taking it as part of the command, which keeps the secret out of your shell history:</p>
+
+<pre><code>$key = Read-Host 'Paste OPENAI_API_KEY'
+[Environment]::SetEnvironmentVariable('OPENAI_API_KEY', $key, 'User')
+$env:OPENAI_API_KEY = $key
+$key = $null</code></pre>
+
+    <p>Those four lines do four things. The first collects the key without echoing it. The second writes it permanently for your Windows account. The third also sets it in the window you're sitting in, so you don't have to reopen anything to keep working. The fourth clears the temporary variable.</p>
+
+    <p>Repeat all four lines for <code>XAI_API_KEY</code> and <code>ANTHROPIC_API_KEY</code>, changing the name in the first two lines each time.</p>
+
+    <div class="callout"><strong>Why not <code>setx</code></strong>
+    Most guides on the internet reach for <code>setx NAME "value"</code>. It works, but it silently truncates anything past 1024 characters and it puts the key itself into your command history where the next person at your keyboard can scroll back to it. The <code>Read-Host</code> form above has neither problem, and it is the form the course uses throughout.</div>
+
+    <h3>Check they landed</h3>
+
+    <p>Open a <strong>new</strong> PowerShell window — a fresh one, because a window that was already open when you set a variable never sees it — and run:</p>
+
+<pre><code>'OPENAI_API_KEY','XAI_API_KEY','ANTHROPIC_API_KEY' | ForEach-Object {
+  '{0}: user={1} session={2}' -f $_,
+    [Environment]::GetEnvironmentVariable($_,'User').Length,
+    (Get-Item "env:$_" -EA SilentlyContinue).Value.Length
+}</code></pre>
+
+    <p>You want three lines, each showing two matching non-zero numbers. This prints only the <em>length</em> of each key, never the key itself, so it's safe to run with someone looking over your shoulder or on a shared screen.</p>
+
+    <p>If a line shows <code>user=0</code>, the key exists only in the window you typed it in and will vanish when you close it — run the set command again and check the variable name for typos. If it shows <code>session=0</code>, the value is saved correctly but this window predates it; open another new window.</p>
+
+    <h2>What your tools do with the keys</h2>
+
+    <p>Most of the stack reads these variables automatically the moment they're set. Two tools need a little more, and it's worth knowing which is which before you start installing.</p>
+
+    <table>
+      <thead><tr><th>Tool</th><th>How it gets the key</th></tr></thead>
+      <tbody>
+        <tr><td><strong>OpenCode</strong></td><td>Reads <code>XAI_API_KEY</code> from the environment and enables the provider on its own. Nothing to configure.</td></tr>
+        <tr><td><strong>Pi</strong></td><td>Reads all three from the environment. Because it sees more than one, you name the model explicitly when you run it.</td></tr>
+        <tr><td><strong>goose</strong></td><td>Reads the provider key from the environment, but also wants <code>GOOSE_PROVIDER</code> and <code>GOOSE_MODEL</code> set so it knows which one to use.</td></tr>
+        <tr><td><strong>Claude Code</strong></td><td>Reads <code>ANTHROPIC_API_KEY</code> and asks you to approve it once on first launch.</td></tr>
+        <tr><td><strong>Codex</strong></td><td>Needs a one-time login step that hands it the key. Setting the variable alone is not enough — see below.</td></tr>
+        <tr><td><strong>n8n</strong></td><td>Doesn't read the environment. You paste the OpenAI key into a credential inside its browser UI during Thursday's exercise.</td></tr>
+      </tbody>
+    </table>
+
+    <p>Codex is the exception worth reading twice, because it surprises people. Setting <code>OPENAI_API_KEY</code> does not by itself authenticate Codex — the variable only pre-fills the box on its sign-in screen. You hand Codex the key once with a login command, and it stores it from then on:</p>
+
+<pre><code>$env:OPENAI_API_KEY | codex login --with-api-key</code></pre>
+
+    <p>The key is piped in rather than typed as an argument, again so it never lands in your shell history. Note the flag carefully: it is <code>--with-api-key</code>. An older flag spelled <code>--api-key</code> appears in most third-party write-ups and has been retired — if you use it, Codex exits with a message pointing you back here.</p>
+
+    <h2>Spending, and why your key might stop working</h2>
+
+    <p>Every request you make costs a fraction of a cent against the key's account, and the keys staff issued you carry a hard spending cap. A cap is a good thing: it means a runaway agent loop costs the course some money rather than an unbounded amount. But it does mean a key can stop working mid-week, and the failure looks like a sudden authentication error rather than a bill.</p>
+
+    <p>The signature is an <strong>HTTP 429</strong> response, sometimes worded as <em>insufficient quota</em> or <em>spend limit exceeded</em>. If a tool that worked yesterday starts failing today and nothing else changed, check that before you start reinstalling anything. Message staff with which key and roughly what you were running; a cap raise takes moments.</p>
+
+    <p>The habits that keep you well inside the cap are the same ones that make you a better operator, which is not a coincidence. Bound the work in your Direction Brief so the machine isn't looping on an unclear goal. Stop a run that has plainly lost the thread rather than watching it spend. Point at the folder that matters instead of the whole disk.</p>
+
+    <h2>Keeping keys out of your repository</h2>
+
+    <p>The single most common way keys leak is a commit. Before your first commit in any practice folder this week, make sure a <code>.gitignore</code> file sits in the project root containing at least:</p>
+
+<pre><code>.env
+.env.*
+*.key
+auth.json</code></pre>
+
+    <p>Then run <code>git status</code> and confirm none of those files appear in the list. If one does, it is about to be committed.</p>
+
+    <p>Some of your tools do write keys to files on your own disk — Codex keeps one in <code>%USERPROFILE%\.codex\auth.json</code>, Pi in <code>%USERPROFILE%\.pi\agent\auth.json</code>, OpenCode in <code>%USERPROFILE%\.local\share\opencode\auth.json</code>. Those live in your user profile rather than in any project folder, so they don't get committed by accident. They're also why, on a shared or loaner laptop, deleting those folders at the end of the week is worth doing.</p>
+
+    <h2>Revoking a key</h2>
+
+    <p>If a key is exposed — pasted into the wrong window, committed, shared on a screen, or you simply aren't sure — revoke it. A revoked key stops working immediately and everywhere, and staff can issue a replacement in a couple of minutes. Tell staff which key and roughly when; they own the consoles and will handle the revocation and reissue.</p>
+
+    <p>Once you have the replacement, set it exactly as you did the first time, then open a new PowerShell window so your tools pick it up. Codex needs its login command run again, since it stored the old key rather than reading the variable each time.</p>
+
+    <div class="callout"><strong>Reporting a leak is the correct move, always</strong>
+    A key that is quietly still exposed is a real problem. A key that was exposed and revoked within the hour is a non-event. Operators keep trails and raise things early — that is the same instinct this whole course is built around, applied to your own credentials.</div>
+
+    <p class="btn-row">
+      <a class="btn" href="checklists/prework-install.html">Install checklist</a>
+      <a class="btn btn-secondary" href="checklists/prework-health.html">Health check</a>
+      <a class="btn btn-secondary" href="prework.html">Pre-work hub</a>
+    </p>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+  <script src="./js/course.js"></script>
+  <script src="./js/nav.js"></script>
+</body>
+</html>

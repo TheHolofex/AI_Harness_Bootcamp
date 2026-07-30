@@ -64,6 +64,7 @@
     ];
     var prework = [
       ["prework", p + "/prework.html", "Pre-work hub"],
+      ["keys", p + "/keys.html", "Your API keys"],
       ["prework-install", p + "/checklists/prework-install.html", "Install checklist"],
       ["prework-health", p + "/checklists/prework-health.html", "Health check gate"]
     ];

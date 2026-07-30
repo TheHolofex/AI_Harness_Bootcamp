@@ -95,19 +95,49 @@ A graduate can:
 9. Transfer the method across vendor, model, and policy change.
 
 
-## Required tool stack (Windows)
+## Authentication posture — API keys only
+
+**The course is taught entirely from API keys. No subscription logins anywhere.**
+
+Staff issue **three keys per student**, one per provider, each project/workspace-scoped with a hard spend cap so it can be capped and revoked individually. Never a shared cohort key.
+
+| Key | Variable | Drives |
+|---|---|---|
+| OpenAI (`sk-proj-`) | `OPENAI_API_KEY` | Codex (home), n8n LLM step |
+| xAI (`xai-`) | `XAI_API_KEY` | OpenCode (second engine, Grok) |
+| Anthropic (`sk-ant-api03-`) | `ANTHROPIC_API_KEY` | Claude Code (optional), alternate provider for Pi and goose |
+
+Consequences that must survive into every learner-facing page:
+
+- Several tools offer a subscription login and an API key option on the same screen. Materials always name the API key path explicitly.
+- **Codex cloud/web is unavailable** — it requires ChatGPT sign-in. CLI, IDE extension, and the GUI inside the **ChatGPT desktop app** all accept a bare key.
+- **The Claude desktop app's Code tab is unavailable** — subscription only. Claude Code means the CLI.
+- A capped key fails as a `429`/quota error that reads like an auth failure. Every troubleshooting path must name this, or students will reinstall instead of asking.
+
+## Required tool stack (Windows 11, 64-bit — no WSL, no ARM64)
 
 | Role | Tool | Required? |
 |---|---|---|
-| Primary home all week | **OpenAI Codex app** | Required |
-| Second engine (twin-engine, compares) | **OpenCode** with **Grok** (or course-pinned OpenCode model) | Required |
+| Primary home all week | **Codex** (CLI; GUI via ChatGPT desktop app) | Required |
+| Second engine (twin-engine, compares) | **OpenCode** with **Grok** on the xAI key | Required |
 | Bare loop demo | **Pi** | Required |
 | Bound autonomy / recipes | **goose** | Required |
 | Knowledge UI | **Obsidian** | Required (Wed) |
 | Pipeline UI | **n8n** | Required (Thu) |
-| Alternate second / third engine | **Claude Code** (Desktop Code tab or CLI) | **Optional** |
+| Alternate second / third engine | **Claude Code** (CLI only) | **Optional** |
 
-Twin-engine pedagogy (P3) uses **Codex + OpenCode**. Students may add Claude as an extra comparator if they already have access; it is not required for GREEN pre-work or course pass.
+Twin-engine pedagogy (P3) uses **Codex + OpenCode**. Students may add Claude as an extra comparator; it is not required for GREEN pre-work or course pass.
+
+### Stack facts that rot fast — re-verify before each cohort
+
+Checked 2026-07-30. These are the ones that silently break a room:
+
+- **goose moved** to `aaif-goose/goose` (Agentic AI Foundation); docs at `goose-docs.ai`. Old `block/goose` URLs are stale. **No winget package** — the winget `goose` is an unrelated database tool.
+- **OpenCode Windows support regresses between releases.** Staff must pin and smoke-test a version per cohort. Its `curl` installer is bash-only; no PowerShell equivalent exists.
+- **`codex login --api-key` is retired** — use `--with-api-key` (reads stdin). `OPENAI_API_KEY` alone does *not* authenticate Codex; it only pre-fills the setup screen. Pin with `forced_login_method = "api"`.
+- **Node must be `OpenJS.NodeJS.LTS`**, landing in 22.22–24.x. Plain `OpenJS.NodeJS` installs a release too new for n8n.
+- **xAI keys are deny-by-default** — a new key does nothing until ACLs are attached. Verify one end to end before issuing.
+- **Model ids rotate.** Never hardcode them in handouts; staff post the cohort pin.
 
 ## North star
 
@@ -119,7 +149,7 @@ When building curriculum, materials, images, scripts, or docs:
 
 - Keep the **operator’s school** frame in every learner-facing line.
 - Prefer **mastery** language over productivity slogans, hype, or tool worship.
-- Design for **vanilla Windows 11**, mixed backgrounds, app-first surfaces (Codex app home; **OpenCode + Grok** as required second engine; Pi; goose). **Claude Code is optional** alternate/third engine.
+- Design for **vanilla Windows 11** (64-bit, no WSL, no ARM64), mixed backgrounds, **API keys only — never a subscription login** (Codex home; **OpenCode + Grok** as required second engine; Pi; goose). **Claude Code (CLI) is optional** alternate/third engine.
 - **Student-owned install** via `prework/` module before contact week — **no golden image** as the default path. Block 0 verifies the gate, then First Light.
 - Every project must force **direction + evidence + judgment**, not passive watching.
 - Honor **MVP pass bars** in `operator/PASS_BARS.md`; do not dilute them for convenience.
