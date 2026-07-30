@@ -1,14 +1,13 @@
 # Pre-work module — Mission workstation
 
-**You install and set up your own environment.**  
-There is no golden image and no “IT hands you a finished laptop.”
+This module gets **your** Windows laptop ready for the bootcamp.  
+You install and set up the tools yourself — there is no golden image and no “IT hands you a finished laptop.”
 
-That is deliberate operator training: at work you will own the chair the thinking machine sits in. Pre-work is Cap 0 — stand up the workstation before the school’s mission week begins.
+That is deliberate. At work you will own the chair the thinking machine sits in. Pre-work is Cap 0: stand up the workstation before mission week begins. Plan for a focused evening or weekend block (often about 2–4 hours, depending on your machine and accounts).
 
 ## When
 
-Complete **before Monday Block 0**.  
-Budget: plan a focused evening or weekend block (often 2–4 hours depending on machine and accounts). Do not start pre-work in the Monday AM contact window.
+Complete **before Monday Block 0**. Do not start pre-work in the Monday morning contact window — that time is for First Light, not install.
 
 ## What “done” means
 

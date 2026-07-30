@@ -1,0 +1,75 @@
+/* Starzl course site — design tokens
+   Paper default from quote/invoice system; field from defense figure altitude.
+   Exact crimson may be refined when official SVG mark is added. */
+
+:root {
+  /* Paper surface (default course UI) */
+  --paper: #ffffff;
+  --paper-warm: #fafaf8;
+  --paper-panel: #f4f4f2;
+  --ink: #0a0a0a;
+  --ink-muted: #4a4a4a;
+  --ink-faint: #6b6b6b;
+  --rule: #d0d0d0;
+  --rule-strong: #1a1a1a;
+  --mark: #e31c23;
+  --accent-line: #e31c23;
+
+  /* Field surface (hero / figures / demo canvas) */
+  --field: #0d0906;
+  --field-panel: #17110c;
+  --gold: #a58650;
+  --gold-bright: #c8a96a;
+  --sand: #c8b78a;
+  --sand-dim: #3a2e1b;
+  --warn: #b43a2f;
+  --steel: #2d3030;
+  --field-text: #fff8e7;
+
+  /* Type */
+  --font-sans: "Inter", "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  --tracking-label: 0.14em;
+  --measure-prose: 42rem;
+  --measure-wide: 68rem;
+  --radius: 2px;
+}
+
+body.surface-paper {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+body.surface-field {
+  background: var(--field);
+  color: var(--field-text);
+  font-family: var(--font-sans);
+}
+
+.eyebrow,
+.label {
+  font-size: 0.7rem;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.rule-accent {
+  border: 0;
+  border-top: 2px solid var(--accent-line);
+}
+
+.mark-disc {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--mark);
+  display: inline-block;
+}

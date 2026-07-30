@@ -34,3 +34,8 @@ Why:
 - YELLOW with documented workaround: allow into First Light.  
 - RED seats-only: staff can often unblock faster than install-from-zero.  
 - RED “never started”: evening make-up; not a redesign of the school into an image depot.
+
+
+## Contact-week lead posture (reminder)
+
+Lead runs missions live on screen with talk-through and real-time AI depth. Pre-work still student-owned — Monday is verify + First Light operate-along, not install lecture.

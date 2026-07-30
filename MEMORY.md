@@ -18,6 +18,68 @@ AI here is treated as what it is — a thinking machine that can aide real work.
 - **Cothinking** — shared cognitive work with trails: the machine proposes and executes; the operator verifies, adjudicates, and decides. Partnership, not delegation of responsibility.
 - **Mastery over novelty** — tools rotate; the operator craft stays. Instructions, tests, memory, skills, contracts, and evidence outlive any single app or model.
 
+
+## Teaching posture (lead instructor)
+
+The lead does **not** abstract into a distant lecturer. The lead **runs the exercises live** with students watching the screen — same tools, same pulse, same failure modes.
+
+| Mode | What it looks like |
+|---|---|
+| **Live operate** | Instructor does the block work on-screen (brief, mission, log, adversarial, measure, transfer) so the room sees real direction and cothinking |
+| **Talk-through** | Continuous narration: why this accept/reject, what evidence counts, where the harness is weak, what they’d do at work |
+| **Side lectures** | Short, experience-grounded asides — only when they sharpen the exercise, not as a separate slide course |
+| **AI as depth instrument** | Instructor interacts with the AI **in real time** to go deeper: explain, challenge, diagram, unpack concepts while the room watches the cothinking |
+| **Students still own the chair** | Watching is not substituting; students run their own pulse and artifacts. Demo is model + insight, not “copy my output” |
+
+### Implications for materials
+
+- Prefer prompts, instruments, and rituals the lead can **drive live** without a separate teacher deck as the main path.
+- Diagrams and deep explanations can be **produced in-session with the AI** when useful; pre-baked slides are support, not the spine.
+- Facilitator notes assume a lead who can show judgment under fire — including REJECT, wounded adversarial, and install scars — not only a polished happy path.
+- Tone in the room: standing beside operators, concrete, experience-rich; not corporate training voice and not mystical AI priesthood.
+
+
+
+## Learner-facing voice — guide-beside
+
+All **student-facing** site copy, pre-work, block pages, instrument READMEs, and in-flow help use **guide-beside** voice:
+
+A calm expert standing next to the reader at the keyboard — not lecturing from the front, not patting them on the head. The reader is capable; they are doing something unfamiliar, right now.
+
+| Do | Don't |
+|---|---|
+| Purpose before procedure; map before territory | Jargon walls and glossary dumps |
+| Complete sentences; plain professional warmth | Staccato marketing fragments; chummy hype |
+| Define terms at first need, in the breath | “You don’t need to understand this” |
+| Explain related concepts when they unlock the step | Assume prior AI-native fluency |
+| Honest about failure; recovery path in the same breath | “You can’t break anything” overclaim |
+| One idea per sentence in procedures | Deck slogans (“level up your AI journey”) |
+
+**Warmth:** welcoming, contracted (“you’ll,” “don’t”), never fawning.  
+**Completeness:** enough mechanism that a technical-but-not-developer operator can follow alone — and enough concept that “why” is clear when it matters.  
+**Lead live talk-through** may go denser and more experiential; **written site path** stays guide-beside so the room can re-read without the lead.
+
+Full recipe: guide-beside-voice skill. Visual chrome stays Starzl paper/field; **voice** is what makes pages feel human and learnable.
+
+## Delivery medium — the course site
+
+This bootcamp is **not a series of slide decks**.  
+
+All exercises, instruments, pre-work, operator rituals, and supporting material **live on a course site** (the canonical learner surface). The lead still operate-alongs on screen; students open the same site and run their own chair.
+
+| Is the course | Is not the course |
+|---|---|
+| A site holding the week’s spine, blocks, kits, and pulse | A PowerPoint/Google-Slides spine with optional links |
+| Durable pages students return to during and after class | Deck theater that evaporates when the projector dies |
+| Repo/content that can publish into the site | Orphan PDFs as the system of record |
+
+### Implications
+
+- Author materials as **site-ready pages** (clear hierarchy, block pages, linked instruments) — decks only if a thin support aid is truly needed.
+- Student path: site → pre-work → block page → instruments → operator templates.
+- Lead path: same site on the projector/share, plus live AI depth — not a private teacher deck that students never see.
+- This repo is the content source of truth until/unless a separate site app is wired; structure should not assume “export to 40 slides.”
+
 ## What “done” means for this course
 
 A graduate can:
@@ -63,6 +125,9 @@ When building curriculum, materials, images, scripts, or docs:
 - Knowledge systems without citation trails and containment
 - Friday theater instead of measured hold/degrade and transfer
 - Golden image as a substitute for student-owned workstation setup (pre-work exists so install is learned, not skipped)
+- Teacher-deck theater while students only watch — lead operates live; students still own their chair and artifacts
+- Deck-first course design — the site holds exercises and materials; slides are optional aides only
+- Cold expert walls *or* chummy hype on learner pages — guide-beside only for student-facing copy
 
 ## Operator ritual (every block)
 
@@ -105,6 +170,7 @@ Student scoreboard + thin facilitator rollup (`operator/FACILITATOR_ROLLUP.md`).
 - `instruments/` — shared course kits: P2 dyno, P3 frozen brief, P8 hold/degrade (engineering + mission_ops tracks)
 - `todo1.md` — circuit completeness analysis (outer loops to close)
 - `operator/` — Direction Brief + Log (Move 1) · Pass bars (Move 2) · Transfer 30-60-90 (Move 3)
+- Course **site** (`site/`) — canonical learner surface; visual system from starzl.com + Starzl PDF courseware
 - This file — course identity and operator standard for anyone (human or agent) working here
 
 When these conflict with a trendy framing, **this memory wins**.

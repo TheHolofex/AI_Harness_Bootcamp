@@ -23,6 +23,10 @@ Geometry: **Pre-work module** (student-owned install) + Monday–Thursday full d
 ## Cross-cutting
 
 - **School type:** operator’s school — deep operator mastery of AI direction and cothinking (`MEMORY.md`)
+- **Lead posture:** live operate-along on screen · talk-through + side lectures · real-time AI for depth/diagrams · students still run their own pulse (`MEMORY.md` Teaching posture)
+- **Delivery medium:** **course site** holds all exercises and materials — not a deck series (`MEMORY.md` Delivery medium)
+- **Site look:** Starzl paper + mark (PDF system) and starzl.com altitude — `site/VISUAL_SYSTEM.md`
+- **Learner voice:** warm guide-beside — complete, plain explanations; define concepts when needed (`MEMORY.md`)
 - **Primary Assistant home:** OpenAI Codex app
 - **Required install set:** Codex app · Claude Code app · Pi · goose
 - **Platform baseline:** Windows 11, no WSL required; student-owned install via **pre-work module** (`prework/`) — not a golden image

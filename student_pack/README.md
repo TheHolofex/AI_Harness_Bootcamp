@@ -13,6 +13,13 @@ You install your own workstation. **No golden image.**
 
 ## In the Codex project (contact week)
 
+The lead will **run exercises live on screen** and cothink with the AI in real time (explain, diagram, go deep). Watch to learn judgment — then do the same pulse in your own project. Your artifacts are yours.
+
+The bootcamp lives on the **course site** (not a stack of slide decks). Open the block page, instruments, and templates from there.
+
+Site pages are written to stand **beside you**: warm, clear, full sentences, with concepts explained when you need them — not a jargon wall and not a pep talk.
+
+
 1. Put `../operator/DIRECTION_BRIEF.md` and `../operator/OPERATOR_LOG.md` in your Codex project (root or `operator/`).
 2. Create a Codex thread named **`Operator — Direction & Log`**.
 3. **Before each mission:** open that thread, paste the starter from `DIRECTION_BRIEF.md`, co-write the five fields until status is LIVE.
