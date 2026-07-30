@@ -22,37 +22,52 @@
     <h1>Pre-work · Mission workstation</h1>
 
     <p class="lede">This module gets your Windows laptop ready for the bootcamp. You install the tools yourself — there is no golden image. Plan a focused evening or weekend block (often about 2–4 hours).</p>
+    <figure class="section-diagram">
+      <img src="./assets/prework/install-overview.svg" alt="Diagram: Install pre-work journey overview — place in pre-work journey" width="1120" height="280" loading="lazy" decoding="async" />
+    </figure>
+    <div class="callout"><strong>Everything runs on API keys</strong>
+Staff issue you three keys — OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly plan during this course. Several tools offer a subscription login and an API key option on the same screen; always take the API key path. Start at <a href="keys.html">Your API keys</a>.</div>
     <div class="callout"><strong>Twin-engine stack</strong>
-Required pair for class: <strong>Codex</strong> (home) + <strong>OpenCode</strong> (second engine, usually Grok). Claude Code is optional and not required for GREEN.</div>
+Required pair for class: Codex on your OpenAI key (home), plus OpenCode on your xAI key (second engine, Grok). Claude Code is optional and not required for GREEN.</div>
 <div class="callout"><strong>Why you install</strong>
     At work you will own the chair the thinking machine sits in. Pre-work is Cap 0: stand up the workstation before mission week. Monday verifies your gate, then we build — we do not spend First Light on winget for the whole room.</div>
 
-    <h2>Do these interactive checklists in order</h2>
-    <p>Each guide is now a full step-by-step web checklist. Check items off as you execute them. Progress saves in this browser.</p>
+    <h2>Work these in order</h2>
+    <p>Read the keys reference first, then work the install checklist, then run the gate. Check items off as you execute them; progress saves in this browser.</p>
     <div class="card-grid">
-      <a class="card" href="checklists/prework-install.html" data-checklist-card data-storage-key="ahb-prework-install" data-total="48">
-        <p class="eyebrow">1 · Install</p>
-        <h3>Install guide checklist</h3>
-        <p>Baseline → PowerShell → Git → Node/Python → Codex → <strong>OpenCode (Grok)</strong> → Pi → goose → Obsidian/n8n → repo → health gate. Claude optional.</p>
-        <p><span class="card-progress">0/48</span> steps checked</p>
+      <a class="card" href="keys.html">
+        <p class="eyebrow">1 · Read first</p>
+        <h3>Your API keys</h3>
+        <p>What a key is, which of your three drives which tool, how to store them on Windows, and what to do if one leaks. About ten minutes.</p>
+        <p>Reference page</p>
       </a>
-      <a class="card" href="checklists/prework-health.html" data-checklist-card data-storage-key="ahb-prework-health" data-total="26">
-        <p class="eyebrow">2 · Gate</p>
-        <h3>Health check checklist</h3>
-        <p>Baseline · four <strong>required</strong> agent files (Codex, OpenCode, Pi, goose) · seats · twin-engine awareness · GREEN/YELLOW/RED.</p>
-        <p><span class="card-progress">0/26</span> steps checked</p>
+      <a class="card" href="checklists/prework-install.html" data-checklist-card data-storage-key="ahb-prework-install" data-total="76">
+        <p class="eyebrow">2 · Install</p>
+        <h3>Install guide checklist</h3>
+        <p>Baseline → PowerShell → winget → Git → Node/Python → <strong>keys</strong> → Codex → <strong>OpenCode (Grok)</strong> → Pi → goose → Obsidian → n8n → repo → gate. Claude Code optional.</p>
+        <p><span class="card-progress">0/76</span> steps checked</p>
+      </a>
+      <a class="card" href="checklists/prework-health.html" data-checklist-card data-storage-key="ahb-prework-health" data-total="27">
+        <p class="eyebrow">3 · Gate</p>
+        <h3>Health check gate</h3>
+        <p>Re-tests everything from a fresh terminal: foundations · three keys · four <strong>regenerated</strong> agent files · supporting tools · GREEN/YELLOW/RED.</p>
+        <p><span class="card-progress">0/27</span> steps checked</p>
       </a>
     </div>
+    <figure class="section-diagram">
+      <img src="./assets/prework/health-overview.svg" alt="Diagram: Health check gate journey overview" width="1120" height="240" loading="lazy" decoding="async" />
+    </figure>
     <p class="btn-row">
-      <a class="btn" href="checklists/prework-install.html">Start install checklist</a>
+      <a class="btn" href="keys.html">Read the keys page</a>
+      <a class="btn btn-secondary" href="checklists/prework-install.html">Start install checklist</a>
       <a class="btn btn-secondary" href="checklists/prework-health.html">Open health check</a>
     </p>
 
     <h2>Done means</h2>
     <ol>
-      <li>Required tools installed and signed in (seats from staff).</li>
+      <li>Required tools installed and configured against your three API keys.</li>
       <li>Health check <strong>GREEN</strong> or <strong>YELLOW</strong> with a written workaround.</li>
-      <li>All four agents created a file in <code>Documents\HarnessBootcamp\prework-smoke\</code> that you can see in Explorer.</li>
+      <li>All four required agents created a file in <code>Documents\HarnessBootcamp\prework-smoke\</code> that you can see in Explorer.</li>
       <li>You have a setup log with at least one real failure and fix.</li>
     </ol>
 
@@ -63,18 +78,31 @@ Required pair for class: <strong>Codex</strong> (home) + <strong>OpenCode</stron
     <table>
       <thead><tr><th>#</th><th>Component</th><th>Notes</th></tr></thead>
             <tbody>
-        <tr><td>1</td><td>Windows 11</td><td>Updated</td></tr>
-        <tr><td>2</td><td>Git for Windows</td><td>Git Bash on PATH</td></tr>
-        <tr><td>3</td><td>Node LTS + Python</td><td>winget or official installers</td></tr>
-        <tr><td>4</td><td>PowerShell RemoteSigned</td><td>CurrentUser scope preferred</td></tr>
-        <tr><td>5</td><td>OpenAI Codex app</td><td>Home tool all week</td></tr>
-        <tr><td>6</td><td><strong>OpenCode</strong> (Grok)</td><td>Required second engine</td></tr>
-        <tr><td>7</td><td>Pi</td><td>Against Git Bash</td></tr>
-        <tr><td>8</td><td>goose</td><td>One sample run</td></tr>
-        <tr><td>9</td><td>Obsidian + n8n</td><td>Wed/Thu</td></tr>
-        <tr><td>—</td><td>Claude Code</td><td><em>Optional</em> alternate/third engine</td></tr>
+        <tr><td>1</td><td>Windows 11, 64-bit</td><td><strong>Not ARM64</strong> — OpenCode and goose have no working ARM build</td></tr>
+        <tr><td>2</td><td>Git for Windows</td><td>Provides Git Bash, which Pi requires</td></tr>
+        <tr><td>3</td><td>Node.js <strong>LTS</strong> + Python</td><td>Use the <code>OpenJS.NodeJS.LTS</code> package id — must land in 22.22–24.x</td></tr>
+        <tr><td>4</td><td>PowerShell RemoteSigned</td><td>CurrentUser scope, and no Group Policy override</td></tr>
+        <tr><td>5</td><td><strong>Three API keys</strong></td><td>OpenAI · xAI · Anthropic, as Windows user variables</td></tr>
+        <tr><td>6</td><td><strong>Codex</strong></td><td>Home tool all week · needs <code>codex login --with-api-key</code></td></tr>
+        <tr><td>7</td><td><strong>OpenCode</strong> (Grok)</td><td>Required second engine · use the cohort-pinned version</td></tr>
+        <tr><td>8</td><td>Pi</td><td>Bare loop · needs Git Bash · pin the model explicitly</td></tr>
+        <tr><td>9</td><td>goose</td><td>From <code>aaif-goose</code> — <strong>not</strong> winget</td></tr>
+        <tr><td>10</td><td>Obsidian + n8n</td><td>Wed/Thu · both local, no subscription</td></tr>
+        <tr><td>—</td><td>Claude Code (CLI)</td><td><em>Optional</em> third engine · command-line tool, not the desktop app</td></tr>
       </tbody>
     </table>
+
+    <h2>Traps worth knowing before you start</h2>
+    <p>These cost the most time, and none of them announce themselves clearly.</p>
+    <ul>
+      <li><strong>A new terminal is required after every install.</strong> A terminal reads PATH once when it opens. This is behind more "it didn't install" reports than everything else combined.</li>
+      <li><strong>Setting <code>OPENAI_API_KEY</code> does not by itself authenticate Codex.</strong> It only pre-fills the sign-in screen; Codex needs <code>codex login --with-api-key</code> once.</li>
+      <li><strong>The <code>.LTS</code> suffix on the Node package id is not optional.</strong> Plain <code>OpenJS.NodeJS</code> installs a release too new for n8n.</li>
+      <li><strong>Installing goose with winget gets you a different program</strong> — an unrelated database tool that shares the name.</li>
+      <li><strong>OpenCode's <code>curl</code> install command can't run on Windows PowerShell.</strong> It's a bash script, and no PowerShell version exists.</li>
+      <li><strong>Pi looks for its shell only when it first needs one</strong>, so a missing Git Bash fails mid-exercise rather than at setup.</li>
+      <li><strong>n8n's first screen looks like a signup and isn't one</strong> — it creates a local account on your own laptop.</li>
+    </ul>
 
     <h2>Markdown sources (reference)</h2>
     <p>The interactive checklists are the primary path. Raw markdown remains available if you want a printable copy:</p>

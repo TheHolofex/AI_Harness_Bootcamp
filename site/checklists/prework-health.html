@@ -18,20 +18,28 @@
     </div>
   </header>
   <main class="site-main checklist-page">
-    <p class="eyebrow">Four required agents · Codex + OpenCode + Pi + goose</p>
+    <p class="eyebrow">The gate · run this on the laptop you'll bring</p>
     <h1>Pre-work · Health check gate</h1>
-    <p class="lede">Monday gate. Four <strong>required</strong> agents: Codex, OpenCode, Pi, goose. Claude optional and does not block GREEN.</p>
+    <p class="lede">This re-tests everything you installed, independently, and ends with you declaring a colour. Allow about thirty minutes. The point isn't to pass — it's to find out now, while there's still time to fix things, rather than on Monday morning.</p>
+<figure class="section-diagram">
+  <img src="../assets/prework/health-overview.svg" alt="Diagram: Health gate journey overview — place in pre-work journey" width="1120" height="240" loading="lazy" decoding="async" />
+</figure>
 
 <div class="meta-grid">
-  <div><span class="k">Module</span><span class="v">Pre-work</span></div>
-  <div><span class="k">Second engine</span><span class="v">OpenCode (Grok)</span></div>
-  <div><span class="k">Plan</span><span class="v">Often 2–4 hours</span></div>
+  <div><span class="k">Required agents</span><span class="v">Codex · OpenCode · Pi · goose</span></div>
+  <div><span class="k">Proof standard</span><span class="v">Files on disk</span></div>
+  <div><span class="k">Time</span><span class="v">~30 minutes</span></div>
   <div><span class="k">Progress</span><span class="v"><span data-progress-for="ahb-prework-health">0%</span></span></div>
 </div>
+
+<div class="callout"><strong>Answer honestly</strong>
+This gate exists to tell you the truth about your machine. A checkbox you ticked because a step nearly worked will quietly become a Monday problem, and it will surface in front of the room instead of in your kitchen. If something is broken, mark it broken and write down what happened — that is a complete and useful answer.</div>
+
 <div class="checklist-toolbar">
-  <p>Check each step when <strong>you</strong> finish it. Progress saves in this browser only. Keep a setup log of failures and fixes.</p>
+  <p>Run every command yourself rather than trusting your memory of Friday. Progress saves in this browser only.</p>
   <div class="btn-row">
-    <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a>
+    <a class="btn btn-secondary" href="prework-install.html">Install checklist</a>
+    <a class="btn btn-secondary" href="../keys.html">Keys reference</a>
     <button type="button" class="btn btn-secondary" data-checklist-expand>Expand all</button>
     <button type="button" class="btn btn-secondary" data-checklist-collapse>Collapse all</button>
     <button type="button" class="btn btn-secondary" data-checklist-reset data-storage-key="ahb-prework-health">Reset checks</button>
@@ -40,265 +48,358 @@
 </div>
 <form class="checklist-form" data-checklist data-storage-key="ahb-prework-health">
 
-<section class="checklist-section"><h2>How to run this gate</h2><ol class="checklist">
+<section class="checklist-section"><h2>How to run this gate</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/health-how-to-run.svg" alt="Diagram: How to run this gate — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-health-h-when" data-check-id="h-when" />
+    <input type="checkbox" id="ahb-prework-health-h-machine" data-check-id="h-machine" />
     <span class="check-num">1</span>
-    <span class="check-title">Run on the Monday laptop</span>
+    <span class="check-title">Run it on the laptop you're bringing Monday</span>
   </label>
-  <div class="check-detail"><p>Bring checklist progress + setup log + screenshots to Block 0.</p></div>
+  <div class="check-detail"><p>Not a second machine, not a machine you tested on last week. If you'll carry two, run this on the one that will be open during class.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-health-h-folder" data-check-id="h-folder" />
+    <input type="checkbox" id="ahb-prework-health-h-fresh" data-check-id="h-fresh" />
     <span class="check-num">2</span>
-    <span class="check-title">Smoke folder exists</span>
+    <span class="check-title">Start from a freshly opened terminal</span>
   </label>
-  <div class="check-detail"><pre><code>Documents\HarnessBootcamp\prework-smoke\</code></pre></div>
+  <div class="check-detail"><p>Close everything and open one new PowerShell window. A window that has been open since you were installing may be carrying variables that won't exist on Monday, which would let a broken setup pass.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-health-h-log" data-check-id="h-log" />
+    <span class="check-num">3</span>
+    <span class="check-title">Have your setup log open beside you</span>
+  </label>
+  <div class="check-detail"><p>Anything that fails here gets written down: the step, the exact error, what you tried. That log is part of what you show Monday.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>A. Baseline</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>A · Foundations</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/health-a-foundations.svg" alt="Diagram: A · Foundations — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-ha-win" data-check-id="ha-win" />
-    <span class="check-num">3</span>
-    <span class="check-title">Windows 11</span>
+    <span class="check-num">4</span>
+    <span class="check-title">Windows 11, 64-bit, not ARM</span>
   </label>
-  <div class="check-detail"><p><code>winver</code> logged.</p></div>
+  <div class="check-detail"><pre><code>[Environment]::Is64BitOperatingSystem
+$env:PROCESSOR_ARCHITECTURE</code></pre>
+  <p>You want <code>True</code> and <code>AMD64</code>. <code>ARM64</code> is a blocker you must raise with staff rather than work around.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-health-ha-git" data-check-id="ha-git" />
-    <span class="check-num">4</span>
-    <span class="check-title">Git on PATH</span>
+    <input type="checkbox" id="ahb-prework-health-ha-tools" data-check-id="ha-tools" />
+    <span class="check-num">5</span>
+    <span class="check-title">Git, Node, and Python all answer</span>
   </label>
-  <div class="check-detail"><pre><code>git --version</code></pre></div>
+  <div class="check-detail"><pre><code>git --version
+node -v
+npm -v
+python --version</code></pre>
+  <p>Four version numbers, no errors. Node must read <strong>22.22 or higher and below 25</strong> — anything outside that range breaks n8n on Thursday and Pi today.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-ha-bash" data-check-id="ha-bash" />
-    <span class="check-num">5</span>
-    <span class="check-title">Git Bash present</span>
-  </label>
-  <div class="check-detail"><p>Path recorded.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-health-ha-node" data-check-id="ha-node" />
     <span class="check-num">6</span>
-    <span class="check-title">Node + npm</span>
+    <span class="check-title">Git Bash exists at a path you know</span>
   </label>
-  <div class="check-detail"><pre><code>node -v
-npm -v</code></pre></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-health-ha-py" data-check-id="ha-py" />
-    <span class="check-num">7</span>
-    <span class="check-title">Python</span>
-  </label>
-  <div class="check-detail"><pre><code>python --version</code></pre></div>
+  <div class="check-detail"><pre><code>Test-Path "C:\Program Files\Git\bin\bash.exe"</code></pre>
+  <p>If <code>False</code>, check the per-user location instead and record whichever is real:</p>
+  <pre><code>Test-Path "$env:LOCALAPPDATA\Programs\Git\bin\bash.exe"</code></pre>
+  <p>Pi needs this. Write the working path in your log.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-ha-ps" data-check-id="ha-ps" />
-    <span class="check-num">8</span>
-    <span class="check-title">PowerShell CurrentUser policy OK</span>
+    <span class="check-num">7</span>
+    <span class="check-title">Script execution is allowed, and not overridden</span>
   </label>
-  <div class="check-detail"><pre><code>Get-ExecutionPolicy -Scope CurrentUser</code></pre></div>
+  <div class="check-detail"><pre><code>Get-ExecutionPolicy -List</code></pre>
+  <p><code>CurrentUser</code> should read <code>RemoteSigned</code>. Just as important: <code>MachinePolicy</code> and <code>UserPolicy</code> should both read <code>Undefined</code>. If either is set, IT is overriding you and some installers will keep failing however many times you retry.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-health-ha-python" data-check-id="ha-python" />
+    <span class="check-num">8</span>
+    <span class="check-title">"python" is the real Python</span>
+  </label>
+  <div class="check-detail"><pre><code>(Get-Command python).Source</code></pre>
+  <p>A path containing <code>\WindowsApps\</code> means the Microsoft Store placeholder is intercepting the command. Fix it before Monday — see step 22 of the install checklist.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>B. Four required agents — files on disk</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>B · Your three keys</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/health-b-keys.svg" alt="Diagram: B · Your three keys — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-health-hk-set" data-check-id="hk-set" />
+    <span class="check-num">9</span>
+    <span class="check-title">All three keys are saved for your account</span>
+  </label>
+  <div class="check-detail"><pre><code>'OPENAI_API_KEY','XAI_API_KEY','ANTHROPIC_API_KEY' | ForEach-Object {
+  '{0}: user={1} session={2}' -f $_,
+    [Environment]::GetEnvironmentVariable($_,'User').Length,
+    (Get-Item "env:$_" -EA SilentlyContinue).Value.Length
+}</code></pre>
+  <p>Three lines, two matching non-zero numbers each. This is the check that matters most in this section, because you're running it in a fresh window — which is what Monday will be.</p>
+  <p>Only lengths print, never the keys, so this is safe to run while someone watches.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-health-hk-spend" data-check-id="hk-spend" />
+    <span class="check-num">10</span>
+    <span class="check-title">Your keys still have room to spend</span>
+  </label>
+  <div class="check-detail"><p>The four write proofs below are the real test of this. If a tool that worked during install now fails with a <strong>429</strong> or a message about quota or spend limits, the key has hit its cap rather than broken.</p>
+  <p>Message staff with which key and what you were running. This is a two-minute fix on their side and not something to reinstall over.</p></div>
+</li>
+</ol></section>
+
+<section class="checklist-section"><h2>C · Four required agents — files on disk</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/health-c-agents.svg" alt="Diagram: C · Four required agents — files on disk — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-health-hb-clean" data-check-id="hb-clean" />
+    <span class="check-num">11</span>
+    <span class="check-title">Clear the old proof files and regenerate them</span>
+  </label>
+  <div class="check-detail"><p>This is the heart of the gate, so don't accept files you made days ago on a machine state you no longer have. Delete them and make each tool prove itself again:</p>
+  <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
+Remove-Item from-*.txt -ErrorAction SilentlyContinue</code></pre>
+  <p>Then re-run the four write commands from the install checklist, steps 36, 43, 47, and 55.</p>
+  <p>If that feels like repetition, it is — and it's the same discipline the whole week runs on. A result you can regenerate on demand is worth more than one you happen to still have lying around.</p></div>
+</li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hb-codex" data-check-id="hb-codex" />
-    <span class="check-num">9</span>
-    <span class="check-title">from-codex.txt in Explorer</span>
+    <span class="check-num">12</span>
+    <span class="check-title">Codex wrote from-codex.txt</span>
   </label>
-  <div class="check-detail"><p>Real file on disk.</p></div>
+  <div class="check-detail"><p>Confirm the credential first, then the file:</p>
+  <pre><code>codex login status
+Get-Content .\from-codex.txt</code></pre>
+  <p>It must report API-key authentication, not a ChatGPT account. If it names an account, the course path isn't set up — redo install step 32.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hb-oc" data-check-id="hb-oc" />
-    <span class="check-num">10</span>
-    <span class="check-title">from-opencode.txt in Explorer</span>
+    <span class="check-num">13</span>
+    <span class="check-title">OpenCode wrote from-opencode.txt</span>
   </label>
-  <div class="check-detail"><p><strong>Required second engine.</strong> OpenCode + Grok/staff model.</p></div>
+  <div class="check-detail"><pre><code>opencode --version
+Get-Content .\from-opencode.txt</code></pre>
+  <p>Record the version in your log — Monday asks for it by name, because Wednesday's twin-engine comparison only means something if you know which build produced it.</p>
+  <p>If OpenCode claims success but no file appears, that's the known Windows defect. Log the version and exact wording and tell staff; don't keep retrying.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hb-pi" data-check-id="hb-pi" />
-    <span class="check-num">11</span>
-    <span class="check-title">from-pi.txt in Explorer</span>
+    <span class="check-num">14</span>
+    <span class="check-title">Pi wrote from-pi.txt, and can reach a shell</span>
   </label>
-  <div class="check-detail"><p>Real file on disk.</p></div>
+  <div class="check-detail"><pre><code>Get-Content .\from-pi.txt
+Get-Content .\bash-check.txt</code></pre>
+  <p>Both files matter. The first proves Pi authenticated and wrote; the second proves it can reach Git Bash. Pi only looks for a shell at the moment it needs one, so without this second check a missing shell stays hidden until it breaks an exercise.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hb-goose" data-check-id="hb-goose" />
-    <span class="check-num">12</span>
-    <span class="check-title">from-goose.txt in Explorer</span>
+    <span class="check-num">15</span>
+    <span class="check-title">goose wrote from-goose.txt</span>
   </label>
-  <div class="check-detail"><p>Real file on disk.</p></div>
+  <div class="check-detail"><pre><code>goose info -v
+Get-Content .\from-goose.txt</code></pre>
+  <p>Check that <code>goose info</code> reports the provider and model you intended. It's easy to have goose working against a provider you didn't mean to use.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hb-all" data-check-id="hb-all" />
-    <span class="check-num">13</span>
-    <span class="check-title">All four required files present together</span>
+    <span class="check-num">16</span>
+    <span class="check-title">All four files present together, seen in Explorer</span>
   </label>
-  <div class="check-detail"><p>Missing any one → not GREEN.</p></div>
+  <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"</code></pre>
+  <p>Then open the folder in Explorer and look at it with your own eyes. That's the view you'll show Monday, and looking at it is the habit being trained.</p>
+  <p><strong>Missing any one of the four means not GREEN.</strong> Three out of four is a YELLOW at best, and only with a written account of the fourth.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hb-opt" data-check-id="hb-opt" />
-    <span class="check-num">14</span>
-    <span class="check-title">(Optional) Claude file — does not block GREEN</span>
+    <span class="check-num">17</span>
+    <span class="check-title">Optional: Claude Code file, if you installed it</span>
   </label>
-  <div class="check-detail"><p><code>from-claude-optional.txt</code> only if you installed Claude.</p></div>
+  <div class="check-detail"><p><code>from-claude-optional.txt</code>. Its absence does not affect your colour in any way — skip this line if you didn't install Claude Code.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>C. Seats and modes</h2><ol class="checklist">
 
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-health-hc-codex" data-check-id="hc-codex" />
-    <span class="check-num">15</span>
-    <span class="check-title">Codex signed in + sandbox understood</span>
-  </label>
-  <div class="check-detail"><p>Log approval mode.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-health-hc-oc" data-check-id="hc-oc" />
-    <span class="check-num">16</span>
-    <span class="check-title">OpenCode configured (model name logged)</span>
-  </label>
-  <div class="check-detail"><p>Grok or staff pin; version noted.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-health-hc-goose" data-check-id="hc-goose" />
-    <span class="check-num">17</span>
-    <span class="check-title">goose provider OK</span>
-  </label>
-  <div class="check-detail"><p>Session can start.</p></div>
-</li>
+<section class="checklist-section"><h2>D · Supporting tools</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/health-d-support.svg" alt="Diagram: D · Supporting tools — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hc-obs" data-check-id="hc-obs" />
     <span class="check-num">18</span>
-    <span class="check-title">Obsidian launches</span>
+    <span class="check-title">Obsidian opens your vault</span>
   </label>
-  <div class="check-detail"><p>—</p></div>
+  <div class="check-detail"><p>Launch it and confirm your vault opens with no login screen.</p>
+  <pre><code>Get-ChildItem -Force "$env:USERPROFILE\Documents\HarnessBootcamp\vault"</code></pre>
+  <p>A <code>.obsidian</code> folder in that listing proves the vault is real rather than just a folder you made.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hc-n8n" data-check-id="hc-n8n" />
     <span class="check-num">19</span>
-    <span class="check-title">n8n UI loaded once</span>
+    <span class="check-title">n8n starts, serves, and stops</span>
   </label>
-  <div class="check-detail"><p>Know how to stop it.</p></div>
+  <div class="check-detail"><p>Run <code>n8n start</code> in one window. In a second window:</p>
+  <pre><code>(Invoke-WebRequest http://localhost:5678/healthz -UseBasicParsing).StatusCode</code></pre>
+  <p>A <code>200</code> means it's genuinely serving. Then stop it with <kbd>Ctrl</kbd>+<kbd>C</kbd> in the first window and confirm the page stops answering.</p>
+  <p>You should also be able to log into it with the owner email and password you set. If you've forgotten them, sort that out now rather than on Thursday.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-health-hc-repo" data-check-id="hc-repo" />
+    <span class="check-num">20</span>
+    <span class="check-title">Course repo present and site serves</span>
+  </label>
+  <div class="check-detail"><p>From the repository root run <code>python -m http.server 8080</code> and open <a href="http://localhost:8080/site/" target="_blank" rel="noopener">http://localhost:8080/site/</a>. Stop it with <kbd>Ctrl</kbd>+<kbd>C</kbd>.</p>
+  <p>Confirm you can also find <code>mission_flesh/b0/reports/</code> in the repo — that's Monday's mission data, and knowing where it is saves you the first ten minutes.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>D. Operator awareness</h2><ol class="checklist">
 
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-health-hd-pair" data-check-id="hd-pair" />
-    <span class="check-num">20</span>
-    <span class="check-title">State twin-engine pair: Codex + OpenCode</span>
-  </label>
-  <div class="check-detail"><p>Claude is optional third, not the required twin.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-health-hd-threads" data-check-id="hd-threads" />
-    <span class="check-num">21</span>
-    <span class="check-title">Name threads: Direction & Log · Adversarial · Transfer</span>
-  </label>
-  <div class="check-detail"><p>—</p></div>
-</li>
+<section class="checklist-section"><h2>E · Operator readiness</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/health-e-ready.svg" alt="Diagram: E · Operator readiness — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hd-ops" data-check-id="hd-ops" />
-    <span class="check-num">22</span>
-    <span class="check-title">Know operator/ template location in Codex project</span>
+    <span class="check-num">21</span>
+    <span class="check-title">Operator templates are in your working project</span>
   </label>
-  <div class="check-detail"><p>—</p></div>
+  <div class="check-detail"><p>Point at the folder and name the files: Direction Brief, Operator Log, pass bars, adversarial review, measurement spine, transfer.</p>
+  <p>If you have to search for them Monday, they'll go unused. Put them where you'll actually be working.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-health-hd-pair" data-check-id="hd-pair" />
+    <span class="check-num">22</span>
+    <span class="check-title">You can state the twin-engine pair</span>
+  </label>
+  <div class="check-detail"><p><strong>Codex</strong> on your OpenAI key and <strong>OpenCode</strong> on your xAI key. Claude Code, if you installed it, is an optional third opinion rather than a substitute for either.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-health-hd-keys" data-check-id="hd-keys" />
+    <span class="check-num">23</span>
+    <span class="check-title">You know what to do if a key leaks</span>
+  </label>
+  <div class="check-detail"><p>Tell staff immediately; they revoke and reissue. Then set the new key and run <code>codex login --with-api-key</code> again, since Codex stored the old one rather than reading the variable each time.</p>
+  <p>Knowing this now is what makes reporting it fast later, and speed is the entire difference between a non-event and a problem.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hd-fail" data-check-id="hd-fail" />
-    <span class="check-num">23</span>
-    <span class="check-title">Setup log has failure + fix</span>
+    <span class="check-num">24</span>
+    <span class="check-title">Your setup log holds at least one real failure and fix</span>
   </label>
-  <div class="check-detail"><p>Operators keep trails.</p></div>
+  <div class="check-detail"><p>Something went wrong during install — a PATH that didn't refresh, a policy that blocked a script, a key pasted into the wrong variable. Write down what it was and what resolved it.</p>
+  <p>If genuinely nothing broke, write that, and note the one step you'd least want to repeat from memory. Operators keep trails; a blank log is the one answer that doesn't hold up.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>Gate result</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>Gate result</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/health-result.svg" alt="Diagram: Gate result — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hg-color" data-check-id="hg-color" />
-    <span class="check-num">24</span>
-    <span class="check-title">Declare GREEN / YELLOW / RED honestly</span>
+    <span class="check-num">25</span>
+    <span class="check-title">Declare your colour honestly</span>
   </label>
-  <div class="check-detail"><p><strong>GREEN</strong> = baseline + four required files + required seats/modes.<br><strong>YELLOW</strong> = minor fail + staff-approved workaround in log.<br><strong>RED</strong> = missing required agent proof or seats — stay in support.</p></div>
+  <div class="check-detail"><p><strong>GREEN</strong> — foundations pass, all three keys verified in a fresh window, all four agent files regenerated and present, supporting tools launch. Ready for Monday.</p>
+  <p><strong>YELLOW</strong> — one thing is unresolved, you know exactly what it is, and you've written down where it stops. You'll start Monday with the room and get help alongside the work.</p>
+  <p><strong>RED</strong> — a required agent can't write a file, a key doesn't work, or you haven't been able to start. Say so before Monday rather than on it. Staff can usually clear a RED faster than you'd expect, but only once they know.</p>
+  <p>YELLOW declared on Saturday is a better position than GREEN claimed on a step you skipped. The colour is information, not a grade.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hg-id" data-check-id="hg-id" />
-    <span class="check-num">25</span>
-    <span class="check-title">Name, machine, date/time, OpenCode version/model on log</span>
+    <span class="check-num">26</span>
+    <span class="check-title">Record the details that identify this run</span>
   </label>
-  <div class="check-detail"><p>—</p></div>
+  <div class="check-detail"><p>In your setup log: your name, the machine, the date and time you reached this colour, your OpenCode version, and your Codex sandbox mode (elevated or unelevated).</p>
+  <p>Those last two are the ones staff ask for most, because they're what differs between machines when something behaves oddly in class.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-health-hg-pack" data-check-id="hg-pack" />
-    <span class="check-num">26</span>
-    <span class="check-title">Laptop + log packed for Monday</span>
+    <span class="check-num">27</span>
+    <span class="check-title">Pack for Monday</span>
   </label>
-  <div class="check-detail"><p>Block 0 verifies, then First Light.</p></div>
+  <div class="check-detail"><p>Laptop and charger, the four proof files, your setup log, your colour, and anything still open that you want help with.</p>
+  <p>Monday verifies this gate in the first twenty minutes and then moves straight to building something real. Arriving with a clear picture of your own machine is what makes that possible.</p></div>
 </li>
 </ol></section>
 </form>
-<p class="btn-row"><a class="btn btn-secondary" href="prework-install.html">Install checklist</a> <a class="btn" href="../blocks/b0.html">Preview B0</a></p>
-<div class="callout"><strong>Identity lock</strong> You can rebuild this chair. A recorded failure is evidence, not shame.</div>
+<p class="btn-row"><a class="btn btn-secondary" href="prework-install.html">Back to install checklist</a> <a class="btn btn-secondary" href="../keys.html">Keys reference</a> <a class="btn" href="../blocks/b0.html">Preview Monday</a></p>
+<div class="callout"><strong>What the gate is really checking</strong>
+Not whether your laptop is tidy — whether you can tell a working system from one that only looks like it works, and whether you can say which you have. That judgement is the first thing this course asks of you, and you just practised it on your own machine.</div>
   </main>
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <div>AI Harness Bootcamp · Pre-work · Codex + OpenCode</div>
+      <div>AI Harness Bootcamp · Pre-work · Codex + OpenCode + Pi + goose</div>
       <div>inquiries@starzl.com · starzl.com</div>
     </div>
   </footer>
-  <script src="../js/course.js"></script>
   <script src="../js/nav.js"></script>
+  <script src="../js/course.js"></script>
   <script src="../js/checklist.js"></script>
 </body>
 </html>

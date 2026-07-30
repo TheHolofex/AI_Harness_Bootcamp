@@ -18,20 +18,25 @@
     </div>
   </header>
   <main class="site-main checklist-page">
-    <p class="eyebrow">OpenCode second engine · interactive checklist</p>
+    <p class="eyebrow">Before Monday · interactive checklist</p>
     <h1>Pre-work · Install guide</h1>
-    <p class="lede">Full install path for the Windows operator chair. <strong>Required second engine is OpenCode (Grok)</strong>. Claude Code is optional.</p>
+    <p class="lede">This takes your Windows 11 laptop from stock to a working operator chair: six agent tools, three API keys, and a folder where you can prove all of it runs. Plan two to four hours. You don't need to be a developer — each step says what it does and what you should see when it works.</p>
 
 <div class="meta-grid">
-  <div><span class="k">Module</span><span class="v">Pre-work</span></div>
-  <div><span class="k">Second engine</span><span class="v">OpenCode (Grok)</span></div>
-  <div><span class="k">Plan</span><span class="v">Often 2–4 hours</span></div>
+  <div><span class="k">Machine</span><span class="v">Windows 11 · no WSL</span></div>
+  <div><span class="k">Auth</span><span class="v">API keys only</span></div>
+  <div><span class="k">Plan</span><span class="v">2–4 hours</span></div>
   <div><span class="k">Progress</span><span class="v"><span data-progress-for="ahb-prework-install">0%</span></span></div>
 </div>
+
+<div class="callout"><strong>Everything runs on API keys</strong>
+Staff issue you three keys — OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly plan during this course. Several tools below offer a subscription login and an API key option on the same screen; always take the API key path. Keep <a href="../keys.html">Your API keys</a> open in another tab while you work.</div>
+
 <div class="checklist-toolbar">
-  <p>Check each step when <strong>you</strong> finish it. Progress saves in this browser only. Keep a setup log of failures and fixes.</p>
+  <p>Check each step when <strong>you</strong> finish it — not when you've read it. Progress saves in this browser only. Keep a setup log as you go; what broke and how you fixed it is the evidence you bring Monday.</p>
   <div class="btn-row">
     <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a>
+    <a class="btn btn-secondary" href="../keys.html">Keys reference</a>
     <button type="button" class="btn btn-secondary" data-checklist-expand>Expand all</button>
     <button type="button" class="btn btn-secondary" data-checklist-collapse>Collapse all</button>
     <button type="button" class="btn btn-secondary" data-checklist-reset data-storage-key="ahb-prework-install">Reset checks</button>
@@ -40,15 +45,20 @@
 </div>
 <form class="checklist-form" data-checklist data-storage-key="ahb-prework-install">
 
-<section class="checklist-section"><h2>Before you begin</h2><ol class="checklist">
+<section class="checklist-section"><h2>Before you begin</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-before-you-begin.svg" alt="Diagram: Before you begin — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-i-time" data-check-id="i-time" />
     <span class="check-num">1</span>
-    <span class="check-title">Block time before Monday morning</span>
+    <span class="check-title">Block real time before Monday</span>
   </label>
-  <div class="check-detail"><p>Finish <strong>before Monday Block 0</strong>. Plan ~2–4 hours. Seats/keys from staff may arrive mid-install — finish auth when they land.</p></div>
+  <div class="check-detail"><p>Finish before Monday's first session. Most people need two to four hours; a corporate-managed laptop can take longer, because policy blocks turn up one at a time rather than all at once.</p>
+  <p>Start early enough that you can raise a blocker and still get an answer. Sunday night is the most reliable way to arrive stuck.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -57,469 +67,999 @@
     <span class="check-num">2</span>
     <span class="check-title">Open a setup log and keep it open</span>
   </label>
-  <div class="check-detail"><p>Copy <code>prework/SETUP_LOG.md</code> or any notes file. After each major step: result, error, fix, time. Bring it Monday.</p></div>
+  <div class="check-detail"><p>Copy <code>prework/SETUP_LOG.md</code>, or open any notes file. After each section, write down the result, any error text, what fixed it, and roughly how long it took.</p>
+  <p>Copy error messages exactly rather than paraphrasing — the precise wording is usually the thing that identifies the problem. A carefully recorded failure is worth more on Monday than a clean install with no trail behind it.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-i-twin" data-check-id="i-twin" />
+    <input type="checkbox" id="ahb-prework-install-i-keys" data-check-id="i-keys" />
     <span class="check-num">3</span>
-    <span class="check-title">Know the required twin-engine pair</span>
+    <span class="check-title">Confirm you have all three API keys in hand</span>
   </label>
-  <div class="check-detail"><p><strong>Home:</strong> Codex app · <strong>Second engine:</strong> OpenCode (usually Grok). Claude Code is <em>optional</em> only.</p></div>
+  <div class="check-detail"><p>You need an OpenAI key starting <code>sk-proj-</code>, an xAI key starting <code>xai-</code>, and an Anthropic key starting <code>sk-ant-api03-</code>.</p>
+  <p>If any are missing, message staff now and start installing anyway. The first five sections need no keys at all, so you can get most of the machine ready while you wait.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-i-shape" data-check-id="i-shape" />
+    <span class="check-num">4</span>
+    <span class="check-title">Know the shape of what you're building</span>
+  </label>
+  <div class="check-detail"><p>Foundations first: a terminal, a package manager, Git, then Node and Python. Then your three keys. Then six tools that use them.</p>
+  <p><strong>Codex</strong> is your home for the week. <strong>OpenCode</strong> is the second engine you'll run the same brief through on Wednesday. <strong>Pi</strong> shows you a bare agent loop with nothing smoothed over. <strong>goose</strong> runs bounded, repeatable work. <strong>Obsidian</strong> holds a knowledge base and <strong>n8n</strong> builds a fixed pipeline. Claude Code is optional.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>0. Baseline machine</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>0 · Baseline machine</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-00-baseline.svg" alt="Diagram: 0 · Baseline machine — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-b-win11" data-check-id="b-win11" />
-    <span class="check-num">4</span>
-    <span class="check-title">Confirm Windows 11 (winver)</span>
+    <span class="check-num">5</span>
+    <span class="check-title">Confirm Windows 11, 64-bit, and updated</span>
   </label>
-  <div class="check-detail"><p>Win+R → <code>winver</code>. Update if you can. Log version.</p></div>
+  <div class="check-detail"><p>Press <kbd>Win</kbd>+<kbd>R</kbd>, type <code>winver</code>, press Enter. Note the version in your log.</p>
+  <p>Then open PowerShell and check the architecture, because two tools here have no 32-bit build:</p>
+  <pre><code>[Environment]::Is64BitOperatingSystem</code></pre>
+  <p>You want <code>True</code>. Install any pending Windows updates now — doing it later tends to interrupt something mid-install.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-b-arm" data-check-id="b-arm" />
+    <span class="check-num">6</span>
+    <span class="check-title">Check whether your laptop is ARM-based</span>
+  </label>
+  <div class="check-detail"><p>Snapdragon and other ARM Windows laptops — often sold as Copilot+ PCs — can't run this stack. OpenCode fails to start on Windows ARM64, and goose publishes no ARM build at all.</p>
+  <pre><code>$env:PROCESSOR_ARCHITECTURE</code></pre>
+  <p><code>AMD64</code> means you're fine. <code>ARM64</code> means tell staff today, before installing anything else. That's a machine question rather than something you can solve at the keyboard, and it needs lead time.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-b-disk" data-check-id="b-disk" />
-    <span class="check-num">5</span>
-    <span class="check-title">Free disk space (≥25 GB recommended)</span>
+    <span class="check-num">7</span>
+    <span class="check-title">Free up disk space (25 GB or more)</span>
   </label>
-  <div class="check-detail"><p>This PC → free space. Clean up if tight.</p></div>
+  <div class="check-detail"><p>Open This PC and check free space on C:. The tools themselves are modest, but Node's dependency trees and the model caches add up faster than you'd expect.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-b-admin" data-check-id="b-admin" />
-    <span class="check-num">6</span>
-    <span class="check-title">Confirm install rights</span>
+    <span class="check-num">8</span>
+    <span class="check-title">Establish whether you can install software</span>
   </label>
-  <div class="check-detail"><p>Corporate lock? Escalate now. Log admin yes/no.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-b-browser" data-check-id="b-browser" />
-    <span class="check-num">7</span>
-    <span class="check-title">Browser works for OAuth</span>
-  </label>
-  <div class="check-detail"><p>You will sign into Codex and providers in a browser.</p></div>
+  <div class="check-detail"><p>Most steps install into your own user profile and need no administrator rights. Three do prompt for elevation: Git, Node, and Codex's sandbox setup.</p>
+  <p>If your laptop is corporate-managed and you can't approve an elevation prompt, raise a ticket <strong>today</strong>. This is the blocker that most reliably costs people their Monday, and it's the one you can't work around from your own seat.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>1. PowerShell readiness</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>1 · Terminal and PowerShell</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-01-terminal.svg" alt="Diagram: 1 · Terminal and PowerShell — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ps-open" data-check-id="ps-open" />
-    <span class="check-num">8</span>
-    <span class="check-title">Open PowerShell (user)</span>
+    <span class="check-num">9</span>
+    <span class="check-title">Open Windows Terminal as your normal user</span>
   </label>
-  <div class="check-detail"><p>Start menu → PowerShell.</p></div>
+  <div class="check-detail"><p>Press <kbd>Win</kbd>, type <code>Terminal</code>, press Enter. Do <em>not</em> choose "Run as administrator" — the installers below ask for elevation individually when they genuinely need it, and running the whole session elevated can put things in the wrong place.</p>
+  <p>Avoid the Start menu entry labelled <strong>Windows PowerShell (x86)</strong>. That's a 32-bit host, and some installers refuse to run in it even on a 64-bit machine.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-ps-version" data-check-id="ps-version" />
+    <span class="check-num">10</span>
+    <span class="check-title">Check which PowerShell you're in</span>
+  </label>
+  <div class="check-detail"><pre><code>$PSVersionTable.PSVersion</code></pre>
+  <p>Stock Windows 11 shows <strong>5.1</strong>. That's expected, and it's enough for everything in this guide.</p>
+  <p>PowerShell 7 is a separate, newer shell that installs alongside 5.1 rather than replacing it. It's optional. If you want it:</p>
+  <pre><code>winget install --id Microsoft.PowerShell --source winget --installer-type wix --accept-source-agreements --accept-package-agreements</code></pre>
+  <p>The <code>--installer-type wix</code> matters. Without it you get a sandboxed build that can't change some settings you may need later.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ps-policy" data-check-id="ps-policy" />
-    <span class="check-num">9</span>
-    <span class="check-title">Set RemoteSigned for CurrentUser</span>
+    <span class="check-num">11</span>
+    <span class="check-title">Allow scripts to run for your user account</span>
   </label>
-  <div class="check-detail"><pre><code>Get-ExecutionPolicy -List
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-Get-ExecutionPolicy -Scope CurrentUser</code></pre><p>If GPO blocks you, log the error and ticket support.</p></div>
+  <div class="check-detail"><p>Windows blocks PowerShell scripts by default. Several installers below — and npm itself — are scripts, so this has to change or they fail with an error that reads like a permissions problem but isn't one.</p>
+  <pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
+  <p>Answer <code>Y</code> if prompted. <code>RemoteSigned</code> means scripts you wrote run freely while downloaded ones must be signed; <code>CurrentUser</code> means it applies to your account only and needs no admin rights. Then check what actually took effect:</p>
+  <pre><code>Get-ExecutionPolicy -List</code></pre>
+  <p>Look at the <code>MachinePolicy</code> and <code>UserPolicy</code> rows. If either shows anything other than <code>Undefined</code>, your IT department sets this centrally and your change is ignored no matter what the command reported. <strong>Log the exact output and ticket IT today.</strong></p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>2. Git for Windows</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>2 · winget, the package manager</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-02-winget.svg" alt="Diagram: 2 · winget, the package manager — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-wg-check" data-check-id="wg-check" />
+    <span class="check-num">12</span>
+    <span class="check-title">Confirm winget is present</span>
+  </label>
+  <div class="check-detail"><p><strong>winget</strong> is Microsoft's built-in package manager. It downloads and installs software from a command instead of a website, which is why several steps below are one line long. It ships with Windows 11.</p>
+  <pre><code>winget --version</code></pre>
+  <p>A version number means you're set. <code>'winget' is not recognized</code> means go to the next step.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-wg-fix" data-check-id="wg-fix" />
+    <span class="check-num">13</span>
+    <span class="check-title">Repair winget only if it's missing</span>
+  </label>
+  <div class="check-detail"><p>Skip this if the previous step printed a version. Otherwise try these in order, checking <code>winget --version</code> in a <strong>new</strong> window after each.</p>
+  <p>Re-register the package — on a freshly imaged machine it sometimes just hasn't finished registering:</p>
+  <pre><code>Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe</code></pre>
+  <p>If that doesn't do it, use Microsoft's repair module:</p>
+  <pre><code>Install-PackageProvider -Name NuGet -Force | Out-Null
+Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery | Out-Null
+Repair-WinGetPackageManager -Force -Latest</code></pre>
+  <p>If winget still refuses, don't fight it. Every tool below has a direct-download alternative — note it in your log and carry on.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-wg-agree" data-check-id="wg-agree" />
+    <span class="check-num">14</span>
+    <span class="check-title">Clear winget's first-run agreement prompt</span>
+  </label>
+  <div class="check-detail"><p>The first time winget runs it stops and asks you to accept its source terms. Get that out of the way now, so a later install doesn't appear to hang when it's really waiting for a keystroke you can't see.</p>
+  <pre><code>winget source update --accept-source-agreements</code></pre></div>
+</li>
+</ol></section>
+
+<section class="checklist-section"><h2>3 · Git for Windows</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-03-git.svg" alt="Diagram: 3 · Git for Windows — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-git-install" data-check-id="git-install" />
-    <span class="check-num">10</span>
+    <span class="check-num">15</span>
     <span class="check-title">Install Git</span>
   </label>
-  <div class="check-detail"><pre><code>winget install --id Git.Git -e --source winget</code></pre><p>Or official Git for Windows .exe if winget is missing.</p></div>
+  <div class="check-detail"><p>Git tracks changes to files, and you'll use it to fetch the course repository. It also installs <strong>Git Bash</strong>, a Unix-style shell that Pi requires and that Codex and goose can use — which is the real reason it comes this early.</p>
+  <pre><code>winget install --id Git.Git -e --source winget --scope machine --accept-source-agreements --accept-package-agreements</code></pre>
+  <p>Approve the elevation prompt. <code>--scope machine</code> puts Git at a predictable path other tools know to look in; without it Git can land somewhere they won't find. If winget isn't available, download from <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com/download/win</a> and accept the installer defaults.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-git-restart" data-check-id="git-restart" />
-    <span class="check-num">11</span>
-    <span class="check-title">New PowerShell window</span>
+    <span class="check-num">16</span>
+    <span class="check-title">Close this terminal and open a new one</span>
   </label>
-  <div class="check-detail"><p>Close and reopen so PATH updates.</p></div>
+  <div class="check-detail"><p>Installers record new programs in a Windows setting called PATH, but a terminal reads PATH once when it opens and never again. Your current window will insist Git isn't installed.</p>
+  <p>This causes more "it didn't install" reports than every other cause combined, and it recurs after every install below. Build the habit now: <strong>install, close, reopen, verify.</strong></p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-git-verify" data-check-id="git-verify" />
-    <span class="check-num">12</span>
-    <span class="check-title">Verify git + bash</span>
+    <span class="check-num">17</span>
+    <span class="check-title">Verify Git and locate Git Bash</span>
   </label>
   <div class="check-detail"><pre><code>git --version
-Test-Path "C:\Program Files\Git\bin\bash.exe"</code></pre><p>Record bash path for Pi.</p></div>
+Test-Path "C:\Program Files\Git\bin\bash.exe"</code></pre>
+  <p>You want a version number and <code>True</code>. Record that path in your log — Pi asks for it if it can't find it on its own.</p>
+  <p>If <code>Test-Path</code> returns <code>False</code>, Git installed for your user only rather than machine-wide. Check the other location and log whichever one is real:</p>
+  <pre><code>Test-Path "$env:LOCALAPPDATA\Programs\Git\bin\bash.exe"</code></pre></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>3. Node LTS + Python</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>4 · Node.js and Python</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-04-runtime.svg" alt="Diagram: 4 · Node.js and Python — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-np-install" data-check-id="np-install" />
-    <span class="check-num">13</span>
-    <span class="check-title">Install Node LTS and Python 3.12</span>
+    <input type="checkbox" id="ahb-prework-install-np-node" data-check-id="np-node" />
+    <span class="check-num">18</span>
+    <span class="check-title">Install Node.js LTS — the suffix matters</span>
   </label>
-  <div class="check-detail"><pre><code>winget install --id OpenJS.NodeJS.LTS -e --source winget
-winget install --id Python.Python.3.12 -e --source winget</code></pre></div>
+  <div class="check-detail"><p>Node runs JavaScript outside a browser. Several tools here are distributed through it, and n8n is built on it.</p>
+  <pre><code>winget install --id OpenJS.NodeJS.LTS -e --source winget --accept-source-agreements --accept-package-agreements</code></pre>
+  <p>Approve the elevation prompt. <strong>The <code>.LTS</code> on the end is not optional.</strong> The package named plain <code>OpenJS.NodeJS</code> installs the newest experimental release, which is too new for n8n — it will refuse to start later, and the error won't mention this step.</p>
+  <p>LTS means Long Term Support. Two tools this week have hard minimums (n8n needs Node 22.22 or newer, Pi needs 22.19 or newer) and the LTS release clears both while staying inside what n8n supports.</p>
+  <p>Without winget, download the LTS Windows Installer from <a href="https://nodejs.org/en/download" target="_blank" rel="noopener">nodejs.org/en/download</a>. Click the LTS option, not Current.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-np-python" data-check-id="np-python" />
+    <span class="check-num">19</span>
+    <span class="check-title">Install Python</span>
+  </label>
+  <div class="check-detail"><p>You'll use Python mainly to serve the course site locally, and agents reach for it when a task suits a quick script.</p>
+  <pre><code>winget install Python.Python.3.14 --accept-source-agreements --accept-package-agreements</code></pre></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-np-restart" data-check-id="np-restart" />
-    <span class="check-num">14</span>
-    <span class="check-title">New terminal</span>
+    <span class="check-num">20</span>
+    <span class="check-title">Close this terminal and open a new one</span>
   </label>
-  <div class="check-detail"><p>Reopen PowerShell.</p></div>
+  <div class="check-detail"><p>Same reason as before. Both installers changed PATH and this window can't see it.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-np-verify" data-check-id="np-verify" />
-    <span class="check-num">15</span>
-    <span class="check-title">Verify node/npm/python/pip</span>
+    <span class="check-num">21</span>
+    <span class="check-title">Verify Node, npm, and Python</span>
   </label>
   <div class="check-detail"><pre><code>node -v
 npm -v
-python --version
-pip --version</code></pre><p>Fallback: <code>py -3 --version</code>.</p></div>
+python --version</code></pre>
+  <p>All three should answer with version numbers. Node must read <strong>22.22 or higher, and below 25</strong>. If it's outside that, fix it now rather than discovering it on Thursday:</p>
+  <pre><code>winget uninstall -e --id OpenJS.NodeJS
+winget install -e --id OpenJS.NodeJS.LTS</code></pre>
+  <p>If <code>npm</code> fails with <em>"npm.ps1 cannot be loaded because running scripts is disabled"</em>, go back to step 11. That error is the execution policy, not a broken Node install.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-np-stub" data-check-id="np-stub" />
+    <span class="check-num">22</span>
+    <span class="check-title">Make sure "python" is the real Python</span>
+  </label>
+  <div class="check-detail"><p>Windows ships a placeholder <code>python.exe</code> that opens the Microsoft Store instead of running Python. It hijacks the command and produces confusing failures rather than a clear message.</p>
+  <pre><code>(Get-Command python).Source</code></pre>
+  <p>You want a real install path — something under <code>...\Programs\Python\...</code>. If the path contains <code>\WindowsApps\</code>, or typing <code>python</code> opened the Store, switch the placeholder off: Settings → Apps → Advanced app settings → App execution aliases, then turn off the entries named <strong>python.exe</strong> and <strong>python3.exe</strong>. Reopen the terminal and check again.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>4. OpenAI Codex app (primary home)</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>5 · Your three API keys</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-05-keys.svg" alt="Diagram: 5 · Your three API keys — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-k-read" data-check-id="k-read" />
+    <span class="check-num">23</span>
+    <span class="check-title">Read the keys reference first</span>
+  </label>
+  <div class="check-detail"><p>Open <a href="../keys.html"><strong>Your API keys</strong></a> and read it once through. It covers what a key is, what each one drives, and what to do if one leaks.</p>
+  <p>Everything below depends on these three variables being set correctly, so the five minutes pays for itself.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-k-openai" data-check-id="k-openai" />
+    <span class="check-num">24</span>
+    <span class="check-title">Set OPENAI_API_KEY</span>
+  </label>
+  <div class="check-detail"><p>Run these four lines. The first prompts you to paste the key rather than putting it in the command, which keeps the secret out of your shell history:</p>
+  <pre><code>$key = Read-Host 'Paste OPENAI_API_KEY'
+[Environment]::SetEnvironmentVariable('OPENAI_API_KEY', $key, 'User')
+$env:OPENAI_API_KEY = $key
+$key = $null</code></pre>
+  <p>Line two saves it permanently for your Windows account. Line three also sets it in this window, so you can keep working without reopening anything.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-k-xai" data-check-id="k-xai" />
+    <span class="check-num">25</span>
+    <span class="check-title">Set XAI_API_KEY</span>
+  </label>
+  <div class="check-detail"><pre><code>$key = Read-Host 'Paste XAI_API_KEY'
+[Environment]::SetEnvironmentVariable('XAI_API_KEY', $key, 'User')
+$env:XAI_API_KEY = $key
+$key = $null</code></pre>
+  <p>This one drives OpenCode. Check it starts with <code>xai-</code> before you paste — mixing up two keys produces an authentication error that never tells you which key was wrong.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-k-anthropic" data-check-id="k-anthropic" />
+    <span class="check-num">26</span>
+    <span class="check-title">Set ANTHROPIC_API_KEY</span>
+  </label>
+  <div class="check-detail"><pre><code>$key = Read-Host 'Paste ANTHROPIC_API_KEY'
+[Environment]::SetEnvironmentVariable('ANTHROPIC_API_KEY', $key, 'User')
+$env:ANTHROPIC_API_KEY = $key
+$key = $null</code></pre></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-k-verify" data-check-id="k-verify" />
+    <span class="check-num">27</span>
+    <span class="check-title">Verify all three in a brand-new window</span>
+  </label>
+  <div class="check-detail"><p>Close the terminal, open a new one, and run:</p>
+  <pre><code>'OPENAI_API_KEY','XAI_API_KEY','ANTHROPIC_API_KEY' | ForEach-Object {
+  '{0}: user={1} session={2}' -f $_,
+    [Environment]::GetEnvironmentVariable($_,'User').Length,
+    (Get-Item "env:$_" -EA SilentlyContinue).Value.Length
+}</code></pre>
+  <p>Three lines, each with two matching non-zero numbers. This prints only the <em>length</em> of each key, never the key, so it's safe to run on a shared screen.</p>
+  <p><code>user=0</code> means it didn't save — re-run that key's step and check the variable name for typos. <code>session=0</code> means this window is older than the variable; open another one.</p></div>
+</li>
+</ol></section>
+
+<section class="checklist-section"><h2>6 · Your smoke folder</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-06-smoke.svg" alt="Diagram: 6 · Your smoke folder — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-sf-make" data-check-id="sf-make" />
+    <span class="check-num">28</span>
+    <span class="check-title">Create the folder every tool will write into</span>
+  </label>
+  <div class="check-detail"><pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"</code></pre>
+  <p>Each tool below writes one uniquely named file here. By the end you'll have four files side by side in Explorer, which is exactly what Monday's gate asks to see.</p>
+  <p>A <strong>smoke test</strong> is the smallest check that proves a thing is genuinely alive. Here it means the agent authenticated, reached a real model, and put a real file on your disk. That last part is the part that counts.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-sf-why" data-check-id="sf-why" />
+    <span class="check-num">29</span>
+    <span class="check-title">Understand why a file on disk is the standard</span>
+  </label>
+  <div class="check-detail"><p>Every one of these tools will happily tell you it created a file it never created. Chat output is a claim; a file in Explorer is evidence.</p>
+  <p>So for each tool: run the command, then open the folder and look. If the file isn't there, the tool did not pass, however confident its reply sounded. You'll use this same distinction on real work all week.</p></div>
+</li>
+</ol></section>
+
+<section class="checklist-section"><h2>7 · Codex — your home for the week</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-07-codex.svg" alt="Diagram: 7 · Codex — your home for the week — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-install" data-check-id="cx-install" />
-    <span class="check-num">16</span>
-    <span class="check-title">Install Codex / ChatGPT Windows app</span>
+    <span class="check-num">30</span>
+    <span class="check-title">Install the Codex command-line tool</span>
   </label>
-  <div class="check-detail"><p>Official Store/OpenAI Windows path for your course date. App launches from Start.</p></div>
+  <div class="check-detail"><p>Codex is OpenAI's coding agent. This installs a native Windows program — no WSL, and no Node needed.</p>
+  <pre><code>powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"</code></pre>
+  <p>If your network blocks that and Node is already installed, this gets you the same tool:</p>
+  <pre><code>npm install -g @openai/codex</code></pre>
+  <p>Use one method or the other, never both — two copies on PATH means you can never be sure which one just ran.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-cx-signin" data-check-id="cx-signin" />
-    <span class="check-num">17</span>
-    <span class="check-title">Sign in with course seat</span>
+    <input type="checkbox" id="ahb-prework-install-cx-verify" data-check-id="cx-verify" />
+    <span class="check-num">31</span>
+    <span class="check-title">New terminal, then verify Codex</span>
   </label>
-  <div class="check-detail"><p>If seats are not ready, install now and return to sign-in later.</p></div>
+  <div class="check-detail"><pre><code>codex --version</code></pre>
+  <p>If you get <em>'codex' is not recognized</em>, close and reopen the terminal once more. If it still fails, the installer couldn't update PATH — check the installer's final lines, which usually print the fix, and note it in your log.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-cx-folder" data-check-id="cx-folder" />
-    <span class="check-num">18</span>
-    <span class="check-title">Create smoke folder</span>
+    <input type="checkbox" id="ahb-prework-install-cx-login" data-check-id="cx-login" />
+    <span class="check-num">32</span>
+    <span class="check-title">Sign Codex in with your API key</span>
   </label>
-  <div class="check-detail"><pre><code>Documents\HarnessBootcamp\prework-smoke</code></pre></div>
+  <div class="check-detail"><p>Read this before running it, because it's the step people get wrong. <strong>Setting <code>OPENAI_API_KEY</code> is not enough on its own for Codex</strong> — the variable only pre-fills its sign-in screen. You hand Codex the key once and it remembers:</p>
+  <pre><code>$env:OPENAI_API_KEY | codex login --with-api-key</code></pre>
+  <p>You want <code>Successfully logged in</code>. The key is piped in rather than typed as an argument so it stays out of your history.</p>
+  <p>Note the flag carefully: it's <code>--with-api-key</code>. An older flag spelled <code>--api-key</code> appears in most guides online and no longer works — it exits with a message pointing back to this form.</p>
+  <p>If the pipe misbehaves, run <code>codex</code> on its own and choose the API key option on the screen it shows, then paste the key.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-cx-native" data-check-id="cx-native" />
-    <span class="check-num">19</span>
-    <span class="check-title">Native Windows agent (no WSL required)</span>
+    <input type="checkbox" id="ahb-prework-install-cx-status" data-check-id="cx-status" />
+    <span class="check-num">33</span>
+    <span class="check-title">Confirm Codex is using the key, not an account</span>
   </label>
-  <div class="check-detail"><p>Prefer Windows-native agent. Log sandbox/approval mode.</p></div>
+  <div class="check-detail"><pre><code>codex login status</code></pre>
+  <p>It should report that you're authenticated with an API key. If it names a ChatGPT account instead, run <code>codex logout</code> and redo the previous step.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cx-lock" data-check-id="cx-lock" />
+    <span class="check-num">34</span>
+    <span class="check-title">Lock Codex to API-key sign-in</span>
+  </label>
+  <div class="check-detail"><p>This stops Codex ever bouncing you to a ChatGPT login screen you can't complete:</p>
+  <pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex" | Out-Null
+Add-Content -Path "$env:USERPROFILE\.codex\config.toml" -Value 'forced_login_method = "api"'</code></pre>
+  <p>That writes one line into <code>%USERPROFILE%\.codex\config.toml</code>. From then on, an accidental ChatGPT login attempt fails politely and tells you to use the key instead.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cx-sandbox" data-check-id="cx-sandbox" />
+    <span class="check-num">35</span>
+    <span class="check-title">Let Codex set up its sandbox</span>
+  </label>
+  <div class="check-detail"><p>Run <code>codex</code> once on its own. On first launch it sets up a <strong>sandbox</strong> — boundaries limiting which files it can change and whether it can reach the network. Approve the elevation prompt when it appears.</p>
+  <p>If your laptop blocks that elevation (you'll see an error mentioning <code>1385</code>), Codex can run with weaker but workable boundaries. Add this to the same <code>config.toml</code>:</p>
+  <pre><code>[windows]
+sandbox = "unelevated"</code></pre>
+  <p>Log which of the two you ended up on. Knowing your own boundaries matters during the week, and it comes up directly on Tuesday.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-write" data-check-id="cx-write" />
-    <span class="check-num">20</span>
-    <span class="check-title">Explorer proof: from-codex.txt</span>
+    <span class="check-num">36</span>
+    <span class="check-title">Write proof: from-codex.txt</span>
   </label>
-  <div class="check-detail"><p>Agent creates the file in prework-smoke. <strong>Pass only if Explorer shows it.</strong></p></div>
+  <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
+codex exec --sandbox workspace-write -a never "Create a file named from-codex.txt containing exactly the text: codex works"
+Get-Content .\from-codex.txt</code></pre>
+  <p>You want <code>codex works</code> printed back and the file visible in Explorer. <code>codex exec</code> runs one instruction without the interactive screen, <code>--sandbox workspace-write</code> lets it write inside this folder, and <code>-a never</code> stops it pausing for approval.</p>
+  <p>If it fails on authentication, the key is the problem rather than the sandbox — go back two steps. <code>codex doctor</code> reports on the whole install if you want a second opinion.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cx-app" data-check-id="cx-app" />
+    <span class="check-num">37</span>
+    <span class="check-title">Optional: add the desktop app</span>
+  </label>
+  <div class="check-detail"><p>If you'd rather work in a window than a terminal, the Codex graphical interface ships inside the <strong>ChatGPT desktop app</strong> for Windows. Search the Microsoft Store for <em>ChatGPT</em> — there's no separate product called "Codex app" to look for, which trips people up.</p>
+  <p>On its signed-out screen choose <strong>Sign in another way</strong>, paste your OpenAI key, and select Continue. Do not sign in with a ChatGPT account.</p>
+  <p>The command-line tool is what the course instructions assume, and it's what you just proved works. Treat the app as a convenience on top rather than a replacement.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>5. OpenCode — required second engine (Grok)</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>8 · OpenCode — your second engine</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-08-opencode.svg" alt="Diagram: 8 · OpenCode — your second engine — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-why" data-check-id="oc-why" />
-    <span class="check-num">21</span>
-    <span class="check-title">Understand why OpenCode is required</span>
+    <span class="check-num">38</span>
+    <span class="check-title">Know what OpenCode is for</span>
   </label>
-  <div class="check-detail"><p>P3 runs the <strong>same frozen brief</strong> on Codex and OpenCode. OpenCode is the course second harness — typically with <strong>Grok</strong> (or a staff-pinned model).</p></div>
+  <div class="check-detail"><p>On Wednesday you'll run the <em>same frozen brief</em> through Codex and through OpenCode, compare what comes back, and decide which you trust. That needs two genuinely different engines, so OpenCode runs on <strong>Grok</strong> via your xAI key while Codex runs on OpenAI.</p>
+  <p>OpenCode is required, not optional. Without it, Wednesday has nothing to compare.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-oc-version" data-check-id="oc-version" />
+    <span class="check-num">39</span>
+    <span class="check-title">Get the version staff pinned for your cohort</span>
+  </label>
+  <div class="check-detail"><p>Check the pre-work channel for the exact OpenCode version to install, and use that rather than whatever is newest.</p>
+  <p>OpenCode ships fast and its Windows support sometimes regresses between releases — recent versions have had reports of the agent's file-writing tools failing on Windows specifically. Staff test a build and pin it so the whole room is on the same known-good version.</p>
+  <p>If no pin has been posted yet, install the current version, run the write proof below, and report what happened. A failure here is useful information for the cohort rather than a fault in your machine.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-install" data-check-id="oc-install" />
-    <span class="check-num">22</span>
-    <span class="check-title">Install OpenCode (staff-pinned method)</span>
+    <span class="check-num">40</span>
+    <span class="check-title">Install OpenCode</span>
   </label>
-  <div class="check-detail"><p>Use the <strong>cohort-pinned</strong> install link/one-liner from staff (commands change). Upstream starting point: <a href="https://opencode.ai" target="_blank" rel="noopener">opencode.ai</a> and current Windows docs.</p><p>Record in log: method · version (<code>opencode --version</code> or About).</p></div>
+  <div class="check-detail"><pre><code>winget install --id SST.opencode --exact --accept-package-agreements --accept-source-agreements</code></pre>
+  <p>If winget doesn't have it, and Node is installed:</p>
+  <pre><code>npm install -g opencode-ai</code></pre>
+  <p><strong>Don't use the <code>curl</code> install command from OpenCode's website.</strong> That script is written for Mac and Linux shells and can't run on plain Windows PowerShell. There's no PowerShell version of it published, so the equivalent address just returns an error page.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-oc-provider" data-check-id="oc-provider" />
-    <span class="check-num">23</span>
-    <span class="check-title">Configure Grok (xAI) or staff-pinned provider</span>
+    <input type="checkbox" id="ahb-prework-install-oc-verify" data-check-id="oc-verify" />
+    <span class="check-num">41</span>
+    <span class="check-title">New terminal, then verify OpenCode</span>
   </label>
-  <div class="check-detail"><p>In OpenCode provider/model settings:</p><ol><li>Add Grok / xAI with the key or seat staff issued <em>or</em> the exact provider staff name for your cohort.</li><li>Select that model as your class default.</li></ol><p>Do not commit API keys into git.</p></div>
+  <div class="check-detail"><pre><code>opencode --version</code></pre>
+  <p>Record the version in your log. Monday's gate asks for it, because knowing exactly which build you're on is what makes Wednesday's comparison mean anything.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-oc-project" data-check-id="oc-project" />
-    <span class="check-num">24</span>
-    <span class="check-title">Open prework-smoke as the project folder</span>
+    <input type="checkbox" id="ahb-prework-install-oc-models" data-check-id="oc-models" />
+    <span class="check-num">42</span>
+    <span class="check-title">Confirm OpenCode sees your xAI key</span>
   </label>
-  <div class="check-detail"><p>Same folder as Codex smoke tests.</p></div>
+  <div class="check-detail"><p>OpenCode picks up <code>XAI_API_KEY</code> from your environment on its own — there's no login step.</p>
+  <pre><code>opencode models xai --refresh</code></pre>
+  <p>You should get a list of Grok models in <code>xai/…</code> form. Note the one staff pinned in your log.</p>
+  <p>An empty list means this window can't see the key. Open a new terminal and try again; if it's still empty, re-check step 27.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-write" data-check-id="oc-write" />
-    <span class="check-num">25</span>
-    <span class="check-title">Explorer proof: from-opencode.txt</span>
+    <span class="check-num">43</span>
+    <span class="check-title">Write proof: from-opencode.txt</span>
   </label>
-  <div class="check-detail"><p>Run a trivial task that creates <code>from-opencode.txt</code>. <strong>File must exist on disk.</strong></p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-oc-briefish" data-check-id="oc-briefish" />
-    <span class="check-num">26</span>
-    <span class="check-title">Optional confidence: one short extract task</span>
-  </label>
-  <div class="check-detail"><p>Paste a tiny paragraph and ask for a three-bullet summary. Confirms model path works before Monday.</p></div>
+  <div class="check-detail"><p>Substitute the model your cohort pinned for <code>MODEL</code>:</p>
+  <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
+opencode run -m xai/MODEL "Create a file named from-opencode.txt in the current directory whose only contents are the text: opencode works"
+Get-Content .\from-opencode.txt</code></pre>
+  <p>The file must exist in Explorer. If OpenCode reports success but the file isn't there, that's the Windows regression mentioned above — record the version and exact error, then tell staff rather than spending an hour on it alone.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>6. Pi (bare loop)</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>9 · Pi — the bare loop</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-09-pi.svg" alt="Diagram: 9 · Pi — the bare loop — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-pi-docs" data-check-id="pi-docs" />
-    <span class="check-num">27</span>
-    <span class="check-title">Skim Pi Windows docs (bash required)</span>
+    <input type="checkbox" id="ahb-prework-install-pi-why" data-check-id="pi-why" />
+    <span class="check-num">44</span>
+    <span class="check-title">Know what Pi is for</span>
   </label>
-  <div class="check-detail"><p><a href="https://pi.dev/docs/latest/windows" target="_blank" rel="noopener">pi.dev/docs/latest/windows</a> — Git Bash is the usual shell.</p></div>
+  <div class="check-detail"><p>Pi is a deliberately thin agent: it reads, writes, and edits files and runs shell commands, and that's close to all of it. You use it to watch a harness loop with nothing hidden — no sandbox, no approval prompts, no polish between you and what the model actually does.</p>
+  <p>That bareness is also a caution. Pi asks no permission before acting, so keep it pointed at your smoke folder rather than anywhere that matters.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-install" data-check-id="pi-install" />
-    <span class="check-num">28</span>
+    <span class="check-num">45</span>
     <span class="check-title">Install Pi</span>
   </label>
-  <div class="check-detail"><p>Follow current official Windows install. Log method.</p></div>
+  <div class="check-detail"><pre><code>powershell -c "irm https://pi.dev/install.ps1 | iex"</code></pre>
+  <p>This installer asks questions, so run it in a normal terminal window and stay with it. If it offers to install its own copy of Node, answer <strong>Y</strong> — that's it making sure it has a new enough version, and it won't disturb the Node you already installed.</p>
+  <p>Wait for <code>Pi was installed successfully</code>.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-pi-bash" data-check-id="pi-bash" />
-    <span class="check-num">29</span>
-    <span class="check-title">Point at Git Bash if needed</span>
+    <input type="checkbox" id="ahb-prework-install-pi-verify" data-check-id="pi-verify" />
+    <span class="check-num">46</span>
+    <span class="check-title">New terminal, then verify Pi</span>
   </label>
-  <div class="check-detail"><pre><code>C:\Program Files\Git\bin\bash.exe</code></pre></div>
+  <div class="check-detail"><pre><code>pi --version</code></pre></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-write" data-check-id="pi-write" />
-    <span class="check-num">30</span>
-    <span class="check-title">Prove Pi runs; prefer from-pi.txt</span>
+    <span class="check-num">47</span>
+    <span class="check-title">Write proof: from-pi.txt</span>
   </label>
-  <div class="check-detail"><p>Trivial command or file create in prework-smoke.</p></div>
+  <div class="check-detail"><p>Pi can see all three of your keys, so you <strong>must</strong> name the model. Left to itself it picks one you didn't expect, and bills that provider:</p>
+  <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
+pi -p --model openai/MODEL "Create a file named from-pi.txt in the current directory containing exactly: pi works"
+Get-Content .\from-pi.txt</code></pre>
+  <p>Use the OpenAI model staff pinned, or run <code>pi --list-models</code> to see what your keys can reach. The <code>-p</code> flag runs one instruction and exits instead of opening the interactive screen.</p>
+  <p>There's no <code>-m</code> shorthand despite what several guides claim — it has to be <code>--model</code>.</p></div>
 </li>
-</ol></section>
-<section class="checklist-section"><h2>7. goose</h2><ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-gs-install" data-check-id="gs-install" />
-    <span class="check-num">31</span>
-    <span class="check-title">Install goose (desktop and/or CLI)</span>
+    <input type="checkbox" id="ahb-prework-install-pi-bash" data-check-id="pi-bash" />
+    <span class="check-num">48</span>
+    <span class="check-title">Prove Pi can reach a shell</span>
   </label>
-  <div class="check-detail"><p>Current goose Windows docs. Log desktop vs CLI.</p></div>
+  <div class="check-detail"><p>Pi needs Git Bash to run shell commands, and it only looks for it at the moment it first needs one. A missing shell therefore fails <em>mid-exercise</em> rather than at setup, so force the problem out now:</p>
+  <pre><code>pi -p --model openai/MODEL "Run the shell command 'echo bash-ok > bash-check.txt' and tell me the result"
+Get-Content .\bash-check.txt</code></pre>
+  <p>If it reports no bash shell found, point Pi at the Git Bash path you recorded in step 17 by creating <code>%USERPROFILE%\.pi\agent\settings.json</code> containing:</p>
+  <pre><code>{ "shellPath": "C:\\Program Files\\Git\\bin\\bash.exe" }</code></pre>
+  <p>The doubled backslashes are required — that file format treats a single backslash as an escape character.</p></div>
+</li>
+</ol></section>
+
+<section class="checklist-section"><h2>10 · goose — bounded, repeatable work</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-10-goose.svg" alt="Diagram: 10 · goose — bounded, repeatable work — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-gs-nowinget" data-check-id="gs-nowinget" />
+    <span class="check-num">49</span>
+    <span class="check-title">Do not install goose with winget</span>
+  </label>
+  <div class="check-detail"><p>Read this before the next step. A winget package named <em>goose</em> exists and is a completely unrelated database tool that happens to share the name. It installs cleanly, reports success, and is the wrong program.</p>
+  <p>The goose you want is an AI agent from the Agentic AI Foundation, and it has no winget package. Use the installer below.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-gs-keyring" data-check-id="gs-keyring" />
+    <span class="check-num">50</span>
+    <span class="check-title">Turn off the Windows keyring first</span>
+  </label>
+  <div class="check-detail"><p>Do this <strong>before</strong> installing. By default goose stores secrets in Windows Credential Manager, which fails often enough on managed laptops that its own documentation tells you to decline it. Setting this first means the installer never tries.</p>
+  <pre><code>[Environment]::SetEnvironmentVariable('GOOSE_DISABLE_KEYRING','1','User')
+$env:GOOSE_DISABLE_KEYRING = '1'</code></pre>
+  <p>One quirk worth knowing: goose only checks whether this variable <em>exists</em>, not what it contains. Setting it to <code>0</code> or <code>false</code> also disables the keyring. To turn it back on you have to delete the variable entirely.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-gs-provider" data-check-id="gs-provider" />
-    <span class="check-num">32</span>
-    <span class="check-title">Configure course-approved provider</span>
+    <span class="check-num">51</span>
+    <span class="check-title">Tell goose which provider and model to use</span>
   </label>
-  <div class="check-detail"><p>Keyring issues: env var / disable keyring per goose Windows notes.</p></div>
+  <div class="check-detail"><p>goose reads your API keys from the environment, but it needs telling which provider to reach for. Use the model staff pinned in place of <code>MODEL</code>:</p>
+  <pre><code>[Environment]::SetEnvironmentVariable('GOOSE_PROVIDER','openai','User')
+[Environment]::SetEnvironmentVariable('GOOSE_MODEL','MODEL','User')
+$env:GOOSE_PROVIDER = 'openai'
+$env:GOOSE_MODEL = 'MODEL'</code></pre>
+  <p>Setting these means you never have to walk goose's provider list, which is worth avoiding: it mixes API-key providers together with subscription ones like ChatGPT Codex, GitHub Copilot and Cursor Agent that need consumer logins you don't have.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-gs-sample" data-check-id="gs-sample" />
-    <span class="check-num">33</span>
-    <span class="check-title">One successful sample run + from-goose.txt if possible</span>
+    <input type="checkbox" id="ahb-prework-install-gs-install" data-check-id="gs-install" />
+    <span class="check-num">52</span>
+    <span class="check-title">Install the goose command-line tool</span>
   </label>
-  <div class="check-detail"><p>Prefer real goose write into smoke folder.</p></div>
+  <div class="check-detail"><pre><code>$env:CONFIGURE = "false"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/goose/main/download_cli.ps1" -OutFile "download_cli.ps1"
+.\download_cli.ps1</code></pre>
+  <p>If PowerShell refuses to run the script, use this form instead:</p>
+  <pre><code>powershell -ExecutionPolicy ByPass -File ".\download_cli.ps1"</code></pre>
+  <p>And if execution policy is locked by your IT department so neither form works, goose publishes a Git Bash path — you installed Git Bash back in step 15. Open <strong>Git Bash</strong> from the Start menu and run:</p>
+  <pre><code>curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash</code></pre>
+  <p>Note the address in all three. The project moved to <code>aaif-goose</code>, and older instructions pointing at <code>block/goose</code> will either fail or fetch a stale build. Current documentation lives at <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-gs-path" data-check-id="gs-path" />
+    <span class="check-num">53</span>
+    <span class="check-title">Add goose to your PATH</span>
+  </label>
+  <div class="check-detail"><p>The installer drops goose into <code>%USERPROFILE%\.local\bin</code> but doesn't add that folder to PATH — it only prints a warning that's easy to scroll past.</p>
+  <pre><code>$userPath = [Environment]::GetEnvironmentVariable('PATH','User')
+[Environment]::SetEnvironmentVariable('PATH', "$userPath;$env:USERPROFILE\.local\bin", 'User')</code></pre>
+  <p>Then close and reopen the terminal.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-gs-verify" data-check-id="gs-verify" />
+    <span class="check-num">54</span>
+    <span class="check-title">Verify goose and check what it sees</span>
+  </label>
+  <div class="check-detail"><pre><code>goose --version
+goose info -v</code></pre>
+  <p>The second command shows the provider, model, and environment variables goose is actually using. Confirm they match what you set two steps ago.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-gs-write" data-check-id="gs-write" />
+    <span class="check-num">55</span>
+    <span class="check-title">Write proof: from-goose.txt</span>
+  </label>
+  <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
+$env:GOOSE_MODE = "auto"
+goose run --no-session -t "Create a file named from-goose.txt in the current directory containing exactly the line: goose works"
+Get-Content .\from-goose.txt</code></pre>
+  <p><code>GOOSE_MODE=auto</code> stops it asking permission for each action, and <code>--no-session</code> keeps it from leaving a session file behind.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>8. Obsidian + n8n</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>11 · Obsidian</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-11-obsidian.svg" alt="Diagram: 11 · Obsidian — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ob-install" data-check-id="ob-install" />
-    <span class="check-num">34</span>
-    <span class="check-title">Install Obsidian and open a vault</span>
+    <span class="check-num">56</span>
+    <span class="check-title">Install Obsidian</span>
   </label>
-  <div class="check-detail"><p>Official installer. Any local vault proves launch.</p></div>
+  <div class="check-detail"><p>Obsidian reads and writes ordinary Markdown files in a folder. On Wednesday you'll point an agent at that folder and build a knowledge system with citations you can walk.</p>
+  <pre><code>winget install -e --id Obsidian.Obsidian --scope user --accept-package-agreements --accept-source-agreements</code></pre>
+  <p>No account is needed and none should be created. Obsidian works fully offline; its paid Sync and Publish services are the only parts that ever ask you to sign in, and this course uses neither.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-ob-vault" data-check-id="ob-vault" />
+    <span class="check-num">57</span>
+    <span class="check-title">Create a vault and confirm it opens</span>
+  </label>
+  <div class="check-detail"><p>A <strong>vault</strong> is just a folder Obsidian has adopted. Make one first:</p>
+  <pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Documents\HarnessBootcamp\vault"</code></pre>
+  <p>Launch Obsidian. On the opening screen choose <strong>Open folder as vault</strong>, select that folder, and click Open. You'll land in an empty vault with no login anywhere.</p>
+  <p>Confirm it took hold — Obsidian writes a hidden settings folder into the vault:</p>
+  <pre><code>Get-ChildItem -Force "$env:USERPROFILE\Documents\HarnessBootcamp\vault"</code></pre>
+  <p>You should see <code>.obsidian</code> listed. The <code>-Force</code> is what reveals it, since Explorer hides folders whose names begin with a dot.</p></div>
+</li>
+</ol></section>
+
+<section class="checklist-section"><h2>12 · n8n</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-12-n8n.svg" alt="Diagram: 12 · n8n — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-n8n-node" data-check-id="n8n-node" />
+    <span class="check-num">58</span>
+    <span class="check-title">Re-check your Node version first</span>
+  </label>
+  <div class="check-detail"><pre><code>node -v</code></pre>
+  <p>n8n refuses to start on Node older than 22.22, and it isn't tested above 24. It exits immediately with a version message rather than failing subtly, which is at least honest. If you're outside that range, go back to step 18 before installing.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-install" data-check-id="n8n-install" />
-    <span class="check-num">35</span>
-    <span class="check-title">Install n8n (staff-approved method)</span>
+    <span class="check-num">59</span>
+    <span class="check-title">Install n8n</span>
   </label>
-  <div class="check-detail"><p>npm global or other cohort path. Example only if staff agree: <code>npm install -g n8n</code>.</p></div>
+  <div class="check-detail"><pre><code>npm install n8n -g</code></pre>
+  <p>This one is slow — often several minutes, with long silent stretches while antivirus scans each extracted file. That's normal. Let it finish rather than killing it, because a half-written global install is genuinely annoying to clean up.</p>
+  <p>There's no n8n desktop app any more; running it from the command line is the current path.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-n8n-ui" data-check-id="n8n-ui" />
-    <span class="check-num">36</span>
-    <span class="check-title">Start n8n once; UI loads; know how to stop</span>
+    <input type="checkbox" id="ahb-prework-install-n8n-start" data-check-id="n8n-start" />
+    <span class="check-num">60</span>
+    <span class="check-title">Start n8n once and open the editor</span>
   </label>
-  <div class="check-detail"><p>Open localhost URL it prints. Stop with Ctrl+C or app quit.</p></div>
+  <div class="check-detail"><pre><code>n8n start</code></pre>
+  <p>Leave that window open — it <em>is</em> the running server. Then browse to <a href="http://localhost:5678" target="_blank" rel="noopener">http://localhost:5678</a>.</p>
+  <p>If Windows Firewall prompts about Node, you can decline safely. Nothing here needs to reach beyond your own machine.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-n8n-owner" data-check-id="n8n-owner" />
+    <span class="check-num">61</span>
+    <span class="check-title">Create the local owner account, and skip the licence offer</span>
+  </label>
+  <div class="check-detail"><p>n8n shows what looks like a signup screen asking for an email and password. <strong>It is not a subscription and not a login to anything.</strong> It creates a record in a database file on your own laptop, nothing is transmitted, and no verification email is sent. It also can't be skipped.</p>
+  <p>Use any email address and a password of at least eight characters with a number and a capital letter. Write both down — you'll need them again on Thursday.</p>
+  <p>Afterwards it offers to email you a free licence key that unlocks a few extra features. <strong>Skip it.</strong> The course uses none of them, and it's the only step that would contact n8n's servers at all.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-n8n-stop" data-check-id="n8n-stop" />
+    <span class="check-num">62</span>
+    <span class="check-title">Learn how to stop it</span>
+  </label>
+  <div class="check-detail"><p>Press <kbd>Ctrl</kbd>+<kbd>C</kbd> in the window running n8n. The page at localhost:5678 stops answering, and your work stays saved on disk for next time.</p>
+  <p>You don't need to build anything today — Thursday covers that, including pasting your OpenAI key into an n8n credential. Getting it to start and stop once is the whole task.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>9. Course repo / operator pack</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>13 · Course repo and operator pack</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-13-repo.svg" alt="Diagram: 13 · Course repo and operator pack — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-get" data-check-id="rp-get" />
-    <span class="check-num">37</span>
-    <span class="check-title">Clone or download AI_Harness_Bootcamp</span>
+    <span class="check-num">63</span>
+    <span class="check-title">Clone the course repository</span>
   </label>
-  <div class="check-detail"><pre><code>git clone https://github.com/TheHolofex/AI_Harness_Bootcamp.git
-cd AI_Harness_Bootcamp</code></pre></div>
+  <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp"
+git clone https://github.com/TheHolofex/AI_Harness_Bootcamp.git
+cd AI_Harness_Bootcamp</code></pre>
+  <p>This holds the exercises, the mission data you'll work on Monday, and the operator templates.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-operator" data-check-id="rp-operator" />
-    <span class="check-num">38</span>
-    <span class="check-title">Copy operator/ into your Codex project</span>
+    <span class="check-num">64</span>
+    <span class="check-title">Copy the operator templates into your working project</span>
   </label>
-  <div class="check-detail"><p>Brief, log, pass bars, adversarial, measurement, transfer templates.</p></div>
+  <div class="check-detail"><p>Copy the <code>operator/</code> folder into whichever project folder you'll work in this week. It holds the Direction Brief and Operator Log you fill in before and after every block, plus the pass bars, adversarial review prompt, measurement spine, and transfer file.</p>
+  <p>These are the instruments of the work rather than paperwork about it. Keeping them where you work, instead of in a separate download, is what makes them get used.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-site" data-check-id="rp-site" />
-    <span class="check-num">39</span>
-    <span class="check-title">Skim local course site</span>
+    <span class="check-num">65</span>
+    <span class="check-title">Run the course site locally</span>
   </label>
-  <div class="check-detail"><pre><code>python3 -m http.server 8080</code></pre><p>Open <code>http://localhost:8080/site/</code>. Note twin-engine: Codex + OpenCode.</p></div>
+  <div class="check-detail"><p>From the repository root:</p>
+  <pre><code>python -m http.server 8080</code></pre>
+  <p>Open <a href="http://localhost:8080/site/" target="_blank" rel="noopener">http://localhost:8080/site/</a>. Stop it with <kbd>Ctrl</kbd>+<kbd>C</kbd> when you're done.</p>
+  <p>Everything for the week lives here, and it works without a network — which matters more than it sounds like it should.</p></div>
 </li>
-</ol></section>
-<section class="checklist-section"><h2>10. Optional — Claude Code (NOT required)</h2><ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-opt-claude" data-check-id="opt-claude" />
-    <span class="check-num">40</span>
-    <span class="check-title">Skip or install Claude Code as third engine only</span>
+    <input type="checkbox" id="ahb-prework-install-rp-gitignore" data-check-id="rp-gitignore" />
+    <span class="check-num">66</span>
+    <span class="check-title">Protect your keys before your first commit</span>
   </label>
-  <div class="check-detail"><p><strong>Optional.</strong> Desktop Code tab or CLI. Write <code>from-claude-optional.txt</code> if you bother.</p><p>Skipping Claude does <strong>not</strong> block GREEN. OpenCode remains the required second engine.</p></div>
+  <div class="check-detail"><p>In any folder where you'll commit work this week, make sure a <code>.gitignore</code> file exists containing at least:</p>
+  <pre><code>.env
+.env.*
+*.key
+auth.json</code></pre>
+  <p>Then run <code>git status</code> and confirm none of those appear in the list. A committed key is the most common way one leaks, and it's the easiest to prevent.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>11. Health check gate</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>14 · Claude Code — optional third engine</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-14-claude-optional.svg" alt="Diagram: 14 · Claude Code — optional third engine — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cc-optional" data-check-id="cc-optional" />
+    <span class="check-num">67</span>
+    <span class="check-title">Decide whether to install it</span>
+  </label>
+  <div class="check-detail"><p><strong>Optional.</strong> Skipping it doesn't affect your gate — OpenCode is the required second engine, and Wednesday's comparison runs on Codex and OpenCode.</p>
+  <p>You have an Anthropic key, so if you'd like a third opinion available during the week it's about five minutes. If you're short on time, skip it and come back later.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-cc-install" data-check-id="cc-install" />
+    <span class="check-num">68</span>
+    <span class="check-title">Install Claude Code and prove it writes</span>
+  </label>
+  <div class="check-detail"><pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
+  <p>Open a new terminal and check <code>claude --version</code>. If the command isn't found, add its folder to PATH:</p>
+  <pre><code>$userPath = [Environment]::GetEnvironmentVariable('PATH','User')
+[Environment]::SetEnvironmentVariable('PATH', "$userPath;$env:USERPROFILE\.local\bin", 'User')</code></pre>
+  <p>It reads <code>ANTHROPIC_API_KEY</code> on its own and asks you to approve the key once. Then:</p>
+  <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
+claude --bare -p "Use the Write tool to create from-claude-optional.txt containing exactly: claude works" --allowedTools "Write"
+Get-Content .\from-claude-optional.txt</code></pre>
+  <p>Use the command-line tool, not the Claude desktop app. The desktop app's Code tab needs a subscription and won't accept your key.</p></div>
+</li>
+</ol></section>
+
+<section class="checklist-section"><h2>15 · Health check gate</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-15-health-gate.svg" alt="Diagram: 15 · Health check gate — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-g-four" data-check-id="g-four" />
+    <span class="check-num">69</span>
+    <span class="check-title">Confirm all four required files exist together</span>
+  </label>
+  <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"</code></pre>
+  <p>You want <code>from-codex.txt</code>, <code>from-opencode.txt</code>, <code>from-pi.txt</code>, and <code>from-goose.txt</code> in one listing. Open the folder in Explorer and look at it too — that's the view you'll show on Monday.</p></div>
+</li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-g-health" data-check-id="g-health" />
-    <span class="check-num">41</span>
-    <span class="check-title">Complete Health Check checklist end-to-end</span>
+    <span class="check-num">70</span>
+    <span class="check-title">Work the health check end to end</span>
   </label>
-  <div class="check-detail"><p>Open <a href="prework-health.html"><strong>Health Check checklist</strong></a>. GREEN or YELLOW with documented workaround.</p></div>
+  <div class="check-detail"><p>Open the <a href="prework-health.html"><strong>Health check gate</strong></a> and work it top to bottom. It re-tests everything independently and ends with you declaring a colour.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-g-proof" data-check-id="g-proof" />
-    <span class="check-num">42</span>
-    <span class="check-title">Pack proof for Monday</span>
+    <input type="checkbox" id="ahb-prework-install-g-pack" data-check-id="g-pack" />
+    <span class="check-num">71</span>
+    <span class="check-title">Pack for Monday</span>
   </label>
-  <div class="check-detail"><p>Four required files in Explorer, OpenCode version/model, setup log, gate color.</p></div>
+  <div class="check-detail"><p>Bring the laptop, the four files, your setup log with at least one real failure and fix in it, your OpenCode version, and your honest gate colour.</p>
+  <p>Arriving YELLOW with a clear written account of what's unresolved is a fine place to start. Arriving GREEN on an untested claim is worse, and it surfaces within the hour.</p></div>
 </li>
 </ol></section>
-<section class="checklist-section"><h2>Rescue paths</h2><ol class="checklist">
+
+<section class="checklist-section"><h2>When something breaks</h2>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-when-something-breaks.svg" alt="Diagram: When something breaks — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-r-oc" data-check-id="r-oc" />
-    <span class="check-num">43</span>
-    <span class="check-title">OpenCode will not auth / no model</span>
+    <input type="checkbox" id="ahb-prework-install-r-notfound" data-check-id="r-notfound" />
+    <span class="check-num">72</span>
+    <span class="check-title">"is not recognized" after a successful install</span>
   </label>
-  <div class="check-detail"><p>Re-check Grok/staff key; provider docs; staff pin; network/proxy. Log exact error.</p></div>
+  <div class="check-detail"><p>Close every terminal and open a new one. That's the answer roughly nine times in ten, and it applies to every tool here.</p>
+  <p>If a second new window doesn't fix it, the installer didn't update PATH. Find the program's folder — usually <code>%USERPROFILE%\.local\bin</code> — and add it:</p>
+  <pre><code>$userPath = [Environment]::GetEnvironmentVariable('PATH','User')
+[Environment]::SetEnvironmentVariable('PATH', "$userPath;$env:USERPROFILE\.local\bin", 'User')</code></pre></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-r-winget" data-check-id="r-winget" />
-    <span class="check-num">44</span>
-    <span class="check-title">winget missing</span>
+    <input type="checkbox" id="ahb-prework-install-r-scripts" data-check-id="r-scripts" />
+    <span class="check-num">73</span>
+    <span class="check-title">"running scripts is disabled on this system"</span>
   </label>
-  <div class="check-detail"><p>Update App Installer or use official .exe installers.</p></div>
+  <div class="check-detail"><p>That's the execution policy from step 11. Re-run it, then check <code>Get-ExecutionPolicy -List</code>.</p>
+  <p>If <code>MachinePolicy</code> or <code>UserPolicy</code> shows anything but <code>Undefined</code>, IT controls this centrally and you can't override it — ticket them with the exact output. As a stopgap for npm specifically, the same commands work from <code>cmd.exe</code>, which ignores this policy: <code>cmd /c npm install n8n -g</code>.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-r-gpo" data-check-id="r-gpo" />
-    <span class="check-num">45</span>
-    <span class="check-title">Execution policy GPO</span>
+    <input type="checkbox" id="ahb-prework-install-r-auth" data-check-id="r-auth" />
+    <span class="check-num">74</span>
+    <span class="check-title">A tool won't authenticate</span>
   </label>
-  <div class="check-detail"><p>Ticket early with error text.</p></div>
+  <div class="check-detail"><p>Work through these in order. Is the key set in <em>this</em> window (step 27)? Does it start with the right prefix for that provider? Is it the right key for that tool — <code>XAI_API_KEY</code> for OpenCode, <code>OPENAI_API_KEY</code> for Codex?</p>
+  <p>For Codex specifically, the variable alone isn't enough; it needs <code>codex login --with-api-key</code>. Check with <code>codex login status</code>.</p>
+  <p>If a tool worked yesterday and fails today with a <strong>429</strong> or a quota message, the key has hit its spending cap. That's a staff fix rather than a reinstall — message them with which key and what you were running.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-r-sandbox" data-check-id="r-sandbox" />
-    <span class="check-num">46</span>
-    <span class="check-title">Codex sandbox elevated fail</span>
+    <input type="checkbox" id="ahb-prework-install-r-noclaim" data-check-id="r-noclaim" />
+    <span class="check-num">75</span>
+    <span class="check-title">The tool says it wrote a file that isn't there</span>
   </label>
-  <div class="check-detail"><p>Try unelevated; still prove write.</p></div>
+  <div class="check-detail"><p>Believe the folder, not the chat. Check you're where you think you are with <code>Get-Location</code>, and list it with <code>Get-ChildItem</code>.</p>
+  <p>If the tool insists and the file genuinely isn't on disk, that's a real defect worth reporting — it has been a live issue on OpenCode for Windows. Record the tool, its version, and the exact wording, and tell staff.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-r-pi" data-check-id="r-pi" />
-    <span class="check-num">47</span>
-    <span class="check-title">Pi missing bash</span>
+    <input type="checkbox" id="ahb-prework-install-r-stuck" data-check-id="r-stuck" />
+    <span class="check-num">76</span>
+    <span class="check-title">You've been stuck on one step for 30 minutes</span>
   </label>
-  <div class="check-detail"><p>Set shellPath to Git bash.exe.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-r-goose" data-check-id="r-goose" />
-    <span class="check-num">48</span>
-    <span class="check-title">goose keyring</span>
-  </label>
-  <div class="check-detail"><p>Env var / disable keyring per goose Windows notes.</p></div>
+  <div class="check-detail"><p>Stop and post in the pre-work channel with the step number, the exact error text, and what you've already tried. Move on to the next section while you wait — most of these are independent, so one blocked tool doesn't block the rest.</p>
+  <p>A documented blocker you brought to staff on Saturday is a small thing. The same blocker discovered Monday at nine is not.</p></div>
 </li>
 </ol></section>
 </form>
-<p class="btn-row"><a class="btn" href="prework-health.html">Continue to Health Check</a> <a class="btn btn-secondary" href="../prework.html">Hub</a></p>
-<div class="callout"><strong>Identity lock</strong> You can rebuild this chair. A recorded failure is evidence, not shame.</div>
+<p class="btn-row"><a class="btn" href="prework-health.html">Continue to health check</a> <a class="btn btn-secondary" href="../keys.html">Keys reference</a> <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a></p>
+<div class="callout"><strong>What you actually built</strong>
+Not a tidy install — a chair you can rebuild. You know where each tool keeps its credentials, what its boundaries are, and how it fails. That knowledge is the part you carry to work, and a recorded failure belongs to it rather than counting against it.</div>
   </main>
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <div>AI Harness Bootcamp · Pre-work · Codex + OpenCode</div>
+      <div>AI Harness Bootcamp · Pre-work · Codex + OpenCode + Pi + goose</div>
       <div>inquiries@starzl.com · starzl.com</div>
     </div>
   </footer>
-  <script src="../js/course.js"></script>
   <script src="../js/nav.js"></script>
+  <script src="../js/course.js"></script>
   <script src="../js/checklist.js"></script>
 </body>
 </html>
