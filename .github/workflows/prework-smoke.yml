@@ -1,0 +1,70 @@
+name: prework-smoke
+
+# Manual only. Windows runners bill at 2x, so this never fires on push.
+#
+# A CI runner is NOT a student laptop: Git, Node and Python arrive preinstalled,
+# there is no GUI, and no API keys are present. This run proves the harness
+# itself works and catches Windows-specific breakage in the checks; it does not
+# replace row B1 of lead/COHORT_PIN.md, which is the candidate cohort build.
+
+on:
+  workflow_dispatch:
+    inputs:
+      install_opencode:
+        description: "npm install -g opencode-ai first (mirrors INSTALL_GUIDE section 8 fallback)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Runner facts
+        shell: pwsh
+        run: |
+          "OS       : $([System.Environment]::OSVersion.VersionString)"
+          "Arch     : $env:PROCESSOR_ARCHITECTURE"
+          "PS       : $($PSVersionTable.PSVersion)"
+          "Image    : $env:ImageVersion"
+
+      - name: Install OpenCode from the npm channel
+        if: ${{ inputs.install_opencode }}
+        shell: pwsh
+        run: |
+          npm install -g opencode-ai
+          # npm's global bin is not on PATH for later steps by default
+          $prefix = (npm prefix -g).Trim()
+          "$prefix" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Run prework smoke
+        shell: pwsh
+        run: |
+          powershell -ExecutionPolicy Bypass -File .github\scripts\prework-verify.ps1 `
+            -ResultsPath "$env:GITHUB_WORKSPACE\prework-verify-results.md"
+          exit $LASTEXITCODE
+
+      - name: Publish results to the run summary
+        if: always()
+        shell: pwsh
+        run: |
+          $p = "$env:GITHUB_WORKSPACE\prework-verify-results.md"
+          if (Test-Path $p) {
+            Get-Content $p -Raw | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
+          } else {
+            "prework-verify-results.md was not written." | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
+          }
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prework-verify-results
+          path: prework-verify-results.md
+          if-no-files-found: warn
