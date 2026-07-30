@@ -90,11 +90,13 @@
     ];
 
     function dropdown(id, label, items, groupKeys) {
-      var open = groupKeys.indexOf(current) !== -1;
-      var btnCurrent = open ? ' aria-current="true"' : "";
-      var html = '<div class="nav-drop' + (open ? " is-active" : "") + '" data-nav-drop>';
-      html += '<button type="button" class="nav-drop-btn" aria-expanded="' + (open ? "true" : "false") + '" aria-controls="' + id + '"' + btnCurrent + ">" + label + " <span class=\"caret\" aria-hidden=\"true\">▾</span></button>";
-      html += '<div class="nav-drop-panel" id="' + id + '" hidden>';
+      var active = groupKeys.indexOf(current) !== -1;
+      var html = '<div class="nav-drop' + (active ? " is-active" : "") + '" data-nav-drop>';
+      html += '<button type="button" class="nav-drop-btn"';
+      html += ' aria-expanded="false" aria-controls="' + id + '">';
+      html += label + '<span class="caret" aria-hidden="true"></span></button>';
+      html += '<div class="nav-drop-panel" id="' + id + '" role="group"';
+      html += ' aria-label="' + label + ' links">';
       for (var i = 0; i < items.length; i++) {
         var it = items[i];
         html += link(it[1], it[2], it[0], current, "nav-drop-link");
@@ -118,33 +120,88 @@
   }
 
   function wireDropdowns(root) {
-    var drops = root.querySelectorAll("[data-nav-drop]");
+    var drops = Array.prototype.slice.call(
+      root.querySelectorAll("[data-nav-drop]")
+    );
+
+    function buttonFor(drop) {
+      return drop.querySelector(".nav-drop-btn");
+    }
+
+    function closeDrop(drop) {
+      var btn = buttonFor(drop);
+      drop.classList.remove("is-open");
+      drop.removeAttribute("data-pinned");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+    }
+
+    function closeAll(except) {
+      drops.forEach(function (drop) {
+        if (drop !== except) closeDrop(drop);
+      });
+    }
+
+    function openDrop(drop, pinned) {
+      var btn = buttonFor(drop);
+      closeAll(drop);
+      drop.classList.add("is-open");
+      if (pinned) drop.setAttribute("data-pinned", "true");
+      if (btn) btn.setAttribute("aria-expanded", "true");
+    }
+
     drops.forEach(function (drop) {
-      var btn = drop.querySelector(".nav-drop-btn");
+      var btn = buttonFor(drop);
       var panel = drop.querySelector(".nav-drop-panel");
       if (!btn || !panel) return;
-      // show active section panel state via CSS; keep closed until click/hover
-      panel.hidden = false; // use CSS visibility; remove hidden for hover UX
-      btn.addEventListener("click", function (e) {
-        e.stopPropagation();
-        var open = drop.classList.contains("is-open");
-        root.querySelectorAll("[data-nav-drop]").forEach(function (d) {
-          d.classList.remove("is-open");
-          var b = d.querySelector(".nav-drop-btn");
-          if (b) b.setAttribute("aria-expanded", "false");
-        });
-        if (!open) {
-          drop.classList.add("is-open");
-          btn.setAttribute("aria-expanded", "true");
+
+      btn.addEventListener("click", function (event) {
+        event.stopPropagation();
+        var pinned = drop.getAttribute("data-pinned") === "true";
+        if (pinned) {
+          closeDrop(drop);
+        } else {
+          openDrop(drop, true);
+        }
+      });
+
+      btn.addEventListener("keydown", function (event) {
+        var links = panel.querySelectorAll("a");
+        if (!links.length) return;
+
+        if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+          event.preventDefault();
+          openDrop(drop, true);
+          links[event.key === "ArrowDown" ? 0 : links.length - 1].focus();
+        }
+      });
+
+      drop.addEventListener("keydown", function (event) {
+        if (event.key !== "Escape") return;
+        event.preventDefault();
+        closeDrop(drop);
+        btn.focus();
+      });
+
+      drop.addEventListener("mouseenter", function () {
+        openDrop(drop, false);
+      });
+
+      drop.addEventListener("mouseleave", function () {
+        if (
+          drop.getAttribute("data-pinned") !== "true" &&
+          !drop.contains(document.activeElement)
+        ) {
+          closeDrop(drop);
         }
       });
     });
+
+    root.addEventListener("focusout", function (event) {
+      if (!event.relatedTarget || !root.contains(event.relatedTarget)) closeAll();
+    });
+
     document.addEventListener("click", function () {
-      root.querySelectorAll("[data-nav-drop]").forEach(function (d) {
-        d.classList.remove("is-open");
-        var b = d.querySelector(".nav-drop-btn");
-        if (b) b.setAttribute("aria-expanded", "false");
-      });
+      closeAll();
     });
   }
 
