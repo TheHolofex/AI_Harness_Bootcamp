@@ -20,12 +20,12 @@
     <p class="eyebrow">Thursday AM · P6 · AI Harness Bootcamp</p>
     <h1>The watch officer</h1>
     
-<p class="lede">You run work under a written autonomy contract — command, exceptions, and stop authority — not babysitting every step.</p>
+<p class="lede">You run work under a written autonomy contract — command, exceptions, and stop authority — not babysitting every step. goose is the vehicle: a local agent with a packaged recipe, a narrow tool surface, an autonomy dial, and an unattended path.</p>
 <div class="meta-grid">
   <div><span class="k">Day</span><span class="v">Thursday AM</span></div>
   <div><span class="k">Block</span><span class="v">P6</span></div>
-  <div><span class="k">Time</span><span class="v">~3–3.5 hr</span></div>
-  <div><span class="k">Tools</span><span class="v">goose + Codex support + Pi demo</span></div>
+  <div><span class="k">Time</span><span class="v">~3–3.5 hr + 45 min case talk</span></div>
+  <div><span class="k">Tools</span><span class="v">goose (recipe + levers) · Codex app support · Pi (build the bound)</span></div>
 </div>
 <hr class="rule-accent" />
 <p class="btn-row">
@@ -36,55 +36,100 @@
 
 <div class="lead-box">
   <p class="eyebrow">Lead operate-along</p>
-  <p>Share this block page on screen. Co-write the brief live. Run the mission in a build thread students can see. Narrate accepts/rejects. Use a side AI thread to diagram a concept when eyes glaze — then return to the artifact.</p>
+  <p>Share this block page on screen. Co-write the brief live. Run the mission in a build chat students can see. Narrate accepts/rejects. Use a side AI chat to diagram a concept when eyes glaze — then return to the artifact.</p>
 </div>
 
 <h2>Why this block exists</h2>
-<p><strong>Autonomy</strong> is not “the brand is safe.” It is a loop plus bounds you wrote. Some bounds the tool enforces; some you enforce by procedure. Pi shows what a bare loop looks like without rails.</p>
+<p><strong>Autonomy</strong> is not “the brand is safe.” It is a loop plus bounds you wrote. goose can enforce some of those bounds with real levers — recipe, extensions, permission mode, max turns, retry checks, schedule. Other bounds stay procedure: stop authority, treating feeder text as data, who may restart.</p>
+<p>In goose you configure bounds someone else designed. In Pi you build them — which is the only way to find out that not all bounds are the same strength. Three layers, and conflating them is the mistake this block exists to prevent:</p>
+<table>
+  <thead><tr><th>Layer</th><th>In practice</th><th>What it actually gives you</th></tr></thead>
+  <tbody>
+    <tr><td><strong>The contract</strong></td><td><code>pi --tools read,grep,find,ls</code></td><td>Filters the tool registry <em>above</em> the extension layer. The banned tool never enters the model's schema, so there is nothing to refuse and no refusal to talk it out of. Provable from the session file.</td></tr>
+    <tr><td><strong>The tripwire</strong></td><td>A <code>tool_call</code> gate you write</td><td>Catches drift and mistakes, and fails closed when it errors. But it is defeatable by the thing it polices — a model holding <code>bash</code> can edit the gate or spawn a subshell whose commands never surface as tool calls.</td></tr>
+    <tr><td><strong>The boundary</strong></td><td>A container</td><td>The only actual one.</td></tr>
+  </tbody>
+</table>
+<p>A tripwire mistaken for a boundary is how people come to believe a written policy stops a process. Today you build one of each and find the seam yourself.</p>
+
+<div class="callout"><strong>Four goose levers you open today</strong>
+<ol style="margin:0.5rem 0 0 1.1rem;padding:0">
+<li><strong>Recipe</strong> — packaged mission (<code>watch_officer.yaml</code>): instructions, parameters, success checks.</li>
+<li><strong>Tool surface</strong> — which extensions/tools exist (starter keeps <code>developer</code> only).</li>
+<li><strong>Autonomy dial</strong> — <code>GOOSE_MODE</code> (approve vs auto) and <code>settings.max_turns</code>.</li>
+<li><strong>Unattended path</strong> — Scheduler run-now, or an honest block with the exact error.</li>
+</ol>
+The contract’s <em>tool-enforced</em> column names these levers. Prose that only says “be safe” is not a tool row. Full notes: <code>mission_flesh/p6/goose_recipe_notes.md</code> · docs: <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</div>
+
 <h2>What you will leave with</h2>
-<ul><li>Adapt goose recipe to local feeder; one successful run</li><li>Two-column contract ≥3 rows each; risk mapping</li><li>Stop proof + restart proof; exception drill</li><li>Pi contrast notes from observation</li><li>Transfer P6 seed; pulse</li></ul>
+<ul>
+<li>Adapted <code>watch_officer.yaml</code> (not stock-only) over the local feeder; successful run evidenced in <code>out/</code></li>
+<li>Two-column contract ≥3 rows each; at least three tool rows name real goose levers</li>
+<li>Stop proof + restart proof; exception drill on <code>event_04</code></li>
+<li>Scheduled attempt <strong>or</strong> honest block with reason</li>
+<li>Pi: a bound you proved from the session file, and — if you take the stretch — a tripwire you wrote and then defeated</li>
+<li>Transfer P6 seed; full operator pulse</li>
+</ul>
 <h2>Before you start</h2>
-<ul><li>goose working from pre-work</li><li>Feeder files from mission_flesh/p6</li></ul>
+<ul>
+<li>goose CLI working from pre-work (<code>goose info -v</code> shows intended provider/model)</li>
+<li>Pack open: <code>mission_flesh/p6/</code> — <code>watch_officer.yaml</code>, <code>feeder/</code>, <code>goose_recipe_notes.md</code></li>
+<li>Course default is CLI; Desktop is optional for Scheduler UI</li>
+</ul>
 
 <div class="callout"><strong>Every block ends with the operator pulse</strong>
-Direction Brief (LIVE) → Mission → Log + pass-bar draft → <em>new</em> Adversarial thread → Measurement spine row → Transfer pulse.
-See <a href="../pulse.html">Pulse &amp; threads</a> for paste-ready prompts.
+Direction Brief (LIVE) → Mission → Log + pass-bar draft → <em>new</em> Adversarial chat → Measurement spine row → Transfer pulse.
+See <a href="../pulse.html">Pulse &amp; chats</a> for paste-ready prompts.
 </div>
 
 <h2>Run of exercise</h2>
 <ol class="steps"><li><h3>Open the chair</h3>
-<p>Open your Codex project. Confirm operator templates are present (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>, etc.).</p>
-<p>Open thread <strong>Operator — Direction &amp; Log</strong>. Paste the Direction Brief starter from the operator pack.</p>
+<p>Open your Codex app project. Confirm operator templates are present (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>, etc.).</p>
+<p>Open chat <strong>Operator — Direction &amp; Log</strong>. Paste the Direction Brief starter from the operator pack.</p>
 </li>
 <li><h3>Co-write the Direction Brief until LIVE</h3>
 <p>Work the five fields with the AI: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back.</p>
 <p>Do not start the mission until status is <strong>LIVE</strong>. Vague “explore the data” outcomes get challenged — name the artifact.</p>
 </li>
 <li><h3>Run the mission</h3>
-<p><strong>Feeder:</strong> <code>mission_flesh/p6/feeder/</code> (dropping files simulates watch traffic).</p>
+<p><strong>Pack:</strong> <code>mission_flesh/p6/</code> — starter recipe <code>watch_officer.yaml</code>, feeder traffic in <code>feeder/</code>, operator notes in <code>goose_recipe_notes.md</code>. Dropping files into <code>feeder/</code> simulates watch traffic.</p>
 <ol>
-<li>Adapt a goose recipe/session to process new feeder files into a short watch summary in <code>out/</code>.</li>
-<li>Write autonomy contract: columns <em>Tool-enforced</em> | <em>Procedure-enforced</em> (≥3 rows each). Map real risks.</li>
-<li>Demonstrate <strong>stop</strong> and <strong>restart</strong>.</li>
-<li>Exception drill: introduce an out-of-bounds file; show contract behavior.</li>
-<li>Open Pi on a tiny task; list rails present in goose/contract and missing in Pi.</li>
+<li><strong>Adapt the recipe</strong> (path, bounds, max_turns, or mode — something real). Run it so new feeder files become lines in <code>out/watch_summary.md</code>. Stock demo only is not yet.</li>
+<li><strong>Write the autonomy contract</strong>: columns <em>Tool-enforced</em> | <em>Procedure-enforced</em> (≥3 rows each). Tool rows name goose levers (extensions, <code>GOOSE_MODE</code>, <code>max_turns</code>, retry check, schedule). Map every serious feeder risk to a column.</li>
+<li><strong>Stop</strong> under realistic load, then <strong>restart</strong> without losing the contract frame (same recipe/mode; prior good lines still present).</li>
+<li><strong>Exception drill:</strong> <code>feeder/event_04.txt</code> is hostile. Contract behavior is quarantine + continue — not obey.</li>
+<li><strong>Unattended path:</strong> schedule the recipe and Run now, <em>or</em> document the exact block and what would unlock it.</li>
+<li><strong>Pi — prove a bound (required).</strong> Run the same tiny task twice in the same folder: once plain, once as <code>pi --tools read,grep,find,ls -p "…"</code>. Then open the session file under <code>%USERPROFILE%\.pi\agent\sessions\</code> and confirm the write tools were <em>absent from the model's schema</em> rather than offered and declined. That distinction — a bound the model complied with versus one it could not violate — is the whole point, and it is visible in the file.</li>
+<li><strong>Pi — write the tripwire (stretch).</strong> Read Pi's shipped <code>protected-paths</code> example, then write your own <code>tool_call</code> gate at <code>~/.pi/agent/extensions/</code> that blocks writes outside the mission folder:
+<pre><code>pi.on("tool_call", async (event, ctx) =&gt; {
+  if (isToolCallEventType("write", event)) {
+    // resolve the path before comparing — see what happens if you don't
+    return { block: true, reason: "outside mission folder" };
+  }
+});</code></pre>
+Then <strong>defeat your own gate</strong> with a <code>../</code> path. Fix it by resolving against <code>ctx.cwd</code> first. Note where you put it: a gate in <code>~/.pi/agent/extensions/</code> loads before project trust and every project gets it; a gate in <code>.pi/extensions/</code> lives inside the repo it is supposed to police.</li>
+<li><strong>Name the layer for each row of your contract.</strong> Go back to your two-column contract and mark every row <em>contract</em>, <em>tripwire</em>, or <em>boundary</em>. Any row you marked "tool-enforced" that is really a tripwire is the finding of the block — write it in your log in those words.</li>
 </ol>
-<p>If scheduled runs are blocked on your OS, document why and run manual trigger — honesty over theater.</p>
+<p>If scheduled runs are blocked on your OS or policy, that is a valid MVP outcome when the reason is written down. Honesty over theater.</p>
 </li>
 <li><h3>Operator Log + pass-bar draft</h3>
 <p>Back in Direction &amp; Log, paste the log starter. Record verdict, evidence, what you still own.</p>
 <p>Self-check against <a href="../../operator/PASS_BARS.md">PASS_BARS.md</a> for P6 — met / not yet with pointers. No inflation.</p>
 </li>
-<li><h3>Adversarial review (new thread)</h3>
-<p>Open a <strong>new</strong> thread titled <code>Adversarial — P6</code>. Paste the frozen prompt from the operator pack plus your artifacts and provisional verdict.</p>
+<li><h3>Adversarial review (new chat)</h3>
+<p>Open a <strong>new</strong> chat titled <code>Adversarial — P6</code>. Paste the frozen prompt from the operator pack plus your artifacts and provisional verdict.</p>
 <p>Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed — …</code>. Fix if wounded.</p>
 </li>
 <li><h3>Measurement spine</h3>
 <p>Update <code>MEASUREMENT_SPINE.md</code>: ritual 0–3, mission HIT/PARTIAL/MISS, quality STRONG/ADEQUATE/WEAK, time to result (minutes).</p>
 </li>
 <li><h3>Transfer pulse</h3>
-<p>Thread <strong>Operator — Transfer 30-60-90</strong>. Paste the every-session transfer prompt. Leave a session-log row even if the seed is small today.</p>
+<p>Chat <strong>Operator — Transfer 30-60-90</strong>. Paste the every-session transfer prompt. Leave a session-log row even if the seed is small today.</p>
 </li></ol>
+
+<div class="callout" id="case-talk"><strong>Before lunch · Harness case talk (45 min)</strong>
+After the mission pulse for this morning, the lead runs a <strong>30-minute</strong> real-world case: a problem they solved with harnessed AI, how the harness helped, and what the experience was — then <strong>15 minutes</strong> of discussion. No hard wall into lunch. Students: listen for problem → harness move → evidence; leave one Transfer seed. Lead guide: <code>lead/HARNESS_CASE_TALKS.md</code>.</div>
+
 <h2>Pass bar (mastery floor)</h2>
 <p>Full checklist: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md</a> · section P6. MVP is not “it ran.” Evidence must survive adversarial review.</p>
 <h2>If you get stuck</h2>
