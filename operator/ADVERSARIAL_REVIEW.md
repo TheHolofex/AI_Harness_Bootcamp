@@ -39,7 +39,7 @@ This thread’s job is to try to take it away — with evidence rules, not vibes
 | Change the log if the attack is valid | Performatively “take notes” and change nothing |
 | Keep human peer as **job** outer-loop name | Pretend AI review replaces institutional challenge forever |
 
-**Cross-engine stretch (recommended when feasible):** if the mission ran in Codex, run adversarial review in **Claude Code** (or the other way around). Correlated blind spots shrink. Same prompt either way.
+**Cross-engine stretch (recommended when feasible):** if the mission ran in Codex, run adversarial review in **OpenCode** (or the other way around). Optional: add Claude Code as a third pass. Correlated blind spots shrink. Same frozen prompt either way.
 
 ---
 

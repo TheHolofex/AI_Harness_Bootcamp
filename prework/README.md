@@ -13,10 +13,10 @@ Complete **before Monday Block 0**. Do not start pre-work in the Monday morning 
 
 You can prove all of the following on **your** Windows 11 machine:
 
-1. Required tools installed and signed in  
-2. Health check script (or checklist) passes  
-3. All four agents can read/write a temp project folder  
-4. You bring a one-page **setup log** (what broke, what you fixed)
+1. Required tools installed and signed in / configured  
+2. Health check GREEN (or YELLOW with documented workaround)  
+3. All **four required** agents can read/write a temp project folder  
+4. You bring a **setup log** (what broke, what you fixed)
 
 Monday Block 0 **verifies** this gate, then moves to First Light.  
 It does not install the stack from zero for the room.
@@ -31,27 +31,43 @@ It does not install the stack from zero for the room.
 | 4 | Python 3.x | via `winget` or official installer |
 | 5 | PowerShell execution policy | User-level `RemoteSigned` is typical |
 | 6 | **OpenAI Codex app** | Primary home all week · signed in · native Windows agent |
-| 7 | **Claude Desktop** with **Code** tab | Second engine · signed in · Git available |
+| 7 | **OpenCode** | **Required second engine** · configure **Grok** (or course-pinned model) |
 | 8 | **Pi** | Configured against Git Bash per pi.dev Windows docs |
 | 9 | **goose** | Desktop and/or CLI · one sample recipe runs once |
 | 10 | **Obsidian** | Installed (vault arrives in class) |
-| 11 | **n8n** | Local install or approved class path (see detailed guide) |
+| 11 | **n8n** | Local install or approved class path |
+
+### Optional
+
+| Component | Notes |
+|---|---|
+| **Claude Code** (Desktop Code tab or CLI) | Alternate / third engine only — **not** required for GREEN or course pass |
 
 Accounts, licenses, and API/seat access are issued by the course separately — install still fails closed without them.
 
 ## How to run pre-work
 
-1. Open `prework/INSTALL_GUIDE.md` and work top to bottom.  
-2. After each major install, record result in `prework/SETUP_LOG.md` (copy into your machine).  
-3. Run `prework/HEALTH_CHECK.md` until green.  
-4. Export or screenshot health-check proof into your setup log.  
-5. Bring laptop + setup log to Monday. Optional: zip log into the class drop.
+1. Prefer the **interactive site checklists** (primary path):  
+   - Install: `site/checklists/prework-install.html`  
+   - Health gate: `site/checklists/prework-health.html`  
+2. Or work `INSTALL_GUIDE.md` top to bottom and tick `SETUP_LOG.md`.  
+3. Run health check until green.  
+4. Bring laptop + setup log to Monday.
+
+## Twin-engine note
+
+During the week, **P3 Twin-engine** runs the same frozen brief on:
+
+1. **Codex app** (home)  
+2. **OpenCode** (second harness — typically Grok)
+
+That is the required comparator pair. Claude Code is welcome as an optional extra mind, not a substitute for OpenCode unless staff waive OpenCode for a documented install failure.
 
 ## Support rules
 
 - Pre-work support window: [course fills channel/hours].  
-- “I didn’t start until Sunday night” is not a Block 0 content delay — use rescue path in the guide.  
-- Corporate-locked machines: escalate early; some sandbox/firewall steps need admin.
+- “I didn’t start until Sunday night” is not a Block 0 content delay.  
+- Corporate-locked machines: escalate early.
 
 ## Identity lock
 

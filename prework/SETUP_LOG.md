@@ -19,7 +19,8 @@ This is operator evidence: what broke, what you did, what still risks Monday.
 | Node | | | | |
 | Python | | | | |
 | Codex app | | | | |
-| Claude Code | | | | |
+| OpenCode (Grok/staff pin) | | | | |
+| Claude Code (optional) | | | | |
 | Pi | | | | |
 | goose | | | | |
 | Obsidian | | | | |

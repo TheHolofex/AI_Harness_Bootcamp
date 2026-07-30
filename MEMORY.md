@@ -94,6 +94,21 @@ A graduate can:
 8. Choose agent loop vs fixed pipeline with a human gate — the right machine for the job.
 9. Transfer the method across vendor, model, and policy change.
 
+
+## Required tool stack (Windows)
+
+| Role | Tool | Required? |
+|---|---|---|
+| Primary home all week | **OpenAI Codex app** | Required |
+| Second engine (twin-engine, compares) | **OpenCode** with **Grok** (or course-pinned OpenCode model) | Required |
+| Bare loop demo | **Pi** | Required |
+| Bound autonomy / recipes | **goose** | Required |
+| Knowledge UI | **Obsidian** | Required (Wed) |
+| Pipeline UI | **n8n** | Required (Thu) |
+| Alternate second / third engine | **Claude Code** (Desktop Code tab or CLI) | **Optional** |
+
+Twin-engine pedagogy (P3) uses **Codex + OpenCode**. Students may add Claude as an extra comparator if they already have access; it is not required for GREEN pre-work or course pass.
+
 ## North star
 
 > A thinking machine as a durable work partner under your judgment — systems you can direct, verify, bound, and transfer.
@@ -104,7 +119,7 @@ When building curriculum, materials, images, scripts, or docs:
 
 - Keep the **operator’s school** frame in every learner-facing line.
 - Prefer **mastery** language over productivity slogans, hype, or tool worship.
-- Design for **vanilla Windows 11**, mixed backgrounds, app-first surfaces (Codex app home; Claude Code app as second engine; Pi; goose).
+- Design for **vanilla Windows 11**, mixed backgrounds, app-first surfaces (Codex app home; **OpenCode + Grok** as required second engine; Pi; goose). **Claude Code is optional** alternate/third engine.
 - **Student-owned install** via `prework/` module before contact week — **no golden image** as the default path. Block 0 verifies the gate, then First Light.
 - Every project must force **direction + evidence + judgment**, not passive watching.
 - Honor **MVP pass bars** in `operator/PASS_BARS.md`; do not dilute them for convenience.

@@ -4,7 +4,9 @@ Platform: **vanilla Windows 11**. **No WSL required** for this course.
 
 Work in order. After each section, tick the box in your `SETUP_LOG.md` and note failures.
 
-> Seat credentials (ChatGPT/Codex, Claude, any class API keys, hosted open-model access) come from the course. Install the apps even if seat login waits on issued credentials — then finish sign-in as soon as seats land.
+> Seat credentials (ChatGPT/Codex, OpenCode/Grok keys, any class API keys) come from the course. Install apps even if login waits on issued credentials — then finish sign-in as soon as seats land.
+
+**Primary path:** interactive checklist at `site/checklists/prework-install.html` (same steps, check-off UI).
 
 ---
 
@@ -24,16 +26,14 @@ Work in order. After each section, tick the box in your `SETUP_LOG.md` and note 
 Open **PowerShell** (user session).
 
 ```powershell
-# See current policy
 Get-ExecutionPolicy -List
-
-# Typical fix if scripts are blocked (user scope — prefer this over machine-wide)
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Get-ExecutionPolicy -Scope CurrentUser
 ```
 
-- [ ] `Get-ExecutionPolicy -Scope CurrentUser` is `RemoteSigned` or less restrictive  
+- [ ] CurrentUser policy is `RemoteSigned` or less restrictive  
 
-**If blocked by group policy:** note the error in setup log; contact support before Monday.
+**If blocked by group policy:** note the error; contact support before Monday.
 
 ---
 
@@ -43,16 +43,15 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 winget install --id Git.Git -e --source winget
 ```
 
-Close and reopen PowerShell, then:
+Close and reopen PowerShell:
 
 ```powershell
 git --version
-# Confirm bash exists (default path often):
 Test-Path "C:\Program Files\Git\bin\bash.exe"
 ```
 
 - [ ] `git --version` works  
-- [ ] Git Bash path known (you will point Pi at it if needed)
+- [ ] Git Bash path known (Pi may need it)
 
 ---
 
@@ -73,7 +72,7 @@ pip --version
 ```
 
 - [ ] Node and npm respond  
-- [ ] Python and pip respond (`py -3 --version` OK if `python` is aliased oddly)
+- [ ] Python and pip respond (`py -3 --version` OK if needed)
 
 ---
 
@@ -81,91 +80,104 @@ pip --version
 
 1. Install via official Windows path (Microsoft Store / OpenAI Windows app instructions current for the course date).  
 2. Sign in with **course-issued** ChatGPT/Codex seat when available.  
-3. Create or open a test folder, e.g. `Documents\HarnessBootcamp\prework-smoke`.  
-4. Confirm the agent can see the folder and run a trivial action you approve (e.g. create `hello.txt`).
+3. Create `Documents\HarnessBootcamp\prework-smoke`.  
+4. Confirm native Windows agent (this course does not require WSL).  
+5. Have the agent create `from-codex.txt` (or `hello.txt`) — **file must exist in Explorer**.
 
-- [ ] App launches  
-- [ ] Signed in  
-- [ ] Native Windows agent mode (not requiring WSL)  
-- [ ] Sandbox/approval prompts understood (Ask vs higher access — know what you clicked)  
-- [ ] Write proof: `hello.txt` exists from agent action  
-
-**Setup log:** note any sandbox elevated/unelevated failure and workaround.
+- [ ] App launches · signed in · write proof on disk  
+- [ ] Sandbox/approval mode understood (log what you clicked)
 
 ---
 
-## 5. Claude Desktop + Code tab (second engine)
+## 5. OpenCode — required second engine
 
-1. Install Claude Desktop for Windows from official download.  
-2. Sign in with course-issued seat.  
-3. Open **Code** tab.  
-4. Select Local + a test folder (can reuse `prework-smoke`).  
-5. Confirm Git is detected; restart Claude after Git install if needed.  
-6. Run a trivial approved edit/create in the test folder.
+OpenCode is the course **second harness** for twin-engine work (typically backed by **Grok** or the model staff pin for your cohort).
 
-- [ ] Code tab available (not paywalled/403)  
-- [ ] Local session works  
-- [ ] Permission mode visible (Manual / Accept edits / etc.)  
-- [ ] Write proof in test folder  
+### 5a. Install
+
+Use the **current official OpenCode install path for Windows** from [opencode.ai](https://opencode.ai) / project docs at course date. Common patterns (verify against live docs — commands change):
+
+```powershell
+# Example patterns only — prefer the official Windows instructions staff link in the cohort channel
+# winget, installer, or npm/npx global as documented upstream
+```
+
+Staff will post the **pinned install one-liner or installer link** for your cohort in the pre-work channel. Use that pin if it differs from generic web instructions.
+
+- [ ] OpenCode installed (CLI and/or desktop per staff pin)  
+- [ ] `opencode --version` or app About shows a version (record it)
+
+### 5b. Configure Grok (or course-pinned model)
+
+1. Open OpenCode config / provider setup for your install flavor.  
+2. Add **Grok** (xAI) with the API key or seat staff issued — **or** the exact provider staff name if the cohort is pinned to a different OpenCode model.  
+3. Set that model as selectable default for class work.  
+4. Open project folder `Documents\HarnessBootcamp\prework-smoke`.  
+5. Run a trivial task that creates `from-opencode.txt` on disk.
+
+- [ ] Provider/model configured (Grok or staff pin)  
+- [ ] Project folder opens  
+- [ ] **Explorer proof:** `from-opencode.txt` exists  
+
+**Setup log:** install method · version · provider name · first error and fix.
+
+### 5c. Know what “second engine” means
+
+During the week you will run the **same frozen brief** on Codex and on OpenCode, then adjudicate. OpenCode is not a toy side app — it is required for P3 MVP.
 
 ---
 
 ## 6. Pi (bare-loop tool)
 
-Follow current [Pi Windows docs](https://pi.dev/docs/latest/windows): bash required (Git Bash is the default path).
+Follow current [Pi Windows docs](https://pi.dev/docs/latest/windows): bash required (Git Bash default).
 
 - [ ] Pi installed  
-- [ ] `shellPath` or auto-detect points at Git Bash if needed  
-- [ ] Pi starts and can run a trivial command in a project dir  
-
-**Setup log:** exact install method + bash path.
+- [ ] bash path configured if needed (`C:\Program Files\Git\bin\bash.exe`)  
+- [ ] Pi runs a trivial command; prefer write proof `from-pi.txt` in smoke folder  
 
 ---
 
 ## 7. goose
 
-Install Windows desktop and/or CLI per current goose docs (PowerShell or Git Bash install path).
+Install Windows desktop and/or CLI per current goose docs.
 
-- [ ] `goose` or desktop app launches  
+- [ ] goose launches  
 - [ ] Provider configured with course-approved credentials  
-- [ ] One sample/recipe or session runs once successfully  
-
-**Setup log:** desktop vs CLI; provider name; first error you hit.
+- [ ] One sample recipe/session runs; prefer `from-goose.txt` write proof  
 
 ---
 
 ## 8. Obsidian + n8n
 
-**Obsidian**
-
-- [ ] Installed from official site  
-- [ ] Opens; you can create a local vault (class vault may replace this on Wed)
-
-**n8n**
-
-- [ ] Installed via course-approved method (local npm/desktop/docker-free path as specified for the cohort)  
-- [ ] UI loads once on localhost (or approved host)  
-- [ ] You know how to start/stop it  
+- [ ] Obsidian installed and opens  
+- [ ] n8n installed via course-approved method; UI loads once; you know how to stop it  
 
 ---
 
-## 9. Course repo / operator pack (when issued)
+## 9. Course repo / operator pack
 
-When the bootcamp materials link is available:
-
-- [ ] Clone or download `AI_Harness_Bootcamp` student pack  
-- [ ] Copy `operator/` standing files into your working Codex project  
-- [ ] Skim `student_pack/README.md` so Monday pulse is not a surprise  
+- [ ] Clone/download `AI_Harness_Bootcamp`  
+- [ ] Copy `operator/` into your Codex working project  
+- [ ] Skim site (`python3 -m http.server 8080` → `http://localhost:8080/site/`)  
 
 ---
 
-## 10. Health check gate
+## 10. Optional — Claude Code (not required)
 
-Complete `HEALTH_CHECK.md` end-to-end.
+Only if you already have access or want a third mind:
 
-- [ ] All checks green **or** red items have a written unblock plan with support  
+- [ ] *(Optional)* Claude Desktop with **Code** tab, or Claude Code CLI  
+- [ ] *(Optional)* Local session can write `from-claude-optional.txt`  
 
-**You are not done until health check is green or explicitly waived in writing by staff.**
+**Claude Code is optional.** It is **not** part of the GREEN four-agent set (Codex, OpenCode, Pi, goose). Skipping Claude does not block pre-work pass.
+
+---
+
+## 11. Health check gate
+
+Complete `HEALTH_CHECK.md` or `site/checklists/prework-health.html` end-to-end.
+
+- [ ] GREEN or YELLOW with documented workaround  
 
 ---
 
@@ -173,13 +185,13 @@ Complete `HEALTH_CHECK.md` end-to-end.
 
 | Symptom | Try |
 |---|---|
-| `winget` missing | Update App Installer / install packages from official .exe and log it |
-| Execution policy blocked | `CurrentUser` RemoteSigned; else corporate GPO → support |
-| Codex sandbox fails elevated | Try unelevated / document; still prove folder write |
-| Claude Code 403 / no Code tab | Seat tier / sign-in; restart after Git install |
-| Pi can’t find bash | Set shell path to `C:\Program Files\Git\bin\bash.exe` |
-| goose keyring errors | Env var / disable keyring per goose Windows notes; log it |
-| No admin rights | Early ticket — do not wait for Monday AM |
+| `winget` missing | App Installer update / official .exe installers |
+| Execution policy GPO | Ticket early with error text |
+| Codex sandbox elevated fail | Unelevated / document; still prove write |
+| OpenCode auth/model missing | Confirm Grok/staff key; re-run provider setup; staff pin |
+| Pi can’t find bash | Set path to Git `bash.exe` |
+| goose keyring errors | Env var / disable keyring per goose Windows notes |
+| No admin | Early ticket |
 
 ---
 

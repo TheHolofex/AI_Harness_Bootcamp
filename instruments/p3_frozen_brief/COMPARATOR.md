@@ -6,7 +6,7 @@
 
 ## Side-by-side (add rows as needed)
 
-| WatchID | Field | Codex | Claude | Agree? | Operator verdict (keep/discard/unknown) | Why (non-model evidence) |
+| WatchID | Field | Codex | OpenCode | Agree? | Operator verdict (keep/discard/unknown) | Why (non-model evidence) |
 |---|---|---|---|---|---|---|
 | | | | | | | |
 | | | | | | | |
@@ -25,4 +25,5 @@ Final operational picture:
 ## Files
 
 - [ ] output_codex.md  
-- [ ] output_claude.md
+- [ ] output_opencode.md
+- [ ] output_claude.md *(optional third engine)*

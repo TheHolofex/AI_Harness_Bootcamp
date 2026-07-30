@@ -61,7 +61,7 @@ Acceptable: paths, commands, diffs, test output, dyno rows, opened citation trai
 ### MVP
 - [ ] **Pre-work gate:** health check GREEN/YELLOW with setup log present (student-installed stack — not a lab image)
 - [ ] **Full LIVE brief** (all five fields) — outcome is an instrument, not “explore the data”
-- [ ] Four-tool write proof confirmed in class (or re-run): Codex, Claude Code, Pi, goose each touch the smoke folder
+- [ ] Four-tool write proof confirmed in class (or re-run): Codex, **OpenCode**, Pi, goose each touch the smoke folder (Claude optional)
 - [ ] Instrument works on the real messy folder: map loads; timeline **and** filters both do something observable
 - [ ] **Negative check:** at least one “done looks like / must not” that you verified (bad data, empty state, or wrong filter result)
 - [ ] **Update proof:** add or drop a file and show the instrument reflects it *or* document the exact break and the redirect you issued
@@ -133,7 +133,7 @@ Single unmeasured tweak, no red→green test, or nothing survives restart.
 **Mastery claim:** You treat models as callable components. Disagreement is a sensor. The verdict is yours.
 
 ### MVP
-- [ ] Course frozen brief `BRIEF-v1` + track corpus in `instruments/p3_frozen_brief` run unchanged on Codex app and Claude Code app
+- [ ] Course frozen brief `BRIEF-v1` + track corpus in `instruments/p3_frozen_brief` run unchanged on **Codex app** and **OpenCode**
 - [ ] Deterministic join/watchlist path where required — model does not “decide” the join key
 - [ ] Comparator artifact: side-by-side fields/claims table (not vibes)
 - [ ] ≥3 material disagreement rows **or**, if fewer, a written proof you searched for disagreement and why the task was low-separation
