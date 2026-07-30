@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workstation verify + First Light · AI Harness Bootcamp · Starzl</title>
+  <link rel="stylesheet" href="../css/course.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+<a href="../week.html" aria-current="page">Week</a>
+<a href="../prework.html">Pre-work</a>
+<a href="../operator.html">Operator</a>
+<a href="../instruments.html">Instruments</a>
+<a href="../pulse.html">Pulse</a>
+<a href="../lead.html">Lead</a>
+      </nav>
+    </div>
+  </header>
+  <main class="site-main">
+    <p class="eyebrow">Monday AM · B0 · AI Harness Bootcamp</p>
+    <h1>Workstation verify + First Light</h1>
+    
+<p class="lede">You prove your pre-work gate, then direct a thinking machine from a messy folder of reports into a live map you can trust.</p>
+<div class="meta-grid">
+  <div><span class="k">Day</span><span class="v">Monday AM</span></div>
+  <div><span class="k">Block</span><span class="v">B0</span></div>
+  <div><span class="k">Time</span><span class="v">~3–3.5 hr contact after gate</span></div>
+  <div><span class="k">Tools</span><span class="v">Codex app (home) · verify Claude Code, Pi, goose</span></div>
+</div>
+<hr class="rule-accent" />
+
+<div class="lead-box">
+  <p class="eyebrow">Lead operate-along</p>
+  <p>Share this block page on screen. Co-write the brief live. Run the mission in a build thread students can see. Narrate accepts/rejects. Use a side AI thread to diagram a concept when eyes glaze — then return to the artifact.</p>
+</div>
+
+<h2>Why this block exists</h2>
+<p>A <strong>harness</strong> is the setup around a model that lets it act: tools, files, permissions, instructions, and your accept/reject loop. Today you will feel that loop before we name every part of it.
+
+You are not installing the stack from zero in class. You already did that in pre-work. Here we <strong>verify</strong>, then we <strong>direct</strong>.</p>
+<h2>What you will leave with</h2>
+<ul><li>Show GREEN/YELLOW pre-work health check and setup log</li><li>Co-write a full LIVE Direction Brief (five fields)</li><li>Ship a working map from the synthetic report folder (timeline and filters)</li><li>Run a negative check and an update proof (or honest break + redirect)</li><li>Explain the harness loop from this run; complete log, adversarial, measure, transfer</li></ul>
+<h2>Before you start</h2>
+<ul><li>Pre-work GREEN or YELLOW</li><li>Codex project folder ready</li><li>Copy operator/ templates into the project</li><li>Open course site on a second window if you like</li></ul>
+
+<div class="callout"><strong>Every block ends with the operator pulse</strong>
+Direction Brief (LIVE) → Mission → Log + pass-bar draft → <em>new</em> Adversarial thread → Measurement spine row → Transfer pulse.
+See <a href="../pulse.html">Pulse &amp; threads</a> for paste-ready prompts.
+</div>
+
+<h2>Run of exercise</h2>
+<ol class="steps"><li><h3>Open the chair</h3>
+<p>Open your Codex project. Confirm operator templates are present (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>, etc.).</p>
+<p>Open thread <strong>Operator — Direction &amp; Log</strong>. Paste the Direction Brief starter from the operator pack.</p>
+</li>
+<li><h3>Co-write the Direction Brief until LIVE</h3>
+<p>Work the five fields with the AI: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back.</p>
+<p>Do not start the mission until status is <strong>LIVE</strong>. Vague “explore the data” outcomes get challenged — name the artifact.</p>
+</li>
+<li><h3>Run the mission</h3>
+<p><strong>Gate (first 15–20 min):</strong> Show pre-work health check. Four agent write-proof files should exist (or re-run quickly). RED students go to rescue track — do not block the cohort.</p>
+<p><strong>Mission data:</strong> open <code>mission_flesh/b0/reports/</code> (synthetic mission reports). Your outcome: a small local web map or timeline+filter view over those reports.</p>
+<p>In a <strong>build</strong> thread (not the operator thread), direct Codex to:</p>
+<ol>
+<li>Inventory the report folder and propose a minimal data shape.</li>
+<li>Build a single-page viewer (HTML/JS is fine) with <strong>timeline</strong> and <strong>filters</strong>.</li>
+<li>Load from the folder or a generated <code>data.json</code>.</li>
+</ol>
+<p><strong>Accept checks you must run yourself:</strong></p>
+<ul>
+<li>Map/page opens and shows multiple reports.</li>
+<li>Timeline control changes what you see <em>or</em> clearly sorts events.</li>
+<li>At least one filter changes the visible set.</li>
+<li><strong>Negative check:</strong> filter or empty state that must <em>not</em> show a wrong report — verify.</li>
+<li><strong>Update proof:</strong> add <code>reports/DELTA_new.md</code> (provided) and show refresh/rebuild reflects it, or document the break and your redirect.</li>
+</ul>
+<p>Sample build prompt (edit to match your LIVE brief):</p>
+<pre><code>Read mission_flesh/b0/reports/. Build a single-page local viewer (index.html + data.json if needed)
+with timeline and filters over these synthetic reports. Keep it simple and offline.
+When done, print how to open it and how to refresh after a new file is added.</code></pre>
+</li>
+<li><h3>Operator Log + pass-bar draft</h3>
+<p>Back in Direction &amp; Log, paste the log starter. Record verdict, evidence, what you still own.</p>
+<p>Self-check against <a href="../../operator/PASS_BARS.md">PASS_BARS.md</a> for B0 — met / not yet with pointers. No inflation.</p>
+</li>
+<li><h3>Adversarial review (new thread)</h3>
+<p>Open a <strong>new</strong> thread titled <code>Adversarial — B0</code>. Paste the frozen prompt from the operator pack plus your artifacts and provisional verdict.</p>
+<p>Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed — …</code>. Fix if wounded.</p>
+</li>
+<li><h3>Measurement spine</h3>
+<p>Update <code>MEASUREMENT_SPINE.md</code>: ritual 0–3, mission HIT/PARTIAL/MISS, quality STRONG/ADEQUATE/WEAK, time to result (minutes).</p>
+</li>
+<li><h3>Transfer pulse</h3>
+<p>Thread <strong>Operator — Transfer 30-60-90</strong>. Paste the every-session transfer prompt. Leave a session-log row even if the seed is small today.</p>
+</li></ol>
+<h2>Pass bar (mastery floor)</h2>
+<p>Full checklist: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md</a> · section B0. MVP is not “it ran.” Evidence must survive adversarial review.</p>
+<h2>If you get stuck</h2>
+<ul>
+<li>Narrow <em>data scope</em>, not the judgment standard.</li>
+<li>Re-read your LIVE brief — most chaos is an unbounded outcome.</li>
+<li>Ask for a lead diagram of the one concept blocking you, then continue on your chair.</li>
+</ul>
+<p class="btn-row">
+  <a class="btn btn-secondary" href="../week.html">All blocks</a>
+  <a class="btn btn-secondary" href="../pulse.html">Pulse prompts</a>
+</p>
+
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+  <script src="../js/course.js"></script>
+</body>
+</html>

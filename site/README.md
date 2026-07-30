@@ -39,3 +39,16 @@ Follow **`VISUAL_SYSTEM.md`** and **`tokens.css`**.
 - Cold expert walls or hype slogans on learner pages — use guide-beside prose  
 - Hide teacher-only truth students need to operate  
 - Long prose on pure black field backgrounds  
+
+
+## Run locally
+
+From the repo root:
+
+```bash
+python3 -m http.server 8080
+```
+
+Open [http://localhost:8080/site/](http://localhost:8080/site/)
+
+Or open `site/index.html` directly (some browsers restrict fetch on sample viewer file://).

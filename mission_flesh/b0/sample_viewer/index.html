@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>First Light Map — sample</title>
+<style>
+ body{font-family:system-ui,sans-serif;margin:1.5rem;background:#fafaf8;color:#0a0a0a}
+ h1{font-size:1.25rem} .row{display:flex;gap:1rem;flex-wrap:wrap}
+ aside{min-width:220px} main{flex:1;min-width:280px}
+ .card{border:1px solid #d0d0d0;padding:.75rem;margin:.4rem 0;background:#fff}
+ .muted{color:#6b6b6b;font-size:.85rem}
+ input,select{width:100%;margin:.25rem 0 .75rem;padding:.4rem}
+ .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e31c23;margin-right:6px}
+</style>
+</head>
+<body>
+<h1><span class="dot"></span>First Light — report viewer (sample)</h1>
+<p class="muted">Synthetic training data. Filter and timeline are client-side.</p>
+<div class="row">
+<aside>
+<label>Filter text</label>
+<input id="q" placeholder="bridge, EU, convoy…"/>
+<label>Tag</label>
+<select id="tag"><option value="">All</option></select>
+<label>From time (HHMMZ contains)</label>
+<input id="t0" placeholder="04"/>
+</aside>
+<main id="list"></main>
+</div>
+<script>
+async function load(){
+  const res = await fetch('data.json'); const data = await res.json();
+  const tags = [...new Set(data.map(d=>d.tag))].sort();
+  const sel = document.getElementById('tag');
+  tags.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});
+  function render(){
+    const q=document.getElementById('q').value.toLowerCase();
+    const tag=document.getElementById('tag').value;
+    const t0=document.getElementById('t0').value;
+    const list=document.getElementById('list'); list.innerHTML='';
+    data.filter(d=>{
+      if(tag && d.tag!==tag) return false;
+      if(t0 && !(d.dtg||'').includes(t0)) return false;
+      const blob=(d.title+' '+d.summary).toLowerCase();
+      if(q && !blob.includes(q)) return false;
+      return true;
+    }).forEach(d=>{
+      const el=document.createElement('div'); el.className='card';
+      el.innerHTML=`<div class="muted">${d.dtg} · ${d.tag}</div><strong>${d.title}</strong><p>${d.summary}</p>`;
+      list.appendChild(el);
+    });
+  }
+  ['q','tag','t0'].forEach(id=>document.getElementById(id).oninput=render);
+  render();
+}
+load().catch(e=>{document.getElementById('list').textContent='Add data.json (see build notes). '+e;});
+</script>
+</body>
+</html>
