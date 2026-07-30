@@ -46,7 +46,7 @@ Geometry: **Pre-work module** (student-owned install, verify-as-you-go) + Monday
 - **Operator ritual (every block):** co-write `DIRECTION_BRIEF.md` with AI before the run (status LIVE) · mission in a build chat · co-write `OPERATOR_LOG.md` after · separate Codex chat `Operator — Direction & Log` · AI interviews/drafts/challenges; operator owns verdict · ≤5 min dialogue pre / post
 - **Adversarial review (every block):** new chat `Adversarial — [block]` · frozen prompt in `operator/ADVERSARIAL_REVIEW.md` · attacks verdict + MVP claims · log stood/wounded/failed · in-course substitute for peer challenge; human challenger remains a transfer seed
 - **Measurement spine (every block):** `operator/MEASUREMENT_SPINE.md` after adversarial · ritual health · mission accomplishment · work quality · time to result · student board + thin facilitator rollup
-- **Course instruments:** `instruments/` — shared P2 dyno · P3 frozen brief · P8 hold/degrade; tracks `engineering` | `mission_ops` (choose once); P8 reuses P2 IDs D01–D05
+- **Course instruments:** `instruments/` — shared P2 dyno · P3 frozen brief · P3 multi-agent (Many Minds stretch) · P8 hold/degrade; tracks `engineering` | `mission_ops` (choose once); P8 reuses P2 IDs D01–D05
 - **Pass bars:** `operator/PASS_BARS.md` — mastery-floor MVP per cap 1–9 (not “it ran”); stretch + side-quests; student+AI stress-check after log; distinction = floor + depth on ≥4 including P2/P5/P8
 - **Transfer outer loop:** own chat `Operator — Transfer 30-60-90` · interactive AI session **after every AM and PM** · `TRANSFER_30_60_90.md` living file · deep seeds P2/P3/P5/P6/P7 · **SEALED** at P8 · not a Friday worksheet
 - **Default surface:** app UI (project folder → permission mode → brief → accept/reject). Terminal is support/stretch, not the default chair
@@ -71,6 +71,7 @@ Geometry: **Pre-work module** (student-owned install, verify-as-you-go) + Monday
 | `prework/INSTALL_GUIDE.md` | Step-by-step install with **per-step verification** (Windows 11, no WSL) |
 | `prework/SETUP_LOG.md` | Failure/fix trail (operator evidence) |
 | `prework/FACILITATOR_NOTES.md` | Support window, Monday clinic, rescue |
+| `lead/COHORT_PIN.md` | Staff pin sheet (versions, models, LOCAL PIN, cold-smoke) |
 | `lead/HARNESS_CASE_TALKS.md` | Tue/Wed/Thu AM case-talk shape |
 
 ### Pre-work done when

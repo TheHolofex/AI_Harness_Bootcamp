@@ -243,12 +243,36 @@ Student scoreboard + thin facilitator rollup (`operator/FACILITATOR_ROLLUP.md`).
 
 ## Living artifacts
 
-- `DAY_PROJECT_TABLE.md` — day spine, projects, tool rotation
-- `prework/` — student-owned workstation install module + health check (before Monday)
-- `instruments/` — shared course kits: P2 dyno, P3 frozen brief, P8 hold/degrade (engineering + mission_ops tracks)
-- `todo1.md` — circuit completeness analysis (outer loops to close)
-- `operator/` — Direction Brief + Log (Move 1) · Pass bars (Move 2) · Transfer 30-60-90 (Move 3)
-- Course **site** (`site/`) — canonical learner surface; visual system from starzl.com + Starzl PDF courseware
-- This file — course identity and operator standard for anyone (human or agent) working here
+### Spine and standard
+- `DAY_PROJECT_TABLE.md` — day spine, projects, tool rotation, stretch callouts
+- This file (`MEMORY.md`) — course identity and operator standard for anyone (human or agent) working here
+- `operator/` — Direction Brief + Log (Move 1) · Pass bars (Move 2) · Transfer 30-60-90 (Move 3) · measurement / adversarial / rollup
+- Course **site** (`site/`) — canonical learner surface (blocks, checklists, week map, lead hub); visual system from starzl.com + Starzl PDF courseware
+
+### Pre-work and staff ops
+- `prework/` — student-owned install module (`INSTALL_GUIDE.md`, setup log, optional health rescue)
+- `prework/FACILITATOR_NOTES.md` — keys, pins, clinic, stretch facilitation
+- `lead/COHORT_PIN.md` — **single staff pin sheet** for the cohort (versions, models, LOCAL PIN, cold-smoke checklist)
+- `.github/scripts/verify-stack-facts.py` — any-machine rotting-facts check (winget ids, Node LTS claim, npm↔winget OpenCode drift)
+- `.github/scripts/prework-verify.ps1` — Windows x64 install/start smoke (no keys)
+- `.github/workflows/stack-facts.yml` — CI for `verify-stack-facts.py`
+
+### Course instruments (shared kits)
+- `instruments/p2_dyno/` — measured harness craft (engineering + mission_ops)
+- `instruments/p3_frozen_brief/` — twin-engine BRIEF-v1 + corpora + comparator
+- `instruments/p3_multi_agent/` — Many Minds stretch pack (baseline → subagents → delta); staff key `lead/MANY_MINDS_ANSWER_KEY.md`
+- `instruments/p8_hold_degrade/` — Friday hold/degrade matrix (reuses P2 case IDs)
+
+### Mission flesh and lead demos
+- `mission_flesh/p3/MANY_MINDS.md` — Many Minds learner guide (P3 stretch)
+- `mission_flesh/p6/` — watch officer recipe, goose notes, feeder, **`local_endpoint_notes.md`** (endpoint-wall stretch)
+- `lead/HARNESS_CASE_TALKS.md` — Tue/Wed/Thu AM case-talk shape
+- `lead/BROWSER_DECK_DEMO.md` — Thursday after-lunch lead demo (browser → deck)
+- `lead/MANY_MINDS_ANSWER_KEY.md` — staff-only seeded-defect key (not linked from learner guides)
+
+### Other
+- `todo1.md` — circuit completeness analysis (outer loops)
+- `START_HERE.md` — entry pointer
+- `student_pack/` — student-facing pack assembly if used
 
 When these conflict with a trendy framing, **this memory wins**.

@@ -37,7 +37,7 @@ Budget roughly $100 per student per provider for a week of heavy agent use, and 
 
 ### 2. Pin versions and models, then post them
 
-Students are told to use the cohort pin rather than latest. Post in the pre-work channel:
+**Source of truth:** fill `lead/COHORT_PIN.md` first, then post the filled values in the pre-work channel. Students are told to use the cohort pin rather than latest.
 
 - **OpenCode version, and the channel you pinned it on.** This one matters most. OpenCode ships fast and Windows support has regressed between releases — file-writing tools failing on Windows has been a live issue. Install a candidate on one machine, run the write proof, and pin what passes.
 
@@ -71,7 +71,8 @@ says, and that the `OPENCODE_DISABLE_CLAUDE_CODE` round-trip survives a fresh
 terminal. Writes `prework-verify-results.md` beside itself.
 
 Neither touches the GUI steps or the key-dependent write proofs. Those still
-need a person at a keyboard with a funded key.
+need a person at a keyboard with a funded key. Tick the human rows on
+`lead/COHORT_PIN.md` (sections C–D) after the scripts pass.
 
 ### 3. Revocation plan
 

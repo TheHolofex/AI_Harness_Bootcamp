@@ -1,0 +1,55 @@
+name: stack-facts
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - ".github/scripts/verify-stack-facts.py"
+      - ".github/workflows/stack-facts.yml"
+      - "MEMORY.md"
+      - "lead/COHORT_PIN.md"
+      - "prework/**"
+      - "instruments/**"
+      - "mission_flesh/**"
+      - "lead/**"
+      - "operator/PASS_BARS.md"
+      - "site/week.html"
+      - "DAY_PROJECT_TABLE.md"
+  pull_request:
+    paths:
+      - ".github/scripts/verify-stack-facts.py"
+      - ".github/workflows/stack-facts.yml"
+      - "MEMORY.md"
+      - "lead/COHORT_PIN.md"
+      - "prework/**"
+      - "instruments/**"
+      - "mission_flesh/**"
+      - "lead/**"
+      - "operator/PASS_BARS.md"
+      - "site/week.html"
+      - "DAY_PROJECT_TABLE.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-stack-facts:
+    name: verify-stack-facts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run rotting-facts harness
+        # Runner IPs share the 60/hour unauthenticated GitHub API pool, which
+        # would fail the winget checks for reasons unrelated to the course.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/verify-stack-facts.py

@@ -18,7 +18,7 @@ Open http://localhost:8080/site/
 | `operator/` | Brief, log, bars, adversarial, measure, transfer |
 | `instruments/` | P2/P3/P8 shared kits (eng + mission_ops) |
 | `mission_flesh/` | Corpora and packs for each block |
-| `lead/` | Operate-along helpers |
+| `lead/` | Operate-along helpers · staff `COHORT_PIN.md` |
 | `diagrams/` | Circuit / pulse / equations |
 
 ## Overnight build note
@@ -39,3 +39,10 @@ Each block (B0–P8) has a full step-by-step checklist with checkboxes. Progress
 - Hub: http://localhost:8080/site/prework.html
 - Monday clinic + First Light: http://localhost:8080/site/blocks/b0.html
 - Optional rescue re-test only: `prework/HEALTH_CHECK.md`
+
+## Staff (before pre-work window)
+
+- Pin sheet: `lead/COHORT_PIN.md`
+- Rotting facts (any machine): `python3 .github/scripts/verify-stack-facts.py`
+- Windows install smoke: `powershell -ExecutionPolicy Bypass -File .github\scripts\prework-verify.ps1`
+- Facilitator notes: `prework/FACILITATOR_NOTES.md`
