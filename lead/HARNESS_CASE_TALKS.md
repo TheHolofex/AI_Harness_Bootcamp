@@ -25,9 +25,9 @@ Students have spent the morning *inside* a capability (craft, knowledge, autonom
 
 | Morning | Block just run | Case-talk theme (pick a real story that fits) |
 |---|---|---|
-| **Tuesday** | P2 hot-rod | Craft that compounded: measured harness change, tests, memory/skills that survived restart |
+| **Tuesday** | P2 hot-rod | Craft that compounded: measured harness change, tests, memory/skills that survived restart. *Optional bridge to PM:* a time you used parallel specialists (subagents), not a second vendor |
 | **Wednesday** | P4 second brain | Knowledge under a harness: trails, citations, intake bounds — or a near-miss with poison |
-| **Thursday** | P6 watch officer | Autonomy under contract: tool vs procedure bounds, stop authority, unattended path honesty |
+| **Thursday** | P6 watch officer | Autonomy under contract: tool vs procedure bounds, stop authority, unattended path honesty. *Optional:* air-gap / local endpoint story (endpoint is a wall) |
 
 You may swap stories if a better live example fits the room. Keep the **capability** of that morning’s block audible in the story.
 
@@ -61,4 +61,11 @@ Listen for the problem, the harness move, and the evidence — then spend discus
 
 ## Related (not a case talk)
 
-**Thursday after lunch** is a separate **30-minute browser → deck lead demo** before P7 — scoped web research, slideshow collate, verify, stop — on the staff machine, not a lived case story. Do not fold it into this AM slot. Script: `lead/COMPUTER_USE_DEMO.md`.
+**Thursday after lunch** is a separate **30-minute browser → deck lead demo** before P7 — scoped web research, slideshow collate, verify, stop — on the staff machine, not a lived case story. Do not fold it into this AM slot. Script: `lead/BROWSER_DECK_DEMO.md`.
+
+## Related stretch modules (not case talks)
+
+- **P3 Many Minds** — subagents/worktrees after twin-engine MVP: `mission_flesh/p3/MANY_MINDS.md`
+- **P6/P8 endpoint wall** — local Ollama/LM Studio stretch: `mission_flesh/p6/local_endpoint_notes.md`
+- **Thu after lunch browser → deck** — `lead/BROWSER_DECK_DEMO.md`
+

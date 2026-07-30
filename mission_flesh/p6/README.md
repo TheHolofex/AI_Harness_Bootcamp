@@ -1,19 +1,12 @@
-# P6 pack — Watch officer (goose)
+# P6 pack · The watch officer
 
-Local feeder + starter goose recipe for Thursday AM autonomy-contract work.
-
-| Path | Role |
+| File | Role |
 |---|---|
-| `watch_officer.yaml` | Starter **recipe** — adapt this (not stock-only) |
-| `goose_recipe_notes.md` | Operator guide: four levers, run commands, Pi contrast |
-| `contract_template.md` | Two-column autonomy contract skeleton |
-| `feeder/` | Watch traffic; `event_04` is the OUT_OF_BOUNDS exception drill |
-| `out/` | Evidence folder; recipe should write `watch_summary.md` here |
+| `watch_officer.yaml` | Starter goose recipe — adapt |
+| `goose_recipe_notes.md` | Levers, contract mapping, runbook |
+| `contract_template.md` | Two-column autonomy contract shape |
+| `feeder/` | Watch traffic including hostile `event_04` |
+| `out/` | Run evidence |
+| `local_endpoint_notes.md` | **Stretch:** Ollama/LM Studio endpoint flip (“The Endpoint Is a Wall”) |
 
-**Shape of goose for this block:**
-
-```text
-loop + recipe + tool surface + autonomy dial + unattended path
-```
-
-Docs: <https://goose-docs.ai> · Full notes in `goose_recipe_notes.md`.
+MVP lives in the recipe + contract + stop/restart. Local endpoint is stretch only — see PASS_BARS P6.

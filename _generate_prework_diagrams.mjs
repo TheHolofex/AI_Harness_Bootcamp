@@ -660,7 +660,7 @@ const installSections = [
     current: 6,
     stage: "Save your three keys",
     purpose: "Store all three keys as Windows user variables, then verify in a new window.",
-    steps: ["READ KEYS PAGE", "OPENAI", "XAI", "ANTHROPIC", "VERIFY FRESH"],
+    steps: ["READ KEYS PAGE", "OPENAI", "XAI", "ANTHROPIC", "MODEL IDS", "VERIFY FRESH"],
     metaphor: metaphors.keys,
     svgTitle: "5 · Your three API keys",
   },

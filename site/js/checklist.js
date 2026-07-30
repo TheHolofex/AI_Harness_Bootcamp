@@ -22,14 +22,22 @@
     }
   }
 
+  // Stretch work is optional and must never count against a completed floor.
+  // Its check ids are prefixed `stretch-`; it is tallied separately.
+  function isOptional(id) { return typeof id === 'string' && id.indexOf('stretch-') === 0; }
+
   function updateProgress(form) {
     const key = form.getAttribute('data-storage-key');
     const boxes = qsa('input[type="checkbox"][data-check-id]', form);
-    const total = boxes.length || 1;
-    const done = boxes.filter((b) => b.checked).length;
+    const required = boxes.filter((b) => !isOptional(b.getAttribute('data-check-id')));
+    const optional = boxes.filter((b) => isOptional(b.getAttribute('data-check-id')));
+    const total = required.length || 1;
+    const done = required.filter((b) => b.checked).length;
     const pct = Math.round((done / total) * 100);
+    const stretchDone = optional.filter((b) => b.checked).length;
+    const suffix = optional.length ? ' · stretch ' + stretchDone + '/' + optional.length : '';
     qsa('[data-progress-for="' + key + '"]').forEach((el) => {
-      el.textContent = pct + '% (' + done + '/' + total + ')';
+      el.textContent = pct + '% (' + done + '/' + total + ')' + suffix;
     });
     qsa('[data-progress-bar-for="' + key + '"]').forEach((el) => {
       el.style.width = pct + '%';
@@ -70,8 +78,10 @@
       const el = card.querySelector('.card-progress');
       if (!el || !key) return;
       const state = loadState(key);
-      const done = Object.keys(state).filter((k) => k !== '_updated' && state[k] === true).length;
-      el.textContent = done + '/' + total;
+      const keys = Object.keys(state).filter((k) => k !== '_updated' && state[k] === true);
+      const done = keys.filter((k) => !isOptional(k)).length;
+      const stretchDone = keys.filter(isOptional).length;
+      el.textContent = done + '/' + total + (stretchDone ? ' +' + stretchDone : '');
       if (total && done >= total) card.classList.add('is-complete');
     });
 

@@ -165,7 +165,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <tbody>
       <tr><td><strong>PowerShell</strong></td><td><code>PS C:\Users\you&gt;</code> — note the <code>PS</code></td><td>Everything in this guide</td></tr>
       <tr><td>Command Prompt</td><td><code>C:\Users\you&gt;</code> — no <code>PS</code></td><td>Nothing here, unless a rescue step says so</td></tr>
-      <tr><td>Git Bash</td><td><code>you@machine ~ $</code> — a <code>$</code>, and <code>/</code> in paths</td><td>One goose fallback in step 53</td></tr>
+      <tr><td>Git Bash</td><td><code>you@machine ~ $</code> — a <code>$</code>, and <code>/</code> in paths</td><td>One goose fallback in step 54</td></tr>
     </tbody>
   </table>
   <p>Confirm you're in the right one:</p>
@@ -263,7 +263,7 @@ Repair-WinGetPackageManager -Force -Latest</code></pre>
     <span class="check-title">Install Git</span>
   </label>
   <div class="check-detail"><p>Git tracks changes to files, and you'll use it to fetch the course repository. It also installs <strong>Git Bash</strong>, a second kind of terminal that some tools reach for behind the scenes — which is the real reason Git comes this early.</p>
-  <p>To be clear about what you have to learn: <strong>you type everything in PowerShell.</strong> Git Bash is a dependency, not a second shell to get fluent in. Pi is the one tool that genuinely can't run without it, and it calls it for you. The only time you'd open Git Bash yourself is one goose fallback in step 53.</p>
+  <p>To be clear about what you have to learn: <strong>you type everything in PowerShell.</strong> Git Bash is a dependency, not a second shell to get fluent in. Pi is the one tool that genuinely can't run without it, and it calls it for you. The only time you'd open Git Bash yourself is one goose fallback in step 54.</p>
   <pre><code>winget install --id Git.Git -e --source winget --scope machine --accept-source-agreements --accept-package-agreements</code></pre>
   <p>Approve the elevation prompt. <code>--scope machine</code> puts Git at a predictable path other tools know to look in; without it Git can land somewhere they won't find. If winget isn't available, download from <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com/download/win</a> and accept the installer defaults.</p></div>
 </li>
@@ -414,8 +414,23 @@ $key = $null</code></pre></div>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-k-verify" data-check-id="k-verify" />
+    <input type="checkbox" id="ahb-prework-install-k-models" data-check-id="k-models" />
     <span class="check-num">27</span>
+    <span class="check-title">Set the pinned model ids</span>
+  </label>
+  <div class="check-detail"><p>Staff pin a model per provider for your cohort and post both ids in the pre-work channel. Set them once here and every later step picks them up &mdash; otherwise you'd be hand-editing four commands further down.</p>
+  <p>Change the two quoted values to the ids from the channel, then run all four lines:</p>
+  <pre><code>$env:HB_OPENAI_MODEL = 'paste the OpenAI model id'
+$env:HB_XAI_MODEL    = 'paste the xAI model id'
+[Environment]::SetEnvironmentVariable('HB_OPENAI_MODEL', $env:HB_OPENAI_MODEL, 'User')
+[Environment]::SetEnvironmentVariable('HB_XAI_MODEL',    $env:HB_XAI_MODEL,    'User')</code></pre>
+  <p>The first two lines set them for this window; the last two make them stick for every future one. These two values are the only thing in this guide you type rather than paste. The <code>HB_</code> prefix keeps them from colliding with anything a tool reads on its own.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-k-verify" data-check-id="k-verify" />
+    <span class="check-num">28</span>
     <span class="check-title">Verify all three in a brand-new window</span>
   </label>
   <div class="check-detail"><p>Close the terminal, open a new one, and run:</p>
@@ -425,7 +440,12 @@ $key = $null</code></pre></div>
     (Get-Item "env:$_" -EA SilentlyContinue).Value.Length
 }</code></pre>
   <p>Three lines, each with two matching non-zero numbers. This prints only the <em>length</em> of each key, never the key, so it's safe to run on a shared screen.</p>
-  <p><code>user=0</code> means it didn't save — re-run that key's step and check the variable name for typos. <code>session=0</code> means this window is older than the variable; open another one.</p></div>
+  <p><code>user=0</code> means it didn't save — re-run that key's step and check the variable name for typos. <code>session=0</code> means this window is older than the variable; open another one.</p>
+  <p>Model ids aren't secret, so check those by eye in the same window:</p>
+  <pre><code>'HB_OPENAI_MODEL','HB_XAI_MODEL' | ForEach-Object {
+  '{0} = {1}' -f $_, [Environment]::GetEnvironmentVariable($_,'User')
+}</code></pre>
+  <p>Both should read back the ids from the channel. If either still says <code>paste the...</code>, go back to step 27 — four later steps depend on these.</p></div>
 </li>
 </ol></section>
 
@@ -438,7 +458,7 @@ $key = $null</code></pre></div>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-sf-make" data-check-id="sf-make" />
-    <span class="check-num">28</span>
+    <span class="check-num">29</span>
     <span class="check-title">Create the folder every tool will write into</span>
   </label>
   <div class="check-detail"><pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"</code></pre>
@@ -449,7 +469,7 @@ $key = $null</code></pre></div>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-sf-why" data-check-id="sf-why" />
-    <span class="check-num">29</span>
+    <span class="check-num">30</span>
     <span class="check-title">Understand why a file on disk is the standard</span>
   </label>
   <div class="check-detail"><p>Every one of these tools will happily tell you it created a file it never created. Chat output is a claim; a file in Explorer is evidence.</p>
@@ -466,7 +486,7 @@ $key = $null</code></pre></div>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-install" data-check-id="cx-install" />
-    <span class="check-num">30</span>
+    <span class="check-num">31</span>
     <span class="check-title">Install the ChatGPT desktop app</span>
   </label>
   <div class="check-detail"><p>Codex isn't a separate download. It's a mode inside the <strong>ChatGPT desktop app</strong>, sitting alongside Chat and Work. When this course says <em>the Codex app</em>, that's what it means — and knowing that saves you hunting the Store for a product that doesn't exist.</p>
@@ -479,7 +499,7 @@ $key = $null</code></pre></div>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-signin" data-check-id="cx-signin" />
-    <span class="check-num">31</span>
+    <span class="check-num">32</span>
     <span class="check-title">Sign in with your API key</span>
   </label>
   <div class="check-detail"><p>Launch the app. You'll land on a signed-out screen whose main button offers to sign in with a ChatGPT account — which you don't have and won't use.</p>
@@ -490,7 +510,7 @@ $key = $null</code></pre></div>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-status" data-check-id="cx-status" />
-    <span class="check-num">32</span>
+    <span class="check-num">33</span>
     <span class="check-title">Confirm you're on the key, not an account</span>
   </label>
   <div class="check-detail"><p>Open the profile menu. It should report that you're authenticated with an API key.</p>
@@ -500,7 +520,7 @@ $key = $null</code></pre></div>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-lock" data-check-id="cx-lock" />
-    <span class="check-num">33</span>
+    <span class="check-num">34</span>
     <span class="check-title">Lock the app to API-key sign-in</span>
   </label>
   <div class="check-detail"><p>Now lock the door behind you, so a stray click can never bounce you to a ChatGPT login you can't complete:</p>
@@ -512,7 +532,7 @@ Add-Content -Path "$env:USERPROFILE\.codex\config.toml" -Value 'forced_login_met
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-project" data-check-id="cx-project" />
-    <span class="check-num">34</span>
+    <span class="check-num">35</span>
     <span class="check-title">Open your smoke folder as a project</span>
   </label>
   <div class="check-detail"><p>Choose <strong>Open project</strong> and pick the smoke folder you made in section 6: <code>Documents\HarnessBootcamp\prework-smoke</code>.</p>
@@ -523,7 +543,7 @@ Add-Content -Path "$env:USERPROFILE\.codex\config.toml" -Value 'forced_login_met
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-sandbox" data-check-id="cx-sandbox" />
-    <span class="check-num">35</span>
+    <span class="check-num">36</span>
     <span class="check-title">Set the permission mode</span>
   </label>
   <div class="check-detail"><p>Beneath the message box is a permissions control. Set it to <strong>Ask for approval</strong>.</p>
@@ -538,20 +558,20 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-write" data-check-id="cx-write" />
-    <span class="check-num">36</span>
+    <span class="check-num">37</span>
     <span class="check-title">Write proof: from-codex.txt</span>
   </label>
   <div class="check-detail"><p>In the message box, ask for the file in plain language:</p>
   <pre><code>Create a file named from-codex.txt in this folder containing exactly the text: codex works</code></pre>
   <p>Approve the write when it asks — that prompt is the sandbox doing its job. Then open the folder in Explorer and look.</p>
   <p>You want the file on disk, containing <code>codex works</code>. A confident <em>"I've created that for you"</em> with nothing in the folder is a fail, and noticing the difference is the first operator habit this course builds.</p>
-  <p>If it can't authenticate, the key is the problem rather than the sandbox — go back to step 31.</p></div>
+  <p>If it can't authenticate, the key is the problem rather than the sandbox — go back to step 32.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-limits" data-check-id="cx-limits" />
-    <span class="check-num">37</span>
+    <span class="check-num">38</span>
     <span class="check-title">Know what your key does and doesn't buy</span>
   </label>
   <div class="check-detail"><p>Worth reading once now, so nothing surprises you mid-week.</p>
@@ -569,7 +589,7 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-why" data-check-id="oc-why" />
-    <span class="check-num">38</span>
+    <span class="check-num">39</span>
     <span class="check-title">Know what OpenCode is for</span>
   </label>
   <div class="check-detail"><p>On Tuesday you'll run the <em>same frozen brief</em> through the Codex app and through OpenCode, compare what comes back, and decide which you trust. That needs two genuinely different engines, so OpenCode runs on <strong>Grok</strong> via your xAI key while Codex runs on OpenAI.</p>
@@ -579,7 +599,7 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-version" data-check-id="oc-version" />
-    <span class="check-num">39</span>
+    <span class="check-num">40</span>
     <span class="check-title">Get the version staff pinned for your cohort</span>
   </label>
   <div class="check-detail"><p>Check the pre-work channel for the exact OpenCode version to install, and use that rather than whatever is newest.</p>
@@ -590,7 +610,7 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-install" data-check-id="oc-install" />
-    <span class="check-num">40</span>
+    <span class="check-num">41</span>
     <span class="check-title">Install OpenCode</span>
   </label>
   <div class="check-detail"><pre><code>winget install --id SST.opencode --exact --accept-package-agreements --accept-source-agreements</code></pre>
@@ -602,7 +622,7 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-verify" data-check-id="oc-verify" />
-    <span class="check-num">41</span>
+    <span class="check-num">42</span>
     <span class="check-title">New terminal, then verify OpenCode</span>
   </label>
   <div class="check-detail"><pre><code>opencode --version</code></pre>
@@ -612,24 +632,26 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-models" data-check-id="oc-models" />
-    <span class="check-num">42</span>
+    <span class="check-num">43</span>
     <span class="check-title">Confirm OpenCode sees your xAI key</span>
   </label>
   <div class="check-detail"><p>OpenCode picks up <code>XAI_API_KEY</code> from your environment on its own — there's no login step.</p>
   <pre><code>opencode models xai --refresh</code></pre>
   <p>You should get a list of Grok models in <code>xai/…</code> form. Note the one staff pinned in your log.</p>
-  <p>An empty list means this window can't see the key. Open a new terminal and try again; if it's still empty, re-check step 27.</p></div>
+  <p>An empty list means this window can't see the key. Open a new terminal and try again; if it's still empty, re-check step 28.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-independent" data-check-id="oc-independent" />
-    <span class="check-num">43</span>
+    <span class="check-num">44</span>
     <span class="check-title">Keep this engine independent</span>
   </label>
   <div class="check-detail"><p>When OpenCode finds Claude Code's files it reads them &mdash; <code>~/.claude/CLAUDE.md</code> and any <code>.claude/skills</code> folder. If you install the optional Claude Code later in this guide, your second engine quietly starts working from the first one's notes, and two engines sharing one memory file will agree more than they should.</p>
   <p>Turn that off once as a user variable, so every window you open from now on inherits it:</p>
-  <pre><code>[Environment]::SetEnvironmentVariable("OPENCODE_DISABLE_CLAUDE_CODE", "1", "User")</code></pre>
+  <pre><code>[Environment]::SetEnvironmentVariable("OPENCODE_DISABLE_CLAUDE_CODE", "1", "User")
+$env:OPENCODE_DISABLE_CLAUDE_CODE = "1"</code></pre>
+  <p>Two lines because they do different jobs. The first makes the setting stick for every window you open from now on; it doesn't reach the window you're in. The second applies it here, so the write proof below and anything else you do in this window are covered too.</p>
   <p>New terminal, then check it took:</p>
   <pre><code>$env:OPENCODE_DISABLE_CLAUDE_CODE</code></pre>
   <p>You want <code>1</code> back. A blank line means it didn't stick &mdash; set it again and note it in your log.</p></div>
@@ -638,12 +660,12 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-write" data-check-id="oc-write" />
-    <span class="check-num">44</span>
+    <span class="check-num">45</span>
     <span class="check-title">Write proof: from-opencode.txt</span>
   </label>
-  <div class="check-detail"><p>Substitute the model your cohort pinned for <code>MODEL</code>:</p>
+  <div class="check-detail"><p>This uses the xAI model id you set in step 27:</p>
   <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
-opencode run -m xai/MODEL "Create a file named from-opencode.txt in the current directory whose only contents are the text: opencode works"
+opencode run -m "xai/$env:HB_XAI_MODEL" "Create a file named from-opencode.txt in the current directory whose only contents are the text: opencode works"
 Get-Content .\from-opencode.txt</code></pre>
   <p>The file must exist in Explorer. If OpenCode reports success but the file isn't there, that's the Windows regression mentioned above — record the version and exact error, then tell staff rather than spending an hour on it alone.</p></div>
 </li>
@@ -658,7 +680,7 @@ Get-Content .\from-opencode.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-why" data-check-id="pi-why" />
-    <span class="check-num">45</span>
+    <span class="check-num">46</span>
     <span class="check-title">Know what Pi is for</span>
   </label>
   <div class="check-detail"><p><a href="https://pi.dev" target="_blank" rel="noopener">Pi</a> is a <strong>minimal coding-agent harness</strong> you reshape to your workflow — not a sealed product with one opinion about how agents should work. Out of the box it is small on purpose: read, write, edit, and bash, plus a clean terminal UI. That is why this course starts you here — you can <em>see</em> the loop.</p>
@@ -672,7 +694,7 @@ Get-Content .\from-opencode.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-install" data-check-id="pi-install" />
-    <span class="check-num">46</span>
+    <span class="check-num">47</span>
     <span class="check-title">Install Pi</span>
   </label>
   <div class="check-detail"><pre><code>powershell -c "irm https://pi.dev/install.ps1 | iex"</code></pre>
@@ -683,7 +705,7 @@ Get-Content .\from-opencode.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-verify" data-check-id="pi-verify" />
-    <span class="check-num">47</span>
+    <span class="check-num">48</span>
     <span class="check-title">New terminal, then verify Pi</span>
   </label>
   <div class="check-detail"><pre><code>pi --version</code></pre></div>
@@ -692,12 +714,12 @@ Get-Content .\from-opencode.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-write" data-check-id="pi-write" />
-    <span class="check-num">48</span>
+    <span class="check-num">49</span>
     <span class="check-title">Write proof: from-pi.txt</span>
   </label>
   <div class="check-detail"><p>Pi can see all three of your keys, so you <strong>must</strong> name the model. Left to itself it picks one you didn't expect, and bills that provider:</p>
   <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
-pi -p --model openai/MODEL "Create a file named from-pi.txt in the current directory containing exactly: pi works"
+pi -p --model "openai/$env:HB_OPENAI_MODEL" "Create a file named from-pi.txt in the current directory containing exactly: pi works"
 Get-Content .\from-pi.txt</code></pre>
   <p>Use the OpenAI model staff pinned, or run <code>pi --list-models</code> to see what your keys can reach. The <code>-p</code> flag runs one instruction and exits instead of opening the interactive screen.</p>
   <p>There's no <code>-m</code> shorthand despite what several guides claim — it has to be <code>--model</code>.</p></div>
@@ -706,11 +728,11 @@ Get-Content .\from-pi.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-bash" data-check-id="pi-bash" />
-    <span class="check-num">49</span>
+    <span class="check-num">50</span>
     <span class="check-title">Prove Pi can reach a shell</span>
   </label>
   <div class="check-detail"><p>Pi needs Git Bash to run shell commands, and it only looks for it at the moment it first needs one. A missing shell therefore fails <em>mid-exercise</em> rather than at setup, so force the problem out now:</p>
-  <pre><code>pi -p --model openai/MODEL "Run the shell command 'echo bash-ok > bash-check.txt' and tell me the result"
+  <pre><code>pi -p --model "openai/$env:HB_OPENAI_MODEL" "Run the shell command 'echo bash-ok > bash-check.txt' and tell me the result"
 Get-Content .\bash-check.txt</code></pre>
   <p>If it reports no bash shell found, point Pi at the Git Bash path you recorded in step 17 by creating <code>%USERPROFILE%\.pi\agent\settings.json</code> containing:</p>
   <pre><code>{ "shellPath": "C:\\Program Files\\Git\\bin\\bash.exe" }</code></pre>
@@ -727,7 +749,7 @@ Get-Content .\bash-check.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-gs-what" data-check-id="gs-what" />
-    <span class="check-num">50</span>
+    <span class="check-num">51</span>
     <span class="check-title">Know what goose is for</span>
   </label>
   <div class="check-detail"><p><a href="https://goose-docs.ai" target="_blank" rel="noopener"><strong>goose</strong></a> is a local-first agent platform (CLI required here; Desktop optional). It is more than a one-shot chat: you package a <strong>recipe</strong> (mission + parameters), choose a <strong>tool surface</strong> (extensions / MCP tools), set an <strong>autonomy dial</strong> (<code>GOOSE_MODE</code>, max turns), and optionally an <strong>unattended path</strong> (scheduler + retry).</p>
@@ -738,7 +760,7 @@ Get-Content .\bash-check.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-gs-nowinget" data-check-id="gs-nowinget" />
-    <span class="check-num">51</span>
+    <span class="check-num">52</span>
     <span class="check-title">Do not install goose with winget</span>
   </label>
   <div class="check-detail"><p>Read this before the next step. A winget package named <em>goose</em> exists and is a completely unrelated database tool that happens to share the name. It installs cleanly, reports success, and is the wrong program.</p>
@@ -748,7 +770,7 @@ Get-Content .\bash-check.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-keyring" data-check-id="gs-keyring" />
-    <span class="check-num">52</span>
+    <span class="check-num">53</span>
     <span class="check-title">Turn off the Windows keyring first</span>
   </label>
   <div class="check-detail"><p>Do this <strong>before</strong> installing. By default goose stores secrets in Windows Credential Manager, which fails often enough on managed laptops that its own documentation tells you to decline it. Setting this first means the installer never tries.</p>
@@ -760,24 +782,25 @@ $env:GOOSE_DISABLE_KEYRING = '1'</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-provider" data-check-id="gs-provider" />
-    <span class="check-num">53</span>
+    <span class="check-num">54</span>
     <span class="check-title">Tell goose which provider and model to use</span>
   </label>
-  <div class="check-detail"><p>goose reads your API keys from the environment, but it needs telling which provider to reach for. Use the model staff pinned in place of <code>MODEL</code>:</p>
+  <div class="check-detail"><p>goose reads your API keys from the environment, but it needs telling which provider to reach for. This reuses the OpenAI model id from step 27:</p>
   <pre><code>[Environment]::SetEnvironmentVariable('GOOSE_PROVIDER','openai','User')
-[Environment]::SetEnvironmentVariable('GOOSE_MODEL','MODEL','User')
+[Environment]::SetEnvironmentVariable('GOOSE_MODEL',$env:HB_OPENAI_MODEL,'User')
 $env:GOOSE_PROVIDER = 'openai'
-$env:GOOSE_MODEL = 'MODEL'</code></pre>
+$env:GOOSE_MODEL = $env:HB_OPENAI_MODEL</code></pre>
   <p>Setting these means you never have to walk goose's provider list, which is worth avoiding: it mixes API-key providers together with subscription ones like ChatGPT Codex, GitHub Copilot and Cursor Agent that need consumer logins you don't have. This course is API keys only — stay on the OpenAI (or staff-posted) pin.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-install" data-check-id="gs-install" />
-    <span class="check-num">54</span>
+    <span class="check-num">55</span>
     <span class="check-title">Install the goose command-line tool</span>
   </label>
   <div class="check-detail"><pre><code>$env:CONFIGURE = "false"
+cd "$env:USERPROFILE\Downloads"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/goose/main/download_cli.ps1" -OutFile "download_cli.ps1"
 .\download_cli.ps1</code></pre>
   <p>If PowerShell refuses to run the script, use this form instead:</p>
@@ -790,7 +813,7 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/goose/main/
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-path" data-check-id="gs-path" />
-    <span class="check-num">55</span>
+    <span class="check-num">56</span>
     <span class="check-title">Add goose to your PATH</span>
   </label>
   <div class="check-detail"><p>The installer drops goose into <code>%USERPROFILE%\.local\bin</code> but doesn't add that folder to PATH — it only prints a warning that's easy to scroll past.</p>
@@ -802,7 +825,7 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/goose/main/
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-verify" data-check-id="gs-verify" />
-    <span class="check-num">56</span>
+    <span class="check-num">57</span>
     <span class="check-title">Verify goose and check what it sees</span>
   </label>
   <div class="check-detail"><pre><code>goose --version
@@ -813,7 +836,7 @@ goose info -v</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-write" data-check-id="gs-write" />
-    <span class="check-num">57</span>
+    <span class="check-num">58</span>
     <span class="check-title">Write proof: from-goose.txt</span>
   </label>
   <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
@@ -834,7 +857,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ob-install" data-check-id="ob-install" />
-    <span class="check-num">58</span>
+    <span class="check-num">59</span>
     <span class="check-title">Install Obsidian</span>
   </label>
   <div class="check-detail"><p>Obsidian reads and writes ordinary Markdown files in a folder. On Wednesday you'll point an agent at that folder and build a knowledge system with citations you can walk.</p>
@@ -845,7 +868,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ob-vault" data-check-id="ob-vault" />
-    <span class="check-num">59</span>
+    <span class="check-num">60</span>
     <span class="check-title">Create a vault and confirm it opens</span>
   </label>
   <div class="check-detail"><p>A <strong>vault</strong> is just a folder Obsidian has adopted. Make one first:</p>
@@ -866,7 +889,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-node" data-check-id="n8n-node" />
-    <span class="check-num">60</span>
+    <span class="check-num">61</span>
     <span class="check-title">Re-check your Node version first</span>
   </label>
   <div class="check-detail"><pre><code>node -v</code></pre>
@@ -876,7 +899,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-install" data-check-id="n8n-install" />
-    <span class="check-num">61</span>
+    <span class="check-num">62</span>
     <span class="check-title">Install n8n</span>
   </label>
   <div class="check-detail"><pre><code>npm install n8n -g</code></pre>
@@ -887,7 +910,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-start" data-check-id="n8n-start" />
-    <span class="check-num">62</span>
+    <span class="check-num">63</span>
     <span class="check-title">Start n8n once and open the editor</span>
   </label>
   <div class="check-detail"><pre><code>n8n start</code></pre>
@@ -898,7 +921,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-owner" data-check-id="n8n-owner" />
-    <span class="check-num">63</span>
+    <span class="check-num">64</span>
     <span class="check-title">Create the local owner account, and skip the licence offer</span>
   </label>
   <div class="check-detail"><p>n8n shows what looks like a signup screen asking for an email and password. <strong>It is not a subscription and not a login to anything.</strong> It creates a record in a database file on your own laptop, nothing is transmitted, and no verification email is sent. It also can't be skipped.</p>
@@ -909,7 +932,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-stop" data-check-id="n8n-stop" />
-    <span class="check-num">64</span>
+    <span class="check-num">65</span>
     <span class="check-title">Learn how to stop it</span>
   </label>
   <div class="check-detail"><p>Press <kbd>Ctrl</kbd>+<kbd>C</kbd> in the window running n8n. The page at localhost:5678 stops answering, and your work stays saved on disk for next time.</p>
@@ -926,7 +949,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-get" data-check-id="rp-get" />
-    <span class="check-num">65</span>
+    <span class="check-num">66</span>
     <span class="check-title">Clone the course repository</span>
   </label>
   <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp"
@@ -938,17 +961,23 @@ cd AI_Harness_Bootcamp</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-operator" data-check-id="rp-operator" />
-    <span class="check-num">66</span>
-    <span class="check-title">Copy the operator templates into your working project</span>
+    <span class="check-num">67</span>
+    <span class="check-title">Copy the operator templates where you actually work</span>
   </label>
-  <div class="check-detail"><p>Copy the <code>operator/</code> folder into whichever project folder you'll work in this week. It holds the Direction Brief and Operator Log you fill in before and after every block, plus the pass bars, adversarial review prompt, measurement spine, and transfer file.</p>
-  <p>These are the instruments of the work rather than paperwork about it. Keeping them where you work, instead of in a separate download, is what makes them get used.</p></div>
+  <div class="check-detail"><p>The <code>operator/</code> folder holds the Direction Brief and Operator Log you fill in before and after every block, plus the pass bars, adversarial review prompt, measurement spine, and transfer file.</p>
+  <p>They belong wherever you're working, not in a folder you downloaded and forgot. Right now that's the smoke folder, because it's the project you opened in the Codex app in step 35:</p>
+  <pre><code>Copy-Item -Recurse -Force `
+  "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator" `
+  "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\"
+Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\operator"</code></pre>
+  <p>You should see the template files listed. When you open a mission folder as a project during the week, bring <code>operator/</code> with you the same way.</p>
+  <p>These are the instruments of the work rather than paperwork about it. Keeping them where you work is what makes them get used.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-site" data-check-id="rp-site" />
-    <span class="check-num">67</span>
+    <span class="check-num">68</span>
     <span class="check-title">Run the course site locally</span>
   </label>
   <div class="check-detail"><p>From the repository root:</p>
@@ -960,7 +989,7 @@ cd AI_Harness_Bootcamp</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-gitignore" data-check-id="rp-gitignore" />
-    <span class="check-num">68</span>
+    <span class="check-num">69</span>
     <span class="check-title">Protect your keys before your first commit</span>
   </label>
   <div class="check-detail"><p>In any folder where you'll commit work this week, make sure a <code>.gitignore</code> file exists containing at least:</p>
@@ -981,18 +1010,18 @@ auth.json</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cc-optional" data-check-id="cc-optional" />
-    <span class="check-num">69</span>
+    <span class="check-num">70</span>
     <span class="check-title">Decide whether to install it</span>
   </label>
   <div class="check-detail"><p><strong>Optional.</strong> Skipping it doesn't affect your gate — OpenCode is the required second engine, and Tuesday's comparison runs on Codex and OpenCode.</p>
   <p>You have an Anthropic key, so if you'd like a third opinion available during the week it's about five minutes. If you're short on time, skip it and come back later.</p>
-  <p>If you do install it, the <code>OPENCODE_DISABLE_CLAUDE_CODE</code> variable from step 43 is what keeps the two apart. Claude Code writes a <code>CLAUDE.md</code> that OpenCode would otherwise read as its own standing instructions.</p></div>
+  <p>If you do install it, the <code>OPENCODE_DISABLE_CLAUDE_CODE</code> variable from step 44 is what keeps the two apart. Claude Code writes a <code>CLAUDE.md</code> that OpenCode would otherwise read as its own standing instructions.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cc-install" data-check-id="cc-install" />
-    <span class="check-num">70</span>
+    <span class="check-num">71</span>
     <span class="check-title">Install Claude Code and prove it writes</span>
   </label>
   <div class="check-detail"><pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
@@ -1016,7 +1045,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-g-four" data-check-id="g-four" />
-    <span class="check-num">71</span>
+    <span class="check-num">72</span>
     <span class="check-title">Confirm all four required files exist together</span>
   </label>
   <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"</code></pre>
@@ -1026,7 +1055,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-g-log" data-check-id="g-log" />
-    <span class="check-num">72</span>
+    <span class="check-num">73</span>
     <span class="check-title">Close the setup log honestly</span>
   </label>
   <div class="check-detail"><p>At least one real failure and fix. OpenCode version. Codex app sandbox mode. Any step still yellow, with what you will try in clinic. There is no separate health-check page to run — if a tool is wrong, re-run that section’s verify.</p></div>
@@ -1035,7 +1064,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-g-pack" data-check-id="g-pack" />
-    <span class="check-num">73</span>
+    <span class="check-num">74</span>
     <span class="check-title">Pack for Monday clinic</span>
   </label>
   <div class="check-detail"><p>Bring the laptop, the four smoke files, and the setup log. Monday AM is an install clinic (~2 hours expected, no hard wall) then First Light — staff help finish gaps; they do not re-teach winget from zero for skipped pre-work.</p>
@@ -1052,7 +1081,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-notfound" data-check-id="r-notfound" />
-    <span class="check-num">74</span>
+    <span class="check-num">75</span>
     <span class="check-title">"is not recognized" after a successful install</span>
   </label>
   <div class="check-detail"><p>Close every terminal and open a new one. That's the answer roughly nine times in ten, and it applies to every tool here.</p>
@@ -1064,7 +1093,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-window" data-check-id="r-window" />
-    <span class="check-num">75</span>
+    <span class="check-num">76</span>
     <span class="check-title">A command that should work doesn't — check which window you're in</span>
   </label>
   <div class="check-detail"><p>Before assuming an install is broken, confirm the terminal:</p>
@@ -1076,7 +1105,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-scripts" data-check-id="r-scripts" />
-    <span class="check-num">76</span>
+    <span class="check-num">77</span>
     <span class="check-title">"running scripts is disabled on this system"</span>
   </label>
   <div class="check-detail"><p>That's the execution policy from step 11. Re-run it, then check <code>Get-ExecutionPolicy -List</code>.</p>
@@ -1086,11 +1115,11 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-auth" data-check-id="r-auth" />
-    <span class="check-num">77</span>
+    <span class="check-num">78</span>
     <span class="check-title">A tool won't authenticate</span>
   </label>
-  <div class="check-detail"><p>Work through these in order. Is the key set in <em>this</em> window (step 27)? Does it start with the right prefix for that provider? Is it the right key for that tool — <code>XAI_API_KEY</code> for OpenCode, <code>OPENAI_API_KEY</code> for the rest?</p>
-  <p>The Codex app is the exception to all of that: it never reads the variable. It uses the key you pasted into <em>Sign in another way</em>. Check the profile menu — it should say API key, not an account. If it's wrong, log out there and redo step 31.</p>
+  <div class="check-detail"><p>Work through these in order. Is the key set in <em>this</em> window (step 28)? Does it start with the right prefix for that provider? Is it the right key for that tool — <code>XAI_API_KEY</code> for OpenCode, <code>OPENAI_API_KEY</code> for the rest?</p>
+  <p>The Codex app is the exception to all of that: it never reads the variable. It uses the key you pasted into <em>Sign in another way</em>. Check the profile menu — it should say API key, not an account. If it's wrong, log out there and redo step 32.</p>
   <p>If the Codex app keeps pushing you toward a ChatGPT login, confirm <code>forced_login_method = "api"</code> is in <code>%USERPROFILE%\.codex\config.toml</code> and restart the app.</p>
   <p>If a tool worked yesterday and fails today with a <strong>429</strong> or a quota message, the key has hit its spending cap. That's a staff fix rather than a reinstall — message them with which key and what you were running.</p></div>
 </li>
@@ -1098,7 +1127,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-store" data-check-id="r-store" />
-    <span class="check-num">78</span>
+    <span class="check-num">79</span>
     <span class="check-title">The Codex app won't install — the Store is blocked</span>
   </label>
   <div class="check-detail"><p>Some managed laptops block the Microsoft Store and the <code>msstore</code> winget source outright. The ChatGPT desktop app ships only as a Store-signed package, so unlike everything else in this stack there's no second vendor to fall back on.</p>
@@ -1110,7 +1139,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-noclaim" data-check-id="r-noclaim" />
-    <span class="check-num">79</span>
+    <span class="check-num">80</span>
     <span class="check-title">The tool says it wrote a file that isn't there</span>
   </label>
   <div class="check-detail"><p>Believe the folder, not the chat. Check you're where you think you are with <code>Get-Location</code>, and list it with <code>Get-ChildItem</code>.</p>
@@ -1120,7 +1149,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-stuck" data-check-id="r-stuck" />
-    <span class="check-num">80</span>
+    <span class="check-num">81</span>
     <span class="check-title">You've been stuck on one step for 30 minutes</span>
   </label>
   <div class="check-detail"><p>Stop and post in the pre-work channel with the step number, the exact error text, and what you've already tried. Move on to the next section while you wait — most of these are independent, so one blocked tool doesn't block the rest.</p>

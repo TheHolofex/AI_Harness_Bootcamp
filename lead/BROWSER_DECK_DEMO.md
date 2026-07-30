@@ -1,4 +1,4 @@
-# Computer Use lead demo — Thursday, right after lunch
+# Browser → deck lead demo — Thursday, right after lunch
 
 **When:** Thursday, **immediately after lunch**, before P7 opens.  
 **Length:** **30 minutes** hard target (soft finish if a permission prompt runs long).  

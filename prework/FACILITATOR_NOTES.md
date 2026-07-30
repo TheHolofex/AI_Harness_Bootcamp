@@ -39,13 +39,39 @@ Budget roughly $100 per student per provider for a week of heavy agent use, and 
 
 Students are told to use the cohort pin rather than latest. Post in the pre-work channel:
 
-- **OpenCode version.** This one matters most. OpenCode ships fast and Windows support has regressed between releases — file-writing tools failing on Windows has been a live issue. Install a candidate on one machine, run the write proof, and pin what passes.
+- **OpenCode version, and the channel you pinned it on.** This one matters most. OpenCode ships fast and Windows support has regressed between releases — file-writing tools failing on Windows has been a live issue. Install a candidate on one machine, run the write proof, and pin what passes.
+
+  **The guide's two install paths do not deliver the same build.** Checked 2026-07-30: winget `SST.opencode` was on **1.18.7** while npm `opencode-ai` was on **1.18.10**. winget lags, sometimes by days. A pin that names only a version number is ambiguous — post the channel with it, or a room that mixed winget and the npm fallback is not on one build no matter what the number says.
 - **Model ids** for OpenAI and xAI. Do not let handouts carry hardcoded model names; providers rotate them. Confirm current ids the week the course runs.
 
 Two things about OpenCode that will not announce themselves:
 
 - **The winget id is still `SST.opencode`.** The project moved from SST to Anomaly and the repo, Homebrew tap, and container images all renamed, but the winget package id did not. It is actively maintained under the old name. Do not "correct" it in the guide.
 - **OpenCode reads `~/.claude/CLAUDE.md` and `.claude/skills` by default.** Any student who installs the optional Claude Code gets a second engine quietly running on the first one's standing instructions, and nothing in either tool says so. Pre-work sets `OPENCODE_DISABLE_CLAUDE_CODE=1` (install checklist step 43, section 8 in `INSTALL_GUIDE.md`); check it during clinic alongside the version. The same exposure exists on the Codex side through `AGENTS.md`, skills, and memories — students handle that one in P3 by running from a clean folder or declaring what was live.
+
+### 2a. Re-check the rotting facts before you pin
+
+Two harnesses exist so this is not a manual afternoon:
+
+```bash
+python3 .github/scripts/verify-stack-facts.py
+```
+
+Runs from any machine, no Windows and no keys. Confirms the winget ids still
+resolve, re-tests the Node `.LTS` claim against what winget actually offers
+today, and flags when the winget and npm channels have drifted apart.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .github\scripts\prework-verify.ps1
+```
+
+Run on the candidate build itself, on real Windows x64. Covers what the first
+one cannot: that the tools install and start, that Git Bash is where the guide
+says, and that the `OPENCODE_DISABLE_CLAUDE_CODE` round-trip survives a fresh
+terminal. Writes `prework-verify-results.md` beside itself.
+
+Neither touches the GUI steps or the key-dependent write proofs. Those still
+need a person at a keyboard with a funded key.
 
 ### 3. Revocation plan
 
@@ -72,7 +98,7 @@ Triage these first when someone reports being stuck; no amount of retrying helps
 | Symptom | Reality |
 |---|---|
 | `Get-ExecutionPolicy -List` shows MachinePolicy or UserPolicy set | Group Policy overrides the student. IT ticket. |
-| `$env:PROCESSOR_ARCHITECTURE` returns ARM64 | OpenCode won't start; goose has no ARM build. Different machine required. |
+| `$env:PROCESSOR_ARCHITECTURE` returns ARM64 | OpenCode won't start; goose has no ARM build. Different machine required. Worth a re-test each cohort: the npm package now declares `cpu: ["arm64","x64"]` and `os: [...,"win32"]`, so the metadata permits a Windows ARM64 install even though the runtime failure is what we actually observed. Metadata permitting an install is not the same as it working — confirm on hardware before relaxing this. |
 | No admin rights for elevation prompts | Git, Node, and the Codex app's elevated sandbox all need one. IT ticket. Codex still runs on the `unelevated` fallback, so this is YELLOW rather than RED. |
 | Microsoft Store or `winget ... -s msstore` blocked by policy | The Codex app ships only as a Store-signed package. Rescue is the direct MSIX (`ChatGPT-x64.msix`) in the install guide's rescue table; there is no MSI or standalone EXE. Screen for this before cohort start — it is the one install with no second vendor path. |
 | Key returns 429 / insufficient quota | Cap or balance. Staff console fix. |
@@ -128,4 +154,18 @@ Lead runs missions live on screen with talk-through and real-time AI depth. Pre-
 
 **Tue/Wed/Thu AM:** protect the last **45 minutes before lunch** for the harness case talk (30 present + 15 discuss). Guide: `lead/HARNESS_CASE_TALKS.md`.
 
-**Thursday after lunch:** protect **30 minutes** for the **browser → deck lead demo** before P7 (staff Windows machine only; students watch). Cold-smoke `@Browser` → four-slide `slideshow.html` at lunch. Script + fallback: `lead/COMPUTER_USE_DEMO.md`. Not student setup; no Chrome extension.
+**Thursday after lunch:** protect **30 minutes** for the **browser → deck lead demo** before P7 (staff Windows machine only; students watch). Cold-smoke `@Browser` → four-slide `slideshow.html` at lunch. Script + fallback: `lead/BROWSER_DECK_DEMO.md`. Not student setup; no Chrome extension.
+
+
+## Stretch modules (contact week — not pre-work GREEN)
+
+### Many Minds (P3 stretch)
+- After twin-engine MVP: `mission_flesh/p3/MANY_MINDS.md` — require **three** artifacts: `baseline_single.md`, `many_minds_synthesis.md`, `many_minds_delta.md`. Spot-audit deltas first.
+- Cap three read-only subagents; synthesis file on disk; correct “Cowork” language. The prompt cap is procedure-enforced — `agents.max_concurrent_threads_per_session` is the tool-enforced one, worth setting on demo or spend-sensitive machines. Answer key for the seeded defects: `lead/MANY_MINDS_ANSWER_KEY.md` (staff only; the corpus is unlabelled on purpose)
+- Worktrees optional; don’t burn the block if Git/UI fights the room
+
+### Local endpoint (P6→P8 stretch)
+- Post before Thursday: `LOCAL PIN: Ollama · <tag> · min RAM · tool-call yes/weak/no`
+- Cold-smoke `goose run` once on staff Windows laptop
+- YELLOW/lead-demo is fine when student RAM is short
+- Guide: `mission_flesh/p6/local_endpoint_notes.md`

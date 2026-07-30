@@ -29,7 +29,7 @@ The lead does **not** abstract into a distant lecturer. The lead **runs the exer
 | **Talk-through** | Continuous narration: why this accept/reject, what evidence counts, where the harness is weak, what they’d do at work |
 | **Side lectures** | Short, experience-grounded asides — only when they sharpen the exercise, not as a separate slide course |
 | **Harness case talks** | Tue/Wed/Thu AM before lunch: 30 min real problem solved with harnesses + 15 min discussion — scars and evidence, not product pitch |
-| **Browser → deck lead demo** | Thursday **after lunch**, 30 min, before P7: staff Windows machine only — `@Browser` on scoped public pages → short slideshow → verify one claim → stop; students watch; **no** Chrome extension, **no** student setup (`lead/COMPUTER_USE_DEMO.md`) |
+| **Browser → deck lead demo** | Thursday **after lunch**, 30 min, before P7: staff Windows machine only — `@Browser` on scoped public pages → short slideshow → verify one claim → stop; students watch; **no** Chrome extension, **no** student setup (`lead/BROWSER_DECK_DEMO.md`) |
 | **AI as depth instrument** | Instructor interacts with the AI **in real time** to go deeper: explain, challenge, diagram, unpack concepts while the room watches the cothinking |
 | **Students still own the chair** | Watching is not substituting; students run their own pulse and artifacts. Demo is model + insight, not “copy my output” |
 
@@ -128,7 +128,7 @@ Verified against OpenAI's plan feature matrix 2026-07-30. This is the boundary t
 | Local `/review` · scheduled tasks · **subagents and custom agents** | Connectors · plugin sharing · Codex-Spark |
 | `AGENTS.md` · skills · MCP · web search · appshots · built-in browser | Analytics, RBAC, SSO, compliance APIs |
 
-Computer Use, plugins, and memories are *limited* on a key rather than absent — treat them as stretch, never as MVP. **Curriculum home:** Thursday after-lunch **lead demo** (`lead/COMPUTER_USE_DEMO.md`) — default path is built-in browser research → short deck → verify → stop; optional Computer Use only for PowerPoint. Not pre-work, not GREEN, not student Chrome extension setup. `@Chrome` stays out of course setup.
+Computer Use, plugins, and memories are *limited* on a key rather than absent — treat them as stretch, never as MVP. **Curriculum home:** Thursday after-lunch **lead demo** (`lead/BROWSER_DECK_DEMO.md`) — default path is built-in browser research → short deck → verify → stop; optional Computer Use only for PowerPoint. Not pre-work, not GREEN, not student Chrome extension setup. `@Chrome` stays out of course setup.
 
 ## Required tool stack (Windows 11, 64-bit — no WSL, no ARM64)
 
@@ -158,6 +158,7 @@ Checked 2026-07-30. These are the ones that silently break a room:
 - **OpenCode permission rules resolve last-match-wins** — a later `allow` overrides an earlier `deny`, which inverts the usual instinct. The shipped defaults demonstrate it: `read *` allow → `*.env` deny → `*.env.example` allow. This is the concrete substance of the P5 bounds comparison; pasting a deny list at the top of the array silently does nothing.
 - **Codex is a mode in the ChatGPT desktop app, not a product you can download by name.** Docs moved from `developers.openai.com/codex` to `learn.chatgpt.com/docs` (append `.md` to any page URL for clean Markdown). Model family is **GPT-5.6 Sol / Terra / Luna**; `gpt-5-codex` is gone. Permission modes are **Ask for approval / Approve for me (auto-review) / Full access**, enabled in Settings > General > Permissions and selected beneath the composer.
 - **The Windows app ships only as a Store-signed package** — `winget install --id 9PLM9XGG6VKS -s msstore`, or the web installer. There is no MSI or standalone EXE. Managed laptops that block Microsoft app distribution need the direct MSIX (`ChatGPT-x64.msix`); this is the one install in the stack with no second vendor path, so screen for it before a cohort starts.
+- **Codex multi-agent on the key:** **subagents** (parallel specialists under one commander; inherit permission mode) and **worktrees** (isolated Git checkouts + handoff). Available on API-key desktop per course matrix — treat as P3 *stretch*, never rename to “Cowork.” Read-heavy first; write-heavy parallel is coordination cost.
 - **On Windows the sandbox only engages when the permission mode is set.** `elevated` is preferred and needs an admin prompt; `unelevated` is the fallback (`[windows] sandbox = "unelevated"`), still the right answer for Windows error `1385`.
 - **Node must be `OpenJS.NodeJS.LTS`**, landing in 22.22–24.x. Plain `OpenJS.NodeJS` installs a release too new for n8n.
 - **xAI keys are deny-by-default** — a new key does nothing until ACLs are attached. Verify one end to end before issuing.
@@ -180,7 +181,9 @@ When building curriculum, materials, images, scripts, or docs:
 - **Use the app's own vocabulary in learner-facing text:** *project* (a folder opened in the app), *chat* (a named, pinnable conversation), *worktree*, *permission mode*, *subagent*. Do not write "thread" — the app has no such object, and the mismatch costs students time hunting for it.
 - **Student-owned install** via `prework/` module before contact week — **no golden image** as the default path. Verify **at the end of each setup step** (no separate health-check pass). Monday AM **install clinic** (~2 hr expected, soft boundary) closes gaps, then First Light.
 - **Harness case talks** Tue/Wed/Thu AM before lunch: 30 min real problem the lead solved with harnesses + 15 min discussion (`lead/HARNESS_CASE_TALKS.md`).
-- **Browser → deck lead demo** Thursday after lunch (30 min) before P7: staff machine, watch-only (`lead/COMPUTER_USE_DEMO.md`); cold-smoke `@Browser`→`slideshow.html` at lunch; fallback if browser tool dead — never student install clinic work.
+- **Browser → deck lead demo** Thursday after lunch (30 min) before P7: staff machine, watch-only (`lead/BROWSER_DECK_DEMO.md`); cold-smoke `@Browser`→`slideshow.html` at lunch; fallback if browser tool dead — never student install clinic work.
+- **Many Minds (P3 stretch):** Codex **subagents** + optional **worktrees** — never teach Anthropic “Cowork”; naming lock *subagent ≠ second engine ≠ second human*; pack `mission_flesh/p3/MANY_MINDS.md` + `instruments/p3_multi_agent/`.
+- **Endpoint is a wall (P6/P8 stretch):** staff-pinned **Ollama** (default) or **LM Studio**; same goose recipe; hold/degrade vs cloud; not clinic GREEN; guide `mission_flesh/p6/local_endpoint_notes.md`.
 - Every project must force **direction + evidence + judgment**, not passive watching.
 - Honor **MVP pass bars** in `operator/PASS_BARS.md`; do not dilute them for convenience.
 - **Every block:** new adversarial review chat using `operator/ADVERSARIAL_REVIEW.md` (frozen prompt); log stood/wounded/failed before transfer.

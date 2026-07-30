@@ -146,9 +146,12 @@ Single unmeasured tweak, no red→green test, or nothing survives restart.
 ### Stretch
 - [ ] Underspecification experiment: v1 brief vs tightened v2; show disagreement rate or error change on both engines
 - [ ] 90-second peer defense using only the comparator (no rebuilding the story)
+- [ ] **Many Minds (subagents):** `mission_flesh/p3/MANY_MINDS.md` + `instruments/p3_multi_agent/` — **baseline** `out/baseline_single.md` (no subagents) **then** three parallel read-only lenses wait-for-all → `out/many_minds_synthesis.md` (deduped merge) → `out/many_minds_delta.md` with defended verdict; ≥1 **earned kill** with corpus evidence (not vibes); ≥2 adversarial seeds logged; sentence *subagent ≠ second engine ≠ second human*. Missing baseline ⇒ not yet for this stretch
+- [ ] **Worktree isolation (optional deeper):** only after the three artifacts above; proof file + when worktree vs subagent; or honest block (`instruments/p3_multi_agent/README.md`)
 
 ### Side-quest
 - [ ] Add a third frozen source; re-adjudicate; show how new disagreement changed the watch
+- [ ] Custom agent TOML for one recurring lens (security or tests) under `.codex/agents/` — spawn it once; not required for stretch credit above
 
 ### Not yet if
 One engine only, “they basically agreed,” or verdict without a comparator.
@@ -228,9 +231,11 @@ goose is the vehicle: local agent platform (CLI default; Desktop optional) whose
 - [ ] Dual-bound demo: tighten one tool-enforced limit (mode, max_turns, or extension cut) and show the refuse
 - [ ] **Tripwire written and defeated:** your own `tool_call` gate in Pi blocking writes outside the mission folder, then beaten with a `../` path, then fixed by resolving against `ctx.cwd`. State where you put the gate and why that location changes what it guarantees
 - [ ] Enable one deeper goose control (Adversary Mode, extra allowlisted tool, or structured `response` schema) and show what it changes on the feeder
+- [ ] **Endpoint is a wall (local):** `mission_flesh/p6/local_endpoint_notes.md` — staff pin; **`out/local_predict.md` before** local watch run; paired `out/watch_summary.cloud.md` + `out/watch_summary.local.md` (or documented paths); **numeric** `out/local_hold_degrade.md` (C1–C7 scores + prediction match rate + event_04 pair); non-exfil checklist filled honestly; endpoint decision rule; flip back (`goose info -v`). YELLOW with predict + decision rule still required; fake air-gap is not
 
 ### Side-quest
 - [ ] Same feeder, two contracts (loose vs strict); measure what each allows/refuses on one scenario pack
+- [ ] Local model as third cell on a mini hold/degrade before P8’s full matrix
 
 ### Not yet if
 Stock recipe only, one-column “be safe” contract, tool column with no real goose settings, or stop never demonstrated.
@@ -279,9 +284,11 @@ Happy-path only, no human gate, or “automation is always better” with no dis
 ### Stretch
 - [ ] Manager-ready one-pager: problem, method, bounds, first 30 days, risks
 - [ ] Partial re-point strategy: what stays commercial and why (cost/risk/quality)
+- [ ] **Endpoint portfolio:** written map of API home · local · hosted open — each cell cites a **score or artifact path** (local: `local_hold_degrade.md` totals; cloud/open: P8 matrix or P6 cloud path). “If attempted” without a YELLOW decision rule is not yet
 
 ### Side-quest
 - [ ] Re-run P3 comparator with open model as third engine; update adjudication rules
+- [ ] Re-run P6 watch recipe against hosted open (if endpoint allows tools) and add a third column to local hold/degrade
 
 ### Not yet if
 Policy after the fact, vibe degrade (“it’s fine”), empty 30-60-90, or no refuse under policy.

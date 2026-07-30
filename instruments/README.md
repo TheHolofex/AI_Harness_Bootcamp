@@ -39,3 +39,7 @@ P3 uses its own frozen corpus + brief (`F-` sources, brief `BRIEF-v1`) on the **
 - Issue track choice Monday PM or P2 open (2 minutes).
 - Score sheets are student-owned; keys stay with staff unless pedagogy says otherwise.
 - MVP uses these kits; personal portable eval stays transfer-only (post-course).
+
+## P3 multi-agent stretch
+
+`p3_multi_agent/` — Many Minds read-only pack. See `mission_flesh/p3/MANY_MINDS.md`.

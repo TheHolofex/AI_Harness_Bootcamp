@@ -165,15 +165,32 @@ winget install -e --id OpenJS.NodeJS.LTS
 Read `site/keys.html` first. Then set each key. The `Read-Host` form keeps the secret out of your shell history:
 
 ```powershell
-$key = Read-Host 'Paste OPENAI_API_KEY'
-[Environment]::SetEnvironmentVariable('OPENAI_API_KEY', $key, 'User')
-$env:OPENAI_API_KEY = $key
-$key = $null
+foreach ($name in 'OPENAI_API_KEY','XAI_API_KEY','ANTHROPIC_API_KEY') {
+  $key = Read-Host "Paste $name"
+  [Environment]::SetEnvironmentVariable($name, $key, 'User')
+  [Environment]::SetEnvironmentVariable($name, $key, 'Process')
+  $key = $null
+}
 ```
 
-Repeat for `XAI_API_KEY` and `ANTHROPIC_API_KEY`.
+That prompts you three times and names the key it wants each time, so paste them in the order it asks. `User` makes each one stick for future windows; `Process` applies it to this one.
 
 Prefer this to `setx`, which truncates values past 1024 characters and leaves the key in your command history.
+
+### Model ids
+
+Staff pin a model per provider for your cohort and post both ids in the pre-work channel. Set them once here and every later step picks them up — otherwise you would be hand-editing four commands further down.
+
+Change the two quoted values to the ids from the channel, then run all four lines:
+
+```powershell
+$env:HB_OPENAI_MODEL = 'paste the OpenAI model id'
+$env:HB_XAI_MODEL    = 'paste the xAI model id'
+[Environment]::SetEnvironmentVariable('HB_OPENAI_MODEL', $env:HB_OPENAI_MODEL, 'User')
+[Environment]::SetEnvironmentVariable('HB_XAI_MODEL',    $env:HB_XAI_MODEL,    'User')
+```
+
+The first two lines set them for this window, the last two make them stick for every future one. These two values are the only thing in this guide you type rather than paste. The `HB_` prefix keeps them from colliding with anything a tool reads on its own.
 
 Close the terminal, open a **new** one, and verify:
 
@@ -188,6 +205,16 @@ Close the terminal, open a **new** one, and verify:
 - [ ] Three lines, each with two matching non-zero numbers
 
 Only lengths print, never the keys, so this is safe on a shared screen. `user=0` means it didn't save; `session=0` means this window predates the variable.
+
+Model ids are not secret, so check those by eye:
+
+```powershell
+'HB_OPENAI_MODEL','HB_XAI_MODEL' | ForEach-Object {
+  '{0} = {1}' -f $_, [Environment]::GetEnvironmentVariable($_,'User')
+}
+```
+
+- [ ] Both read back the ids from the channel, not the words `paste the...`
 
 ---
 
@@ -297,11 +324,14 @@ opencode models xai --refresh
 
 OpenCode reads `XAI_API_KEY` from the environment automatically — there is no login step. An empty model list means this window can't see the key.
 
-**Keep this engine independent.** When OpenCode finds Claude Code's files it reads them: `~/.claude/CLAUDE.md` and any `.claude/skills` folder. If you add Claude Code in step 14, your second engine quietly starts working from the first one's notes, and two engines sharing one memory file will agree more than they should. Turn that off once as a user variable, so every window you open from now on inherits it:
+**Keep this engine independent.** When OpenCode finds Claude Code's files it reads them: `~/.claude/CLAUDE.md` and any `.claude/skills` folder. If you add Claude Code in section 14, your second engine quietly starts working from the first one's notes, and two engines sharing one memory file will agree more than they should. Turn that off:
 
 ```powershell
 [Environment]::SetEnvironmentVariable("OPENCODE_DISABLE_CLAUDE_CODE", "1", "User")
+$env:OPENCODE_DISABLE_CLAUDE_CODE = "1"
 ```
+
+Two lines because they do different jobs. The first makes the setting stick for every window you open from now on; it does **not** reach the window you are in. The second applies it here, so the write proof below and anything else you do in this window are covered too.
 
 New terminal, then check it took:
 
@@ -311,11 +341,11 @@ $env:OPENCODE_DISABLE_CLAUDE_CODE
 
 You want `1` back. A blank line means it didn't stick — set it again and note it in your log.
 
-Write proof — substitute the pinned model for `MODEL`:
+Write proof — this uses the xAI model id you set in section 5:
 
 ```powershell
 cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
-opencode run -m xai/MODEL "Create a file named from-opencode.txt in the current directory whose only contents are the text: opencode works"
+opencode run -m "xai/$env:HB_XAI_MODEL" "Create a file named from-opencode.txt in the current directory whose only contents are the text: opencode works"
 Get-Content .\from-opencode.txt
 ```
 
@@ -351,7 +381,7 @@ Pi can see all three keys, so **you must name the model** or it picks one you di
 
 ```powershell
 cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
-pi -p --model openai/MODEL "Create a file named from-pi.txt in the current directory containing exactly: pi works"
+pi -p --model "openai/$env:HB_OPENAI_MODEL" "Create a file named from-pi.txt in the current directory containing exactly: pi works"
 Get-Content .\from-pi.txt
 ```
 
@@ -360,7 +390,7 @@ There is no `-m` shorthand despite what several guides claim.
 Then prove it can reach a shell. Pi only looks for Git Bash at the moment it first needs one, so a missing shell otherwise fails mid-exercise:
 
 ```powershell
-pi -p --model openai/MODEL "Run the shell command 'echo bash-ok > bash-check.txt' and tell me the result"
+pi -p --model "openai/$env:HB_OPENAI_MODEL" "Run the shell command 'echo bash-ok > bash-check.txt' and tell me the result"
 Get-Content .\bash-check.txt
 ```
 
@@ -402,18 +432,21 @@ Set provider and model so you never have to walk goose's provider list, which mi
 
 ```powershell
 [Environment]::SetEnvironmentVariable('GOOSE_PROVIDER','openai','User')
-[Environment]::SetEnvironmentVariable('GOOSE_MODEL','MODEL','User')
+[Environment]::SetEnvironmentVariable('GOOSE_MODEL',$env:HB_OPENAI_MODEL,'User')
 $env:GOOSE_PROVIDER = 'openai'
-$env:GOOSE_MODEL = 'MODEL'
+$env:GOOSE_MODEL = $env:HB_OPENAI_MODEL
 ```
 
 Install:
 
 ```powershell
+cd "$env:USERPROFILE\Downloads"
 $env:CONFIGURE = "false"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/goose/main/download_cli.ps1" -OutFile "download_cli.ps1"
 .\download_cli.ps1
 ```
+
+The `cd` matters only because the installer downloads into whatever folder you are standing in, and the last section left you in the smoke folder. Keep that one for evidence files.
 
 If PowerShell blocks the script: `powershell -ExecutionPolicy ByPass -File ".\download_cli.ps1"`
 
@@ -503,14 +536,30 @@ There is no n8n desktop app any more; the command line is the current path.
 ```powershell
 cd "$env:USERPROFILE\Documents\HarnessBootcamp"
 git clone https://github.com/TheHolofex/AI_Harness_Bootcamp.git
-cd AI_Harness_Bootcamp
+```
+
+The operator templates — brief, log, pass bars, adversarial prompt, measurement spine, transfer file — belong wherever you are actually working, not in a folder you downloaded and forgot. Right now that is the smoke folder, because it is the project you opened in the Codex app in section 7:
+
+```powershell
+Copy-Item -Recurse -Force `
+  "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator" `
+  "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\"
+Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\operator"
+```
+
+When you open a mission folder as a project during the week, bring `operator/` with you the same way.
+
+Now serve the site. This one keeps running until you stop it:
+
+```powershell
+cd "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
 python -m http.server 8080
 ```
 
 Open <http://localhost:8080/site/>. Stop with `Ctrl+C`.
 
 - [ ] Repo cloned
-- [ ] `operator/` copied into your working project (brief, log, pass bars, adversarial, measurement, transfer)
+- [ ] `operator/` now listed inside `prework-smoke`
 - [ ] Site serves locally
 
 Protect your keys before your first commit. In any folder you'll commit from, `.gitignore` must contain at least:
@@ -552,6 +601,28 @@ Get-Content .\from-claude-optional.txt
 ```
 
 Use the command-line tool, **not** the Claude desktop app — the desktop app's Code tab requires a subscription and will not accept your key.
+
+---
+
+## 14b. Optional — local model (non-blocking stretch prep)
+
+**Skip freely.** This is **not** required for Monday GREEN, the install clinic, or course pass. It only saves time if you want Thursday’s **endpoint wall** stretch (`mission_flesh/p6/local_endpoint_notes.md`).
+
+Staff will post a **model pin** (tag + minimum RAM). Do not freestyle large downloads on hotel Wi‑Fi without that pin.
+
+1. Install [Ollama for Windows](https://ollama.com) from the channel staff approve, **or** LM Studio if the pin says so.
+2. New PowerShell: `ollama --version` (or confirm LM Studio server starts).
+3. When the pin exists, set it once and pull it — or wait until staff post it:
+
+   ```powershell
+   $env:HB_LOCAL_MODEL = 'paste the tag from the LOCAL PIN line'
+   [Environment]::SetEnvironmentVariable('HB_LOCAL_MODEL', $env:HB_LOCAL_MODEL, 'User')
+   ollama pull $env:HB_LOCAL_MODEL
+   ```
+4. Smoke: `ollama run MODEL_TAG "Reply with exactly: local-brain-ok"`.
+5. Note free RAM and whether the smoke worked in your setup log.
+
+If pull fails or the machine thrashes, stop and write YELLOW. Cloud goose remains the Thursday floor.
 
 ---
 
