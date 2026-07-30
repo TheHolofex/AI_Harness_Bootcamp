@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The velocity paradox · AI Harness Bootcamp</title>
+  <link rel="stylesheet" href="./css/course.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="./index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
+    </div>
+  </header>
+  <main class="site-main">
+    <p class="eyebrow">Additional resources · operating tempo</p>
+    <h1>The velocity paradox</h1>
+    <p class="lede">Slow start, fast finish: pay for clarity early so harness execution can run hard without architectural drift.</p>
+
+    <div class="callout">
+      <strong>Standing resource.</strong>
+      Pairs with Direction Briefs, Pass Bars, and the measurement spine.
+      Companion: <a href="./prompt-direction.html">Prompt &amp; direction tips</a>.
+    </div>
+
+    <p>In AI-assisted work, speed is <strong>non-linear</strong>. The efficient path to a finished artifact usually includes an early stretch of deliberate friction. That friction is not delay. It is how you shrink the hallucination surface so later execution can run hard.</p>
+
+    <h2>1. The phase shift</h2>
+    <h3>Phase A — Reasoning over possibilities (slow)</h3>
+    <ul>
+      <li><strong>Activity:</strong> Clear ambiguity. Name success. Define interfaces and data shapes. Stand up verification (tests, lints, health checks, pass bars). Write the brief.</li>
+      <li><strong>Feels like:</strong> Pedantic, recursive, “are we there yet?”</li>
+      <li><strong>Goal:</strong> <strong>Contextual gravity.</strong> Constraints rigid enough that the harness stops guessing intent and starts filling a known shape.</li>
+    </ul>
+    <h3>Phase B — Reasoning over artifacts (fast)</h3>
+    <ul>
+      <li><strong>Activity:</strong> Implement features, wire UI, expand boilerplate, twin-engine compare on a frozen brief.</li>
+      <li><strong>Feels like:</strong> Momentum. You are driving.</li>
+      <li><strong>Goal:</strong> High-fidelity delivery. The model is anchored by real files, real failures, and a real definition of done.</li>
+    </ul>
+    <p>Skipping A does not get you to B early. It gets you <strong>architectural drift</strong>: plausible code aimed at unstated goals, plus a long cleanup tax.</p>
+
+    <h2>2. Visualizing velocity</h2>
+    <div class="diagram"><pre>       ^
+       |                                       /--- [DONE]
+       |                                      /
+       |                                     /  (PHASE B)
+    V  |                                    /   MOMENTUM
+    E  |                                   /    Reasoning over
+    L  |                             _____/     Artifacts
+    O  |                       _____/
+    C  |                 _____/
+    I  |           _____/
+    T  |     _____/   (PHASE A)
+    Y  |____/         FOUNDATION
+       |              Reasoning over
+       |              Possibilities
+       +--------------------------------------------------->
+                          PROGRESS / TIME</pre></div>
+    <p>Early slope is shallow on purpose. Later slope is steep because uncertainty was paid down.</p>
+
+    <h2>3. Why this is sharper in the agent era</h2>
+    <p>Three facts from current practice (directionally consistent across delivery research on AI adoption, controlled studies on AI coding, and production agent write-ups):</p>
+    <ol>
+      <li><strong>Drafting got cheaper.</strong> Boilerplate, first cuts, and navigation are fast.</li>
+      <li><strong>Verification did not disappear.</strong> Review, integration, and “is this the right thing?” still dominate real calendars. If generation outruns checks, queues move downstream.</li>
+      <li><strong>Context beats clever wording.</strong> Long windows still suffer <strong>context rot</strong>. Small, high-signal context plus a crisp pass bar outperforms a monorepo dump.</li>
+    </ol>
+    <table>
+      <thead><tr><th>Face</th><th>What you notice</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Personal</strong></td><td>Slowing down to brief and test makes the afternoon feel faster.</td></tr>
+        <tr><td><strong>System</strong></td><td>Speeding only the inner coding loop can slow delivery if review and verification stay overloaded.</td></tr>
+      </tbody>
+    </table>
+    <p>This course trains the personal face first: operator judgment, cothinking, and instruments you own.</p>
+
+    <h2>4. Logical building blocks</h2>
+    <p>Lock these before you ask for volume:</p>
+    <ol>
+      <li><strong>The Anchor — success.</strong> Observable “good” (pass bars, acceptance checks).</li>
+      <li><strong>The Harness — verification.</strong> Re-runnable commands, health check, twin-engine spot check.</li>
+      <li><strong>The Interface — shape.</strong> Data models, file boundaries, contracts, non-goals.</li>
+      <li><strong>The Context pack.</strong> Standing invariants + relevant paths + frozen brief — not the entire chat history.</li>
+    </ol>
+    <p>If any block is missing, you are still in Phase A — even if the model is already emitting files.</p>
+
+    <h2>5. Course mapping</h2>
+    <table>
+      <thead><tr><th>Paradox move</th><th>Bootcamp instrument</th></tr></thead>
+      <tbody>
+        <tr><td>Name success before code</td><td>Pass Bars · Direction Brief</td></tr>
+        <tr><td>Keep judgment out of build chat</td><td>Operator threads (brief/log vs mission)</td></tr>
+        <tr><td>Attack your own certainty</td><td>Adversarial review in a <strong>new</strong> thread</td></tr>
+        <tr><td>Prove learning transferred</td><td>Transfer 30-60-90 · gates</td></tr>
+        <tr><td>Evidence over vibes</td><td>Measurement spine · P2 Dyno</td></tr>
+        <tr><td>Fair engine compare</td><td>P3 Frozen brief</td></tr>
+        <tr><td>Hold quality when the stack degrades</td><td>P8 Hold / degrade</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Daily pulse:</strong> AM brief (Phase A minutes) → build (Phase B) → PM log + bars + measure. Do not skip the bookends because the middle feels productive.</p>
+
+    <h2>6. Anti-patterns (false speed)</h2>
+    <table>
+      <thead><tr><th>Anti-pattern</th><th>What actually happens</th></tr></thead>
+      <tbody>
+        <tr><td>Skip the brief; “just build”</td><td>Model invents requirements; you debate ghosts later</td></tr>
+        <tr><td>One mega-prompt for the system</td><td>Partial blob; cannot localize failure</td></tr>
+        <tr><td>Giant diffs</td><td>Unreviewable; twin-engine compare becomes theater</td></tr>
+        <tr><td>No pass bar</td><td>Progress and motion look the same</td></tr>
+        <tr><td>Same thread forever</td><td>Context poison + commitment bias</td></tr>
+        <tr><td>Optimize only lines/minute</td><td>Verification debt; delivery flatlines</td></tr>
+      </tbody>
+    </table>
+
+    <h2>7. Operator checklist (before you “drive”)</h2>
+    <ul>
+      <li>Mission in one sentence; non-goals listed</li>
+      <li>Done-when / pass bars written where you will actually look</li>
+      <li>Interfaces or file touch-list named</li>
+      <li>Verification command or manual check exists</li>
+      <li>Context pack is lean (paths + invariants, not a dump)</li>
+      <li>Batch size is one vertical slice</li>
+      <li>Engine choice noted (Codex / OpenCode / both)</li>
+      <li>Plan for adversarial or twin-engine check if the stake is high</li>
+    </ul>
+
+    <h2>8. The engineering mandate</h2>
+    <div class="lead-box">
+      <p><strong>Do not rush the friction.</strong></p>
+      <p>Attempts to skip straight to driving usually produce architectural drift and a cleanup bill larger than the “slow” hour you avoided.</p>
+      <p><em>Slow is smooth, and smooth is fast.</em></p>
+      <p>In harness terms: <strong>brief hard, batch small, verify early, then let the engines run.</strong></p>
+    </div>
+
+    <h2>9. Further orientation</h2>
+    <ul>
+      <li><a href="./operator.html">Operator pack</a> · <a href="./instruments.html">Instruments</a> · <a href="./pulse.html">Pulse</a></li>
+      <li><a href="./prompt-direction.html">Prompt &amp; direction tips</a></li>
+      <li>Industry orientation (optional): delivery research on AI adoption vs instability; controlled studies on AI coding time; practitioner notes on context engineering and generation outrunning verification</li>
+    </ul>
+    <p><em>Velocity you cannot verify is just acceleration toward rework. Pay for clarity in Phase A; collect speed in Phase B.</em></p>
+
+    <p class="muted" style="margin-top:2rem">Portable markdown: <a href="../resources/velocity-paradox.md">resources/</a> · <a href="./resources.html">All additional resources</a></p>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+  <script src="./js/course.js"></script>
+  <script src="./js/nav.js"></script>
+</body>
+</html>

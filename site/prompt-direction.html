@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prompt & direction tips · AI Harness Bootcamp</title>
+  <link rel="stylesheet" href="./css/course.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="./index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
+    </div>
+  </header>
+  <main class="site-main">
+    <p class="eyebrow">Additional resources · direction craft</p>
+    <h1>Prompt & direction tips</h1>
+    <p class="lede">Clear intent, high-signal context, and a pass bar. Updated for agentic harnesses, context engineering, and this course’s twin-engine stack.</p>
+
+    <div class="callout">
+      <strong>Course tie-in.</strong>
+      Use these habits with your Direction Brief, Operator Log, Pass Bars, and twin-engine stack
+      (Codex home + OpenCode required; Claude Code optional). Companion:
+      <a href="./velocity-paradox.html">The velocity paradox</a>.
+    </div>
+
+    <h2>0. Two skills, not one slogan</h2>
+    <table>
+      <thead><tr><th>Skill</th><th>What you optimize</th><th>When it matters</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Prompt / direction</strong></td><td>Instructions you author this turn</td><td>Every brief, repair, and ask</td></tr>
+        <tr><td><strong>Context engineering</strong></td><td>Everything the model can see: files, tools, memory, history, tool results</td><td>Multi-step harness sessions</td></tr>
+      </tbody>
+    </table>
+    <p>Modern agentic work fails more often from <strong>bad context</strong> than from a slightly clumsy sentence. A mediocre prompt in a clean window usually beats a clever prompt in a polluted one.</p>
+    <p><strong>Operator rule:</strong> Before you polish wording, ask: <em>What is in the window, and does it earn its tokens?</em></p>
+
+    <h2>1. Be specific</h2>
+    <p>The gap between useful and useless is almost always specificity.</p>
+    <table>
+      <thead><tr><th>Weak</th><th>Stronger</th></tr></thead>
+      <tbody>
+        <tr><td>“Make a website”</td><td>“Create a small local web app with home and /about. Home: one-line welcome. About: list these people [paste]. Plain HTML/CSS first.”</td></tr>
+        <tr><td>“Fix the bug”</td><td>“/api/users returns 500 when the DB has zero rows. Full traceback below. Fix the null path and add a regression check.”</td></tr>
+        <tr><td>“Make it better”</td><td>“Search takes ~3s. Profile the hot path, name the top two costs, target &lt;500ms on this machine.”</td></tr>
+        <tr><td>“Add a database”</td><td>“Add SQLite. Table tasks: id, title, status, created_at. Routes to create and list only.”</td></tr>
+      </tbody>
+    </table>
+    <p><strong>The rule:</strong> If a sharp coworker would need clarifying questions, the brief is still too thin. Name format, audience, constraints, and done. Prefer positive instructions over long lists of “don’ts.”</p>
+
+    <h2>2. Give context — then stop dumping</h2>
+    <p>Front-load what you are building and why. Do <strong>not</strong> paste the whole repo “just in case.”</p>
+    <p><strong>Without context:</strong> “Add a route that handles authentication.”</p>
+    <p><strong>With context:</strong> “Inventory web app for a small warehouse. Python/Flask + SQLite. Already has list/add item routes. Add login with session cookies against a users table. Unauthenticated users redirect to /login. Offline-friendly; no cloud IdP.”</p>
+    <p><strong>Usually include:</strong> stack and OS (this course defaults to vanilla Windows 11) · what already works · end goal and non-goals · hard constraints · how you will judge success (pass bar).</p>
+    <div class="lead-box">
+      <strong>Context engineering habits</strong>
+      <ul>
+        <li>Prefer <strong>just-in-time</strong> reads (paths, @file, “inspect src/…”) over dumping twelve files up front.</li>
+        <li>Keep a short standing memory (AGENTS.md, project notes, or your Direction Brief) with invariants — not a junk drawer.</li>
+        <li>Separate instructions from untrusted data (logs, web pages, pasted email) with clear markers.</li>
+        <li>Budget the window: history and tool spam cause <strong>context rot</strong>. Compact or restart when signal drops.</li>
+      </ul>
+    </div>
+
+    <h2>3. Paste errors — still the #1 repair skill</h2>
+    <p>When something breaks, paste the <strong>full</strong> error into the harness.</p>
+    <div class="diagram"><pre>The app crashed after I ran the health check. Full error:
+
+Traceback (most recent call last):
+  File "app.py", line 42, in get_user
+    user = db.query(User).filter_by(id=user_id).first()
+AttributeError: 'NoneType' object has no attribute 'query'
+
+I was on the OpenCode session against the local repo.
+What does this mean and how do we fix it without changing unrelated files?</pre></div>
+    <p><strong>Tips:</strong> full traceback · nearby log lines · exact command · last change · which engine (Codex vs OpenCode).</p>
+
+    <h2>4. Iterate — small batches, testable steps</h2>
+    <p>Do not ask for the whole system in one shot. Scaffold → one runnable vertical slice → next feature → polish only after green.</p>
+    <p>Each step is checkable. Failures localize. Twin-engine comparison stays fair when the brief is frozen and the batch is small. Same physics as the <a href="./velocity-paradox.html">velocity paradox</a>: friction up front, momentum later.</p>
+
+    <h2>5. When the output is wrong — five checks</h2>
+    <table>
+      <thead><tr><th>Check</th><th>Ask</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>Context</td><td>Does it know mission and stack?</td><td>Restate project, paths, constraints</td></tr>
+        <tr><td>Role / altitude</td><td>Too vague or too brittle?</td><td>Goal + constraints, not a 40-step flowchart</td></tr>
+        <tr><td>Specificity</td><td>Exact behavior named?</td><td>“Monthly summary route” beats “improve it”</td></tr>
+        <tr><td>Format</td><td>Shape of output named?</td><td>Complete files · table · diff only</td></tr>
+        <tr><td>Evaluation</td><td>How do we know pass?</td><td>Pass bars / tests / manual check</td></tr>
+      </tbody>
+    </table>
+
+    <h2>6. When to restart (and when to go adversarial)</h2>
+    <p><strong>Restart or compact when:</strong> same wrong fix loops · edits thrash · phantom files · long unfocused window · mission changed.</p>
+    <p><strong>Before you leave:</strong> working diffs, last error, short works/broken/next note.</p>
+    <div class="diagram"><pre>New session. Working tree is at [path]. Done: [bullets]. Broken: [error].
+Non-goals: [list]. First task: [one slice].
+Review the tree, then propose a plan before editing.</pre></div>
+    <p><strong>Adversarial (course move):</strong> for judgment calls, open a <strong>new thread</strong> with a frozen attack prompt. Do not argue with the same chat that built the artifact — that chat is contaminated by commitment.</p>
+
+    <h2>7. Common mistakes</h2>
+    <table>
+      <thead><tr><th>Mistake</th><th>Do instead</th></tr></thead>
+      <tbody>
+        <tr><td>Vague (“make it work”)</td><td>Name behavior + pass bar</td></tr>
+        <tr><td>Too much at once</td><td>2–3 step slices</td></tr>
+        <tr><td>Not reading the reply</td><td>Read full response before run</td></tr>
+        <tr><td>“It doesn’t work” with no artifact</td><td>Paste error or command output</td></tr>
+        <tr><td>Assuming infinite memory</td><td>Restate invariants; use memory files</td></tr>
+        <tr><td>Dumping the whole corpus</td><td>Point, then let the harness retrieve</td></tr>
+        <tr><td>Skipping verification</td><td>Tests, health check, twin-engine spot check</td></tr>
+      </tbody>
+    </table>
+
+    <h2>8. Harness tips for this stack</h2>
+    <h3>Codex (home)</h3>
+    <ul>
+      <li>Build in the mission thread; brief / log / pass bars in Operator threads.</li>
+      <li>Plan-then-edit on non-trivial work; freeze the brief before multi-file changes.</li>
+      <li>Pin conventions in a short standing file loaded every session.</li>
+    </ul>
+    <h3>OpenCode (required second engine)</h3>
+    <ul>
+      <li>Twin-engine comparison (especially P3) and Grok / staff-pinned model work.</li>
+      <li><code>opencode run "…"</code> for one-shots; interactive session for multi-step repair.</li>
+      <li>Configure model + MCP deliberately — wrong model is often a context problem.</li>
+      <li>Local-capable setups matter for hold-and-degrade (P8).</li>
+    </ul>
+    <h3>Optional Claude Code · Twin-engine habit</h3>
+    <p>Same rules: small batch, full errors, explicit pass bar. Same frozen brief → both engines → compare on evidence. Log the delta in the Operator Log.</p>
+
+    <h2>9. Direction starters</h2>
+    <div class="diagram"><pre>I have a [stack] project at [path] that [mission in one sentence].
+Constraints: [OS / offline / libs / style].
+Already true: [what works].
+Task: [one slice].
+Done when: [pass bar].
+Please [plan only | edit | review only]. Do not expand scope.
+
+---
+
+Error while [command]:
+
+[full traceback]
+
+Engine: [Codex | OpenCode]. Last change: [one line].
+Fix with minimal diff; add a check so it cannot silently return.
+
+---
+
+Review [path] against these pass bars: [bullets].
+List gaps only. Do not rewrite yet.
+
+---
+
+New adversarial thread. Artifact: [path or paste].
+Attack prompt: [frozen].
+Findings ranked by severity + one-line fix hypothesis each. No pep talk.</pre></div>
+
+    <h2>10. Course instruments</h2>
+    <ul>
+      <li><a href="./operator.html">Operator pack</a> — brief, log, bars, adversarial, measure, transfer</li>
+      <li><a href="./instruments.html">Instruments</a> — P2 Dyno, P3 Frozen brief, P8 Hold/degrade</li>
+      <li><a href="./velocity-paradox.html">Velocity paradox</a> — why slow foundation beats rushed codegen</li>
+    </ul>
+    <p><em>The best direction is one a sharp colleague could act on without a follow-up. If you would clarify for a human, clarify for the harness — and keep only high-signal tokens in the window.</em></p>
+
+    <p class="muted" style="margin-top:2rem">Portable markdown: <a href="../resources/prompt-direction-tips.md">resources/</a> · <a href="./resources.html">All additional resources</a></p>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+  <script src="./js/course.js"></script>
+  <script src="./js/nav.js"></script>
+</body>
+</html>

@@ -78,6 +78,8 @@
     var root = p === ".." ? "../.." : "..";
     var resources = [
       ["resources", p + "/resources.html", "Resources hub"],
+      ["prompt-direction", p + "/prompt-direction.html", "Prompt & direction tips"],
+      ["velocity-paradox", p + "/velocity-paradox.html", "Velocity paradox"],
       ["resources-day", root + "/DAY_PROJECT_TABLE.md", "Day / project table"],
       ["resources-diagrams", root + "/diagrams/README.md", "Diagrams"],
       ["resources-pass", root + "/operator/PASS_BARS.md", "Pass bars"],
