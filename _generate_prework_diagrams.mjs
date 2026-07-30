@@ -41,16 +41,6 @@ const installStages = [
   "15 Gate",
 ];
 
-const healthStages = [
-  "Run",
-  "A Found",
-  "B Keys",
-  "C Agents",
-  "D Support",
-  "E Ready",
-  "Result",
-];
-
 function esc(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -96,7 +86,7 @@ function svgOpen(title, height) {
 
 function ribbon(kind, current, { overview = false, crosscut = false } = {}) {
   const install = kind === "install";
-  const stages = install ? installStages : healthStages;
+  const stages = installStages;
   const label = install ? "PRE-WORK · GETTING SET UP" : "PRE-WORK · HEALTH CHECK";
   const start = install ? 24 : 28;
   const width = install ? 58 : 138;
@@ -499,22 +489,6 @@ const metaphors = {
     <text x="803" y="70" class="tiny red" text-anchor="middle">RETRY FROM A FRESH WINDOW · ESCALATE AT 30 MINUTES</text>
   </g>
 `,
-  healthRun: `  <g aria-label="Laptop terminal and setup log ready for the health run">
-    <rect x="534" y="87" width="153" height="53" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
-    <rect x="543" y="95" width="135" height="35" fill="${C.panel}" stroke="${C.rule}"/>
-    <path d="M520 145H701L689 151H532Z" fill="${C.panel}" stroke="${C.strong}"/>
-    <text x="610.5" y="117" class="micro muted" text-anchor="middle">THIS LAPTOP</text>
-    <path d="M704 116H755" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="772" y="84" width="139" height="61" rx="2" fill="${C.ink}"/>
-    <text x="788" y="105" class="body white">PS&gt;</text>
-    <rect x="817" y="97" width="7" height="12" fill="${C.paper}"/>
-    <text x="841.5" y="132" class="tiny white" text-anchor="middle">FRESH TERMINAL</text>
-    <path d="M911 116H954" class="redline" marker-end="url(#arrow-red)"/>
-    <path d="M971 78H1050L1065 93V148H971Z" fill="${C.paper}" stroke="${C.strong}"/>
-    <path d="M1050 78V93H1065M986 106H1049M986 118H1049M986 130H1034" class="hair"/>
-    <text x="1018" y="142" class="tiny muted" text-anchor="middle">SETUP LOG</text>
-  </g>
-`,
   foundations: `  <g aria-label="Five checked foundation layers">
     <rect x="554" y="78" width="502" height="72" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
     <path d="M554 92H1056M554 106H1056M554 120H1056M554 134H1056" class="hair"/>
@@ -790,80 +764,9 @@ file: "install-10-goose.svg",
   },
 ];
 
-const healthSections = [
-  {
-    file: "health-how-to-run.svg",
-    current: 0,
-    stage: "How to run this gate",
-    purpose: "Use the laptop you are bringing Monday. Fresh terminal, setup log beside you.",
-    steps: ["BRING THIS LAPTOP", "FRESH TERMINAL", "LOG BESIDE YOU"],
-    metaphor: metaphors.healthRun,
-    svgTitle: "How to run this gate",
-  },
-  {
-    file: "health-a-foundations.svg",
-    current: 1,
-    stage: "A · Foundations",
-    purpose: "Confirm Windows, Git, Node, Python, PowerShell policy, and the real python.",
-    steps: ["WINDOWS", "GIT NODE PYTHON", "GIT BASH PATH", "SCRIPTS OK", "REAL PYTHON"],
-    metaphor: metaphors.foundations,
-    svgTitle: "A · Foundations",
-  },
-  {
-    file: "health-b-keys.svg",
-    current: 2,
-    stage: "B · Your three keys",
-    purpose: "All three keys still load for your account, and still have room to spend.",
-    steps: ["THREE KEYS SAVED", "ROOM TO SPEND"],
-    metaphor: metaphors.keyHeadroom,
-    svgTitle: "B · Your three keys",
-  },
-  {
-    file: "health-c-agents.svg",
-    current: 3,
-    stage: "C · Four required agents",
-    purpose: "Clear old proof files, regenerate all four, and see them together in Explorer.",
-    steps: ["CLEAR OLD", "CODEX FILE", "OPENCODE FILE", "PI FILE", "GOOSE FILE", "SEE ALL FOUR"],
-    metaphor: metaphors.agents,
-    svgTitle: "C · Four required agents — files on disk",
-  },
-  {
-    file: "health-d-support.svg",
-    current: 4,
-    stage: "D · Supporting tools",
-    purpose: "Obsidian opens your vault, n8n starts and stops, and the course site serves.",
-    steps: ["OBSIDIAN", "N8N LIFECYCLE", "COURSE SITE"],
-    metaphor: metaphors.support,
-    svgTitle: "D · Supporting tools",
-  },
-  {
-    file: "health-e-ready.svg",
-    current: 5,
-    stage: "E · Operator readiness",
-    purpose: "Templates in place, twin-engine pair named, one real fix in your log.",
-    steps: ["TEMPLATES", "TWIN-ENGINE PAIR", "KEY LEAK PLAN", "ONE REAL FIX"],
-    metaphor: metaphors.ready,
-    svgTitle: "E · Operator readiness",
-  },
-  {
-    file: "health-result.svg",
-    current: 6,
-    stage: "Gate result",
-    purpose: "Mark GREEN, YELLOW, or RED honestly, log this run, and pack for Monday.",
-    steps: ["MARK COLOUR", "RECORD THE RUN", "PACK FOR MONDAY"],
-    metaphor: metaphors.result,
-    svgTitle: "Gate result",
-  },
-];
-
 for (const section of installSections) {
   section.svgTitle = `Install pre-work: ${section.svgTitle}`;
   fs.writeFileSync(path.join(OUT, section.file), sectionSvg("install", section));
-}
-
-for (const section of healthSections) {
-  section.svgTitle = `Health gate: ${section.svgTitle}`;
-  fs.writeFileSync(path.join(OUT, section.file), sectionSvg("health", section));
 }
 
 function installOverview() {
@@ -908,62 +811,16 @@ function installOverview() {
 `;
 }
 
-function healthOverview() {
-  return `${svgOpen("Health gate journey overview", 240)}${ribbon("health", 0, { overview: true })}
-  <text x="24" y="80" class="micro red">ABOUT HALF AN HOUR · BE HONEST</text>
-  <text x="24" y="107" class="title">Open a fresh terminal. Check everything. Say how it went.</text>
-  <text x="24" y="127" class="purpose">Start from a new terminal. Confirm foundations, keys, four agent files, and the supporting tools — then mark GREEN, YELLOW, or RED.</text>
-  <path d="M24 145H1096" class="hair"/>
-  <g aria-label="Health gate flow">
-    <rect x="24" y="158" width="151" height="34" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="99.5" y="172" class="tiny muted" text-anchor="middle">FRESH RUN</text>
-    <text x="99.5" y="185" class="caption" text-anchor="middle">LAPTOP + LOG</text>
-    <path d="M175 175H208" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="218" y="158" width="151" height="34" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="293.5" y="172" class="tiny muted" text-anchor="middle">FOUNDATIONS</text>
-    <text x="293.5" y="185" class="caption" text-anchor="middle">TOOLS ANSWER</text>
-    <path d="M369 175H402" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="412" y="158" width="151" height="34" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="487.5" y="172" class="tiny muted" text-anchor="middle">CREDENTIALS</text>
-    <text x="487.5" y="185" class="caption" text-anchor="middle">3 KEYS FUNDED</text>
-    <path d="M563 175H596" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="606" y="151" width="181" height="48" rx="2" fill="${C.ink}"/>
-    <text x="696.5" y="170" class="micro white" text-anchor="middle">FOUR AGENT FILES</text>
-    <text x="696.5" y="187" class="caption white" text-anchor="middle">REGENERATED TOGETHER</text>
-    <path d="M787 175H820" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="830" y="158" width="124" height="34" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="892" y="172" class="tiny muted" text-anchor="middle">SUPPORT</text>
-    <text x="892" y="185" class="caption" text-anchor="middle">TOOLS READY</text>
-    <path d="M954 175H987" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="997" y="151" width="99" height="48" rx="2" fill="${C.paper}" stroke="${C.mark}"/>
-    <text x="1046.5" y="170" class="micro red" text-anchor="middle">RESULT</text>
-    <text x="1046.5" y="187" class="caption" text-anchor="middle">HONEST</text>
-  </g>
-  <rect x="0" y="213" width="1120" height="27" fill="${C.warm}"/>
-  <circle cx="401" cy="226.5" r="5" fill="${C.paper}" stroke="${C.strong}"/>
-  <text x="415" y="230" class="tiny">GREEN</text>
-  <circle cx="516" cy="226.5" r="5" fill="${C.gold}"/>
-  <text x="530" y="230" class="tiny gold">AMBER</text>
-  <circle cx="634" cy="226.5" r="5" fill="${C.mark}"/>
-  <text x="648" y="230" class="tiny red">RED</text>
-  <text x="765" y="230" class="tiny muted">RECORD THE RUN · PACK FOR MONDAY</text>
-</svg>
-`;
-}
-
 fs.writeFileSync(path.join(OUT, "install-overview.svg"), installOverview());
-fs.writeFileSync(path.join(OUT, "health-overview.svg"), healthOverview());
 
 const allFiles = [
   ["install-overview.svg", "Install journey overview for the pre-work hub"],
   ...installSections.map((section) => [section.file, section.svgTitle]),
-  ["health-overview.svg", "Health-gate journey overview"],
-  ...healthSections.map((section) => [section.file, section.svgTitle]),
 ];
 
 const readme = `# Pre-work section diagrams
 
-Crisp, script-free SVG diagrams for the AI Harness Bootcamp install and health-check pages. All diagrams use the paper-surface Starzl visual system, selectable text, and an internal \`<title>\` for standalone accessibility.
+Crisp, script-free SVG diagrams for the AI Harness Bootcamp install pages. All diagrams use the paper-surface Starzl visual system, selectable text, and an internal \`<title>\` for standalone accessibility.
 
 ## Asset index
 
@@ -981,7 +838,7 @@ Place the matching figure immediately after its section \`<h2>\`:
 </figure>
 \`\`\`
 
-Use \`install-overview.svg\` at 1120 × 280 and \`health-overview.svg\` at 1120 × 240. Section diagrams are 1120 × 220. Keep the surrounding figure border in CSS; the SVGs deliberately carry no outer border so they remain reusable in print and other paper surfaces.
+Use \`install-overview.svg\` at 1120 × 280. Section diagrams are 1120 × 220. Keep the surrounding figure border in CSS; the SVGs deliberately carry no outer border so they remain reusable in print and other paper surfaces.
 
 Claude Code is encoded with the gold optional treatment. Completed stages use a crimson disc; the current stage uses a filled crimson capsule. The repair diagram is intentionally marked “ANY STAGE” because recovery is cross-cutting rather than a numbered install stage.
 `;
@@ -991,10 +848,6 @@ fs.writeFileSync(path.join(OUT, "README.md"), readme);
 const installRows = installSections
   .map((section) => `| \`${section.svgTitle}\` | \`${section.file}\` |`)
   .join("\n");
-const healthRows = healthSections
-  .map((section) => `| \`${section.svgTitle}\` | \`${section.file}\` |`)
-  .join("\n");
-
 const integrate = `# Pre-work diagram integration
 
 The live site files are already integrated. This is the exact insertion pattern for future rebuilds.
@@ -1009,19 +862,13 @@ Insert immediately after the matching \`<h2>\`:
 </figure>
 \`\`\`
 
-For the pre-work hub, the overview path is \`./assets/prework/install-overview.svg\`, width 1120, height 280. For the health-check overview, use \`../assets/prework/health-overview.svg\`, width 1120, height 240.
+For the pre-work hub, the overview path is \`./assets/prework/install-overview.svg\`, width 1120, height 280.
 
 ## Install heading map
 
 | Heading | File |
 |---|---|
 ${installRows}
-
-## Health heading map
-
-| Heading | File |
-|---|---|
-${healthRows}
 
 ## CSS
 
@@ -1078,7 +925,6 @@ function integrateSections(file, sections) {
 }
 
 integrateSections(path.join(ROOT, "site/checklists/prework-install.html"), installSections);
-integrateSections(path.join(ROOT, "site/checklists/prework-health.html"), healthSections);
 
 function insertAfterOnce(file, needle, insertion, sentinel) {
   let html = fs.readFileSync(file, "utf8");
@@ -1096,13 +942,6 @@ insertAfterOnce(
   '    <p class="lede">This module gets your Windows laptop ready for the bootcamp. You install the tools yourself — there is no golden image. Plan a focused evening or weekend block (often about 2–4 hours).</p>',
   `    ${figureHtml("./assets/prework/install-overview.svg", "Install pre-work journey overview", 280).replaceAll("\n", "\n    ")}`,
   "install-overview.svg",
-);
-
-insertAfterOnce(
-  path.join(ROOT, "site/checklists/prework-health.html"),
-  "    <p class=\"lede\">This re-tests everything you installed, independently, and ends with you declaring a colour. Allow about thirty minutes. The point isn't to pass — it's to find out now, while there's still time to fix things, rather than on Monday morning.</p>",
-  `${figureHtml("../assets/prework/health-overview.svg", "Health gate journey overview", 240)}`,
-  "health-overview.svg",
 );
 
 const cssFile = path.join(ROOT, "site/css/course.css");

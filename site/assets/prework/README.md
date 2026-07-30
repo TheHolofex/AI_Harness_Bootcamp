@@ -1,6 +1,6 @@
 # Pre-work section diagrams
 
-Crisp, script-free SVG diagrams for the AI Harness Bootcamp install and health-check pages. All diagrams use the paper-surface Starzl visual system, selectable text, and an internal `<title>` for standalone accessibility.
+Crisp, script-free SVG diagrams for the AI Harness Bootcamp install pages. All diagrams use the paper-surface Starzl visual system, selectable text, and an internal `<title>` for standalone accessibility.
 
 ## Asset index
 
@@ -25,14 +25,6 @@ Crisp, script-free SVG diagrams for the AI Harness Bootcamp install and health-c
 | `install-14-claude-optional.svg` | Install pre-work: 14 · Claude Code — optional third engine |
 | `install-15-health-gate.svg` | Install pre-work: 15 · Pack for Monday |
 | `install-when-something-breaks.svg` | Install pre-work: When something breaks |
-| `health-overview.svg` | Health-gate journey overview |
-| `health-how-to-run.svg` | Health gate: How to run this gate |
-| `health-a-foundations.svg` | Health gate: A · Foundations |
-| `health-b-keys.svg` | Health gate: B · Your three keys |
-| `health-c-agents.svg` | Health gate: C · Four required agents — files on disk |
-| `health-d-support.svg` | Health gate: D · Supporting tools |
-| `health-e-ready.svg` | Health gate: E · Operator readiness |
-| `health-result.svg` | Health gate: Gate result |
 
 ## Usage
 
@@ -44,6 +36,6 @@ Place the matching figure immediately after its section `<h2>`:
 </figure>
 ```
 
-Use `install-overview.svg` at 1120 × 280 and `health-overview.svg` at 1120 × 240. Section diagrams are 1120 × 220. Keep the surrounding figure border in CSS; the SVGs deliberately carry no outer border so they remain reusable in print and other paper surfaces.
+Use `install-overview.svg` at 1120 × 280. Section diagrams are 1120 × 220. Keep the surrounding figure border in CSS; the SVGs deliberately carry no outer border so they remain reusable in print and other paper surfaces.
 
 Claude Code is encoded with the gold optional treatment. Completed stages use a crimson disc; the current stage uses a filled crimson capsule. The repair diagram is intentionally marked “ANY STAGE” because recovery is cross-cutting rather than a numbered install stage.

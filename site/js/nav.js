@@ -32,7 +32,6 @@
     if (path.indexOf("/checklists/") !== -1) {
       if (file === "index.html") return "checklists-index";
       if (file.indexOf("prework-install") === 0) return "prework-install";
-      if (file.indexOf("prework-health") === 0) return "prework-health";
       return "checklist-" + file.replace(".html", "");
     }
     if (path.indexOf("/blocks/") !== -1) {
