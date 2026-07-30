@@ -454,21 +454,24 @@ const metaphors = {
     <text x="1035" y="80.5" class="tiny white" text-anchor="middle">OPTIONAL</text>
   </g>
 `,
-  gate: `  <g aria-label="Health gate with green amber and red statuses">
+  pack: `  <g aria-label="Four proof files and a closed setup log packed for Monday clinic">
     <rect x="546" y="79" width="126" height="72" rx="2" fill="${C.ink}"/>
-    <circle cx="572" cy="100" r="8" fill="${C.paper}" stroke="${C.paper}"/>
-    <circle cx="572" cy="116" r="8" fill="${C.gold}"/>
-    <circle cx="572" cy="132" r="8" fill="${C.mark}"/>
-    <text x="625" y="104" class="micro white" text-anchor="middle">HEALTH</text>
-    <text x="625" y="123" class="caption white" text-anchor="middle">GATE</text>
-    <path d="M672 116H771" class="line"/>
-    <rect x="771" y="101" width="193" height="30" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
-    <text x="867.5" y="120" class="micro" text-anchor="middle">FOUR FILES TOGETHER</text>
-    <path d="M964 116H1031" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="1042" y="94" width="40" height="44" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <path d="M1051 107H1073M1051 116H1073M1051 125H1066" class="hair"/>
+    <circle cx="570" cy="99" r="3.4" fill="${C.mark}"/>
+    <circle cx="570" cy="111" r="3.4" fill="${C.mark}"/>
+    <circle cx="570" cy="123" r="3.4" fill="${C.mark}"/>
+    <circle cx="570" cy="135" r="3.4" fill="${C.mark}"/>
+    <text x="632" y="105" class="micro white" text-anchor="middle">FOUR</text>
+    <text x="632" y="124" class="caption white" text-anchor="middle">FILES</text>
+    <path d="M672 116H751" class="line"/>
+    <rect x="751" y="94" width="193" height="44" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
+    <text x="847.5" y="110" class="micro muted" text-anchor="middle">SETUP LOG</text>
+    <path d="M769 120H926M769 129H881" class="hair"/>
+    <path d="M944 116H1005" class="redline" marker-end="url(#arrow-red)"/>
+    <rect x="1015" y="94" width="66" height="36" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
+    <path d="M1011 130H1085L1078 137H1018Z" fill="${C.panel}" stroke="${C.strong}"/>
+    <text x="1048" y="116" class="tiny muted" text-anchor="middle">MONDAY</text>
     <path d="M542 156H1081" class="hair"/>
-    <text x="811" y="160" class="tiny muted" text-anchor="middle">GREEN · YELLOW · RED — pick the colour that is true</text>
+    <text x="811" y="160" class="tiny muted" text-anchor="middle">Four files, one honest log — that is what clinic asks for</text>
   </g>
 `,
   repair: `  <g aria-label="Repair loop from error to paste to fix to log">
@@ -744,12 +747,12 @@ file: "install-10-goose.svg",
     optional: true,
   },
   {
-    file: "install-15-health-gate.svg",
+    file: "install-15-pack.svg",
     current: 16,
     stage: "Pack for Monday",
     purpose: "Roll up the four smoke files and setup log for Monday's install clinic.",
     steps: ["FOUR FILES", "CLOSE THE LOG", "PACK FOR CLINIC"],
-    metaphor: metaphors.gate,
+    metaphor: metaphors.pack,
     svgTitle: "15 · Pack for Monday",
   },
   {
@@ -794,8 +797,8 @@ function installOverview() {
     <text x="724" y="197" class="tiny muted">REPO · CLAUDE OPTIONAL</text>
     <path d="M894 186H916" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="926" y="166" width="170" height="40" rx="2" fill="${C.ink}"/>
-    <text x="944" y="182" class="micro white">05 · HEALTH CHECK</text>
-    <text x="944" y="197" class="tiny white">Mark what is true</text>
+    <text x="944" y="182" class="micro white">05 · PACK FOR MONDAY</text>
+    <text x="944" y="197" class="tiny white">Four files, log, clinic</text>
   </g>
   <rect x="0" y="220" width="1120" height="60" fill="${C.warm}"/>
   <rect x="24" y="232" width="515" height="36" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
