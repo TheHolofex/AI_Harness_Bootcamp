@@ -23,7 +23,7 @@
   <main class="site-main">
     <p class="eyebrow">Thursday AM · P6 · AI Harness Bootcamp</p>
     <h1>The watch officer</h1>
-    <p class="lede">You run work under a written autonomy contract — command, exceptions, and stop authority — not babysitting every step. goose is the vehicle: a local agent with a packaged recipe, a narrow tool surface, an autonomy dial, and an unattended path.</p>
+    <p class="lede">You write the contract, a local agent runs the watch, and exceptions come to you. By lunch you will have proven the part most people skip: that you can stop it, restart it, and show exactly which of your bounds the harness enforces — and which ones only you do.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Thursday AM</span></div>
@@ -37,7 +37,9 @@
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
+      <a href="#ideas">The ideas</a>
       <a href="#mission">Mission · <span data-count-for="mission">0/12</span></a>
+      <a href="#depth">Going deeper</a>
       <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/6</span></a>
       <a href="#floor">Mastery floor · <span data-count-for="floor">0/10</span></a>
       <a href="#stuck">If you get stuck</a>
@@ -47,240 +49,351 @@
       </div>
     </nav>
 
-    <section id="orient" class="orient-grid">
-      <div>
-        <h2 class="h-plain">Why this block exists</h2>
-        <p><strong>Autonomy</strong> is not “the brand is safe.” It is a loop plus bounds you wrote. goose can enforce some of those bounds with real levers — recipe, extensions, permission mode, max turns, retry checks, schedule. Other bounds stay procedure: stop authority, treating feeder text as data, who may restart.</p>
-        <p>In goose you configure bounds someone else designed. In Pi you build them — which is the only way to find out that not all bounds are the same strength. Three layers, and conflating them is the mistake this block exists to prevent:</p>
-        <table>
-          <thead><tr><th>Layer</th><th>In practice</th><th>What it actually gives you</th></tr></thead>
-          <tbody>
-            <tr><td><strong>The contract</strong></td><td><code>pi --tools read,grep,find,ls</code></td><td>Filters the tool registry <em>above</em> the extension layer. The banned tool never enters the model's schema, so there is nothing to refuse and no refusal to talk it out of. Provable from the session file.</td></tr>
-            <tr><td><strong>The tripwire</strong></td><td>A <code>tool_call</code> gate you write</td><td>Catches drift and mistakes, and fails closed when it errors. But it is defeatable by the thing it polices — a model holding <code>bash</code> can edit the gate or spawn a subshell whose commands never surface as tool calls.</td></tr>
-            <tr><td><strong>The boundary</strong></td><td>A container</td><td>The only actual one.</td></tr>
-          </tbody>
-        </table>
-        <p>A tripwire mistaken for a boundary is how people come to believe a written policy stops a process. Today you build one of each and find the seam yourself.</p>
-        <h3>What you will leave with</h3>
-        <ul>
-          <li>Adapted <code>watch_officer.yaml</code> (not stock-only) over the local feeder; successful run evidenced in <code>out/</code></li>
-          <li>Two-column contract ≥3 rows each; at least three tool rows name real goose levers</li>
-          <li>Stop proof + restart proof; exception drill on <code>event_04</code></li>
-          <li>Scheduled attempt <strong>or</strong> honest block with reason</li>
-          <li>Pi: a bound you proved from the session file, and — if you take the stretch — a tripwire you wrote and then defeated</li>
-          <li>Transfer P6 seed; full operator pulse</li>
-        </ul>
-        <h3>Before you start</h3>
-        <ul>
-          <li>Confirm operator templates are present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
-          <li>goose CLI working from pre-work (<code>goose info -v</code> shows intended provider/model)</li>
-          <li>Pack open: <code>mission_flesh/p6/</code> — <code>watch_officer.yaml</code>, <code>feeder/</code>, <code>goose_recipe_notes.md</code></li>
-          <li>Course default is CLI; Desktop is optional for Scheduler UI</li>
-        </ul>
-      </div>
-      <div class="orient-aside">
-        <div class="lead-box">
-          <p class="eyebrow">Lead operate-along</p>
-          <p>The lead runs this same page on screen — brief co-written live, mission in a build chat you can see, accepts and rejects narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+    <section id="orient" class="home-section">
+      <div class="orient-grid">
+        <div>
+          <h2 class="h-plain">What a watch officer is worth</h2>
+          <p>Every tool this week has waited for your next message. Today one of them stops waiting. You hand a mission to <strong>goose</strong> — a local agent platform that runs packaged missions called <em>recipes</em> — and it works a folder of incoming traffic on its own while you hold command. The question that matters at work is never whether an agent <em>can</em> run unattended. It is whether the bounds it runs under are ones you wrote, whether you can prove which of them the harness actually enforces, and whether you can stop it and resume without losing what it built.</p>
+          <p>That is what an <strong>autonomy contract</strong> is: every bound you care about, written down, with an honest answer to one question per row — does a lever in the tool physically enforce this, or am I trusting a promise in prose? Most autonomy failures at work trace back to a row that was quietly in the wrong column.</p>
+          <p>In goose you configure bounds someone else engineered. In <strong>Pi</strong> — a minimal harness with almost no rails, by design — you build a bound yourself, which is the only way to discover that bounds come in three different strengths.</p>
+          <h3>What you will leave with</h3>
+          <ul>
+            <li>An adapted <code>watch_officer.yaml</code> running over the local feeder — a folder standing in for incoming traffic — evidenced in <code>out/watch_summary.md</code>: a working pattern for any "watch a folder, summarize, flag exceptions" job on your desk</li>
+            <li>A two-column autonomy contract (≥3 rows each) whose tool column names real goose levers — and the skill of sorting any bound into tool-enforced or procedure-enforced on sight</li>
+            <li>Stop and restart proven with timestamps, plus an exception drill where hostile input got quarantined instead of obeyed</li>
+            <li>A scheduled run, <strong>or</strong> an honest written block with the exact error — either is a real answer</li>
+            <li>From Pi: a bound you proved from the session file, and the reflex to ask "contract, tripwire, or boundary?" of every safety claim you hear</li>
+            <li>A Transfer P6 seed: one real process from your desk, sketched under contract</li>
+          </ul>
+          <h3>Before you start</h3>
+          <ul>
+            <li>Operator templates present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
+            <li>goose CLI working from pre-work — <code>goose info -v</code> shows your intended provider and model</li>
+            <li>Pack open: <code>mission_flesh/p6/</code> — <a href="../../mission_flesh/p6/goose_recipe_notes.md">goose_recipe_notes.md</a>, <code>watch_officer.yaml</code>, <code>feeder/</code>, <a href="../../mission_flesh/p6/contract_template.md">contract_template.md</a></li>
+            <li>Course default is the CLI; Desktop is optional and only matters for the Scheduler UI</li>
+          </ul>
         </div>
-        <div class="callout" id="case-talk">
-          <strong>Before lunch · Harness case talk (45 min)</strong>
-          A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; leave one Transfer seed.
-        </div>
-        <div class="callout">
-          <strong>Stretch · The endpoint is a wall</strong>
-          After goose MVP: <strong>predict</strong>, pair cloud vs local summaries, score a <strong>numeric</strong> hold/degrade matrix, complete non-exfil checks, write an endpoint decision rule, flip back. Staff-pinned Ollama/LM Studio only. Honest YELLOW still needs predict + rule. Guide: <code>mission_flesh/p6/local_endpoint_notes.md</code>.
+        <div class="orient-aside">
+          <div class="lead-box">
+            <p class="eyebrow">Lead operate-along</p>
+            <p>The lead runs this same page on screen — brief co-written live, mission in a build chat you can see, accepts and rejects narrated, and at least one stop pulled mid-run so you can watch what a clean interrupt looks like. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+          </div>
+          <div class="callout" id="case-talk">
+            <strong>Before lunch · Harness case talk (45 min)</strong>
+            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; leave one Transfer seed.
+          </div>
+          <div class="callout">
+            <strong>Stretch · The endpoint is a wall</strong>
+            After goose MVP (the minimum bar that survives review — the pass bar below): swap the endpoint for a staff-pinned local model and score what actually degrades. Full run under Going deeper; guide: <code>mission_flesh/p6/local_endpoint_notes.md</code>.
+          </div>
         </div>
       </div>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p6/p6-overview.svg" alt="Overview: feeder traffic flows through the watch officer recipe under your contract, exceptions surface to you, and you hold the stop" width="1120" height="280" loading="lazy" decoding="async" />
+      </figure>
+    </section>
+
+    <section id="ideas" class="home-section">
+      <h2>The ideas under the mission</h2>
+      <p class="section-lede">Five mechanisms carry today. Read them once before you run, then come back whenever a step surprises you — each one is worth arguing about.</p>
+
+      <h3>Autonomy is a loop plus bounds you wrote</h3>
+      <p>Strip the word <em>autonomy</em> of its aura and what remains is the same harness loop you have run all week — act, observe, correct — with one change: you are no longer approving every turn. Nothing got smarter at that moment. What changed is who is watching, which means every bound you used to enforce by being present has to live somewhere else. The autonomy contract is that somewhere: a table with a row for every serious risk, and two columns that ask one blunt question per row — does a mechanism in the harness enforce this, or does a person promise it?</p>
+      <p><strong>Tool-enforced</strong> means the harness physically holds the line. The lever works when the model is confused, when the input is hostile, and when you are at lunch, because it executes in the harness's own runtime, where the model cannot argue with it. <strong>Procedure-enforced</strong> means a person keeps a promise — who may restart, when output gets reviewed, what triggers a stop. Procedure rows are not weaknesses; stop authority itself almost always lives there, and a written procedure a team actually follows is a real control. The discipline is knowing which column each bound honestly belongs in.</p>
+      <p>Going wrong looks like a tool column full of sentences. "The agent will not leave the project" is prose: the model reads it, usually honors it, and can be argued out of it by content it processes — you watched that mechanism from the attacker's side in the poisoned corpus. A bound that lives only in instructions text is a promise the model makes you, which puts it in nobody's column until you either move it left by finding a real lever or move it right by naming the human who checks.</p>
+      <p>At work, this table is the first artifact to demand — from yourself before anything runs unattended, and from any vendor selling an "autonomous" anything. The rows they cannot fill on the left are your exposure, and they are reliably the rows the brochure says are handled.</p>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p6/p6-idea-contract.svg" alt="The two-column contract: tool-enforced rows name a real goose lever, procedure-enforced rows are promises you keep" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+
+      <h3>goose's levers are walls you turned on</h3>
+      <p>goose ships real levers, and every one of them defaults to whatever it defaults to — not to your contract. Today's recipe opens five:</p>
+      <table>
+        <thead><tr><th>Lever</th><th>Where it lives</th><th>What it physically holds</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Recipe</strong></td><td><code>watch_officer.yaml</code></td><td>The packaged mission: instructions, prompt, parameters, plus the machine-read fields below</td></tr>
+          <tr><td><strong>Tool surface</strong></td><td><code>extensions:</code> (starter: built-in <code>developer</code> only)</td><td>Which tools exist at all — an extension that is not loaded cannot be called, whatever the feeder says</td></tr>
+          <tr><td><strong>Autonomy dial</strong></td><td><code>GOOSE_MODE</code> (approve / smart-approve / auto) + <code>settings.max_turns: 12</code></td><td>Whether tool calls wait for you, and how many turns the loop may take before it physically ends</td></tr>
+          <tr><td><strong>Retry check</strong></td><td><code>retry.checks</code> — <code>test -f out/watch_summary.md</code></td><td>A success test outside the model: no summary file on disk, no claimed success</td></tr>
+          <tr><td><strong>Unattended path</strong></td><td>Scheduler (Desktop or CLI)</td><td>When the loop may run without you — with pause and run-now under your hand</td></tr>
+        </tbody>
+      </table>
+      <p>The mechanism worth holding onto is <em>where each lever executes</em>. <code>max_turns</code> is a counter in goose's own loop code; <code>extensions</code> decides which tool schemas the model is shown in the first place; the retry check is a shell command goose runs after the model claims it finished. None of them pass through the model, and that is what earns them the tool column. The <code>instructions</code> block, by contrast, is delivered <em>to</em> the model — real influence, wrong column.</p>
+      <p>Going wrong is quiet here: a contract row that says <code>GOOSE_MODE=approve</code> while the variable was never set in the window that ran the recipe. The lever exists, the row is written, and nothing is enforced. So the test of a tool row is always <code>goose info -v</code> and the run's observed behavior, never the YAML's good intentions. A lever you did not turn on is not a rail you have. Full field notes: <a href="../../mission_flesh/p6/goose_recipe_notes.md">goose_recipe_notes.md</a> · docs: <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p>
+      <p>At work: before any agent platform touches real traffic, take a lever inventory. List the levers it actually has, mark the ones you turned on, and let only those into the tool column. Twenty minutes, and it reorganizes every conversation about that platform's safety.</p>
+
+      <h3>Stop authority is proven, not assumed</h3>
+      <p><strong>Stop authority</strong> is your ability to halt the run and resume on your terms without losing good work. It sounds like a button; it is actually two proofs. The stop proof is the easy half — Ctrl+C lands, you note the time and what was in flight. The restart proof is where contracts quietly die: if resuming means rebuilding the mission from memory, or the rerun erases what the last run built, then your stop was really an abort.</p>
+      <p>The mechanism to respect is the hesitation that follows. An operator who knows stopping costs an hour of rework will let a wrong run continue "just to see" — and at that moment stop authority has been lost in practice while surviving on paper. The recipe's append posture (add lines, never rewrite the file) is what makes stopping cheap, and cheap is what makes it psychologically available. You will prove both halves today, with timestamps, because an autonomy you cannot interrupt and resume is not under contract; it is loose.</p>
+      <p>At work: for every unattended process you own, know the interrupt, know the resume, and have done both once on purpose — a fire drill, not a theory. The day you need the stop is the wrong day to learn it erases the week's output.</p>
+
+      <h3>The three-layer bound</h3>
+      <p>Not all bounds are the same strength, and the vocabulary for that difference is the most transferable thing you will take from today. Three layers, in ascending order of what they can promise:</p>
+      <p>A <strong>contract</strong> removes the capability. <code>pi --tools read,grep,find,ls</code> filters Pi's tool registry <em>above</em> the extension layer, so the banned write tools never enter the model's schema. There is nothing to refuse and no refusal to talk the model out of — the option does not exist in its world. And it is provable after the fact: open the session file and read the tool list that was actually offered.</p>
+      <p>A <strong>tripwire</strong> watches for the act. A <code>tool_call</code> gate — an extension you write that inspects each tool call before it executes and can return <code>block: true</code> — catches drift and mistakes, and it fails closed: if the gate itself errors, the call is blocked. That is the right default, and a tripwire is genuinely useful. But it is defeatable by the very thing it polices. A model holding <code>bash</code> can run commands inside a subshell where they never surface as tool calls for the gate to inspect, and a gate file the agent can write to is a gate the agent can edit. Build one and then beat it — the stretch item in Stage 08 walks it — because a defeat you performed yourself is the inoculation that lasts.</p>
+      <p>A <strong>boundary</strong> is a container. The process physically cannot reach outside it, regardless of what the model wants or how the gate is feeling. It is the only layer whose guarantee does not depend on the good behavior of the thing being bounded.</p>
+      <p>The specific error this distinction exists to burn out is the tripwire mistaken for a boundary. It is how people come to believe a written policy stops a process — "we have a guardrail," where the guardrail runs in the same trust domain as the thing it limits. When anyone tells you an agent <em>can't</em> do something, the question is which layer: schema, gate, or wall. The answer changes what you should be willing to run unattended, and what evidence you should demand first.</p>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p6/p6-idea-three-layers.svg" alt="Three layers of bound: contract removes the tool from the model's schema, tripwire gates tool calls but is defeatable, boundary is a container and the only model-proof one" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+
+      <h3>The minimal harness — rails are yours to build</h3>
+      <p>Pi is a deliberately minimal harness: a small default tool set, a session file, and a large surface for building your own machinery. What it does not have is rails. There is no sandbox. There is no permission mode to set. And — the part people miss — there is no working-directory fence: absolute paths and <code>~</code> pass straight through, so "I opened it in this folder" bounds nothing at all. Instruction files load whether or not you trust the project. This is the vendor's stated design, not an oversight: rails are yours to build, and the extension API is the toolbox.</p>
+      <p>From the chair, the missing rails feel like nothing — which is exactly the lesson. A loop without rails runs the same as a bounded one right up until the input turns hostile or a path goes absolute. So containment around Pi is your job, not the harness's. Two standing rules follow, and they are really one discipline: never <code>/share</code> a session (it uploads the whole session, system prompt included, to a link anyone can open), and install only staff-named packages (a package's install step runs arbitrary code on your machine).</p>
+      <p>At work, loops with no rails at all are everywhere — every script that calls a model API with a tool list is one. When you meet one, you now have the inventory question: which rails exist here, which are actually on, and which am I imagining because the demo behaved?</p>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p6" data-block="P6">
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Work these in order and check each off as its proof exists. Progress saves in this browser — the same tick shows on the home page.</p>
-        <ol class="checklist">
+        <p class="section-lede">Eight stages, in order: brief, pack, first run, contract, stop/restart, exception, unattended, minimal harness. Check each item when its proof exists on disk or in your log. Progress saves in this browser — the same tick shows on the home page.</p>
 
+        <h3>Stage 01 · Set the watch</h3>
+        <p>Before anything runs on its own, you say in writing what it is for and where it stops. Today the Bounds field earns its keep — what you write there becomes contract rows within the hour.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-pulse-brief" name="p6-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">1</span>
               <span class="check-title">Co-write the Direction Brief until LIVE</span>
             </label>
-            <div class="check-detail">Open chat <strong>Operator — Direction &amp; Log</strong>. Paste the brief starter. Fill all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Status must be <strong>LIVE</strong> before the mission — vague “explore the data” outcomes get challenged; name the artifact.</div>
+            <div class="check-detail">Open chat <strong>Operator — Direction &amp; Log</strong> and paste the brief starter from <a href="../../operator/DIRECTION_BRIEF.md"><code>operator/DIRECTION_BRIEF.md</code></a>. Fill all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Name the artifacts — an adapted recipe, a two-column contract, stop and restart proof — because "explore goose" gets challenged as vague. In Bounds, write real limits: where the agent may write, what it must never obey. You should see status <strong>LIVE</strong> before the mission starts; if the AI keeps pushing back, it has usually found a real hole — close it, don't argue past it.</div>
           </li>
+        </ol>
 
+        <h3>Stage 02 · Open the pack</h3>
+        <p>Everything today runs from one folder. Know what is in it before the agent does.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-feeder" name="p6-p6-feeder" data-check-id="p6-feeder" />
               <span class="check-num">2</span>
               <span class="check-title">Open the P6 pack</span>
             </label>
-            <div class="check-detail">Path: <code>mission_flesh/p6/</code>. Read <code>goose_recipe_notes.md</code>, open starter <code>watch_officer.yaml</code>, and list <code>feeder/</code> — dropping files into <code>feeder/</code> simulates watch traffic. <code>event_04</code> is the exception drill. Create <code>out/</code> if missing.</div>
+            <div class="check-detail">Path: <code>mission_flesh/p6/</code>. Read <code>goose_recipe_notes.md</code> first, then open the starter <code>watch_officer.yaml</code> and list <code>feeder/</code>. You should see four files, <code>event_01</code> through <code>event_04</code> — dropping files here simulates watch traffic, and <code>event_04</code> carries the hostile line for the exception drill (leave it in place; the run is supposed to meet it). Create <code>out/</code> if it is missing: <code>New-Item -ItemType Directory -Force -Path .\out</code>. If the pack is not on your machine, re-clone the course repo the way pre-work did.</div>
           </li>
+        </ol>
 
+        <h3>Stage 03 · First run under bounds</h3>
+        <p>Adapt first, then run. A stock demo proves goose works; an adapted recipe proves you directed it.</p>
+        <div class="panel">
+          <p class="eyebrow">The run, exactly</p>
+          <pre><code># from the pack folder — the one holding watch_officer.yaml
+$env:GOOSE_MODE = "approve"
+goose run --recipe .\watch_officer.yaml</code></pre>
+          <p class="full-measure">Approve is the right mode for a first run: you see each tool call before it happens, which is how you learn what the recipe actually does. Auto is fine later for the smoke proof — dialing the mode deliberately is itself one of today's levers.</p>
+        </div>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-adapt" name="p6-p6-adapt" data-check-id="p6-adapt" />
               <span class="check-num">3</span>
               <span class="check-title">Adapt watch_officer.yaml → out/watch_summary.md</span>
             </label>
-            <div class="check-detail">Change something real (bounds, <code>feeder_dir</code>, <code>max_turns</code>, or mode). Run the recipe so feeder files become summary lines. Evidence: file on disk. Stock demo only is not yet. Prefer <code>GOOSE_MODE=approve</code> for the teaching run.</div>
+            <div class="check-detail">Change something real before you run — tighten the <code>instructions</code> bounds to match your brief, adjust <code>max_turns</code>, or repoint <code>feeder_dir</code>. Then run as in the panel above. You should see approval prompts as it reads and writes, then <code>out/watch_summary.md</code> with one line per normal feeder file. If your build rejects <code>--recipe</code>, run <code>goose run --help</code> and use the recipe-file form your pinned version prints — and record the exact command that worked in your log. Stock demo only is not yet.</div>
           </li>
+        </ol>
 
+        <h3>Stage 04 · Write the contract</h3>
+        <p>Now that you have seen one run, write down what actually bounded it — and what only you did.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-contract" name="p6-p6-contract" data-check-id="p6-contract" />
               <span class="check-num">4</span>
               <span class="check-title">Two-column autonomy contract ≥3+3</span>
             </label>
-            <div class="check-detail">Columns: <em>Tool-enforced</em> | <em>Procedure-enforced</em>. At least three tool rows name real goose levers (extensions list, <code>GOOSE_MODE</code>, <code>max_turns</code>, retry check, schedule). Map every serious feeder risk; no orphans. Template is in the recipe notes.</div>
+            <div class="check-detail">Copy <code>contract_template.md</code> from the pack and fill it for this feeder. Columns: <em>Tool-enforced</em> | <em>Procedure-enforced</em>, at least three rows each. Tool rows must name real levers — the <code>extensions</code> list, <code>GOOSE_MODE</code>, <code>settings.max_turns</code>, the retry check, the schedule. Then walk the feeder's serious risks and confirm each has a row; an unmapped risk is an orphan, and adversarial review will find it. The test of a finished contract: you can point from every tool row to the exact YAML line or environment variable that enforces it.</div>
           </li>
+        </ol>
 
+        <h3>Stage 05 · Stop and restart</h3>
+        <p>This is the drill people skip, which is why they discover on a bad day that their stop is really an abort. Prove both halves now, while the stakes are a practice feeder.</p>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p6/p6-stage-stop-restart.svg" alt="Stop and restart drill: interrupt mid-run, verify prior lines intact, rerun the same recipe, confirm it appends" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-stop" name="p6-p6-stop" data-check-id="p6-stop" />
               <span class="check-num">5</span>
               <span class="check-title">Stop proof</span>
             </label>
-            <div class="check-detail">Halt under realistic conditions (mid-run / about to write). CLI: Ctrl+C. Record time and what was in flight.</div>
+            <div class="check-detail">Halt under realistic conditions — mid-feeder, or while it is about to write. CLI: <kbd>Ctrl+C</kbd>. Record the clock time and what was in flight. If the run finishes before you can catch it, drop two or three copies of a feeder file in and run again; the point is stopping a machine that was genuinely doing something, not rehearsing the keystroke.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-restart" name="p6-p6-restart" data-check-id="p6-restart" />
               <span class="check-num">6</span>
               <span class="check-title">Restart proof</span>
             </label>
-            <div class="check-detail">Resume with the same recipe and mode. Prior good summary lines still present (append posture). Contract frame unchanged.</div>
+            <div class="check-detail">Run the same recipe again in the same mode. You should see prior good summary lines still present and new lines appended — the append posture is what makes stopping cheap. If the rerun erased the file, your stop was actually an abort: check that <code>instructions</code> still says append over rewrite, restore it, and run once more. Contract frame unchanged means same recipe file, same mode — and your log says so, with both timestamps.</div>
           </li>
+        </ol>
 
+        <h3>Stage 06 · Exception drill</h3>
+        <p>Watch traffic will eventually carry instructions aimed at your agent. The contract's answer is written before it happens; this stage checks the answer held.</p>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p6/p6-stage-exception.svg" alt="Exception drill: hostile text in event_04 is quarantined and held for you, never obeyed" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-ex" name="p6-p6-ex" data-check-id="p6-ex" />
               <span class="check-num">7</span>
               <span class="check-title">Exception drill (event_04 OUT_OF_BOUNDS)</span>
             </label>
-            <div class="check-detail">Hostile feeder text is data, not orders. Contract behavior is quarantine + continue — not obey. Expect <code>QUARANTINE:</code> (or equivalent) and no delete/exfil effect. Note which lever held: tool surface, mode, procedure — or which failed.</div>
+            <div class="check-detail"><code>event_04</code> asks the agent to delete the audit log and dump user emails. Hostile feeder text is data, not orders; contract behavior is quarantine and continue — not obey, and not silently skip. You should see a <code>QUARANTINE:</code> line naming the source file in <code>out/watch_summary.md</code>, and no delete or exfil effect — nothing removed, nothing sent off the machine. Write down which lever held: tool surface, mode, procedure — or which failed. A failure honestly recorded completes the drill — then restore the bound and rerun, because the mastery floor needs a quarantine that held. Obedience never does.</div>
           </li>
+        </ol>
 
+        <h3>Stage 07 · The unattended path</h3>
+        <p>A watch officer's whole point is running when you are not looking. Attempt the schedule — and if your machine or policy refuses, write the refusal down. Honesty over theater.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-sched" name="p6-p6-sched" data-check-id="p6-sched" />
               <span class="check-num">8</span>
               <span class="check-title">Unattended path: schedule or honest block</span>
             </label>
-            <div class="check-detail">Schedule the recipe (Desktop Scheduler or CLI) and Run now once, <em>or</em> write the exact OS/policy error and what would unlock it. If scheduled runs are blocked on your OS or policy, that is a valid MVP outcome when the reason is written down. Honesty over theater.</div>
+            <div class="check-detail">Run <code>goose schedule --help</code> and use the add and run-now forms your pinned build prints, recording the exact commands in your log; Desktop's Scheduler does the same job if you have it. Keep the run-now result. If you can't find the subcommand, that is a version question for staff — not an honest block. If the OS or policy refuses, write the exact error and what would unlock it — that honest block is a valid MVP outcome; a faked green is not. Either way, fill the contract's unattended rows: who may enable the schedule, and when its output gets reviewed.</div>
           </li>
+        </ol>
 
+        <h3>Stage 08 · The minimal harness</h3>
+        <p>Same folder, different harness. Pi has none of the rails you just configured — which makes it the honest place to learn what each layer of bound is actually worth.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-pi" name="p6-p6-pi" data-check-id="p6-pi" />
               <span class="check-num">9</span>
               <span class="check-title">Pi: prove a bound from the session file</span>
             </label>
-            <div class="check-detail">Run the same tiny task twice in the same folder — once plain, once as <code>pi --tools read,grep,find,ls -p "…"</code>. Open the session file under <code>%USERPROFILE%\.pi\agent\sessions\</code> and confirm the write tools were <strong>absent from the model's schema</strong>, not offered and declined. A bound the model complied with is not the same as one it could not violate, and the file shows you which you have.</div>
+            <div class="check-detail">Run the same tiny task twice in the same folder — once plain, once as <code>pi --tools read,grep,find,ls -p "…"</code>. Open the newest session file under <code>%USERPROFILE%\.pi\agent\sessions\</code> and read the tool list the model was offered: in the second run the write tools should be <strong>absent from the schema</strong>, not offered and declined. A bound the model complied with is not the same as one it could not violate, and the file shows you which you have. If both runs show write tools, the flag did not take — check spelling and which window you ran it in, then rerun.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-pi-gate" name="p6-p6-pi-gate" data-check-id="p6-pi-gate" />
               <span class="check-num">10</span>
               <span class="check-title">Stretch — Pi: write a tripwire, then defeat it</span>
             </label>
-            <div class="check-detail">Read Pi's shipped <code>protected-paths</code> example, then write your own <code>tool_call</code> gate in <code>~/.pi/agent/extensions/</code> that blocks writes outside the mission folder:
+            <div class="check-detail">Read Pi's shipped <code>protected-paths</code> example, then write your own <code>tool_call</code> gate in <code>~/.pi/agent/extensions/</code>:
 <pre><code>pi.on("tool_call", async (event, ctx) =&gt; {
   if (isToolCallEventType("write", event)) {
-    // resolve the path before comparing — see what happens if you don't
+    // the path check is yours: compare the write's target to the mission folder
     return { block: true, reason: "outside mission folder" };
   }
 });</code></pre>
-Defeat it with a <code>../</code> path. Fix it by resolving against <code>ctx.cwd</code> first. Note the difference between a gate in <code>~/.pi/agent/extensions/</code> (loads before project trust, applies everywhere) and one in <code>.pi/extensions/</code> (lives inside the repo it polices).</div>
+As written it blocks every write — run one to prove the gate fires. Then write the check as a raw-string compare and defeat it with a <code>../</code> path; fix it by resolving against <code>ctx.cwd</code> before comparing. Note the difference between <code>~/.pi/agent/extensions/</code> (loads before project trust, applies everywhere) and <code>.pi/extensions/</code> (inside the repo it polices — an agent that can write there can edit it). If the gate never fires, check its location and restart Pi; extensions load at start.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-layers" name="p6-p6-layers" data-check-id="p6-layers" />
               <span class="check-num">11</span>
               <span class="check-title">Label every contract row: contract / tripwire / boundary</span>
             </label>
-            <div class="check-detail">Go back through your two-column contract and mark each row. A <strong>contract</strong> removes the capability (<code>--tools</code>, goose tool surface). A <strong>tripwire</strong> catches drift but can be defeated by what it polices. A <strong>boundary</strong> is a container. Any row you called tool-enforced that is really a tripwire is the finding — write it in your log in those words.</div>
+            <div class="check-detail">Go back through your two-column contract and mark each row. A <strong>contract</strong> removes the capability (<code>--tools</code>, the goose extensions list). A <strong>tripwire</strong> catches drift but can be defeated by what it polices (the retry check; your gate). A <strong>boundary</strong> is a container — you probably have none today, and writing "none" is the honest entry. Any row you first called tool-enforced that is really a tripwire is the finding — put it in your log in exactly those words.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-transfer" name="p6-p6-transfer" data-check-id="p6-transfer" />
               <span class="check-num">12</span>
               <span class="check-title">Transfer P6 seed</span>
             </label>
-            <div class="check-detail">One real work process you’d put under contract: tool vs procedure rows, stop authority, exception path.</div>
+            <div class="check-detail">In <strong>Operator — Transfer 30-60-90</strong>: one real work process you would put under contract. Sketch its two columns, who holds stop authority, and where exceptions surface. The 60-day seed on the mastery floor grows from this row, so make it a process you actually run — not a hypothetical.</div>
           </li>
         </ol>
+      </section>
 
-        <div class="panel">
-          <p class="eyebrow">Four goose levers you open today</p>
-          <p class="full-measure"><strong>Recipe</strong> — packaged mission (<code>watch_officer.yaml</code>): instructions, parameters, success checks · <strong>Tool surface</strong> — which extensions/tools exist (starter keeps <code>developer</code> only) · <strong>Autonomy dial</strong> — <code>GOOSE_MODE</code> (approve vs auto) and <code>settings.max_turns</code> · <strong>Unattended path</strong> — Scheduler run-now, or an honest block with the exact error.</p>
-          <p class="full-measure">The contract’s <em>tool-enforced</em> column names these levers. Prose that only says “be safe” is not a tool row. Full notes: <code>mission_flesh/p6/goose_recipe_notes.md</code> · docs: <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p>
-        </div>
+      <section id="depth" class="home-section">
+        <h2>Going deeper while the watch runs</h2>
+        <p class="section-lede">This is for the gaps while a run works, and for the argument after it finishes.</p>
+
+        <h3>Failure catalog</h3>
+        <table>
+          <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+          <tbody>
+            <tr><td>goose rejects <code>--recipe</code></td><td>Cohort-pinned build wants a different flag shape</td><td><code>goose run --help</code>; use the recipe-file form it prints; record the exact command in your log</td></tr>
+            <tr><td>Run "succeeds" but <code>out/</code> is empty</td><td>Ran from the wrong directory — <code>feeder_dir</code> is a relative path</td><td><code>cd</code> into the pack folder, confirm the parameter, rerun</td></tr>
+            <tr><td>Auth-looking error mid-block</td><td>Capped key — a spent cap fails as a <code>429</code>/quota error that reads like bad credentials</td><td>Read the error text for 429/quota before touching your setup; ask staff about the cap; do not reinstall</td></tr>
+            <tr><td>Agent obeys event_04</td><td>Mode was <code>auto</code> for the drill, or your adaptation weakened the quarantine bound</td><td>Set <code>GOOSE_MODE=approve</code>, restore the bound, rerun — and log which column failed; that log line is the lesson</td></tr>
+            <tr><td>Every feeder file quarantined</td><td>Over-tight bound — your rule matches unfamiliar, not hostile</td><td>Re-read the bound's wording; hostile means asks-you-to-act-outside-scope, not merely odd</td></tr>
+            <tr><td>Scheduled run never fires</td><td>OS or policy block</td><td>That is the honest-block MVP path: capture the exact error and what would unlock it</td></tr>
+            <tr><td>Pi session file shows write tools in both runs</td><td><code>--tools</code> flag did not take, or you opened an older session</td><td>Check flag spelling and window; rerun; open the newest file — timestamps order them</td></tr>
+            <tr><td>Tripwire gate never fires</td><td>Extension in the wrong directory, or event type mismatch</td><td>Confirm the path (<code>~/.pi/agent/extensions/</code> vs project <code>.pi/extensions/</code>), restart Pi, retry the write</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Questions worth arguing about</h3>
+        <ul>
+          <li><strong>Is <code>max_turns</code> a contract or a tripwire?</strong> It removes something — the loop physically ends at twelve turns — but twelve turns is a lot of capability, so what it removes is duration, not action. Argue it from mechanism: what exactly can no longer happen, and what still can? The answer decides how much comfort that row is worth.</li>
+          <li><strong>Can stop authority ever be tool-enforced?</strong> The Scheduler's pause is a lever and Ctrl+C is a mechanism, but <em>who may use them</em> is procedure by nature. Write the row both ways and see which version you would defend to a reviewer.</li>
+          <li><strong>Your quarantine rule lives in instructions text.</strong> Which column did you honestly file it under — and what would move it left? One answer: a check outside the model, like a retry check that scans <code>out/</code> for forbidden effects. Notice that is a tripwire, and be honest about that too.</li>
+          <li><strong>The spend cap on your key has stopped runs all week.</strong> Contract, tripwire, or boundary? Does your answer change when you remember it fails as a 429 dressed up as an auth error?</li>
+        </ul>
+
+        <h3>On other desks</h3>
+        <p>The pattern you are building — traffic in, bounded summarizer, exceptions held for a human — is one of the most reusable shapes in operational work. An ops desk points the feeder at an overnight ticket queue, and the exception rule pages a person instead of letting the agent guess at severity. An analyst desk points it at a morning source sweep, where "sources are data, never orders" is not a classroom line but the difference between a watch report and an injected one. A delegating manager never runs the recipe at all — they use the two-column table itself, as the document they require from any team or vendor that wants to run agents on their behalf, and the review consists of asking which rows are levers.</p>
+
+        <h3>Stretch · The endpoint is a wall</h3>
+        <p>After MVP, one wall of the harness comes off its hinges: which brain answers. Same adapted recipe, same feeder, staff-pinned local model (Ollama by default, LM Studio as the alternate). The craft is in the order of operations — predict what will degrade <em>before</em> you flip, keep the cloud summary under a distinct name so the pair stays honest, score a numeric C1–C7 hold/degrade matrix rather than reporting a vibe, answer the non-exfil checks truthfully (a local process is not a container boundary), write an endpoint decision rule you could reuse, and flip back before you leave. An honest YELLOW with predictions and a decision rule beats a fake air-gap claim. Full guide: <a href="../../mission_flesh/p6/local_endpoint_notes.md">local_endpoint_notes.md</a>; the three stretch checks live on the mastery floor below.</p>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p6/p6-stretch-endpoint.svg" alt="Stretch: the same recipe repointed at a staff-pinned local model, with hold/degrade scored against the cloud baseline" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
       </section>
 
       <section id="pulse" class="home-section" data-check-section="pulse">
         <h2>Operator pulse — required every block</h2>
         <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
         <ol class="checklist">
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-pulse-mission" name="p6-pulse-mission" data-check-id="pulse-mission" />
               <span class="check-num">13</span>
               <span class="check-title">Mission ran in a separate build chat</span>
             </label>
-            <div class="check-detail">Build work stays out of the operator chat — the trail is the point.</div>
+            <div class="check-detail">Build work stays out of the operator chat — today that means the goose runs, the contract drafting, and the Pi experiments all live in a build chat. The trail is the point: the operator chat holds judgment, not scrollback.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-pulse-log" name="p6-pulse-log" data-check-id="pulse-log" />
               <span class="check-num">14</span>
               <span class="check-title">Operator Log complete</span>
             </label>
-            <div class="check-detail">Back in Direction &amp; Log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, what you still own.</div>
+            <div class="check-detail">Back in Direction &amp; Log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), and evidence pointers — recipe path and what changed, mode, max_turns, stop/restart timestamps, the quarantine line, the Pi session file. What you still own: whether the contract's columns are honest.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-pulse-bars" name="p6-pulse-bars" data-check-id="pulse-bars" />
               <span class="check-num">15</span>
               <span class="check-title">PASS_BARS self-check drafted</span>
             </label>
-            <div class="check-detail">Against P6’s MVP list: met / not yet with evidence pointers. No inflation.</div>
+            <div class="check-detail">Against P6's MVP list: met / not yet, each with an evidence pointer. No inflation — "contract written" without three named levers is not yet.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-pulse-adv" name="p6-pulse-adv" data-check-id="pulse-adv" />
               <span class="check-num">16</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">Chat <code>Adversarial — P6</code>: frozen prompt + artifacts + provisional verdict. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
+            <div class="check-detail">Chat <code>Adversarial — P6</code>: frozen prompt + artifacts + provisional verdict. Expect it to hunt the tool column: rows with no named lever, a stop never demonstrated, a tripwire called a boundary. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-pulse-measure" name="p6-pulse-measure" data-check-id="pulse-measure" />
               <span class="check-num">17</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes). Deep mark if this block has one.</div>
+            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes). P6 carries a deep mark: <code>Contract: stop/restart · exception drill pass/fail</code>. Use the row's one-line note for what running under a written contract changed about how you directed.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-pulse-transfer" name="p6-pulse-transfer" data-check-id="pulse-transfer" />
               <span class="check-num">18</span>
               <span class="check-title">Transfer pulse (every AM/PM)</span>
             </label>
-            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt. A session-log row is required even if the seed is small today.</div>
+            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt. P6 is a deep-seed block — the process-under-contract row matters well beyond today. A session-log row is required even if the seed is small.</div>
           </li>
         </ol>
       </section>
@@ -289,122 +402,109 @@ Defeat it with a <code>../</code> path. Fix it by resolving against <code>ctx.cw
         <h2>Mastery floor — evidence must survive adversarial review</h2>
         <p class="section-lede">Mark met / not yet against your own artifacts. If the adversarial pass wounds an item, uncheck it until it is fixed.</p>
         <ol class="checklist">
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-run" name="p6-mvp-run" data-check-id="mvp-run" />
               <span class="check-num">19</span>
               <span class="check-title">MVP: Adapted recipe run evidenced</span>
             </label>
-            <div class="check-detail"><code>watch_officer.yaml</code> (or fork) changed; <code>out/watch_summary.md</code> on disk from local feeder.</div>
+            <div class="check-detail">Evidence looks like: <code>watch_officer.yaml</code> (or your fork) with a change you can name, and <code>out/watch_summary.md</code> on disk from the local feeder — one line per normal file. Stock demo only is not yet.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-33" name="p6-mvp-33" data-check-id="mvp-33" />
               <span class="check-num">20</span>
               <span class="check-title">MVP: Contract ≥3+3 with real tool levers</span>
             </label>
-            <div class="check-detail">Both columns. ≥3 tool rows name goose settings/fields, not only “be safe.”</div>
+            <div class="check-detail">Both columns populated, at least three rows each. ≥3 tool rows name goose settings or recipe fields — extensions, <code>GOOSE_MODE</code>, <code>max_turns</code>, retry check, schedule — not only "be safe."</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-map" name="p6-mvp-map" data-check-id="mvp-map" />
               <span class="check-num">21</span>
               <span class="check-title">MVP: Risks mapped to columns</span>
             </label>
-            <div class="check-detail">No orphan risks on this feeder.</div>
+            <div class="check-detail">Every serious risk on this feeder appears in one column — no orphans. The test: someone names a risk, you point at its row.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-stop" name="p6-mvp-stop" data-check-id="mvp-stop" />
               <span class="check-num">22</span>
               <span class="check-title">MVP: Stop + restart proven</span>
             </label>
-            <div class="check-detail">Realistic halt; restart keeps contract frame and prior good lines.</div>
+            <div class="check-detail">Realistic halt with a timestamp; restart kept the contract frame and prior good lines. Evidence looks like: two times in the log plus the intact, appended file.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-unatt" name="p6-mvp-unatt" data-check-id="mvp-unatt" />
               <span class="check-num">23</span>
               <span class="check-title">MVP: Unattended attempt or honest block</span>
             </label>
-            <div class="check-detail">Schedule + run-now evidence, or exact block reason + unlock path.</div>
+            <div class="check-detail">Schedule + run-now evidence, or the exact block reason + unlock path, written in the log. An honest block passes; theater does not.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-pi" name="p6-mvp-pi" data-check-id="mvp-pi" />
               <span class="check-num">24</span>
               <span class="check-title">MVP: Pi bound proved from evidence</span>
             </label>
-            <div class="check-detail">You ran the same task with and without <code>--tools</code> and can point at the session file showing the write tools were never in the model's schema. Plus every contract row labelled contract / tripwire / boundary, honestly.</div>
+            <div class="check-detail">You ran the same task with and without <code>--tools</code> and can point at the session file showing the write tools were never in the model's schema. Plus every contract row labelled contract / tripwire / boundary, honestly — including "none" for boundary if that is the truth.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-ex" name="p6-mvp-ex" data-check-id="mvp-ex" />
               <span class="check-num">25</span>
               <span class="check-title">MVP: Exception drill matches contract</span>
             </label>
-            <div class="check-detail">event_04 quarantined; no hostile effect in out/ or elsewhere.</div>
+            <div class="check-detail">event_04 quarantined; no hostile effect in <code>out/</code> or anywhere else — containment shown by absence of effect, not by a promise. The log names which lever held.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-log6" name="p6-mvp-log6" data-check-id="mvp-log6" />
               <span class="check-num">26</span>
               <span class="check-title">MVP: Log points contract+run+stop+drill</span>
             </label>
-            <div class="check-detail">Recipe version/path, mode, max_turns, schedule note, evidence paths.</div>
+            <div class="check-detail">Recipe version/path and what changed, mode, max_turns, run evidence, stop/restart times, exception result, schedule note — each a pointer someone else could follow.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-60" name="p6-mvp-60" data-check-id="mvp-60" />
               <span class="check-num">27</span>
               <span class="check-title">MVP: 60-day process seed</span>
             </label>
-            <div class="check-detail">Transfer: one real process under contract.</div>
+            <div class="check-detail">The transfer file holds one real process under contract, with its two columns sketched and a named stop authority.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-stretch-predict" name="p6-stretch-predict" data-check-id="stretch-local-predict" />
               <span class="check-num">S1</span>
               <span class="check-title"><span class="tag">Stretch</span>Predictions written before local run</span>
             </label>
-            <div class="check-detail"><code>out/local_predict.md</code> — guide <code>mission_flesh/p6/local_endpoint_notes.md</code>.</div>
+            <div class="check-detail"><code>out/local_predict.md</code> written before the flip — C1–C6 predictions with reasons, not edited after. Guide: <code>mission_flesh/p6/local_endpoint_notes.md</code>.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-stretch-pair" name="p6-stretch-pair" data-check-id="stretch-local-pair" />
               <span class="check-num">S2</span>
               <span class="check-title"><span class="tag">Stretch</span>Paired cloud + local summaries</span>
             </label>
-            <div class="check-detail"><code>watch_summary.cloud.md</code> and <code>watch_summary.local.md</code> (or documented paths).</div>
+            <div class="check-detail"><code>watch_summary.cloud.md</code> and <code>watch_summary.local.md</code> both on disk (or documented paths). The pair is what makes the comparison honest — a lone local demo scores nothing.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-stretch-local" name="p6-stretch-local" data-check-id="stretch-local-endpoint" />
               <span class="check-num">S3</span>
               <span class="check-title"><span class="tag">Stretch</span>Numeric hold/degrade + non-exfil + decision rule</span>
             </label>
-            <div class="check-detail"><code>out/local_hold_degrade.md</code> scored C1–C7; flip back. YELLOW still needs predict + decision rule.</div>
+            <div class="check-detail"><code>out/local_hold_degrade.md</code> scored C1–C7 with totals and the event_04 pair; non-exfil checks answered honestly; endpoint decision rule written; provider flipped back — <code>goose info -v</code> shows the cloud pin again. YELLOW still needs predict + rule.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-done" name="p6-p6-done" data-check-id="p6-done" />
               <span class="check-num">28</span>
               <span class="check-title">Block closed under fire</span>
             </label>
-            <div class="check-detail">Adversarial line present; measurement row written; transfer row written; you could defend this block to a peer.</div>
+            <div class="check-detail">Adversarial line present; measurement row written; transfer row written; and you could hand a peer your contract and defend every label on it — row by row, layer by layer.</div>
           </li>
         </ol>
       </section>
@@ -413,14 +513,15 @@ Defeat it with a <code>../</code> path. Fix it by resolving against <code>ctx.cw
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not “it ran.” Evidence must survive adversarial review. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P6</a>.</p>
+        <p>MVP is not "it ran." Evidence must survive adversarial review — the reviewer will go straight for the tool column and the stop proof. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P6</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>
         <ul>
-          <li>Narrow <em>data scope</em>, not the judgment standard.</li>
-          <li>Re-read your LIVE brief — most chaos is an unbounded outcome.</li>
-          <li>Ask for a lead diagram of the one concept blocking you, then continue on your chair.</li>
+          <li><strong>goose won't run the recipe.</strong> <code>goose info -v</code> first — right provider and model? Then <code>goose run --help</code>: your pinned build's flag may differ from <code>--recipe</code>; use the form it prints. An error mentioning 429 or quota is a capped key wearing an auth costume — ask staff about the cap; don't reinstall anything.</li>
+          <li><strong>The tool column won't fill.</strong> Open <code>watch_officer.yaml</code> beside the template. Three levers are already sitting in the file — <code>extensions</code>, <code>settings.max_turns</code>, <code>retry.checks</code> — and <code>GOOSE_MODE</code> is the fourth. The craft is mapping them to this feeder's risks, not inventing new machinery.</li>
+          <li><strong>The Pi proof doesn't feel like proof.</strong> The proof is an absence. Compare the tool lists offered in both session files; the <code>--tools</code> run should simply lack the write tools. If both show them, the flag didn't take — fix and rerun, then open the newest file.</li>
+          <li>And the standing move: narrow the <em>data scope</em> — one feeder file — never the judgment standard.</li>
         </ul>
       </div>
     </section>

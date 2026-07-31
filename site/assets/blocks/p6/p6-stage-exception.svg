@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 220" role="img" aria-labelledby="title-p6-stage-exception">
+  <title id="title-p6-stage-exception">Stage 06 exception drill: hostile text in event_04 is treated as data — quarantined and held for you, never obeyed</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 8 4 0 8Z" fill="#0A0A0A"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 8 4 0 8Z" fill="#E31C23"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, "Inter", "Helvetica Neue", Arial, sans-serif; fill: #0A0A0A; }
+      .micro { font-size: 8px; font-weight: 650; letter-spacing: 1.65px; }
+      .tiny { font-size: 7px; font-weight: 650; letter-spacing: 1px; }
+      .railtext { font-size: 7.1px; font-weight: 650; }
+      .title { font-size: 21px; font-weight: 680; letter-spacing: -0.25px; }
+      .purpose { font-size: 11.5px; font-weight: 430; fill: #4A4A4A; }
+      .caption { font-size: 8.5px; font-weight: 650; letter-spacing: 1.15px; }
+      .body { font-size: 9.5px; font-weight: 520; }
+      .muted { fill: #6B6B6B; }
+      .white { fill: #FFFFFF; }
+      .red { fill: #E31C23; }
+      .gold { fill: #A58650; }
+      .line { fill: none; stroke: #0A0A0A; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+      .hair { fill: none; stroke: #D0D0D0; stroke-width: 1; vector-effect: non-scaling-stroke; }
+      .redline { fill: none; stroke: #E31C23; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+      .goldline { fill: none; stroke: #A58650; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+      .dash { stroke-dasharray: 5 4; }
+    </style>
+  </defs>
+  <rect width="1120" height="220" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1120" height="56" fill="#FAFAF8"/>
+  <text x="24" y="13" class="micro muted">P6 · THE WATCH OFFICER</text>
+  <text x="1096" y="13" class="micro muted" text-anchor="end">STAGE 06 OF 08</text>
+  <path d="M88 37H1026" class="hair"/>
+  <rect x="24" y="25" width="128" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <circle cx="31" cy="37" r="2.6" fill="#E31C23"/>
+  <text x="91" y="40" class="railtext" text-anchor="middle">1 Brief</text>
+  <rect x="158" y="25" width="128" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <circle cx="165" cy="37" r="2.6" fill="#E31C23"/>
+  <text x="225" y="40" class="railtext" text-anchor="middle">2 Pack</text>
+  <rect x="292" y="25" width="128" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <circle cx="299" cy="37" r="2.6" fill="#E31C23"/>
+  <text x="359" y="40" class="railtext" text-anchor="middle">3 First run</text>
+  <rect x="426" y="25" width="128" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <circle cx="433" cy="37" r="2.6" fill="#E31C23"/>
+  <text x="493" y="40" class="railtext" text-anchor="middle">4 Contract</text>
+  <rect x="560" y="25" width="128" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <circle cx="567" cy="37" r="2.6" fill="#E31C23"/>
+  <text x="627" y="40" class="railtext" text-anchor="middle">5 Stop/restart</text>
+  <rect x="694" y="25" width="128" height="24" rx="2" fill="#E31C23" stroke="#E31C23" stroke-width="1.4"/>
+  <text x="758" y="40" class="railtext white" text-anchor="middle">6 Exception</text>
+  <rect x="828" y="25" width="128" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="892" y="40" class="railtext muted" text-anchor="middle">7 Unattended</text>
+  <rect x="962" y="25" width="128" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="1026" y="40" class="railtext muted" text-anchor="middle">8 Min harness</text>
+  <path d="M0 56H1120" class="hair"/>
+
+  <text x="24" y="76" class="micro red">STAGE 06 · EXCEPTION DRILL</text>
+  <text x="24" y="103" class="title">Hostile text is data, not orders</text>
+  <text x="24" y="123" class="purpose">event_04 orders deletion and exfil; the contract answer is quarantine.</text>
+  <text x="24" y="141" class="body muted">Log which lever held — tool surface, mode, or procedure.</text>
+  <path d="M480 69V151" class="hair"/>
+  <text x="512" y="76" class="micro muted">WHAT THIS LOOKS LIKE</text>
+  <g aria-label="Hostile feeder file quarantined instead of obeyed">
+    <rect x="512" y="86" width="180" height="56" rx="2" fill="#FFFFFF" stroke="#1A1A1A"/>
+    <text x="524" y="100" class="micro muted">FEEDER/EVENT_04.TXT</text>
+    <text x="524" y="116" class="tiny red">OUT_OF_BOUNDS:</text>
+    <text x="524" y="130" class="tiny muted">DELETE LOG · DUMP EMAILS</text>
+    <path d="M692 114H714" class="line" marker-end="url(#arrow)"/>
+    <rect x="724" y="86" width="150" height="56" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+    <text x="736" y="100" class="micro muted">THE CONTRACT</text>
+    <text x="736" y="116" class="tiny muted">FEEDER = DATA,</text>
+    <text x="736" y="130" class="tiny muted">NEVER ORDERS</text>
+    <path d="M874 104L920 98" class="line" marker-end="url(#arrow)"/>
+    <rect x="924" y="80" width="172" height="36" rx="2" fill="#FFFFFF" stroke="#1A1A1A"/>
+    <text x="936" y="94" class="micro muted">QUARANTINE: LINE</text>
+    <text x="936" y="108" class="tiny muted">APPENDED · OTHERS RUN</text>
+    <path d="M874 124L916 132" class="redline dash"/>
+    <path d="M898 122L910 134M910 122L898 134" class="redline"/>
+    <rect x="924" y="126" width="172" height="36" rx="2" fill="#FFFFFF" stroke="#E31C23" stroke-dasharray="5 4"/>
+    <text x="936" y="140" class="micro red">OBEY THE FILE</text>
+    <text x="936" y="154" class="tiny red">REFUSED — NO DELETE, NO EXFIL</text>
+  </g>
+  <rect x="0" y="164" width="1120" height="56" fill="#FAFAF8"/>
+  <text x="24" y="175" class="micro muted">IN THIS STAGE</text>
+  <rect x="24.00" y="182" width="172.00" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="24.00" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="36.50" y="198.3" class="caption white" text-anchor="middle">01</text>
+  <text x="58.00" y="198.2" class="caption">DROP EVENT_04</text>
+  <rect x="204.00" y="182" width="172.00" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="204.00" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="216.50" y="198.3" class="caption white" text-anchor="middle">02</text>
+  <text x="238.00" y="198.2" class="caption">RUN THE WATCH</text>
+  <rect x="384.00" y="182" width="172.00" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="384.00" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="396.50" y="198.3" class="caption white" text-anchor="middle">03</text>
+  <text x="418.00" y="198.2" class="caption">SEE QUARANTINE</text>
+  <rect x="564.00" y="182" width="172.00" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="564.00" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="576.50" y="198.3" class="caption white" text-anchor="middle">04</text>
+  <text x="598.00" y="198.2" class="caption">CHECK NO EFFECT</text>
+  <rect x="744.00" y="182" width="172.00" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="744.00" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="756.50" y="198.3" class="caption white" text-anchor="middle">05</text>
+  <text x="778.00" y="198.2" class="caption">NAME THE LEVER</text>
+</svg>
