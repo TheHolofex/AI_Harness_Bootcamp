@@ -52,3 +52,7 @@ python3 -m http.server 8080
 Open [http://localhost:8080/site/](http://localhost:8080/site/)
 
 Or open `site/index.html` directly (some browsers restrict fetch on sample viewer file://).
+
+## Hosted (Railway)
+
+Password-gated host at repo root: `server.py`. Configure `SITE_PASSWORD` (and optional `SITE_SECRET`). Full steps: [`HOSTING.md`](../HOSTING.md).

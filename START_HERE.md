@@ -2,12 +2,23 @@
 
 ## Run the course site
 
+Local (no password), from repo root:
+
 ```bash
 cd /path/to/AI_Harness_Bootcamp
 python3 -m http.server 8080
 ```
 
 Open http://localhost:8080/site/
+
+Password-gated (local or Railway) — set `SITE_PASSWORD` and run:
+
+```bash
+export SITE_PASSWORD='your-cohort-password'
+python3 server.py
+```
+
+Open http://localhost:8080/site/ (login first). Deploy notes: `HOSTING.md`.
 
 ## Map
 
@@ -46,3 +57,4 @@ Each block (B0–P8) has a full step-by-step checklist with checkboxes. Progress
 - Rotting facts (any machine): `python3 .github/scripts/verify-stack-facts.py`
 - Windows install smoke: `powershell -ExecutionPolicy Bypass -File .github\scripts\prework-verify.ps1`
 - Facilitator notes: `prework/FACILITATOR_NOTES.md`
+- Hosted site: `HOSTING.md` — Railway + `SITE_PASSWORD`

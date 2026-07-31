@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
   Windows x64 install/start smoke for AI Harness Bootcamp pre-work.
 
@@ -44,9 +44,9 @@ function Write-Result {
     if ($Ok) {
         [void]$script:Passes.Add($Name)
     } elseif ($Hard) {
-        [void]$script:HardFails.Add("$Name — $Detail")
+        [void]$script:HardFails.Add("$Name - $Detail")
     } else {
-        [void]$script:SoftFails.Add("$Name — $Detail")
+        [void]$script:SoftFails.Add("$Name - $Detail")
     }
 }
 
@@ -73,8 +73,8 @@ function Test-CommandVersion {
                 return $out
             }
         }
-        $snippet = if ($out.Length -gt 120) { $out.Substring(0, 120) + "…" } else { $out }
-        Write-Result -Name "bin.$Name" -Ok $true -Detail "$($cmd.Source) · $snippet" -Hard $Hard
+        $snippet = if ($out.Length -gt 120) { $out.Substring(0, 120) + "..." } else { $out }
+        Write-Result -Name "bin.$Name" -Ok $true -Detail "$($cmd.Source) - $snippet" -Hard $Hard
         return $out
     } catch {
         Write-Result -Name "bin.$Name" -Ok $false -Detail $_.Exception.Message -Hard $Hard
@@ -90,7 +90,7 @@ if ($env:OS -ne "Windows_NT") {
 
 $arch = $env:PROCESSOR_ARCHITECTURE
 if ($arch -and $arch -match "ARM") {
-    Write-Result -Name "os.arch" -Ok $false -Detail "ARM64 ($arch) — course requires x64; OpenCode/goose path is RED" -Hard $true
+    Write-Result -Name "os.arch" -Ok $false -Detail "ARM64 ($arch) - course requires x64; OpenCode/goose path is RED" -Hard $true
 } else {
     Write-Result -Name "os.arch" -Ok $true -Detail ($arch, "unknown" | Where-Object { $_ } | Select-Object -First 1) -Hard $true
 }
@@ -104,7 +104,7 @@ if (Test-Path -LiteralPath $bash) {
 } else {
     $alt = Get-Command "bash.exe" -ErrorAction SilentlyContinue
     if ($alt) {
-        Write-Result -Name "git.bash_path" -Ok $false -Detail "guide path missing; found $($alt.Source) — Pi shellPath may need edit" -Hard $true
+        Write-Result -Name "git.bash_path" -Ok $false -Detail "guide path missing; found $($alt.Source) - Pi shellPath may need edit" -Hard $true
     } else {
         Write-Result -Name "git.bash_path" -Ok $false -Detail "Git Bash not at guide path and bash.exe not on PATH" -Hard $true
     }
@@ -119,9 +119,9 @@ if ($nodeOut) {
         $maj = [int]$Matches[1]
         $min = [int]$Matches[2]
         $inBand = ($maj -eq 22 -and $min -ge 22) -or ($maj -ge 23 -and $maj -le 24) -or ($maj -eq 24)
-        # Course band: 22.22–24.x inclusive majors 22 (patch>=22) through 24
+        # Course band: 22.22-24.x inclusive majors 22 (patch>=22) through 24
         $inBand = ($maj -eq 22 -and $min -ge 22) -or ($maj -eq 23) -or ($maj -eq 24)
-        Write-Result -Name "node.lts_band" -Ok $inBand -Detail "parsed $nodeOut (want 22.22–24.x)" -Hard $true
+        Write-Result -Name "node.lts_band" -Ok $inBand -Detail "parsed $nodeOut (want 22.22-24.x)" -Hard $true
     } else {
         Write-Result -Name "node.lts_band" -Ok $false -Detail "could not parse node -v: $nodeOut" -Hard $true
     }
@@ -134,11 +134,11 @@ if (-not $py) {
 } else {
     $src = $py.Source
     if ($src -match "WindowsApps") {
-        Write-Result -Name "bin.python" -Ok $false -Detail "WindowsApps stub: $src — install real Python" -Hard $true
+        Write-Result -Name "bin.python" -Ok $false -Detail "WindowsApps stub: $src - install real Python" -Hard $true
     } else {
         try {
             $pv = & python --version 2>&1 | Out-String
-            Write-Result -Name "bin.python" -Ok $true -Detail "$src · $($pv.Trim())" -Hard $true
+            Write-Result -Name "bin.python" -Ok $true -Detail "$src - $($pv.Trim())" -Hard $true
         } catch {
             Write-Result -Name "bin.python" -Ok $false -Detail $_.Exception.Message -Hard $true
         }
@@ -154,14 +154,14 @@ $gooseOk = $false
 foreach ($g in @("goose", "goose.exe")) {
     $c = Get-Command $g -ErrorAction SilentlyContinue
     if ($c) {
-        # Avoid confusing with unrelated winget "goose" DB tool — version string heuristic
+        # Avoid confusing with unrelated winget "goose" DB tool - version string heuristic
         try {
             $gout = & $c.Source "--version" 2>&1 | Out-String
             $gout = $gout.Trim()
             if ($gout -match "(?i)database|clickhouse|ibis") {
                 Write-Result -Name "bin.goose" -Ok $false -Detail "looks like wrong winget goose (database tool): $gout" -Hard $true
             } else {
-                Write-Result -Name "bin.goose" -Ok $true -Detail "$($c.Source) · $gout" -Hard $false
+                Write-Result -Name "bin.goose" -Ok $true -Detail "$($c.Source) - $gout" -Hard $false
                 $gooseOk = $true
             }
         } catch {
@@ -202,7 +202,7 @@ if (-not $SkipOpenCodeDisableRoundTrip) {
     Write-Result -Name "env.OPENCODE_DISABLE_CLAUDE_CODE" -Ok $true -Detail "skipped by switch" -Hard $false
 }
 
-# --- Codex config presence (soft — GUI still required) ---
+# --- Codex config presence (soft - GUI still required) ---
 $codexCfg = Join-Path $env:USERPROFILE ".codex\config.toml"
 if (Test-Path -LiteralPath $codexCfg) {
     $raw = Get-Content -LiteralPath $codexCfg -Raw -ErrorAction SilentlyContinue
@@ -278,7 +278,7 @@ $md += "## Not covered (still need a person + keys)"
 $md += "- Codex GUI sign-in and from-codex.txt write proof"
 $md += "- Funded key write proofs (OpenCode/Pi/goose/Claude)"
 $md += "- xAI ACL end-to-end"
-$md += "- Browser → deck cold-smoke (lead/BROWSER_DECK_DEMO.md)"
+$md += "- Browser -> deck cold-smoke (lead/BROWSER_DECK_DEMO.md)"
 $md += "- LOCAL PIN Ollama quality"
 $md += ""
 $md += "Pin sheet: lead/COHORT_PIN.md"

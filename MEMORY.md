@@ -256,6 +256,7 @@ Student scoreboard + thin facilitator rollup (`operator/FACILITATOR_ROLLUP.md`).
 - `.github/scripts/verify-stack-facts.py` — any-machine rotting-facts check (winget ids, Node LTS claim, npm↔winget OpenCode drift)
 - `.github/scripts/prework-verify.ps1` — Windows x64 install/start smoke (no keys)
 - `.github/workflows/stack-facts.yml` — CI for `verify-stack-facts.py`
+- `server.py` + `HOSTING.md` + `railway.toml` — Railway (or local) password-gated host; env `SITE_PASSWORD`; serves repo root so `/site/` and `../operator` links work; blocks staff keys / `.git` / `*.py` even after login
 
 ### Course instruments (shared kits)
 - `instruments/p2_dyno/` — measured harness craft (engineering + mission_ops)

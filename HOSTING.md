@@ -1,0 +1,95 @@
+# Hosting the course site (Railway)
+
+Password-gated static host for the whole bootcamp repo. Learners open `/site/` after entering one shared password from an environment variable.
+
+## Why the whole repo
+
+Local and install-guide flow is:
+
+```bash
+python3 -m http.server 8080
+# → http://localhost:8080/site/
+```
+
+HTML pages link to `../operator/`, `../instruments/`, `../prework/`, etc. The host therefore serves the **repository root**, not `site/` alone.
+
+## Environment variables
+
+| Variable | Required | Purpose |
+|---|---|---|
+| `SITE_PASSWORD` | **Yes** (production) | Single shared cohort site password |
+| `PORT` | Set by Railway | Listen port |
+| `SITE_SECRET` | Optional | Cookie HMAC secret; defaults to a key derived from `SITE_PASSWORD` |
+| `COOKIE_MAX_AGE` | Optional | Session length in seconds (default 14 days) |
+| `ALLOW_OPEN` | Local only | `1` allows start with empty `SITE_PASSWORD` — **never** on Railway |
+
+## Local
+
+```bash
+cd /path/to/AI_Harness_Bootcamp
+python3 -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\Activate.ps1
+export SITE_PASSWORD='choose-a-cohort-password'
+python server.py
+# open http://127.0.0.1:8080/site/
+```
+
+Ungated local (dev only):
+
+```bash
+ALLOW_OPEN=1 python server.py
+```
+
+## Railway
+
+1. New project → Deploy from this GitHub repo (root directory = repo root).
+2. Service variables:
+   - `SITE_PASSWORD` = the cohort password (mark sensitive).
+   - Optional: `SITE_SECRET` = long random string (rotate independently of the password).
+3. Generate a domain on the service.
+4. Health check path is `/healthz` (no auth; returns `ok`).
+5. Open `https://<your-domain>/` → login → redirects to `/site/`.
+
+`railway.toml`, `Procfile`, and `nixpacks.toml` start `python server.py`. No extra dependencies.
+
+### Rotate password
+
+Change `SITE_PASSWORD` in Railway and redeploy (or restart). Existing cookies stop working immediately because the token is tied to the password (and `SITE_SECRET` if set).
+
+## What the gate is (and is not)
+
+- **Is:** a shared classroom door so the URL is not a public index of courseware.
+- **Is not:** per-student accounts, audit logging, or strong DRM.
+- Staff-only files are **not** served over HTTP even after login (answer keys, pin sheet, `FACILITATOR_KEY.md`, `.git`, `.github`, `*.py`, env files). Keep filled pins and secrets out of git.
+
+## Endpoints
+
+| Path | Auth | Role |
+|---|---|---|
+| `/healthz` | No | Liveness |
+| `/__login` | No | Password form |
+| `/__logout` | Cookie clear | End session |
+| `/` | Yes | Redirect → `/site/` |
+| `/site/…` and repo markdown | Yes | Course content |
+
+## Smoke test
+
+```bash
+export SITE_PASSWORD='test-pass'
+python server.py &
+sleep 1
+curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8080/healthz
+# 200
+curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8080/site/
+# 303 → login
+curl -sS -c /tmp/ahb.ck -b /tmp/ahb.ck -X POST \
+  -d 'password=test-pass&next=/site/' \
+  -o /dev/null -w '%{http_code}\n' \
+  http://127.0.0.1:8080/__login
+# 303 with Set-Cookie
+curl -sS -b /tmp/ahb.ck -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8080/site/
+# 200
+curl -sS -b /tmp/ahb.ck -o /dev/null -w '%{http_code}\n' \
+  http://127.0.0.1:8080/lead/MANY_MINDS_ANSWER_KEY.md
+# 404 (staff-only)
+```

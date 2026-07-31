@@ -1,0 +1,13 @@
+# Railway — AI Harness Bootcamp course site
+# Set SITE_PASSWORD (and optionally SITE_SECRET) in the Railway service variables.
+# https://docs.railway.com/guides/variables
+
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "python server.py"
+healthcheckPath = "/healthz"
+healthcheckTimeout = 30
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5
