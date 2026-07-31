@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The director&#x27;s second brain · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="../css/course.css" />
+  <link rel="stylesheet" href="../css/checklist.css" />
 </head>
 <body>
   <header class="site-header">
@@ -16,104 +17,342 @@
       <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
     </div>
   </header>
+
+  <div data-context-for="P4"></div>
+
   <main class="site-main">
     <p class="eyebrow">Wednesday AM · P4 · AI Harness Bootcamp</p>
     <h1>The director&#x27;s second brain</h1>
-    
-<p class="lede">You put a thinking machine inside your knowledge structure so answers come with trails you can walk — not black-box chat.</p>
-<div class="meta-grid">
-  <div><span class="k">Day</span><span class="v">Wednesday AM</span></div>
-  <div><span class="k">Block</span><span class="v">P4</span></div>
-  <div><span class="k">Time</span><span class="v">~3–3.5 hr + 45 min case talk</span></div>
-  <div><span class="k">Tools</span><span class="v">Codex app + Obsidian · mission_flesh vault seed</span></div>
-</div>
-<hr class="rule-accent" />
-<p class="btn-row">
-  <a class="btn" href="../checklists/p4.html">Open interactive checklist</a>
-  <a class="btn btn-secondary" href="../checklists/index.html">All checklists</a>
-</p>
+    <p class="lede">You put a thinking machine inside your knowledge structure so answers come with trails you can walk — not black-box chat.</p>
 
+    <div class="meta-grid">
+      <div><span class="k">Day</span><span class="v">Wednesday AM</span></div>
+      <div><span class="k">Block</span><span class="v">P4</span></div>
+      <div><span class="k">Time</span><span class="v">~3–3.5 hr + 45 min case talk</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex app + Obsidian · mission_flesh vault seed</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p4">0 / 24 · 0%</span></div>
+    </div>
+    <hr class="rule-accent" />
 
-<div class="lead-box">
-  <p class="eyebrow">Lead operate-along</p>
-  <p>Share this block page on screen. Co-write the brief live. Run the mission in a build chat students can see. Narrate accepts/rejects. Use a side AI chat to diagram a concept when eyes glaze — then return to the artifact.</p>
-</div>
+    <nav class="page-nav" aria-label="On this page">
+      <span class="page-nav-label">On this page</span>
+      <a href="#orient">Orientation</a>
+      <a href="#mission">Mission · <span data-count-for="mission">0/10</span></a>
+      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/6</span></a>
+      <a href="#floor">Mastery floor · <span data-count-for="floor">0/8</span></a>
+      <a href="#stuck">If you get stuck</a>
+      <div class="page-nav-progress">
+        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p4"></span></div>
+        <span class="page-nav-pct" data-progress-for="ahb-checklist-p4" data-progress-format="pct">0%</span>
+      </div>
+    </nav>
 
-<h2>Why this block exists</h2>
-<p>A <strong>vault</strong> is a folder of linked notes (we use Obsidian). Citations you can click beat quotes the model invents. Today you organize an inbox and answer director questions with real note links.</p>
-<h2>What you will leave with</h2>
-<ul><li>Scope vault access in LIVE brief</li><li>Inbox → navigable link graph</li><li>≥2 multi-note answers with clickable citations</li><li>Trail audit; kill or revise at least one weak answer</li><li>Morning Brief note in vault; transfer knowledge seed; pulse</li></ul>
-<h2>Before you start</h2>
-<ul><li>Obsidian installed</li><li>Copy seeded vault from mission_flesh/p4</li></ul>
+    <section id="orient" class="orient-grid">
+      <div>
+        <h2 class="h-plain">Why this block exists</h2>
+        <p>A <strong>vault</strong> is a folder of linked notes (we use Obsidian). Citations you can click beat quotes the model invents. Today you organize an inbox and answer director questions with real note links.</p>
+        <h3>What you will leave with</h3>
+        <ul>
+          <li>Scope vault access in LIVE brief</li>
+          <li>Inbox → navigable link graph</li>
+          <li>≥2 multi-note answers with clickable citations</li>
+          <li>Trail audit; kill or revise at least one weak answer</li>
+          <li>Morning Brief note in vault; transfer knowledge seed; pulse</li>
+        </ul>
+        <h3>Before you start</h3>
+        <ul>
+          <li>Obsidian installed</li>
+          <li>Copy seeded vault from <code>mission_flesh/p4</code></li>
+          <li>Confirm operator templates are present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
+        </ul>
+      </div>
+      <div class="orient-aside">
+        <div class="lead-box">
+          <p class="eyebrow">Lead operate-along</p>
+          <p>The lead runs this same page on screen — brief co-written live, the mission in a build chat you can see, accepts and rejects narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+        </div>
+        <div class="callout" id="case-talk">
+          <strong>Before lunch · Harness case talk (45 min)</strong>
+          A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; leave one Transfer seed.
+        </div>
+      </div>
+    </section>
 
-<div class="callout"><strong>Every block ends with the operator pulse</strong>
-Direction Brief (LIVE) → Mission → Log + pass-bar draft → <em>new</em> Adversarial chat → Measurement spine row → Transfer pulse.
-See <a href="../pulse.html">Pulse &amp; chats</a> for paste-ready prompts.
-</div>
+    <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p4" data-block="P4">
 
-<h2>Run of exercise</h2>
-<ol class="steps"><li><h3>Open the chair</h3>
-<p>Open your Codex app project. Confirm operator templates are present (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>, etc.).</p>
-<p>Open chat <strong>Operator — Direction &amp; Log</strong>. Paste the Direction Brief starter from the operator pack.</p>
-</li>
-<li><h3>Co-write the Direction Brief until LIVE</h3>
-<p>Work the five fields with the AI: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back.</p>
-<p>Do not start the mission until status is <strong>LIVE</strong>. Vague “explore the data” outcomes get challenged — name the artifact.</p>
-</li>
-<li><h3>Run the mission</h3>
-<p>Copy <code>mission_flesh/p4/vault_seed/</code> into a new Obsidian vault (or open in place).</p>
-<ol>
-<li>Process <code>00_Inbox/</code> into linked notes under a simple structure (People / Systems / Events / Decisions — or your IA).</li>
-<li>Ask ≥2 director questions via Codex with vault access scoped in your brief.</li>
-<li>Require <strong>clickable wiki-links</strong> to notes; open each citation; mark support / partial / not supported.</li>
-<li>Revise or kill at least one answer after trail audit.</li>
-<li>Generate <code>Morning_Brief.md</code> into the vault with verified links only.</li>
-</ol>
-<pre><code>Vault root: [path]. Only read/write inside this vault.
+      <section id="mission" class="home-section" data-check-section="mission">
+        <h2>Run of exercise</h2>
+        <p class="section-lede">Work these in order and check each off as its proof exists. Progress saves in this browser — the same tick shows on the home page.</p>
+        <ol class="checklist">
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-pulse-brief" name="p4-pulse-brief" data-check-id="pulse-brief" />
+              <span class="check-num">1</span>
+              <span class="check-title">Co-write the Direction Brief until LIVE</span>
+            </label>
+            <div class="check-detail">Open chat <strong>Operator — Direction &amp; Log</strong>. Paste the brief starter from the operator pack. Fill all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Status must be <strong>LIVE</strong> before the mission — vague “explore the data” outcomes get challenged; name the artifact.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-vault" name="p4-p4-vault" data-check-id="p4-vault" />
+              <span class="check-num">2</span>
+              <span class="check-title">Open/copy vault seed into Obsidian</span>
+            </label>
+            <div class="check-detail">Copy <code>mission_flesh/p4/vault_seed/</code> into a new Obsidian vault, or open it in place.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-scope" name="p4-p4-scope" data-check-id="p4-scope" />
+              <span class="check-num">3</span>
+              <span class="check-title">LIVE brief scopes vault access</span>
+            </label>
+            <div class="check-detail">What the assistant may read/write; what must never leave the vault.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-inbox" name="p4-p4-inbox" data-check-id="p4-inbox" />
+              <span class="check-num">4</span>
+              <span class="check-title">Process 00_Inbox into linked notes</span>
+            </label>
+            <div class="check-detail">Navigable structure (People / Systems / Events / Decisions — or your own IA). Not a dump of AI filenames.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-q1" name="p4-p4-q1" data-check-id="p4-q1" />
+              <span class="check-num">5</span>
+              <span class="check-title">Director question 1 with multi-note citations</span>
+            </label>
+            <div class="check-detail">Ask via Codex with vault access scoped in your brief. Clickable [[wiki-links]]; the answer spans multiple notes.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-q2" name="p4-p4-q2" data-check-id="p4-q2" />
+              <span class="check-num">6</span>
+              <span class="check-title">Director question 2 with multi-note citations</span>
+            </label>
+            <div class="check-detail">Second director-level question, same standard.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-audit" name="p4-p4-audit" data-check-id="p4-audit" />
+              <span class="check-num">7</span>
+              <span class="check-title">Trail audit every cited note</span>
+            </label>
+            <div class="check-detail">Open each citation; mark support / partial / not supported.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-kill" name="p4-p4-kill" data-check-id="p4-kill" />
+              <span class="check-num">8</span>
+              <span class="check-title">Revise or kill ≥1 weak answer</span>
+            </label>
+            <div class="check-detail">Because the trail failed audit — not because of vibes.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-morning" name="p4-p4-morning" data-check-id="p4-morning" />
+              <span class="check-num">9</span>
+              <span class="check-title">Morning_Brief.md in vault with verified links only</span>
+            </label>
+            <div class="check-detail">Generated into the vault; citations you verified.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-transfer" name="p4-p4-transfer" data-check-id="p4-transfer" />
+              <span class="check-num">10</span>
+              <span class="check-title">Transfer knowledge/trail seed</span>
+            </label>
+            <div class="check-detail">What must live in a navigable system at work.</div>
+          </li>
+        </ol>
+
+        <div class="panel">
+          <p class="eyebrow">A vault-scoped director prompt</p>
+          <pre><code>Vault root: [path]. Only read/write inside this vault.
 Organize the inbox into linked notes. Then answer:
 1) What are the top operational risks this week and which notes support each?
 2) What decision is blocked and what evidence is missing?
 Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack support.</code></pre>
-</li>
-<li><h3>Operator Log + pass-bar draft</h3>
-<p>Back in Direction &amp; Log, paste the log starter. Record verdict, evidence, what you still own.</p>
-<p>Self-check against <a href="../../operator/PASS_BARS.md">PASS_BARS.md</a> for P4 — met / not yet with pointers. No inflation.</p>
-</li>
-<li><h3>Adversarial review (new chat)</h3>
-<p>Open a <strong>new</strong> chat titled <code>Adversarial — P4</code>. Paste the frozen prompt from the operator pack plus your artifacts and provisional verdict.</p>
-<p>Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed — …</code>. Fix if wounded.</p>
-</li>
-<li><h3>Measurement spine</h3>
-<p>Update <code>MEASUREMENT_SPINE.md</code>: ritual 0–3, mission HIT/PARTIAL/MISS, quality STRONG/ADEQUATE/WEAK, time to result (minutes).</p>
-</li>
-<li><h3>Transfer pulse</h3>
-<p>Chat <strong>Operator — Transfer 30-60-90</strong>. Paste the every-session transfer prompt. Leave a session-log row even if the seed is small today.</p>
-</li></ol>
+        </div>
+      </section>
 
-<div class="callout" id="case-talk"><strong>Before lunch · Harness case talk (45 min)</strong>
-After the mission pulse for this morning, the lead runs a <strong>30-minute</strong> real-world case: a problem they solved with harnessed AI, how the harness helped, and what the experience was — then <strong>15 minutes</strong> of discussion. No hard wall into lunch. Students: listen for problem → harness move → evidence; leave one Transfer seed. Lead guide: <code>lead/HARNESS_CASE_TALKS.md</code>.</div>
+      <section id="pulse" class="home-section" data-check-section="pulse">
+        <h2>Operator pulse — required every block</h2>
+        <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
+        <ol class="checklist">
 
-<h2>Pass bar (mastery floor)</h2>
-<p>Full checklist: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md</a> · section P4. MVP is not “it ran.” Evidence must survive adversarial review.</p>
-<h2>If you get stuck</h2>
-<ul>
-<li>Narrow <em>data scope</em>, not the judgment standard.</li>
-<li>Re-read your LIVE brief — most chaos is an unbounded outcome.</li>
-<li>Ask for a lead diagram of the one concept blocking you, then continue on your chair.</li>
-</ul>
-<p class="btn-row">
-  <a class="btn btn-secondary" href="../week.html">All blocks</a>
-  <a class="btn btn-secondary" href="../pulse.html">Pulse prompts</a>
-</p>
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-pulse-mission" name="p4-pulse-mission" data-check-id="pulse-mission" />
+              <span class="check-num">11</span>
+              <span class="check-title">Mission ran in a separate build chat</span>
+            </label>
+            <div class="check-detail">Build work stays out of the operator chat — the trail is the point.</div>
+          </li>
 
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-pulse-log" name="p4-pulse-log" data-check-id="pulse-log" />
+              <span class="check-num">12</span>
+              <span class="check-title">Operator Log complete</span>
+            </label>
+            <div class="check-detail">Back in Direction &amp; Log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, what you still own.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-pulse-bars" name="p4-pulse-bars" data-check-id="pulse-bars" />
+              <span class="check-num">13</span>
+              <span class="check-title">PASS_BARS self-check drafted</span>
+            </label>
+            <div class="check-detail">Against P4’s MVP list: met / not yet with evidence pointers. No inflation.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-pulse-adv" name="p4-pulse-adv" data-check-id="pulse-adv" />
+              <span class="check-num">14</span>
+              <span class="check-title">Adversarial review in a NEW chat</span>
+            </label>
+            <div class="check-detail">Chat <code>Adversarial — P4</code>: frozen prompt + artifacts + provisional verdict. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-pulse-measure" name="p4-pulse-measure" data-check-id="pulse-measure" />
+              <span class="check-num">15</span>
+              <span class="check-title">Measurement spine updated</span>
+            </label>
+            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes). Deep mark if this block has one.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-pulse-transfer" name="p4-pulse-transfer" data-check-id="pulse-transfer" />
+              <span class="check-num">16</span>
+              <span class="check-title">Transfer pulse (every AM/PM)</span>
+            </label>
+            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt. A session-log row is required even if the seed is small today.</div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="floor" class="home-section" data-check-section="floor">
+        <h2>Mastery floor — evidence must survive adversarial review</h2>
+        <p class="section-lede">Mark met / not yet against your own artifacts. If the adversarial pass wounds an item, uncheck it until it is fixed.</p>
+        <ol class="checklist">
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-mvp-scope" name="p4-mvp-scope" data-check-id="mvp-scope" />
+              <span class="check-num">17</span>
+              <span class="check-title">MVP: Vault scoped in LIVE brief</span>
+            </label>
+            <div class="check-detail">Access + never-leave rules.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-mvp-graph" name="p4-mvp-graph" data-check-id="mvp-graph" />
+              <span class="check-num">18</span>
+              <span class="check-title">MVP: Link graph from inbox</span>
+            </label>
+            <div class="check-detail">Navigable structure.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-mvp-2q" name="p4-mvp-2q" data-check-id="mvp-2q" />
+              <span class="check-num">19</span>
+              <span class="check-title">MVP: ≥2 multi-note cited answers</span>
+            </label>
+            <div class="check-detail">Clickable links.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-mvp-trail" name="p4-mvp-trail" data-check-id="mvp-trail" />
+              <span class="check-num">20</span>
+              <span class="check-title">MVP: Full trail audit</span>
+            </label>
+            <div class="check-detail">Every cited note opened.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-mvp-revise" name="p4-mvp-revise" data-check-id="mvp-revise" />
+              <span class="check-num">21</span>
+              <span class="check-title">MVP: ≥1 answer revised/killed on failed trail</span>
+            </label>
+            <div class="check-detail">Evidence-based.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-mvp-morning" name="p4-mvp-morning" data-check-id="mvp-morning" />
+              <span class="check-num">22</span>
+              <span class="check-title">MVP: Morning Brief in vault verified</span>
+            </label>
+            <div class="check-detail">Links only.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-mvp-own4" name="p4-mvp-own4" data-check-id="mvp-own4" />
+              <span class="check-num">23</span>
+              <span class="check-title">MVP: Log retrieval vs judgment + gap</span>
+            </label>
+            <div class="check-detail">What vault cannot support.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-done" name="p4-p4-done" data-check-id="p4-done" />
+              <span class="check-num">24</span>
+              <span class="check-title">Block closed under fire</span>
+            </label>
+            <div class="check-detail">Adversarial line present; measurement row written; transfer row written; you could defend this block to a peer.</div>
+          </li>
+        </ol>
+      </section>
+    </form>
+
+    <section id="stuck" class="split-2 home-section">
+      <div>
+        <h2>Pass bar (mastery floor)</h2>
+        <p>MVP is not “it ran.” Evidence must survive adversarial review. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P4</a>.</p>
+      </div>
+      <div>
+        <h2>If you get stuck</h2>
+        <ul>
+          <li>Narrow <em>data scope</em>, not the judgment standard</li>
+          <li>Re-read your LIVE brief — most chaos is an unbounded outcome</li>
+          <li>Ask for a lead diagram of the one concept blocking you, then continue on your chair</li>
+        </ul>
+      </div>
+    </section>
+
+    <div data-plate-for="P4"></div>
   </main>
+
   <footer class="site-footer">
     <div class="site-footer-inner">
       <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
       <div>inquiries@starzl.com · starzl.com</div>
     </div>
   </footer>
-  <script src="../js/course.js"></script>
-  <script src="../js/nav.js"></script>
+
+  <script src="../js/registry.js"></script>
+  <script src="../js/shell.js"></script>
 </body>
 </html>

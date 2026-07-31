@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Daily Status Brief · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="../css/course.css" />
+  <link rel="stylesheet" href="../css/checklist.css" />
 </head>
 <body>
   <header class="site-header">
@@ -16,105 +17,312 @@
       <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
     </div>
   </header>
+
+  <div data-context-for="P1"></div>
+
   <main class="site-main">
     <p class="eyebrow">Monday PM · P1 · AI Harness Bootcamp</p>
     <h1>The Daily Status Brief</h1>
-    
-<p class="lede">You build a machine that regenerates a cited daily brief when the world changes — not a one-shot chat answer.</p>
-<div class="meta-grid">
-  <div><span class="k">Day</span><span class="v">Monday PM</span></div>
-  <div><span class="k">Block</span><span class="v">P1</span></div>
-  <div><span class="k">Time</span><span class="v">~3–3.5 hr</span></div>
-  <div><span class="k">Tools</span><span class="v">Codex app</span></div>
-</div>
-<hr class="rule-accent" />
-<p class="btn-row">
-  <a class="btn" href="../checklists/p1.html">Open interactive checklist</a>
-  <a class="btn btn-secondary" href="../checklists/index.html">All checklists</a>
-</p>
+    <p class="lede">You build a machine that regenerates a cited daily brief when the world changes — not a one-shot chat answer.</p>
 
+    <div class="meta-grid">
+      <div><span class="k">Day</span><span class="v">Monday PM</span></div>
+      <div><span class="k">Block</span><span class="v">P1</span></div>
+      <div><span class="k">Time</span><span class="v">~3–3.5 hr</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex app</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p1">0 / 21 · 0%</span></div>
+    </div>
+    <hr class="rule-accent" />
 
-<div class="lead-box">
-  <p class="eyebrow">Lead operate-along</p>
-  <p>Share this block page on screen. Co-write the brief live. Run the mission in a build chat students can see. Narrate accepts/rejects. Use a side AI chat to diagram a concept when eyes glaze — then return to the artifact.</p>
-</div>
+    <nav class="page-nav" aria-label="On this page">
+      <span class="page-nav-label">On this page</span>
+      <a href="#orient">Orientation</a>
+      <a href="#mission">Mission · <span data-count-for="mission">0/8</span></a>
+      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/6</span></a>
+      <a href="#floor">Mastery floor · <span data-count-for="floor">0/7</span></a>
+      <a href="#stuck">If you get stuck</a>
+      <div class="page-nav-progress">
+        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p1"></span></div>
+        <span class="page-nav-pct" data-progress-for="ahb-checklist-p1" data-progress-format="pct">0%</span>
+      </div>
+    </nav>
 
-<h2>Why this block exists</h2>
-<p>If you only prompt once, you get a frozen answer. Operators need a <strong>judgment product</strong> they can re-run: same format, fresh evidence, citations you can check.
+    <section id="orient" class="orient-grid">
+      <div>
+        <h2 class="h-plain">Why this block exists</h2>
+        <p>If you only prompt once, you get a frozen answer. Operators need a <strong>judgment product</strong> they can re-run: same format, fresh evidence, citations you can check. You will practice the difference between “the model wrote something nice” and “I own a regenerable brief.”</p>
+        <h3>What you will leave with</h3>
+        <ul>
+          <li>LIVE brief with audience, format, citation rule, accept checks, stop conditions</li>
+          <li>Rerunnable path you can show (script, skill, or saved one-command flow)</li>
+          <li>Citation audit ≥5 claims with at least one forced correction</li>
+          <li>Delta test + stale-source test (visible failure on broken source)</li>
+          <li>Log draft-vs-judgment; full pulse</li>
+        </ul>
+        <h3>Before you start</h3>
+        <ul>
+          <li>B0 complete enough to use the Codex app comfortably</li>
+          <li>Open your Codex app project and confirm operator templates are present (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
+        </ul>
+      </div>
+      <div class="orient-aside">
+        <div class="lead-box">
+          <p class="eyebrow">Lead operate-along</p>
+          <p>The lead runs this same page on screen — brief co-written live, the mission run in a build chat you can see, accepts and rejects narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+        </div>
+        <div class="callout">
+          <strong>Every block ends with the operator pulse</strong>
+          Direction Brief (LIVE) → Mission → Log + pass-bar draft → <em>new</em> Adversarial chat → Measurement spine row → Transfer pulse. See <a href="../pulse.html">Pulse &amp; chats</a> for paste-ready prompts.
+        </div>
+      </div>
+    </section>
 
-You will practice the difference between “the model wrote something nice” and “I own a regenerable brief.”</p>
-<h2>What you will leave with</h2>
-<ul><li>LIVE brief with audience, format, citation rule, accept checks, stop conditions</li><li>Rerunnable path you can show (script, skill, or saved one-command flow)</li><li>Citation audit ≥5 claims with at least one forced correction</li><li>Delta test + stale-source test (visible failure on broken source)</li><li>Log draft-vs-judgment; full pulse</li></ul>
-<h2>Before you start</h2>
-<ul><li>B0 complete enough to use the Codex app comfortably</li><li>Track not required yet (P1 shared corpus)</li></ul>
+    <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p1" data-block="P1">
 
-<div class="callout"><strong>Every block ends with the operator pulse</strong>
-Direction Brief (LIVE) → Mission → Log + pass-bar draft → <em>new</em> Adversarial chat → Measurement spine row → Transfer pulse.
-See <a href="../pulse.html">Pulse &amp; chats</a> for paste-ready prompts.
-</div>
+      <section id="mission" class="home-section" data-check-section="mission">
+        <h2>Run of exercise</h2>
+        <p class="section-lede">Work these in order and check each off as its proof exists. Progress saves in this browser — the same tick shows on the home page.</p>
+        <ol class="checklist">
 
-<h2>Run of exercise</h2>
-<ol class="steps"><li><h3>Open the chair</h3>
-<p>Open your Codex app project. Confirm operator templates are present (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>, etc.).</p>
-<p>Open chat <strong>Operator — Direction &amp; Log</strong>. Paste the Direction Brief starter from the operator pack.</p>
-</li>
-<li><h3>Co-write the Direction Brief until LIVE</h3>
-<p>Work the five fields with the AI: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back.</p>
-<p>Do not start the mission until status is <strong>LIVE</strong>. Vague “explore the data” outcomes get challenged — name the artifact.</p>
-</li>
-<li><h3>Run the mission</h3>
-<p><strong>Corpus:</strong> <code>mission_flesh/p1/corpus/</code> — daily ops fragments with intentional citation targets. Track-neutral.</p>
-<p>Direct Codex (build chat) to produce a <strong>rerunnable</strong> daily brief:</p>
-<ul>
-<li>Fixed sections (e.g. Shipped / Broken / Blocked / Asks — or ops Confirmed / Developing / Gaps).</li>
-<li>Every factual claim cites a file id like <code>[C1]</code>.</li>
-<li>One command or documented step regenerates from the corpus folder.</li>
-</ul>
-<p><strong>You must personally:</strong></p>
-<ol>
-<li>Audit ≥5 citations against files; record pass/fail; force at least one correction.</li>
-<li><strong>Delta:</strong> drop in <code>corpus/DELTA_*.md</code> and regenerate; note what changed and what correctly did not.</li>
-<li><strong>Stale:</strong> rename/remove one cited file and regenerate; failure must be visible (no silent omit, no invented cite).</li>
-</ol>
-<pre><code>Using only mission_flesh/p1/corpus/, build a regenerable daily status brief.
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-pulse-brief" name="p1-pulse-brief" data-check-id="pulse-brief" />
+              <span class="check-num">1</span>
+              <span class="check-title">Co-write the Direction Brief until LIVE</span>
+            </label>
+            <div class="check-detail">Open chat <strong>Operator — Direction &amp; Log</strong>. Paste the brief starter. Fill all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Status must be <strong>LIVE</strong> before the mission — vague “explore the data” outcomes get challenged; name the artifact.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-corpus" name="p1-p1-corpus" data-check-id="p1-corpus" />
+              <span class="check-num">2</span>
+              <span class="check-title">Open P1 corpus</span>
+            </label>
+            <div class="check-detail">Path: <code>mission_flesh/p1/corpus/</code> — daily ops fragments with intentional citation targets. Note source files C1… and <code>DELTA_patch.md</code>.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-machine" name="p1-p1-machine" data-check-id="p1-machine" />
+              <span class="check-num">3</span>
+              <span class="check-title">Build regenerable brief path</span>
+            </label>
+            <div class="check-detail">Direct Codex to produce daily brief + regenerate method (script or one clear command). Fixed sections (e.g. Shipped / Broken / Blocked / Asks — or ops Confirmed / Developing / Gaps). Every factual claim cites a file id as <code>[C#]</code> mapped to files. No invented sources.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-regen" name="p1-p1-regen" data-check-id="p1-regen" />
+              <span class="check-num">4</span>
+              <span class="check-title">Regenerate once successfully</span>
+            </label>
+            <div class="check-detail">Run your regenerate path end-to-end without re-explaining the whole mission from memory — one command or documented step regenerates from the corpus folder.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-audit" name="p1-p1-audit" data-check-id="p1-audit" />
+              <span class="check-num">5</span>
+              <span class="check-title">Citation audit ≥5 claims</span>
+            </label>
+            <div class="check-detail">Personally check ≥5 claims against files. Record pass/fail. Force at least one correction.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-delta" name="p1-p1-delta" data-check-id="p1-delta" />
+              <span class="check-num">6</span>
+              <span class="check-title">Delta test</span>
+            </label>
+            <div class="check-detail">Add <code>DELTA_patch.md</code> (or equivalent). Regenerate. Note what changed and what correctly did not.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-stale" name="p1-p1-stale" data-check-id="p1-stale" />
+              <span class="check-num">7</span>
+              <span class="check-title">Stale-source test</span>
+            </label>
+            <div class="check-detail">Remove or rename one cited file. Regenerate. Failure must be visible — no silent omit, no invented cite.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-judgment" name="p1-p1-judgment" data-check-id="p1-judgment" />
+              <span class="check-num">8</span>
+              <span class="check-title">Log draft vs your judgment</span>
+            </label>
+            <div class="check-detail">In the log: what is machine draft vs what you own as operator judgment.</div>
+          </li>
+        </ol>
+
+        <div class="panel">
+          <p class="eyebrow">Paste-ready mission prompt</p>
+          <pre><code>Using only mission_flesh/p1/corpus/, build a regenerable daily status brief.
 Output markdown + a small script or clear regenerate instruction.
 Citation format [C#] mapping to filenames. Do not invent sources.</code></pre>
-</li>
-<li><h3>Operator Log + pass-bar draft</h3>
-<p>Back in Direction &amp; Log, paste the log starter. Record verdict, evidence, what you still own.</p>
-<p>Self-check against <a href="../../operator/PASS_BARS.md">PASS_BARS.md</a> for P1 — met / not yet with pointers. No inflation.</p>
-</li>
-<li><h3>Adversarial review (new chat)</h3>
-<p>Open a <strong>new</strong> chat titled <code>Adversarial — P1</code>. Paste the frozen prompt from the operator pack plus your artifacts and provisional verdict.</p>
-<p>Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed — …</code>. Fix if wounded.</p>
-</li>
-<li><h3>Measurement spine</h3>
-<p>Update <code>MEASUREMENT_SPINE.md</code>: ritual 0–3, mission HIT/PARTIAL/MISS, quality STRONG/ADEQUATE/WEAK, time to result (minutes).</p>
-</li>
-<li><h3>Transfer pulse</h3>
-<p>Chat <strong>Operator — Transfer 30-60-90</strong>. Paste the every-session transfer prompt. Leave a session-log row even if the seed is small today.</p>
-</li></ol>
-<h2>Pass bar (mastery floor)</h2>
-<p>Full checklist: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md</a> · section P1. MVP is not “it ran.” Evidence must survive adversarial review.</p>
-<h2>If you get stuck</h2>
-<ul>
-<li>Narrow <em>data scope</em>, not the judgment standard.</li>
-<li>Re-read your LIVE brief — most chaos is an unbounded outcome.</li>
-<li>Ask for a lead diagram of the one concept blocking you, then continue on your chair.</li>
-</ul>
-<p class="btn-row">
-  <a class="btn btn-secondary" href="../week.html">All blocks</a>
-  <a class="btn btn-secondary" href="../pulse.html">Pulse prompts</a>
-</p>
+        </div>
+      </section>
 
+      <section id="pulse" class="home-section" data-check-section="pulse">
+        <h2>Operator pulse — required every block</h2>
+        <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
+        <ol class="checklist">
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-pulse-mission" name="p1-pulse-mission" data-check-id="pulse-mission" />
+              <span class="check-num">9</span>
+              <span class="check-title">Mission ran in a separate build chat</span>
+            </label>
+            <div class="check-detail">Build work stays out of the operator chat — the trail is the point.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-pulse-log" name="p1-pulse-log" data-check-id="pulse-log" />
+              <span class="check-num">10</span>
+              <span class="check-title">Operator Log complete</span>
+            </label>
+            <div class="check-detail">Back in Direction &amp; Log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, what you still own.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-pulse-bars" name="p1-pulse-bars" data-check-id="pulse-bars" />
+              <span class="check-num">11</span>
+              <span class="check-title">PASS_BARS self-check drafted</span>
+            </label>
+            <div class="check-detail">Against P1’s MVP list: met / not yet with evidence pointers. No inflation.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-pulse-adv" name="p1-pulse-adv" data-check-id="pulse-adv" />
+              <span class="check-num">12</span>
+              <span class="check-title">Adversarial review in a NEW chat</span>
+            </label>
+            <div class="check-detail">Chat <code>Adversarial — P1</code>: frozen prompt + artifacts + provisional verdict. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-pulse-measure" name="p1-pulse-measure" data-check-id="pulse-measure" />
+              <span class="check-num">13</span>
+              <span class="check-title">Measurement spine updated</span>
+            </label>
+            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes). Deep mark if this block has one.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-pulse-transfer" name="p1-pulse-transfer" data-check-id="pulse-transfer" />
+              <span class="check-num">14</span>
+              <span class="check-title">Transfer pulse (every AM/PM)</span>
+            </label>
+            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt. A session-log row is required even if the seed is small today.</div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="floor" class="home-section" data-check-section="floor">
+        <h2>Mastery floor — evidence must survive adversarial review</h2>
+        <p class="section-lede">Mark met / not yet against your own artifacts. If the adversarial pass wounds an item, uncheck it until it is fixed.</p>
+        <ol class="checklist">
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-live" name="p1-mvp-live" data-check-id="mvp-live" />
+              <span class="check-num">15</span>
+              <span class="check-title">MVP: LIVE brief complete</span>
+            </label>
+            <div class="check-detail">Audience, format, citation rule, accept checks, stop.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-rerun" name="p1-mvp-rerun" data-check-id="mvp-rerun" />
+              <span class="check-num">16</span>
+              <span class="check-title">MVP: Rerunnable path exists</span>
+            </label>
+            <div class="check-detail">Not a one-shot paste.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-5cite" name="p1-mvp-5cite" data-check-id="mvp-5cite" />
+              <span class="check-num">17</span>
+              <span class="check-title">MVP: Citation audit ≥5 with correction</span>
+            </label>
+            <div class="check-detail">Forced correction recorded.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-delta" name="p1-mvp-delta" data-check-id="mvp-delta" />
+              <span class="check-num">18</span>
+              <span class="check-title">MVP: Delta test evidenced</span>
+            </label>
+            <div class="check-detail">Change + stability noted.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-stale" name="p1-mvp-stale" data-check-id="mvp-stale" />
+              <span class="check-num">19</span>
+              <span class="check-title">MVP: Stale-source visible failure</span>
+            </label>
+            <div class="check-detail">No silent omit / invented cite.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-own" name="p1-mvp-own" data-check-id="mvp-own" />
+              <span class="check-num">20</span>
+              <span class="check-title">MVP: Draft vs judgment in log</span>
+            </label>
+            <div class="check-detail">Operator owns judgment.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-done" name="p1-p1-done" data-check-id="p1-done" />
+              <span class="check-num">21</span>
+              <span class="check-title">Block closed under fire</span>
+            </label>
+            <div class="check-detail">Adversarial line present; measurement row written; transfer row written; you could defend this block to a peer.</div>
+          </li>
+        </ol>
+      </section>
+    </form>
+
+    <section id="stuck" class="split-2 home-section">
+      <div>
+        <h2>Pass bar (mastery floor)</h2>
+        <p>MVP is not “it ran.” Evidence must survive adversarial review. Full checklist: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P1</a>.</p>
+      </div>
+      <div>
+        <h2>If you get stuck</h2>
+        <ul>
+          <li>Narrow <em>data scope</em>, not the judgment standard.</li>
+          <li>Re-read your LIVE brief — most chaos is an unbounded outcome.</li>
+          <li>Ask for a lead diagram of the one concept blocking you, then continue on your chair.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div data-plate-for="P1"></div>
   </main>
+
   <footer class="site-footer">
     <div class="site-footer-inner">
       <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
       <div>inquiries@starzl.com · starzl.com</div>
     </div>
   </footer>
-  <script src="../js/course.js"></script>
-  <script src="../js/nav.js"></script>
+
+  <script src="../js/registry.js"></script>
+  <script src="../js/shell.js"></script>
 </body>
 </html>
