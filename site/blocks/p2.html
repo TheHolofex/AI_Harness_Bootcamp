@@ -23,7 +23,7 @@
   <main class="site-main">
     <p class="eyebrow">Tuesday AM · P2 · AI Harness Bootcamp</p>
     <h1>The hot-rod morning</h1>
-    <p class="lede">You improve the harness on purpose and prove it on a fixed dyno suite — so craft compounds instead of resetting every session.</p>
+    <p class="lede">You measure a stock harness on a fixed five-case dyno, improve it one wall at a time, and prove the number moved. This is the craft that makes competence compound across days instead of resetting every session.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Tuesday AM</span></div>
@@ -37,7 +37,9 @@
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
+      <a href="#ideas">The ideas</a>
       <a href="#mission">Mission · <span data-count-for="mission">0/9</span></a>
+      <a href="#depth">Going deeper</a>
       <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/6</span></a>
       <a href="#floor">Mastery floor · <span data-count-for="floor">0/8</span></a>
       <a href="#stuck">If you get stuck</a>
@@ -47,127 +49,239 @@
       </div>
     </nav>
 
-    <section id="orient" class="orient-grid">
-      <div>
-        <h2 class="h-plain">Why this block exists</h2>
-        <p>A stock assistant forgets how you work. A <strong>modded harness</strong> carries instructions, tests, memory, and skills across sessions. The <strong>dyno</strong> is a shared five-case test (D01–D05). You score baseline, change the walls, score again. Numbers beat “feels smarter.”</p>
-        <h3>What you will leave with</h3>
-        <ul>
-          <li>Baseline D01–D05 · ≥2 wall changes · after-score · a red→green test story</li>
-          <li>Durability proof: a new chat still carries the craft</li>
-          <li>Transfer file open with Identity + P2 seed</li>
-        </ul>
-        <h3>Before you start</h3>
-        <ul>
-          <li>Confirm operator templates are present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
-          <li>Open <code>instruments/p2_dyno</code> — cases and the shared score sheet</li>
-        </ul>
-      </div>
-      <div class="orient-aside">
-        <div class="lead-box">
-          <p class="eyebrow">Lead operate-along</p>
-          <p>The lead runs this same page on screen — brief co-written live, accepts and rejects narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+    <section id="orient" class="home-section">
+      <div class="orient-grid">
+        <div>
+          <h2 class="h-plain">Why this matters</h2>
+          <p>Most people meet the same assistant fresh every morning. They re-explain their standards, re-paste their rules, and get the same generic first draft they got last week — because everything they taught it lived in a chat that is now closed. A <strong>harness</strong> is everything durable you build around the model — its four walls: the instructions it loads, the tests that check it, the memory it keeps, the skills it carries. The model is rented. The harness is yours.</p>
+          <p>This morning you treat the harness as a machine you can tune and prove. A <strong>dyno</strong> — the garage instrument that measures an engine's output before and after a modification — is here a fixed set of five cases, <code>D01–D05</code>, each with a strict pass condition. You score the stock harness, change it deliberately, and score it again cold — in a brand-new chat that carries none of your coaching. The delta is the proof. Numbers beat "feels smarter," and by lunch you will have the numbers.</p>
+          <h3>What you will leave with</h3>
+          <ul>
+            <li>A dyno score sheet with a real baseline, at least two wall changes, an after-score, and a delta you can defend</li>
+            <li>At least two machine-checkable tests you authored — ideally one with a red→green story</li>
+            <li>Durability proof: a brand-new chat that carries your standard without being reminded</li>
+            <li>The judgment to baseline any assistant at work, name its four walls, and improve one on purpose</li>
+            <li>Your Transfer file's Identity section plus the harness seed, written while the win is fresh</li>
+          </ul>
+          <h3>Before you start</h3>
+          <ul>
+            <li>Confirm the operator templates are in your Codex app project: <code>DIRECTION_BRIEF.md</code> and <code>OPERATOR_LOG.md</code></li>
+            <li>Open <a href="../../instruments/p2_dyno/README.md">instruments/p2_dyno</a> and find your track folder — <code>engineering</code> or <code>mission_ops</code>, the one you chose for the week</li>
+            <li>Know what your project loads today: if an <code>AGENTS.md</code> already sits at the project root, it is part of "stock" — note that on the score sheet</li>
+          </ul>
         </div>
-        <div class="callout" id="case-talk">
-          <strong>Before lunch · Harness case talk (45 min)</strong>
-          A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; leave one Transfer seed.
+        <div class="orient-aside">
+          <div class="lead-box">
+            <p class="eyebrow">Lead operate-along</p>
+            <p>The lead runs this same page on screen — baseline scored live, wall changes narrated, at least one change that doesn't move the number. You still run your own chair. Check a box when <em>you</em> finish the step, not when you watch it happen.</p>
+          </div>
+          <div class="callout" id="case-talk">
+            <strong>Before lunch · Harness case talk (45 min)</strong>
+            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; leave with one Transfer seed.
+          </div>
         </div>
       </div>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p2/p2-overview.svg" alt="The morning at a glance: baseline D01–D05, move two walls one at a time, cold rescore, prove it survives restart, then write the claim and the 30-day seed" width="1120" height="280" loading="lazy" decoding="async" />
+      </figure>
+    </section>
+
+    <section id="ideas" class="home-section">
+      <h2>How a harness actually gets better</h2>
+      <p class="section-lede">Five ideas carry everything you're about to do. Read them once now, then come back whenever a step feels arbitrary — each one names the mechanism behind a move you'll make before lunch.</p>
+
+      <h3>Measure before you mod</h3>
+      <p>A <strong>baseline</strong> is the score before you change anything. It sounds like bookkeeping; it is the whole game. A delta without a baseline is a story, not a measurement — "it's much better now" carries no information unless you can say better <em>than what</em>, on <em>which cases</em>, by <em>how much</em>.</p>
+      <p>The dyno makes the baseline honest by holding everything still. The five cases are fixed and you don't edit them, even when an edit would make your score prettier. Each case file opens with a <em>pass-if</em> line — an observable condition like "names the failing job, no invented file paths" — and that line is the grader, not your general impression of the answer. Baseline and after run on the same model tier, both in fresh chats. When every variable but one is pinned, the one that moved is the one you changed.</p>
+      <p>Going wrong looks like this: skipping the baseline because stock is "obviously bad," grading generously because you're rooting for your own harness, or letting the standard drift between the first run and the second. Each one quietly converts your instrument into a mirror — it reads back whatever you want it to say. When you're unsure whether a response passed, score FAIL and write why; a strict FAIL is worth more than a hopeful PASS, because fails are where your changes come from.</p>
+      <p>At work, this is the ten-minute habit that converts tool arguments into arithmetic. Before you tune any assistant — or believe any vendor — write five fixed cases from your own desk and score what you have today. Every claim of improvement after that is a number, not a feeling.</p>
+
+      <h3>The four walls of a harness</h3>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p2/p2-four-walls.svg" alt="Concept: the loop (act, observe, correct) surrounded by four wall artifacts — instructions in AGENTS.md, tests you authored, memory as a recall layer, and skills that fire on a trigger" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+      <p>Loop quality tracks the walls you build, not model magic. The same model inside better walls does visibly better work — which means "the AI isn't good at this" is usually a claim about your walls, not the model. There are four of them, and each is a real artifact you can point at, not a habit you promise to keep.</p>
+      <p><strong>Instructions</strong> live in <code>AGENTS.md</code> at the project root. The app loads that file into every session that opens the project — it is the difference between a rule you re-type each morning and a rule the machine already has before you say hello. Instructions are cheap to add and cost attention to obey, so the best files are short: a handful of rules, each traceable to a failure you've actually seen.</p>
+      <p><strong>Tests</strong> are checks that live outside the model and pass or fail without your judgment in the loop — a count, a required string, a forbidden pattern. Give them a file: a <code>CHECKS.md</code> at the project root, one predicate per line, that any session — including a cold one — can load and run against its own answer. Their power comes from independence: the system under test never grades itself. A model asked "was that good?" says yes; a test asked the same question has no opinion to flatter you with.</p>
+      <p><strong>Memory</strong> is a recall layer — off by default until you switch it on in the app's Settings, and limited on an API key, so treat it as a convenience rather than a foundation. The distinction that matters: memory is for context worth recalling; rules that must <em>always</em> hold belong in <code>AGENTS.md</code>, the artifact you can read, diff, and commit. A must-hold rule stored in memory is a rule with an unreliable landlord.</p>
+      <p><strong>Skills</strong> are packaged procedure: a folder holding a <code>SKILL.md</code> that describes a move you make repeatedly, and when to make it. The app discovers them from <code>%USERPROFILE%\.codex\skills</code> — one folder per skill, so that's where yours goes. They are how a checklist stops being something you remember and starts being something the harness carries.</p>
+      <p>When you hear "my assistant is just better at this," audit the walls before you credit the model. Two colleagues on the same tool, one producing sharp work and one producing mush, are almost always separated by artifacts, not accounts.</p>
+
+      <h3>One change, one re-measure</h3>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p2/p2-attribution.svg" alt="Concept: editing one wall then rescoring gives a delta with a known cause; four edits at once give a delta whose cause is unknown" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+      <p><strong>Attribution</strong> means knowing which change caused which effect. It is the discipline the whole morning runs on: change a single wall, rescore, and the delta has exactly one candidate cause. Change four things at once and the delta is unreadable — the score moved, but you learned nothing you can use tomorrow, because you cannot say which edit earned its place and which three are decoration.</p>
+      <p>The mechanism is single-variable isolation, the same one behind any controlled comparison. The dyno pins the cases, the model tier, and the cold-chat condition; your edit is the only free variable left. That is also why confounds matter: switch model tiers mid-morning and your delta measures the model change, not your craft — which is exactly why the dyno rule says same tier for baseline and after.</p>
+      <p>Shotgun changes feel productive. You rewrite the instructions, add three tests, enable memory, and draft a skill in one heroic pass — and the after-score moves, and you have no idea why. Worse is when it <em>doesn't</em> move: now you must un-pick four changes to find the one that hurt. The slow-looking path — one change, one rescore — is faster by lunch, because every measurement teaches you something you keep.</p>
+      <p>This discipline transfers to anything configurable: prompts, pipelines, team process. Anywhere someone says "we changed a bunch of things and it got better," you now hear what's missing.</p>
+
+      <h3>Craft that survives restart</h3>
+      <p><strong>Durable</strong> means still there when the session dies. Everything you teach an assistant inside a chat lives in that chat's context — a working memory that is genuinely impressive and genuinely gone the moment the chat closes. Artifacts on disk are the other side of the line: <code>AGENTS.md</code>, test files, and skill folders are loaded fresh into every new session, with no dependence on what you said yesterday.</p>
+      <p>The cold re-run is the only honest test of which side of the line your standard lives on. Close the chat where you did the coaching. Open a new one. Run a dyno case. If the standard still fires — the rule applied, the format held, the skill offered — it lives in an artifact and you own it. If the output reverts to stock, your craft was living in scrollback, and what felt like an improved harness was an improved <em>conversation</em>.</p>
+      <p>The classic self-deception here is demonstrating improvement in the same long chat where the coaching happened. Of course it performs — the entire lesson is still sitting in context. That demo proves nothing about tomorrow. The test that means something is the one where the machine has never met you today.</p>
+      <p>At work the bar is: could a colleague open your project cold and get your standard from the machine? If yes, you've built something the team owns. If your standard only lives in the chat scrollback, you do not own it yet — you're renting it one session at a time.</p>
+
+      <h3>A skill that fires unprompted</h3>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p2/p2-skill-fire.svg" alt="Concept: a task arrives, the SKILL.md description line decides — trigger conditions fire unprompted, a vague title never fires" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+      <p>A <strong>skill</strong> is a folder with a <code>SKILL.md</code> inside: a named, packaged procedure plus a description of when to use it. The subtle part — the part most people never learn — is that the description line is the trigger surface. When a task arrives, the assistant matches the task against skill descriptions to decide what to load. A description written as a title ("Review helper") gives it nothing to match. A description written as conditions ("Use when reviewing a diff or code snippet for security issues; checks for leaked credentials, logging of secrets…") fires on its own.</p>
+      <p>That firing is the whole point. A skill you must invoke by name is just remembering to ask, with extra steps. A skill that fires unprompted is your standard showing up on every matching task — including the ones you'd have forgotten to check, on the days you're rushed, in the sessions where you never thought to mention it. That is what compounding competence looks like from the inside: the harness volunteers your craft.</p>
+      <p>Going wrong looks quiet: the skill exists, is well-written, and never fires, so the operator concludes skills don't work. The fix is almost always the description line. Write it as trigger conditions, test it by giving the assistant a realistic task <em>without naming the skill</em>, and tune the line until it fires. That test-and-tune loop is the same craft as the dyno, applied to one artifact.</p>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p2" data-block="P2">
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Work these in order and check each off as its proof exists. Progress saves in this browser — the same tick shows on the home page.</p>
-        <ol class="checklist">
+        <p class="section-lede">Six stages, in order. Check each item when its proof exists, not when you've read it. Progress saves in this browser — the same tick shows on the home page.</p>
 
+        <h3>Stage 01 · Set direction</h3>
+        <p>Before you touch the dyno, you and the AI agree on what winning means. For this mission that is easy to say and easy to fumble: the outcome is a measured delta with named wall changes, not "make the assistant better."</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p2-pulse-brief" name="p2-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">1</span>
               <span class="check-title">Co-write the Direction Brief until LIVE</span>
             </label>
-            <div class="check-detail">In chat <strong>Operator — Direction &amp; Log</strong>, work the five fields with the AI: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Do not start the mission until status is <strong>LIVE</strong> — vague “explore the data” outcomes get challenged.</div>
+            <div class="check-detail">In the chat <strong>Operator — Direction &amp; Log</strong>, work the five fields with the AI: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. State the outcome as artifacts — a filled score sheet, two wall changes, a delta. You should see the brief marked <strong>LIVE</strong> before you open the kit. If the AI challenges a vague field, that's the interview working — answer in files and numbers, not intentions.</div>
           </li>
+        </ol>
 
+        <h3>Stage 02 · Stock reveal and baseline</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p2/p2-dyno-sheet.svg" alt="The score sheet baseline column — five case cells scored pass or fail, a total out of five, and the instruction to beat that number" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <p>Now you find out what the stock harness actually does — not what you assume it does. The gap between those two is usually the morning's first surprise.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p2-p2-open" name="p2-p2-open" data-check-id="p2-open" />
               <span class="check-num">2</span>
               <span class="check-title">Open the dyno kit</span>
             </label>
-            <div class="check-detail">Open <code>instruments/p2_dyno</code> — the cases folder and the shared score sheet.</div>
+            <div class="check-detail">Open <code>instruments/p2_dyno</code>, go to your track folder — <code>engineering</code> or <code>mission_ops</code> — then into its <code>cases</code> folder. You should see five case files, <code>D01</code> through <code>D05</code>. The shared <a href="../../instruments/p2_dyno/SCORE_SHEET.md">SCORE_SHEET.md</a> sits at the top of <code>instruments/p2_dyno</code>, next to the track folders. Read each case's <em>pass-if</em> line before running anything — that line is the grader. If the folder isn't on your machine, pull the course repo or ask staff; don't reconstruct cases from memory.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p2-p2-base" name="p2-p2-base" data-check-id="p2-base" />
               <span class="check-num">3</span>
               <span class="check-title">Baseline: score D01–D05 stock</span>
             </label>
-            <div class="check-detail">New chat, stock harness. Score each case PASS/FAIL with notes. This is the number your craft has to beat.</div>
+            <div class="check-detail">Start a fresh chat so no earlier coaching leaks in, and run the five cases exactly as written. Score each PASS or FAIL strictly against its pass-if line, with a one-line note on every FAIL — those notes are where your wall changes come from. You should end with a filled baseline column and a total out of 5. Expect fails: a clean 5/5 usually means soft grading, not a great harness. When unsure, score FAIL and say why.</div>
           </li>
+        </ol>
 
+        <h3>Stage 03 · Hot-rod the walls</h3>
+        <p>This is the craft stage: pick specific baseline fails and build the wall that catches each one. One change at a time, with a quick re-run of the targeted case after each change — the attribution discipline from the ideas above is what makes stage 04 mean anything.</p>
+        <div class="panel">
+          <p class="eyebrow">Quick reference · wall → artifact</p>
+          <p class="full-measure"><strong>Instructions</strong> → <code>AGENTS.md</code> at the project root, loaded every session · <strong>Tests</strong> → predicates in a checks file (e.g. <code>CHECKS.md</code> in the project) that pass or fail without your judgment · <strong>Memory</strong> → recall layer, off by default; the switch is in the app's Settings, and must-hold rules go in <code>AGENTS.md</code> instead · <strong>Skills</strong> → a folder with <code>SKILL.md</code> under <code>%USERPROFILE%\.codex\skills</code>; the description line, written as trigger conditions, decides whether it fires unprompted.</p>
+        </div>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p2-p2-walls" name="p2-p2-walls" data-check-id="p2-walls" />
               <span class="check-num">4</span>
               <span class="check-title">Hot-rod: improve at least two walls</span>
             </label>
-            <div class="check-detail">Each wall is a real artifact in the app, not a habit you promise to keep — see the four walls below. Not one lucky prompt tweak.</div>
+            <div class="check-detail">Make changes on at least two distinct layers — instructions <em>and</em> tests, or memory <em>and</em> a skill — one change at a time, each aimed at a specific baseline FAIL. After each change, re-run the case it targets and write the result on the sheet before touching the next wall; the full cold rescore comes in stage 04. Every wall must be an artifact you can point at: an <code>AGENTS.md</code> diff, a test file, memory explicitly enabled, a skill folder. If you can't say which case a change targets, you're decorating, not tuning.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p2-p2-tests" name="p2-p2-tests" data-check-id="p2-tests" />
               <span class="check-num">5</span>
               <span class="check-title">Author ≥2 machine-checkable tests</span>
             </label>
-            <div class="check-detail">Show a red→green story where possible (fails stock / passes after).</div>
+            <div class="check-detail">Write at least two tests of your own in a checks file — <code>CHECKS.md</code> next to <code>AGENTS.md</code> works — one predicate per line, so a fresh chat can load and run them cold. At least one must fail on the stock harness and pass after your change — or an equivalent red→green story you can show. The AI can draft the checks, but you accept every predicate — the system under test doesn't get to write its own grader unchallenged. If a check needs your judgment to call, tighten it until it doesn't.</div>
           </li>
+        </ol>
 
+        <h3>Stage 04 · Re-measure cold</h3>
+        <p>The after-score is only comparable to the baseline if it runs under the same conditions: same cases, same model tier, fresh chat. You already spot-checked each change against its target case in stage 03 — this is the full sweep that fills the after column.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p2-p2-after" name="p2-p2-after" data-check-id="p2-after" />
               <span class="check-num">6</span>
               <span class="check-title">After: cold rescore D01–D05</span>
             </label>
-            <div class="check-detail">Cold new chat, rescore, compute the delta on the score sheet. Cold matters — a wall that only works while the old chat is open is not a wall.</div>
+            <div class="check-detail">Open a cold new chat — same model tier as baseline — and rescore all five cases at the same strictness. Fill the after column and compute the delta on the score sheet. Cold matters: a wall that only works while the old chat is open is not a wall. If the delta is zero or negative, that's data, not failure — write down which change didn't land and your best theory why.</div>
           </li>
+        </ol>
 
+        <h3>Stage 05 · Prove it survives</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p2/p2-cold-restart.svg" alt="Old chat closed, a new cold chat loads AGENTS.md, tests, and SKILL.md from disk, and re-running one case shows the standard still fires" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <p>The rescore proved the number moved. This stage proves the craft is yours — that it lives on disk, not in a conversation that will be gone by Thursday.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p2-p2-durable" name="p2-p2-durable" data-check-id="p2-durable" />
               <span class="check-num">7</span>
               <span class="check-title">Durability proof</span>
             </label>
-            <div class="check-detail">Restart or new chat still carries the craft; re-run one dyno item cold.</div>
+            <div class="check-detail">Restart the app or open another brand-new chat and re-run one dyno case cold. You should see your standard fire without being reminded — the rule applied, the format held, the skill offered. If it doesn't, find where that standard actually lives; it's probably in scrollback, and the fix is moving it into an artifact, not re-teaching the chat. Name which artifact carried it — that name goes in your log.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p2-p2-claim" name="p2-p2-claim" data-check-id="p2-claim" />
               <span class="check-num">8</span>
               <span class="check-title">Write which wall moved and what still fails</span>
             </label>
-            <div class="check-detail">One honest paragraph on the score sheet. Measurement deep mark: Dyno baseline n/5 → after n/5.</div>
+            <div class="check-detail">One honest paragraph on the score sheet: which wall moved the number, which changes did nothing, and what still fails. Then record the deep mark: <code>Dyno: baseline n/5 → after n/5</code>. A claim with a named wall and a named remaining failure survives adversarial review; "it improved overall" does not.</div>
           </li>
+        </ol>
 
+        <h3>Stage 06 · Seed the transfer</h3>
+        <p>The dyno win is fresh — this is the moment to map it onto your real desk, while you can still feel which wall did the work.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p2-p2-transfer" name="p2-p2-transfer" data-check-id="p2-transfer" />
               <span class="check-num">9</span>
               <span class="check-title">Transfer Identity + P2 seed</span>
             </label>
-            <div class="check-detail">Open the Transfer chat; fill identity and the harness/30-day seed while it is fresh.</div>
+            <div class="check-detail">In the chat <strong>Operator — Transfer 30-60-90</strong>, fill the Identity section and the harness seed: your actual desk, the walls you'd build there first, one concrete 30-day habit, and the first proof you'd accept. This is the major seed of the transfer file — give it the full dialogue, not a token row. The AI will attack vagueness; let it.</div>
           </li>
         </ol>
+      </section>
 
-        <div class="panel">
-          <p class="eyebrow">The four walls you can move</p>
-          <p class="full-measure"><strong>Instructions</strong> → <code>AGENTS.md</code> at the project root, loaded every session — the difference between a rule you re-type and a rule the machine already has · <strong>Skills</strong> → a folder with a <code>SKILL.md</code>; the description line is what decides whether it fires unprompted, so write it as trigger conditions rather than a title · <strong>Memory</strong> → off by default; a recall layer, not where rules that must always hold belong — those go in <code>AGENTS.md</code>, the only one of the two you can commit · <strong>Tests</strong> → ≥2 machine-checkable cases, red→green if you can.</p>
-        </div>
+      <section id="depth" class="home-section">
+        <h2>Going deeper while the dyno cools</h2>
+        <p class="section-lede">Material for the gaps — while a rescore runs, over the case talk, or back at your desk next month.</p>
+
+        <h3>Failure catalog</h3>
+        <table>
+          <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+          <tbody>
+            <tr><td>Baseline is 5/5</td><td>Soft grading — you read the answers as their author's friend</td><td>Re-read each pass-if line; rescore strictly; when unsure, FAIL with a note</td></tr>
+            <tr><td>After-score dropped</td><td>Instruction bloat — <code>AGENTS.md</code> became an essay the model skims</td><td>Cut to the few rules that target real fails; rescore</td></tr>
+            <tr><td>Standard vanishes in the new chat</td><td>The craft lived in scrollback, not on disk</td><td>Move it into <code>AGENTS.md</code> or a skill; re-run the case cold</td></tr>
+            <tr><td>Skill never fires</td><td>Description is a title, not trigger conditions</td><td>Rewrite the description as "use when…" conditions; test on a realistic task without naming it</td></tr>
+            <tr><td>Delta unreadable</td><td>Several walls changed between measurements</td><td>Revert, change one, rescore; repeat — slower per step, faster to real knowledge</td></tr>
+            <tr><td>Test "passes" but you had to interpret</td><td>Predicate isn't machine-checkable</td><td>Tighten to an observable check: a count, a required string, a forbidden pattern</td></tr>
+            <tr><td>Memory rule ignored next session</td><td>A must-hold rule stored in the recall layer</td><td>Move it to <code>AGENTS.md</code>; keep memory for context, not law</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Questions worth arguing about</h3>
+        <p><strong>Is a 5/5 harness the goal?</strong> No — a suite you always pass has stopped measuring. The interesting argument is when to add a harder case: once the current five are green, a good operator writes a sixth that the harness fails. The suite's <code>D05</code> already probes refusal, so the sixth should probe something the five don't — ambiguity, conflicting sources, or a hostile shape from your own desk. An instrument is alive as long as it can still tell you something you don't want to hear.</p>
+        <p><strong>When does <code>AGENTS.md</code> become too big?</strong> Every rule costs a slice of the model's attention, and twenty rules obeyed at 80% can lose to six rules obeyed at 100%. A rule you can't tie to a fail you've seen is a candidate to cut. The deeper trade: an instruction tells the machine what to do; a test catches it when it doesn't. Standards you can check belong in tests, which never get skimmed.</p>
+        <p><strong>Who should author the tests — you or the machine?</strong> The machine can draft them, and drafting is real work saved. But the system under test must never own its own grader: a harness that writes, runs, and interprets its own checks can quietly optimize for passing them. You accept every predicate personally, the way you'd sign any acceptance criterion. That rule holds for any system you'll ever automate, not just this one.</p>
+        <p><strong>Is memory a wall or a leak?</strong> Both, depending on discipline. As a recall layer it saves re-explaining context. But an assistant that quietly carries yesterday's context into today's work can also carry it into places you didn't intend — including comparisons where you needed a clean machine. Knowing exactly what your harness loads, and being able to turn it off, is part of owning it.</p>
+
+        <h3>At your desk</h3>
+        <p><strong>An analyst desk:</strong> five report fragments from last quarter become your dyno; <code>AGENTS.md</code> holds the citation standard; a skill fires whenever a briefing task appears. The Monday version of you stops re-teaching the Friday version's standards.</p>
+        <p><strong>An engineering desk:</strong> the repo's <code>AGENTS.md</code> carries review and style standards for every session anyone opens there; your authored checks grow into CI habits; dyno cases come from last month's incidents, so the harness is tuned against what actually goes wrong on your team.</p>
+        <p><strong>An ops or intel desk:</strong> watch criteria written as pass-if lines; a standing hostile-request case so the refusal behavior is measured, not assumed; the daily brief regenerated inside walls instead of re-prompted from memory.</p>
+        <p><strong>A manager's desk:</strong> you can't read every output your team's assistants produce. Walls are how your standard scales to work you never see — and "show me the score sheet" is a better question than "is the AI helping?"</p>
+
+        <h3>Stretch lanes</h3>
+        <p>After the floor is met, the same capability goes deeper. Get a skill to fire unprompted on a realistic task — the description line is the lever. Author a sixth case of your own beyond the fixed five — the suite's <code>D05</code> already probes refusal, so add a shape it doesn't cover: an ambiguity case, conflicting sources, or a second hostility pattern from your real desk. Or take the side-quest: improve someone else's harness one measured notch, with their confirmation of the delta as the evidence. P2 depth counts toward distinction, and the peer version is the hardest and most honest of the three.</p>
       </section>
 
       <section id="pulse" class="home-section" data-check-section="pulse">
@@ -181,7 +295,7 @@
               <span class="check-num">10</span>
               <span class="check-title">Mission ran in a separate build chat</span>
             </label>
-            <div class="check-detail">Build work stays out of the operator chat — the trail is the point.</div>
+            <div class="check-detail">The dyno runs and wall changes happened in build chats, not in <strong>Operator — Direction &amp; Log</strong>. The operator chat holds judgment; the build chat holds work. Keeping them apart is what keeps the log a trail instead of a transcript.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -190,7 +304,7 @@
               <span class="check-num">11</span>
               <span class="check-title">Operator Log complete</span>
             </label>
-            <div class="check-detail">Back in Direction &amp; Log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, what you still own.</div>
+            <div class="check-detail">Back in Direction &amp; Log, write the log with the AI: what you directed, mid-run changes, your verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, and what judgment you still own. For this mission the evidence pointers are dyno rows and test names — cite them, don't summarize them.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -199,7 +313,7 @@
               <span class="check-num">12</span>
               <span class="check-title">PASS_BARS self-check drafted</span>
             </label>
-            <div class="check-detail">Against P2’s MVP list: met / not yet with evidence pointers. No inflation.</div>
+            <div class="check-detail">Against the P2 MVP list: met or not yet, each with an evidence pointer. No inflation — an unmet bar named honestly costs nothing now and saves you at adversarial. Let the AI stress-test any "met" you're proud of.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -208,7 +322,7 @@
               <span class="check-num">13</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">Chat <code>Adversarial — P2</code>: frozen prompt + artifacts + provisional verdict. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
+            <div class="check-detail">Open a fresh chat named <code>Adversarial — P2</code> and paste the frozen prompt from <code>operator/ADVERSARIAL_REVIEW.md</code> with your artifacts and provisional verdict. A new chat matters: the reviewer must not be the assistant that helped you succeed. Copy the closing line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Wounded means fix and re-check, not shrug.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -217,7 +331,7 @@
               <span class="check-num">14</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes). Dyno deep mark for P2.</div>
+            <div class="check-detail">Add the block's row: ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result in minutes — plus the P2 deep mark, <code>Dyno: baseline n/5 → after n/5</code>. Three to five minutes; longer means you're over-measuring.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -226,14 +340,14 @@
               <span class="check-num">15</span>
               <span class="check-title">Transfer pulse (every AM/PM)</span>
             </label>
-            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt. A session-log row is required even if the seed is small today.</div>
+            <div class="check-detail">In <strong>Operator — Transfer 30-60-90</strong>, run the every-session prompt. Today carries the major harness seed (item 9), so if that dialogue went deep this beat is a short confirmation — but a session-log row is still required. Every block leaves a fingerprint on the file, even a small one.</div>
           </li>
         </ol>
       </section>
 
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Mastery floor — evidence must survive adversarial review</h2>
-        <p class="section-lede">Mark met / not yet against your own artifacts. If the adversarial pass wounds an item, uncheck it until it is fixed.</p>
+        <p class="section-lede">Mark met / not yet against your own artifacts, not your memory of the morning. If the adversarial pass wounds an item, uncheck it until it is fixed.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -242,7 +356,7 @@
               <span class="check-num">16</span>
               <span class="check-title">MVP: Dyno baseline on course suite</span>
             </label>
-            <div class="check-detail">instruments/p2_dyno D01–D05.</div>
+            <div class="check-detail">Evidence looks like: a score sheet with the baseline column filled for D01–D05 on <code>instruments/p2_dyno</code>, your chosen track, scored in a fresh chat before any change.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -251,7 +365,7 @@
               <span class="check-num">17</span>
               <span class="check-title">MVP: ≥2 wall changes</span>
             </label>
-            <div class="check-detail">Distinct layers.</div>
+            <div class="check-detail">Evidence looks like: two artifacts on distinct layers — an <code>AGENTS.md</code> diff and a test file, or memory enabled and a skill folder. Two edits to the same file is one wall.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -260,7 +374,7 @@
               <span class="check-num">18</span>
               <span class="check-title">MVP: Before/after measurement</span>
             </label>
-            <div class="check-detail">Numeric or strict P/F counts.</div>
+            <div class="check-detail">Evidence looks like: before and after numbers for each change — strict pass/fail counts on the sheet, not adjectives — with the delta line filled in.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -269,7 +383,7 @@
               <span class="check-num">19</span>
               <span class="check-title">MVP: ≥2 authored tests + red→green story</span>
             </label>
-            <div class="check-detail">Where possible.</div>
+            <div class="check-detail">Evidence looks like: at least two named tests you authored and accepted, runnable without your judgment in the loop; at least one that fails stock and passes after — or an equivalent red→green story you can show.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -278,7 +392,7 @@
               <span class="check-num">20</span>
               <span class="check-title">MVP: Durability across restart/new chat</span>
             </label>
-            <div class="check-detail">Cold re-run item.</div>
+            <div class="check-detail">Evidence looks like: a restart or brand-new chat re-running a dyno case with the standard still firing — and you can name which artifact carried it.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -287,7 +401,7 @@
               <span class="check-num">21</span>
               <span class="check-title">MVP: Wall claim + still-fails</span>
             </label>
-            <div class="check-detail">Not “feels smarter.”</div>
+            <div class="check-detail">Evidence looks like: the written paragraph naming which wall moved the number and what still fails. "Feels smarter" is an automatic not yet.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -296,7 +410,7 @@
               <span class="check-num">22</span>
               <span class="check-title">MVP: 30-day seed started</span>
             </label>
-            <div class="check-detail">Transfer Identity + habit.</div>
+            <div class="check-detail">Evidence looks like: Identity filled and one concrete 30-day harness habit in the Transfer file — specific to your desk, checkable, bound. "Use AI more" is void.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -305,7 +419,7 @@
               <span class="check-num">23</span>
               <span class="check-title">Block closed under fire</span>
             </label>
-            <div class="check-detail">Adversarial line present; measurement row written; transfer row written; you could defend this block to a peer.</div>
+            <div class="check-detail">Evidence looks like: the <code>ADVERSARIAL:</code> line in your log, a measurement row with the dyno deep mark, a transfer row — and you could defend the delta to a skeptical peer with the score sheet in hand.</div>
           </li>
         </ol>
       </section>
@@ -314,14 +428,15 @@
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not “it ran.” Evidence must survive adversarial review. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P2</a>.</p>
+        <p>MVP is not "it ran." A single unmeasured tweak, no red→green test, or nothing surviving restart is not yet — the evidence must survive adversarial review. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P2</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>
         <ul>
-          <li>Narrow <em>data scope</em>, not the judgment standard</li>
-          <li>Re-read your LIVE brief — most chaos is an unbounded outcome</li>
-          <li>Ask for a lead diagram of the blocking concept, then continue on your chair</li>
+          <li><strong>The baseline is eating the morning.</strong> Fifteen to twenty minutes is the shape of it — score fast and strict, one-line notes, no polishing answers. The baseline is a reading, not a deliverable.</li>
+          <li><strong>You don't know what to change.</strong> Your FAIL notes are the work order. Pick the single fail that annoys you most and write one rule or one test aimed at exactly that.</li>
+          <li><strong>The after-score didn't move.</strong> First check the wall actually loads cold: is <code>AGENTS.md</code> at the project root, and did the new chat open the same project? If it loads and still doesn't move the score, that's a finding — write it in the claim and pick a different wall.</li>
+          <li><strong>Time is short.</strong> Narrow the <em>data scope</em> — fewer walls, one targeted case re-run at a time — never the judgment standard. Pass-if lines stay strict; a smaller sweep scored honestly beats a full sweep scored soft.</li>
         </ul>
       </div>
     </section>

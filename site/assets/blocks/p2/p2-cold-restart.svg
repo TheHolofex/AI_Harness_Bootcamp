@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 220" role="img" aria-labelledby="title-p2-cold-restart">
+  <title id="title-p2-cold-restart">Stage 05: cold-restart proof — close the chat, reopen cold, and the standard still fires from disk artifacts</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 8 4 0 8Z" fill="#0A0A0A"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 8 4 0 8Z" fill="#E31C23"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, "Inter", "Helvetica Neue", Arial, sans-serif; fill: #0A0A0A; }
+      .micro { font-size: 8px; font-weight: 650; letter-spacing: 1.65px; }
+      .tiny { font-size: 7px; font-weight: 650; letter-spacing: 1px; }
+      .railtext { font-size: 7.1px; font-weight: 650; }
+      .title { font-size: 21px; font-weight: 680; letter-spacing: -0.25px; }
+      .purpose { font-size: 11.5px; font-weight: 430; fill: #4A4A4A; }
+      .caption { font-size: 8.5px; font-weight: 650; letter-spacing: 1.15px; }
+      .body { font-size: 9.5px; font-weight: 520; }
+      .muted { fill: #6B6B6B; }
+      .white { fill: #FFFFFF; }
+      .red { fill: #E31C23; }
+      .gold { fill: #A58650; }
+      .line { fill: none; stroke: #0A0A0A; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+      .hair { fill: none; stroke: #D0D0D0; stroke-width: 1; vector-effect: non-scaling-stroke; }
+      .redline { fill: none; stroke: #E31C23; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+      .goldline { fill: none; stroke: #A58650; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+      .dash { stroke-dasharray: 5 4; }
+    </style>
+  </defs>
+  <rect width="1120" height="220" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1120" height="56" fill="#FAFAF8"/>
+  <text x="24" y="13" class="micro muted">P2 · THE HOT-ROD MORNING</text>
+  <text x="1096" y="13" class="micro muted" text-anchor="end">STAGE 05 OF 06</text>
+  <path d="M53 37H1005" class="hair"/>
+  <rect x="24" y="25" width="173" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <circle cx="31" cy="37" r="2.6" fill="#E31C23"/>
+  <text x="110" y="40" class="railtext" text-anchor="middle">1 Brief</text>
+  <rect x="203" y="25" width="173" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <circle cx="210" cy="37" r="2.6" fill="#E31C23"/>
+  <text x="289" y="40" class="railtext" text-anchor="middle">2 Baseline</text>
+  <rect x="382" y="25" width="173" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <circle cx="389" cy="37" r="2.6" fill="#E31C23"/>
+  <text x="468" y="40" class="railtext" text-anchor="middle">3 Hot-rod</text>
+  <rect x="561" y="25" width="173" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <circle cx="568" cy="37" r="2.6" fill="#E31C23"/>
+  <text x="647" y="40" class="railtext" text-anchor="middle">4 Rescore</text>
+  <rect x="740" y="25" width="173" height="24" rx="2" fill="#E31C23" stroke="#E31C23" stroke-width="1.4"/>
+  <text x="826" y="40" class="railtext white" text-anchor="middle">5 Cold proof</text>
+  <rect x="919" y="25" width="173" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="1005" y="40" class="railtext muted" text-anchor="middle">6 Seed</text>
+  <path d="M0 56H1120" class="hair"/>
+
+  <text x="24" y="76" class="micro red">STAGE 05 · COLD PROOF</text>
+  <text x="24" y="103" class="title">Kill the session. Return cold.</text>
+  <text x="24" y="123" class="purpose">A wall that only works while the old chat is open is not a wall.</text>
+  <text x="24" y="141" class="body muted">Artifacts on disk load fresh; chat scrollback dies with the session.</text>
+  <path d="M480 69V151" class="hair"/>
+  <text x="512" y="76" class="micro muted">WHAT THIS LOOKS LIKE</text>
+  <g aria-label="Old chat closed, new cold chat loads walls from disk, standard still fires">
+    <rect x="512" y="88" width="140" height="30" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-dasharray="5 4"/>
+    <text x="582" y="106" class="tiny muted" text-anchor="middle">OLD CHAT · CLOSED</text>
+    <path d="M652 103H688" class="hair"/>
+    <rect x="692" y="88" width="150" height="30" rx="2" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.35"/>
+    <text x="767" y="106" class="tiny" text-anchor="middle">NEW COLD CHAT</text>
+    <path d="M842 103H866" class="line" marker-end="url(#arrow)"/>
+    <rect x="870" y="88" width="196" height="30" rx="2" fill="#FFFFFF" stroke="#E31C23" stroke-width="1.4"/>
+    <text x="968" y="106" class="tiny red" text-anchor="middle">RE-RUN ONE CASE · STILL FIRES</text>
+    <path d="M656 124H952" class="hair"/>
+    <path d="M767 118V124" class="hair"/>
+    <text x="512" y="147" class="micro muted">FROM DISK</text>
+    <rect x="656" y="130" width="100" height="26" rx="2" fill="#FFFFFF" stroke="#1A1A1A"/>
+    <text x="706" y="146" class="tiny" text-anchor="middle">AGENTS.MD</text>
+    <rect x="764" y="130" width="80" height="26" rx="2" fill="#FFFFFF" stroke="#1A1A1A"/>
+    <text x="804" y="146" class="tiny" text-anchor="middle">TESTS</text>
+    <rect x="852" y="130" width="100" height="26" rx="2" fill="#FFFFFF" stroke="#1A1A1A"/>
+    <text x="902" y="146" class="tiny" text-anchor="middle">SKILL.MD</text>
+    <path d="M706 130V124" class="hair"/>
+    <path d="M804 130V124" class="hair"/>
+    <path d="M902 130V124" class="hair"/>
+  </g>
+  <rect x="0" y="164" width="1120" height="56" fill="#FAFAF8"/>
+  <text x="24" y="175" class="micro muted">IN THIS STAGE</text>
+  <rect x="24" y="182" width="172" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="24" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="36.5" y="198.3" class="caption white" text-anchor="middle">01</text>
+  <text x="58" y="198.2" class="caption">CLOSE THE CHAT</text>
+  <rect x="204" y="182" width="172" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="204" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="216.5" y="198.3" class="caption white" text-anchor="middle">02</text>
+  <text x="238" y="198.2" class="caption">REOPEN COLD</text>
+  <rect x="384" y="182" width="172" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="384" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="396.5" y="198.3" class="caption white" text-anchor="middle">03</text>
+  <text x="418" y="198.2" class="caption">RE-RUN A CASE</text>
+  <rect x="564" y="182" width="172" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="564" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="576.5" y="198.3" class="caption white" text-anchor="middle">04</text>
+  <text x="598" y="198.2" class="caption">NAME THE CARRIER</text>
+</svg>
