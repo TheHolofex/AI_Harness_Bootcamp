@@ -45,7 +45,8 @@
 
     <h2>The three keys and what each one drives</h2>
 
-    <table>
+    <div class="table-scroll">
+<table>
       <thead><tr><th>Key</th><th>Starts with</th><th>Variable name</th><th>Drives</th></tr></thead>
       <tbody>
         <tr><td>OpenAI</td><td><code>sk-proj-</code></td><td><code>OPENAI_API_KEY</code></td><td>The Codex app (your home tool all week), plus the LLM step in n8n</td></tr>
@@ -53,6 +54,7 @@
         <tr><td>Anthropic</td><td><code>sk-ant-api03-</code></td><td><code>ANTHROPIC_API_KEY</code></td><td>Claude Code, and an alternate provider for Pi and goose</td></tr>
       </tbody>
     </table>
+</div>
 
     <p>Pi and goose are deliberately provider-agnostic: each one talks to any of the three, and you choose which by naming a model when you run it. That flexibility is the point — part of what this course teaches is running the same demand through different engines and owning the verdict when they disagree.</p>
 
@@ -98,7 +100,8 @@ $key = $null</code></pre>
 
     <p>Most of the stack reads these variables automatically the moment they're set. Two tools need a little more, and it's worth knowing which is which before you start installing.</p>
 
-    <table>
+    <div class="table-scroll">
+<table>
       <thead><tr><th>Tool</th><th>How it gets the key</th></tr></thead>
       <tbody>
         <tr><td><strong>OpenCode</strong></td><td>Reads <code>XAI_API_KEY</code> from the environment and enables the provider on its own. Nothing to configure.</td></tr>
@@ -109,6 +112,7 @@ $key = $null</code></pre>
         <tr><td><strong>n8n</strong></td><td>Doesn't read the environment. You paste the OpenAI key into a credential inside its browser UI during Thursday's exercise.</td></tr>
       </tbody>
     </table>
+</div>
 
     <p>The Codex app is the exception worth reading twice, because it surprises people. It is a window rather than a command line, and it never looks at <code>OPENAI_API_KEY</code>. Setting the variable does nothing for it.</p>
 
@@ -162,7 +166,7 @@ auth.json</code></pre>
       <div>inquiries@starzl.com · starzl.com</div>
     </div>
   </footer>
-  <script src="./js/course.js"></script>
-  <script src="./js/nav.js"></script>
+  <script src="./js/registry.js"></script>
+  <script src="./js/shell.js"></script>
 </body>
 </html>

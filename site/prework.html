@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pre-work · Mission workstation · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="./css/course.css" />
-  <link rel="stylesheet" href="./css/checklist.css" />
 </head>
 <body>
   <header class="site-header">
@@ -17,110 +16,169 @@
       <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
     </div>
   </header>
+
+  <div class="context-strip">
+    <div class="context-strip-inner">
+      <a class="context-prev" href="./index.html">← Home</a>
+      <span class="context-label">Before Monday · Pre-work</span>
+      <a class="context-next" href="./blocks/b0.html">B0 · Install clinic + First Light →</a>
+    </div>
+  </div>
+
   <main class="site-main">
-    <p class="eyebrow">Before Monday · Student-owned install</p>
-    <h1>Pre-work · Mission workstation</h1>
+    <div class="hub-head">
+      <div>
+        <p class="eyebrow">Before Monday · Student-owned install</p>
+        <h1>Pre-work · Mission workstation</h1>
+        <p class="lede">This module gets your Windows laptop ready for the bootcamp. You install the tools yourself — there is no golden image. Plan a focused evening or weekend block, often about 2–4 hours.</p>
+        <p>At work you will own the chair the thinking machine sits in. Pre-work is Cap 0: stand up the workstation before mission week. Verify at the end of each setup step as you go — Monday opens with an install clinic to close gaps, not a second full health-check ritual.</p>
+      </div>
+      <div class="status-panel" data-prework-hub>
+        <p class="eyebrow">Your pre-work status</p>
+        <p class="status-headline" data-hub-headline>Not started yet</p>
+        <div class="status-bar" aria-hidden="true"><span data-hub-bar></span></div>
+        <p class="status-line" data-hub-line>0 / 79 install steps · 0%</p>
+        <a class="status-cta" data-hub-cta href="./keys.html">Start with Your API keys</a>
+        <p class="status-note">Progress saves in this browser as you check steps off.</p>
+      </div>
+    </div>
+    <hr class="rule-accent" />
 
-    <p class="lede">This module gets your Windows laptop ready for the bootcamp. You install the tools yourself — there is no golden image. Plan a focused evening or weekend block (often about 2–4 hours).</p>
-    <figure class="section-diagram">
-      <img src="./assets/prework/install-overview.svg" alt="Diagram: Install pre-work journey overview — place in pre-work journey" width="1120" height="280" loading="lazy" decoding="async" />
-    </figure>
-    <div class="callout"><strong>Everything runs on API keys</strong>
-Staff issue you three keys — OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly plan during this course. Several tools offer a subscription login and an API key option on the same screen; always take the API key path. Start at <a href="keys.html">Your API keys</a>.</div>
-    <div class="callout"><strong>Twin-engine stack</strong>
-Required pair for class: the Codex app on your OpenAI key (home), plus OpenCode on your xAI key (second engine, Grok). Claude Code is optional and not required to pass pre-work.</div>
-<div class="callout"><strong>Why you install</strong>
-    At work you will own the chair the thinking machine sits in. Pre-work is Cap 0: stand up the workstation before mission week. Verify at the end of each setup step as you go. Monday opens with an install clinic to close gaps, then First Light — not a second full health-check ritual.</div>
-
-    <h2>Work these in order</h2>
-    <p>Read the keys reference first, then work the install checklist. Each major section ends with its own verify. Check items off as you execute them; progress saves in this browser.</p>
-    <div class="card-grid">
-      <a class="card" href="keys.html">
-        <p class="eyebrow">1 · Read first</p>
+    <h2 class="h-plain mt-section">Work these in order</h2>
+    <p class="section-lede">Read the keys reference first, then work the install checklist top to bottom. Each tool section ends when its proof is on disk.</p>
+    <div class="grid-3">
+      <a class="stage-card" href="./keys.html" data-stage="keys">
+        <p class="eyebrow">1 · Read first · ~10 min</p>
         <h3>Your API keys</h3>
-        <p>What a key is, which of your three drives which tool, how to store them on Windows, and what to do if one leaks. About ten minutes.</p>
-        <p>Reference page</p>
+        <p>What a key is, which of your three drives which tool, how to store them on Windows, and what to do if one leaks.</p>
+        <p class="card-stat" data-stage-stat>Not read yet</p>
       </a>
-<a class="card" href="checklists/prework-install.html" data-checklist-card data-storage-key="ahb-prework-install" data-total="79">
-        <p class="eyebrow">2 · Install + verify as you go</p>
-        <h3>Install guide checklist</h3>
-<p>Baseline → PowerShell → winget → Git → Node/Python → <strong>keys</strong> → Codex → <strong>OpenCode (Grok)</strong> → Pi → goose → Obsidian → n8n → repo → pack for Monday. Each tool section ends when its proof is on disk. Claude Code optional.</p>
-        <p><span class="card-progress">0/79</span> steps checked</p>
+      <a class="stage-card" href="./checklists/prework-install.html" data-stage="install">
+        <p class="eyebrow">2 · Before Monday · 2–4 hr</p>
+        <h3>Install + verify as you go</h3>
+        <p>Baseline → PowerShell → winget → Git → Node/Python → keys → Codex → OpenCode (Grok) → Pi → goose → Obsidian → n8n → repo → pack for Monday.</p>
+        <p class="card-stat" data-stage-stat>0 / 79 steps checked</p>
       </a>
-      <a class="card" href="blocks/b0.html">
-        <p class="eyebrow">3 · Monday AM</p>
+      <a class="stage-card" href="./blocks/b0.html" data-stage="monday">
+        <p class="eyebrow">3 · Monday AM · contact block</p>
         <h3>Install clinic + First Light</h3>
         <p>About two hours expected (no hard wall) to finish gaps under staff eyes, then the First Light mission. Bring laptop and setup log.</p>
-        <p>Contact block</p>
+        <p class="card-stat" data-stage-stat>Opens Monday</p>
       </a>
     </div>
-    <p class="btn-row">
-      <a class="btn" href="keys.html">Read the keys page</a>
-      <a class="btn btn-secondary" href="checklists/prework-install.html">Start install checklist</a>
-      <a class="btn btn-secondary" href="blocks/b0.html">Monday clinic page</a>
-    </p>
 
-    <h2>Done means</h2>
-    <ol>
-      <li>Required tools installed and configured against your three API keys.</li>
-      <li>Each major setup step’s <strong>verify</strong> checks passed (fresh terminal after PATH changes).</li>
-      <li>All four required agents created a file in <code>Documents\HarnessBootcamp\prework-smoke\</code> that you can see in Explorer.</li>
-      <li>You have a setup log with at least one real failure and fix.</li>
-    </ol>
-    <p class="muted" style="color:#4A4A4A">There is no separate health-check pass. If something breaks later, re-run that section’s verify — or use the optional rescue sheet <code>prework/HEALTH_CHECK.md</code> only when you need a full re-test.</p>
+    <div class="grid-2 mt-tight">
+      <div class="callout full-measure"><strong>Everything runs on API keys</strong>
+Staff issue you three keys — OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly plan during this course. Several tools offer a subscription login and an API key option on the same screen; always take the API key path. Start at <a href="./keys.html">Your API keys</a>.</div>
+      <div class="callout full-measure"><strong>Twin-engine stack</strong>
+Required pair for class: the Codex app on your OpenAI key (home), plus OpenCode on your xAI key (second engine, Grok). Claude Code is optional and not required to pass pre-work.</div>
+    </div>
 
-    <h2>Setup log (keep beside the checklists)</h2>
-    <p>While you work, keep a running log (copy <a href="../prework/SETUP_LOG.md">prework/SETUP_LOG.md</a> or any notes file). For each major step record result, errors, fix, and time. Monday asks for this trail.</p>
+    <section class="home-section split-2">
+      <div>
+        <h2>Done means</h2>
+        <ol>
+          <li>Required tools installed and configured against your three API keys</li>
+          <li>Each major setup step’s <strong>verify</strong> checks passed (fresh terminal after PATH changes)</li>
+          <li>All four required agents created a file in <code>Documents\HarnessBootcamp\prework-smoke\</code> that you can see in Explorer</li>
+          <li>A setup log with at least one real failure and fix</li>
+        </ol>
+        <p>There is no separate health-check pass. If something breaks later, re-run that section’s verify — the rescue sheet <code>prework/HEALTH_CHECK.md</code> exists only for a full re-test.</p>
+      </div>
+      <div>
+        <h2>Setup log</h2>
+        <p>Keep a running log beside the checklist (copy <a href="../prework/SETUP_LOG.md">prework/SETUP_LOG.md</a> or any notes file). For each major step record result, errors, fix, and time. Monday asks for this trail.</p>
+        <div class="callout full-measure"><strong>Monday</strong>
+Bring laptop + setup log. Block 0 is install clinic (~2 hr expected, soft boundary), then First Light. Still blocked after honest clinic work goes to rescue in parallel.</div>
+      </div>
+    </section>
 
     <h2>Stack at a glance</h2>
-    <table>
+    <div class="table-scroll">
+<table>
       <thead><tr><th>#</th><th>Component</th><th>Notes</th></tr></thead>
-            <tbody>
+      <tbody>
         <tr><td>1</td><td>Windows 11, 64-bit</td><td><strong>Not ARM64</strong> — OpenCode and goose have no working ARM build</td></tr>
-        <tr><td>2</td><td>Git for Windows</td><td>Provides Git Bash, which Pi requires. You still work in <strong>PowerShell</strong> — Git Bash is a dependency, not a second shell to learn</td></tr>
+        <tr><td>2</td><td>Git for Windows</td><td>Provides Git Bash, which Pi requires. You still work in <strong>PowerShell</strong></td></tr>
         <tr><td>3</td><td>Node.js <strong>LTS</strong> + Python</td><td>Use the <code>OpenJS.NodeJS.LTS</code> package id — must land in 22.22–24.x</td></tr>
         <tr><td>4</td><td>PowerShell RemoteSigned</td><td>CurrentUser scope, and no Group Policy override</td></tr>
         <tr><td>5</td><td><strong>Three API keys</strong></td><td>OpenAI · xAI · Anthropic, as Windows user variables</td></tr>
         <tr><td>6</td><td><strong>Codex app</strong></td><td>Home tool all week · Codex mode in the <strong>ChatGPT desktop app</strong> · sign in via <em>Sign in another way</em></td></tr>
-        <tr><td>7</td><td><strong>OpenCode</strong> (Grok)</td><td>Required second engine · use the cohort-pinned version · set <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> so it doesn't read Claude Code's files</td></tr>
+        <tr><td>7</td><td><strong>OpenCode</strong> (Grok)</td><td>Required second engine · cohort-pinned version · set <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code></td></tr>
         <tr><td>8</td><td>Pi</td><td>Minimal, extensible harness · multi-provider · needs Git Bash · pin the model</td></tr>
-<tr><td>9</td><td>goose</td><td>Local agent · recipes + extensions + mode + schedule · CLI required · from <code>aaif-goose</code> — <strong>not</strong> winget · <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a></td></tr>
+        <tr><td>9</td><td>goose</td><td>Local agent · recipes + extensions + mode + schedule · CLI required · from <code>aaif-goose</code> — <strong>not</strong> winget · <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a></td></tr>
         <tr><td>10</td><td>Obsidian + n8n</td><td>Wed/Thu · both local, no subscription</td></tr>
         <tr><td>—</td><td>Claude Code (CLI)</td><td><em>Optional</em> third engine · command-line tool, not the desktop app</td></tr>
       </tbody>
     </table>
+</div>
 
     <h2>Traps worth knowing before you start</h2>
-    <p>These cost the most time, and none of them announce themselves clearly.</p>
-    <ul>
-      <li><strong>You only ever type into PowerShell.</strong> Windows ships three terminals that look alike, and commands aren't interchangeable. Git Bash gets installed as a dependency, not as a second shell for you to learn.</li>
-      <li><strong>A new terminal is required after every install.</strong> A terminal reads PATH once when it opens. This is behind more "it didn't install" reports than everything else combined.</li>
-      <li><strong>The Codex app ignores <code>OPENAI_API_KEY</code> entirely.</strong> Every other tool reads the variable; this one reads the key you paste into <em>Sign in another way</em> on its signed-out screen.</li>
-      <li><strong>The permission mode is what switches the sandbox on.</strong> Set it to <strong>Ask for approval</strong> beneath the message box, or Codex runs without the boundaries the rest of the week assumes.</li>
-      <li><strong>The <code>.LTS</code> suffix on the Node package id is not optional.</strong> Plain <code>OpenJS.NodeJS</code> installs a release too new for n8n.</li>
-      <li><strong>Installing goose with winget gets you a different program</strong> — an unrelated database tool that shares the name.</li>
-      <li><strong>OpenCode's <code>curl</code> install command can't run on Windows PowerShell.</strong> It's a bash script, and no PowerShell version exists.</li>
-      <li><strong>OpenCode reads Claude Code's files by default.</strong> <code>~/.claude/CLAUDE.md</code> and <code>.claude/skills</code> load into your second engine unless you set <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code>. Nothing warns you; the comparison just gets quieter.</li>
-      <li><strong>Pi looks for its shell only when it first needs one</strong>, so a missing Git Bash fails mid-exercise rather than at setup.</li>
-      <li><strong>n8n's first screen looks like a signup and isn't one</strong> — it creates a local account on your own laptop.</li>
-    </ul>
+    <p class="section-lede">These cost the most time, and none of them announce themselves clearly.</p>
+    <div class="trap-grid">
+      <div class="trap-card">
+        <p class="t">You only ever type into PowerShell.</p>
+        <p>Windows ships three terminals that look alike, and commands are not interchangeable. Git Bash gets installed as a dependency, not as a second shell to learn.</p>
+      </div>
+      <div class="trap-card">
+        <p class="t">A new terminal is required after every install.</p>
+        <p>A terminal reads PATH once when it opens. This is behind more “it didn’t install” reports than everything else combined.</p>
+      </div>
+      <div class="trap-card">
+        <p class="t">The Codex app ignores OPENAI_API_KEY entirely.</p>
+        <p>Every other tool reads the variable; this one reads the key you paste into <em>Sign in another way</em> on its signed-out screen.</p>
+      </div>
+      <div class="trap-card">
+        <p class="t">The permission mode is what switches the sandbox on.</p>
+        <p>Set it to <strong>Ask for approval</strong> beneath the message box, or Codex runs without the boundaries the rest of the week assumes.</p>
+      </div>
+      <div class="trap-card">
+        <p class="t">The .LTS suffix on the Node package id is not optional.</p>
+        <p>Plain <code>OpenJS.NodeJS</code> installs a release too new for n8n.</p>
+      </div>
+      <div class="trap-card">
+        <p class="t">Installing goose with winget gets you a different program.</p>
+        <p>An unrelated database tool shares the name. Install from <code>aaif-goose</code> instead.</p>
+      </div>
+      <div class="trap-card">
+        <p class="t">OpenCode’s curl install command can’t run in PowerShell.</p>
+        <p>It is a bash script, and no PowerShell version exists. Use the cohort-pinned path.</p>
+      </div>
+      <div class="trap-card">
+        <p class="t">OpenCode reads Claude Code’s files by default.</p>
+        <p>Set <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> or your second engine quietly loads the first engine’s instructions.</p>
+      </div>
+      <div class="trap-card">
+        <p class="t">Pi looks for its shell only when it first needs one.</p>
+        <p>A missing Git Bash fails mid-exercise rather than at setup.</p>
+      </div>
+      <div class="trap-card">
+        <p class="t">n8n’s first screen looks like a signup and isn’t one.</p>
+        <p>It creates a local account on your own laptop. No subscription is involved.</p>
+      </div>
+    </div>
 
-    <div class="callout"><strong>Monday</strong>
-    Bring laptop + setup log. Block 0 is install clinic (~2 hr expected, soft boundary), then First Light. Still blocked after honest clinic work goes to rescue in parallel — not to redefine the school as imaging.</div>
-
-    <p class="btn-row">
-      <a class="btn" href="checklists/prework-install.html">Start install checklist</a>
-      <a class="btn btn-secondary" href="blocks/b0.html">Monday clinic + First Light</a>
-    </p>
+    <div class="plate">
+      <a class="plate-cell" href="./keys.html">
+        <span class="plate-eyebrow">← Read first</span>
+        <span class="plate-title">Your API keys</span>
+      </a>
+      <a class="plate-mid" href="./index.html">Home</a>
+      <a class="plate-cell plate-next" href="./blocks/b0.html">
+        <span class="plate-eyebrow">Next · Monday AM →</span>
+        <span class="plate-title">B0 · Install clinic + First Light</span>
+      </a>
+    </div>
   </main>
+
   <footer class="site-footer">
     <div class="site-footer-inner">
       <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
       <div>inquiries@starzl.com · starzl.com</div>
     </div>
   </footer>
-  <script src="./js/course.js"></script>
-  <script src="./js/nav.js"></script>
-  <script src="./js/checklist.js"></script>
+
+  <script src="./js/registry.js"></script>
+  <script src="./js/shell.js"></script>
 </body>
 </html>
