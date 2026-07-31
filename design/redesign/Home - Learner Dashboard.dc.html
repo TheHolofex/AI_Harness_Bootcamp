@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="site-css/course.css">
+  <link rel="stylesheet" href="site-css/checklist.css">
+  <style>
+    body { margin: 0; }
+    a { color: #0A0A0A; }
+    a:hover { color: #E31C23; }
+  </style>
+</helmet>
+
+<header class="site-header">
+  <div class="site-header-inner" style="min-height: 56px;">
+    <a class="brand" href="#">
+      <span class="mark-disc" aria-hidden="true"></span>
+      <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+    </a>
+    <nav style="display: flex; align-items: center; gap: 0.125rem;" aria-label="Primary">
+      <a href="#" aria-current="page" style="position: relative; display: inline-flex; align-items: center; min-height: 1.75rem; padding: 0.25rem 0.45rem; color: #0A0A0A; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; white-space: nowrap; box-shadow: inset 0 -2px 0 #E31C23;">Home</a>
+      <a href="#" style="display: inline-flex; align-items: center; min-height: 1.75rem; padding: 0.25rem 0.45rem; color: #4A4A4A; font-size: 0.7rem; font-weight: 550; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; white-space: nowrap;" style-hover="color: #0A0A0A;">Pre-work</a>
+      <sc-for list="{{ dayNav }}" as="day" hint-placeholder-count="5">
+        <div style="position: relative;" onMouseEnter="{{ day.open }}" onMouseLeave="{{ day.close }}">
+          <a href="#" style="display: inline-flex; align-items: center; gap: 0.3rem; min-height: 1.75rem; padding: 0.25rem 0.45rem; color: #4A4A4A; font-size: 0.7rem; font-weight: 550; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; white-space: nowrap;" style-hover="color: #0A0A0A;">{{ day.label }}<span style="display: inline-block; width: 0.32rem; height: 0.32rem; margin-top: -0.16rem; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; opacity: 0.72; transform: rotate(45deg);"></span></a>
+          <sc-if value="{{ day.isOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position: absolute; top: 100%; left: 0; z-index: 50; width: max-content; min-width: 15rem; padding: 0.25rem 0; background: #FFFFFF; border: 1px solid #D0D0D0; box-shadow: 0 10px 24px rgba(10,10,10,0.09);">
+              <sc-for list="{{ day.blocks }}" as="b" hint-placeholder-count="2">
+                <a href="#" style="display: grid; grid-template-columns: 1rem 1fr auto; gap: 0.5rem; align-items: baseline; padding: 0.45rem 0.75rem; color: #4A4A4A; font-size: 0.79rem; text-decoration: none; white-space: nowrap; background: {{ b.bg }};" style-hover="background: #FAFAF8; color: #0A0A0A;">
+                  <span style="font-family: 'IBM Plex Mono', ui-monospace, Consolas, monospace; font-size: 0.68rem; color: {{ b.dotColor }};">{{ b.dot }}</span>
+                  <span><strong style="font-weight: 600;">{{ b.code }}</strong> · {{ b.name }}</span>
+                  <span style="font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B;">{{ b.slot }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+      <span style="width: 1px; height: 1rem; background: #D0D0D0; margin: 0 0.35rem;"></span>
+      <a href="#" style="display: inline-flex; align-items: center; min-height: 1.75rem; padding: 0.25rem 0.45rem; color: #6B6B6B; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; white-space: nowrap;" style-hover="color: #0A0A0A;">Resources</a>
+      <a href="#" style="display: inline-flex; align-items: center; min-height: 1.75rem; padding: 0.25rem 0.45rem; color: #6B6B6B; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; white-space: nowrap;" style-hover="color: #0A0A0A;">Lead</a>
+    </nav>
+  </div>
+</header>
+
+<section style="background: #0D0906; color: #FFF8E7; padding: 2.75rem 1.25rem 2.5rem;">
+  <div style="max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: start;">
+    <div>
+      <p style="margin: 0 0 0.5rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #A58650; font-weight: 500;">Applied AI · Instructor-led · Operator school</p>
+      <h1 style="margin: 0 0 0.75rem; font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; color: #FFF8E7;">AI Harness Bootcamp</h1>
+      <p style="margin: 0 0 1.5rem; font-size: 1.05rem; line-height: 1.6; color: #C8B78A; max-width: 34rem;">An operator's school: you direct outcomes, bounds, and standards of evidence — a thinking machine works inside that frame. One week, nine blocks, your own chair.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+        <a href="#journey" style="display: inline-block; padding: 0.55rem 1rem; border-radius: 2px; font-size: 0.9rem; font-weight: 500; text-decoration: none; border: 1px solid #A58650; background: #A58650; color: #0D0906;">How the week works</a>
+        <a href="#" style="display: inline-block; padding: 0.55rem 1rem; border-radius: 2px; font-size: 0.9rem; font-weight: 500; text-decoration: none; border: 1px solid #C8B78A; background: transparent; color: #FFF8E7;">What this school is</a>
+      </div>
+    </div>
+    <div style="border: 1px solid rgba(200, 169, 106, 0.35); background: #17110C; padding: 1.1rem 1.2rem 1.25rem;">
+      <p style="margin: 0 0 0.6rem; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #A58650; font-weight: 500;">You are here</p>
+      <p style="margin: 0 0 0.15rem; font-size: 0.78rem; color: #C8B78A;">{{ nextEyebrow }}</p>
+      <p style="margin: 0 0 0.75rem; font-size: 1.25rem; font-weight: 600; color: #FFF8E7; line-height: 1.25;">{{ nextTitle }}</p>
+      <div style="height: 5px; background: rgba(200, 183, 138, 0.22); margin: 0 0 0.45rem; overflow: hidden;">
+        <div style="height: 100%; background: #E31C23; width: {{ nextPctCss }};"></div>
+      </div>
+      <p style="margin: 0 0 0.9rem; font-size: 0.75rem; font-family: 'IBM Plex Mono', ui-monospace, Consolas, monospace; color: #C8B78A;">{{ nextProgressLine }}</p>
+      <a href="#" style="display: block; text-align: center; padding: 0.6rem 1rem; border-radius: 2px; font-size: 0.9rem; font-weight: 600; text-decoration: none; border: 1px solid #E31C23; background: #E31C23; color: #FFF8E7;">{{ nextCta }}</a>
+      <p style="margin: 0.6rem 0 0; font-size: 0.72rem; color: #6B6B6B; text-align: center;">Progress saves in this browser as you check steps off.</p>
+    </div>
+  </div>
+</section>
+
+<main style="max-width: 72rem; margin: 0 auto; padding: 2.25rem 1.25rem 4rem;">
+
+  <section id="journey">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 0 0 1rem;">
+      <h2 style="margin: 0; font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em;">Your journey</h2>
+      <p style="margin: 0; font-size: 0.78rem; color: #6B6B6B;"><span style="display: inline-block; width: 0.7rem; height: 0.7rem; background: #F4F8F4; border: 1px solid #D0D0D0; vertical-align: -1px;"></span> done &nbsp;·&nbsp; <span style="color: #E31C23;">●</span> you are here &nbsp;·&nbsp; ○ ahead</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid #D0D0D0;">
+      <sc-for list="{{ journey }}" as="col" hint-placeholder-count="6">
+        <div style="border-right: 1px solid #D0D0D0; display: flex; flex-direction: column;">
+          <div style="padding: 0.6rem 0.8rem 0.5rem; border-bottom: 1px solid #D0D0D0; background: {{ col.headBg }};">
+            <p style="margin: 0; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; font-weight: 500;">{{ col.phase }}</p>
+            <p style="margin: 0.1rem 0 0; font-size: 0.92rem; font-weight: 600;">{{ col.title }}</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0; flex: 1;">
+            <sc-for list="{{ col.items }}" as="it" hint-placeholder-count="2">
+              <a href="#" style="display: grid; grid-template-columns: 0.9rem 1fr; gap: 0.45rem; align-items: baseline; padding: 0.55rem 0.8rem; text-decoration: none; color: inherit; border-bottom: 1px solid #EDEDEA; background: {{ it.bg }};" style-hover="background: #FAFAF8;">
+                <span style="font-size: 0.72rem; color: {{ it.dotColor }};">{{ it.dot }}</span>
+                <span>
+                  <span style="display: block; font-size: 0.8rem; font-weight: 600; line-height: 1.3;">{{ it.code }} · {{ it.name }}</span>
+                  <span style="display: block; font-size: 0.7rem; color: #6B6B6B; margin-top: 0.05rem;">{{ it.meta }}</span>
+                </span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin: 0.6rem 0 0; font-size: 0.85rem; color: #4A4A4A; max-width: 46rem;">Every block runs the same operator pulse: <strong>Brief → Mission → Log → Adversarial → Measure → Transfer</strong>. <a href="#">Pulse guide with paste-ready prompts →</a></p>
+  </section>
+
+  <section style="margin-top: 2.75rem;">
+    <h2 style="margin: 0 0 0.25rem; font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; border-top: 1px solid #D0D0D0; padding-top: 1.25rem;">New here? Start in three moves</h2>
+    <p style="margin: 0 0 1.1rem; color: #4A4A4A; max-width: 46rem;">Everything before Monday is yours to own: your machine, your keys, your install. Plan a focused evening or weekend block (about 2–4 hours).</p>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem;">
+      <a href="#" style="border: 1px solid #D0D0D0; padding: 1rem 1.05rem; text-decoration: none; color: inherit; background: #FFFFFF; display: block;" style-hover="border-color: #0A0A0A;">
+        <p style="margin: 0 0 0.35rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; font-weight: 500;">1 · Read first · ~10 min</p>
+        <h3 style="margin: 0 0 0.4rem; font-size: 1.05rem; font-weight: 600;">Your API keys</h3>
+        <p style="margin: 0; font-size: 0.92rem; color: #4A4A4A;">Which of your three keys drives which tool, how to store them on Windows, what to do if one leaks.</p>
+      </a>
+      <a href="#" style="border: 1px solid #D0D0D0; padding: 1rem 1.05rem; text-decoration: none; color: inherit; background: #FFFFFF; display: block;" style-hover="border-color: #0A0A0A;">
+        <p style="margin: 0 0 0.35rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; font-weight: 500;">2 · Before Monday · 2–4 hr</p>
+        <h3 style="margin: 0 0 0.4rem; font-size: 1.05rem; font-weight: 600;">Install + verify as you go</h3>
+        <p style="margin: 0 0 0.5rem; font-size: 0.92rem; color: #4A4A4A;">The full workstation checklist — each tool section ends when its proof is on disk.</p>
+        <p style="margin: 0; font-size: 0.78rem; font-family: 'IBM Plex Mono', ui-monospace, Consolas, monospace; color: {{ preworkStatColor }};">{{ preworkStat }}</p>
+      </a>
+      <a href="#" style="border: 1px solid #D0D0D0; padding: 1rem 1.05rem; text-decoration: none; color: inherit; background: #FFFFFF; display: block;" style-hover="border-color: #0A0A0A;">
+        <p style="margin: 0 0 0.35rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; font-weight: 500;">3 · Monday AM</p>
+        <h3 style="margin: 0 0 0.4rem; font-size: 1.05rem; font-weight: 600;">Install clinic + First Light</h3>
+        <p style="margin: 0; font-size: 0.92rem; color: #4A4A4A;">Bring laptop and setup log. Close gaps under staff eyes (~2 hr), then your first mission.</p>
+      </a>
+    </div>
+  </section>
+
+  <section style="margin-top: 2.75rem;">
+    <h2 style="margin: 0 0 0.25rem; font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; border-top: 1px solid #D0D0D0; padding-top: 1.25rem;">The shape of a day</h2>
+    <p style="margin: 0 0 1.1rem; color: #4A4A4A; max-width: 46rem;">Two project blocks a day. Tuesday–Thursday mornings end with a 45-minute harness case talk before lunch; Thursday after lunch adds a 30-minute lead demo. You keep your own chair throughout — watching is never the exercise.</p>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid #D0D0D0;">
+      <div style="padding: 0.75rem 0.9rem; border-right: 1px solid #D0D0D0;">
+        <span style="display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 0.25rem;">Morning</span>
+        <span style="font-weight: 500; font-size: 0.92rem;">AM block · full operator pulse</span>
+      </div>
+      <div style="padding: 0.75rem 0.9rem; border-right: 1px solid #D0D0D0;">
+        <span style="display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 0.25rem;">Before lunch · Tue–Thu</span>
+        <span style="font-weight: 500; font-size: 0.92rem;">Harness case talk · 30 + 15 min</span>
+      </div>
+      <div style="padding: 0.75rem 0.9rem; border-right: 1px solid #D0D0D0;">
+        <span style="display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 0.25rem;">Afternoon</span>
+        <span style="font-weight: 500; font-size: 0.92rem;">PM block · full operator pulse</span>
+      </div>
+      <div style="padding: 0.75rem 0.9rem;">
+        <span style="display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 0.25rem;">Every AM + PM</span>
+        <span style="font-weight: 500; font-size: 0.92rem;">Transfer pulse · 30-60-90 file</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 2.75rem;">
+    <h2 style="margin: 0 0 0.25rem; font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; border-top: 1px solid #D0D0D0; padding-top: 1.25rem;">What you learn</h2>
+    <p style="margin: 0 0 1rem; color: #4A4A4A; max-width: 46rem;">Nine blocks, one arc — direct, verify, bound, transfer. Each is a skill you demonstrate with log evidence a peer could audit.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.75rem;">
+      <div style="border: 1px solid #D0D0D0; background: #FFFFFF; padding: 0.85rem 1rem;">
+        <span style="display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 0.3rem;">B0 · P1 — Direct</span>
+        <span style="display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem;">Direct the harness</span>
+        <p style="margin: 0; font-size: 0.88rem; color: #4A4A4A;">Stand up a working instrument from messy data, state acceptance criteria, and accept or reject with evidence — a rerunnable tool, not a one-shot chat.</p>
+      </div>
+      <div style="border: 1px solid #D0D0D0; background: #FFFFFF; padding: 0.85rem 1rem;">
+        <span style="display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 0.3rem;">P2 — Tune</span>
+        <span style="display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem;">Encode your craft</span>
+        <p style="margin: 0; font-size: 0.88rem; color: #4A4A4A;">Improve harness config with measured deltas, author machine-checkable tests, install durable memory, and package skills that fire unprompted.</p>
+      </div>
+      <div style="border: 1px solid #D0D0D0; background: #FFFFFF; padding: 0.85rem 1rem;">
+        <span style="display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 0.3rem;">P3 — Verify</span>
+        <span style="display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem;">Command many minds</span>
+        <p style="margin: 0; font-size: 0.88rem; color: #4A4A4A;">Run the same brief on two engines, use disagreement as a sensor, adjudicate with provenance — agreement ≠ truth, and you own the verdict.</p>
+      </div>
+      <div style="border: 1px solid #D0D0D0; background: #FFFFFF; padding: 0.85rem 1rem;">
+        <span style="display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 0.3rem;">P4 · P5 — Guard</span>
+        <span style="display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem;">Work your knowledge, keep it clean</span>
+        <p style="margin: 0; font-size: 0.88rem; color: #4A4A4A;">Scope AI into a linked vault, verify citations by walking the links, and detect poisoned intake — proving containment by absence of effect.</p>
+      </div>
+      <div style="border: 1px solid #D0D0D0; background: #FFFFFF; padding: 0.85rem 1rem;">
+        <span style="display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 0.3rem;">P6 · P7 — Bound</span>
+        <span style="display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem;">Bound autonomy</span>
+        <p style="margin: 0; font-size: 0.88rem; color: #4A4A4A;">Write an autonomy contract on real tool levers, prove stop and restart, and choose agent loop vs fixed pipeline with a human gate on exceptions.</p>
+      </div>
+      <div style="border: 1px solid #D0D0D0; background: #FFFFFF; padding: 0.85rem 1rem;">
+        <span style="display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 0.3rem;">P8 — Transfer</span>
+        <span style="display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem;">Transfer the method</span>
+        <p style="margin: 0; font-size: 0.88rem; color: #4A4A4A;">Author endpoint policy first, measure hold/degrade when the model changes, and leave with a 30-60-90 plan you run at your own desk.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 2.75rem; border: 1px dashed #6B6B6B; padding: 1rem 1.2rem; background: #FFFFFF;">
+    <p style="margin: 0 0 0.35rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #E31C23; font-weight: 500;">For the lead &amp; staff</p>
+    <p style="margin: 0 0 0.5rem; font-size: 0.92rem; color: #4A4A4A; max-width: 46rem;">Same site, no teacher skin — these pages just aren't on the student path:</p>
+    <p style="margin: 0; font-size: 0.9rem;"><a href="#">Operate-along guide</a> &nbsp;·&nbsp; <a href="#">Pulse &amp; chats</a> &nbsp;·&nbsp; <a href="#">Operator pack</a> &nbsp;·&nbsp; <a href="#">Course instruments</a> &nbsp;·&nbsp; <a href="#">Case talks</a></p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+    <div>inquiries@starzl.com · starzl.com</div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;demoProgress&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Mockup&quot;}}">
+class Component extends DCLogic {
+  state = { openDay: null, store: {} };
+
+  componentDidMount() {
+    const store = {};
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.indexOf('ahb-') === 0) store[k] = JSON.parse(localStorage.getItem(k) || '{}');
+      }
+    } catch (e) {}
+    this.setState({ store });
+  }
+
+  countDone(key, ids) {
+    const s = this.state.store[key];
+    if (!s) return 0;
+    // when the block declares its id set, count only ids that still exist (block pages own their id sets)
+    if (ids) return ids.filter((id) => s[id] === true).length;
+    return Object.keys(s).filter((k) => k !== '_updated' && k.indexOf('stretch-') !== 0 && s[k] === true).length;
+  }
+
+  renderVals() {
+    const demo = this.props.demoProgress ?? true;
+    // block registry: code, name, slot, checklist key, total required steps
+    const blocks = [
+      { code: 'KEYS', name: 'Your API keys', slot: 'read', key: null, total: 0, meta: 'Reference · ~10 min' },
+      { code: 'INSTALL', name: 'Install + verify', slot: 'pre', key: 'ahb-prework-install', total: 79, meta: 'Checklist · 2–4 hr' },
+      { code: 'B0', name: 'Clinic + First Light', slot: 'AM', key: 'ahb-checklist-b0', total: 18, meta: 'Codex app' },
+      { code: 'P1', name: 'Daily Status Brief', slot: 'PM', key: 'ahb-checklist-p1', total: 16, meta: 'Codex app' },
+      { code: 'P2', name: 'The hot-rod morning', slot: 'AM', key: 'ahb-checklist-p2', total: 11, ids: ['pulse-brief', 'p2-baseline', 'p2-walls', 'p2-after', 'p2-story', 'pulse-mission', 'pulse-log', 'pulse-bars', 'pulse-adv', 'pulse-measure', 'pulse-transfer'], meta: 'Codex · p2_dyno' },
+      { code: 'P3', name: 'Twin-engine intel desk', slot: 'PM', key: 'ahb-checklist-p3', total: 19, meta: 'Codex + OpenCode' },
+      { code: 'P4', name: "Director's second brain", slot: 'AM', key: 'ahb-checklist-p4', total: 17, meta: 'Codex + Obsidian' },
+      { code: 'P5', name: 'The poisoned corpus', slot: 'PM', key: 'ahb-checklist-p5', total: 18, meta: 'Poison pack' },
+      { code: 'P6', name: 'The watch officer', slot: 'AM', key: 'ahb-checklist-p6', total: 20, meta: 'goose + Pi' },
+      { code: 'P7', name: 'The automation line', slot: 'PM', key: 'ahb-checklist-p7', total: 16, meta: 'n8n + AI step' },
+      { code: 'P8', name: 'Open model · sealed', slot: 'AM', key: 'ahb-checklist-p8', total: 22, meta: 'hold/degrade' }
+    ];
+
+    // demo seed so the mockup shows the mechanism (real site reads live localStorage)
+    const demoDone = { 'INSTALL': 79, 'B0': 18, 'P1': 16, 'P2': 4 };
+    const withState = blocks.map((b, i) => {
+      let done = b.key ? this.countDone(b.key, b.ids) : 0;
+      if (demo && !done) done = demoDone[b.code] || 0;
+      const complete = b.total > 0 && done >= b.total;
+      return Object.assign({}, b, { done, complete, idx: i });
+    });
+    // current = first incomplete block with a checklist (skip KEYS)
+    const current = withState.find((b) => b.key && !b.complete) || withState[withState.length - 1];
+
+    const decorate = (b) => {
+      const isCurrent = b.code === current.code;
+      return Object.assign({}, b, {
+        dot: b.complete ? '●' : isCurrent ? '●' : '○',
+        dotColor: b.complete ? '#0A0A0A' : isCurrent ? '#E31C23' : '#9B9B94',
+        bg: isCurrent ? '#FDF6F0' : b.complete ? '#F4F8F4' : '#FFFFFF',
+        meta: b.slot === 'read' ? b.meta : (b.slot === 'pre' ? b.meta : b.slot + ' · ' + b.meta)
+      });
+    };
+
+    const journey = [
+      { phase: 'Before Monday', title: 'Pre-work', codes: ['KEYS', 'INSTALL'] },
+      { phase: 'Monday', title: 'Foundations', codes: ['B0', 'P1'] },
+      { phase: 'Tuesday', title: 'Craft + verdict', codes: ['P2', 'P3'] },
+      { phase: 'Wednesday', title: 'Knowledge', codes: ['P4', 'P5'] },
+      { phase: 'Thursday', title: 'Autonomy', codes: ['P6', 'P7'] },
+      { phase: 'Friday', title: 'Transfer', codes: ['P8'] }
+    ].map((col) => {
+      const items = col.codes.map((c) => decorate(withState.find((b) => b.code === c)));
+      const hasCurrent = items.some((it) => it.code === current.code);
+      return { phase: col.phase, title: col.title, items, headBg: hasCurrent ? '#FDF6F0' : '#FAFAF8' };
+    });
+
+    const dayNav = [
+      { label: 'Mon', codes: ['B0', 'P1'] },
+      { label: 'Tue', codes: ['P2', 'P3'] },
+      { label: 'Wed', codes: ['P4', 'P5'] },
+      { label: 'Thu', codes: ['P6', 'P7'] },
+      { label: 'Fri', codes: ['P8'] }
+    ].map((d) => ({
+      label: d.label,
+      isOpen: this.state.openDay === d.label,
+      open: () => this.setState({ openDay: d.label }),
+      close: () => this.setState({ openDay: null }),
+      blocks: d.codes.map((c) => {
+        const b = decorate(withState.find((x) => x.code === c));
+        return { code: b.code, name: b.name, slot: b.slot, dot: b.dot, dotColor: b.dotColor, bg: b.complete ? '#F4F8F4' : '#FFFFFF' };
+      })
+    }));
+
+    const pct = current.total ? Math.round((current.done / current.total) * 100) : 0;
+    const slotLabelMap = { pre: 'Before Monday · Pre-work', AM: '', PM: '' };
+    const dayOfCode = { B0: 'Monday AM', P1: 'Monday PM', P2: 'Tuesday AM', P3: 'Tuesday PM', P4: 'Wednesday AM', P5: 'Wednesday PM', P6: 'Thursday AM', P7: 'Thursday PM', P8: 'Friday AM' };
+    const nextEyebrow = current.slot === 'pre' ? 'Before Monday · Pre-work' : dayOfCode[current.code] + ' · ' + current.code;
+    const started = current.done > 0;
+
+    return {
+      dayNav, journey,
+      nextEyebrow,
+      nextTitle: current.code === 'INSTALL' ? 'Install + verify as you go' : current.name,
+      nextPctCss: pct + '%',
+      nextProgressLine: current.done + ' / ' + current.total + ' steps · ' + pct + '%',
+      nextCta: started ? 'Continue where you left off' : 'Start this block',
+      preworkStat: (demo ? 79 : this.countDone('ahb-prework-install')) + ' / 79 steps checked',
+      preworkStatColor: (demo ? 79 : this.countDone('ahb-prework-install')) >= 79 ? '#2F6B3A' : '#4A4A4A'
+    };
+  }
+}
+</script>
+</body>
+</html>

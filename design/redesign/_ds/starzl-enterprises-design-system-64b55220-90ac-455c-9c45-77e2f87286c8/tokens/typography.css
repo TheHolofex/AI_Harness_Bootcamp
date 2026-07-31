@@ -1,0 +1,43 @@
+/* Starzl Enterprises — typography tokens
+   Website: Inter (body) + Space Grotesk (display) + Space Mono (labels/data).
+   Deck:    Arial (sans) + Courier New (mono) — system fonts, no binaries.
+   SENT:    Cormorant Garamond (serif) + Cinzel (small-caps) + JetBrains Mono (body). */
+
+:root{
+  /* Families — website */
+  --font-body:"Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display:"Space Grotesk", Inter, sans-serif;
+  --font-mono:"Space Mono", Menlo, monospace;
+
+  /* Families — Quicksilver deck */
+  --deck-font-sans:Arial, Helvetica, sans-serif;
+  --deck-font-mono:"Courier New", "Space Mono", monospace;
+
+  /* Families — SENT dashboard */
+  --sent-font-serif:"Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --sent-font-mono:"JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  --sent-font-cap:"Cinzel", "Trajan Pro", var(--sent-font-serif);
+
+  /* Scale — website (desktop values from site.css) */
+  --text-hero:76px;        /* .hero h1 — 700, line-height .95, uppercase */
+  --text-h2:48px;          /* .section-header h2 — line-height 1.02, uppercase */
+  --text-h2-feature:46px;  /* .feature-copy h2 / .system-copy h2 */
+  --text-h2-panel:36px;    /* .detail-row h2 / .contact-panel h2 */
+  --text-h3:28px;          /* card h3 — line-height 1.05, uppercase */
+  --text-h3-sm:22px;       /* .system-card h3 */
+  --text-lede:20px;        /* .hero-lede */
+  --text-base:16px;        /* body — line-height 1.55 */
+  --text-small:14px;       /* card body copy */
+  --text-caption:13px;
+  --text-eyebrow:11px;     /* mono labels — uppercase */
+  --text-chip:10px;
+
+  /* Tracking */
+  --track-eyebrow:0.18em;
+  --track-nav:0.14em;
+  --track-button:0.16em;
+  --track-chip:0.12em;
+
+  /* Metric numerals */
+  --text-metric:28px;      /* .metric .value — Space Mono 700 */
+}

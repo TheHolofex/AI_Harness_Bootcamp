@@ -1,0 +1,225 @@
+/* Starzl Enterprises — website class system.
+   A faithful port of the load-bearing classes from SE_Website/public/site.css,
+   re-pointed at tokens. Values are verbatim from the source; do not "normalize".
+   Scope: pages opt in by putting class="starzl-site" on <body>. */
+
+.starzl-site{
+  margin:0;
+  background:var(--sand);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:geometricPrecision;
+}
+.starzl-site *{box-sizing:border-box;}
+.starzl-site img{display:block; max-width:100%;}
+.starzl-site button,.starzl-site input,.starzl-site textarea,.starzl-site select{font:inherit;}
+.starzl-site a{color:inherit;}
+.starzl-site a:hover{color:var(--red);}
+
+/* Grain overlay — fixed, multiply, 8% (from site.css body::before) */
+.starzl-site::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:100;
+  pointer-events:none;
+  opacity:0.08;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.76' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.34 0 0 0 0 0.27 0 0 0 0 0.16 0 0 0 0.32 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* — Labels — */
+.eyebrow,.section-kicker,.label{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:0.18em;
+  line-height:1.45;
+  text-transform:uppercase;
+}
+.eyebrow{color:var(--gold-2);}
+.section-kicker{color:var(--red);}
+.label{color:var(--gold);}
+
+/* — Buttons — */
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:0 18px;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  background:transparent;
+  font-family:var(--font-mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.16em;
+  text-decoration:none;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.button.primary{border-color:var(--red-2); color:var(--white); background:var(--red-2);}
+.button.dark{border-color:var(--black); color:var(--sand-2); background:var(--black);}
+.button:hover{border-color:var(--red); color:var(--red);}
+.button.primary:hover,.button.dark:hover{border-color:var(--gold-2); color:var(--white);}
+
+/* — Chips & pills — */
+.pill{
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:0 10px;
+  border:1px solid rgba(165,134,80,0.56);
+  color:var(--muted);
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+}
+.proof-chip{
+  display:inline-flex;
+  align-items:center;
+  min-height:26px;
+  padding:0 9px;
+  border:1px solid rgba(165,134,80,0.56);
+  color:var(--muted);
+  font-family:var(--font-mono);
+  font-size:9px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+}
+
+/* — Brand lockup — */
+.brand{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  font-family:var(--font-mono);
+  font-size:13px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.brand-dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--red-2);
+  box-shadow:0 0 14px rgba(211,58,44,0.65);
+}
+
+/* — Metrics — */
+.hero-metrics{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  width:min(100%, 640px);
+  border-top:1px solid rgba(200,169,106,0.48);
+  border-left:1px solid rgba(200,169,106,0.32);
+}
+.metric{
+  min-width:0;
+  padding:15px 14px;
+  border-right:1px solid rgba(200,169,106,0.32);
+  border-bottom:1px solid rgba(200,169,106,0.32);
+}
+.metric .key{
+  color:var(--gold-2);
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+}
+.metric .value{
+  margin-top:4px;
+  color:var(--white);
+  font-family:var(--font-mono);
+  font-size:28px;
+  font-weight:700;
+  line-height:1;
+}
+
+/* — Section scaffolding — */
+.section{padding:82px 28px; background:var(--sand);}
+.section.alt{background:var(--sand-3);}
+.section.dark{background:var(--black-2); color:var(--white);}
+.section-inner{width:min(100%, 1280px); margin:0 auto;}
+.section-header{
+  display:grid;
+  grid-template-columns:minmax(0,0.9fr) minmax(280px,0.7fr);
+  gap:48px;
+  align-items:end;
+  margin-bottom:34px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+}
+.section-header h2{
+  margin:8px 0 0;
+  font-family:var(--font-display);
+  font-size:48px;
+  line-height:1.02;
+  letter-spacing:0;
+  text-transform:uppercase;
+}
+.section-header p{margin:0; color:var(--muted);}
+.dark .section-header{border-bottom-color:rgba(200,169,106,0.25);}
+.dark .section-header p{color:#C8A96A;}
+
+/* — Lists — */
+.plain-list{
+  display:grid;
+  gap:9px;
+  margin:0;
+  padding:0;
+  list-style:none;
+  color:var(--muted);
+  font-size:14px;
+}
+.plain-list li{display:grid; grid-template-columns:8px minmax(0,1fr); gap:10px;}
+.plain-list li::before{content:""; width:5px; height:5px; margin-top:9px; background:var(--red);}
+
+/* — Cards — */
+.card-surface{
+  min-width:0;
+  border:1px solid var(--line);
+  background:rgba(248,242,222,0.72);
+  padding:18px;
+}
+.dark .card-surface{
+  border-color:rgba(200,169,106,0.28);
+  background:rgba(23,17,12,0.78);
+}
+.card-link{
+  align-self:end;
+  color:var(--red);
+  font-family:var(--font-mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.14em;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+.card-link:hover{color:var(--ink);}
+
+/* — Forms — */
+.field{display:grid; gap:7px;}
+.field label{
+  color:var(--muted);
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:0.13em;
+  text-transform:uppercase;
+}
+.field input,.field textarea,.field select{
+  width:100%;
+  min-width:0;
+  border:1px solid var(--line);
+  border-radius:0;
+  background:var(--sand-2);
+  color:var(--ink);
+  padding:12px 12px;
+}
+.field textarea{min-height:138px; resize:vertical;}
