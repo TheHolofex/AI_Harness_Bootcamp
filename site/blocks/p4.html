@@ -23,7 +23,7 @@
   <main class="site-main">
     <p class="eyebrow">Wednesday AM · P4 · AI Harness Bootcamp</p>
     <h1>The director&#x27;s second brain</h1>
-    <p class="lede">You put a thinking machine inside your knowledge structure so answers come with trails you can walk — not black-box chat.</p>
+    <p class="lede">You put a thinking machine inside a knowledge structure you own, so its answers arrive as links you can walk instead of prose you must trust. By lunch, your vault answers director-level questions with citations that survive an audit.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Wednesday AM</span></div>
@@ -37,7 +37,9 @@
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
+      <a href="#ideas">The ideas</a>
       <a href="#mission">Mission · <span data-count-for="mission">0/10</span></a>
+      <a href="#depth">Going deeper</a>
       <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/6</span></a>
       <a href="#floor">Mastery floor · <span data-count-for="floor">0/8</span></a>
       <a href="#stuck">If you get stuck</a>
@@ -47,42 +49,88 @@
       </div>
     </nav>
 
-    <section id="orient" class="orient-grid">
-      <div>
-        <h2 class="h-plain">Why this block exists</h2>
-        <p>A <strong>vault</strong> is a folder of linked notes (we use Obsidian). Citations you can click beat quotes the model invents. Today you organize an inbox and answer director questions with real note links.</p>
-        <h3>What you will leave with</h3>
-        <ul>
-          <li>Scope vault access in LIVE brief</li>
-          <li>Inbox → navigable link graph</li>
-          <li>≥2 multi-note answers with clickable citations</li>
-          <li>Trail audit; kill or revise at least one weak answer</li>
-          <li>Morning Brief note in vault; transfer knowledge seed; pulse</li>
-        </ul>
-        <h3>Before you start</h3>
-        <ul>
-          <li>Obsidian installed</li>
-          <li>Copy seeded vault from <code>mission_flesh/p4</code></li>
-          <li>Confirm operator templates are present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
-        </ul>
-      </div>
-      <div class="orient-aside">
-        <div class="lead-box">
-          <p class="eyebrow">Lead operate-along</p>
-          <p>The lead runs this same page on screen — brief co-written live, the mission in a build chat you can see, accepts and rejects narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+    <section id="orient" class="home-section">
+      <h2 class="h-plain">Prose you must trust, or links you can walk</h2>
+      <p>Ask a chatbot a hard question and you get prose. It may be right, it may be confident and wrong, and either way the answer dies in a scrollback you&#x27;ll never search again. Today you build the alternative: an assistant working inside a <strong>vault</strong> — Obsidian&#x27;s name for a folder of plain-text notes that link to each other, displayed as a web you can navigate. When the machine works inside your structure, every claim in its answer can point at a note you can open. The difference between the two is not intelligence. It is the trail.</p>
+      <p>The scenario is close to most real desks. A director needs a straight picture of export risk versus SSO stability before Thursday&#x27;s steering meeting, and the raw material is four messy captures sitting in an inbox: a Slack thread, an on-call paste, an undecided ship-order question, and the director&#x27;s own ask. The facts exist, scattered, and the question spans all of them. You will turn the scatter into a system that answers — and then hold that system to a standard chat never meets: citations you personally walked.</p>
+
+      <div class="orient-grid">
+        <div>
+          <h3>What you will leave with</h3>
+          <ul>
+            <li>A vault that answers director-level questions with citations you can click, walk, and verify — plus the audit habit that keeps it honest</li>
+            <li>A triage method that turns raw captures into titled, linked notes a machine can navigate</li>
+            <li>The scope craft: you can bound an assistant&#x27;s reach to exactly what you can audit, in the project and in the brief</li>
+            <li>A Morning Brief note you can regenerate Monday at work, inside your own system</li>
+            <li>A written verdict trail: which answers stood, which you revised or killed, and why</li>
+          </ul>
+          <h3>Before you start</h3>
+          <ul>
+            <li>Obsidian installed during pre-work. If it&#x27;s missing, install it now — it&#x27;s a short install and needs no key</li>
+            <li>The course repo on disk, so you can copy <code>mission_flesh/p4/vault_seed/</code></li>
+            <li>Operator templates in your Codex app project: <code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code></li>
+          </ul>
         </div>
-        <div class="callout" id="case-talk">
-          <strong>Before lunch · Harness case talk (45 min)</strong>
-          A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; leave one Transfer seed.
+        <div class="orient-aside">
+          <div class="lead-box">
+            <p class="eyebrow">Lead operate-along</p>
+            <p>The lead runs this same page on screen — brief co-written live, triage directed in a build chat you can see, a trail audit narrated including the claim that gets killed. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+          </div>
+          <div class="callout" id="case-talk">
+            <strong>Before lunch · Harness case talk (45 min)</strong>
+            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence, and today especially for how the trails held when the answer was challenged — what the speaker&#x27;s system could not support is the interesting part. Bank one Transfer seed from that.
+          </div>
         </div>
       </div>
+
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p4/p4-overview.svg" alt="Overview: scope the vault, triage the inbox into linked notes, answer two director questions, audit every trail, generate a Morning Brief into the vault" width="1120" height="280" loading="lazy" decoding="async" />
+      </figure>
+    </section>
+
+    <section id="ideas" class="home-section">
+      <h2>How a second brain actually works</h2>
+      <p class="section-lede">Five ideas make a second brain trustworthy, and every one of them outlives this particular app.</p>
+
+      <h3>Your structure, the machine&#x27;s reach</h3>
+      <p>A note in the vault is an ordinary Markdown file on disk. A <strong>wikilink</strong> — <code>[[Note Name]]</code> written inside a note — is plain text that Obsidian turns into a clickable connection to the note with that title. Nothing is hidden in a database: the assistant and Obsidian are looking at the same files, so when the assistant writes or links a note, it appears in Obsidian immediately. That shared ground is the whole trick. An answer built from your files can cite your files, and a citation to a file is something you can open.</p>
+      <p>Compare that with asking the same question in a bare chat. The model answers from whatever it absorbed in training plus whatever you pasted, the reasoning is invisible, and next month the exchange is unfindable. The chat is a workroom; the vault is the record. What goes wrong when people skip this distinction is a familiar graveyard: months of genuinely good AI conversations trapped in scrollback, none of it linked, none of it citable, all of it dead the day the chat history is cleared. At work, the rule that follows is simple — anything that must outlive the conversation gets landed in the structure before the conversation ends.</p>
+
+      <h3>Scoped access is knowledge governance</h3>
+      <p>In the Codex app, a <strong>project</strong> is a folder you open — and that folder is the assistant&#x27;s working world. Open the vault folder as the project and the vault is what the assistant can reach; your tax returns, your other clients, and your credentials are not in the folder, so they are not in play. That is the structural layer. Your Direction Brief adds a written layer on top: what the assistant may read, what it may write, and what must never leave the vault — names, incident details, anything you would not paste into a status email.</p>
+
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p4/p4-idea-scope.svg" alt="Concept: the project boundary holds the vault files the assistant can reach; other clients, personal files, and credentials sit outside it; the brief adds written rules on top" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+
+      <p>Two layers, two different guarantees. The folder edge governs what <em>can</em> happen; the brief governs what <em>may</em> happen, and it only binds because you check it. The classic failure is opening the project one level too high &quot;to be safe&quot; — now the assistant&#x27;s reach includes everything in your user folder, and you can no longer say what informed an answer. The craft here is the same one used to scope any aide&#x27;s clearance: enough access to be useful, and no more than you can audit. It is worth pausing on how rare this move is — most people either lock the machine out of everything or open everything to it. Operators scope.</p>
+
+      <h3>Retrieval is agentic search over your links</h3>
+      <p>The assistant hasn&#x27;t memorized your vault. When you ask a cross-vault question, it searches for likely files, opens them, and follows wikilinks from note to note — the same walk you would do by clicking, done at machine speed. That style of retrieval is called <strong>agentic search</strong>: the machine navigates and reads rather than matching keywords once. The practical consequence is easy to miss and changes everything about how you organize: folders alone are closets, links are roads. A question about export risk finds <code>EU-Export-v2</code> because your Systems hub links to it and the Slack-thread note links to it — not because it sits in a well-named folder.</p>
+      <p>This is why triage quality decides answer quality before any question is asked. A vault of two hundred orphan notes with no links gives the machine nothing to walk, and cross-vault answers come back thin — or worse, confidently padded with invention where the roads ran out. A seeded hub note like <code>MOC.md</code> (a map of content — a note whose job is to link out to everything important) is the trailhead the machine starts from. At work, the ontology you would hand a new analyst on day one — people, systems, events, decisions, or whatever fits your desk — is exactly the map the machine navigates. Build it for the human and the machine gets it free.</p>
+
+      <h3>A citation you verify by navigation</h3>
+      <p>A note-link citation is a claim plus a door. The audit discipline is the one you built Monday — check citations with your own eyes, never by asking the model whether it is sure, which measures confidence, not truth — with the cite upgraded from a file tag to a link you can walk. The move has four beats: click the link, read the note, find the sentence that actually carries the claim, and mark a verdict in writing: <strong>support</strong>, <strong>partial</strong>, or <strong>not supported</strong>. Partial matters more than it sounds — a note that says a rumor is <em>unreproduced</em> only partially supports an answer that lists it as a live risk, and partial counts as failed when the answer stated the claim as fact.</p>
+
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p4/p4-idea-citation.svg" alt="Concept: the walkable citation — an answer links to a note, the note holds the sentence that carries the claim, and you mark support, partial, or not supported" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+
+      <p>What going wrong looks like: a citation to a note that does not exist (Obsidian renders those links faded, and clicking one offers to create an empty note instead of showing evidence), or a citation to a real note that never says what the answer claims. Plausible, cited, and wrong is the most dangerous combination in AI-assisted work, because the citation costume defeats the skepticism a bare claim would trigger. The only tell for an unwalked citation is that you never walked it. At work this becomes the standard you demand of any AI-produced brief, including ones other people hand you: every claim someone will act on carries a trail a skeptic can walk in under a minute. An answer that spans many notes with walkable links is a different product from a summary — a summary asks for trust; a trailed answer offers inspection.</p>
+
+      <h3>The Morning Brief: a knowledge product that regenerates</h3>
+      <p>On Monday you built a machine that makes the answer instead of a one-shot answer. The Morning Brief is that same pattern moved inside your own knowledge system: a dated note the assistant regenerates from the current state of the vault, every claim citing the note it stands on. Because the brief is generated <em>from</em> notes, it inherits the audit trail — and because the knowledge lives in the notes rather than the brief, you can delete the brief and regenerate it tomorrow after new intake without losing anything. The brief is disposable; the vault is not. That asymmetry is what makes it a product, not a document.</p>
+      <p>Two failure shapes to know. A brief that summarizes the chat instead of citing notes looks identical on day one and drifts silently by day five, because it regenerates from conversation memory instead of from the record. And a brief whose citations you never audit becomes a laundering machine: unverified claims acquire the costume of your own system and walk into your operating picture wearing it. The daily habit only compounds if the trails stay walked. At work, this is how a personal knowledge system starts earning its keep daily — the Morning Brief is the first regenerable product, and watchlists, decision logs, and handoff notes follow the same pattern.</p>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p4" data-block="P4">
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Work these in order and check each off as its proof exists. Progress saves in this browser — the same tick shows on the home page.</p>
+        <p class="section-lede">Work the stages in order and check each step when its proof exists. Progress saves in this browser — the same tick shows on the home page.</p>
+
+        <h3 id="stage-1">Stage 01 · Open the vault, write the bounds</h3>
+        <p>Before the machine touches a note, you establish what it is working toward and what it can reach. Three moves: a LIVE brief, a vault on disk, and a scope the assistant can repeat back to you.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -91,99 +139,192 @@
               <span class="check-num">1</span>
               <span class="check-title">Co-write the Direction Brief until LIVE</span>
             </label>
-            <div class="check-detail">Open chat <strong>Operator — Direction &amp; Log</strong>. Paste the brief starter from the operator pack. Fill all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Status must be <strong>LIVE</strong> before the mission — vague “explore the data” outcomes get challenged; name the artifact.</div>
+            <div class="check-detail">In chat <strong>Operator — Direction &amp; Log</strong>, paste the brief starter and fill all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Name the artifacts — a navigable vault, two cited answers, a Morning Brief note — not &quot;organize my notes.&quot; Evidence standard today is specific: every citation opened by you, verdict marked. You should see the AI push back on anything vague; that push-back is the co-writing. If it accepts everything on the first pass, your fields are too vague to fail — tighten Done-looks-like and Evidence standard until it argues. Status <strong>LIVE</strong> before the mission starts.</div>
           </li>
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-vault" name="p4-p4-vault" data-check-id="p4-vault" />
               <span class="check-num">2</span>
-              <span class="check-title">Open/copy vault seed into Obsidian</span>
+              <span class="check-title">Copy the vault seed and open it in Obsidian</span>
             </label>
-            <div class="check-detail">Copy <code>mission_flesh/p4/vault_seed/</code> into a new Obsidian vault, or open it in place.</div>
+            <div class="check-detail">Copy <code>mission_flesh/p4/vault_seed/</code> to a working folder you own (for example <code>Documents\p4-vault</code>) so the course copy stays clean. In Obsidian, choose <strong>Open folder as vault</strong> and pick that folder. You should see <code>MOC</code>, <code>People</code>, <code>Systems</code>, <code>Events</code>, <code>Decisions</code>, and a <code>00_Inbox</code> folder holding four captures. If the file list looks wrong, you opened the parent folder — reopen at the folder that directly contains <code>MOC.md</code>.</div>
           </li>
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-scope" name="p4-p4-scope" data-check-id="p4-scope" />
               <span class="check-num">3</span>
-              <span class="check-title">LIVE brief scopes vault access</span>
+              <span class="check-title">Scope the assistant&#x27;s reach, and prove it</span>
             </label>
-            <div class="check-detail">What the assistant may read/write; what must never leave the vault.</div>
+            <div class="check-detail">Start a fresh build chat in the Codex app and open the vault folder as its project, keeping the permission mode at <strong>Ask for approval</strong> while a machine writes into your knowledge base. Each chat keeps its own project — your pinned operator chats stay in the sidebar on the course project, and you click between chats all morning. Your brief&#x27;s Bounds field states: read and write only inside the vault, plus the never-leave list (names, incident details). Then prove the scope: ask the assistant to list the files it can see and compare against Explorer. More than the vault means the project is opened too high — reopen at the vault root.</div>
           </li>
+        </ol>
+
+        <h3 id="stage-2">Stage 02 · Triage the inbox into your ontology</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p4/p4-stage-triage.svg" alt="Stage 2: four raw inbox captures become titled notes linked under the People, Systems, Events, and Decisions hubs" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <p>Now the raw captures become roads. You direct the organization; the assistant does the typing. The one decision you must not delegate is the ontology — the naming scheme and hub structure the whole vault will follow. People / Systems / Events / Decisions is the seeded default; replace it with your own if your desk thinks differently.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-inbox" name="p4-p4-inbox" data-check-id="p4-inbox" />
               <span class="check-num">4</span>
-              <span class="check-title">Process 00_Inbox into linked notes</span>
+              <span class="check-title">Process 00_Inbox into linked, titled notes</span>
             </label>
-            <div class="check-detail">Navigable structure (People / Systems / Events / Decisions — or your own IA). Not a dump of AI filenames.</div>
+            <div class="check-detail">Direct the assistant: propose a title and home for each capture first, write only after you approve. Require <code>[[links]]</code> from the hub notes to every new note, and require status words — <em>rumor</em>, <em>unreproduced</em>, <em>ignore for prod</em> — to survive into the new notes verbatim. You should see the hubs link out to new notes and the graph view (left ribbon in Obsidian) show connections. If you got a dump of AI-named files instead, the ontology was never stated — name it and redirect.</div>
           </li>
+        </ol>
+        <div class="panel">
+          <p class="eyebrow">A triage direction that keeps you in charge</p>
+          <pre><code>Vault root: [path]. Only read and write inside this vault.
+Process each file in 00_Inbox into notes under People / Systems / Events / Decisions.
+For each capture: propose the note title(s) and links first; wait for my OK.
+Preserve status words exactly (rumor, unreproduced, ignore for prod).
+Link every new note from its hub and from MOC. Do not delete the originals;
+move processed captures to 00_Inbox/processed/.</code></pre>
+        </div>
+
+        <h3 id="stage-3">Stage 03 · Director questions with walkable citations</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p4/p4-stage-question.svg" alt="Stage 3: one director question fans out across several notes and converges into a single answer whose claims each cite a note" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <p>This is the payoff of the triage: questions no single note can answer. The two questions are in <a href="../../mission_flesh/p4/director_questions.md"><code>mission_flesh/p4/director_questions.md</code></a>. Each answer lands as a dated note inside the vault — a <code>[[wiki-link]]</code> is only clickable where Obsidian renders it, and an answer that stays in the chat is just text with brackets. Hold the answers to the standard your brief set — multi-note, cited, status carried — and remember that the machine will happily meet a lower standard if you let it.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-q1" name="p4-p4-q1" data-check-id="p4-q1" />
               <span class="check-num">5</span>
-              <span class="check-title">Director question 1 with multi-note citations</span>
+              <span class="check-title">Director question 1 — multi-note, cited</span>
             </label>
-            <div class="check-detail">Ask via Codex with vault access scoped in your brief. Clickable [[wiki-links]]; the answer spans multiple notes.</div>
+            <div class="check-detail">Ask: what are the top operational risks this week, and which notes support each? Have the answer written as a note in the vault — <code>Answers/Q1 Risks.md</code> — per the panel below. You should see it appear in Obsidian, claims each citing a <code>[[note]]</code> and spanning several notes: the export, billing, and SSO facts live in different notes, so a real answer must span them. Open the answer note and click two links as a smoke test — real notes, not faded links offering to create one. Single-note answers or unresolved links: failure catalog below, then re-ask.</div>
           </li>
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-q2" name="p4-p4-q2" data-check-id="p4-q2" />
               <span class="check-num">6</span>
-              <span class="check-title">Director question 2 with multi-note citations</span>
+              <span class="check-title">Director question 2 — same standard</span>
             </label>
-            <div class="check-detail">Second director-level question, same standard.</div>
+            <div class="check-detail">Ask: what decision is blocked, and what evidence is missing? This one tests whether triage kept the decision open instead of resolving it by paraphrase — the ship-order question has unclear owners, and a good answer says so and names what evidence would unblock it. Same bar, same landing: an answer note in the vault, multiple notes cited, resolvable links. The &quot;what is missing&quot; half is the interesting half; a vault that can say what it does not know is worth more than one that always answers.</div>
           </li>
+        </ol>
+        <div class="panel">
+          <p class="eyebrow">A vault-scoped director prompt</p>
+          <pre><code>Vault root: [path]. Only read and write inside this vault.
+Answer from the vault only. Write each answer as its own dated note
+under Answers/ in the vault. Cite notes as [[Note Name]] and, for each
+claim, quote the sentence in the note that supports it.
+1) What are the top operational risks this week, and which notes support each?
+2) What decision is blocked, and what evidence is missing?
+Do not cite a note that does not exist. Carry status words (rumor,
+unreproduced) into the answer. Where the vault is silent, say so.</code></pre>
+        </div>
+
+        <h3 id="stage-4">Stage 04 · Walk every trail, kill what fails</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p4/p4-stage-audit.svg" alt="Stage 4: an audit ledger — every cited note opened and marked support, partial, or not supported; the partial verdict drives a revision" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <p>The audit is where your judgment does the work, and it is yours alone — the assistant does not grade its own citations. Budget real time for it. Fifteen minutes of walking trails teaches you more about machine-generated knowledge than an hour of generating it.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-audit" name="p4-p4-audit" data-check-id="p4-audit" />
               <span class="check-num">7</span>
-              <span class="check-title">Trail audit every cited note</span>
+              <span class="check-title">Walk every cited trail and mark a verdict</span>
             </label>
-            <div class="check-detail">Open each citation; mark support / partial / not supported.</div>
+            <div class="check-detail">Work from the two answer notes in Obsidian. For every citation in both: click it, read the note, find the sentence that carries the claim, and mark <strong>support / partial / not supported</strong> — in writing, in your log or an <code>Audit</code> note in the vault. Partial is the verdict to respect: a note recording an <em>unreproduced</em> rumor only partially supports an answer listing it as a live risk. If every verdict comes back support on the first pass, you are probably reading generously — re-check the claims against the exact sentences.</div>
           </li>
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-kill" name="p4-p4-kill" data-check-id="p4-kill" />
               <span class="check-num">8</span>
-              <span class="check-title">Revise or kill ≥1 weak answer</span>
+              <span class="check-title">Revise or kill at least one weak answer</span>
             </label>
-            <div class="check-detail">Because the trail failed audit — not because of vibes.</div>
+            <div class="check-detail">Act on the audit: at least one claim revised or killed because its trail failed — restated as rumor, cut entirely, or re-asked with a tighter direction such as &quot;quote the exact supporting sentence per claim.&quot; The reason must be the trail, not vibes, and the before/after goes in your log; the adversarial chat will ask for it. If nothing failed even on a hard second read, tighten the standard until something honest gives — a first audit that catches nothing usually means the bar moved, not the machine.</div>
           </li>
+        </ol>
+
+        <h3 id="stage-5">Stage 05 · Generate the Morning Brief into the vault</h3>
+        <p>Now the machine pattern: a regenerable product living inside the system, not a paste into a document. The brief lands as a note, so it can cite notes — and so tomorrow&#x27;s version can replace it without losing anything.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-morning" name="p4-p4-morning" data-check-id="p4-morning" />
               <span class="check-num">9</span>
-              <span class="check-title">Morning_Brief.md in vault with verified links only</span>
+              <span class="check-title">Morning_Brief.md in the vault, verified links only</span>
             </label>
-            <div class="check-detail">Generated into the vault; citations you verified.</div>
+            <div class="check-detail">Direct the assistant to write <code>Morning_Brief.md</code> into the vault: dated, short, every claim citing a <code>[[note]]</code> — and only claims whose trails you verified in Stage 4. You should see the note appear in Obsidian the moment it is written; that is the shared-files mechanism working. Spot-walk two of its citations before accepting. If the brief quotes the chat instead of citing notes, reject it and regenerate — that difference is exactly what makes it a product instead of a transcript.</div>
           </li>
+        </ol>
+        <div class="panel">
+          <p class="eyebrow">A Morning Brief direction that stays a product</p>
+          <pre><code>Vault root: [path]. Only read and write inside this vault.
+Write Morning_Brief.md into the vault: today&#x27;s date, short.
+Every claim cites a [[note]] — vault notes only, never the chat.
+Include only claims whose trails I marked support in the audit;
+carry status words (rumor, unreproduced). Where the vault is
+silent, say so instead of filling the gap.</code></pre>
+        </div>
+
+        <h3 id="stage-6">Stage 06 · Bank the transfer seed</h3>
+        <p>One written sentence now beats reconstruction later — the transfer chat will build on whatever you bank here.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-transfer" name="p4-p4-transfer" data-check-id="p4-transfer" />
               <span class="check-num">10</span>
-              <span class="check-title">Transfer knowledge/trail seed</span>
+              <span class="check-title">Name what must live in a navigable system at work</span>
             </label>
-            <div class="check-detail">What must live in a navigable system at work.</div>
+            <div class="check-detail">One honest sentence, written down now while the morning is fresh: what knowledge at your work currently lives in your head, a chat scrollback, or a pile of documents — and should live in a linked structure a machine can work inside. Decisions and their reasons? Client facts? Incident history? You will develop this in the transfer chat during the pulse; jotting it here keeps it real instead of reconstructed.</div>
           </li>
         </ol>
+      </section>
 
-        <div class="panel">
-          <p class="eyebrow">A vault-scoped director prompt</p>
-          <pre><code>Vault root: [path]. Only read/write inside this vault.
-Organize the inbox into linked notes. Then answer:
-1) What are the top operational risks this week and which notes support each?
-2) What decision is blocked and what evidence is missing?
-Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack support.</code></pre>
+      <section id="depth" class="home-section">
+        <h2>Going deeper while you work</h2>
+        <p class="section-lede">Use these when something breaks, when you finish early, or when you want to argue.</p>
+
+        <h3>Failure catalog — symptom, cause, move</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+            <tbody>
+              <tr><td>Answers come back thin, or &quot;I can&#x27;t find that in the vault&quot;</td><td>Project opened at the wrong level, or the notes involved are unlinked</td><td>Ask the assistant to list what it can see; confirm the project root is the vault root; check <code>MOC</code> links out to the hubs and the hubs to the notes</td></tr>
+              <tr><td>A citation opens to a note that never says that</td><td>The model paraphrased past the note — or invented the support</td><td>Mark <em>not supported</em>; re-direct with &quot;quote the exact supporting sentence per claim&quot;; kill claims that still cannot produce a sentence</td></tr>
+              <tr><td>A cited link is faded and clicking it offers to create a new note</td><td>The cited note does not exist — an invented title, or a rename broke it</td><td>That is a fake cite; treat the whole answer as suspect, audit the rest hard, and re-ask with &quot;cite only notes that exist&quot;</td></tr>
+              <tr><td>The vault fills with files like <code>summary_v2_final.md</code></td><td>You delegated the ontology instead of the typing</td><td>State the ontology and naming scheme in the direction; require proposed titles before writing; rename the offenders via Obsidian so backlinks update</td></tr>
+              <tr><td>The unreproduced SSO rumor shows up as a confirmed risk</td><td>Retrieval treats every note as equally true; status words got dropped in triage</td><td>Fix the notes first — status in the note text — then require answers to carry status forward; this is the partial-verdict case from Stage 4</td></tr>
+              <tr><td>Morning Brief reads well but cites nothing, or cites the conversation</td><td>Generation anchored on chat memory instead of the vault</td><td>Reject; regenerate with &quot;every claim cites a [[note]], vault only&quot;; spot-walk two links before accepting the redo</td></tr>
+            </tbody>
+          </table>
         </div>
+
+        <h3>Questions worth arguing about</h3>
+        <ul>
+          <li><strong>When is agreement not evidence?</strong> Two notes that both trace to the same Slack thread are one source wearing two costumes, and a cited answer built on them looks better-supported than it is. What would your vault have to record — a source line per note? a provenance link? — for the machine to be unable to launder one rumor into three citations?</li>
+          <li><strong>What belongs in the vault versus the chat?</strong> Everything-in-the-vault drowns the structure in noise; nothing-in-the-vault starves it. Draw your line: what earned a note today, and what deserved to die in the workroom?</li>
+          <li><strong>Where does &quot;unverified&quot; live?</strong> The seed carries a rumor, an unreproduced report, and a note explicitly marked to ignore for production. If your structure has no home for epistemic status, every note ranks as equally true the day retrieval touches it. Is status a word in the text, a tag, a folder — and which of those survives a machine&#x27;s rewrite?</li>
+          <li><strong>Would you hand this vault to a new deputy on day one?</strong> If not, name the gap precisely: missing notes, or missing links? The answer usually embarrasses one specific stage of this morning&#x27;s work — and tells you which habit to keep.</li>
+        </ul>
+
+        <h3>At your desk</h3>
+        <ul>
+          <li><strong>Program or project lead:</strong> a vault of decisions, owners, and risks; the Monday brief regenerated before standup instead of rebuilt from memory; &quot;what changed since Friday?&quot; becomes a cited answer.</li>
+          <li><strong>Analyst:</strong> source notes carrying provenance and status; the standing watch question re-asked each morning; every claim in the product traceable to a source note a reviewer can walk.</li>
+          <li><strong>Consultant:</strong> one vault per client, opened as its own project — the boundary is the confidentiality control, and the never-leave list is in the brief before the first question.</li>
+          <li><strong>Ops or on-call lead:</strong> incident notes linked to system notes; the handoff brief regenerated at shift change, citing the incidents it summarizes so the next shift can walk what it inherits.</li>
+        </ul>
+
+        <h3>Stretch, once the floor is solid</h3>
+        <p>Three directions, in rough order of value. Reconciliation: ask a question that forces two conflicting notes into the same answer — the director&#x27;s ask treats the cyber rumor as possibly live while the on-call paste records it as unreproduced — and require the conflict to surface explicitly rather than be smoothed over; smoothing is the failure. Durability: rework the vault&#x27;s naming and hub structure into an information architecture you would still be using in 90 days, and write down why. Load-bearing honesty: the third question in <code>director_questions.md</code> — where are we over-confident? — or a deliberately loaded question like &quot;confirm the cyber attack is real,&quot; answered with trails only, logging a refusal wherever the vault is silent. A system that can decline to answer is the one you can trust when it does answer.</p>
       </section>
 
       <section id="pulse" class="home-section" data-check-section="pulse">
@@ -197,7 +338,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">11</span>
               <span class="check-title">Mission ran in a separate build chat</span>
             </label>
-            <div class="check-detail">Build work stays out of the operator chat — the trail is the point.</div>
+            <div class="check-detail">Triage, questions, and the Morning Brief all ran in a build chat, not in <strong>Operator — Direction &amp; Log</strong>. Build chat wants to cheerlead; the operator chat holds judgment. Keeping them separate is what makes the trail readable later.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -206,7 +347,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">12</span>
               <span class="check-title">Operator Log complete</span>
             </label>
-            <div class="check-detail">Back in Direction &amp; Log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, what you still own.</div>
+            <div class="check-detail">Click back to the pinned <strong>Operator — Direction &amp; Log</strong> chat in the sidebar: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, and what you still own. Today&#x27;s log carries two specifics: what the machine retrieved versus what you judged, and one thing the vault cannot yet support — both feed the mastery floor below.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -215,7 +356,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">13</span>
               <span class="check-title">PASS_BARS self-check drafted</span>
             </label>
-            <div class="check-detail">Against P4’s MVP list: met / not yet with evidence pointers. No inflation.</div>
+            <div class="check-detail">Against P4&#x27;s MVP list: met / not yet, each with an evidence pointer — the audit marks, the killed claim, the brief&#x27;s citations. No inflation; the AI in the operator chat should stress-test any claim that leans on &quot;basically.&quot;</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -224,7 +365,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">14</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">Chat <code>Adversarial — P4</code>: frozen prompt + artifacts + provisional verdict. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
+            <div class="check-detail">Open a fresh chat <code>Adversarial — P4</code> with the frozen prompt from <code>operator/ADVERSARIAL_REVIEW.md</code>, plus your artifacts: both cited answers, the audit marks, the Morning Brief, the provisional verdict. Expect it to attack unwalked citations first. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded — and uncheck the floor item it wounded until fixed.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -233,7 +374,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">15</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes). Deep mark if this block has one.</div>
+            <div class="check-detail">Four headlines in <code>operator/MEASUREMENT_SPINE.md</code>: ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result in minutes. Quality today rides on the audit: an answer that survived your walk rates differently from one that merely read well. P4 carries no deep mark — the four headlines are the whole entry.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -242,7 +383,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">16</span>
               <span class="check-title">Transfer pulse (every AM/PM)</span>
             </label>
-            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt. A session-log row is required even if the seed is small today.</div>
+            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt and develop the seed you banked in Stage 6 — what at your work belongs in a navigable, machine-workable structure. A session-log row is required even if the seed stays small today.</div>
           </li>
         </ol>
       </section>
@@ -258,7 +399,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">17</span>
               <span class="check-title">MVP: Vault scoped in LIVE brief</span>
             </label>
-            <div class="check-detail">Access + never-leave rules.</div>
+            <div class="check-detail">Evidence looks like: the brief text names the vault root, the allowed read/write actions, and the never-leave list — written before the mission, not reconstructed after.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -267,7 +408,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">18</span>
               <span class="check-title">MVP: Link graph from inbox</span>
             </label>
-            <div class="check-detail">Navigable structure.</div>
+            <div class="check-detail">Evidence looks like: you can navigate <code>MOC</code> → hub → note by clicking, and the graph view shows a connected structure. A pile of AI-named files with no links is not yet, however tidy the names.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -276,7 +417,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">19</span>
               <span class="check-title">MVP: ≥2 multi-note cited answers</span>
             </label>
-            <div class="check-detail">Clickable links.</div>
+            <div class="check-detail">Evidence looks like: both director answers living as notes in the vault, each spanning multiple notes, every citation a clickable link that resolves to a real note. One-note answers are summaries and do not clear the bar.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -285,7 +426,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">20</span>
               <span class="check-title">MVP: Full trail audit</span>
             </label>
-            <div class="check-detail">Every cited note opened.</div>
+            <div class="check-detail">Evidence looks like: a written mark — support / partial / not supported — for every cited note in both answers, in your log or an Audit note. &quot;I checked them&quot; without marks does not survive the adversarial chat.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -294,16 +435,16 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">21</span>
               <span class="check-title">MVP: ≥1 answer revised/killed on failed trail</span>
             </label>
-            <div class="check-detail">Evidence-based.</div>
+            <div class="check-detail">Evidence looks like: the before and after of one claim, plus which trail failed and how — restated as rumor, cut, or re-asked. The cause is a verdict from the audit, not a feeling about tone.</div>
           </li>
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-morning" name="p4-mvp-morning" data-check-id="mvp-morning" />
               <span class="check-num">22</span>
-              <span class="check-title">MVP: Morning Brief in vault verified</span>
+              <span class="check-title">MVP: Morning Brief in vault, verified</span>
             </label>
-            <div class="check-detail">Links only.</div>
+            <div class="check-detail">Evidence looks like: <code>Morning_Brief.md</code> inside the vault, dated, every claim citing a note — and its citations drawn from trails you already walked, with two spot-checked on acceptance.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -312,7 +453,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">23</span>
               <span class="check-title">MVP: Log retrieval vs judgment + gap</span>
             </label>
-            <div class="check-detail">What vault cannot support.</div>
+            <div class="check-detail">Evidence looks like: a log line separating what the machine retrieved from what you judged, and one named thing the vault cannot yet support — a question it would answer thinly, or a status it cannot represent.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -321,7 +462,7 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
               <span class="check-num">24</span>
               <span class="check-title">Block closed under fire</span>
             </label>
-            <div class="check-detail">Adversarial line present; measurement row written; transfer row written; you could defend this block to a peer.</div>
+            <div class="check-detail">Adversarial line present in the log; measurement row written; transfer row written. The test: you could defend this block&#x27;s verdict to a skeptical peer using only your artifacts, walking any trail they pick.</div>
           </li>
         </ol>
       </section>
@@ -330,14 +471,16 @@ Cite notes as [[Note Name]]. Do not cite notes you did not create or that lack s
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not “it ran.” Evidence must survive adversarial review. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P4</a>.</p>
+        <p>MVP is not &quot;it ran.&quot; A vault answering with fake or unopened citations is not yet, however smooth the answers read. Evidence must survive adversarial review. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P4</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>
         <ul>
-          <li>Narrow <em>data scope</em>, not the judgment standard</li>
-          <li>Re-read your LIVE brief — most chaos is an unbounded outcome</li>
-          <li>Ask for a lead diagram of the one concept blocking you, then continue on your chair</li>
+          <li><strong>&quot;The assistant can&#x27;t see my vault.&quot;</strong> The project is almost always opened at the wrong folder. Reopen it at the vault root — the folder that directly contains <code>MOC.md</code> — then ask the assistant to list what it sees and compare with Explorer.</li>
+          <li><strong>&quot;My answers keep citing one giant note.&quot;</strong> Triage collapsed the inbox into a single summary file, and a question cannot span notes that do not exist. Split the material back into separate titled notes, link them from the hubs, and re-ask.</li>
+          <li><strong>&quot;My links don&#x27;t resolve.&quot;</strong> Wikilinks match note titles exactly — <code>[[Billing API]]</code> and <code>[[Billing-API]]</code> are different notes. Pick one naming convention and rename via Obsidian itself, which updates the links that point at the renamed note.</li>
+          <li><strong>Assistant suddenly erroring mid-morning?</strong> A capped API key fails as a 429 quota error that reads like an auth failure. Don&#x27;t reinstall anything — flag staff and check the key first.</li>
+          <li>When narrowing, narrow the <em>data scope</em>, not the judgment standard: fewer notes, same audit.</li>
         </ul>
       </div>
     </section>
