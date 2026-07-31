@@ -38,6 +38,36 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent
 
+
+def load_dotenv(path: Path | None = None) -> None:
+    """Load KEY=VALUE pairs from a local .env if present.
+
+    Does not override variables already set in the process environment
+    (Railway / shell win). No external dependency.
+    """
+    env_path = path or (REPO_ROOT / ".env")
+    if not env_path.is_file():
+        return
+    try:
+        text = env_path.read_text(encoding="utf-8")
+    except OSError:
+        return
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        key = key.strip()
+        if not key or key in os.environ:
+            continue
+        value = value.strip()
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+            value = value[1:-1]
+        os.environ[key] = value
+
+
+load_dotenv()
+
 COOKIE_NAME = os.environ.get("COOKIE_NAME", "ahb_site_auth")
 COOKIE_MAX_AGE = int(os.environ.get("COOKIE_MAX_AGE", str(14 * 24 * 3600)))
 BIND_HOST = os.environ.get("BIND_HOST", "0.0.0.0")
@@ -59,6 +89,7 @@ STAFF_ONLY_PATHS = {
     "lead/COHORT_PIN.md",
     "instruments/p2_dyno/engineering/FACILITATOR_KEY.md",
     "instruments/p2_dyno/mission_ops/FACILITATOR_KEY.md",
+    "mission_flesh/p5/FACILITATOR_KEY.md",
 }
 
 BLOCKED_NAMES = {

@@ -25,13 +25,22 @@ HTML pages link to `../operator/`, `../instruments/`, `../prework/`, etc. The ho
 
 ## Local
 
+Preferred: put the password in a gitignored `.env` (see `.env.example`). `server.py` loads it automatically and will not override real environment variables.
+
 ```bash
 cd /path/to/AI_Harness_Bootcamp
+cp .env.example .env   # then edit SITE_PASSWORD=
 python3 -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\Activate.ps1
-export SITE_PASSWORD='choose-a-cohort-password'
 python server.py
 # open http://127.0.0.1:8080/site/
+```
+
+Or export once in the shell:
+
+```bash
+export SITE_PASSWORD='choose-a-cohort-password'
+python server.py
 ```
 
 Ungated local (dev only):
