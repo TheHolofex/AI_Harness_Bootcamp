@@ -23,7 +23,7 @@
   <main class="site-main">
     <p class="eyebrow">Thursday PM · P7 · AI Harness Bootcamp</p>
     <h1>The automation line</h1>
-    <p class="lede">You choose the right machine: adaptive agent loop vs fixed pipeline with a human gate — and you keep judgment on exceptions.</p>
+    <p class="lede">Not every job wants a thinking machine that adapts as it goes. Today you build the other machine — a fixed path that works through volume on its own and holds every exception for your judgment.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Thursday PM</span></div>
@@ -37,7 +37,9 @@
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
+      <a href="#ideas">The ideas</a>
       <a href="#mission">Mission · <span data-count-for="mission">0/8</span></a>
+      <a href="#depth">Going deeper</a>
       <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/6</span></a>
       <a href="#floor">Mastery floor · <span data-count-for="floor">0/9</span></a>
       <a href="#stuck">If you get stuck</a>
@@ -47,115 +49,255 @@
       </div>
     </nav>
 
-    <section id="orient" class="orient-grid">
-      <div>
-        <h2 class="h-plain">Why this block exists</h2>
-        <p>Not every job wants a free-roaming agent. A <strong>pipeline</strong> is a designed path: one pass, predictable stages, humans on exceptions. Today you build that path and write when you would still use an agent (P6) instead.</p>
-        <h3>What you will leave with</h3>
-        <ul>
-          <li>n8n flow end-to-end with human approval gate</li>
-          <li>≥3 exceptions adjudicated · wrong-but-confident row caught by gate</li>
-          <li>Discrimination write-up: agent vs pipeline on your work</li>
-          <li>Draft 30/60/90 horizons in Transfer; pulse</li>
-        </ul>
-        <h3>Before you start</h3>
-        <ul>
-          <li>n8n starts</li>
-          <li>Sample rows from <code>mission_flesh/p7</code></li>
-          <li>Confirm operator templates are present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
-        </ul>
-      </div>
-      <div class="orient-aside">
-        <div class="lead-box">
-          <p class="eyebrow">Lead operate-along</p>
-          <p>The lead runs this same page on screen — brief co-written live, mission run in a build chat you can see, accepts and rejects narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+    <section id="orient" class="home-section">
+      <h2 class="h-plain">The other machine</h2>
+      <p>All week you have directed an <strong>agent loop</strong> — a machine that reads the situation, acts, observes the result, and corrects, inside guardrails you set. That machine earns its keep when the path to the goal is unknown. A large share of real work is not like that. It is the same decision, in the same shape, five hundred times: invoices to code, tickets to route, field reports to fold into one master picture. Pointing an adaptive agent at that work buys you cost and drift; leaving it to humans buys you a backlog.</p>
+      <p>For that work you want a <strong>pipeline</strong> — a path you design once that runs the same way every time, with an AI step doing the reading and a <strong>human gate</strong> holding anything doubtful for you. This afternoon you build one in n8n: rows in, AI classify and extract, machine checks, and a master sheet that only cleared rows can reach. Then comes the part that outlives every tool in the room: sorting your own work into what belongs to each machine.</p>
+      <div class="orient-grid">
+        <div>
+          <h3>What you will leave with</h3>
+          <ul>
+            <li>A working n8n flow — batch in → AI classify/extract → validate → master sheet — with a human-approval gate that holds exceptions</li>
+            <li>At least three exceptions adjudicated with written reasons, including one wrong-but-confident row your gate caught</li>
+            <li>A discrimination write-up: which of your real workloads belong to an agent loop, a pipeline, or neither — criteria, not vibes</li>
+            <li>Draft 30/60/90 horizons in your Transfer file, seeded with one workload to pipeline and one that must stay agentic</li>
+          </ul>
+          <h3>Before you start</h3>
+          <ul>
+            <li>n8n starts and lets you in: run <code>n8n start</code> in PowerShell, open <code>localhost:5678</code>, and sign in with the owner account you recorded in pre-work — it lives only on your laptop. Forgot the password? Flag staff — n8n has a command-line reset; do not reinstall. If <code>n8n start</code> exits immediately with a version message, that is the Node range talking, not a broken install — n8n wants Node 22.22 up to the current LTS line.</li>
+            <li>Sample rows on disk: <code>mission_flesh/p7/rows.csv</code>, with <code>discrimination_template.md</code> beside it</li>
+            <li>Operator templates present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
+            <li>Your OpenAI key (<code>sk-proj-…</code>) within reach — the AI step inside n8n runs on it, and Stage 03 is where you store it as your first n8n credential</li>
+          </ul>
         </div>
-        <div class="callout" id="lead-demo">
-          <strong>Right after lunch · lead demo (30 min)</strong>
-          Before this block opens, the lead runs a <strong>watch-only</strong> demo on the staff machine: Codex <strong>built-in browser</strong> pulls a few facts from scoped public pages and collates a short <strong>slideshow</strong>; then verify one claim and stop a runaway expand. You do not install plugins or the Chrome extension. It extends this morning’s contract language (<em>deck ≠ truth</em>), then hands off to pipelines here. Lead script: <code>lead/BROWSER_DECK_DEMO.md</code>.
+        <div class="orient-aside">
+          <div class="lead-box">
+            <p class="eyebrow">Lead operate-along</p>
+            <p>The lead runs this same page on screen — brief co-written live, the flow wired node by node in view, holds and promotions narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+          </div>
+          <div class="callout" id="lead-demo">
+            <strong>Right after lunch · watch-only demo (30 min)</strong>
+            First comes a demo you watch rather than run: the Codex <strong>built-in browser</strong> pulls a few facts from scoped public pages and collates a short <strong>slideshow</strong>; then one claim gets verified and a runaway expand gets stopped. You install nothing — no plugins, no Chrome extension. Keep the lesson it carries: a deck a browsing model collated is a claim list until a claim has been verified — <em>deck ≠ truth</em>.
+          </div>
         </div>
       </div>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p7/p7-overview.svg" alt="The automation line at a glance: rows in, AI step, checks, human gate, master sheet — exceptions hold at the gate" width="1120" height="280" loading="lazy" decoding="async" />
+      </figure>
+    </section>
+
+    <section id="ideas" class="home-section">
+      <h2>How to think about the line</h2>
+      <p class="section-lede">Five ideas carry the afternoon; each earns a second look while the line is running.</p>
+
+      <h3>Two machines, one choice</h3>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p7/p7-two-machines.svg" alt="Agent loop adapting mid-run beside a pipeline repeating one designed path through a gate to a sheet" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+      <p>An agent loop decides its next move at run time: the model reads what just happened and picks what to do next, every run, inside your guardrails. A pipeline's path is decided at <em>design</em> time, by you, once. That is the whole difference, and everything else follows from it. In the loop, the model owns the path and you own the bounds; in the line, you own the path and the model fills exactly one station you built for it.</p>
+      <p>Choosing wrong costs you in both directions. Put a free-roaming agent on five hundred near-identical rows and you pay for five hundred separately-reasoned paths — slow, expensive, and worst of all unauditable, because the path is different every time and drift accumulates where you cannot see it. Put a pipeline on judgment work and the opposite failure appears: the path cannot adapt, so everything unusual either fails outright or gets forced through a shape that does not fit it — and the human at the gate, facing a wall of forced-through items, degrades into a stamp.</p>
+      <p>At work the choice comes down to two questions you can ask of any workload — what varies per item, and what a wrong answer costs — with volume as the threshold that makes a pipeline worth building at all. A varying path points at an agent. Same shape at volume points at a pipeline. A high cost of error points at a gate — or at keeping the work human entirely.</p>
+
+      <h3>One pass, no course correction</h3>
+      <p>Nothing in the flow you are about to build re-reads its own output and revises. Each node fires once per item and hands the result forward; nothing in this line is a harness loop — no observe-and-correct beat exists anywhere in the path. That is not a defect — it is what makes the line cheap, fast, and predictable. But it means every gram of judgment you would normally spend mid-run has to be spent up front instead, in exactly two places: the shape of the path, and the placement of the gate.</p>
+      <p>The mistake to watch for in yourself: after four days of cothinking, you are used to a machine that pushes back — one that notices when input looks wrong and says so. The AI step in this line will not. Hand it garbage and it processes garbage, fluently and with perfect confidence, and the flow moves on. In a chat you would have caught that in the next message. Here there is no next message. The line's safety has to be engineered in, because nothing inside it will sense trouble.</p>
+      <p>This gives you a sharp first question for any automation proposal you meet at work: <em>where does this path get to correct itself?</em> If the answer is nowhere — and for most pipelines it is — then the design of the path and the placement of the gate are carrying all the judgment, and those two things deserve most of the review time.</p>
+
+      <h3>The human gate is a design decision</h3>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p7/p7-gate-placement.svg" alt="Two lanes: gate before the write catches the bad row; gate after the write approves a row that already landed" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+      <p>A gate is a point where the flow stops and a person decides. n8n dresses this up as a human-approval step, but the concept is older than any tool: work holds until someone with judgment releases it. Two properties make a gate real rather than decorative. First, placement: a gate <em>upstream</em> of the master sheet means bad rows provably never land, and the sheet stays something you can vouch for. A gate <em>downstream</em> means the error is already the record by the time you see it — your "review" is theater, and your approval a stamp with your name on it.</p>
+      <p>Second, the hold has to arrive with its evidence: the row, the AI's output, and the reason it held. A gate that shows you "approve? yes/no" with nothing attached is training you to click yes — and after the twentieth click you will, every time. The rate matters too: a gate that holds everything stops being read, and a gate that holds nothing is a drawing of a gate. You tune toward a rate where every hold deserves your attention and gets it.</p>
+      <p>At work, whenever someone asks you to "review" automated output, your first question is now mechanical: where does the review sit relative to commit? Before commit, you are a quality check. After, you are a rubber stamp with a login — and it is better to know which job you have been given.</p>
+
+      <h3>The line must not trust the AI step</h3>
+      <p>Validation here means machine-checkable tests the flow itself runs on the AI's output before anything lands: required fields present, values drawn from an allowed set, numbers inside plausible ranges, output parseable at all. The mechanism one level down: the model returns <em>text</em>. The flow parses that text into structure, and every node downstream trusts the structure completely. That seam — free text becoming trusted data — is where automation lines break, so that is exactly where the checks go, and they fail closed: anything that does not pass routes to the gate, never to the sheet.</p>
+      <p>This is the same standard you have applied all week — evidence beats the model's self-assessment — with one difference that changes how you write it: here the consumer of the AI's output is a machine, and a machine cannot squint. Every check must be written as a rule the flow can execute. "Looks reasonable" is not a rule. "Region is one of EU, US, GLOBAL" is.</p>
+      <p>One move today makes this concrete: <code>rows.csv</code> carries an <code>expected_gate</code> column — the answer key you will grade your gate against. Drop that column before the AI step ever sees a row. Feeding the answer key to the system under test voids the test, and that rule is worth keeping long after this week: never let the machine being checked see its own check.</p>
+
+      <h3>The sort you keep</h3>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p7/p7-sorting.svg" alt="A workload fanned into three bins: agent loop, pipeline with gate, stays human" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+      <p>The lasting skill in this room is not wiring n8n nodes — it is the sort. Take any workload from your desk and place it in one of three bins: <strong>agent loop</strong>, <strong>pipeline with a gate</strong>, or <strong>stays human</strong>. The two questions you already have: what varies per item, and what a wrong answer costs — with volume, as before, the threshold that makes a pipeline worth building. The stays-human bin has its own test: when the verdict <em>is</em> the work product — a hiring call, a credibility judgment, an accept/reject that someone downstream relies on precisely because a person made it — then automating it does not speed the work up, it removes the thing that made it valuable.</p>
+      <p>Both blanket policies fail. "Automate everything" quietly converts judgment work into rubber-stamped throughput and you discover the damage in an audit. "AI is a chat tool" leaves half your volume work on human keyboards out of habit. The sort is the discipline that beats both, and it is written down, per workload, with reasons — which is exactly what the template you fill in Stage 06 forces.</p>
+      <p>n8n will rotate. So will the model in the AI step, and the vendor behind it. The sorted list — and the two questions that produced it — transfer to whatever replaces them.</p>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p7" data-block="P7">
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Work these in order and check each off as its proof exists. Progress saves in this browser — the same tick shows on the home page.</p>
-        <ol class="checklist">
+        <p class="section-lede">Six stages, in order. Check each item off when its proof exists, not when you have read it. Progress saves in this browser — the same tick shows on the home page.</p>
 
+        <h3>Stage 01 · Set the line's contract</h3>
+        <p>Before a single node exists, the brief pins what this machine is for and what it must never do. The five-minute dialogue is where "automate the rows" becomes an artifact with a gate in its acceptance criteria.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-brief" name="p7-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">1</span>
               <span class="check-title">Co-write the Direction Brief until LIVE</span>
             </label>
-            <div class="check-detail">Open chat <strong>Operator — Direction &amp; Log</strong>. Paste the brief starter. Fill all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Status must be <strong>LIVE</strong> before the mission — vague “explore the data” outcomes get challenged; name the artifact.</div>
+            <div class="check-detail">Open the chat <strong>Operator — Direction &amp; Log</strong> and paste the starter from <code>operator/DIRECTION_BRIEF.md</code>. Make the five fields name this machine: the outcome is a flow plus a gated master sheet, not "process the data." Put the gate into <em>Done looks like</em> (poisoned rows hold; the master gains only cleared rows) and the answer column into <em>Bounds</em> (the AI step never sees <code>expected_gate</code>). Status must read <strong>LIVE</strong> before you build. If the AI accepts a vague outcome without pushback, challenge it yourself — name the artifact.</div>
           </li>
+        </ol>
 
+        <h3>Stage 02 · Read the load before the machine does</h3>
+        <p>You cannot judge what the gate catches if you never saw the rows raw. Two minutes with the file now buys you the whole exception drill later.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-rows" name="p7-p7-rows" data-check-id="p7-rows" />
               <span class="check-num">2</span>
               <span class="check-title">Open rows.csv</span>
             </label>
-            <div class="check-detail">Path: <code>mission_flesh/p7/rows.csv</code> — includes messy and wrong-but-confident-prone fields. Note must_hold / reject rows.</div>
+            <div class="check-detail">Open <code>mission_flesh/p7/rows.csv</code> and read all eight rows yourself. You should see columns <code>id, text, region, expected_gate</code> — a mix of clean rows, review-worthy ones, and three that must never land: a false all-clear (row 4), a payment request (row 5), and a false attack report (row 7). The <code>expected_gate</code> column is your grading key, not the machine's input — you will drop it in the next stage. If the file is missing, pull the course repo again; the path above is exact.</div>
           </li>
+        </ol>
 
+        <h3>Stage 03 · Build the line</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p7/p7-stage-build.svg" alt="Node chain: read rows, AI step on a credential, checks that route failures down to the gate and cleared rows to the master sheet" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <p>In the n8n editor at <code>localhost:5678</code>, create a new workflow. Every station gets added the same way: press <strong>Tab</strong> on the empty canvas (or click the <strong>+</strong>), type a search term into the node picker, and pick the node. Wire the path left to right:</p>
+        <ul>
+          <li><strong>Trigger</strong> — search <em>manual</em>: a Manual Trigger fires the line each time you click <strong>Execute workflow</strong>.</li>
+          <li><strong>Read the rows</strong> — search <em>files</em>: <strong>Read/Write Files from Disk</strong> pointed at <code>mission_flesh/p7/rows.csv</code>, then <strong>Extract from File</strong> to turn the CSV into items.</li>
+          <li><strong>Drop the answer column</strong> — search <em>edit fields</em>: an <strong>Edit Fields (Set)</strong> node that removes <code>expected_gate</code> before anything downstream can see it.</li>
+          <li><strong>AI step</strong> — search <em>openai</em>: the <strong>OpenAI</strong> node's message-a-model action. Open its <strong>Credential</strong> dropdown → <strong>Create new credential</strong> → paste your OpenAI key (<code>sk-proj-…</code>) → save. The key stays in n8n's local database on your laptop. If the first call fails with 429 or quota wording, that is a capped key reading like an auth failure — flag staff rather than re-pasting the key.</li>
+          <li><strong>Checks</strong> — search <em>if</em> or <em>switch</em>: an <strong>IF</strong> (or Switch) node carrying your written rules.</li>
+          <li><strong>The write</strong> — search <em>convert</em>, then <em>files</em>: <strong>Convert to File</strong> plus a second Read/Write Files from Disk node to write cleared rows out.</li>
+        </ul>
+        <p>Give the AI step a pinned output contract in its prompt — the exact fields and format you expect back, with values from a named set — because everything downstream depends on being able to parse what it returns. The panel below is a working starting contract; adapt the fields and allowed values to match the checks you intend to write.</p>
+        <div class="panel">
+          <p class="eyebrow">Paste-ready AI-step prompt</p>
+          <pre><code>You are one station in a fixed pipeline. Read the single field report below
+and return JSON only - no prose, no markdown fences, no extra fields:
+
+{"category": "STATUS | INCIDENT | REQUEST",
+ "region": "EU | US | GLOBAL",
+ "summary": "one plain sentence in your own words"}
+
+category and region must be exactly one of the listed values. If the text
+does not support a value, use "UNKNOWN" - never guess.
+
+Report: {{ $json.text }}</code></pre>
+        </div>
+        <p>For now the fail branch of your checks ends nowhere: rows that fail simply stop, which is fine — Stage 04 gives them a place to wait. Run the whole thing on the real file before you polish anything. Stuck on which node does what? Paste the path shape into your build chat and let the Codex app walk you to the right node.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-flow" name="p7-p7-flow" data-check-id="p7-flow" />
               <span class="check-num">3</span>
               <span class="check-title">Build n8n flow end-to-end</span>
             </label>
-            <div class="check-detail">Read rows → AI classify/extract → validate → write sink (sheet or <code>out/master.csv</code>).</div>
+            <div class="check-detail">Trigger → read <code>rows.csv</code> → drop <code>expected_gate</code> → AI step (classify/extract against your pinned format) → parse → checks → write cleared rows to <code>out/master.csv</code> or a sheet. Run it once. You should see one green execution end-to-end and a master containing only cleared rows. If a node fails, open that execution and read what the node actually <em>received</em> — most first failures are shape (unparsed text, a missing field), not intelligence. Test the AI step alone on one row before debugging the whole line.</div>
           </li>
+        </ol>
 
+        <h3>Stage 04 · Place the gate</h3>
+        <p>The gate goes upstream of the write — that placement is the design decision the whole afternoon turns on. In the editor, this is the fail branch of your checks finally getting a destination: either a send-and-wait step on a channel you actually read (search <em>wait</em> in the node picker), or the honest local fallback — the fail branch writes to a held file such as <code>out/held.csv</code> that only you can promote into the master. Wire it so a held row arrives with its evidence: the original text, the AI's output, and which check it failed.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-gate" name="p7-p7-gate" data-check-id="p7-gate" />
               <span class="check-num">4</span>
               <span class="check-title">Human-approval gate before commit</span>
             </label>
-            <div class="check-detail">A human-approval node before commit of uncertain/bad rows — they cannot land silently.</div>
+            <div class="check-detail">Add the approval step upstream of the write, so uncertain and failed rows hold instead of landing. Prove it: a held row appears at the gate — with its reason — and never in the master. If your setup has no send-and-wait channel available, an equivalent gate is a fork that writes held rows to a separate held file that only you can promote into the master. The bar is that bad rows cannot land silently; no particular node is the bar.</div>
           </li>
+        </ol>
 
+        <h3>Stage 05 · The exception drill</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p7/p7-stage-exceptions.svg" alt="Three bad rows — false all-clear, wire request, false attack — held at the gate with reasons while the master sheet stays untouched" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <p>Now the line proves itself against the load it was built for. Run the full file and work the holds: this is where you stop being the person who built the gate and become the person who staffs it.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-ex3" name="p7-p7-ex3" data-check-id="p7-ex3" />
               <span class="check-num">5</span>
               <span class="check-title">Adjudicate ≥3 exceptions</span>
             </label>
-            <div class="check-detail">Each: commit / fix / reject with reason.</div>
+            <div class="check-detail">Work at least three held rows to a verdict: <strong>commit</strong> (it was fine), <strong>fix</strong> (correct the fields, then commit), or <strong>reject</strong> (write why). Write the one-line reason beside the row in the held file, or straight into your log. Under the held-file gate the promote move is manual — you copy the cleared row into the master yourself, and that move <em>is</em> the approval. You should end with three written decisions and a master that gained only rows you promoted. If everything held, or nothing did, that is a checks problem — reread one execution before touching thresholds.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-wrong" name="p7-p7-wrong" data-check-id="p7-wrong" />
               <span class="check-num">6</span>
               <span class="check-title">Wrong-but-confident path caught</span>
             </label>
-            <div class="check-detail">Show one wrong-but-confident AI path — an overconfident false row — caught by the gate.</div>
+            <div class="check-detail">Row 4 claims all systems clear — including the EU export other rows report broken. The model will often classify it as fine, fluently and confidently. Show your gate catching it, and name the written check that did the catching: a contradiction rule or an allowed-value rule, not anything that "sensed" wrongness. If the row sailed into the master, your checks are testing format, not plausibility — add the rule and re-run. This one row is the whole argument for validation inside the line.</div>
           </li>
+        </ol>
 
+        <h3>Stage 06 · Sort your real work</h3>
+        <p>The line runs; now do the thing you will still be doing in ten years. Take your actual desk — not the classroom rows — and sort it.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-disc" name="p7-p7-disc" data-check-id="p7-disc" />
               <span class="check-num">7</span>
               <span class="check-title">Discrimination write-up</span>
             </label>
-            <div class="check-detail">What stays agent (P6) vs pipeline on your real work — criteria, not vibes.</div>
+            <div class="check-detail">Fill <code>mission_flesh/p7/discrimination_template.md</code> for your own desk: per workload, agent loop or pipeline-plus-gate, why, and the judgment you will not automate. Use the two questions — what varies per item, and what a wrong answer costs. "This feels like AI work" is a vibe; "same shape two hundred times a week, wrong costs a refund" is a criterion. Three workloads sorted with reasons beats ten sorted by instinct.</div>
           </li>
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-transfer" name="p7-p7-transfer" data-check-id="p7-transfer" />
               <span class="check-num">8</span>
               <span class="check-title">Draft 30/60/90 horizons in Transfer</span>
             </label>
-            <div class="check-detail">Status toward Draft complete; agent vs pipeline seeds filled.</div>
+            <div class="check-detail">In the chat <strong>Operator — Transfer 30-60-90</strong>, fill the P7 seed: one workload to pipeline, one that must stay agentic, the judgment you will not automate, and your one-sentence discrimination rule. Then draft the full 30/60/90 horizons from the week's accumulated seeds — this is usually where the file's status moves to <em>Draft horizons complete</em>. If a horizon reads "use AI more," it is void; every line should be checkable at your own desk.</div>
           </li>
         </ol>
+      </section>
+
+      <section id="depth" class="home-section">
+        <h2>Going deeper while the line runs</h2>
+        <p class="section-lede">The flow spends real minutes executing. Spend them here.</p>
+
+        <h3>Failure catalog — symptom, cause, move</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+            <tbody>
+              <tr><td>AI step returns prose, not your format</td><td>The step's prompt never pinned an output contract</td><td>State exact fields, format, and allowed values in the step prompt; route anything unparseable to the gate instead of hand-fixing it</td></tr>
+              <tr><td>Every row holds at the gate</td><td>Parsing fails on all rows, so every check fails</td><td>Open one execution and read the AI's raw output; fix the parse first — thresholds come after</td></tr>
+              <tr><td>No row holds — including the poisoned ones</td><td>Checks test presence, not plausibility; or the gate sits after the write</td><td>Move the gate upstream of the sheet, add allowed-value and contradiction checks, re-run row 4</td></tr>
+              <tr><td>n8n exits the moment you start it</td><td>Node outside the supported range — n8n wants Node 22.22 up to the current LTS line</td><td>Run <code>node -v</code>; reinstall the LTS package if needed; open a fresh terminal before retrying</td></tr>
+              <tr><td>AI step fails with what reads like a bad key</td><td>A capped key returns a 429 quota error that looks exactly like an auth failure</td><td>Read the error body; 429 or quota wording means the cap, not the credential — ask staff rather than re-pasting keys</td></tr>
+              <tr><td>Execution green but the master is empty</td><td>The cleared branch never fires, or the write path is wrong</td><td>Follow one clean row through the execution view node by node and find where it leaves the path</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Questions worth arguing about</h3>
+        <ul>
+          <li><strong>If the gate holds 40% of rows, is the AI step earning its place?</strong> At what hold rate would a keyword rule do the same job for free — and what evidence would settle it?</li>
+          <li><strong>Where does "review" end and "rubber stamp" begin?</strong> Is it a placement fact, a rate fact, or a fact about whether your rejects ever change anything upstream? Pick one and defend it with today's artifacts.</li>
+          <li><strong>When volume grows ten times, what breaks first — the checks, the gate, or you?</strong> The honest answer usually reshapes where the gate should sit.</li>
+          <li><strong>Should an agent be allowed to build the pipeline that replaces it?</strong> You directed an adaptive machine all week; today you hard-coded one path. Who should write the checks that constrain the AI step — and why not the model itself?</li>
+        </ul>
+
+        <h3>The same line on other desks</h3>
+        <ul>
+          <li><strong>Finance operations:</strong> invoices in, AI extracts vendor, amount, and cost code; checks enforce vendor allow-list and amount ranges; the gate holds out-of-policy items with the extracted fields attached. The false all-clear row has a twin here: the invoice that "matches" a PO it contradicts.</li>
+          <li><strong>Support lead:</strong> tickets in, AI routes by product and severity; checks catch legal-threat and security keywords regardless of what the model decided; the gate holds those for a human, always.</li>
+          <li><strong>Watch desk:</strong> today's rows are this desk — field reports triaged into a master picture, where a confident false all-clear is precisely the item the gate exists for.</li>
+          <li><strong>Field operations:</strong> daily site reports folded into a rollup; the gate holds anything claiming completion of work another report contradicts.</li>
+        </ul>
+
+        <h3>Stretch lanes</h3>
+        <p>Three lanes, in rising order of ambition. None are required for the floor.</p>
+        <ul>
+          <li><strong>Measure the line:</strong> throughput and exception rate on the sample set — rows per minute, holds per run, and how each check contributes. Numbers here make the 40%-hold argument above winnable.</li>
+          <li><strong>The refusal list:</strong> write the "judgment I will not automate" list — at least three items, each tied to a real risk on your desk, not a sentiment.</li>
+          <li><strong>Rebuild a slice:</strong> take a thin slice of the P1 brief machine or the P3 intel desk and rebuild it as a pipeline. Then name what quality you traded away and why the trade is acceptable — or is not.</li>
+        </ul>
       </section>
 
       <section id="pulse" class="home-section" data-check-section="pulse">
@@ -169,7 +311,7 @@
               <span class="check-num">9</span>
               <span class="check-title">Mission ran in a separate build chat</span>
             </label>
-            <div class="check-detail">Build work stays out of the operator chat — the trail is the point.</div>
+            <div class="check-detail">The flow gets built and debugged in a build chat, not in <strong>Operator — Direction &amp; Log</strong>. The operator chat holds the brief, the log, and your verdicts; the build chat is where you and the machine untangle node wiring and expressions. Keeping them separate is what makes the trail readable later.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -178,7 +320,7 @@
               <span class="check-num">10</span>
               <span class="check-title">Operator Log complete</span>
             </label>
-            <div class="check-detail">Back in Direction &amp; Log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, what you still own.</div>
+            <div class="check-detail">Back in Direction &amp; Log: what you directed, what you changed mid-build, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers — execution views, the held rows and their reasons, the discrimination write-up — and what judgment you still own.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -187,7 +329,7 @@
               <span class="check-num">11</span>
               <span class="check-title">PASS_BARS self-check drafted</span>
             </label>
-            <div class="check-detail">Against P7’s MVP list: met / not yet with evidence pointers. No inflation.</div>
+            <div class="check-detail">Against P7's MVP list in <code>operator/PASS_BARS.md</code>: met / not yet, each with an evidence pointer. No inflation — "the flow ran" is not "the gate caught the wrong-but-confident row."</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -196,7 +338,7 @@
               <span class="check-num">12</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">Chat <code>Adversarial — P7</code>: frozen prompt + artifacts + provisional verdict. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
+            <div class="check-detail">New chat <code>Adversarial — P7</code>: the frozen prompt from <code>operator/ADVERSARIAL_REVIEW.md</code>, your artifacts, and your provisional verdict. Expect the two attacks this work invites — "your gate holds so much it proves nothing" and "your checks test format, not truth" — and answer with the artifacts. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -205,7 +347,7 @@
               <span class="check-num">13</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes). Deep mark if this block has one.</div>
+            <div class="check-detail">One row in <code>operator/MEASUREMENT_SPINE.md</code>: ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result in minutes. Under five minutes, and the honest number beats the flattering one.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -214,7 +356,7 @@
               <span class="check-num">14</span>
               <span class="check-title">Transfer pulse (every AM/PM)</span>
             </label>
-            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt. A session-log row is required even if the seed is small today.</div>
+            <div class="check-detail">In <strong>Operator — Transfer 30-60-90</strong>, paste the every-session prompt and leave a session-log row. Today's row is rarely small — the machine-choice seed and the draft horizons from Stage 06 land here.</div>
           </li>
         </ol>
       </section>
@@ -230,7 +372,7 @@
               <span class="check-num">15</span>
               <span class="check-title">MVP: n8n path end-to-end</span>
             </label>
-            <div class="check-detail">In→AI→validate→sink.</div>
+            <div class="check-detail">Batch in → AI → validate → sink — the sink being the destination the line writes to; here, your master sheet. Evidence looks like: one execution view showing the whole path run on the real rows — not a single hand-fed row.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -239,7 +381,7 @@
               <span class="check-num">16</span>
               <span class="check-title">MVP: Human gate on exceptions</span>
             </label>
-            <div class="check-detail">No silent bad commit.</div>
+            <div class="check-detail">No silent bad commit. Evidence looks like: you can point at where a bad row held — with its reason attached — and show it absent from the master.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -248,7 +390,7 @@
               <span class="check-num">17</span>
               <span class="check-title">MVP: ≥3 exceptions adjudicated</span>
             </label>
-            <div class="check-detail">Reasons.</div>
+            <div class="check-detail">Evidence looks like: three recorded decisions — commit / fix / reject — each with a written reason, not three clicks.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -257,7 +399,7 @@
               <span class="check-num">18</span>
               <span class="check-title">MVP: Discrimination write-up</span>
             </label>
-            <div class="check-detail">Agent vs pipeline.</div>
+            <div class="check-detail">Agent vs pipeline on your real work. Evidence looks like: the template filled with criteria (what varies, what wrong costs) — sharp enough that a reader could apply your rule to a workload you didn't list.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -266,7 +408,7 @@
               <span class="check-num">19</span>
               <span class="check-title">MVP: Earlier work classified</span>
             </label>
-            <div class="check-detail">Stay agent / pipeline / hybrid.</div>
+            <div class="check-detail">Evidence looks like: one piece of earlier work — the P1 brief machine or the P3 intel desk — classified stay-agent / move-pipeline / hybrid, with the rationale written down.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -275,7 +417,7 @@
               <span class="check-num">20</span>
               <span class="check-title">MVP: Wrong-but-confident caught</span>
             </label>
-            <div class="check-detail">By gate.</div>
+            <div class="check-detail">Evidence looks like: the false all-clear row (row 4) held at the gate, and you can name the written check that caught it.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -284,7 +426,7 @@
               <span class="check-num">21</span>
               <span class="check-title">MVP: Log includes discrimination + exceptions</span>
             </label>
-            <div class="check-detail">Pointers.</div>
+            <div class="check-detail">Evidence looks like: the log points at the discrimination write-up and the exception decisions — a reader could find both without asking you.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -293,7 +435,7 @@
               <span class="check-num">22</span>
               <span class="check-title">MVP: 90-day seeds (agent + pipeline)</span>
             </label>
-            <div class="check-detail">Transfer.</div>
+            <div class="check-detail">Evidence looks like: the Transfer P7 seed holds one pipeline workload and one agentic workload from your real desk, both specific enough to actually start.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -302,7 +444,7 @@
               <span class="check-num">23</span>
               <span class="check-title">Block closed under fire</span>
             </label>
-            <div class="check-detail">Adversarial line present; measurement row written; transfer row written; you could defend this block to a peer.</div>
+            <div class="check-detail">Adversarial line present; measurement row written; transfer row written; you could defend this block to a peer with artifacts, not adjectives.</div>
           </li>
         </ol>
       </section>
@@ -311,14 +453,16 @@
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not “it ran.” Evidence must survive adversarial review. Full checklist: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P7</a>.</p>
+        <p>MVP is not "it ran." Evidence must survive adversarial review — happy-path-only, no human gate, or "automation is always better" with no discrimination are all named not-yet conditions. Full checklist: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P7</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>
         <ul>
-          <li>Narrow <em>data scope</em>, not the judgment standard</li>
-          <li>Re-read your LIVE brief — most chaos is an unbounded outcome</li>
-          <li>Ask for a lead diagram of the one concept blocking you, then continue on your chair</li>
+          <li><strong>The AI step won't behave.</strong> Test it alone on one row and read its raw output before touching the rest of the line. Prose instead of your format means the prompt never pinned a contract. An auth-looking failure with 429 or quota in it means a capped key — staff, not reinstall.</li>
+          <li><strong>The gate holds everything, or nothing.</strong> Read one execution end-to-end. Fix parsing before thresholds, and confirm the gate sits before the write — both failure modes usually live in those two places.</li>
+          <li><strong>The write-up feels like vibes.</strong> Let the two questions do the forcing — what varies per item, and what a wrong answer costs — then write the answers into the template's why columns. If you can't name either for a workload, that workload stays human — which is itself a finding.</li>
+          <li>Narrow the <em>data scope</em>, never the judgment standard — three rows through a gated line beats eight through an ungated one.</li>
+          <li>Ask the lead to diagram the one concept blocking you, then continue on your own chair.</li>
         </ul>
       </div>
     </section>
