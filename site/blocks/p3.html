@@ -23,7 +23,7 @@
   <main class="site-main">
     <p class="eyebrow">Tuesday PM · P3 · AI Harness Bootcamp</p>
     <h1>The twin-engine intel desk</h1>
-    <p class="lede">You run the same frozen brief on two engines, compare outputs, and own the verdict. Agreement is not truth.</p>
+    <p class="lede">You'll run one frozen brief through two independent engines, put their outputs side by side, and rule on every disagreement yourself. Agreement is not truth — but disagreement shows you exactly where your judgment is needed.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Tuesday PM</span></div>
@@ -37,7 +37,9 @@
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
+      <a href="#ideas">The ideas</a>
       <a href="#mission">Mission · <span data-count-for="mission">0/9</span></a>
+      <a href="#depth">Going deeper</a>
       <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/6</span></a>
       <a href="#floor">Mastery floor · <span data-count-for="floor">0/8</span></a>
       <a href="#stuck">If you get stuck</a>
@@ -47,43 +49,99 @@
       </div>
     </nav>
 
-    <section id="orient" class="orient-grid">
-      <div>
-        <h2 class="h-plain">Why this block exists</h2>
-        <p>Models are callable components. When they disagree, that disagreement is a <strong>sensor</strong>. Your job is adjudication with evidence outside either model’s confidence.</p>
-        <h3>What you will leave with</h3>
-        <ul>
-          <li>Run BRIEF-v1 unchanged on the Codex app and OpenCode</li>
-          <li>Run identity declared for both engines — model, version, folder, context loaded</li>
-          <li>Comparator table; ≥3 material disagreements or proof of search</li>
-          <li>Kill at least one model-asserted claim</li>
-          <li>Supervisor-readable adjudication note</li>
-          <li>Transfer P3 seed; full pulse</li>
-          <li><em>Stretch:</em> Many Minds — baseline, synthesis, and a delta sheet that defends whether parallel helped (optional)</li>
-        </ul>
-        <h3>Before you start</h3>
-        <ul>
-          <li>Confirm operator templates are present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
-          <li>Both apps signed in</li>
-        </ul>
-      </div>
-      <div class="orient-aside">
-        <div class="lead-box">
-          <p class="eyebrow">Lead operate-along</p>
-          <p>The lead runs this same page on screen — brief co-written live, the mission run in a build chat you can see, accepts and rejects narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+    <section id="orient" class="home-section">
+      <h2 class="h-plain">Why this desk exists</h2>
+      <p class="full-measure">Somewhere in a normal work week, a model drafts something you pass upward — a status rollup, an extraction from documents you didn't have time to read twice, a summary that becomes someone else's operating picture. When that draft is wrong, the error arrives wearing your name. The trap is quiet: a model's fluent answer <em>feels</em> like a second opinion because it's phrased like one. It isn't. It's one witness, interviewed once.</p>
+      <p class="full-measure">The countermeasure is a desk, and you build it now: the same extraction demand, run verbatim through two engines that share neither product nor model family, a comparator that surfaces every place they differ, and a ruling — from you, on evidence — for each one. An <strong>engine</strong> here means a model running inside a harness product; today's two are the Codex app and OpenCode running Grok on your xAI key. By the end you own the whole circuit, and it reruns on Monday's real work with nothing but a new corpus.</p>
+
+      <div class="orient-grid">
+        <div>
+          <h3>What you will leave with</h3>
+          <ul>
+            <li>BRIEF-v1 run unchanged on the Codex app and OpenCode — two raw outputs on disk you can point to</li>
+            <li>Run identity declared for both engines — model id, version, folder, and the context each one carried</li>
+            <li>A filled comparator with ≥3 material disagreements, or written proof you searched for them</li>
+            <li>At least one model-asserted claim killed on non-model evidence — and the kill test in your hands as a repeatable move</li>
+            <li>An adjudication note a supervisor could act on cold</li>
+            <li>The habit set: single-engine ban on consequential claims, comparator over vibes, kills that name their evidence</li>
+            <li><em>Stretch:</em> Many Minds — a baseline, a subagent synthesis, and a delta sheet that defends whether parallel actually helped</li>
+          </ul>
+          <h3>Before you start</h3>
+          <ul>
+            <li>Operator templates present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
+            <li>Both engines alive on your keys: the Codex app opens a chat; <code>opencode</code> starts from a terminal</li>
+            <li>You know which track you ran in P2 — the desk uses the same one</li>
+            <li>The Grok model id from the staff pin sheet within reach — you'll pin it with <code>-m</code></li>
+          </ul>
         </div>
-        <div class="callout">
-          <strong>Stretch · Many Minds, one commander</strong>
-          After twin-engine MVP: <strong>baseline</strong> single-chat review, then parallel <strong>subagents</strong> (not “Cowork”), then a <strong>delta sheet</strong> that defends whether parallel helped. Three artifacts under <code>instruments/p3_multi_agent/out/</code>. Earned kills need corpus evidence. Guide: <code>mission_flesh/p3/MANY_MINDS.md</code>. Naming lock: subagent ≠ second engine ≠ second human.
+        <div class="orient-aside">
+          <div class="lead-box">
+            <p class="eyebrow">Lead operate-along</p>
+            <p>The lead runs this same page on screen — brief co-written live, the mission run in a build chat you can see, accepts and rejects narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+          </div>
+          <div class="callout">
+            <strong>Stretch · Many Minds, one commander</strong>
+            After twin-engine MVP: <strong>baseline</strong> single-chat review, then parallel <strong>subagents</strong>, then a <strong>delta sheet</strong> that defends whether parallel helped. Three artifacts under <code>instruments/p3_multi_agent/out/</code>. Earned kills need corpus evidence. Guide: <a href="../../mission_flesh/p3/MANY_MINDS.md"><code>mission_flesh/p3/MANY_MINDS.md</code></a>. Naming lock: subagent ≠ second engine ≠ second human.
+          </div>
         </div>
       </div>
+
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p3/p3-overview.svg" alt="Frozen sources feed a deterministic watchlist join, one brief runs on two engines, outputs meet in a comparator, and the verdict is yours" width="1120" height="280" loading="lazy" decoding="async" />
+      </figure>
+    </section>
+
+    <section id="ideas" class="home-section">
+      <h2>The craft under the desk</h2>
+      <p class="section-lede">Read these once before you start, then come back to whichever idea a disagreement — or a suspicious agreement — puts to work.</p>
+
+      <h3>Agreement is not truth; disagreement is a sensor</h3>
+      <p class="full-measure">When two engines return the same answer, it's tempting to call the answer confirmed. What a match actually establishes is narrower: two systems produced the same output. If their failure modes overlap, they can match for shared-wrong reasons — and their failure modes do overlap. Both models trained on overlapping public text, both read the exact corpus you handed them, and both are optimized to produce fluent, confident prose. Where the corpus is thin or ambiguous, each fills the gap with the most plausible completion — and the most plausible completion is often the <em>same</em> wrong guess. A match therefore tells you a claim is either well-supported or a shared blind spot, and it cannot tell you which. That's why matched claims still get sample-checked.</p>
+      <p class="full-measure">Disagreement is the more useful signal, and it's worth being precise about what it is. Two different model families under two different harnesses diverge mostly where the evidence underdetermines the answer — a contradiction between sources, a gap the brief doesn't cover, a synonym the status vocabulary maps two ways. So each disagreement row is a pointer to exactly the claims where mechanical processing ran out and judgment has to take over. That is what the second engine buys for its cost: not a better answer, but a <em>map of where your attention belongs</em>. An operator who reads the comparator top to bottom spends twenty minutes; an operator who reads only the disagreement rows spends five and misses nothing the engines could have caught — the shared blind spots remain, and they are exactly what the sample-check on matched claims is for.</p>
+      <p class="full-measure">The failure smell on this idea has a name in the pass bars: “they basically agreed.” If that sentence appears without a table behind it, no comparison happened — an impression happened. The other failure is subtler: treating every split as proof one engine is defective. Usually neither is defective; the evidence is genuinely thin, and the honest ruling is UNKNOWN with a note saying why.</p>
+
+      <h3>Independence hygiene — the cargo neither engine declares</h3>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p3/p3-idea-hidden-cargo.svg" alt="Both engines carry context you never typed — the Codex app loads AGENTS.md, skills, and memories; OpenCode reads Claude's files — and a declare-or-clear gate sits before any delta counts as evidence" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+      <p class="full-measure">A two-engine comparison is only evidence if both engines got the same job with nothing extra riding along. Neither engine helps you with this. The Codex app loads <code>AGENTS.md</code> from whatever folder you open as the project — including the one you hot-rodded in P2 — plus <code>%USERPROFILE%\.codex\AGENTS.md</code>, any skills it discovers, and memories if you enabled them. OpenCode, for its part, reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set — pre-work set it, and today is the day that setting earns its keep. Neither product announces any of this at run time. The cargo is invisible until you go looking.</p>
+      <p class="full-measure">Here is what going wrong looks like, because it's the most common way this desk fails: you run the brief inside your P2 project, the Codex output comes back noticeably sharper, and you conclude the Codex app is the stronger engine. It wasn't the engine — it was your own instruction file riding along on one side. One engine plus your notes is not two engines. And the error cuts both ways: <strong>an advantage you didn't declare looks exactly like a capability you don't have</strong>. Every conclusion you draw from a contaminated delta is a finding about your setup wearing a costume.</p>
+      <p class="full-measure">The discipline is <strong>declare or clear</strong>, and either is honest — silence is the only wrong answer. Clear means a fresh folder holding only the frozen corpus, the disable flag set (<code>OPENCODE_DISABLE_CLAUDE_CODE=1</code>), and <code>--pure</code> on the OpenCode run so installed plugins stay out of the path. Declare means writing the run identity down like a lab notebook entry: engine, model id, version, folder, and which instruction files, skills, and memories were live. The comparator's first table exists for exactly this, and it gets filled before any side-by-side row. At work this habit generalizes far past today's two products: any time you compare AI outputs — models, prompts, vendors, versions — the first question is what each side was carrying.</p>
+
+      <h3>The frozen brief is the control</h3>
+      <p class="full-measure">You're about to attribute output differences to the engines. That attribution is only valid if everything else is identical — the brief byte for byte, the corpus files, the join rule. In experiment terms the brief is the <strong>control</strong>: the thing held fixed so the remaining variation means something. This is why BRIEF-v1 is frozen and why editing it mid-run is the one move that ruins the afternoon quietly. A clarification you give one engine and not the other converts your comparison into a story about your prompting.</p>
+      <p class="full-measure">Read the brief once as a piece of engineering and you'll see each rule closing a degree of freedom. WatchIDs must come from <code>watchlist.csv</code> — so the join is deterministic and no model gets to guess which entity a paragraph is about. Status must be one of four values — so synonyms can't blur into unfalsifiable prose. Every factual cell needs a quote of twenty words or fewer — so checking a claim takes seconds, not minutes. Contradictions are kept, not resolved — so the model can't silently pick a side of a dispute that's yours to rule on. Unlisted entities are fenced into their own section — so scope creep is visible instead of woven in. Remove any of these and the comparator fills with noise you can't adjudicate.</p>
+      <p class="full-measure">An underspecified brief fails differently, and the failure is instructive: both engines drift, but in <em>different directions</em>, and the disagreement count explodes. When that happens the divergence is telling you about the brief, not the engines — which is why a flood of disagreements is a diagnostic, not a jackpot. If you find yourself wanting to tighten the wording, the honest path is a labeled variant: BRIEF-v2, run as a stretch experiment on both engines, with the disagreement-rate change recorded. That experiment — v1 versus v2, measured — is one of the sharpest things you can bring back to any prompt-writing argument at work.</p>
+
+      <h3>Adjudication is a ruling, not an average</h3>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p3/p3-idea-adjudication.svg" alt="From each comparator row: if the engines agree, sample-check anyway; if they split, go to the source file, rule the field, and record why" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+      <p class="full-measure">When the engines split on a field, three tempting moves are all wrong: ask a third model to break the tie, keep the answer that sounds more confident, or split the difference. All three keep the decision inside model-land, where the error was born. The correct move is shorter than any of them — open the source file. The brief's quote rule means each engine has told you where it thinks its evidence lives; go there and read. Then rule the field: which side wins, why, and what evidence outside either model settles it. Write the ruling in the verdict column. If the sources genuinely don't settle it, UNKNOWN is a ruling too — often the most honest one on the sheet.</p>
+      <p class="full-measure">For claims that resist a quick source check — especially claims both engines agree on — there's a sharper instrument: the <strong>kill test</strong>. Copy the corpus, delete the file a claim cites, and rerun the brief — the stale-source test from P1's brief machine, re-aimed at a single claim instead of the whole machine. A grounded claim dies with its evidence: the row goes UNKNOWN or the field empties. A claim that survives losing its own source was never resting on it — the model was <strong>confabulating</strong>, generating a plausible assertion and decorating it with a citation after the fact. That's a kill, and it's the strongest kind, because you demonstrated the failure instead of suspecting it. One earned kill teaches you more about a model's evidence discipline than fifty smooth successes.</p>
+      <p class="full-measure">Adjudication done this way produces a specific artifact: a note a supervisor can act on cold, with every ruling walkable back to a file and a line. That's the difference between “the AI said” and intelligence work. On a real desk the rulings are what you're paid for — the engines are interchangeable; the verdict column is you.</p>
+
+      <h3>Three instruments that look alike</h3>
+      <p class="full-measure">Once you've run a second engine, it's easy to blur it together with two neighbors that look similar and aren't. A <strong>second engine</strong> is a different product and model family given the same frozen job — it buys independence, and it's the only one of the three that can catch a shared-vendor blind spot. A <strong>subagent</strong> is a specialist the Codex app spawns under your commander chat — same product, same model family, so it buys division of labor and clean context, never independence. A <strong>second human</strong> brings actual judgment and accountability — the one thing neither machine instrument carries, which is why a human challenger stays on your transfer list even after this desk works.</p>
+      <table>
+        <thead><tr><th>Instrument</th><th>What it buys</th><th>What it cannot do</th></tr></thead>
+        <tbody>
+          <tr><td>Second engine (OpenCode)</td><td>Independent failure modes; a real check on the first engine</td><td>Own the verdict; guarantee truth when it agrees</td></tr>
+          <tr><td>Subagent (Codex app)</td><td>Parallel specialist lenses; keeps the main chat clean</td><td>Provide independence — same model family, same cargo</td></tr>
+          <tr><td>Second human</td><td>Judgment and accountability; a challenge that doesn't share your incentives</td><td>Scale to every claim; be available on demand for every run</td></tr>
+        </tbody>
+      </table>
+      <p class="full-measure">Here is what mistaking one for another looks like: three subagents converge on a finding and the report upstairs calls it “independently confirmed.” It is nothing of the kind — same product, same model family, same cargo; the agreement was manufactured, not found. The Many Minds stretch puts the middle row in your hands: one commander, three parallel lenses, and a measured answer to whether parallel helped. Whatever mix of instruments you run, the merges and the kills stay with the commander — the sentence to be able to say cold is <em>subagent ≠ second engine ≠ second human</em>.</p>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p3" data-block="P3">
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Work these in order and check each off as its proof exists. Progress saves in this browser — the same tick shows on the home page.</p>
+        <p class="section-lede">Six stages, in order. Check each item when its proof exists on disk, not when you've read it. Progress saves in this browser — the same tick shows on the home page.</p>
+
+        <h3>Stage 01 · Frame the run</h3>
+        <p class="full-measure">Before either engine sees the brief, you and the AI agree on what winning looks like. Five minutes of dialogue here saves an hour of drift later.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -92,8 +150,13 @@
               <span class="check-num">1</span>
               <span class="check-title">Co-write the Direction Brief until LIVE</span>
             </label>
-            <div class="check-detail">Open chat <strong>Operator — Direction &amp; Log</strong>. Paste the brief starter. Fill all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Status must be <strong>LIVE</strong> before the mission — vague “explore the data” outcomes get challenged; name the artifact.</div>
+            <div class="check-detail">Open chat <strong>Operator — Direction &amp; Log</strong> and paste the brief starter from <a href="../../operator/DIRECTION_BRIEF.md"><code>operator/DIRECTION_BRIEF.md</code></a>. Fill all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. The outcome here is two named artifacts — a filled comparator and an adjudication note someone could read cold; “compare the models” is not an outcome, and the AI should challenge it. Status must read <strong>LIVE</strong> before you touch either engine. If the dialogue passes eight minutes, accept the wording you have and move.</div>
           </li>
+        </ol>
+
+        <h3>Stage 02 · Load the frozen brief</h3>
+        <p class="full-measure">Now you set up the control: the brief read as a contract, and a working folder where nothing rides along that you haven't declared. What you should see at the end of this stage is a folder holding exactly five files — the brief and your track's four corpus files — and nothing else.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -101,7 +164,7 @@
               <span class="check-num">2</span>
               <span class="check-title">Read BRIEF-v1 (do not edit)</span>
             </label>
-            <div class="check-detail">Path: <code>instruments/p3_frozen_brief/BRIEF-v1.md</code>.</div>
+            <div class="check-detail">Open <code>instruments/p3_frozen_brief/BRIEF-v1.md</code> and read it as a contract. Notice what each rule pins down: WatchIDs come from <code>watchlist.csv</code>, status has four allowed values, every factual cell needs a quote of twenty words or fewer, contradictions are kept rather than resolved, off-watchlist entities are fenced into Unlisted mentions. Do not edit a word — the moment the text drifts, the comparison stops being about the engines. If a rule seems ambiguous, write the ambiguity down; it's comparator material later.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -110,8 +173,21 @@
               <span class="check-num">3</span>
               <span class="check-title">Point both engines at the corpus</span>
             </label>
-            <div class="check-detail">Folder: <code>instruments/p3_frozen_brief</code> — the corpus including <code>watchlist.csv</code>. Joins use <code>watchlist.csv</code> IDs only — models do not invent join keys.</div>
+            <div class="check-detail">Make a clean working folder and copy in <code>BRIEF-v1.md</code> plus your track's four files from <code>instruments/p3_frozen_brief/engineering/corpus/</code> (<code>watchlist.csv</code>, <code>F1_status_page.md</code>, <code>F2_oncall_notes.md</code>, <code>F3_deploy_log.md</code>) or <code>instruments/p3_frozen_brief/mission_ops/corpus/</code> (<code>watchlist.csv</code>, <code>F1_ops_log.md</code>, <code>F2_field_hawk.md</code>, <code>F3_drone_snip.md</code>). Same track as P2. Both engines read this folder and nothing else; joins use <code>watchlist.csv</code> IDs only — models do not invent join keys. Running in place instead is allowed, but then every live instruction file gets declared in the comparator.</div>
           </li>
+        </ol>
+
+        <div class="panel">
+          <p class="eyebrow">Settle what each engine is carrying before either one runs</p>
+          <p class="full-measure">Both load context you never typed and neither announces it: the Codex app picks up <code>AGENTS.md</code>, skills, and memories from wherever you launch it — including the harness you hot-rodded in P2 — and OpenCode reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set. Run from a clean folder holding only the frozen corpus, or write down exactly what was live on each side. One engine plus your notes is not two engines. An advantage you didn't declare looks exactly like a capability you don't have — if the two sides ran with different context, that is a finding about your setup, not a disagreement between models.</p>
+        </div>
+
+        <h3>Stage 03 · Dispatch both engines</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p3/p3-stage-dispatch.svg" alt="BRIEF-v1 goes verbatim to the Codex app and to OpenCode running Grok; each produces a raw output file, with run identity declared on both sides" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <p class="full-measure">The same brief, verbatim, to each engine in turn. What you should see from each: the four-part shape the brief demands — table, contradictions, unlisted mentions, gaps. What you must not do between the two runs: explain, clarify, or coach. The brief does the talking; you take dictation and save files.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -119,7 +195,7 @@
               <span class="check-num">4</span>
               <span class="check-title">Run BRIEF-v1 on Codex → output_codex.md</span>
             </label>
-            <div class="check-detail">Save raw output. Do not change the brief between engines.</div>
+            <div class="check-detail">Open the clean folder as a project in the Codex app, start a build chat, and give it BRIEF-v1 exactly — point it at the file or paste the text unaltered. Copy the full response into a new file <code>output_codex.md</code> yourself — Notepad is fine; don't ask the engine to write its own transcript. Record the model from the picker beneath the composer and the app version from Settings. You should see a table with one row per WatchID, then contradictions, unlisted mentions, gaps; if you get prose instead, rerun the same verbatim brief once — coaching one engine breaks the control.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -128,8 +204,13 @@
               <span class="check-num">5</span>
               <span class="check-title">Run BRIEF-v1 on OpenCode → output_opencode.md</span>
             </label>
-            <div class="check-detail">Same brief, same corpus. Run with <code>--pure</code>, model pinned with <code>-m</code>.</div>
+            <div class="check-detail">Same brief, same corpus, second engine. In the terminal you'll run from, confirm <code>$env:OPENCODE_DISABLE_CLAUDE_CODE</code> prints <code>1</code> (pre-work set it). Then, from the clean folder: <code>opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder and follow it exactly."</code> — <code>--pure</code> keeps plugins out; <code>-m</code> pins the Grok id staff posted rather than inheriting whichever model ran last. Copy the response into a new <code>output_opencode.md</code> yourself, and record the <code>-m</code> value plus <code>opencode --version</code> beside it. An error mentioning 429 or quota is usually a capped key — flag staff instead of reinstalling.</div>
           </li>
+        </ol>
+
+        <h3>Stage 04 · Compare on paper</h3>
+        <p class="full-measure">Two outputs exist; now the desk earns its name. Identity first, then the side-by-side. A <strong>material</strong> disagreement changes an operational fact — a status flip, one engine asserting where the other says UNKNOWN, different evidence behind the same cell. A wording difference that changes no fact is cosmetic, and cosmetic rows are how comparators eat an hour.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -137,8 +218,16 @@
               <span class="check-num">6</span>
               <span class="check-title">Fill COMPARATOR.md</span>
             </label>
-            <div class="check-detail">Fill the run-identity table first — model id, version, folder, context loaded — then the side-by-side fields. Count material disagreements (or document low-separation search).</div>
+            <div class="check-detail">Open <code>instruments/p3_frozen_brief/COMPARATOR.md</code>. Fill the run-identity table before any side-by-side row: engine, model id, version, folder, and which instruction files, skills, or memories were live on each side. Then work field by field, one row per material disagreement, and count them. Three or more: on to adjudication. Fewer: document where you searched and why the task separated so little — that written proof of search meets the bar honestly.</div>
           </li>
+        </ol>
+
+        <h3>Stage 05 · Adjudicate, kill, and write the note</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p3/p3-stage-kill-test.svg" alt="The kill test: pull the file a claim cites from a copy of the corpus, rerun the brief, and see whether the claim honestly disappears or persists as confabulation" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <p class="full-measure">Every disagreement row gets a ruling from the source file — which side, why, what evidence outside either model. Matched claims get sample-checked. And at least one asserted claim dies today, on evidence you can show. If nothing on the sheet deserves killing, run the kill test on the strongest claim both engines agree on and watch what happens.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -146,7 +235,7 @@
               <span class="check-num">7</span>
               <span class="check-title">Kill at least one model-asserted claim</span>
             </label>
-            <div class="check-detail">Show the assert + why discarded using non-model evidence.</div>
+            <div class="check-detail">Find a claim a model asserted that you can discard on evidence outside either model — the source line says otherwise, the watchlist has no such ID, or the kill test settles it: copy the corpus, delete the cited file, rerun, and watch whether the claim survives losing its own evidence. In the comparator, quote the assert and write the discard reason. “It seemed weak” is not a kill; a kill names its evidence.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -155,8 +244,13 @@
               <span class="check-num">8</span>
               <span class="check-title">Supervisor-readable adjudication note</span>
             </label>
-            <div class="check-detail">Final operational picture someone cold could read.</div>
+            <div class="check-detail">Write the note at the bottom of the comparator: the operational picture as you now rule it — what is true, what is UNKNOWN and why, what you killed and on what evidence. This note is the run's final watch product, the artifact your log points at. Test it by imagination: someone who has read nothing else picks this up during a handover. If they'd have to ask you a question before acting on it, it isn't finished. A supervisor-readable note is measured in clarity, not length.</div>
           </li>
+        </ol>
+
+        <h3>Stage 06 · Bank what transfers</h3>
+        <p class="full-measure">One minute of naming what transfers is what turns today's run into something you reach for on a real desk.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -164,14 +258,50 @@
               <span class="check-num">9</span>
               <span class="check-title">Transfer P3 seed</span>
             </label>
-            <div class="check-detail">Single-engine ban, kill rule, comparator habit.</div>
+            <div class="check-detail">Put the three portable habits in your own words before the pulse: no single-engine answer on consequential claims; a kill names non-model evidence; the comparator table beats “they basically agreed.” Then name the first real decision at work you'd run through this desk — that's the seed the transfer chat will grow.</div>
           </li>
         </ol>
+      </section>
 
-        <div class="panel">
-          <p class="eyebrow">Settle what each engine is carrying before either one runs</p>
-          <p class="full-measure">Both load context you never typed and neither announces it: the Codex app picks up <code>AGENTS.md</code>, skills, and memories from wherever you launch it — including the harness you hot-rodded in P2 — and OpenCode reads <code>~/.claude/CLAUDE.md</code> and <code>.claude/skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set. Run from a clean folder holding only the frozen corpus, or write down exactly what was live on each side. One engine plus your notes is not two engines. An advantage you didn't declare looks exactly like a capability you don't have — if the two sides ran with different context, that is a finding about your setup, not a disagreement between models.</p>
-        </div>
+      <section id="depth" class="home-section">
+        <h2>Going deeper while the desk is live</h2>
+        <p class="section-lede">For the stretches between runs, the arguments worth having, and the desks this transfers to.</p>
+
+        <h3>Failure catalog — symptom, cause, move</h3>
+        <table>
+          <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+          <tbody>
+            <tr><td>OpenCode errors in a way that reads like a bad key</td><td>A capped key returns 429/quota errors that look like auth failure; xAI keys are also deny-by-default until ACLs attach</td><td>Read the error body for 429 or quota; ask staff to check the cap. Reinstalling fixes nothing here.</td></tr>
+            <tr><td>Both outputs nearly identical</td><td>Genuinely low-separation task — or both engines carried the same cargo</td><td>Verify the cargo was cleared or declared; then document the search, sample-check matches, and run one kill test.</td></tr>
+            <tr><td>One output dramatically sharper than the other</td><td>Undeclared instruction files, skills, or memories on the sharp side</td><td>Check what each side was carrying before crediting the model. Rerun clean if contaminated.</td></tr>
+            <tr><td>An output uses a WatchID not in the CSV, or joins on a name</td><td>The engine invented a join key — the deterministic-join rule was violated</td><td>Record the violation as a comparator finding, then rerun the same verbatim brief. That failure is itself evidence.</td></tr>
+            <tr><td>The comparator is eating the whole block</td><td>Cosmetic differences being logged as rows</td><td>Material only: does the difference change an operational fact? If not, skip the row.</td></tr>
+            <tr><td>An engine narrates instead of producing the table</td><td>Output-order rules ignored on that run</td><td>Rerun the identical brief once. If both engines keep failing the same rule, record it as a brief finding — that's data about BRIEF-v1, not about either engine.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Questions worth arguing about</h3>
+        <ul>
+          <li><strong>If the engines agree on every field, what did the second engine buy you?</strong> One answer: nothing, this run — cancel it. A better answer: the proof of search, the sample-checks, and the standing ability to catch the day they don't agree. Insurance you never claim on still priced the risk. Where's the line for your desk?</li>
+          <li><strong>Which is worse: a wrong claim both engines agreed on, or a disagreement you ruled incorrectly?</strong> The first fails silently and scales; the second leaves a trail — your ruling, your reasoning, reviewable. What does that say about where checking effort should go?</li>
+          <li><strong>When is a third engine worth it?</strong> Each added engine buys diminishing independence and linearly growing adjudication cost. The comparator has an optional third-output slot — argue for a claim class where you'd actually pay that cost.</li>
+          <li><strong>What separates the kill test from simply distrusting the model?</strong> One is a falsifiable procedure with an observable outcome; the other is a mood. What else on your desk deserves the same upgrade from suspicion to procedure?</li>
+        </ul>
+
+        <h3>The same desk at work</h3>
+        <ul>
+          <li><strong>Incident and status rollups</strong> — two engines extract service status from the status page, on-call notes, and deploy log; the comparator catches the automated bot claiming clear while a human still shows degraded. The engineering corpus is this desk in miniature.</li>
+          <li><strong>Field and watch reporting</strong> — clearance times, movement claims, single-source rumors: adjudicated against the raw logs before anything reaches a leadership brief. The mission_ops corpus is this desk in miniature.</li>
+          <li><strong>Contract and compliance review</strong> — two engines extract obligations and deadlines from the same agreement; disagreement rows go back to the clause text, and the ruling cites page and line.</li>
+          <li><strong>Vendor and hiring diligence</strong> — claims extracted from proposals or CVs, run twice; anything that fails a kill test never reaches the decision memo.</li>
+        </ul>
+
+        <h3>Stretch lane · Many Minds, one commander</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p3/p3-stretch-many-minds.svg" alt="One commander dispatches three parallel subagent lenses — correctness, test gaps, spec drift — waits for all, then owns the synthesis, the kills, and the delta against baseline" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <p class="full-measure">After the twin-engine floor is met, a different kind of “many”: not two vendors, but several specialists under one commander — you — with a measured answer to whether parallel helped. A <strong>subagent</strong> is a specialist the Codex app starts for one bounded job; it works off to the side and returns a summary to your chat. The mastery path is three artifacts in order: a <strong>baseline</strong> single-chat review with no subagents, then three parallel lenses (correctness, test gaps, spec drift) merged with visible dedupe and at least one corpus-evidenced kill, then a <strong>delta sheet</strong> that defends a verdict — improved, duplicated, or noisy. Skipping the baseline turns the stretch into a product demo: without it you cannot say what parallel added.</p>
+        <p class="full-measure">Two details worth noticing while you run it. The three-subagent cap lives in your prompt wording, which makes it procedure-enforced — it holds because the model cooperates and you're watching. The app also has a real setting, <code>agents.max_concurrent_threads_per_session</code>, which holds whether the prompt cooperates or not — tool-enforced. Feel the difference: a procedure-enforced bound is a promise, and a tool-enforced bound is a wall. And if two of your specialists ever needed to <em>write</em> at once, a <strong>worktree</strong> — a second checkout of the same repository — is the isolation instrument; since nothing in this run writes to the repo, the worktree proof stays the optional deeper cut. Full walkthrough: <a href="../../mission_flesh/p3/MANY_MINDS.md"><code>mission_flesh/p3/MANY_MINDS.md</code></a>; pack: <code>instruments/p3_multi_agent/</code>; the four stretch checks live on the mastery floor below.</p>
       </section>
 
       <section id="pulse" class="home-section" data-check-section="pulse">
@@ -185,7 +315,7 @@
               <span class="check-num">10</span>
               <span class="check-title">Mission ran in a separate build chat</span>
             </label>
-            <div class="check-detail">Build work stays out of the operator chat — the trail is the point.</div>
+            <div class="check-detail">Twin-engine work ran in build chats, not in <strong>Operator — Direction &amp; Log</strong>. The operator chat holds judgment; build chats hold the mess. If they mixed today, note it in the log rather than rewriting history — the trail is the point.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -194,7 +324,7 @@
               <span class="check-num">11</span>
               <span class="check-title">Operator Log complete</span>
             </label>
-            <div class="check-detail">Back in Direction &amp; Log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, what you still own.</div>
+            <div class="check-detail">Back in Direction &amp; Log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), and evidence pointers to <code>output_codex.md</code>, <code>output_opencode.md</code>, and the comparator. Write what judgment you still own — for this desk, that is every ruling in the adjudication note.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -203,7 +333,7 @@
               <span class="check-num">12</span>
               <span class="check-title">PASS_BARS self-check drafted</span>
             </label>
-            <div class="check-detail">Against P3’s MVP list: met / not yet with evidence pointers. No inflation.</div>
+            <div class="check-detail">Against P3's MVP list: met / not yet, each with an evidence pointer. No inflation. The two bars most often claimed early here: three disagreements (were they material?) and the kill (was it earned, or polite?).</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -212,7 +342,7 @@
               <span class="check-num">13</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">Chat <code>Adversarial — P3</code>: frozen prompt + artifacts + provisional verdict. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
+            <div class="check-detail">Chat <code>Adversarial — P3</code>: frozen prompt + artifacts + provisional verdict. Expect attacks on undeclared cargo, cosmetic rows counted as material, and a cheap kill. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -221,7 +351,7 @@
               <span class="check-num">14</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes). Deep mark if this block has one.</div>
+            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes). P3 carries a deep mark: <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code> — counts and ruling, one line. What the disagreement rate taught you can ride along as an optional one-sentence note beside the mark.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -230,14 +360,16 @@
               <span class="check-num">15</span>
               <span class="check-title">Transfer pulse (every AM/PM)</span>
             </label>
-            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt. A session-log row is required even if the seed is small today.</div>
+            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt. A session-log row is required even if the seed is small today — and P3's usually isn't: the single-engine ban and the comparator habit go on the 30-day list with a named work claim to run first.</div>
           </li>
         </ol>
       </section>
 
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Mastery floor — evidence must survive adversarial review</h2>
-        <p class="section-lede">Mark met / not yet against your own artifacts. If the adversarial pass wounds an item, uncheck it until it is fixed.</p>
+        <p class="section-lede">Mark met / not yet against your own artifacts, not your memory of them. If the adversarial pass wounds an item, uncheck it until it is fixed. Full bar text: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · P3</a>.</p>
+
+        <h3>The floor</h3>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -246,7 +378,7 @@
               <span class="check-num">16</span>
               <span class="check-title">MVP: BRIEF-v1 + corpus dual run</span>
             </label>
-            <div class="check-detail">Codex app and OpenCode unchanged brief.</div>
+            <div class="check-detail">Evidence looks like: <code>output_codex.md</code> and <code>output_opencode.md</code> on disk, produced from byte-identical brief text with no coaching between runs. If you clarified anything for one engine only, this is not yet met — rerun that side.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -255,7 +387,7 @@
               <span class="check-num">17</span>
               <span class="check-title">MVP: Deterministic join/watchlist</span>
             </label>
-            <div class="check-detail">No model-invented join keys.</div>
+            <div class="check-detail">Evidence looks like: every WatchID row in both outputs matches an ID in <code>watchlist.csv</code>, with off-watchlist entities fenced into Unlisted mentions. A model that joined on a display name instead of an ID fails this bar even when the answer happens to be right.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -264,7 +396,7 @@
               <span class="check-num">18</span>
               <span class="check-title">MVP: Comparator artifact</span>
             </label>
-            <div class="check-detail">Side-by-side, not vibes.</div>
+            <div class="check-detail">Evidence looks like: <code>COMPARATOR.md</code> with the run-identity table filled for both engines and side-by-side rows carrying keep / discard / unknown verdicts. “They basically agreed” with no table behind it is the named not-yet.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -273,7 +405,7 @@
               <span class="check-num">19</span>
               <span class="check-title">MVP: ≥3 disagreements or proof of search</span>
             </label>
-            <div class="check-detail">Low-separation documented if fewer.</div>
+            <div class="check-detail">Evidence looks like: at least three rows where the engines differ on an operational fact — or a written proof of search naming the fields you checked and why separation was low. Cosmetic wording differences count toward neither.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -282,7 +414,7 @@
               <span class="check-num">20</span>
               <span class="check-title">MVP: ≥1 kill of model claim</span>
             </label>
-            <div class="check-detail">Assert + discard reason.</div>
+            <div class="check-detail">Evidence looks like: the model's assert quoted, plus a discard reason grounded outside either model — a source line, a missing watchlist ID, or a kill-test result. One earned kill beats three polite ones.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -291,7 +423,7 @@
               <span class="check-num">21</span>
               <span class="check-title">MVP: Adjudication note</span>
             </label>
-            <div class="check-detail">Supervisor-readable.</div>
+            <div class="check-detail">Evidence looks like: the note reads cold. Someone who saw none of the run can state what is operationally true, what is unknown, and what you killed — without asking you anything.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -300,8 +432,12 @@
               <span class="check-num">22</span>
               <span class="check-title">MVP: Log points at both outputs + comparator</span>
             </label>
-            <div class="check-detail">Brief id BRIEF-v1.</div>
+            <div class="check-detail">Evidence looks like: the Operator Log names brief id <code>BRIEF-v1</code> and points at both raw outputs, the comparator, and the final watch product — the adjudication note at the bottom of the comparator. Two runs you can't identify are not evidence.</div>
           </li>
+        </ol>
+
+        <h3>Stretch lane checks · Many Minds</h3>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -309,7 +445,7 @@
               <span class="check-num">S1</span>
               <span class="check-title"><span class="tag">Stretch</span> Baseline single-chat review on disk</span>
             </label>
-            <div class="check-detail"><code>out/baseline_single.md</code> — no subagents. Guide: <code>mission_flesh/p3/MANY_MINDS.md</code>.</div>
+            <div class="check-detail"><code>out/baseline_single.md</code> under <code>instruments/p3_multi_agent/</code> — one reviewer, no subagents, every finding carrying corpus evidence. If the model spawned specialists anyway, restart the baseline chat; the comparison is ruined otherwise. Guide: <code>mission_flesh/p3/MANY_MINDS.md</code>.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -318,7 +454,7 @@
               <span class="check-num">S2</span>
               <span class="check-title"><span class="tag">Stretch</span> Subagent synthesis + earned kill</span>
             </label>
-            <div class="check-detail"><code>out/many_minds_synthesis.md</code> — three lenses, dedupe, corpus-based kill, naming sentence.</div>
+            <div class="check-detail"><code>out/many_minds_synthesis.md</code> — three lenses ran in parallel, waited for all, then merged with visible dedupe, at least one corpus-evidenced kill, and the naming sentence: subagent ≠ second engine ≠ second human. Nine raw findings pasted in a stack is not a synthesis.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -327,7 +463,7 @@
               <span class="check-num">S3</span>
               <span class="check-title"><span class="tag">Stretch</span> Delta sheet with defended verdict</span>
             </label>
-            <div class="check-detail"><code>out/many_minds_delta.md</code> + ≥2 adversarial seeds in log. Missing baseline ⇒ not yet.</div>
+            <div class="check-detail"><code>out/many_minds_delta.md</code> — baseline vs parallel with a defended verdict (improved / duplicated / noisy) and ≥2 adversarial seeds answered in your log. Missing baseline ⇒ not yet: without it, a synthesis is a product demo, not evidence.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -336,8 +472,12 @@
               <span class="check-num">S4</span>
               <span class="check-title"><span class="tag">Stretch</span> Worktree note (optional deeper)</span>
             </label>
-            <div class="check-detail">Only after S1–S3. Proof or honest block. Not Cowork.</div>
+            <div class="check-detail">Only after S1–S3. A worktree isolation proof file or an honest block note, plus one line on when you'd choose a worktree over a subagent (writes and isolation vs read-split and context). See <code>instruments/p3_multi_agent/README.md</code>. Not Cowork.</div>
           </li>
+        </ol>
+
+        <h3>Close the block</h3>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -345,7 +485,7 @@
               <span class="check-num">23</span>
               <span class="check-title">Block closed under fire</span>
             </label>
-            <div class="check-detail">Adversarial line present; measurement row written; transfer row written; you could defend this block to a peer.</div>
+            <div class="check-detail">Adversarial line present in the log; measurement row written; transfer row written; and you could defend the block to a peer with the comparator alone, without rebuilding the story from memory.</div>
           </li>
         </ol>
       </section>
@@ -354,14 +494,14 @@
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not “it ran.” Evidence must survive adversarial review. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P3</a>.</p>
+        <p>MVP is not “it ran.” Evidence must survive adversarial review — and the named not-yets for this desk are one engine only, “they basically agreed,” and a verdict without a comparator. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P3</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>
         <ul>
-          <li>Narrow <em>data scope</em>, not the judgment standard</li>
-          <li>Re-read your LIVE brief — most chaos is an unbounded outcome</li>
-          <li>Ask for a lead diagram of the one concept blocking you, then continue on your chair</li>
+          <li><strong>OpenCode won't run the brief.</strong> Read the error body before touching the install: 429 or quota means a capped key wearing an auth-failure costume, and a brand-new key does nothing until its ACLs attach. Both are staff fixes. While you wait, keep working the Codex side and prep the comparator.</li>
+          <li><strong>The engines agree on everything.</strong> That's not a failed run. First confirm both sides ran clean — shared cargo manufactures agreement. Then document the search, sample-check the strongest matches, and run one kill test; the floor accepts proof of search in place of three rows.</li>
+          <li><strong>The comparator is eating the block.</strong> You're logging cosmetic rows. Narrow the data scope — fewer fields, material disagreements only — and never the judgment standard. If a concept is what's blocking you, ask the lead to diagram it live, then continue on your own chair.</li>
         </ul>
       </div>
     </section>

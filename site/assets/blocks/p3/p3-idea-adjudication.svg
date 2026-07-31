@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 220" role="img" aria-labelledby="title-p3-idea-adjudication">
+  <title id="title-p3-idea-adjudication">The adjudication fork: engines agree, still sample-check; engines split, go to the source file, rule, and record why</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 8 4 0 8Z" fill="#0A0A0A"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 8 4 0 8Z" fill="#E31C23"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, "Inter", "Helvetica Neue", Arial, sans-serif; fill: #0A0A0A; }
+      .micro { font-size: 8px; font-weight: 650; letter-spacing: 1.65px; }
+      .tiny { font-size: 7px; font-weight: 650; letter-spacing: 1px; }
+      .railtext { font-size: 7.1px; font-weight: 650; }
+      .title { font-size: 21px; font-weight: 680; letter-spacing: -0.25px; }
+      .purpose { font-size: 11.5px; font-weight: 430; fill: #4A4A4A; }
+      .caption { font-size: 8.5px; font-weight: 650; letter-spacing: 1.15px; }
+      .body { font-size: 9.5px; font-weight: 520; }
+      .muted { fill: #6B6B6B; }
+      .white { fill: #FFFFFF; }
+      .red { fill: #E31C23; }
+      .gold { fill: #A58650; }
+      .line { fill: none; stroke: #0A0A0A; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+      .hair { fill: none; stroke: #D0D0D0; stroke-width: 1; vector-effect: non-scaling-stroke; }
+      .redline { fill: none; stroke: #E31C23; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+      .goldline { fill: none; stroke: #A58650; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+      .dash { stroke-dasharray: 5 4; }
+    </style>
+  </defs>
+  <rect width="1120" height="220" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1120" height="56" fill="#FAFAF8"/>
+  <text x="24" y="13" class="micro muted">P3 · TWIN-ENGINE INTEL DESK</text>
+  <text x="1096" y="13" class="micro muted" text-anchor="end">ANY STAGE</text>
+  <path d="M110.5 37H1005.5" class="hair"/>
+  <rect x="24" y="25" width="173" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="110.5" y="40" class="railtext muted" text-anchor="middle">1 Frame</text>
+  <rect x="203" y="25" width="173" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="289.5" y="40" class="railtext muted" text-anchor="middle">2 Load brief</text>
+  <rect x="382" y="25" width="173" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="468.5" y="40" class="railtext muted" text-anchor="middle">3 Dispatch</text>
+  <rect x="561" y="25" width="173" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="647.5" y="40" class="railtext muted" text-anchor="middle">4 Compare</text>
+  <rect x="740" y="25" width="173" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="826.5" y="40" class="railtext muted" text-anchor="middle">5 Adjudicate</text>
+  <rect x="919" y="25" width="173" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="1005.5" y="40" class="railtext muted" text-anchor="middle">6 Close</text>
+  <path d="M0 56H1120" class="hair"/>
+  <text x="24" y="76" class="micro red">CONCEPT · ADJUDICATION</text>
+  <text x="24" y="103" class="title">Ruling on a disagreement</text>
+  <text x="24" y="123" class="purpose">The ruling comes from the source file, not a third opinion.</text>
+  <text x="24" y="139" class="body muted">Record which side won, why, and what evidence sits outside both.</text>
+  <path d="M480 69V151" class="hair"/>
+  <text x="512" y="76" class="micro muted">THE SHAPE OF IT</text>
+  <g aria-label="Fork from a comparator row: agree leads to sample-check, disagree leads to the source file">
+    <rect x="512" y="96" width="132" height="36" rx="2" fill="#FFFFFF" stroke="#1A1A1A"/>
+    <text x="578" y="111" class="caption" text-anchor="middle">COMPARATOR</text>
+    <text x="578" y="124" class="caption" text-anchor="middle">ROW</text>
+    <path d="M644 106L688 89" class="line" marker-end="url(#arrow)"/>
+    <path d="M644 122L688 139" class="redline" marker-end="url(#arrow-red)"/>
+    <rect x="694" y="74" width="126" height="26" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+    <text x="757" y="90" class="caption muted" text-anchor="middle">AGREE</text>
+    <path d="M820 87H862" class="line" marker-end="url(#arrow)"/>
+    <rect x="866" y="74" width="210" height="26" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+    <text x="971" y="90" class="caption" text-anchor="middle">SAMPLE-CHECK ANYWAY</text>
+    <text x="866" y="112" class="tiny muted">A MATCH CAN SHARE A BLIND SPOT</text>
+    <rect x="694" y="128" width="126" height="26" rx="2" fill="#FFFFFF" stroke="#E31C23" stroke-width="1.5"/>
+    <text x="757" y="144" class="caption red" text-anchor="middle">DISAGREE</text>
+    <path d="M820 141H862" class="redline" marker-end="url(#arrow-red)"/>
+    <rect x="866" y="120" width="210" height="40" rx="2" fill="#FFFFFF" stroke="#1A1A1A"/>
+    <text x="971" y="136" class="caption" text-anchor="middle">GO TO THE SOURCE FILE</text>
+    <text x="971" y="150" class="caption" text-anchor="middle">RULE · RECORD WHY</text>
+  </g>
+  <rect x="0" y="164" width="1120" height="56" fill="#FAFAF8"/>
+  <text x="24" y="175" class="micro muted">THE MOVES</text>
+  <rect x="24.00" y="182" width="172.00" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="24.00" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="36.50" y="198.3" class="caption white" text-anchor="middle">01</text>
+  <text x="58.00" y="198.2" class="caption">READ THE ROW</text>
+  <rect x="204.00" y="182" width="172.00" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="204.00" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="216.50" y="198.3" class="caption white" text-anchor="middle">02</text>
+  <text x="238.00" y="198.2" class="caption">OPEN THE FILE</text>
+  <rect x="384.00" y="182" width="172.00" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="384.00" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="396.50" y="198.3" class="caption white" text-anchor="middle">03</text>
+  <text x="418.00" y="198.2" class="caption">QUOTE THE LINE</text>
+  <rect x="564.00" y="182" width="172.00" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="564.00" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="576.50" y="198.3" class="caption white" text-anchor="middle">04</text>
+  <text x="598.00" y="198.2" class="caption">RULE THE FIELD</text>
+  <rect x="744.00" y="182" width="172.00" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="744.00" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="756.50" y="198.3" class="caption white" text-anchor="middle">05</text>
+  <text x="778.00" y="198.2" class="caption">RECORD WHY</text>
+  <rect x="924.00" y="182" width="172.00" height="25" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/>
+  <rect x="924.00" y="182" width="25" height="25" rx="2" fill="#0A0A0A"/>
+  <text x="936.50" y="198.3" class="caption white" text-anchor="middle">06</text>
+  <text x="958.00" y="198.2" class="caption">KILL IF FALSE</text>
+</svg>
