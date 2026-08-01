@@ -19,44 +19,40 @@
     "pulse-adv", "pulse-measure", "pulse-transfer"
   ];
 
-  // The detailed checklist rolls up into five outcomes. Explanations and
+  // The detailed checklist rolls up into four outcomes. Explanations and
   // conditional recovery remain on the page but do not block readiness.
   var PREWORK_PHASES = [
     {
       id: "basics", title: "Prepare the machine", time: "45–75 min", anchor: "phase-basics",
-      summary: "Confirm the laptop, shell, package manager, Git, Node, and Python.",
+      summary: "Confirm the laptop and shell, then install Git, Node, and Python from their official download pages.",
       ids: [
         "i-time", "i-log", "i-keys", "b-win11", "b-arm", "b-disk", "b-admin",
-        "ps-open", "ps-version", "ps-policy", "wg-check",
+        "ps-open", "ps-version", "ps-policy", "dl-git", "dl-node", "dl-python",
         "git-install", "git-restart", "git-verify",
         "np-node", "np-python", "np-restart", "np-verify", "np-stub"
       ]
     },
     {
       id: "keys", title: "Install the keys", time: "20–30 min", anchor: "phase-keys",
-      summary: "Store the three course keys safely and prove they survive a fresh shell.",
+      summary: "Store the three course keys safely and verify them in a fresh shell.",
       ids: ["k-openai", "k-xai", "k-anthropic", "k-models", "k-verify", "sf-make"]
     },
     {
-      id: "tools", title: "Prove the required tools", time: "75–120 min", anchor: "phase-tools",
-      summary: "Make Codex, OpenCode, Pi, goose, Obsidian, and n8n do observable work.",
+      id: "tools", title: "Install and verify the course harnesses and tools", time: "75–120 min", anchor: "phase-tools",
+      summary: "Install Codex, OpenCode, Pi, goose, Obsidian, and n8n, then verify them with observable work.",
       ids: [
         "cx-install", "cx-signin", "cx-status", "cx-lock", "cx-project", "cx-sandbox", "cx-write",
         "oc-version", "oc-install", "oc-verify", "oc-models", "oc-independent", "oc-write",
         "pi-install", "pi-verify", "pi-write", "pi-bash",
         "gs-keyring", "gs-provider", "gs-install", "gs-path", "gs-verify", "gs-write",
-        "ob-install", "ob-vault", "n8n-node", "n8n-install", "n8n-start", "n8n-owner", "n8n-stop"
+        "ob-install", "ob-vault", "n8n-node", "n8n-install", "n8n-start", "n8n-owner", "n8n-stop",
+        "g-four"
       ]
     },
     {
-      id: "files", title: "Open the course files", time: "15–25 min", anchor: "phase-files",
-      summary: "Clone the course, find the operator files, and open the local site.",
-      ids: ["rp-get", "rp-operator", "rp-site", "rp-gitignore"]
-    },
-    {
-      id: "pack", title: "Pack for Monday", time: "15–20 min", anchor: "phase-pack",
-      summary: "Check the four proofs, finish the setup log, and record any clinic item.",
-      ids: ["g-four", "g-log", "g-pack"]
+      id: "files", title: "Open the course files and finish the setup record", time: "15–25 min", anchor: "phase-files",
+      summary: "Clone the course, find the operator files, open the local site, and finish the setup log.",
+      ids: ["rp-get", "rp-operator", "rp-site", "rp-gitignore", "g-log"]
     }
   ];
 
@@ -71,24 +67,24 @@
   // `ids` = required ids (mission incl. pulse-brief, the 6 pulse beats, floor).
   var REGISTRY = [
     {
-      code: "KEYS", name: "Your API keys", title: "Your API keys", day: "Before Monday", slot: "read",
+      code: "KEYS", name: "Your API keys", title: "Your API keys", day: "Monday AM", slot: "clinic",
       key: null, ids: [], stretchIds: [],
       url: "keys.html", meta: "Reference · ~10 min"
     },
     {
-      code: "INSTALL", name: "Install + verify as you go", title: "Install + verify as you go", day: "Before Monday", slot: "pre",
+      code: "INSTALL", name: "Install + verify in clinic", title: "Install + verify in clinic", day: "Monday AM", slot: "clinic",
       key: "ahb-prework-install",
       ids: preworkRequiredIds(),
       conditionalIds: [
-        "i-shape", "wg-fix", "wg-agree", "k-read", "sf-why", "cx-limits",
-        "oc-why", "pi-why", "gs-what", "gs-nowinget",
+        "i-shape", "k-read", "sf-why", "cx-limits",
+        "oc-why", "pi-why", "gs-what", "gs-official",
         "r-notfound", "r-window", "r-scripts", "r-auth", "r-store", "r-noclaim", "r-stuck"
       ],
       // Claude Code and the local model are optional — skipping either never
       // blocks the pre-work gate.
       stretchIds: ["cc-optional", "cc-install", "lm-decide", "lm-install", "lm-pull"],
       optionalLabel: "optional",
-      url: "checklists/prework-install.html", meta: "Checklist · 2–4 hr"
+      url: "checklists/prework-install.html", meta: "Monday clinic · 2–4 hr"
     },
     {
       code: "B0", name: "Clinic + First Light", title: "Install clinic + First Light", day: "Monday", slot: "AM",
@@ -219,10 +215,10 @@
   var COURSE_CODES = ["B0", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"];
   var INSTALL = REGISTRY[1];
   var PREWORK_STOP = {
-    code: "PREWORK", name: "Mission workstation", title: "Pre-work · Mission workstation",
-    day: "Before Monday", slot: "pre", key: INSTALL.key, ids: INSTALL.ids,
+    code: "PREWORK", name: "Install clinic", title: "Pre-work · Install clinic",
+    day: "Monday AM", slot: "clinic", key: INSTALL.key, ids: INSTALL.ids,
     conditionalIds: INSTALL.conditionalIds, stretchIds: INSTALL.stretchIds,
-    optionalLabel: INSTALL.optionalLabel, url: "prework.html", meta: "2–4 hr"
+    optionalLabel: INSTALL.optionalLabel, url: "prework.html", meta: "Monday clinic · 2–4 hr"
   };
   var COURSE_BLOCKS = REGISTRY.filter(function (item) {
     return COURSE_CODES.indexOf(item.code) !== -1;
@@ -231,7 +227,7 @@
 
   // Journey board columns and day dropdowns are derived from these groups.
   var JOURNEY = [
-    { phase: "Before Monday", title: "Pre-work", codes: ["PREWORK"] },
+    { phase: "Monday AM", title: "Pre-work · Install clinic", codes: ["PREWORK"] },
     { phase: "Monday", title: "Foundations", codes: ["B0", "P1"] },
     { phase: "Tuesday", title: "Craft + verdict", codes: ["P2", "P3"] },
     { phase: "Wednesday", title: "Knowledge", codes: ["P4", "P5"] },

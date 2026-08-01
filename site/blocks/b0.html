@@ -23,12 +23,12 @@
   <main class="site-main">
     <p class="eyebrow">Monday AM · B0 · AI Harness Bootcamp</p>
     <h1>Install clinic + First Light</h1>
-    <p class="lede">Monday morning opens with an install clinic — finish gaps, prove the four agents, setup log in hand — then you direct a thinking machine from a messy folder of reports into a live map you can trust.</p>
+    <p class="lede">Monday morning opens with the pre-work install clinic. We install and verify the course harnesses and tools together, then you direct a thinking machine from a messy folder of reports into a live map you can trust.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Monday AM</span></div>
       <div><span class="k">Block</span><span class="v">B0</span></div>
-      <div><span class="k">Time</span><span class="v">Clinic ~2 hr (soft) + First Light</span></div>
+      <div><span class="k">Time</span><span class="v">Install clinic + First Light</span></div>
       <div><span class="k">Tools</span><span class="v">Codex app (home) · OpenCode · Pi · goose</span></div>
       <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-b0">0 / 23 · 0%</span></div>
     </div>
@@ -50,11 +50,11 @@
       <div>
         <h2 class="h-plain">Why this block exists</h2>
         <p>A <strong>harness</strong> is the setup around a model that lets it act: tools, files, permissions, instructions, and your accept/reject loop. Today you will feel that loop before we name every part of it.</p>
-        <p>Pre-work already walked install with a verify at the end of each step. Monday still opens with an <strong>install clinic</strong> — about two hours expected, <strong>no hard wall-clock boundary</strong> — so remaining blockers die with help on hand. Then we <strong>direct</strong>. The clinic is finish-and-prove, not a substitute for skipping pre-work.</p>
+        <p>We complete pre-work together during the <strong>install clinic</strong>. Follow the four phases in order, verify each tool before moving on, and record the result in the setup log. First Light begins after the course setup is complete.</p>
         <p>You will work in more than one chat today, and the split is deliberate. Build work — the machine reading files, writing code, rebuilding a page — runs in its own chat. Direction and verdicts — the brief you write before the run, the log you write after, the lesson-outcome checklist, the attack on that list — run in a separate operator chat. Keep them apart and your log’s evidence pointers stay checkable by someone who was not in the room. Let them merge and the chat that helped you build is the same chat you ask whether the build was any good; it will tell you yes, and you will have no trail that says otherwise. Each paste below names the chat it belongs in — follow the names and the split takes care of itself.</p>
         <h3>What you will leave with</h3>
         <ul>
-          <li>Stack proven in clinic: four smoke files, setup log, OpenCode version, Codex app sandbox mode</li>
+          <li>Course setup completed in clinic: four smoke files, setup log, OpenCode version, Codex app sandbox mode</li>
           <li>Co-write a full LIVE Direction Brief (five fields)</li>
           <li>Ship a working map from the synthetic report folder (timeline and filters)</li>
           <li>Run a negative check and an update proof (or honest break + redirect)</li>
@@ -62,10 +62,10 @@
         </ul>
         <h3>Before you start</h3>
         <ul>
-          <li>As much pre-work as you could finish; setup log open; course repo cloned to disk (pre-work section 13) — today’s Codex project opens at that folder, not <code>prework-smoke</code></li>
+          <li>The <a href="../prework.html">pre-work install guide</a> and setup log open</li>
           <li>Three API keys — see <a href="../keys.html">Your API keys</a></li>
-          <li>Laptop you are actually bringing all week</li>
-          <li>Willingness to re-run a verify step in clinic if something is stale</li>
+          <li>The Windows laptop you will use all week</li>
+          <li>Work through the installation with the room; ask for help when a check does not match</li>
         </ul>
       </div>
       <div class="orient-aside">
@@ -75,7 +75,7 @@
         </div>
         <div class="callout">
           <strong>Install clinic (first stretch of the morning)</strong>
-          Expect about <strong>two hours</strong>. There is no hard cutoff — when the room’s chairs are proven, First Light starts. Help roams the room; you re-run the verify checks from the install guide (fresh terminal after PATH changes). Goal: four files in <code>prework-smoke</code> you can open in Explorer, keys alive, Codex app on API-key sign-in, setup log with at least one real failure and fix. Still blocked after honest effort → rescue track in parallel; do not freeze First Light for everyone.
+          Work through the four pre-work phases with the instructor. Open a fresh terminal after PATH changes and run every verification in the guide. The finish line is four files in <code>prework-smoke</code> that you can open in Explorer, working keys, Codex signed in with its API key, the course repo on disk, and a setup log that records what happened. A clean install can simply say <strong>PASS</strong>; do not invent a failure.
         </div>
       </div>
     </section>
@@ -86,8 +86,8 @@
         <h2>Run of exercise</h2>
         <p class="section-lede">Work top to bottom. Every block below is something you paste or run, in order; the prose between blocks tells you what you should see and the recovery if you don’t. Check each item off as its proof exists — progress saves in this browser, and the same tick shows on the home page.</p>
 
-        <h3>Stage 01 · Prove your chair</h3>
-        <p>The clinic starts with evidence, not with reinstalling. One command shows whether your four agents already left their proof on disk.</p>
+        <h3>Stage 01 · Verify the course setup</h3>
+        <p>This is the final verification after the four pre-work phases. One command shows whether the four course tools left their proof on disk.</p>
 
         <div class="do-step">
           <p class="do-label">Now run this in a <strong>new PowerShell window</strong>:</p>
@@ -148,7 +148,7 @@ Get-Content "$env:USERPROFILE\.codex\config.toml"</code></pre>
           <pre><code>Test-Path "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator"</code></pre>
         </div>
 
-        <p>You want <code>True</code>. If you get <code>False</code>, the pre-work clone never happened — close that gap right now with the next step; otherwise skip it.</p>
+        <p>You want <code>True</code>. If you get <code>False</code>, the repo clone is still incomplete — run the next step; otherwise skip it.</p>
 
         <div class="do-step">
           <p class="do-label">Only if the check above said <code>False</code> — now in <strong>PowerShell</strong>:</p>
@@ -161,9 +161,9 @@ git clone https://github.com/TheHolofex/AI_Harness_Bootcamp.git</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-b0-gate" name="b0-b0-gate" data-check-id="b0-gate" />
               <span class="check-num">1</span>
-              <span class="check-title">Install clinic complete for your chair</span>
+              <span class="check-title">Course harnesses and tools installed and verified</span>
             </label>
-            <div class="check-detail">Proof: four smoke files in Explorer, setup log present, OpenCode version and Codex sandbox mode written down, course repo on disk. ~2 hr expected, no hard wall. A capped key looks like an authentication failure, not a bill — <code>429</code> on a tool that worked yesterday is a capped key, not something a reinstall fixes. Still blocked after honest effort → rescue track in parallel; First Light does not wait for the whole room.</div>
+            <div class="check-detail">Proof: four smoke files in Explorer, setup log present, OpenCode version and Codex sandbox mode written down, and the course repo on disk. If a tool returns <code>429</code>, tell the instructor; a capped key is not something a reinstall fixes. First Light begins after this setup is complete.</div>
           </li>
         </ol>
 
@@ -700,9 +700,9 @@ Do not seal. Do not draft horizons yet.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-prework" name="b0-mvp-prework" data-check-id="mvp-prework" />
               <span class="check-num">16</span>
-              <span class="check-title">Setup completed and four tools verified</span>
+              <span class="check-title">Course setup completed and four tools verified</span>
             </label>
-            <div class="check-detail">Setup log · per-step verifies · four smoke files on disk (re-run in clinic if needed). YELLOW only with written workaround.</div>
+            <div class="check-detail">Setup log complete · each install check passed · four smoke files visible on disk.</div>
           </li>
 
           <li class="check-item" data-check-item>

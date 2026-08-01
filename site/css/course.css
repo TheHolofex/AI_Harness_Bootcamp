@@ -1187,7 +1187,7 @@ code, .meta-grid .v, .check-detail a { overflow-wrap: anywhere; }
 .prework-route-figure { margin: 1.75rem 0 2rem; }
 .phase-map {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
   margin: 0 0 2.25rem;
   border: 1px solid var(--rule);
@@ -1256,10 +1256,10 @@ section[id^="phase-"] { scroll-margin-top: 5.5rem; }
 @media (max-width: 1000px) {
   .nav.nav-unified > a,
   .nav-drop-btn { padding-right: 0.45rem; padding-left: 0.45rem; font-size: 0.7rem; }
-  .phase-map { grid-template-columns: repeat(6, 1fr); }
-  .phase-card { grid-column: span 2; border-bottom: 1px solid var(--rule); }
-  .phase-card:nth-child(3) { border-right: 0; }
-  .phase-card:nth-child(n + 4) { grid-column: span 3; border-bottom: 0; }
+  .phase-map { grid-template-columns: repeat(2, 1fr); }
+  .phase-card { border-bottom: 1px solid var(--rule); }
+  .phase-card:nth-child(even) { border-right: 0; }
+  .phase-card:nth-child(n + 3) { border-bottom: 0; }
   .phase-card:last-child { border-right: 0; }
 }
 

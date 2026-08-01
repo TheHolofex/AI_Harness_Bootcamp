@@ -21,9 +21,9 @@
   <div data-context-for="PREWORK"></div>
 
   <main class="site-main checklist-page">
-    <p class="eyebrow">Before Monday · interactive checklist</p>
+    <p class="eyebrow">Monday morning · install clinic checklist</p>
     <h1>Pre-work · Install guide</h1>
-    <p class="lede">Choose a phase, open the section you need, then work one step at a time. Each phase ends in something you can show, not a claim that setup probably worked.</p>
+    <p class="lede">We will work through this pre-work together during Monday morning’s install clinic. Choose a phase, open the section you need, and complete one visible check at a time.</p>
 
 <div class="meta-grid">
   <div><span class="k">Machine</span><span class="v">Windows 11</span></div>
@@ -33,11 +33,10 @@
 </div>
 
 <nav class="checklist-phase-map" aria-label="Pre-work phases">
-  <a href="#phase-basics"><span class="phase-number">1</span><strong>Machine</strong><span data-phase-stat="basics">0 / 19</span></a>
+  <a href="#phase-basics"><span class="phase-number">1</span><strong>Machine</strong><span data-phase-stat="basics">0 / 21</span></a>
   <a href="#phase-keys"><span class="phase-number">2</span><strong>Keys</strong><span data-phase-stat="keys">0 / 6</span></a>
-  <a href="#phase-tools"><span class="phase-number">3</span><strong>Tools</strong><span data-phase-stat="tools">0 / 30</span></a>
-  <a href="#phase-files"><span class="phase-number">4</span><strong>Course files</strong><span data-phase-stat="files">0 / 4</span></a>
-  <a href="#phase-pack"><span class="phase-number">5</span><strong>Pack</strong><span data-phase-stat="pack">0 / 3</span></a>
+  <a href="#phase-tools"><span class="phase-number">3</span><strong>Harnesses + tools</strong><span data-phase-stat="tools">0 / 31</span></a>
+  <a href="#phase-files"><span class="phase-number">4</span><strong>Course files + log</strong><span data-phase-stat="files">0 / 5</span></a>
 </nav>
 
 <div class="callout"><strong>Everything runs on API keys</strong>
@@ -47,7 +46,7 @@ You'll be issued three keys — OpenAI, xAI, and Anthropic. You will never sign 
 Every command in this guide is typed into PowerShell. You will also install Git Bash, which is a different kind of terminal — but that is a dependency other tools reach for on their own, not a second thing for you to learn. Step 9 shows how to tell at a glance which window you are looking at, because pasting a command into the wrong one produces errors that never say so.</div>
 
 <div class="checklist-toolbar">
-  <p>Check observable work when it passes. Reading notes, optional tools, repairs you did not need, and troubleshooting symptoms do not count toward READY. Progress is saved in this browser at this exact address. Keep the <a href="../prework-setup-log.html">web setup log</a> beside you.</p>
+  <p>Check observable work when it passes. Reading notes, optional tools, repairs you did not need, and troubleshooting symptoms do not count toward completion. Progress is saved in this browser at this exact address. Keep the <a href="../prework-setup-log.html">web setup log</a> beside you.</p>
   <div class="btn-row">
     <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a>
     <a class="btn btn-secondary" href="../keys.html">Keys reference</a>
@@ -70,10 +69,10 @@ Every command in this guide is typed into PowerShell. You will also install Git 
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-i-time" data-check-id="i-time" />
     <span class="check-num">1</span>
-    <span class="check-title">Block real time before Monday</span>
+    <span class="check-title">Start the Monday install clinic with this guide open</span>
   </label>
-  <div class="check-detail"><p>Finish before Monday's first session. Most people need two to four hours; a corporate-managed laptop can take longer, because policy blocks turn up one at a time rather than all at once.</p>
-  <p>Start early enough that you can raise a blocker and still get an answer. Sunday night is the most reliable way to arrive stuck.</p></div>
+  <div class="check-detail"><p>We will complete installation and setup together during Monday morning’s clinic. Plan for two to four hours; a corporate-managed laptop can take longer because policy blocks appear one at a time.</p>
+  <p>Bring the Windows 11 laptop you will use during the course. Keep this checklist and your setup log open while the instructor walks the room.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -83,7 +82,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <span class="check-title">Open a setup log and keep it open</span>
   </label>
   <div class="check-detail"><p>Open the <a href="../prework-setup-log.html">web setup log</a> in another tab, or use any notes file. After each section, write down the result, any error text, what fixed it, and roughly how long it took.</p>
-  <p>Copy error messages exactly rather than paraphrasing — the precise wording is usually the thing that identifies the problem. A carefully recorded failure is worth more on Monday than a clean install with no trail behind it.</p></div>
+  <p>Copy error messages exactly rather than paraphrasing — the precise wording is usually the thing that identifies the problem. A carefully recorded failure lets the instructor help faster than a vague report that setup did not work.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -93,7 +92,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <span class="check-title">Confirm you have all three API keys in hand</span>
   </label>
   <div class="check-detail"><p>You need an OpenAI key starting <code>sk-proj-</code>, an xAI key starting <code>xai-</code>, and an Anthropic key starting <code>sk-ant-api03-</code>.</p>
-  <p>If any are missing, say so in the pre-work channel now and start installing anyway. The first five sections need no keys at all, so you can get most of the machine ready while you wait.</p></div>
+  <p>If any are missing, tell the instructor and start with the machine steps anyway. The first four sections need no keys, so you can keep moving while the missing key is resolved.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -102,7 +101,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <span class="check-num">4</span>
     <span class="check-title">Know the shape of what you're building</span>
   </label>
-  <div class="check-detail"><p>Foundations first: a terminal, a package manager, Git, then Node and Python. Then your three keys. Then six tools that use them.</p>
+  <div class="check-detail"><p>Foundations first: a terminal, the official installers for Git, Node, and Python, then your three keys. After that you will install and verify the course harnesses and tools.</p>
   <p>All of it is driven from one window — a PowerShell terminal. You'll open it in step 9 and stay there for the rest of this guide.</p>
 <p><strong>The Codex app</strong> is your home for the week. <strong>OpenCode</strong> is the second harness you'll run the same brief through on Tuesday. <strong>Pi</strong> is a minimal, extensible coding harness — small defaults, then skills, packages, and tree-shaped sessions when you need more. <strong>goose</strong> is a local agent platform: packaged recipes, a tool surface (extensions), an autonomy dial (mode and max turns), and an unattended path (schedule) — Thursday’s autonomy-contract vehicle. <strong>Obsidian</strong> holds a knowledge base and <strong>n8n</strong> builds a fixed pipeline. Claude Code is optional.</p></div>
 </li>
@@ -134,7 +133,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
   </label>
   <div class="check-detail"><p>Snapdragon and other ARM Windows laptops — often sold as Copilot+ PCs — can't run this stack. OpenCode fails to start on Windows ARM64, and goose publishes no ARM build at all.</p>
   <pre><code>$env:PROCESSOR_ARCHITECTURE</code></pre>
-  <p><code>AMD64</code> means you're fine. <code>ARM64</code> means flag it today, before installing anything else. That's a machine question rather than something you can solve at the keyboard, and it needs lead time.</p></div>
+  <p><code>AMD64</code> means you're fine. <code>ARM64</code> means stop and tell the instructor before installing anything else. That's a machine question rather than something you can solve at the keyboard.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -153,7 +152,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <span class="check-title">Establish whether you can install software</span>
   </label>
   <div class="check-detail"><p>Most steps install into your own user profile and need no administrator rights. Three do prompt for elevation: Git, Node, and Codex's sandbox setup.</p>
-  <p>If your laptop is corporate-managed and you can't approve an elevation prompt, raise a ticket <strong>today</strong>. This is the blocker that most reliably costs people their Monday, and it's the one you can't work around from your own seat.</p></div>
+  <p>If your laptop is corporate-managed and you can't approve an elevation prompt, tell the instructor. This may require an IT ticket that cannot be resolved from your seat during the clinic.</p></div>
 </li>
 </ol></section>
 
@@ -198,10 +197,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <span class="check-title">Check which PowerShell you're in</span>
   </label>
   <div class="check-detail"><pre><code>$PSVersionTable.PSVersion</code></pre>
-  <p>Stock Windows 11 shows <strong>5.1</strong>. That's expected, and it's enough for everything in this guide.</p>
-  <p>PowerShell 7 is a separate, newer shell that installs alongside 5.1 rather than replacing it. It's optional. If you want it:</p>
-  <pre><code>winget install --id Microsoft.PowerShell --source winget --installer-type wix --accept-source-agreements --accept-package-agreements</code></pre>
-  <p>The <code>--installer-type wix</code> matters. Without it you get a sandboxed build that can't change some settings you may need later.</p></div>
+  <p>Stock Windows 11 shows <strong>5.1</strong>. That's expected, and it's enough for everything in this guide. You do not need to install a second PowerShell version for the course.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -214,51 +210,41 @@ Every command in this guide is typed into PowerShell. You will also install Git 
   <pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
   <p>Answer <code>Y</code> if prompted. <code>RemoteSigned</code> means scripts you wrote run freely while downloaded ones must be signed; <code>CurrentUser</code> means it applies to your account only and needs no admin rights. Then check what actually took effect:</p>
   <pre><code>Get-ExecutionPolicy -List</code></pre>
-  <p>Look at the <code>MachinePolicy</code> and <code>UserPolicy</code> rows. If either shows anything other than <code>Undefined</code>, your IT department sets this centrally and your change is ignored no matter what the command reported. <strong>Log the exact output and ticket IT today.</strong></p></div>
+  <p>Look at the <code>MachinePolicy</code> and <code>UserPolicy</code> rows. If either shows anything other than <code>Undefined</code>, your IT department sets this centrally and your change is ignored no matter what the command reported. <strong>Log the exact output and tell the instructor; this may need IT support.</strong></p></div>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h3>2 · winget, the package manager</h3>
+<section class="checklist-section"><h3>2 · Download the core installers</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-02-winget.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-02-installers.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-wg-check" data-check-id="wg-check" />
+    <input type="checkbox" id="ahb-prework-install-dl-git" data-check-id="dl-git" />
     <span class="check-num">12</span>
-    <span class="check-title">Confirm winget is present</span>
+    <span class="check-title">Download the Git for Windows installer</span>
   </label>
-  <div class="check-detail"><p><strong>winget</strong> is Microsoft's built-in package manager. It downloads and installs software from a command instead of a website, which is why several steps below are one line long. It ships with Windows 11.</p>
-  <pre><code>winget --version</code></pre>
-  <p>A version number means you're set. <code>'winget' is not recognized</code> means go to the next step.</p></div>
+  <div class="check-detail"><p>Open the official <a href="https://git-scm.com/install/windows" target="_blank" rel="noopener">Git for Windows download page</a> and download the current <strong>x64 Setup</strong> installer. Keep the file in Downloads; you will run it in the next section.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-wg-fix" data-check-id="wg-fix" />
+    <input type="checkbox" id="ahb-prework-install-dl-node" data-check-id="dl-node" />
     <span class="check-num">13</span>
-    <span class="check-title">Repair winget only if it's missing</span>
+    <span class="check-title">Download the Node.js LTS Windows installer</span>
   </label>
-  <div class="check-detail"><p>Skip this if the previous step printed a version. Otherwise try these in order, checking <code>winget --version</code> in a <strong>new</strong> window after each.</p>
-  <p>Re-register the package — on a freshly imaged machine it sometimes just hasn't finished registering:</p>
-  <pre><code>Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe</code></pre>
-  <p>If that doesn't do it, use Microsoft's repair module:</p>
-  <pre><code>Install-PackageProvider -Name NuGet -Force | Out-Null
-Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery | Out-Null
-Repair-WinGetPackageManager -Force -Latest</code></pre>
-  <p>If winget still refuses, don't fight it. Every tool below has a direct-download alternative — note it in your log and carry on.</p></div>
+  <div class="check-detail"><p>Open the official <a href="https://nodejs.org/en/download" target="_blank" rel="noopener">Node.js download page</a>. Choose <strong>LTS</strong>, Windows, x64, and the Installer (<code>.msi</code>). Do not choose Current; n8n does not support the newest experimental Node release.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-wg-agree" data-check-id="wg-agree" />
+    <input type="checkbox" id="ahb-prework-install-dl-python" data-check-id="dl-python" />
     <span class="check-num">14</span>
-    <span class="check-title">Clear winget's first-run agreement prompt</span>
+    <span class="check-title">Download the Python 3.14 Windows installer</span>
   </label>
-  <div class="check-detail"><p>The first time winget runs it stops and asks you to accept its source terms. Get that out of the way now, so a later install doesn't appear to hang when it's really waiting for a keystroke you can't see.</p>
-  <pre><code>winget source update --accept-source-agreements</code></pre></div>
+  <div class="check-detail"><p>Open the official <a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">Python releases for Windows</a>. Under the latest Python 3.14 release, choose <strong>Windows installer (64-bit)</strong>. Keep the file in Downloads; you will run it after Node.</p></div>
 </li>
 </ol></section>
 
@@ -276,8 +262,7 @@ Repair-WinGetPackageManager -Force -Latest</code></pre>
   </label>
   <div class="check-detail"><p>Git tracks changes to files, and you'll use it to fetch the course repository. It also installs <strong>Git Bash</strong>, a second kind of terminal that some tools reach for behind the scenes — which is the real reason Git comes this early.</p>
   <p>To be clear about what you have to learn: <strong>you type everything in PowerShell.</strong> Git Bash is a dependency, not a second shell to get fluent in. Pi is the one tool that genuinely can't run without it, and it calls it for you. The only time you'd open Git Bash yourself is one goose fallback in step 55.</p>
-  <pre><code>winget install --id Git.Git -e --source winget --scope machine --accept-source-agreements --accept-package-agreements</code></pre>
-  <p>Approve the elevation prompt. <code>--scope machine</code> puts Git at a predictable path other tools know to look in; without it Git can land somewhere they won't find. If winget isn't available, download from <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com/download/win</a> and accept the installer defaults.</p></div>
+  <p>Open the Git installer you downloaded in the previous section. Approve the elevation prompt and accept the installer defaults. If it offers a choice between installing for your account and for everyone on the machine, choose everyone so other tools find Git at the standard path.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -317,10 +302,10 @@ Test-Path "C:\Program Files\Git\bin\bash.exe"</code></pre>
     <span class="check-title">Install Node.js LTS — the suffix matters</span>
   </label>
   <div class="check-detail"><p>Node runs JavaScript outside a browser. Several tools here are distributed through it, and n8n is built on it.</p>
-  <pre><code>winget install --id OpenJS.NodeJS.LTS -e --source winget --accept-source-agreements --accept-package-agreements</code></pre>
-  <p>Approve the elevation prompt. <strong>The <code>.LTS</code> on the end is not optional.</strong> The package named plain <code>OpenJS.NodeJS</code> installs the newest experimental release, which is too new for n8n — it will refuse to start later, and the error won't mention this step.</p>
+  <p>Open the Node.js LTS installer you downloaded in section 2. Approve the elevation prompt and keep the default option that adds Node to PATH.</p>
+  <p><strong>LTS is not optional.</strong> The Current release is too new for n8n — it will refuse to start later, and the error won't mention this step.</p>
   <p>LTS means Long Term Support. Two tools this week have hard minimums (n8n needs Node 22.22 or newer, Pi needs 22.19 or newer) and the LTS release clears both while staying inside what n8n supports.</p>
-  <p>Without winget, download the LTS Windows Installer from <a href="https://nodejs.org/en/download" target="_blank" rel="noopener">nodejs.org/en/download</a>. Click the LTS option, not Current.</p></div>
+  </div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -330,7 +315,7 @@ Test-Path "C:\Program Files\Git\bin\bash.exe"</code></pre>
     <span class="check-title">Install Python</span>
   </label>
   <div class="check-detail"><p>You'll use Python mainly to serve the course site locally, and agents reach for it when a task suits a quick script.</p>
-  <pre><code>winget install Python.Python.3.14 --accept-source-agreements --accept-package-agreements</code></pre></div>
+  <p>Open the Python 3.14 64-bit installer you downloaded in section 2. On its first screen, select <strong>Add python.exe to PATH</strong>, then choose <strong>Install Now</strong>.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -351,9 +336,7 @@ Test-Path "C:\Program Files\Git\bin\bash.exe"</code></pre>
   <div class="check-detail"><pre><code>node -v
 npm -v
 python --version</code></pre>
-  <p>All three should answer with version numbers. Node must read <strong>22.22 or higher, and below 25</strong>. If it's outside that, fix it now rather than discovering it on Thursday:</p>
-  <pre><code>winget uninstall -e --id OpenJS.NodeJS
-winget install -e --id OpenJS.NodeJS.LTS</code></pre>
+  <p>All three should answer with version numbers. Node must read <strong>22.22 or higher, and below 25</strong>. If it's outside that range, open Settings → Apps → Installed apps, uninstall Node.js, and run the LTS installer from section 2 again.</p>
   <p>If <code>npm</code> fails with <em>"npm.ps1 cannot be loaded because running scripts is disabled"</em>, go back to step 11. That error is the execution policy, not a broken Node install.</p></div>
 </li>
 
@@ -431,8 +414,8 @@ $key = $null</code></pre></div>
     <span class="check-num">27</span>
     <span class="check-title">Set the pinned model ids</span>
   </label>
-  <div class="check-detail"><p>A model id per provider should be posted in the pre-work channel. Set them once here and every later step picks them up &mdash; otherwise you'd be hand-editing four commands further down.</p>
-  <p>If nothing has been posted yet, ask in the channel, and meanwhile use any current model id for that provider. These are two variables you can change in ten seconds later, not a decision you're locked into.</p>
+  <div class="check-detail"><p>The instructor will provide one model id per provider during the clinic. Set them once here and every later step picks them up &mdash; otherwise you'd be hand-editing four commands further down.</p>
+  <p>If the model ids have not been provided yet, ask the instructor. Meanwhile, use any current model id for that provider. These are two variables you can change in ten seconds later, not a decision you're locked into.</p>
   <p>Change the two quoted values to the ids you're using, then run all four lines:</p>
   <pre><code>$env:HB_OPENAI_MODEL = 'paste the OpenAI model id'
 $env:HB_XAI_MODEL    = 'paste the xAI model id'
@@ -459,7 +442,7 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
   <pre><code>'HB_OPENAI_MODEL','HB_XAI_MODEL' | ForEach-Object {
   '{0} = {1}' -f $_, [Environment]::GetEnvironmentVariable($_,'User')
 }</code></pre>
-  <p>Both should read back the ids from the channel. If either still says <code>paste the...</code>, go back to step 27 — four later steps depend on these.</p></div>
+  <p>Both should read back the ids provided during the clinic. If either still says <code>paste the...</code>, go back to step 27 — four later steps depend on these.</p></div>
 </li>
 </ol></section>
 
@@ -476,7 +459,7 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
     <span class="check-title">Create the folder every tool will write into</span>
   </label>
   <div class="check-detail"><pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"</code></pre>
-  <p>Each tool below writes one uniquely named file here. By the end you'll have four files side by side in Explorer, which is exactly what Monday's gate asks to see.</p>
+  <p>Each harness below writes one uniquely named file here. By the end of the clinic you'll have four files side by side in Explorer, which is the verification that installation worked.</p>
   <p>A <strong>smoke test</strong> is the smallest check that proves a thing is genuinely alive. Here it means the agent authenticated, reached a real model, and put a real file on your disk. That last part is the part that counts.</p></div>
 </li>
 
@@ -491,7 +474,7 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
 </li>
 </ol></section>
 
-<section class="checklist-section" id="phase-tools"><h2>Phase 3 · Prove the required tools</h2>
+<section class="checklist-section" id="phase-tools"><h2>Phase 3 · Install and verify the course harnesses and tools</h2>
 <figure class="section-diagram">
   <img src="../assets/prework/install-07-codex.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
@@ -505,10 +488,9 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
     <span class="check-title">Install the ChatGPT desktop app</span>
   </label>
   <div class="check-detail"><p>Codex isn't a separate download. It's a mode inside the <strong>ChatGPT desktop app</strong>, sitting alongside Chat and Work. When this course says <em>the Codex app</em>, that's what it means — and knowing that saves you hunting the Store for a product that doesn't exist.</p>
-  <p>Use the web installer at <a href="https://get.microsoft.com/installer/download/9PLM9XGG6VKS">get.microsoft.com/installer/download/9PLM9XGG6VKS</a>, or install from PowerShell:</p>
-  <pre><code>winget install --id 9PLM9XGG6VKS -s msstore</code></pre>
+  <p>Use the web installer at <a href="https://get.microsoft.com/installer/download/9PLM9XGG6VKS">get.microsoft.com/installer/download/9PLM9XGG6VKS</a>. Open the downloaded installer and follow its prompts.</p>
   <p>The package is Store-signed, so Store components may flash past while it installs. You don't need to browse the Store yourself, and you don't need a Microsoft account.</p>
-  <p>If your laptop blocks Microsoft's distribution service entirely, there's a direct package — see <em>When something breaks</em> at the end. Unlike the rest of this stack, there's no second vendor to fall back on, so raise it early.</p></div>
+  <p>If your laptop blocks Microsoft's distribution service entirely, there's a direct package — see <em>When something breaks</em> at the end. Unlike the rest of this stack, there's no second vendor to fall back on, so tell the instructor when you see the block.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -519,7 +501,7 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
   </label>
   <div class="check-detail"><p>Launch the app. You'll land on a signed-out screen whose main button offers to sign in with a ChatGPT account — which you don't have and won't use.</p>
   <p>Choose <strong>Sign in another way</strong> instead, paste your OpenAI key, and select <strong>Continue</strong>.</p>
-  <p>This is the one tool in the stack that ignores <code>OPENAI_API_KEY</code>. Everywhere else the variable is what does the work; here it's the key you paste that counts. Setting the variable and expecting the app to find it is the single most common way to lose an evening on this step.</p></div>
+  <p>This is the one tool in the stack that ignores <code>OPENAI_API_KEY</code>. Everywhere else the variable is what does the work; here it's the key you paste that counts. Setting the variable and expecting the app to find it is the most common way to lose time on this step.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -619,12 +601,11 @@ sandbox = "unelevated"</code></pre>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-version" data-check-id="oc-version" />
     <span class="check-num">40</span>
-    <span class="check-title">Check for a pinned channel and version</span>
+    <span class="check-title">Check for a pinned npm version</span>
   </label>
-  <div class="check-detail"><p>Check the pre-work channel for a pinned OpenCode build, and prefer that over whatever is newest.</p>
+  <div class="check-detail"><p>Check the instructor’s screen for the current OpenCode npm pin, and prefer that over whatever is newest.</p>
   <p>OpenCode ships fast and its Windows support sometimes regresses between releases — recent versions have had reports of the agent's file-writing tools failing on Windows specifically. A cohort is better off on one known build than on whatever shipped that morning.</p>
-  <p>The pin names <strong>two</strong> things, a <em>channel</em> and a <em>version</em>, because winget and npm publish this tool on their own schedules and are usually a few releases apart. A version number on its own doesn't identify a build.</p>
-  <p>If there's no pin, don't stall on it. Install from winget without the <code>--version</code> flag, then write down the channel and the exact version you landed on and post it in the channel — two people comparing notes is usually how a pin gets settled. You may end up switching builds later; that's a two-minute reinstall, not a redo of this section.</p></div>
+  <p>The course uses one install path — npm — so the pin only needs a version number. If there is no pin, install the current npm release, record the exact version, and continue.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -633,13 +614,10 @@ sandbox = "unelevated"</code></pre>
     <span class="check-num">41</span>
     <span class="check-title">Install OpenCode</span>
   </label>
-  <div class="check-detail"><p>If there is a pin, run <strong>only</strong> the line for the channel it names, substituting the version:</p>
-  <pre><code># channel: winget
-winget install --id SST.opencode --exact --version &lt;pinned version&gt; --accept-package-agreements --accept-source-agreements</code></pre>
-  <pre><code># channel: npm  — needs Node from section 4
-npm install -g opencode-ai@&lt;pinned version&gt;</code></pre>
-  <p>If there's no pin, this is the whole command — the winget line without the version flag:</p>
-  <pre><code>winget install --id SST.opencode --exact --accept-package-agreements --accept-source-agreements</code></pre>
+  <div class="check-detail"><p>If there is a pin, substitute its version in this npm command:</p>
+  <pre><code>npm install -g opencode-ai@&lt;pinned version&gt;</code></pre>
+  <p>If there is no pin, install the current npm release:</p>
+  <pre><code>npm install -g opencode-ai</code></pre>
   <p><strong>Don't use the <code>curl</code> install command from OpenCode's website.</strong> That script is written for Mac and Linux shells and can't run on plain Windows PowerShell. There's no PowerShell version of it published, so the equivalent address just returns an error page.</p></div>
 </li>
 
@@ -651,7 +629,7 @@ npm install -g opencode-ai@&lt;pinned version&gt;</code></pre>
   </label>
   <div class="check-detail"><pre><code>opencode --version</code></pre>
   <p>If you installed against a pin, this should print that version exactly. If it prints anything else — higher or lower — an older install is probably still on PATH, or the other channel got used. Record both numbers in your log and mention it, rather than quietly upgrading to whatever is current. With no pin, whatever it prints is your answer; just write it down.</p>
-  <p>Record the channel and the version in your log. Monday's gate asks for both, because knowing exactly which build you're on is what makes Tuesday's comparison mean anything.</p></div>
+  <p>Record the version in your log. Knowing exactly which build you're on is what makes Tuesday's comparison meaningful.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -692,7 +670,7 @@ $env:OPENCODE_DISABLE_CLAUDE_CODE = "1"</code></pre>
   <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
 opencode run -m "xai/$env:HB_XAI_MODEL" "Create a file named from-opencode.txt in the current directory whose only contents are the text: opencode works"
 Get-Content .\from-opencode.txt</code></pre>
-  <p>The file must exist in Explorer. If OpenCode reports success but the file isn't there, that's the Windows regression mentioned above — record the version and exact error, then post it rather than spending an hour on it alone.</p></div>
+  <p>The file must exist in Explorer. If OpenCode reports success but the file isn't there, that's the Windows regression mentioned above — record the version and exact error, then show the instructor rather than debugging it alone.</p></div>
 </li>
 </ol></section>
 
@@ -712,7 +690,7 @@ Get-Content .\from-opencode.txt</code></pre>
   <p>What the marketing line “bare” often misses: Pi is built to <strong>grow</strong>. You can load <strong>skills</strong> on demand, install <strong>packages</strong> from npm or git, write <strong>TypeScript extensions</strong> (tools, commands, UI, lifecycle hooks), keep <strong>tree-shaped sessions</strong> you can branch with <code>/tree</code>, share runs with <code>/export</code> or <code>/share</code>, and run it four ways — interactive TUI, one-shot print/JSON, RPC, or embed via SDK. Fifteen-plus providers, model switch mid-session, prompt templates, compaction you can customize. If a feature is missing (plan mode, sub-agents, MCP, permission popups), the Pi answer is usually “build it or install a package,” not “wait for the vendor.”</p>
   <p><strong>Out of the box it has no guardrails, and the detail people get wrong is worth reading twice.</strong> Pi runs with exactly your own permissions — no sandbox, no approval prompt, and <strong>no working-directory fence</strong>. Being "in" your smoke folder is a convention you are keeping, not a boundary Pi enforces: an absolute path or a <code>~</code> reaches anything your Windows account can reach, including your SSH keys and saved credentials. Shell commands also have no default timeout.</p>
   <p>Pi's own documentation says so plainly, and explains why: a partial in-process sandbox <em>"would be easy to misunderstand as a security boundary while still depending on the host shell, filesystem, package managers, credentials, and extension code."</em> Real isolation has to come from the operating system or a container. That is a sharper lesson about security theatre than most security training, and you will build on it during the week.</p>
-  <p>For pre-work you only need install, one proof file, and shell reach. Give it small, specific tasks inside the smoke folder, read what it proposes, and don't leave it running unattended.</p>
+  <p>During the install clinic you only need install, one proof file, and shell reach. Give it small, specific tasks inside the smoke folder, read what it proposes, and don't leave it running unattended.</p>
   <p>Two more things to know now: <code>/share</code> uploads your whole session — including the system prompt and every tool result — to a public-by-URL gist, so don't use it on work material. And installing third-party Pi packages runs their code with full access to your machine, so don't install any this week that haven't been named for the course.</p></div>
 </li>
 
@@ -754,7 +732,7 @@ Get-Content .\from-pi.txt</code></pre>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-bash" data-check-id="pi-bash" />
     <span class="check-num">50</span>
-    <span class="check-title">Prove Pi can reach a shell</span>
+    <span class="check-title">Verify that Pi can reach a shell</span>
   </label>
   <div class="check-detail"><p>Pi needs Git Bash to run shell commands, and it only looks for it at the moment it first needs one. A missing shell therefore fails <em>mid-exercise</em> rather than at setup, so force the problem out now:</p>
   <pre><code>pi -p --model "openai/$env:HB_OPENAI_MODEL" "Run the shell command 'echo bash-ok > bash-check.txt' and tell me the result"
@@ -778,18 +756,17 @@ Get-Content .\bash-check.txt</code></pre>
     <span class="check-title">Know what goose is for</span>
   </label>
   <div class="check-detail"><p><a href="https://goose-docs.ai" target="_blank" rel="noopener"><strong>goose</strong></a> is a local-first agent platform (CLI required here; Desktop optional). It is more than a one-shot chat: you package a <strong>recipe</strong> (mission + parameters), choose a <strong>tool surface</strong> (extensions / MCP tools), set an <strong>autonomy dial</strong> (<code>GOOSE_MODE</code>, max turns), and optionally an <strong>unattended path</strong> (scheduler + retry).</p>
-  <p>Thursday’s block uses those four levers as the <em>tool-enforced</em> half of an autonomy contract. Pre-work only proves install and one write — you are not learning the whole product tonight.</p>
-  <p>Course default is the <strong>CLI</strong>. Desktop adds a recipe library and Scheduler UI; nothing in the Monday gate requires it.</p></div>
+  <p>Thursday’s block uses those four levers as the <em>tool-enforced</em> half of an autonomy contract. The install clinic only proves install and one write — you are not learning the whole product now.</p>
+  <p>Course default is the <strong>CLI</strong>. Desktop adds a recipe library and Scheduler UI; the course verification does not require it.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-gs-nowinget" data-check-id="gs-nowinget" />
+    <input type="checkbox" id="ahb-prework-install-gs-official" data-check-id="gs-official" />
     <span class="check-num">52</span>
-    <span class="check-title">Do not install goose with winget</span>
+    <span class="check-title">Use the official AAIF goose installer</span>
   </label>
-  <div class="check-detail"><p>Read this before the next step. A winget package named <em>goose</em> exists and is a completely unrelated database tool that happens to share the name. It installs cleanly, reports success, and is the wrong program.</p>
-  <p>The goose you want is from the Agentic AI Foundation (<code>aaif-goose</code>), and it has no winget package. Use the installer below. Docs: <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p></div>
+  <div class="check-detail"><p>The course uses goose from the Agentic AI Foundation (<code>aaif-goose</code>). Use only the installer in the next step. Current documentation lives at <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -815,7 +792,7 @@ $env:GOOSE_DISABLE_KEYRING = '1'</code></pre>
 [Environment]::SetEnvironmentVariable('GOOSE_MODEL',$env:HB_OPENAI_MODEL,'User')
 $env:GOOSE_PROVIDER = 'openai'
 $env:GOOSE_MODEL = $env:HB_OPENAI_MODEL</code></pre>
-  <p>Setting these means you never have to walk goose's provider list, which is worth avoiding: it mixes API-key providers together with subscription ones like ChatGPT Codex, GitHub Copilot and Cursor Agent that need consumer logins you don't have. This course is API keys only — stay on the OpenAI pin, or whatever the channel names.</p></div>
+  <p>Setting these means you never have to walk goose's provider list, which is worth avoiding: it mixes API-key providers together with subscription ones like ChatGPT Codex, GitHub Copilot and Cursor Agent that need consumer logins you don't have. This course is API keys only — stay on the OpenAI pin, or whichever model the instructor names.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -874,7 +851,7 @@ $env:GOOSE_MODE = "auto"
 goose run --no-session -t "Create a file named from-goose.txt in the current directory containing exactly the line: goose works"
 Get-Content .\from-goose.txt</code></pre>
   <p><code>GOOSE_MODE</code> is the autonomy dial. <code>auto</code> skips per-action approval so this smoke test can finish; on Thursday you will often set <code>approve</code> (or smart-approve) so the tool itself enforces a human gate — that is a real contract row, not just advice. <code>--no-session</code> keeps this proof from leaving a session file behind.</p>
-  <p>Once the course repo is cloned, Thursday’s starter pack is <code>mission_flesh/p6/</code> (<code>watch_officer.yaml</code> + <code>goose_recipe_notes.md</code>). You do not need to run that recipe tonight.</p></div>
+  <p>Once the course repo is cloned, Thursday’s starter pack is <code>mission_flesh/p6/</code> (<code>watch_officer.yaml</code> + <code>goose_recipe_notes.md</code>). You do not need to run that recipe during the install clinic.</p></div>
 </li>
 </ol></section>
 
@@ -891,7 +868,7 @@ Get-Content .\from-goose.txt</code></pre>
     <span class="check-title">Install Obsidian</span>
   </label>
   <div class="check-detail"><p>Obsidian reads and writes ordinary Markdown files in a folder. On Wednesday you'll point an agent at that folder and build a knowledge system with citations you can walk.</p>
-  <pre><code>winget install -e --id Obsidian.Obsidian --scope user --accept-package-agreements --accept-source-agreements</code></pre>
+  <p>Open the official <a href="https://obsidian.md/download" target="_blank" rel="noopener">Obsidian download page</a>. Under Windows, choose <strong>Universal</strong>, open the downloaded installer, and follow its prompts.</p>
   <p>No account is needed and none should be created. Obsidian works fully offline; its paid Sync and Publish services are the only parts that ever ask you to sign in, and this course uses neither.</p></div>
 </li>
 
@@ -966,50 +943,55 @@ Get-Content .\from-goose.txt</code></pre>
     <span class="check-title">Learn how to stop it</span>
   </label>
   <div class="check-detail"><p>Press <kbd>Ctrl</kbd>+<kbd>C</kbd> in the window running n8n. The page at localhost:5678 stops answering, and your work stays saved on disk for next time.</p>
-  <p>You don't need to build anything today — Thursday covers that, including pasting your OpenAI key into an n8n credential. Getting it to start and stop once is the whole task.</p></div>
+  <p>You don't need to build anything during the clinic — Thursday covers that, including pasting your OpenAI key into an n8n credential. Getting it to start and stop once is the whole task.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-g-four" data-check-id="g-four" />
+    <span class="check-num">66</span>
+    <span class="check-title">Verify all four harness proof files together</span>
+  </label>
+  <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"</code></pre>
+  <p>You want <code>from-codex.txt</code>, <code>from-opencode.txt</code>, <code>from-pi.txt</code>, and <code>from-goose.txt</code> in one listing. Open the folder in Explorer and look at it too. Each file proves that its harness authenticated, reached a model, and wrote to disk.</p></div>
 </li>
 </ol></section>
 
-<section class="checklist-section" id="phase-files"><h2>Phase 4 · Course repo and operator pack</h2>
+<section class="checklist-section" id="phase-files"><h2>Phase 4 · Open the course files and finish the setup record</h2>
 <figure class="section-diagram">
   <img src="../assets/prework/install-13-repo.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
-<h3>13 · Course repo and operator pack</h3>
+<h3>13 · Course repo and operator files</h3>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-get" data-check-id="rp-get" />
-    <span class="check-num">66</span>
+    <span class="check-num">67</span>
     <span class="check-title">Clone the course repository</span>
   </label>
   <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp"
 git clone https://github.com/TheHolofex/AI_Harness_Bootcamp.git
 cd AI_Harness_Bootcamp</code></pre>
-  <p>This holds the exercises, the mission data you'll work on Monday, and the operator templates.</p></div>
+  <p>This holds the exercises, the mission data you will use after the clinic, and the operator templates.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-operator" data-check-id="rp-operator" />
-    <span class="check-num">67</span>
-    <span class="check-title">Copy the operator templates where you actually work</span>
+    <span class="check-num">68</span>
+    <span class="check-title">Find the operator files in the cloned course</span>
   </label>
-  <div class="check-detail"><p>The <code>operator/</code> folder holds the Direction Brief and Operator Log you fill in before and after every block, plus the lesson outcomes, independent-review prompt, measurement spine, and transfer file.</p>
-  <p>They belong wherever you're working, not in a folder you downloaded and forgot. Right now that's the smoke folder, because it's the project you opened in the Codex app in step 35:</p>
-  <pre><code>Copy-Item -Recurse -Force `
-  "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator" `
-  "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\"
-Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\operator"</code></pre>
-  <p>You should see the template files listed. When you open a mission folder as a project during the week, bring <code>operator/</code> with you the same way.</p>
-  <p>These are the instruments of the work rather than paperwork about it. Keeping them where you work is what makes them get used.</p>
-  <p><strong>This copy is a rehearsal, not your Monday workspace.</strong> Monday you open the cloned repository itself as your Codex project, and the <code>operator/</code> inside it is the one you actually fill in. Anything you type into the smoke folder's copy between now and then stays behind — so read these templates here, and save the writing for Monday.</p></div>
+  <div class="check-detail"><p>The <code>operator/</code> folder holds the Direction Brief and Operator Log you fill in before and after every lesson, plus the lesson outcomes, independent-review prompt, measurement spine, and transfer file.</p>
+  <p>List that folder now:</p>
+  <pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator"</code></pre>
+  <p>You should see the template files listed. The cloned repository becomes your Codex project for the course, so these files are already where the work will happen. Do not copy them into the smoke-test folder.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-site" data-check-id="rp-site" />
-    <span class="check-num">68</span>
+    <span class="check-num">69</span>
     <span class="check-title">Run the course site locally</span>
   </label>
   <div class="check-detail"><p>This one keeps running until you stop it, and it has to be started from the repository root:</p>
@@ -1022,7 +1004,7 @@ python -m http.server 8080</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-gitignore" data-check-id="rp-gitignore" />
-    <span class="check-num">69</span>
+    <span class="check-num">70</span>
     <span class="check-title">Protect your keys before your first commit</span>
   </label>
   <div class="check-detail"><p>In any folder where you'll commit work this week, make sure a <code>.gitignore</code> file exists containing at least:</p>
@@ -1032,48 +1014,20 @@ python -m http.server 8080</code></pre>
 auth.json</code></pre>
   <p>Then run <code>git status</code> and confirm none of those appear in the list. A committed key is the most common way one leaks, and it's the easiest to prevent.</p></div>
 </li>
-</ol></section>
-
-<section class="checklist-section" id="phase-pack"><h2>Phase 5 · Pack for Monday</h2>
-<figure class="section-diagram">
-  <img src="../assets/prework/install-15-pack.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
-</figure>
-<h3>15 · Pack for Monday</h3>
-<ol class="checklist">
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-g-four" data-check-id="g-four" />
-    <span class="check-num">70</span>
-    <span class="check-title">Confirm all four required files exist together</span>
-  </label>
-  <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"</code></pre>
-  <p>You want <code>from-codex.txt</code>, <code>from-opencode.txt</code>, <code>from-pi.txt</code>, and <code>from-goose.txt</code> in one listing. Open the folder in Explorer and look at it too — that is what Monday clinic will ask for. You already proved each file when you installed that tool; this is only the roll-up.</p></div>
-</li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-g-log" data-check-id="g-log" />
     <span class="check-num">71</span>
-    <span class="check-title">Close the setup log honestly</span>
+    <span class="check-title">Finish the setup record</span>
   </label>
-  <div class="check-detail"><p>Record any real failure and fix that occurred; do not invent one. Add the OpenCode version, Codex app sandbox mode, and any step still yellow with what you will try in clinic. Use the <a href="../prework-setup-log.html">web setup log</a>. If a tool is wrong, re-run that section’s verify.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-g-pack" data-check-id="g-pack" />
-    <span class="check-num">72</span>
-    <span class="check-title">Pack for Monday clinic</span>
-  </label>
-  <div class="check-detail"><p>Bring the laptop, the four smoke files, and the setup log. Monday AM is an install clinic (~2 hours expected, no hard wall) then First Light. Clinic is for finishing gaps, not for starting from zero if pre-work was skipped.</p>
-  <p>Arriving with a clear written yellow is fine. Arriving with an untested claim is worse, and it surfaces within the hour.</p></div>
+  <div class="check-detail"><p>Record any real failure and fix that occurred; do not invent one. Add the OpenCode version, Codex app sandbox mode, and any step that still needs instructor or IT help. Use the <a href="../prework-setup-log.html">web setup log</a>. If a tool is wrong, re-run that section’s verification.</p></div>
 </li>
 </ol></section>
 
-<p class="btn-row"><a class="btn" href="../blocks/b0.html">Monday: clinic + First Light</a> <a class="btn btn-secondary" href="../keys.html">Keys reference</a> <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a></p>
+<p class="btn-row"><a class="btn" href="../blocks/b0.html">Continue to First Light</a> <a class="btn btn-secondary" href="../keys.html">Keys reference</a> <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a></p>
 <div class="callout"><strong>What you actually built</strong>
-Not a tidy install — a chair you can rebuild. You know where each tool keeps its credentials, what its boundaries are, and how it fails. That knowledge is the part you carry to work, and a recorded failure belongs to it rather than counting against it.</div>
+Not a tidy install — a course setup you can rebuild. You know where each tool keeps its credentials, what its boundaries are, and how it fails. That knowledge is the part you carry to work, and a recorded failure belongs to it rather than counting against it.</div>
 
 <div data-plate-for="PREWORK"></div>
 
@@ -1081,7 +1035,7 @@ Not a tidy install — a chair you can rebuild. You know where each tool keeps i
 <summary>Optional tools · Claude Code + local model</summary>
 <h2 class="visually-hidden">Optional tools · Claude Code and local model</h2>
 <div class="callout optional-lane"><strong>Optional lane</strong>
-Claude Code and a local model never block READY. Add them only if the required five-phase route is already green and you want the extra capability.</div>
+Claude Code and a local model never block the required setup. Add them only after the four required phases are complete and you want the extra capability.</div>
 
 <section class="checklist-section optional-section"><h3>Optional · Claude Code third engine</h3>
 <figure class="section-diagram">
@@ -1095,7 +1049,7 @@ Claude Code and a local model never block READY. Add them only if the required f
     <span class="check-num">S1</span>
     <span class="check-title">Decide whether to install it</span>
   </label>
-  <div class="check-detail"><p><strong>Optional.</strong> Skipping it doesn't affect your gate — OpenCode is the required second engine, and Tuesday's comparison runs on Codex and OpenCode.</p>
+  <div class="check-detail"><p><strong>Optional.</strong> Skipping it does not affect the required setup — OpenCode is the required second engine, and Tuesday's comparison runs on Codex and OpenCode.</p>
   <p>You have an Anthropic key, so if you'd like a third opinion available during the week it's about five minutes. If you're short on time, skip it and come back later.</p>
   <p>If you do install it, the <code>OPENCODE_DISABLE_CLAUDE_CODE</code> variable from step 44 is what keeps the two apart. Claude Code writes a <code>CLAUDE.md</code> that OpenCode would otherwise read as its own standing instructions.</p></div>
 </li>
@@ -1104,7 +1058,7 @@ Claude Code and a local model never block READY. Add them only if the required f
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cc-install" data-check-id="cc-install" />
     <span class="check-num">S2</span>
-    <span class="check-title">Install Claude Code and prove it writes</span>
+    <span class="check-title">Install Claude Code and verify a file write</span>
   </label>
   <div class="check-detail"><pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
   <p>Open a new terminal and check <code>claude --version</code>. If the command isn't found, it installed into the same <code>%USERPROFILE%\.local\bin</code> goose uses, so this is the section 10 block again — safe to run whether or not the folder is already there:</p>
@@ -1130,8 +1084,8 @@ Get-Content .\from-claude-optional.txt</code></pre>
     <span class="check-num">S3</span>
     <span class="check-title">Decide whether to prepare a local model</span>
   </label>
-  <div class="check-detail"><p><strong>Skip freely.</strong> This is not required for Monday's gate, the install clinic, or passing the course. It only saves you time if you want Thursday's <em>endpoint wall</em> stretch, where you point a harness at a model running on your own machine instead of somebody's API.</p>
-  <p>A <strong>model pin</strong> — a tag and a minimum amount of RAM — may be posted in the channel. If one is, use it. These downloads are several gigabytes, and picking your own tag on hotel Wi-Fi is how you spend an evening on a model your laptop can't hold, so ask before pulling anything large.</p></div>
+  <div class="check-detail"><p><strong>Skip freely.</strong> This is not required for the course setup or for completing the bootcamp. Add it only after the four required phases are complete and only if you want Thursday's <em>endpoint wall</em> stretch, where you point a harness at a model running on your own machine instead of somebody's API.</p>
+  <p>The instructor may provide a <strong>model pin</strong> — a tag and a minimum amount of RAM. If so, use it. These downloads are several gigabytes, and picking your own tag can waste bandwidth on a model your laptop cannot hold, so ask before pulling anything large.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -1141,8 +1095,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
     <span class="check-title">Install the runner</span>
   </label>
   <div class="check-detail"><p>Ollama is the path here. LM Studio is only for a pin that names it.</p>
-  <pre><code>winget install -e --id Ollama.Ollama --accept-package-agreements --accept-source-agreements</code></pre>
-  <p>Without winget, download the Windows installer from <a href="https://ollama.com" target="_blank" rel="noopener">ollama.com</a> and accept the defaults. Then open a <strong>new</strong> PowerShell window:</p>
+  <p>Download and run the Windows installer from <a href="https://ollama.com/download/windows" target="_blank" rel="noopener">ollama.com/download/windows</a>. Then open a <strong>new</strong> PowerShell window:</p>
   <pre><code>ollama --version</code></pre>
   <p>A version number means you're done here.</p>
   <p>If the pin names <a href="https://lmstudio.ai" target="_blank" rel="noopener">LM Studio</a> instead, install it from that page. It has no version command to run — start its local server instead (the <strong>Developer</strong> tab, or <code>lms server start</code>) and confirm it reports listening, usually on <code>http://localhost:1234</code>.</p></div>
@@ -1158,7 +1111,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
   <pre><code>$env:HB_LOCAL_MODEL = 'paste the tag from the LOCAL PIN line'
 [Environment]::SetEnvironmentVariable('HB_LOCAL_MODEL', $env:HB_LOCAL_MODEL, 'User')
 ollama pull $env:HB_LOCAL_MODEL</code></pre>
-  <p>Then prove it answers:</p>
+  <p>Then verify that it answers:</p>
   <pre><code>ollama run $env:HB_LOCAL_MODEL "Reply with exactly: local-brain-ok"</code></pre>
   <p>On LM Studio, run the first two lines above to set the variable, then do the rest in its own window: download <strong>only</strong> the pinned tag, load it so the running server isn't empty, and send <code>Reply with exactly: local-brain-ok</code> in the chat pane. You want the same answer back either way.</p>
   <p>Write your free RAM and whether the smoke worked into your setup log. If the pull fails or the machine starts thrashing, stop and log it YELLOW — that is a real result, and cloud goose remains Thursday's floor either way.</p></div>
@@ -1178,7 +1131,7 @@ ollama pull $env:HB_LOCAL_MODEL</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-notfound" data-check-id="r-notfound" />
-    <span class="check-num">73</span>
+    <span class="check-num">T1</span>
     <span class="check-title">"is not recognized" after a successful install</span>
   </label>
   <div class="check-detail"><p>Close every terminal and open a new one. That's the answer roughly nine times in ten, and it applies to every tool here.</p>
@@ -1193,7 +1146,7 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-window" data-check-id="r-window" />
-    <span class="check-num">74</span>
+    <span class="check-num">T2</span>
     <span class="check-title">A command that should work doesn't — check which window you're in</span>
   </label>
   <div class="check-detail"><p>Before assuming an install is broken, confirm the terminal:</p>
@@ -1205,7 +1158,7 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-scripts" data-check-id="r-scripts" />
-    <span class="check-num">75</span>
+    <span class="check-num">T3</span>
     <span class="check-title">"running scripts is disabled on this system"</span>
   </label>
   <div class="check-detail"><p>That's the execution policy from step 11. Re-run it, then check <code>Get-ExecutionPolicy -List</code>.</p>
@@ -1215,45 +1168,45 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-auth" data-check-id="r-auth" />
-    <span class="check-num">76</span>
+    <span class="check-num">T4</span>
     <span class="check-title">A tool won't authenticate</span>
   </label>
   <div class="check-detail"><p>Work through these in order. Is the key set in <em>this</em> window (step 28)? Does it start with the right prefix for that provider? Is it the right key for that tool — <code>XAI_API_KEY</code> for OpenCode, <code>OPENAI_API_KEY</code> for the rest?</p>
   <p>The Codex app is the exception to all of that: it never reads the variable. It uses the key you pasted into <em>Sign in another way</em>. Check the profile menu — it should say API key, not an account. If it's wrong, log out there and redo step 32.</p>
   <p>If the Codex app keeps pushing you toward a ChatGPT login, confirm <code>forced_login_method = "api"</code> sits in <code>%USERPROFILE%\.codex\config.toml</code> <strong>above</strong> any <code>[table]</code> header — re-running step 34's four-line command puts it there safely — then restart the app.</p>
-  <p>If a tool worked yesterday and fails today with a <strong>429</strong> or a quota message, the key has hit its spending cap. That's not something a reinstall fixes — post which key and what you were running.</p></div>
+  <p>If a tool worked earlier and now fails with a <strong>429</strong> or a quota message, the key has hit its spending cap. That's not something a reinstall fixes — tell the instructor which key and command produced the error.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-store" data-check-id="r-store" />
-    <span class="check-num">77</span>
+    <span class="check-num">T5</span>
     <span class="check-title">The Codex app won't install — the Store is blocked</span>
   </label>
-  <div class="check-detail"><p>Some managed laptops block the Microsoft Store and the <code>msstore</code> winget source outright. The ChatGPT desktop app ships only as a Store-signed package, so unlike everything else in this stack there's no second vendor to fall back on.</p>
+  <div class="check-detail"><p>Some managed laptops block Microsoft's app-distribution service. The ChatGPT desktop app ships only as a Store-signed package, so unlike everything else in this stack there's no second vendor to fall back on.</p>
   <p>The rescue is the package itself. Download <a href="https://persistent.oaistatic.com/codex-app-prod/ChatGPT-x64.msix">ChatGPT-x64.msix</a> and install it directly:</p>
   <pre><code>Add-AppxPackage .\ChatGPT-x64.msix</code></pre>
-  <p>If that's blocked too, it's an IT ticket rather than something you can solve from your seat. Raise it the day you hit it — this is the one install with no workaround, and it's the one most likely to cost you Monday.</p></div>
+  <p>If that's blocked too, it's an IT ticket rather than something you can solve from your seat. Tell the instructor and capture the exact policy error so the ticket has useful evidence.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-noclaim" data-check-id="r-noclaim" />
-    <span class="check-num">78</span>
+    <span class="check-num">T6</span>
     <span class="check-title">The tool says it wrote a file that isn't there</span>
   </label>
   <div class="check-detail"><p>Believe the folder, not the chat. Check you're where you think you are with <code>Get-Location</code>, and list it with <code>Get-ChildItem</code>.</p>
-  <p>If the tool insists and the file genuinely isn't on disk, that's a real defect worth reporting — it has been a live issue on OpenCode for Windows. Record the tool, its version, and the exact wording, and post it.</p></div>
+  <p>If the tool insists and the file genuinely isn't on disk, that's a real defect worth reporting — it has been a live issue on OpenCode for Windows. Record the tool, its version, and the exact wording, and show the instructor.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-stuck" data-check-id="r-stuck" />
-    <span class="check-num">79</span>
+    <span class="check-num">T7</span>
     <span class="check-title">You've been stuck on one step for 30 minutes</span>
   </label>
-  <div class="check-detail"><p>Stop and post in the pre-work channel with the step number, the exact error text, and what you've already tried. Move on to the next section while you wait — most of these are independent, so one blocked tool doesn't block the rest.</p>
-  <p>A documented blocker you raised on Saturday is a small thing. The same blocker discovered Monday at nine is not.</p></div>
+  <div class="check-detail"><p>Stop and ask an instructor with the step number, the exact error text, and what you've already tried. Move on to the next section while the blocker is investigated — most of these are independent, so one blocked tool doesn't block the rest.</p>
+  <p>A documented blocker is useful evidence. Keep it in the setup log so another instructor or IT can continue from the same facts.</p></div>
 </li>
 </ol></section>
 </details>

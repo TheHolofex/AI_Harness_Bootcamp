@@ -25,7 +25,7 @@ const installStages = [
   "BYB",
   "0 Base",
   "1 Term",
-  "2 winget",
+  "2 Installers",
   "3 Git",
   "4 Runtime",
   "5 Keys",
@@ -38,7 +38,6 @@ const installStages = [
   "12 n8n",
   "13 Repo",
   "14 Claude*",
-  "15 Gate",
 ];
 
 function esc(value) {
@@ -89,7 +88,7 @@ function ribbon(kind, current, { overview = false, crosscut = false } = {}) {
   const stages = installStages;
   const label = install ? "PRE-WORK · GETTING SET UP" : "PRE-WORK · HEALTH CHECK";
   const start = install ? 24 : 28;
-  const width = install ? 58 : 138;
+  const width = install ? 62 : 138;
   const gap = install ? 5 : 18;
   const y = 25;
   const h = 24;
@@ -106,7 +105,7 @@ function ribbon(kind, current, { overview = false, crosscut = false } = {}) {
 `;
   stages.forEach((stage, index) => {
     const x = start + index * (width + gap);
-    const optional = install && index === 15;
+    const optional = install && stage.endsWith("*");
     const completed = !overview && !crosscut && index < current;
     const active = !overview && !crosscut && index === current;
     const stroke = optional ? C.gold : active ? C.mark : C.rule;
@@ -241,20 +240,20 @@ const metaphors = {
     <text x="862" y="138" class="tiny muted">FRESH WINDOW · FRESH PATH</text>
   </g>
 `,
-  winget: `  <g aria-label="Package box moving along an install conveyor">
-    <path d="M545 137H1068" class="line" marker-end="url(#arrow)"/>
-    <circle cx="590" cy="137" r="8" fill="${C.paper}" stroke="${C.strong}"/>
-    <circle cx="1015" cy="137" r="8" fill="${C.paper}" stroke="${C.strong}"/>
-    <rect x="678" y="82" width="128" height="56" rx="2" fill="${C.panel}" stroke="${C.strong}"/>
-    <path d="M678 98L742 116 806 98M742 116V138M678 82L742 100 806 82" class="line"/>
-    <text x="742" y="94" class="caption" text-anchor="middle">WINGET</text>
-    <rect x="842" y="89" width="180" height="36" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <circle cx="860" cy="107" r="7" fill="${C.mark}"/>
-    <path d="M856 107l3 3 6-7" fill="none" stroke="${C.paper}" stroke-width="1.4"/>
-    <text x="938" y="104" class="tiny muted" text-anchor="middle">SOURCE TERMS</text>
-    <text x="938" y="116" class="caption" text-anchor="middle">ACCEPTED</text>
-    <text x="574" y="104" class="tiny muted" text-anchor="middle">FIND</text>
-    <text x="1050" y="104" class="tiny muted" text-anchor="middle">INSTALL</text>
+  installers: `  <g aria-label="Official Git Node and Python installers ready to download">
+    <rect x="540" y="78" width="528" height="75" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
+    <rect x="540" y="78" width="528" height="20" fill="${C.panel}" stroke="${C.strong}"/>
+    <circle cx="556" cy="88" r="3" fill="${C.mark}"/>
+    <text x="804" y="91" class="tiny muted" text-anchor="middle">OFFICIAL DOWNLOAD PAGES</text>
+    <rect x="558" y="111" width="142" height="27" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
+    <rect x="733" y="111" width="142" height="27" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
+    <rect x="908" y="111" width="142" height="27" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
+    <circle cx="574" cy="124.5" r="5" fill="${C.ink}"/>
+    <circle cx="749" cy="124.5" r="5" fill="${C.mark}"/>
+    <circle cx="924" cy="124.5" r="5" fill="${C.gold}"/>
+    <text x="625" y="128" class="caption" text-anchor="middle">GIT</text>
+    <text x="800" y="128" class="caption" text-anchor="middle">NODE LTS</text>
+    <text x="975" y="128" class="caption" text-anchor="middle">PYTHON</text>
   </g>
 `,
   git: `  <g aria-label="Git commit graph">
@@ -422,7 +421,7 @@ const metaphors = {
     <circle cx="912" cy="116" r="3" fill="${C.mark}"/>
   </g>
 `,
-  repo: `  <g aria-label="Course repository cloned into operator pack">
+  repo: `  <g aria-label="Course repository containing the operator files">
     <rect x="548" y="82" width="194" height="68" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
     <path d="M570 100v32M570 108h27M597 108v24M570 124h14" class="line"/>
     <circle cx="570" cy="98" r="5" fill="${C.mark}"/>
@@ -438,7 +437,7 @@ const metaphors = {
     <text x="884" y="127" class="tiny muted" text-anchor="middle">BRIEFS</text>
     <text x="952" y="127" class="tiny muted" text-anchor="middle">LOGS</text>
     <text x="1018.5" y="127" class="tiny muted" text-anchor="middle">SITE</text>
-    <text x="949.5" y="103" class="micro muted" text-anchor="middle">OPERATOR PACK</text>
+    <text x="949.5" y="103" class="micro muted" text-anchor="middle">OPERATOR FILES</text>
   </g>
 `,
   claude: `  <g aria-label="Optional Claude Code rail">
@@ -452,26 +451,6 @@ const metaphors = {
     <text x="947" y="129" class="title" text-anchor="middle">CLAUDE CODE</text>
     <rect x="1000" y="68" width="70" height="18" rx="2" fill="${C.gold}"/>
     <text x="1035" y="80.5" class="tiny white" text-anchor="middle">OPTIONAL</text>
-  </g>
-`,
-  pack: `  <g aria-label="Four proof files and a closed setup log packed for Monday clinic">
-    <rect x="546" y="79" width="126" height="72" rx="2" fill="${C.ink}"/>
-    <circle cx="570" cy="99" r="3.4" fill="${C.mark}"/>
-    <circle cx="570" cy="111" r="3.4" fill="${C.mark}"/>
-    <circle cx="570" cy="123" r="3.4" fill="${C.mark}"/>
-    <circle cx="570" cy="135" r="3.4" fill="${C.mark}"/>
-    <text x="632" y="105" class="micro white" text-anchor="middle">FOUR</text>
-    <text x="632" y="124" class="caption white" text-anchor="middle">FILES</text>
-    <path d="M672 116H751" class="line"/>
-    <rect x="751" y="94" width="193" height="44" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
-    <text x="847.5" y="110" class="micro muted" text-anchor="middle">SETUP LOG</text>
-    <path d="M769 120H926M769 129H881" class="hair"/>
-    <path d="M944 116H1005" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="1015" y="94" width="66" height="36" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
-    <path d="M1011 130H1085L1078 137H1018Z" fill="${C.panel}" stroke="${C.strong}"/>
-    <text x="1048" y="116" class="tiny muted" text-anchor="middle">MONDAY</text>
-    <path d="M542 156H1081" class="hair"/>
-    <text x="811" y="160" class="tiny muted" text-anchor="middle">Four files, one honest log — that is what clinic asks for</text>
   </g>
 `,
   repair: `  <g aria-label="Repair loop from error to paste to fix to log">
@@ -567,7 +546,7 @@ const metaphors = {
     <rect x="545" y="78" width="515" height="74" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
     <path d="M802.5 78V152M545 115H1060" class="hair"/>
     <rect x="545" y="78" width="7" height="74" fill="${C.mark}"/>
-    <text x="570" y="99" class="micro muted">OPERATOR PACK</text>
+    <text x="570" y="99" class="micro muted">OPERATOR FILES</text>
     <text x="570" y="110" class="tiny muted">TEMPLATES PRESENT</text>
     <text x="827" y="99" class="micro muted">TWIN ENGINES</text>
     <text x="827" y="110" class="tiny muted">CODEX + OPENCODE</text>
@@ -595,7 +574,7 @@ const metaphors = {
     <text x="996" y="112" class="micro red" text-anchor="middle">RED</text>
     <text x="996" y="130" class="tiny muted" text-anchor="middle">RESCUE PLAN NEEDED</text>
     <path d="M535 156H1068" class="hair"/>
-    <text x="801.5" y="161" class="tiny muted" text-anchor="middle">Mark the colour · write it down · pack for Monday</text>
+    <text x="801.5" y="161" class="tiny muted" text-anchor="middle">Record the result · continue when the required checks pass</text>
   </g>
 `,
 };
@@ -605,8 +584,8 @@ const installSections = [
     file: "install-before-you-begin.svg",
     current: 0,
     stage: "Before you begin",
-    purpose: "Block real time, open a setup log, and have your three keys ready.",
-    steps: ["BLOCK TIME", "OPEN A LOG", "HAVE THREE KEYS", "KNOW THE SHAPE"],
+    purpose: "Start the Monday clinic with a setup log and your three course keys at hand.",
+    steps: ["START THE CLINIC", "OPEN A LOG", "HAVE THREE KEYS", "KNOW THE SHAPE"],
     metaphor: metaphors.begin,
     svgTitle: "Before you begin",
   },
@@ -629,13 +608,13 @@ const installSections = [
     svgTitle: "1 · Terminal and PowerShell",
   },
   {
-    file: "install-02-winget.svg",
+    file: "install-02-installers.svg",
     current: 3,
-    stage: "Get the installer ready",
-    purpose: "Make sure winget works so the rest of the installs are one command each.",
-    steps: ["FIND WINGET", "REPAIR IF NEEDED", "ACCEPT PROMPTS"],
-    metaphor: metaphors.winget,
-    svgTitle: "2 · winget, the package manager",
+    stage: "Download the core installers",
+    purpose: "Use the official Git, Node, and Python download pages for the core installers.",
+    steps: ["GIT", "NODE LTS", "PYTHON 3.14"],
+    metaphor: metaphors.installers,
+    svgTitle: "2 · Download the core installers",
   },
   {
     file: "install-03-git.svg",
@@ -704,7 +683,7 @@ const installSections = [
 file: "install-10-goose.svg",
     current: 11,
     stage: "Set up goose",
-    purpose: "Install real goose (not winget): recipe, tool surface, mode, schedule, one write.",
+    purpose: "Install the official AAIF goose CLI, then verify its provider, mode, and file write.",
     steps: ["KNOW THE SHAPE", "INSTALL AAIF", "PROVIDER + MODE", "WRITE PROOF"],
     metaphor: metaphors.goose,
     svgTitle: "10 · goose — recipe, tools, mode, schedule",
@@ -731,10 +710,10 @@ file: "install-10-goose.svg",
     file: "install-13-repo.svg",
     current: 14,
     stage: "Get the course repo",
-    purpose: "Clone the course, copy the operator templates in, and serve the site once.",
-    steps: ["CLONE REPO", "COPY TEMPLATES", "SERVE SITE"],
+    purpose: "Clone the course, find the operator files, and serve the site once.",
+    steps: ["CLONE REPO", "FIND OPERATOR FILES", "SERVE SITE"],
     metaphor: metaphors.repo,
-    svgTitle: "13 · Course repo and operator pack",
+    svgTitle: "13 · Course repo and operator files",
   },
   {
     file: "install-14-claude-optional.svg",
@@ -745,15 +724,6 @@ file: "install-10-goose.svg",
     metaphor: metaphors.claude,
     svgTitle: "14 · Claude Code — optional third engine",
     optional: true,
-  },
-  {
-    file: "install-15-pack.svg",
-    current: 16,
-    stage: "Pack for Monday",
-    purpose: "Roll up the four smoke files and setup log for Monday's install clinic.",
-    steps: ["FOUR FILES", "CLOSE THE LOG", "PACK FOR CLINIC"],
-    metaphor: metaphors.pack,
-    svgTitle: "15 · Pack for Monday",
   },
   {
     file: "install-when-something-breaks.svg",
@@ -774,42 +744,38 @@ for (const section of installSections) {
 
 function installOverview() {
   return `${svgOpen("Install pre-work journey overview", 280)}${ribbon("install", 0, { overview: true })}
-  <text x="24" y="82" class="micro red">BEFORE MONDAY · YOUR LAPTOP</text>
-  <text x="24" y="111" class="title">Get the tools on your machine. Prove they work.</text>
-  <text x="24" y="132" class="purpose">Start with the basics, save your three keys, then make each required tool leave a file you can see.</text>
+  <text x="24" y="82" class="micro red">MONDAY MORNING · INSTALL CLINIC</text>
+  <text x="24" y="111" class="title">Install and verify the course harnesses and tools.</text>
+  <text x="24" y="132" class="purpose">Work through four large phases with the instructor. Each phase ends with a result you can see.</text>
   <path d="M24 153H1096" class="hair"/>
-  <g aria-label="Five install phases">
-    <rect x="24" y="166" width="194" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
+  <g aria-label="Four install phases">
+    <rect x="24" y="166" width="235" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
     <rect x="24" y="166" width="7" height="40" fill="${C.mark}"/>
-    <text x="42" y="182" class="micro muted">01 · BASICS</text>
-    <text x="42" y="197" class="tiny muted">START → NODE/PYTHON</text>
-    <path d="M218 186H240" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="250" y="166" width="148" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="268" y="182" class="micro muted">02 · KEYS</text>
-    <text x="268" y="197" class="tiny muted">OPENAI · XAI · ANTHROPIC</text>
-    <path d="M398 186H420" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="430" y="166" width="244" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="448" y="182" class="micro muted">03 · AGENTS + TOOLS</text>
-    <text x="448" y="197" class="tiny muted">SMOKE FOLDER → N8N</text>
-    <path d="M674 186H696" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="706" y="166" width="188" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="724" y="182" class="micro muted">04 · COURSE FILES</text>
-    <text x="724" y="197" class="tiny muted">REPO · CLAUDE OPTIONAL</text>
-    <path d="M894 186H916" class="redline" marker-end="url(#arrow-red)"/>
-    <rect x="926" y="166" width="170" height="40" rx="2" fill="${C.ink}"/>
-    <text x="944" y="182" class="micro white">05 · PACK FOR MONDAY</text>
-    <text x="944" y="197" class="tiny white">Four files, log, clinic</text>
+    <text x="42" y="182" class="micro muted">01 · PREPARE THE MACHINE</text>
+    <text x="42" y="197" class="tiny muted">WINDOWS · TERMINAL · INSTALLERS</text>
+    <path d="M259 186H277" class="redline" marker-end="url(#arrow-red)"/>
+    <rect x="287" y="166" width="235" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
+    <text x="305" y="182" class="micro muted">02 · INSTALL THE KEYS</text>
+    <text x="305" y="197" class="tiny muted">OPENAI · XAI · ANTHROPIC</text>
+    <path d="M522 186H540" class="redline" marker-end="url(#arrow-red)"/>
+    <rect x="550" y="166" width="260" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
+    <text x="568" y="182" class="micro muted">03 · HARNESSES + TOOLS</text>
+    <text x="568" y="197" class="tiny muted">CODEX · OPENCODE · PI · GOOSE</text>
+    <path d="M810 186H828" class="redline" marker-end="url(#arrow-red)"/>
+    <rect x="838" y="166" width="258" height="40" rx="2" fill="${C.ink}"/>
+    <text x="856" y="182" class="micro white">04 · FILES + SETUP RECORD</text>
+    <text x="856" y="197" class="tiny white">REPO · LOG · FINAL CHECK</text>
   </g>
   <rect x="0" y="220" width="1120" height="60" fill="${C.warm}"/>
   <rect x="24" y="232" width="515" height="36" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
   <circle cx="48" cy="250" r="7" fill="${C.ink}"/>
-  <text x="68" y="247" class="micro muted">TWIN ENGINES READY</text>
-  <text x="68" y="260" class="caption">CODEX · OPENCODE</text>
+  <text x="68" y="247" class="micro muted">COMPLETE TOGETHER</text>
+  <text x="68" y="260" class="caption">MONDAY MORNING · INSTALL CLINIC</text>
   <rect x="557" y="232" width="539" height="36" rx="2" fill="${C.paper}" stroke="${C.mark}" stroke-width="1.5"/>
   <circle cx="581" cy="250" r="7" fill="${C.mark}"/>
   <path d="M577 250l3 3 6-7" fill="none" stroke="${C.paper}" stroke-width="1.4"/>
-  <text x="603" y="247" class="micro red">GREEN = FOUR FILES</text>
-  <text x="603" y="260" class="caption">FROM-CODEX · FROM-OPENCODE · FROM-PI · FROM-GOOSE</text>
+  <text x="603" y="247" class="micro red">VERIFIED = FOUR FILES + SETUP LOG</text>
+  <text x="603" y="260" class="caption">CODEX · OPENCODE · PI · GOOSE</text>
 </svg>
 `;
 }
@@ -942,7 +908,7 @@ function insertAfterOnce(file, needle, insertion, sentinel) {
 
 insertAfterOnce(
   path.join(ROOT, "site/prework.html"),
-  '    <p class="lede">This module gets your Windows laptop ready for the bootcamp. You install the tools yourself — there is no golden image. Plan a focused evening or weekend block (often about 2–4 hours).</p>',
+  '        <p class="lede">Complete this pre-work together during Monday morning’s install clinic. Bring the Windows 11 laptop you will use during the course, then work the four phases from left to right with an instructor in the room.</p>',
   `    ${figureHtml("./assets/prework/install-overview.svg", "Install pre-work journey overview", 280).replaceAll("\n", "\n    ")}`,
   "install-overview.svg",
 );

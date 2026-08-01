@@ -208,7 +208,7 @@
       if (!b) return;
       var nb = neighbors(b.code);
       var label = b.code === "PREWORK"
-        ? "Before Monday · Pre-work"
+        ? "Monday morning · Pre-work install clinic"
         : dayLabel(b) + " · Module " + AHB.moduleNumber(b.code) +
           " of " + AHB.TOTAL_MODULES;
       var html = '<div class="context-strip-inner">';
@@ -322,7 +322,7 @@
         if (!phase) return;
         var currentPhase = !phase.complete && prework.firstPhase && prework.firstPhase.id === phase.id;
         el.textContent = phase.complete
-          ? "✓ Ready"
+          ? "✓ Complete"
           : (currentPhase ? "Current · " : "") + phase.done + " / " + phase.total;
         el.classList.toggle("is-done", phase.complete);
         el.classList.toggle("is-current", currentPhase);
@@ -368,7 +368,7 @@
       section.classList.toggle("is-section-done", complete);
       section.classList.remove("is-section-current");
       var stat = section.querySelector("[data-phase-section-stat]");
-      if (stat) stat.textContent = complete ? "✓ Ready" : done + " / " + total;
+      if (stat) stat.textContent = complete ? "✓ Complete" : done + " / " + total;
     });
     if (currentSection) {
       currentSection.classList.add("is-section-current");
@@ -534,7 +534,7 @@
           var badge = document.createElement("span");
           badge.className = "check-kind";
           badge.textContent = stretch ? "Optional" :
-            (/^r-/.test(id) || id === "wg-fix" ? "Only if needed" : "Reference");
+            (/^r-/.test(id) ? "Only if needed" : "Reference");
           title.appendChild(badge);
         }
       }
@@ -634,15 +634,15 @@
       setText("[data-yah-eyebrow]", weekComplete
         ? "Friday · Course complete"
         : isPrework
-        ? "Before Monday · Pre-work"
+        ? "Monday morning · Pre-work install clinic"
         : dayLabel(cur) + " · " + cur.code);
       setText("[data-yah-title]", weekComplete
         ? "Week complete"
-        : isPrework ? "Mission workstation" : cur.title);
+        : isPrework ? "Install and verify the course setup" : cur.title);
       setText("[data-yah-line]", weekComplete
         ? AHB.TOTAL_MODULES + " / " + AHB.TOTAL_MODULES + " modules complete"
         : isPrework
-        ? prework.donePhases + " / " + prework.totalPhases + " phases ready"
+        ? prework.donePhases + " / " + prework.totalPhases + " phases complete"
         : done + " / " + total + " checks · " + pct + "%");
       var bar = document.querySelector("[data-yah-bar]");
       if (bar) bar.style.width = (weekComplete ? 100 : pct) + "%";
@@ -679,7 +679,7 @@
           html += dotHtml(st);
           html += "<span>";
           html += '<span class="journey-name">' +
-            (b.code === "PREWORK" ? "Get ready" : b.code + " · " + b.name) + "</span>";
+            (b.code === "PREWORK" ? "Install clinic" : b.code + " · " + b.name) + "</span>";
           html += '<span class="journey-meta">' + meta + "</span>";
           html += "</span></a>";
         });
@@ -692,7 +692,7 @@
     var stat = document.querySelector("[data-prework-stat]");
     if (stat && install) {
       var pw = AHB.preworkProgress();
-      stat.textContent = pw.donePhases + " / " + pw.totalPhases + " phases ready";
+      stat.textContent = pw.donePhases + " / " + pw.totalPhases + " phases complete";
       stat.classList.toggle("is-done", pw.complete);
     }
   }
@@ -708,15 +708,15 @@
     var started = prework.requiredDone > 0;
 
     setText("[data-hub-headline]", prework.complete
-      ? "Pre-work complete — see you Monday"
+      ? "Pre-work setup verified"
       : started ? "Keep moving through the phases" : "Start with the machine");
-    setText("[data-hub-line]", prework.donePhases + " / " + prework.totalPhases + " phases ready");
+    setText("[data-hub-line]", prework.donePhases + " / " + prework.totalPhases + " phases complete");
     var bar = document.querySelector("[data-hub-bar]");
     if (bar) bar.style.width = pct + "%";
     var cta = document.querySelector("[data-hub-cta]");
     if (cta) {
       if (prework.complete) {
-        cta.textContent = "Next · Monday B0";
+        cta.textContent = "Next · First Light";
         cta.setAttribute("href", prefix + "/blocks/b0.html");
       } else if (started) {
         cta.textContent = "Continue · " + prework.firstPhase.title;
@@ -739,14 +739,14 @@
       var stat = card.querySelector("[data-stage-stat]");
       if (stat) {
         stat.textContent = phase.complete
-          ? "✓ Ready"
+          ? "✓ Complete"
           : (currentPhase ? "Current · " : "") + phase.done + " / " + phase.total;
         stat.classList.remove("stat-done", "stat-current");
         if (phase.complete) stat.classList.add("stat-done");
         else if (currentPhase) stat.classList.add("stat-current");
       }
       card.setAttribute("aria-label", "Phase " + (index + 1) + ": " + phase.title +
-        (phase.complete ? ", ready" : currentPhase ? ", current, " : ", ") +
+        (phase.complete ? ", complete" : currentPhase ? ", current, " : ", ") +
         (phase.complete ? "" : phase.done + " of " + phase.total + " checks"));
     });
   }
