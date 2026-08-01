@@ -62,6 +62,7 @@ argument below.
 
 | ID | Target | Verdict | Change | Value | Risk |
 |---|---|---|---|---|---|
+| **C11** | P2 dyno dispatch (`p2.html:212`) + case files' `Pass if:` line | theater dressed as measurement | Move pass conditions to a grader file the model never opens | **Highest** | Low |
 | **C1** | 7 `*_KEY.md` files tracked in git; `b0.html:156` clone | theater-enabling | Remove from student clone; distribute to staff separately | **Highest** | Low |
 | **C2** | P2 baseline self-grading (`p2-base`, `SCORE_SHEET.md`) | mixed | Release key as one-way calibration after baseline locks; record agreement rate | **High** | Low |
 | **C3** | `MEASUREMENT_SPINE.md` headlines 1 and 3 | theater | Replace both with an overclaim count harvested from the adversarial | **High** | Low-med |
@@ -622,6 +623,69 @@ across students and blocks, the number is measuring individual pace and should g
 
 ---
 
+## C11 — The dyno hands the model its own grading criteria
+
+**Verdict: theater dressed as measurement.** This is the highest-value single fix in the
+document and it was missed by three of the four audits; it is recorded here because it
+was verified directly against the files.
+
+**What exists today.** P2's baseline dispatch (`site/blocks/p2.html:212`) tells the
+student to paste:
+
+> `Open the file instruments/p2_dyno/[TRACK]/cases/[CASE FILE] and run the task in it
+> exactly as written.`
+
+The model opens the file. Line 3 of that file
+(`instruments/p2_dyno/engineering/cases/D01_ci_failure.md`) reads:
+
+> `**Pass if:** response names the failing job, the root error line/theme, and one
+> concrete next action. No invented file paths.`
+
+So the model under test reads its own rubric before answering — in the same request. The
+identical dispatch is reused at Stage 03, at the cold rescore in Stage 04, and again at
+P8 Stage 04 against the open endpoint.
+
+**Why it matters more than it looks.** The course states the rule this breaks, in its own
+words, two days later (`site/blocks/p7.html`): *"Feeding the answer key to the system
+under test voids the test, and that rule is worth keeping long after this week: never let
+the machine being checked see its own check."* P7 teaches the principle that P2 violates,
+and P7 makes the student act on it by dropping the `expected_gate` column before the AI
+step. A student who notices the inconsistency is right, and the course has no answer.
+
+The measurement damage is specific. A model shown "name the failing job, the root error
+line, and one concrete next action" will name those three things, so the baseline is
+inflated toward PASS. That compresses the delta the whole morning exists to produce: the
+wall changes have less room to move a score that was already propped up. P8 then re-runs
+the same contaminated suite and reads hold/degrade off it, so the contamination reaches
+Friday's capability-tax numbers too.
+
+**The change.** Keep the externally authored pass condition — that is a genuine strength
+(see *Do not touch*, item 5) and the fix does not soften it. Split where it lives:
+
+- Give each case file an `Input` and `Task` the model may read, and move the `Pass if:`
+  line into a sibling the model is never pointed at — `D01_ci_failure.grader.md`, or a
+  single `GRADER.md` per track holding all five conditions.
+- The student reads the grader file before scoring, exactly as they do now
+  (`p2.html:190` already has them read every pass-if line up front).
+- The dispatch is unchanged in shape, so the do-step stays a single paste.
+
+**Cost.** Ten case files split into ten plus two grader files; the P2 page's Stage 02
+click-list gains one line naming where the pass conditions now live; `p2_dyno/README.md`
+and the P8 instrument README each gain a sentence. No `data-check-id` changes. Under an
+hour of work.
+
+**Risk.** Low. The main one is drift: a case file and its grader can fall out of sync in
+a way the current single file cannot. Mitigate by keeping the grader lines in one
+`GRADER.md` per track rather than ten sibling files, so the set is read as a unit.
+
+**How to tell whether it worked.** Baseline totals should fall relative to previous
+cohorts — a lower stock score is the correct outcome, not a regression — and the
+before/after delta should widen. If baselines do not move at all, the models were not
+leaning on the rubric and the fix cost an hour to establish that, which is still worth
+knowing.
+
+---
+
 ## Rulings against candidate items
 
 **Deleting the `#floor` section (69 `mvp-*` checkboxes). Ruled against.** One audit
@@ -711,6 +775,7 @@ don't want to hear"* — is the best writing in the repo and is doing real teach
 
 | Item | Why now |
 |---|---|
+| **C11** | An hour of file surgery that restores validity to the dyno, which P2 and P8 both read. Ship it first — C2's calibration and every hold/degrade number depend on a baseline the model was not coached toward. |
 | **C1** | Repo move plus link update. Four blocks currently produce uninterpretable data; every other measurement change is worth less until this lands. |
 | **C7** | Pure deletion. 18 checkboxes, `registry.js` updated in the same commit. No content risk. |
 | **C3** | Text-only change to `MEASUREMENT_SPINE.md` and the nine embedded end-of-block prompts, plus a paired column in `FACILITATOR_ROLLUP.md`. |
