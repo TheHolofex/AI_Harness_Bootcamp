@@ -30,6 +30,7 @@ npm -v
 python --version
 (Get-Command python).Source
 Test-Path "C:\Program Files\Git\bin\bash.exe"
+where.exe MSVCP140.dll
 Get-ExecutionPolicy -List
 ```
 
@@ -42,6 +43,7 @@ Get-ExecutionPolicy -List
 | Node **22.22–24.x** | | version |
 | npm answers | | version |
 | Python answers, **not** a `\WindowsApps\` path | | resolved path |
+| Microsoft Visual C++ x64 runtime | | `MSVCP140.dll` path |
 | `CurrentUser` policy `RemoteSigned` | | |
 | `MachinePolicy` and `UserPolicy` both `Undefined` | | GPO override check |
 
@@ -95,7 +97,7 @@ Get-ChildItem from-*.txt
 | Codex app | `from-codex.txt` | | profile menu reports **API key**, not a ChatGPT account · permission mode shows **Ask for approval** |
 | **OpenCode** | `from-opencode.txt` | | version recorded — Monday asks by name · `$env:OPENCODE_DISABLE_CLAUDE_CODE` returns `1` in a fresh window |
 | Pi | `from-pi.txt` | | `bash-check.txt` also present (proves it reaches Git Bash) · you can state that Pi has no sandbox and no working-directory fence |
-| goose | `from-goose.txt` | | `goose info -v` shows the intended provider and model |
+| goose | `from-goose.txt` | | `where.exe MSVCP140.dll` finds the runtime · `goose info -v` shows the intended provider and model |
 
 **PASS only if all four files exist on disk** — not "the chat said it did". Open the folder in Explorer and look.
 

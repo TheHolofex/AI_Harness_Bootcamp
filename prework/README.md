@@ -43,7 +43,7 @@ Before Monday, also make sure the course repo is cloned and you know its path (`
 | 7 | **Codex app** | Primary home all week · Codex mode in the **ChatGPT desktop app**, from the Microsoft Store · sign in via *Sign in another way* |
 | 8 | **OpenCode** | **Required second engine** · runs Grok on your xAI key · use the cohort-pinned version · set `OPENCODE_DISABLE_CLAUDE_CODE=1` so it doesn't read Claude Code's files |
 | 9 | **Pi** | Minimal harness you extend · multi-provider · needs Git Bash · pin the model explicitly · **no sandbox and no working-directory fence** |
-| 10 | **goose** | Local agent platform · recipes + extensions + permission modes + schedule · CLI required, Desktop optional · from `aaif-goose`, **not** winget · docs: goose-docs.ai |
+| 10 | **goose** | Local agent platform · recipes + extensions + permission modes + schedule · CLI required, Desktop optional · from `aaif-goose`, **not** winget · Windows also needs the Microsoft Visual C++ 2015+ x64 runtime · docs: goose-docs.ai |
 | 11 | **Obsidian** | Local vault, no account |
 | 12 | **n8n** | Local install · owner account is local-only, not a subscription |
 
@@ -82,6 +82,7 @@ These cost the most time, and none of them announce themselves clearly:
 - **The permission mode is what switches the sandbox on.** Set it to **Ask for approval** beneath the message box. Left unset, Codex works without the boundaries the rest of the week depends on.
 - **The `.LTS` suffix on the Node package id is not optional.** Plain `OpenJS.NodeJS` installs a release too new for n8n.
 - **`winget install ... goose` is a different program** — an unrelated database tool with the same name. Install from `aaif-goose` only.
+- **The Goose Windows executable needs the Microsoft C++ runtime.** The Goose download contains only `goose.exe`; install `Microsoft.VCRedist.2015+.x64` and verify `where.exe MSVCP140.dll` before troubleshooting the CLI. A `0xC0000135` or `-1073741515` exit is a missing DLL, not a provider or API-key failure.
 - **goose is more than a one-shot CLI.** Thursday’s contract uses its recipe, tool surface, mode/max-turns dial, and schedule path — pre-work only proves install + one write.
 - **OpenCode's `curl` install command cannot run on Windows PowerShell.** It is a bash script; no PowerShell equivalent exists.
 - **OpenCode reads Claude Code's files by default.** `~/.claude/CLAUDE.md` and `.claude/skills` load into your second engine unless you set `OPENCODE_DISABLE_CLAUDE_CODE=1`. Nothing warns you; the comparison just gets quieter.

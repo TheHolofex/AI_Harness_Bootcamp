@@ -422,7 +422,7 @@ $key = $null</code></pre></div>
     <span class="check-title">Set the pinned model ids</span>
   </label>
   <div class="check-detail"><p>A model id per provider should be posted in the pre-work channel. Set them once here and every later step picks them up &mdash; otherwise you'd be hand-editing four commands further down.</p>
-  <p>If nothing has been posted yet, ask in the channel, and meanwhile use any current model id for that provider. These are two variables you can change in ten seconds later, not a decision you're locked into.</p>
+  <p>If nothing has been posted yet, ask in the channel rather than saving a placeholder. If you use a current model id temporarily, replace it with the cohort pin before the write proofs. These are two variables you can change in ten seconds later, not a decision you're locked into.</p>
   <p>Change the two quoted values to the ids you're using, then run all four lines:</p>
   <pre><code>$env:HB_OPENAI_MODEL = 'paste the OpenAI model id'
 $env:HB_XAI_MODEL    = 'paste the xAI model id'
@@ -449,7 +449,8 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
   <pre><code>'HB_OPENAI_MODEL','HB_XAI_MODEL' | ForEach-Object {
   '{0} = {1}' -f $_, [Environment]::GetEnvironmentVariable($_,'User')
 }</code></pre>
-  <p>Both should read back the ids from the channel. If either still says <code>paste the...</code>, go back to step 27 — four later steps depend on these.</p></div>
+  <p>Both should read back the ids from the channel. If either still says <code>paste the...</code>, go back to step 27 — four later steps depend on these.</p>
+  <p>If either id is unknown, leave that variable unset until staff posts a real id. Never save an empty value or the words <code>paste the...</code>; the tools will otherwise fail later with a blank model and the error will look like authentication trouble.</p></div>
 </li>
 </ol></section>
 
@@ -800,7 +801,10 @@ $env:GOOSE_DISABLE_KEYRING = '1'</code></pre>
     <span class="check-title">Tell goose which provider and model to use</span>
   </label>
   <div class="check-detail"><p>goose reads your API keys from the environment, but it needs telling which provider to reach for. This reuses the OpenAI model id from step 27:</p>
-  <pre><code>[Environment]::SetEnvironmentVariable('GOOSE_PROVIDER','openai','User')
+  <pre><code>if ([string]::IsNullOrWhiteSpace($env:HB_OPENAI_MODEL) -or $env:HB_OPENAI_MODEL -like 'paste *') {
+  throw 'HB_OPENAI_MODEL is empty. Complete step 27 with a real model id, then open a new PowerShell window.'
+}
+[Environment]::SetEnvironmentVariable('GOOSE_PROVIDER','openai','User')
 [Environment]::SetEnvironmentVariable('GOOSE_MODEL',$env:HB_OPENAI_MODEL,'User')
 $env:GOOSE_PROVIDER = 'openai'
 $env:GOOSE_MODEL = $env:HB_OPENAI_MODEL</code></pre>
@@ -813,7 +817,15 @@ $env:GOOSE_MODEL = $env:HB_OPENAI_MODEL</code></pre>
     <span class="check-num">55</span>
     <span class="check-title">Install the goose command-line tool</span>
   </label>
-  <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Downloads"
+  <div class="check-detail"><p>Goose's Windows executable also needs the Microsoft Visual C++ 2015+ x64 runtime. The Goose download contains <code>goose.exe</code> only; it does not install the runtime, and Python's bundled DLLs are not a substitute. Install this first:</p>
+  <pre><code>winget install `
+  --id "Microsoft.VCRedist.2015+.x64" `
+  --exact `
+  --source winget `
+  --accept-source-agreements `
+  --accept-package-agreements</code></pre>
+  <p>If winget cannot install it, download Microsoft's x64 installer directly from <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe">aka.ms/vs/17/release/vc_redist.x64.exe</a>. Run it, choosing <strong>Install</strong> or <strong>Repair</strong> if it is already present. Do not download individual DLL files from an untrusted site.</p>
+  <pre><code>cd "$env:USERPROFILE\Downloads"
 $env:CONFIGURE = "false"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/goose/main/download_cli.ps1" -OutFile "download_cli.ps1"
 .\download_cli.ps1</code></pre>
@@ -847,9 +859,12 @@ if (($userPath -split ';') -notcontains $bin) {
     <span class="check-num">57</span>
     <span class="check-title">Verify goose and check what it sees</span>
   </label>
-  <div class="check-detail"><pre><code>goose --version
+  <div class="check-detail"><pre><code>Get-Command goose -All
+where.exe MSVCP140.dll
+goose --version
 goose info -v</code></pre>
-  <p>The second command shows the provider, model, and environment variables goose is actually using. Confirm they match what you set two steps ago.</p></div>
+  <p><code>Get-Command goose -All</code> should point at the <code>aaif-goose</code> executable, and <code>where.exe MSVCP140.dll</code> should print a Windows runtime path. If the DLL lookup prints nothing, the runtime install did not complete. <code>goose --version</code> must return a version before you continue.</p>
+  <p>The second Goose command shows the provider, model, and environment variables it is actually using. Confirm they match what you set two steps ago.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -1158,7 +1173,8 @@ ollama pull $env:HB_LOCAL_MODEL</code></pre>
 $userPath = [Environment]::GetEnvironmentVariable('PATH','User')
 if (($userPath -split ';') -notcontains $bin) {
   [Environment]::SetEnvironmentVariable('PATH', "$userPath;$bin".Trim(';'), 'User')
-}</code></pre></div>
+}</code></pre>
+  <p>If <code>Get-Command goose</code> finds the executable but <code>goose --version</code> exits with <code>-1073741515</code> or <code>0xC0000135</code>, this is not a PATH problem. Install the Microsoft Visual C++ 2015+ x64 runtime from step 55, close every PowerShell window, and run <code>where.exe MSVCP140.dll</code> before retrying. Do not reinstall goose or switch shells.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -1192,7 +1208,8 @@ if (($userPath -split ';') -notcontains $bin) {
   <div class="check-detail"><p>Work through these in order. Is the key set in <em>this</em> window (step 28)? Does it start with the right prefix for that provider? Is it the right key for that tool — <code>XAI_API_KEY</code> for OpenCode, <code>OPENAI_API_KEY</code> for the rest?</p>
   <p>The Codex app is the exception to all of that: it never reads the variable. It uses the key you pasted into <em>Sign in another way</em>. Check the profile menu — it should say API key, not an account. If it's wrong, log out there and redo step 32.</p>
   <p>If the Codex app keeps pushing you toward a ChatGPT login, confirm <code>forced_login_method = "api"</code> sits in <code>%USERPROFILE%\.codex\config.toml</code> <strong>above</strong> any <code>[table]</code> header — re-running step 34's four-line command puts it there safely — then restart the app.</p>
-  <p>If a tool worked yesterday and fails today with a <strong>429</strong> or a quota message, the key has hit its spending cap. That's not something a reinstall fixes — post which key and what you were running.</p></div>
+  <p>If a tool worked yesterday and fails today with a <strong>429</strong> or a quota message, the key has hit its spending cap. That's not something a reinstall fixes — post which key and what you were running.</p>
+  <p>If <code>goose info -v</code> shows a blank provider or model, set a real model id in step 27, open a new window, and rerun step 54.</p></div>
 </li>
 
 <li class="check-item" data-check-item>

@@ -201,6 +201,7 @@ def github_winget_manifest_exists(package_id: str) -> Tuple[bool, str]:
 WATCHED_WINGET = [
     ("Git.Git", True),
     ("OpenJS.NodeJS.LTS", True),
+    ("Microsoft.VCRedist.2015+.x64", True),
     ("SST.opencode", True),
     ("Python.Python.3.14", False),  # minor floats between cohorts; soft
     ("Obsidian.Obsidian", False),
@@ -223,8 +224,11 @@ def check_guide_ids_covered(rep: Report) -> None:
         rep.add("guide.winget_ids_covered", False, "prework/INSTALL_GUIDE.md missing", hard=True)
         return
     text = guide.read_text(encoding="utf-8")
-    found = set(re.findall(r"winget install[^\n]*?--id\s+([A-Za-z0-9._]+)", text))
-    found |= set(re.findall(r"winget install\s+([A-Z][A-Za-z0-9._]*\.[A-Za-z0-9._]+)", text))
+    # PowerShell uses a backtick to continue a command across lines; fold that
+    # continuation before looking for package ids so multiline installs remain covered.
+    text = re.sub(r"`\s*\n\s*", " ", text)
+    found = set(re.findall(r'winget install[^\n]*?--id\s+"?([A-Za-z0-9._+]+)"?', text))
+    found |= set(re.findall(r"winget install\s+([A-Z][A-Za-z0-9._+]*\.[A-Za-z0-9._+]+)", text))
     found -= NOT_IN_WINGET_PKGS
     watched = {p for p, _ in WATCHED_WINGET}
     missing = sorted(found - watched)
@@ -350,6 +354,8 @@ def check_memory_mentions_pins(rep: Report) -> None:
     need = [
         "SST.opencode",
         "OpenJS.NodeJS.LTS",
+        "Microsoft.VCRedist.2015+.x64",
+        "MSVCP140.dll",
         "OPENCODE_DISABLE_CLAUDE_CODE",
         "p3_multi_agent",
         "local_endpoint_notes",

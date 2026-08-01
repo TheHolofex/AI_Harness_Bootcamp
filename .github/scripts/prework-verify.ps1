@@ -145,6 +145,17 @@ if (-not $py) {
     }
 }
 
+# --- Microsoft Visual C++ runtime (goose prerequisite) ---
+$goosePathPresent = $null -ne (Get-Command "goose" -ErrorAction SilentlyContinue)
+$vcOut = & where.exe "MSVCP140.dll" 2>&1 | Out-String
+$vcExit = $LASTEXITCODE
+$vcDetail = $vcOut.Trim()
+if ($vcExit -eq 0 -and $vcDetail) {
+    Write-Result -Name "runtime.vcredist_x64" -Ok $true -Detail $vcDetail -Hard $goosePathPresent
+} else {
+    Write-Result -Name "runtime.vcredist_x64" -Ok $false -Detail "MSVCP140.dll not found; install Microsoft.VCRedist.2015+.x64 before starting goose" -Hard $goosePathPresent
+}
+
 # --- OpenCode ---
 $oc = Test-CommandVersion -Name "opencode" -Exe "opencode" -VersionArgs @("--version") -Hard $true
 
@@ -158,7 +169,15 @@ foreach ($g in @("goose", "goose.exe")) {
         try {
             $gout = & $c.Source "--version" 2>&1 | Out-String
             $gout = $gout.Trim()
-            if ($gout -match "(?i)database|clickhouse|ibis") {
+            $gexit = $LASTEXITCODE
+            if ($gexit -ne 0) {
+                $detail = "exited $gexit"
+                if ($gexit -eq -1073741515) {
+                    $detail += " (0xC0000135: missing DLL; install Microsoft.VCRedist.2015+.x64)"
+                }
+                if ($gout) { $detail += ": $gout" }
+                Write-Result -Name "bin.goose" -Ok $false -Detail "$($c.Source) - $detail" -Hard $true
+            } elseif ($gout -match "(?i)database|clickhouse|ibis") {
                 Write-Result -Name "bin.goose" -Ok $false -Detail "looks like wrong winget goose (database tool): $gout" -Hard $true
             } else {
                 Write-Result -Name "bin.goose" -Ok $true -Detail "$($c.Source) - $gout" -Hard $false

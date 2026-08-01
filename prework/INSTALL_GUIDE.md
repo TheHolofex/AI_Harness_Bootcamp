@@ -193,7 +193,7 @@ Prefer this to `setx`, which truncates values past 1024 characters and leaves th
 
 A model id per provider should be posted in the pre-work channel. Set them once here and every later step picks them up — otherwise you would be hand-editing four commands further down.
 
-If nothing has been posted yet, ask in the channel, and meanwhile use any current model id for that provider — these are two variables you can change in ten seconds later, not a decision you're locked into.
+If nothing has been posted yet, ask in the channel rather than saving a placeholder. If you use a current model id temporarily, replace it with the cohort pin before the write proofs — these are two variables you can change in ten seconds later, not a decision you're locked into.
 
 Change the two quoted values to the ids you're using, then run all four lines:
 
@@ -229,6 +229,8 @@ Model ids are not secret, so check those by eye:
 ```
 
 - [ ] Both read back the ids from the channel, not the words `paste the...`
+
+If either id is unknown, leave that variable unset until staff posts a real id. Never save an empty value or the words `paste the...`; the tools will otherwise fail later with a blank model and the error will look like authentication trouble.
 
 ---
 
@@ -453,6 +455,19 @@ Pre-work only proves install and one write. The four levers — recipe, extensio
 
 **Do not install goose with winget.** A winget package named *goose* is an unrelated database tool that shares the name. It installs cleanly and is the wrong program.
 
+Goose's Windows executable also needs the Microsoft Visual C++ 2015+ x64 runtime. The Goose download contains `goose.exe` only; it does not install the runtime, and Python's bundled DLLs are not a substitute. Install this before the Goose CLI:
+
+```powershell
+winget install `
+  --id "Microsoft.VCRedist.2015+.x64" `
+  --exact `
+  --source winget `
+  --accept-source-agreements `
+  --accept-package-agreements
+```
+
+If winget cannot install it, download Microsoft's x64 installer directly: <https://aka.ms/vs/17/release/vc_redist.x64.exe>. Run it, choosing **Install** or **Repair** if it is already present. Do not download individual DLL files from an untrusted site.
+
 Turn off the Windows keyring **before** installing — goose defaults to Credential Manager, which fails often enough on managed laptops that its own docs tell you to decline it:
 
 ```powershell
@@ -465,6 +480,9 @@ goose only checks whether this variable *exists*, not what it says — setting i
 Set provider and model so you never have to walk goose's provider list, which mixes API-key providers with subscription ones (ChatGPT Codex, GitHub Copilot, Cursor Agent) that need logins you don't have:
 
 ```powershell
+if ([string]::IsNullOrWhiteSpace($env:HB_OPENAI_MODEL) -or $env:HB_OPENAI_MODEL -like 'paste *') {
+  throw 'HB_OPENAI_MODEL is empty. Complete section 5 with a real model id, then open a new PowerShell window.'
+}
 [Environment]::SetEnvironmentVariable('GOOSE_PROVIDER','openai','User')
 [Environment]::SetEnvironmentVariable('GOOSE_MODEL',$env:HB_OPENAI_MODEL,'User')
 $env:GOOSE_PROVIDER = 'openai'
@@ -504,12 +522,16 @@ if (($userPath -split ';') -notcontains $bin) {
 
 The `if` is there because this exact folder comes up again in section 14, and PATH is a list you append to rather than a value you set. Without the guard, running it twice leaves the same folder in your PATH twice — harmless today, confusing the first time you have to read it. Note that this reads and writes **your** user PATH only; it never touches the system one.
 
-New terminal, then:
+Close every PowerShell window and open a new one, then run:
 
 ```powershell
+Get-Command goose -All
+where.exe MSVCP140.dll
 goose --version
 goose info -v
 ```
+
+`Get-Command goose -All` should point at the `aaif-goose` executable, and `where.exe MSVCP140.dll` should print a Windows runtime path. If the DLL lookup prints nothing, the runtime install did not complete. `goose --version` must return a version before you continue; `goose info -v` must show the provider and model you intended.
 
 Write proof. `GOOSE_MODE=auto` skips per-action approval so the smoke test can finish unattended — on Thursday you will deliberately dial this (often to `approve`) as a **tool-enforced** contract row:
 
@@ -702,6 +724,8 @@ There is **no separate health-check checklist** to run. If something fails later
 | Worked yesterday, now `429` / quota / spend limit | Key hit its cap | Nothing a reinstall fixes — the key needs raising at the console end. Post which key and what you ran. |
 | Tool claims it wrote a file that isn't there | Believe the folder, not the chat | `Get-Location`, `Get-ChildItem`. On OpenCode this is a known Windows defect — report version and exact wording. |
 | goose installed but is a database tool | winget package name collision | Uninstall it; use the `aaif-goose` installer in section 10 |
+| `goose --version` exits with `-1073741515` / `0xC0000135`, or mentions `MSVCP140.dll` | Microsoft Visual C++ runtime is missing; Goose crashes before its CLI starts | Install `Microsoft.VCRedist.2015+.x64` (or use Microsoft's x64 installer), close every PowerShell window, then check `where.exe MSVCP140.dll`; do not reinstall goose or switch shells |
+| `goose info -v` shows a blank provider or model | `HB_OPENAI_MODEL` was unset or a placeholder was saved | Set a real model id in section 5, open a new window, and rerun the Goose provider block |
 | Pi: "no bash shell found" mid-exercise | Git Bash not found | Set `shellPath` in `%USERPROFILE%\.pi\agent\settings.json` |
 | n8n exits on startup with a version message | Node outside 22.22–24.x | Reinstall with the `.LTS` package id |
 | Stuck 30 minutes on one step | — | Post the step number, exact error, and what you tried. Move to the next section; most are independent. |

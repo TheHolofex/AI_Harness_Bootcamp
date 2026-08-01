@@ -29,6 +29,7 @@ This is operator evidence: what broke, what you did about it, and what still ris
 | OpenCode independence (`OPENCODE_DISABLE_CLAUDE_CODE=1`) | | | | |
 | Pi install | | | | |
 | Pi bash check | | | | |
+| Microsoft Visual C++ x64 runtime (`MSVCP140.dll`) | | | | |
 | goose install (aaif-goose CLI; not winget) | | | | |
 | goose provider/model + mode note | | | | |
 | Obsidian | | | | |

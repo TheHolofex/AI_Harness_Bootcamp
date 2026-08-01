@@ -71,7 +71,9 @@ says, and that the `OPENCODE_DISABLE_CLAUDE_CODE` round-trip survives a fresh
 terminal. Writes `prework-verify-results.md` beside itself.
 
 Neither touches the GUI steps or the key-dependent write proofs. Those still
-need a person at a keyboard with a funded key. Tick the human rows on
+need a person at a keyboard with a funded key. The Windows smoke also checks the
+Microsoft Visual C++ x64 runtime required by the native Goose CLI and surfaces a
+missing `MSVCP140.dll` before the write proof. Tick the human rows on
 `lead/COHORT_PIN.md` (sections C–D) after the scripts pass.
 
 ### 3. Revocation plan
@@ -104,6 +106,7 @@ Triage these first when someone reports being stuck; no amount of retrying helps
 | Microsoft Store or `winget ... -s msstore` blocked by policy | The Codex app ships only as a Store-signed package. Rescue is the direct MSIX (`ChatGPT-x64.msix`) in the install guide's rescue table; there is no MSI or standalone EXE. Screen for this before cohort start — it is the one install with no second vendor path. |
 | Key returns 429 / insufficient quota | Cap or balance. Staff console fix. |
 | xAI key authenticates but reaches no model | Missing ACLs on the key. Staff console fix. |
+| `goose --version` exits with `-1073741515` / `0xC0000135` or mentions `MSVCP140.dll` | Goose's native Windows executable is missing the Microsoft Visual C++ 2015+ x64 runtime. Install `Microsoft.VCRedist.2015+.x64`, close every PowerShell window, and verify `where.exe MSVCP140.dll`. Do not reinstall Goose or change shells. |
 
 ## Monday install clinic
 
@@ -123,6 +126,8 @@ Collect **OpenCode version**, **`OPENCODE_DISABLE_CLAUDE_CODE`**, and **Codex sa
 ## goose — product vs course slice (P6)
 
 goose is a full local agent platform (CLI + Desktop + API/ACP): recipes with parameters/extensions/retry, 70+ MCP extensions, permission modes, scheduler, subagents, adversary mode, hooks. Docs: <https://goose-docs.ai>.
+
+On Windows, the native CLI also requires the Microsoft Visual C++ 2015+ x64 runtime; the Goose download supplies `goose.exe` but not `MSVCP140.dll`. Staff should verify that dependency before diagnosing provider, model, or key failures.
 
 **Course slice (keep this altitude with students):**
 
