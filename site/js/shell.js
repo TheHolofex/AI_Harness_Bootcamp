@@ -297,13 +297,32 @@
     var bars = document.querySelectorAll('[data-progress-bar-for="' + key + '"]');
     Array.prototype.forEach.call(bars, function (el) { el.style.width = p.pct + "%"; });
 
+    var form = document.querySelector('form[data-storage-key="' + key + '"]');
+    var state = AHB.readState(key);
+    var outcomeStatuses = form
+      ? form.querySelectorAll("[data-outcome-status-for]")
+      : [];
+    Array.prototype.forEach.call(outcomeStatuses, function (row) {
+      var id = row.getAttribute("data-outcome-status-for");
+      var complete = state[id] === true;
+      row.classList.toggle("is-complete", complete);
+      row.classList.toggle("is-remaining", !complete);
+      var mark = row.querySelector("[data-outcome-status-mark]");
+      var word = row.querySelector("[data-outcome-status-word]");
+      if (mark) mark.textContent = complete ? "✓" : "○";
+      if (word) word.textContent = complete ? "Complete" : "Not yet";
+    });
+
     var sections = document.querySelectorAll("[data-check-section]");
     Array.prototype.forEach.call(sections, function (section) {
       var name = section.getAttribute("data-check-section");
-      var boxes = section.querySelectorAll('input[type="checkbox"][data-check-id]');
+      var boxes = name === "floor"
+        ? (form ? form.querySelectorAll('input[type="checkbox"][data-check-group="floor"][data-check-id]') : [])
+        : section.querySelectorAll('input[type="checkbox"][data-check-id]');
       var total = 0, done = 0;
       Array.prototype.forEach.call(boxes, function (box) {
-        if (box.closest("[data-check-section]") !== section) return;
+        if (name !== "floor" && box.closest("[data-check-section]") !== section) return;
+        if (name !== "floor" && box.getAttribute("data-check-group")) return;
         if (!isRequiredId(b, box.getAttribute("data-check-id"))) return;
         total++;
         if (box.checked) done++;
@@ -342,6 +361,156 @@
   function applyItemState(input) {
     var li = input.closest("[data-check-item]");
     if (li) li.classList.toggle("is-done", input.checked);
+  }
+
+  function prepareOutcomeLayout(form, b) {
+    if (!form || !b) return;
+    var section = form.querySelector('#floor[data-check-section="floor"]');
+    if (!section) return;
+    var sources = Array.prototype.slice.call(section.querySelectorAll("ol.checklist"));
+    if (!sources.length) return;
+    var entries = [];
+    sources.forEach(function (source) {
+      var sourceItems = Array.prototype.slice.call(source.querySelectorAll("[data-check-item]"));
+      sourceItems.forEach(function (item) {
+        entries.push({ item: item, source: source });
+      });
+    });
+    if (!entries.length) return;
+
+    var valid = true;
+    entries.forEach(function (entry) {
+      var item = entry.item;
+      var target = item.getAttribute("data-outcome-after");
+      var input = item.querySelector('input[type="checkbox"][data-check-id]');
+      var title = item.querySelector(".check-title");
+      var anchor = null;
+      if (target && target.charAt(0) === "#") {
+        anchor = form.querySelector(target);
+      } else if (target) {
+        var targetInput = form.querySelector('input[data-check-id="' + target + '"]');
+        var targetItem = targetInput && targetInput.closest("[data-check-item]");
+        anchor = targetItem && targetItem.closest("ol.checklist");
+      }
+      if (!input || !title || !target || !anchor || section.contains(anchor)) {
+        valid = false;
+        return;
+      }
+      entry.input = input;
+      entry.title = title;
+      entry.detail = item.querySelector(".check-detail");
+      entry.target = target;
+      entry.anchor = anchor;
+    });
+    if (!valid) return;
+
+    sources.forEach(function (source) {
+      source.classList.remove("checklist");
+      source.classList.add("outcome-summary");
+      source.setAttribute("aria-label", "Lesson outcome status");
+    });
+    var groups = [];
+
+    entries.forEach(function (entry) {
+      var item = entry.item;
+      var source = entry.source;
+      var input = entry.input;
+      var title = entry.title;
+      var detail = entry.detail;
+      var target = entry.target;
+      var anchor = entry.anchor;
+
+      var group = null;
+      for (var gi = 0; gi < groups.length; gi++) {
+        if (groups[gi].anchor === anchor) {
+          group = groups[gi].group;
+          break;
+        }
+      }
+      if (!group) {
+        group = document.createElement("div");
+        group.className = "inline-outcomes";
+        group.setAttribute("data-inline-outcomes-for", target);
+        var list = document.createElement("ol");
+        list.className = "checklist outcome-checklist";
+        list.setAttribute("aria-label", "Lesson outcome to confirm here");
+        group.appendChild(list);
+        anchor.insertAdjacentElement("afterend", group);
+        groups.push({ anchor: anchor, group: group });
+      }
+
+      var id = input.getAttribute("data-check-id");
+      var optional = b.stretchIds.indexOf(id) !== -1;
+      var summary = document.createElement("li");
+      summary.className = "outcome-status" + (optional ? " is-optional" : "");
+      summary.setAttribute("data-outcome-status-for", id);
+      var summaryMark = document.createElement("span");
+      summaryMark.className = "outcome-status-mark";
+      summaryMark.setAttribute("data-outcome-status-mark", "");
+      summaryMark.setAttribute("aria-hidden", "true");
+      summaryMark.textContent = "○";
+      var summaryBody = document.createElement("div");
+      summaryBody.className = "outcome-status-body";
+      var summaryTitle = document.createElement("a");
+      summaryTitle.className = "outcome-status-title";
+      summaryTitle.setAttribute("href", "#" + input.id);
+      summaryTitle.innerHTML = title.innerHTML;
+      Array.prototype.forEach.call(summaryTitle.querySelectorAll(".tag, .check-kind"), function (tag) {
+        tag.insertAdjacentText("afterend", " ");
+      });
+      summaryTitle.addEventListener("click", function () {
+        var lane = input.closest("details");
+        if (lane) lane.open = true;
+      });
+      if (optional) {
+        var optionalBadge = document.createElement("span");
+        optionalBadge.className = "check-kind";
+        optionalBadge.textContent = "Optional";
+        summaryTitle.appendChild(document.createTextNode(" "));
+        summaryTitle.appendChild(optionalBadge);
+      }
+      summaryBody.appendChild(summaryTitle);
+      if (detail) {
+        var summaryDetail = document.createElement("div");
+        summaryDetail.className = "outcome-status-detail";
+        summaryDetail.innerHTML = detail.innerHTML;
+        summaryBody.appendChild(summaryDetail);
+      }
+      var summaryWord = document.createElement("span");
+      summaryWord.className = "outcome-status-word";
+      summaryWord.setAttribute("data-outcome-status-word", "");
+      summaryWord.textContent = "Not yet";
+      summary.appendChild(summaryMark);
+      summary.appendChild(summaryBody);
+      summary.appendChild(summaryWord);
+      source.appendChild(summary);
+
+      input.setAttribute("data-check-group", "floor");
+      item.classList.add("outcome-check");
+      item.setAttribute("data-outcome-item", "");
+      var number = item.querySelector(".check-num");
+      if (number) {
+        number.classList.remove("check-num");
+        number.classList.add("outcome-check-label");
+        number.textContent = optional ? "Optional outcome" : "Lesson outcome";
+      }
+      group.querySelector("ol").appendChild(item);
+    });
+
+    if (location.hash) {
+      var hash = "";
+      try { hash = decodeURIComponent(location.hash.replace(/^#/, "")); }
+      catch (e) { hash = location.hash.replace(/^#/, ""); }
+      var hashTarget = hash ? document.getElementById(hash) : null;
+      if (hashTarget && hashTarget.closest("[data-outcome-item]")) {
+        var hashLane = hashTarget.closest("details");
+        if (hashLane) hashLane.open = true;
+        window.setTimeout(function () {
+          hashTarget.scrollIntoView({ block: "center" });
+          hashTarget.focus();
+        }, 0);
+      }
+    }
   }
 
   function setPreworkSection(section, open) {
@@ -517,11 +686,12 @@
   function initForm(form) {
     var key = form.getAttribute("data-storage-key");
     if (!key) return;
-    var state = AHB.readState(key);
     var b = null;
     for (var i = 0; i < AHB.REGISTRY.length; i++) {
       if (AHB.REGISTRY[i].key === key) { b = AHB.REGISTRY[i]; break; }
     }
+    prepareOutcomeLayout(form, b);
+    var state = AHB.readState(key);
     var boxes = form.querySelectorAll('input[type="checkbox"][data-check-id]');
     Array.prototype.forEach.call(boxes, function (input) {
       var id = input.getAttribute("data-check-id");
@@ -530,7 +700,7 @@
         var stretch = b.stretchIds.indexOf(id) !== -1;
         item.classList.add(stretch ? "is-optional" : "is-conditional");
         var title = item.querySelector(".check-title");
-        if (title && !title.querySelector(".check-kind")) {
+        if (title && !item.hasAttribute("data-outcome-item") && !title.querySelector(".check-kind")) {
           var badge = document.createElement("span");
           badge.className = "check-kind";
           badge.textContent = stretch ? "Optional" :

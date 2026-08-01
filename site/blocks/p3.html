@@ -522,7 +522,7 @@ opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder 
 
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
           <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
-        <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking fresh reviewers to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
+        <p class="section-lede">Close this lesson by recording what happened, reviewing the outcome status created during the run, asking fresh reviewers to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
         <p class="reflection-question"><strong>Think back:</strong> What did engine disagreement change about when you seek a second run or reject a claim?</p>
 
         <p><strong>Where your answer goes:</strong> You will write the one-sentence answer in the P3 row of <code>operator/MEASUREMENT_SPINE.md</code> through <strong>Operator — Direction &amp; Log</strong>, after both independent reviews. Do not start a separate reflection chat.</p>
@@ -573,25 +573,25 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
 
         <div class="do-step">
           <!-- The bars themselves live in operator/PASS_BARS.md · section P3 -->
-          <p class="do-label">Now on this page, in <strong>Lesson outcomes</strong> below:</p>
+          <p class="do-label">Now capture the outcome status already shown on this page:</p>
           <ul class="do-clicks">
-            <li>Open Lesson outcomes below and check only the outcomes you can prove with an artifact — right now, before the independent review.</li>
-            <li>Leave any outcome you cannot evidence unticked. An honest not-yet costs nothing here and saves you at the next step.</li>
-            <li>Open a blank Notepad window and type the title of each checked outcome into one short list. Do not include the unticked outcomes</li>
-            <li>Keep that list open. It is your prediction, and you will paste it into the <code>Lesson outcomes I marked complete</code> line in the adversarial chat</li>
+            <li>Open <strong>Lesson outcomes</strong> below. It displays which inline outcomes are <strong>Complete</strong> and which are <strong>Not yet</strong></li>
+            <li>If a status is wrong, return to that outcome beside its relevant run instruction and correct the inline checkbox there. Do not change status in the summary</li>
+            <li>Open a blank Notepad window and type the title of every outcome shown <strong>Complete</strong>. Do not include <strong>Not yet</strong> outcomes</li>
+            <li>Keep that list open. It is the pre-review snapshot you will paste into both adversarial reviews</li>
           </ul>
         </div>
 
-        <p class="full-measure">Two outcomes are often checked too early on this desk. The three disagreements: were they material, or cosmetic rows counted to reach a number? And the kill: it only counts if it names evidence from outside either model.</p>
+        <p class="full-measure">Before saving the snapshot, inspect two statuses people often complete too early. For the disagreements outcome, ask whether the rows were material or cosmetic. For the kill outcome, require evidence from outside either model. If either proof is thin, return to that inline checkbox and leave it Not yet.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-pulse-bars" name="p3-pulse-bars" data-check-id="pulse-bars" />
               <span class="check-num">10</span>
-              <span class="check-title">Lesson outcomes marked from current evidence</span>
+              <span class="check-title">Pre-review outcome snapshot saved</span>
             </label>
-            <div class="check-detail">The checked list is a forecast, not a summary: you are naming, in writing and before the independent review, which outcomes you believe the evidence supports. Every check needs an artifact you could open in front of someone — the outcome list’s evidence rule stands, and if the review questions an outcome, clear it until you fix the evidence.</div>
+            <div class="check-detail">The Notepad list captures every title shown Complete in the read-only summary before review. It records the inline checkbox state; it does not ask you to decide every outcome a second time.</div>
           </li>
         </ol>
 
@@ -615,7 +615,7 @@ Context: careful, evidence-based AI direction and shared reasoning.
 Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
 Containment is absence of effect. Autonomy without stop proof is theater.
 
-I will paste: block, artifacts/paths/excerpts, provisional verdict, and the lesson outcomes I marked complete.
+I will paste: block, artifacts/paths/excerpts, provisional verdict, and my pre-review lesson-outcome snapshot.
 
 Protocol — follow in order:
 1. Restate my claimed outcome and verdict in one cold sentence (no praise).
@@ -623,7 +623,7 @@ Protocol — follow in order:
    - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
    - Name completion theater if you see it.
    - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
-3. Evidence audit: for each lesson outcome I marked complete, mark:
+3. Evidence audit: for each lesson outcome in my pre-review snapshot, mark:
    SURVIVES / WOUNDED / DEAD — with reason.
 4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
    If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
@@ -647,7 +647,7 @@ Rules for you:
           <pre><code>Block: P3 — twin-engine desk. Outcome: a filled comparator and a supervisor-readable adjudication note.
 Artifacts: instruments/p3_frozen_brief/output_codex.md · output_opencode.md · COMPARATOR.md
 Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
-Lesson outcomes I marked complete: [PASTE THE LESSON OUTCOMES YOU MARKED COMPLETE]
+Lesson outcomes shown Complete before review: [PASTE THE TITLES FROM YOUR PRE-REVIEW SNAPSHOT]
 Known weak spots: [ANYTHING YOU ALREADY DOUBT — E.G. A ROW THAT MIGHT BE COSMETIC]
 Comparator excerpts: [PASTE THE RUN-IDENTITY TABLE AND YOUR DISAGREEMENT ROWS]</code></pre>
         </div>
@@ -686,7 +686,7 @@ opencode --pure -m "xai/$env:HB_XAI_MODEL"</code></pre>
           <p class="do-label">Now in the <strong>OpenCode session</strong> you just opened:</p>
           <ul class="do-clicks">
             <li>Return to ChatGPT, open <strong>Adversarial — P3</strong>, and copy the complete frozen prompt message beginning <code>You are an adversarial operator reviewer</code>. Switch back to OpenCode, paste it, and send it</li>
-            <li>Return to <strong>Adversarial — P3</strong> and copy the filled paste-pack message you sent after the prompt. Switch back to OpenCode, paste that exact pack, and send it. Same artifacts, verdict, checked outcomes, and comparator excerpts; no reconstruction from memory</li>
+            <li>Return to <strong>Adversarial — P3</strong> and copy the filled paste-pack message you sent after the prompt. Switch back to OpenCode, paste that exact pack, and send it. Same artifacts, verdict, pre-review outcome snapshot, and comparator excerpts; no reconstruction from memory</li>
             <li>Select from the first <code>SURVIVES / WOUNDED / DEAD</code> ruling through the final <code>ADVERSARIAL:</code> line and copy that complete block before leaving the session</li>
             <li>Leave the session with <code>/exit</code> — <strong>Ctrl+C</strong> if your build does not take the command</li>
           </ul>
@@ -706,7 +706,8 @@ In the P3 entry, append both labelled reviewers' complete ruling lists and
 final ADVERSARIAL lines to field 6, Adversarial, verbatim.
 Keep the Codex reviewer and OpenCode reviewer labels. Do not summarize,
 rewrite, or omit either review. Preserve fields 1–5.
-For each WOUNDED or DEAD outcome, ask what I did; append my answer. Where
+For each WOUNDED or DEAD outcome, ask what I did; if I cleared it, confirm I
+returned to its inline Lesson outcome checkbox. Append my answer. Where
 the reviewers disagree, append that disagreement as the finding. Save the
 file, then tell me the exact section you updated.</code></pre>
         </div>
@@ -718,7 +719,7 @@ file, then tell me the exact section you updated.</code></pre>
               <span class="check-num">11</span>
               <span class="check-title">Two clean independent reviews completed across both engines</span>
             </label>
-            <div class="check-detail">Chat <code>Adversarial — P3 — [date]</code>: frozen prompt + your pack + provisional verdict, then the same prompt and the same pack run a second time in OpenCode, and both final <code>ADVERSARIAL: stood | wounded | failed</code> lines copied into your log, labelled by engine. Fix if wounded — clearing an unsupported outcome is the honest move, not a setback. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
+            <div class="check-detail">Chat <code>Adversarial — P3 — [date]</code>: frozen prompt + your pack + provisional verdict, then the same prompt and the same pack run a second time in OpenCode, and both final <code>ADVERSARIAL: stood | wounded | failed</code> lines copied into your log, labelled by engine. For an unsupported outcome, return to the relevant run instruction and clear its inline Lesson outcome checkbox until the evidence is repaired. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
         </ol>
 
@@ -729,7 +730,7 @@ file, then tell me the exact section you updated.</code></pre>
 Block: [B1/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
 Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
-Lesson outcomes I marked complete before the review: [n].
+Lesson outcomes shown Complete before the review: [n].
 Brief LIVE at: [time or "approx"].
 Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
@@ -738,8 +739,8 @@ Fill this block's row:
    run, and which one of the five brief fields would I write differently now?
    Refuse "the brief was fine": make me name a field, or say none and name what
    held better than expected.
-2. Overclaim n/m — count the lesson outcomes I marked complete that came back WOUNDED or DEAD,
-   over the number I marked complete. Count from the rulings I pasted, not from my summary.
+2. Overclaim n/m — count the lesson outcomes shown Complete before review that came back WOUNDED or DEAD,
+   over the number shown Complete. Count from the rulings I pasted, not from my summary.
 3. Time to result in minutes.
 4. Lesson reflection (one sentence) — What did engine disagreement change about when I seek a second run or reject a claim?
 5. Deep mark if this block has one.
@@ -756,7 +757,7 @@ Do not start transfer until this row is written.</code></pre>
               <span class="check-num">12</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes you marked complete that the adversarial ruled WOUNDED or DEAD over the number you marked complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, a one-sentence <strong>lesson reflection</strong> answering the question above, and the deep mark <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code>.</div>
+            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of outcomes shown Complete before review that the adversarial ruled WOUNDED or DEAD over the number shown Complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, a one-sentence <strong>lesson reflection</strong> answering the question above, and the deep mark <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code>.</div>
           </li>
         </ol>
         </div>
@@ -806,7 +807,7 @@ date I gave you.
 
 Use my words from COMPARATOR.md. Change nothing else.</code></pre>
         </div>
-        <p>Approve the write if the app asks. The result should be the same seed you just saved, carried into the standing transfer file without rewording it.</p>
+        <p id="p3-transfer-complete">Approve the write if the app asks. The result should be the same seed you just saved, carried into the standing transfer file without rewording it.</p>
       </section>
 
 
@@ -815,12 +816,12 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
 
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Lesson outcomes</h2>
-        <p class="section-lede">Check an outcome when the named evidence exists. If review finds a gap, clear it until you fix the artifact or narrow the claim.</p>
+        <p class="section-lede">This is a read-only summary of the Lesson outcome checkboxes beside the relevant instructions throughout this page. <strong>Complete</strong> means you checked the outcome where its evidence was produced; <strong>Not yet</strong> means it remains open. To change a status, use the outcome title to return to that inline checkbox.</p>
 
         <h3>What you should be able to show</h3>
         <ol class="checklist">
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="p3-claude">
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-briefv1" name="p3-mvp-briefv1" data-check-id="mvp-briefv1" />
               <span class="check-num">13</span>
@@ -829,7 +830,7 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
             <div class="check-detail">Evidence looks like: <code>output_codex.md</code> and <code>output_opencode.md</code> on disk, produced from byte-identical brief text with no coaching between runs. If you clarified anything for one engine only, this is not yet met — rerun that side.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="p3-comp">
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-join" name="p3-mvp-join" data-check-id="mvp-join" />
               <span class="check-num">14</span>
@@ -838,7 +839,7 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
             <div class="check-detail">Evidence looks like: the Stage 04 tick-through against <code>watchlist.csv</code> ran clean — every WatchID row in both outputs matches an ID in the CSV, with off-watchlist entities fenced into Unlisted mentions. A model that invented an ID or joined on a display name fails this outcome even when the answer happens to be right — the violation goes on the comparator, and that engine reruns the verbatim brief.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="p3-comp">
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-comp" name="p3-mvp-comp" data-check-id="mvp-comp" />
               <span class="check-num">15</span>
@@ -847,7 +848,7 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
             <div class="check-detail">Evidence looks like: <code>COMPARATOR.md</code> with the run-identity table filled for both engines and side-by-side rows carrying keep / discard / unknown verdicts. “They basically agreed” with no table behind it is the named not-yet.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="p3-comp">
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-3dis" name="p3-mvp-3dis" data-check-id="mvp-3dis" />
               <span class="check-num">16</span>
@@ -856,7 +857,7 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
             <div class="check-detail">Evidence looks like: at least three rows where the engines differ on an operational fact — or a written proof of search naming the fields you checked and why separation was low. Cosmetic wording differences count toward neither.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="p3-kill">
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-kill" name="p3-mvp-kill" data-check-id="mvp-kill" />
               <span class="check-num">17</span>
@@ -865,7 +866,7 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
             <div class="check-detail">Evidence looks like: the model's assert quoted, plus a discard reason grounded outside either model — a source line, a missing watchlist ID, or a kill-test result. One earned kill beats three polite ones.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="p3-note">
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-adj" name="p3-mvp-adj" data-check-id="mvp-adj" />
               <span class="check-num">18</span>
@@ -874,7 +875,7 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
             <div class="check-detail">Evidence looks like: the note reads cold. Someone who saw none of the run can state what is operationally true, what is unknown, and what you killed — without asking you anything.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="pulse-log">
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-files" name="p3-mvp-files" data-check-id="mvp-files" />
               <span class="check-num">19</span>
@@ -883,7 +884,7 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
             <div class="check-detail">Evidence looks like: the Operator Log names brief id <code>BRIEF-v1</code> and points at both raw outputs, the comparator, and the final watch product — the adjudication note at the bottom of the comparator. Two runs you can't identify are not evidence.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="#p3-transfer-complete">
             <label class="check-label">
               <input type="checkbox" id="p3-p3-transfer" name="p3-p3-transfer" data-check-id="p3-transfer" />
               <span class="check-num">20</span>
@@ -896,7 +897,7 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
         <h3>Stretch lane checks · Many Minds</h3>
         <ol class="checklist">
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="#p3-stretch-baseline-proof">
             <label class="check-label">
               <input type="checkbox" id="p3-stretch-base" name="p3-stretch-base" data-check-id="stretch-many-baseline" />
               <span class="check-num">S1</span>
@@ -905,7 +906,7 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
             <div class="check-detail"><code>out/baseline_single.md</code> under <code>instruments/p3_multi_agent/</code> — one reviewer, no subagents, every finding carrying corpus evidence. If the model spawned specialists anyway, restart the baseline chat; the comparison is ruined otherwise. Guide: <code>mission_flesh/p3/MANY_MINDS.md</code>.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="#p3-stretch-synthesis-proof">
             <label class="check-label">
               <input type="checkbox" id="p3-stretch-mm" name="p3-stretch-mm" data-check-id="stretch-many-minds" />
               <span class="check-num">S2</span>
@@ -914,7 +915,7 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
             <div class="check-detail"><code>out/many_minds_synthesis.md</code> — three lenses ran in parallel, waited for all, then merged with visible dedupe, at least one corpus-evidenced kill, and the naming sentence: subagent ≠ second engine ≠ second human. Nine raw findings pasted in a stack is not a synthesis.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="#p3-stretch-delta-proof">
             <label class="check-label">
               <input type="checkbox" id="p3-stretch-delta" name="p3-stretch-delta" data-check-id="stretch-many-delta" />
               <span class="check-num">S3</span>
@@ -923,7 +924,7 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
             <div class="check-detail"><code>out/many_minds_delta.md</code> — baseline vs parallel with a defended verdict (improved / duplicated / noisy) and ≥2 adversarial seeds answered in your log. Missing baseline ⇒ not yet: without it, a synthesis is a product demo, not evidence.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="#p3-stretch-worktree-proof">
             <label class="check-label">
               <input type="checkbox" id="p3-stretch-wt" name="p3-stretch-wt" data-check-id="stretch-worktree" />
               <span class="check-num">S4</span>
@@ -972,7 +973,50 @@ Use my words from COMPARATOR.md. Change nothing else.</code></pre>
           <img src="../assets/blocks/p3/p3-stretch-many-minds.svg" alt="One commander dispatches three parallel subagent lenses — correctness, test gaps, spec drift — waits for all, then owns the synthesis, the kills, and the delta against baseline" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
         <p class="full-measure">After the required twin-engine outcomes are complete, a different kind of “many”: not two vendors, but several specialists under one commander — you — with a measured answer to whether parallel helped. A <strong>subagent</strong> is a specialist the Codex app starts for one bounded job; it works off to the side and returns a summary to your chat. The optional path is three artifacts in order: a <strong>baseline</strong> single-chat review with no subagents, then three parallel lenses (correctness, test gaps, spec drift) merged with visible dedupe and at least one corpus-evidenced kill, then a <strong>delta sheet</strong> that defends a verdict — improved, duplicated, or noisy. Skipping the baseline turns the stretch into a product demo: without it you cannot say what parallel added.</p>
-        <p class="full-measure">Two details worth noticing while you run it. The three-subagent cap lives in your prompt wording, which makes it procedure-enforced — it holds because the model cooperates and you're watching. The app also has a real setting, <code>agents.max_concurrent_threads_per_session</code>, which holds whether the prompt cooperates or not — tool-enforced. Feel the difference: a procedure-enforced bound is a promise, and a tool-enforced bound is a wall. And if two of your specialists ever needed to <em>write</em> at once, a <strong>worktree</strong> — a second checkout of the same repository — is the isolation instrument; since nothing in this run writes to the repo, the worktree proof stays the optional deeper cut. This section is the web walkthrough; the cloned pack keeps its working copy at <code>mission_flesh/p3/MANY_MINDS.md</code>. The pack is at <code>instruments/p3_multi_agent/</code>, and the four stretch checks live on the lesson outcomes below.</p>
+        <p class="full-measure">Two details worth noticing while you run it. The three-subagent cap lives in your prompt wording, which makes it procedure-enforced — it holds because the model cooperates and you're watching. The app also has a real setting, <code>agents.max_concurrent_threads_per_session</code>, which holds whether the prompt cooperates or not — tool-enforced. Feel the difference: a procedure-enforced bound is a promise, and a tool-enforced bound is a wall. And if two of your specialists ever needed to <em>write</em> at once, a <strong>worktree</strong> — a second checkout of the same repository — is the isolation instrument; since nothing in this run writes to the repo, the worktree proof stays the optional deeper cut. This section is the web walkthrough; the cloned pack keeps its working copy at <code>mission_flesh/p3/MANY_MINDS.md</code>. The pack is at <code>instruments/p3_multi_agent/</code>, and each stretch outcome check appears beside the step that produces its evidence.</p>
+
+        <div class="do-step" id="p3-stretch-baseline-proof">
+          <p class="do-label">Stretch S1 · Run the single-chat baseline before spawning anything:</p>
+          <ul class="do-clicks">
+            <li>In PowerShell at the course repository root, run <code>New-Item -ItemType Directory -Force -Path ".\instruments\p3_multi_agent\out" | Out-Null</code></li>
+            <li>In the Codex app, open the course project, create a new chat named <code>P3 — Many Minds baseline</code>, and keep permissions at <strong>Ask for approval</strong></li>
+            <li>Tell the single reviewer not to spawn subagents or implement fixes. Point it only at the three files under <code>instruments/p3_multi_agent/corpus/</code></li>
+            <li>Require at most eight findings in <code>instruments/p3_multi_agent/out/baseline_single.md</code>. Every finding must name a claim, corpus file and symbol or short quote, severity, and the lens it belongs to</li>
+            <li>Open the saved file yourself. Confirm it exists, every finding carries corpus evidence, and no subagent ran. If a specialist spawned, restart the baseline chat</li>
+          </ul>
+        </div>
+
+        <div class="do-step" id="p3-stretch-synthesis-proof">
+          <p class="do-label">Stretch S2 · Run three read-only lenses and make the commander synthesize:</p>
+          <ul class="do-clicks">
+            <li>Create a separate Codex chat named <code>P3 — Many Minds commander</code> on the course project</li>
+            <li>Direct it to spawn exactly three subagents in parallel: <strong>correctness and edge cases</strong>, <strong>test gaps</strong>, and <strong>spec drift</strong>. Each reads only <code>instruments/p3_multi_agent/corpus/</code>, edits nothing, and returns at most five findings with corpus cues</li>
+            <li>Require the commander to wait for all three, then write only <code>instruments/p3_multi_agent/out/many_minds_synthesis.md</code></li>
+            <li>Require a lens-by-lens table, visible deduplication, at least one specialist claim killed with a corpus-based reason, what the operator still owns, and the sentence <code>subagent ≠ second engine ≠ second human</code></li>
+            <li>Open the synthesis yourself. Confirm all three lenses returned and that the result is a merge rather than three lists stacked together</li>
+          </ul>
+        </div>
+
+        <div class="do-step" id="p3-stretch-delta-proof">
+          <p class="do-label">Stretch S3 · Compare baseline with parallel and defend the delta:</p>
+          <ul class="do-clicks">
+            <li>Create <code>instruments/p3_multi_agent/out/many_minds_delta.md</code></li>
+            <li>Record baseline versus parallel counts, findings unique to each path, noise introduced by specialists, and honest time or spend</li>
+            <li>Choose and defend one verdict in three to five sentences: <strong>improved coverage</strong>, <strong>mostly duplicated baseline</strong>, or <strong>added misleading noise</strong></li>
+            <li>Run at least two attacks in an adversarial or scratch-review chat: dedupe theater, rubber-stamp merge, lens bleed, cheap kill, or missing baseline. Record both answers in your Operator Log</li>
+            <li>Open all three files together. Confirm the baseline, synthesis, and delta exist; the delta defends its verdict; and at least one kill names corpus evidence</li>
+          </ul>
+        </div>
+
+        <div class="do-step" id="p3-stretch-worktree-proof">
+          <p class="do-label">Optional Stretch S4 · Prove when a worktree is the right isolation tool:</p>
+          <ul class="do-clicks">
+            <li>Start only after S1–S3. Note the Local course-repository path, then create a new Codex chat with <strong>Worktree</strong> selected</li>
+            <li>Ask it to print its working directory and create only <code>instruments/p3_multi_agent/out/worktree_path.txt</code> containing that path and <code>proof=many-minds-isolation</code></li>
+            <li>Confirm the Local lesson files did not change</li>
+            <li>Write one line explaining the choice: use a worktree for isolated writes; use subagents for read-split specialist context. If Worktree is unavailable, save an honest block note instead</li>
+          </ul>
+        </div>
 
         <p class="eyebrow">Optional field guide · 45–60 min</p>
         <h3>Audit suspicious agreement</h3>

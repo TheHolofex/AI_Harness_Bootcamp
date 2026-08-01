@@ -78,7 +78,7 @@
           </div>
           <div class="callout">
             <strong>Every lesson closes with reflection</strong>
-            Direction Brief (LIVE) → lesson work → log → outcome check → <em>new</em> review chat → measurement and reflection. See the <a href="../pulse.html">lesson reflection guide</a> for the shared prompts.
+            Direction Brief (LIVE) → lesson work + inline outcome checks → log → outcome snapshot → <em>new</em> review chat → measurement and reflection. See the <a href="../pulse.html">lesson reflection guide</a> for the shared prompts.
           </div>
         </div>
       </div>
@@ -431,8 +431,9 @@ brief. Ask me, one question at a time:
 3. What did the brief leave out, and who owns that omission?
 4. How did the brief handle C5_sso_rumor.md - and would I defend that choice
    to my reader?
-Write my answers as two short lists - machine draft / my judgment - and do not
-answer for me.</code></pre>
+Write my accepted answers into the P1 entry in operator/OPERATOR_LOG.md as two
+short lists - machine draft / my judgment - and do not answer for me. Save the
+file and tell me the exact section you updated.</code></pre>
         </div>
 
         <p>One honest sentence per call is enough. If you can't name a judgment you made, look at how your brief handled the SSO rumor — someone decided that, and it wasn't the model.</p>
@@ -452,7 +453,7 @@ answer for me.</code></pre>
 
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
           <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
-        <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
+        <p class="section-lede">Close this lesson by recording what happened, reviewing the outcome status created during the run, asking a fresh reviewer to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
         <p class="reflection-question"><strong>Think back:</strong> What did the delta and stale-source tests change about what you require before trusting a generated brief?</p>
 
         <p><strong>Where your answer goes:</strong> You will write the one-sentence answer in the P1 row of <code>operator/MEASUREMENT_SPINE.md</code> through <strong>Operator — Direction &amp; Log</strong>, after the independent review. Do not start a separate reflection chat.</p>
@@ -485,6 +486,7 @@ Walk fields 1 → 5:
 5. Ask what I still own.
 
 When I accept the wording, write the entry into the correct block section in this file.
+Preserve the machine draft / my judgment lists already written in the P1 entry.
 Remind me: REJECT with real evidence is a successful operator act.</code></pre>
         </div>
 
@@ -502,15 +504,15 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           </li>
         </ol>
 
-        <p>Next you commit to a prediction, in writing, while you still get to choose it.</p>
+        <p>Next you freeze a pre-review snapshot of the outcomes you completed during the run.</p>
 
         <div class="do-step">
-          <p class="do-label">Now on this page:</p>
+          <p class="do-label">Now capture the outcome status already shown on this page:</p>
           <ul class="do-clicks">
-            <li>Open <strong>Lesson outcomes</strong> below and check only the outcomes you can prove with an artifact — right now, before the independent review.</li>
-            <li>Leave any outcome you cannot evidence unticked. An honest not-yet costs nothing here and saves you at the next step.</li>
-            <li>Open a blank Notepad window and type the title of each checked outcome into one short list. Do not include the unticked outcomes</li>
-            <li>Keep that list open. It is your prediction, and you will paste it into the <code>Lesson outcomes I marked complete</code> line in the adversarial chat</li>
+            <li>Open <strong>Lesson outcomes</strong> below. It displays which inline outcomes are <strong>Complete</strong> and which are <strong>Not yet</strong></li>
+            <li>If a status is wrong, return to that outcome beside its relevant run instruction and correct the inline checkbox there. Do not change status in the summary</li>
+            <li>Open a blank Notepad window and type the title of each outcome shown <strong>Complete</strong>. Do not include <strong>Not yet</strong> outcomes</li>
+            <li>Keep that list open. It is the pre-review snapshot you will paste into the adversarial chat</li>
           </ul>
         </div>
 
@@ -520,9 +522,9 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p1-pulse-bars" name="p1-pulse-bars" data-check-id="pulse-bars" />
               <span class="check-num">10</span>
-              <span class="check-title">Lesson outcomes marked from current evidence</span>
+              <span class="check-title">Pre-review outcome snapshot saved</span>
             </label>
-            <div class="check-detail">The checked list is a forecast, not a summary: you are naming, in writing and before the independent review, which outcomes you believe the evidence supports. Every check needs an artifact you could open in front of someone — the outcome list’s evidence rule stands, and if the review questions an outcome, clear it until you fix the evidence.</div>
+            <div class="check-detail">The Notepad list captures every title shown Complete in the read-only summary before review. It records the inline checkbox state; it does not ask you to decide every outcome a second time.</div>
           </li>
         </ol>
 
@@ -548,7 +550,7 @@ Context: careful, evidence-based AI direction and shared reasoning.
 Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
 Containment is absence of effect. Autonomy without stop proof is theater.
 
-I will paste: block, artifacts/paths/excerpts, provisional verdict, and the lesson outcomes I marked complete.
+I will paste: block, artifacts/paths/excerpts, provisional verdict, and my pre-review lesson-outcome snapshot.
 
 Protocol — follow in order:
 1. Restate my claimed outcome and verdict in one cold sentence (no praise).
@@ -556,7 +558,7 @@ Protocol — follow in order:
    - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
    - Name completion theater if you see it.
    - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
-3. Evidence audit: for each lesson outcome I marked complete, mark:
+3. Evidence audit: for each lesson outcome in my pre-review snapshot, mark:
    SURVIVES / WOUNDED / DEAD — with reason.
 4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
    If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
@@ -583,11 +585,11 @@ Artifacts: the brief, the regenerate command, mission_flesh/p1/AUDIT.md, the
 delta rerun output, the stale-source failure output.
 Excerpts: [PASTE THE BRIEF, YOUR AUDIT TABLE, AND BOTH TEST OUTPUTS]
 Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
-Lesson outcomes I marked complete: [PASTE THE LESSON OUTCOMES YOU MARKED COMPLETE]
+Lesson outcomes shown Complete before review: [PASTE THE TITLES FROM YOUR PRE-REVIEW SNAPSHOT]
 Known weak spots: [ANYTHING YOU ALREADY DOUBT]</code></pre>
         </div>
 
-        <p>Let it attack. If the attack lands, fix or downgrade the verdict — and clear the outcome the review questioned below until it's fixed. Then carry the scar back to the record.</p>
+        <p>Let it attack. If the attack lands, fix or downgrade the verdict — then return to the relevant run instruction and clear that inline Lesson outcome checkbox until the evidence is fixed. Then carry the scar back to the record.</p>
 
         <div class="do-step">
           <p class="do-label">Before measurement, carry the complete review into <strong>Operator — Direction &amp; Log</strong>:</p>
@@ -607,8 +609,8 @@ Known weak spots: [ANYTHING YOU ALREADY DOUBT]</code></pre>
 In the P1 entry, append the ruling-list message and final ADVERSARIAL-line
 message I just pasted to field 6, Adversarial, verbatim and in that order.
 Do not summarize, rewrite, or omit either message. Preserve fields 1–5.
-For each WOUNDED or DEAD outcome, ask what I did: fixed it, cleared the
-outcome, or kept it as a named gap. Append my answer, save the file, then
+For each WOUNDED or DEAD outcome, ask what I did: fixed it, cleared its
+inline Lesson outcome checkbox, or kept it as a named gap. Append my answer, save the file, then
 tell me the exact section you updated.</code></pre>
         </div>
 
@@ -620,7 +622,7 @@ tell me the exact section you updated.</code></pre>
               <span class="check-num">11</span>
               <span class="check-title">Independent evidence review completed in a new chat</span>
             </label>
-            <div class="check-detail">Frozen prompt, your artifacts, your provisional verdict — in the fresh chat, never the build chat. The final line lands in your log: <code>ADVERSARIAL: stood | wounded | failed</code>. If wounded, fix — and clear the outcome the review questioned until it's fixed. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
+            <div class="check-detail">Frozen prompt, your artifacts, your provisional verdict — in the fresh chat, never the build chat. The final line lands in your log: <code>ADVERSARIAL: stood | wounded | failed</code>. If wounded, return to the relevant instruction and clear its inline Lesson outcome checkbox until the evidence is fixed. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
         </ol>
 
@@ -631,7 +633,7 @@ tell me the exact section you updated.</code></pre>
 Block: [B1/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
 Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
-Lesson outcomes I marked complete before the review: [n].
+Lesson outcomes shown Complete before the review: [n].
 Brief LIVE at: [time or "approx"].
 Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
@@ -640,8 +642,8 @@ Fill this block's row:
    run, and which one of the five brief fields would I write differently now?
    Refuse "the brief was fine": make me name a field, or say none and name what
    held better than expected.
-2. Overclaim n/m — count the lesson outcomes I marked complete that came back WOUNDED or DEAD,
-   over the number I marked complete. Count from the rulings I pasted, not from my summary.
+2. Overclaim n/m — count the lesson outcomes shown Complete before review that came back WOUNDED or DEAD,
+   over the number shown Complete. Count from the rulings I pasted, not from my summary.
 3. Time to result in minutes.
 4. Lesson reflection (one sentence) — What did the delta and stale-source tests change about what I require before trusting a generated brief?
 5. Deep mark if this block has one.
@@ -659,7 +661,7 @@ Do not start transfer until this row is written.</code></pre>
               <span class="check-num">12</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes you marked complete that the adversarial ruled WOUNDED or DEAD over the number you marked complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and a one-sentence <strong>lesson reflection</strong> answering the question above. This block has no deep mark.</div>
+            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of outcomes shown Complete before review that the adversarial ruled WOUNDED or DEAD over the number shown Complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and a one-sentence <strong>lesson reflection</strong> answering the question above. This block has no deep mark.</div>
           </li>
         </ol>
         </div>
@@ -694,7 +696,7 @@ visible failure when a source goes missing.
 Use the product name and date I gave you. Keep the same transfer file.</code></pre>
         </div>
 
-        <p>Approve the write if the app asks. One product, named and dated. If two came to mind, pick the one you rewrite most often — that is where the hours are.</p>
+        <p id="p1-transfer-complete">Approve the write if the app asks. One product, named and dated. If two came to mind, pick the one you rewrite most often — that is where the hours are.</p>
       </section>
 
 
@@ -703,10 +705,10 @@ Use the product name and date I gave you. Keep the same transfer file.</code></p
 
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Lesson outcomes</h2>
-        <p class="section-lede">Check an outcome when the named evidence exists. If review finds a gap, clear it until you fix the artifact or narrow the claim.</p>
+        <p class="section-lede">This is a read-only summary of the Lesson outcome checkboxes beside the relevant instructions above. <strong>Complete</strong> means you checked the outcome where its evidence was produced; <strong>Not yet</strong> means it remains open. Select an outcome title to return to its inline checkbox.</p>
         <ol class="checklist">
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="pulse-brief">
             <label class="check-label">
               <input type="checkbox" id="p1-mvp-live" name="p1-mvp-live" data-check-id="mvp-live" />
               <span class="check-num">13</span>
@@ -715,7 +717,7 @@ Use the product name and date I gave you. Keep the same transfer file.</code></p
             <div class="check-detail">Audience, format, citation rule, accept checks, stop conditions — all pinned across the brief's five fields, before the build started. Evidence looks like: the brief text in your operator chat, marked LIVE, sitting above the mission in the record.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="p1-regen">
             <label class="check-label">
               <input type="checkbox" id="p1-mvp-rerun" name="p1-mvp-rerun" data-check-id="mvp-rerun" />
               <span class="check-num">14</span>
@@ -724,7 +726,7 @@ Use the product name and date I gave you. Keep the same transfer file.</code></p
             <div class="check-detail">Script, skill, or saved brief-plus-command — not a one-shot paste. Evidence looks like: you rerunning it in front of someone without re-prompting the mission from memory.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="p1-audit">
             <label class="check-label">
               <input type="checkbox" id="p1-mvp-5cite" name="p1-mvp-5cite" data-check-id="mvp-5cite" />
               <span class="check-num">15</span>
@@ -733,7 +735,7 @@ Use the product name and date I gave you. Keep the same transfer file.</code></p
             <div class="check-detail">Five-plus claims checked against corpus files by you, pass/fail recorded, at least one correction forced by the audit. Evidence looks like: <code>mission_flesh/p1/AUDIT.md</code>, plus the corrected claim before and after.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="p1-delta">
             <label class="check-label">
               <input type="checkbox" id="p1-mvp-delta" name="p1-mvp-delta" data-check-id="mvp-delta" />
               <span class="check-num">16</span>
@@ -742,7 +744,7 @@ Use the product name and date I gave you. Keep the same transfer file.</code></p
             <div class="check-detail">New material in, regenerate, both halves shown: what changed and what correctly did not. Evidence looks like: the two briefs side by side with the moved lines named.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="p1-stale">
             <label class="check-label">
               <input type="checkbox" id="p1-mvp-stale" name="p1-mvp-stale" data-check-id="mvp-stale" />
               <span class="check-num">17</span>
@@ -751,7 +753,7 @@ Use the product name and date I gave you. Keep the same transfer file.</code></p
             <div class="check-detail">One source removed or broken, regenerate, failure visible in the output. Evidence looks like: the failing run itself — no silent omission, no invented cite anywhere.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="p1-judgment">
             <label class="check-label">
               <input type="checkbox" id="p1-mvp-own" name="p1-mvp-own" data-check-id="mvp-own" />
               <span class="check-num">18</span>
@@ -760,7 +762,7 @@ Use the product name and date I gave you. Keep the same transfer file.</code></p
             <div class="check-detail">The log answers: which part of this brief is machine draft, which is my judgment. Evidence looks like: named calls — the C5 rumor decision is the usual one.</div>
           </li>
 
-          <li class="check-item" data-check-item>
+          <li class="check-item" data-check-item data-outcome-after="#p1-transfer-complete">
             <label class="check-label">
               <input type="checkbox" id="p1-p1-transfer" name="p1-p1-transfer" data-check-id="p1-transfer" />
               <span class="check-num">19</span>
