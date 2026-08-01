@@ -19,11 +19,11 @@
   <main class="site-main">
     <p class="eyebrow">Additional resources · direction craft</p>
     <h1>Prompt & direction tips</h1>
-    <p class="lede">Clear intent, high-signal context, and a pass bar. Updated for agentic harnesses, context engineering, and this course’s twin-engine stack.</p>
+    <p class="lede">Clear intent, high-signal context, and observable acceptance checks. Updated for agentic harnesses, context engineering, and this course’s twin-engine stack.</p>
 
     <div class="callout">
       <strong>Course tie-in.</strong>
-      Use these habits with your Direction Brief, Operator Log, Pass Bars, and twin-engine stack
+      Use these habits with your Direction Brief, Operator Log, lesson outcomes, and twin-engine stack
       (Codex app home + OpenCode required; Claude Code optional). Companion:
       <a href="./velocity-paradox.html">The velocity paradox</a>.
     </div>
@@ -56,7 +56,7 @@
     <p>Front-load what you are building and why. Do <strong>not</strong> paste the whole repo “just in case.”</p>
     <p><strong>Without context:</strong> “Add a route that handles authentication.”</p>
     <p><strong>With context:</strong> “Inventory web app for a small warehouse. Python/Flask + SQLite. Already has list/add item routes. Add login with session cookies against a users table. Unauthenticated users redirect to /login. Offline-friendly; no cloud IdP.”</p>
-    <p><strong>Usually include:</strong> stack and OS (this course defaults to vanilla Windows 11) · what already works · end goal and non-goals · hard constraints · how you will judge success (pass bar).</p>
+    <p><strong>Usually include:</strong> stack and OS (this course defaults to vanilla Windows 11) · what already works · end goal and non-goals · hard constraints · how you will judge success (acceptance checks).</p>
     <div class="lead-box">
       <strong>Context engineering habits</strong>
       <ul>
@@ -92,7 +92,7 @@ What does this mean and how do we fix it without changing unrelated files?</code
         <tr><td>Role / altitude</td><td>Too vague or too brittle?</td><td>Goal + constraints, not a 40-step flowchart</td></tr>
         <tr><td>Specificity</td><td>Exact behavior named?</td><td>“Monthly summary route” beats “improve it”</td></tr>
         <tr><td>Format</td><td>Shape of output named?</td><td>Complete files · table · diff only</td></tr>
-        <tr><td>Evaluation</td><td>How do we know pass?</td><td>Pass bars / tests / manual check</td></tr>
+        <tr><td>Evaluation</td><td>How do we know it worked?</td><td>Acceptance checks / tests / manual review</td></tr>
       </tbody>
     </table>
 
@@ -108,7 +108,7 @@ Review the tree, then propose a plan before editing.</code></pre>
     <table>
       <thead><tr><th>Mistake</th><th>Do instead</th></tr></thead>
       <tbody>
-        <tr><td>Vague (“make it work”)</td><td>Name behavior + pass bar</td></tr>
+        <tr><td>Vague (“make it work”)</td><td>Name the behavior and its acceptance check</td></tr>
         <tr><td>Too much at once</td><td>2–3 step slices</td></tr>
         <tr><td>Not reading the reply</td><td>Read full response before run</td></tr>
         <tr><td>“It doesn’t work” with no artifact</td><td>Paste error or command output</td></tr>
@@ -121,7 +121,7 @@ Review the tree, then propose a plan before editing.</code></pre>
     <h2>8. Harness tips for this stack</h2>
     <h3>Codex app (home)</h3>
     <ul>
-      <li>Build in the mission chat; brief / log / pass bars in Operator chats. Name and pin chats so you can find them a day later.</li>
+      <li>Build in the mission chat; keep the brief, log, and lesson-outcome check in Operator chats. Name and pin chats so you can find them a day later.</li>
       <li><strong><code>/plan</code> before you edit</strong> on anything non-trivial — it proposes an approach without touching files, which is the machine-readable version of freezing your brief.</li>
       <li><strong>Steer, don't restart.</strong> A follow-up joins the run in progress; queue it instead when it should wait. Killing a run to retype loses context you already paid for.</li>
       <li><strong><code>/review</code> your own work</strong> before accepting it — against a base branch or over uncommitted changes. Inline comments on specific lines count as direction.</li>
@@ -142,7 +142,7 @@ Review the tree, then propose a plan before editing.</code></pre>
       <li>Custom providers and local endpoints sit under <code>provider</code> in <code>opencode.json</code> — that seam is what you re-point during hold-and-degrade (P8).</li>
     </ul>
     <h3>Optional Claude Code · Twin-engine habit</h3>
-    <p>Same rules: small batch, full errors, explicit pass bar. Same frozen brief → both engines → compare on evidence. Log the delta in the Operator Log.</p>
+    <p>Same rules: small batch, full errors, explicit acceptance checks. Same frozen brief → both engines → compare on evidence. Log the delta in the Operator Log.</p>
     <p>Before the delta means anything, check what each side was carrying: instruction files, skills, memories, plugins, and which model actually answered. Both engines load context you didn't type, and neither announces it. One engine plus your notes is not two engines — run clean, or declare what was live.</p>
 
     <h2>9. Direction starters</h2>
@@ -150,7 +150,7 @@ Review the tree, then propose a plan before editing.</code></pre>
 Constraints: [OS / offline / libs / style].
 Already true: [what works].
 Task: [one slice].
-Done when: [pass bar].
+Done when: [observable result or acceptance check].
 Please [plan only | edit | review only]. Do not expand scope.
 
 ---
@@ -164,7 +164,7 @@ Fix with minimal diff; add a check so it cannot silently return.
 
 ---
 
-Review [path] against these pass bars: [bullets].
+Review [path] against these acceptance checks: [bullets].
 List gaps only. Do not rewrite yet.
 
 ---
@@ -175,7 +175,7 @@ Findings ranked by severity + one-line fix hypothesis each. No pep talk.</code><
 
     <h2>10. Course instruments</h2>
     <ul>
-      <li><a href="./operator.html">Operator pack</a> — brief, log, bars, adversarial, measure, transfer</li>
+      <li><a href="./operator.html">Operator pack</a> — brief, log, lesson outcomes, independent review, measurement, transfer</li>
       <li><a href="./instruments.html">Instruments</a> — P2 case suite, P3 Frozen brief, P8 Hold/degrade</li>
       <li><a href="./velocity-paradox.html">Velocity paradox</a> — why slow foundation beats rushed codegen</li>
     </ul>

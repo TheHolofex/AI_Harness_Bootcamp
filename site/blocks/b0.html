@@ -38,8 +38,7 @@
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
       <a href="#mission">Mission · <span data-count-for="mission">0/10</span></a>
-      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/5</span></a>
-      <a href="#floor">Mastery floor · <span data-count-for="floor">0/8</span></a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/8</span></a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
         <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-b0"></span></div>
@@ -52,7 +51,7 @@
         <h2 class="h-plain">Why this block exists</h2>
         <p>A <strong>harness</strong> is the setup around a model that lets it act: tools, files, permissions, instructions, and your accept/reject loop. Today you will feel that loop before we name every part of it.</p>
         <p>Pre-work already walked install with a verify at the end of each step. Monday still opens with an <strong>install clinic</strong> — about two hours expected, <strong>no hard wall-clock boundary</strong> — so remaining blockers die with help on hand. Then we <strong>direct</strong>. The clinic is finish-and-prove, not a substitute for skipping pre-work.</p>
-        <p>You will work in more than one chat today, and the split is deliberate. Build work — the machine reading files, writing code, rebuilding a page — runs in its own chat. Direction and verdicts — the brief you write before the run, the log you write after, the pass-bar list, the attack on that list — run in a separate operator chat. Keep them apart and your log’s evidence pointers stay checkable by someone who was not in the room. Let them merge and the chat that helped you build is the same chat you ask whether the build was any good; it will tell you yes, and you will have no trail that says otherwise. Each paste below names the chat it belongs in — follow the names and the split takes care of itself.</p>
+        <p>You will work in more than one chat today, and the split is deliberate. Build work — the machine reading files, writing code, rebuilding a page — runs in its own chat. Direction and verdicts — the brief you write before the run, the log you write after, the lesson-outcome checklist, the attack on that list — run in a separate operator chat. Keep them apart and your log’s evidence pointers stay checkable by someone who was not in the room. Let them merge and the chat that helped you build is the same chat you ask whether the build was any good; it will tell you yes, and you will have no trail that says otherwise. Each paste below names the chat it belongs in — follow the names and the split takes care of itself.</p>
         <h3>What you will leave with</h3>
         <ul>
           <li>Stack proven in clinic: four smoke files, setup log, OpenCode version, Codex app sandbox mode</li>
@@ -443,11 +442,12 @@ a generic slogan instead of something that actually happened at my keyboard.</co
             <div class="check-detail">Proof: five beats — goal → act → observe → correct → accept — each pinned to a real moment from <em>this</em> mission, and your explanation survived the AI’s challenge. Generic slogans get sent back; that’s the check working.</div>
           </li>
         </ol>
-      </section>
 
-      <section id="pulse" class="home-section" data-check-section="pulse">
-        <h2>Operator pulse — required every block</h2>
-        <p class="section-lede">Five beats close this block — log, bars, adversarial, measurement, transfer. It is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
+
+        <div id="pulse" class="lesson-reflection" data-check-section="pulse">
+          <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/5</span></h3>
+        <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and updating your transfer plan. <a href="../pulse.html">Lesson reflection guide →</a></p>
+        <p class="reflection-question"><strong>Think back:</strong> What did this first run change about how you will brief and verify an AI-built instrument?</p>
 
         <p>The log goes where the direction went. The mission runs elsewhere; this chat holds direction and verdicts. Everything from here to the end of the block is written in <strong>Operator — Direction &amp; Log</strong> or in a chat you open fresh — never in <strong>Build — B0 First Light</strong>.</p>
 
@@ -487,7 +487,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
           <pre><code>PASS_BARS self-check for B0. Read operator/PASS_BARS.md, section B0.
 
-Walk the MVP bars one at a time. For each bar, ask me met or not yet,
+Walk the B0 lesson outcomes one at a time. For each outcome, ask me met or not yet,
 and require an evidence pointer — a path, a file, a check I ran — before we mark it met.
 Challenge inflation. When we finish, write the draft list here so I can paste it
 into the adversarial review.</code></pre>
@@ -498,9 +498,9 @@ into the adversarial review.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-pulse-bars" name="b0-pulse-bars" data-check-id="pulse-bars" />
               <span class="check-num">12</span>
-              <span class="check-title">PASS_BARS self-check drafted</span>
+              <span class="check-title">Lesson outcomes checked against current evidence</span>
             </label>
-            <div class="check-detail">Proof: a draft met / not yet list against B0’s MVP bars, each “met” carrying an evidence pointer. No inflation — this list is about to be attacked, and honest gaps survive that better than hopeful ticks.</div>
+            <div class="check-detail">Proof: a draft met / not yet list against B0’s lesson outcomes, each “met” carrying an evidence pointer. No inflation — this list is about to be attacked, and honest gaps survive that better than hopeful ticks.</div>
           </li>
         </ol>
 
@@ -517,27 +517,27 @@ into the adversarial review.</code></pre>
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>Adversarial — B0</strong> chat:</p>
           <pre><code>You are an adversarial operator reviewer for an operator’s school.
-Your job is NOT to help me feel successful. Your job is to stress-test my verdict and MVP claims.
+Your job is NOT to help me feel successful. Your job is to stress-test my verdict and claimed lesson outcomes.
 
-Context: deep operator mastery of AI direction and cothinking.
+Context: careful, evidence-based AI direction and shared reasoning.
 Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
 Containment is absence of effect. Autonomy without stop proof is theater.
 
-I will paste: block, artifacts/paths/excerpts, provisional verdict, draft MVP checklist.
+I will paste: block, artifacts/paths/excerpts, provisional verdict, and the lesson outcomes I marked complete.
 
 Protocol — follow in order:
 1. Restate my claimed outcome and verdict in one cold sentence (no praise).
-2. Attack pass: give the strongest case that this is NOT YET mastery for this block.
+2. Attack pass: give the strongest case that this is NOT YET complete for this lesson.
    - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
    - Name completion theater if you see it.
    - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
-3. Evidence audit: for each MVP claim I marked met, mark:
+3. Evidence audit: for each lesson outcome I marked complete, mark:
    SURVIVES / WOUNDED / DEAD — with reason.
 4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
    If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
    If REJECT, check I am not rejecting to avoid measurement.
 5. Force one of:
-   a) Concrete fix list (smallest changes to reach real MVP), or
+   a) Concrete fix list (smallest changes to complete the lesson outcomes), or
    b) “Stands under fire” — only if evidence is actually strong.
 6. End with a single line I must copy into my Operator Log:
    ADVERSARIAL: [stood / wounded / failed] — [one sentence].
@@ -556,36 +556,36 @@ Rules for you:
 Artifacts: mission_flesh/b0/first_light/index.html · operator/DIRECTION_BRIEF.md · operator/OPERATOR_LOG.md (B0 entry)
 Checks I ran: [WHAT YOU SAW IN THE TIMELINE, FILTER, NEGATIVE, AND DELTA CHECKS]
 Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
-Draft MVP self-check: [PASTE THE DRAFT LIST FROM DIRECTION &amp; LOG]
+Lesson outcomes I marked complete: [PASTE THE DRAFT LIST FROM DIRECTION &amp; LOG]
 Known weak spots: [ANYTHING YOU ALREADY DOUBT]</code></pre>
         </div>
 
-        <p>Fill every bracket before sending: your brief’s outcome line, what you actually observed in each check, your verdict, the draft bars list, and anything you already doubt. Thin pastes get polite reviews — and a polite review means you under-fed the attacker, not that you passed. Let it run the protocol; argue back where you have evidence.</p>
+        <p>Fill every bracket before sending: your brief’s outcome line, what you actually observed in each check, your verdict, the draft lesson-outcome list, and anything you already doubt. Thin pastes get polite reviews — and a polite review means you under-fed the attacker, not that you passed. Let it run the protocol; argue back where you have evidence.</p>
 
         <div class="do-step">
           <p class="do-label">Now copy the review’s final line into <strong>Operator — Direction &amp; Log</strong> — it looks like this:</p>
           <pre><code>ADVERSARIAL: [stood | wounded | failed] — [THE ONE-SENTENCE REASON FROM THE REVIEW CHAT]</code></pre>
         </div>
 
-        <p>Use the exact line the review chat produced, not this template. Wounded means fix now or downgrade to ACCEPT WITH FIXES; failed means the affected bars go back to not yet before you leave the block.</p>
+        <p>Use the exact line the review chat produced, not this template. Wounded means fix now or downgrade to ACCEPT WITH FIXES; failed means the affected lesson outcomes go back to not yet before you leave the block.</p>
 
         <div class="do-step">
           <p class="do-label">Now copy the rulings across as well — from the <strong>Adversarial — B0</strong> chat into <strong>Operator — Direction &amp; Log</strong>:</p>
           <ul class="do-clicks">
-            <li>Scroll back to step 3 of the review — the <code>SURVIVES / WOUNDED / DEAD</code> ruling on each bar you marked met</li>
+            <li>Scroll back to step 3 of the review — the <code>SURVIVES / WOUNDED / DEAD</code> ruling on each outcome you marked complete</li>
             <li>Copy that whole list, unedited, underneath the <code>ADVERSARIAL:</code> line you just logged</li>
-            <li>Beside each WOUNDED or DEAD bar, write what you did about it — fixed it, unticked it, or left it as a named gap you still own</li>
+            <li>Beside each WOUNDED or DEAD outcome, write what you did about it — fixed it, unticked it, or left it as a named gap you still own</li>
           </ul>
         </div>
 
-        <p>That list is what the next beat counts, so it has to exist in writing. Copied now it takes half a minute; rebuilt from memory in ten minutes it becomes an impression of how the review felt, which is the thing this block is trying to replace.</p>
+        <p>That list is what the next step counts, so it has to exist in writing. Copied now it takes half a minute; rebuilt from memory in ten minutes it becomes an impression of how the review felt, which is the thing this block is trying to replace.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-pulse-adv" name="b0-pulse-adv" data-check-id="pulse-adv" />
               <span class="check-num">13</span>
-              <span class="check-title">Adversarial review in a NEW chat</span>
+              <span class="check-title">Independent evidence review completed in a new chat</span>
             </label>
             <div class="check-detail">Proof: a fresh <code>Adversarial — B0</code> chat ran the frozen prompt against your real paste pack, and the final <code>ADVERSARIAL: stood | wounded | failed</code> line is copied into your log. Reusing the build chat for “review” doesn’t count — it helped you five minutes ago. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
@@ -598,7 +598,7 @@ Known weak spots: [ANYTHING YOU ALREADY DOUBT]</code></pre>
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
 Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
-Bars I marked met before the attack: [n].
+Lesson outcomes I marked complete before the review: [n].
 Brief LIVE at: [time or "approx"].
 Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
@@ -607,16 +607,16 @@ Fill this block's row:
    run, and which one of the five brief fields would I write differently now?
    Refuse "the brief was fine": make me name a field, or say none and name what
    held better than expected.
-2. Overclaim n/m — count the bars I marked met that came back WOUNDED or DEAD,
-   over the number I marked met. Count from the rulings I pasted, not from my summary.
+2. Overclaim n/m — count the lesson outcomes I marked complete that came back WOUNDED or DEAD,
+   over the number I marked complete. Count from the rulings I pasted, not from my summary.
 3. Time to result in minutes.
-4. One-line note.
+4. Lesson reflection (one sentence) — What did this first run change about how I will brief and verify an AI-built instrument?
 5. Deep mark if this block has one.
 Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
         </div>
 
-        <p>Before sending, fill the brackets. Block is <strong>B0</strong>. The adversarial line and the rulings list are both sitting in this chat already — paste the rulings whole rather than summarizing them, because the count in step 2 is only honest if it comes off the review’s own words. The met count is how many bars you ticked in the self-check <em>before</em> the attack, not how many survived it. The outcome path is <code>mission_flesh/b0/first_light/index.html</code>, and honest approximate times are fine — fiction is not. B0 carries no deep mark, so step 5 is answered “none.”</p>
+        <p>Before sending, fill the brackets. Block is <strong>B0</strong>. The adversarial line and the rulings list are both sitting in this chat already — paste the rulings whole rather than summarizing them, because the count in step 2 is only honest if it comes off the review’s own words. The completion count is how many lesson outcomes you marked complete <em>before</em> the review, not how many the review supported. The outcome path is <code>mission_flesh/b0/first_light/index.html</code>, and honest approximate times are fine — fiction is not. B0 carries no deep mark, so step 5 is answered “none.”</p>
 
         <p>Expect step 1 to push back. Naming a brief field you would write differently is harder than it sounds on your first block, and “the brief was fine” will not be accepted — if every field genuinely held, say which one held better than you expected and why. Expect the overclaim number to be non-zero today. It is supposed to be. The number worth watching is not this morning’s value but whether it falls by Friday.</p>
 
@@ -627,7 +627,7 @@ Do not start transfer until this row is written.</code></pre>
               <span class="check-num">14</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of bars you marked met that the adversarial ruled WOUNDED or DEAD over the number you marked met, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and no deep mark on this block — those three entries are the whole row.</div>
+            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes you marked complete that the adversarial ruled WOUNDED or DEAD over the number you marked complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and a one-sentence <strong>lesson reflection</strong> answering the question above. This block has no deep mark.</div>
           </li>
         </ol>
 
@@ -646,10 +646,10 @@ Do not start transfer until this row is written.</code></pre>
           <pre><code>Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
 
 Block I just finished: [B0/P1/…].
-I have finished Direction/Log and pass-bar check in the other operator chat.
+I have finished Direction/Log and lesson-outcome check in the other operator chat.
 
 Run a short interactive update:
-1. What mastery did this block actually prove (one sentence, no theater)?
+1. What did this lesson prove you can now do (one sentence, no theater)?
 2. Map it onto MY real desk — interview me if missing.
 3. Update the matching seed and today’s row in the session log.
 4. Tighten at most three lines in identity or 30/60/90 if enough signal exists.
@@ -686,18 +686,21 @@ Do not seal. Do not draft horizons yet.</code></pre>
             <div class="check-detail">Proof: one recurring piece of work from your own desk written into the Identity section of <code>operator/TRANSFER_30_60_90.md</code> in your wording, with today’s dated row in the session log and Status set to Living. A category is not a workload — if what you wrote would equally describe forty other people’s jobs, it is not yet specific enough for a seed to land on.</div>
           </li>
         </ol>
+        </div>
       </section>
 
+
+
       <section id="floor" class="home-section" data-check-section="floor">
-        <h2>Mastery floor — evidence must survive adversarial review</h2>
-        <p class="section-lede">Mark met / not yet against your own artifacts. If the adversarial pass wounds an item, uncheck it until it is fixed.</p>
+        <h2>Lesson outcomes</h2>
+        <p class="section-lede">Check an outcome when the named evidence exists. If review finds a gap, clear it until you fix the artifact or narrow the claim.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-prework" name="b0-mvp-prework" data-check-id="mvp-prework" />
               <span class="check-num">16</span>
-              <span class="check-title">MVP: Install clinic / stack proof</span>
+              <span class="check-title">Setup completed and four tools verified</span>
             </label>
             <div class="check-detail">Setup log · per-step verifies · four smoke files on disk (re-run in clinic if needed). YELLOW only with written workaround.</div>
           </li>
@@ -706,7 +709,7 @@ Do not seal. Do not draft horizons yet.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-brief5" name="b0-mvp-brief5" data-check-id="mvp-brief5" />
               <span class="check-num">17</span>
-              <span class="check-title">MVP: Full LIVE brief (5 fields)</span>
+              <span class="check-title">Five-part direction brief marked LIVE</span>
             </label>
             <div class="check-detail">Outcome is an instrument, not “explore the data.”</div>
           </li>
@@ -715,7 +718,7 @@ Do not seal. Do not draft horizons yet.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-four" name="b0-mvp-four" data-check-id="mvp-four" />
               <span class="check-num">18</span>
-              <span class="check-title">MVP: Four-tool write proof confirmed</span>
+              <span class="check-title">Codex, OpenCode, Pi, and goose each wrote a file</span>
             </label>
             <div class="check-detail">Codex app, OpenCode, Pi, goose each touch smoke folder.</div>
           </li>
@@ -724,7 +727,7 @@ Do not seal. Do not draft horizons yet.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-map" name="b0-mvp-map" data-check-id="mvp-map" />
               <span class="check-num">19</span>
-              <span class="check-title">MVP: Map works — timeline and filters</span>
+              <span class="check-title">Timeline and filters both work</span>
             </label>
             <div class="check-detail">Both do something observable.</div>
           </li>
@@ -733,7 +736,7 @@ Do not seal. Do not draft horizons yet.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-neg" name="b0-mvp-neg" data-check-id="mvp-neg" />
               <span class="check-num">20</span>
-              <span class="check-title">MVP: Negative check verified</span>
+              <span class="check-title">The must-not-appear check passes</span>
             </label>
             <div class="check-detail">Must-not case checked.</div>
           </li>
@@ -742,7 +745,7 @@ Do not seal. Do not draft horizons yet.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-upd" name="b0-mvp-upd" data-check-id="mvp-upd" />
               <span class="check-num">21</span>
-              <span class="check-title">MVP: Update proof or honest break+redirect</span>
+              <span class="check-title">Changed input updates the result, or the failure is recorded</span>
             </label>
             <div class="check-detail">DELTA or documented failure path.</div>
           </li>
@@ -751,7 +754,7 @@ Do not seal. Do not draft horizons yet.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-loop" name="b0-mvp-loop" data-check-id="mvp-loop" />
               <span class="check-num">22</span>
-              <span class="check-title">MVP: Harness loop explained from this run</span>
+              <span class="check-title">You can explain the harness loop using this run</span>
             </label>
             <div class="check-detail">AI may challenge hand-waving.</div>
           </li>
@@ -760,7 +763,7 @@ Do not seal. Do not draft horizons yet.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-log" name="b0-mvp-log" data-check-id="mvp-log" />
               <span class="check-num">23</span>
-              <span class="check-title">MVP: Log with verdict + evidence + still own</span>
+              <span class="check-title">The log records your decision, evidence, and remaining responsibility</span>
             </label>
             <div class="check-detail">Peer-auditable pointers.</div>
           </li>
@@ -770,8 +773,8 @@ Do not seal. Do not draft horizons yet.</code></pre>
 
     <section id="stuck" class="split-2 home-section">
       <div>
-        <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not “it ran.” Evidence must survive adversarial review. Full list: <a href="#floor">this B0 mastery floor</a>.</p>
+        <h2>Before you move on</h2>
+        <p>A completed lesson means more than a successful run. Evidence must survive adversarial review. Full list: <a href="#floor">these B0 lesson outcomes</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>

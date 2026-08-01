@@ -303,6 +303,7 @@
       var boxes = section.querySelectorAll('input[type="checkbox"][data-check-id]');
       var total = 0, done = 0;
       Array.prototype.forEach.call(boxes, function (box) {
+        if (box.closest("[data-check-section]") !== section) return;
         if (!isRequiredId(b, box.getAttribute("data-check-id"))) return;
         total++;
         if (box.checked) done++;

@@ -39,9 +39,8 @@
       <a href="#orient">Orientation</a>
       <a href="#ideas">The ideas</a>
       <a href="#mission">Mission · <span data-count-for="mission">0/8</span></a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/8</span></a>
       <a href="#depth">Going deeper</a>
-      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/5</span></a>
-      <a href="#floor">Mastery floor · <span data-count-for="floor">0/8</span></a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
         <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p7"></span></div>
@@ -270,7 +269,7 @@ n8n start</code></pre>
             <li>Turn on <strong>Include Other Input Fields</strong>, set <strong>Input Fields to Include</strong> to <strong>All Except</strong>, and enter <code>expected_gate</code> in the exclude box</li>
           </ul>
         </div>
-        <p>If your n8n version words those toggles differently, the bar is unchanged: one node whose output carries every column except <code>expected_gate</code> — you will verify that on the first run. Now the AI station and its credential.</p>
+        <p>If your n8n version words those toggles differently, the requirement is unchanged: one node whose output carries every column except <code>expected_gate</code> — you will verify that on the first run. Now the AI station and its credential.</p>
         <div class="do-step">
           <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
           <ul class="do-clicks">
@@ -352,7 +351,7 @@ Report: {{ $json.text }}</code></pre>
         </ol>
 
         <h3>Stage 04 · Place the gate</h3>
-        <p>The gate goes upstream of the write — that placement is the design decision the whole afternoon turns on. In the editor, this is the fail branch of your checks finally getting a destination. The default here is the held file: the fail branch writes doubtful rows to <code>out\held.csv</code>, and nothing moves from there into the master except by your hand — fully local, nothing extra to configure. If you would rather the line interrupt you, n8n can hold mid-run for a person: search <em>wait</em> in the node picker — the Wait node pauses until a form served by your own n8n instance is submitted, and the send-and-wait operations on the mail and chat nodes do the same over a channel you actually read. The held file is today's default; the bar is the same either way.</p>
+        <p>The gate goes upstream of the write — that placement is the design decision the whole afternoon turns on. In the editor, this is the fail branch of your checks finally getting a destination. The default here is the held file: the fail branch writes doubtful rows to <code>out\held.csv</code>, and nothing moves from there into the master except by your hand — fully local, nothing extra to configure. If you would rather the line interrupt you, n8n can hold mid-run for a person: search <em>wait</em> in the node picker — the Wait node pauses until a form served by your own n8n instance is submitted, and the send-and-wait operations on the mail and chat nodes do the same over a channel you actually read. The held file is today's default; the requirement is the same either way.</p>
         <div class="do-step">
           <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
           <ul class="do-clicks">
@@ -386,7 +385,7 @@ Report: {{ $json.text }}</code></pre>
               <span class="check-num">4</span>
               <span class="check-title">Human-approval gate before commit</span>
             </label>
-            <div class="check-detail">Both branches run green, and <code>out\held.csv</code> now exists: every held row with its columns plus the <code>reason</code> naming the failed check — at the gate, and absent from the master. The held file is a complete gate on its own: a fork that writes held rows where only you can promote them. A wait-on-form or send-and-wait hold is equally valid. The bar is that bad rows cannot land silently; no particular node is the bar.</div>
+            <div class="check-detail">Both branches run green, and <code>out\held.csv</code> now exists: every held row with its columns plus the <code>reason</code> naming the failed check — at the gate, and absent from the master. The held file is a complete gate on its own: a fork that writes held rows where only you can promote them. A wait-on-form or send-and-wait hold is equally valid. The requirement is that bad rows cannot land silently; no particular node is required.</div>
           </li>
         </ol>
 
@@ -403,7 +402,7 @@ Report: {{ $json.text }}</code></pre>
             <li>Return to the <strong>Editor</strong> tab</li>
           </ul>
         </div>
-        <p>If <code>expected_gate</code> shows up, the exclude box in <em>Drop answer column</em> is misspelled — fix it and click <strong>Execute workflow</strong> again. Then open both output files and read what the gate did. Rows 4, 5, and 7 must be among the held; row 2 belongs in the master; the review-worthy rows (1, 3, 6, 8) will usually hold too — that is what review means. If one of those four cleared instead — row 3 reads close to a routine status — that is the checks reading it as routine, not a broken gate; the bar lives on rows 4, 5, and 7.</p>
+        <p>If <code>expected_gate</code> shows up, the exclude box in <em>Drop answer column</em> is misspelled — fix it and click <strong>Execute workflow</strong> again. Then open both output files and read what the gate did. Rows 4, 5, and 7 must be among the held; row 2 belongs in the master; the review-worthy rows (1, 3, 6, 8) will usually hold too — that is what review means. If one of those four cleared instead — row 3 reads close to a routine status — that is the checks reading it as routine, not a broken gate; the required checks are rows 4, 5, and 7.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into a <strong>new PowerShell window</strong> — the first one is busy running n8n:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out\held.csv"
@@ -477,7 +476,7 @@ reasons beat ten sorted by instinct.</code></pre>
             <div class="check-detail"><code>mission_flesh/p7/discrimination_template.md</code> is filled for your own desk: per workload, agent loop or pipeline-plus-gate, why, and the judgment you will not automate — plus one row classifying the P1 brief machine or the P3 intel desk as stay-agent / move-pipeline / hybrid. "This feels like AI work" is a vibe; "same shape two hundred times a week, wrong costs a refund" is a criterion. If a why column reads thin, run the two questions again before checking off.</div>
           </li>
         </ol>
-        <p>The sorted list feeds straight into the outer loop: one workload to pipeline, one that must stay agentic, and the rule that produced the sort. Bank it as a seed now; you will draft the horizons from it, and from the seeds every earlier block left in the same file, in the pulse below.</p>
+        <p>The sorted list feeds straight into the outer loop: one workload to pipeline, one that must stay agentic, and the rule that produced the sort. Bank it as a seed now; you will draft the horizons from it, and from the seeds every earlier lesson left in the same file, in the reflection below.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into the chat <strong>Operator — Transfer 30-60-90</strong>:</p>
           <pre><code>Transfer chat - P7 machine choice. Read operator/TRANSFER_30_60_90.md.
@@ -505,59 +504,12 @@ every line.</code></pre>
             <div class="check-detail">The <em>From P7 — Machine choice</em> seed in <code>operator/TRANSFER_30_60_90.md</code> holds one workload to pipeline, one that must stay agentic, the judgment you will not automate, and your one-sentence rule — with today's date beside it. A field that reads "use AI more" is void; every line should be checkable at your own desk. If a field comes back thin, run the two questions on that workload again before you check this off.</div>
           </li>
         </ol>
-      </section>
 
-      <section id="depth" class="home-section">
-        <h2>Going deeper while the line runs</h2>
-        <p class="section-lede">The flow spends real minutes executing. Spend them here.</p>
 
-        <h3>Failure catalog — symptom, cause, move</h3>
-        <div class="table-scroll">
-          <table>
-            <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
-            <tbody>
-              <tr><td>AI step returns prose, not your format</td><td>The step's prompt never pinned an output contract</td><td>State exact fields, format, and allowed values in the step prompt; route anything unparseable to the gate instead of hand-fixing it</td></tr>
-              <tr><td>Every row holds at the gate</td><td>Parsing fails on all rows, so every check fails</td><td>Open one execution and read the AI's raw output; fix the parse first — thresholds come after</td></tr>
-              <tr><td>No row holds — including the poisoned ones</td><td>Checks test presence, not plausibility; or the gate sits after the write</td><td>Move the gate upstream of the sheet, add allowed-value and contradiction checks, re-run row 4</td></tr>
-              <tr><td>n8n exits the moment you start it</td><td>Node outside the supported range — n8n wants Node 22.22 up to the current LTS line</td><td>Run <code>node -v</code>; reinstall the LTS package if needed; open a fresh terminal before retrying</td></tr>
-              <tr><td>AI step fails with what reads like a bad key</td><td>A capped key returns a 429 quota error that looks exactly like an auth failure</td><td>Read the error body; 429 or quota wording means the cap, not the credential — ask for the cap to be checked rather than re-pasting keys</td></tr>
-              <tr><td>Execution green but the master is empty</td><td>The cleared branch never fires, or the write path is wrong</td><td>Follow one clean row through the execution view node by node and find where it leaves the path</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Questions worth arguing about</h3>
-        <ul>
-          <li><strong>If the gate holds 40% of rows, is the AI step earning its place?</strong> At what hold rate would a keyword rule do the same job for free — and what evidence would settle it?</li>
-          <li><strong>Where does "review" end and "rubber stamp" begin?</strong> Is it a placement fact, a rate fact, or a fact about whether your rejects ever change anything upstream? Pick one and defend it with today's artifacts.</li>
-          <li><strong>When volume grows ten times, what breaks first — the checks, the gate, or you?</strong> The honest answer usually reshapes where the gate should sit.</li>
-          <li><strong>Should an agent be allowed to build the pipeline that replaces it?</strong> You directed an adaptive machine all week; today you hard-coded one path. Who should write the checks that constrain the AI step — and why not the model itself?</li>
-        </ul>
-
-        <h3>The same line on other desks</h3>
-        <ul>
-          <li><strong>Finance operations:</strong> invoices in, AI extracts vendor, amount, and cost code; checks enforce vendor allow-list and amount ranges; the gate holds out-of-policy items with the extracted fields attached. The false all-clear row has a twin here: the invoice that "matches" a PO it contradicts.</li>
-          <li><strong>Support lead:</strong> tickets in, AI routes by product and severity; checks catch legal-threat and security keywords regardless of what the model decided; the gate holds those for a human, always.</li>
-          <li><strong>Watch desk:</strong> today's rows are this desk — field reports triaged into a master picture, where a confident false all-clear is precisely the item the gate exists for.</li>
-          <li><strong>Field operations:</strong> daily site reports folded into a rollup; the gate holds anything claiming completion of work another report contradicts.</li>
-        </ul>
-
-        <h3>Stretch lanes</h3>
-        <p>Three lanes, in rising order of ambition. None are required for the floor.</p>
-        <ul>
-          <li><strong>Measure the line:</strong> throughput and exception rate on the sample set — rows per minute, holds per run, and how each check contributes. Numbers here make the 40%-hold argument above winnable.</li>
-          <li><strong>The refusal list:</strong> write the "judgment I will not automate" list — at least three items, each tied to a real risk on your desk, not a sentiment.</li>
-          <li><strong>Rebuild a slice:</strong> take a thin slice of the P1 brief machine or the P3 intel desk and rebuild it as a pipeline. Then name what quality you traded away and why the trade is acceptable — or is not.</li>
-        </ul>
-
-        <p class="eyebrow">Optional field guide · 60–75 min</p>
-        <h3>Engineer the exception lane</h3>
-        <p><a href="../resources/p7/human-gate-engineering.html"><strong>Human Gate Capacity and Exception Economics</strong></a> turns arrival patterns, review capacity, failure demand, decision packets, aging defaults, and false-hold versus miss costs into a gate model that can survive real volume.</p>
-      </section>
-
-      <section id="pulse" class="home-section" data-check-section="pulse">
-        <h2>Operator pulse — required every block</h2>
-        <p class="section-lede">Five beats close this block — log, bars, adversarial, measurement, transfer. It is how a mission becomes evidence. Every paste is below, in order. <a href="../pulse.html">Background on the beats →</a></p>
+        <div id="pulse" class="lesson-reflection" data-check-section="pulse">
+          <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/5</span></h3>
+        <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and updating your transfer plan. <a href="../pulse.html">Lesson reflection guide →</a></p>
+        <p class="reflection-question"><strong>Think back:</strong> What did the exception gate change about which work belongs in a pipeline versus an agent loop?</p>
         <p>The log is written where the brief lives. The mission runs elsewhere; this chat holds direction and verdicts.</p>
         <!-- Verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
         <div class="do-step">
@@ -587,13 +539,13 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
             <div class="check-detail">The P7 entry holds: what you directed, what you changed mid-build, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers — execution views, the held rows and their reasons, the discrimination write-up — and what judgment you still own.</div>
           </li>
         </ol>
-        <p>Bars next — and you mark them yourself, on this page, before anyone gets to argue with you.</p>
+        <p>Check the lesson outcomes next, using only evidence you can open and show.</p>
         <div class="do-step">
           <p class="do-label">Now on <strong>this page</strong>:</p>
           <ul class="do-clicks">
-            <li>Scroll to Mastery floor below and tick every bar you can point at an artifact for — right now, before the attack.</li>
-            <li>Leave any bar you cannot evidence unticked. An honest not-yet costs nothing here and saves you in the next beat.</li>
-            <li>Copy the ticked list. It is your prediction, and the adversarial chat is about to rule on it one bar at a time.</li>
+            <li>Open Lesson outcomes below and check only the outcomes you can prove with an artifact — right now, before the independent review.</li>
+            <li>Leave any outcome you cannot evidence unticked. An honest not-yet costs nothing here and saves you at the next step.</li>
+            <li>Copy the checked list. It is your prediction, and the adversarial chat is about to rule on it one outcome at a time.</li>
           </ul>
         </div>
         <ol class="checklist">
@@ -601,9 +553,9 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-bars" name="p7-pulse-bars" data-check-id="pulse-bars" />
               <span class="check-num">10</span>
-              <span class="check-title">Mastery floor ticked as your stated prediction</span>
+              <span class="check-title">Lesson outcomes marked from current evidence</span>
             </label>
-            <div class="check-detail">The ticked list is a forecast, not a summary: you are naming, in writing and before the attack, which bars you believe survive. Every tick needs an artifact you could open in front of someone — the floor's own rule stands, and if the adversarial pass wounds an item you come back and untick it.</div>
+            <div class="check-detail">The checked list is a forecast, not a summary: you are naming, in writing and before the independent review, which outcomes you believe the evidence supports. Every check needs an artifact you could open in front of someone — the outcome list’s evidence rule stands, and if the review questions an outcome, clear it until you fix the evidence.</div>
           </li>
         </ol>
         <p>The verdict now meets a reviewer with no stake in it — a fresh chat that never helped you succeed five minutes ago.</p>
@@ -617,27 +569,27 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Adversarial — P7</strong>:</p>
           <pre><code>You are an adversarial operator reviewer for an operator’s school.
-Your job is NOT to help me feel successful. Your job is to stress-test my verdict and MVP claims.
+Your job is NOT to help me feel successful. Your job is to stress-test my verdict and claimed lesson outcomes.
 
-Context: deep operator mastery of AI direction and cothinking.
+Context: careful, evidence-based AI direction and shared reasoning.
 Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
 Containment is absence of effect. Autonomy without stop proof is theater.
 
-I will paste: block, artifacts/paths/excerpts, provisional verdict, draft MVP checklist.
+I will paste: block, artifacts/paths/excerpts, provisional verdict, and the lesson outcomes I marked complete.
 
 Protocol — follow in order:
 1. Restate my claimed outcome and verdict in one cold sentence (no praise).
-2. Attack pass: give the strongest case that this is NOT YET mastery for this block.
+2. Attack pass: give the strongest case that this is NOT YET complete for this lesson.
    - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
    - Name completion theater if you see it.
    - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
-3. Evidence audit: for each MVP claim I marked met, mark:
+3. Evidence audit: for each lesson outcome I marked complete, mark:
    SURVIVES / WOUNDED / DEAD — with reason.
 4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
    If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
    If REJECT, check I am not rejecting to avoid measurement.
 5. Force one of:
-   a) Concrete fix list (smallest changes to reach real MVP), or
+   a) Concrete fix list (smallest changes to complete the lesson outcomes), or
    b) “Stands under fire” — only if evidence is actually strong.
 6. End with a single line I must copy into my Operator Log:
    ADVERSARIAL: [stood / wounded / failed] — [one sentence].
@@ -660,20 +612,20 @@ mission_flesh/p7/discrimination_template.md filled for my desk.
 Row-4 catch: held at the gate; its reason column names the written check that
 fired - on most runs condition 3, "single report claims all systems clear".
 Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
-Draft MVP self-check: [PASTE THE BARS YOU TICKED ON THE MASTERY FLOOR]
+Lesson outcomes I marked complete: [PASTE THE LESSON OUTCOMES YOU MARKED COMPLETE]
 Known weak spots: [NAME AT LEAST ONE]
 If you cannot read the files, say so and I will paste the held rows and the
 master contents directly.</code></pre>
         </div>
-        <p>Fill the three bracketed slots before sending: your provisional verdict, the bars you ticked on the mastery floor, and at least one weak spot you already know about. Expect the two attacks this work invites — "your gate holds so much it proves nothing" and "your checks test format, not truth" — and answer with the artifacts.</p>
+        <p>Fill the three bracketed slots before sending: your provisional verdict, the lesson outcomes you marked complete, and at least one weak spot you already know about. Expect the two attacks this work invites — "your gate holds so much it proves nothing" and "your checks test format, not truth" — and answer with the artifacts.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-adv" name="p7-pulse-adv" data-check-id="pulse-adv" />
               <span class="check-num">11</span>
-              <span class="check-title">Adversarial review in a NEW chat</span>
+              <span class="check-title">Independent evidence review completed in a new chat</span>
             </label>
-            <div class="check-detail">The review ran in the fresh chat, your verdict survived or changed on evidence, and the final line is copied into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded — and uncheck any floor item the attack killed until it is repaired. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
+            <div class="check-detail">The review ran in the fresh chat, your verdict survived or changed on evidence, and the final line is copied into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded — and clear any outcome the review did not support until it is repaired. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
         </ol>
         <p>Measurement follows attack — the row is written only after the adversarial line exists.</p>
@@ -684,7 +636,7 @@ master contents directly.</code></pre>
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
 Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
-Bars I marked met before the attack: [n].
+Lesson outcomes I marked complete before the review: [n].
 Brief LIVE at: [time or "approx"].
 Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
@@ -693,15 +645,15 @@ Fill this block's row:
    run, and which one of the five brief fields would I write differently now?
    Refuse "the brief was fine": make me name a field, or say none and name what
    held better than expected.
-2. Overclaim n/m — count the bars I marked met that came back WOUNDED or DEAD,
-   over the number I marked met. Count from the rulings I pasted, not from my summary.
+2. Overclaim n/m — count the lesson outcomes I marked complete that came back WOUNDED or DEAD,
+   over the number I marked complete. Count from the rulings I pasted, not from my summary.
 3. Time to result in minutes.
-4. One-line note.
+4. Lesson reflection (one sentence) — What did the exception gate change about which work belongs in a pipeline versus an agent loop?
 5. Deep mark if this block has one.
 Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
         </div>
-        <p>Replace <code>[B0/P1/…]</code> with <code>P7</code>. Paste your ADVERSARIAL line, then the SURVIVES / WOUNDED / DEAD rulings the attack produced on each bar, then the number of bars you ticked on the floor before it started. Name your output paths and give honest times — approx is allowed, fiction is not.</p>
+        <p>Replace <code>[B0/P1/…]</code> with <code>P7</code>. Paste your ADVERSARIAL line, then the SURVIVES / WOUNDED / DEAD rulings the attack produced on each outcome, then the number of lesson outcomes you marked complete before it started. Name your output paths and give honest times — approx is allowed, fiction is not.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -709,7 +661,7 @@ Do not start transfer until this row is written.</code></pre>
               <span class="check-num">12</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of bars you marked met that the adversarial ruled WOUNDED or DEAD over the number you marked met, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and no deep mark on this block — those three entries are the whole row.</div>
+            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes you marked complete that the adversarial ruled WOUNDED or DEAD over the number you marked complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and a one-sentence <strong>lesson reflection</strong> answering the question above. This block has no deep mark.</div>
           </li>
         </ol>
         <p>Last beat, and this afternoon it is the heavy one. Every block this week has left a seed in <code>operator/TRANSFER_30_60_90.md</code>, under the heading <strong>Circuit seeds</strong> — a machine candidate from P1, harness craft from P2, verdict ownership from P3, trailed knowledge from P4, operating picture from P5, contract from P6, and the machine-choice seed you filled an hour ago. Each one already names which horizon it feeds. This is the sitting where they stop being seven notes and become three horizons.</p>
@@ -754,18 +706,23 @@ status to "Draft horizons complete" once I accept all three. I own every accept.
             <div class="check-detail">All three sections of <code>operator/TRANSFER_30_60_90.md</code> are drafted, and every line traces back to a named seed under <strong>Circuit seeds</strong> rather than to an ambition. The file's status reads <em>Draft horizons complete</em>. A horizon that says "use AI more" is void; a thin horizon over a thin seed is honest, and tomorrow's seal is easier to earn against three horizons you can check than against nine lines you invented.</div>
           </li>
         </ol>
+        </div>
       </section>
 
+
+
+
+
       <section id="floor" class="home-section" data-check-section="floor">
-        <h2>Mastery floor — evidence must survive adversarial review</h2>
-        <p class="section-lede">Mark met / not yet against your own artifacts. If the adversarial pass wounds an item, uncheck it until it is fixed.</p>
+        <h2>Lesson outcomes</h2>
+        <p class="section-lede">Check an outcome when the named evidence exists. If review finds a gap, clear it until you fix the artifact or narrow the claim.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-mvp-e2e" name="p7-mvp-e2e" data-check-id="mvp-e2e" />
               <span class="check-num">14</span>
-              <span class="check-title">MVP: n8n path end-to-end</span>
+              <span class="check-title">The full n8n path runs on the real batch</span>
             </label>
             <div class="check-detail">Batch in → AI → validate → sink — the sink being the destination the line writes to; here, your master sheet. Evidence looks like: one execution view showing the whole path run on the real rows — not a single hand-fed row.</div>
           </li>
@@ -774,7 +731,7 @@ status to "Draft horizons complete" once I accept all three. I own every accept.
             <label class="check-label">
               <input type="checkbox" id="p7-mvp-gate" name="p7-mvp-gate" data-check-id="mvp-gate" />
               <span class="check-num">15</span>
-              <span class="check-title">MVP: Human gate on exceptions</span>
+              <span class="check-title">Exceptions stop at a human review gate</span>
             </label>
             <div class="check-detail">No silent bad commit. Evidence looks like: you can point at where a bad row held — with its reason attached — and show it absent from the master.</div>
           </li>
@@ -783,7 +740,7 @@ status to "Draft horizons complete" once I accept all three. I own every accept.
             <label class="check-label">
               <input type="checkbox" id="p7-mvp-3ex" name="p7-mvp-3ex" data-check-id="mvp-3ex" />
               <span class="check-num">16</span>
-              <span class="check-title">MVP: ≥3 exceptions adjudicated</span>
+              <span class="check-title">At least three exceptions were decided with written reasons</span>
             </label>
             <div class="check-detail">Evidence looks like: three recorded decisions — commit / fix / reject — each with a written reason, not three clicks.</div>
           </li>
@@ -792,7 +749,7 @@ status to "Draft horizons complete" once I accept all three. I own every accept.
             <label class="check-label">
               <input type="checkbox" id="p7-mvp-disc" name="p7-mvp-disc" data-check-id="mvp-disc" />
               <span class="check-num">17</span>
-              <span class="check-title">MVP: Discrimination write-up</span>
+              <span class="check-title">A written rule separates agent work from pipeline work</span>
             </label>
             <div class="check-detail">Agent vs pipeline on your real work. Evidence looks like: the template filled with criteria (what varies, what wrong costs) — sharp enough that a reader could apply your rule to a workload you didn't list.</div>
           </li>
@@ -801,7 +758,7 @@ status to "Draft horizons complete" once I accept all three. I own every accept.
             <label class="check-label">
               <input type="checkbox" id="p7-mvp-slice" name="p7-mvp-slice" data-check-id="mvp-slice" />
               <span class="check-num">18</span>
-              <span class="check-title">MVP: Earlier work classified</span>
+              <span class="check-title">One earlier course workflow was classified using that rule</span>
             </label>
             <div class="check-detail">Evidence looks like: the last row of the discrimination table — the P1 brief machine or the P3 intel desk classified stay-agent / move-pipeline / hybrid, with the rationale written down.</div>
           </li>
@@ -810,7 +767,7 @@ status to "Draft horizons complete" once I accept all three. I own every accept.
             <label class="check-label">
               <input type="checkbox" id="p7-mvp-conf" name="p7-mvp-conf" data-check-id="mvp-conf" />
               <span class="check-num">19</span>
-              <span class="check-title">MVP: Wrong-but-confident caught</span>
+              <span class="check-title">A wrong-but-confident result was caught</span>
             </label>
             <div class="check-detail">Evidence looks like: the false all-clear row (row 4) held at the gate, and you can name the written check that caught it.</div>
           </li>
@@ -819,7 +776,7 @@ status to "Draft horizons complete" once I accept all three. I own every accept.
             <label class="check-label">
               <input type="checkbox" id="p7-mvp-log7" name="p7-mvp-log7" data-check-id="mvp-log7" />
               <span class="check-num">20</span>
-              <span class="check-title">MVP: Log includes discrimination + exceptions</span>
+              <span class="check-title">The log links the classification and exception decisions</span>
             </label>
             <div class="check-detail">Evidence looks like: the log points at the discrimination write-up and the exception decisions — a reader could find both without asking you.</div>
           </li>
@@ -828,18 +785,66 @@ status to "Draft horizons complete" once I accept all three. I own every accept.
             <label class="check-label">
               <input type="checkbox" id="p7-mvp-90" name="p7-mvp-90" data-check-id="mvp-90" />
               <span class="check-num">21</span>
-              <span class="check-title">MVP: 90-day seeds (agent + pipeline)</span>
+              <span class="check-title">One agent workload and one pipeline workload are recorded for 90 days</span>
             </label>
             <div class="check-detail">Evidence looks like: the Transfer P7 seed holds one pipeline workload and one agentic workload from your real desk, both specific enough to actually start.</div>
           </li>
         </ol>
       </section>
+
+      <section id="depth" class="home-section">
+        <h2>Going deeper while the line runs</h2>
+        <p class="section-lede">The flow spends real minutes executing. Spend them here.</p>
+
+        <h3>Failure catalog — symptom, cause, move</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+            <tbody>
+              <tr><td>AI step returns prose, not your format</td><td>The step's prompt never pinned an output contract</td><td>State exact fields, format, and allowed values in the step prompt; route anything unparseable to the gate instead of hand-fixing it</td></tr>
+              <tr><td>Every row holds at the gate</td><td>Parsing fails on all rows, so every check fails</td><td>Open one execution and read the AI's raw output; fix the parse first — thresholds come after</td></tr>
+              <tr><td>No row holds — including the poisoned ones</td><td>Checks test presence, not plausibility; or the gate sits after the write</td><td>Move the gate upstream of the sheet, add allowed-value and contradiction checks, re-run row 4</td></tr>
+              <tr><td>n8n exits the moment you start it</td><td>Node outside the supported range — n8n wants Node 22.22 up to the current LTS line</td><td>Run <code>node -v</code>; reinstall the LTS package if needed; open a fresh terminal before retrying</td></tr>
+              <tr><td>AI step fails with what reads like a bad key</td><td>A capped key returns a 429 quota error that looks exactly like an auth failure</td><td>Read the error body; 429 or quota wording means the cap, not the credential — ask for the cap to be checked rather than re-pasting keys</td></tr>
+              <tr><td>Execution green but the master is empty</td><td>The cleared branch never fires, or the write path is wrong</td><td>Follow one clean row through the execution view node by node and find where it leaves the path</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Questions worth arguing about</h3>
+        <ul>
+          <li><strong>If the gate holds 40% of rows, is the AI step earning its place?</strong> At what hold rate would a keyword rule do the same job for free — and what evidence would settle it?</li>
+          <li><strong>Where does "review" end and "rubber stamp" begin?</strong> Is it a placement fact, a rate fact, or a fact about whether your rejects ever change anything upstream? Pick one and defend it with today's artifacts.</li>
+          <li><strong>When volume grows ten times, what breaks first — the checks, the gate, or you?</strong> The honest answer usually reshapes where the gate should sit.</li>
+          <li><strong>Should an agent be allowed to build the pipeline that replaces it?</strong> You directed an adaptive machine all week; today you hard-coded one path. Who should write the checks that constrain the AI step — and why not the model itself?</li>
+        </ul>
+
+        <h3>The same line on other desks</h3>
+        <ul>
+          <li><strong>Finance operations:</strong> invoices in, AI extracts vendor, amount, and cost code; checks enforce vendor allow-list and amount ranges; the gate holds out-of-policy items with the extracted fields attached. The false all-clear row has a twin here: the invoice that "matches" a PO it contradicts.</li>
+          <li><strong>Support lead:</strong> tickets in, AI routes by product and severity; checks catch legal-threat and security keywords regardless of what the model decided; the gate holds those for a human, always.</li>
+          <li><strong>Watch desk:</strong> today's rows are this desk — field reports triaged into a master picture, where a confident false all-clear is precisely the item the gate exists for.</li>
+          <li><strong>Field operations:</strong> daily site reports folded into a rollup; the gate holds anything claiming completion of work another report contradicts.</li>
+        </ul>
+
+        <h3>Stretch lanes</h3>
+        <p>Three lanes, in rising order of ambition. None are required lesson outcomes.</p>
+        <ul>
+          <li><strong>Measure the line:</strong> throughput and exception rate on the sample set — rows per minute, holds per run, and how each check contributes. Numbers here make the 40%-hold argument above winnable.</li>
+          <li><strong>The refusal list:</strong> write the "judgment I will not automate" list — at least three items, each tied to a real risk on your desk, not a sentiment.</li>
+          <li><strong>Rebuild a slice:</strong> take a thin slice of the P1 brief machine or the P3 intel desk and rebuild it as a pipeline. Then name what quality you traded away and why the trade is acceptable — or is not.</li>
+        </ul>
+
+        <p class="eyebrow">Optional field guide · 60–75 min</p>
+        <h3>Engineer the exception lane</h3>
+        <p><a href="../resources/p7/human-gate-engineering.html"><strong>Human Gate Capacity and Exception Economics</strong></a> turns arrival patterns, review capacity, failure demand, decision packets, aging defaults, and false-hold versus miss costs into a gate model that can survive real volume.</p>
+      </section>
     </form>
 
     <section id="stuck" class="split-2 home-section">
       <div>
-        <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not "it ran." Evidence must survive adversarial review — happy-path-only, no human gate, or "automation is always better" with no discrimination are all named not-yet conditions. Full checklist: <a href="#floor">this P7 mastery floor</a>.</p>
+        <h2>Before you move on</h2>
+        <p>A completed lesson means more than a successful run. Evidence must survive adversarial review — happy-path-only, no human gate, or "automation is always better" with no discrimination are all named not-yet conditions. Full checklist: <a href="#floor">these P7 lesson outcomes</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>

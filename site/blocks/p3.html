@@ -39,9 +39,8 @@
       <a href="#orient">Orientation</a>
       <a href="#ideas">The ideas</a>
       <a href="#mission">Mission · <span data-count-for="mission">0/8</span></a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/8</span></a>
       <a href="#depth">Going deeper</a>
-      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/4</span></a>
-      <a href="#floor">Mastery floor · <span data-count-for="floor">0/8</span></a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
         <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p3"></span></div>
@@ -81,7 +80,7 @@
           </div>
           <div class="callout">
             <strong>Stretch · Many Minds, one commander</strong>
-            After twin-engine MVP: <strong>baseline</strong> single-chat review, then parallel <strong>subagents</strong>, then a <strong>delta sheet</strong> that defends whether parallel helped. Three artifacts under <code>instruments/p3_multi_agent/out/</code>. Earned kills need corpus evidence. Guide: <a href="#many-minds">Many Minds walkthrough</a>. Naming lock: subagent ≠ second engine ≠ second human.
+            After the required twin-engine outcomes are complete: <strong>baseline</strong> single-chat review, then parallel <strong>subagents</strong>, then a <strong>delta sheet</strong> that defends whether parallel helped. Three artifacts under <code>instruments/p3_multi_agent/out/</code>. Earned kills need corpus evidence. Guide: <a href="#many-minds">Many Minds walkthrough</a>. Naming lock: subagent ≠ second engine ≠ second human.
           </div>
         </div>
       </div>
@@ -98,7 +97,7 @@
       <h3>Agreement is not truth; disagreement is a sensor</h3>
       <p class="full-measure">When two engines return the same answer, it's tempting to call the answer confirmed. What a match actually establishes is narrower: two systems produced the same output. If their failure modes overlap, they can match for shared-wrong reasons — and their failure modes do overlap. Both models trained on overlapping public text, both read the exact corpus you handed them, and both are optimized to produce fluent, confident prose. Where the corpus is thin or ambiguous, each fills the gap with the most plausible completion — and the most plausible completion is often the <em>same</em> wrong guess. A match therefore tells you a claim is either well-supported or a shared blind spot, and it cannot tell you which. That's why matched claims still get sample-checked.</p>
       <p class="full-measure">Disagreement is the more useful signal, and it's worth being precise about what it is. Two different model families under two different harnesses diverge mostly where the evidence underdetermines the answer — a contradiction between sources, a gap the brief doesn't cover, a synonym the status vocabulary maps two ways. So each disagreement row is a pointer to exactly the claims where mechanical processing ran out and judgment has to take over. That is what the second engine buys for its cost: not a better answer, but a <em>map of where your attention belongs</em>. An operator who reads the comparator top to bottom spends twenty minutes; an operator who reads only the disagreement rows spends five and misses nothing the engines could have caught — the shared blind spots remain, and they are exactly what the sample-check on matched claims is for.</p>
-      <p class="full-measure">The failure smell on this idea has a name in the pass bars: “they basically agreed.” If that sentence appears without a table behind it, no comparison happened — an impression happened. The other failure is subtler: treating every split as proof one engine is defective. Usually neither is defective; the evidence is genuinely thin, and the honest ruling is UNKNOWN with a note saying why.</p>
+      <p class="full-measure">The failure smell on this idea has a name in the lesson outcomes: “they basically agreed.” If that sentence appears without a table behind it, no comparison happened — an impression happened. The other failure is subtler: treating every split as proof one engine is defective. Usually neither is defective; the evidence is genuinely thin, and the honest ruling is UNKNOWN with a note saying why.</p>
 
       <h3>Independence hygiene — the cargo neither engine declares</h3>
       <figure class="section-diagram">
@@ -364,7 +363,7 @@ opencode --version
           </ul>
         </div>
 
-        <p class="full-measure">One more pass before the count is final: the join check. The brief's first rule — WatchIDs come from <code>watchlist.csv</code>, never invented — is a bar you verify, not assume.</p>
+        <p class="full-measure">One more pass before the count is final: the join check. The brief's first rule — WatchIDs come from <code>watchlist.csv</code>, never invented — is a requirement you verify, not assume.</p>
 
         <div class="do-step">
           <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it opens the watchlist for the join check:</p>
@@ -382,7 +381,7 @@ opencode --version
 
         <p class="full-measure">An engine that invents an ID or joins on a name has broken the one rule that makes the two tables comparable, and the violation itself is a finding — record it, then rerun that engine on the same verbatim brief. Close the CSV when every row is ticked.</p>
 
-        <p class="full-measure">Three or more rows: on to adjudication. Fewer: document where you searched and why the task separated so little — that written proof of search meets the bar honestly. Save with <strong>Ctrl+S</strong> and keep the file open; the next stage writes into it.</p>
+        <p class="full-measure">Three or more rows: on to adjudication. Fewer: document where you searched and why the task separated so little — that written proof of search meets the requirement honestly. Save with <strong>Ctrl+S</strong> and keep the file open; the next stage writes into it.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -391,7 +390,7 @@ opencode --version
               <span class="check-num">6</span>
               <span class="check-title">Fill COMPARATOR.md</span>
             </label>
-            <div class="check-detail">Run-identity table filled for both engines before any side-by-side row, then one row per material disagreement, counted. Three or more: on to adjudication. Fewer: written proof of search naming the fields you checked and why separation was low — that meets the bar honestly. Cosmetic rows count toward neither.</div>
+            <div class="check-detail">Run-identity table filled for both engines before any side-by-side row, then one row per material disagreement, counted. Three or more: on to adjudication. Fewer: written proof of search naming the fields you checked and why separation was low — that meets the requirement honestly. Cosmetic rows count toward neither.</div>
           </li>
         </ol>
 
@@ -507,60 +506,12 @@ opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder 
             <li>Write today's date at the end of the last row you filled, e.g. <code>— 2026-03-18</code>, then save with <strong>Ctrl+S</strong></li>
           </ul>
         </div>
-      </section>
 
-      <section id="depth" class="home-section">
-        <h2>Going deeper while the desk is live</h2>
-        <p class="section-lede">For the stretches between runs, the arguments worth having, and the desks this transfers to.</p>
 
-        <h3>Failure catalog — symptom, cause, move</h3>
-        <table>
-          <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
-          <tbody>
-            <tr><td>OpenCode errors in a way that reads like a bad key</td><td>A capped key returns 429/quota errors that look like auth failure; xAI keys are also deny-by-default until ACLs attach</td><td>Read the error body for 429 or quota, then ask for the cap to be checked. Reinstalling fixes nothing here.</td></tr>
-            <tr><td>Both outputs nearly identical</td><td>Genuinely low-separation task — or both engines carried the same cargo</td><td>Verify the cargo was cleared or declared; then document the search, sample-check matches, and run one kill test.</td></tr>
-            <tr><td>One output dramatically sharper than the other</td><td>Undeclared instruction files, skills, or memories on the sharp side</td><td>Check what each side was carrying before crediting the model. Rerun clean if contaminated.</td></tr>
-            <tr><td>An output uses a WatchID not in the CSV, or joins on a name</td><td>The engine invented a join key — the deterministic-join rule was violated</td><td>Record the violation as a comparator finding, then rerun the same verbatim brief. That failure is itself evidence.</td></tr>
-            <tr><td>The comparator is eating the whole block</td><td>Cosmetic differences being logged as rows</td><td>Material only: does the difference change an operational fact? If not, skip the row.</td></tr>
-            <tr><td>An engine narrates instead of producing the table</td><td>Output-order rules ignored on that run</td><td>Rerun the identical brief once. If both engines keep failing the same rule, record it as a brief finding — that's data about BRIEF-v1, not about either engine.</td></tr>
-          </tbody>
-        </table>
-
-        <h3>Questions worth arguing about</h3>
-        <ul>
-          <li><strong>If the engines agree on every field, what did the second engine buy you?</strong> One answer: nothing, this run — cancel it. A better answer: the proof of search, the sample-checks, and the standing ability to catch the day they don't agree. Insurance you never claim on still priced the risk. Where's the line for your desk?</li>
-          <li><strong>Which is worse: a wrong claim both engines agreed on, or a disagreement you ruled incorrectly?</strong> The first fails silently and scales; the second leaves a trail — your ruling, your reasoning, reviewable. What does that say about where checking effort should go?</li>
-          <li><strong>When is a third engine worth it?</strong> Each added engine can add provider-and-model diversity, with diminishing value and linearly growing adjudication cost. The comparator has an optional third-output slot — argue for a claim class and a named path separation where you'd actually pay that cost.</li>
-          <li><strong>What separates the kill test from simply distrusting the model?</strong> One is a falsifiable procedure with an observable outcome; the other is a mood. What else on your desk deserves the same upgrade from suspicion to procedure?</li>
-        </ul>
-
-        <h3>The same desk at work</h3>
-        <ul>
-          <li><strong>Incident and status rollups</strong> — two engines extract service status from the status page, on-call notes, and deploy log; the comparator catches the automated bot claiming clear while a human still shows degraded. The engineering corpus is this desk in miniature.</li>
-          <li><strong>Field and watch reporting</strong> — clearance times, movement claims, single-source rumors: adjudicated against the raw logs before anything reaches a leadership brief. The mission_ops corpus is this desk in miniature.</li>
-          <li><strong>Contract and compliance review</strong> — two engines extract obligations and deadlines from the same agreement; disagreement rows go back to the clause text, and the ruling cites page and line.</li>
-          <li><strong>Vendor and hiring diligence</strong> — claims extracted from proposals or CVs, run twice; anything that fails a kill test never reaches the decision memo.</li>
-        </ul>
-
-        <h3 id="many-minds">Stretch lane · Many Minds, one commander</h3>
-        <figure class="section-diagram">
-          <img src="../assets/blocks/p3/p3-stretch-many-minds.svg" alt="One commander dispatches three parallel subagent lenses — correctness, test gaps, spec drift — waits for all, then owns the synthesis, the kills, and the delta against baseline" width="1120" height="220" loading="lazy" decoding="async" />
-        </figure>
-        <p class="full-measure">After the twin-engine floor is met, a different kind of “many”: not two vendors, but several specialists under one commander — you — with a measured answer to whether parallel helped. A <strong>subagent</strong> is a specialist the Codex app starts for one bounded job; it works off to the side and returns a summary to your chat. The mastery path is three artifacts in order: a <strong>baseline</strong> single-chat review with no subagents, then three parallel lenses (correctness, test gaps, spec drift) merged with visible dedupe and at least one corpus-evidenced kill, then a <strong>delta sheet</strong> that defends a verdict — improved, duplicated, or noisy. Skipping the baseline turns the stretch into a product demo: without it you cannot say what parallel added.</p>
-        <p class="full-measure">Two details worth noticing while you run it. The three-subagent cap lives in your prompt wording, which makes it procedure-enforced — it holds because the model cooperates and you're watching. The app also has a real setting, <code>agents.max_concurrent_threads_per_session</code>, which holds whether the prompt cooperates or not — tool-enforced. Feel the difference: a procedure-enforced bound is a promise, and a tool-enforced bound is a wall. And if two of your specialists ever needed to <em>write</em> at once, a <strong>worktree</strong> — a second checkout of the same repository — is the isolation instrument; since nothing in this run writes to the repo, the worktree proof stays the optional deeper cut. This section is the web walkthrough; the cloned pack keeps its working copy at <code>mission_flesh/p3/MANY_MINDS.md</code>. The pack is at <code>instruments/p3_multi_agent/</code>, and the four stretch checks live on the mastery floor below.</p>
-
-        <p class="eyebrow">Optional field guide · 45–60 min</p>
-        <h3>Audit suspicious agreement</h3>
-        <p><a href="../resources/p3/when-both-engines-agree.html"><strong>When Both Engines Agree</strong></a> separates shared evidence paths from claim truth, tests plausible common causes, and chooses the smallest observation that can change the decision.</p>
-
-        <p class="eyebrow">Optional field guide · 45–60 min</p>
-        <h3>Design meaningful separation before dispatch</h3>
-        <p><a href="../resources/p3/independence-spectrum.html"><strong>Independence Is a Spectrum</strong></a> maps common-cause paths across evidence, retrieval, tools, infrastructure, model ancestry, evaluation, and incentives—then records the isolation that actually breaks a named failure path.</p>
-      </section>
-
-      <section id="pulse" class="home-section" data-check-section="pulse">
-        <h2>Operator pulse — required every block</h2>
-        <p class="section-lede">Four beats close this block — log, bars, adversarial, measurement. It is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
+        <div id="pulse" class="lesson-reflection" data-check-section="pulse">
+          <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
+        <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking fresh reviewers to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
+        <p class="reflection-question"><strong>Think back:</strong> What did engine disagreement change about when you seek a second run or reject a claim?</p>
 
         <p class="full-measure">The log goes back in <strong>Operator — Direction &amp; Log</strong>, the same chat that carried the brief. The mission runs elsewhere; this chat holds direction and verdicts.</p>
 
@@ -606,24 +557,24 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
 
         <div class="do-step">
           <!-- The bars themselves live in operator/PASS_BARS.md · section P3 -->
-          <p class="do-label">Now on this page, in <strong>Mastery floor</strong> below:</p>
+          <p class="do-label">Now on this page, in <strong>Lesson outcomes</strong> below:</p>
           <ul class="do-clicks">
-            <li>Scroll to Mastery floor below and tick every bar you can point at an artifact for — right now, before the attack.</li>
-            <li>Leave any bar you cannot evidence unticked. An honest not-yet costs nothing here and saves you in the next beat.</li>
-            <li>Copy the ticked list. It is your prediction, and the adversarial chat is about to rule on it one bar at a time.</li>
+            <li>Open Lesson outcomes below and check only the outcomes you can prove with an artifact — right now, before the independent review.</li>
+            <li>Leave any outcome you cannot evidence unticked. An honest not-yet costs nothing here and saves you at the next step.</li>
+            <li>Copy the checked list. It is your prediction, and the adversarial chat is about to rule on it one outcome at a time.</li>
           </ul>
         </div>
 
-        <p class="full-measure">Two bars get ticked early on this desk more often than any others. The three disagreements: were they material, or cosmetic rows counted to reach a number? And the kill: it only counts if it names evidence from outside either model.</p>
+        <p class="full-measure">Two outcomes are often checked too early on this desk. The three disagreements: were they material, or cosmetic rows counted to reach a number? And the kill: it only counts if it names evidence from outside either model.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-pulse-bars" name="p3-pulse-bars" data-check-id="pulse-bars" />
               <span class="check-num">10</span>
-              <span class="check-title">Mastery floor ticked as your stated prediction</span>
+              <span class="check-title">Lesson outcomes marked from current evidence</span>
             </label>
-            <div class="check-detail">The ticked list is a forecast, not a summary: you are naming, in writing and before the attack, which bars you believe survive. Every tick needs an artifact you could open in front of someone — the floor's own rule stands, and if the adversarial pass wounds an item you come back and untick it.</div>
+            <div class="check-detail">The checked list is a forecast, not a summary: you are naming, in writing and before the independent review, which outcomes you believe the evidence supports. Every check needs an artifact you could open in front of someone — the outcome list’s evidence rule stands, and if the review questions an outcome, clear it until you fix the evidence.</div>
           </li>
         </ol>
 
@@ -638,27 +589,27 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <!-- Canonical source: operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
           <p class="do-label">Now paste this into the <strong>Adversarial — P3 — [date]</strong> chat you just titled:</p>
           <pre><code>You are an adversarial operator reviewer for an operator’s school.
-Your job is NOT to help me feel successful. Your job is to stress-test my verdict and MVP claims.
+Your job is NOT to help me feel successful. Your job is to stress-test my verdict and claimed lesson outcomes.
 
-Context: deep operator mastery of AI direction and cothinking.
+Context: careful, evidence-based AI direction and shared reasoning.
 Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
 Containment is absence of effect. Autonomy without stop proof is theater.
 
-I will paste: block, artifacts/paths/excerpts, provisional verdict, draft MVP checklist.
+I will paste: block, artifacts/paths/excerpts, provisional verdict, and the lesson outcomes I marked complete.
 
 Protocol — follow in order:
 1. Restate my claimed outcome and verdict in one cold sentence (no praise).
-2. Attack pass: give the strongest case that this is NOT YET mastery for this block.
+2. Attack pass: give the strongest case that this is NOT YET complete for this lesson.
    - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
    - Name completion theater if you see it.
    - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
-3. Evidence audit: for each MVP claim I marked met, mark:
+3. Evidence audit: for each lesson outcome I marked complete, mark:
    SURVIVES / WOUNDED / DEAD — with reason.
 4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
    If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
    If REJECT, check I am not rejecting to avoid measurement.
 5. Force one of:
-   a) Concrete fix list (smallest changes to reach real MVP), or
+   a) Concrete fix list (smallest changes to complete the lesson outcomes), or
    b) “Stands under fire” — only if evidence is actually strong.
 6. End with a single line I must copy into my Operator Log:
    ADVERSARIAL: [stood / wounded / failed] — [one sentence].
@@ -676,7 +627,7 @@ Rules for you:
           <pre><code>Block: P3 — twin-engine desk. Outcome: a filled comparator and a supervisor-readable adjudication note.
 Artifacts: instruments/p3_frozen_brief/output_codex.md · output_opencode.md · COMPARATOR.md
 Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
-Draft MVP self-check: [PASTE THE BARS YOU TICKED ON THE MASTERY FLOOR]
+Lesson outcomes I marked complete: [PASTE THE LESSON OUTCOMES YOU MARKED COMPLETE]
 Known weak spots: [ANYTHING YOU ALREADY DOUBT — E.G. A ROW THAT MIGHT BE COSMETIC]
 Comparator excerpts: [PASTE THE RUN-IDENTITY TABLE AND YOUR DISAGREEMENT ROWS]</code></pre>
         </div>
@@ -698,7 +649,7 @@ opencode --pure -m "xai/$env:HB_XAI_MODEL"</code></pre>
           <p class="do-label">Now in the <strong>OpenCode session</strong> you just opened:</p>
           <ul class="do-clicks">
             <li>Paste the same frozen adversarial prompt you used above — the one beginning <code>You are an adversarial operator reviewer</code> — and send it</li>
-            <li>Paste the same pack after it: same artifacts, same provisional verdict, same ticked bars, same comparator excerpts. Same prompt, same pack, no softening.</li>
+            <li>Paste the same pack after it: same artifacts, same provisional verdict, same checked outcomes, same comparator excerpts. Same prompt, same pack, no softening.</li>
             <li>Read the second <code>ADVERSARIAL:</code> line it returns, then leave the session with <code>/exit</code> — <strong>Ctrl+C</strong> if your build does not take the command</li>
           </ul>
         </div>
@@ -708,7 +659,7 @@ opencode --pure -m "xai/$env:HB_XAI_MODEL"</code></pre>
           <ul class="do-clicks">
             <li>Record both final <code>ADVERSARIAL: stood | wounded | failed</code> lines side by side in your P3 log entry, labelled by engine</li>
             <li>Fix first if either line came back wounded, then log what changed under fire</li>
-            <li>Where the two engines disagree about a bar, that disagreement is the finding — name it in the log</li>
+            <li>Where the two engines disagree about an outcome, that disagreement is the finding — name it in the log</li>
           </ul>
         </div>
         <ol class="checklist">
@@ -717,9 +668,9 @@ opencode --pure -m "xai/$env:HB_XAI_MODEL"</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p3-pulse-adv" name="p3-pulse-adv" data-check-id="pulse-adv" />
               <span class="check-num">11</span>
-              <span class="check-title">Adversarial review in a NEW chat</span>
+              <span class="check-title">Independent evidence review completed in a new chat</span>
             </label>
-            <div class="check-detail">Chat <code>Adversarial — P3 — [date]</code>: frozen prompt + your pack + provisional verdict, then the same prompt and the same pack run a second time in OpenCode, and both final <code>ADVERSARIAL: stood | wounded | failed</code> lines copied into your log, labelled by engine. Fix if wounded — unchecking a floor item is the honest move, not a setback. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
+            <div class="check-detail">Chat <code>Adversarial — P3 — [date]</code>: frozen prompt + your pack + provisional verdict, then the same prompt and the same pack run a second time in OpenCode, and both final <code>ADVERSARIAL: stood | wounded | failed</code> lines copied into your log, labelled by engine. Fix if wounded — clearing an unsupported outcome is the honest move, not a setback. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
         </ol>
 
@@ -730,7 +681,7 @@ opencode --pure -m "xai/$env:HB_XAI_MODEL"</code></pre>
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
 Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
-Bars I marked met before the attack: [n].
+Lesson outcomes I marked complete before the review: [n].
 Brief LIVE at: [time or "approx"].
 Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
@@ -739,16 +690,16 @@ Fill this block's row:
    run, and which one of the five brief fields would I write differently now?
    Refuse "the brief was fine": make me name a field, or say none and name what
    held better than expected.
-2. Overclaim n/m — count the bars I marked met that came back WOUNDED or DEAD,
-   over the number I marked met. Count from the rulings I pasted, not from my summary.
+2. Overclaim n/m — count the lesson outcomes I marked complete that came back WOUNDED or DEAD,
+   over the number I marked complete. Count from the rulings I pasted, not from my summary.
 3. Time to result in minutes.
-4. One-line note.
+4. Lesson reflection (one sentence) — What did engine disagreement change about when I seek a second run or reject a claim?
 5. Deep mark if this block has one.
 Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
         </div>
 
-        <p class="full-measure">The per-claim rulings come from step 3 of the review you just ran — the <code>SURVIVES / WOUNDED / DEAD</code> list — so scroll back in the adversarial chat and paste the list itself rather than your memory of it. Mission outcome paths are both raw outputs and the comparator. P3's deep mark is one line — <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code> — counts and ruling, and what the disagreement rate taught you can ride along as the one-line note.</p>
+        <p class="full-measure">The per-claim rulings come from step 3 of the review you just ran — the <code>SURVIVES / WOUNDED / DEAD</code> list — so scroll back in the adversarial chat and paste the list itself rather than your memory of it. Mission outcome paths are both raw outputs and the comparator. P3's deep mark is one line — <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code> — counts and ruling, and what the disagreement rate taught you becomes the one-sentence lesson reflection.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -757,23 +708,28 @@ Do not start transfer until this row is written.</code></pre>
               <span class="check-num">12</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of bars you marked met that the adversarial ruled WOUNDED or DEAD over the number you marked met, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and the deep mark <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code>.</div>
+            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes you marked complete that the adversarial ruled WOUNDED or DEAD over the number you marked complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, a one-sentence <strong>lesson reflection</strong> answering the question above, and the deep mark <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code>.</div>
           </li>
         </ol>
+        </div>
       </section>
 
-      <section id="floor" class="home-section" data-check-section="floor">
-        <h2>Mastery floor — evidence must survive adversarial review</h2>
-        <p class="section-lede">Mark met / not yet against your own artifacts, not your memory of them. If the adversarial pass wounds an item, uncheck it until it is fixed. Full bar text: <a href="#floor">this P3 mastery floor</a>.</p>
 
-        <h3>The floor</h3>
+
+
+
+      <section id="floor" class="home-section" data-check-section="floor">
+        <h2>Lesson outcomes</h2>
+        <p class="section-lede">Check an outcome when the named evidence exists. If review finds a gap, clear it until you fix the artifact or narrow the claim.</p>
+
+        <h3>What you should be able to show</h3>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-briefv1" name="p3-mvp-briefv1" data-check-id="mvp-briefv1" />
               <span class="check-num">13</span>
-              <span class="check-title">MVP: BRIEF-v1 + corpus dual run</span>
+              <span class="check-title">The same brief and corpus ran through both engines</span>
             </label>
             <div class="check-detail">Evidence looks like: <code>output_codex.md</code> and <code>output_opencode.md</code> on disk, produced from byte-identical brief text with no coaching between runs. If you clarified anything for one engine only, this is not yet met — rerun that side.</div>
           </li>
@@ -782,16 +738,16 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-join" name="p3-mvp-join" data-check-id="mvp-join" />
               <span class="check-num">14</span>
-              <span class="check-title">MVP: Deterministic join/watchlist</span>
+              <span class="check-title">Watchlist joins are correct and repeatable</span>
             </label>
-            <div class="check-detail">Evidence looks like: the Stage 04 tick-through against <code>watchlist.csv</code> ran clean — every WatchID row in both outputs matches an ID in the CSV, with off-watchlist entities fenced into Unlisted mentions. A model that invented an ID or joined on a display name fails this bar even when the answer happens to be right — the violation goes on the comparator, and that engine reruns the verbatim brief.</div>
+            <div class="check-detail">Evidence looks like: the Stage 04 tick-through against <code>watchlist.csv</code> ran clean — every WatchID row in both outputs matches an ID in the CSV, with off-watchlist entities fenced into Unlisted mentions. A model that invented an ID or joined on a display name fails this outcome even when the answer happens to be right — the violation goes on the comparator, and that engine reruns the verbatim brief.</div>
           </li>
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-comp" name="p3-mvp-comp" data-check-id="mvp-comp" />
               <span class="check-num">15</span>
-              <span class="check-title">MVP: Comparator artifact</span>
+              <span class="check-title">A side-by-side comparison is saved</span>
             </label>
             <div class="check-detail">Evidence looks like: <code>COMPARATOR.md</code> with the run-identity table filled for both engines and side-by-side rows carrying keep / discard / unknown verdicts. “They basically agreed” with no table behind it is the named not-yet.</div>
           </li>
@@ -800,7 +756,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-3dis" name="p3-mvp-3dis" data-check-id="mvp-3dis" />
               <span class="check-num">16</span>
-              <span class="check-title">MVP: ≥3 disagreements or proof of search</span>
+              <span class="check-title">At least three real disagreements were found, or the search is recorded</span>
             </label>
             <div class="check-detail">Evidence looks like: at least three rows where the engines differ on an operational fact — or a written proof of search naming the fields you checked and why separation was low. Cosmetic wording differences count toward neither.</div>
           </li>
@@ -809,7 +765,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-kill" name="p3-mvp-kill" data-check-id="mvp-kill" />
               <span class="check-num">17</span>
-              <span class="check-title">MVP: ≥1 kill of model claim</span>
+              <span class="check-title">At least one model claim was rejected using outside evidence</span>
             </label>
             <div class="check-detail">Evidence looks like: the model's assert quoted, plus a discard reason grounded outside either model — a source line, a missing watchlist ID, or a kill-test result. One earned kill beats three polite ones.</div>
           </li>
@@ -818,7 +774,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-adj" name="p3-mvp-adj" data-check-id="mvp-adj" />
               <span class="check-num">18</span>
-              <span class="check-title">MVP: Adjudication note</span>
+              <span class="check-title">The final decision note stands on its own</span>
             </label>
             <div class="check-detail">Evidence looks like: the note reads cold. Someone who saw none of the run can state what is operationally true, what is unknown, and what you killed — without asking you anything.</div>
           </li>
@@ -827,7 +783,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-files" name="p3-mvp-files" data-check-id="mvp-files" />
               <span class="check-num">19</span>
-              <span class="check-title">MVP: Log points at both outputs + comparator</span>
+              <span class="check-title">The log links both outputs and the comparison</span>
             </label>
             <div class="check-detail">Evidence looks like: the Operator Log names brief id <code>BRIEF-v1</code> and points at both raw outputs, the comparator, and the final watch product — the adjudication note at the bottom of the comparator. Two runs you can't identify are not evidence.</div>
           </li>
@@ -836,7 +792,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p3-p3-transfer" name="p3-p3-transfer" data-check-id="p3-transfer" />
               <span class="check-num">20</span>
-              <span class="check-title">Transfer P3 seed</span>
+              <span class="check-title">The P3 transfer rule is recorded and dated</span>
             </label>
             <div class="check-detail">Evidence looks like: the seed block at the bottom of the comparator with all four brackets filled in your own words — the single-engine ban, the kill rule, the comparator habit, and the first real decision at work you'd run through this desk — and those answers carried into the <strong>From P3 — Verdict ownership</strong> rows of <code>operator/TRANSFER_30_60_90.md</code> with today's date. Bracket text still sitting in the file is not a filled seed.</div>
           </li>
@@ -882,18 +838,67 @@ Do not start transfer until this row is written.</code></pre>
           </li>
         </ol>
       </section>
+
+      <section id="depth" class="home-section">
+        <h2>Going deeper while the desk is live</h2>
+        <p class="section-lede">For the stretches between runs, the arguments worth having, and the desks this transfers to.</p>
+
+        <h3>Failure catalog — symptom, cause, move</h3>
+        <table>
+          <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+          <tbody>
+            <tr><td>OpenCode errors in a way that reads like a bad key</td><td>A capped key returns 429/quota errors that look like auth failure; xAI keys are also deny-by-default until ACLs attach</td><td>Read the error body for 429 or quota, then ask for the cap to be checked. Reinstalling fixes nothing here.</td></tr>
+            <tr><td>Both outputs nearly identical</td><td>Genuinely low-separation task — or both engines carried the same cargo</td><td>Verify the cargo was cleared or declared; then document the search, sample-check matches, and run one kill test.</td></tr>
+            <tr><td>One output dramatically sharper than the other</td><td>Undeclared instruction files, skills, or memories on the sharp side</td><td>Check what each side was carrying before crediting the model. Rerun clean if contaminated.</td></tr>
+            <tr><td>An output uses a WatchID not in the CSV, or joins on a name</td><td>The engine invented a join key — the deterministic-join rule was violated</td><td>Record the violation as a comparator finding, then rerun the same verbatim brief. That failure is itself evidence.</td></tr>
+            <tr><td>The comparator is eating the whole block</td><td>Cosmetic differences being logged as rows</td><td>Material only: does the difference change an operational fact? If not, skip the row.</td></tr>
+            <tr><td>An engine narrates instead of producing the table</td><td>Output-order rules ignored on that run</td><td>Rerun the identical brief once. If both engines keep failing the same rule, record it as a brief finding — that's data about BRIEF-v1, not about either engine.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Questions worth arguing about</h3>
+        <ul>
+          <li><strong>If the engines agree on every field, what did the second engine buy you?</strong> One answer: nothing, this run — cancel it. A better answer: the proof of search, the sample-checks, and the standing ability to catch the day they don't agree. Insurance you never claim on still priced the risk. Where's the line for your desk?</li>
+          <li><strong>Which is worse: a wrong claim both engines agreed on, or a disagreement you ruled incorrectly?</strong> The first fails silently and scales; the second leaves a trail — your ruling, your reasoning, reviewable. What does that say about where checking effort should go?</li>
+          <li><strong>When is a third engine worth it?</strong> Each added engine can add provider-and-model diversity, with diminishing value and linearly growing adjudication cost. The comparator has an optional third-output slot — argue for a claim class and a named path separation where you'd actually pay that cost.</li>
+          <li><strong>What separates the kill test from simply distrusting the model?</strong> One is a falsifiable procedure with an observable outcome; the other is a mood. What else on your desk deserves the same upgrade from suspicion to procedure?</li>
+        </ul>
+
+        <h3>The same desk at work</h3>
+        <ul>
+          <li><strong>Incident and status rollups</strong> — two engines extract service status from the status page, on-call notes, and deploy log; the comparator catches the automated bot claiming clear while a human still shows degraded. The engineering corpus is this desk in miniature.</li>
+          <li><strong>Field and watch reporting</strong> — clearance times, movement claims, single-source rumors: adjudicated against the raw logs before anything reaches a leadership brief. The mission_ops corpus is this desk in miniature.</li>
+          <li><strong>Contract and compliance review</strong> — two engines extract obligations and deadlines from the same agreement; disagreement rows go back to the clause text, and the ruling cites page and line.</li>
+          <li><strong>Vendor and hiring diligence</strong> — claims extracted from proposals or CVs, run twice; anything that fails a kill test never reaches the decision memo.</li>
+        </ul>
+
+        <h3 id="many-minds">Stretch lane · Many Minds, one commander</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p3/p3-stretch-many-minds.svg" alt="One commander dispatches three parallel subagent lenses — correctness, test gaps, spec drift — waits for all, then owns the synthesis, the kills, and the delta against baseline" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <p class="full-measure">After the required twin-engine outcomes are complete, a different kind of “many”: not two vendors, but several specialists under one commander — you — with a measured answer to whether parallel helped. A <strong>subagent</strong> is a specialist the Codex app starts for one bounded job; it works off to the side and returns a summary to your chat. The optional path is three artifacts in order: a <strong>baseline</strong> single-chat review with no subagents, then three parallel lenses (correctness, test gaps, spec drift) merged with visible dedupe and at least one corpus-evidenced kill, then a <strong>delta sheet</strong> that defends a verdict — improved, duplicated, or noisy. Skipping the baseline turns the stretch into a product demo: without it you cannot say what parallel added.</p>
+        <p class="full-measure">Two details worth noticing while you run it. The three-subagent cap lives in your prompt wording, which makes it procedure-enforced — it holds because the model cooperates and you're watching. The app also has a real setting, <code>agents.max_concurrent_threads_per_session</code>, which holds whether the prompt cooperates or not — tool-enforced. Feel the difference: a procedure-enforced bound is a promise, and a tool-enforced bound is a wall. And if two of your specialists ever needed to <em>write</em> at once, a <strong>worktree</strong> — a second checkout of the same repository — is the isolation instrument; since nothing in this run writes to the repo, the worktree proof stays the optional deeper cut. This section is the web walkthrough; the cloned pack keeps its working copy at <code>mission_flesh/p3/MANY_MINDS.md</code>. The pack is at <code>instruments/p3_multi_agent/</code>, and the four stretch checks live on the lesson outcomes below.</p>
+
+        <p class="eyebrow">Optional field guide · 45–60 min</p>
+        <h3>Audit suspicious agreement</h3>
+        <p><a href="../resources/p3/when-both-engines-agree.html"><strong>When Both Engines Agree</strong></a> separates shared evidence paths from claim truth, tests plausible common causes, and chooses the smallest observation that can change the decision.</p>
+
+        <p class="eyebrow">Optional field guide · 45–60 min</p>
+        <h3>Design meaningful separation before dispatch</h3>
+        <p><a href="../resources/p3/independence-spectrum.html"><strong>Independence Is a Spectrum</strong></a> maps common-cause paths across evidence, retrieval, tools, infrastructure, model ancestry, evaluation, and incentives—then records the isolation that actually breaks a named failure path.</p>
+      </section>
     </form>
 
     <section id="stuck" class="split-2 home-section">
       <div>
-        <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not “it ran.” Evidence must survive adversarial review — and the named not-yets for this desk are one engine only, “they basically agreed,” and a verdict without a comparator. Full list: <a href="#floor">this P3 mastery floor</a>.</p>
+        <h2>Before you move on</h2>
+        <p>A completed lesson means more than a successful run. Evidence must survive adversarial review — and the named not-yets for this desk are one engine only, “they basically agreed,” and a verdict without a comparator. Full list: <a href="#floor">these P3 lesson outcomes</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>
         <ul>
           <li><strong>OpenCode won't run the brief.</strong> Read the error body before touching the install: 429 or quota means a capped key wearing an auth-failure costume, and a brand-new key does nothing until its ACLs attach. Neither is fixed from your seat. While you wait, keep working the Codex side and prep the comparator.</li>
-          <li><strong>The engines agree on everything.</strong> That's not a failed run. First confirm both sides ran clean — shared cargo manufactures agreement. Then document the search, sample-check the strongest matches, and run one kill test; the floor accepts proof of search in place of three rows.</li>
+          <li><strong>The engines agree on everything.</strong> That's not a failed run. First confirm both sides ran clean — shared cargo manufactures agreement. Then document the search, sample-check the strongest matches, and run one kill test; the outcome list accepts proof of search in place of three rows.</li>
           <li><strong>The comparator is eating the block.</strong> You're logging cosmetic rows. Narrow the data scope — fewer fields, material disagreements only — and never the judgment standard. If a concept is what's blocking you, ask the lead to diagram it live, then continue on your own chair.</li>
         </ul>
       </div>

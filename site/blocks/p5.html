@@ -39,9 +39,8 @@
       <a href="#orient">Orientation</a>
       <a href="#ideas">The ideas</a>
       <a href="#mission">Mission · <span data-count-for="mission">0/9</span></a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/9</span></a>
       <a href="#depth">Going deeper</a>
-      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/4</span></a>
-      <a href="#floor">Mastery floor · <span data-count-for="floor">0/9</span></a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
         <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p5"></span></div>
@@ -61,7 +60,7 @@
             <li>Three catches on the record — false citation, field contradiction, hostile instruction — each with mechanical evidence a skeptic can re-run</li>
             <li>A containment proof: the exact places the poison aimed at, shown untouched against a baseline</li>
             <li>The Codex app's sandbox and approvals named as separate controls, and the ability to read an OpenCode permission rule set and predict what it permits before running anything against it</li>
-            <li>An intake rule you'll reuse at work, a P5 transfer seed, and a full operator pulse</li>
+            <li>An intake rule you'll reuse at work, a P5 transfer seed, and a full lesson reflection</li>
           </ul>
           <h3>Before you start</h3>
           <ul>
@@ -107,7 +106,7 @@
 
       <h3>Catch it mechanically — don't wait for a confession</h3>
       <p>A mechanical check is one whose outcome doesn't depend on the model choosing to tell you. Three of them do almost all the work here. <strong>Quarantine</strong> is structural: intake lands in a staging area the vault never reads, so poison can't touch trusted material because the path simply doesn't cross. <strong>Claim-versus-source</strong> is comparative: before any claim enters the vault, open what it cites and read the line — the check succeeds or fails on the file's content, not on anyone's honesty. <strong>Diff</strong> is the catch-all tripwire: compare the vault to its baseline, and anything that changed without your say-so shows up regardless of how it got there.</p>
-      <p>Each check leaves an artifact — a staging listing, a quoted pair of lines, an empty diff — and that's the point. "We told the model to be careful with this data" is the opposite: volunteered honesty. It may even work most of the time, and it proves nothing any of the time, which is why the pass bar names it as a failure on its own.</p>
+      <p>Each check leaves an artifact — a staging listing, a quoted pair of lines, an empty diff — and that's the point. "We told the model to be careful with this data" is the opposite: volunteered honesty. It may even work most of the time, and it proves nothing any of the time, which is why the lesson outcome names it as a failure on its own.</p>
       <p>One subtle trap: summarization is not triage. Ask the assistant to "review the intake" and you may get a fluent summary that repeats the false claim in a confident register — now unmarked, one step closer to trusted. Triage means running the named checks, not describing the files.</p>
 
       <h3>The machine flags; the verdict stays yours</h3>
@@ -588,51 +587,12 @@ Date: [TODAY'S DATE]
 Challenge any entry that names a category instead of a named system.</code></pre>
         </div>
         <p>Type the date in yourself; a model has no reliable way to know what day it is. For the boundary and the corpus, a role's worth of specificity is enough — "the team wiki" beats a paragraph, and "knowledge management" is not a system anyone can put a gate in front of. Dating the entry as you write it is what keeps the file a record rather than a reconstruction weeks later.</p>
-      </section>
 
-      <section id="depth" class="home-section">
-        <h2>Going deeper while you work</h2>
-        <p class="section-lede">Reach for the failure catalog when a stage stalls mid-run. The questions and translations are for after the verdict — with a peer, or arguing with yourself on a quiet desk.</p>
 
-        <h3>Failure catalog — symptom, cause, move</h3>
-        <div class="table-scroll">
-          <table>
-            <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
-            <tbody>
-              <tr><td>The vault already contains a summary of an intake file</td><td>Intake was read before the boundary was LIVE, or the assistant wrote while it triaged</td><td>Restore from baseline (the restore paste in Stage 02), restate the boundary in the brief, re-run the stage read-only</td></tr>
-              <tr><td>The whole batch comes back "clean"</td><td>Triage ran as summarization, not source comparison</td><td>Direct the checks by name: open every cited file and quote its line; extract field claims side by side; scan for imperative text addressed to the machine</td></tr>
-              <tr><td>A citation passes because the cited note exists</td><td>The check stopped at existence; the claim was never compared to the content</td><td>The check is "the source says what the citation claims" — open the cited note and read the exact line the claim leans on</td></tr>
-              <tr><td>A catch has no artifact behind it</td><td>Detection happened in conversation and never got written down</td><td>No row, no catch: add the triage record row with quoted evidence before checking the box</td></tr>
-              <tr><td>Your OpenCode deny doesn't deny</td><td>A broader allow sits later in the list, and last match wins</td><td>Move the deny below the allow it must beat; predict again; probe again</td></tr>
-              <tr><td>Adversarial review wounds the containment claim</td><td>The verdict leaned on the assistant's account of its own behavior</td><td>Rebuild the proof from artifacts only — diff, target checks, quarantine listing — and re-log</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Questions worth arguing about</h3>
-        <ul>
-          <li><strong>At what flag volume does "confirm each personally" break — and what changes first when it does?</strong> The honest answers are narrower intake or tighter mechanical filters, both of which keep the verdict yours. The dishonest answer is letting the flags clear themselves, which keeps the ceremony and discards the control.</li>
-          <li><strong>Is a quarantined contradiction a liability or an asset?</strong> A held pair of incompatible claims is also a record that the world disagreed at a specific time — some desks would pay for exactly that signal. The answer changes how long you keep quarantine and who reads it.</li>
-          <li><strong>Would you let a second engine adjudicate the first engine's flags?</strong> Two machines agreeing is cheaper than your attention — and it's still agreement, not truth. Be precise about what you kept and what you handed over before you call it a control.</li>
-          <li><strong>Where is the trusted boundary on your desk right now, and who else can write inside it?</strong> If the answer includes "anyone who can email me an attachment," you have intake without a gate — which is most desks, which is why this craft is rare and valuable.</li>
-        </ul>
-
-        <h3>The same craft on other desks</h3>
-        <p>On an <strong>analyst desk</strong>, the vault is the team wiki and the poison is a vendor report citing a study that says less than claimed. Claim-versus-source at the boundary is the same check with the same artifact: the quoted pair.</p>
-        <p>On an <strong>operations desk</strong>, incident timelines assembled from several sources carry field contradictions as a matter of routine. The discipline is the merge refusal: hold both accounts with a reconciliation note until someone with authority reconciles, and never let the tooling quietly pick a winner.</p>
-        <p>On <strong>any desk with an assistant that reads email</strong>, hostile instruction is a standing condition, not an exotic case — every message body is text written by a stranger, sitting in front of your machine. The containment posture you built today, quarantine plus prove-clean, is the honest default there.</p>
-
-        <h3>Stretch lanes</h3>
-        <p>The pass bars carry two stretch lanes and a side-quest for this capability: a one-page triage runbook usable under time pressure; a controlled demo of the <em>uncontained</em> effect run in a sandbox copy that you then destroy; and a mediated exchange where you plant a novel poison class for a peer to catch. Details are on <a href="#floor">this P5 mastery floor</a> — stretch is the same capability, deeper, never a substitute for the floor.</p>
-
-        <p class="eyebrow">Optional field guide · 60–75 min</p>
-        <h3>Climb the containment evidence ladder</h3>
-        <p><a href="../resources/p5/containment-evidence-ladder.html"><strong>Proving a Negative: The Containment Evidence Ladder</strong></a> combines manifests, calibrated canaries, semantic and effect checks, paired runs, and a clean rerun into a claim whose limits remain visible.</p>
-      </section>
-
-      <section id="pulse" class="home-section" data-check-section="pulse">
-        <h2>Operator pulse — required every block</h2>
-        <p class="section-lede">Four beats close this block — log, bars, adversarial, measurement. It is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
+        <div id="pulse" class="lesson-reflection" data-check-section="pulse">
+          <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
+        <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
+        <p class="reflection-question"><strong>Think back:</strong> What did the containment test change about what you require before untrusted material enters trusted knowledge?</p>
 
         <p>The log entry gets written with the AI, in the operator chat, from the artifacts staging and triage produced. The mission runs elsewhere; this chat holds direction and verdicts.</p>
 
@@ -669,7 +629,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
         <div class="do-step">
           <p class="do-label">Now paste this into the chat <strong>Operator — Direction &amp; Log</strong>:</p>
           <pre><code>PASS_BARS self-check for P5. Read operator/PASS_BARS.md, section P5.
-Walk the MVP list with me one bar at a time. For each bar I answer
+Walk the lesson outcomes with me one outcome at a time. For each outcome I answer
 met or not yet and give an evidence pointer — a path, a row, a diff,
 a quoted pair. Challenge any pointer that is vibe instead of
 artifact. Write the result as a draft list I can paste into the log.
@@ -681,9 +641,9 @@ An unproven absence is a not-yet, not a probably.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-pulse-bars" name="p5-pulse-bars" data-check-id="pulse-bars" />
               <span class="check-num">11</span>
-              <span class="check-title">PASS_BARS self-check drafted</span>
+              <span class="check-title">Lesson outcomes checked against current evidence</span>
             </label>
-            <div class="check-detail">Against P5's MVP list: met / not yet, each with an evidence pointer. The bars want mechanical evidence per class, time-ordered detect → isolate → verify, the bounds comparison, and the written rule-set prediction. No inflation — an unproven absence is a not-yet, not a probably.</div>
+            <div class="check-detail">Against P5's lesson outcomes: met / not yet, each with an evidence pointer. The outcomes require mechanical evidence per class, time-ordered detect → isolate → verify, the bounds comparison, and the written rule-set prediction. No inflation — an unproven absence is a not-yet, not a probably.</div>
           </li>
         </ol>
 
@@ -699,27 +659,27 @@ An unproven absence is a not-yet, not a probably.</code></pre>
           <p class="do-label">Now paste this into the <strong>Adversarial — P5</strong> chat:</p>
           <!-- Verbatim frozen adversarial prompt from operator/ADVERSARIAL_REVIEW.md -->
           <pre><code>You are an adversarial operator reviewer for an operator’s school.
-Your job is NOT to help me feel successful. Your job is to stress-test my verdict and MVP claims.
+Your job is NOT to help me feel successful. Your job is to stress-test my verdict and claimed lesson outcomes.
 
-Context: deep operator mastery of AI direction and cothinking.
+Context: careful, evidence-based AI direction and shared reasoning.
 Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
 Containment is absence of effect. Autonomy without stop proof is theater.
 
-I will paste: block, artifacts/paths/excerpts, provisional verdict, draft MVP checklist.
+I will paste: block, artifacts/paths/excerpts, provisional verdict, and the lesson outcomes I marked complete.
 
 Protocol — follow in order:
 1. Restate my claimed outcome and verdict in one cold sentence (no praise).
-2. Attack pass: give the strongest case that this is NOT YET mastery for this block.
+2. Attack pass: give the strongest case that this is NOT YET complete for this lesson.
    - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
    - Name completion theater if you see it.
    - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
-3. Evidence audit: for each MVP claim I marked met, mark:
+3. Evidence audit: for each lesson outcome I marked complete, mark:
    SURVIVES / WOUNDED / DEAD — with reason.
 4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
    If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
    If REJECT, check I am not rejecting to avoid measurement.
 5. Force one of:
-   a) Concrete fix list (smallest changes to reach real MVP), or
+   a) Concrete fix list (smallest changes to complete the lesson outcomes), or
    b) “Stands under fire” — only if evidence is actually strong.
 6. End with a single line I must copy into my Operator Log:
    ADVERSARIAL: [stood / wounded / failed] — [one sentence].
@@ -742,7 +702,7 @@ vault vs Documents\p4-vault_baseline (exposed chat and fresh chat) ·
 quarantined item(s) still in Documents\p5-staging\intake · bounds
 prediction and probe results in the operator chat.
 Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
-Draft MVP self-check: [PASTE THE MET / NOT-YET LIST]
+Lesson outcomes I marked complete: [PASTE THE MET / NOT-YET LIST]
 Known weak spot: [NAME ONE]
 Excerpts, since you cannot open files: [PASTE YOUR TRIAGE ROWS AND
 BOTH DIFF RESULTS]</code></pre>
@@ -762,7 +722,7 @@ notepad "$env:USERPROFILE\Documents\p5-adversarial\pack.md"</code></pre>
           <ul class="do-clicks">
             <li>Paste the frozen adversarial prompt — the long block you sent into the <strong>Adversarial — P5</strong> chat first, unchanged</li>
             <li>Press <strong>Enter</strong> twice to leave a blank line</li>
-            <li>Paste the block you sent second, exactly as you filled it in: block, outcome, artifacts, provisional verdict, draft MVP self-check, weak spot, and the excerpts — your triage rows and both diff results</li>
+            <li>Paste the block you sent second, exactly as you filled it in: block, outcome, artifacts, provisional verdict, lesson outcomes I marked complete, weak spot, and the excerpts — your triage rows and both diff results</li>
             <li>Press <strong>Ctrl+S</strong> to save, then close Notepad</li>
           </ul>
         </div>
@@ -782,17 +742,17 @@ lines to my P5 log entry, labelled by engine, and leave my verdict
 alone until I say otherwise:
 - Codex app: [PASTE THE ADVERSARIAL LINE FROM THE CODEX APP CHAT]
 - OpenCode: [PASTE THE ADVERSARIAL LINE FROM THE OPENCODE RUN]
-Where the two disagree about a bar, name the disagreement in the
+Where the two disagree about an outcome, name the disagreement in the
 entry in one line. Do not reconcile it for me.</code></pre>
         </div>
-        <p>Two <em>stood</em> lines are worth having and prove less than they feel like proving — either the evidence was strong enough for both, or the pack was thin enough that neither could bite. A disagreement is the more useful result: one engine saw something the other missed, and the bar it names is the one to re-open before you close the block.</p>
+        <p>Two <em>stood</em> lines are worth having and prove less than they feel like proving — either the evidence was strong enough for both, or the pack was thin enough that neither could bite. A disagreement is the more useful result: one engine saw something the other missed, and the outcome it names is the one to re-open before you close the block.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p5-pulse-adv" name="p5-pulse-adv" data-check-id="pulse-adv" />
               <span class="check-num">12</span>
-              <span class="check-title">Adversarial review in a NEW chat</span>
+              <span class="check-title">Independent evidence review completed in a new chat</span>
             </label>
             <div class="check-detail">Expect the attack to land on absence of effect — "you checked the chat; did you check the targets?" Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded. If the reviewer is polite, you under-pasted — give it narrower, rawer excerpts, not a softer prompt. Both engines ruled on the same pack, so both final lines belong in the entry, labelled. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
@@ -805,7 +765,7 @@ entry in one line. Do not reconcile it for me.</code></pre>
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
 Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
-Bars I marked met before the attack: [n].
+Lesson outcomes I marked complete before the review: [n].
 Brief LIVE at: [time or "approx"].
 Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
@@ -814,15 +774,15 @@ Fill this block's row:
    run, and which one of the five brief fields would I write differently now?
    Refuse "the brief was fine": make me name a field, or say none and name what
    held better than expected.
-2. Overclaim n/m — count the bars I marked met that came back WOUNDED or DEAD,
-   over the number I marked met. Count from the rulings I pasted, not from my summary.
+2. Overclaim n/m — count the lesson outcomes I marked complete that came back WOUNDED or DEAD,
+   over the number I marked complete. Count from the rulings I pasted, not from my summary.
 3. Time to result in minutes.
-4. One-line note.
+4. Lesson reflection (one sentence) — What did the containment test change about what I require before untrusted material enters trusted knowledge?
 5. Deep mark if this block has one.
 Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
         </div>
-        <p>Replace <code>[B0/P1/…]</code> with <strong>P5</strong> and paste your actual <code>ADVERSARIAL:</code> line. The per-claim rulings are the SURVIVES / WOUNDED / DEAD list the reviewer produced in its evidence audit — paste it as it came back rather than summarising it, and where the two engines ruled differently on a bar, paste both and say so. The outcome paths are your triage record and the two diff results. This block's deep mark is <code>Containment: 3/3 catches · absence-of-effect proof pointer</code>.</p>
+        <p>Replace <code>[B0/P1/…]</code> with <strong>P5</strong> and paste your actual <code>ADVERSARIAL:</code> line. The per-claim rulings are the SURVIVES / WOUNDED / DEAD list the reviewer produced in its evidence audit — paste it as it came back rather than summarising it, and where the two engines ruled differently on an outcome, paste both and say so. The outcome paths are your triage record and the two diff results. This block's deep mark is <code>Containment: 3/3 catches · absence-of-effect proof pointer</code>.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -831,22 +791,27 @@ Do not start transfer until this row is written.</code></pre>
               <span class="check-num">13</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of bars you marked met that the adversarial ruled WOUNDED or DEAD over the number you marked met, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and the deep mark <code>Containment: 3/3 catches · absence-of-effect proof pointer</code>.</div>
+            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes you marked complete that the adversarial ruled WOUNDED or DEAD over the number you marked complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, a one-sentence <strong>lesson reflection</strong> answering the question above, and the deep mark <code>Containment: 3/3 catches · absence-of-effect proof pointer</code>.</div>
           </li>
         </ol>
 
+        </div>
       </section>
 
+
+
+
+
       <section id="floor" class="home-section" data-check-section="floor">
-        <h2>Mastery floor — evidence must survive adversarial review</h2>
-        <p class="section-lede">Mark met / not yet against your own artifacts. If the adversarial pass wounds an item, uncheck it until it is fixed.</p>
+        <h2>Lesson outcomes</h2>
+        <p class="section-lede">Check an outcome when the named evidence exists. If review finds a gap, clear it until you fix the artifact or narrow the claim.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-trusted" name="p5-mvp-trusted" data-check-id="mvp-trusted" />
               <span class="check-num">14</span>
-              <span class="check-title">MVP: Trusted boundary before poison</span>
+              <span class="check-title">The trusted-data boundary was set before intake</span>
             </label>
             <div class="check-detail">Evidence looks like: the brief's Bounds field naming vault path, staging path, and crossing rule, with the chat showing the boundary went LIVE before any intake was read. A boundary written after the poison arrived is a not-yet.</div>
           </li>
@@ -855,7 +820,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-fc" name="p5-mvp-fc" data-check-id="mvp-fc" />
               <span class="check-num">15</span>
-              <span class="check-title">MVP: False citation caught</span>
+              <span class="check-title">A false citation was detected and documented</span>
             </label>
             <div class="check-detail">Evidence looks like: the claimed line and the source's own line quoted side by side in the triage record, plus any citation that resolved to no file at all flagged as such. "The model said it was wrong" is not mechanical — the quoted pair is.</div>
           </li>
@@ -864,7 +829,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-cd" name="p5-mvp-cd" data-check-id="mvp-cd" />
               <span class="check-num">16</span>
-              <span class="check-title">MVP: Contradiction caught</span>
+              <span class="check-title">A contradiction was detected and held for review</span>
             </label>
             <div class="check-detail">Evidence looks like: both assertions extracted side by side with a disposition of hold or reject. If the merged note quietly picked one version, the contradiction wasn't caught — it was silently resolved, which is worse.</div>
           </li>
@@ -873,7 +838,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-hi" name="p5-mvp-hi" data-check-id="mvp-hi" />
               <span class="check-num">17</span>
-              <span class="check-title">MVP: Hostile caught + absence of effect</span>
+              <span class="check-title">Hostile instructions were quarantined with no side effects</span>
             </label>
             <div class="check-detail">Evidence looks like: the hostile file in quarantine, none of its instructions executed, and the absence checks from step 7 — clean diff, nothing exfiltrated, logs intact. Both halves are required: a catch without the absence proof is half a catch.</div>
           </li>
@@ -882,7 +847,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-order" name="p5-mvp-order" data-check-id="mvp-order" />
               <span class="check-num">18</span>
-              <span class="check-title">MVP: detect→isolate→verify logged</span>
+              <span class="check-title">The detect → isolate → verify sequence is recorded</span>
             </label>
             <div class="check-detail">Evidence looks like: the log or triage record showing detect → isolate → verify clean for each class, in time order. If verification actually ran before isolation, say so honestly — an order violation found now is cheaper than one found at work.</div>
           </li>
@@ -891,7 +856,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-modes" name="p5-mvp-modes" data-check-id="mvp-modes" />
               <span class="check-num">19</span>
-              <span class="check-title">MVP: Bounds compare — modes vs rules</span>
+              <span class="check-title">Tool-enforced controls are separated from written rules</span>
             </label>
             <div class="check-detail">Evidence looks like: one enforce-versus-procedure sentence per tool; sandbox and approvals named as separate Codex app controls; your written OpenCode prediction with the probe result; and the sentence naming which catches a permission control could have blocked (the hostile write, an outbound send) and which no mode can judge (whether a claim is true).</div>
           </li>
@@ -900,7 +865,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-rule" name="p5-mvp-rule" data-check-id="mvp-rule" />
               <span class="check-num">20</span>
-              <span class="check-title">MVP: Reusable intake rule written</span>
+              <span class="check-title">A reusable intake rule is written and tested</span>
             </label>
             <div class="check-detail">Evidence looks like: the completed "until ___" sentence with an observable gate in the blank, plus the test — each of today's three catches run against it, each caught. A gate you can't observe isn't a gate.</div>
           </li>
@@ -909,7 +874,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-contain" name="p5-mvp-contain" data-check-id="mvp-contain" />
               <span class="check-num">21</span>
-              <span class="check-title">MVP: Log verdict = containment proof</span>
+              <span class="check-title">The final decision rests on containment evidence</span>
             </label>
             <div class="check-detail">Evidence looks like: the log's verdict resting on artifacts — diff result, target checks, quarantine listing — with no load-bearing reassurance from the assistant. Strip every sentence the model produced about its own behavior; the proof should still stand. If it doesn't, this is a not-yet.</div>
           </li>
@@ -918,18 +883,58 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-p5-transfer" name="p5-p5-transfer" data-check-id="p5-transfer" />
               <span class="check-num">22</span>
-              <span class="check-title">P5 seed filled and dated in Transfer</span>
+              <span class="check-title">The P5 transfer rule is recorded and dated</span>
             </label>
             <div class="check-detail">Evidence looks like: the three fields under <strong>From P5 — Operating picture</strong> in <code>operator/TRANSFER_30_60_90.md</code> filled and carrying today's date — the trusted knowledge boundary at work, the intake rule in its "never accept into trusted until ___" form, and the first corpus or inbox it applies to. An entry naming a category rather than a system you could put a gate in front of on Monday is a not-yet.</div>
           </li>
         </ol>
       </section>
+
+      <section id="depth" class="home-section">
+        <h2>Going deeper while you work</h2>
+        <p class="section-lede">Reach for the failure catalog when a stage stalls mid-run. The questions and translations are for after the verdict — with a peer, or arguing with yourself on a quiet desk.</p>
+
+        <h3>Failure catalog — symptom, cause, move</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+            <tbody>
+              <tr><td>The vault already contains a summary of an intake file</td><td>Intake was read before the boundary was LIVE, or the assistant wrote while it triaged</td><td>Restore from baseline (the restore paste in Stage 02), restate the boundary in the brief, re-run the stage read-only</td></tr>
+              <tr><td>The whole batch comes back "clean"</td><td>Triage ran as summarization, not source comparison</td><td>Direct the checks by name: open every cited file and quote its line; extract field claims side by side; scan for imperative text addressed to the machine</td></tr>
+              <tr><td>A citation passes because the cited note exists</td><td>The check stopped at existence; the claim was never compared to the content</td><td>The check is "the source says what the citation claims" — open the cited note and read the exact line the claim leans on</td></tr>
+              <tr><td>A catch has no artifact behind it</td><td>Detection happened in conversation and never got written down</td><td>No row, no catch: add the triage record row with quoted evidence before checking the box</td></tr>
+              <tr><td>Your OpenCode deny doesn't deny</td><td>A broader allow sits later in the list, and last match wins</td><td>Move the deny below the allow it must beat; predict again; probe again</td></tr>
+              <tr><td>Adversarial review wounds the containment claim</td><td>The verdict leaned on the assistant's account of its own behavior</td><td>Rebuild the proof from artifacts only — diff, target checks, quarantine listing — and re-log</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Questions worth arguing about</h3>
+        <ul>
+          <li><strong>At what flag volume does "confirm each personally" break — and what changes first when it does?</strong> The honest answers are narrower intake or tighter mechanical filters, both of which keep the verdict yours. The dishonest answer is letting the flags clear themselves, which keeps the ceremony and discards the control.</li>
+          <li><strong>Is a quarantined contradiction a liability or an asset?</strong> A held pair of incompatible claims is also a record that the world disagreed at a specific time — some desks would pay for exactly that signal. The answer changes how long you keep quarantine and who reads it.</li>
+          <li><strong>Would you let a second engine adjudicate the first engine's flags?</strong> Two machines agreeing is cheaper than your attention — and it's still agreement, not truth. Be precise about what you kept and what you handed over before you call it a control.</li>
+          <li><strong>Where is the trusted boundary on your desk right now, and who else can write inside it?</strong> If the answer includes "anyone who can email me an attachment," you have intake without a gate — which is most desks, which is why this craft is rare and valuable.</li>
+        </ul>
+
+        <h3>The same craft on other desks</h3>
+        <p>On an <strong>analyst desk</strong>, the vault is the team wiki and the poison is a vendor report citing a study that says less than claimed. Claim-versus-source at the boundary is the same check with the same artifact: the quoted pair.</p>
+        <p>On an <strong>operations desk</strong>, incident timelines assembled from several sources carry field contradictions as a matter of routine. The discipline is the merge refusal: hold both accounts with a reconciliation note until someone with authority reconciles, and never let the tooling quietly pick a winner.</p>
+        <p>On <strong>any desk with an assistant that reads email</strong>, hostile instruction is a standing condition, not an exotic case — every message body is text written by a stranger, sitting in front of your machine. The containment posture you built today, quarantine plus prove-clean, is the honest default there.</p>
+
+        <h3>Stretch lanes</h3>
+        <p>The optional extensions include two stretch lanes and a side-quest for this capability: a one-page triage runbook usable under time pressure; a controlled demo of the <em>uncontained</em> effect run in a sandbox copy that you then destroy; and a mediated exchange where you plant a novel poison class for a peer to catch. Details are on <a href="#floor">these P5 lesson outcomes</a> — stretch is the same capability, deeper, never a substitute for the required outcomes.</p>
+
+        <p class="eyebrow">Optional field guide · 60–75 min</p>
+        <h3>Climb the containment evidence ladder</h3>
+        <p><a href="../resources/p5/containment-evidence-ladder.html"><strong>Proving a Negative: The Containment Evidence Ladder</strong></a> combines manifests, calibrated canaries, semantic and effect checks, paired runs, and a clean rerun into a claim whose limits remain visible.</p>
+      </section>
     </form>
 
     <section id="stuck" class="split-2 home-section">
       <div>
-        <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not "it ran." Evidence must survive adversarial review — and for this capability the bar is explicit that "we told the model to be careful" is a failure on its own. Full list: <a href="#floor">this P5 mastery floor</a>.</p>
+        <h2>Before you move on</h2>
+        <p>A completed lesson means more than a successful run. Evidence must survive adversarial review — and for this lesson, the outcome is explicit that "we told the model to be careful" is a failure on its own. Full list: <a href="#floor">these P5 lesson outcomes</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>

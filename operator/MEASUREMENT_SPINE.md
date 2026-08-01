@@ -4,10 +4,10 @@
 Updated **once per block, after adversarial review**.
 
 Not a second curriculum. Not a metrics religion.  
-Three entries that answer: *Was the brief I wrote any good, how much of what I claimed survived attack, and what did the block cost in time?*
+Four entries that answer: *Was the brief I wrote any good, how much of what I claimed survived review, what did the lesson cost in time, and what will I change next?*
 
 ```text
-Brief accuracy · Overclaim · Time to result
+Brief accuracy · Overclaim · Time to result · Lesson reflection
 ```
 
 ---
@@ -18,7 +18,7 @@ Brief accuracy · Overclaim · Time to result
 |---|---|
 | **Student** | See the week as one circuit; watch overclaim fall block by block |
 | **Facilitator** | Thin rollup (`FACILITATOR_ROLLUP.md`) — who is claiming more than the evidence carries |
-| **Transfer** | 30-day rhythm inherits the same three entries on one real workload |
+| **Transfer** | 30-day rhythm inherits the same four entries on one real workload |
 
 ---
 
@@ -30,20 +30,20 @@ Brief accuracy · Overclaim · Time to result
 | **Chat** | Prefer a short update in `Operator — Direction & Log` after adversarial (or a dedicated `Operator — Measurement` chat if the log chat is crowded) |
 | **When** | **End of every block only**, after the `ADVERSARIAL:` line exists |
 | **How** | Interactive with AI: you paste the facts, the AI counts overclaim from the rulings and refuses “the brief was fine” |
-| **Weight** | Three entries, one note, and a deep mark on the blocks that carry one. More than two or three minutes means you are over-measuring |
+| **Weight** | Four short entries and a deep mark on the lessons that carry one. More than two or three minutes means you are over-measuring |
 
-### Pulse position
+### Position in the lesson
 
 ```text
-Brief → Mission → Log + PASS_BARS draft
-  → Adversarial (new chat)
+Brief → Lesson work → Log + lesson-outcome check
+  → Independent review (new chat)
   → Measurement spine row (this file)
   → Transfer chat at B0, P7 and P8; a dated seed line at the other blocks
 ```
 
 ---
 
-## The three entries (every block)
+## The four entries (every lesson)
 
 ### 1. Brief accuracy — was the brief you wrote before the run any good?
 
@@ -78,22 +78,22 @@ Done looks like: I wrote "filters work"; I would write "select one region and th
 count changes, and I can name the new count".
 ```
 
-### 2. Overclaim — how much of what you claimed did the attack take away?
+### 2. Overclaim — how much of what you marked complete did the review change?
 
 Write it as `n/m`, for example `2/7`.
 
 | Symbol | What it is | Where it comes from |
 |---|---|---|
-| **m** | How many MVP bars you marked **met** | Your pass-bar draft, counted **before** the adversarial chat opened |
-| **n** | How many of *those same bars* came back **WOUNDED** or **DEAD** | Step 3 of the frozen prompt in `ADVERSARIAL_REVIEW.md` — the per-claim `SURVIVES / WOUNDED / DEAD` ruling |
+| **m** | How many lesson outcomes you marked **complete** | Your outcome check, counted **before** the review chat opened |
+| **n** | How many of *those same outcomes* came back **WOUNDED** or **DEAD** | Step 3 of the frozen prompt in `ADVERSARIAL_REVIEW.md` — the per-claim `SURVIVES / WOUNDED / DEAD` ruling |
 
 Counting rules, in order:
 
-1. **Fix `m` before you paste.** Count the bars you marked met, write the number down, and put it in the adversarial paste pack. A denominator chosen after the verdict is not a denominator.
-2. **Count `n` from the rulings, not from the summary.** The `ADVERSARIAL:` line grades the block *stood / wounded / failed*; overclaim is counted one bar at a time from the evidence audit. Two different resolutions, and only the per-bar one goes here.
-3. **`SURVIVES` does not count.** Neither does a bar you never marked met — if the reviewer attacks something you left unticked, it is a real finding for the log, but it is outside this number.
-4. **A bar it refused to rule on is unfinished business.** Give it the evidence it asked for and ask again. Do not score around a missing ruling in either direction.
-5. **`m = 0` is not a score, it is a skipped beat.** Claiming nothing to protect the ratio leaves the mastery floor empty, and an empty floor is *not yet* on every bar.
+1. **Fix `m` before you paste.** Count the lesson outcomes you marked complete, write the number down, and put it in the review paste pack. A denominator chosen after the verdict is not a denominator.
+2. **Count `n` from the rulings, not from the summary.** The `ADVERSARIAL:` line grades the lesson *stood / wounded / failed*; overclaim is counted one outcome at a time from the evidence audit. Two different resolutions, and only the per-outcome one goes here.
+3. **`SURVIVES` does not count.** Neither does an outcome you left incomplete — if the reviewer challenges it anyway, that is a real finding for the log, but it is outside this number.
+4. **An outcome the reviewer would not rule on is unfinished business.** Give it the evidence requested and ask again. Do not score around a missing ruling in either direction.
+5. **`m = 0` is not a score; it means the outcome check was skipped.** Marking nothing to protect the ratio leaves every lesson outcome incomplete.
 
 **Why this is the number to trust:** a number you cannot award yourself is worth more than two you can, because only a number someone else rules on is able to come back wrong — and a mark that cannot be wrong cannot teach.
 
@@ -105,17 +105,21 @@ Record **minutes** (integer):
 
 `time_to_result = clock from Direction Brief status LIVE → ADVERSARIAL line written`
 
-Optional note (≤5 words): e.g. `setup drag`, `rabbit hole`, `clean run`.
+If timing needs context, keep it in this field: `42 min — setup drag`, `35 min — clean run`.
 
 No stopwatch theater: an honest estimate is fine; fiction is not.
 
 **What this number is for.** It is read **across operators on one block**, never across blocks on one operator. The blocks differ in shape, length, and instrument, so your P4 minutes and your P6 minutes are not on the same axis and their difference means nothing. When several people run long on the same block, the finding belongs to that block — it was scoped too wide, and the fix is to narrow the data. Your own pace is not a grade here and never becomes one.
 
+### 4. Lesson reflection — what changes because of this run?
+
+Answer the question printed in the **Lesson reflection** panel on the current lesson page. Use one sentence. Name the test, comparison, failure, or decision that changed what you will require next time. A summary of the activity is not a reflection.
+
 ---
 
 ## Block rows (fill every block)
 
-| Block | Brief accuracy (HIT/PARTIAL/MISS + field named) | Overclaim `n/m` | Time (min) | One-line note |
+| Block | Brief accuracy (HIT/PARTIAL/MISS + field named) | Overclaim `n/m` | Time (min) | Lesson reflection (one sentence) |
 |---|---|---|---|---|
 | B0 | | | | |
 | P1 | | | | |
@@ -143,7 +147,7 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 | **P6** | Contract: stop/restart · exception drill pass/fail |
 | **P8** | Hold-degrade: open `n/5` vs home `n/5`; refuse: Y/N; transfer SEALED: Y/N |
 
-B0, P1, P4 and P7 carry no deep mark — for those blocks the three entries and the note are the whole row.
+B0, P1, P4 and P7 carry no deep mark — for those blocks the four entries are the whole row.
 
 ---
 
@@ -154,7 +158,7 @@ Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
 Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
-Bars I marked met before the attack: [n].
+Lesson outcomes I marked complete before the review: [n].
 Brief LIVE at: [time or "approx"].
 Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
@@ -163,10 +167,11 @@ Fill this block's row:
    run, and which one of the five brief fields would I write differently now?
    Refuse "the brief was fine": make me name a field, or say none and name what
    held better than expected.
-2. Overclaim n/m — count the bars I marked met that came back WOUNDED or DEAD,
-   over the number I marked met. Count from the rulings I pasted, not from my summary.
+2. Overclaim n/m — count the lesson outcomes I marked complete that came back
+   WOUNDED or DEAD, over the number I marked complete. Count from the rulings I
+   pasted, not from my summary.
 3. Time to result in minutes.
-4. One-line note.
+4. Lesson reflection — answer the one-sentence question on the current lesson page.
 5. Deep mark if this block has one.
 Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.
@@ -176,7 +181,7 @@ Do not start transfer until this row is written.
 
 ## Facilitator rollup
 
-Thin view lives in `FACILITATOR_ROLLUP.md`. One rule travels with the number: **overclaim is never read without the met-count beside it.** One wounded bar out of nine claimed and one out of two are different students, and the ratio alone cannot tell you which you are looking at.
+Thin view lives in `FACILITATOR_ROLLUP.md`. One rule travels with the number: **overclaim is never read without the completion count beside it.** One wounded outcome out of nine claimed and one out of two are different students, and the ratio alone cannot tell you which you are looking at.
 
 ---
 
@@ -184,9 +189,9 @@ Thin view lives in `FACILITATOR_ROLLUP.md`. One rule travels with the number: **
 
 | Pattern | Likely issue |
 |---|---|
-| Brief accuracy HIT, overclaim high | You are shipping the artifact and over-reading the evidence. The attack is doing its job |
-| Overclaim near zero, bars-met falling week on week | You are protecting the ratio by claiming less. Unticked bars are still *not yet* and still hold the floor open |
-| Overclaim near zero, bars-met rising, no fix list ever | Check the paste pack before you believe it. A reviewer handed thin evidence has nothing to attack |
+| Brief accuracy HIT, overclaim high | You are shipping the artifact and over-reading the evidence. The independent review is finding the gap |
+| Overclaim near zero, completed outcomes falling week on week | You may be protecting the ratio by claiming less. Incomplete outcomes still require work or a narrower claim |
+| Overclaim near zero, completed outcomes rising, no fix list ever | Check the paste pack before you believe it. A reviewer handed thin evidence has nothing to challenge |
 | The same brief field named every block | That is where your brief-writing needs the work. *Done looks like* and *Evidence standard* are the usual two |
 | “None held better than expected” nine times running | Not credible across nine missions. You are defending the brief rather than scoring it |
 | Overclaim falling B0 → P8 | Your self-assessment is calibrating. This is the line to want |
@@ -197,11 +202,12 @@ Thin view lives in `FACILITATOR_ROLLUP.md`. One rule travels with the number: **
 
 ## Transfer bridge
 
-At P7 and P8, carry the same three entries into the 30-day rhythm for **one real workload**:
+At P7 and P8, carry the same four entries into the 30-day rhythm for **one real workload**:
 
 - **Brief accuracy:** did the work match the criteria you set before starting, and which criterion do you now write differently
 - **Overclaim:** what you claimed was done that a reviewer took back
 - **Time:** time-to-accept or time-to-result on that workload
+- **Lesson reflection:** the one requirement or habit you will change on the next run
 
 Same spine, smaller world. The party who rules on your overclaim at work is a colleague, a check, or a customer — pick one before you leave.
 
@@ -209,7 +215,7 @@ Same spine, smaller world. The party who rules on your overclaim at work is a co
 
 ## Identity lock
 
-If the spine grows past three entries and a note, cut it back.  
-If rows are filled before adversarial, delete them — measurement follows attack.  
+If the spine grows past four entries, cut it back.
+If rows are filled before the independent review, delete them — measurement comes after the review.
 If overclaim is counted from your own summary instead of the rulings, it is a self-awarded number again and this file has lost its only teeth.  
-If facilitators grade people on speed, the school has betrayed mastery.
+If facilitators grade people on speed, the course has confused pace with learning.

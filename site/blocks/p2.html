@@ -39,9 +39,8 @@
       <a href="#orient">Orientation</a>
       <a href="#ideas">The ideas</a>
       <a href="#mission">Mission · <span data-count-for="mission">0/8</span></a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/8</span></a>
       <a href="#depth">Going deeper</a>
-      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/4</span></a>
-      <a href="#floor">Mastery floor · <span data-count-for="floor">0/8</span></a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
         <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p2"></span></div>
@@ -121,7 +120,7 @@
       <p><strong>Durable</strong> means still there when the session dies. Everything you teach an assistant inside a chat lives in that chat's context — a working memory that is genuinely impressive and genuinely gone the moment the chat closes. Artifacts on disk are the other side of the line: <code>AGENTS.md</code>, test files, and skill folders are loaded fresh into every new session, with no dependence on what you said yesterday.</p>
       <p>The cold re-run is the only honest test of which side of the line your standard lives on. Close the chat where you did the coaching. Open a new one. Run one case. If the standard still fires — the rule applied, the format held, the skill offered — it lives in an artifact and you own it. If the output reverts to what you saw before any changes, your craft was living in scrollback, and what felt like an improved harness was an improved <em>conversation</em>.</p>
       <p>The classic self-deception here is demonstrating improvement in the same long chat where the coaching happened. Of course it performs — the entire lesson is still sitting in context. That demo proves nothing about tomorrow. The test that means something is the one where the machine has never met you today.</p>
-      <p>At work the bar is: could a colleague open your project cold and get your standard from the machine? If yes, you've built something the team owns. If your standard only lives in the chat scrollback, you do not own it yet — you're renting it one session at a time.</p>
+      <p>At work, the practical test is: could a colleague open your project cold and get your standard from the machine? If yes, you've built something the team owns. If your standard only lives in the chat scrollback, you do not own it yet — you're renting it one session at a time.</p>
 
       <h3>A skill that fires unprompted</h3>
       <figure class="section-diagram">
@@ -512,53 +511,12 @@ a concrete entry I accepted. When the seed block is complete, write today's
 date on it.</code></pre>
         </div>
         <p>This dialogue is about your actual desk, not the classroom: the walls you'd build there first, the habit that survives a busy Monday, the first proof you'd accept from yourself. Give it the time it asks for, then open the file yourself before you leave the chat — the seed block should hold five concrete entries and today's date. If a field stays empty, name what's blocking it in the file rather than inventing an answer.</p>
-      </section>
 
-      <section id="depth" class="home-section">
-        <h2>Going deeper while a rescore runs</h2>
-        <p class="section-lede">Material for the gaps — between runs, over the case talk, or back at your desk next month.</p>
 
-        <h3>Failure catalog</h3>
-        <table>
-          <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
-          <tbody>
-            <tr><td>Baseline is 5/5</td><td>Soft grading — you read the answers as their author's friend</td><td>Re-read each pass condition in <code>GRADER.md</code> one requirement at a time; rescore strictly; when unsure, FAIL with a note</td></tr>
-            <tr><td>After-score dropped</td><td>Instruction bloat — <code>AGENTS.md</code> became an essay the model skims</td><td>Cut to the few rules that target real fails; rescore</td></tr>
-            <tr><td>Standard vanishes in the new chat</td><td>The craft lived in scrollback, not on disk</td><td>Move it into <code>AGENTS.md</code> or a skill; re-run the case cold</td></tr>
-            <tr><td>Skill never fires</td><td>Description is a title, not trigger conditions</td><td>Rewrite the description as "use when…" conditions; test on a realistic task without naming it</td></tr>
-            <tr><td>Delta unreadable</td><td>Several walls changed between measurements</td><td>Revert, change one, rescore; repeat — slower per step, faster to real knowledge</td></tr>
-            <tr><td>Test "passes" but you had to interpret</td><td>Predicate isn't machine-checkable</td><td>Tighten to an observable check: a count, a required string, a forbidden pattern</td></tr>
-            <tr><td>Memory rule ignored next session</td><td>A must-hold rule stored in the recall layer</td><td>Move it to <code>AGENTS.md</code>; keep memory for context, not law</td></tr>
-          </tbody>
-        </table>
-
-        <h3>Questions worth arguing about</h3>
-        <p><strong>Is a 5/5 harness the goal?</strong> No — a suite you always pass has stopped measuring. The interesting argument is when to add a harder case: once the current five are green, a good operator writes a sixth that the harness fails. The suite's <code>D05</code> already probes refusal, so the sixth should probe something the five don't — ambiguity, conflicting sources, or a hostile shape from your own desk. An instrument is alive as long as it can still tell you something you don't want to hear.</p>
-        <p><strong>When does <code>AGENTS.md</code> become too big?</strong> Every rule costs a slice of the model's attention, and twenty rules obeyed at 80% can lose to six rules obeyed at 100%. A rule you can't tie to a fail you've seen is a candidate to cut. The deeper trade: an instruction tells the machine what to do; a test catches it when it doesn't. Standards you can check belong in tests, which never get skimmed.</p>
-        <p><strong>Who should author the tests — you or the machine?</strong> The machine can draft them, and drafting is real work saved. But the system under test must never own its own grader: a harness that writes, runs, and interprets its own checks can quietly optimize for passing them. You accept every predicate personally, the way you'd sign any acceptance criterion. That rule holds for any system you'll ever automate, not just this one.</p>
-        <p><strong>Is memory a wall or a leak?</strong> Both, depending on discipline. As a recall layer it saves re-explaining context. But an assistant that quietly carries yesterday's context into today's work can also carry it into places you didn't intend — including comparisons where you needed a clean machine. Knowing exactly what your harness loads, and being able to turn it off, is part of owning it.</p>
-
-        <h3>At your desk</h3>
-        <p><strong>An analyst desk:</strong> five report fragments from last quarter become your five cases; <code>AGENTS.md</code> holds the citation standard; a skill fires whenever a briefing task appears. The Monday version of you stops re-teaching the Friday version's standards.</p>
-        <p><strong>An engineering desk:</strong> the repo's <code>AGENTS.md</code> carries review and style standards for every session anyone opens there; your authored checks grow into CI habits; cases come from last month's incidents, so the harness is aimed at what actually goes wrong on your team.</p>
-        <p><strong>An ops or intel desk:</strong> watch criteria written as pass-if lines; a standing hostile-request case so the refusal behavior is measured, not assumed; the daily brief regenerated inside walls instead of re-prompted from memory.</p>
-        <p><strong>A manager's desk:</strong> you can't read every output your team's assistants produce. Walls are how your standard scales to work you never see — and "show me the score sheet" is a better question than "is the AI helping?"</p>
-
-        <h3>Stretch lanes</h3>
-        <p>After the floor is met, the same capability goes deeper. Get a skill to fire unprompted on a realistic task — the description line is the lever. Author a sixth case of your own beyond the fixed five — the suite's <code>D05</code> already probes refusal, so add a shape it doesn't cover: an ambiguity case, conflicting sources, or a second hostility pattern from your real desk. Or take the side-quest: improve someone else's harness one measured notch, with their confirmation of the delta as the evidence. P2 depth counts toward distinction, and the peer version is the hardest and most honest of the three.</p>
-
-        <p class="eyebrow">Optional field guide · 60–75 min</p>
-        <h3>Build an eval that can refuse your claim</h3>
-        <p><a href="../resources/p2/eval-surprise.html"><strong>Build an Eval That Can Still Surprise You</strong></a> turns a bounded construct, hostile coverage, a real or explicitly simulated seal, and precommitted invalidation rules into an eval charter that can return an unwelcome verdict.</p>
-
-        <p class="eyebrow">Optional field guide · 45–60 min</p>
-        <h3>Treat one run as a probe</h3>
-        <p><a href="../resources/p2/one-run-is-a-probe.html"><strong>One Run Is a Probe, Not Proof</strong></a> uses paired runs, sequence-aware order control, visible spread, and bounded conclusions to keep a single attractive score from becoming a capability claim.</p>
-      </section>
-
-      <section id="pulse" class="home-section" data-check-section="pulse">
-        <h2>Operator pulse — required every block</h2>
-        <p class="section-lede">Four beats close this block — log, bars, adversarial, measurement. It is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
+        <div id="pulse" class="lesson-reflection" data-check-section="pulse">
+          <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
+        <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
+        <p class="reflection-question"><strong>Think back:</strong> Which harness layer moved the result, and what will you change first next time?</p>
         <p>The mission runs elsewhere; this chat holds direction and verdicts.</p>
         <!-- Embedded verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
         <div class="do-step">
@@ -592,7 +550,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
           <pre><code>PASS_BARS self-check for P2. Read operator/PASS_BARS.md, section P2 — Harness craft.
 
-Walk the MVP list one bar at a time. For each bar I answer met or not yet and
+Walk the lesson outcomes one outcome at a time. For each outcome I answer met or not yet and
 give one evidence pointer — a file path, a score-sheet row, or a test name. Challenge
 any "met" that leans on vibe instead of an artifact, and stress-test the ones
 I sound proud of. Leave the result as a draft list I will paste into the
@@ -603,9 +561,9 @@ adversarial review — do not soften a single not yet.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p2-pulse-bars" name="p2-pulse-bars" data-check-id="pulse-bars" />
               <span class="check-num">10</span>
-              <span class="check-title">PASS_BARS self-check drafted</span>
+              <span class="check-title">Lesson outcomes checked against current evidence</span>
             </label>
-            <div class="check-detail">Met or not yet on each P2 bar, each with an evidence pointer. No inflation — an unmet bar named honestly costs nothing now and saves you at adversarial. You should end with a draft list ready to paste into the review chat.</div>
+            <div class="check-detail">Met or not yet on each P2 outcome, each with an evidence pointer. No inflation — an incomplete outcome named honestly costs nothing now and saves you at adversarial. You should end with a draft list ready to paste into the review chat.</div>
           </li>
         </ol>
         <div class="do-step">
@@ -618,27 +576,27 @@ adversarial review — do not soften a single not yet.</code></pre>
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Adversarial — P2</strong>:</p>
           <pre><code>You are an adversarial operator reviewer for an operator’s school.
-Your job is NOT to help me feel successful. Your job is to stress-test my verdict and MVP claims.
+Your job is NOT to help me feel successful. Your job is to stress-test my verdict and claimed lesson outcomes.
 
-Context: deep operator mastery of AI direction and cothinking.
+Context: careful, evidence-based AI direction and shared reasoning.
 Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
 Containment is absence of effect. Autonomy without stop proof is theater.
 
-I will paste: block, artifacts/paths/excerpts, provisional verdict, draft MVP checklist.
+I will paste: block, artifacts/paths/excerpts, provisional verdict, and the lesson outcomes I marked complete.
 
 Protocol — follow in order:
 1. Restate my claimed outcome and verdict in one cold sentence (no praise).
-2. Attack pass: give the strongest case that this is NOT YET mastery for this block.
+2. Attack pass: give the strongest case that this is NOT YET complete for this lesson.
    - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
    - Name completion theater if you see it.
    - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
-3. Evidence audit: for each MVP claim I marked met, mark:
+3. Evidence audit: for each lesson outcome I marked complete, mark:
    SURVIVES / WOUNDED / DEAD — with reason.
 4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
    If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
    If REJECT, check I am not rejecting to avoid measurement.
 5. Force one of:
-   a) Concrete fix list (smallest changes to reach real MVP), or
+   a) Concrete fix list (smallest changes to complete the lesson outcomes), or
    b) “Stands under fire” — only if evidence is actually strong.
 6. End with a single line I must copy into my Operator Log:
    ADVERSARIAL: [stood / wounded / failed] — [one sentence].
@@ -657,7 +615,7 @@ Artifacts: instruments/p2_test_suite/SCORE_SHEET.md (filled), AGENTS.md, CHECKS.
 checks_runner output (red then green), skill folder [SKILL NAME], memory [ON OR OFF].
 Baseline: [N]/5 · After: [N]/5 · Delta: [N].
 Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES].
-Draft MVP self-check: [PASTE THE MET / NOT YET LIST FROM THE LOG CHAT].
+Lesson outcomes I marked complete: [PASTE THE MET / NOT YET LIST FROM THE LOG CHAT].
 Known weak spots: [WHAT YOU ALREADY DOUBT].</code></pre>
           <p>Fill every bracket before sending. If the reviewer can't see your files, paste the score-sheet rows and the runner output directly into the chat — the attack is only as good as what you feed it.</p>
         </div>
@@ -671,9 +629,9 @@ Known weak spots: [WHAT YOU ALREADY DOUBT].</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p2-pulse-adv" name="p2-pulse-adv" data-check-id="pulse-adv" />
               <span class="check-num">11</span>
-              <span class="check-title">Adversarial review in a NEW chat</span>
+              <span class="check-title">Independent evidence review completed in a new chat</span>
             </label>
-            <div class="check-detail">A new chat matters: the reviewer must not be the assistant that helped you succeed. You should end with the closing line — <code>ADVERSARIAL: stood | wounded | failed</code> — copied into your log. Wounded means fix and re-check, not shrug; a dead MVP claim goes back to not yet until the fix lands. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
+            <div class="check-detail">A new chat matters: the reviewer must not be the assistant that helped you succeed. You should end with the closing line — <code>ADVERSARIAL: stood | wounded | failed</code> — copied into your log. Wounded means fix and re-check, not shrug; an unsupported lesson outcome goes back to not yet until the fix lands. Before you close the chat, write down what the review changed: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
         </ol>
         <!-- Embedded verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
@@ -683,7 +641,7 @@ Known weak spots: [WHAT YOU ALREADY DOUBT].</code></pre>
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
 Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
-Bars I marked met before the attack: [n].
+Lesson outcomes I marked complete before the review: [n].
 Brief LIVE at: [time or "approx"].
 Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
@@ -692,10 +650,10 @@ Fill this block's row:
    run, and which one of the five brief fields would I write differently now?
    Refuse "the brief was fine": make me name a field, or say none and name what
    held better than expected.
-2. Overclaim n/m — count the bars I marked met that came back WOUNDED or DEAD,
-   over the number I marked met. Count from the rulings I pasted, not from my summary.
+2. Overclaim n/m — count the lesson outcomes I marked complete that came back WOUNDED or DEAD,
+   over the number I marked complete. Count from the rulings I pasted, not from my summary.
 3. Time to result in minutes.
-4. One-line note.
+4. Lesson reflection (one sentence) — Which harness layer moved the result, and what will I change first next time?
 5. Deep mark if this block has one.
 Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
@@ -708,21 +666,26 @@ Do not start transfer until this row is written.</code></pre>
               <span class="check-num">12</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of bars you marked met that the adversarial ruled WOUNDED or DEAD over the number you marked met, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and the deep mark <code>Case suite: baseline n/5 → after n/5</code> from the bottom of your score sheet.</div>
+            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes you marked complete that the adversarial ruled WOUNDED or DEAD over the number you marked complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, a one-sentence <strong>lesson reflection</strong> answering the question above, and the deep mark <code>Case suite: baseline n/5 → after n/5</code> from the bottom of your score sheet.</div>
           </li>
         </ol>
+        </div>
       </section>
 
+
+
+
+
       <section id="floor" class="home-section" data-check-section="floor">
-        <h2>Mastery floor — evidence must survive adversarial review</h2>
-        <p class="section-lede">Mark met / not yet against your own artifacts, not your memory of the morning. If the adversarial pass wounds an item, uncheck it until it is fixed.</p>
+        <h2>Lesson outcomes</h2>
+        <p class="section-lede">Check an outcome when the named evidence exists. If review finds a gap, clear it until you fix the artifact or narrow the claim.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p2-mvp-baseline" name="p2-mvp-baseline" data-check-id="mvp-baseline" />
               <span class="check-num">13</span>
-              <span class="check-title">MVP: Case-suite baseline on the course cases</span>
+              <span class="check-title">All five course cases have a baseline score</span>
             </label>
             <div class="check-detail">Evidence looks like: a score sheet with the baseline column filled for D01–D05 on <code>instruments/p2_test_suite</code>, your chosen track, scored in a fresh chat before any change — plus the <code>Baseline agreement: n/5</code> line from re-scoring your own five calls against the pass conditions.</div>
           </li>
@@ -731,7 +694,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p2-mvp-2walls" name="p2-mvp-2walls" data-check-id="mvp-2walls" />
               <span class="check-num">14</span>
-              <span class="check-title">MVP: ≥2 wall changes</span>
+              <span class="check-title">At least two harness layers were changed</span>
             </label>
             <div class="check-detail">Evidence looks like: two artifacts on distinct layers — an <code>AGENTS.md</code> diff and a test file, or memory enabled and a skill folder. Two edits to the same file is one wall.</div>
           </li>
@@ -740,7 +703,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p2-mvp-measure" name="p2-mvp-measure" data-check-id="mvp-measure" />
               <span class="check-num">15</span>
-              <span class="check-title">MVP: Before/after measurement</span>
+              <span class="check-title">Each change has before-and-after scores</span>
             </label>
             <div class="check-detail">Evidence looks like: before and after numbers for each change — strict pass/fail counts on the sheet, not adjectives — with the delta line filled in.</div>
           </li>
@@ -749,7 +712,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p2-mvp-2tests" name="p2-mvp-2tests" data-check-id="mvp-2tests" />
               <span class="check-num">16</span>
-              <span class="check-title">MVP: ≥2 authored tests + red→green story</span>
+              <span class="check-title">At least two tests were written, and one changed from fail to pass</span>
             </label>
             <div class="check-detail">Evidence looks like: at least two named tests you authored and accepted, runnable without your judgment in the loop; at least one that fails on the unchanged harness and passes after — or an equivalent red→green story you can show.</div>
           </li>
@@ -758,7 +721,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p2-mvp-cold" name="p2-mvp-cold" data-check-id="mvp-cold" />
               <span class="check-num">17</span>
-              <span class="check-title">MVP: Durability across restart/new chat</span>
+              <span class="check-title">One improvement survives a restart or new chat</span>
             </label>
             <div class="check-detail">Evidence looks like: a restart or brand-new chat re-running one case with the standard still firing — and you can name which artifact carried it.</div>
           </li>
@@ -767,7 +730,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p2-mvp-wallclaim" name="p2-mvp-wallclaim" data-check-id="mvp-wallclaim" />
               <span class="check-num">18</span>
-              <span class="check-title">MVP: Wall claim + still-fails</span>
+              <span class="check-title">The written conclusion names what improved and what still fails</span>
             </label>
             <div class="check-detail">Evidence looks like: the written paragraph naming which wall moved the number and what still fails. "Feels smarter" is an automatic not yet.</div>
           </li>
@@ -776,7 +739,7 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p2-mvp-30seed" name="p2-mvp-30seed" data-check-id="mvp-30seed" />
               <span class="check-num">19</span>
-              <span class="check-title">MVP: 30-day seed started</span>
+              <span class="check-title">One specific 30-day work habit is recorded</span>
             </label>
             <div class="check-detail">Evidence looks like: Identity filled and one concrete 30-day harness habit in the Transfer file — specific to your desk, checkable, bound. "Use AI more" is void.</div>
           </li>
@@ -785,18 +748,60 @@ Do not start transfer until this row is written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p2-p2-transfer" name="p2-p2-transfer" data-check-id="p2-transfer" />
               <span class="check-num">20</span>
-              <span class="check-title">MVP: P2 seed block filled and dated</span>
+              <span class="check-title">The P2 transfer plan is complete and dated</span>
             </label>
             <div class="check-detail">Evidence looks like: the five fields under <em>From P2 — Harness craft</em> in <code>operator/TRANSFER_30_60_90.md</code> — the workload this harness serves, the walls you will keep, the case or check you will re-run cold, the 30-day habit, and the first proof you will attach in week one — each holding a concrete entry you accepted, with today's date on the block. A field left blank is not yet; name what is blocking it in the file instead.</div>
           </li>
         </ol>
       </section>
+
+      <section id="depth" class="home-section">
+        <h2>Going deeper while a rescore runs</h2>
+        <p class="section-lede">Material for the gaps — between runs, over the case talk, or back at your desk next month.</p>
+
+        <h3>Failure catalog</h3>
+        <table>
+          <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+          <tbody>
+            <tr><td>Baseline is 5/5</td><td>Soft grading — you read the answers as their author's friend</td><td>Re-read each pass condition in <code>GRADER.md</code> one requirement at a time; rescore strictly; when unsure, FAIL with a note</td></tr>
+            <tr><td>After-score dropped</td><td>Instruction bloat — <code>AGENTS.md</code> became an essay the model skims</td><td>Cut to the few rules that target real fails; rescore</td></tr>
+            <tr><td>Standard vanishes in the new chat</td><td>The craft lived in scrollback, not on disk</td><td>Move it into <code>AGENTS.md</code> or a skill; re-run the case cold</td></tr>
+            <tr><td>Skill never fires</td><td>Description is a title, not trigger conditions</td><td>Rewrite the description as "use when…" conditions; test on a realistic task without naming it</td></tr>
+            <tr><td>Delta unreadable</td><td>Several walls changed between measurements</td><td>Revert, change one, rescore; repeat — slower per step, faster to real knowledge</td></tr>
+            <tr><td>Test "passes" but you had to interpret</td><td>Predicate isn't machine-checkable</td><td>Tighten to an observable check: a count, a required string, a forbidden pattern</td></tr>
+            <tr><td>Memory rule ignored next session</td><td>A must-hold rule stored in the recall layer</td><td>Move it to <code>AGENTS.md</code>; keep memory for context, not law</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Questions worth arguing about</h3>
+        <p><strong>Is a 5/5 harness the goal?</strong> No — a suite you always pass has stopped measuring. The interesting argument is when to add a harder case: once the current five are green, a good operator writes a sixth that the harness fails. The suite's <code>D05</code> already probes refusal, so the sixth should probe something the five don't — ambiguity, conflicting sources, or a hostile shape from your own desk. An instrument is alive as long as it can still tell you something you don't want to hear.</p>
+        <p><strong>When does <code>AGENTS.md</code> become too big?</strong> Every rule costs a slice of the model's attention, and twenty rules obeyed at 80% can lose to six rules obeyed at 100%. A rule you can't tie to a fail you've seen is a candidate to cut. The deeper trade: an instruction tells the machine what to do; a test catches it when it doesn't. Standards you can check belong in tests, which never get skimmed.</p>
+        <p><strong>Who should author the tests — you or the machine?</strong> The machine can draft them, and drafting is real work saved. But the system under test must never own its own grader: a harness that writes, runs, and interprets its own checks can quietly optimize for passing them. You accept every predicate personally, the way you'd sign any acceptance criterion. That rule holds for any system you'll ever automate, not just this one.</p>
+        <p><strong>Is memory a wall or a leak?</strong> Both, depending on discipline. As a recall layer it saves re-explaining context. But an assistant that quietly carries yesterday's context into today's work can also carry it into places you didn't intend — including comparisons where you needed a clean machine. Knowing exactly what your harness loads, and being able to turn it off, is part of owning it.</p>
+
+        <h3>At your desk</h3>
+        <p><strong>An analyst desk:</strong> five report fragments from last quarter become your five cases; <code>AGENTS.md</code> holds the citation standard; a skill fires whenever a briefing task appears. The Monday version of you stops re-teaching the Friday version's standards.</p>
+        <p><strong>An engineering desk:</strong> the repo's <code>AGENTS.md</code> carries review and style standards for every session anyone opens there; your authored checks grow into CI habits; cases come from last month's incidents, so the harness is aimed at what actually goes wrong on your team.</p>
+        <p><strong>An ops or intel desk:</strong> watch criteria written as pass-if lines; a standing hostile-request case so the refusal behavior is measured, not assumed; the daily brief regenerated inside walls instead of re-prompted from memory.</p>
+        <p><strong>A manager's desk:</strong> you can't read every output your team's assistants produce. Walls are how your standard scales to work you never see — and "show me the score sheet" is a better question than "is the AI helping?"</p>
+
+        <h3>Stretch lanes</h3>
+        <p>After the required outcomes are complete, the same capability goes deeper. Get a skill to fire unprompted on a realistic task — the description line is the lever. Author a sixth case of your own beyond the fixed five — the suite's <code>D05</code> already probes refusal, so add a shape it doesn't cover: an ambiguity case, conflicting sources, or a second hostility pattern from your real desk. Or take the side-quest: improve someone else's harness one measured notch, with their confirmation of the delta as the evidence. P2 depth counts toward distinction, and the peer version is the hardest and most honest of the three.</p>
+
+        <p class="eyebrow">Optional field guide · 60–75 min</p>
+        <h3>Build an eval that can refuse your claim</h3>
+        <p><a href="../resources/p2/eval-surprise.html"><strong>Build an Eval That Can Still Surprise You</strong></a> turns a bounded construct, hostile coverage, a real or explicitly simulated seal, and precommitted invalidation rules into an eval charter that can return an unwelcome verdict.</p>
+
+        <p class="eyebrow">Optional field guide · 45–60 min</p>
+        <h3>Treat one run as a probe</h3>
+        <p><a href="../resources/p2/one-run-is-a-probe.html"><strong>One Run Is a Probe, Not Proof</strong></a> uses paired runs, sequence-aware order control, visible spread, and bounded conclusions to keep a single attractive score from becoming a capability claim.</p>
+      </section>
     </form>
 
     <section id="stuck" class="split-2 home-section">
       <div>
-        <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not "it ran." A single unmeasured tweak, no red→green test, or nothing surviving restart is not yet — the evidence must survive adversarial review. Full list: <a href="#floor">this P2 mastery floor</a>.</p>
+        <h2>Before you move on</h2>
+        <p>A completed lesson means more than a successful run. A single unmeasured tweak, no red→green test, or nothing surviving restart is not yet — the evidence must survive adversarial review. Full list: <a href="#floor">these P2 lesson outcomes</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>
