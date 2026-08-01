@@ -1,5 +1,5 @@
 /**
- * AHB block registry — the single source of truth for the 11 blocks.
+ * AHB course registry — the single source of truth for Pre-work and B0–P8.
  *
  * Every reader of progress (home dashboard, nav dots, block pages, the
  * pre-work hub) counts against the id lists declared here — never against
@@ -19,7 +19,55 @@
     "pulse-adv", "pulse-measure", "pulse-transfer"
   ];
 
-  // Order is the student path: INSTALL → B0 → P1 → … → P8.
+  // The detailed checklist rolls up into five outcomes. Explanations and
+  // conditional recovery remain on the page but do not block readiness.
+  var PREWORK_PHASES = [
+    {
+      id: "basics", title: "Prepare the machine", time: "45–75 min", anchor: "phase-basics",
+      summary: "Confirm the laptop, shell, package manager, Git, Node, and Python.",
+      ids: [
+        "i-time", "i-log", "i-keys", "b-win11", "b-arm", "b-disk", "b-admin",
+        "ps-open", "ps-version", "ps-policy", "wg-check",
+        "git-install", "git-restart", "git-verify",
+        "np-node", "np-python", "np-restart", "np-verify", "np-stub"
+      ]
+    },
+    {
+      id: "keys", title: "Install the keys", time: "20–30 min", anchor: "phase-keys",
+      summary: "Store the three course keys safely and prove they survive a fresh shell.",
+      ids: ["k-openai", "k-xai", "k-anthropic", "k-models", "k-verify", "sf-make"]
+    },
+    {
+      id: "tools", title: "Prove the required tools", time: "75–120 min", anchor: "phase-tools",
+      summary: "Make Codex, OpenCode, Pi, goose, Obsidian, and n8n do observable work.",
+      ids: [
+        "cx-install", "cx-signin", "cx-status", "cx-lock", "cx-project", "cx-sandbox", "cx-write",
+        "oc-version", "oc-install", "oc-verify", "oc-models", "oc-independent", "oc-write",
+        "pi-install", "pi-verify", "pi-write", "pi-bash",
+        "gs-keyring", "gs-provider", "gs-install", "gs-path", "gs-verify", "gs-write",
+        "ob-install", "ob-vault", "n8n-node", "n8n-install", "n8n-start", "n8n-owner", "n8n-stop"
+      ]
+    },
+    {
+      id: "files", title: "Open the course files", time: "15–25 min", anchor: "phase-files",
+      summary: "Clone the course, find the operator files, and open the local site.",
+      ids: ["rp-get", "rp-operator", "rp-site", "rp-gitignore"]
+    },
+    {
+      id: "pack", title: "Pack for Monday", time: "15–20 min", anchor: "phase-pack",
+      summary: "Check the four proofs, finish the setup log, and record any clinic item.",
+      ids: ["g-four", "g-log", "g-pack"]
+    }
+  ];
+
+  function preworkRequiredIds() {
+    var ids = [];
+    PREWORK_PHASES.forEach(function (phase) { ids = ids.concat(phase.ids); });
+    return ids;
+  }
+
+  // Storage order is retained for compatibility. The visible path is
+  // Pre-work → B0 → P1 → … → P8; KEYS is a reference inside Pre-work.
   // `ids` = required ids (mission incl. pulse-brief, the 6 pulse beats, floor).
   var REGISTRY = [
     {
@@ -30,28 +78,11 @@
     {
       code: "INSTALL", name: "Install + verify as you go", title: "Install + verify as you go", day: "Before Monday", slot: "pre",
       key: "ahb-prework-install",
-      ids: [
-        "i-time", "i-log", "i-keys", "i-shape",
-        "b-win11", "b-arm", "b-disk", "b-admin",
-        "ps-open", "ps-version", "ps-policy",
-        "wg-check", "wg-fix", "wg-agree",
-        "git-install", "git-restart", "git-verify",
-        "np-node", "np-python", "np-restart", "np-verify", "np-stub",
-        "k-read", "k-openai", "k-xai", "k-anthropic", "k-models", "k-verify",
-        "sf-make", "sf-why",
-        "cx-install", "cx-signin", "cx-status", "cx-lock", "cx-project",
-        "cx-sandbox", "cx-write", "cx-limits",
-        "oc-why", "oc-version", "oc-install", "oc-verify", "oc-models",
-        "oc-independent", "oc-write",
-        "pi-why", "pi-install", "pi-verify", "pi-write", "pi-bash",
-        "gs-what", "gs-nowinget", "gs-keyring", "gs-provider", "gs-install",
-        "gs-path", "gs-verify", "gs-write",
-        "ob-install", "ob-vault",
-        "n8n-node", "n8n-install", "n8n-start", "n8n-owner", "n8n-stop",
-        "rp-get", "rp-operator", "rp-site", "rp-gitignore",
-        "g-four", "g-log", "g-pack",
-        "r-notfound", "r-window", "r-scripts", "r-auth", "r-store",
-        "r-noclaim", "r-stuck"
+      ids: preworkRequiredIds(),
+      conditionalIds: [
+        "i-shape", "wg-fix", "wg-agree", "k-read", "sf-why", "cx-limits",
+        "oc-why", "pi-why", "gs-what", "gs-nowinget",
+        "r-notfound", "r-window", "r-scripts", "r-auth", "r-store", "r-noclaim", "r-stuck"
       ],
       // Claude Code and the local model are optional — skipping either never
       // blocks the pre-work gate.
@@ -185,9 +216,22 @@
     }
   ];
 
+  var COURSE_CODES = ["B0", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"];
+  var INSTALL = REGISTRY[1];
+  var PREWORK_STOP = {
+    code: "PREWORK", name: "Mission workstation", title: "Pre-work · Mission workstation",
+    day: "Before Monday", slot: "pre", key: INSTALL.key, ids: INSTALL.ids,
+    conditionalIds: INSTALL.conditionalIds, stretchIds: INSTALL.stretchIds,
+    optionalLabel: INSTALL.optionalLabel, url: "prework.html", meta: "2–4 hr"
+  };
+  var COURSE_BLOCKS = REGISTRY.filter(function (item) {
+    return COURSE_CODES.indexOf(item.code) !== -1;
+  });
+  var CORE_PATH = [PREWORK_STOP].concat(COURSE_BLOCKS);
+
   // Journey board columns and day dropdowns are derived from these groups.
   var JOURNEY = [
-    { phase: "Before Monday", title: "Pre-work", codes: ["KEYS", "INSTALL"] },
+    { phase: "Before Monday", title: "Pre-work", codes: ["PREWORK"] },
     { phase: "Monday", title: "Foundations", codes: ["B0", "P1"] },
     { phase: "Tuesday", title: "Craft + verdict", codes: ["P2", "P3"] },
     { phase: "Wednesday", title: "Knowledge", codes: ["P4", "P5"] },
@@ -196,14 +240,15 @@
   ];
 
   var DAY_NAV = [
-    { label: "Mon", codes: ["B0", "P1"] },
-    { label: "Tue", codes: ["P2", "P3"] },
-    { label: "Wed", codes: ["P4", "P5"] },
-    { label: "Thu", codes: ["P6", "P7"] },
-    { label: "Fri", codes: ["P8"] }
+    { label: "Monday", codes: ["B0", "P1"] },
+    { label: "Tuesday", codes: ["P2", "P3"] },
+    { label: "Wednesday", codes: ["P4", "P5"] },
+    { label: "Thursday", codes: ["P6", "P7"] },
+    { label: "Friday", codes: ["P8"] }
   ];
 
   function block(code) {
+    if (code === "PREWORK") return PREWORK_STOP;
     for (var i = 0; i < REGISTRY.length; i++) {
       if (REGISTRY[i].code === code) return REGISTRY[i];
     }
@@ -247,40 +292,75 @@
     return !!b && b.ids.length > 0 && countDone(b) >= b.ids.length;
   }
 
-  // The current block: first block with a checklist that is not complete.
-  // If the whole week is done, the last block stays current.
-  function currentBlock() {
-    var last = null;
-    for (var i = 0; i < REGISTRY.length; i++) {
-      var b = REGISTRY[i];
-      if (!b.key) continue;
-      last = b;
-      if (!isComplete(b)) return b;
-    }
-    return last;
+  function preworkProgress() {
+    var state = readState(INSTALL.key);
+    var donePhases = 0;
+    var firstPhase = null;
+    var firstId = null;
+    var phases = PREWORK_PHASES.map(function (phase) {
+      var done = 0;
+      phase.ids.forEach(function (id) { if (state[id] === true) done++; });
+      var complete = done === phase.ids.length;
+      if (complete) donePhases++;
+      if (!complete && !firstPhase) {
+        firstPhase = phase;
+        for (var i = 0; i < phase.ids.length; i++) {
+          if (state[phase.ids[i]] !== true) { firstId = phase.ids[i]; break; }
+        }
+      }
+      return {
+        id: phase.id, title: phase.title, time: phase.time, anchor: phase.anchor,
+        summary: phase.summary, done: done, total: phase.ids.length, complete: complete
+      };
+    });
+    return {
+      phases: phases, donePhases: donePhases, totalPhases: PREWORK_PHASES.length,
+      requiredDone: countDone(INSTALL), requiredTotal: INSTALL.ids.length,
+      complete: donePhases === PREWORK_PHASES.length,
+      firstPhase: firstPhase, firstId: firstId
+    };
   }
 
-  // Block number for wayfinding: INSTALL = 1 … P8 = 10, shown "of 11".
-  function blockNumber(code) {
-    var n = 0;
-    for (var i = 0; i < REGISTRY.length; i++) {
-      if (REGISTRY[i].key) n++;
-      if (REGISTRY[i].code === code) return n;
+  // The current course stop: Pre-work first, then the nine live modules.
+  function currentBlock() {
+    if (!isComplete(PREWORK_STOP)) return PREWORK_STOP;
+    for (var i = 0; i < COURSE_BLOCKS.length; i++) {
+      if (!isComplete(COURSE_BLOCKS[i])) return COURSE_BLOCKS[i];
     }
-    return 0;
+    return COURSE_BLOCKS[COURSE_BLOCKS.length - 1];
+  }
+
+  function courseComplete() {
+    if (!isComplete(PREWORK_STOP) || !COURSE_BLOCKS.length) return false;
+    for (var i = 0; i < COURSE_BLOCKS.length; i++) {
+      if (!isComplete(COURSE_BLOCKS[i])) return false;
+    }
+    return true;
+  }
+
+  function moduleNumber(code) {
+    return COURSE_CODES.indexOf(code) + 1;
   }
 
   window.AHB = {
     REGISTRY: REGISTRY,
     JOURNEY: JOURNEY,
     DAY_NAV: DAY_NAV,
-    TOTAL_BLOCKS: REGISTRY.length,
+    PREWORK_PHASES: PREWORK_PHASES,
+    PREWORK_STOP: PREWORK_STOP,
+    COURSE_BLOCKS: COURSE_BLOCKS,
+    CORE_PATH: CORE_PATH,
+    TOTAL_MODULES: COURSE_BLOCKS.length,
+    TOTAL_BLOCKS: COURSE_BLOCKS.length,
     block: block,
     readState: readState,
     countDone: countDone,
     countStretchDone: countStretchDone,
     isComplete: isComplete,
+    preworkProgress: preworkProgress,
     currentBlock: currentBlock,
-    blockNumber: blockNumber
+    courseComplete: courseComplete,
+    moduleNumber: moduleNumber,
+    blockNumber: moduleNumber
   };
 })();

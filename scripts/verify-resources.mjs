@@ -306,6 +306,11 @@ function validateLinks() {
     for (const match of value.matchAll(/\b(href|src)=["']([^"']+)["']/gi)) {
       const attribute = match[1].toLowerCase();
       const raw = match[2];
+      const visiblePath = raw.split(/[?#]/, 1)[0];
+      if (attribute === "href" && /\.(?:md|markdown)$/i.test(visiblePath)) {
+        fail(`${rel(file)}: visible link exposes raw Markdown ${raw}`);
+        continue;
+      }
       if (/^(?:https?:|mailto:|tel:|data:|javascript:)/i.test(raw) || raw === "#") continue;
       const [rawPath, fragment = ""] = raw.split("#", 2);
       let target;

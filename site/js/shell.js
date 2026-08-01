@@ -58,58 +58,41 @@
 
   /* ---------- primary nav ---------- */
 
-  var RESOURCE_SHELVES = [
-    { label: "Resource hub", path: "resources.html" },
-    { label: "Pre-work", path: "resources/prework/index.html" },
-    { label: "P1 · Daily Status Brief", path: "resources/p1/index.html" },
-    { label: "P2 · Measured harness", path: "resources/p2/index.html" },
-    { label: "P3 · Twin-engine intel desk", path: "resources/p3/index.html" },
-    { label: "P4 · Director’s second brain", path: "resources/p4/index.html" },
-    { label: "P5 · Poisoned corpus", path: "resources/p5/index.html" },
-    { label: "P6 · Watch officer", path: "resources/p6/index.html" },
-    { label: "P7 · Automation line", path: "resources/p7/index.html" },
-    { label: "P8 · Operator-governed model", path: "resources/p8/index.html" },
-    { label: "Course-wide", path: "resources/course-wide/index.html" }
-  ];
-
-  function navGroupFor(current) {
-    if (current === "index") return "home";
-    if (current === "prework" || current === "keys" || current === "prework-install") return "prework";
-    if (current === "resources" || current === "pulse" ||
-        current === "prompt-direction" || current === "velocity-paradox") return "resources";
-    if (current === "lead" || current === "operator" || current === "instruments") return "lead";
+  function pageOwnerCode(current) {
+    if (current === "prework" || current === "keys" || current === "prework-install" ||
+        current === "prework-setup-log") return "PREWORK";
+    if (current.indexOf("block-") === 0) return current.replace("block-", "").toUpperCase();
+    var module = document.body && document.body.getAttribute("data-module");
+    if (module === "prework") return "PREWORK";
+    if (module && /^p[1-8]$/.test(module)) return module.toUpperCase();
     return "";
   }
 
   function buildNav(prefix, current) {
     var p = prefix;
     var cur = AHB.currentBlock();
-    var group = navGroupFor(current);
+    var owner = pageOwnerCode(current);
 
-    function topLink(href, label, active, quiet) {
+    function topLink(href, label, active) {
       return '<a href="' + href + '"' +
-        (quiet ? ' class="nav-quiet"' : "") +
         (active ? ' aria-current="page"' : "") + ">" + label + "</a>";
     }
 
     var html = "";
-    html += topLink(p + "/index.html", "Home", group === "home");
-    html += topLink(p + "/prework.html", "Pre-work", group === "prework");
+    html += topLink(p + "/prework.html", "Pre-work", owner === "PREWORK");
 
     AHB.DAY_NAV.forEach(function (day, di) {
-      var dayActive = day.codes.some(function (c) {
-        return current === "block-" + c.toLowerCase();
-      });
+      var dayActive = day.codes.indexOf(owner) !== -1;
       html += '<div class="nav-drop' + (dayActive ? " is-active" : "") + '" data-nav-drop>';
       html += '<button type="button" class="nav-drop-btn" aria-expanded="false"' +
-        ' aria-controls="nav-day-' + di + '">' + day.label +
+        ' aria-controls="nav-day-' + di + '"><span class="nav-day-name">' + day.label + "</span>" +
         '<span class="caret" aria-hidden="true"></span></button>';
       html += '<div class="nav-drop-panel nav-drop-blocks" id="nav-day-' + di + '"' +
-        ' role="group" aria-label="' + day.label + ' blocks">';
+        ' role="group" aria-label="' + day.label + ' modules" hidden>';
       day.codes.forEach(function (code) {
         var b = AHB.block(code);
         var st = statusOf(b, cur);
-        var isHere = current === "block-" + code.toLowerCase();
+        var isHere = owner === code;
         html += '<a class="nav-drop-item' + (st === "done" ? " is-done" : "") + '"' +
           ' href="' + p + "/" + b.url + '"' + (isHere ? ' aria-current="page"' : "") + ">";
         html += dotHtml(st);
@@ -119,16 +102,6 @@
       });
       html += "</div></div>";
     });
-
-    html += '<span class="nav-sep" aria-hidden="true"></span>';
-    html += '<div class="nav-drop nav-drop-resources' + (group === "resources" ? " is-active" : "") + '" data-nav-drop>';
-    html += '<button type="button" class="nav-drop-btn nav-quiet" aria-expanded="false" aria-controls="nav-resources">Resources<span class="caret" aria-hidden="true"></span></button>';
-    html += '<div class="nav-drop-panel nav-drop-resource-shelves" id="nav-resources" role="group" aria-label="Resource module shelves" hidden>';
-    RESOURCE_SHELVES.forEach(function (shelf) {
-      html += '<a class="nav-drop-link" href="' + p + "/" + shelf.path + '">' + shelf.label + '</a>';
-    });
-    html += "</div></div>";
-    html += topLink(p + "/lead.html", "Lead", group === "lead", true);
     return html;
   }
 
@@ -218,13 +191,13 @@
 
   function neighbors(code) {
     var i = -1;
-    for (var k = 0; k < AHB.REGISTRY.length; k++) {
-      if (AHB.REGISTRY[k].code === code) { i = k; break; }
+    for (var k = 0; k < AHB.CORE_PATH.length; k++) {
+      if (AHB.CORE_PATH[k].code === code) { i = k; break; }
     }
     if (i === -1) return { prev: null, next: null };
     return {
-      prev: i > 0 ? AHB.REGISTRY[i - 1] : null,
-      next: i < AHB.REGISTRY.length - 1 ? AHB.REGISTRY[i + 1] : null
+      prev: i > 0 ? AHB.CORE_PATH[i - 1] : null,
+      next: i < AHB.CORE_PATH.length - 1 ? AHB.CORE_PATH[i + 1] : null
     };
   }
 
@@ -234,8 +207,10 @@
       var b = AHB.block(el.getAttribute("data-context-for"));
       if (!b) return;
       var nb = neighbors(b.code);
-      var label = dayLabel(b) + " · Block " + AHB.blockNumber(b.code) +
-        " of " + AHB.TOTAL_BLOCKS;
+      var label = b.code === "PREWORK"
+        ? "Before Monday · Pre-work"
+        : dayLabel(b) + " · Module " + AHB.moduleNumber(b.code) +
+          " of " + AHB.TOTAL_MODULES;
       var html = '<div class="context-strip-inner">';
       html += nb.prev
         ? '<a class="context-prev" href="' + prefix + "/" + nb.prev.url + '">← ' +
@@ -285,8 +260,8 @@
 
   /* ---------- checklist forms ---------- */
 
-  function isOptional(id) {
-    return typeof id === "string" && id.indexOf("stretch-") === 0;
+  function isRequiredId(b, id) {
+    return !!b && b.ids.indexOf(id) !== -1;
   }
 
   function saveState(key, state) {
@@ -328,7 +303,7 @@
       var boxes = section.querySelectorAll('input[type="checkbox"][data-check-id]');
       var total = 0, done = 0;
       Array.prototype.forEach.call(boxes, function (box) {
-        if (isOptional(box.getAttribute("data-check-id"))) return;
+        if (!isRequiredId(b, box.getAttribute("data-check-id"))) return;
         total++;
         if (box.checked) done++;
       });
@@ -337,11 +312,120 @@
         el.textContent = done + "/" + total;
       });
     });
+
+    if (key === "ahb-prework-install") {
+      var prework = AHB.preworkProgress();
+      Array.prototype.forEach.call(document.querySelectorAll("[data-phase-stat]"), function (el) {
+        var id = el.getAttribute("data-phase-stat");
+        var phase = prework.phases.filter(function (item) { return item.id === id; })[0];
+        if (!phase) return;
+        var currentPhase = !phase.complete && prework.firstPhase && prework.firstPhase.id === phase.id;
+        el.textContent = phase.complete
+          ? "✓ Ready"
+          : (currentPhase ? "Current · " : "") + phase.done + " / " + phase.total;
+        el.classList.toggle("is-done", phase.complete);
+        el.classList.toggle("is-current", currentPhase);
+        var link = el.closest("a");
+        if (link) {
+          link.classList.toggle("is-done", phase.complete);
+          link.classList.toggle("is-current", currentPhase);
+          if (currentPhase) link.setAttribute("aria-current", "step");
+          else link.removeAttribute("aria-current");
+        }
+      });
+    }
   }
 
   function applyItemState(input) {
     var li = input.closest("[data-check-item]");
     if (li) li.classList.toggle("is-done", input.checked);
+  }
+
+  function setCheckDetail(detail, open) {
+    if (!detail) return;
+    detail.hidden = !open;
+    var item = detail.closest("[data-check-item]");
+    var button = item && item.querySelector("[data-check-detail-toggle]");
+    if (button) {
+      button.setAttribute("aria-expanded", open ? "true" : "false");
+      button.textContent = open ? "Hide instructions ↑" : "Show instructions ↓";
+    }
+  }
+
+  function initPreworkStepDetails(form, b) {
+    if (!b || b.code !== "INSTALL") return;
+    var items = form.querySelectorAll("[data-check-item]");
+    Array.prototype.forEach.call(items, function (item, index) {
+      var detail = item.querySelector(".check-detail");
+      var label = item.querySelector(".check-label");
+      if (!detail || !label) return;
+      if (!detail.id) detail.id = "prework-step-detail-" + (index + 1);
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "check-detail-toggle";
+      button.setAttribute("data-check-detail-toggle", "");
+      button.setAttribute("aria-controls", detail.id);
+      button.setAttribute("aria-expanded", "false");
+      button.textContent = "Show instructions ↓";
+      label.insertAdjacentElement("afterend", button);
+      setCheckDetail(detail, false);
+      button.addEventListener("click", function () {
+        setCheckDetail(detail, button.getAttribute("aria-expanded") !== "true");
+      });
+    });
+
+    function openHashTarget(rawHash) {
+      var hash = "";
+      try { hash = decodeURIComponent((rawHash || "").replace(/^#/, "")); }
+      catch (e) { hash = (rawHash || "").replace(/^#/, ""); }
+      var target = hash ? document.getElementById(hash) : null;
+      var targetItem = target && target.closest ? target.closest("[data-check-item]") : null;
+      var phaseTarget = target && target.matches && target.matches('section[id^="phase-"]');
+      var boxes = form.querySelectorAll('input[type="checkbox"][data-check-id]');
+
+      // A visual phase spans several sibling tool sections. Use the registry's
+      // phase membership rather than only searching the section with the anchor.
+      if (!targetItem && phaseTarget) {
+        var phase = null;
+        for (var p = 0; p < AHB.PREWORK_PHASES.length; p++) {
+          if (AHB.PREWORK_PHASES[p].anchor === hash) { phase = AHB.PREWORK_PHASES[p]; break; }
+        }
+        if (phase) {
+          for (var pi = 0; pi < phase.ids.length && !targetItem; pi++) {
+            for (var bi = 0; bi < boxes.length; bi++) {
+              if (boxes[bi].getAttribute("data-check-id") === phase.ids[pi] && !boxes[bi].checked) {
+                targetItem = boxes[bi].closest("[data-check-item]");
+                break;
+              }
+            }
+          }
+        }
+      }
+      if (!targetItem && !target) {
+        for (var i = 0; i < boxes.length; i++) {
+          if (isRequiredId(b, boxes[i].getAttribute("data-check-id")) && !boxes[i].checked) {
+            targetItem = boxes[i].closest("[data-check-item]");
+            break;
+          }
+        }
+      }
+      if (target) {
+        var lane = target.closest && target.closest("details");
+        if (lane) lane.open = true;
+      }
+      if (targetItem) {
+        var targetLane = targetItem.closest("details");
+        if (targetLane) targetLane.open = true;
+        setCheckDetail(targetItem.querySelector(".check-detail"), true);
+      }
+      var scrollTarget = phaseTarget && targetItem ? targetItem : target;
+      if (scrollTarget && scrollTarget.scrollIntoView) {
+        window.setTimeout(function () { scrollTarget.scrollIntoView({ block: "start" }); }, 0);
+      }
+    }
+
+    openHashTarget(location.hash);
+    window.addEventListener("hashchange", function () { openHashTarget(location.hash); });
   }
 
   function initForm(form) {
@@ -379,6 +463,7 @@
         updateProgressOutputs(key);
       });
     });
+    initPreworkStepDetails(form, b);
     updateProgressOutputs(key);
   }
 
@@ -408,7 +493,11 @@
         btn.addEventListener("click", function () {
           Array.prototype.forEach.call(
             document.querySelectorAll(".check-detail"),
-            function (el) { el.style.display = ""; }
+            function (el) {
+              var lane = el.closest("details");
+              if (lane) lane.open = true;
+              setCheckDetail(el, true);
+            }
           );
         });
       }
@@ -419,7 +508,11 @@
         btn.addEventListener("click", function () {
           Array.prototype.forEach.call(
             document.querySelectorAll(".check-detail"),
-            function (el) { el.style.display = "none"; }
+            function (el) { setCheckDetail(el, false); }
+          );
+          Array.prototype.forEach.call(
+            document.querySelectorAll("details.lane-disclosure"),
+            function (lane) { lane.open = false; }
           );
         });
       }
@@ -439,29 +532,46 @@
     if (!board && !panel) return;
 
     var cur = AHB.currentBlock();
+    var weekComplete = AHB.courseComplete();
 
     if (panel) {
       var done = AHB.countDone(cur);
       var total = cur.ids.length || 1;
       var pct = Math.round((done / total) * 100);
-      setText("[data-yah-eyebrow]", cur.slot === "pre"
+      var isPrework = cur.code === "PREWORK";
+      var prework = isPrework ? AHB.preworkProgress() : null;
+      setText("[data-yah-eyebrow]", weekComplete
+        ? "Friday · Course complete"
+        : isPrework
         ? "Before Monday · Pre-work"
         : dayLabel(cur) + " · " + cur.code);
-      setText("[data-yah-title]", cur.title);
-      setText("[data-yah-line]", done + " / " + total + " steps · " + pct + "%");
+      setText("[data-yah-title]", weekComplete
+        ? "Week complete"
+        : isPrework ? "Mission workstation" : cur.title);
+      setText("[data-yah-line]", weekComplete
+        ? AHB.TOTAL_MODULES + " / " + AHB.TOTAL_MODULES + " modules complete"
+        : isPrework
+        ? prework.donePhases + " / " + prework.totalPhases + " phases ready"
+        : done + " / " + total + " checks · " + pct + "%");
       var bar = document.querySelector("[data-yah-bar]");
-      if (bar) bar.style.width = pct + "%";
+      if (bar) bar.style.width = (weekComplete ? 100 : pct) + "%";
       var cta = document.querySelector("[data-yah-cta]");
       if (cta) {
-        cta.textContent = done > 0 ? "Continue where you left off" : "Start this block";
-        cta.setAttribute("href", prefix + "/" + cur.url);
+        cta.textContent = weekComplete
+          ? "Review the week map"
+          : isPrework
+          ? (done > 0 ? "Continue pre-work" : "Start pre-work")
+          : (done > 0 ? "Continue this module" : "Start this module");
+        cta.setAttribute("href", weekComplete
+          ? prefix + "/index.html#journey"
+          : prefix + "/" + cur.url);
       }
     }
 
     if (board) {
       var html = "";
       AHB.JOURNEY.forEach(function (col) {
-        var hasCurrent = col.codes.indexOf(cur.code) !== -1;
+        var hasCurrent = !weekComplete && col.codes.indexOf(cur.code) !== -1;
         html += '<div class="journey-col">';
         html += '<div class="journey-head' + (hasCurrent ? " is-current" : "") + '">';
         html += '<p class="journey-phase">' + col.phase + "</p>";
@@ -471,13 +581,14 @@
         col.codes.forEach(function (code) {
           var b = AHB.block(code);
           var st = statusOf(b, cur);
-          var meta = b.slot === "read" || b.slot === "pre" ? b.meta : b.slot + " · " + b.meta;
+          var meta = b.code === "PREWORK" ? b.meta : b.slot;
           html += '<a class="journey-cell is-' + st + '"' +
             (st === "current" ? ' aria-current="step"' : "") +
             ' href="' + prefix + "/" + b.url + '">';
           html += dotHtml(st);
           html += "<span>";
-          html += '<span class="journey-name">' + b.code + " · " + b.name + "</span>";
+          html += '<span class="journey-name">' +
+            (b.code === "PREWORK" ? "Get ready" : b.code + " · " + b.name) + "</span>";
           html += '<span class="journey-meta">' + meta + "</span>";
           html += "</span></a>";
         });
@@ -489,9 +600,9 @@
     var install = AHB.block("INSTALL");
     var stat = document.querySelector("[data-prework-stat]");
     if (stat && install) {
-      var idone = AHB.countDone(install);
-      stat.textContent = idone + " / " + install.ids.length + " steps checked";
-      stat.classList.toggle("is-done", idone >= install.ids.length);
+      var pw = AHB.preworkProgress();
+      stat.textContent = pw.donePhases + " / " + pw.totalPhases + " phases ready";
+      stat.classList.toggle("is-done", pw.complete);
     }
   }
 
@@ -501,57 +612,52 @@
     var hub = document.querySelector("[data-prework-hub]");
     if (!hub) return;
 
-    var install = AHB.block("INSTALL");
-    var done = AHB.countDone(install);
-    var total = install.ids.length;
-    var pct = Math.round((done / total) * 100);
-    var complete = done >= total;
-    var started = done > 0;
-    // Reading the keys page precedes checklist work on the student path.
-    var keysRead = started;
+    var prework = AHB.preworkProgress();
+    var pct = Math.round((prework.requiredDone / prework.requiredTotal) * 100);
+    var started = prework.requiredDone > 0;
 
-    setText("[data-hub-headline]", complete
+    setText("[data-hub-headline]", prework.complete
       ? "Pre-work complete — see you Monday"
-      : started ? "Install in progress" : "Not started yet");
-    setText("[data-hub-line]", done + " / " + total + " install steps · " + pct + "%");
+      : started ? "Keep moving through the phases" : "Start with the machine");
+    setText("[data-hub-line]", prework.donePhases + " / " + prework.totalPhases + " phases ready");
     var bar = document.querySelector("[data-hub-bar]");
     if (bar) bar.style.width = pct + "%";
     var cta = document.querySelector("[data-hub-cta]");
     if (cta) {
-      if (complete) {
-        cta.textContent = "Review the checklist";
-        cta.setAttribute("href", prefix + "/checklists/prework-install.html");
+      if (prework.complete) {
+        cta.textContent = "Next · Monday B0";
+        cta.setAttribute("href", prefix + "/blocks/b0.html");
       } else if (started) {
-        cta.textContent = "Continue the install checklist";
-        cta.setAttribute("href", prefix + "/checklists/prework-install.html");
+        cta.textContent = "Continue · " + prework.firstPhase.title;
+        cta.setAttribute("href", prefix + "/checklists/prework-install.html#ahb-prework-install-" + prework.firstId);
       } else {
-        cta.textContent = "Start with Your API keys";
-        cta.setAttribute("href", prefix + "/keys.html");
+        cta.textContent = "Start phase 1";
+        cta.setAttribute("href", prefix + "/checklists/prework-install.html#ahb-prework-install-i-time");
       }
     }
 
-    function setStage(name, state, statText, statClass) {
-      var card = document.querySelector('[data-stage="' + name + '"]');
+    prework.phases.forEach(function (phase, index) {
+      var card = document.querySelector('[data-phase="' + phase.id + '"]');
       if (!card) return;
+      var currentPhase = !phase.complete && prework.firstPhase && prework.firstPhase.id === phase.id;
       card.classList.remove("is-done", "is-current");
-      if (state) card.classList.add(state);
+      if (phase.complete) card.classList.add("is-done");
+      else if (currentPhase) card.classList.add("is-current");
+      if (currentPhase) card.setAttribute("aria-current", "step");
+      else card.removeAttribute("aria-current");
       var stat = card.querySelector("[data-stage-stat]");
       if (stat) {
-        stat.textContent = statText;
+        stat.textContent = phase.complete
+          ? "✓ Ready"
+          : (currentPhase ? "Current · " : "") + phase.done + " / " + phase.total;
         stat.classList.remove("stat-done", "stat-current");
-        if (statClass) stat.classList.add(statClass);
+        if (phase.complete) stat.classList.add("stat-done");
+        else if (currentPhase) stat.classList.add("stat-current");
       }
-    }
-
-    setStage("keys",
-      keysRead ? "is-done" : null,
-      keysRead ? "Read" : "Not read yet",
-      keysRead ? "stat-done" : null);
-    setStage("install",
-      complete ? "is-done" : started ? "is-current" : null,
-      done + " / " + total + " steps checked",
-      complete ? "stat-done" : started ? "stat-current" : null);
-    setStage("monday", null, "Opens Monday", null);
+      card.setAttribute("aria-label", "Phase " + (index + 1) + ": " + phase.title +
+        (phase.complete ? ", ready" : currentPhase ? ", current, " : ", ") +
+        (phase.complete ? "" : phase.done + " of " + phase.total + " checks"));
+    });
   }
 
   /* ---------- copy buttons on code blocks ---------- */

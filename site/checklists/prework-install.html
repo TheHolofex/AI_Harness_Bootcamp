@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pre-work · Install guide · Pre-work · Starzl</title>
+  <title>Pre-work install guide · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="../css/course.css" />
   <link rel="stylesheet" href="../css/checklist.css" />
 </head>
@@ -18,12 +18,12 @@
     </div>
   </header>
 
-  <div data-context-for="INSTALL"></div>
+  <div data-context-for="PREWORK"></div>
 
   <main class="site-main checklist-page">
     <p class="eyebrow">Before Monday · interactive checklist</p>
     <h1>Pre-work · Install guide</h1>
-    <p class="lede">This takes your Windows 11 laptop from stock to a working operator chair: six agent tools, three API keys, and a folder where you can prove all of it runs. Plan two to four hours. Verify at the end of each section before you move on — there is no separate health-check pass later. You don't need to be a developer — each step says what it does and what you should see when it works.</p>
+    <p class="lede">Choose a phase, then open one step at a time. Each phase ends in something you can show, not a claim that setup probably worked.</p>
 
 <div class="meta-grid">
   <div><span class="k">Machine</span><span class="v">Windows 11</span></div>
@@ -32,6 +32,14 @@
   <div><span class="k">Progress</span><span class="v"><span data-progress-for="ahb-prework-install">0%</span></span></div>
 </div>
 
+<nav class="checklist-phase-map" aria-label="Pre-work phases">
+  <a href="#phase-basics"><span class="phase-number">1</span><strong>Machine</strong><span data-phase-stat="basics">0 / 19</span></a>
+  <a href="#phase-keys"><span class="phase-number">2</span><strong>Keys</strong><span data-phase-stat="keys">0 / 6</span></a>
+  <a href="#phase-tools"><span class="phase-number">3</span><strong>Tools</strong><span data-phase-stat="tools">0 / 30</span></a>
+  <a href="#phase-files"><span class="phase-number">4</span><strong>Course files</strong><span data-phase-stat="files">0 / 4</span></a>
+  <a href="#phase-pack"><span class="phase-number">5</span><strong>Pack</strong><span data-phase-stat="pack">0 / 3</span></a>
+</nav>
+
 <div class="callout"><strong>Everything runs on API keys</strong>
 You'll be issued three keys — OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly plan during this course. Several tools below offer a subscription login and an API key option on the same screen; always take the API key path. Keep <a href="../keys.html">Your API keys</a> open in another tab while you work.</div>
 
@@ -39,22 +47,23 @@ You'll be issued three keys — OpenAI, xAI, and Anthropic. You will never sign 
 Every command in this guide is typed into PowerShell. You will also install Git Bash, which is a different kind of terminal — but that is a dependency other tools reach for on their own, not a second thing for you to learn. Step 9 shows how to tell at a glance which window you are looking at, because pasting a command into the wrong one produces errors that never say so.</div>
 
 <div class="checklist-toolbar">
-  <p>Check each step when <strong>you</strong> finish it — not when you've read it. The steps you need run 1 to 79; five more are marked <strong>S1</strong> to <strong>S5</strong>, and those are optional extras that sit outside the 79. Progress saves in this browser only, against the exact address in the bar — so stay on one address while you work. Reopening on <code>127.0.0.1</code> instead of <code>localhost</code>, or on the hosted site later, starts a fresh set of boxes rather than losing your old ones. Keep a setup log as you go; what broke and how you fixed it is the evidence you bring Monday.</p>
+  <p>Check observable work when it passes. Reading notes, optional tools, repairs you did not need, and troubleshooting symptoms do not count toward READY. Progress is saved in this browser at this exact address. Keep the <a href="../prework-setup-log.html">web setup log</a> beside you.</p>
   <div class="btn-row">
     <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a>
     <a class="btn btn-secondary" href="../keys.html">Keys reference</a>
-    <button type="button" class="btn btn-secondary" data-checklist-expand>Expand all</button>
-    <button type="button" class="btn btn-secondary" data-checklist-collapse>Collapse all</button>
+    <button type="button" class="btn btn-secondary" data-checklist-expand>Show all instructions</button>
+    <button type="button" class="btn btn-secondary" data-checklist-collapse>Hide all instructions</button>
     <button type="button" class="btn btn-secondary" data-checklist-reset data-storage-key="ahb-prework-install">Reset checks</button>
   </div>
   <div class="progress-bar" aria-hidden="true"><span data-progress-bar-for="ahb-prework-install"></span></div>
 </div>
 <form class="checklist-form" data-checklist data-storage-key="ahb-prework-install">
 
-<section class="checklist-section"><h2>Before you begin</h2>
+<section class="checklist-section" id="phase-basics"><h2>Phase 1 · Prepare the machine</h2>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-before-you-begin.svg" alt="Diagram: Before you begin — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-before-you-begin.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
+<h3>Before you begin</h3>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
@@ -73,7 +82,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <span class="check-num">2</span>
     <span class="check-title">Open a setup log and keep it open</span>
   </label>
-  <div class="check-detail"><p>Copy <code>prework/SETUP_LOG.md</code>, or open any notes file. After each section, write down the result, any error text, what fixed it, and roughly how long it took.</p>
+  <div class="check-detail"><p>Open the <a href="../prework-setup-log.html">web setup log</a> in another tab, or use any notes file. After each section, write down the result, any error text, what fixed it, and roughly how long it took.</p>
   <p>Copy error messages exactly rather than paraphrasing — the precise wording is usually the thing that identifies the problem. A carefully recorded failure is worth more on Monday than a clean install with no trail behind it.</p></div>
 </li>
 
@@ -99,9 +108,9 @@ Every command in this guide is typed into PowerShell. You will also install Git 
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>0 · Baseline machine</h2>
+<section class="checklist-section"><h3>0 · Baseline machine</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-00-baseline.svg" alt="Diagram: 0 · Baseline machine — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-00-baseline.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -148,9 +157,9 @@ Every command in this guide is typed into PowerShell. You will also install Git 
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>1 · Terminal and PowerShell</h2>
+<section class="checklist-section"><h3>1 · Terminal and PowerShell</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-01-terminal.svg" alt="Diagram: 1 · Terminal and PowerShell — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-01-terminal.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -209,9 +218,9 @@ Every command in this guide is typed into PowerShell. You will also install Git 
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>2 · winget, the package manager</h2>
+<section class="checklist-section"><h3>2 · winget, the package manager</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-02-winget.svg" alt="Diagram: 2 · winget, the package manager — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-02-winget.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -253,9 +262,9 @@ Repair-WinGetPackageManager -Force -Latest</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>3 · Git for Windows</h2>
+<section class="checklist-section"><h3>3 · Git for Windows</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-03-git.svg" alt="Diagram: 3 · Git for Windows — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-03-git.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -295,9 +304,9 @@ Test-Path "C:\Program Files\Git\bin\bash.exe"</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>4 · Node.js and Python</h2>
+<section class="checklist-section"><h3>4 · Node.js and Python</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-04-runtime.svg" alt="Diagram: 4 · Node.js and Python — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-04-runtime.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -360,10 +369,11 @@ winget install -e --id OpenJS.NodeJS.LTS</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>5 · Your three API keys</h2>
+<section class="checklist-section" id="phase-keys"><h2>Phase 2 · Install your three API keys</h2>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-05-keys.svg" alt="Diagram: 5 · Your three API keys — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-05-keys.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
+<h3>5 · Your three API keys</h3>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
@@ -453,9 +463,9 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>6 · Your smoke folder</h2>
+<section class="checklist-section"><h3>6 · Your smoke folder</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-06-smoke.svg" alt="Diagram: 6 · Your smoke folder — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-06-smoke.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -481,10 +491,11 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>7 · Codex — your home for the week</h2>
+<section class="checklist-section" id="phase-tools"><h2>Phase 3 · Prove the required tools</h2>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-07-codex.svg" alt="Diagram: 7 · Codex — your home for the week — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-07-codex.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
+<h3>7 · Codex — your home for the week</h3>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
@@ -588,9 +599,9 @@ sandbox = "unelevated"</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>8 · OpenCode — your second engine</h2>
+<section class="checklist-section"><h3>8 · OpenCode — your second engine</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-08-opencode.svg" alt="Diagram: 8 · OpenCode — your second engine — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-08-opencode.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -685,9 +696,9 @@ Get-Content .\from-opencode.txt</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>9 · Pi — the minimal harness</h2>
+<section class="checklist-section"><h3>9 · Pi — the minimal harness</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-09-pi.svg" alt="Diagram: 9 · Pi — the minimal harness — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-09-pi.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -754,9 +765,9 @@ Get-Content .\bash-check.txt</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>10 · goose — recipe, tools, mode, schedule</h2>
+<section class="checklist-section"><h3>10 · goose — recipe, tools, mode, schedule</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-10-goose.svg" alt="Diagram: 10 · goose — recipe, tools, mode, schedule — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-10-goose.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -867,9 +878,9 @@ Get-Content .\from-goose.txt</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>11 · Obsidian</h2>
+<section class="checklist-section"><h3>11 · Obsidian</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-11-obsidian.svg" alt="Diagram: 11 · Obsidian — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-11-obsidian.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -899,9 +910,9 @@ Get-Content .\from-goose.txt</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>12 · n8n</h2>
+<section class="checklist-section"><h3>12 · n8n</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-12-n8n.svg" alt="Diagram: 12 · n8n — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-12-n8n.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -959,10 +970,11 @@ Get-Content .\from-goose.txt</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>13 · Course repo and operator pack</h2>
+<section class="checklist-section" id="phase-files"><h2>Phase 4 · Course repo and operator pack</h2>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-13-repo.svg" alt="Diagram: 13 · Course repo and operator pack — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-13-repo.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
+<h3>13 · Course repo and operator pack</h3>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
@@ -1022,9 +1034,58 @@ auth.json</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>14 · Claude Code — optional third engine</h2>
+<section class="checklist-section" id="phase-pack"><h2>Phase 5 · Pack for Monday</h2>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-14-claude-optional.svg" alt="Diagram: 14 · Claude Code — optional third engine — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-15-pack.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
+</figure>
+<h3>15 · Pack for Monday</h3>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-g-four" data-check-id="g-four" />
+    <span class="check-num">70</span>
+    <span class="check-title">Confirm all four required files exist together</span>
+  </label>
+  <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"</code></pre>
+  <p>You want <code>from-codex.txt</code>, <code>from-opencode.txt</code>, <code>from-pi.txt</code>, and <code>from-goose.txt</code> in one listing. Open the folder in Explorer and look at it too — that is what Monday clinic will ask for. You already proved each file when you installed that tool; this is only the roll-up.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-g-log" data-check-id="g-log" />
+    <span class="check-num">71</span>
+    <span class="check-title">Close the setup log honestly</span>
+  </label>
+  <div class="check-detail"><p>Record any real failure and fix that occurred; do not invent one. Add the OpenCode version, Codex app sandbox mode, and any step still yellow with what you will try in clinic. Use the <a href="../prework-setup-log.html">web setup log</a>. If a tool is wrong, re-run that section’s verify.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-g-pack" data-check-id="g-pack" />
+    <span class="check-num">72</span>
+    <span class="check-title">Pack for Monday clinic</span>
+  </label>
+  <div class="check-detail"><p>Bring the laptop, the four smoke files, and the setup log. Monday AM is an install clinic (~2 hours expected, no hard wall) then First Light. Clinic is for finishing gaps, not for starting from zero if pre-work was skipped.</p>
+  <p>Arriving with a clear written yellow is fine. Arriving with an untested claim is worse, and it surfaces within the hour.</p></div>
+</li>
+</ol></section>
+
+<p class="btn-row"><a class="btn" href="../blocks/b0.html">Monday: clinic + First Light</a> <a class="btn btn-secondary" href="../keys.html">Keys reference</a> <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a></p>
+<div class="callout"><strong>What you actually built</strong>
+Not a tidy install — a chair you can rebuild. You know where each tool keeps its credentials, what its boundaries are, and how it fails. That knowledge is the part you carry to work, and a recorded failure belongs to it rather than counting against it.</div>
+
+<div data-plate-for="PREWORK"></div>
+
+<details class="lane-disclosure">
+<summary>Optional tools · Claude Code + local model</summary>
+<h2 class="visually-hidden">Optional tools · Claude Code and local model</h2>
+<div class="callout optional-lane"><strong>Optional lane</strong>
+Claude Code and a local model never block READY. Add them only if the required five-phase route is already green and you want the extra capability.</div>
+
+<section class="checklist-section optional-section"><h3>Optional · Claude Code third engine</h3>
+<figure class="section-diagram">
+  <img src="../assets/prework/install-14-claude-optional.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -1060,7 +1121,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h2>14b · Local model — optional stretch prep</h2>
+<section class="checklist-section optional-section"><h3>Optional · Local model stretch prep</h3>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
@@ -1103,46 +1164,14 @@ ollama pull $env:HB_LOCAL_MODEL</code></pre>
   <p>Write your free RAM and whether the smoke worked into your setup log. If the pull fails or the machine starts thrashing, stop and log it YELLOW — that is a real result, and cloud goose remains Thursday's floor either way.</p></div>
 </li>
 </ol></section>
+</details>
 
-<section class="checklist-section"><h2>15 · Pack for Monday</h2>
+<details class="lane-disclosure">
+<summary>Only if needed · Troubleshooting</summary>
+<section class="checklist-section conditional-section">
+<h2 class="visually-hidden">Only if needed · Troubleshooting</h2>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-15-pack.svg" alt="Diagram: 15 · Pack for Monday — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
-</figure>
-<ol class="checklist">
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-g-four" data-check-id="g-four" />
-    <span class="check-num">70</span>
-    <span class="check-title">Confirm all four required files exist together</span>
-  </label>
-  <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"</code></pre>
-  <p>You want <code>from-codex.txt</code>, <code>from-opencode.txt</code>, <code>from-pi.txt</code>, and <code>from-goose.txt</code> in one listing. Open the folder in Explorer and look at it too — that is what Monday clinic will ask for. You already proved each file when you installed that tool; this is only the roll-up.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-g-log" data-check-id="g-log" />
-    <span class="check-num">71</span>
-    <span class="check-title">Close the setup log honestly</span>
-  </label>
-  <div class="check-detail"><p>At least one real failure and fix. OpenCode version. Codex app sandbox mode. Any step still yellow, with what you will try in clinic. There is no separate health-check page to run — if a tool is wrong, re-run that section’s verify.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-g-pack" data-check-id="g-pack" />
-    <span class="check-num">72</span>
-    <span class="check-title">Pack for Monday clinic</span>
-  </label>
-  <div class="check-detail"><p>Bring the laptop, the four smoke files, and the setup log. Monday AM is an install clinic (~2 hours expected, no hard wall) then First Light. Clinic is for finishing gaps, not for starting from zero if pre-work was skipped.</p>
-  <p>Arriving with a clear written yellow is fine. Arriving with an untested claim is worse, and it surfaces within the hour.</p></div>
-</li>
-</ol></section>
-
-<section class="checklist-section"><h2>When something breaks</h2>
-<figure class="section-diagram">
-  <img src="../assets/prework/install-when-something-breaks.svg" alt="Diagram: When something breaks — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-when-something-breaks.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
@@ -1227,12 +1256,8 @@ if (($userPath -split ';') -notcontains $bin) {
   <p>A documented blocker you raised on Saturday is a small thing. The same blocker discovered Monday at nine is not.</p></div>
 </li>
 </ol></section>
+</details>
 </form>
-<p class="btn-row"><a class="btn" href="../blocks/b0.html">Monday: clinic + First Light</a> <a class="btn btn-secondary" href="../keys.html">Keys reference</a> <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a></p>
-<div class="callout"><strong>What you actually built</strong>
-Not a tidy install — a chair you can rebuild. You know where each tool keeps its credentials, what its boundaries are, and how it fails. That knowledge is the part you carry to work, and a recorded failure belongs to it rather than counting against it.</div>
-
-<div data-plate-for="INSTALL"></div>
   </main>
   <footer class="site-footer">
     <div class="site-footer-inner">

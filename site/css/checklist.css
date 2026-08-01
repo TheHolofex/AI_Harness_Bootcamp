@@ -60,3 +60,87 @@ ol.checklist { list-style: none; padding: 0; margin: 0; max-width: var(--measure
   .check-label { grid-template-columns: auto 1fr; }
   .check-num { display: none; }
 }
+
+.checklist-phase-map {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 0 0 1.25rem;
+  border: 1px solid var(--rule);
+}
+.checklist-phase-map a {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.15rem 0.55rem;
+  align-items: center;
+  min-height: 5.5rem;
+  padding: 0.65rem;
+  border-right: 1px solid var(--rule);
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--paper);
+}
+.checklist-phase-map a:last-child { border-right: 0; }
+.checklist-phase-map a:hover { background: var(--paper-warm); }
+.checklist-phase-map a.is-current { background: var(--current-tint); box-shadow: inset 0 4px 0 var(--mark); }
+.checklist-phase-map a.is-done { background: var(--done-tint); box-shadow: inset 0 4px 0 var(--ok); }
+.checklist-phase-map .phase-number { grid-row: 1 / 3; margin: 0; width: 2rem; height: 2rem; font-size: 0.9rem; }
+.checklist-phase-map a.is-current .phase-number { background: var(--mark); }
+.checklist-phase-map a.is-done .phase-number { background: var(--ok); }
+.checklist-phase-map strong { line-height: 1.15; }
+.checklist-phase-map [data-phase-stat] { color: var(--ink-faint); font-family: var(--font-mono); font-size: 0.72rem; }
+.checklist-phase-map [data-phase-stat].is-done { color: var(--ok); }
+.checklist-phase-map [data-phase-stat].is-current { color: var(--mark); }
+.check-kind {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.12rem 0.35rem;
+  border: 1px solid var(--rule);
+  color: var(--ink-faint);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  vertical-align: 0.12rem;
+}
+.check-item.is-conditional,
+.check-item.is-optional { border-left-color: var(--ink-faint); background: var(--paper-warm); }
+.check-item.is-conditional .check-num,
+.check-item.is-optional .check-num { background: var(--ink-faint); }
+.optional-lane { margin-top: 2rem; }
+.optional-section,
+.conditional-section { opacity: 0.92; }
+.check-detail-toggle {
+  margin: 0.55rem 0 0 2.9rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.check-detail-toggle:hover,
+.check-detail-toggle:focus-visible { border-color: var(--ink); color: var(--ink); }
+.lane-disclosure {
+  margin: 1.5rem 0;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+}
+.lane-disclosure > summary {
+  padding: 1rem 1.1rem;
+  color: var(--ink);
+  font-weight: 650;
+  cursor: pointer;
+}
+.lane-disclosure > summary:hover { background: var(--paper); }
+.lane-disclosure > summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.lane-disclosure[open] > summary { border-bottom: 1px solid var(--rule); }
+.lane-disclosure > .checklist-section { margin: 0; padding: 0 1rem 1rem; }
+
+@media (max-width: 760px) {
+  .checklist-phase-map { grid-template-columns: 1fr; }
+  .checklist-phase-map a { min-height: 4rem; border-right: 0; border-bottom: 1px solid var(--rule); }
+  .checklist-phase-map a:last-child { border-bottom: 0; }
+  .check-detail-toggle { margin-left: 0; min-height: 2.5rem; }
+}

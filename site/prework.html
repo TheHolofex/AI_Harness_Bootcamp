@@ -9,7 +9,7 @@
 <body>
   <header class="site-header">
     <div class="site-header-inner">
-      <a class="brand" href="./index.html">
+      <a class="brand" href="./index.html" aria-label="AI Harness Bootcamp home">
         <span class="mark-disc" aria-hidden="true"></span>
         <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
       </a>
@@ -19,182 +19,104 @@
 
   <div class="context-strip">
     <div class="context-strip-inner">
-      <a class="context-prev" href="./index.html">← Home</a>
+      <a class="context-prev" href="./index.html">← Course map</a>
       <span class="context-label">Before Monday · Pre-work</span>
-      <a class="context-next" href="./blocks/b0.html">B0 · Install clinic + First Light →</a>
+      <a class="context-next" href="./blocks/b0.html">Monday · B0 →</a>
     </div>
   </div>
 
   <main class="site-main">
     <div class="hub-head">
       <div>
-        <p class="eyebrow">Before Monday · Student-owned install</p>
-        <h1>Pre-work · Mission workstation</h1>
-        <p class="lede">This module gets your Windows laptop ready for the bootcamp. You install the tools yourself — there is no golden image. Plan a focused evening or weekend block, often about 2–4 hours.</p>
-        <p>At work you will own the chair the thinking machine sits in. Pre-work is Cap 0: stand up the workstation before mission week. Verify at the end of each setup step as you go — Monday opens with an install clinic to close gaps, not a second full health-check ritual.</p>
+        <p class="eyebrow">Before Monday · one clear route</p>
+        <h1>Build your mission workstation</h1>
+        <p class="lede">Arrive Monday with a Windows laptop that can run the course, four proof files, and a setup log. Work the five phases from left to right.</p>
+        <div class="meta-grid prework-facts">
+          <div><span class="k">Time</span><span class="v">2–4 hours</span></div>
+          <div><span class="k">Machine</span><span class="v">Windows 11 · x64</span></div>
+          <div><span class="k">Finish</span><span class="v">Before Monday</span></div>
+        </div>
       </div>
       <div class="status-panel" data-prework-hub>
-        <p class="eyebrow">Your pre-work status</p>
-        <p class="status-headline" data-hub-headline>Not started yet</p>
+        <p class="eyebrow">Your position</p>
+        <p class="status-headline" data-hub-headline>Start with the machine</p>
         <div class="status-bar" aria-hidden="true"><span data-hub-bar></span></div>
-        <p class="status-line" data-hub-line>0 / 79 install steps · 0%</p>
-        <a class="status-cta" data-hub-cta href="./keys.html">Start with Your API keys</a>
-        <p class="status-note">Progress saves in this browser as you check steps off.</p>
+        <p class="status-line" data-hub-line>0 / 5 phases ready</p>
+        <a class="status-cta" data-hub-cta href="./checklists/prework-install.html#ahb-prework-install-i-time">Start phase 1</a>
+        <p class="status-note">Checks save in this browser.</p>
       </div>
     </div>
-    <hr class="rule-accent" />
 
-    <h2 class="h-plain mt-section">Work these in order</h2>
-    <p class="section-lede">Read the keys reference first, then work the install checklist top to bottom. Each tool section ends when its proof is on disk.</p>
-    <div class="grid-3">
-      <a class="stage-card" href="./keys.html" data-stage="keys">
-        <p class="eyebrow">1 · Read first · ~10 min</p>
-        <h3>Your API keys</h3>
-        <p>What a key is, which of your three drives which tool, how to store them on Windows, and what to do if one leaks.</p>
-        <p class="card-stat" data-stage-stat>Not read yet</p>
-      </a>
-      <a class="stage-card" href="./checklists/prework-install.html" data-stage="install">
-        <p class="eyebrow">2 · Before Monday · 2–4 hr</p>
-        <h3>Install + verify as you go</h3>
-        <p>Baseline → PowerShell → winget → Git → Node/Python → keys → Codex → OpenCode (Grok) → Pi → goose → Obsidian → n8n → repo → pack for Monday.</p>
-        <p class="card-stat" data-stage-stat>0 / 79 steps checked</p>
-      </a>
-      <a class="stage-card" href="./blocks/b0.html" data-stage="monday">
-        <p class="eyebrow">3 · Monday AM · contact block</p>
-        <h3>Install clinic + First Light</h3>
-        <p>About two hours expected (no hard wall) to finish gaps with help on hand, then the First Light mission. Bring laptop and setup log.</p>
-        <p class="card-stat" data-stage-stat>Opens Monday</p>
-      </a>
-    </div>
+    <figure class="section-diagram prework-route-figure">
+      <img src="./assets/prework/install-overview.svg" alt="Five pre-work phases: prepare the machine, install the keys, prove the tools, open course files, and pack for Monday" width="1120" height="220" decoding="async" />
+    </figure>
 
-    <div class="grid-2 mt-tight">
-      <div class="callout full-measure"><strong>Everything runs on API keys</strong>
-You'll be issued three keys — OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly plan during this course. Several tools offer a subscription login and an API key option on the same screen; always take the API key path. Start at <a href="./keys.html">Your API keys</a>.</div>
-      <div class="callout full-measure"><strong>Twin-engine stack</strong>
-Required pair for class: the Codex app on your OpenAI key (home), plus OpenCode on your xAI key (second engine, Grok). Claude Code is optional and not required to pass pre-work.</div>
-    </div>
-
-    <section class="home-section split-2">
-      <div>
-        <h2>Done means</h2>
-        <ol>
-          <li>Required tools installed and configured against your three API keys</li>
-          <li>Each major setup step’s <strong>verify</strong> checks passed (fresh terminal after PATH changes)</li>
-          <li>All four required agents created a file in <code>Documents\HarnessBootcamp\prework-smoke\</code> that you can see in Explorer</li>
-          <li>A setup log with at least one real failure and fix</li>
-        </ol>
-        <p>There is no separate health-check pass. If something breaks later, re-run that section’s verify — the rescue sheet <code>prework/HEALTH_CHECK.md</code> exists only for a full re-test.</p>
+    <section aria-labelledby="prework-route">
+      <div class="section-head">
+        <h2 id="prework-route">Your five phases</h2>
+        <p class="journey-legend"><span class="legend-here">●</span> current &nbsp;·&nbsp; ✓ ready</p>
       </div>
-      <div>
-        <h2>Setup log</h2>
-        <p>Keep a running log beside the checklist (copy <a href="../prework/SETUP_LOG.md">prework/SETUP_LOG.md</a> or any notes file). For each major step record result, errors, fix, and time. Monday asks for this trail.</p>
-        <div class="callout full-measure"><strong>Monday</strong>
-Bring laptop + setup log. Block 0 is install clinic (~2 hr expected, soft boundary), then First Light. Still blocked after honest clinic work goes to rescue in parallel.</div>
-      </div>
+      <nav class="phase-map" aria-label="Pre-work phase navigation">
+        <a class="phase-card" data-phase="basics" href="./checklists/prework-install.html#phase-basics">
+          <span class="phase-number">1</span><span class="phase-time">45–75 min</span>
+          <strong>Prepare the machine</strong><span class="phase-proof">Windows · shell · Git · runtimes</span>
+          <span class="card-stat" data-stage-stat>0 / 19</span>
+        </a>
+        <a class="phase-card" data-phase="keys" href="./checklists/prework-install.html#phase-keys">
+          <span class="phase-number">2</span><span class="phase-time">20–30 min</span>
+          <strong>Install the keys</strong><span class="phase-proof">3 keys · fresh-shell proof</span>
+          <span class="card-stat" data-stage-stat>0 / 6</span>
+        </a>
+        <a class="phase-card" data-phase="tools" href="./checklists/prework-install.html#phase-tools">
+          <span class="phase-number">3</span><span class="phase-time">75–120 min</span>
+          <strong>Prove the tools</strong><span class="phase-proof">4 agents · Obsidian · n8n</span>
+          <span class="card-stat" data-stage-stat>0 / 30</span>
+        </a>
+        <a class="phase-card" data-phase="files" href="./checklists/prework-install.html#phase-files">
+          <span class="phase-number">4</span><span class="phase-time">15–25 min</span>
+          <strong>Open course files</strong><span class="phase-proof">Repo · operator pack · local site</span>
+          <span class="card-stat" data-stage-stat>0 / 4</span>
+        </a>
+        <a class="phase-card" data-phase="pack" href="./checklists/prework-install.html#phase-pack">
+          <span class="phase-number">5</span><span class="phase-time">15–20 min</span>
+          <strong>Pack for Monday</strong><span class="phase-proof">4 proofs · log · clinic note</span>
+          <span class="card-stat" data-stage-stat>0 / 3</span>
+        </a>
+      </nav>
     </section>
 
-    <h2>Stack at a glance</h2>
-    <div class="table-scroll">
-<table>
-      <thead><tr><th>#</th><th>Component</th><th>Notes</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td>Windows 11, 64-bit</td><td><strong>Not ARM64</strong> — OpenCode and goose have no working ARM build</td></tr>
-        <tr><td>2</td><td>Git for Windows</td><td>Provides Git Bash, which Pi requires. You still work in <strong>PowerShell</strong></td></tr>
-        <tr><td>3</td><td>Node.js <strong>LTS</strong> + Python</td><td>Use the <code>OpenJS.NodeJS.LTS</code> package id — must land in 22.22–24.x</td></tr>
-        <tr><td>4</td><td>PowerShell RemoteSigned</td><td>CurrentUser scope, and no Group Policy override</td></tr>
-        <tr><td>5</td><td><strong>Three API keys</strong></td><td>OpenAI · xAI · Anthropic, as Windows user variables</td></tr>
-        <tr><td>6</td><td><strong>Codex app</strong></td><td>Home tool all week · Codex mode in the <strong>ChatGPT desktop app</strong> · sign in via <em>Sign in another way</em></td></tr>
-        <tr><td>7</td><td><strong>OpenCode</strong> (Grok)</td><td>Required second engine · cohort-pinned version · set <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code></td></tr>
-        <tr><td>8</td><td>Pi</td><td>Minimal, extensible harness · multi-provider · needs Git Bash · pin the model</td></tr>
-        <tr><td>9</td><td>goose</td><td>Local agent · recipes + extensions + mode + schedule · CLI required · from <code>aaif-goose</code> — <strong>not</strong> winget · <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a></td></tr>
-        <tr><td>10</td><td>Obsidian + n8n</td><td>Wed/Thu · both local, no subscription</td></tr>
-        <tr><td>—</td><td>Claude Code (CLI)</td><td><em>Optional</em> third engine · command-line tool, not the desktop app</td></tr>
-      </tbody>
-    </table>
-</div>
+    <section class="prework-ready" aria-labelledby="ready-means">
+      <div><p class="eyebrow">The finish line</p><h2 id="ready-means">READY means you can show it</h2></div>
+      <ul class="ready-grid">
+        <li><strong>Four files</strong><span>Codex · OpenCode · Pi · goose</span></li>
+        <li><strong>Fresh shell</strong><span>Keys and required commands still work</span></li>
+        <li><strong>Course opens</strong><span>Repo and local site are in place</span></li>
+        <li><strong>Trail saved</strong><span><a href="./prework-setup-log.html">Setup log</a> + honest clinic items</span></li>
+      </ul>
+    </section>
 
-    <h2>Traps worth knowing before you start</h2>
-    <p class="section-lede">These cost the most time, and none of them announce themselves clearly.</p>
-    <div class="trap-grid">
-      <div class="trap-card">
-        <p class="t">You only ever type into PowerShell.</p>
-        <p>Windows ships three terminals that look alike, and commands are not interchangeable. Git Bash gets installed as a dependency, not as a second shell to learn.</p>
-      </div>
-      <div class="trap-card">
-        <p class="t">A new terminal is required after every install.</p>
-        <p>A terminal reads PATH once when it opens. This is behind more “it didn’t install” reports than everything else combined.</p>
-      </div>
-      <div class="trap-card">
-        <p class="t">The Codex app ignores OPENAI_API_KEY entirely.</p>
-        <p>Every other tool reads the variable; this one reads the key you paste into <em>Sign in another way</em> on its signed-out screen.</p>
-      </div>
-      <div class="trap-card">
-        <p class="t">The permission mode is what switches the sandbox on.</p>
-        <p>Set it to <strong>Ask for approval</strong> beneath the message box, or Codex runs without the boundaries the rest of the week assumes.</p>
-      </div>
-      <div class="trap-card">
-        <p class="t">The .LTS suffix on the Node package id is not optional.</p>
-        <p>Plain <code>OpenJS.NodeJS</code> installs a release too new for n8n.</p>
-      </div>
-      <div class="trap-card">
-        <p class="t">Installing goose with winget gets you a different program.</p>
-        <p>An unrelated database tool shares the name. Install from <code>aaif-goose</code> instead.</p>
-      </div>
-      <div class="trap-card">
-        <p class="t">OpenCode’s curl install command can’t run in PowerShell.</p>
-        <p>It is a bash script, and no PowerShell version exists. Use the cohort-pinned path.</p>
-      </div>
-      <div class="trap-card">
-        <p class="t">OpenCode reads Claude Code’s files by default.</p>
-        <p>Set <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> or your second engine quietly loads the first engine’s instructions.</p>
-      </div>
-      <div class="trap-card">
-        <p class="t">Pi looks for its shell only when it first needs one.</p>
-        <p>A missing Git Bash fails mid-exercise rather than at setup.</p>
-      </div>
-      <div class="trap-card">
-        <p class="t">n8n’s first screen looks like a signup and isn’t one.</p>
-        <p>It creates a local account on your own laptop. No subscription is involved.</p>
-      </div>
-    </div>
-
-    <section class="home-section" aria-labelledby="prework-field-guides">
-      <h2 id="prework-field-guides">Field guides for setup evidence</h2>
-      <p class="section-lede">Use these after the checklist when a green check is not yet a diagnosis or durable proof.</p>
-      <div class="card-grid">
+    <section class="secondary-help" aria-labelledby="need-help">
+      <div><p class="eyebrow">Only when you need it</p><h2 id="need-help">Blocked or already green?</h2></div>
+      <div class="grid-2">
         <a class="card" href="./resources/prework/install-fault-tree.html">
-          <p class="eyebrow">PW-2 · 45–60 min</p>
-          <h3>The Install Fault Tree</h3>
-          <p>Choose the next discriminating observation, preserve the failing state, and hand off an evidence packet instead of a repair story.</p>
+          <p class="eyebrow">Optional help · 45–60 min</p><h3>An install step failed</h3>
+          <p>Use the fault tree to choose the next check and preserve useful evidence.</p>
         </a>
         <a class="card" href="./resources/prework/cold-start-reproducibility.html">
-          <p class="eyebrow">PW-4 · 45–60 min</p>
-          <h3>Cold-Start Reproducibility</h3>
-          <p>Prove that workstation readiness survives a restart, rather than depending on an open process, stale output, or a remembered repair.</p>
+          <p class="eyebrow">Optional deeper proof · 45–60 min</p><h3>Everything is already green</h3>
+          <p>Run the cold-start protocol only if you want stronger durability evidence.</p>
         </a>
       </div>
     </section>
 
     <div class="plate">
-      <a class="plate-cell" href="./keys.html">
-        <span class="plate-eyebrow">← Read first</span>
-        <span class="plate-title">Your API keys</span>
-      </a>
-      <a class="plate-mid" href="./index.html">Home</a>
-      <a class="plate-cell plate-next" href="./blocks/b0.html">
-        <span class="plate-eyebrow">Next · Monday AM →</span>
-        <span class="plate-title">B0 · Install clinic + First Light</span>
-      </a>
+      <a class="plate-cell" href="./index.html#journey"><span class="plate-eyebrow">← Course map</span><span class="plate-title">Pre-work · Monday–Friday</span></a>
+      <a class="plate-mid" href="./keys.html">Keys help</a>
+      <a class="plate-cell plate-next" href="./blocks/b0.html"><span class="plate-eyebrow">Next · Monday AM →</span><span class="plate-title">B0 · First Light</span></a>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
-      <div>inquiries@starzl.com · starzl.com</div>
-    </div>
-  </footer>
-
+  <footer class="site-footer"><div class="site-footer-inner"><div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div><div>inquiries@starzl.com · starzl.com</div></div></footer>
   <script src="./js/registry.js"></script>
   <script src="./js/shell.js"></script>
 </body>
