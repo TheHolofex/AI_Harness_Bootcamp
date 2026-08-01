@@ -127,37 +127,127 @@
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Work the stages in order and check each step when its proof exists. Progress saves in this browser — the same tick shows on the home page.</p>
+        <p class="section-lede">Work top to bottom. The gray blocks are the doing — copy each one into the surface its label names, in order — and the prose between them tells you what to expect and how to recover. Check each step when its proof exists; progress saves in this browser and the same tick shows on the home page.</p>
 
         <h3 id="stage-1">Stage 01 · Open the vault, write the bounds</h3>
-        <p>Before the machine touches a note, you establish what it is working toward and what it can reach. Three moves: a LIVE brief, a vault on disk, and a scope the assistant can repeat back to you.</p>
-        <ol class="checklist">
+        <p>Before the machine touches a note, you establish what it is working toward and what it can reach. The brief comes first, and it is written in the operator chat — never in the chat that will run the mission.</p>
 
+        <div class="do-step">
+          <p class="do-label">Now in the Codex app:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>Operator — Direction &amp; Log</strong> in the sidebar — the standing chat you named in B0; it lives on the course project, <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+          </ul>
+        </div>
+
+        <!-- Embedded verbatim from operator/DIRECTION_BRIEF.md — operator-chat starter -->
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <pre><code>We are writing the Direction Brief for this block together.
+
+Read operator/DIRECTION_BRIEF.md (or this file). Interview me in short turns.
+Do not dump all five fields at once unless I already gave you a clear mission.
+
+For each field:
+1. Ask one focused question.
+2. Propose tight wording from my answer.
+3. Challenge anything vague, uncheckable, or unbounded.
+4. Wait for me to accept or correct before moving on.
+
+When all five fields are accepted, write them into this file, set Status to LIVE,
+and remind me to run the mission in a separate build chat — not here.
+
+After the mission, we will write the Operator Log in this same chat.</code></pre>
+        </div>
+
+        <p>The AI starts interviewing you in short turns. Answer from the P4 mission — the next block hands it the whole picture at once, so the interview tightens each field instead of dragging it out of you question by question.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong> as your first answer:</p>
+          <pre><code>Block: P4 — the director's second brain.
+Outcome: an Obsidian vault at Documents\p4-vault that answers director
+questions with walkable citations; two answer notes under Answers/; a
+Morning_Brief.md generated from the vault.
+Done looks like: I can open each answer note in Obsidian, click every
+[[citation]], and find the supporting sentence; an Audit note records a
+verdict for every citation; Morning_Brief.md cites only audited notes.
+Bounds: read and write only inside the p4-vault folder. Names and
+incident details never leave the vault. No deletions — processed
+captures move to 00_Inbox/processed/. The .obsidian folder is
+Obsidian's own settings — never touch it.
+Evidence standard: every citation opened by me, verdict marked in the
+Audit note. Model self-assessment does not count.
+Stop / hand-back: propose before writing during triage; stop and ask if
+a question cannot be answered from the vault.
+Challenge anything vague before you accept it. Then set Status to LIVE.</code></pre>
+        </div>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-pulse-brief" name="p4-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">1</span>
               <span class="check-title">Co-write the Direction Brief until LIVE</span>
             </label>
-            <div class="check-detail">In chat <strong>Operator — Direction &amp; Log</strong>, paste the brief starter and fill all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Name the artifacts — a navigable vault, two cited answers, a Morning Brief note — not &quot;organize my notes.&quot; Evidence standard today is specific: every citation opened by you, verdict marked. You should see the AI push back on anything vague; that push-back is the co-writing. If it accepts everything on the first pass, your fields are too vague to fail — tighten Done-looks-like and Evidence standard until it argues. Status <strong>LIVE</strong> before the mission starts.</div>
+            <div class="check-detail">The interview is the co-writing: the AI asks one field at a time, proposes tight wording, and challenges anything vague. You should see it push back — on the outcome if it drifts toward &quot;organize my notes,&quot; on any evidence standard it cannot check. If it accepts everything on the first pass, your fields are too vague to fail; tighten Done-looks-like and Evidence standard until it argues. Status <strong>LIVE</strong> before the mission starts.</div>
           </li>
+        </ol>
 
+        <p>Next, the vault itself. The seed ships with the course pack; you copy it out to a folder you own so the course copy stays clean and the machine works on files that are yours.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into a <strong>PowerShell window</strong>:</p>
+          <pre><code>Copy-Item -Recurse "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p4\vault_seed" "$env:USERPROFILE\Documents\p4-vault"
+Get-ChildItem "$env:USERPROFILE\Documents\p4-vault"</code></pre>
+        </div>
+
+        <p>The listing should show <code>00_Inbox</code>, <code>Decisions.md</code>, <code>Events.md</code>, <code>MOC.md</code>, <code>People.md</code>, and <code>Systems.md</code>. If it shows a single <code>vault_seed</code> folder instead, the copy landed inside a folder that already existed — delete <code>Documents\p4-vault</code> in File Explorer and run the block again.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in Obsidian:</p>
+          <ul class="do-clicks">
+            <li>If a vault is already open, click the <strong>vault switcher</strong> icon at the bottom of the left ribbon; on a fresh launch you are already at the vault screen</li>
+            <li>Click <strong>Open folder as vault</strong>, browse to <code>Documents\p4-vault</code>, and click <strong>Select Folder</strong></li>
+          </ul>
+        </div>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-vault" name="p4-p4-vault" data-check-id="p4-vault" />
               <span class="check-num">2</span>
               <span class="check-title">Copy the vault seed and open it in Obsidian</span>
             </label>
-            <div class="check-detail">Copy <code>mission_flesh/p4/vault_seed/</code> to a working folder you own (for example <code>Documents\p4-vault</code>) so the course copy stays clean. In Obsidian, choose <strong>Open folder as vault</strong> and pick that folder. You should see <code>MOC</code>, <code>People</code>, <code>Systems</code>, <code>Events</code>, <code>Decisions</code>, and a <code>00_Inbox</code> folder holding four captures. If the file list looks wrong, you opened the parent folder — reopen at the folder that directly contains <code>MOC.md</code>.</div>
+            <div class="check-detail">You should see <code>MOC</code>, <code>People</code>, <code>Systems</code>, <code>Events</code>, <code>Decisions</code>, and a <code>00_Inbox</code> folder holding four captures in Obsidian&#x27;s file list. If the list looks wrong, you opened the parent folder — reopen at the folder that directly contains <code>MOC.md</code>. Everything today happens in <code>Documents\p4-vault</code>; the course copy stays untouched.</div>
           </li>
+        </ol>
 
+        <p>Now the build chat — the separate chat where the mission runs. Opening the vault folder as its project is the structural half of your scope; the brief&#x27;s Bounds field is the written half. You are about to prove the structural half holds.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in the Codex app:</p>
+          <ul class="do-clicks">
+            <li>Start a <strong>new chat</strong> — this is today&#x27;s build chat</li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\p4-vault</code> — each chat keeps its own project, so your operator chats stay on the course project and you click between them all morning</li>
+            <li>Leave the permission mode at <strong>Ask for approval</strong> — a machine is about to write into your knowledge base</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
+          <pre><code>Before we start: list every file and folder you can see from the
+project root, as a tree. Do not open or change anything yet.</code></pre>
+        </div>
+
+        <p>Put the tree next to File Explorer&#x27;s view of <code>Documents\p4-vault</code>. The tree should show the six entries you copied plus one more: a <code>.obsidian</code> folder, which Obsidian created the moment you opened the vault — Explorer may or may not show it, depending on its hidden-items setting. That folder is Obsidian&#x27;s own settings — config, not content — and it is fine. Anything else beyond the vault means the project is opened too high; reopen it at the vault root and probe again.</p>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-scope" name="p4-p4-scope" data-check-id="p4-scope" />
               <span class="check-num">3</span>
               <span class="check-title">Scope the assistant&#x27;s reach, and prove it</span>
             </label>
-            <div class="check-detail">Start a fresh build chat in the Codex app and open the vault folder as its project, keeping the permission mode at <strong>Ask for approval</strong> while a machine writes into your knowledge base. Each chat keeps its own project — your pinned operator chats stay in the sidebar on the course project, and you click between chats all morning. Your brief&#x27;s Bounds field states: read and write only inside the vault, plus the never-leave list (names, incident details). Then prove the scope: ask the assistant to list the files it can see and compare against Explorer. More than the vault means the project is opened too high — reopen at the vault root.</div>
+            <div class="check-detail">The tree shows the six seeded entries plus Obsidian&#x27;s <code>.obsidian</code> settings folder — expected, whether or not Explorer shows it. Your brief&#x27;s Bounds field states the same edge in writing: read and write only inside the vault, plus the never-leave list (names, incident details). Two layers, two guarantees — the folder edge governs what <em>can</em> happen, the brief what <em>may</em>. If the tree showed anything beyond the vault, do not proceed until the reopen fixed it.</div>
           </li>
         </ol>
 
@@ -165,125 +255,252 @@
         <figure class="section-diagram">
           <img src="../assets/blocks/p4/p4-stage-triage.svg" alt="Stage 2: four raw inbox captures become titled notes linked under the People, Systems, Events, and Decisions hubs" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
-        <p>Now the raw captures become roads. You direct the organization; the assistant does the typing. The one decision you must not delegate is the ontology — the naming scheme and hub structure the whole vault will follow. People / Systems / Events / Decisions is the seeded default; replace it with your own if your desk thinks differently.</p>
-        <ol class="checklist">
+        <p>Now the raw captures become roads. You direct the organization; the assistant does the typing. The one decision you must not delegate is the ontology — the naming scheme and hub structure the whole vault will follow. People / Systems / Events / Decisions is the seeded default; if your desk thinks differently, edit those four words in the paste before sending it.</p>
 
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
+          <pre><code>Vault root: this project's root folder — the folder that contains MOC.md.
+Only read and write inside this vault.
+Process each file in 00_Inbox into notes under People / Systems /
+Events / Decisions.
+For each capture: propose the note title(s) and links first; wait for my OK.
+Preserve status words exactly (rumor, unreproduced, ignore for prod).
+Link every new note from its hub and from MOC. Do not delete the
+originals; move processed captures to 00_Inbox/processed/.</code></pre>
+        </div>
+
+        <p>You should get proposals back, not files — a title and a home for each of the four captures, waiting on your OK. Read them as the owner: would you find that note in three weeks? If a proposal is wrong, say so and get a revised one; the typing is delegated, the naming is not. When the titles are ones you can live with:</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this reply into the <strong>build chat</strong>:</p>
+          <pre><code>Approved as proposed. Write the notes now. Keep the status words
+(rumor, unreproduced, ignore for prod) verbatim, link every new note
+from its hub and from MOC, and move each processed capture to
+00_Inbox/processed/. Then list every note you created.</code></pre>
+        </div>
+
+        <p>The Codex app will ask you to approve each write — that is Ask-for-approval doing its job, so approve them; nothing lands until you do. Then switch to Obsidian and watch the file list fill — the shared-files mechanism at work. Open a hub, click through to a new note, and open the graph view (left ribbon) to see the connections.</p>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-inbox" name="p4-p4-inbox" data-check-id="p4-inbox" />
               <span class="check-num">4</span>
               <span class="check-title">Process 00_Inbox into linked, titled notes</span>
             </label>
-            <div class="check-detail">Direct the assistant: propose a title and home for each capture first, write only after you approve. Require <code>[[links]]</code> from the hub notes to every new note, and require status words — <em>rumor</em>, <em>unreproduced</em>, <em>ignore for prod</em> — to survive into the new notes verbatim. You should see the hubs link out to new notes and the graph view (left ribbon in Obsidian) show connections. If you got a dump of AI-named files instead, the ontology was never stated — name it and redirect.</div>
+            <div class="check-detail">You should see the hubs link out to the new notes and the graph view show a connected structure, with status words — <em>rumor</em>, <em>unreproduced</em>, <em>ignore for prod</em> — surviving into the new notes verbatim. Spot-open the SSO note and check the word <em>unreproduced</em> is still there. If you got a dump of AI-named files instead, the ontology was never stated — name it and redirect.</div>
           </li>
         </ol>
-        <div class="panel">
-          <p class="eyebrow">A triage direction that keeps you in charge</p>
-          <pre><code>Vault root: [path]. Only read and write inside this vault.
-Process each file in 00_Inbox into notes under People / Systems / Events / Decisions.
-For each capture: propose the note title(s) and links first; wait for my OK.
-Preserve status words exactly (rumor, unreproduced, ignore for prod).
-Link every new note from its hub and from MOC. Do not delete the originals;
-move processed captures to 00_Inbox/processed/.</code></pre>
-        </div>
 
         <h3 id="stage-3">Stage 03 · Director questions with walkable citations</h3>
         <figure class="section-diagram">
           <img src="../assets/blocks/p4/p4-stage-question.svg" alt="Stage 3: one director question fans out across several notes and converges into a single answer whose claims each cite a note" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
-        <p>This is the payoff of the triage: questions no single note can answer. The two questions are in <a href="../../mission_flesh/p4/director_questions.md"><code>mission_flesh/p4/director_questions.md</code></a>. Each answer lands as a dated note inside the vault — a <code>[[wiki-link]]</code> is only clickable where Obsidian renders it, and an answer that stays in the chat is just text with brackets. Hold the answers to the standard your brief set — multi-note, cited, status carried — and remember that the machine will happily meet a lower standard if you let it.</p>
-        <ol class="checklist">
+        <p>This is the payoff of the triage: questions no single note can answer. Both come from <a href="../../mission_flesh/p4/director_questions.md"><code>mission_flesh/p4/director_questions.md</code></a>, and each answer lands as a note inside the vault — a <code>[[wiki-link]]</code> is only clickable where Obsidian renders it, and an answer that stays in the chat is just text with brackets. The machine will happily meet a lower standard if you let it; the pastes below do not let it.</p>
 
+        <!-- Question 1 embedded verbatim from mission_flesh/p4/director_questions.md -->
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
+          <pre><code>Answer from the vault only. Write the answer as a note at
+Answers/Q1 Risks.md inside the vault, dated today at the top.
+Cite notes as [[Note Name]] and, for each claim, quote the sentence
+in the note that supports it.
+The question: What are the top operational risks this week and which notes support each?
+Do not cite a note that does not exist. Carry status words (rumor,
+unreproduced) into the answer. Where the vault is silent, say so.</code></pre>
+        </div>
+
+        <p>Approve the write when the app asks, and the note should appear in Obsidian under <code>Answers/</code> within the minute. Before you judge the content, smoke-test the trails:</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in Obsidian:</p>
+          <ul class="do-clicks">
+            <li>Click <code>Answers/Q1 Risks</code> in the file list to open the answer note</li>
+            <li>Click any two of its <code>[[citations]]</code> — each should open a real note; a faded link that offers to create a new note is a fake cite</li>
+          </ul>
+        </div>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-q1" name="p4-p4-q1" data-check-id="p4-q1" />
               <span class="check-num">5</span>
               <span class="check-title">Director question 1 — multi-note, cited</span>
             </label>
-            <div class="check-detail">Ask: what are the top operational risks this week, and which notes support each? Have the answer written as a note in the vault — <code>Answers/Q1 Risks.md</code> — per the panel below. You should see it appear in Obsidian, claims each citing a <code>[[note]]</code> and spanning several notes: the export, billing, and SSO facts live in different notes, so a real answer must span them. Open the answer note and click two links as a smoke test — real notes, not faded links offering to create one. Single-note answers or unresolved links: failure catalog below, then re-ask.</div>
+            <div class="check-detail">You should see claims each citing a <code>[[note]]</code> and spanning several notes — the export, billing, and SSO facts live in different notes, so a real answer must span them. The smoke test catches fake cites early: real notes opened, none faded. Single-note answers or unresolved links: failure catalog below, then re-ask.</div>
           </li>
+        </ol>
 
+        <!-- Question 2 embedded verbatim from mission_flesh/p4/director_questions.md -->
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
+          <pre><code>Same rules as the last answer. Write the answer as a note at
+Answers/Q2 Blocked Decision.md inside the vault, dated today at the top.
+Cite notes as [[Note Name]] and quote the supporting sentence per claim.
+The question: What decision is blocked and what evidence is missing?
+Do not cite a note that does not exist. Carry status words into the
+answer. Where the vault is silent, say so.</code></pre>
+        </div>
+
+        <p>This one tests whether triage kept the decision open instead of resolving it by paraphrase — the ship-order question has unclear owners, and a good answer says so and names what evidence would unblock it. Run the same smoke test:</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in Obsidian:</p>
+          <ul class="do-clicks">
+            <li>Open <code>Answers/Q2 Blocked Decision</code> and click any two of its <code>[[citations]]</code> — real notes, none faded</li>
+          </ul>
+        </div>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-q2" name="p4-p4-q2" data-check-id="p4-q2" />
               <span class="check-num">6</span>
               <span class="check-title">Director question 2 — same standard</span>
             </label>
-            <div class="check-detail">Ask: what decision is blocked, and what evidence is missing? This one tests whether triage kept the decision open instead of resolving it by paraphrase — the ship-order question has unclear owners, and a good answer says so and names what evidence would unblock it. Same bar, same landing: an answer note in the vault, multiple notes cited, resolvable links. The &quot;what is missing&quot; half is the interesting half; a vault that can say what it does not know is worth more than one that always answers.</div>
+            <div class="check-detail">Same bar, same landing: an answer note in the vault, multiple notes cited, resolvable links — and the decision held open, not resolved by paraphrase. The &quot;what is missing&quot; half is the interesting half; a vault that can say what it does not know is worth more than one that always answers. If the answer invented an owner or a resolution, that is a failed trail waiting for Stage 04.</div>
           </li>
         </ol>
-        <div class="panel">
-          <p class="eyebrow">A vault-scoped director prompt</p>
-          <pre><code>Vault root: [path]. Only read and write inside this vault.
-Answer from the vault only. Write each answer as its own dated note
-under Answers/ in the vault. Cite notes as [[Note Name]] and, for each
-claim, quote the sentence in the note that supports it.
-1) What are the top operational risks this week, and which notes support each?
-2) What decision is blocked, and what evidence is missing?
-Do not cite a note that does not exist. Carry status words (rumor,
-unreproduced) into the answer. Where the vault is silent, say so.</code></pre>
-        </div>
 
         <h3 id="stage-4">Stage 04 · Walk every trail, kill what fails</h3>
         <figure class="section-diagram">
           <img src="../assets/blocks/p4/p4-stage-audit.svg" alt="Stage 4: an audit ledger — every cited note opened and marked support, partial, or not supported; the partial verdict drives a revision" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
-        <p>The audit is where your judgment does the work, and it is yours alone — the assistant does not grade its own citations. Budget real time for it. Fifteen minutes of walking trails teaches you more about machine-generated knowledge than an hour of generating it.</p>
-        <ol class="checklist">
+        <p>The audit is where your judgment does the work, and it is yours alone — the assistant does not grade its own citations, so nothing in this stage goes through the build chat until a trail has already failed. Budget real time for it. Fifteen minutes of walking trails teaches you more about machine-generated knowledge than an hour of generating it.</p>
 
+        <div class="do-step">
+          <p class="do-label">Now in Obsidian:</p>
+          <ul class="do-clicks">
+            <li>Press <strong>Ctrl+N</strong> to create a new note, and name it <code>Audit</code></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>Audit note in Obsidian</strong> — put today&#x27;s date in place of [TODAY]:</p>
+          <pre><code># Audit — [TODAY]
+
+## Answers/Q1 Risks
+| Citation | Sentence that carries the claim | Verdict |
+|---|---|---|
+|  |  |  |
+
+## Answers/Q2 Blocked Decision
+| Citation | Sentence that carries the claim | Verdict |
+|---|---|---|
+|  |  |  |
+
+## Revised or killed
+Claim before:
+Trail that failed:
+Claim after (or CUT):</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now in Obsidian, walk every trail — this part is yours, not the machine&#x27;s:</p>
+          <ul class="do-clicks">
+            <li>Open <code>Answers/Q1 Risks</code> and click its first <code>[[citation]]</code></li>
+            <li>In the note that opens, find the one sentence that actually carries the claim, and copy it into that citation&#x27;s row in the <code>Audit</code> table</li>
+            <li>Mark the row&#x27;s verdict: <strong>support</strong>, <strong>partial</strong>, or <strong>not supported</strong> — partial when the note hedges (<em>rumor</em>, <em>unreproduced</em>) and the answer does not</li>
+            <li>Click back to the answer note and repeat for every citation in both answer notes — every one, not a sample</li>
+          </ul>
+        </div>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-audit" name="p4-p4-audit" data-check-id="p4-audit" />
               <span class="check-num">7</span>
               <span class="check-title">Walk every cited trail and mark a verdict</span>
             </label>
-            <div class="check-detail">Work from the two answer notes in Obsidian. For every citation in both: click it, read the note, find the sentence that carries the claim, and mark <strong>support / partial / not supported</strong> — in writing, in your log or an <code>Audit</code> note in the vault. Partial is the verdict to respect: a note recording an <em>unreproduced</em> rumor only partially supports an answer listing it as a live risk. If every verdict comes back support on the first pass, you are probably reading generously — re-check the claims against the exact sentences.</div>
+            <div class="check-detail">Every citation in both answers has a row: the sentence you found and a written verdict — <strong>support / partial / not supported</strong>. Partial is the verdict to respect: a note recording an <em>unreproduced</em> rumor only partially supports an answer listing it as a live risk. If every verdict comes back support on the first pass, you are probably reading generously — re-check the claims against the exact sentences.</div>
           </li>
+        </ol>
 
+        <p>Now act on the audit. Pick the claim whose verdict was partial or not supported — the SSO rumor stated as a live risk is the usual candidate. If every verdict honestly came back support, hold the answers to a harder line: a claim earns <strong>support</strong> only when the cited sentence carries it at the same strength, hedges and all — re-mark on that standard and one row will give. Then make the machine repair the failed claim against the trail, not against its own memory.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong> — put the answer note&#x27;s name in place of [ANSWER NOTE] and the failed claim&#x27;s text in place of [CLAIM]:</p>
+          <pre><code>In [ANSWER NOTE], this claim failed my trail audit: "[CLAIM]".
+The cited note does not support it as stated. Revise the answer note:
+restate the claim to match exactly what its note says — keep status
+words like rumor and unreproduced — or cut it if no note carries it.
+Quote the exact supporting sentence under each claim you revise.
+Do not change claims I did not name.</code></pre>
+        </div>
+
+        <p>Then fill the <strong>Revised or killed</strong> section of your Audit note: the claim before, the trail that failed, the claim after (or CUT). The adversarial chat will ask for exactly this.</p>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-kill" name="p4-p4-kill" data-check-id="p4-kill" />
               <span class="check-num">8</span>
               <span class="check-title">Revise or kill at least one weak answer</span>
             </label>
-            <div class="check-detail">Act on the audit: at least one claim revised or killed because its trail failed — restated as rumor, cut entirely, or re-asked with a tighter direction such as &quot;quote the exact supporting sentence per claim.&quot; The reason must be the trail, not vibes, and the before/after goes in your log; the adversarial chat will ask for it. If nothing failed even on a hard second read, tighten the standard until something honest gives — a first audit that catches nothing usually means the bar moved, not the machine.</div>
+            <div class="check-detail">At least one claim revised or killed because its trail failed — restated as rumor, cut entirely, or re-asked with the tighter direction above. The reason must be the trail, not vibes, and the before/after sits in the Audit note&#x27;s Revised-or-killed section. If nothing failed even on a hard second read, tighten the standard until something honest gives — a first audit that catches nothing usually means the bar moved, not the machine.</div>
           </li>
         </ol>
 
         <h3 id="stage-5">Stage 05 · Generate the Morning Brief into the vault</h3>
         <p>Now the machine pattern: a regenerable product living inside the system, not a paste into a document. The brief lands as a note, so it can cite notes — and so tomorrow&#x27;s version can replace it without losing anything.</p>
-        <ol class="checklist">
 
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
+          <pre><code>Vault root: this project's root folder. Only read and write inside
+this vault.
+Write Morning_Brief.md into the vault: today's date, short.
+Every claim cites a [[note]] — vault notes only, never this chat.
+Include only claims whose trails I marked support in my Audit note;
+carry status words (rumor, unreproduced). Where the vault is silent,
+say so instead of filling the gap.</code></pre>
+        </div>
+
+        <p>Approve the write, and you should see the note appear in Obsidian the moment it lands — the shared-files mechanism again. Before accepting it:</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in Obsidian:</p>
+          <ul class="do-clicks">
+            <li>Click <code>Morning_Brief</code> in the file list and read it once through</li>
+            <li>Click any two of its <code>[[citations]]</code> — each should land on a note you already audited</li>
+          </ul>
+        </div>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-morning" name="p4-p4-morning" data-check-id="p4-morning" />
               <span class="check-num">9</span>
               <span class="check-title">Morning_Brief.md in the vault, verified links only</span>
             </label>
-            <div class="check-detail">Direct the assistant to write <code>Morning_Brief.md</code> into the vault: dated, short, every claim citing a <code>[[note]]</code> — and only claims whose trails you verified in Stage 4. You should see the note appear in Obsidian the moment it is written; that is the shared-files mechanism working. Spot-walk two of its citations before accepting. If the brief quotes the chat instead of citing notes, reject it and regenerate — that difference is exactly what makes it a product instead of a transcript.</div>
+            <div class="check-detail">Dated, short, every claim citing a <code>[[note]]</code> — and only claims whose trails you verified in Stage 04, with two spot-walked on acceptance. If the brief quotes the chat instead of citing notes, reject it and regenerate — that difference is exactly what makes it a product instead of a transcript.</div>
           </li>
         </ol>
-        <div class="panel">
-          <p class="eyebrow">A Morning Brief direction that stays a product</p>
-          <pre><code>Vault root: [path]. Only read and write inside this vault.
-Write Morning_Brief.md into the vault: today&#x27;s date, short.
-Every claim cites a [[note]] — vault notes only, never the chat.
-Include only claims whose trails I marked support in the audit;
-carry status words (rumor, unreproduced). Where the vault is
-silent, say so instead of filling the gap.</code></pre>
-        </div>
 
         <h3 id="stage-6">Stage 06 · Bank the transfer seed</h3>
         <p>One written sentence now beats reconstruction later — the transfer chat will build on whatever you bank here.</p>
-        <ol class="checklist">
 
+        <div class="do-step">
+          <p class="do-label">Now in Obsidian:</p>
+          <ul class="do-clicks">
+            <li>Press <strong>Ctrl+N</strong> and name the new note <code>Transfer Seed</code></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now type your sentence into the <strong>Transfer Seed note</strong>, in this shape — replace each bracket with your own desk&#x27;s truth:</p>
+          <pre><code>At work, [WHAT KNOWLEDGE] currently lives in [MY HEAD / A CHAT
+SCROLLBACK / A PILE OF DOCUMENTS] and should live in a linked
+structure a machine can work inside.</code></pre>
+        </div>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-transfer" name="p4-p4-transfer" data-check-id="p4-transfer" />
               <span class="check-num">10</span>
               <span class="check-title">Name what must live in a navigable system at work</span>
             </label>
-            <div class="check-detail">One honest sentence, written down now while the morning is fresh: what knowledge at your work currently lives in your head, a chat scrollback, or a pile of documents — and should live in a linked structure a machine can work inside. Decisions and their reasons? Client facts? Incident history? You will develop this in the transfer chat during the pulse; jotting it here keeps it real instead of reconstructed.</div>
+            <div class="check-detail">One honest sentence, written while the morning is fresh. Decisions and their reasons? Client facts? Incident history? You will develop it in the transfer chat during the pulse; the note keeps it real instead of reconstructed.</div>
           </li>
         </ol>
       </section>
@@ -325,49 +542,204 @@ silent, say so instead of filling the gap.</code></pre>
 
         <h3>Stretch, once the floor is solid</h3>
         <p>Three directions, in rough order of value. Reconciliation: ask a question that forces two conflicting notes into the same answer — the director&#x27;s ask treats the cyber rumor as possibly live while the on-call paste records it as unreproduced — and require the conflict to surface explicitly rather than be smoothed over; smoothing is the failure. Durability: rework the vault&#x27;s naming and hub structure into an information architecture you would still be using in 90 days, and write down why. Load-bearing honesty: the third question in <code>director_questions.md</code> — where are we over-confident? — or a deliberately loaded question like &quot;confirm the cyber attack is real,&quot; answered with trails only, logging a refusal wherever the vault is silent. A system that can decline to answer is the one you can trust when it does answer.</p>
+
+        <h3>Field guide · turn missing evidence into a useful refusal</h3>
+        <p><a href="../resources/p4/negative-knowledge.html"><strong>Negative Knowledge and Honest Refusal</strong></a> distinguishes unknown, disputed, restricted, stale, and not-observed states, then records the bounded search and next observation needed before saying “none.”</p>
+
+        <h3>Field guide · count evidence roots, not document volume</h3>
+        <p><a href="../resources/p4/claim-lineage.html"><strong>Claim Lineage: One Rumor, Five Notes</strong></a> reconstructs derivation paths, detects circular sourcing and false corroboration, and separates five artifacts from the one evidentiary root beneath them.</p>
       </section>
 
       <section id="pulse" class="home-section" data-check-section="pulse">
         <h2>Operator pulse — required every block</h2>
-        <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
-        <ol class="checklist">
+        <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. Every paste you need is below, in order. <a href="../pulse.html">Paste-ready prompts →</a></p>
 
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-pulse-mission" name="p4-pulse-mission" data-check-id="pulse-mission" />
               <span class="check-num">11</span>
               <span class="check-title">Mission ran in a separate build chat</span>
             </label>
-            <div class="check-detail">Triage, questions, and the Morning Brief all ran in a build chat, not in <strong>Operator — Direction &amp; Log</strong>. Build chat wants to cheerlead; the operator chat holds judgment. Keeping them separate is what makes the trail readable later.</div>
+            <div class="check-detail">Triage, questions, and the Morning Brief all ran in a build chat, not in <strong>Operator — Direction &amp; Log</strong>. Build chat wants to cheerlead; the operator chat holds judgment. Keeping them separate is what makes the trail readable later. Nothing to do here if you followed the stages — check it and move on.</div>
           </li>
+        </ol>
 
+        <!-- Embedded verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
+        <div class="do-step">
+          <p class="do-label">Now click back to the <strong>Operator — Direction &amp; Log</strong> chat and paste this:</p>
+          <pre><code>We are writing the Operator Log entry for this block together.
+
+Read operator/DIRECTION_BRIEF.md (the LIVE brief) and operator/OPERATOR_LOG.md.
+Interview me in short turns. Do not fill the verdict for me.
+
+Walk fields 1 → 5:
+1. Ask what I directed (confirm against the Brief).
+2. Ask what I changed mid-run.
+3. Ask my provisional verdict — then challenge weak reasoning without overriding me.
+4. Demand concrete evidence (paths, checks, citations, reruns). Reject vibe language.
+5. Ask what I still own.
+
+When I accept the wording, write the entry into the correct block section in this file.
+Remind me: REJECT with real evidence is a successful operator act.</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>, right after the starter:</p>
+          <pre><code>Today's entry must also carry two specifics: one line separating what
+the machine retrieved from what I judged, and one thing the vault
+cannot yet support — a question it would answer thinly, or a status
+it cannot represent. Ask me for both before you write the entry.</code></pre>
+        </div>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-pulse-log" name="p4-pulse-log" data-check-id="pulse-log" />
               <span class="check-num">12</span>
               <span class="check-title">Operator Log complete</span>
             </label>
-            <div class="check-detail">Click back to the pinned <strong>Operator — Direction &amp; Log</strong> chat in the sidebar: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, and what you still own. Today&#x27;s log carries two specifics: what the machine retrieved versus what you judged, and one thing the vault cannot yet support — both feed the mastery floor below.</div>
+            <div class="check-detail">What you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, and what you still own. Today&#x27;s log carries two specifics: what the machine retrieved versus what you judged, and one thing the vault cannot yet support — both feed the mastery floor below.</div>
           </li>
+        </ol>
 
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>, right after the log entry:</p>
+          <pre><code>Now the PASS_BARS self-check for P4. Read operator/PASS_BARS.md,
+section P4. Walk me through each MVP bar; I will mark met or not yet
+and give one evidence pointer per bar — the Audit table, the killed
+claim, the answer notes, Morning_Brief.md. Stress-test any claim of
+mine that leans on "basically" or "mostly". Do not mark a bar met
+for me.</code></pre>
+        </div>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-pulse-bars" name="p4-pulse-bars" data-check-id="pulse-bars" />
               <span class="check-num">13</span>
               <span class="check-title">PASS_BARS self-check drafted</span>
             </label>
-            <div class="check-detail">Against P4&#x27;s MVP list: met / not yet, each with an evidence pointer — the audit marks, the killed claim, the brief&#x27;s citations. No inflation; the AI in the operator chat should stress-test any claim that leans on &quot;basically.&quot;</div>
+            <div class="check-detail">Against P4&#x27;s MVP list: met / not yet, each with an evidence pointer — the audit marks, the killed claim, the brief&#x27;s citations. No inflation; the AI should stress-test any claim that leans on &quot;basically,&quot; and the paste above tells it to.</div>
           </li>
+        </ol>
 
+        <div class="do-step">
+          <p class="do-label">Now in the Codex app:</p>
+          <ul class="do-clicks">
+            <li>Start a <strong>new chat</strong> on the course project and title it <code>Adversarial — P4 — [today&#x27;s date]</code> — a fresh chat every time, never the build chat</li>
+          </ul>
+        </div>
+
+        <!-- Embedded verbatim from operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Adversarial — P4</strong>:</p>
+          <pre><code>You are an adversarial operator reviewer for an operator’s school.
+Your job is NOT to help me feel successful. Your job is to stress-test my verdict and MVP claims.
+
+Context: deep operator mastery of AI direction and cothinking.
+Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
+Containment is absence of effect. Autonomy without stop proof is theater.
+
+I will paste: block, artifacts/paths/excerpts, provisional verdict, draft MVP checklist.
+
+Protocol — follow in order:
+1. Restate my claimed outcome and verdict in one cold sentence (no praise).
+2. Attack pass: give the strongest case that this is NOT YET mastery for this block.
+   - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
+   - Name completion theater if you see it.
+   - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
+3. Evidence audit: for each MVP claim I marked met, mark:
+   SURVIVES / WOUNDED / DEAD — with reason.
+4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
+   If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
+   If REJECT, check I am not rejecting to avoid measurement.
+5. Force one of:
+   a) Concrete fix list (smallest changes to reach real MVP), or
+   b) “Stands under fire” — only if evidence is actually strong.
+6. End with a single line I must copy into my Operator Log:
+   ADVERSARIAL: [stood / wounded / failed] — [one sentence].
+
+Rules for you:
+- No encouragement fluff. No “great job.” No emoji.
+- Do not rewrite my mission for me unless citing a fix.
+- Do not accept screenshots of chat enthusiasm as evidence.
+- Prefer false NOT YET over false pass.
+- Short, sharp, specific.</code></pre>
+        </div>
+
+        <p>The adversarial chat sits on the course project, so it cannot read the vault — you carry the evidence in by hand, one note at a time, because the clipboard only holds the last thing you copied. Send the pack first; the four artifacts follow it one by one.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste your paste pack into <strong>Adversarial — P4</strong> — fill the three brackets before sending:</p>
+          <pre><code>Block: P4 — the director's second brain. Outcome: a vault that answers
+director questions with walkable citations, plus a regenerable
+Morning Brief.
+Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
+Draft MVP self-check: [WHICH BARS I MARKED MET]
+Known weak spot: [ONE THING I ALREADY DOUBT]
+Artifacts follow: Answers/Q1 Risks.md, Answers/Q2 Blocked Decision.md,
+the Audit table with a verdict per citation, the Revised-or-killed
+before/after, Morning_Brief.md.</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now carry the four artifacts into <strong>Adversarial — P4</strong>, one at a time:</p>
+          <ul class="do-clicks">
+            <li>In Obsidian, click <code>Answers/Q1 Risks</code> in the file list, then press <strong>Ctrl+A</strong>, <strong>Ctrl+C</strong></li>
+            <li>Switch to the <strong>Adversarial — P4</strong> chat, press <strong>Ctrl+V</strong>, and send it</li>
+            <li>Repeat the copy-then-paste for <code>Answers/Q2 Blocked Decision</code>, <code>Audit</code>, and <code>Morning_Brief</code> — one artifact per trip, all four in</li>
+          </ul>
+        </div>
+
+        <p>With all four in, let the review run its protocol. Thin pastes get polite reviews — a polite review means you under-fed the attacker, not that you passed. Argue back where you have evidence; the Audit table is your armor. The review ends with a single <code>ADVERSARIAL:</code> line, and that line belongs in your log, not just here.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now copy the review&#x27;s final line into <strong>Operator — Direction &amp; Log</strong> — it looks like this:</p>
+          <pre><code>ADVERSARIAL: [stood | wounded | failed] — [THE ONE-SENTENCE REASON FROM THE REVIEW CHAT]</code></pre>
+        </div>
+
+        <p>Use the exact line the review chat produced, not this template. Wounded means fix now or downgrade the verdict; failed means the affected bars go back to not yet before you leave the block.</p>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-pulse-adv" name="p4-pulse-adv" data-check-id="pulse-adv" />
               <span class="check-num">14</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">Open a fresh chat <code>Adversarial — P4</code> with the frozen prompt from <code>operator/ADVERSARIAL_REVIEW.md</code>, plus your artifacts: both cited answers, the audit marks, the Morning Brief, the provisional verdict. Expect it to attack unwalked citations first. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded — and uncheck the floor item it wounded until fixed.</div>
+            <div class="check-detail">Expect the attack to open on unwalked citations — the Audit table is your armor. Proof: a fresh <code>Adversarial — P4</code> chat ran the frozen prompt against your real artifacts, and the final <code>ADVERSARIAL: stood | wounded | failed</code> line now sits in your log. Fix if wounded — and uncheck the floor item it wounded until fixed.</div>
           </li>
+        </ol>
 
+        <!-- Embedded verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>, filling every bracket:</p>
+          <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
+
+Block: [B0/P1/…].
+Adversarial line: [paste ADVERSARIAL: …].
+Brief LIVE at: [time or “approx”].
+Adversarial done at: [time or “approx”].
+Mission outcome path(s): [paths].
+Draft MVP: [met / not yet summary].
+
+Fill this block’s row:
+1. Ritual 0–3 with proof of each point
+2. Mission HIT/PARTIAL/MISS against the LIVE brief
+3. Quality STRONG/ADEQUATE/WEAK from adversarial + evidence (challenge inflation)
+4. Time to result in minutes
+5. One-line note
+6. Deep mark if this is P2/P3/P5/P6/P8
+
+Update running totals.
+Refuse cheerful quality scores without evidence.
+Do not start transfer until this row is written.</code></pre>
+        </div>
+
+        <p>The brackets, in order: Block is P4; the Adversarial line is the one you just copied into the log; approximate times are honest enough; mission outcome paths are your two <code>Answers/</code> notes and <code>Morning_Brief.md</code>; Draft MVP is the met / not-yet list from your PASS_BARS self-check above.</p>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-pulse-measure" name="p4-pulse-measure" data-check-id="pulse-measure" />
@@ -376,14 +748,35 @@ silent, say so instead of filling the gap.</code></pre>
             </label>
             <div class="check-detail">Four headlines in <code>operator/MEASUREMENT_SPINE.md</code>: ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result in minutes. Quality today rides on the audit: an answer that survived your walk rates differently from one that merely read well. P4 carries no deep mark — the four headlines are the whole entry.</div>
           </li>
+        </ol>
 
+        <!-- Embedded verbatim from operator/TRANSFER_30_60_90.md — every-session prompt -->
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>Operator — Transfer 30-60-90</strong> chat, replacing [B0/P1/…] with P4:</p>
+          <pre><code>Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
+
+Block I just finished: [B0/P1/…].
+I have finished Direction/Log and pass-bar check in the other operator chat.
+
+Run a short interactive update:
+1. What mastery did this block actually prove (one sentence, no theater)?
+2. Map it onto MY real desk — interview me if missing.
+3. Update the matching seed and today’s row in the session log.
+4. Tighten at most three lines in identity or 30/60/90 if enough signal exists.
+5. Name one backslide risk if I do nothing at work.
+
+Do not seal. Do not invent a full plan from zero on a light block.
+Challenge vagueness. I own every accept.</code></pre>
+        </div>
+
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-pulse-transfer" name="p4-pulse-transfer" data-check-id="pulse-transfer" />
               <span class="check-num">16</span>
               <span class="check-title">Transfer pulse (every AM/PM)</span>
             </label>
-            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt and develop the seed you banked in Stage 6 — what at your work belongs in a navigable, machine-workable structure. A session-log row is required even if the seed stays small today.</div>
+            <div class="check-detail">Develop the seed you banked in Stage 06 — read your Transfer Seed note back to it: what at your work belongs in a navigable, machine-workable structure. A session-log row is required even if the seed stays small today.</div>
           </li>
         </ol>
       </section>
@@ -426,7 +819,7 @@ silent, say so instead of filling the gap.</code></pre>
               <span class="check-num">20</span>
               <span class="check-title">MVP: Full trail audit</span>
             </label>
-            <div class="check-detail">Evidence looks like: a written mark — support / partial / not supported — for every cited note in both answers, in your log or an Audit note. &quot;I checked them&quot; without marks does not survive the adversarial chat.</div>
+            <div class="check-detail">Evidence looks like: a written mark — support / partial / not supported — for every cited note in both answers, in your Audit note. &quot;I checked them&quot; without marks does not survive the adversarial chat.</div>
           </li>
 
           <li class="check-item" data-check-item>
@@ -462,7 +855,7 @@ silent, say so instead of filling the gap.</code></pre>
               <span class="check-num">24</span>
               <span class="check-title">Block closed under fire</span>
             </label>
-            <div class="check-detail">Adversarial line present in the log; measurement row written; transfer row written. The test: you could defend this block&#x27;s verdict to a skeptical peer using only your artifacts, walking any trail they pick.</div>
+            <div class="check-detail">Adversarial line present in the log; measurement row written; transfer row written. The test: you could defend this block&#x27;s verdict to a skeptical peer using only your artifacts, walking any trail they pick. Then leave the vault exactly where it is and keep its path handy — the afternoon block works inside this same vault.</div>
           </li>
         </ol>
       </section>

@@ -3,4 +3,4 @@
 - [[People]]
 - [[Events]]
 - [[Decisions]]
-- [[00_Inbox]]
+- 00_Inbox/ — raw captures awaiting triage
