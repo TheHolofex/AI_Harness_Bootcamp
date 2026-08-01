@@ -71,7 +71,7 @@
             <li>Operator templates present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
             <li>Both engines alive on your keys: the Codex app opens a chat; <code>opencode</code> starts from a terminal</li>
             <li>You know which track you ran in P2 — the desk uses the same one</li>
-            <li>The Grok model id from the staff pin sheet within reach — you'll pin it with <code>-m</code></li>
+            <li>The Grok model id from the pin within reach — you'll pin it with <code>-m</code></li>
           </ul>
         </div>
         <div class="orient-aside">
@@ -314,7 +314,7 @@ $env:OPENCODE_PURE = "1"</code></pre>
           <pre><code>opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder and follow it exactly."</code></pre>
         </div>
 
-        <p class="full-measure">Same sentence, same corpus, second engine — <code>-m</code> pins the Grok id staff posted rather than inheriting whichever model ran last. You should see the same four-part shape. If the command fails calling <code>--pure</code> an unknown flag, your build predates it — drop the flag and rerun; <code>OPENCODE_PURE=1</code> is already set and does the same job, and you'll note the substitution in the run-identity table. An error mentioning 429 or quota is usually a capped key wearing an auth-failure costume — flag staff instead of reinstalling, and prep the comparator while you wait.</p>
+        <p class="full-measure">Same sentence, same corpus, second engine — <code>-m</code> pins the posted Grok id rather than inheriting whichever model ran last. You should see the same four-part shape. If the command fails calling <code>--pure</code> an unknown flag, your build predates it — drop the flag and rerun; <code>OPENCODE_PURE=1</code> is already set and does the same job, and you'll note the substitution in the run-identity table. An error mentioning 429 or quota is usually a capped key wearing an auth-failure costume — flag it instead of reinstalling, and prep the comparator while you wait.</p>
 
         <div class="do-step">
           <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it creates Engine B's output file and prints the run identity to record:</p>
@@ -332,7 +332,7 @@ opencode --version
               <span class="check-num">5</span>
               <span class="check-title">Run BRIEF-v1 on OpenCode → output_opencode.md</span>
             </label>
-            <div class="check-detail"><code>output_opencode.md</code> holds the full response with <code>opencode --version</code> and the pinned model id at the top. The run went out with <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> confirmed and <code>OPENCODE_PURE=1</code> alongside <code>--pure</code>. A 429 or quota error is usually a capped key — flag staff instead of reinstalling.</div>
+            <div class="check-detail"><code>output_opencode.md</code> holds the full response with <code>opencode --version</code> and the pinned model id at the top. The run went out with <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> confirmed and <code>OPENCODE_PURE=1</code> alongside <code>--pure</code>. A 429 or quota error is usually a capped key — flag it instead of reinstalling.</div>
           </li>
         </ol>
 
@@ -514,7 +514,7 @@ opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder 
         <table>
           <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
           <tbody>
-            <tr><td>OpenCode errors in a way that reads like a bad key</td><td>A capped key returns 429/quota errors that look like auth failure; xAI keys are also deny-by-default until ACLs attach</td><td>Read the error body for 429 or quota; ask staff to check the cap. Reinstalling fixes nothing here.</td></tr>
+            <tr><td>OpenCode errors in a way that reads like a bad key</td><td>A capped key returns 429/quota errors that look like auth failure; xAI keys are also deny-by-default until ACLs attach</td><td>Read the error body for 429 or quota, then ask for the cap to be checked. Reinstalling fixes nothing here.</td></tr>
             <tr><td>Both outputs nearly identical</td><td>Genuinely low-separation task — or both engines carried the same cargo</td><td>Verify the cargo was cleared or declared; then document the search, sample-check matches, and run one kill test.</td></tr>
             <tr><td>One output dramatically sharper than the other</td><td>Undeclared instruction files, skills, or memories on the sharp side</td><td>Check what each side was carrying before crediting the model. Rerun clean if contaminated.</td></tr>
             <tr><td>An output uses a WatchID not in the CSV, or joins on a name</td><td>The engine invented a join key — the deterministic-join rule was violated</td><td>Record the violation as a comparator finding, then rerun the same verbatim brief. That failure is itself evidence.</td></tr>
@@ -913,7 +913,7 @@ Challenge vagueness. I own every accept.</code></pre>
       <div>
         <h2>If you get stuck</h2>
         <ul>
-          <li><strong>OpenCode won't run the brief.</strong> Read the error body before touching the install: 429 or quota means a capped key wearing an auth-failure costume, and a brand-new key does nothing until its ACLs attach. Both are staff fixes. While you wait, keep working the Codex side and prep the comparator.</li>
+          <li><strong>OpenCode won't run the brief.</strong> Read the error body before touching the install: 429 or quota means a capped key wearing an auth-failure costume, and a brand-new key does nothing until its ACLs attach. Neither is fixed from your seat. While you wait, keep working the Codex side and prep the comparator.</li>
           <li><strong>The engines agree on everything.</strong> That's not a failed run. First confirm both sides ran clean — shared cargo manufactures agreement. Then document the search, sample-check the strongest matches, and run one kill test; the floor accepts proof of search in place of three rows.</li>
           <li><strong>The comparator is eating the block.</strong> You're logging cosmetic rows. Narrow the data scope — fewer fields, material disagreements only — and never the judgment standard. If a concept is what's blocking you, ask the lead to diagram it live, then continue on your own chair.</li>
         </ul>

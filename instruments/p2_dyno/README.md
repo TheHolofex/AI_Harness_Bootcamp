@@ -19,7 +19,7 @@ To run authored checks by machine, save an answer to a file and use `python chec
 ## Rules
 
 - Do not edit case files to make scores prettier.
-- Same model tier for baseline and after unless staff says otherwise.
+- Same model tier for baseline and after unless told otherwise.
 - FAIL is useful — especially if it turns PASS after craft.
 
 ## Timing

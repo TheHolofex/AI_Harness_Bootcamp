@@ -45,7 +45,7 @@ Get-ExecutionPolicy -List
 | `CurrentUser` policy `RemoteSigned` | | |
 | `MachinePolicy` and `UserPolicy` both `Undefined` | | GPO override check |
 
-ARM64, or a policy row that is set, is a blocker to raise with staff rather than work around.
+ARM64, or a policy row that is set, is a blocker to raise rather than work around.
 
 ---
 
@@ -69,7 +69,7 @@ Run in a **fresh window** — that is what Monday will be. Only lengths print, n
 
 `user=0` means it never saved. `session=0` means this window predates it.
 
-**Spend caps:** if a tool that worked during install now fails with `429`, or a quota or spend-limit message, the key has hit its cap rather than broken. That is a staff fix, not a reinstall.
+**Spend caps:** if a tool that worked during install now fails with `429`, or a quota or spend-limit message, the key has hit its cap rather than broken. That is not something a reinstall fixes.
 
 ---
 
@@ -101,7 +101,7 @@ Get-ChildItem from-*.txt
 
 Missing any one is **not GREEN**.
 
-If OpenCode reports success but writes no file, that is the known Windows defect: record version and exact wording, tell staff, stop retrying.
+If OpenCode reports success but writes no file, that is the known Windows defect: record version and exact wording, post it, stop retrying.
 
 ### Optional (does not affect your colour)
 
@@ -134,7 +134,7 @@ Get-ChildItem -Force "$env:USERPROFILE\Documents\HarnessBootcamp\vault"
 | `operator/` templates are **in your working project**, and you can name them | |
 | You can state the twin-engine pair: **Codex app** (OpenAI key) + **OpenCode** (xAI key) | |
 | You can say what each engine loads without being told — `AGENTS.md`, skills, and memories on the Codex side; `~/.claude/CLAUDE.md` and `.claude/skills` on the OpenCode side unless disabled | |
-| You know what to do if a key leaks — tell staff, then sign the Codex app in again with the reissued key via *Sign in another way* | |
+| You know what to do if a key leaks — report it, then sign the Codex app in again with the reissued key via *Sign in another way* | |
 | Setup log holds at least one real failure and its fix | |
 
 If genuinely nothing broke, write that, and note the one step you would least want to repeat from memory. A blank log is the one answer that doesn't hold up.

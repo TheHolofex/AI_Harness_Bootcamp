@@ -84,7 +84,7 @@
           </div>
           <div class="callout">
             <strong>Stretch · The endpoint is a wall</strong>
-            After goose MVP (the minimum bar that survives review — the pass bar below): swap the endpoint for a staff-pinned local model and score what actually degrades. Full run under Going deeper; guide: <code>mission_flesh/p6/local_endpoint_notes.md</code>.
+            After goose MVP (the minimum bar that survives review — the pass bar below): swap the endpoint for the pinned local model and score what actually degrades. Full run under Going deeper; guide: <code>mission_flesh/p6/local_endpoint_notes.md</code>.
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@
 
       <h3>The minimal harness — rails are yours to build</h3>
       <p>Pi is a deliberately minimal harness: a small default tool set, a session file, and a large surface for building your own machinery. What it does not have is rails. There is no sandbox. There is no permission mode to set. And — the part people miss — there is no working-directory fence: absolute paths and <code>~</code> pass straight through, so "I opened it in this folder" bounds nothing at all. Instruction files load whether or not you trust the project. This is the vendor's stated design, not an oversight: rails are yours to build, and the extension API is the toolbox.</p>
-      <p>From the chair, the missing rails feel like nothing — which is exactly the lesson. A loop without rails runs the same as a bounded one right up until the input turns hostile or a path goes absolute. So containment around Pi is your job, not the harness's. Two standing rules follow, and they are really one discipline: never <code>/share</code> a session (it uploads the whole session, system prompt included, to a link anyone can open), and install only staff-named packages (a package's install step runs arbitrary code on your machine).</p>
+      <p>From the chair, the missing rails feel like nothing — which is exactly the lesson. A loop without rails runs the same as a bounded one right up until the input turns hostile or a path goes absolute. So containment around Pi is your job, not the harness's. Two standing rules follow, and they are really one discipline: never <code>/share</code> a session (it uploads the whole session, system prompt included, to a link anyone can open), and install only packages named for the course (a package's install step runs arbitrary code on your machine).</p>
       <p>At work, loops with no rails at all are everywhere — every script that calls a model API with a tool list is one. When you meet one, you now have the inventory question: which rails exist here, which are actually on, and which am I imagining because the demo behaved?</p>
     </section>
 
@@ -423,13 +423,13 @@ Get-ChildItem .\feeder</code></pre>
           <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to see what your pinned build offers:</p>
           <pre><code>goose schedule --help</code></pre>
         </div>
-        <p>Read the forms it prints before touching anything — your build's flags are the truth, and the next block matches the current shape. If the subcommand does not exist at all, that is a version question for staff, not an honest block.</p>
+        <p>Read the forms it prints before touching anything — your build's flags are the truth, and the next block matches the current shape. If the subcommand does not exist at all, that is a version question to raise, not an honest block.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to add the schedule and fire it once:</p>
           <pre><code>goose schedule add --schedule-id watch --cron "0 0 9 * * *" --recipe-source .\watch_officer.yaml
 goose schedule run-now</code></pre>
         </div>
-        <p>The cron expression takes six fields, seconds first — this one means 09:00 every day. If run-now asks which schedule, give it <code>watch</code>. If either command errors on a flag, the help you just printed is the fix: find <code>schedule add</code> in it, match each piece — the id, the cron string, the recipe path — to the flag names your build lists, and if the mapping is not obvious, ask staff for the working line rather than guessing. Put the exact command that worked in the record line below, and keep the run-now result on screen — it is the evidence.</p>
+        <p>The cron expression takes six fields, seconds first — this one means 09:00 every day. If run-now asks which schedule, give it <code>watch</code>. If either command errors on a flag, the help you just printed is the fix: find <code>schedule add</code> in it, match each piece — the id, the cron string, the recipe path — to the flag names your build lists, and if the mapping is not obvious, ask for the working line rather than guessing. Put the exact command that worked in the record line below, and keep the run-now result on screen — it is the evidence.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to record the outcome, whichever it was — bracket filled, keeping only the half that happened:</p>
           <pre><code>Add-Content -Path .\out\run_log.md -Value "SCHEDULE: [ran — run-now completed / blocked: EXACT ERROR — and what would unlock it]"</code></pre>
@@ -452,7 +452,7 @@ goose schedule run-now</code></pre>
               <span class="check-num">8</span>
               <span class="check-title">Unattended path: schedule or honest block</span>
             </label>
-            <div class="check-detail">Keep the run-now result, and the SCHEDULE line in <code>out/run_log.md</code> tells the truth either way; Desktop's Scheduler does the same job if you have it. If the OS or policy refuses, the exact error plus what would unlock it is a valid MVP outcome; a faked green is not. If you can't find the subcommand, that is a version question for staff — not an honest block. Either way, the contract's unattended rows say who may enable the schedule and when its output gets reviewed.</div>
+            <div class="check-detail">Keep the run-now result, and the SCHEDULE line in <code>out/run_log.md</code> tells the truth either way; Desktop's Scheduler does the same job if you have it. If the OS or policy refuses, the exact error plus what would unlock it is a valid MVP outcome; a faked green is not. If you can't find the subcommand, that is a version question to raise — not an honest block. Either way, the contract's unattended rows say who may enable the schedule and when its output gets reviewed.</div>
           </li>
         </ol>
 
@@ -466,7 +466,7 @@ goose schedule run-now</code></pre>
           <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to open the session file that run just wrote:</p>
           <pre><code>notepad (Get-ChildItem "$env:USERPROFILE\.pi\agent\sessions" -Recurse -File | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName</code></pre>
         </div>
-        <p>If the command errors or Notepad opens nothing, the sessions folder is not where this page expects: run <code>Get-ChildItem "$env:USERPROFILE\.pi\agent"</code> and look for the folder your build writes sessions into, then open the newest file there. If no session file exists anywhere after a run, that is a version question for staff — not a failed proof.</p>
+        <p>If the command errors or Notepad opens nothing, the sessions folder is not where this page expects: run <code>Get-ChildItem "$env:USERPROFILE\.pi\agent"</code> and look for the folder your build writes sessions into, then open the newest file there. If no session file exists anywhere after a run, that is a version question to raise — not a failed proof.</p>
         <div class="do-step">
           <p class="do-label">Now in <strong>Notepad</strong> (the session file):</p>
           <ul class="do-clicks">
@@ -608,7 +608,7 @@ Challenge anything vague. Do not seal anything — the full transfer pulse comes
           <tbody>
             <tr><td>goose rejects <code>--recipe</code></td><td>Cohort-pinned build wants a different flag shape</td><td><code>goose run --help</code>; use the recipe-file form it prints; record the exact command in your log</td></tr>
             <tr><td>Run "succeeds" but <code>out/</code> is empty</td><td>Ran from the wrong directory — <code>feeder_dir</code> is a relative path</td><td><code>cd</code> into the pack folder, confirm the parameter, rerun</td></tr>
-            <tr><td>Auth-looking error mid-block</td><td>Capped key — a spent cap fails as a <code>429</code>/quota error that reads like bad credentials</td><td>Read the error text for 429/quota before touching your setup; ask staff about the cap; do not reinstall</td></tr>
+            <tr><td>Auth-looking error mid-block</td><td>Capped key — a spent cap fails as a <code>429</code>/quota error that reads like bad credentials</td><td>Read the error text for 429/quota before touching your setup; ask for the cap to be checked; do not reinstall</td></tr>
             <tr><td>Agent obeys event_04</td><td>Mode was <code>auto</code> for the drill, or your adaptation weakened the quarantine bound</td><td>Set <code>GOOSE_MODE=approve</code>, restore the bound, rerun — and log which column failed; that log line is the lesson</td></tr>
             <tr><td>Every feeder file quarantined</td><td>Over-tight bound — your rule matches unfamiliar, not hostile</td><td>Re-read the bound's wording; hostile means asks-you-to-act-outside-scope, not merely odd</td></tr>
             <tr><td>Scheduled run never fires</td><td>OS or policy block</td><td>That is the honest-block MVP path: capture the exact error and what would unlock it</td></tr>
@@ -629,9 +629,9 @@ Challenge anything vague. Do not seal anything — the full transfer pulse comes
         <p>The pattern you are building — traffic in, bounded summarizer, exceptions held for a human — is one of the most reusable shapes in operational work. An ops desk points the feeder at an overnight ticket queue, and the exception rule pages a person instead of letting the agent guess at severity. An analyst desk points it at a morning source sweep, where "sources are data, never orders" is not a classroom line but the difference between a watch report and an injected one. A delegating manager never runs the recipe at all — they use the two-column table itself, as the document they require from any team or vendor that wants to run agents on their behalf, and the review consists of asking which rows are levers.</p>
 
         <h3>Stretch · The endpoint is a wall</h3>
-        <p>After MVP, one wall of the harness comes off its hinges: which brain answers. Same adapted recipe, same feeder, staff-pinned local model (Ollama by default, LM Studio as the alternate). The craft is in the order of operations — predict what will degrade <em>before</em> you flip, keep the cloud summary under a distinct name so the pair stays honest, score a numeric C1–C7 hold/degrade matrix rather than reporting a vibe, answer the non-exfil checks truthfully (a local process is not a container boundary), write an endpoint decision rule you could reuse, and flip back before you leave. An honest YELLOW with predictions and a decision rule beats a fake air-gap claim. Full guide: <a href="../../mission_flesh/p6/local_endpoint_notes.md">local_endpoint_notes.md</a>; the three stretch checks live on the mastery floor below.</p>
+        <p>After MVP, one wall of the harness comes off its hinges: which brain answers. Same adapted recipe, same feeder, the pinned local model (Ollama by default, LM Studio as the alternate). The craft is in the order of operations — predict what will degrade <em>before</em> you flip, keep the cloud summary under a distinct name so the pair stays honest, score a numeric C1–C7 hold/degrade matrix rather than reporting a vibe, answer the non-exfil checks truthfully (a local process is not a container boundary), write an endpoint decision rule you could reuse, and flip back before you leave. An honest YELLOW with predictions and a decision rule beats a fake air-gap claim. Full guide: <a href="../../mission_flesh/p6/local_endpoint_notes.md">local_endpoint_notes.md</a>; the three stretch checks live on the mastery floor below.</p>
         <figure class="section-diagram">
-          <img src="../assets/blocks/p6/p6-stretch-endpoint.svg" alt="Stretch: the same recipe repointed at a staff-pinned local model, with hold/degrade scored against the cloud baseline" width="1120" height="220" loading="lazy" decoding="async" />
+          <img src="../assets/blocks/p6/p6-stretch-endpoint.svg" alt="Stretch: the same recipe repointed at the pinned local model, with hold/degrade scored against the cloud baseline" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
 
         <h3>Field guide · turn each failure path into an owned response</h3>
@@ -948,7 +948,7 @@ Challenge vagueness. I own every accept.</code></pre>
       <div>
         <h2>If you get stuck</h2>
         <ul>
-          <li><strong>goose won't run the recipe.</strong> <code>goose info -v</code> first — right provider and model? Then <code>goose run --help</code>: your pinned build's flag may differ from <code>--recipe</code>; use the form it prints. An error mentioning 429 or quota is a capped key wearing an auth costume — ask staff about the cap; don't reinstall anything.</li>
+          <li><strong>goose won't run the recipe.</strong> <code>goose info -v</code> first — right provider and model? Then <code>goose run --help</code>: your pinned build's flag may differ from <code>--recipe</code>; use the form it prints. An error mentioning 429 or quota is a capped key wearing an auth costume — ask for the cap to be checked; don't reinstall anything.</li>
           <li><strong>The tool column won't fill.</strong> Open <code>watch_officer.yaml</code> beside the template. Three levers are already sitting in the file — <code>extensions</code>, <code>settings.max_turns</code>, <code>retry.checks</code> — and <code>GOOSE_MODE</code> is the fourth. The craft is mapping them to this feeder's risks, not inventing new machinery.</li>
           <li><strong>The Pi proof doesn't feel like proof.</strong> The proof is an absence. Compare the tool lists offered in both session files; the <code>--tools</code> run should simply lack the write tools. If both show them, the flag didn't take — fix and rerun, then open the newest file.</li>
           <li>And the standing move: narrow the <em>data scope</em> — one feeder file — never the judgment standard.</li>

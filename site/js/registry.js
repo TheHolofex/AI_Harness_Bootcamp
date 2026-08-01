@@ -53,8 +53,9 @@
         "r-notfound", "r-window", "r-scripts", "r-auth", "r-store",
         "r-noclaim", "r-stuck"
       ],
-      // Claude Code is optional — skipping it never blocks the pre-work gate.
-      stretchIds: ["cc-optional", "cc-install"],
+      // Claude Code and the local model are optional — skipping either never
+      // blocks the pre-work gate.
+      stretchIds: ["cc-optional", "cc-install", "lm-decide", "lm-install", "lm-pull"],
       optionalLabel: "optional",
       url: "checklists/prework-install.html", meta: "Checklist · 2–4 hr"
     },

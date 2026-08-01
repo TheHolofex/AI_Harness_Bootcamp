@@ -11,11 +11,11 @@ Complete **before Monday Block 0**. Do not start pre-work in the Monday morning 
 
 ## Everything runs on API keys
 
-Staff issue you **three API keys**: OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly subscription during this course.
+You'll be issued **three API keys**: OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly subscription during this course.
 
 This matters at the keyboard, because several tools in the stack offer a subscription login and an API key option on the same screen. Always take the API key path. See `site/keys.html` for what each key drives, how to store it, and what to do if one leaks.
 
-Keys are prepaid and carry a spending cap. A tool that worked yesterday and fails today with a `429` or a quota message has hit the cap rather than broken — that is a staff fix, not a reinstall.
+Keys are prepaid and carry a spending cap. A tool that worked yesterday and fails today with a `429` or a quota message has hit the cap rather than broken — nothing a reinstall fixes, so post it rather than tearing your install down.
 
 ## What "done" means
 
@@ -26,7 +26,7 @@ You can prove all of the following on **your** Windows 11 machine:
 3. All **four required** agents wrote a real file into a temp project folder you can see in Explorer
 4. You bring a **setup log** — what broke, what you fixed
 
-There is **no separate health-check pass**. Monday AM is an **install clinic** (~2 hours expected, no hard wall) to finish gaps under staff eyes, then First Light. Clinic is finish-and-prove — not a substitute for skipping pre-work.
+There is **no separate health-check pass**. Monday AM is an **install clinic** (~2 hours expected, no hard wall) to finish gaps with help on hand, then First Light. Clinic is finish-and-prove — not a substitute for skipping pre-work.
 
 Before Monday, also make sure the course repo is cloned and you know its path (`INSTALL_GUIDE.md` section 13 walks it — `Documents\HarnessBootcamp\AI_Harness_Bootcamp`). Monday opens that folder as your Codex app project; the smoke folder was install proof only.
 
@@ -69,7 +69,7 @@ During the week, **P3 Twin-engine** runs the same frozen brief on:
 1. **Codex** on your OpenAI key
 2. **OpenCode** on your xAI key (Grok)
 
-That is the required comparator pair. Claude Code is welcome as an optional extra mind, not a substitute for OpenCode unless staff waive it for a documented install failure.
+That is the required comparator pair. Claude Code is welcome as an optional extra mind. It substitutes for OpenCode only where a documented install failure makes that the sensible call — raise it rather than deciding quietly.
 
 The pair only tells you something if the two engines are genuinely separate, and both of them load context you never typed. OpenCode reads `~/.claude/CLAUDE.md` and `.claude/skills` when it finds them, which is why step 8 sets `OPENCODE_DISABLE_CLAUDE_CODE=1`. The Codex app loads `AGENTS.md`, skills, and memories from wherever you run it. Neither announces what it picked up. You will handle the Codex side during P3 itself; the install-time half is step 8.
 
@@ -94,7 +94,7 @@ These cost the most time, and none of them announce themselves clearly:
 - Pre-work support window: [course fills channel/hours].
 - Post the step number, the exact error text, and what you already tried. Then move to the next section while you wait — most are independent.
 - "I didn't start until Sunday night" is not a clinic delay the whole room will wait on.
-- Corporate-locked machines and ARM64 laptops: escalate early. Neither is fixable from your seat.
+- Corporate-locked machines and ARM64 laptops: raise these early. Neither is fixable from your seat, and both take time to work around.
 
 ## Identity lock
 

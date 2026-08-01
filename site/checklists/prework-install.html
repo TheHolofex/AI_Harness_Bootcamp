@@ -33,13 +33,13 @@
 </div>
 
 <div class="callout"><strong>Everything runs on API keys</strong>
-Staff issue you three keys — OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly plan during this course. Several tools below offer a subscription login and an API key option on the same screen; always take the API key path. Keep <a href="../keys.html">Your API keys</a> open in another tab while you work.</div>
+You'll be issued three keys — OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly plan during this course. Several tools below offer a subscription login and an API key option on the same screen; always take the API key path. Keep <a href="../keys.html">Your API keys</a> open in another tab while you work.</div>
 
 <div class="callout"><strong>You only need one shell: PowerShell</strong>
 Every command in this guide is typed into PowerShell. You will also install Git Bash, which is a different kind of terminal — but that is a dependency other tools reach for on their own, not a second thing for you to learn. Step 9 shows how to tell at a glance which window you are looking at, because pasting a command into the wrong one produces errors that never say so.</div>
 
 <div class="checklist-toolbar">
-  <p>Check each step when <strong>you</strong> finish it — not when you've read it. Progress saves in this browser only. Keep a setup log as you go; what broke and how you fixed it is the evidence you bring Monday.</p>
+  <p>Check each step when <strong>you</strong> finish it — not when you've read it. Progress saves in this browser only, against the exact address in the bar — so stay on one address while you work. Reopening on <code>127.0.0.1</code> instead of <code>localhost</code>, or on the hosted site later, starts a fresh set of boxes rather than losing your old ones. Keep a setup log as you go; what broke and how you fixed it is the evidence you bring Monday.</p>
   <div class="btn-row">
     <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a>
     <a class="btn btn-secondary" href="../keys.html">Keys reference</a>
@@ -84,7 +84,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <span class="check-title">Confirm you have all three API keys in hand</span>
   </label>
   <div class="check-detail"><p>You need an OpenAI key starting <code>sk-proj-</code>, an xAI key starting <code>xai-</code>, and an Anthropic key starting <code>sk-ant-api03-</code>.</p>
-  <p>If any are missing, message staff now and start installing anyway. The first five sections need no keys at all, so you can get most of the machine ready while you wait.</p></div>
+  <p>If any are missing, say so in the pre-work channel now and start installing anyway. The first five sections need no keys at all, so you can get most of the machine ready while you wait.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -125,7 +125,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
   </label>
   <div class="check-detail"><p>Snapdragon and other ARM Windows laptops — often sold as Copilot+ PCs — can't run this stack. OpenCode fails to start on Windows ARM64, and goose publishes no ARM build at all.</p>
   <pre><code>$env:PROCESSOR_ARCHITECTURE</code></pre>
-  <p><code>AMD64</code> means you're fine. <code>ARM64</code> means tell staff today, before installing anything else. That's a machine question rather than something you can solve at the keyboard, and it needs lead time.</p></div>
+  <p><code>AMD64</code> means you're fine. <code>ARM64</code> means flag it today, before installing anything else. That's a machine question rather than something you can solve at the keyboard, and it needs lead time.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -421,8 +421,9 @@ $key = $null</code></pre></div>
     <span class="check-num">27</span>
     <span class="check-title">Set the pinned model ids</span>
   </label>
-  <div class="check-detail"><p>Staff pin a model per provider for your cohort and post both ids in the pre-work channel. Set them once here and every later step picks them up &mdash; otherwise you'd be hand-editing four commands further down.</p>
-  <p>Change the two quoted values to the ids from the channel, then run all four lines:</p>
+  <div class="check-detail"><p>A model id per provider should be posted in the pre-work channel. Set them once here and every later step picks them up &mdash; otherwise you'd be hand-editing four commands further down.</p>
+  <p>If nothing has been posted yet, ask in the channel, and meanwhile use any current model id for that provider. These are two variables you can change in ten seconds later, not a decision you're locked into.</p>
+  <p>Change the two quoted values to the ids you're using, then run all four lines:</p>
   <pre><code>$env:HB_OPENAI_MODEL = 'paste the OpenAI model id'
 $env:HB_XAI_MODEL    = 'paste the xAI model id'
 [Environment]::SetEnvironmentVariable('HB_OPENAI_MODEL', $env:HB_OPENAI_MODEL, 'User')
@@ -439,8 +440,8 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
   <div class="check-detail"><p>Close the terminal, open a new one, and run:</p>
   <pre><code>'OPENAI_API_KEY','XAI_API_KEY','ANTHROPIC_API_KEY' | ForEach-Object {
   '{0}: user={1} session={2}' -f $_,
-    [Environment]::GetEnvironmentVariable($_,'User').Length,
-    (Get-Item "env:$_" -EA SilentlyContinue).Value.Length
+    ([string][Environment]::GetEnvironmentVariable($_,'User')).Length,
+    ([string](Get-Item "env:$_" -EA SilentlyContinue).Value).Length
 }</code></pre>
   <p>Three lines, each with two matching non-zero numbers. This prints only the <em>length</em> of each key, never the key, so it's safe to run on a shared screen.</p>
   <p><code>user=0</code> means it didn't save — re-run that key's step and check the variable name for typos. <code>session=0</code> means this window is older than the variable; open another one.</p>
@@ -527,9 +528,12 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
     <span class="check-title">Lock the app to API-key sign-in</span>
   </label>
   <div class="check-detail"><p>Now lock the door behind you, so a stray click can never bounce you to a ChatGPT login you can't complete:</p>
-  <pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex" | Out-Null
-Add-Content -Path "$env:USERPROFILE\.codex\config.toml" -Value 'forced_login_method = "api"'</code></pre>
-  <p>That writes one line into <code>%USERPROFILE%\.codex\config.toml</code>. Restart the app afterwards so it reads the change. From then on, an accidental account sign-in fails politely and points you back to the key.</p></div>
+  <pre><code>$cfg = "$env:USERPROFILE\.codex\config.toml"
+New-Item -ItemType Directory -Force -Path (Split-Path $cfg) | Out-Null
+$keep = @(if (Test-Path $cfg) { Get-Content $cfg | Where-Object { $_ -notmatch '^\s*forced_login_method\s*=' } })
+Set-Content -Path $cfg -Value (@('forced_login_method = "api"') + $keep)</code></pre>
+  <p>That writes one setting into <code>%USERPROFILE%\.codex\config.toml</code>. Restart the app afterwards so it reads the change. From then on, an accidental account sign-in fails politely and points you back to the key.</p>
+  <p>Four lines rather than one, because of how this file is shaped. A line like <code>[windows]</code> opens a <strong>table</strong>, and every plain setting below it belongs to that table. So a setting appended to the bottom of a file that already has a table header silently joins the table and stops working — nothing errors, the app just keeps asking you to sign in. These commands rewrite the setting at the <strong>top</strong>, above every table, which also makes them safe to run again any time you want to confirm the lock is still there.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -603,11 +607,12 @@ sandbox = "unelevated"</code></pre>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-version" data-check-id="oc-version" />
     <span class="check-num">40</span>
-    <span class="check-title">Get the version staff pinned for your cohort</span>
+    <span class="check-title">Check for a pinned channel and version</span>
   </label>
-  <div class="check-detail"><p>Check the pre-work channel for the exact OpenCode version to install, and use that rather than whatever is newest.</p>
-  <p>OpenCode ships fast and its Windows support sometimes regresses between releases — recent versions have had reports of the agent's file-writing tools failing on Windows specifically. Staff test a build and pin it so the whole room is on the same known-good version.</p>
-  <p>If no pin has been posted yet, install the current version, run the write proof below, and report what happened. A failure here is useful information for the cohort rather than a fault in your machine.</p></div>
+  <div class="check-detail"><p>Check the pre-work channel for a pinned OpenCode build, and prefer that over whatever is newest.</p>
+  <p>OpenCode ships fast and its Windows support sometimes regresses between releases — recent versions have had reports of the agent's file-writing tools failing on Windows specifically. A cohort is better off on one known build than on whatever shipped that morning.</p>
+  <p>The pin names <strong>two</strong> things, a <em>channel</em> and a <em>version</em>, because winget and npm publish this tool on their own schedules and are usually a few releases apart. A version number on its own doesn't identify a build.</p>
+  <p>If there's no pin, don't stall on it. Install from winget without the <code>--version</code> flag, then write down the channel and the exact version you landed on and post it in the channel — two people comparing notes is usually how a pin gets settled. You may end up switching builds later; that's a two-minute reinstall, not a redo of this section.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -616,9 +621,11 @@ sandbox = "unelevated"</code></pre>
     <span class="check-num">41</span>
     <span class="check-title">Install OpenCode</span>
   </label>
-  <div class="check-detail"><pre><code>winget install --id SST.opencode --exact --accept-package-agreements --accept-source-agreements</code></pre>
-  <p>If winget doesn't have it, and Node is installed:</p>
-  <pre><code>npm install -g opencode-ai</code></pre>
+  <div class="check-detail"><p>Run <strong>only</strong> the line for the channel your pin names, substituting the pinned version:</p>
+  <pre><code># channel: winget
+winget install --id SST.opencode --exact --version &lt;pinned version&gt; --accept-package-agreements --accept-source-agreements</code></pre>
+  <pre><code># channel: npm  — needs Node from section 4
+npm install -g opencode-ai@&lt;pinned version&gt;</code></pre>
   <p><strong>Don't use the <code>curl</code> install command from OpenCode's website.</strong> That script is written for Mac and Linux shells and can't run on plain Windows PowerShell. There's no PowerShell version of it published, so the equivalent address just returns an error page.</p></div>
 </li>
 
@@ -629,7 +636,8 @@ sandbox = "unelevated"</code></pre>
     <span class="check-title">New terminal, then verify OpenCode</span>
   </label>
   <div class="check-detail"><pre><code>opencode --version</code></pre>
-  <p>Record the version in your log. Monday's gate asks for it, because knowing exactly which build you're on is what makes Tuesday's comparison mean anything.</p></div>
+  <p>This must print the pinned version exactly. If it prints something newer, an older install is still on PATH or you used the wrong channel — record both numbers and raise it, rather than upgrading to whatever is current.</p>
+  <p>Record the channel and the version in your log. Monday's gate asks for both, because knowing exactly which build you're on is what makes Tuesday's comparison mean anything.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -640,7 +648,7 @@ sandbox = "unelevated"</code></pre>
   </label>
   <div class="check-detail"><p>OpenCode picks up <code>XAI_API_KEY</code> from your environment on its own — there's no login step.</p>
   <pre><code>opencode models xai --refresh</code></pre>
-  <p>You should get a list of Grok models in <code>xai/…</code> form. Note the one staff pinned in your log.</p>
+  <p>You should get a list of Grok models in <code>xai/…</code> form. Note the pinned one — or the one you chose — in your log.</p>
   <p>An empty list means this window can't see the key. Open a new terminal and try again; if it's still empty, re-check step 28.</p></div>
 </li>
 
@@ -670,7 +678,7 @@ $env:OPENCODE_DISABLE_CLAUDE_CODE = "1"</code></pre>
   <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
 opencode run -m "xai/$env:HB_XAI_MODEL" "Create a file named from-opencode.txt in the current directory whose only contents are the text: opencode works"
 Get-Content .\from-opencode.txt</code></pre>
-  <p>The file must exist in Explorer. If OpenCode reports success but the file isn't there, that's the Windows regression mentioned above — record the version and exact error, then tell staff rather than spending an hour on it alone.</p></div>
+  <p>The file must exist in Explorer. If OpenCode reports success but the file isn't there, that's the Windows regression mentioned above — record the version and exact error, then post it rather than spending an hour on it alone.</p></div>
 </li>
 </ol></section>
 
@@ -691,7 +699,7 @@ Get-Content .\from-opencode.txt</code></pre>
   <p><strong>Out of the box it has no guardrails, and the detail people get wrong is worth reading twice.</strong> Pi runs with exactly your own permissions — no sandbox, no approval prompt, and <strong>no working-directory fence</strong>. Being "in" your smoke folder is a convention you are keeping, not a boundary Pi enforces: an absolute path or a <code>~</code> reaches anything your Windows account can reach, including your SSH keys and saved credentials. Shell commands also have no default timeout.</p>
   <p>Pi's own documentation says so plainly, and explains why: a partial in-process sandbox <em>"would be easy to misunderstand as a security boundary while still depending on the host shell, filesystem, package managers, credentials, and extension code."</em> Real isolation has to come from the operating system or a container. That is a sharper lesson about security theatre than most security training, and you will build on it during the week.</p>
   <p>For pre-work you only need install, one proof file, and shell reach. Give it small, specific tasks inside the smoke folder, read what it proposes, and don't leave it running unattended.</p>
-  <p>Two more things to know now: <code>/share</code> uploads your whole session — including the system prompt and every tool result — to a public-by-URL gist, so don't use it on work material. And installing third-party Pi packages runs their code with full access to your machine, so don't install any this week that staff haven't named.</p></div>
+  <p>Two more things to know now: <code>/share</code> uploads your whole session — including the system prompt and every tool result — to a public-by-URL gist, so don't use it on work material. And installing third-party Pi packages runs their code with full access to your machine, so don't install any this week that haven't been named for the course.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -724,7 +732,7 @@ Get-Content .\from-opencode.txt</code></pre>
   <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
 pi -p --model "openai/$env:HB_OPENAI_MODEL" "Create a file named from-pi.txt in the current directory containing exactly: pi works"
 Get-Content .\from-pi.txt</code></pre>
-  <p>Use the OpenAI model staff pinned, or run <code>pi --list-models</code> to see what your keys can reach. The <code>-p</code> flag runs one instruction and exits instead of opening the interactive screen.</p>
+  <p>Use the pinned OpenAI model, or run <code>pi --list-models</code> to see what your keys can reach. The <code>-p</code> flag runs one instruction and exits instead of opening the interactive screen.</p>
   <p>There's no <code>-m</code> shorthand despite what several guides claim — it has to be <code>--model</code>.</p></div>
 </li>
 
@@ -793,7 +801,7 @@ $env:GOOSE_DISABLE_KEYRING = '1'</code></pre>
 [Environment]::SetEnvironmentVariable('GOOSE_MODEL',$env:HB_OPENAI_MODEL,'User')
 $env:GOOSE_PROVIDER = 'openai'
 $env:GOOSE_MODEL = $env:HB_OPENAI_MODEL</code></pre>
-  <p>Setting these means you never have to walk goose's provider list, which is worth avoiding: it mixes API-key providers together with subscription ones like ChatGPT Codex, GitHub Copilot and Cursor Agent that need consumer logins you don't have. This course is API keys only — stay on the OpenAI (or staff-posted) pin.</p></div>
+  <p>Setting these means you never have to walk goose's provider list, which is worth avoiding: it mixes API-key providers together with subscription ones like ChatGPT Codex, GitHub Copilot and Cursor Agent that need consumer logins you don't have. This course is API keys only — stay on the OpenAI pin, or whatever the channel names.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -820,8 +828,12 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/goose/main/
     <span class="check-title">Add goose to your PATH</span>
   </label>
   <div class="check-detail"><p>The installer drops goose into <code>%USERPROFILE%\.local\bin</code> but doesn't add that folder to PATH — it only prints a warning that's easy to scroll past.</p>
-  <pre><code>$userPath = [Environment]::GetEnvironmentVariable('PATH','User')
-[Environment]::SetEnvironmentVariable('PATH', "$userPath;$env:USERPROFILE\.local\bin", 'User')</code></pre>
+  <pre><code>$bin = "$env:USERPROFILE\.local\bin"
+$userPath = [Environment]::GetEnvironmentVariable('PATH','User')
+if (($userPath -split ';') -notcontains $bin) {
+  [Environment]::SetEnvironmentVariable('PATH', "$userPath;$bin".Trim(';'), 'User')
+}</code></pre>
+  <p>The <code>if</code> is there because this same folder comes up again in section 14. PATH is a list you append to, not a value you set, so without the guard running it twice leaves the folder listed twice. Note that this reads and writes <strong>your</strong> user PATH only; it never touches the system one.</p>
   <p>Then close and reopen the terminal.</p></div>
 </li>
 
@@ -974,7 +986,8 @@ cd AI_Harness_Bootcamp</code></pre>
   "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\"
 Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\operator"</code></pre>
   <p>You should see the template files listed. When you open a mission folder as a project during the week, bring <code>operator/</code> with you the same way.</p>
-  <p>These are the instruments of the work rather than paperwork about it. Keeping them where you work is what makes them get used.</p></div>
+  <p>These are the instruments of the work rather than paperwork about it. Keeping them where you work is what makes them get used.</p>
+  <p><strong>This copy is a rehearsal, not your Monday workspace.</strong> Monday you open the cloned repository itself as your Codex project, and the <code>operator/</code> inside it is the one you actually fill in. Anything you type into the smoke folder's copy between now and then stays behind — so read these templates here, and save the writing for Monday.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -1028,14 +1041,57 @@ auth.json</code></pre>
     <span class="check-title">Install Claude Code and prove it writes</span>
   </label>
   <div class="check-detail"><pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
-  <p>Open a new terminal and check <code>claude --version</code>. If the command isn't found, add its folder to PATH:</p>
-  <pre><code>$userPath = [Environment]::GetEnvironmentVariable('PATH','User')
-[Environment]::SetEnvironmentVariable('PATH', "$userPath;$env:USERPROFILE\.local\bin", 'User')</code></pre>
+  <p>Open a new terminal and check <code>claude --version</code>. If the command isn't found, it installed into the same <code>%USERPROFILE%\.local\bin</code> goose uses, so this is the section 10 block again — safe to run whether or not the folder is already there:</p>
+  <pre><code>$bin = "$env:USERPROFILE\.local\bin"
+$userPath = [Environment]::GetEnvironmentVariable('PATH','User')
+if (($userPath -split ';') -notcontains $bin) {
+  [Environment]::SetEnvironmentVariable('PATH', "$userPath;$bin".Trim(';'), 'User')
+}</code></pre>
   <p>It reads <code>ANTHROPIC_API_KEY</code> on its own and asks you to approve the key once. Then:</p>
   <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
 claude --bare -p "Use the Write tool to create from-claude-optional.txt containing exactly: claude works" --allowedTools "Write"
 Get-Content .\from-claude-optional.txt</code></pre>
   <p>Use the command-line tool, not the Claude desktop app. The desktop app's Code tab needs a subscription and won't accept your key.</p></div>
+</li>
+</ol></section>
+
+<section class="checklist-section"><h2>14b · Local model — optional stretch prep</h2>
+<ol class="checklist">
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-lm-decide" data-check-id="lm-decide" />
+    <span class="check-num">71a</span>
+    <span class="check-title">Decide whether to prepare a local model</span>
+  </label>
+  <div class="check-detail"><p><strong>Skip freely.</strong> This is not required for Monday's gate, the install clinic, or passing the course. It only saves you time if you want Thursday's <em>endpoint wall</em> stretch, where you point a harness at a model running on your own machine instead of somebody's API.</p>
+  <p>A <strong>model pin</strong> — a tag and a minimum amount of RAM — may be posted in the channel. If one is, use it. These downloads are several gigabytes, and picking your own tag on hotel Wi-Fi is how you spend an evening on a model your laptop can't hold, so ask before pulling anything large.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-lm-install" data-check-id="lm-install" />
+    <span class="check-num">71b</span>
+    <span class="check-title">Install the runner</span>
+  </label>
+  <div class="check-detail"><p>Install <a href="https://ollama.com" target="_blank" rel="noopener">Ollama for Windows</a>, or LM Studio if the pin names it. Then open a <strong>new</strong> PowerShell window:</p>
+  <pre><code>ollama --version</code></pre>
+  <p>A version number means you're done here. For LM Studio, confirm instead that its local server starts.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+    <input type="checkbox" id="ahb-prework-install-lm-pull" data-check-id="lm-pull" />
+    <span class="check-num">71c</span>
+    <span class="check-title">Pull the pinned tag and smoke it</span>
+  </label>
+  <div class="check-detail"><p>Once you have a tag, set it once so Thursday's commands can read it, then pull:</p>
+  <pre><code>$env:HB_LOCAL_MODEL = 'paste the tag from the LOCAL PIN line'
+[Environment]::SetEnvironmentVariable('HB_LOCAL_MODEL', $env:HB_LOCAL_MODEL, 'User')
+ollama pull $env:HB_LOCAL_MODEL</code></pre>
+  <p>Then prove it answers:</p>
+  <pre><code>ollama run $env:HB_LOCAL_MODEL "Reply with exactly: local-brain-ok"</code></pre>
+  <p>Write your free RAM and whether the smoke worked into your setup log. If the pull fails or the machine starts thrashing, stop and log it YELLOW — that is a real result, and cloud goose remains Thursday's floor either way.</p></div>
 </li>
 </ol></section>
 
@@ -1070,7 +1126,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
     <span class="check-num">74</span>
     <span class="check-title">Pack for Monday clinic</span>
   </label>
-  <div class="check-detail"><p>Bring the laptop, the four smoke files, and the setup log. Monday AM is an install clinic (~2 hours expected, no hard wall) then First Light — staff help finish gaps; they do not re-teach winget from zero for skipped pre-work.</p>
+  <div class="check-detail"><p>Bring the laptop, the four smoke files, and the setup log. Monday AM is an install clinic (~2 hours expected, no hard wall) then First Light. Clinic is for finishing gaps, not for starting from zero if pre-work was skipped.</p>
   <p>Arriving with a clear written yellow is fine. Arriving with an untested claim is worse, and it surfaces within the hour.</p></div>
 </li>
 </ol></section>
@@ -1089,8 +1145,11 @@ Get-Content .\from-claude-optional.txt</code></pre>
   </label>
   <div class="check-detail"><p>Close every terminal and open a new one. That's the answer roughly nine times in ten, and it applies to every tool here.</p>
   <p>If a second new window doesn't fix it, the installer didn't update PATH. Find the program's folder — usually <code>%USERPROFILE%\.local\bin</code> — and add it:</p>
-  <pre><code>$userPath = [Environment]::GetEnvironmentVariable('PATH','User')
-[Environment]::SetEnvironmentVariable('PATH', "$userPath;$env:USERPROFILE\.local\bin", 'User')</code></pre></div>
+  <pre><code>$bin = "$env:USERPROFILE\.local\bin"
+$userPath = [Environment]::GetEnvironmentVariable('PATH','User')
+if (($userPath -split ';') -notcontains $bin) {
+  [Environment]::SetEnvironmentVariable('PATH', "$userPath;$bin".Trim(';'), 'User')
+}</code></pre></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -1123,8 +1182,8 @@ Get-Content .\from-claude-optional.txt</code></pre>
   </label>
   <div class="check-detail"><p>Work through these in order. Is the key set in <em>this</em> window (step 28)? Does it start with the right prefix for that provider? Is it the right key for that tool — <code>XAI_API_KEY</code> for OpenCode, <code>OPENAI_API_KEY</code> for the rest?</p>
   <p>The Codex app is the exception to all of that: it never reads the variable. It uses the key you pasted into <em>Sign in another way</em>. Check the profile menu — it should say API key, not an account. If it's wrong, log out there and redo step 32.</p>
-  <p>If the Codex app keeps pushing you toward a ChatGPT login, confirm <code>forced_login_method = "api"</code> is in <code>%USERPROFILE%\.codex\config.toml</code> and restart the app.</p>
-  <p>If a tool worked yesterday and fails today with a <strong>429</strong> or a quota message, the key has hit its spending cap. That's a staff fix rather than a reinstall — message them with which key and what you were running.</p></div>
+  <p>If the Codex app keeps pushing you toward a ChatGPT login, confirm <code>forced_login_method = "api"</code> sits in <code>%USERPROFILE%\.codex\config.toml</code> <strong>above</strong> any <code>[table]</code> header — re-running step 34's four-line command puts it there safely — then restart the app.</p>
+  <p>If a tool worked yesterday and fails today with a <strong>429</strong> or a quota message, the key has hit its spending cap. That's not something a reinstall fixes — post which key and what you were running.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -1146,7 +1205,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
     <span class="check-title">The tool says it wrote a file that isn't there</span>
   </label>
   <div class="check-detail"><p>Believe the folder, not the chat. Check you're where you think you are with <code>Get-Location</code>, and list it with <code>Get-ChildItem</code>.</p>
-  <p>If the tool insists and the file genuinely isn't on disk, that's a real defect worth reporting — it has been a live issue on OpenCode for Windows. Record the tool, its version, and the exact wording, and tell staff.</p></div>
+  <p>If the tool insists and the file genuinely isn't on disk, that's a real defect worth reporting — it has been a live issue on OpenCode for Windows. Record the tool, its version, and the exact wording, and post it.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -1156,7 +1215,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
     <span class="check-title">You've been stuck on one step for 30 minutes</span>
   </label>
   <div class="check-detail"><p>Stop and post in the pre-work channel with the step number, the exact error text, and what you've already tried. Move on to the next section while you wait — most of these are independent, so one blocked tool doesn't block the rest.</p>
-  <p>A documented blocker you brought to staff on Saturday is a small thing. The same blocker discovered Monday at nine is not.</p></div>
+  <p>A documented blocker you raised on Saturday is a small thing. The same blocker discovered Monday at nine is not.</p></div>
 </li>
 </ol></section>
 </form>
