@@ -126,10 +126,51 @@
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Six stages, in order. Check each item when its proof exists — progress saves in this browser, and the same tick shows on the home page.</p>
+        <p class="section-lede">Six stages, in order. Every move is written out below — paste the blocks, click the clicks, and check each item when its proof exists. Progress saves in this browser, and the same tick shows on the home page.</p>
 
         <h3>Stage 01 · Set the contract</h3>
-        <p>Everything downstream inherits its quality from this conversation. In the Codex app, open your pinned chat <strong>Operator — Direction &amp; Log</strong> and co-write the brief: the AI interviews and challenges, you accept every field. For this mission the outcome names an artifact and an audience — a daily status brief, fixed format, for a reader you can picture.</p>
+        <p>Everything downstream inherits its quality from this conversation. The AI interviews and challenges; you accept or rewrite every field. For this mission the outcome names an artifact and an audience — a daily status brief, fixed format, for a reader you can picture.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in the Codex app:</p>
+          <ul class="do-clicks">
+            <li>Open your pinned chat <strong>Operator — Direction &amp; Log</strong></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <!-- Verbatim from operator/DIRECTION_BRIEF.md — operator-chat starter -->
+          <pre><code>We are writing the Direction Brief for this block together.
+
+Read operator/DIRECTION_BRIEF.md (or this file). Interview me in short turns.
+Do not dump all five fields at once unless I already gave you a clear mission.
+
+For each field:
+1. Ask one focused question.
+2. Propose tight wording from my answer.
+3. Challenge anything vague, uncheckable, or unbounded.
+4. Wait for me to accept or correct before moving on.
+
+When all five fields are accepted, write them into this file, set Status to LIVE,
+and remind me to run the mission in a separate build chat — not here.
+
+After the mission, we will write the Operator Log in this same chat.</code></pre>
+        </div>
+
+        <p>The AI can't interview you well without knowing the mission. Give it the whole thing in one paste.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the same chat. Replace <code>[YOUR AUDIENCE]</code> with the reader you picture — a role is enough (ops lead, your boss, the on-call engineer):</p>
+          <pre><code>Block: P1 - The Daily Status Brief.
+Mission: a daily status brief built only from mission_flesh/p1/corpus/, in a
+fixed format, every factual claim cited [C#] to a filename, regenerable by one
+saved command, failing visibly on missing sources.
+Audience: [YOUR AUDIENCE].</code></pre>
+        </div>
+
+        <p>Answer its questions in your own words, and push back wherever the wording isn't yours. You should end with all five fields accepted and Status set to <strong>LIVE</strong>. If the AI dumps all five fields at once, answer only the first and tell it to slow down — one field at a time.</p>
+
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -138,12 +179,40 @@
               <span class="check-num">1</span>
               <span class="check-title">Co-write the Direction Brief until LIVE</span>
             </label>
-            <div class="check-detail">Paste the starter from <code>operator/DIRECTION_BRIEF.md</code> and work all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Name the audience and the citation rule now — they're accept checks later. You should end with a brief the AI has challenged at least once and you've marked <strong>LIVE</strong>. If your outcome still reads like "summarize the reports," it isn't a contract yet — name the artifact and the checks it must pass.</div>
+            <div class="check-detail">All five fields worked: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. The audience and the citation rule are named now — they're accept checks later. You should end with a brief the AI has challenged at least once and you've marked <strong>LIVE</strong>. If your outcome still reads like "summarize the reports," it isn't a contract yet — name the artifact and the checks it must pass.</div>
           </li>
         </ol>
 
         <h3>Stage 02 · Meet the corpus</h3>
         <p>Two minutes of reading now saves twenty of confusion later. The corpus is six short operational fragments plus one prepared change file. Between them: a shipped feature with a known bug, a regional export failure, a finance blocker, a burning error budget — and one deliberate trap.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in File Explorer:</p>
+          <ul class="do-clicks">
+            <li>Open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p1\corpus</code></li>
+            <li>Open and read each of the seven files — they're a few lines each: <code>C1_release_notes.md</code> through <code>C6_billing_api.md</code>, plus <code>DELTA_patch.md</code></li>
+          </ul>
+        </div>
+
+        <p>As you read, note which files qualify their own claims and which state facts flat — that difference will matter when you audit. <code>DELTA_patch.md</code> is tomorrow's news arriving early; you'll hold it back until the delta test. Now open the room where the build will happen — a separate chat, so the operator chat stays clean for judgment.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in the Codex app:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>New chat</strong> — this is your <strong>build chat</strong>, separate from the operator chat</li>
+            <li>Rename it <code>Build — P1 Daily Brief</code> so you can find it again</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
+          <pre><code>Before any drafting: list the files in mission_flesh/p1/corpus/ with a one-line
+summary of each. Do not write the brief yet. If you cannot see the folder, say
+so plainly.</code></pre>
+        </div>
+
+        <p>You should get the same seven filenames back, with summaries matching what you just read. If the machine can't see the folder, your project is opened at the wrong folder — the corpus must sit inside the open project. Fix that before anything else; re-clone only if the files are truly missing from disk.</p>
+
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -152,7 +221,7 @@
               <span class="check-num">2</span>
               <span class="check-title">Open P1 corpus</span>
             </label>
-            <div class="check-detail">Open <code>mission_flesh/p1/corpus/</code> and skim all seven files — they're short. You should see six sources, <code>C1_release_notes.md</code> through <code>C6_billing_api.md</code>, plus <code>DELTA_patch.md</code>, which you'll hold back for the delta test. As you read, note which files qualify their own claims and which state facts flat — that difference will matter when you audit. If the machine can't see the folder, check which folder your project is opened at before anything else — the corpus must sit inside the open project. Re-clone only if it's truly missing from disk.</div>
+            <div class="check-detail">You read all seven files with your own eyes, and the machine listed the same seven from the build chat. You should know already which file carries its own "unverified" caveat. If the machine can't see the folder, check which folder your project is opened at before anything else — re-clone only if the corpus is truly missing from disk.</div>
           </li>
         </ol>
 
@@ -160,7 +229,21 @@
         <figure class="section-diagram">
           <img src="../assets/blocks/p1/p1-stage-03-machine.svg" alt="Stage 3, inside the machine: an input rule reading the corpus with DELTA held back, fixed sections, a citation rule that fails loudly on unresolved tags, and outputs of the brief plus a saved run command" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
-        <p>This is the build. Work in a separate build chat, not the operator chat. You direct; the machine writes both the brief and the method that regenerates it. The paste-ready prompt below is a floor, not a script — tighten it with your own audience and format from the LIVE brief.</p>
+        <p>This is the build, and it happens in the build chat — never the operator chat. You direct; the machine writes both the brief and the method that regenerates it. The prompt below is a floor, not a script: the audience is yours, and if your LIVE brief fixed a different section list, use that one.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong>. Replace <code>[YOUR AUDIENCE]</code> with the audience from your LIVE brief:</p>
+          <pre><code>Using only mission_flesh/p1/corpus/, build a regenerable daily status brief.
+Ignore files whose names start with DELTA - that material has not arrived yet.
+Audience: [YOUR AUDIENCE]. Fixed sections: Shipped / Broken / Blocked / Asks.
+Every factual claim carries a citation [C#] mapping to a filename.
+Do not invent sources. Distinguish verified facts from unverified reports.
+If a cited file is missing at regenerate time, fail visibly - never omit quietly.
+Output: the brief in markdown plus a script or one documented regenerate command.</code></pre>
+        </div>
+
+        <p>You should see a brief in your stated format with a tag on every claim, plus a script or one documented command that regenerates it. If claims arrive untagged, reject the draft and restate the citation rule — don't fix tags by hand; that converts machine error into your error.</p>
+
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -169,8 +252,27 @@
               <span class="check-num">3</span>
               <span class="check-title">Build regenerable brief path</span>
             </label>
-            <div class="check-detail">Direct Codex to produce the daily brief plus its regenerate method — a script or one clearly documented command. Fix the sections up front (e.g. Shipped / Broken / Blocked / Asks, or Confirmed / Developing / Gaps) and require every factual claim to carry <code>[C#]</code> mapped to a filename. No invented sources. You should see a brief in your stated format with a tag on every claim. If claims arrive untagged, reject the draft and restate the citation rule — don't fix tags by hand.</div>
+            <div class="check-detail">The brief exists in your stated format — every factual claim tagged <code>[C#]</code> mapped to a filename, no invented sources — plus the regenerate method: a script or one clearly documented command. If claims arrived untagged, reject the draft and restate the citation rule as an accept check; don't fix tags by hand.</div>
           </li>
+        </ol>
+
+        <p>Now prove the machine runs without you re-explaining it. First get the run path out of the conversation and into your hands.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
+          <pre><code>Show me the exact regenerate command and the folder to run it from - one
+command, nothing else. Then stop. I will run it myself.</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in a <strong>PowerShell window</strong>. Replace <code>[YOUR REGENERATE COMMAND]</code> with the one command the machine just gave you (for example <code>python mission_flesh\p1\regenerate.py</code>):</p>
+          <pre><code>cd $env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp
+[YOUR REGENERATE COMMAND]</code></pre>
+        </div>
+
+        <p>You should get the same sections and citations as the first pass. If the machine's run path lives inside the app — a skill or a saved one-command flow — trigger it there instead; the test is the same either way: no fresh paragraph of instructions, no mission from memory. Keep this command; you'll rerun it twice in Stage 05.</p>
+
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -178,26 +280,59 @@
               <span class="check-num">4</span>
               <span class="check-title">Regenerate once successfully</span>
             </label>
-            <div class="check-detail">Run the regenerate path end-to-end, cold: one command or one documented step, starting from the corpus folder, with no re-explaining of the mission from memory. You should get the same sections and citations as the first pass. If regenerating needs a fresh paragraph of instructions, the mission still lives in your head — direct Codex to write the run instruction down. <code>mission_flesh/p1/sample_regenerate.py</code> shows the minimum viable shape — and note what it does <em>not</em> do: it numbers citations by position and regenerates without complaint when a source vanishes. Your machine has to beat it on both counts.</div>
+            <div class="check-detail">The regenerate path ran end-to-end, cold: one command, same sections and citations as the first pass. If regenerating needed fresh instructions, the mission still lives in your head — direct Codex to write the run instruction down. <code>mission_flesh/p1/sample_regenerate.py</code> shows the minimum viable shape — and note what it does <em>not</em> do: it numbers citations by position and regenerates without complaint when a source vanishes. Your machine has to beat it on both counts.</div>
           </li>
         </ol>
-
-        <div class="panel">
-          <p class="eyebrow">Paste-ready mission prompt</p>
-          <pre><code>Using only mission_flesh/p1/corpus/, build a regenerable daily status brief.
-Ignore files whose names start with DELTA - that material has not arrived yet.
-Audience: [name yours]. Fixed sections: Shipped / Broken / Blocked / Asks.
-Every factual claim carries a citation [C#] mapping to a filename.
-Do not invent sources. Distinguish verified facts from unverified reports.
-If a cited file is missing at regenerate time, fail visibly - never omit quietly.
-Output: the brief in markdown plus a script or one documented regenerate command.</code></pre>
-        </div>
 
         <h3>Stage 04 · Audit the citations</h3>
         <figure class="section-diagram">
           <img src="../assets/blocks/p1/p1-stage-04-audit.svg" alt="Stage 4: five cited claims sampled from the brief and checked against their files by the operator, with one forced correction recorded" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
-        <p>The brief looks right. Now find out whether it is right — with your own eyes, on a sample. Do not ask the model to check itself; that reading is yours.</p>
+        <p>The brief looks right. Now find out whether it is right — with your own eyes, on a sample. The machine's only job here is to hand you the map; the reading is yours, and you never ask the model to check itself.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
+          <pre><code>List every citation in the current brief as a table: the tag, the exact
+sentence carrying it, and the source filename it maps to. Do not judge whether
+the citations are correct - I will read the files myself.</code></pre>
+        </div>
+
+        <p>That table is your audit map. Next, make the place your verdicts will live — a file, so the audit survives the chat.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now open <strong>Notepad</strong> and save this as <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p1\AUDIT.md</code>:</p>
+          <pre><code># P1 citation audit - my eyes, not the model's
+
+| Tag | Claim (short) | File | PASS/FAIL | Why |
+|-----|---------------|------|-----------|-----|
+|     |               |      |           |     |
+|     |               |      |           |     |
+|     |               |      |           |     |
+|     |               |      |           |     |
+|     |               |      |           |     |
+
+Correction forced: [WHICH CLAIM - BEFORE and AFTER]</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now in File Explorer, walk five wires yourself:</p>
+          <ul class="do-clicks">
+            <li>Pick five cited claims from the audit map — include any claim built on <code>C5_sso_rumor.md</code> and any sentence that merges two files into one claim</li>
+            <li>For each claim: open its cited file in <code>mission_flesh\p1\corpus</code>, read it, and fill one row of <code>AUDIT.md</code> — PASS or FAIL, with why</li>
+          </ul>
+        </div>
+
+        <p>At least one correction must come out of this, and the corpus rewards a careful reader: check whether the "unverified" on the SSO rumor survived into the brief, and whether any sentence claims more than its file actually says. If all five passed, you sampled too gently — audit two more, starting with anything touching <code>C5</code>.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong>. Fill the three brackets from your failed row in <code>AUDIT.md</code>:</p>
+          <pre><code>Audit result: the claim "[PASTE THE CLAIM]" cites [FILENAME], but the file
+actually says: [WHAT THE FILE SAYS]. Correct the brief. Keep the format and
+every other claim unchanged, and show me the corrected line.</code></pre>
+        </div>
+
+        <p>Keep the before-and-after — it's evidence for the log, and the adversarial chat will ask for it.</p>
+
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -206,12 +341,22 @@ Output: the brief in markdown plus a script or one documented regenerate command
               <span class="check-num">5</span>
               <span class="check-title">Citation audit ≥5 claims</span>
             </label>
-            <div class="check-detail">Pick at least five cited claims and check each against its file yourself. Record pass/fail per claim. At least one correction must come out of the audit, and the corpus rewards a careful reader. If all five passed, you sampled too gently — look hard at any claim built on <code>C5_sso_rumor.md</code> (did the "unverified" survive?) and at any sentence that merges two files into one claim. Direct the fix in chat; keep the before-and-after as evidence.</div>
+            <div class="check-detail">Five-plus claims checked against their files by you, pass/fail recorded in <code>AUDIT.md</code>, at least one correction forced and directed in chat. If all five passed, you sampled too gently — look hard at any claim built on <code>C5_sso_rumor.md</code> (did the "unverified" survive?) and at any sentence that merges two files into one claim. Keep the before-and-after as evidence.</div>
           </li>
         </ol>
 
         <h3>Stage 05 · Break it on purpose</h3>
-        <p>Two controlled breakages — the afternoon's most important evidence. The corpus ships with the change file ready. Run the delta first, then the stale test, and keep both outputs.</p>
+        <p>Two controlled breakages — the afternoon's most important evidence. The change file has been sitting in the corpus all along, and your machine ignores DELTA-named files, so the delta move is to give it a name the machine reads. <code>C7</code> sorts after <code>C6</code>, which matters if your machine numbers sources by position.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in your <strong>PowerShell window</strong> — same <code>[YOUR REGENERATE COMMAND]</code> as Stage 03:</p>
+          <pre><code>cd $env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp
+Copy-Item mission_flesh\p1\corpus\DELTA_patch.md mission_flesh\p1\corpus\C7_patch.md
+[YOUR REGENERATE COMMAND]</code></pre>
+        </div>
+
+        <p>You should see the EU-export line move — flag disabled in staging, prod still blocked — and <code>PLAT-901</code> appear, while billing holds steady. Note what changed <em>and</em> what correctly did not; both halves are evidence. If nothing changed, the ignore rule is still excluding the patch — confirm where the machine reads from, then rerun. If everything changed, your format isn't holding — pin the sections and rerun.</p>
+
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -220,8 +365,28 @@ Output: the brief in markdown plus a script or one documented regenerate command
               <span class="check-num">6</span>
               <span class="check-title">Delta test</span>
             </label>
-            <div class="check-detail"><code>DELTA_patch.md</code> already sits in the corpus folder, and your machine ignores DELTA-named files — so the move is to make it visible: copy it to a name the machine reads (<code>C7_patch.md</code>; a name that sorts after C6 matters if your machine numbers sources by position) or lift the ignore rule, then regenerate. You should see the EU-export line move (flag disabled in staging, prod still blocked) and <code>PLAT-901</code> appear, while billing holds steady. Note what changed <em>and</em> what correctly did not. If nothing changed, the ignore rule is still excluding the patch; if everything changed, your format isn't holding.</div>
+            <div class="check-detail">The rerun moved for the right reasons: EU-export updated (staging unblocked, prod still blocked), <code>PLAT-901</code> present, billing steady. Keep both briefs side by side — what changed and what correctly did not. If nothing changed, the patch never entered the input set; if everything changed, the format isn't holding.</div>
           </li>
+        </ol>
+
+        <p>Now the harder probe. Removing a cited source must produce a loud failure — an error, a MISSING SOURCE line, an explicit gap in the brief. The rename below takes <code>C4_finance_ask.md</code> out of the machine's sight without deleting anything.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in your <strong>PowerShell window</strong>:</p>
+          <pre><code>cd $env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp
+Rename-Item mission_flesh\p1\corpus\C4_finance_ask.md C4_finance_ask.md.hold
+[YOUR REGENERATE COMMAND]</code></pre>
+        </div>
+
+        <p>The failure must be visible in the output. What must never happen: the finance claim quietly disappears, or survives with an invented cite. If your run passes clean, that's the worst result on this page — go back to the build chat, direct the machine to fail loudly on any unresolvable <code>[C#]</code>, and run this test again until it fails honestly.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now put the source back — run this in your <strong>PowerShell window</strong>:</p>
+          <pre><code>cd $env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp
+Rename-Item mission_flesh\p1\corpus\C4_finance_ask.md.hold C4_finance_ask.md</code></pre>
+        </div>
+
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -229,12 +394,29 @@ Output: the brief in markdown plus a script or one documented regenerate command
               <span class="check-num">7</span>
               <span class="check-title">Stale-source test</span>
             </label>
-            <div class="check-detail">Remove or rename one cited file — <code>C4_finance_ask.md</code> works well — and regenerate. The failure must be visible: an error, a MISSING SOURCE line, or an explicit gap. What must never happen: the claim quietly disappears, or survives with an invented cite. If your run passes clean, that's the worst result on this page — direct the machine to fail loudly on any unresolvable <code>[C#]</code>, then re-test. Put the file back when you're done.</div>
+            <div class="check-detail">The failure was visible: an error, a MISSING SOURCE line, or an explicit gap. What must never happen: the claim quietly disappears, or survives with an invented cite. If your run passed clean, direct the machine to fail loudly on any unresolvable <code>[C#]</code>, then re-test. Confirm <code>C4_finance_ask.md</code> is back in place before moving on.</div>
           </li>
         </ol>
 
         <h3>Stage 06 · Own the verdict</h3>
         <p>Close the loop where it started — in the operator chat, on the record.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <pre><code>Before the log entry: help me draw the draft-versus-judgment line for this
+brief. Ask me, one question at a time:
+1. Which claims printed as fact and which carried an unverified flag - whose
+   call was each one?
+2. What does "Blocked" mean for my audience - who decided that?
+3. What did the brief leave out, and who owns that omission?
+4. How did the brief handle C5_sso_rumor.md - and would I defend that choice
+   to my reader?
+Write my answers as two short lists - machine draft / my judgment - and do not
+answer for me.</code></pre>
+        </div>
+
+        <p>One honest sentence per call is enough. If you can't name a judgment you made, look at how your brief handled the SSO rumor — someone decided that, and it wasn't the model.</p>
+
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -243,7 +425,7 @@ Output: the brief in markdown plus a script or one documented regenerate command
               <span class="check-num">8</span>
               <span class="check-title">Log draft vs your judgment</span>
             </label>
-            <div class="check-detail">In the log, draw the line: which parts of the brief are machine draft, and which are calls you own — what printed as fact versus flagged unverified, what "Blocked" means for your audience, what got left out. One honest sentence each is enough. If you can't name a judgment you made, look at how your brief handled <code>C5</code> — someone decided that, and it wasn't the model.</div>
+            <div class="check-detail">The line is drawn in the log: which parts of the brief are machine draft, and which are calls you own — what printed as fact versus flagged unverified, what "Blocked" means for your audience, what got left out. One honest sentence each. If no judgment surfaced, the <code>C5</code> decision is yours by definition.</div>
           </li>
         </ol>
       </section>
@@ -286,11 +468,17 @@ Output: the brief in markdown plus a script or one documented regenerate command
 
         <h3>Stretch, once the floor is cleared</h3>
         <p>Two stretch lanes and a side-quest, straight from the pass-bar file: collapse the regenerate path to a single operator action end-to-end; produce a second consumer format — exec versus desk — from the same machine without forking truth; or run a different judgment product, a risk rollup or watch list, over the same corpus with the same regenerate-audit-delta discipline. Log stretch work like everything else: evidence, not enthusiasm.</p>
+
+        <h3>Field guide · test the machine when no gold paragraph exists</h3>
+        <p><a href="../resources/p1/metamorphic-tests.html"><strong>Metamorphic Tests for Generative Judgment Products</strong></a> gives you a relation-based test sheet for changes that should hold, move, stay out, or force a stop. Use it after the rerunnable machine exists.</p>
+
+        <h3>Field guide · bind one run to reconstructable evidence</h3>
+        <p><a href="../resources/p1/reproducible-runs.html"><strong>Reproducible Runs: Stable IDs, Manifests, and Hashes</strong></a> gives each execution an immutable identity and a replayable bundle of exact inputs, procedure, configuration, output, checks, and residual unknowns.</p>
       </section>
 
       <section id="pulse" class="home-section" data-check-section="pulse">
         <h2>Operator pulse — required every block</h2>
-        <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
+        <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. Every prompt you need is below, ready to paste — <a href="../pulse.html">Pulse &amp; chats</a> keeps the same set for reference.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -301,6 +489,32 @@ Output: the brief in markdown plus a script or one documented regenerate command
             </label>
             <div class="check-detail">The build stayed out of <strong>Operator — Direction &amp; Log</strong>. Build chats cheerlead; the operator chat holds judgment — the trail is the point. If you built in the log chat today, note it honestly and split them next block.</div>
           </li>
+        </ol>
+
+        <p>Beat two is the log — same chat as the brief, so the entry lands where the contract was set.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <!-- Verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
+          <pre><code>We are writing the Operator Log entry for this block together.
+
+Read operator/DIRECTION_BRIEF.md (the LIVE brief) and operator/OPERATOR_LOG.md.
+Interview me in short turns. Do not fill the verdict for me.
+
+Walk fields 1 → 5:
+1. Ask what I directed (confirm against the Brief).
+2. Ask what I changed mid-run.
+3. Ask my provisional verdict — then challenge weak reasoning without overriding me.
+4. Demand concrete evidence (paths, checks, citations, reruns). Reject vibe language.
+5. Ask what I still own.
+
+When I accept the wording, write the entry into the correct block section in this file.
+Remind me: REJECT with real evidence is a successful operator act.</code></pre>
+        </div>
+
+        <p>Answer fields one through five in your own words. On this block, ACCEPT is only honest if the audit, delta, and stale evidence exist.</p>
+
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -308,8 +522,19 @@ Output: the brief in markdown plus a script or one documented regenerate command
               <span class="check-num">10</span>
               <span class="check-title">Operator Log complete</span>
             </label>
-            <div class="check-detail">Back in Direction &amp; Log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers a peer could follow, and what you still own. On this block, ACCEPT is only honest if the audit, delta, and stale evidence exist.</div>
+            <div class="check-detail">What you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers a peer could follow, and what you still own. On this block, ACCEPT is only honest if the audit, delta, and stale evidence exist.</div>
           </li>
+        </ol>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <pre><code>PASS_BARS self-check for P1. Read operator/PASS_BARS.md, section P1.
+Walk the MVP list one bar at a time. For each bar I will answer met or not yet
+and give an evidence pointer - a path, a file, or a chat moment. Challenge any
+claim that has no evidence. Do not mark a bar met for me.</code></pre>
+        </div>
+
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -319,6 +544,74 @@ Output: the brief in markdown plus a script or one documented regenerate command
             </label>
             <div class="check-detail">Against P1's MVP list: met / not yet, each with an evidence pointer. No inflation — the adversarial chat will try to take these claims away in a few minutes, and inflated ones go first.</div>
           </li>
+        </ol>
+
+        <p>Now the attack. A fresh chat, so the reviewer never "helped you succeed" five minutes ago.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in the Codex app:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>New chat</strong> and rename it <code>Adversarial — P1 — [TODAY'S DATE]</code></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the new <strong>Adversarial — P1</strong> chat:</p>
+          <!-- Verbatim from operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
+          <pre><code>You are an adversarial operator reviewer for an operator’s school.
+Your job is NOT to help me feel successful. Your job is to stress-test my verdict and MVP claims.
+
+Context: deep operator mastery of AI direction and cothinking.
+Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
+Containment is absence of effect. Autonomy without stop proof is theater.
+
+I will paste: block, artifacts/paths/excerpts, provisional verdict, draft MVP checklist.
+
+Protocol — follow in order:
+1. Restate my claimed outcome and verdict in one cold sentence (no praise).
+2. Attack pass: give the strongest case that this is NOT YET mastery for this block.
+   - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
+   - Name completion theater if you see it.
+   - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
+3. Evidence audit: for each MVP claim I marked met, mark:
+   SURVIVES / WOUNDED / DEAD — with reason.
+4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
+   If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
+   If REJECT, check I am not rejecting to avoid measurement.
+5. Force one of:
+   a) Concrete fix list (smallest changes to reach real MVP), or
+   b) “Stands under fire” — only if evidence is actually strong.
+6. End with a single line I must copy into my Operator Log:
+   ADVERSARIAL: [stood / wounded / failed] — [one sentence].
+
+Rules for you:
+- No encouragement fluff. No “great job.” No emoji.
+- Do not rewrite my mission for me unless citing a fix.
+- Do not accept screenshots of chat enthusiasm as evidence.
+- Prefer false NOT YET over false pass.
+- Short, sharp, specific.</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now paste your evidence into the same chat. Fill every bracket — and if the reviewer can't see files, paste the excerpts themselves:</p>
+          <pre><code>Block: P1 - Daily Status Brief.
+Claimed outcome: a regenerable, cited daily brief from mission_flesh/p1/corpus/.
+Artifacts: the brief, the regenerate command, mission_flesh/p1/AUDIT.md, the
+delta rerun output, the stale-source failure output.
+Excerpts: [PASTE THE BRIEF, YOUR AUDIT TABLE, AND BOTH TEST OUTPUTS]
+Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
+Draft MVP self-check: [WHICH BARS YOU MARKED MET / NOT YET]
+Known weak spots: [ANYTHING YOU ALREADY DOUBT]</code></pre>
+        </div>
+
+        <p>Let it attack. If the attack lands, fix or downgrade the verdict — and uncheck the wounded floor item below until it's fixed. Then carry the scar back to the record.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now copy the reviewer's final line into <strong>Operator — Direction &amp; Log</strong> — it looks like this:</p>
+          <pre><code>ADVERSARIAL: [stood | wounded | failed] - [one sentence]</code></pre>
+        </div>
+
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -326,8 +619,38 @@ Output: the brief in markdown plus a script or one documented regenerate command
               <span class="check-num">12</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">New chat <code>Adversarial — P1</code>: the frozen prompt from <code>operator/ADVERSARIAL_REVIEW.md</code>, your artifacts, and your provisional verdict. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. If wounded, fix — and uncheck the wounded floor item until it's fixed.</div>
+            <div class="check-detail">Frozen prompt, your artifacts, your provisional verdict — in the fresh chat, never the build chat. The final line lands in your log: <code>ADVERSARIAL: stood | wounded | failed</code>. If wounded, fix — and uncheck the wounded floor item until it's fixed.</div>
           </li>
+        </ol>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>. Write <code>P1</code> in the block slot and fill the other brackets from your artifacts:</p>
+          <!-- Verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
+          <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
+
+Block: [B0/P1/…].
+Adversarial line: [paste ADVERSARIAL: …].
+Brief LIVE at: [time or “approx”].
+Adversarial done at: [time or “approx”].
+Mission outcome path(s): [paths].
+Draft MVP: [met / not yet summary].
+
+Fill this block’s row:
+1. Ritual 0–3 with proof of each point
+2. Mission HIT/PARTIAL/MISS against the LIVE brief
+3. Quality STRONG/ADEQUATE/WEAK from adversarial + evidence (challenge inflation)
+4. Time to result in minutes
+5. One-line note
+6. Deep mark if this is P2/P3/P5/P6/P8
+
+Update running totals.
+Refuse cheerful quality scores without evidence.
+Do not start transfer until this row is written.</code></pre>
+        </div>
+
+        <p>Three to five minutes, honest numbers. No deep mark on this block — the four headlines are the whole row.</p>
+
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -335,8 +658,39 @@ Output: the brief in markdown plus a script or one documented regenerate command
               <span class="check-num">13</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Add today's row: ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result in minutes. Three to five minutes, honest numbers. No deep mark on this block — deep marks belong to the blocks that build the big instruments; the four headlines are the whole row.</div>
+            <div class="check-detail">Today's row exists: ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result in minutes. Honest numbers only. No deep mark on this block — deep marks belong to the blocks that build the big instruments; the four headlines are the whole row.</div>
           </li>
+        </ol>
+
+        <div class="do-step">
+          <p class="do-label">Now in the Codex app:</p>
+          <ul class="do-clicks">
+            <li>Open your pinned chat <strong>Operator — Transfer 30-60-90</strong></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Transfer 30-60-90</strong>. Write <code>P1</code> in the block slot:</p>
+          <!-- Verbatim from operator/TRANSFER_30_60_90.md — every-session prompt -->
+          <pre><code>Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
+
+Block I just finished: [B0/P1/…].
+I have finished Direction/Log and pass-bar check in the other operator chat.
+
+Run a short interactive update:
+1. What mastery did this block actually prove (one sentence, no theater)?
+2. Map it onto MY real desk — interview me if missing.
+3. Update the matching seed and today’s row in the session log.
+4. Tighten at most three lines in identity or 30/60/90 if enough signal exists.
+5. Name one backslide risk if I do nothing at work.
+
+Do not seal. Do not invent a full plan from zero on a light block.
+Challenge vagueness. I own every accept.</code></pre>
+        </div>
+
+        <p>Name one recurring product on your real desk that deserves this machine treatment. A session-log row is required even if the seed is small today.</p>
+
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -344,7 +698,7 @@ Output: the brief in markdown plus a script or one documented regenerate command
               <span class="check-num">14</span>
               <span class="check-title">Transfer pulse (every AM/PM)</span>
             </label>
-            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt. Name one recurring product on your real desk that deserves this machine treatment. A session-log row is required even if the seed is small today.</div>
+            <div class="check-detail">One recurring product on your real desk named as a machine candidate, and a session-log row written in the Transfer file — required even if the seed is small today.</div>
           </li>
         </ol>
       </section>
@@ -378,7 +732,7 @@ Output: the brief in markdown plus a script or one documented regenerate command
               <span class="check-num">17</span>
               <span class="check-title">MVP: Citation audit ≥5 with correction</span>
             </label>
-            <div class="check-detail">Five-plus claims checked against corpus files by you, pass/fail recorded, at least one correction forced by the audit. Evidence looks like: the audit list, plus the corrected claim before and after.</div>
+            <div class="check-detail">Five-plus claims checked against corpus files by you, pass/fail recorded, at least one correction forced by the audit. Evidence looks like: <code>mission_flesh/p1/AUDIT.md</code>, plus the corrected claim before and after.</div>
           </li>
 
           <li class="check-item" data-check-item>
