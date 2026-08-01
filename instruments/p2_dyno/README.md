@@ -14,6 +14,8 @@
 6. Record after scores; compute delta.
 7. Deep mark on measurement spine: `Dyno: baseline n/5 → after n/5`.
 
+To run authored checks by machine, save an answer to a file and use `python checks_runner.py CHECKS.md answer.txt` (script in this folder) — one `REQUIRE <pattern>` or `FORBID <pattern>` per line, PASS/FAIL printed for each.
+
 ## Rules
 
 - Do not edit case files to make scores prettier.
