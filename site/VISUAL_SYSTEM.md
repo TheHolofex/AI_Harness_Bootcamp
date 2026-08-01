@@ -60,7 +60,7 @@ From Starzl defense figure system / starzl.com altitude — **sparingly**.
 | `--warn` | `#B43A2F` | Warnings only |
 | `--steel` | `#2D3030` | Neutral structure |
 
-Use field surface for: home hero, live-demo backdrop, instrument “dyno board” moments, figure embeds.  
+Use field surface for: home hero, live-demo backdrop, instrument score-board moments, figure embeds.  
 **Do not** force long exercise prose onto pure black — readability loses to mood.
 
 ---
@@ -153,7 +153,7 @@ The site should *look* like Starzl courseware and *read* like a skilled operator
 | Map before territory | Steps/shape of the whole before the first deep detail |
 | Warm-neutral | “you’ll,” “don’t”; welcoming; never chummy, never cold |
 | Complete sentences | Flowing prose; short complete lines at decision points — not slogan fragments |
-| Concepts when needed | Define harness, brief, adversarial, dyno, etc. at first use, in plain words; add a related-concept beat when it prevents confusion |
+| Concepts when needed | Define harness, brief, adversarial, baseline, etc. at first use, in plain words; add a related-concept beat when it prevents confusion |
 | Failure is data | Normalize errors; give the recovery path in the same breath |
 | Concrete verbs | *Run, Verify, Direct, Adjudicate, Seal* — still operator school |
 | No marketing register | Not “Level up your AI journey,” “take the wheel,” confetti empty states |
@@ -170,7 +170,7 @@ Full recipe: guide-beside-voice skill · identity: `MEMORY.md` Learner-facing vo
 - Paper mode body contrast ≥ WCAG AA  
 - Crimson never the only encoding of meaning (pair with text)  
 - Focus rings visible on black and paper  
-- Dyno/score tables usable with keyboard  
+- Score tables usable with keyboard  
 
 ---
 

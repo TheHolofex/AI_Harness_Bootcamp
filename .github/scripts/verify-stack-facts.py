@@ -124,7 +124,7 @@ def check_repo_paths(rep: Report) -> None:
         "DAY_PROJECT_TABLE.md",
         "prework/INSTALL_GUIDE.md",
         "prework/FACILITATOR_NOTES.md",
-        "instruments/p2_dyno",
+        "instruments/p2_test_suite",
         "instruments/p3_frozen_brief",
         "instruments/p3_multi_agent",
         "instruments/p8_hold_degrade",
@@ -132,7 +132,8 @@ def check_repo_paths(rep: Report) -> None:
         "mission_flesh/p6/local_endpoint_notes.md",
         "mission_flesh/p6/watch_officer.yaml",
         "lead/BROWSER_DECK_DEMO.md",
-        "lead/COHORT_PIN.md",
+        # lead/COHORT_PIN.md is staff-only: it lives under the gitignored staff/
+        # tree and is never present in a student clone or on a CI runner.
         "operator/PASS_BARS.md",
         "site/week.html",
     ]

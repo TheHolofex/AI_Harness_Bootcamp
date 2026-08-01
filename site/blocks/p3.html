@@ -30,7 +30,7 @@
       <div><span class="k">Block</span><span class="v">P3</span></div>
       <div><span class="k">Time</span><span class="v">~3–3.5 hr</span></div>
       <div><span class="k">Tools</span><span class="v">Codex app + OpenCode (Grok) · instruments/p3_frozen_brief</span></div>
-      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p3">0 / 23 · 0%</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p3">0 / 20 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
 
@@ -38,9 +38,9 @@
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
       <a href="#ideas">The ideas</a>
-      <a href="#mission">Mission · <span data-count-for="mission">0/9</span></a>
+      <a href="#mission">Mission · <span data-count-for="mission">0/8</span></a>
       <a href="#depth">Going deeper</a>
-      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/6</span></a>
+      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/4</span></a>
       <a href="#floor">Mastery floor · <span data-count-for="floor">0/8</span></a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
@@ -81,7 +81,7 @@
           </div>
           <div class="callout">
             <strong>Stretch · Many Minds, one commander</strong>
-            After twin-engine MVP: <strong>baseline</strong> single-chat review, then parallel <strong>subagents</strong>, then a <strong>delta sheet</strong> that defends whether parallel helped. Three artifacts under <code>instruments/p3_multi_agent/out/</code>. Earned kills need corpus evidence. Guide: <a href="../../mission_flesh/p3/MANY_MINDS.md"><code>mission_flesh/p3/MANY_MINDS.md</code></a>. Naming lock: subagent ≠ second engine ≠ second human.
+            After twin-engine MVP: <strong>baseline</strong> single-chat review, then parallel <strong>subagents</strong>, then a <strong>delta sheet</strong> that defends whether parallel helped. Three artifacts under <code>instruments/p3_multi_agent/out/</code>. Earned kills need corpus evidence. Guide: <a href="#many-minds">Many Minds walkthrough</a>. Naming lock: subagent ≠ second engine ≠ second human.
           </div>
         </div>
       </div>
@@ -104,7 +104,7 @@
       <figure class="section-diagram">
         <img src="../assets/blocks/p3/p3-idea-hidden-cargo.svg" alt="Both engines carry context you never typed — the Codex app loads AGENTS.md, skills, and memories; OpenCode reads Claude's files — and a declare-or-clear gate sits before any delta counts as evidence" width="1120" height="220" loading="lazy" decoding="async" />
       </figure>
-      <p class="full-measure">For this controlled comparison to support a claim about engine differences, both engines must receive the same frozen job and every material difference in their run paths must be declared. Neither engine helps you with this. The Codex app loads <code>AGENTS.md</code> from whatever folder you open as the project — including the one you hot-rodded in P2 — plus <code>%USERPROFILE%\.codex\AGENTS.md</code>, any skills it discovers, and memories if you enabled them. OpenCode, for its part, reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set — pre-work set it, and today is the day that setting earns its keep. Neither product announces any of this at run time. The cargo is invisible until you go looking.</p>
+      <p class="full-measure">For this controlled comparison to support a claim about engine differences, both engines must receive the same frozen job and every material difference in their run paths must be declared. Neither engine helps you with this. The Codex app loads <code>AGENTS.md</code> from whatever folder you open as the project — including the P2 project whose harness you changed — plus <code>%USERPROFILE%\.codex\AGENTS.md</code>, any skills it discovers, and memories if you enabled them. OpenCode, for its part, reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set — pre-work set it, and today is the day that setting earns its keep. Neither product announces any of this at run time. The cargo is invisible until you go looking.</p>
       <p class="full-measure">Here is what going wrong looks like, because it's the most common way this desk fails: you run the brief inside your P2 project, the Codex output comes back noticeably sharper, and you conclude the Codex app is the stronger engine. That comparison is contaminated: the product and model family changed, but so did the instruction path, so the observed delta cannot be attributed to the engine split. The run is still evidence about the combined setups; it is not clean evidence that one engine is stronger. <strong>An advantage you didn't declare looks exactly like a capability you don't have.</strong></p>
       <p class="full-measure">The discipline is <strong>declare or clear</strong>, and either is honest — silence is the only wrong answer. Clear means a fresh folder holding only the frozen corpus, the disable flag set (<code>OPENCODE_DISABLE_CLAUDE_CODE=1</code>), and installed plugins held out of the OpenCode run with <code>OPENCODE_PURE=1</code> alongside <code>--pure</code> — some builds silently ignore the flag on its own. Declare means writing the run identity down like a lab notebook entry: engine, model id, version, folder, and which instruction files, skills, and memories were live. The comparator's first table exists for exactly this, and it gets filled before any side-by-side row. At work this habit generalizes far past today's two products: any time you compare AI outputs — models, prompts, vendors, versions — the first question is what each side was carrying.</p>
 
@@ -180,7 +180,7 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
               <span class="check-num">1</span>
               <span class="check-title">Co-write the Direction Brief until LIVE</span>
             </label>
-            <div class="check-detail">All five fields accepted — Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back — and Status reads <strong>LIVE</strong> in <a href="../../operator/DIRECTION_BRIEF.md"><code>operator/DIRECTION_BRIEF.md</code></a>. The outcome names the comparator and the adjudication note. If the chat drifted into running the mission, pull it back — the mission runs in a separate build chat later.</div>
+            <div class="check-detail">All five fields accepted — Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back — and Status reads <strong>LIVE</strong> in <code>operator/DIRECTION_BRIEF.md</code>. The outcome names the comparator and the adjudication note. If the chat drifted into running the mission, pull it back — the mission runs in a separate build chat later.</div>
           </li>
         </ol>
 
@@ -205,7 +205,7 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
           </li>
         </ol>
 
-        <p class="full-measure">Next, the clean folder. Run exactly one of the next two blocks — the one matching the track you ran in P2. You circled it at the top of your dyno score sheet in <code>instruments/p2_dyno/SCORE_SHEET.md</code>, so look there if you're unsure. The commands create <code>Documents\HarnessBootcamp\p3_desk</code> and copy in the brief plus your track's four corpus files.</p>
+        <p class="full-measure">Next, the clean folder. Run exactly one of the next two blocks — the one matching the track you ran in P2. You circled it at the top of your P2 score sheet in <code>instruments/p2_test_suite/SCORE_SHEET.md</code>, so look there if you're unsure. The commands create <code>Documents\HarnessBootcamp\p3_desk</code> and copy in the brief plus your track's four corpus files.</p>
 
         <div class="do-step">
           <p class="do-label">Now run this in the <strong>PowerShell window</strong> — <strong>engineering track</strong> only:</p>
@@ -248,7 +248,7 @@ Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instru
 
         <div class="panel">
           <p class="eyebrow">Settle what each engine is carrying before either one runs</p>
-          <p class="full-measure">Both load context you never typed and neither announces it: the Codex app picks up <code>AGENTS.md</code>, skills, and memories from wherever you launch it — including the harness you hot-rodded in P2 — and OpenCode reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set. Run from a clean folder holding only the frozen corpus, or write down exactly what was live on each side. Unequal hidden context leaves the provider-and-model split in place, but adds an instruction-path difference that can explain the result. An advantage you didn't declare looks exactly like a capability you don't have — if the two sides carried different context, the run is evidence about the combined setups unless you repeat it with that path held fixed.</p>
+          <p class="full-measure">Both load context you never typed and neither announces it: the Codex app picks up <code>AGENTS.md</code>, skills, and memories from wherever you launch it — including the harness you improved in P2 — and OpenCode reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set. Run from a clean folder holding only the frozen corpus, or write down exactly what was live on each side. Unequal hidden context leaves the provider-and-model split in place, but adds an instruction-path difference that can explain the result. An advantage you didn't declare looks exactly like a capability you don't have — if the two sides carried different context, the run is evidence about the combined setups unless you repeat it with that path held fixed.</p>
         </div>
 
         <h3>Stage 03 · Dispatch both engines</h3>
@@ -492,18 +492,21 @@ opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder 
 - First real decision to run through this desk: [NAME IT]</code></pre>
         </div>
 
-        <p class="full-measure">Save the file. These four lines are the seed the transfer chat grows at the end of the block — having them written means the outer loop starts from your words, not from a blank field.</p>
-        <ol class="checklist">
+        <p class="full-measure">Save the file. Those four lines are the seed in your own words; the last move of the stage is carrying them into the file that outlives the week, dated, so the outer loop starts from something you wrote rather than a blank field.</p>
 
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p3-p3-transfer" name="p3-p3-transfer" data-check-id="p3-transfer" />
-              <span class="check-num">9</span>
-              <span class="check-title">Transfer P3 seed</span>
-            </label>
-            <div class="check-detail">The seed block sits at the bottom of the comparator with all four brackets filled in your own words: the single-engine ban, the kill rule, the comparator habit, and the first real decision at work you'd run through this desk. That's what the transfer chat will grow.</div>
-          </li>
-        </ol>
+        <div class="do-step">
+          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it opens the transfer file:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md"</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now in <strong>TRANSFER_30_60_90.md</strong> (Notepad), find the table headed <strong>From P3 — Verdict ownership</strong>:</p>
+          <ul class="do-clicks">
+            <li>Fill its three rows from the seed you just wrote — decision type you must not single-engine, comparator habit, kill rule — in your own words, not the bracket text</li>
+            <li>Name the first real decision you'd run through this desk beside the decision-type row, so the seed points at something on your actual calendar</li>
+            <li>Write today's date at the end of the last row you filled, e.g. <code>— 2026-03-18</code>, then save with <strong>Ctrl+S</strong></li>
+          </ul>
+        </div>
       </section>
 
       <section id="depth" class="home-section">
@@ -539,34 +542,27 @@ opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder 
           <li><strong>Vendor and hiring diligence</strong> — claims extracted from proposals or CVs, run twice; anything that fails a kill test never reaches the decision memo.</li>
         </ul>
 
-        <h3>Stretch lane · Many Minds, one commander</h3>
+        <h3 id="many-minds">Stretch lane · Many Minds, one commander</h3>
         <figure class="section-diagram">
           <img src="../assets/blocks/p3/p3-stretch-many-minds.svg" alt="One commander dispatches three parallel subagent lenses — correctness, test gaps, spec drift — waits for all, then owns the synthesis, the kills, and the delta against baseline" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
         <p class="full-measure">After the twin-engine floor is met, a different kind of “many”: not two vendors, but several specialists under one commander — you — with a measured answer to whether parallel helped. A <strong>subagent</strong> is a specialist the Codex app starts for one bounded job; it works off to the side and returns a summary to your chat. The mastery path is three artifacts in order: a <strong>baseline</strong> single-chat review with no subagents, then three parallel lenses (correctness, test gaps, spec drift) merged with visible dedupe and at least one corpus-evidenced kill, then a <strong>delta sheet</strong> that defends a verdict — improved, duplicated, or noisy. Skipping the baseline turns the stretch into a product demo: without it you cannot say what parallel added.</p>
-        <p class="full-measure">Two details worth noticing while you run it. The three-subagent cap lives in your prompt wording, which makes it procedure-enforced — it holds because the model cooperates and you're watching. The app also has a real setting, <code>agents.max_concurrent_threads_per_session</code>, which holds whether the prompt cooperates or not — tool-enforced. Feel the difference: a procedure-enforced bound is a promise, and a tool-enforced bound is a wall. And if two of your specialists ever needed to <em>write</em> at once, a <strong>worktree</strong> — a second checkout of the same repository — is the isolation instrument; since nothing in this run writes to the repo, the worktree proof stays the optional deeper cut. Full walkthrough: <a href="../../mission_flesh/p3/MANY_MINDS.md"><code>mission_flesh/p3/MANY_MINDS.md</code></a>; pack: <code>instruments/p3_multi_agent/</code>; the four stretch checks live on the mastery floor below.</p>
+        <p class="full-measure">Two details worth noticing while you run it. The three-subagent cap lives in your prompt wording, which makes it procedure-enforced — it holds because the model cooperates and you're watching. The app also has a real setting, <code>agents.max_concurrent_threads_per_session</code>, which holds whether the prompt cooperates or not — tool-enforced. Feel the difference: a procedure-enforced bound is a promise, and a tool-enforced bound is a wall. And if two of your specialists ever needed to <em>write</em> at once, a <strong>worktree</strong> — a second checkout of the same repository — is the isolation instrument; since nothing in this run writes to the repo, the worktree proof stays the optional deeper cut. This section is the web walkthrough; the cloned pack keeps its working copy at <code>mission_flesh/p3/MANY_MINDS.md</code>. The pack is at <code>instruments/p3_multi_agent/</code>, and the four stretch checks live on the mastery floor below.</p>
 
-        <h3>Field guide · audit suspicious agreement</h3>
+        <p class="eyebrow">Optional field guide · 45–60 min</p>
+        <h3>Audit suspicious agreement</h3>
         <p><a href="../resources/p3/when-both-engines-agree.html"><strong>When Both Engines Agree</strong></a> separates shared evidence paths from claim truth, tests plausible common causes, and chooses the smallest observation that can change the decision.</p>
 
-        <h3>Field guide · design meaningful separation before dispatch</h3>
+        <p class="eyebrow">Optional field guide · 45–60 min</p>
+        <h3>Design meaningful separation before dispatch</h3>
         <p><a href="../resources/p3/independence-spectrum.html"><strong>Independence Is a Spectrum</strong></a> maps common-cause paths across evidence, retrieval, tools, infrastructure, model ancestry, evaluation, and incentives—then records the isolation that actually breaks a named failure path.</p>
       </section>
 
       <section id="pulse" class="home-section" data-check-section="pulse">
         <h2>Operator pulse — required every block</h2>
-        <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
-        <ol class="checklist">
+        <p class="section-lede">Four beats close this block — log, bars, adversarial, measurement. It is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
 
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p3-pulse-mission" name="p3-pulse-mission" data-check-id="pulse-mission" />
-              <span class="check-num">10</span>
-              <span class="check-title">Mission ran in a separate build chat</span>
-            </label>
-            <div class="check-detail">Twin-engine work ran in build chats, not in <strong>Operator — Direction &amp; Log</strong>. The operator chat holds judgment; build chats hold the mess. If they mixed today, note it in the log rather than rewriting history — the trail is the point.</div>
-          </li>
-        </ol>
+        <p class="full-measure">The log goes back in <strong>Operator — Direction &amp; Log</strong>, the same chat that carried the brief. The mission runs elsewhere; this chat holds direction and verdicts.</p>
 
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
@@ -601,7 +597,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-pulse-log" name="p3-pulse-log" data-check-id="pulse-log" />
-              <span class="check-num">11</span>
+              <span class="check-num">9</span>
               <span class="check-title">Operator Log complete</span>
             </label>
             <div class="check-detail">The P3 entry holds what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers to both outputs and the comparator, and what judgment you still own. If the AI tried to assign the verdict, take it back — it argues; you rule.</div>
@@ -610,20 +606,24 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
 
         <div class="do-step">
           <!-- The bars themselves live in operator/PASS_BARS.md · section P3 -->
-          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
-          <pre><code>Draft my PASS_BARS self-check for P3. Read operator/PASS_BARS.md, section P3.
-For each MVP bar: met or not yet, with an evidence pointer — a path, a comparator row, a count.
-Challenge any claim that has no pointer. Do not soften a not-yet.</code></pre>
+          <p class="do-label">Now on this page, in <strong>Mastery floor</strong> below:</p>
+          <ul class="do-clicks">
+            <li>Scroll to Mastery floor below and tick every bar you can point at an artifact for — right now, before the attack.</li>
+            <li>Leave any bar you cannot evidence unticked. An honest not-yet costs nothing here and saves you in the next beat.</li>
+            <li>Copy the ticked list. It is your prediction, and the adversarial chat is about to rule on it one bar at a time.</li>
+          </ul>
         </div>
+
+        <p class="full-measure">Two bars get ticked early on this desk more often than any others. The three disagreements: were they material, or cosmetic rows counted to reach a number? And the kill: it only counts if it names evidence from outside either model.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-pulse-bars" name="p3-pulse-bars" data-check-id="pulse-bars" />
-              <span class="check-num">12</span>
-              <span class="check-title">PASS_BARS self-check drafted</span>
+              <span class="check-num">10</span>
+              <span class="check-title">Mastery floor ticked as your stated prediction</span>
             </label>
-            <div class="check-detail">Against P3's MVP list: met / not yet, each with an evidence pointer. No inflation. The two bars most often claimed early here: three disagreements (were they material?) and the kill (was it earned, or polite?).</div>
+            <div class="check-detail">The ticked list is a forecast, not a summary: you are naming, in writing and before the attack, which bars you believe survive. Every tick needs an artifact you could open in front of someone — the floor's own rule stands, and if the adversarial pass wounds an item you come back and untick it.</div>
           </li>
         </ol>
 
@@ -676,17 +676,39 @@ Rules for you:
           <pre><code>Block: P3 — twin-engine desk. Outcome: a filled comparator and a supervisor-readable adjudication note.
 Artifacts: instruments/p3_frozen_brief/output_codex.md · output_opencode.md · COMPARATOR.md
 Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
-Draft MVP self-check: [PASTE THE MET / NOT-YET LINES FROM THE LOG CHAT]
+Draft MVP self-check: [PASTE THE BARS YOU TICKED ON THE MASTERY FLOOR]
 Known weak spots: [ANYTHING YOU ALREADY DOUBT — E.G. A ROW THAT MIGHT BE COSMETIC]
 Comparator excerpts: [PASTE THE RUN-IDENTITY TABLE AND YOUR DISAGREEMENT ROWS]</code></pre>
         </div>
 
         <p class="full-measure">Expect attacks on undeclared cargo, cosmetic rows counted as material, and a cheap kill. If the reviewer is polite, you under-pasted — give it the comparator excerpts, not a summary of them.</p>
 
+        <p class="full-measure">Now run the review a second time, and this part is required rather than optional. A reviewer from the same model family as the one that wrote Engine A's output shares its habits — the phrasings it finds convincing, the gaps it does not think to look for — so a reviewer from a different family will take a claim the first one let stand. The PowerShell window from Stage 03 is still open with the cargo flags set, which puts the second reviewer one command away.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it opens a second reviewer running Grok:</p>
+          <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk"
+$env:OPENCODE_PURE = "1"
+opencode --pure -m "xai/$env:HB_XAI_MODEL"</code></pre>
+        </div>
+
+        <p class="full-measure">If the command fails calling <code>--pure</code> an unknown flag, your build predates it — drop the flag and rerun; <code>OPENCODE_PURE=1</code> is already set and does the same job.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>OpenCode session</strong> you just opened:</p>
+          <ul class="do-clicks">
+            <li>Paste the same frozen adversarial prompt you used above — the one beginning <code>You are an adversarial operator reviewer</code> — and send it</li>
+            <li>Paste the same pack after it: same artifacts, same provisional verdict, same ticked bars, same comparator excerpts. Same prompt, same pack, no softening.</li>
+            <li>Read the second <code>ADVERSARIAL:</code> line it returns, then leave the session with <code>/exit</code> — <strong>Ctrl+C</strong> if your build does not take the command</li>
+          </ul>
+        </div>
+
         <div class="do-step">
           <p class="do-label">Now in <strong>Operator — Direction &amp; Log</strong>:</p>
           <ul class="do-clicks">
-            <li>Paste the review's final <code>ADVERSARIAL: stood | wounded | failed</code> line into your P3 log entry — fix first if wounded, then log what changed under fire</li>
+            <li>Record both final <code>ADVERSARIAL: stood | wounded | failed</code> lines side by side in your P3 log entry, labelled by engine</li>
+            <li>Fix first if either line came back wounded, then log what changed under fire</li>
+            <li>Where the two engines disagree about a bar, that disagreement is the finding — name it in the log</li>
           </ul>
         </div>
         <ol class="checklist">
@@ -694,10 +716,10 @@ Comparator excerpts: [PASTE THE RUN-IDENTITY TABLE AND YOUR DISAGREEMENT ROWS]</
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-pulse-adv" name="p3-pulse-adv" data-check-id="pulse-adv" />
-              <span class="check-num">13</span>
+              <span class="check-num">11</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">Chat <code>Adversarial — P3 — [date]</code>: frozen prompt + your pack + provisional verdict, and the final <code>ADVERSARIAL: stood | wounded | failed</code> line copied into your log. Fix if wounded — unchecking a floor item is the honest move, not a setback.</div>
+            <div class="check-detail">Chat <code>Adversarial — P3 — [date]</code>: frozen prompt + your pack + provisional verdict, then the same prompt and the same pack run a second time in OpenCode, and both final <code>ADVERSARIAL: stood | wounded | failed</code> lines copied into your log, labelled by engine. Fix if wounded — unchecking a floor item is the honest move, not a setback. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
         </ol>
 
@@ -705,83 +727,44 @@ Comparator excerpts: [PASTE THE RUN-IDENTITY TABLE AND YOUR DISAGREEMENT ROWS]</
           <!-- Canonical source: operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
           <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>, filling each bracket (Block is P3):</p>
           <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
-
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
-Brief LIVE at: [time or “approx”].
-Adversarial done at: [time or “approx”].
+Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
+Bars I marked met before the attack: [n].
+Brief LIVE at: [time or "approx"].
+Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
-Draft MVP: [met / not yet summary].
-
-Fill this block’s row:
-1. Ritual 0–3 with proof of each point
-2. Mission HIT/PARTIAL/MISS against the LIVE brief
-3. Quality STRONG/ADEQUATE/WEAK from adversarial + evidence (challenge inflation)
-4. Time to result in minutes
-5. One-line note
-6. Deep mark if this is P2/P3/P5/P6/P8
-
-Update running totals.
-Refuse cheerful quality scores without evidence.
+Fill this block's row:
+1. Brief accuracy — did the artifact match the "done looks like" I wrote before the
+   run, and which one of the five brief fields would I write differently now?
+   Refuse "the brief was fine": make me name a field, or say none and name what
+   held better than expected.
+2. Overclaim n/m — count the bars I marked met that came back WOUNDED or DEAD,
+   over the number I marked met. Count from the rulings I pasted, not from my summary.
+3. Time to result in minutes.
+4. One-line note.
+5. Deep mark if this block has one.
+Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
         </div>
 
-        <p class="full-measure">P3's deep mark is one line — <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code> — counts and ruling. What the disagreement rate taught you can ride along as an optional one-sentence note beside it.</p>
+        <p class="full-measure">The per-claim rulings come from step 3 of the review you just ran — the <code>SURVIVES / WOUNDED / DEAD</code> list — so scroll back in the adversarial chat and paste the list itself rather than your memory of it. Mission outcome paths are both raw outputs and the comparator. P3's deep mark is one line — <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code> — counts and ruling, and what the disagreement rate taught you can ride along as the one-line note.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-pulse-measure" name="p3-pulse-measure" data-check-id="pulse-measure" />
-              <span class="check-num">14</span>
+              <span class="check-num">12</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes) — plus the P3 deep mark with its counts and ruling. The row is written only after the adversarial line exists; measurement follows attack.</div>
-          </li>
-        </ol>
-
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open the chat <strong>Operator — Transfer 30-60-90</strong></li>
-          </ul>
-        </div>
-
-        <div class="do-step">
-          <!-- Canonical source: operator/TRANSFER_30_60_90.md — every-session prompt -->
-          <p class="do-label">Now paste this into <strong>Operator — Transfer 30-60-90</strong>:</p>
-          <pre><code>Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
-
-Block I just finished: [B0/P1/…].
-I have finished Direction/Log and pass-bar check in the other operator chat.
-
-Run a short interactive update:
-1. What mastery did this block actually prove (one sentence, no theater)?
-2. Map it onto MY real desk — interview me if missing.
-3. Update the matching seed and today’s row in the session log.
-4. Tighten at most three lines in identity or 30/60/90 if enough signal exists.
-5. Name one backslide risk if I do nothing at work.
-
-Do not seal. Do not invent a full plan from zero on a light block.
-Challenge vagueness. I own every accept.</code></pre>
-        </div>
-
-        <p class="full-measure">Block is P3, and your seed is already drafted at the bottom of the comparator — read it into the P3 seed fields rather than improvising new answers. Do not end the chat with the P3 seed empty; this block's gate is a filled seed, not a polite row.</p>
-        <ol class="checklist">
-
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p3-pulse-transfer" name="p3-pulse-transfer" data-check-id="pulse-transfer" />
-              <span class="check-num">15</span>
-              <span class="check-title">Transfer pulse (every AM/PM)</span>
-            </label>
-            <div class="check-detail">A session-log row exists even if the seed feels small today — and P3's usually isn't: the single-engine ban and the comparator habit go on the 30-day list with a named work claim to run first. The P3 seed fields in <code>operator/TRANSFER_30_60_90.md</code> are no longer empty.</div>
+            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of bars you marked met that the adversarial ruled WOUNDED or DEAD over the number you marked met, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and the deep mark <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code>.</div>
           </li>
         </ol>
       </section>
 
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Mastery floor — evidence must survive adversarial review</h2>
-        <p class="section-lede">Mark met / not yet against your own artifacts, not your memory of them. If the adversarial pass wounds an item, uncheck it until it is fixed. Full bar text: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · P3</a>.</p>
+        <p class="section-lede">Mark met / not yet against your own artifacts, not your memory of them. If the adversarial pass wounds an item, uncheck it until it is fixed. Full bar text: <a href="#floor">this P3 mastery floor</a>.</p>
 
         <h3>The floor</h3>
         <ol class="checklist">
@@ -789,7 +772,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-briefv1" name="p3-mvp-briefv1" data-check-id="mvp-briefv1" />
-              <span class="check-num">16</span>
+              <span class="check-num">13</span>
               <span class="check-title">MVP: BRIEF-v1 + corpus dual run</span>
             </label>
             <div class="check-detail">Evidence looks like: <code>output_codex.md</code> and <code>output_opencode.md</code> on disk, produced from byte-identical brief text with no coaching between runs. If you clarified anything for one engine only, this is not yet met — rerun that side.</div>
@@ -798,7 +781,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-join" name="p3-mvp-join" data-check-id="mvp-join" />
-              <span class="check-num">17</span>
+              <span class="check-num">14</span>
               <span class="check-title">MVP: Deterministic join/watchlist</span>
             </label>
             <div class="check-detail">Evidence looks like: the Stage 04 tick-through against <code>watchlist.csv</code> ran clean — every WatchID row in both outputs matches an ID in the CSV, with off-watchlist entities fenced into Unlisted mentions. A model that invented an ID or joined on a display name fails this bar even when the answer happens to be right — the violation goes on the comparator, and that engine reruns the verbatim brief.</div>
@@ -807,7 +790,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-comp" name="p3-mvp-comp" data-check-id="mvp-comp" />
-              <span class="check-num">18</span>
+              <span class="check-num">15</span>
               <span class="check-title">MVP: Comparator artifact</span>
             </label>
             <div class="check-detail">Evidence looks like: <code>COMPARATOR.md</code> with the run-identity table filled for both engines and side-by-side rows carrying keep / discard / unknown verdicts. “They basically agreed” with no table behind it is the named not-yet.</div>
@@ -816,7 +799,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-3dis" name="p3-mvp-3dis" data-check-id="mvp-3dis" />
-              <span class="check-num">19</span>
+              <span class="check-num">16</span>
               <span class="check-title">MVP: ≥3 disagreements or proof of search</span>
             </label>
             <div class="check-detail">Evidence looks like: at least three rows where the engines differ on an operational fact — or a written proof of search naming the fields you checked and why separation was low. Cosmetic wording differences count toward neither.</div>
@@ -825,7 +808,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-kill" name="p3-mvp-kill" data-check-id="mvp-kill" />
-              <span class="check-num">20</span>
+              <span class="check-num">17</span>
               <span class="check-title">MVP: ≥1 kill of model claim</span>
             </label>
             <div class="check-detail">Evidence looks like: the model's assert quoted, plus a discard reason grounded outside either model — a source line, a missing watchlist ID, or a kill-test result. One earned kill beats three polite ones.</div>
@@ -834,7 +817,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-adj" name="p3-mvp-adj" data-check-id="mvp-adj" />
-              <span class="check-num">21</span>
+              <span class="check-num">18</span>
               <span class="check-title">MVP: Adjudication note</span>
             </label>
             <div class="check-detail">Evidence looks like: the note reads cold. Someone who saw none of the run can state what is operationally true, what is unknown, and what you killed — without asking you anything.</div>
@@ -843,10 +826,19 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p3-mvp-files" name="p3-mvp-files" data-check-id="mvp-files" />
-              <span class="check-num">22</span>
+              <span class="check-num">19</span>
               <span class="check-title">MVP: Log points at both outputs + comparator</span>
             </label>
             <div class="check-detail">Evidence looks like: the Operator Log names brief id <code>BRIEF-v1</code> and points at both raw outputs, the comparator, and the final watch product — the adjudication note at the bottom of the comparator. Two runs you can't identify are not evidence.</div>
+          </li>
+
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p3-p3-transfer" name="p3-p3-transfer" data-check-id="p3-transfer" />
+              <span class="check-num">20</span>
+              <span class="check-title">Transfer P3 seed</span>
+            </label>
+            <div class="check-detail">Evidence looks like: the seed block at the bottom of the comparator with all four brackets filled in your own words — the single-engine ban, the kill rule, the comparator habit, and the first real decision at work you'd run through this desk — and those answers carried into the <strong>From P3 — Verdict ownership</strong> rows of <code>operator/TRANSFER_30_60_90.md</code> with today's date. Bracket text still sitting in the file is not a filled seed.</div>
           </li>
         </ol>
 
@@ -889,26 +881,13 @@ Challenge vagueness. I own every accept.</code></pre>
             <div class="check-detail">Only after S1–S3. A worktree isolation proof file or an honest block note, plus one line on when you'd choose a worktree over a subagent (writes and isolation vs read-split and context). See <code>instruments/p3_multi_agent/README.md</code>. Not Cowork.</div>
           </li>
         </ol>
-
-        <h3>Close the block</h3>
-        <ol class="checklist">
-
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p3-p3-done" name="p3-p3-done" data-check-id="p3-done" />
-              <span class="check-num">23</span>
-              <span class="check-title">Block closed under fire</span>
-            </label>
-            <div class="check-detail">Adversarial line present in the log; measurement row written; transfer row written; and you could defend the block to a peer with the comparator alone, without rebuilding the story from memory.</div>
-          </li>
-        </ol>
       </section>
     </form>
 
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not “it ran.” Evidence must survive adversarial review — and the named not-yets for this desk are one engine only, “they basically agreed,” and a verdict without a comparator. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P3</a>.</p>
+        <p>MVP is not “it ran.” Evidence must survive adversarial review — and the named not-yets for this desk are one engine only, “they basically agreed,” and a verdict without a comparator. Full list: <a href="#floor">this P3 mastery floor</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>

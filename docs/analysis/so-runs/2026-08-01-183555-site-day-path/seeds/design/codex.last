@@ -1,0 +1,32 @@
+{
+  "draft_approach": "Reframe the site as a linear course application with a dashboard and nine module surfaces: Pre-work, Monday/B0, Monday/P1, Tuesday/P2–P3, Wednesday/P4–P5, Thursday/P6–P7, and Friday/P8. Instead of converting every Markdown file one-for-one, consolidate learner actions into concise module pages and reusable web-native reference pages, while removing operator-only and redundant source documents from the learner path.",
+  "key_decisions": [
+    "Make the primary graph `/`, `/prework/`, and day indexes with module children such as `/monday/b0/`, `/monday/p1/`, and `/tuesday/p2/`. The dashboard shows current module, required work, completion state, and one unambiguous continue action.",
+    "Limit global navigation to Course, Progress, and the five weekdays. Within each day, provide previous/next module controls and a compact module outline; expose resources, handouts, and troubleshooting only beside the task that needs them.",
+    "Structure every module around mission, required actions, exact commands, evidence to capture, completion criteria, and optional depth. Move orientation and theory behind short expandable explanations so P1’s six-stage mission remains the visible spine.",
+    "Convert source material by learner intent rather than source-file boundaries. Merge repeated setup, evidence, key-command, troubleshooting, and submission material into shared web pages or reusable rendered sections; leave `operator/`, `lead/`, internal authoring notes, and superseded student-pack documents unlinked.",
+    "Keep `registry.js` as the authoritative course sequence and extend it with day, module, prerequisite, progress-key, and contextual-resource metadata. Preserve existing local-storage identifiers only when the corresponding learner action remains semantically equivalent; introduce explicit migration mappings for renamed or consolidated checks.",
+    "Replace Pre-work’s flat 79-check model with a short required readiness path. Conditional repairs and seven troubleshooting cases should be marked conditional and must never block completion unless activated by a failed readiness check.",
+    "Use static HTML, CSS, and JavaScript throughout. Generated handouts may continue using `resources/catalog.json`, but each catalog item needs an HTML landing page and must not appear in primary navigation.",
+    "Create static redirect stubs for published legacy HTML URLs, pointing to the closest new module or anchored shared reference. Replace every former `.md` learner link with its web equivalent; preserve meaningful fragments where possible and do not redirect internal/operator documents into learner content.",
+    "Validate with a full learner-surface crawl: no reachable Markdown or repository-source links, no orphaned required pages, correct B0–P8 ordering, valid previous/next routes, honest progress totals, exact command-text snapshots, working legacy redirects, keyboard navigation, responsive layouts, and successful serving through both Python static hosting and `server.py`."
+  ],
+  "alternatives_considered": [
+    "Convert every Markdown file into a matching HTML page. Rejected because it preserves the current information architecture, duplicates concepts, and leaves learners navigating authoring boundaries rather than course tasks.",
+    "Build one long single-page course. Rejected because progress restoration, contextual linking, browser history, and day-by-day orientation would become fragile, especially for P1 and Pre-work.",
+    "Introduce a framework or documentation generator. Rejected because it adds deployment and maintenance complexity without solving the underlying hierarchy problem and conflicts with the deliberately simple static architecture."
+  ],
+  "edge_cases": [
+    "Learners returning with legacy progress that references removed, split, or optional checks.",
+    "Direct bookmarks to old pages or fragments, including resource and student-pack URLs.",
+    "Commands containing shell-sensitive characters whose rendered text must remain byte-for-byte accurate.",
+    "JavaScript-disabled access, where core content and navigation must remain usable.",
+    "Conditional troubleshooting branches that become required only after a specific failed check."
+  ],
+  "risks": [
+    "Source documents may disagree about commands, evidence standards, or module numbering and require an explicit canonical-content decision.",
+    "Progress migration can over-credit learners if old checks are mapped too broadly.",
+    "Consolidation may hide useful nuance unless contextual expansion and cross-linking are carefully curated.",
+    "Legacy URL inventory and externally shared bookmarks may be incomplete."
+  ]
+}

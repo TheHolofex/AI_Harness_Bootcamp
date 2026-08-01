@@ -76,7 +76,7 @@ So: **yes — as designed, the arc forms a closed cognitive circuit.** The raise
 | Governance / policy | Strong | P5 rule, P6 contract, P8 AUP |
 | Transfer / non-rental capability | Strong | P8 + 30/60/90 seeds in bars |
 | Multi-tool literacy without brand worship | Strong | Codex home, Claude second, Pi bare, goose bound |
-| Measurement continuity | Designed | Dyno → comparator → containment → contract → hold/degrade |
+| Measurement continuity | Designed | Case suite → comparator → containment → contract → hold/degrade |
 
 That is holistic **operator** mastery: judgment, systems, bounds, and transfer — not a partial “prompting + agents” slice.
 
@@ -96,7 +96,7 @@ Most mastery is solo-with-machine. Real work is desk chains: handoff briefs, sha
 Messy folders, vaults, feeders, n8n — good. Still thin: permissions, secrets, retention, “this corpus is classified/wrong/incomplete,” live network risk. P5/P8 touch integrity and policy; **operational security and data stewardship** as standing craft are not a full node.
 
 **4. Cost, latency, and capacity as operator variables are almost absent.**  
-Mastery of direction without ever feeling token/time/cost pressure can produce beautiful but unshippable habits. A thin dyno dimension (time-to-accept, cost per regenerate, fail rate under budget) would close a real-world loop P2/P7/P8 currently leave soft.
+Mastery of direction without ever feeling token/time/cost pressure can produce beautiful but unshippable habits. A thin cost dimension on the case suite (time-to-accept, cost per regenerate, fail rate under budget) would close a real-world loop P2/P7/P8 currently leave soft.
 
 **5. Creation vs. critical loops are asymmetric — correctly, but know the trade.**  
 The arc is strongest on **verification, bounds, and judgment**. It is lighter on long-horizon *design* of novel systems (architecture of a multi-agent shop floor, productizing an internal platform). Mission Architect title suggests more design than the spine prioritizes. That’s fine for operator school — but then don’t market “full AI architect.” You’re minting **operators who can direct and govern thinking machines**, not platform architects.
@@ -110,7 +110,7 @@ Circuit *logic* is complete on paper. Circuit *formation* still depends on:
 Until those exist, the arc is a complete **design** of a circuit, not yet a complete **induction** into one.
 
 **7. Nothing first-class on evaluation design as a reusable skill.**  
-P2 tests and P8 matrices practice it inside blocks. “I can build a frozen suite and a dyno for a *new* work domain” is the meta-skill that makes mastery portable. It’s implied by P2→P8; not yet named as its own mastery claim.
+P2 tests and P8 matrices practice it inside blocks. “I can build a frozen suite and a scored set of fixed cases for a *new* work domain” is the meta-skill that makes mastery portable. It’s implied by P2→P8; not yet named as its own mastery claim.
 
 ---
 
@@ -149,7 +149,7 @@ Minimum additions (not new project days — grafts):
 2. **Move 4** — one measurement spine students carry all week  
 3. **Once-per-week pair node** — shared verdict or countersigned contract (30–45 min)  
 4. **Portable eval named** — “build a frozen suite for your job domain” as explicit P8 (or P2→P8) mastery language  
-5. **Optional thin cost/time column** on dyno and hold/degrade  
+5. **Optional thin cost/time column** on the case suite and hold/degrade  
 
 Do those, and I would call it a **complete circuit of operator AI mastery** without apology.
 

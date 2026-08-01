@@ -63,13 +63,13 @@
       code: "B0", name: "Clinic + First Light", title: "Install clinic + First Light", day: "Monday", slot: "AM",
       key: "ahb-checklist-b0",
       ids: [
-        "pulse-brief",
-        "b0-gate", "b0-inventory", "b0-build", "b0-open", "b0-timeline",
-        "b0-filter", "b0-negative", "b0-delta", "b0-loop"
-      ].concat(PULSE_IDS, [
-        "mvp-prework", "mvp-brief5", "mvp-four", "mvp-map", "mvp-neg",
-        "mvp-upd", "mvp-loop", "mvp-log", "b0-done"
-      ]),
+        "b0-gate", "pulse-brief", "b0-inventory", "b0-build",
+        "b0-open", "b0-timeline", "b0-filter", "b0-negative",
+        "b0-delta", "b0-loop", "pulse-log", "pulse-bars",
+        "pulse-adv", "pulse-measure", "pulse-transfer", "mvp-prework",
+        "mvp-brief5", "mvp-four", "mvp-map", "mvp-neg",
+        "mvp-upd", "mvp-loop", "mvp-log"
+      ],
       stretchIds: [],
       url: "blocks/b0.html", meta: "Codex app"
     },
@@ -77,13 +77,12 @@
       code: "P1", name: "Daily Status Brief", title: "The Daily Status Brief", day: "Monday", slot: "PM",
       key: "ahb-checklist-p1",
       ids: [
-        "pulse-brief",
-        "p1-corpus", "p1-machine", "p1-regen", "p1-audit", "p1-delta",
-        "p1-stale", "p1-judgment"
-      ].concat(PULSE_IDS, [
-        "mvp-live", "mvp-rerun", "mvp-5cite", "mvp-delta", "mvp-stale",
-        "mvp-own", "p1-done"
-      ]),
+        "pulse-brief", "p1-corpus", "p1-machine", "p1-regen",
+        "p1-audit", "p1-delta", "p1-stale", "p1-judgment",
+        "pulse-log", "pulse-bars", "pulse-adv", "pulse-measure",
+        "mvp-live", "mvp-rerun", "mvp-5cite", "mvp-delta",
+        "mvp-stale", "mvp-own", "p1-transfer"
+      ],
       stretchIds: [],
       url: "blocks/p1.html", meta: "Codex app"
     },
@@ -91,13 +90,12 @@
       code: "P2", name: "The hot-rod morning", title: "The hot-rod morning", day: "Tuesday", slot: "AM",
       key: "ahb-checklist-p2",
       ids: [
-        "pulse-brief",
-        "p2-open", "p2-base", "p2-walls", "p2-tests", "p2-after",
-        "p2-durable", "p2-claim", "p2-transfer"
-      ].concat(PULSE_IDS, [
-        "mvp-dyno-base", "mvp-2walls", "mvp-measure", "mvp-2tests",
-        "mvp-cold", "mvp-wallclaim", "mvp-30seed", "p2-done"
-      ]),
+        "pulse-brief", "p2-open", "p2-base", "p2-walls",
+        "p2-tests", "p2-after", "p2-durable", "p2-claim",
+        "pulse-log", "pulse-bars", "pulse-adv", "pulse-measure",
+        "mvp-baseline", "mvp-2walls", "mvp-measure", "mvp-2tests",
+        "mvp-cold", "mvp-wallclaim", "mvp-30seed", "p2-transfer"
+      ],
       stretchIds: [],
       url: "blocks/p2.html", meta: "Codex · p2_dyno"
     },
@@ -105,30 +103,26 @@
       code: "P3", name: "Twin-engine intel desk", title: "The twin-engine intel desk", day: "Tuesday", slot: "PM",
       key: "ahb-checklist-p3",
       ids: [
-        "pulse-brief",
-        "p3-brief", "p3-corpus", "p3-codex", "p3-claude", "p3-comp",
-        "p3-kill", "p3-note", "p3-transfer"
-      ].concat(PULSE_IDS, [
-        "mvp-briefv1", "mvp-join", "mvp-comp", "mvp-3dis", "mvp-kill",
-        "mvp-adj", "mvp-files", "p3-done"
-      ]),
-      stretchIds: [
-        "stretch-many-baseline", "stretch-many-minds", "stretch-many-delta",
-        "stretch-worktree"
+        "pulse-brief", "p3-brief", "p3-corpus", "p3-codex",
+        "p3-claude", "p3-comp", "p3-kill", "p3-note",
+        "pulse-log", "pulse-bars", "pulse-adv", "pulse-measure",
+        "mvp-briefv1", "mvp-join", "mvp-comp", "mvp-3dis",
+        "mvp-kill", "mvp-adj", "mvp-files", "p3-transfer"
       ],
+      stretchIds: ["stretch-many-baseline", "stretch-many-minds", "stretch-many-delta", "stretch-worktree"],
       url: "blocks/p3.html", meta: "Codex + OpenCode"
     },
     {
       code: "P4", name: "Director’s second brain", title: "The director’s second brain", day: "Wednesday", slot: "AM",
       key: "ahb-checklist-p4",
       ids: [
-        "pulse-brief",
-        "p4-vault", "p4-scope", "p4-inbox", "p4-q1", "p4-q2", "p4-audit",
-        "p4-kill", "p4-morning", "p4-transfer"
-      ].concat(PULSE_IDS, [
-        "mvp-scope", "mvp-graph", "mvp-2q", "mvp-trail", "mvp-revise",
-        "mvp-morning", "mvp-own4", "p4-done"
-      ]),
+        "pulse-brief", "p4-vault", "p4-scope", "p4-inbox",
+        "p4-q1", "p4-q2", "p4-audit", "p4-kill",
+        "p4-morning", "pulse-log", "pulse-bars", "pulse-adv",
+        "pulse-measure", "mvp-scope", "mvp-graph", "mvp-2q",
+        "mvp-trail", "mvp-revise", "mvp-morning", "mvp-own4",
+        "p4-transfer"
+      ],
       stretchIds: [],
       url: "blocks/p4.html", meta: "Codex + Obsidian"
     },
@@ -136,13 +130,13 @@
       code: "P5", name: "The poisoned corpus", title: "The poisoned corpus", day: "Wednesday", slot: "PM",
       key: "ahb-checklist-p5",
       ids: [
-        "pulse-brief",
-        "p5-boundary", "p5-stage", "p5-false", "p5-contra", "p5-hostile",
-        "p5-absent", "p5-perm", "p5-rule", "p5-transfer"
-      ].concat(PULSE_IDS, [
-        "mvp-trusted", "mvp-fc", "mvp-cd", "mvp-hi", "mvp-order",
-        "mvp-modes", "mvp-rule", "mvp-contain", "p5-done"
-      ]),
+        "pulse-brief", "p5-boundary", "p5-stage", "p5-false",
+        "p5-contra", "p5-hostile", "p5-absent", "p5-perm",
+        "p5-rule", "pulse-log", "pulse-bars", "pulse-adv",
+        "pulse-measure", "mvp-trusted", "mvp-fc", "mvp-cd",
+        "mvp-hi", "mvp-order", "mvp-modes", "mvp-rule",
+        "mvp-contain", "p5-transfer"
+      ],
       stretchIds: [],
       url: "blocks/p5.html", meta: "Poison pack"
     },
@@ -150,29 +144,28 @@
       code: "P6", name: "The watch officer", title: "The watch officer", day: "Thursday", slot: "AM",
       key: "ahb-checklist-p6",
       ids: [
-        "pulse-brief",
-        "p6-feeder", "p6-adapt", "p6-contract", "p6-stop", "p6-restart",
-        "p6-ex", "p6-sched", "p6-pi", "p6-pi-gate", "p6-layers", "p6-transfer"
-      ].concat(PULSE_IDS, [
-        "mvp-run", "mvp-33", "mvp-map", "mvp-stop", "mvp-unatt", "mvp-pi",
-        "mvp-ex", "mvp-log6", "mvp-60", "p6-done"
-      ]),
-      stretchIds: [
-        "stretch-local-predict", "stretch-local-pair", "stretch-local-endpoint"
+        "pulse-brief", "p6-feeder", "p6-adapt", "p6-contract",
+        "p6-stop", "p6-restart", "p6-ex", "p6-sched",
+        "p6-pi", "p6-pi-gate", "p6-layers", "pulse-log",
+        "pulse-bars", "pulse-adv", "pulse-measure", "mvp-run",
+        "mvp-33", "mvp-map", "mvp-stop", "mvp-unatt",
+        "mvp-pi", "mvp-ex", "mvp-log6", "mvp-60",
+        "p6-transfer"
       ],
+      stretchIds: ["stretch-local-predict", "stretch-local-pair", "stretch-local-endpoint"],
       url: "blocks/p6.html", meta: "goose + Pi"
     },
     {
       code: "P7", name: "The automation line", title: "The automation line", day: "Thursday", slot: "PM",
       key: "ahb-checklist-p7",
       ids: [
-        "pulse-brief",
-        "p7-rows", "p7-flow", "p7-gate", "p7-ex3", "p7-wrong", "p7-disc",
-        "p7-transfer"
-      ].concat(PULSE_IDS, [
-        "mvp-e2e", "mvp-gate", "mvp-3ex", "mvp-disc", "mvp-slice",
-        "mvp-conf", "mvp-log7", "mvp-90", "p7-done"
-      ]),
+        "pulse-brief", "p7-rows", "p7-flow", "p7-gate",
+        "p7-ex3", "p7-wrong", "p7-disc", "p7-transfer",
+        "pulse-log", "pulse-bars", "pulse-adv", "pulse-measure",
+        "pulse-transfer", "mvp-e2e", "mvp-gate", "mvp-3ex",
+        "mvp-disc", "mvp-slice", "mvp-conf", "mvp-log7",
+        "mvp-90"
+      ],
       stretchIds: [],
       url: "blocks/p7.html", meta: "n8n + AI step"
     },
@@ -180,13 +173,13 @@
       code: "P8", name: "Open model · sealed", title: "Operator-governed open model", day: "Friday", slot: "AM",
       key: "ahb-checklist-p8",
       ids: [
-        "pulse-brief",
-        "p8-aup", "p8-repoint", "p8-run", "p8-matrix", "p8-layer",
-        "p8-refuse", "p8-defense", "p8-seal"
-      ].concat(PULSE_IDS, [
-        "mvp-aup", "mvp-repoint", "mvp-hd", "mvp-layer", "mvp-refuse",
-        "mvp-loop8", "mvp-90s", "mvp-sealed", "mvp-log8", "p8-done"
-      ]),
+        "pulse-brief", "p8-aup", "p8-repoint", "p8-run",
+        "p8-matrix", "p8-layer", "p8-refuse", "p8-defense",
+        "p8-seal", "pulse-log", "pulse-bars", "pulse-adv",
+        "pulse-measure", "pulse-transfer", "mvp-aup", "mvp-repoint",
+        "mvp-hd", "mvp-layer", "mvp-refuse", "mvp-loop8",
+        "mvp-90s", "mvp-sealed", "mvp-log8"
+      ],
       stretchIds: ["stretch-endpoint-portfolio"],
       url: "blocks/p8.html", meta: "hold/degrade"
     }

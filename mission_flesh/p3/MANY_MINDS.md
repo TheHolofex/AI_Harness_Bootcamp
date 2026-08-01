@@ -219,7 +219,7 @@ If Codex edits the Python files, **stop** and restate: read-only; synthesis only
 
 ## Part 4 · Delta sheet + pressure (required · about 15–20 minutes)
 
-This is the stretch’s dyno moment. Without it, parallel is a story.
+This is the stretch’s measurement moment. Without it, parallel is a story.
 
 ### 4.1 Build the delta (you may use a short Codex assist, but you own the cells)
 

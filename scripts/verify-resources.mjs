@@ -237,6 +237,20 @@ function validateSvg(file) {
   }
 }
 
+function validateOwnerReturn(label, value, ownerHref) {
+  const ownerLinks = value.split(`href="${ownerHref}"`).length - 1;
+  if (ownerLinks < 3) fail(`${label}: owning course route is not prominent in the page header and footer`);
+  const plate = value.match(/<nav class="resource-plate"[^>]*>[\s\S]*?<\/nav>/i)?.[0];
+  if (!plate) {
+    fail(`${label}: missing return-to-course navigation`);
+    return;
+  }
+  const plateHrefs = [...plate.matchAll(/\bhref=["']([^"']+)["']/gi)].map((match) => match[1]);
+  if (plateHrefs.length !== 1 || plateHrefs[0] !== ownerHref) {
+    fail(`${label}: bottom navigation must return only to its owning course route`);
+  }
+}
+
 function validateGenerated() {
   const published = CATALOG.resources.filter((item) => item.status === "published");
   const expectedHtml = new Set(CATALOG.modules.map((module) => path.join(SITE, "resources", module.route, "index.html")));
@@ -261,6 +275,16 @@ function validateGenerated() {
     if (new Set(ids).size !== ids.length) fail(`${rel(file)}: duplicate HTML ids`);
     for (const match of value.matchAll(/<img\b([^>]*)>/gi)) if (!/\balt="[^"]*"/.test(match[1])) fail(`${rel(file)}: image without alt`);
     if (/\/(?:Users|home)\//.test(value) || /file:\/\//i.test(value) || /localhost(?::\d+)?/i.test(value)) fail(`${rel(file)}: local workstation reference leaked`);
+    const generatedPath = rel(file);
+    const resource = published.find((item) => generatedPath === `site/resources/${item.module}/${item.slug}.html`);
+    if (resource) {
+      const fragment = resource.canonical.fragment ? `#${resource.canonical.fragment}` : "";
+      const ownerHref = `../../${resource.canonical.path.replace(/^site\//, "")}${fragment}`;
+      validateOwnerReturn(generatedPath, value, ownerHref);
+    } else {
+      const module = CATALOG.modules.find((item) => generatedPath === `site/resources/${item.route}/index.html`);
+      if (module) validateOwnerReturn(generatedPath, value, `../../${module.canonicalPath.replace(/^site\//, "")}`);
+    }
     const tidy = spawnSync("/usr/bin/tidy", ["-qe", "--new-blocklevel-tags", "header,nav,main,section,article,footer,figure,figcaption,details,summary", file], { encoding: "utf8" });
     if (tidy.error) warn(`${rel(file)}: tidy unavailable; HTML structural checks still ran`);
     else if (tidy.status !== null && tidy.status >= 2) fail(`${rel(file)}: tidy found HTML errors: ${(tidy.stderr || tidy.stdout || "unknown HTML error").trim().split("\n").slice(0, 3).join(" | ")}`);
@@ -268,14 +292,20 @@ function validateGenerated() {
   for (const file of expectedSvg) if (fs.existsSync(file)) validateSvg(file);
   const builtCorpus = [...expectedHtml, ...expectedSvg].filter(fs.existsSync).map(text).join("\n");
   if (/startsWherePageEnds|doNotRetell|canonicalOwner|portfolioCollisionRules/.test(builtCorpus)) fail("internal scope metadata appears in generated resource output");
+  const hub = text(path.join(SITE, "resources.html"));
+  if (!/<h1>Optional handouts<\/h1>/.test(hub)) fail("site/resources.html: hub must identify itself as optional handouts");
+  if (/id="course-shelves"|href="\.\/(?:operator|instruments|prework)\.html"|<h3>Week map<\/h3>/.test(hub)) {
+    fail("site/resources.html: hub exposes an alternate course-path menu");
+  }
 }
 
 function validateLinks() {
   const htmlFiles = walk(SITE, (file) => file.endsWith(".html"));
   for (const file of htmlFiles) {
     const value = text(file);
-    for (const match of value.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)) {
-      const raw = match[1];
+    for (const match of value.matchAll(/\b(href|src)=["']([^"']+)["']/gi)) {
+      const attribute = match[1].toLowerCase();
+      const raw = match[2];
       if (/^(?:https?:|mailto:|tel:|data:|javascript:)/i.test(raw) || raw === "#") continue;
       const [rawPath, fragment = ""] = raw.split("#", 2);
       let target;

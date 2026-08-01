@@ -96,7 +96,7 @@ If any block is missing, you are still in Phase A — even if the model is alrea
 | Keep judgment out of build chat | Operator chats (brief/log vs mission) |
 | Attack your own certainty | Adversarial review in a **new** chat |
 | Prove learning transferred | Transfer 30-60-90 · Transfer gates |
-| Evidence over vibes | Measurement spine · P2 Dyno |
+| Evidence over vibes | Measurement spine · P2 case suite |
 | Fair engine compare | P3 Frozen brief (same brief, two engines) |
 | Hold quality when the stack degrades | P8 Hold / degrade |
 

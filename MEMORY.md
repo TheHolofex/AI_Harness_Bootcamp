@@ -154,7 +154,7 @@ Checked 2026-07-30. These are the ones that silently break a room:
 
 - **goose moved** to `aaif-goose/goose` (Agentic AI Foundation); docs at `goose-docs.ai`. Old `block/goose` URLs are stale. **No winget package** — the winget `goose` is an unrelated database tool. Product shape for teaching: **recipe + extensions/tool surface + `GOOSE_MODE`/max turns + schedule/retry** — not “CLI chat only.” Course default is CLI; Desktop optional. P6 pack: `mission_flesh/p6/watch_officer.yaml` + `goose_recipe_notes.md`. Subscription providers in goose’s list stay off-limits (API keys only).
 - **OpenCode Windows support regresses between releases.** Staff must pin and smoke-test a version per cohort. Its `curl` installer is bash-only; no PowerShell equivalent exists. The winget id remains **`SST.opencode`** even though the project moved from SST to **Anomaly** (repo `anomalyco/opencode`, Homebrew tap `anomalyco/tap`, images `ghcr.io/anomalyco/opencode`) — the winget package is current under the old name, so do not "fix" it. winget is not a channel OpenCode's own docs list; documented Windows paths are choco, scoop, npm (`opencode-ai`), mise, docker.
-- **OpenCode reads Claude Code's files by default** — `~/.claude/CLAUDE.md` and `.claude/skills`. Kill switches: `OPENCODE_DISABLE_CLAUDE_CODE`, `..._PROMPT`, `..._SKILLS`. This silently adds an undeclared instruction path on Engine B and confounds the provider/model comparison; the split remains, but its effect is no longer isolated. Pre-work therefore sets `OPENCODE_DISABLE_CLAUDE_CODE=1` as a user variable and clinic checks it. **The symmetric exposure is on the Codex side** — the app loads `AGENTS.md` (including the P2-hot-rodded one), skills, and memories from wherever it launches, so P3 must run from a clean folder or declare what was live on each side. `--pure` additionally skips installed plugins on any run treated as evidence.
+- **OpenCode reads Claude Code's files by default** — `~/.claude/CLAUDE.md` and `.claude/skills`. Kill switches: `OPENCODE_DISABLE_CLAUDE_CODE`, `..._PROMPT`, `..._SKILLS`. This silently adds an undeclared instruction path on Engine B and confounds the provider/model comparison; the split remains, but its effect is no longer isolated. Pre-work therefore sets `OPENCODE_DISABLE_CLAUDE_CODE=1` as a user variable and clinic checks it. **The symmetric exposure is on the Codex side** — the app loads `AGENTS.md` (including the one improved in P2), skills, and memories from wherever it launches, so P3 must run from a clean folder or declare what was live on each side. `--pure` additionally skips installed plugins on any run treated as evidence.
 - **OpenCode permission rules resolve last-match-wins** — a later `allow` overrides an earlier `deny`, which inverts the usual instinct. The shipped defaults demonstrate it: `read *` allow → `*.env` deny → `*.env.*` deny → `*.env.example` allow. This is the concrete substance of the P5 bounds comparison; pasting a deny list at the top of the array silently does nothing.
 - **Codex is a mode in the ChatGPT desktop app, not a product you can download by name.** Docs moved from `developers.openai.com/codex` to `learn.chatgpt.com/docs` (append `.md` to any page URL for clean Markdown). Model family is **GPT-5.6 Sol / Terra / Luna**; `gpt-5-codex` is gone. Permission modes are **Ask for approval / Approve for me (auto-review) / Full access**, enabled in Settings > General > Permissions and selected beneath the composer.
 - **The Windows app ships only as a Store-signed package** — `winget install --id 9PLM9XGG6VKS -s msstore`, or the web installer. There is no MSI or standalone EXE. Managed laptops that block Microsoft app distribution need the direct MSIX (`ChatGPT-x64.msix`); this is the one install in the stack with no second vendor path, so screen for it before a cohort starts.
@@ -189,9 +189,9 @@ When building curriculum, materials, images, scripts, or docs:
 - **Every block:** new adversarial review chat using `operator/ADVERSARIAL_REVIEW.md` (frozen prompt); log stood/wounded/failed before transfer.
 - **Every block after adversarial:** update `operator/MEASUREMENT_SPINE.md` (ritual · mission · quality · time); then transfer pulse.
 - After **every AM and PM** block: interactive transfer session in chat `Operator — Transfer 30-60-90` (`operator/TRANSFER_30_60_90.md`); seal at P8 — never invent cold on Friday.
-- Protect the spine: First Light → machine-that-makes-the-answer → hot-rod craft → twin-engine verdict → knowledge → poison → autonomy contract → pipeline contrast → transferable method.
+- Protect the spine: First Light → machine-that-makes-the-answer → measured harness craft → twin-engine verdict → knowledge → poison → autonomy contract → pipeline contrast → transferable method.
 - MVP and stretch lanes are allowed; watering down the operator standard is not.
-- Epic is the feeling after a real dyno win — not an adjective on the syllabus.
+- Epic is the feeling after a real measured win — not an adjective on the syllabus.
 
 ## Anti-patterns (reject these)
 
@@ -239,7 +239,8 @@ Session log proves the pulse; major seeds deepen on P2/P3/P5/P6/P7; **SEALED** o
 
 `operator/MEASUREMENT_SPINE.md` — ultra-light living scoreboard updated **after adversarial**, before transfer.  
 Four headlines only: **ritual health** (brief/log/adversarial) · **mission accomplishment** · **work quality** (evidence under fire) · **time to result**.  
-Student scoreboard + thin facilitator rollup (`operator/FACILITATOR_ROLLUP.md`). Continuity without KPI bloat; deep one-liners only on P2/P3/P5/P6/P8.
+Student scoreboard + thin facilitator rollup (`operator/FACILITATOR_ROLLUP.md`). Continuity without KPI bloat; deep marks only on P2/P3/P5/P6/P8.  
+Deep marks are one line each, spelled the same way everywhere they appear. P2's is `Case suite: baseline n/5 → after n/5` — Unicode arrow, no other form; student-fillable copies keep the blanks as `Case suite: baseline __/5 → after __/5`.
 
 ## Living artifacts
 
@@ -259,7 +260,7 @@ Student scoreboard + thin facilitator rollup (`operator/FACILITATOR_ROLLUP.md`).
 - `server.py` + `HOSTING.md` + `railway.toml` — Railway (or local) password-gated host; env `SITE_PASSWORD`; serves repo root so `/site/` and `../operator` links work; blocks staff keys / `.git` / `*.py` even after login
 
 ### Course instruments (shared kits)
-- `instruments/p2_dyno/` — measured harness craft (engineering + mission_ops)
+- `instruments/p2_test_suite/` — the P2 case suite: five fixed cases `D01–D05`, each with a written pass condition, plus the shared score sheet (engineering + mission_ops). Naming rule: **the five fixed cases** on first use in a document, **the case suite** thereafter.
 - `instruments/p3_frozen_brief/` — twin-engine BRIEF-v1 + corpora + comparator
 - `instruments/p3_multi_agent/` — Many Minds stretch pack (baseline → subagents → delta); staff key `lead/MANY_MINDS_ANSWER_KEY.md`
 - `instruments/p8_hold_degrade/` — Friday hold/degrade matrix (reuses P2 case IDs)

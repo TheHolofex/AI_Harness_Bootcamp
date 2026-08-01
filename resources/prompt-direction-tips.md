@@ -223,7 +223,7 @@ Max 12 lines.
 ## 10. Quick link to course instruments
 
 - Direction Brief · Operator Log · Pass Bars · Adversarial review · Measurement spine · Transfer 30-60-90 → Operator pack  
-- P2 Dyno · P3 Frozen brief · P8 Hold/degrade → Instruments  
+- P2 case suite · P3 Frozen brief · P8 Hold/degrade → Instruments  
 - Why slow foundation beats rushed codegen → [The velocity paradox](./velocity-paradox.md)
 
 ---

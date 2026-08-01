@@ -52,7 +52,10 @@ The course itself is a website, served from this repository.
 | `lead/` | Facilitator material |
 | `server.py` | Password-gated host for deploying the site — see `HOSTING.md` |
 
-Facilitator material ships alongside the course material here, and `server.py` keeps it off the
-hosted site. A clone is not a sealed copy, though — during the week, the line between what you work
-out for yourself and what has already been worked out is one you hold, not one the repository holds
-for you.
+Answer keys and scoring keys are not in this repository, and `server.py` serves them only to a
+separate staff password. They were taken out on purpose: this tree gets cloned, and a file in it is
+readable by anyone holding the clone and by any model pointed at the folder. Staff receive that
+material separately — `START_HERE.md` covers how.
+
+What is left in the clone is the work itself. During the week the line between what you work out for
+yourself and what has already been worked out is one you hold, not one the repository holds for you.

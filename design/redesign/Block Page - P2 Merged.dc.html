@@ -55,7 +55,7 @@
     <div><span class="k">Day</span><span class="v">Tuesday AM</span></div>
     <div><span class="k">Block</span><span class="v">P2</span></div>
     <div><span class="k">Time</span><span class="v">~3–3.5 hr + case talk</span></div>
-    <div><span class="k">Tools</span><span class="v">Codex app · instruments/p2_dyno</span></div>
+    <div><span class="k">Tools</span><span class="v">Codex app · instruments/p2_test_suite</span></div>
     <div><span class="k">Your progress</span><span class="v" style="font-family: 'IBM Plex Mono', ui-monospace, Consolas, monospace; font-size: 0.85rem;">{{ progressLine }}</span></div>
   </div>
   <hr class="rule-accent" />
@@ -85,7 +85,7 @@
       <h3 style="margin: 1.5rem 0 0.5rem; font-size: 1.1rem; font-weight: 600;">Before you start</h3>
       <ul style="max-width: 46rem;">
         <li>Confirm operator templates are present in your Codex app project</li>
-        <li>Open <code>instruments/p2_dyno</code> — cases and the shared score sheet</li>
+        <li>Open <code>instruments/p2_test_suite</code> — cases and the shared score sheet</li>
       </ul>
     </div>
     <div style="display: flex; flex-direction: column; gap: 0.85rem;">
@@ -220,7 +220,7 @@ class Component extends DCLogic {
   renderVals() {
     const missionDef = [
       { id: 'pulse-brief', title: 'Co-write the Direction Brief until LIVE', detail: 'In chat Operator — Direction & Log, work the five fields with the AI: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. Do not start the mission until status is LIVE — vague "explore the data" outcomes get challenged.' },
-      { id: 'p2-baseline', title: 'Baseline: score D01–D05 stock', detail: 'Open instruments/p2_dyno/cases/ and the shared score sheet. New chat, stock harness, PASS/FAIL per case. This is the number your craft has to beat.' },
+      { id: 'p2-baseline', title: 'Baseline: score D01–D05 stock', detail: 'Open instruments/p2_test_suite/cases/ and the shared score sheet. New chat, stock harness, PASS/FAIL per case. This is the number your craft has to beat.' },
       { id: 'p2-walls', title: 'Hot-rod: improve at least two walls', detail: 'Each wall is a real artifact in the app, not a habit you promise to keep — see the four walls below. Author ≥2 machine-checkable tests; show red→green if you can.' },
       { id: 'p2-after', title: 'After: cold rescore D01–D05', detail: 'Cold new chat, rescore. Cold matters — a wall that only works while the old chat is open is not a wall.' },
       { id: 'p2-story', title: 'Write which wall moved and what still fails', detail: 'One honest paragraph on the score sheet. Start your Transfer Identity + P2 seed while it is fresh.' }

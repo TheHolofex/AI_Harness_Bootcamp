@@ -1,13 +1,13 @@
 # Measurement spine — Move 4
 
 **Ultra-light week scoreboard.** Living Markdown in the Codex app project.  
-Updated **once per block, after adversarial review** — before the Transfer pulse.
+Updated **once per block, after adversarial review**.
 
 Not a second curriculum. Not a metrics religion.  
-Four headlines that answer: *Did the operator circuit actually run, and what did it cost in time and quality?*
+Three entries that answer: *Was the brief I wrote any good, how much of what I claimed survived attack, and what did the block cost in time?*
 
 ```text
-Ritual health · Mission accomplishment · Work quality · Time to result
+Brief accuracy · Overclaim · Time to result
 ```
 
 ---
@@ -16,9 +16,9 @@ Ritual health · Mission accomplishment · Work quality · Time to result
 
 | Audience | Use |
 |---|---|
-| **Student** | See the week as one circuit; spot ritual skips, hollow wins, and slow/fragile work |
-| **Facilitator** | Thin rollup (end of file / copy rows) — who’s stuck on ritual vs mission vs quality |
-| **Transfer** | 30-day rhythm inherits the same four headlines on one real workload |
+| **Student** | See the week as one circuit; watch overclaim fall block by block |
+| **Facilitator** | Thin rollup (`FACILITATOR_ROLLUP.md`) — who is claiming more than the evidence carries |
+| **Transfer** | 30-day rhythm inherits the same three entries on one real workload |
 
 ---
 
@@ -27,10 +27,10 @@ Ritual health · Mission accomplishment · Work quality · Time to result
 | Rule | Detail |
 |---|---|
 | **Where** | `operator/MEASUREMENT_SPINE.md` in the Codex app project |
-| **Chat** | Prefer short update in `Operator — Direction & Log` after adversarial (or a dedicated `Operator — Measurement` chat if the log chat is crowded) |
-| **When** | **End of every block only**, after `ADVERSARIAL:` line exists |
-| **How** | Interactive with AI: you report facts; AI challenges inflated quality scores and missing times |
-| **Weight** | 3–5 fields. If it takes more than ~3–5 minutes, you’re over-measuring |
+| **Chat** | Prefer a short update in `Operator — Direction & Log` after adversarial (or a dedicated `Operator — Measurement` chat if the log chat is crowded) |
+| **When** | **End of every block only**, after the `ADVERSARIAL:` line exists |
+| **How** | Interactive with AI: you paste the facts, the AI counts overclaim from the rulings and refuses “the brief was fine” |
+| **Weight** | Three entries, one note, and a deep mark on the blocks that carry one. More than two or three minutes means you are over-measuring |
 
 ### Pulse position
 
@@ -38,47 +38,68 @@ Ritual health · Mission accomplishment · Work quality · Time to result
 Brief → Mission → Log + PASS_BARS draft
   → Adversarial (new chat)
   → Measurement spine row (this file)
-  → Transfer pulse
+  → Transfer chat at B0, P7 and P8; a dated seed line at the other blocks
 ```
 
 ---
 
-## The four headlines (every block)
+## The three entries (every block)
 
-### 1. Ritual health — did the operator circuit run?
+### 1. Brief accuracy — was the brief you wrote before the run any good?
 
-Score **0–3** (one point each, no partials):
+Two parts. Both are required, and the second is the one that teaches.
 
-| Point | Earned only if |
-|---|---|
-| +1 Brief | LIVE Direction Brief (all five fields) before mission |
-| +1 Log | Operator Log complete including provisional verdict + evidence pointers |
-| +1 Adversarial | New adversarial chat run; `ADVERSARIAL: stood/wounded/failed` line in log |
-
-**Ritual = 3** is the floor for claiming the block was operated, not merely attended.
-
-### 2. Mission accomplishment — did the block outcome exist?
+**First, the artifact against the criteria.** Did what you shipped meet the *Done looks like* checks you wrote **before** the mission started, as written?
 
 | Mark | Meaning |
 |---|---|
-| **HIT** | Stated outcome exists and matches the LIVE brief’s “done looks like” |
-| **PARTIAL** | Something shipped; brief outcome not fully met (name the gap) |
-| **MISS** | Outcome not there; honest fail |
+| **HIT** | The artifact meets the checks the brief listed, on the terms the brief set |
+| **PARTIAL** | Something shipped; one or more brief checks not met — name which |
+| **MISS** | The outcome is not there. Honest fail |
 
-Mission is about **the artifact/state**, not effort and not MVP stretch goals.
+Judge the artifact and the state, not the effort, and not the stretch goals.
 
-### 3. Work quality — would a skeptical peer trust this?
+**Second, name the field you would rewrite.** The Direction Brief has five fields — **Outcome**, **Done looks like**, **Bounds**, **Evidence standard**, **Stop / hand-back**. Name **one** of them you would write differently now that you have seen what the run produced, and say in a clause what you would write instead.
 
-| Mark | Meaning |
-|---|---|
-| **STRONG** | Adversarial **stood**; MVP claims mostly SURVIVES; evidence is peer-auditable |
-| **ADEQUATE** | Usable under **wounded** or ACCEPT WITH FIXES; gaps named |
-| **WEAK** | Adversarial **failed** or vibe-heavy; MVP not yet / dead claims dominate |
-| **N/A** | Only if mission MISS and no artifact to judge (still say why) |
+Naming a field is required. If nothing needs rewriting, the only accepted way to say so is to name the field that carried the run and why:
 
-Quality is **not** “I worked hard.” It tracks evidence survival under fire.
+```text
+none — Bounds held better than expected, because the "no writes outside the mission folder"
+line is what made the stop proof cheap to produce.
+```
 
-### 4. Time to result — how long from live brief to adversarial line?
+“The brief was fine” is not an entry. A brief you cannot improve after watching what it produced is a brief you did not read back against the artifact, and the AI you paste into is told to send that answer straight back to you.
+
+A worked example of the whole entry:
+
+```text
+PARTIAL — the map loads but the filter check was never observable.
+Done looks like: I wrote "filters work"; I would write "select one region and the row
+count changes, and I can name the new count".
+```
+
+### 2. Overclaim — how much of what you claimed did the attack take away?
+
+Write it as `n/m`, for example `2/7`.
+
+| Symbol | What it is | Where it comes from |
+|---|---|---|
+| **m** | How many MVP bars you marked **met** | Your pass-bar draft, counted **before** the adversarial chat opened |
+| **n** | How many of *those same bars* came back **WOUNDED** or **DEAD** | Step 3 of the frozen prompt in `ADVERSARIAL_REVIEW.md` — the per-claim `SURVIVES / WOUNDED / DEAD` ruling |
+
+Counting rules, in order:
+
+1. **Fix `m` before you paste.** Count the bars you marked met, write the number down, and put it in the adversarial paste pack. A denominator chosen after the verdict is not a denominator.
+2. **Count `n` from the rulings, not from the summary.** The `ADVERSARIAL:` line grades the block *stood / wounded / failed*; overclaim is counted one bar at a time from the evidence audit. Two different resolutions, and only the per-bar one goes here.
+3. **`SURVIVES` does not count.** Neither does a bar you never marked met — if the reviewer attacks something you left unticked, it is a real finding for the log, but it is outside this number.
+4. **A bar it refused to rule on is unfinished business.** Give it the evidence it asked for and ask again. Do not score around a missing ruling in either direction.
+5. **`m = 0` is not a score, it is a skipped beat.** Claiming nothing to protect the ratio leaves the mastery floor empty, and an empty floor is *not yet* on every bar.
+
+**Why this is the number to trust:** a number you cannot award yourself is worth more than two you can, because only a number someone else rules on is able to come back wrong — and a mark that cannot be wrong cannot teach.
+
+Expect overclaim to be highest early. It is the one line in this file that should **fall** across the week, and a falling line is the first hard evidence you get that your own read of your own evidence is getting better.
+
+### 3. Time to result — how long from live brief to adversarial line?
 
 Record **minutes** (integer):
 
@@ -86,34 +107,27 @@ Record **minutes** (integer):
 
 Optional note (≤5 words): e.g. `setup drag`, `rabbit hole`, `clean run`.
 
-No stopwatch theater: honest estimate is fine; fiction is not.
+No stopwatch theater: an honest estimate is fine; fiction is not.
+
+**What this number is for.** It is read **across operators on one block**, never across blocks on one operator. The blocks differ in shape, length, and instrument, so your P4 minutes and your P6 minutes are not on the same axis and their difference means nothing. When several people run long on the same block, the finding belongs to that block — it was scoped too wide, and the fix is to narrow the data. Your own pace is not a grade here and never becomes one.
 
 ---
 
 ## Block rows (fill every block)
 
-| Block | Ritual 0–3 | Mission HIT/PARTIAL/MISS | Quality STRONG/ADEQUATE/WEAK | Time (min) | One-line note |
-|---|---|---|---|---|---|
-| B0 | | | | | |
-| P1 | | | | | |
-| P2 | | | | | |
-| P3 | | | | | |
-| P4 | | | | | |
-| P5 | | | | | |
-| P6 | | | | | |
-| P7 | | | | | |
-| P8 | | | | | |
+| Block | Brief accuracy (HIT/PARTIAL/MISS + field named) | Overclaim `n/m` | Time (min) | One-line note |
+|---|---|---|---|---|
+| B0 | | | | |
+| P1 | | | | |
+| P2 | | | | |
+| P3 | | | | |
+| P4 | | | | |
+| P5 | | | | |
+| P6 | | | | |
+| P7 | | | | |
+| P8 | | | | |
 
-### Running totals (update when a row is added)
-
-| Total | Value |
-|---|---|
-| Blocks logged | |
-| Ritual perfect (3/3) count | |
-| Mission HIT count | |
-| Quality STRONG count | |
-| Median time_to_result (min) | |
-| Adversarial stood / wounded / failed counts | |
+Nine rows is the whole scoreboard. Do not average them and do not add a totals line: a median across nine unlike missions has no referent, because the missions are not repeats of one another. The reading that carries a decision is the **shape of the overclaim column down the page**, and you get that by looking at it.
 
 ---
 
@@ -123,13 +137,13 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 
 | Block | Deep mark (one line) |
 |---|---|
-| **P2** | Dyno: baseline → after on `instruments/p2_dyno` D01–D05 (`n/5`) |
-| **P3** | Comparator on `BRIEF-v1`: disagreements · kills · verdict |
+| **P2** | Case suite: baseline → after on `instruments/p2_test_suite` D01–D05 (`n/5`) |
+| **P3** | Comparator on `BRIEF-v1`: disagreements `n` · kills `n` · verdict |
 | **P5** | Containment: 3/3 catches · absence-of-effect proof pointer |
 | **P6** | Contract: stop/restart · exception drill pass/fail |
-| **P8** | Hold/degrade D01–D05 open vs home (`n/5`) · policy refuse · transfer SEALED |
+| **P8** | Hold-degrade: open `n/5` vs home `n/5`; refuse: Y/N; transfer SEALED: Y/N |
 
-These feed quality and transfer; they do **not** replace the four headlines.
+B0, P1, P4 and P7 carry no deep mark — for those blocks the three entries and the note are the whole row.
 
 ---
 
@@ -137,41 +151,32 @@ These feed quality and transfer; they do **not** replace the four headlines.
 
 ```text
 Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
-
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
-Brief LIVE at: [time or “approx”].
-Adversarial done at: [time or “approx”].
+Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
+Bars I marked met before the attack: [n].
+Brief LIVE at: [time or "approx"].
+Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
-Draft MVP: [met / not yet summary].
-
-Fill this block’s row:
-1. Ritual 0–3 with proof of each point
-2. Mission HIT/PARTIAL/MISS against the LIVE brief
-3. Quality STRONG/ADEQUATE/WEAK from adversarial + evidence (challenge inflation)
-4. Time to result in minutes
-5. One-line note
-6. Deep mark if this is P2/P3/P5/P6/P8
-
-Update running totals.
-Refuse cheerful quality scores without evidence.
+Fill this block's row:
+1. Brief accuracy — did the artifact match the "done looks like" I wrote before the
+   run, and which one of the five brief fields would I write differently now?
+   Refuse "the brief was fine": make me name a field, or say none and name what
+   held better than expected.
+2. Overclaim n/m — count the bars I marked met that came back WOUNDED or DEAD,
+   over the number I marked met. Count from the rulings I pasted, not from my summary.
+3. Time to result in minutes.
+4. One-line note.
+5. Deep mark if this block has one.
+Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.
 ```
 
 ---
 
-## Facilitator rollup (thin)
+## Facilitator rollup
 
-Copy or glance at student **Running totals** + any row with Ritual &lt; 3, Mission MISS, or Quality WEAK.
-
-| Student | Blocks | Ritual 3/3 | HIT | STRONG | Med min | Flags |
-|---|---|---|---|---|---|---|
-| | | | | | | |
-| | | | | | | |
-
-**Flags (use codes):** `R` ritual leak · `M` mission miss · `Q` quality weak · `T` time outlier · `A` adversarial skip  
-
-Facilitator does not need a second database. Rescue = restore ritual and evidence, not add metrics.
+Thin view lives in `FACILITATOR_ROLLUP.md`. One rule travels with the number: **overclaim is never read without the met-count beside it.** One wounded bar out of nine claimed and one out of two are different students, and the ratio alone cannot tell you which you are looking at.
 
 ---
 
@@ -179,29 +184,32 @@ Facilitator does not need a second database. Rescue = restore ritual and evidenc
 
 | Pattern | Likely issue |
 |---|---|
-| High HIT, low quality | Shipping without mastery — adversarial is doing its job |
-| Strong quality, slow time | Craft OK; scope or fluency bottleneck |
-| Ritual &lt; 3 with any HIT | Attendance theater — block doesn’t count as operated |
-| Fast time, weak quality | Speed without judgment |
-| Quality rises P2→P8 while time stabilizes | Circuit is compounding (what we want) |
+| Brief accuracy HIT, overclaim high | You are shipping the artifact and over-reading the evidence. The attack is doing its job |
+| Overclaim near zero, bars-met falling week on week | You are protecting the ratio by claiming less. Unticked bars are still *not yet* and still hold the floor open |
+| Overclaim near zero, bars-met rising, no fix list ever | Check the paste pack before you believe it. A reviewer handed thin evidence has nothing to attack |
+| The same brief field named every block | That is where your brief-writing needs the work. *Done looks like* and *Evidence standard* are the usual two |
+| “None held better than expected” nine times running | Not credible across nine missions. You are defending the brief rather than scoring it |
+| Overclaim falling B0 → P8 | Your self-assessment is calibrating. This is the line to want |
+| Long times scattered across people and blocks | Individual pace. Not a finding |
+| Long times clustered on one block | That block is scoped too wide. A finding about the block |
 
 ---
 
 ## Transfer bridge
 
-At P7/P8 transfer draft, copy the four headlines into the 30-day rhythm for **one real workload**:
+At P7 and P8, carry the same three entries into the 30-day rhythm for **one real workload**:
 
-- Ritual: brief + log + (lightweight) challenge  
-- Mission: outcome hit rate on that workload  
-- Quality: evidence standard under challenge  
-- Time: time-to-accept or time-to-result  
+- **Brief accuracy:** did the work match the criteria you set before starting, and which criterion do you now write differently
+- **Overclaim:** what you claimed was done that a reviewer took back
+- **Time:** time-to-accept or time-to-result on that workload
 
-Same spine, smaller world.
+Same spine, smaller world. The party who rules on your overclaim at work is a colleague, a check, or a customer — pick one before you leave.
 
 ---
 
 ## Identity lock
 
-If the spine becomes a wall of KPIs, cut it back to four headlines.  
+If the spine grows past three entries and a note, cut it back.  
 If rows are filled before adversarial, delete them — measurement follows attack.  
-If facilitators grade people on speed alone, the school has betrayed mastery.
+If overclaim is counted from your own summary instead of the rulings, it is a self-awarded number again and this file has lost its only teeth.  
+If facilitators grade people on speed, the school has betrayed mastery.

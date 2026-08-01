@@ -18,6 +18,14 @@ export SITE_PASSWORD='your-cohort-password'
 python3 server.py
 ```
 
+Staff who also want the keys served add a second, different password:
+
+```bash
+export SITE_PASSWORD='your-cohort-password'
+export STAFF_PASSWORD='a-different-password-students-never-see'
+python3 server.py
+```
+
 Open http://localhost:8080/site/ (login first). Deploy notes: `HOSTING.md`.
 
 ## Map
@@ -29,8 +37,9 @@ Open http://localhost:8080/site/ (login first). Deploy notes: `HOSTING.md`.
 | `operator/` | Brief, log, bars, adversarial, measure, transfer |
 | `instruments/` | P2/P3/P8 shared kits (eng + mission_ops) |
 | `mission_flesh/` | Corpora and packs for each block |
-| `lead/` | Operate-along helpers · staff `COHORT_PIN.md` |
+| `lead/` | Operate-along helpers |
 | `diagrams/` | Circuit / pulse / equations |
+| `staff/` | Answer keys and the pin sheet. Not in the clone — see below |
 
 ## Overnight build note
 
@@ -54,8 +63,23 @@ Each block (B0–P8) has a full step-by-step checklist with checkboxes. Progress
 
 ## Staff (before pre-work window)
 
-- Pin sheet: `lead/COHORT_PIN.md`
+- Pin sheet: `staff/lead/COHORT_PIN.md`
 - Rotting facts (any machine): `python3 .github/scripts/verify-stack-facts.py`
 - Windows install smoke: `powershell -ExecutionPolicy Bypass -File .github\scripts\prework-verify.ps1`
 - Facilitator notes: `prework/FACILITATOR_NOTES.md`
 - Hosted site: `HOSTING.md` — Railway + `SITE_PASSWORD`
+
+### The `staff/` directory
+
+Answer keys, facilitator keys, and the pin sheet are **not in this repository**. They
+were removed from it deliberately: students clone this tree, and anything in it is
+readable by every student and by every model they point at a folder.
+
+Get `staff/` from the course lead over the channel you use for keys and passwords, and
+unpack it at the repo root so the paths read `staff/lead/COHORT_PIN.md`,
+`staff/mission_flesh/p5/FACILITATOR_KEY.md`, and so on. `.gitignore` already excludes it,
+so it cannot be committed back by accident. Full contents and placement:
+`staff/README.md`.
+
+To reach the same files on the hosted site, set `STAFF_PASSWORD` to something other than
+`SITE_PASSWORD` and sign in with it. The cohort password does not open `staff/`.

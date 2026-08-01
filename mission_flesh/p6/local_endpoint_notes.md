@@ -21,7 +21,7 @@ Now you hold the **recipe still** and change the **endpoint** — the place the 
 |---|---|---|
 | API / cloud (course default) | Course key, spend cap, strong tool calling | Baseline P6 run (already done) |
 | **Local** (this stretch) | Ollama or LM Studio on the laptop | Numeric hold/degrade vs baseline |
-| Hosted open (P8) | Operator-governed remote open model | Hold/degrade matrix on dyno IDs |
+| Hosted open (P8) | Operator-governed remote open model | Hold/degrade matrix on the same case IDs (D01–D05) |
 
 Local is not “more autonomous.” Local is **a different wall**.
 

@@ -86,8 +86,8 @@ argument below.
 Seven key files, all tracked by git:
 
 ```
-instruments/p2_dyno/engineering/FACILITATOR_KEY.md
-instruments/p2_dyno/mission_ops/FACILITATOR_KEY.md
+instruments/p2_test_suite/engineering/FACILITATOR_KEY.md
+instruments/p2_test_suite/mission_ops/FACILITATOR_KEY.md
 instruments/p3_frozen_brief/engineering/FACILITATOR_KEY.md
 instruments/p3_frozen_brief/mission_ops/FACILITATOR_KEY.md
 instruments/p8_hold_degrade/FACILITATOR_KEY.md
@@ -112,10 +112,10 @@ evidence, and the expected mechanical catch — plus a "Watch-fors" section desc
 exact partial-credit failures a struggling student would otherwise discover the hard way.
 
 The P2 keys sit one level above the cases the model is told to open. `p2.html:212`
-directs the model at `instruments/p2_dyno/[TRACK]/cases/[CASE FILE]`, while
-`instruments/p2_dyno/engineering/FACILITATOR_KEY.md` — *"D01 | Names redis timeout /
+directs the model at `instruments/p2_test_suite/[TRACK]/cases/[CASE FILE]`, while
+`instruments/p2_test_suite/engineering/FACILITATOR_KEY.md` — *"D01 | Names redis timeout /
 integration job; ... ignores npm warn as root cause"* — sits in the parent directory.
-`p2.html:188` separately tells the student to open `instruments\p2_dyno` in a file
+`p2.html:188` separately tells the student to open `instruments\p2_test_suite` in a file
 browser.
 
 ### Two corrections to the candidate claim
@@ -159,7 +159,7 @@ currently produce data that cannot be read.
 
 ### What exists today
 
-`instruments/p2_dyno/SCORE_SHEET.md` asks the student to fill `Baseline P/F` and
+`instruments/p2_test_suite/SCORE_SHEET.md` asks the student to fill `Baseline P/F` and
 `After P/F` for D01–D05 and compute a delta. Every one of those ten judgments is made by
 the student, uncalibrated, by someone who wants a positive delta, and is never checked
 by anyone. The dyno is the strongest instrument in the week and its grading is the
@@ -632,11 +632,11 @@ was verified directly against the files.
 **What exists today.** P2's baseline dispatch (`site/blocks/p2.html:212`) tells the
 student to paste:
 
-> `Open the file instruments/p2_dyno/[TRACK]/cases/[CASE FILE] and run the task in it
+> `Open the file instruments/p2_test_suite/[TRACK]/cases/[CASE FILE] and run the task in it
 > exactly as written.`
 
 The model opens the file. Line 3 of that file
-(`instruments/p2_dyno/engineering/cases/D01_ci_failure.md`) reads:
+(`instruments/p2_test_suite/engineering/cases/D01_ci_failure.md`) reads:
 
 > `**Pass if:** response names the failing job, the root error line/theme, and one
 > concrete next action. No invented file paths.`
@@ -670,7 +670,7 @@ Friday's capability-tax numbers too.
 - The dispatch is unchanged in shape, so the do-step stays a single paste.
 
 **Cost.** Ten case files split into ten plus two grader files; the P2 page's Stage 02
-click-list gains one line naming where the pass conditions now live; `p2_dyno/README.md`
+click-list gains one line naming where the pass conditions now live; `p2_test_suite/README.md`
 and the P8 instrument README each gain a sentence. No `data-check-id` changes. Under an
 hour of work.
 
@@ -758,7 +758,7 @@ proof is a real containment test. C1 exists to protect exactly this.
 
 **5. The P2 dyno's externally authored `Pass if:` lines.** Each case opens with a
 pass condition written by someone other than the student —
-`instruments/p2_dyno/engineering/cases/D01_ci_failure.md`: *"Pass if: response names the
+`instruments/p2_test_suite/engineering/cases/D01_ci_failure.md`: *"Pass if: response names the
 failing job, the root error line/theme, and one concrete next action. No invented file
 paths."* This is the one place in the week where a criterion arrives from outside. C2
 extends it; do not soften it.

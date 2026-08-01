@@ -16,7 +16,7 @@ Pick at P2 start. **Do not switch mid-week** — P8 reuses the same suite IDs as
 
 ```text
 instruments/
-  p2_dyno/           # Tue AM — harness before/after
+  p2_test_suite/           # Tue AM — harness before/after
   p3_frozen_brief/   # Tue PM — dual-engine frozen demand
   p8_hold_degrade/   # Fri AM — same suite IDs as P2, new endpoint
 ```
@@ -30,7 +30,7 @@ Each instrument has:
 
 | Suite ID | P2 | P8 |
 |---|---|---|
-| D01–D05 | Dyno baseline + after | Hold/degrade on open (or re-pointed) model |
+| D01–D05 | Baseline + after | Hold/degrade on open (or re-pointed) model |
 
 P3 uses its own frozen corpus + brief (`F-` sources, brief `BRIEF-v1`) on the **same track**.
 

@@ -25,7 +25,7 @@ Students have spent the morning *inside* a capability (craft, knowledge, autonom
 
 | Morning | Block just run | Case-talk theme (pick a real story that fits) |
 |---|---|---|
-| **Tuesday** | P2 hot-rod | Craft that compounded: measured harness change, tests, memory/skills that survived restart. *Optional bridge to PM:* a time you used parallel specialists (subagents), not a second vendor |
+| **Tuesday** | P2 harness craft | Craft that compounded: measured harness change, tests, memory/skills that survived restart. *Optional bridge to PM:* a time you used parallel specialists (subagents), not a second vendor |
 | **Wednesday** | P4 second brain | Knowledge under a harness: trails, citations, intake bounds — or a near-miss with poison |
 | **Thursday** | P6 watch officer | Autonomy under contract: tool vs procedure bounds, stop authority, unattended path honesty. *Optional:* air-gap / local endpoint story (endpoint is a wall) |
 
@@ -42,7 +42,7 @@ You may swap stories if a better live example fits the room. Keep the **capabili
 ## Lead posture
 
 - First person, concrete, scar-inclusive. Guide-beside energy, not keynote.
-- Show an artifact when you can (brief, log line, dyno row, contract snippet, PR, ticket) — not a slide deck of abstractions.
+- Show an artifact when you can (brief, log line, score-sheet row, contract snippet, PR, ticket) — not a slide deck of abstractions.
 - Name the harness parts in plain words when they appear; do not dump a glossary.
 - Leave air in the 15 minutes. Silence after a hard question is useful.
 

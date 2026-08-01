@@ -13,10 +13,26 @@ Clearable the same day with serious work. Not clearable by watching a demo, acce
 | **Not yet** | Capability not demonstrated. Fix and re-log. No soft pass. |
 
 **Always required (Move 1):** full LIVE Direction Brief (all five fields) before the run · Operator Log after with verdict, evidence, and what you still own.  
-**Always required (adversarial):** new chat + `ADVERSARIAL_REVIEW.md` prompt after log/pass-bar draft; `ADVERSARIAL:` line in the log. MVP items marked met must **survive** or be marked wounded/fixed.  
+**Always required (adversarial):** new chat + `ADVERSARIAL_REVIEW.md` prompt after log/pass-bar draft; `ADVERSARIAL:` line in the log. MVP items marked met must **survive** or be marked wounded/fixed. At **P3, P5 and P8** the same paste pack runs a second time in the second engine already open at that block, and both verdicts go in the log.  
 A block without brief/log/adversarial is **not yet**, regardless of artifacts.
 
-**Primary use:** student + AI in `Operator — Direction & Log` after the log. The AI stress-tests claims; you do not get to grade your own vibes unchallenged.
+---
+
+## How this list gets ticked
+
+Whichever way you do it, the list is written down **before** the attack, and you do not get to grade your own vibes unchallenged.
+
+**At B0, P2 and P5 — walk the list with the AI.** In `Operator — Direction & Log`, after the log, go one bar at a time. For each bar you answer *met* or *not yet* and give an evidence pointer, and the AI challenges any pointer that is a feeling rather than an artifact. Use the closer prompt at the bottom of this file. B0 and P2 are where an evidence pointer is still a new idea; P5's bars are the most mechanically specific in the week and the walk-through there earns its minutes.
+
+**At P1, P3, P4, P6, P7 and P8 — tick the list yourself, then hand it to the attack.** Before you open the adversarial chat:
+
+1. Tick every bar you can point at an artifact for, right now.
+2. Leave unticked any bar you cannot evidence. An honest *not yet* costs nothing at this moment and saves you in the next one.
+3. Count the ticks, and paste the ticked list into the adversarial as your stated prediction.
+
+The ticked list is a forecast, not a summary. You are naming, in writing and before the attack, which bars you believe survive — and the evidence rule does not move an inch because you ticked it alone. Every tick needs an artifact you could open in front of someone.
+
+**A wounded bar comes back unticked.** That is what makes the tick mean anything, and it is why the count you paste in has to be fixed before the reviewer speaks: it is the denominator of your overclaim in `MEASUREMENT_SPINE.md`.
 
 ---
 
@@ -31,7 +47,7 @@ A block without brief/log/adversarial is **not yet**, regardless of artifacts.
 
 ## What counts as evidence (school-wide)
 
-Acceptable: paths, commands, diffs, test output, dyno rows, opened citation trails, side-by-side extracts, stop/restart timestamps, policy text + refused task record, hold/degrade table.
+Acceptable: paths, commands, diffs, test output, score-sheet rows, opened citation trails, side-by-side extracts, stop/restart timestamps, policy text + refused task record, hold/degrade table.
 
 **Not evidence:** “looks good,” model self-praise, screenshots of chat enthusiasm, “I understand the concept,” peer agreement without artifacts.
 
@@ -53,7 +69,7 @@ Acceptable: paths, commands, diffs, test output, dyno rows, opened citation trai
 
 ---
 
-> **Course instruments:** shared kits in `instruments/` (P2 dyno, P3 frozen brief, P8 hold/degrade). Two tracks: `engineering`, `mission_ops`. Pick one track for the week. P8 reuses P2 case IDs D01–D05. These are class instruments — not personal portable evals.
+> **Course instruments:** shared kits in `instruments/` (P2 case suite, P3 frozen brief, P8 hold/degrade). Two tracks: `engineering`, `mission_ops`. Pick one track for the week. P8 reuses P2 case IDs D01–D05. These are class instruments — not personal portable evals.
 
 ## B0 — First Light · Cap 1  
 **Mastery claim:** You can direct a thinking machine from operational mess to a working instrument, and you know how you’ll know it’s right.
@@ -104,25 +120,25 @@ Paste job, citations unchecked, no delta, or silent failure on broken sources.
 
 ---
 
-## P2 — Hot-rod · Cap 3  
+## P2 — Harness craft · Cap 3  
 **Mastery claim:** Loop quality is something you can change on purpose and prove — craft compounds instead of resetting every session.
 
 ### MVP
-- [ ] Dyno sheet with **baseline** on course suite `instruments/p2_dyno` (D01–D05, chosen track) before and after
+- [ ] Score sheet with **baseline** on the course case suite `instruments/p2_test_suite` (D01–D05, chosen track) before and after
 - [ ] ≥2 harness changes across distinct layers (e.g. instructions *and* tests, or memory *and* skill) — not one lucky prompt tweak
-- [ ] Each change has before/after measurement on the dyno (numeric or strict pass/fail counts)
-- [ ] ≥2 machine-checkable tests **you authored**; at least one fails on the stock harness and passes after the change (or equivalent red→green story)
-- [ ] Durability proof: **new chat or restart** still carries instructions/memory/skill; re-run a dyno item cold. Each wall must point at a real artifact — `AGENTS.md` for instructions, a `SKILL.md` folder for skills, memory explicitly enabled — not a habit you promise to keep
+- [ ] Each change has before/after measurement on the case suite (numeric or strict pass/fail counts)
+- [ ] ≥2 machine-checkable tests **you authored**; at least one fails on the unchanged harness and passes after the change (or equivalent red→green story)
+- [ ] Durability proof: **new chat or restart** still carries instructions/memory/skill; re-run one case cold. Each wall must point at a real artifact — `AGENTS.md` for instructions, a `SKILL.md` folder for skills, memory explicitly enabled — not a habit you promise to keep
 - [ ] Written claim: which wall improved (instructions / tests / memory / skills) and what still fails
-- [ ] Log cites dyno rows and test names — “feels smarter” is automatic not yet
+- [ ] Log cites score-sheet rows and test names — “feels smarter” is automatic not yet
 - [ ] **30-day seed:** one concrete habit for keeping a harness at work (feeds Move 3)
 
 ### Stretch
 - [ ] Skill fires unprompted or via a minimal trigger on a realistic task — the `description` line in `SKILL.md` is what decides this, so tune it as trigger conditions rather than a title
-- [ ] Dyno includes a hostility or ambiguity case, not only happy path
+- [ ] The suite includes a hostility or ambiguity case, not only happy path
 
 ### Side-quest
-- [ ] Blind-ish peer dyno: improve someone else’s harness one measured notch; they confirm the delta
+- [ ] Blind-ish peer scoring run: improve someone else’s harness one measured notch; they confirm the delta
 
 ### Not yet if
 Single unmeasured tweak, no red→green test, or nothing survives restart.
@@ -214,7 +230,7 @@ Missed class without containment, or “we told the model to be careful.”
 goose is the vehicle: local agent platform (CLI default; Desktop optional) whose **tool-enforced** column is real levers — recipe, extensions/tool surface, `GOOSE_MODE`, `max_turns`, retry checks, schedule — not brochure safety. Pack: `mission_flesh/p6/` (`watch_officer.yaml`, `goose_recipe_notes.md`, `feeder/`). Docs: <https://goose-docs.ai>
 
 ### MVP
-- [ ] goose recipe **adapted** from `watch_officer.yaml` (not stock demo only) to the local feeder; successful run evidenced (`out/watch_summary.md` on disk)
+- [ ] goose recipe **adapted** from `watch_officer.yaml` (not the shipped demo only) to the local feeder; successful run evidenced (`out/watch_summary.md` on disk)
 - [ ] Autonomy contract with **both columns populated**: tool-enforced vs procedure-enforced — ≥3 rows each
 - [ ] **≥3 tool-enforced rows name real goose levers** (e.g. extensions allowlist, `GOOSE_MODE`, `settings.max_turns`, retry success check, scheduler) — “be safe” prose alone is not a tool row
 - [ ] Mapping: each serious risk on this feeder appears in one column (no orphan risks)
@@ -238,7 +254,7 @@ goose is the vehicle: local agent platform (CLI default; Desktop optional) whose
 - [ ] Local model as third cell on a mini hold/degrade before P8’s full matrix
 
 ### Not yet if
-Stock recipe only, one-column “be safe” contract, tool column with no real goose settings, or stop never demonstrated.
+The shipped recipe unchanged, one-column “be safe” contract, tool column with no real goose settings, or stop never demonstrated.
 
 ---
 
@@ -277,9 +293,11 @@ Happy-path only, no human gate, or “automation is always better” with no dis
 - [ ] Layered read of failures: model vs instructions vs tests vs environment vs operator brief (label each fail)
 - [ ] Legitimate task **refused under your policy** with recorded reason; contrast with a allowed task that still runs
 - [ ] Loop still closes on a core path you care about — or you document which walls must change for it to close
-- [ ] **90s defense** from evidence only (matrix + policy + one accept and one reject)
+- [ ] **90-second defense delivered to a live listener** — a person, not a model, who was not in your build chat. Ninety seconds on a clock, from evidence only: the matrix, the policy, one task you accepted and one you refused. **It passes when the listener states back, unprompted and without asking you a single question, which work this endpoint is fit for and which it is not.** If they cannot, the defense failed: change what you led with and run it again. Rehearse against a model first if you like — the model is a rehearsal, never the judge
 - [ ] **30-60-90 SEALED** via `TRANSFER_30_60_90.md` checklist (grown all week — not invented Friday)
-- [ ] Log points at policy version, matrix, refuse record, and 30-60-90
+- [ ] Log points at policy version, matrix, refuse record, 30-60-90, and who listened to the defense
+
+**What the listener is judging.** One thing: whether they can restate the fitness verdict. Nerves, restarts, a flat voice, a lost thread you pick back up — all of these pass. Charm, fluency, and a confident tone do not pass on their own. If the listener has to ask “so can we use it or not?”, the ninety seconds failed no matter how well they were delivered, and the fix is in the evidence you led with rather than in the performance. A listener who cannot restate your verdict is telling you something true about the verdict.
 
 ### Stretch
 - [ ] Manager-ready one-pager: problem, method, bounds, first 30 days, risks
@@ -291,35 +309,39 @@ Happy-path only, no human gate, or “automation is always better” with no dis
 - [ ] Re-run P6 watch recipe against hosted open (if endpoint allows tools) and add a third column to local hold/degrade
 
 ### Not yet if
-Policy after the fact, vibe degrade (“it’s fine”), empty 30-60-90, or no refuse under policy.
+Policy after the fact, vibe degrade (“it’s fine”), empty 30-60-90, no refuse under policy, or a defense that only ever ran against a model.
 
 ---
 
-## Operator-chat closer (paste after the log)
+## Operator-chat closer (paste after the log at B0, P2 and P5)
 
 ```text
 Deep mastery self-check against operator/PASS_BARS.md for this block.
 
 For each MVP item:
 - met / not yet
-- evidence pointer (path, dyno row, comparator line, contract section, matrix cell…)
+- evidence pointer (path, score-sheet row, comparator line, contract section, matrix cell…)
 - if met: what mastery it proves in one sentence (not “I did the step”)
 
 Challenge me hard on anything that smells like completion theater.
+Challenge any pointer that is a feeling instead of an artifact.
 If any not yet: the single highest-leverage fix, and whether I can finish it before leaving the block.
 
 Stretch/side-quest: only if actually attempted — same evidence standard.
 
-Confirm ADVERSARIAL line exists in the log (stood / wounded / failed).
+End with the count of bars I marked met. I carry that number into the adversarial chat.
 Do not treat MVP as met if adversarial review did not run.
-Next: write MEASUREMENT_SPINE.md row, then Transfer pulse.
+Next: adversarial in a new chat, then the MEASUREMENT_SPINE.md row.
 ```
+
+At the other six blocks you tick the list yourself instead, count the ticks, and paste the ticked list into the adversarial chat as your stated prediction.
 
 ## Facilitator stance
 
 - Protect time for **evidence**, not polish.
 - “Not yet” mid-week is normal; unlogged “not yet” is not.
 - Spot-audit the bars students mark met fastest — those fail first under mastery pressure.
+- The self-tick blocks are where a vibe pointer survives longest; read three students' P4 pointers and confirm each names a path, a row, or a test.
 - If a cohort needs rescue, narrow **scope of data**, never the judgment standard.
 
 ## Identity lock

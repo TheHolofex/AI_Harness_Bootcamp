@@ -37,7 +37,9 @@ Budget roughly $100 per student per provider for a week of heavy agent use, and 
 
 ### 2. Pin versions and models, then post them
 
-**Source of truth:** fill `lead/COHORT_PIN.md` first, then post the filled values in the pre-work channel. Students are told to use the cohort pin rather than latest.
+**Source of truth:** fill `staff/lead/COHORT_PIN.md` first, then post the filled values in the pre-work channel. Students are told to use the cohort pin rather than latest.
+
+`staff/` is not part of the clone. If you do not have it, ask the course lead — it carries the pin sheet and every answer key, and it is kept out of the repository so that cloning the course does not hand a student the answers. Unpack it at the repo root; `staff/README.md` lists what should be there.
 
 - **OpenCode version, and the channel you pinned it on.** This one matters most. OpenCode ships fast and Windows support has regressed between releases — file-writing tools failing on Windows has been a live issue. Install a candidate on one machine, run the write proof, and pin what passes.
 
@@ -72,7 +74,7 @@ terminal. Writes `prework-verify-results.md` beside itself.
 
 Neither touches the GUI steps or the key-dependent write proofs. Those still
 need a person at a keyboard with a funded key. Tick the human rows on
-`lead/COHORT_PIN.md` (sections C–D) after the scripts pass.
+`staff/lead/COHORT_PIN.md` (sections C–D) after the scripts pass.
 
 ### 3. Revocation plan
 
@@ -162,7 +164,7 @@ Lead runs missions live on screen with talk-through and real-time AI depth. Pre-
 
 ### Many Minds (P3 stretch)
 - After twin-engine MVP: `mission_flesh/p3/MANY_MINDS.md` — require **three** artifacts: `baseline_single.md`, `many_minds_synthesis.md`, `many_minds_delta.md`. Spot-audit deltas first.
-- Cap three read-only subagents; synthesis file on disk; correct “Cowork” language. The prompt cap is procedure-enforced — `agents.max_concurrent_threads_per_session` is the tool-enforced one, worth setting on demo or spend-sensitive machines. Answer key for the seeded defects: `lead/MANY_MINDS_ANSWER_KEY.md` (staff only; the corpus is unlabelled on purpose)
+- Cap three read-only subagents; synthesis file on disk; correct “Cowork” language. The prompt cap is procedure-enforced — `agents.max_concurrent_threads_per_session` is the tool-enforced one, worth setting on demo or spend-sensitive machines. Answer key for the seeded defects: `staff/lead/MANY_MINDS_ANSWER_KEY.md` (staff only; the corpus is unlabelled on purpose)
 - Worktrees optional; don’t burn the block if Git/UI fights the room
 
 ### Local endpoint (P6→P8 stretch)

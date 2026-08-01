@@ -46,7 +46,7 @@ Five fields. Target: under five minutes of dialogue. Append one entry per block;
 | 5. I still own | |
 | 6. Adversarial | |
 
-### P2 — Hot-rod
+### P2 — Improve the harness
 
 | Field | Note |
 |---|---|

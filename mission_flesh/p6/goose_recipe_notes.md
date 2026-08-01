@@ -30,7 +30,7 @@ pass bar requires it.
 
 | File | Role |
 |---|---|
-| `watch_officer.yaml` | Starter recipe — adapt this, don’t only run a stock demo |
+| `watch_officer.yaml` | Starter recipe — adapt this, don’t only run the shipped demo |
 | `feeder/` | Watch traffic (dropping files simulates the desk) |
 | `out/` | Create on first run; `watch_summary.md` is evidence |
 
@@ -86,7 +86,7 @@ prints. Record the exact command that worked in your operator log.
 5. Evidence of a successful adapted run:
    - `out/watch_summary.md` exists
    - One line per normal feeder file
-   - You changed something in the YAML (path, bounds, max_turns, or mode) so it is not stock-only
+   - You changed something in the YAML (path, bounds, max_turns, or mode) so it is not the shipped recipe unchanged
 
 ## Exception drill (event_04)
 

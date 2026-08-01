@@ -1,0 +1,28 @@
+You are providing a DESIGN SEED for a workflow called /so (Superpowers Orchestrator). The main agent will use your draft as one input into its own design.
+
+TASK DESCRIPTION:
+Restructure the existing static AI Harness Bootcamp website so it is the complete learner surface. Every learner-visible raw Markdown link or instruction must either become an online web page/content or leave the learner path. Global and contextual navigation must focus on the day-by-day course: Pre-work, Monday (B0 and P1), Tuesday (P2/P3), Wednesday (P4/P5), Thursday (P6/P7), Friday (P8). Resources and handouts remain available only as contextual secondary material, not core navigation. Preserve exact commands, evidence standards, current static architecture, progress compatibility where honest, and the existing Starzl visual system.
+
+PRIOR ANALYSIS:
+The current site mixes a nine-block live course, a keys reference, install checklist, resources, lead tools, and raw repository Markdown in one hierarchy. P1 is about 29 laptop viewports, with the six-stage mission buried beneath orientation, theory, optional depth, repeated pulse, and mastery checks. Pre-work has 79 required checks, including conditional repairs and seven troubleshooting cases, so honest completion is impossible. The site claims to be canonical while root and student documentation route learners back to Markdown. Navigation labels P1 as Block 3 of 11 even though the contact course is B0-P8. The redesign should preserve technical precision through progressive disclosure while making required action, current module, next module, and completion unmistakable.
+
+REPO CONTEXT:
+Existing site is vanilla static HTML/CSS/JavaScript served from site/ through Python or password-gated Railway server.py. Shared navigation and progress live in site/js/registry.js and site/js/shell.js. Generated contextual handouts live in site/resources/ and are built from resources/catalog.json by scripts/build-resources.mjs. There is no package manifest and no .openai/hosting.json. The repo includes operator/, instruments/, mission_flesh/, prework/, lead/, and student_pack/ Markdown sources, many of which are currently linked directly from learner pages.
+
+YOUR JOB:
+Produce a draft design approach. Be specific about the site graph, content conversion strategy, navigation hierarchy, reuse of shared web pages, redirect policy, and validation. Consider at least one approach that differs from simply converting every Markdown file one-for-one.
+
+OUTPUT:
+Return a single JSON object with these fields:
+- draft_approach: 2-4 sentences describing your suggested approach
+- key_decisions: array of major design decisions you would make and why
+- alternatives_considered: array of alternative approaches considered and rejected, with reasons
+- edge_cases: array of edge cases the design should handle
+- risks: array of risks or unknowns
+
+Rules:
+- Output JSON only, with no code fences or closing remarks
+- Do not write files
+- Do not invoke shell commands
+- You may read files in the workspace for context
+- Total length 300-600 words

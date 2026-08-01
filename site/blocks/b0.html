@@ -30,7 +30,7 @@
       <div><span class="k">Block</span><span class="v">B0</span></div>
       <div><span class="k">Time</span><span class="v">Clinic ~2 hr (soft) + First Light</span></div>
       <div><span class="k">Tools</span><span class="v">Codex app (home) · OpenCode · Pi · goose</span></div>
-      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-b0">0 / 25 · 0%</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-b0">0 / 23 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
 
@@ -38,8 +38,8 @@
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
       <a href="#mission">Mission · <span data-count-for="mission">0/10</span></a>
-      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/6</span></a>
-      <a href="#floor">Mastery floor · <span data-count-for="floor">0/9</span></a>
+      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/5</span></a>
+      <a href="#floor">Mastery floor · <span data-count-for="floor">0/8</span></a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
         <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-b0"></span></div>
@@ -52,6 +52,7 @@
         <h2 class="h-plain">Why this block exists</h2>
         <p>A <strong>harness</strong> is the setup around a model that lets it act: tools, files, permissions, instructions, and your accept/reject loop. Today you will feel that loop before we name every part of it.</p>
         <p>Pre-work already walked install with a verify at the end of each step. Monday still opens with an <strong>install clinic</strong> — about two hours expected, <strong>no hard wall-clock boundary</strong> — so remaining blockers die with help on hand. Then we <strong>direct</strong>. The clinic is finish-and-prove, not a substitute for skipping pre-work.</p>
+        <p>You will work in more than one chat today, and the split is deliberate. Build work — the machine reading files, writing code, rebuilding a page — runs in its own chat. Direction and verdicts — the brief you write before the run, the log you write after, the pass-bar list, the attack on that list — run in a separate operator chat. Keep them apart and your log’s evidence pointers stay checkable by someone who was not in the room. Let them merge and the chat that helped you build is the same chat you ask whether the build was any good; it will tell you yes, and you will have no trail that says otherwise. Each paste below names the chat it belongs in — follow the names and the split takes care of itself.</p>
         <h3>What you will leave with</h3>
         <ul>
           <li>Stack proven in clinic: four smoke files, setup log, OpenCode version, Codex app sandbox mode</li>
@@ -446,18 +447,9 @@ a generic slogan instead of something that actually happened at my keyboard.</co
 
       <section id="pulse" class="home-section" data-check-section="pulse">
         <h2>Operator pulse — required every block</h2>
-        <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
+        <p class="section-lede">Five beats close this block — log, bars, adversarial, measurement, transfer. It is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
 
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-pulse-mission" name="b0-pulse-mission" data-check-id="pulse-mission" />
-              <span class="check-num">11</span>
-              <span class="check-title">Mission ran in a separate build chat</span>
-            </label>
-            <div class="check-detail">Already true if you followed the stages: the build lived in <strong>Build — B0 First Light</strong>, the brief and log live in <strong>Operator — Direction &amp; Log</strong>. Build work stays out of the operator chat — the trail is the point.</div>
-          </li>
-        </ol>
+        <p>The log goes where the direction went. The mission runs elsewhere; this chat holds direction and verdicts. Everything from here to the end of the block is written in <strong>Operator — Direction &amp; Log</strong> or in a chat you open fresh — never in <strong>Build — B0 First Light</strong>.</p>
 
         <!-- Verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
         <div class="do-step">
@@ -484,7 +476,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-pulse-log" name="b0-pulse-log" data-check-id="pulse-log" />
-              <span class="check-num">12</span>
+              <span class="check-num">11</span>
               <span class="check-title">Operator Log complete</span>
             </label>
             <div class="check-detail">Proof: the B0 entry in <code>operator/OPERATOR_LOG.md</code> holds what you directed, mid-run changes, your verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, and what you still own. “Looked good” is not evidence — a path or a check you ran is.</div>
@@ -505,7 +497,7 @@ into the adversarial review.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-pulse-bars" name="b0-pulse-bars" data-check-id="pulse-bars" />
-              <span class="check-num">13</span>
+              <span class="check-num">12</span>
               <span class="check-title">PASS_BARS self-check drafted</span>
             </label>
             <div class="check-detail">Proof: a draft met / not yet list against B0’s MVP bars, each “met” carrying an evidence pointer. No inflation — this list is about to be attacked, and honest gaps survive that better than hopeful ticks.</div>
@@ -577,14 +569,25 @@ Known weak spots: [ANYTHING YOU ALREADY DOUBT]</code></pre>
 
         <p>Use the exact line the review chat produced, not this template. Wounded means fix now or downgrade to ACCEPT WITH FIXES; failed means the affected bars go back to not yet before you leave the block.</p>
 
+        <div class="do-step">
+          <p class="do-label">Now copy the rulings across as well — from the <strong>Adversarial — B0</strong> chat into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <ul class="do-clicks">
+            <li>Scroll back to step 3 of the review — the <code>SURVIVES / WOUNDED / DEAD</code> ruling on each bar you marked met</li>
+            <li>Copy that whole list, unedited, underneath the <code>ADVERSARIAL:</code> line you just logged</li>
+            <li>Beside each WOUNDED or DEAD bar, write what you did about it — fixed it, unticked it, or left it as a named gap you still own</li>
+          </ul>
+        </div>
+
+        <p>That list is what the next beat counts, so it has to exist in writing. Copied now it takes half a minute; rebuilt from memory in ten minutes it becomes an impression of how the review felt, which is the thing this block is trying to replace.</p>
+
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-pulse-adv" name="b0-pulse-adv" data-check-id="pulse-adv" />
-              <span class="check-num">14</span>
+              <span class="check-num">13</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">Proof: a fresh <code>Adversarial — B0</code> chat ran the frozen prompt against your real paste pack, and the final <code>ADVERSARIAL: stood | wounded | failed</code> line is copied into your log. Reusing the build chat for “review” doesn’t count — it helped you five minutes ago.</div>
+            <div class="check-detail">Proof: a fresh <code>Adversarial — B0</code> chat ran the frozen prompt against your real paste pack, and the final <code>ADVERSARIAL: stood | wounded | failed</code> line is copied into your log. Reusing the build chat for “review” doesn’t count — it helped you five minutes ago. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
         </ol>
 
@@ -592,39 +595,43 @@ Known weak spots: [ANYTHING YOU ALREADY DOUBT]</code></pre>
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
           <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
-
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
-Brief LIVE at: [time or “approx”].
-Adversarial done at: [time or “approx”].
+Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
+Bars I marked met before the attack: [n].
+Brief LIVE at: [time or "approx"].
+Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
-Draft MVP: [met / not yet summary].
-
-Fill this block’s row:
-1. Ritual 0–3 with proof of each point
-2. Mission HIT/PARTIAL/MISS against the LIVE brief
-3. Quality STRONG/ADEQUATE/WEAK from adversarial + evidence (challenge inflation)
-4. Time to result in minutes
-5. One-line note
-6. Deep mark if this is P2/P3/P5/P6/P8
-
-Update running totals.
-Refuse cheerful quality scores without evidence.
+Fill this block's row:
+1. Brief accuracy — did the artifact match the "done looks like" I wrote before the
+   run, and which one of the five brief fields would I write differently now?
+   Refuse "the brief was fine": make me name a field, or say none and name what
+   held better than expected.
+2. Overclaim n/m — count the bars I marked met that came back WOUNDED or DEAD,
+   over the number I marked met. Count from the rulings I pasted, not from my summary.
+3. Time to result in minutes.
+4. One-line note.
+5. Deep mark if this block has one.
+Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
         </div>
 
-        <p>Before sending, fill the brackets: Block is <strong>B0</strong>, the adversarial line is the one you just logged, the outcome path is <code>mission_flesh/b0/first_light/index.html</code>, and honest approximate times are fine — fiction is not.</p>
+        <p>Before sending, fill the brackets. Block is <strong>B0</strong>. The adversarial line and the rulings list are both sitting in this chat already — paste the rulings whole rather than summarizing them, because the count in step 2 is only honest if it comes off the review’s own words. The met count is how many bars you ticked in the self-check <em>before</em> the attack, not how many survived it. The outcome path is <code>mission_flesh/b0/first_light/index.html</code>, and honest approximate times are fine — fiction is not. B0 carries no deep mark, so step 5 is answered “none.”</p>
+
+        <p>Expect step 1 to push back. Naming a brief field you would write differently is harder than it sounds on your first block, and “the brief was fine” will not be accepted — if every field genuinely held, say which one held better than you expected and why. Expect the overclaim number to be non-zero today. It is supposed to be. The number worth watching is not this morning’s value but whether it falls by Friday.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-pulse-measure" name="b0-pulse-measure" data-check-id="pulse-measure" />
-              <span class="check-num">15</span>
+              <span class="check-num">14</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Proof: B0’s row in <code>operator/MEASUREMENT_SPINE.md</code> holds Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result in minutes. The row is written only after the adversarial line exists — measurement follows attack.</div>
+            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of bars you marked met that the adversarial ruled WOUNDED or DEAD over the number you marked met, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and no deep mark on this block — those three entries are the whole row.</div>
           </li>
         </ol>
+
+        <p>One chat left, and it is the only one that is not about today. The rest of the week produces seeds — a harness you would keep, a habit of comparing two engines before you believe either, a rule about what you never accept into trusted material. Every one of those has to land somewhere real or it dies on Friday. So B0’s job in this chat is to name the landing site: <strong>one recurring piece of work from your own desk</strong> that the week’s seeds will attach to. Not a job title and not a department — one thing you produce more than once, that you could describe to a stranger in a sentence.</p>
 
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
@@ -652,16 +659,31 @@ Do not seal. Do not invent a full plan from zero on a light block.
 Challenge vagueness. I own every accept.</code></pre>
         </div>
 
-        <p>Replace <code>[B0/P1/…]</code> with <strong>B0</strong>. Today’s seed may be small — a desk hint, a first instrument instinct for your own work — and small is fine. What matters is that the B0 row in the session log exists and the file’s status moves to Living.</p>
+        <p>Replace <code>[B0/P1/…]</code> with <strong>B0</strong>. Step 2 is where the workload gets named, and the chat will push on a vague answer. Expect “reporting” and “analysis” to come back challenged — those are categories, and a category cannot be handed to anything. “The Thursday readiness summary I write for the section chief” is a workload. So is “the intake triage on every new supplier request.” If two or three come to mind, name them all and mark the one you would carry first.</p>
+
+        <div class="do-step">
+          <p class="do-label">Then paste this into <strong>Operator — Transfer 30-60-90</strong> — fill the bracket with the workload in your own accepted wording before you send it:</p>
+          <pre><code>The workload is: [ONE RECURRING PIECE OF WORK FROM MY OWN DESK, IN MY WORDS].
+
+Write it into the Primary missions field of the Identity section in
+operator/TRANSFER_30_60_90.md, in my wording and not yours.
+Add today's row to the session log: date, what I named, what is still blocked.
+Set Status to Living.
+Then name one thing about this workload that would make it hard to hand to a machine.
+
+Do not seal. Do not draft horizons yet.</code></pre>
+        </div>
+
+        <p>Approve the write when the app asks. Small is fine today — one workload, named, dated. What must not happen is a blank: every seed the rest of the week produces gets attached to what you write here, and a seed with nothing to land on is a note you will never open again.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-pulse-transfer" name="b0-pulse-transfer" data-check-id="pulse-transfer" />
-              <span class="check-num">16</span>
-              <span class="check-title">Transfer pulse (every AM/PM)</span>
+              <span class="check-num">15</span>
+              <span class="check-title">Your real workload named in the Transfer chat</span>
             </label>
-            <div class="check-detail">Proof: a B0 row in the session log of <code>operator/TRANSFER_30_60_90.md</code>, written in the dedicated Transfer chat. A session-log row is required even if the seed is small today — every block leaves a fingerprint on this file.</div>
+            <div class="check-detail">Proof: one recurring piece of work from your own desk written into the Identity section of <code>operator/TRANSFER_30_60_90.md</code> in your wording, with today’s dated row in the session log and Status set to Living. A category is not a workload — if what you wrote would equally describe forty other people’s jobs, it is not yet specific enough for a seed to land on.</div>
           </li>
         </ol>
       </section>
@@ -674,7 +696,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-prework" name="b0-mvp-prework" data-check-id="mvp-prework" />
-              <span class="check-num">17</span>
+              <span class="check-num">16</span>
               <span class="check-title">MVP: Install clinic / stack proof</span>
             </label>
             <div class="check-detail">Setup log · per-step verifies · four smoke files on disk (re-run in clinic if needed). YELLOW only with written workaround.</div>
@@ -683,7 +705,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-brief5" name="b0-mvp-brief5" data-check-id="mvp-brief5" />
-              <span class="check-num">18</span>
+              <span class="check-num">17</span>
               <span class="check-title">MVP: Full LIVE brief (5 fields)</span>
             </label>
             <div class="check-detail">Outcome is an instrument, not “explore the data.”</div>
@@ -692,7 +714,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-four" name="b0-mvp-four" data-check-id="mvp-four" />
-              <span class="check-num">19</span>
+              <span class="check-num">18</span>
               <span class="check-title">MVP: Four-tool write proof confirmed</span>
             </label>
             <div class="check-detail">Codex app, OpenCode, Pi, goose each touch smoke folder.</div>
@@ -701,7 +723,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-map" name="b0-mvp-map" data-check-id="mvp-map" />
-              <span class="check-num">20</span>
+              <span class="check-num">19</span>
               <span class="check-title">MVP: Map works — timeline and filters</span>
             </label>
             <div class="check-detail">Both do something observable.</div>
@@ -710,7 +732,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-neg" name="b0-mvp-neg" data-check-id="mvp-neg" />
-              <span class="check-num">21</span>
+              <span class="check-num">20</span>
               <span class="check-title">MVP: Negative check verified</span>
             </label>
             <div class="check-detail">Must-not case checked.</div>
@@ -719,7 +741,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-upd" name="b0-mvp-upd" data-check-id="mvp-upd" />
-              <span class="check-num">22</span>
+              <span class="check-num">21</span>
               <span class="check-title">MVP: Update proof or honest break+redirect</span>
             </label>
             <div class="check-detail">DELTA or documented failure path.</div>
@@ -728,7 +750,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-loop" name="b0-mvp-loop" data-check-id="mvp-loop" />
-              <span class="check-num">23</span>
+              <span class="check-num">22</span>
               <span class="check-title">MVP: Harness loop explained from this run</span>
             </label>
             <div class="check-detail">AI may challenge hand-waving.</div>
@@ -737,19 +759,10 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-log" name="b0-mvp-log" data-check-id="mvp-log" />
-              <span class="check-num">24</span>
+              <span class="check-num">23</span>
               <span class="check-title">MVP: Log with verdict + evidence + still own</span>
             </label>
             <div class="check-detail">Peer-auditable pointers.</div>
-          </li>
-
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-b0-done" name="b0-b0-done" data-check-id="b0-done" />
-              <span class="check-num">25</span>
-              <span class="check-title">Block closed under fire</span>
-            </label>
-            <div class="check-detail">Adversarial line present; measurement row written; transfer row written; you could defend this block to a peer.</div>
           </li>
         </ol>
       </section>
@@ -758,7 +771,7 @@ Challenge vagueness. I own every accept.</code></pre>
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not “it ran.” Evidence must survive adversarial review. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section B0</a>.</p>
+        <p>MVP is not “it ran.” Evidence must survive adversarial review. Full list: <a href="#floor">this B0 mastery floor</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>

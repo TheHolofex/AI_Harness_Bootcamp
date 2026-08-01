@@ -2,8 +2,9 @@
 
 **Mandate:** deep operator mastery requires verdicts that survive attack — not only self-check.
 
-In class, the reliable challenger is a **fresh AI chat with a frozen adversarial prompt**, run **every block** after you have results.  
-That is the logistical peer. A human who can challenge verdicts remains a **transfer** target for the job (see `TRANSFER_30_60_90.md`); it is not required to staff every exercise.
+The challenger you can always get is a **fresh AI chat with a frozen adversarial prompt**, run **every block** after you have results. It is available at eleven at night, it has no stake in your feelings, and it will read the whole pack.
+
+A human who can challenge your verdicts is a different and better thing, and it is what you are building toward on the job (see `TRANSFER_30_60_90.md`). One does not replace the other. At P8 the ninety-second defense goes to a live listener precisely because a person can refuse to be convinced in a way a prompt cannot.
 
 ```text
 You own the verdict.
@@ -21,8 +22,8 @@ This chat’s job is to try to take it away — with evidence rules, not vibes.
    + PASS_BARS draft   →  Direction & Log
 4. Adversarial review  →  NEW chat every time (below)   ← you are here
 5. Fix or stand firm   →  update Log / bars if the attack lands
-6. Measurement spine   →  MEASUREMENT_SPINE.md row (four headlines)
-7. Transfer pulse      →  chat: Operator — Transfer 30-60-90
+6. Measurement spine   →  MEASUREMENT_SPINE.md row (three entries)
+7. Transfer            →  chat at B0, P7, P8; a dated seed line at the others
 ```
 
 **Why a new chat each time:** clean context. No build-chat cheerleading, no log-chat collusion. Paste artifacts in; the reviewer never “helped you succeed” five minutes ago.
@@ -39,7 +40,26 @@ This chat’s job is to try to take it away — with evidence rules, not vibes.
 | Change the log if the attack is valid | Performatively “take notes” and change nothing |
 | Keep human peer as **job** outer-loop name | Pretend AI review replaces institutional challenge forever |
 
-**Cross-engine stretch (recommended when feasible):** if the mission ran in the Codex app, run adversarial review in **OpenCode** (or the other way around). Optional: add Claude Code as a third pass. Correlated blind spots shrink. Same frozen prompt either way.
+---
+
+## Which engine reviews you
+
+One rule, and it has no exceptions:
+
+> **Where a second engine is already open, the review runs in the second engine. Everywhere else it runs in a new chat in the same engine.**
+
+| Block | Reviewer | Why it is free there |
+|---|---|---|
+| **P3** | **OpenCode**, second pass on the same pack | OpenCode is already running from Stage 03 with the cargo flags set |
+| **P5** | **OpenCode**, second pass on the same pack | OpenCode is already running from the probe folder |
+| **P8** | **The re-pointed hosted open model**, second pass on the same pack | You wired that endpoint this morning and trusted it enough to run D01–D05 |
+| B0, P1, P2, P4, P6, P7 | New chat, same engine | No second engine is open, and opening one costs more than the pass is worth |
+
+At P3, P5 and P8 the second engine is a **second pass on the pack you already assembled** — same frozen prompt, same excerpts, no softening, run after the first review is done. It is not a replacement for the first pass and it is not a lighter one. Record **both** final `ADVERSARIAL:` lines in the log, side by side and labelled by engine or endpoint.
+
+**Where the two engines disagree about a bar, the disagreement is the finding.** Name it in the log. One reviewer accepting an absence-of-effect proof that the other rejects tells you which of the two had the blind spot, and it is not always the one you expect. If they agree, that is information too — it does not make the claim true, it makes it un-attacked by two readers of the same pack.
+
+A third pass in a third engine is available if you want it and proves nothing extra you cannot already see.
 
 ---
 
@@ -60,10 +80,12 @@ Minimum paste into the new chat:
 1. Block name + one-line mission outcome  
 2. Link/paths to key artifacts (brief path, outputs, comparator, vault notes, contract, etc.)  
 3. Your **provisional** Log verdict (`ACCEPT` / `REJECT` / `ACCEPT WITH FIXES`)  
-4. Your **draft** MVP self-check (which bars you think you met)  
+4. Your **draft** MVP self-check — which bars you marked met, **and how many**  
 5. Anything you already know is weak  
 
-If the model cannot see files, paste the critical excerpts (comparator rows, test output, citation sample, stop proof).
+Item 4 carries a number for a reason. The count of bars you marked met is the denominator of your overclaim, and it has to be fixed before the reviewer speaks. Write it down, paste it in, and do not revise it afterwards — a denominator chosen after the verdict is not a denominator.
+
+If the model cannot see files, paste the critical excerpts (comparator rows, test output, citation sample, stop proof). Thin excerpts produce a polite reviewer, and a polite reviewer is not a pass.
 
 ---
 
@@ -112,35 +134,44 @@ Back in `Operator — Direction & Log` (or edit files directly):
 
 | If review says… | You must… |
 |---|---|
-| **Stood under fire** | Log the ADVERSARIAL line; proceed to Transfer |
+| **Stood under fire** | Log the ADVERSARIAL line; write the measurement row |
 | **Wounded** | `ACCEPT WITH FIXES` or fix now; note what changed under fire |
 | **Failed / dead MVP items** | Status **not yet** on those bars; fix or schedule fix before leaving block |
 
-Measurement spine row is written only after the adversarial line exists.
-Transfer session starts only after measurement row exists for this block.  
-Outer loop should not inherit unchallenged fantasy.
+### Write down what the attack took away
+
+Before you close the chat, copy the per-claim rulings out of it. Name **every** claim the review marked `WOUNDED` or `DEAD` and what you did about each one — fixed it, re-evidenced it, or accepted the wound and unticked the bar.
+
+An empty list is a legitimate answer and is worth having on the record.
+
+That list is the only place the rulings survive, and the measurement row is counted from it: the bars that came back wounded or dead, over the number you marked met, is your **overclaim** for the block. Counting it from your own summary of the chat instead of from the rulings turns it back into a number you awarded yourself.
+
+Measurement spine row is written only after the adversarial line exists.  
+At B0, P7 and P8, the Transfer chat starts only after the measurement row exists.  
+The outer loop should not inherit unchallenged fantasy.
 
 ---
 
-## Optional human peer (still real — just not the course logistics backbone)
+## Who else can challenge a verdict
 
 | Setting | Challenger |
 |---|---|
-| **Every block in course** | Adversarial AI chat (this file) |
-| **Stretch / distinction** | Cross-engine adversarial (Codex app work reviewed in Claude or reverse) |
+| **Every block** | Adversarial AI chat, new every time (this file) |
+| **P3, P5, P8** | A second engine on the same pack — required, not a stretch. See *Which engine reviews you* above |
 | **Pair moments (optional)** | Human peer uses the same frozen prompt on your paste pack |
 | **After course (transfer seed)** | Named human who can challenge verdicts on the job |
 
-AI adversarial review trains the *habit* and raises the floor in a room of mixed backgrounds.  
-Human challenge on the desk trains *institutional* honesty. Both matter; only the first is required every exercise.
+An AI challenger trains the *habit*: you learn to assemble a pack, take the hit, and change the log.  
+A human challenger trains *institutional* honesty: someone whose good opinion costs you something has read your evidence and disagreed. Build the habit first; the habit is what makes the human conversation short enough to actually happen.
 
 ---
 
 ## Facilitator notes
 
-- Spot-check adversarial chats: if the model is polite, students under-pasted or used the build chat.  
-- Time box: **5–8 minutes** standard; P3/P5/P8 may need 10.  
-- Rescue: narrower artifact paste, not a softer prompt.  
+- **Watch the engine-disagreement rate at P3, P5 and P8.** Two engines reading the same pack should differ on something. Near-zero disagreement across a cohort almost never means the work was clean — it means the packs are too thin to tell two reviewers apart. Go and read a pack before you read the verdicts.
+- A polite reviewer is the same signal one engine at a time: the student under-pasted or reused the build chat.
+- Time box: **5–8 minutes** standard; **10–12** at P3, P5 and P8, where the pack is reviewed twice.
+- Rescue: narrower artifact paste, not a softer prompt.
 - Never replace PASS_BARS with “the AI said it’s fine.” Bars still need evidence pointers.
 
 ## Identity lock

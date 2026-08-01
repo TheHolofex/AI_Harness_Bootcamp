@@ -10,18 +10,36 @@ Serves the **repo root** (not only site/) so relative links like
 Environment
 -----------
 SITE_PASSWORD   Required in production. Shared cohort site password.
+STAFF_PASSWORD  Optional, and separate from SITE_PASSWORD. Unlocks staff/
+                (answer keys, facilitator keys, cohort pin sheet). Leave it
+                unset and staff/ is unreachable over HTTP by anyone.
 PORT            Listen port (Railway sets this). Default 8080.
 BIND_HOST       Default 0.0.0.0
 SITE_SECRET     Optional cookie-signing secret. Defaults to a key derived
                 from SITE_PASSWORD (fine for a single shared password).
 COOKIE_NAME     Default ahb_site_auth
+STAFF_COOKIE_NAME  Default ahb_staff_auth
 COOKIE_MAX_AGE  Seconds. Default 1209600 (14 days).
 ALLOW_OPEN      If "1" and SITE_PASSWORD is empty, serve without a gate
                 (local only). Never set this on Railway.
 
-Always blocked (even after login): .git, .env*, secrets/, venvs,
-.github/, *.py, authoring/build sources, analysis notes, and staff-only
-keys listed in STAFF_ONLY_PATHS.
+Two audiences, two credentials
+------------------------------
+SITE_PASSWORD is handed to the whole cohort, so holding it proves nothing
+about who you are — a cohort login must never reach an answer key. Staff
+material therefore sits behind its own password on its own cookie:
+
+  * No cookie at all      → login page. Nothing under staff/ is served,
+                            and nothing else is either.
+  * Cohort cookie only    → the course site. staff/ returns 404, exactly as
+                            it does for a logged-out stranger.
+  * Staff cookie          → the course site plus staff/.
+
+ALLOW_OPEN does not grant staff access; only STAFF_PASSWORD does.
+
+Always blocked (even for staff): .git, .env*, secrets/, venvs, .github/,
+*.py, authoring/build sources, analysis notes, and — outside staff/ — the
+STAFF_ONLY_PATHS list and any *FACILITATOR_KEY.md / *ANSWER_KEY.md file.
 """
 
 from __future__ import annotations
@@ -70,8 +88,13 @@ def load_dotenv(path: Path | None = None) -> None:
 load_dotenv()
 
 COOKIE_NAME = os.environ.get("COOKIE_NAME", "ahb_site_auth")
+STAFF_COOKIE_NAME = os.environ.get("STAFF_COOKIE_NAME", "ahb_staff_auth")
 COOKIE_MAX_AGE = int(os.environ.get("COOKIE_MAX_AGE", str(14 * 24 * 3600)))
 BIND_HOST = os.environ.get("BIND_HOST", "0.0.0.0")
+
+# The one directory a staff login opens. Not in the git tree at all — staff
+# receive it out of band and drop it at the repo root (see staff/README.md).
+STAFF_ROOT = "staff"
 
 BLOCKED_PREFIXES = (
     ".git/",
@@ -91,11 +114,18 @@ BLOCKED_PREFIXES = (
 # Cohort password is shared with students — keep answer keys off HTTP.
 # operator/PASS_BARS.md is deliberately NOT here: every block page links to it
 # as the learner-facing MVP checklist.
+#
+# The key files now live under staff/ and are reachable only with a staff
+# login. Their former locations stay on this list so that a stray copy dropped
+# back into the course tree — a facilitator's convenience checkout, a bad
+# merge — is still refused over HTTP.
 STAFF_ONLY_PATHS = {
     "lead/MANY_MINDS_ANSWER_KEY.md",
     "lead/COHORT_PIN.md",
-    "instruments/p2_dyno/engineering/FACILITATOR_KEY.md",
-    "instruments/p2_dyno/mission_ops/FACILITATOR_KEY.md",
+    "instruments/p2_test_suite/engineering/FACILITATOR_KEY.md",
+    "instruments/p2_test_suite/mission_ops/FACILITATOR_KEY.md",
+    "instruments/p3_frozen_brief/engineering/FACILITATOR_KEY.md",
+    "instruments/p3_frozen_brief/mission_ops/FACILITATOR_KEY.md",
     "instruments/p8_hold_degrade/FACILITATOR_KEY.md",
     "mission_flesh/p5/FACILITATOR_KEY.md",
     "resources/AUTHORING.md",
@@ -116,6 +146,10 @@ BLOCKED_NAMES = {
 
 def env_password() -> str:
     return os.environ.get("SITE_PASSWORD", "")
+
+
+def env_staff_password() -> str:
+    return os.environ.get("STAFF_PASSWORD", "").strip()
 
 
 def allow_open() -> bool:
@@ -139,27 +173,71 @@ def token_valid(password: str, token: str | None) -> bool:
     return hmac.compare_digest(auth_token(password), token)
 
 
+def staff_signing_key(staff_password: str) -> bytes:
+    """Key for the staff cookie.
+
+    Always bound to STAFF_PASSWORD, even when SITE_SECRET is set, so that
+    rotating the staff password invalidates every outstanding staff cookie
+    and knowing the cohort password never yields the staff token.
+    """
+    secret = os.environ.get("SITE_SECRET", "").strip() or "ahb-staff-v1"
+    return hashlib.sha256(f"{secret}:staff:{staff_password}".encode("utf-8")).digest()
+
+
+def staff_auth_token(staff_password: str) -> str:
+    return hmac.new(
+        staff_signing_key(staff_password), b"staff-authenticated", hashlib.sha256
+    ).hexdigest()
+
+
+def staff_token_valid(staff_password: str, token: str | None) -> bool:
+    if not staff_password or not token:
+        return False
+    return hmac.compare_digest(staff_auth_token(staff_password), token)
+
+
 def normalize_rel(rel_path: str) -> str:
     return rel_path.replace("\\", "/").lstrip("/")
 
 
-def is_blocked(rel_path: str) -> bool:
+def in_staff_root(rel_path: str) -> bool:
+    norm = normalize_rel(rel_path)
+    return norm == STAFF_ROOT or norm.startswith(STAFF_ROOT + "/")
+
+
+def is_blocked(rel_path: str, staff: bool = False) -> bool:
+    """Should this repo-relative path be refused?
+
+    ``staff`` says the request carried a valid staff cookie. It opens exactly
+    one door — the staff/ directory — and nothing else. It defaults to False so
+    that any caller which forgets to pass it fails closed.
+    """
     norm = normalize_rel(rel_path)
     if not norm or norm == ".":
         return False
-    if norm in STAFF_ONLY_PATHS:
-        return True
     name = Path(norm).name
+    lowered = norm.lower()
+
+    # Refused for everyone, staff included: source, secrets, build inputs.
     if name in BLOCKED_NAMES or name.startswith(".env"):
         return True
     if name.endswith(".py"):
         return True
-    if name.endswith("FACILITATOR_KEY.md") or name.endswith("ANSWER_KEY.md"):
-        return True
-    lowered = norm.lower()
     for prefix in BLOCKED_PREFIXES:
         if lowered == prefix.rstrip("/") or lowered.startswith(prefix):
             return True
+
+    # staff/ is the one place a staff login reaches. For everyone else it is a
+    # 404, indistinguishable from a path that does not exist.
+    if in_staff_root(norm):
+        return not staff
+
+    # Outside staff/, the key rules stand for staff and students alike: a key
+    # file has no business in the course tree, whoever is asking.
+    if norm in STAFF_ONLY_PATHS:
+        return True
+    if name.endswith("FACILITATOR_KEY.md") or name.endswith("ANSWER_KEY.md"):
+        return True
     return False
 
 
@@ -256,7 +334,7 @@ LOGIN_PAGE = """<!DOCTYPE html>
       <input id="password" name="password" type="password" autocomplete="current-password" required autofocus />
       <button type="submit">Enter course site</button>
     </form>
-    <p class="foot">Session lasts about two weeks on this browser. Do not post the password in chat logs or screenshots.</p>
+    <p class="foot">Session lasts about two weeks on this browser. Do not post the password in chat logs or screenshots. Staff: enter the staff password here instead — it opens the same site plus your own material.</p>
   </div>
 </body>
 </html>
@@ -289,9 +367,17 @@ class BootcampHandler(SimpleHTTPRequestHandler):
         ".csv": "text/csv",
     }
 
-    def __init__(self, *args, password: str, open_mode: bool, **kwargs):
+    def __init__(
+        self,
+        *args,
+        password: str,
+        open_mode: bool,
+        staff_password: str = "",
+        **kwargs,
+    ):
         self.password = password
         self.open_mode = open_mode
+        self.staff_password = staff_password
         super().__init__(*args, **kwargs)
 
     def log_message(self, fmt: str, *args) -> None:
@@ -321,7 +407,7 @@ class BootcampHandler(SimpleHTTPRequestHandler):
         if self.command != "HEAD":
             self.wfile.write(body)
 
-    def _read_cookie_token(self) -> str | None:
+    def _read_cookie(self, cookie_name: str) -> str | None:
         raw = self.headers.get("Cookie")
         if not raw:
             return None
@@ -330,11 +416,29 @@ class BootcampHandler(SimpleHTTPRequestHandler):
             jar.load(raw)
         except http.cookies.CookieError:
             return None
-        morsel = jar.get(COOKIE_NAME)
+        morsel = jar.get(cookie_name)
         return morsel.value if morsel else None
+
+    def _read_cookie_token(self) -> str | None:
+        return self._read_cookie(COOKIE_NAME)
+
+    def _staff_authorized(self) -> bool:
+        """True only for a valid staff cookie.
+
+        Deliberately independent of open_mode and of the cohort password: an
+        ungated local run still refuses staff/ unless STAFF_PASSWORD is set and
+        the staff login has actually happened.
+        """
+        if not self.staff_password:
+            return False
+        return staff_token_valid(
+            self.staff_password, self._read_cookie(STAFF_COOKIE_NAME)
+        )
 
     def _authorized(self) -> bool:
         if self.open_mode:
+            return True
+        if self._staff_authorized():
             return True
         if not self.password:
             return False
@@ -350,13 +454,20 @@ class BootcampHandler(SimpleHTTPRequestHandler):
         safe = safe_next_path(next_path).replace('"', "&quot;")
         return LOGIN_PAGE.format(error=err, next=safe).encode("utf-8")
 
-    def _set_auth_cookie_header(self) -> str:
-        token = auth_token(self.password)
+    def _cookie_header(self, cookie_name: str, token: str) -> str:
         proto = self.headers.get("X-Forwarded-Proto", "").split(",")[0].strip().lower()
         secure = "; Secure" if proto == "https" else ""
         return (
-            f"{COOKIE_NAME}={token}; Path=/; HttpOnly; SameSite=Lax; "
+            f"{cookie_name}={token}; Path=/; HttpOnly; SameSite=Lax; "
             f"Max-Age={COOKIE_MAX_AGE}{secure}"
+        )
+
+    def _set_auth_cookie_header(self) -> str:
+        return self._cookie_header(COOKIE_NAME, auth_token(self.password))
+
+    def _set_staff_cookie_header(self) -> str:
+        return self._cookie_header(
+            STAFF_COOKIE_NAME, staff_auth_token(self.staff_password)
         )
 
     def do_POST(self) -> None:  # noqa: N802
@@ -376,10 +487,23 @@ class BootcampHandler(SimpleHTTPRequestHandler):
         form = urllib.parse.parse_qs(raw, keep_blank_values=True)
         submitted = (form.get("password") or [""])[0]
         next_path = safe_next_path((form.get("next") or ["/site/"])[0])
-        if self.password and hmac.compare_digest(submitted, self.password):
+
+        # One field, two passwords. Staff is checked first: a staff member gets
+        # the staff cookie *and* the ordinary site cookie, so one sign-in serves
+        # the whole site. Students match only the cohort password and get one.
+        cookies: list[str] = []
+        if self.staff_password and hmac.compare_digest(submitted, self.staff_password):
+            cookies.append(self._set_staff_cookie_header())
+            if self.password:
+                cookies.append(self._set_auth_cookie_header())
+        elif self.password and hmac.compare_digest(submitted, self.password):
+            cookies.append(self._set_auth_cookie_header())
+
+        if cookies:
             self.send_response(303)
             self.send_header("Location", next_path)
-            self.send_header("Set-Cookie", self._set_auth_cookie_header())
+            for cookie in cookies:
+                self.send_header("Set-Cookie", cookie)
             self.send_header("Content-Length", "0")
             self.send_header("Cache-Control", "no-store")
             self.end_headers()
@@ -415,11 +539,13 @@ class BootcampHandler(SimpleHTTPRequestHandler):
         if path.rstrip("/") == "/__logout":
             self.send_response(303)
             self.send_header("Location", "/__login")
-            self.send_header(
-                "Set-Cookie",
-                f"{COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0",
-            )
+            for cookie_name in (COOKIE_NAME, STAFF_COOKIE_NAME):
+                self.send_header(
+                    "Set-Cookie",
+                    f"{cookie_name}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0",
+                )
             self.send_header("Content-Length", "0")
+            self.send_header("Cache-Control", "no-store")
             self.end_headers()
             return
 
@@ -445,7 +571,7 @@ class BootcampHandler(SimpleHTTPRequestHandler):
             return
 
         rel = path.lstrip("/")
-        if is_blocked(rel):
+        if is_blocked(rel, staff=self._staff_authorized()):
             self._send(404, b"Not found\n", "text/plain; charset=utf-8")
             return
 
@@ -462,7 +588,7 @@ class BootcampHandler(SimpleHTTPRequestHandler):
             rel = str(resolved.relative_to(root)).replace("\\", "/")
         except Exception:
             return str(root / "__blocked__")
-        if is_blocked(rel):
+        if is_blocked(rel, staff=self._staff_authorized()):
             return str(root / "__blocked__")
         return str(resolved)
 
@@ -473,6 +599,7 @@ class BootcampHandler(SimpleHTTPRequestHandler):
 
 def main() -> int:
     password = env_password()
+    staff_password = env_staff_password()
     open_mode = False
     if not password:
         if allow_open():
@@ -490,12 +617,22 @@ def main() -> int:
             )
             return 1
 
+    if staff_password and password and staff_password == password:
+        print(
+            "STAFF_PASSWORD must differ from SITE_PASSWORD — the cohort holds\n"
+            "SITE_PASSWORD, so an identical staff password hands every student\n"
+            "the answer keys. Refusing to start.",
+            file=sys.stderr,
+        )
+        return 1
+
     port = int(os.environ.get("PORT", "8080"))
     handler = partial(
         BootcampHandler,
         directory=str(REPO_ROOT),
         password=password,
         open_mode=open_mode,
+        staff_password=staff_password,
     )
     mimetypes.add_type("text/plain", ".md")
     mimetypes.add_type("text/yaml", ".yaml")
@@ -503,8 +640,16 @@ def main() -> int:
 
     server = ThreadingHTTPServer((BIND_HOST, port), handler)
     mode = "open" if open_mode else "password-gated"
+    staff_dir = (REPO_ROOT / STAFF_ROOT).is_dir()
+    if staff_password:
+        note = "staff/ served to a staff login" if staff_dir else (
+            "STAFF_PASSWORD set but staff/ is not present on this machine"
+        )
+    else:
+        note = "staff/ unreachable (STAFF_PASSWORD unset)"
     print(
-        f"AI Harness Bootcamp host ({mode}) on http://{BIND_HOST}:{port}/site/",
+        f"AI Harness Bootcamp host ({mode}) on http://{BIND_HOST}:{port}/site/\n"
+        f"  {note}",
         flush=True,
     )
     try:

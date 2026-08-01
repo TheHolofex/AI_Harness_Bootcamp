@@ -30,7 +30,7 @@
       <div><span class="k">Block</span><span class="v">P4</span></div>
       <div><span class="k">Time</span><span class="v">~3–3.5 hr + 45 min case talk</span></div>
       <div><span class="k">Tools</span><span class="v">Codex app + Obsidian · mission_flesh vault seed</span></div>
-      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p4">0 / 24 · 0%</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p4">0 / 21 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
 
@@ -38,9 +38,9 @@
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
       <a href="#ideas">The ideas</a>
-      <a href="#mission">Mission · <span data-count-for="mission">0/10</span></a>
+      <a href="#mission">Mission · <span data-count-for="mission">0/9</span></a>
       <a href="#depth">Going deeper</a>
-      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/6</span></a>
+      <a href="#pulse">Operator pulse · <span data-count-for="pulse">0/4</span></a>
       <a href="#floor">Mastery floor · <span data-count-for="floor">0/8</span></a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
@@ -296,7 +296,7 @@ from its hub and from MOC, and move each processed capture to
         <figure class="section-diagram">
           <img src="../assets/blocks/p4/p4-stage-question.svg" alt="Stage 3: one director question fans out across several notes and converges into a single answer whose claims each cite a note" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
-        <p>This is the payoff of the triage: questions no single note can answer. Both come from <a href="../../mission_flesh/p4/director_questions.md"><code>mission_flesh/p4/director_questions.md</code></a>, and each answer lands as a note inside the vault — a <code>[[wiki-link]]</code> is only clickable where Obsidian renders it, and an answer that stays in the chat is just text with brackets. The machine will happily meet a lower standard if you let it; the pastes below do not let it.</p>
+        <p>This is the payoff of the triage: questions no single note can answer. Both questions are embedded in <a href="#stage-3">this Stage 03 mission</a> and also live in the cloned pack at <code>mission_flesh/p4/director_questions.md</code>. Each answer lands as a note inside the vault — a <code>[[wiki-link]]</code> is only clickable where Obsidian renders it, and an answer that stays in the chat is just text with brackets. The machine will happily meet a lower standard if you let it; the pastes below do not let it.</p>
 
         <!-- Question 1 embedded verbatim from mission_flesh/p4/director_questions.md -->
         <div class="do-step">
@@ -477,7 +477,7 @@ say so instead of filling the gap.</code></pre>
         </ol>
 
         <h3 id="stage-6">Stage 06 · Bank the transfer seed</h3>
-        <p>One written sentence now beats reconstruction later — the transfer chat will build on whatever you bank here.</p>
+        <p>One written sentence now beats reconstruction later. You write it here while the morning is fresh, then land it in the file that carries your seeds from block to block.</p>
 
         <div class="do-step">
           <p class="do-label">Now in Obsidian:</p>
@@ -493,16 +493,22 @@ SCROLLBACK / A PILE OF DOCUMENTS] and should live in a linked
 structure a machine can work inside.</code></pre>
         </div>
 
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p4-p4-transfer" name="p4-p4-transfer" data-check-id="p4-transfer" />
-              <span class="check-num">10</span>
-              <span class="check-title">Name what must live in a navigable system at work</span>
-            </label>
-            <div class="check-detail">One honest sentence, written while the morning is fresh. Decisions and their reasons? Client facts? Incident history? You will develop it in the transfer chat during the pulse; the note keeps it real instead of reconstructed.</div>
-          </li>
-        </ol>
+        <p>Decisions and their reasons? Client facts? Incident history? Whatever it is, it has to be yours — a hypothetical seed grows nothing. Now move it out of the vault and into the file that accumulates across the week, because this vault is a training ground and that file is not.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into a <strong>PowerShell window</strong>:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md"</code></pre>
+        </div>
+
+        <p>Scroll down to the heading <strong>From P4 — Trailed knowledge</strong>. Under it sits a two-row table with both entry cells empty.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in <strong>Notepad</strong> (TRANSFER_30_60_90.md), replace those two rows with these, filled, then save:</p>
+          <pre><code>| Work knowledge that must live in a navigable system | [YOUR SENTENCE FROM THE TRANSFER SEED NOTE] — seeded [TODAY'S DATE] |
+| Citation/trail rule I'll keep | [THE STANDARD YOU WILL HOLD ANY AI-WRITTEN BRIEF TO] — seeded [TODAY'S DATE] |</code></pre>
+        </div>
+
+        <p>Fill the brackets before you save. The first takes the sentence you just wrote in the vault. The second takes the standard you will demand at work — <em>every claim I act on carries a trail I can walk in under a minute</em> is a workable starting rule, and you can tighten it later. Write the real date; a dated seed is the only kind that can be told apart from one reconstructed on Friday.</p>
       </section>
 
       <section id="depth" class="home-section">
@@ -543,27 +549,20 @@ structure a machine can work inside.</code></pre>
         <h3>Stretch, once the floor is solid</h3>
         <p>Three directions, in rough order of value. Reconciliation: ask a question that forces two conflicting notes into the same answer — the director&#x27;s ask treats the cyber rumor as possibly live while the on-call paste records it as unreproduced — and require the conflict to surface explicitly rather than be smoothed over; smoothing is the failure. Durability: rework the vault&#x27;s naming and hub structure into an information architecture you would still be using in 90 days, and write down why. Load-bearing honesty: the third question in <code>director_questions.md</code> — where are we over-confident? — or a deliberately loaded question like &quot;confirm the cyber attack is real,&quot; answered with trails only, logging a refusal wherever the vault is silent. A system that can decline to answer is the one you can trust when it does answer.</p>
 
-        <h3>Field guide · turn missing evidence into a useful refusal</h3>
+        <p class="eyebrow">Optional field guide · 45–60 min</p>
+        <h3>Turn missing evidence into a useful refusal</h3>
         <p><a href="../resources/p4/negative-knowledge.html"><strong>Negative Knowledge and Honest Refusal</strong></a> distinguishes unknown, disputed, restricted, stale, and not-observed states, then records the bounded search and next observation needed before saying “none.”</p>
 
-        <h3>Field guide · count evidence roots, not document volume</h3>
+        <p class="eyebrow">Optional field guide · 60–75 min</p>
+        <h3>Count evidence roots, not document volume</h3>
         <p><a href="../resources/p4/claim-lineage.html"><strong>Claim Lineage: One Rumor, Five Notes</strong></a> reconstructs derivation paths, detects circular sourcing and false corroboration, and separates five artifacts from the one evidentiary root beneath them.</p>
       </section>
 
       <section id="pulse" class="home-section" data-check-section="pulse">
         <h2>Operator pulse — required every block</h2>
-        <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. Every paste you need is below, in order. <a href="../pulse.html">Paste-ready prompts →</a></p>
+        <p class="section-lede">Four beats close this block — log, bars, adversarial, measurement. It is how a mission becomes evidence. Every paste you need is below, in order. <a href="../pulse.html">Paste-ready prompts →</a></p>
 
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p4-pulse-mission" name="p4-pulse-mission" data-check-id="pulse-mission" />
-              <span class="check-num">11</span>
-              <span class="check-title">Mission ran in a separate build chat</span>
-            </label>
-            <div class="check-detail">Triage, questions, and the Morning Brief all ran in a build chat, not in <strong>Operator — Direction &amp; Log</strong>. Build chat wants to cheerlead; the operator chat holds judgment. Keeping them separate is what makes the trail readable later. Nothing to do here if you followed the stages — check it and move on.</div>
-          </li>
-        </ol>
+        <p>The mission runs elsewhere; this chat holds direction and verdicts. Triage, the two director answers, and the Morning Brief all happened in the build chat; the log is where you say what you make of them.</p>
 
         <!-- Embedded verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
         <div class="do-step">
@@ -596,7 +595,7 @@ it cannot represent. Ask me for both before you write the entry.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-pulse-log" name="p4-pulse-log" data-check-id="pulse-log" />
-              <span class="check-num">12</span>
+              <span class="check-num">10</span>
               <span class="check-title">Operator Log complete</span>
             </label>
             <div class="check-detail">What you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, and what you still own. Today&#x27;s log carries two specifics: what the machine retrieved versus what you judged, and one thing the vault cannot yet support — both feed the mastery floor below.</div>
@@ -604,23 +603,22 @@ it cannot represent. Ask me for both before you write the entry.</code></pre>
         </ol>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>, right after the log entry:</p>
-          <pre><code>Now the PASS_BARS self-check for P4. Read operator/PASS_BARS.md,
-section P4. Walk me through each MVP bar; I will mark met or not yet
-and give one evidence pointer per bar — the Audit table, the killed
-claim, the answer notes, Morning_Brief.md. Stress-test any claim of
-mine that leans on "basically" or "mostly". Do not mark a bar met
-for me.</code></pre>
+          <p class="do-label">Now on this page:</p>
+          <ul class="do-clicks">
+            <li>Scroll to <strong>Mastery floor</strong> below and tick every bar you can point at an artifact for — right now, before the attack.</li>
+            <li>Leave any bar you cannot evidence unticked. An honest not-yet costs nothing here and saves you in the next beat.</li>
+            <li>Copy the ticked list. It is your prediction, and the adversarial chat is about to rule on it one bar at a time.</li>
+          </ul>
         </div>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-pulse-bars" name="p4-pulse-bars" data-check-id="pulse-bars" />
-              <span class="check-num">13</span>
-              <span class="check-title">PASS_BARS self-check drafted</span>
+              <span class="check-num">11</span>
+              <span class="check-title">Mastery floor ticked as your stated prediction</span>
             </label>
-            <div class="check-detail">Against P4&#x27;s MVP list: met / not yet, each with an evidence pointer — the audit marks, the killed claim, the brief&#x27;s citations. No inflation; the AI should stress-test any claim that leans on &quot;basically,&quot; and the paste above tells it to.</div>
+            <div class="check-detail">The ticked list is a forecast, not a summary: you are naming, in writing and before the attack, which bars you believe survive. Every tick needs an artifact you could open in front of someone — the floor&#x27;s own rule stands, and if the adversarial pass wounds an item you come back and untick it.</div>
           </li>
         </ol>
 
@@ -676,7 +674,7 @@ Rules for you:
 director questions with walkable citations, plus a regenerable
 Morning Brief.
 Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
-Draft MVP self-check: [WHICH BARS I MARKED MET]
+Draft MVP self-check: [PASTE THE BARS YOU TICKED ON THE MASTERY FLOOR]
 Known weak spot: [ONE THING I ALREADY DOUBT]
 Artifacts follow: Answers/Q1 Risks.md, Answers/Q2 Blocked Decision.md,
 the Audit table with a verdict per citation, the Revised-or-killed
@@ -705,10 +703,10 @@ before/after, Morning_Brief.md.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-pulse-adv" name="p4-pulse-adv" data-check-id="pulse-adv" />
-              <span class="check-num">14</span>
+              <span class="check-num">12</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">Expect the attack to open on unwalked citations — the Audit table is your armor. Proof: a fresh <code>Adversarial — P4</code> chat ran the frozen prompt against your real artifacts, and the final <code>ADVERSARIAL: stood | wounded | failed</code> line now sits in your log. Fix if wounded — and uncheck the floor item it wounded until fixed.</div>
+            <div class="check-detail">Expect the attack to open on unwalked citations — the Audit table is your armor. Proof: a fresh <code>Adversarial — P4</code> chat ran the frozen prompt against your real artifacts, and the final <code>ADVERSARIAL: stood | wounded | failed</code> line now sits in your log. Fix if wounded — and uncheck the floor item it wounded until fixed. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
         </ol>
 
@@ -716,67 +714,37 @@ before/after, Morning_Brief.md.</code></pre>
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>, filling every bracket:</p>
           <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
-
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
-Brief LIVE at: [time or “approx”].
-Adversarial done at: [time or “approx”].
+Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
+Bars I marked met before the attack: [n].
+Brief LIVE at: [time or "approx"].
+Adversarial done at: [time or "approx"].
 Mission outcome path(s): [paths].
-Draft MVP: [met / not yet summary].
-
-Fill this block’s row:
-1. Ritual 0–3 with proof of each point
-2. Mission HIT/PARTIAL/MISS against the LIVE brief
-3. Quality STRONG/ADEQUATE/WEAK from adversarial + evidence (challenge inflation)
-4. Time to result in minutes
-5. One-line note
-6. Deep mark if this is P2/P3/P5/P6/P8
-
-Update running totals.
-Refuse cheerful quality scores without evidence.
+Fill this block's row:
+1. Brief accuracy — did the artifact match the "done looks like" I wrote before the
+   run, and which one of the five brief fields would I write differently now?
+   Refuse "the brief was fine": make me name a field, or say none and name what
+   held better than expected.
+2. Overclaim n/m — count the bars I marked met that came back WOUNDED or DEAD,
+   over the number I marked met. Count from the rulings I pasted, not from my summary.
+3. Time to result in minutes.
+4. One-line note.
+5. Deep mark if this block has one.
+Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
         </div>
 
-        <p>The brackets, in order: Block is P4; the Adversarial line is the one you just copied into the log; approximate times are honest enough; mission outcome paths are your two <code>Answers/</code> notes and <code>Morning_Brief.md</code>; Draft MVP is the met / not-yet list from your PASS_BARS self-check above.</p>
+        <p>The brackets, in order: Block is P4; the Adversarial line is the one you just copied into the log; the per-claim rulings are the <code>SURVIVES / WOUNDED / DEAD</code> list the review produced in step 3, pasted as it came rather than summarised; the met count is how many bars you ticked on the mastery floor before the attack; approximate times are honest enough; mission outcome paths are your two <code>Answers/</code> notes and <code>Morning_Brief.md</code>.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-pulse-measure" name="p4-pulse-measure" data-check-id="pulse-measure" />
-              <span class="check-num">15</span>
+              <span class="check-num">13</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Four headlines in <code>operator/MEASUREMENT_SPINE.md</code>: ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result in minutes. Quality today rides on the audit: an answer that survived your walk rates differently from one that merely read well. P4 carries no deep mark — the four headlines are the whole entry.</div>
-          </li>
-        </ol>
-
-        <!-- Embedded verbatim from operator/TRANSFER_30_60_90.md — every-session prompt -->
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Operator — Transfer 30-60-90</strong> chat, replacing [B0/P1/…] with P4:</p>
-          <pre><code>Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
-
-Block I just finished: [B0/P1/…].
-I have finished Direction/Log and pass-bar check in the other operator chat.
-
-Run a short interactive update:
-1. What mastery did this block actually prove (one sentence, no theater)?
-2. Map it onto MY real desk — interview me if missing.
-3. Update the matching seed and today’s row in the session log.
-4. Tighten at most three lines in identity or 30/60/90 if enough signal exists.
-5. Name one backslide risk if I do nothing at work.
-
-Do not seal. Do not invent a full plan from zero on a light block.
-Challenge vagueness. I own every accept.</code></pre>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p4-pulse-transfer" name="p4-pulse-transfer" data-check-id="pulse-transfer" />
-              <span class="check-num">16</span>
-              <span class="check-title">Transfer pulse (every AM/PM)</span>
-            </label>
-            <div class="check-detail">Develop the seed you banked in Stage 06 — read your Transfer Seed note back to it: what at your work belongs in a navigable, machine-workable structure. A session-log row is required even if the seed stays small today.</div>
+            <div class="check-detail">Today&#x27;s row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the &quot;done looks like&quot; you wrote before the run, and which one of the brief&#x27;s five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered &quot;none — [field] held better than expected, because …&quot; — then <strong>overclaim n/m</strong>, the number of bars you marked met that the adversarial ruled WOUNDED or DEAD over the number you marked met, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and no deep mark on this block — those three entries are the whole row.</div>
           </li>
         </ol>
       </section>
@@ -789,7 +757,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-scope" name="p4-mvp-scope" data-check-id="mvp-scope" />
-              <span class="check-num">17</span>
+              <span class="check-num">14</span>
               <span class="check-title">MVP: Vault scoped in LIVE brief</span>
             </label>
             <div class="check-detail">Evidence looks like: the brief text names the vault root, the allowed read/write actions, and the never-leave list — written before the mission, not reconstructed after.</div>
@@ -798,7 +766,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-graph" name="p4-mvp-graph" data-check-id="mvp-graph" />
-              <span class="check-num">18</span>
+              <span class="check-num">15</span>
               <span class="check-title">MVP: Link graph from inbox</span>
             </label>
             <div class="check-detail">Evidence looks like: you can navigate <code>MOC</code> → hub → note by clicking, and the graph view shows a connected structure. A pile of AI-named files with no links is not yet, however tidy the names.</div>
@@ -807,7 +775,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-2q" name="p4-mvp-2q" data-check-id="mvp-2q" />
-              <span class="check-num">19</span>
+              <span class="check-num">16</span>
               <span class="check-title">MVP: ≥2 multi-note cited answers</span>
             </label>
             <div class="check-detail">Evidence looks like: both director answers living as notes in the vault, each spanning multiple notes, every citation a clickable link that resolves to a real note. One-note answers are summaries and do not clear the bar.</div>
@@ -816,7 +784,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-trail" name="p4-mvp-trail" data-check-id="mvp-trail" />
-              <span class="check-num">20</span>
+              <span class="check-num">17</span>
               <span class="check-title">MVP: Full trail audit</span>
             </label>
             <div class="check-detail">Evidence looks like: a written mark — support / partial / not supported — for every cited note in both answers, in your Audit note. &quot;I checked them&quot; without marks does not survive the adversarial chat.</div>
@@ -825,7 +793,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-revise" name="p4-mvp-revise" data-check-id="mvp-revise" />
-              <span class="check-num">21</span>
+              <span class="check-num">18</span>
               <span class="check-title">MVP: ≥1 answer revised/killed on failed trail</span>
             </label>
             <div class="check-detail">Evidence looks like: the before and after of one claim, plus which trail failed and how — restated as rumor, cut, or re-asked. The cause is a verdict from the audit, not a feeling about tone.</div>
@@ -834,7 +802,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-morning" name="p4-mvp-morning" data-check-id="mvp-morning" />
-              <span class="check-num">22</span>
+              <span class="check-num">19</span>
               <span class="check-title">MVP: Morning Brief in vault, verified</span>
             </label>
             <div class="check-detail">Evidence looks like: <code>Morning_Brief.md</code> inside the vault, dated, every claim citing a note — and its citations drawn from trails you already walked, with two spot-checked on acceptance.</div>
@@ -843,7 +811,7 @@ Challenge vagueness. I own every accept.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-own4" name="p4-mvp-own4" data-check-id="mvp-own4" />
-              <span class="check-num">23</span>
+              <span class="check-num">20</span>
               <span class="check-title">MVP: Log retrieval vs judgment + gap</span>
             </label>
             <div class="check-detail">Evidence looks like: a log line separating what the machine retrieved from what you judged, and one named thing the vault cannot yet support — a question it would answer thinly, or a status it cannot represent.</div>
@@ -851,20 +819,21 @@ Challenge vagueness. I own every accept.</code></pre>
 
           <li class="check-item" data-check-item>
             <label class="check-label">
-              <input type="checkbox" id="p4-p4-done" name="p4-p4-done" data-check-id="p4-done" />
-              <span class="check-num">24</span>
-              <span class="check-title">Block closed under fire</span>
+              <input type="checkbox" id="p4-p4-transfer" name="p4-p4-transfer" data-check-id="p4-transfer" />
+              <span class="check-num">21</span>
+              <span class="check-title">Transfer seed filled and dated</span>
             </label>
-            <div class="check-detail">Adversarial line present in the log; measurement row written; transfer row written. The test: you could defend this block&#x27;s verdict to a skeptical peer using only your artifacts, walking any trail they pick. Then leave the vault exactly where it is and keep its path handy — the afternoon block works inside this same vault.</div>
+            <div class="check-detail">Evidence looks like: the <strong>From P4 — Trailed knowledge</strong> block in <code>operator/TRANSFER_30_60_90.md</code> with both rows filled and carrying today&#x27;s date — the work knowledge that must live in a navigable system, and the citation rule you will hold an AI-written brief to. It has to name your own desk; a hypothetical seed has nothing to grow from in the weeks after the course.</div>
           </li>
         </ol>
+        <p>Leave the vault exactly where it is and keep its path handy — this afternoon&#x27;s block works inside this same vault.</p>
       </section>
     </form>
 
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Pass bar (mastery floor)</h2>
-        <p>MVP is not &quot;it ran.&quot; A vault answering with fake or unopened citations is not yet, however smooth the answers read. Evidence must survive adversarial review. Full list: <a href="../../operator/PASS_BARS.md">operator/PASS_BARS.md · section P4</a>.</p>
+        <p>MVP is not &quot;it ran.&quot; A vault answering with fake or unopened citations is not yet, however smooth the answers read. Evidence must survive adversarial review. Full list: <a href="#floor">this P4 mastery floor</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>

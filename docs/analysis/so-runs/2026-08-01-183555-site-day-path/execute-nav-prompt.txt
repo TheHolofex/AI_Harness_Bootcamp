@@ -1,0 +1,36 @@
+You are providing an EXECUTE SEED for a workflow called /so. The main implementer will receive your reference implementation as one input alongside its own reasoning, and may adopt, adapt, or reject it.
+
+TASK SPEC:
+Refactor site/js/registry.js and site/js/shell.js for the AI Harness Bootcamp static site. Visible primary navigation must contain only Pre-work, Mon, Tue, Wed, Thu, and Fri; the Starzl brand remains the Home link. The contact-course sequence is B0-P8 and context labels must say Module 1 of 9 through Module 9 of 9. Pre-work is a prerequisite, not a module. Previous/next module controls should route Pre-work -> B0 -> P1 -> ... -> P8. Preserve existing localStorage keys and existing state. Remove conditional wg-fix and r-* recovery IDs from required pre-work completion without deleting their saved state. Add minimal dependency-free logic that lets the pre-work hub identify a first-incomplete phase anchor using the existing checklist IDs. Do not introduce a framework or change exact learner commands.
+
+GROUND TRUTH MANIFEST (verified APIs, libraries, types):
+- Plain browser JavaScript, no transpiler or package dependencies.
+- site/js/registry.js owns REGISTRY, JOURNEY, DAY_NAV, readState/countDone/isComplete/currentBlock/blockNumber.
+- site/js/shell.js owns buildNav, neighbors, renderContextStrips, renderPlates, renderDashboard, renderPreworkHub.
+- Existing storage is JSON under one key per checklist and must remain compatible.
+- Browser APIs already used: DOM query/event APIs, URL, localStorage.
+- The existing nav dropdown interaction and CSS classes should be reused.
+
+PROVIDES / REQUIRES (interface contracts with other tasks):
+Provides AHB.COURSE_BLOCKS or equivalent nine-module sequence, honest moduleNumber/total, a Pre-work phase model, and day nav used by shell.js. Requires current HTML routes to remain site/prework.html, site/checklists/prework-install.html, and site/blocks/b0.html through p8.html. Do not require HTML changes to avoid runtime errors when phase anchors are absent.
+
+RELEVANT CODE CONTEXT:
+Read the current site/js/registry.js and site/js/shell.js from the workspace. The current REGISTRY starts with KEYS and INSTALL before B0-P8; TOTAL_BLOCKS is incorrectly REGISTRY.length; neighbors traverses the full registry; primary nav currently includes Home, Resources, and Lead; renderPreworkHub infers keys were read from any install progress.
+
+YOUR JOB:
+Produce a complete reference implementation of the relevant changed JavaScript sections that satisfies the task spec, respects the ground truth, and honors the Provides/Requires contracts. Include edge cases. A focused diff-style replacement is acceptable if it is unambiguous. If there is a meaningfully different approach worth considering, describe it briefly.
+
+OUTPUT:
+Return a single JSON object with these fields:
+- reference_implementation: full code for the reference implementation (main payload)
+- approach_summary: 1-3 sentences
+- edge_cases_handled: array
+- alternative_approach: string or empty string
+- notes: caveats or context
+
+Rules:
+- Output JSON only with no code fences or closing remarks
+- Do not write files
+- Do not invoke shell commands or run tests
+- You may read files in the workspace
+- Total length up to 4000 tokens
