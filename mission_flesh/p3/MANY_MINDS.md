@@ -356,7 +356,7 @@ Mark P3 Stretch in `PASS_BARS.md` only if baseline + synthesis + delta survive a
 - Run after comparator discipline exists.  
 - **Require the three files** on any student claiming the stretch. Spot-audit deltas first — that is where theater hides.  
 - Cap three subagents; set `agents.max_concurrent_threads_per_session` on spend-sensitive machines and say it out loud (Thursday lesson early).  
-- Seeded defects are unlabelled on purpose; staff keep the key offline from this guide.  
+- Seeded defects are unlabelled on purpose, and the key is kept out of this guide.  
 - Correct “cowork” language immediately.  
 - Worktree is optional deeper; never a substitute for delta.  
 - Success = three artifacts + earned kill + defended delta verdict.

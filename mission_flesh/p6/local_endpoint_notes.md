@@ -2,7 +2,7 @@
 
 **Blocks:** P6 stretch (Thursday AM, after goose MVP) and/or P8 stretch (Friday bridge)  
 **Time:** about 70–100 minutes when local hardware cooperates; honest YELLOW is a valid outcome  
-**Vehicle:** goose + staff-pinned local model (Ollama default; LM Studio alternate)  
+**Vehicle:** goose + the pinned local model (Ollama default; LM Studio alternate)  
 **Not required for GREEN.** Cloud/API goose recipe remains the P6 floor. Hosted open model remains the P8 floor.
 
 This guide stands beside you while you flip one wall of the harness: **which brain answers**, not which mission you wrote — and you will **score** the flip the way Friday scores models.
@@ -11,7 +11,7 @@ This guide stands beside you while you flip one wall of the harness: **which bra
 
 ## What this is for
 
-On Thursday morning you proved autonomy under a **contract**: recipe, extensions, mode, max turns, stop authority. Those levers stayed put while the model was whatever staff pinned on the API key.
+On Thursday morning you proved autonomy under a **contract**: recipe, extensions, mode, max turns, stop authority. Those levers stayed put while the model was whatever the pin named on the API key.
 
 Now you hold the **recipe still** and change the **endpoint** — the place the tokens come from. Same adapted `watch_officer.yaml`. Same feeder. Different provider.
 
@@ -19,7 +19,7 @@ Now you hold the **recipe still** and change the **endpoint** — the place the 
 
 | Endpoint | Typical story | What you measure |
 |---|---|---|
-| API / cloud (course default) | Staff key, spend cap, strong tool calling | Baseline P6 run (already done) |
+| API / cloud (course default) | Course key, spend cap, strong tool calling | Baseline P6 run (already done) |
 | **Local** (this stretch) | Ollama or LM Studio on the laptop | Numeric hold/degrade vs baseline |
 | Hosted open (P8) | Operator-governed remote open model | Hold/degrade matrix on dyno IDs |
 
@@ -52,7 +52,7 @@ Install steps are necessary. They are not the stretch. The score sheet is.
 
 | Part | About | Evidence |
 |---|---|---|
-| 0. Staff pin | Model tag + RAM + tool-call note | Cohort channel |
+| 0. The pin | Model tag + RAM + tool-call note | Cohort channel |
 | 1–2. Install + brain smoke | Runtime works | `ollama list` / completion |
 | 3. Point goose at local | Provider visible | `goose info -v` |
 | 4. **Predict** | Written before local recipe | `out/local_predict.md` |
@@ -67,9 +67,9 @@ If Parts 1–2 fail after honest try: **YELLOW**. Write the decision rule anyway
 
 ---
 
-## Part 0 · Staff pin
+## Part 0 · The pin
 
-Staff post before Thursday:
+Posted before Thursday:
 
 ```text
 LOCAL PIN: Ollama · <model-tag> · min free RAM <N> GB · verified tool-call: yes/weak/no
@@ -96,7 +96,7 @@ Your cloud model id is already set from pre-work, so you do not need to retype i
 $env:HB_OPENAI_MODEL
 ```
 
-If that comes back empty, set it the same way as the local tag, using the cloud model id staff pinned. Part 10 uses it to flip back.
+If that comes back empty, set it the same way as the local tag, using the pinned cloud model id. Part 10 uses it to flip back.
 
 ---
 
@@ -104,7 +104,7 @@ If that comes back empty, set it the same way as the local tag, using the cloud 
 
 ### Path A — Ollama (default)
 
-Install from the staff-approved Windows channel. **New** PowerShell:
+Install from the Windows channel the pin names. **New** PowerShell:
 
 ```powershell
 ollama --version
@@ -119,11 +119,11 @@ When goose will load tools, raise context (silent truncation is a known footgun)
 $env:OLLAMA_CONTEXT_LENGTH = '32768'
 ```
 
-Restart Ollama if staff say the server must reread env. Default host: `http://localhost:11434` (`OLLAMA_HOST` only if staff say so).
+Restart Ollama if the server must reread env. Default host: `http://localhost:11434` (`OLLAMA_HOST` only if the pin says so).
 
 ### Path B — LM Studio (alternate)
 
-1. Install from staff-approved channel.  
+1. Install from the channel the pin names.  
 2. Download **only** the pinned model.  
 3. Start local server; confirm listen (often `http://localhost:1234`).  
 4. **Load** the model so the server is not empty.
@@ -163,7 +163,7 @@ LM Studio shape when pinned:
 ```powershell
 $env:GOOSE_PROVIDER = "lmstudio"
 $env:GOOSE_MODEL = $env:HB_LOCAL_MODEL
-# $env:LMSTUDIO_HOST = "http://localhost:1234"   # if staff require
+# $env:LMSTUDIO_HOST = "http://localhost:1234"   # if the pin requires
 goose info -v
 ```
 
@@ -190,7 +190,7 @@ No file ⇒ already a degrade signal. Do not loop forever.
 
 Cloud baseline path: out/watch_summary.md   (or full path)
 Local provider/model: 
-Tool-call pin from staff: yes / weak / no
+Tool-call note from the pin: yes / weak / no
 
 ## Predictions (Hold / Partial / Miss)
 | Check id | What “Hold” means | My prediction | Why |
@@ -335,7 +335,7 @@ Confirm cloud pin returned.
 ## Optional pre-work appendix (non-blocking)
 
 1. Install Ollama  
-2. Pull staff pin when posted  
+2. Pull the pin when posted  
 3. One `ollama run` smoke  
 4. Note RAM  
 
@@ -345,7 +345,7 @@ Confirm cloud pin returned.
 
 ## Facilitator notes
 
-- Cold-smoke pin on staff Windows **before** Thursday lunch.  
+- Cold-smoke the pin on a Windows machine **before** Thursday lunch.  
 - Spot-audit **prediction timestamps / honesty** and **paired files** first.  
 - Lead-demo local once if RAM is scarce; students still write predict + score from shared artifacts.  
 - Keep P6 MVP stop/restart on cloud if local melts the clock.  

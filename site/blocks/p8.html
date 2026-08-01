@@ -54,7 +54,7 @@
         <div>
           <h2 class="h-plain">The day the vendor changes</h2>
           <p>All week, every model behind your harnesses came from a commercial vendor, with that vendor's acceptable-use machinery standing between you and the raw engine. At work that arrangement is temporary by nature: models get deprecated mid-quarter, prices move, procurement changes vendors, a policy shop bans an endpoint overnight. When that day comes, the only question that matters is whether your craft was a method or a product habit.</p>
-          <p>Today staff hand you a hosted open model — an endpoint where no vendor's guardrails stand between you and the model, so the governance is yours to author or it does not exist. You write the policy before the first request, re-run the same five dyno cases (the frozen benchmark case files) you scored on Tuesday, read the difference as counts, refuse one legitimate task under your own rules, and seal the plan that carries all of it to your desk.</p>
+          <p>Today you are handed a hosted open model — an endpoint where no vendor's guardrails stand between you and the model, so the governance is yours to author or it does not exist. You write the policy before the first request, re-run the same five dyno cases (the frozen benchmark case files) you scored on Tuesday, read the difference as counts, refuse one legitimate task under your own rules, and seal the plan that carries all of it to your desk.</p>
           <h3>What you will leave with</h3>
           <ul>
             <li>An endpoint AUP (acceptable-use policy) with a version and a date that precede your first request — a policy you can reuse the next time a new model shows up at work</li>
@@ -69,7 +69,7 @@
             <li>Your P2 score sheet with the after column filled — that is the home baseline (if it's missing, you'll run home once this morning first)</li>
             <li>Operator templates in your Codex app project: <code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code></li>
             <li><code>mission_flesh/p8/AUP_ENDPOINT_TEMPLATE.md</code> located and readable</li>
-            <li>The staff endpoint pin — endpoint, model name, and key. The lead posts it at the start of the block, on the room screen or handed to you directly; it never ships in the pack, whose <code>mission_flesh/p8/</code> folder carries a placeholder endpoint only, so if you don't have it, ask. <code>mission_flesh/p8/REPOINT_RUNBOOK.md</code> lets you stage the whole re-point before the pin lands</li>
+            <li>The endpoint pin — endpoint, model name, and key. The lead posts it at the start of the block, on the room screen or handed to you directly; it never ships in the pack, whose <code>mission_flesh/p8/</code> folder carries a placeholder endpoint only, so if you don't have it, ask. <code>mission_flesh/p8/REPOINT_RUNBOOK.md</code> lets you stage the whole re-point before the pin lands</li>
             <li><code>operator/TRANSFER_30_60_90.md</code> with its session-log rows from the week</li>
           </ul>
         </div>
@@ -221,7 +221,7 @@ Set Version to 1.0 and Effective to today's date. Leave the endpoint placeholder
         </ol>
 
         <h3>Stage 03 · Re-point</h3>
-        <p>Now — and only now — the app gets pointed at the open endpoint. The runbook at <a href="../../mission_flesh/p8/REPOINT_RUNBOOK.md"><code>mission_flesh/p8/REPOINT_RUNBOOK.md</code></a> is the full reference — config block, placeholder swap, smoke check, rollback. The moves below are that runbook in order. The real values come from the staff pin the lead posts at the start of the block — if it isn't in front of you, ask before you reach the value swap; everything before that swap can be staged while you wait.</p>
+        <p>Now — and only now — the app gets pointed at the open endpoint. The runbook at <a href="../../mission_flesh/p8/REPOINT_RUNBOOK.md"><code>mission_flesh/p8/REPOINT_RUNBOOK.md</code></a> is the full reference — config block, placeholder swap, smoke check, rollback. The moves below are that runbook in order. The real values come from the pin posted at the start of the block — if it isn't in front of you, ask before you reach the value swap; everything before that swap can be staged while you wait.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into a <strong>Windows PowerShell</strong> window:</p>
           <pre><code>Copy-Item "$env:USERPROFILE\.codex\config.toml" "$env:USERPROFILE\.codex\config.toml.p8-backup"
@@ -233,7 +233,7 @@ notepad "$env:USERPROFILE\.codex\config.toml"</code></pre>
           <p class="do-label">Now paste this at the very <strong>top</strong> of <strong>config.toml</strong> in the Notepad window — line 1, above everything already there:</p>
           <pre><code>model = "YOUR_MODEL_NAME"
 model_provider = "openmodel"</code></pre>
-          <p>Replace <code>YOUR_MODEL_NAME</code> with the model name from the staff pin — the quotes stay. If a <code>model =</code> line already exists anywhere in the file, change that line rather than adding a second one.</p>
+          <p>Replace <code>YOUR_MODEL_NAME</code> with the model name from the pin — the quotes stay. If a <code>model =</code> line already exists anywhere in the file, change that line rather than adding a second one.</p>
         </div>
         <p>The placement is TOML law, not tidiness: every line below a <code>[bracketed]</code> header belongs to that header's table, so these two lines sit above the first header to stay root keys — and for the same reason, the provider table you add next goes below everything, never above.</p>
         <!-- From mission_flesh/p8/REPOINT_RUNBOOK.md — provider block, provider table -->
@@ -244,22 +244,22 @@ name = "Hosted open model"
 base_url = "YOUR_ENDPOINT"
 env_key = "OPEN_MODEL_API_KEY"
 wire_api = "responses"</code></pre>
-          <p>Replace <code>YOUR_ENDPOINT</code> with the endpoint from the staff pin — the quotes stay. Before you save, scroll the file once: every line that was there before — <code>forced_login_method = "api"</code> included — must still sit above this new header. A pre-existing line that ended up below it has silently joined the table and stopped doing its job; move the table back to the bottom and save again.</p>
+          <p>Replace <code>YOUR_ENDPOINT</code> with the endpoint from the pin — the quotes stay. Before you save, scroll the file once: every line that was there before — <code>forced_login_method = "api"</code> included — must still sit above this new header. A pre-existing line that ended up below it has silently joined the table and stopped doing its job; move the table back to the bottom and save again.</p>
         </div>
         <p>Line by line: <code>model</code> names what to ask for, <code>model_provider</code> routes requests through the <code>openmodel</code> entry, <code>base_url</code> is where they go, and <code>env_key</code> names the environment variable that will hold the key — the key itself never goes in this file. <code>wire_api = "responses"</code> declares the endpoint speaks the Responses API, the only protocol the app supports.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>P8 build</strong> chat:</p>
-          <pre><code>Re-point record. The staff pin values: endpoint [ENDPOINT FROM THE STAFF PIN], model name [MODEL NAME FROM THE STAFF PIN]. Do not ask for or record the key anywhere.
+          <pre><code>Re-point record. The pin values: endpoint [ENDPOINT FROM THE PIN], model name [MODEL NAME FROM THE PIN]. Do not ask for or record the key anywhere.
 
 1. In AUP_ENDPOINT.md, fill the endpoint placeholder block with those two values.
 2. Create REPOINT_NOTE.md in the project root recording: the file changed (%USERPROFILE%\.codex\config.toml), the model value it carried before today [OLD MODEL LINE, OR "none"], the provider block that was added — copy it from mission_flesh/p8/REPOINT_RUNBOOK.md with the placeholders replaced by the pin values — and one line stating the key lives only in the OPEN_MODEL_API_KEY environment variable.</code></pre>
-          <p>Fill the three bracketed slots from the staff pin and from the backup you just made. This is the old-value → new-value evidence the mastery floor asks for — written now, not reconstructed later.</p>
+          <p>Fill the three bracketed slots from the pin and from the backup you just made. This is the old-value → new-value evidence the mastery floor asks for — written now, not reconstructed later.</p>
         </div>
         <p>The key itself goes into the environment variable the config named, and nowhere else.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into the same <strong>Windows PowerShell</strong> window:</p>
           <pre><code>setx OPEN_MODEL_API_KEY "[PASTE THE KEY FROM THE STAFF PIN]"</code></pre>
-          <p>Replace everything between the quotes — brackets included — with the key from the staff pin; the quotes stay. The key lives in this variable only: not in the config, not in the AUP, not in anything git tracks.</p>
+          <p>Replace everything between the quotes — brackets included — with the key from the pin; the quotes stay. The key lives in this variable only: not in the config, not in the AUP, not in anything git tracks.</p>
         </div>
         <p><code>setx</code> only reaches programs started afterward, so the restart that follows is not optional — it is what makes the app both see the key and re-read the config.</p>
         <div class="do-step">
@@ -502,7 +502,7 @@ Challenge vagueness. I own every accept.</code></pre>
         <table>
           <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
           <tbody>
-            <tr><td>Open endpoint answers nothing, or errors on everything</td><td>Placeholder never swapped for the staff pin, or a capped/mispasted credential failing with an error that reads like a login problem</td><td>Re-check pin values character by character; run the allowed control task; escalate with the exact error text, not a paraphrase</td></tr>
+            <tr><td>Open endpoint answers nothing, or errors on everything</td><td>Placeholder never swapped for the pin, or a capped/mispasted credential failing with an error that reads like a login problem</td><td>Re-check pin values character by character; run the allowed control task; escalate with the exact error text, not a paraphrase</td></tr>
             <tr><td>After the re-point, a stray click bounces the app to a ChatGPT login</td><td>The provider table was pasted above existing lines — every line below a <code>[bracketed]</code> header joins that table, so <code>forced_login_method = "api"</code> stopped being a root key even though it still reads fine in the file</td><td>Move the <code>[model_providers.openmodel]</code> block to the very bottom of <code>config.toml</code>, keep only the two <code>model</code> lines at the top, save, fully restart the app</td></tr>
             <tr><td>Every case degrades at once</td><td>Harness walls didn't make the trip — instructions or skills not loaded on the re-pointed run</td><td>Probe environment before model: confirm what the re-pointed run can actually see, port the walls, re-run one case</td></tr>
             <tr><td>Open answers read fluent but the matrix says FAIL</td><td>You're grading prose instead of loop completion</td><td>Score the case's check, nothing else — fluent-but-wrong is exactly the failure the suite exists to catch</td></tr>

@@ -64,7 +64,7 @@
           </ul>
           <h3>Before you start</h3>
           <ul>
-            <li>n8n starts and lets you in: run <code>n8n start</code> in PowerShell, open <code>localhost:5678</code>, and sign in with the owner account you recorded in pre-work — it lives only on your laptop. Forgot the password? Flag staff — n8n has a command-line reset; do not reinstall. If <code>n8n start</code> exits immediately with a version message, that is the Node range talking, not a broken install — n8n wants Node 22.22 up to the current LTS line.</li>
+            <li>n8n starts and lets you in: run <code>n8n start</code> in PowerShell, open <code>localhost:5678</code>, and sign in with the owner account you recorded in pre-work — it lives only on your laptop. Forgot the password? Flag it — n8n has a command-line reset; do not reinstall. If <code>n8n start</code> exits immediately with a version message, that is the Node range talking, not a broken install — n8n wants Node 22.22 up to the current LTS line.</li>
             <li>Sample rows on disk: <code>mission_flesh/p7/rows.csv</code>, with <code>discrimination_template.md</code> beside it</li>
             <li>Operator templates present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
             <li>Your OpenAI key (<code>sk-proj-…</code>) within reach — the AI step inside n8n runs on it, and Stage 03 is where you store it as your first n8n credential</li>
@@ -235,7 +235,7 @@ n8n start</code></pre>
             <li>Click the workflow name at the top and rename it to <code>P7 automation line</code></li>
           </ul>
         </div>
-        <p>Forgot the owner password? Flag staff — n8n has a command-line reset; do not reinstall. From here every station goes in the same way: the first node from the empty canvas, each later one from the <strong>+</strong> on the previous node's right edge, so the wire draws itself.</p>
+        <p>Forgot the owner password? Flag it — n8n has a command-line reset; do not reinstall. From here every station goes in the same way: the first node from the empty canvas, each later one from the <strong>+</strong> on the previous node's right edge, so the wire draws itself.</p>
         <div class="do-step">
           <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
           <ul class="do-clicks">
@@ -281,7 +281,7 @@ n8n start</code></pre>
             <li>Under <strong>Options</strong>, click <strong>Add option</strong>, choose <strong>Output Content as JSON</strong>, and switch it on</li>
           </ul>
         </div>
-        <p>The key lands in n8n's local database on your laptop and nowhere else. If a call later fails with 429 or quota wording, that is a capped key reading like an auth failure — flag staff rather than re-pasting the key. The station itself gets a pinned output contract — the exact fields and format you expect back, values drawn from a named set — because everything downstream depends on being able to parse what returns.</p>
+        <p>The key lands in n8n's local database on your laptop and nowhere else. If a call later fails with 429 or quota wording, that is a capped key reading like an auth failure — flag it rather than re-pasting the key. The station itself gets a pinned output contract — the exact fields and format you expect back, values drawn from a named set — because everything downstream depends on being able to parse what returns.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>AI step</strong> node's message <strong>Text</strong> field, with the field switched from <strong>Fixed</strong> to <strong>Expression</strong>:</p>
           <pre><code>You are one station in a fixed pipeline. Read the single field report below
@@ -518,7 +518,7 @@ is void; every line must be checkable at my own desk. I accept every line.</code
               <tr><td>Every row holds at the gate</td><td>Parsing fails on all rows, so every check fails</td><td>Open one execution and read the AI's raw output; fix the parse first — thresholds come after</td></tr>
               <tr><td>No row holds — including the poisoned ones</td><td>Checks test presence, not plausibility; or the gate sits after the write</td><td>Move the gate upstream of the sheet, add allowed-value and contradiction checks, re-run row 4</td></tr>
               <tr><td>n8n exits the moment you start it</td><td>Node outside the supported range — n8n wants Node 22.22 up to the current LTS line</td><td>Run <code>node -v</code>; reinstall the LTS package if needed; open a fresh terminal before retrying</td></tr>
-              <tr><td>AI step fails with what reads like a bad key</td><td>A capped key returns a 429 quota error that looks exactly like an auth failure</td><td>Read the error body; 429 or quota wording means the cap, not the credential — ask staff rather than re-pasting keys</td></tr>
+              <tr><td>AI step fails with what reads like a bad key</td><td>A capped key returns a 429 quota error that looks exactly like an auth failure</td><td>Read the error body; 429 or quota wording means the cap, not the credential — ask it rather than re-pasting keys</td></tr>
               <tr><td>Execution green but the master is empty</td><td>The cleared branch never fires, or the write path is wrong</td><td>Follow one clean row through the execution view node by node and find where it leaves the path</td></tr>
             </tbody>
           </table>
@@ -849,7 +849,7 @@ Challenge vagueness. I own every accept.</code></pre>
       <div>
         <h2>If you get stuck</h2>
         <ul>
-          <li><strong>The AI step won't behave.</strong> Test it alone on one row and read its raw output before touching the rest of the line. Prose instead of your format means the prompt never pinned a contract. An auth-looking failure with 429 or quota in it means a capped key — staff, not reinstall.</li>
+          <li><strong>The AI step won't behave.</strong> Test it alone on one row and read its raw output before touching the rest of the line. Prose instead of your format means the prompt never pinned a contract. An auth-looking failure with 429 or quota in it means a capped key — raise the cap, don't reinstall.</li>
           <li><strong>The gate holds everything, or nothing.</strong> Read one execution end-to-end. Fix parsing before thresholds, and confirm the gate sits before the write — both failure modes usually live in those two places.</li>
           <li><strong>The write-up feels like vibes.</strong> Let the two questions do the forcing — what varies per item, and what a wrong answer costs — then write the answers into the template's why columns. If you can't name either for a workload, that workload stays human — which is itself a finding.</li>
           <li>Narrow the <em>data scope</em>, never the judgment standard — three rows through a gated line beats eight through an ungated one.</li>

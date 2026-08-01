@@ -1,6 +1,6 @@
 # Re-point runbook — Codex app to the open endpoint
 
-Re-pointing means changing where the Codex app sends its requests: the same app, the same project, and the same harness, now talking to a hosted open model at a different address instead of the home model. Nothing else about your setup moves — which is the whole test, because everything you built should keep working when only the engine changes. You can read this page and stage every edit before the real endpoint details exist; only the placeholder swap waits on the staff pin posted this morning.
+Re-pointing means changing where the Codex app sends its requests: the same app, the same project, and the same harness, now talking to a hosted open model at a different address instead of the home model. Nothing else about your setup moves — which is the whole test, because everything you built should keep working when only the engine changes. You can read this page and stage every edit before the real endpoint details exist; only the placeholder swap waits on the pin posted this morning.
 
 ## The file you edit
 
@@ -33,7 +33,7 @@ Before saving, scroll the file once: every pre-existing line — `forced_login_m
 
 ## Swap the placeholders
 
-`YOUR_ENDPOINT` and `YOUR_MODEL_NAME` are the same placeholders `AUP_ENDPOINT_TEMPLATE.md` carries; the staff pin posted this morning has the real values and the key. Paste the endpoint and model name into both places — this config and your AUP's endpoint block — so the policy and the config agree about what they govern. Then set the key in a terminal, matching the name to whatever your `env_key` line says:
+`YOUR_ENDPOINT` and `YOUR_MODEL_NAME` are the same placeholders `AUP_ENDPOINT_TEMPLATE.md` carries; the pin posted this morning has the real values and the key. Paste the endpoint and model name into both places — this config and your AUP's endpoint block — so the policy and the config agree about what they govern. Then set the key in a terminal, matching the name to whatever your `env_key` line says:
 
 ```
 setx OPEN_MODEL_API_KEY "paste-the-key-here"

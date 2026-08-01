@@ -126,9 +126,9 @@ $key = $null</code></pre>
 
     <h2>Spending, and why your key might stop working</h2>
 
-    <p>Every request you make costs a fraction of a cent against the key's account, and the keys staff issued you carry a hard spending cap. A cap is a good thing: it means a runaway agent loop costs the course some money rather than an unbounded amount. But it does mean a key can stop working mid-week, and the failure looks like a sudden authentication error rather than a bill.</p>
+    <p>Every request you make costs a fraction of a cent against the key's account, and the keys you were issued carry a hard spending cap. A cap is a good thing: it means a runaway agent loop costs the course some money rather than an unbounded amount. But it does mean a key can stop working mid-week, and the failure looks like a sudden authentication error rather than a bill.</p>
 
-    <p>The signature is an <strong>HTTP 429</strong> response, sometimes worded as <em>insufficient quota</em> or <em>spend limit exceeded</em>. If a tool that worked yesterday starts failing today and nothing else changed, check that before you start reinstalling anything. Message staff with which key and roughly what you were running; a cap raise takes moments.</p>
+    <p>The signature is an <strong>HTTP 429</strong> response, sometimes worded as <em>insufficient quota</em> or <em>spend limit exceeded</em>. If a tool that worked yesterday starts failing today and nothing else changed, check that before you start reinstalling anything. Post which key and roughly what you were running — raising a cap is a small change at the console end, so it's worth asking rather than assuming your install broke.</p>
 
     <p>The habits that keep you well inside the cap are the same ones that make you a better operator, which is not a coincidence. Bound the work in your Direction Brief so the machine isn't looping on an unclear goal. Stop a run that has plainly lost the chat rather than watching it spend. Point at the folder that matters instead of the whole disk.</p>
 
@@ -147,7 +147,7 @@ auth.json</code></pre>
 
     <h2>Revoking a key</h2>
 
-    <p>If a key is exposed — pasted into the wrong window, committed, shared on a screen, or you simply aren't sure — revoke it. A revoked key stops working immediately and everywhere, and staff can issue a replacement in a couple of minutes. Tell staff which key and roughly when; they own the consoles and will handle the revocation and reissue.</p>
+    <p>If a key is exposed — pasted into the wrong window, committed, shared on a screen, or you simply aren't sure — revoke it. A revoked key stops working immediately and everywhere, and a replacement can be issued in its place. Say which key and roughly when — revoking and reissuing happens at the provider console, which is not somewhere you have access, so this is a message to send rather than a thing to attempt yourself.</p>
 
     <p>Once you have the replacement, set it exactly as you did the first time, then open a new PowerShell window so your tools pick it up. The Codex app needs signing in again through <em>Sign in another way</em>, since it stored the old key rather than reading the variable each time.</p>
 

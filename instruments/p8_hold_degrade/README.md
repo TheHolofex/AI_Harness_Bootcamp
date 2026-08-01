@@ -15,7 +15,7 @@ If P2 after is missing, run commercial once Friday AM then open — still use D0
 ## Student flow
 
 1. AUP/policy written **before** re-point (block MVP).  
-2. Re-point pack/endpoint per staff instructions.  
+2. Re-point pack/endpoint per the posted pin.  
 3. Cold-run D01–D05 from your track’s `p2_dyno/.../cases/`.  
 4. Score on `SCORE_SHEET.md` (open model column).  
 5. Fill hold/degrade matrix vs P2-after (or Friday commercial).  

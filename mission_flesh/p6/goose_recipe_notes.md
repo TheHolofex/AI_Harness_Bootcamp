@@ -163,11 +163,11 @@ Fill ≥3 rows in each column with **this feeder’s** real risks. No orphan ris
 - goose’s provider list also offers ChatGPT / Copilot / Claude subscription
   paths. **Do not use those** in this course.
 - Docs often note strongest tool-calling on Claude-class models; the course pin
-  is still your staff-posted OpenAI (or alternate) model. Measure what you get.
+  is still your posted OpenAI (or alternate) model. Measure what you get.
 
 ## Local endpoint stretch (optional)
 
-Same recipe, different brain: staff-pinned Ollama or LM Studio. Hold/degrade versus your cloud run. Not MVP.
+Same recipe, different brain: the pinned Ollama or LM Studio. Hold/degrade versus your cloud run. Not MVP.
 Full guide: `local_endpoint_notes.md` in this folder.
 
 ## Out of scope for MVP (exist in the product; not required today)

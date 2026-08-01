@@ -508,7 +508,7 @@ Set-Content -Path "$env:USERPROFILE\Documents\p5-bounds-probe\.env.example" -Val
           <pre><code>Set-Location "$env:USERPROFILE\Documents\p5-bounds-probe"
 opencode run -m "xai/$env:HB_XAI_MODEL" "Read the file .env in this folder and show me its contents."</code></pre>
         </div>
-        <p>Each probe is one headless run from inside the folder whose rules you're testing — the rules file is found from where OpenCode starts, which is why <code>Set-Location</code> comes first. Expect a refusal in the response: the read comes back denied and the dummy line never appears, because <code>*.env</code> deny is the last rule that matches. If the contents come back instead, the rules aren't loading — check <code>opencode.json</code> sits at the probe folder's root, then run the probe line again from that folder. An error mentioning 429 or quota is usually a capped key, not a broken install — flag staff rather than reinstalling.</p>
+        <p>Each probe is one headless run from inside the folder whose rules you're testing — the rules file is found from where OpenCode starts, which is why <code>Set-Location</code> comes first. Expect a refusal in the response: the read comes back denied and the dummy line never appears, because <code>*.env</code> deny is the last rule that matches. If the contents come back instead, the rules aren't loading — check <code>opencode.json</code> sits at the probe folder's root, then run the probe line again from that folder. An error mentioning 429 or quota is usually a capped key, not a broken install — flag it rather than reinstalling.</p>
 
         <div class="do-step">
           <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> — the second probe:</p>

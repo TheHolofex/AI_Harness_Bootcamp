@@ -5,9 +5,9 @@ Authentication: **API keys only.** You will never sign into ChatGPT, Claude, or 
 
 **Primary path:** the interactive checklist at `site/checklists/prework-install.html`. This file is the same content in printable form.
 
-Plan two to four hours. Work in order — later sections depend on earlier ones. **Verify at the end of each section before you move on** (fresh terminal after anything that changes PATH). There is no separate health-check pass afterward. Keep `SETUP_LOG.md` open and record what broke and what fixed it. Monday’s install clinic re-runs these same verifies under staff eyes.
+Plan two to four hours. Work in order — later sections depend on earlier ones. **Verify at the end of each section before you move on** (fresh terminal after anything that changes PATH). There is no separate health-check pass afterward. Keep `SETUP_LOG.md` open and record what broke and what fixed it. Monday’s install clinic re-runs these same verifies with help on hand.
 
-> Staff issue you three API keys: OpenAI (`sk-proj-…`), xAI (`xai-…`), and Anthropic (`sk-ant-api03-…`).
+> You'll be issued three API keys: OpenAI (`sk-proj-…`), xAI (`xai-…`), and Anthropic (`sk-ant-api03-…`).
 > Sections 0–4 need no keys, so start installing even if your keys haven't arrived yet.
 
 ---
@@ -24,7 +24,7 @@ $env:PROCESSOR_ARCHITECTURE             # must be AMD64
 - [ ] 25 GB or more free on C:
 - [ ] You can approve an elevation prompt (Git, Node, and Codex's sandbox need one)
 
-**ARM64 laptops cannot run this stack.** OpenCode fails to start on Windows ARM64 and goose ships no ARM build. Raise it with staff today.
+**ARM64 laptops cannot run this stack.** OpenCode fails to start on Windows ARM64 and goose ships no ARM build. Flag it in the pre-work channel today — it isn't something you can fix from your seat.
 
 **No admin rights?** Ticket IT immediately. This is the blocker that most reliably costs people their Monday.
 
@@ -179,9 +179,11 @@ Prefer this to `setx`, which truncates values past 1024 characters and leaves th
 
 ### Model ids
 
-Staff pin a model per provider for your cohort and post both ids in the pre-work channel. Set them once here and every later step picks them up — otherwise you would be hand-editing four commands further down.
+A model id per provider should be posted in the pre-work channel. Set them once here and every later step picks them up — otherwise you would be hand-editing four commands further down.
 
-Change the two quoted values to the ids from the channel, then run all four lines:
+If nothing has been posted yet, ask in the channel, and meanwhile use any current model id for that provider — these are two variables you can change in ten seconds later, not a decision you're locked into.
+
+Change the two quoted values to the ids you're using, then run all four lines:
 
 ```powershell
 $env:HB_OPENAI_MODEL = 'paste the OpenAI model id'
@@ -282,7 +284,7 @@ sandbox = "unelevated"
 
 That is a table header, so it has to be the last thing in the file — see the note above. If you later re-run the four-line command, it rewrites the top of the file and leaves this table where it is.
 
-Write down which mode you ended up on. It is one of the two details staff ask for when a machine behaves oddly mid-week.
+Write down which mode you ended up on. It is one of the two details worth having to hand when a machine behaves oddly mid-week.
 
 ### Write proof
 
@@ -309,9 +311,9 @@ Approve the write when it asks. Then look in Explorer.
 
 P3 runs the **same frozen brief** through Codex and OpenCode, then you adjudicate. P5 uses it again to compare how a second harness expresses permissions. OpenCode runs on **Grok** via your xAI key, so the two engines differ underneath and not just in name. Without it, P3 has nothing to compare.
 
-**Use the exact build staff pinned for your cohort.** OpenCode ships fast and its Windows support sometimes regresses between releases, so staff test one build and pin it. The pin names two things — a **channel** and a **version** — because winget and npm publish this tool on their own schedules and are usually a few releases apart. A version number without a channel is ambiguous, and a room running two different builds is not one comparator in P3.
+**Check the pre-work channel for a pinned build before you install.** OpenCode ships fast and its Windows support sometimes regresses between releases, which is why a cohort is better off on one known build than on whatever is newest that day. A pin names two things — a **channel** and a **version** — because winget and npm publish this tool on their own schedules and are usually a few releases apart. A version number without a channel doesn't identify a build.
 
-Run **only** the line for the channel the pin names, substituting the pinned version:
+If there is a pin, run **only** the line for the channel it names, substituting the version:
 
 ```powershell
 # channel: winget
@@ -323,7 +325,7 @@ winget install --id SST.opencode --exact --version <pinned version> --accept-pac
 npm install -g opencode-ai@<pinned version>
 ```
 
-If the pin hasn't been posted yet, install nothing here and finish the other sections first — this is the one step where "latest" costs you the exercise rather than an afternoon. Say so in the pre-work channel and come back.
+If there's no pin, don't stall on it. Install from winget without the `--version` flag, then write down the channel and the exact version you landed on and post it in the channel. Two people comparing notes is how the pin usually gets settled, and being able to say "I'm on winget 1.18.7" is what makes your result mean something on Tuesday. You may end up switching builds later; that's a two-minute reinstall, not a redo of this section.
 
 **Do not use the `curl` install command from OpenCode's website.** It is a bash script and cannot run on plain Windows PowerShell; no PowerShell equivalent is published.
 
@@ -336,7 +338,7 @@ opencode models xai --refresh
 
 OpenCode reads `XAI_API_KEY` from the environment automatically — there is no login step. An empty model list means this window can't see the key.
 
-`opencode --version` must print the pinned version exactly. If it prints something newer, an older install is still on PATH or the channel was wrong — record both numbers in your log and raise it, rather than upgrading to whatever is current.
+If you installed against a pin, `opencode --version` should print that version exactly. If it prints something else, an older install is probably still on PATH, or the other channel got used — record both numbers in your log and mention it, rather than quietly upgrading to whatever is current.
 
 **Keep this engine independent.** When OpenCode finds Claude Code's files it reads them: `~/.claude/CLAUDE.md` and any `.claude/skills` folder. If you add Claude Code in section 14, your second engine quietly starts working from the first one's notes, and two engines sharing one memory file will agree more than they should. Turn that off:
 
@@ -363,11 +365,11 @@ opencode run -m "xai/$env:HB_XAI_MODEL" "Create a file named from-opencode.txt i
 Get-Content .\from-opencode.txt
 ```
 
-- [ ] Channel and version recorded in your log, and they match the pin (Monday asks for both by name)
+- [ ] Channel and version recorded in your log — matching the pin if there is one (Monday asks for both by name)
 - [ ] `$env:OPENCODE_DISABLE_CLAUDE_CODE` returns `1` in a new terminal
 - [ ] `from-opencode.txt` exists on disk
 
-If OpenCode reports success but no file appears, that is the known Windows defect. Record the version and exact wording and tell staff.
+If OpenCode reports success but no file appears, that is the known Windows defect. Record the version and exact wording and post it — it's useful to the whole cohort, not just to you.
 
 ---
 
@@ -381,7 +383,7 @@ The features you might expect to find missing — approval gates, plan mode, sub
 
 Pi's docs say so plainly and explain why: a partial in-process sandbox *"would be easy to misunderstand as a security boundary while still depending on the host shell, filesystem, package managers, credentials, and extension code."* Real isolation has to come from the OS or a container. That is a sharper lesson about security theatre than most security training.
 
-For pre-work: small, specific tasks inside the smoke folder; read what it proposes; don't leave it unattended. Do not use `/share` on work material — it uploads the whole session, system prompt and tool results included, to a public-by-URL gist. Do not install third-party Pi packages this week unless staff name them; package code runs with full access to your machine.
+For pre-work: small, specific tasks inside the smoke folder; read what it proposes; don't leave it unattended. Do not use `/share` on work material — it uploads the whole session, system prompt and tool results included, to a public-by-URL gist. Do not install third-party Pi packages this week unless one has been named for the course; package code runs with full access to your machine.
 
 ```powershell
 powershell -c "irm https://pi.dev/install.ps1 | iex"
@@ -624,11 +626,11 @@ Use the command-line tool, **not** the Claude desktop app — the desktop app's 
 
 **Skip freely.** This is **not** required for Monday GREEN, the install clinic, or course pass. It only saves time if you want Thursday’s **endpoint wall** stretch (`mission_flesh/p6/local_endpoint_notes.md`).
 
-Staff will post a **model pin** (tag + minimum RAM). Do not freestyle large downloads on hotel Wi‑Fi without that pin.
+A **model pin** (tag + minimum RAM) may be posted in the channel. If one is, use it — these downloads are several gigabytes, and picking your own tag on hotel Wi‑Fi is how you spend an evening on a model your laptop can't hold. If none appears, ask before pulling anything large.
 
-1. Install [Ollama for Windows](https://ollama.com) from the channel staff approve, **or** LM Studio if the pin says so.
+1. Install [Ollama for Windows](https://ollama.com), **or** LM Studio if the pin names it.
 2. New PowerShell: `ollama --version` (or confirm LM Studio server starts).
-3. When the pin exists, set it once and pull it — or wait until staff post it:
+3. Once you have a tag, set it once and pull it:
 
    ```powershell
    $env:HB_LOCAL_MODEL = 'paste the tag from the LOCAL PIN line'
@@ -672,7 +674,7 @@ There is **no separate health-check checklist** to run. If something fails later
 | Tool won't authenticate | Key missing in this window, wrong prefix, or wrong key for that tool | Re-run the section 5 check; confirm prefix. The Codex app is the exception — it ignores the variable entirely and uses the key you pasted into *Sign in another way*. |
 | Codex app keeps asking you to sign in with ChatGPT | It was signed in to an account, or the key was never accepted | Profile menu → log out, then sign back in via *Sign in another way*. Confirm `forced_login_method = "api"` sits in `%USERPROFILE%\.codex\config.toml` **above** any `[table]` header — re-running section 7's four-line command puts it there safely — then restart the app. |
 | Codex app won't install — Store or `winget ... msstore` blocked | Group Policy blocks Microsoft app distribution | Download the Store-signed package directly: `https://persistent.oaistatic.com/codex-app-prod/ChatGPT-x64.msix`, then `Add-AppxPackage .\ChatGPT-x64.msix`. There is no plain MSI or EXE. If that is blocked too, it is an IT ticket. |
-| Worked yesterday, now `429` / quota / spend limit | Key hit its cap | Staff fix, not a reinstall. Message them with the key and what you ran. |
+| Worked yesterday, now `429` / quota / spend limit | Key hit its cap | Nothing a reinstall fixes — the key needs raising at the console end. Post which key and what you ran. |
 | Tool claims it wrote a file that isn't there | Believe the folder, not the chat | `Get-Location`, `Get-ChildItem`. On OpenCode this is a known Windows defect — report version and exact wording. |
 | goose installed but is a database tool | winget package name collision | Uninstall it; use the `aaif-goose` installer in section 10 |
 | Pi: "no bash shell found" mid-exercise | Git Bash not found | Set `shellPath` in `%USERPROFILE%\.pi\agent\settings.json` |
