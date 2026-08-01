@@ -60,12 +60,14 @@ settings:
   max_turns: 12
 
 # Success check after the recipe finishes. Failed check can retry.
+# Windows form: goose hands retry checks to cmd.exe on Windows, where `test`
+# does not exist. On macOS/Linux use: test -f out/watch_summary.md
 retry:
   max_retries: 1
   checks:
     - type: shell
-      command: "test -f out/watch_summary.md"
-  on_failure: "echo 'watch_summary missing' >> out/watch_summary.md || true"
+      command: 'powershell -NoProfile -Command "if (Test-Path out/watch_summary.md) { exit 0 } else { exit 1 }"'
+  on_failure: 'powershell -NoProfile -Command "New-Item -ItemType Directory -Force -Path out | Out-Null; Add-Content -Path out/watch_summary.md -Value ''watch_summary missing''"'
 
 activities:
   - "message: P6 Watch Officer — process feeder/ into out/watch_summary.md under the contract in instructions."

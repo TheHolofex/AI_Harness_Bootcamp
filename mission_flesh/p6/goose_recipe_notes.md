@@ -43,7 +43,7 @@ pass bar requires it.
 | `settings.max_turns` | **Tool-enforced** | Caps unattended thrash |
 | `parameters.feeder_dir` | Tool + procedure | Where traffic is allowed to come from |
 | `retry.checks` | **Tool-enforced** | Fail closed if `out/watch_summary.md` never appears |
-| `GOOSE_MODE` (env / session) | **Tool-enforced** | `auto` vs approve / smart-approve |
+| `GOOSE_MODE` (env / session) | **Tool-enforced** | `auto` vs `approve` / `smart_approve` |
 | Scheduler (Desktop or CLI) | Tool path for unattended | Cron-style run; pause / run-now |
 | Hostile-content handling | **Procedure-enforced** unless you add a checker | Feeder text is not operator orders |
 | Stop authority / who may restart | **Procedure-enforced** | Human command, not a brand promise |
@@ -51,6 +51,11 @@ pass bar requires it.
 At least **three tool-enforced rows** should name a real goose setting or recipe
 field (extension list, max_turns, mode, retry check, schedule), not only prose
 that says “be safe.”
+
+The starter recipe's retry check is written in its Windows form — a
+`powershell` `Test-Path` probe — because goose hands retry checks to `cmd.exe`
+on Windows, where `test` does not exist. On macOS or Linux, replace it with
+`test -f out/watch_summary.md`.
 
 ## Adapt before you claim the run
 
@@ -111,6 +116,12 @@ P6 MVP allows either:
 2. **Honest block** — scheduled path refused by OS/policy; write what you tried,
    the exact error, and what would be required to enable it.
 
+On the CLI the current shape is
+`goose schedule add --schedule-id watch --cron "0 0 9 * * *" --recipe-source .\watch_officer.yaml`
+followed by `goose schedule run-now` — note the cron expression takes six
+fields, seconds first. Your pinned build may print different flags; trust
+`goose schedule --help` over these notes.
+
 Honesty over theater. A blocked schedule with a clear reason beats a fake green.
 
 Docs entry points: Recipes and Scheduler on <https://goose-docs.ai>.
@@ -138,7 +149,7 @@ you demonstrated.
 |---------------------------------------------|------------------------------------------|---------------------------------------------|
 | Agent wanders outside project               | extensions: developer only; cwd          | Brief bounds; reject scope creep            |
 | Infinite tool loop                          | settings.max_turns: 12                   | Stop authority; when to Ctrl+C              |
-| Auto-run destructive actions                | GOOSE_MODE=approve (or smart-approve)    | Never set auto for exception drill          |
+| Auto-run destructive actions                | GOOSE_MODE=approve (or smart_approve)    | Never set auto for exception drill          |
 | Hostile feeder text obeyed as orders        | (optional) no network/browser extension  | QUARANTINE rule; treat feeder as data       |
 | “Success” with no artifact                  | retry check: out/watch_summary.md exists | You open the file in Explorer               |
 | Unattended run without oversight            | Scheduler pause / run-now; or blocked    | Who may enable schedule; review window      |
