@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P4-5",
+  "figures": [
+    {
+      "id": "p4-5-orientation",
+      "role": "orientation",
+      "template": "matrix",
+      "title": "Five answer gaps require five different moves",
+      "desc": "An epistemic-state map distinguishing unknown, disputed, withheld or restricted, stale, and not observed answers by evidence condition and safe language.",
+      "caption": "These states are not a confidence ladder; enter by the evidence condition, preserve its exact limit, and do not use any row as a synonym for false.",
+      "transcript": "UNKNOWN means no adequate relevant observation or authoritative source has been found; safely say that neither the claim nor its opposite is supported. DISPUTED means current relevant evidence supports incompatible answers; show the conflict and return to the resolving authority. WITHHELD or RESTRICTED means relevant evidence is outside permitted access; access status says nothing about truth, so use an authorized handoff. STALE means a once-relevant source lies outside the required time boundary; it may support a past claim but not current state. NOT OBSERVED means a defined search found no target but coverage or detection was incomplete; report the exact surface and window without claiming absence. Bounded absence is not another gap state; it is earned only after query-specific coverage, authority, time, and detection are established.",
+      "eyebrow": "ORIENTATION",
+      "columns": ["ANSWER STATE", "EVIDENCE CONDITION", "SAFE MOVE"],
+      "rows": [
+        ["UNKNOWN", "NO ADEQUATE OBSERVATION", "MAP SOURCE + OWNER"],
+        ["DISPUTED", "CURRENT EVIDENCE CONFLICTS", "SHOW BOTH + RESOLVE"],
+        ["WITHHELD / RESTRICTED", "ACCESS NOT PERMITTED", "AUTHORIZED HANDOFF"],
+        ["STALE", "OUTSIDE TIME BOUND", "REFRESH SOURCE"],
+        ["NOT OBSERVED", "NEGATIVE, INCOMPLETE VIEW", "NAME SURFACE + CHECK"]
+      ]
+    },
+    {
+      "id": "p4-5-mechanism",
+      "role": "mechanism",
+      "template": "flow",
+      "title": "Move from the question to a bounded answer or useful refusal",
+      "desc": "A five-stage path that normalizes a forced yes-or-no question, declares evidence bounds, tests an absence warrant, classifies the result, and returns a bounded answer or refusal with a next observation.",
+      "caption": "Move right only when each plate is written; the absence warrant—not an empty search result—determines whether the final output may say none.",
+      "transcript": "Stage one writes the exact claim, its opposite, and the decision it could change. Stage two declares the search coverage, source authority, event window, and answer-as-of time. Stage three tests detection: if the target were present, would this current, reconciled source be required and able to record it? Stage four classifies the result as UNKNOWN, DISPUTED, WITHHELD or RESTRICTED, STALE, NOT OBSERVED, supported positive, or BOUNDED ABSENCE. Stage five returns every supported partial fact, then either a bounded answer or a refusal that states the gap, what it does not establish, the next discriminating observation, and the owner.",
+      "eyebrow": "MECHANISM",
+      "items": [
+        { "label": "EXACT CLAIM", "detail": "Question · opposite · decision" },
+        { "label": "DECLARE BOUNDS", "detail": "Coverage · authority · time" },
+        { "label": "TEST DETECTION", "detail": "Would presence be recorded?" },
+        { "label": "CLASSIFY STATE", "detail": "Gap · support · bounded absence" },
+        { "label": "ANSWER / REFUSE", "detail": "Limit · next check · owner" }
+      ]
+    },
+    {
+      "id": "p4-5-diagnostic",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Diagnose what a missing result actually means",
+      "desc": "A decision surface mapping five missing-evidence signals to the answer state and smallest next observation, with the negative-search row distinguishing not observed from bounded absence.",
+      "caption": "Read the evidence signal first, then the state; only the last row can produce bounded absence, and only when every named warrant is satisfied.",
+      "transcript": "When no adequate relevant source was searched, classify UNKNOWN and map the authoritative source and owner. When current evidence conflicts, classify DISPUTED and identify the authority or direct observation that resolves the conflict. When access is barred, classify WITHHELD or RESTRICTED and hand off through the authorized path without inferring content. When the best source lies outside the needed time, classify STALE and obtain a current record. When a targeted search is negative, inspect coverage, authority, time, and detection: if any is open, classify NOT OBSERVED and close the specific gap; if all are satisfied, state BOUNDED ABSENCE for only that query slice and timestamp.",
+      "eyebrow": "DIAGNOSTIC",
+      "columns": ["MISSING-EVIDENCE SIGNAL", "ANSWER STATE", "NEXT OBSERVATION"],
+      "rows": [
+        ["NO ADEQUATE SOURCE", "UNKNOWN", "MAP AUTHORITY + OWNER"],
+        ["CURRENT CONFLICT", "DISPUTED", "RESOLVING AUTHORITY"],
+        ["ACCESS BAR", "WITHHELD / RESTRICTED", "AUTHORIZED HANDOFF"],
+        ["OUTSIDE AS-OF TIME", "STALE", "CURRENT RECORD"],
+        ["NEGATIVE SEARCH", "NOT OBSERVED / BOUNDED ABSENCE", "COVERAGE · AUTHORITY · TIME · DETECTION"]
+      ]
+    }
+  ]
+}

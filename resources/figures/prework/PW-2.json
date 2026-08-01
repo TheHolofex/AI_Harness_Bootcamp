@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "PW-2",
+  "figures": [
+    {
+      "id": "pw-2-orientation",
+      "role": "orientation",
+      "template": "fork",
+      "title": "One symptom, six possible layers",
+      "desc": "A fault-tree fork from one precise workstation symptom to six distinct diagnostic layers: shell, path, runtime, identity and access, local policy, and tool behavior.",
+      "caption": "Read from the top event into six distinct layer branches; evidence changes a branch’s status for this top event, while an error label alone does not.",
+      "transcript": "The top event is the exact observed failure. It forks to six diagnostic layers. Shell asks whether the intended interpreter received and parsed the input. Path asks whether name resolution selected the intended executable. Runtime asks whether that executable loaded and began. Identity and access separate authentication, which establishes identity, from authorization, which decides what that identity may do. Local policy asks whether a workstation or organization-managed control denied the action. Tool asks whether the started and permitted program performed the requested behavior and left the expected artifact. More than one branch may remain live, and evidence changes each branch’s status only for the top event under investigation.",
+      "eyebrow": "ORIENTATION",
+      "root": { "label": "TOP EVENT", "detail": "Exact symptom · time · observation point" },
+      "items": [
+        { "label": "SHELL", "detail": "Receive · parse" },
+        { "label": "PATH", "detail": "Resolve name · locate" },
+        { "label": "RUNTIME", "detail": "Load · begin" },
+        { "label": "IDENTITY & ACCESS", "detail": "Authenticate · authorize" },
+        { "label": "LOCAL POLICY", "detail": "Managed controls" },
+        { "label": "TOOL", "detail": "Perform · leave artifact" }
+      ]
+    },
+    {
+      "id": "pw-2-mechanism",
+      "role": "mechanism",
+      "template": "matrix",
+      "title": "Order probes by what they separate",
+      "desc": "A matrix ranking diagnostic probe classes by disruption, evidence loss, and the kind of hypothesis split each can provide.",
+      "caption": "Move downward only when the cheaper row cannot improve the decision; do not spend a change on a probe whose outcomes all mean the same thing.",
+      "transcript": "Passive capture has very low disruption and preserves the baseline symptom, context, and timeline even when it does not separate hypotheses. State inspection has low disruption and can separate shell, path, file, process, and boundary questions. A controlled comparison has low to moderate disruption and separates one changed dimension from held-constant conditions. A reversible intervention has moderate disruption and tests a written causal prediction, but it must include a return path. A reset or reinstall has high disruption and high evidence loss because it changes many variables, so it comes last rather than first.",
+      "eyebrow": "MECHANISM",
+      "columns": ["PROBE CLASS", "COST / RISK", "DECISION CONTRIBUTION", "ORDER"],
+      "rows": [
+        ["CAPTURE EXACT OUTPUT", "VERY LOW", "PRESERVE BASELINE", "FIRST"],
+        ["INSPECT CURRENT STATE", "LOW", "SHELL · PATH · FILE · BOUNDARY", "EARLY"],
+        ["CONTROLLED COMPARISON", "LOW–MEDIUM", "SPLIT ONE DIMENSION", "NEXT"],
+        ["REVERSIBLE INTERVENTION", "MEDIUM", "TEST CAUSAL PREDICTION", "LATER"],
+        ["RESET OR REINSTALL", "HIGH · EVIDENCE LOSS", "MANY VARIABLES · LOW SPLIT", "LAST" ]
+      ]
+    },
+    {
+      "id": "pw-2-diagnostic",
+      "role": "diagnostic",
+      "template": "timeline",
+      "title": "Escalate without erasing the trail",
+      "desc": "A six-stage evidence-preserving path from first symptom capture through prediction, one bounded probe, recorded state change, recovery proof, and owner handoff.",
+      "caption": "Each move adds evidence; if the required authority or scope of possible harm grows, stop the experiment and hand off the packet as it stands.",
+      "transcript": "First, capture the exact symptom, time, context, and expected behavior. Second, list live layer hypotheses and predict opposite outcomes. Third, run one bounded probe with a stop condition. Fourth, record the exact result and every state change without rewriting earlier entries. Fifth, verify recovery at the boundary actually tested and name remaining unknowns. Sixth, hand off the top event, evidence, probe log, bounded verdict, and requested owner decision. If a probe would expose secrets, change policy, risk work data, or exceed the operator's authority, the path moves directly to handoff.",
+      "eyebrow": "DIAGNOSTIC",
+      "items": [
+        { "label": "CAPTURE", "detail": "Symptom · time · context · expectation" },
+        { "label": "PREDICT", "detail": "Live branches · result A · result B" },
+        { "label": "PROBE", "detail": "One bounded move · stop condition" },
+        { "label": "RECORD", "detail": "Exact result · state change · return path" },
+        { "label": "VERIFY", "detail": "Recovery proof · remaining unknowns" },
+        { "label": "HAND OFF", "detail": "Evidence packet · owner decision" }
+      ]
+    }
+  ]
+}

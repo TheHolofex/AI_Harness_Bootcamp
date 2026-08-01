@@ -1,0 +1,191 @@
+<section id="purpose" class="resource-section">
+  <h2>When the next move is not obvious</h2>
+  <p>An install or smoke proof has failed, several explanations sound plausible, and each extra change risks hiding the original evidence. Set aside 45–60 minutes. You will leave with an annotated fault tree and a diagnostic record that another person can inspect without asking you to reconstruct the evening from memory.</p>
+  <p>Complete the <a href="/site/checklists/prework-install.html#ahb-prework-install-r-notfound">Pre-work install recovery checks</a> first; they establish the current commands, vendor paths, and recovery order. Continue when the unresolved task is to decide which layer can still explain the symptom, what observation would separate the live explanations, and when the evidence is strong enough to act or hand off.</p>
+  <div class="callout"><strong>Your finish line</strong>
+  One precise top event, six layer branches marked with evidence, a cost-ordered probe log, a <strong>bounded verdict</strong> limited to the boundary you actually tested, and a clear return-to-human condition. A carefully isolated “still unknown” is a valid result. An unsupported repair story is not.</div>
+</section>
+
+<figure data-resource-figure="orientation"></figure>
+
+<section id="mechanism" class="resource-section">
+  <h2>Work backward from the symptom</h2>
+  <p>A <strong>top event</strong> is the exact unwanted state you can observe. “The install is broken” is too broad. “The named smoke action returned a command-not-found message in a particular terminal at 19:10” is useful because another person can reproduce or refute it.</p>
+  <p>Formal fault-tree analysis begins with a specific undesired state and works backward through logically related contributing events. It distinguishes alternatives that can each cause the event (OR branches) from combinations that must occur together (AND branches). NASA describes this as deductive systems analysis: postulate the failed state, then build the more basic contributing faults systematically. The install fault tree borrows that discipline, but it is not a quantified safety analysis. Its job is to keep plausible workstation explanations visible until evidence removes them. See NASA’s <a href="https://s3vi.ndc.nasa.gov/ssri-kb/static/resources/Fault%20Tree%20Handbook_NASA.pdf" target="_blank" rel="noopener">Fault Tree Handbook with Aerospace Applications</a>, Chapters 2–4.</p>
+
+  <h3>Open six layer branches</h3>
+  <p>Start with all six branches live. Do not choose a favorite from the wording of the error alone.</p>
+  <p>A <strong>name resolver</strong> is the shell’s lookup that turns a short command name into a particular file. A <strong>runtime</strong> is the supporting engine and dependencies that the selected program needs in order to start. You will meet both boundaries separately in the tree.</p>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Layer</th><th>Question the branch asks</th><th>Evidence that would move it</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Shell</strong></td><td>Did the intended command interpreter receive and parse the input?</td><td>Shell identity, prompt shape, parsing behavior, and the exact error text.</td></tr>
+        <tr><td><strong>Path</strong></td><td>Did the resolver select the intended executable or script?</td><td>The resolved location, search order, file presence, and differences between old and fresh processes.</td></tr>
+        <tr><td><strong>Runtime</strong></td><td>Could the selected program load what it needs and begin execution?</td><td>A startup boundary, dependency or compatibility message, and whether a harmless diagnostic mode begins.</td></tr>
+        <tr><td><strong>Identity &amp; access</strong><br />Authentication / authorization</td><td>Did the running program prove the intended identity, and did the service allow that identity to perform the request?</td><td>Proof that execution reached the service, the authentication result, the authorization result, and a secret-safe check of credential presence—not the secret itself.</td></tr>
+        <tr><td><strong>Local policy</strong></td><td>Did an operating-system or organization control on the workstation deny the attempted action?</td><td>A named control source, denial event, scope, owner, and whether the same action is allowed in a permitted context.</td></tr>
+        <tr><td><strong>Tool</strong></td><td>Did the started and authorized tool perform the requested behavior?</td><td>The expected artifact, process output, logs, exit state, and a repeatable minimal case.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Authentication</strong> establishes who or what is presenting a credential. <strong>Authorization</strong> decides what that established identity may do. Both sit in the identity-and-access branch; local policy stays separate because it is enforced by the workstation or its organization-managed controls. NIST keeps the same distinction in its <a href="https://csrc.nist.gov/glossary/term/authentication" target="_blank" rel="noopener">authentication</a> and <a href="https://csrc.nist.gov/glossary/term/security_authorization" target="_blank" rel="noopener">authorization</a> glossary entries.</p>
+  <p>These branches are not a sequence of repairs. The root uses OR because any one layer can produce the observed failure. Use AND only when the system model says conditions must combine; uncertainty by itself is not a logic gate. More than one branch can be true: a stale search path may hide the intended executable, and the intended executable may later meet an identity or access fault. A verdict at one boundary should therefore say what it proves and what it does not.</p>
+
+  <h3>Turn a guess into a hypothesis</h3>
+  <p>A <strong>hypothesis</strong> is a possible cause paired with a prediction. Write it in this form: “If this branch explains the top event, then observation X should produce result Y; result Z would weaken it.” The prediction is what prevents a test from becoming another random action.</p>
+  <p>A <strong>probe</strong> is a bounded observation or experiment used to separate hypotheses. A probe is <strong>discriminating</strong> when its possible outcomes divide the live explanations. Before running one, fill in both predicted outcomes. If every live hypothesis predicts the same result, the probe may collect background information, but it will not choose the next branch.</p>
+  <p>Google’s troubleshooting method treats diagnosis as an iterative cycle of observations, hypotheses, and tests. It recommends tests whose outcomes separate groups of hypotheses, with likelihood and risk considered before active changes. It also warns that active tests can change later results. That is why passive observations come first and every <strong>intervention</strong>—a change made to the system—belongs in the record. See <a href="https://sre.google/sre-book/effective-troubleshooting/" target="_blank" rel="noopener">Effective Troubleshooting</a>, especially “Theory” and “Test and Treat.”</p>
+
+  <h3>Order probes by decision value, not habit</h3>
+  <p>A probe earns its place by changing the next decision. Decision-theoretic troubleshooting formalizes this by comparing observations, repairs, and configuration changes through their expected costs. You do not need reliable probabilities to use the practical consequence: favor a low-disruption observation that divides the live branches before an expensive action that merely repeats the symptom. See Breese and Heckerman’s <a href="https://www.microsoft.com/en-us/research/publication/topics-in-decision-theoretic-troubleshooting-repair-and-experiment/" target="_blank" rel="noopener">Decision-Theoretic Troubleshooting: A Framework for Repair and Experiment</a>.</p>
+  <ol>
+    <li><strong>Preserve first.</strong> Capture the exact symptom, time, working location, process age, and relevant non-secret state before changing anything.</li>
+    <li><strong>Prefer observation.</strong> Ask the current system what shell is running, what name it resolves, what file exists, or which boundary produced the error.</li>
+    <li><strong>Use a controlled comparison.</strong> Compare one meaningful dimension, such as an already-open process with a fresh one, while holding the target and requested action fixed.</li>
+    <li><strong>Make one reversible change.</strong> State what the change can distinguish, record the prior state, and define how to return.</li>
+    <li><strong>Reserve resets and reinstalls.</strong> They touch many variables at once, consume time, and can overwrite the evidence that would explain why the first attempt failed.</li>
+  </ol>
+  <p>On Windows, this old-process versus fresh-process comparison has a concrete mechanism. A process receives an environment block when it starts, and child processes normally inherit their parent’s environment. The search path is the ordered set of directories used to locate executable files. A new persistent setting can therefore be correct while an already-running terminal still holds an older process copy. Microsoft documents these behaviors in <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables" target="_blank" rel="noopener">about_Environment_Variables</a> and the Windows <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/path" target="_blank" rel="noopener">path reference</a>.</p>
+</section>
+
+<figure data-resource-figure="mechanism"></figure>
+
+<section id="worked-case" class="resource-section">
+  <h2>Workstation case: the successful install that cannot be named</h2>
+  <p>Mara is preparing a fictional command-line tool called Northstar. The installer reported completion, but the smoke proof never began. Her top event is precise:</p>
+  <blockquote>At 19:10 in Terminal A, entering the Northstar command returned “name not recognized”; no Northstar process began and no smoke artifact was created.</blockquote>
+  <p>She records four facts before touching the machine:</p>
+  <ul>
+    <li>Terminal A was opened at 18:30, before the installer ran.</li>
+    <li>The installer ended at 18:54 and wrote a completion record.</li>
+    <li>The expected executable file exists in the location recorded by the installer.</li>
+    <li>The current shell’s resolver cannot map the Northstar name to any file.</li>
+  </ul>
+
+  <h3>The deliberate misdiagnosis</h3>
+  <p>Mara remembers a credential failure from another tool and writes “bad authentication” as the cause. She starts toward the credential settings. That diagnosis conflicts with the boundary evidence: authentication cannot reject a process that the shell never located or started. She stops before exposing or replacing a secret, marks the identity-and-access branch <strong>not reached</strong>, and records the aborted action. The recovery is not pretending the wrong turn did not happen; it is restoring a clean decision point.</p>
+  <p>She then makes a second wrong move on purpose for the exercise: she runs the installer again. The same terminal returns the same name-resolution symptom. This result weakens “installer did not place the file,” but the reinstall changed several unknowns and replaced part of the original timeline. She labels the second completion record <strong>intervention, no symptom change</strong> instead of treating it as fresh proof of health.</p>
+
+  <h3>The discriminating path</h3>
+  <p>Her live explanations are now narrower:</p>
+  <ul>
+    <li><strong>Shell:</strong> possible but weak; the terminal identifies itself as the intended shell and parses ordinary built-in input.</li>
+    <li><strong>Path:</strong> live; the file exists but the current resolver does not find it.</li>
+    <li><strong>Runtime:</strong> not reached through the failed name, so still unknown.</li>
+    <li><strong>Identity and access, local policy, and tool behavior:</strong> not reached, so none can explain this specific top event yet.</li>
+  </ul>
+  <p>The next probe compares Terminal A with a fresh terminal while keeping the machine, user, name, and harmless diagnostic request fixed. Mara predicts:</p>
+  <ul>
+    <li>If the executable or install record is genuinely absent, both terminals will fail to resolve it.</li>
+    <li>If Terminal A holds an old process environment, the fresh terminal will resolve the intended location while Terminal A still will not.</li>
+    <li>If both resolve the same file but startup fails, the investigation moves to runtime, local policy, or tool behavior.</li>
+  </ul>
+  <p>The fresh terminal resolves the exact file recorded by the installer and begins the harmless diagnostic mode. Terminal A still does not resolve the name. That paired result is far more discriminating than another reinstall.</p>
+  <p>Her bounded verdict reads:</p>
+  <blockquote>The command-not-found top event in Terminal A is explained by stale process search state. The file existed and a fresh process resolved and started it. This does not yet prove identity, access, or smoke-file creation; those remain subject to the current checklist proof.</blockquote>
+  <p>Notice what stood after the misdiagnosis: the original error, both process start times, the resolver results, the installer record, and the outcome of each intervention. The case is useful to another person because it shows observations and state changes separately.</p>
+</section>
+
+<figure data-resource-figure="diagnostic"></figure>
+
+<section id="practice" class="resource-section">
+  <h2>Build the tree before you reveal the result</h2>
+  <p>Plan 20–25 minutes. Use a blank page or notes file. The fictional workstation below gives you enough evidence to choose a probe without needing any product knowledge.</p>
+
+  <h3>Supplied case: two copies of Atlas</h3>
+  <p>The top event is: “At 20:05 in Terminal B, Atlas begins a diagnostic request, reports that its runtime host is unavailable, and leaves the designated output folder without an artifact.” You also know:</p>
+  <ul>
+    <li>The intended shell is confirmed and parses the request.</li>
+    <li>The command resolver selects an Atlas executable in an old user-tools location.</li>
+    <li>The latest installer record names a different application location.</li>
+    <li>The old location still contains an earlier Atlas executable.</li>
+    <li>No network or credential exchange appears before the runtime message.</li>
+    <li>No operating-system or organization-policy denial is recorded.</li>
+  </ul>
+
+  <p>Use four evidence statuses. <strong>LIVE</strong> means the branch still fits the observations. <strong>WEAKENED</strong> means evidence argues against it without removing it. <strong>SUPPORTED</strong> means a probe favors it as a contributor, not necessarily the only cause. <strong>NOT REACHED</strong> means the failure occurred before that boundary; it cannot explain this top event, but its own health remains unknown.</p>
+
+  <ol>
+    <li>Write the top event with expected behavior, actual behavior, time, and observation point.</li>
+    <li>Draw the six layer branches. Mark each <strong>LIVE</strong>, <strong>WEAKENED</strong>, <strong>SUPPORTED</strong>, or <strong>NOT REACHED</strong>. Put one evidence item beside every mark.</li>
+    <li>Write two competing hypotheses. Include the tempting runtime explanation and the path-selection explanation.</li>
+    <li>For each hypothesis, predict what would happen if a harmless diagnostic mode were started from the exact location named in the latest installer record.</li>
+    <li>List three possible probes. Rank them by disruption, time, evidence loss, and how cleanly their possible outcomes split the two hypotheses.</li>
+    <li>Choose one probe and write the verdict you would be allowed to make after each possible result. Do this before opening the reveal.</li>
+  </ol>
+
+  <details>
+    <summary><strong>Reveal the supplied result only after you predict it</strong></summary>
+    <p>The executable at the latest installer location begins its harmless diagnostic mode without the runtime-host error. The resolver still selects the older copy when only the short Atlas name is used.</p>
+    <p>The strongest bounded verdict is: short-name resolution selected the older copy; the exact latest copy does not reproduce the runtime-host error; and the broad claim “the current runtime is missing” is weakened. Why the old copy emits that error remains unknown. Identity and access, final tool behavior, and artifact creation remain unproved because the diagnostic stopped before those boundaries.</p>
+    <p>A defensible status update is: <strong>Shell—WEAKENED</strong> by the confirmed shell; <strong>Path—SUPPORTED</strong> as a contributor by the paired copy result; <strong>Runtime—LIVE</strong> but bounded to the old copy’s startup context; <strong>Identity &amp; access—NOT REACHED</strong>; <strong>Local policy—WEAKENED</strong> because no denial is recorded; and <strong>Tool—NOT REACHED</strong>.</p>
+    <p>One defensible probe ranking is:</p>
+    <ol>
+      <li>Start the same harmless diagnostic from the exact latest location: low disruption and a clean split between copy selection and a shared runtime problem.</li>
+      <li>If both copies fail, inspect their non-secret startup context and support-file lookup without changing either copy: very low disruption, but useful only after the first split.</li>
+      <li>Reset or reinstall only through the current recovery owner: high disruption, many changed variables, and substantial evidence loss.</li>
+    </ol>
+  </details>
+
+  <h3>Make the work inspectable</h3>
+  <p>Copy this record for your Atlas case, then keep it for one real pre-work failure. Never paste a credential value. Record the variable or credential name and whether a secret-safe presence check passed.</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Field</th><th>Your record</th></tr></thead>
+      <tbody>
+        <tr><td>Case ID · local time · time zone</td><td></td></tr>
+        <tr><td>Top event: expected / actual / observation point</td><td></td></tr>
+        <tr><td>Impact and stop condition</td><td></td></tr>
+        <tr><td>Context: machine, shell, process start time, working location, tool identifier</td><td></td></tr>
+        <tr><td>Exact error or artifact absence</td><td></td></tr>
+        <tr><td>Layer branches and status: LIVE / WEAKENED / SUPPORTED / NOT REACHED</td><td></td></tr>
+        <tr><td>Probe prediction: result A means / result B means</td><td></td></tr>
+        <tr><td>Probe run: time, observation or intervention, exact result</td><td></td></tr>
+        <tr><td>State changed and return path</td><td></td></tr>
+        <tr><td>Branches removed, surviving hypothesis, and remaining unknowns</td><td></td></tr>
+        <tr><td>Recovery proof or escalation owner</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>This is a diagnostic record, not a formal evidence record for legal use. The transferable discipline is still the same: record facts and actions, preserve integrity and <strong>provenance</strong>—where the evidence came from and what changed it—and keep sensitive records protected. NIST gives those requirements high priority for incident analysis in <a href="https://csrc.nist.gov/pubs/sp/800/61/r3/final" target="_blank" rel="noopener">SP 800-61 Rev. 3</a>, RS.AN-06 and RS.AN-07.</p>
+
+  <h3>Self-check: predict, then reveal</h3>
+  <ol>
+    <li>A name does not resolve, the intended file exists, and starting that exact file reaches its diagnostic mode. Which branch best explains the top event? What remains unproved?</li>
+    <li>A program starts and reaches a remote service. The service recognizes its identity but denies the requested action. Which access check produced the result, and would reinstalling the local program discriminate?</li>
+    <li>Two live hypotheses predict the same result from a proposed probe. What should you change before running it?</li>
+    <li>An active test would require an administrator policy change and could affect work applications. Is that still your next probe?</li>
+  </ol>
+  <details>
+    <summary><strong>Reveal the self-check</strong></summary>
+    <ol>
+      <li>Path or name resolution is strongest. Runtime, identity and access, local policy, and final tool behavior are known only up to the boundary actually reached.</li>
+      <li>Authorization produced the result: identity was established, but the action was not allowed. No, reinstalling would not discriminate; the program was already found, started, and authenticated.</li>
+      <li>Write a different observation whose possible outcomes divide the hypotheses. If you cannot, combine or refine the hypotheses rather than pretending the test is decisive.</li>
+      <li>No. Preserve the record and return the policy decision to its owner. A low-cost probe becomes high-cost when its required authority or scope of possible harm grows.</li>
+    </ol>
+  </details>
+
+  <div class="callout"><strong>Stop and hand off</strong>
+  Stop active testing when the next move would expose a secret, alter organization policy, require authority you do not hold, risk work data, or erase the failing state. Also stop after two probes return ambiguous evidence. Carry the record to the person who owns the blocked layer, then use the current recovery step they name.</div>
+</section>
+
+<section id="transfer" class="resource-section resource-transfer">
+  <h2>Carry the tree to your desk</h2>
+  <p>Use the next harmless workstation failure you meet, or reconstruct one from your setup log. Give yourself 15 minutes. Write the top event, open the six branches, and run only one probe whose predictions you wrote first. Attach the exact result to the record and make a bounded verdict: supported cause, weakened causes, and what you did not reach.</p>
+  <p>Keep the boundary small. Do not use a production system, work data, real secret values, or a policy change for this transfer. Return to a human owner when the next move crosses administrator authority, security policy, account ownership, or a destructive reset. If the issue belongs to the course workstation, take your evidence packet back to the <a href="/site/checklists/prework-install.html#ahb-prework-install-r-notfound">current install recovery checks</a> rather than improvising a repair from this page.</p>
+
+  <h3>Sources</h3>
+  <ul>
+    <li><a href="https://s3vi.ndc.nasa.gov/ssri-kb/static/resources/Fault%20Tree%20Handbook_NASA.pdf" target="_blank" rel="noopener">NASA · Fault Tree Handbook with Aerospace Applications</a> — deductive top-event analysis and logical branch construction.</li>
+    <li><a href="https://www.nrc.gov/reading-rm/doc-collections/nuregs/staff/sr0492/index" target="_blank" rel="noopener">U.S. Nuclear Regulatory Commission · Fault Tree Handbook (NUREG-0492)</a> — authoritative fault-tree construction reference.</li>
+    <li><a href="https://sre.google/sre-book/effective-troubleshooting/" target="_blank" rel="noopener">Google SRE · Effective Troubleshooting</a> — hypothesis testing, discriminating experiments, risk, and clear notes.</li>
+    <li><a href="https://www.microsoft.com/en-us/research/publication/topics-in-decision-theoretic-troubleshooting-repair-and-experiment/" target="_blank" rel="noopener">Microsoft Research · Decision-Theoretic Troubleshooting</a> — observations and repairs ordered by expected decision cost.</li>
+    <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables" target="_blank" rel="noopener">Microsoft Learn · Environment variables</a> and the <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/path" target="_blank" rel="noopener">Windows path reference</a> — process inheritance and executable search behavior.</li>
+    <li>NIST CSRC glossary · <a href="https://csrc.nist.gov/glossary/term/authentication" target="_blank" rel="noopener">Authentication</a> and <a href="https://csrc.nist.gov/glossary/term/security_authorization" target="_blank" rel="noopener">Authorization</a> — identity verification versus permission to act.</li>
+    <li><a href="https://csrc.nist.gov/pubs/sp/800/61/r3/final" target="_blank" rel="noopener">NIST SP 800-61 Rev. 3</a> — recording actions and preserving evidence integrity and provenance.</li>
+  </ul>
+</section>

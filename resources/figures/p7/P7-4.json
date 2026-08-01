@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P7-4",
+  "figures": [
+    {
+      "id": "p7-4-orientation",
+      "role": "orientation",
+      "template": "matrix",
+      "title": "Two inflows share one finite review lane",
+      "desc": "A queue map showing first-touch holds and failure demand as separate inflows to one review queue, plus incomplete or escaped outcomes feeding later failure demand.",
+      "caption": "Read across each row: first-touch holds and failure demand enter the same finite service lane; incomplete or escaped outcomes become later demand rather than successful completions.",
+      "transcript": "Row one shows first-touch holds entering the review queue and finite human service, then leaving through a recorded decision or declared exit. Row two shows failure demand—missing evidence, unclear return reasons, duplicates, and corrections after misses—entering the same queue as additional touches and either closing or re-entering later. Row three shows incomplete or escaped outcomes being traced as exits and feeding later failure demand rather than being counted as successful completions. Backlog and age arise inside the shared lane when combined arrivals outrun service or arrive in bursts.",
+      "eyebrow": "ORIENTATION · QUEUE / CAPACITY",
+      "columns": ["INFLOW / SIGNAL", "SHARED SERVICE BOUNDARY", "EXIT / FEEDBACK"],
+      "rows": [
+        ["FIRST-TOUCH HOLDS", "QUEUE + FINITE REVIEW", "DECISION / DECLARED EXIT"],
+        ["FAILURE DEMAND", "SAME QUEUE · EXTRA TOUCHES", "CLOSE OR RE-ENTER LATER"],
+        ["INCOMPLETE / ESCAPED", "TRACE AS AN EXIT", "FEEDS LATER FAILURE DEMAND"]
+      ]
+    },
+    {
+      "id": "p7-4-mechanism",
+      "role": "mechanism",
+      "template": "stack",
+      "title": "A decision packet removes search without hiding uncertainty",
+      "desc": "A five-layer exception evidence packet progressing from stable identity and clock through the exact trigger, proposed effect, decision evidence, and the authorized control and decision record.",
+      "caption": "Read from the top: each layer removes a specific source of review time while keeping the condition, uncertainty, deadline, authority, and resulting decision inspectable.",
+      "transcript": "Layer one, IDENTITY AND CLOCK, carries item ID, source or run ID, policy version, received time, age, and decision deadline. Layer two, TRIGGER AND OBSERVATION, names the exact rule or check, observed value, expected condition, and every trigger that fired. Layer three, PROPOSED EFFECT, states what clearing would do, who or what is affected, and whether the effect can be reversed. Layer four, DECISION EVIDENCE, presents the minimum source facts and links relevant to the trigger, with conflicts, missing facts, and uncertainty left visible. Layer five, CONTROL AND RECORD, names allowed verdicts, authority, default at deadline, escalation, prior attempts, final verdict, reason, reviewer, timestamps, and resulting state. The packet is complete when an authorized reviewer can decide or name the one missing fact without reconstructing the item elsewhere.",
+      "eyebrow": "MECHANISM · EVIDENCE PACKET",
+      "items": [
+        { "label": "IDENTITY + CLOCK", "detail": "Item · source · version · age · deadline" },
+        { "label": "TRIGGER + OBSERVATION", "detail": "Rule · actual · expected · all fires" },
+        { "label": "PROPOSED EFFECT", "detail": "Action · affected surface · reversibility" },
+        { "label": "DECISION EVIDENCE", "detail": "Minimum facts · links · conflicts · missing" },
+        { "label": "CONTROL + RECORD", "detail": "Options · default · authority · verdict · time" }
+      ]
+    },
+    {
+      "id": "p7-4-diagnostic",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Move the mechanism, not only the threshold",
+      "desc": "An economic decision surface mapping observed false-hold and miss burdens, plus queue escape, to the first bounded redesign move instead of a universal threshold.",
+      "caption": "Find the observed burden pattern; the final column names the first move to test while preserving representative audits of both held and cleared lanes.",
+      "transcript": "When false-hold and miss burdens are both bounded, preserve the current rule and continue representative sampling. When false-hold burden is high but miss burden is bounded, refine the trigger or inputs and audit the cleared lane before loosening. When miss burden is high but false-hold burden is bounded, strengthen detection, increase safe holding, or add review capacity without averaging away severe consequences. When both burdens are high, the discriminator, source quality, or evidence packet is weak; redesign the mechanism rather than sliding the same threshold. When the visible queue ages while items expire, abandon, duplicate, or bypass, restore outcome visibility, define defaults and escalation, and repair demand or capacity before interpreting a lower queue as success.",
+      "eyebrow": "DIAGNOSTIC · ECONOMIC SURFACE",
+      "columns": ["OBSERVED SURFACE", "FALSE-HOLD BURDEN", "MISS BURDEN", "FIRST MOVE"],
+      "rows": [
+        ["BOTH BOUNDED", "BOUNDED", "BOUNDED", "PRESERVE + SAMPLE"],
+        ["HOLDS DOMINATE", "HIGH", "BOUNDED", "REFINE TRIGGER + AUDIT"],
+        ["MISSES DOMINATE", "BOUNDED", "HIGH", "STRENGTHEN + CAPACITY"],
+        ["BOTH HIGH", "HIGH", "HIGH", "REDESIGN INPUT + PACKET"],
+        ["QUEUE ESCAPES", "DELAY HIDDEN", "UNKNOWN", "TRACE EXITS + DEFAULT"]
+      ]
+    }
+  ]
+}

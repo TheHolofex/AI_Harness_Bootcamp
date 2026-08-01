@@ -1,0 +1,249 @@
+<section id="purpose" class="resource-section">
+  <h2>Use it when a pile of notes starts to look like corroboration</h2>
+  <p>Five notes can carry one claim without providing five pieces of evidence. A handover becomes a digest, the digest becomes a schedule card, two later notes cite those derivatives, and the final brief reports “multiple sources.” The surface has multiplied. The origin has not.</p>
+  <p>Plan for 60–75 minutes. You will leave with a <strong>claim-lineage graph</strong> and ledger: one inspectable record showing which artifacts carry the claim, how each artifact derives from another, what changed during each transformation, how many evidence roots remain, and what confidence correction follows.</p>
+  <p>Start after <a href="../../blocks/p4.html#ideas">P4 · The director’s second brain</a>. That course path gives you a navigable vault and citations you can walk. The move here begins after a cited note opens: keep walking backward until you can distinguish original evidence from retellings of it.</p>
+  <div class="callout">
+    <strong>Lineage answers “where did this claim come from?”</strong>
+    It does not by itself answer “is the claim true?” or “is the source authorized to decide this?” A perfectly drawn graph can lead to one false rumor. Provenance makes that dependence visible so a human can test it.
+  </div>
+</section>
+
+<figure data-resource-figure="orientation"></figure>
+
+<section id="mechanism" class="resource-section">
+  <h2>Trace the claim as a graph of artifacts and transformations</h2>
+  <p>Work one claim at a time. An <strong>artifact</strong> is any durable carrier of the claim: a note, message, report, recording, ticket, table, or page. A <strong>derivation edge</strong> records that one artifact’s content was influenced by another. A <strong>transformation</strong> names what happened on that edge: quotation, paraphrase, summary, translation, extraction, normalization, merge, or revision.</p>
+  <p>This vocabulary is a plain operational use of the <a href="https://www.w3.org/TR/prov-primer/">W3C PROV model</a>. PROV calls durable things <em>entities</em>, the processes that use and generate them <em>activities</em>, and the people, organizations, or software responsible for those activities <em>agents</em>. Its <code>wasDerivedFrom</code> relation connects a generated entity to a used entity when the used entity influenced the result. You do not need to encode formal PROV to borrow its discipline: keep the carrier, the transformation, and responsibility separate.</p>
+
+  <div class="table-scroll">
+    <table>
+      <caption>A small PROV-style vocabulary for a working vault</caption>
+      <thead><tr><th>Question</th><th>Graph element</th><th>Vault example</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>What carries the claim?</td><td>Artifact / entity</td><td><code>Weekly Ops Digest</code></td><td>Counts the actual objects, not vague “mentions.”</td></tr>
+        <tr><td>What produced the new carrier?</td><td>Transformation / activity</td><td>Summarized a handover</td><td>Exposes where qualifiers, dates, or scope could change.</td></tr>
+        <tr><td>What earlier carrier influenced it?</td><td><code>derives-from</code> edge</td><td>Digest derives from handover</td><td>Prevents a derivative note from posing as a new origin.</td></tr>
+        <tr><td>Who or what performed it?</td><td>Responsible agent</td><td>Duty analyst or import script</td><td>Supports accountability, but does not confer truth.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Choose an arrow convention and write it down</h3>
+  <p>In the ledger below, arrows point from the derived artifact back to the artifact it used: <code>N3 → N2</code> means “N3 derives from N2.” That direction matches the audit move. Start at the claim in front of you and walk backward. Other graph systems reverse the arrow; either convention works if the label and transcript remove doubt.</p>
+
+  <h3>A root is an origin in this graph, not a certificate of truth</h3>
+  <p>A <strong>root source</strong> is the earliest reachable evidence-bearing artifact for the scoped claim whose own derivation is not known in the graph. “Earliest reachable” is deliberately honest. A root may later turn out to be another retelling. It may be anonymous, mistaken, stale, fabricated, or outside its author’s authority. Root status says that your current trail stops there; it does not promote the artifact.</p>
+  <p><em>Root source</em> is a graph term here, not a synonym for <em>primary source</em>. The <a href="https://www.w3.org/TR/prov-dm/">PROV data model</a> treats primary-source status as relative to a topic and subject to domain conventions. Your current root may be secondary to the event and still be the place where the recorded trail ends.</p>
+  <p>A derivation edge is not a support edge either. A rebuttal can quote a report in order to contradict it, and a digest can derive from a note without endorsing every claim in that note. Record <code>support</code>, <code>contradict</code>, or <code>unresolved</code> for the scoped claim after reading the artifacts; never infer stance from the existence of an edge.</p>
+  <p>Count roots only after tracing every carrying artifact. Then assess each root on separate axes:</p>
+  <ul>
+    <li><strong>Authority:</strong> is its source responsible or competent for this proposition? An authorized facilities owner can approve a closure; a colleague repeating hallway talk cannot.</li>
+    <li><strong>Directness:</strong> does it record the event, measurement, decision, or first-hand observation, or report somebody else’s report?</li>
+    <li><strong>Stance:</strong> does it support the exact claim, contradict it, or leave it unresolved at the strength stated?</li>
+    <li><strong>Uncertainty:</strong> what qualifier, missing step, date boundary, or provenance gap limits use?</li>
+  </ul>
+  <p>Those axes are not interchangeable. An authorized executive can relay hearsay. A direct witness may lack decision authority. A source can be both direct and wrong. The <a href="https://www.w3.org/2005/Incubator/prov/XGR-prov-20101214/">W3C Provenance Incubator final report</a> makes the boundary explicit: provenance supports trust judgments, but trust is a contextual judgment derived from provenance and other quality information, not provenance itself.</p>
+
+  <h3>Count origins, not costumes</h3>
+  <ol>
+    <li><strong>Freeze the claim.</strong> Write the proposition with actor, action, object, place, and time precise enough that two artifacts can genuinely agree or disagree.</li>
+    <li><strong>Inventory carriers.</strong> List every artifact used to support or contradict that exact proposition.</li>
+    <li><strong>Follow each edge backward.</strong> Open the cited artifact. Record the relationship and the transformation; do not stop because the intermediate note looks polished.</li>
+    <li><strong>Mark transformation loss.</strong> Compare wording across the edge. Note dropped qualifiers, widened scope, translated terms, rounded numbers, merged actors, or changed dates.</li>
+    <li><strong>Collapse derivative branches.</strong> Artifacts that terminate at the same root form one lineage cluster for root counting.</li>
+    <li><strong>Assess roots.</strong> Record authority, directness, stance, and uncertainty before stating any support count or operational conclusion.</li>
+  </ol>
+  <p>The corrected count is not always “one root equals one support.” One root can contradict the claim, or merely record uncertainty. Multiple roots can also share one witness, dataset, or upstream collection process. When that broader dependence matters, use <a href="../p3/independence-spectrum.html">The Independence Spectrum</a> to inspect the system paths. This graph stays narrower: it reveals artifact genealogy.</p>
+</section>
+
+<figure data-resource-figure="mechanism"></figure>
+
+<section id="worked-case" class="resource-section">
+  <h2>Follow one rumor through five notes</h2>
+  <p>A training coordinator is preparing a non-acting space-planning brief. The claim under review is:</p>
+  <blockquote><strong>Claim C-7:</strong> North Annex will close on 30 September.</blockquote>
+  <p>The brief cites five internal notes. Before reading the table, predict the maximum number of distinct evidence roots those five notes could represent from their titles alone. The honest answer is a range from one to five. Titles and locations do not reveal genealogy; only the edges do.</p>
+
+  <div class="table-scroll">
+    <table>
+      <caption>The claim’s production history, preserved before correction</caption>
+      <thead><tr><th>Artifact</th><th>Claim wording</th><th>Derives from</th><th>Transformation</th><th>What changed</th></tr></thead>
+      <tbody>
+        <tr><td><code>R0 · voice memo</code></td><td>“A facilities tech thinks the Annex may go offline around 30 September.”</td><td>Unknown</td><td>Recorded recollection</td><td>No named speaker, approval record, or direct notice; “thinks,” “may,” and “around” bound the report.</td></tr>
+        <tr><td><code>N1 · Shift Handover</code></td><td>“North Annex likely offline 30 September; unconfirmed.”</td><td><code>R0</code></td><td>Paraphrase</td><td>Retains uncertainty but sharpens “around” to an exact date.</td></tr>
+        <tr><td><code>N2 · Weekly Ops Digest</code></td><td>“North Annex closes 30 September.”</td><td><code>N1</code></td><td>Summary</td><td>Drops “likely” and “unconfirmed.” Possibility becomes fact.</td></tr>
+        <tr><td><code>N3 · Space Board</code></td><td>“Closure scheduled: 30 September.”</td><td><code>N2</code></td><td>Field extraction and normalization</td><td>Adds the institutional-sounding word “scheduled.”</td></tr>
+        <tr><td><code>N4 · Relocation Memo</code></td><td>“Per the weekly digest, closure is 30 September.”</td><td><code>N2</code></td><td>Quotation-like restatement</td><td>Preserves the digest’s overstatement and adds no observation.</td></tr>
+        <tr><td><code>N5 · Director Note</code></td><td>“Space Board and Relocation Memo confirm the 30 September closure.”</td><td><code>N3</code> and <code>N4</code></td><td>Merge</td><td>Two branches from N2 are mistaken for two independent supports.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Using the stated arrow convention, the graph is:</p>
+  <pre><code>N5 → N3 → N2 → N1 → R0
+  ↘ N4 ↗
+
+Artifact mentions of C-7: 5 notes
+Distinct reachable roots: 1 (R0)
+Independent supporting roots established: at most 1
+Authoritative, direct confirmation established: 0</code></pre>
+  <p>The five-note support count collapses to one lineage root. Even “one support” is too generous if it implies confirmation: R0 is an unverified recollection of what an unnamed technician may have thought. The repaired sentence is:</p>
+  <blockquote>Five notes repeat one unconfirmed report that North Annex may close around 30 September. No independent, authorized closure notice was found.</blockquote>
+  <p>Confidence is corrected in words, not by dividing a score by five. The operational state is unresolved, and the next check is concrete: ask the accountable facilities owner for the dated closure decision or approved notice. Until that artifact exists, the coordinator may model a contingency but must not brief the closure as settled.</p>
+  <p>This is <strong>false corroboration</strong>: several visible sources descend from the same primary source. The current UK Home Office <a href="https://www.gov.uk/government/publications/about-country-policy-and-information-notes/purpose-methodology-and-use-accessible">country-information methodology</a> names that failure directly and also warns about <strong>round-tripping</strong>, where secondary sources cite each other. The lesson is domain-independent: source plurality is not evidence plurality until the roots are shown.</p>
+</section>
+
+<section id="failure-recovery" class="resource-section">
+  <h2>Break it on purpose: let the last note confirm the first</h2>
+  <p>Inject a circular-sourcing failure. After N5 is published, edit N1 in place to add, “Confirmed by Director Note N5.” The visible graph now contains <code>N1 → N5 → N3 → N2 → N1</code>. A reader entering at any node can walk in a loop and mistake persistence for confirmation. No edge reaches new evidence.</p>
+  <p>The symptom is mechanical: backward traversal revisits an artifact already on the current path. Mark the repeated node, stop that branch, and set <code>cycle flag: yes</code>. Do not keep clicking until the loop feels persuasive, and do not count either side of the loop as a new root.</p>
+  <p>First diagnose identity. The <a href="https://www.w3.org/TR/prov-primer/">W3C PROV primer</a> treats each revision as a new entity, and the <a href="https://www.w3.org/TR/prov-constraints/">PROV constraints</a> require a derived entity’s generation to follow the original’s generation. The apparent cycle often means mutable note names hid versions. Recover N1 as two artifacts: <code>N1-v1</code> existed before N5; <code>N1-v2</code> was created later from N1-v1 and N5. The repaired edges are:</p>
+  <pre><code>N5 → N3 → N2 → N1-v1 → R0
+  ↘ N4 ↗
+N1-v2 → N1-v1
+N1-v2 → N5
+
+Root count for C-7 remains 1: R0.</code></pre>
+  <p>Then collapse the circular cluster for counting and search for an outbound edge to evidence that predates it. If versioning and timestamps cannot repair the order, mark the lineage inconsistent. If the cluster has no external root, record <code>root source: unknown</code>; a cycle is not a root. Preserve the original wording, timestamps, and edit history before repair so the correction does not erase how false independence arose.</p>
+  <p>Transformation loss compounds across chains. Greenberg’s empirical <a href="https://pubmed.ncbi.nlm.nih.gov/19622839/">citation-network study</a> documented amplification and “citation invention,” including hypotheses acquiring the appearance of fact through citation. Your small graph catches the same shape early: compare each edge, especially where a qualifier disappears or a downstream summary cites two siblings as though they were independent.</p>
+</section>
+
+<figure data-resource-figure="diagnostic"></figure>
+
+<section id="practice" class="resource-section">
+  <h2>Reconstruct the roots before deciding whether Bay 4 reopens</h2>
+  <p>This synthetic exercise is advisory. No message, facility action, or schedule change may follow from it. The scoped claim is: <strong>Bay 4 reopens Monday.</strong> Use the supplied excerpts and links exactly as written.</p>
+
+  <div class="table-scroll">
+    <table>
+      <caption>Supplied artifacts for root reconstruction</caption>
+      <thead><tr><th>Artifact</th><th>Excerpt and source link</th></tr></thead>
+      <tbody>
+        <tr><td><code>R-17 · Call Log</code></td><td>“Facilities technician: Monday is possible if inspection clears.” No inspection result or authorization is recorded. Source link: none known.</td></tr>
+        <tr><td><code>A · Shift Handover</code></td><td>“Bay 4 expected Monday (tentative).” Source: <code>[[Call Log R-17]]</code>.</td></tr>
+        <tr><td><code>B · Daily Digest</code></td><td>“Bay 4 reopens Monday.” Source: <code>[[Shift Handover A]]</code>.</td></tr>
+        <tr><td><code>C · Schedule Card</code></td><td>“Bay 4 — open Monday.” Imported from <code>[[Daily Digest B]]</code>.</td></tr>
+        <tr><td><code>D · Planning Note</code></td><td>“Two sources say Monday.” Sources: <code>[[Schedule Card C]]</code> and <code>[[Team Message E]]</code>.</td></tr>
+        <tr><td><code>E · Team Message</code></td><td>“Monday confirmed in the plan.” Source: <code>[[Planning Note D]]</code>.</td></tr>
+        <tr><td><code>R-44 · Inspection Work Order</code></td><td>Signed by the facilities inspector: “Inspection booked Tuesday 09:00. Reopening requires a passed inspection.” Source link: none known.</td></tr>
+        <tr><td><code>F · Safety Note</code></td><td>“Do not reopen before inspection approval.” Source: <code>[[Inspection Work Order R-44]]</code>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ol>
+    <li><strong>Predict.</strong> Before drawing, write the apparent artifact count and your predicted root count as a range.</li>
+    <li><strong>Trace.</strong> Draw one derived-artifact-to-source edge for every supplied link. Put the transformation on each edge: paraphrase, summary, import, merge, or quotation-like restatement.</li>
+    <li><strong>Detect the loop.</strong> Mark the first repeated node during backward traversal. Collapse that circular cluster for root counting.</li>
+    <li><strong>Classify roots.</strong> For each reachable root, record authority, directness, support or contradict, and uncertainty. Do not use artifact count as support count.</li>
+    <li><strong>Correct the claim.</strong> Write one sentence proportionate to the roots, followed by one next check and one human return condition.</li>
+  </ol>
+
+  <details>
+    <summary><strong>Reveal the reconstruction after you commit</strong></summary>
+    <pre><code>D → C → B → A → R-17
+D ↔ E                    cycle; adds no root
+F → R-44
+
+Distinct reachable roots: R-17 and R-44
+R-17: tentative support; indirect; authority unclear; inspection condition open
+R-44: direct, signed process evidence; contradicts Monday reopening
+Corrected conclusion: Monday reopening is not supported for action.
+Next check: obtain the passed inspection record and authorized reopening notice.</code></pre>
+    <p>The D/E loop is round-tripping, not a third source. R-17 supports only a possibility conditioned on inspection. R-44 directly states that inspection occurs Tuesday and must pass before reopening, so it contradicts the Monday claim at a stronger authority and directness. A human facilities owner must adjudicate any real schedule; the graph only shows why the current note cluster cannot settle it.</p>
+  </details>
+
+  <div class="callout">
+    <strong>Stop conditions:</strong> stop if an artifact cannot be opened, a cited excerpt does not match its carrier, versions or timestamps cannot order the edges, the root source remains unknown, or acting would affect a real person, facility, commitment, or safety condition. Record the gap and return the claim to the accountable human owner.
+  </div>
+</section>
+
+<section id="artifact" class="resource-section">
+  <h2>Keep the lineage graph and ledger beside the claim</h2>
+  <p>Copy this into <code>claim-lineage.md</code>. Use one row per claim–artifact–source edge. If one artifact derives the claim from two sources, give it two rows; hiding both inside one cell makes cycles and shared roots harder to detect.</p>
+  <pre><code># Claim lineage
+
+claim:
+claim_scope_actor_action_object_place_time:
+arrow_convention: derived artifact -> source artifact
+operator_owner:
+traced_at:
+
+## Graph
+artifacts:
+- id:
+  exact_claim_excerpt:
+edges:
+- derived_artifact:
+  derives_from:
+  transformation: quotation / paraphrase / summary / translation /
+                  extraction / normalization / merge / revision
+
+## Lineage ledger
+| Claim | Artifact | Derives-from | Transformation | Root source | Authority | Directness | Support/contradict | Uncertainty | Cycle flag | Next check |
+|---|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | support / contradict / unresolved | | yes / no | |
+
+## Count correction
+artifact_mentions:
+distinct_reachable_roots:
+roots_supporting_exact_claim:
+roots_contradicting_exact_claim:
+roots_unresolved_or_unknown:
+broader_dependency_not_tested:
+
+claim_before_lineage:
+claim_after_lineage:
+confidence_correction_reason:
+
+## Human return
+stop_condition:
+accountable_decision_owner:
+next_non-derivative_check:</code></pre>
+  <p>Do not turn the ledger into a numeric truth score. Root count removes duplicate genealogy; authority, directness, contradiction, uncertainty, and broader dependence still require judgment. Keep exact excerpts close enough that another operator can replay every edge.</p>
+</section>
+
+<section id="self-check" class="resource-section">
+  <h2>Self-check: predict before revealing the verdict</h2>
+  <ol>
+    <li>Five notes all trace to one anonymous report. How many distinct roots and confirmed supports exist?</li>
+    <li>A signed executive summary traces to an unverified blog. Does the executive’s authority make the underlying claim authoritative?</li>
+    <li>Two roots interview the same witness independently. May the lineage ledger call them two independent evidence paths?</li>
+    <li>A backward walk returns to an earlier note. What should happen to the support count?</li>
+    <li>One derivative cluster supports a date and one direct work order contradicts it. Should artifact majority decide?</li>
+  </ol>
+  <details>
+    <summary><strong>Reveal the answers after you commit</strong></summary>
+    <ol>
+      <li>One known root. Confirmed supports may still be zero because the root’s authority, directness, and truth have not been established.</li>
+      <li>No. Responsibility for publishing the summary is not direct evidence for the blog’s proposition. Record the executive as an agent in the transformation and assess the root separately.</li>
+      <li>Not from this ledger alone. It shows two artifact roots, but the shared witness may couple them. Test that broader dependence with the P3 independence method.</li>
+      <li>Flag the cycle, stop the branch, repair versions and timestamps, and collapse the loop for counting. A circular edge adds no root.</li>
+      <li>No. Preserve support and contradiction separately, compare authority and directness, and return the decision to the accountable human owner.</li>
+    </ol>
+  </details>
+</section>
+
+<section id="transfer" class="resource-section">
+  <h2>Transfer one live claim in 20 minutes</h2>
+  <p>Choose one consequential claim that appears in at least three approved notes on your real desk. Freeze its wording, then fill the ledger until every branch reaches a root, a cycle, or an explicit unknown. Compare wording at each transformation. Correct the visible support count and rewrite the claim at the strength the roots can bear.</p>
+  <p>Keep the move small. Do not redesign note statuses here, establish broader system-path independence, or treat the graph as a containment proof. If the lineage exposes those needs, link the open question to the owning workflow and stop this pass with a bounded finding.</p>
+  <p>Return to the P4 answer and audit record with two lines: <code>artifact mentions → distinct roots</code>, and <code>claim before → claim after</code>. That is the proof that navigation changed judgment rather than merely producing a prettier graph.</p>
+  <div class="callout">
+    <strong>Human return:</strong> stop before any action when a decisive root is unavailable, identity or access rules prohibit following the trail, a circular cluster cannot be ordered, roots materially contradict, or no authorized source can resolve the claim. The accountable owner chooses whether to gather evidence, carry a named uncertainty, or halt the decision.
+  </div>
+</section>
+
+<section id="sources" class="resource-section">
+  <h2>Sources</h2>
+  <p>Use this shelf to deepen the mechanism. None of these sources can certify the truth of a local claim; that verdict still depends on the actual roots, their quality, and human judgment.</p>
+  <ul>
+    <li><a href="https://www.w3.org/TR/prov-primer/">W3C, <em>PROV Model Primer</em></a> — an accessible model of entities, activities, agents, derivation, revision, and quotation.</li>
+    <li><a href="https://www.w3.org/TR/prov-dm/">W3C, <em>PROV-DM: The PROV Data Model</em></a> — normative definitions for derivation and expanded transformation paths.</li>
+    <li><a href="https://www.w3.org/TR/prov-constraints/">W3C, <em>Constraints of the PROV Data Model</em></a> — ordering rules that make hidden versions and impossible derivation order diagnosable.</li>
+    <li><a href="https://www.w3.org/2005/Incubator/prov/XGR-prov-20101214/">W3C Provenance Incubator Group, final report</a> — the boundary between provenance records and contextual trust judgments.</li>
+    <li><a href="https://www.gov.uk/government/publications/about-country-policy-and-information-notes/purpose-methodology-and-use-accessible">UK Home Office, <em>Purpose, methodology and use of Country Policy and Information Notes</em></a> — an authoritative operational warning against round-tripping and false corroboration.</li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/19622839/">Steven A. Greenberg, “How citation distortions create unfounded authority” (BMJ, 2009)</a> — a primary citation-network study of amplification, citation bias, and claims acquiring authority through retelling.</li>
+  </ul>
+</section>

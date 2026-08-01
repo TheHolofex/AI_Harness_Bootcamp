@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P1-2",
+  "figures": [
+    {
+      "id": "p1-2-relation-family-map",
+      "role": "orientation",
+      "template": "comparison",
+      "title": "Four relation families for a judgment-product machine",
+      "desc": "Four labeled relation families show whether a transformed input should leave decision fields stable, be ignored as out of scope, move affected fields in a known direction, or force a visible stop.",
+      "caption": "Choose the family from the semantic effect of the input change, then name both what moves and what must hold.",
+      "transcript": "KEEP covers meaning-preserving representation changes and expects decision-bearing fields to remain stable. IGNORE covers clearly out-of-scope additions and expects in-scope fields to remain stable while the addition stays absent. MOVE covers a known fact change and expects affected fields to move in a predicted direction while unrelated fields hold. STOP covers missing, conflicting, or malformed required input and expects an explicit gap, conflict, or hand-back.",
+      "eyebrow": "RELATION FAMILY MAP",
+      "items": [
+        { "label": "KEEP", "detail": "Representation changes; decision fields stay stable" },
+        { "label": "IGNORE", "detail": "Out-of-scope additions stay out of the product" },
+        { "label": "MOVE", "detail": "Known fact changes move named fields only" },
+        { "label": "STOP", "detail": "Missing or conflicting input becomes visible" }
+      ]
+    },
+    {
+      "id": "p1-2-transformation-relation",
+      "role": "mechanism",
+      "template": "flow",
+      "title": "From a related input pair to a checkable output relation",
+      "desc": "A four-step flow starts with a source input and output, applies one controlled transformation under a stated precondition, runs the same machine on the follow-up input, and verifies that the intended input relation implies the predicted output relation.",
+      "caption": "The prediction is written before the follow-up run; otherwise the observed output can quietly redefine what counts as passing.",
+      "transcript": "Step 1: run source input X through the saved machine to obtain output O. Step 2: under precondition P, apply controlled transformation T to produce follow-up input X prime and verify the intended input relation I between X and X prime. Step 3: run the same machine on X prime to obtain output O prime. Step 4: check the full metamorphic relation: when P holds and I of X and X prime is true, output relation R of O and O prime must be true. R names expected changes and expected holds.",
+      "eyebrow": "METAMORPHIC TEST",
+      "items": [
+        { "label": "SOURCE X → O", "detail": "Record decision-bearing fields" },
+        { "label": "TRANSFORM UNDER P", "detail": "Create X′ and verify I(X, X′)" },
+        { "label": "FOLLOW-UP X′ → O′", "detail": "Run the same saved machine" },
+        { "label": "CHECK MR", "detail": "P and I(X, X′) imply R(O, O′)" }
+      ]
+    },
+    {
+      "id": "p1-2-failure-localization-surface",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Failure-localization decision surface",
+      "desc": "A two-by-two matrix crosses response to a relevant change with stability under an irrelevant change to route the operator toward the next diagnostic probe.",
+      "caption": "Read the relevant-change row first, then the irrelevant-change column; each cell names a likely fault area, not a final diagnosis.",
+      "transcript": "When the machine responds to relevant changes and stays stable under irrelevant changes, the expected behavioral pattern stands. When it responds to relevant changes but drifts under irrelevant changes, inspect scope, format, ordering, or hidden context. When it ignores relevant changes but stays stable under irrelevant changes, inspect input selection, stale state, or a comparator aimed at the wrong field. When it ignores relevant changes and also drifts under irrelevant ones, inspect the transformation, relation, run control, and machine before making a broad capability claim.",
+      "eyebrow": "NEXT PROBE",
+      "columns": ["RELEVANT PROBE", "IRRELEVANT STABLE", "IRRELEVANT DRIFTS"],
+      "rows": [
+        ["RESPONDS", "EXPECTED PATTERN", "SCOPE / CONTEXT LEAK"],
+        ["IGNORES", "INPUT / STATE BLIND", "SYSTEM OR TEST SUSPECT"]
+      ]
+    }
+  ]
+}

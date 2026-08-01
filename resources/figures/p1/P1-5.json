@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P1-5",
+  "figures": [
+    {
+      "id": "p1-5-run-evidence-bundle",
+      "role": "orientation",
+      "template": "stack",
+      "title": "The run is a bundle, not an output file",
+      "desc": "Five stacked, independently labeled layers bind one execution identity to its input snapshot, machine and configuration, execution record, and output plus operator verdict.",
+      "caption": "Read from the run ID down: every layer closes a different reconstruction gap, and no single filename can stand in for the bundle.",
+      "transcript": "Layer 1 is the stable run ID, the immutable handle for one execution. Layer 2 is the input snapshot, including expected boundary, resolved source IDs, paths, roles, and full content hashes. Layer 3 is the machine and configuration, including the saved procedure and the exact governing configuration bytes. Layer 4 is the execution record, including time, working location, parameters, status, byproducts, and visible unknowns. Layer 5 is the raw output and operator verdict, with the output hash, decision surface, external checks, and residual uncertainty. Together these layers form an inspectable run-evidence bundle.",
+      "eyebrow": "RUN EVIDENCE BUNDLE",
+      "items": [
+        { "label": "STABLE RUN ID", "detail": "One immutable handle; never reused" },
+        { "label": "INPUT SNAPSHOT", "detail": "Source IDs + paths + full hashes" },
+        { "label": "MACHINE + CONFIG", "detail": "Saved procedure and governing bytes" },
+        { "label": "EXECUTION RECORD", "detail": "Time, parameters, status, unknowns" },
+        { "label": "OUTPUT + VERDICT", "detail": "Raw product, checks, human judgment" }
+      ]
+    },
+    {
+      "id": "p1-5-identity-location-content",
+      "role": "mechanism",
+      "template": "comparison",
+      "title": "Identity, location, and content answer different questions",
+      "desc": "Four labeled panels distinguish the immutable run identifier, a stable artifact identifier, a mutable file path, and a content hash that identifies observed bytes.",
+      "caption": "Use all four where they earn a job: IDs preserve reference, paths locate copies, and hashes expose byte-level substitution or change.",
+      "transcript": "RUN ID answers which execution occurred and must never be reused. ARTIFACT ID answers which logical source, configuration, or output the record means, even if its location moves. PATH answers where a copy was found at a particular time and may be renamed, moved, or overwritten. CONTENT HASH answers which exact bytes were observed under a named algorithm. A hash does not prove truth or authority, a path does not prove content, and an identifier does not prove that either the path or bytes are correct. The manifest binds these distinct claims together.",
+      "eyebrow": "IDENTITY / LOCATION / CONTENT",
+      "items": [
+        { "label": "RUN ID", "detail": "Which one-time execution?" },
+        { "label": "ARTIFACT ID", "detail": "Which logical source or output?" },
+        { "label": "PATH", "detail": "Where was this copy located?" },
+        { "label": "CONTENT HASH", "detail": "Which observed bytes?" }
+      ]
+    },
+    {
+      "id": "p1-5-replay-diagnosis-surface",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Replay diagnosis starts with the bundle",
+      "desc": "A two-by-two matrix crosses whether the recorded run bundle matches with whether the decision surface matches, routing the operator to a bounded replay classification.",
+      "caption": "Read the recorded-bundle column first; a matching decision cannot rescue a mismatched reconstruction, and a divergent decision matters only after controls match.",
+      "transcript": "When the recorded observable bundle matches and the decision surface matches, behavior stood; compare output hashes separately because a matching output digest yields byte stood. When the recorded bundle differs but the decision surface matches, replay is not established and the reconstruction must be repaired. When the recorded bundle matches but the decision surface differs, classify controlled divergence and investigate generative variance, hidden state, machine behavior, and product checks. When the run or output cannot be compared, classify inconclusive and name the missing comparison.",
+      "eyebrow": "REPLAY DIAGNOSIS",
+      "columns": ["DECISION SURFACE", "RECORDED BUNDLE MATCHES", "RECORDED BUNDLE DIFFERS"],
+      "rows": [
+        ["MATCHES", "BYTE / BEHAVIOR STOOD", "NOT ESTABLISHED"],
+        ["DIFFERS", "CONTROLLED DIVERGENCE", "NOT ESTABLISHED"]
+      ]
+    }
+  ]
+}

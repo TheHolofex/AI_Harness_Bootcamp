@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P4-1",
+  "figures": [
+    {
+      "id": "p4-1-orientation",
+      "role": "orientation",
+      "template": "fork",
+      "title": "Five notes can converge on one evidence root",
+      "desc": "An audit starts at merged note N5 and follows its N3 and N4 branches backward through shared notes N2 and N1 until both paths terminate at the same unverified root R0.",
+      "caption": "Start at N5 and read left to right; both apparent support branches terminate at R0, so N1 through N5 form one derivative cluster.",
+      "transcript": "The audit starts at N5, a note that merges N3 and N4 and calls them two confirmations. The first backward branch is N5 to N3 to N2 to N1 to R0. The second backward branch is N5 to N4 to N2 to N1 to R0. N1 paraphrases R0, N2 summarizes N1, N3 imports N2, N4 restates N2, and N5 merges N3 with N4. The union contains five note artifacts, N1 through N5, but both branches terminate at the same unverified voice memo R0. The distinct root count is one; authoritative direct confirmation is still zero.",
+      "eyebrow": "ORIENTATION",
+      "source": { "label": "N5 · AUDIT START", "detail": "Merges N3 + N4" },
+      "items": [
+        { "label": "N3 → N2 → N1 → R0", "detail": "Board → digest → handover → root" },
+        { "label": "N4 → N2 → N1 → R0", "detail": "Memo → digest → handover → root" }
+      ]
+    },
+    {
+      "id": "p4-1-mechanism",
+      "role": "mechanism",
+      "template": "flow",
+      "title": "Root counting comes before support counting",
+      "desc": "A five-stage audit freezes one claim, traces artifact edges, records transformation loss, counts unique reachable roots, and then assesses authority, directness, stance, and uncertainty.",
+      "caption": "Do not assess corroboration at the artifact layer; trace and collapse genealogy before judging each root.",
+      "transcript": "First, freeze one claim with enough actor, action, object, place, and time detail to compare exact propositions. Second, trace each derived artifact back to every artifact that influenced it. Third, label each transformation and record information lost, added, or strengthened. Fourth, collapse derivative branches that terminate at the same root and count unique reachable roots. Fifth, assess each root separately for authority, directness, support or contradiction, and uncertainty before writing a bounded claim. Root count removes duplicate genealogy but does not prove truth or full system-path independence.",
+      "eyebrow": "MECHANISM",
+      "items": [
+        { "label": "FREEZE CLAIM", "detail": "One exact proposition" },
+        { "label": "TRACE EDGES", "detail": "Artifact → source" },
+        { "label": "LOG TRANSFORMS", "detail": "Loss, addition, strength" },
+        { "label": "COUNT ROOTS", "detail": "Collapse shared origins" },
+        { "label": "ASSESS, THEN CLAIM", "detail": "Authority · directness · stance" }
+      ]
+    },
+    {
+      "id": "p4-1-diagnostic",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Diagnose false independence at the graph surface",
+      "desc": "A diagnostic matrix maps shared roots, circular citations, unknown roots, shared upstream witnesses, and direct contradictions to corrected counts and concrete next checks.",
+      "caption": "Find the graph condition first; each condition changes what may be counted and what the operator checks next.",
+      "transcript": "When five notes reach one root, treat them as one derivative cluster and assess that root; there is at most one supporting origin. When D and E cite each other, the cycle adds no root; version the artifacts, collapse the circular cluster, and search for an external source. When the trail ends at an unknown source, support remains unresolved and the next move is to locate the origin or declare the gap. When two roots use the same witness, the artifact-root count is two but broader independence is not established; test the shared path. When a direct root contradicts a derivative cluster, artifact majority cannot decide; preserve the contradiction and return it to accountable human judgment.",
+      "eyebrow": "DIAGNOSTIC",
+      "columns": ["SIGNAL", "GRAPH READING", "COUNT", "NEXT MOVE"],
+      "rows": [
+        ["5 NOTES → 1 ROOT", "DERIVATIVE CLUSTER", "AT MOST 1", "ASSESS ROOT"],
+        ["D ↔ E", "CIRCULAR CITE", "NO NEW ROOT", "VERSION + COLLAPSE"],
+        ["ROOT UNKNOWN", "TRAIL ENDS EARLY", "UNRESOLVED", "FIND OR DECLARE"],
+        ["2 ROOTS, 1 WITNESS", "POSSIBLE DEPENDENCE", "NOT YET 2", "TEST PATHS"],
+        ["DIRECT CONTRADICTION", "ROOTS DISAGREE", "NO CONSENSUS", "HUMAN ADJUDICATES"]
+      ]
+    }
+  ]
+}

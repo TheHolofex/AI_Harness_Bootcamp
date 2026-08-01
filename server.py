@@ -20,7 +20,8 @@ ALLOW_OPEN      If "1" and SITE_PASSWORD is empty, serve without a gate
                 (local only). Never set this on Railway.
 
 Always blocked (even after login): .git, .env*, secrets/, venvs,
-.github/, *.py, and staff-only keys listed in STAFF_ONLY_PATHS.
+.github/, *.py, authoring/build sources, analysis notes, and staff-only
+keys listed in STAFF_ONLY_PATHS.
 """
 
 from __future__ import annotations
@@ -81,6 +82,10 @@ BLOCKED_PREFIXES = (
     "__pycache__/",
     ".github/",
     "node_modules/",
+    "scripts/",
+    "docs/analysis/",
+    "resources/handouts/",
+    "resources/figures/",
 )
 
 # Cohort password is shared with students — keep answer keys off HTTP.
@@ -89,7 +94,11 @@ STAFF_ONLY_PATHS = {
     "lead/COHORT_PIN.md",
     "instruments/p2_dyno/engineering/FACILITATOR_KEY.md",
     "instruments/p2_dyno/mission_ops/FACILITATOR_KEY.md",
+    "instruments/p8_hold_degrade/FACILITATOR_KEY.md",
     "mission_flesh/p5/FACILITATOR_KEY.md",
+    "resources/AUTHORING.md",
+    "resources/catalog.json",
+    "resources/scopes.json",
 }
 
 BLOCKED_NAMES = {

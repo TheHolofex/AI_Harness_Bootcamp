@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P6-5",
+  "figures": [
+    {
+      "id": "p6-5-orientation",
+      "role": "orientation",
+      "template": "flow",
+      "title": "Supervision is an active control loop",
+      "desc": "A five-stage loop showing bounded automation, visible mode and responsibility, active human sampling, a meaningful exception deadline, and an authorized intervention with handover evidence.",
+      "caption": "Read left to right: technical bounds start the loop; supervision becomes credible only when state is visible, attention has an active task, exceptions carry a clock, and intervention leaves inspectable evidence.",
+      "transcript": "Stage one is BOUNDED SYSTEM ACTS: the automation operates in its nominal state within technical limits. Stage two is MODE AND STATE EXPOSED: the interface shows actual mode, likely next mode, system condition, and whether the human or automation owns the next action. Stage three is HUMAN SAMPLES: the supervisor answers a triggered, active monitoring question and records the result. Stage four is EXCEPTION AND DEADLINE: an alarm states the condition, consequence, required action, responsible role, and time available. Stage five is INTERVENE AND HAND OVER: an authorized person stops, stabilizes, takes over, or transfers responsibility and preserves evidence. The intervention and handover evidence feeds the next supervision cycle and the next rehearsal.",
+      "eyebrow": "ORIENTATION",
+      "items": [
+        { "label": "BOUNDED SYSTEM ACTS", "detail": "Nominal · bounded" },
+        { "label": "MODE + STATE EXPOSED", "detail": "Actual · next · owner" },
+        { "label": "HUMAN SAMPLES", "detail": "Active check · record" },
+        { "label": "EXCEPTION + DEADLINE", "detail": "Meaning · clock · owner" },
+        { "label": "INTERVENE + HAND OVER", "detail": "Stop · stabilize · proof" }
+      ]
+    },
+    {
+      "id": "p6-5-mechanism",
+      "role": "mechanism",
+      "template": "timeline",
+      "title": "Nominal success can consume intervention readiness",
+      "desc": "A six-step timeline showing how long quiet operation, low-value alerts, a weakly signaled mode shift, clustered exceptions, and an unrehearsed takeover can erode the supervisor’s readiness even when technical bounds hold.",
+      "caption": "Read across the shift: the boundary may remain intact while attention, mode knowledge, alarm response, and takeover fluency become progressively less ready for the rare exception.",
+      "transcript": "At START, the supervisor has an active model of the system and the intervention. During QUIET RUN, the automation succeeds and attention rationally reallocates to other work. During LOW-VALUE ALERTS, repeated notices that require no action reinforce fast acknowledgment and reduce the signal value of the channel. At MODE SHIFT, a weak cue lets the actual mode diverge from the supervisor’s model. At EXCEPTION CLUSTER, several signals and competing tasks compress the time available to interpret responsibility. At TAKEOVER, the response deadline meets a cognitive and procedural skill that has not been rehearsed. Recovery adds active samples, explicit mode and responsibility cues, actionable alarms, precommitted stop authority, and timed rehearsal before the next run.",
+      "eyebrow": "MECHANISM",
+      "items": [
+        { "label": "START", "detail": "Active model" },
+        { "label": "QUIET RUN", "detail": "Attention shifts" },
+        { "label": "LOW-VALUE ALERTS", "detail": "Response erodes" },
+        { "label": "MODE SHIFT", "detail": "Mode model splits" },
+        { "label": "EXCEPTION CLUSTER", "detail": "Load spikes" },
+        { "label": "TAKEOVER", "detail": "Skill unpracticed" }
+      ]
+    },
+    {
+      "id": "p6-5-diagnostic",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Intervention readiness must appear on five surfaces",
+      "desc": "A diagnostic matrix contrasting observable readiness evidence with fragile signals and the smallest recovery move for mode cues, monitoring, alarms, authority, and rehearsal.",
+      "caption": "Scan downward before unattended time: any fragile signal means the human layer is still an assumption; use the recovery column to make it testable.",
+      "transcript": "MODE CUE is ready when actual mode, consequence, next transition, and responsibility are visible; status color alone is fragile; recover with an explicit mode and responsibility callout. MONITORING is ready when a triggered active sample leaves a record; watch the dashboard is fragile; recover by naming the question, trigger, and evidence. ALARM is ready when condition, consequence, action, deadline, owner, and acknowledgment state are visible; repeated notices and ACK ALL are fragile; recover by grouping causes, removing nonactionable noise, and separating acknowledgment from resolution. AUTHORITY is ready when one named role can intervene or stop; ambiguous shared responsibility is fragile; recover by precommitting the decision and safe state. REHEARSAL is ready when a timed exception, intervention, final state, and handover pass are recorded; explanation without practice is fragile; recover by injecting the mode transition, measuring, redesigning, and retesting.",
+      "eyebrow": "DIAGNOSTIC",
+      "columns": ["READINESS SURFACE", "READY EVIDENCE", "FRAGILE SIGNAL", "RECOVERY MOVE"],
+      "rows": [
+        ["MODE CUE", "ACTUAL MODE + RESPONSIBILITY", "STATUS COLOR ONLY", "EXPLICIT CALLOUT"],
+        ["MONITORING", "TRIGGERED SAMPLE RECORD", "WATCH DASHBOARD", "QUESTION + TRIGGER"],
+        ["ALARM", "MEANING + DEADLINE", "REPEATS + ACK ALL", "GROUP + DISTINGUISH"],
+        ["AUTHORITY", "NAMED INTERVENE / STOP", "ROLE AMBIGUOUS", "PRECOMMIT + SAFE STATE"],
+        ["REHEARSAL", "TIMED PASS + HANDOVER", "EXPLAINED, NOT PRACTICED", "INJECT + RETEST"]
+      ]
+    }
+  ]
+}

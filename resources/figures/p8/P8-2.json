@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P8-2",
+  "figures": [
+    {
+      "id": "p8-2-orientation",
+      "role": "orientation",
+      "template": "matrix",
+      "title": "One endpoint, four boundary planes",
+      "desc": "A data-flow boundary map separating the request path from credential control, telemetry and support, and retention and recovery paths.",
+      "caption": "Trace every plane across organization and service control; the response path is only the first row.",
+      "transcript": "The request and data plane moves prompts, files, and outputs from the organization app through its gateway to provider ingress and inference. The credential and control plane joins user identity and the organization secret store to a service principal, provider policy, and provider administrators. The telemetry and support plane moves local logs plus request and error metadata toward provider operations and support. The retention and recovery plane connects local records and deletion events to provider caches, logs, replicas, and backups. Each crossing needs its own owner, principal, control, and evidence.",
+      "eyebrow": "ORIENTATION · DATA-FLOW BOUNDARY",
+      "columns": ["PLANE", "ORGANIZATION SIDE", "CROSSING", "SERVICE SIDE"],
+      "rows": [
+        ["REQUEST + DATA", "APP → GATEWAY", "PAYLOAD + OUTPUT", "INGRESS → INFERENCE"],
+        ["CREDENTIAL + CONTROL", "USER + SECRET STORE", "SERVICE PRINCIPAL", "POLICY + ADMINS"],
+        ["TELEMETRY + SUPPORT", "GATEWAY LOGS", "REQUEST + ERROR METADATA", "OPS LOGS + SUPPORT"],
+        ["RETENTION + RECOVERY", "LOCAL RECORDS", "DELETE + RESTORE EVENTS", "CACHE + LOGS + BACKUPS"]
+      ]
+    },
+    {
+      "id": "p8-2-mechanism",
+      "role": "mechanism",
+      "template": "flow",
+      "title": "Turn an endpoint promise into a decision record",
+      "desc": "A five-stage map from an exact scoped claim through boundary, control, and evidence to an explicit unknown and bounded decision.",
+      "caption": "A claim becomes usable only when its scope, mechanism, evidence, owner, and remaining unknown survive inspection.",
+      "transcript": "First write the exact scoped claim rather than a compressed word such as private or local. Second name the component, data state, actor, and boundary the claim covers. Third identify the control and where it acts. Fourth attach an applicable artifact with version, date, and owner; keep documented, configured, and observed evidence distinct. Fifth preserve every material unknown, assign its owner, and issue a bounded clear, hold, or stop status.",
+      "eyebrow": "MECHANISM · CLAIM TO EVIDENCE",
+      "items": [
+        { "label": "1 · CLAIM", "detail": "Exact wording + scope" },
+        { "label": "2 · BOUNDARY", "detail": "Component · data · actor" },
+        { "label": "3 · CONTROL", "detail": "Mechanism + where it acts" },
+        { "label": "4 · EVIDENCE", "detail": "Artifact · date · owner" },
+        { "label": "5 · UNKNOWN", "detail": "Clear · hold · stop · return" }
+      ]
+    },
+    {
+      "id": "p8-2-diagnostic",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Let the unresolved question choose the safe return",
+      "desc": "A decision surface mapping five unresolved endpoint questions to a bounded operating status and the human role that owns the return.",
+      "caption": "Unknown is an operating state: hold the affected use, name the owner, and return with the dossier row that needs a decision.",
+      "transcript": "When core flow or expected egress is unknown, hold all probes and return to architecture and security owners. When the acting credential's privilege is unknown, hold all probes and return to identity and security owners. When provider administration is unknown, hold sensitive use and return to security and the provider owner. When retention or backup behavior is unknown, hold sensitive use and return to privacy and records owners. When jurisdiction or contract requirements conflict with the arrangement, stop and return to the proper legal or organizational authority. A synthetic probe is cleared only when its own authority, credential privilege, expected egress, and data class are known.",
+      "eyebrow": "DIAGNOSTIC · QUESTION TO DECISION",
+      "columns": ["UNRESOLVED SIGNAL", "SAFE STATUS", "RETURN TO"],
+      "rows": [
+        ["CORE FLOW / EXPECTED EGRESS UNKNOWN", "HOLD ALL PROBES", "ARCHITECTURE + SECURITY"],
+        ["ACTING CREDENTIAL PRIVILEGE UNKNOWN", "HOLD ALL PROBES", "IDENTITY + SECURITY"],
+        ["PROVIDER ADMIN UNKNOWN", "HOLD SENSITIVE USE", "SECURITY + PROVIDER OWNER"],
+        ["RETENTION / BACKUP UNKNOWN", "HOLD SENSITIVE USE", "PRIVACY + RECORDS OWNER"],
+        ["JURISDICTION / TERMS CONFLICT", "STOP + RETURN", "PROPER AUTHORITY"]
+      ]
+    }
+  ]
+}

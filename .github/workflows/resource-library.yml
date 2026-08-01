@@ -1,0 +1,71 @@
+name: Resource library
+
+on:
+  push:
+    paths:
+      - "resources/**"
+      - "scripts/**"
+      - "site/resources.html"
+      - "site/resources/**"
+      - "site/assets/resources/**"
+      - "site/css/resources.css"
+      - "site/css/course.css"
+      - "site/js/shell.js"
+      - "site/blocks/**"
+      - "site/prework.html"
+      - "site/pulse.html"
+      - "server.py"
+      - ".github/workflows/resource-library.yml"
+  pull_request:
+    paths:
+      - "resources/**"
+      - "scripts/**"
+      - "site/resources.html"
+      - "site/resources/**"
+      - "site/assets/resources/**"
+      - "site/css/resources.css"
+      - "site/css/course.css"
+      - "site/js/shell.js"
+      - "site/blocks/**"
+      - "site/prework.html"
+      - "site/pulse.html"
+      - "server.py"
+      - ".github/workflows/resource-library.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install markup validators
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils tidy
+      - name: Check scripts
+        run: |
+          node --check scripts/resource-figure-kit.mjs
+          node --check scripts/build-resources.mjs
+          node --check scripts/verify-resources.mjs
+          node --check site/js/shell.js
+          python3 -m py_compile server.py
+      - name: Verify committed output
+        run: |
+          node scripts/build-resources.mjs --check
+          node scripts/verify-resources.mjs
+      - name: Verify production files stay off the learner host
+        run: |
+          python3 - <<'PY'
+          import server
+
+          internal = [
+              "resources/AUTHORING.md",
+              "resources/catalog.json",
+              "resources/scopes.json",
+              "resources/handouts/p1/metamorphic-tests.html",
+              "resources/figures/p1/P1-2.json",
+              "scripts/build-resources.mjs",
+          ]
+          for item in internal:
+              assert server.is_blocked(item), item
+          PY

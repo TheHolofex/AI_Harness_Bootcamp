@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P3-1",
+  "figures": [
+    {
+      "id": "p3-1-orientation",
+      "role": "orientation",
+      "template": "timeline",
+      "title": "From duplicate run to diversified evidence path",
+      "desc": "A five-stage spectrum moves from a duplicate run through context and engine separation to diversified evidence paths with residual dependencies stated explicitly.",
+      "caption": "Move right only when a named isolation move removes a plausible common cause; no point on the spectrum proves statistical independence.",
+      "transcript": "At DUPLICATE, both outputs share the run recipe, context, engine, evidence, and evaluator. At CONTEXT SPLIT, fresh contexts reduce prior-output anchoring but leave the rest shared. At ENGINE SPLIT, providers or model families differ while the upstream evidence and downstream evaluator may remain common. At PATH SPLIT, source preparation, retrieval, or transformation differs for the failure of concern. At BOUNDED CORROBORATION, the operator states which failure classes the split addresses and names every material residual dependence. Movement along this spectrum is causal and dimension-specific, not a percentage score or proof of statistical independence.",
+      "eyebrow": "ORIENTATION",
+      "items": [
+        { "label": "DUPLICATE", "detail": "Same recipe + path" },
+        { "label": "CONTEXT SPLIT", "detail": "Fresh context only" },
+        { "label": "ENGINE SPLIT", "detail": "Different model path" },
+        { "label": "PATH SPLIT", "detail": "Evidence path split" },
+        { "label": "BOUNDED", "detail": "Residuals named" }
+      ]
+    },
+    {
+      "id": "p3-1-mechanism",
+      "role": "mechanism",
+      "template": "fork",
+      "title": "One common cause can survive two engine labels",
+      "desc": "A shared upstream set containing a summary, search index, and rubric reaches two different engines and one judge, producing an overstated agreement verdict.",
+      "caption": "Before dispatch, name the joint failure and mark each shared node that could produce it; split the earliest feasible edge.",
+      "transcript": "Before dispatch, the root is marked SHARED CAUSE: an incomplete summary, an index built from that summary, and a rubric that checks only the summary. PATH A would use one model but inherit the omission. PATH B would use a different provider and model but inherit the same omission. The shared JUDGE could not detect the missing raw evidence because its rubric has the same reference boundary. The planned VERDICT would overstate any agreement. Changing an engine label leaves all three causal edges intact; a useful isolation move must split the evidence or evaluation path before the shared node that can cause the failure.",
+      "eyebrow": "MECHANISM",
+      "source": { "label": "SHARED CAUSE", "detail": "Summary · index · rubric" },
+      "items": [
+        { "label": "PATH A", "detail": "Model A, same omission" },
+        { "label": "PATH B", "detail": "Provider B, same omission" },
+        { "label": "SHARED JUDGE", "detail": "Same false-pass surface" },
+        { "label": "VERDICT", "detail": "Agreement overstated" }
+      ]
+    },
+    {
+      "id": "p3-1-diagnostic",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Choose isolation by the failure path",
+      "desc": "A diagnostic matrix maps five shared dimensions to a plausible joint failure, an isolation move, and the residual dependence that must still be named.",
+      "caption": "Read across the row that can cause your named failure; isolate that edge and preserve the residual in the claim.",
+      "transcript": "For PROMPT OR CONTEXT sharing, the joint failure is the same blind frame; separate supporting authoring while preserving the common decision question as a residual. For DATA OR RETRIEVAL sharing, the joint failure is the same missing record; give Path B an approved raw-source route while naming source-system completeness as residual. For TOOLS OR INFRA sharing, the joint failure is the same transformation defect; use an alternate pipeline or original-file check while naming original format quality as residual. For MODEL ANCESTRY sharing, the joint failure is a shared learned bias; use a materially diverse family while admitting that public-corpus overlap may remain. For EVALUATOR OR INCENTIVE sharing, the joint failure is the same false pass; use a separate evidence check or accountable owner while naming the common policy and deadline as residual.",
+      "eyebrow": "DIAGNOSTIC",
+      "columns": ["SHARED DIMENSION", "JOINT FAILURE", "ISOLATION", "RESIDUAL"],
+      "rows": [
+        ["PROMPT / CONTEXT", "SAME BLIND FRAME", "SEPARATE AUTHORING", "COMMON QUESTION"],
+        ["DATA / RETRIEVAL", "SAME OMISSION", "RAW PATH FOR B", "SOURCE SYSTEM"],
+        ["TOOLS / INFRA", "SAME TRANSFORM BUG", "ALTERNATE PIPE", "ORIGINAL FORMAT"],
+        ["MODEL ANCESTRY", "SAME LEARNED BIAS", "DIVERSE FAMILY", "PUBLIC CORPUS"],
+        ["EVALUATOR / INCENTIVE", "SAME FALSE PASS", "SEPARATE CHECK", "POLICY / DEADLINE"]
+      ]
+    }
+  ]
+}

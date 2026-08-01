@@ -1,0 +1,226 @@
+<section id="purpose" class="resource-section">
+  <h2>Use it before agreement becomes corroboration</h2>
+  <p>Two outputs can look like two witnesses while sharing the same blind spot. A different provider, model label, or reviewer name tells you that one component changed. It does not tell you whether the paths were exposed to different evidence, transformations, evaluation rules, or pressures.</p>
+  <p>Plan for 45–60 minutes. You will leave with an <strong>independence ledger</strong>: a record of the shared state between two paths, the common failure each connection could produce, the isolation move that breaks that connection, and the dependence that remains afterward.</p>
+  <p>Start after <a href="../../blocks/p3.html#ideas">P3 · Twin-engine intel desk</a>, where you set the frozen brief, clean-run conditions, run identity, and comparator. The move here happens before you treat any agreement as independent support: map how the two paths could still become wrong together.</p>
+  <div class="callout">
+    <strong>Independence is a profile, not a badge.</strong>
+    Name the failure you are trying to resist, then show which causal paths are actually separated. Do not turn the profile into a percentage or a claim of statistical independence.
+  </div>
+</section>
+
+<figure data-resource-figure="orientation"></figure>
+
+<section id="mechanism" class="resource-section">
+  <h2>Model the failure path, not the brand count</h2>
+  <p>A <strong>common cause</strong> is one upstream condition that can make more than one path fail. A <strong>common-mode failure</strong> is the similar wrong behavior those paths display. One omitted record in a shared summary is a common cause; two reviewers recommending the wrong vendor because neither saw that record is the common mode. The terms matter because changing the outward reviewer does not remove the upstream cause.</p>
+  <p><strong>Operational independence</strong> means that, for a named failure, the paths differ at the points capable of producing it. It is intentionally narrower than statistical independence. Statistical independence is a claim about the joint probabilities of defined events under a defined input distribution. A ledger with many separated rows does not supply that model or those observations.</p>
+
+  <h3>The old experiment behind the modern warning</h3>
+  <p>N-version programming attempted to tolerate software design faults by running separately developed implementations of the same specification and applying a decision function to their outputs. Its architects treated diversity in algorithms, languages, tools, teams, and execution sites as potentially useful, while also recognizing that the specification and the decision environment remained shared dependencies (<a href="https://people.cs.rutgers.edu/~uli/cs673/papers/N-VersionFaultTolerant85.pdf">Avizienis, 1985</a>).</p>
+  <p>Knight and Leveson then tested 27 separately developed programs on one million inputs. Coincident failures occurred substantially more often than the tested independence model predicted. Their conclusion was not that diversity is useless. It was that independent development does not justify assuming independent failures, and reliability analysis must account for dependent error (<a href="https://people.cs.rutgers.edu/~uli/cs673/papers/EvaluationMultiVersionProgramming86.pdf">Knight and Leveson, 1986</a>). The uncomfortable part is that some shared failures appeared to arise from difficult problem semantics and common human misconceptions, not merely from a sloppy specification.</p>
+  <p>That lesson transfers cleanly to AI work. A recent study across more than 350 language models found substantial error correlation; shared providers and architectures explained some correlation, but distinct providers and architectures did not remove it (<a href="https://arxiv.org/abs/2506.07962">Kim et al., 2025</a>). “Different model” is useful evidence about one dimension. It is not a verdict about the whole path.</p>
+
+  <h3>Scan nine dimensions</h3>
+  <div class="table-scroll">
+    <table>
+      <caption>Independence dimensions and the joint failures they can carry</caption>
+      <thead><tr><th>Dimension</th><th>What may be shared</th><th>Plausible common failure</th><th>Useful isolation move</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Prompt and instruction lineage</strong></td><td>One brief, copied examples, one policy interpretation</td><td>The same omission or leading frame constrains both answers.</td><td>Keep only the decision question fixed; independently author or challenge supporting instructions when corroboration, not engine attribution, is the goal.</td></tr>
+        <tr><td><strong>Context</strong></td><td>Prior outputs, memory, notes, conversation history</td><td>One earlier claim anchors both paths.</td><td>Use separately assembled context and prevent either path from seeing the other output.</td></tr>
+        <tr><td><strong>Source data</strong></td><td>One summary, export, dataset, or cutoff</td><td>An absent or corrupted record disappears from both.</td><td>Give one path raw records or an independently prepared source packet.</td></tr>
+        <tr><td><strong>Retrieval</strong></td><td>One index, search query, ranking rule, or selected subset</td><td>Both paths fail to retrieve the same decisive item.</td><td>Use a separate index, search strategy, or manual source inventory for the critical claim.</td></tr>
+        <tr><td><strong>Tools and transformations</strong></td><td>One OCR engine, parser, spreadsheet formula, or conversion script</td><td>The same transformation silently changes both inputs.</td><td>Cross-check a critical field against the original or use a materially different transformation.</td></tr>
+        <tr><td><strong>Infrastructure</strong></td><td>One runtime, gateway, cache, credential boundary, or storage layer</td><td>A shared outage, stale cache, or policy filter affects both paths.</td><td>Separate the relevant service or retain a non-shared verification route.</td></tr>
+        <tr><td><strong>Provider and model ancestry</strong></td><td>Provider, model family, base model, training corpus, alignment lineage</td><td>Shared learned priors produce the same plausible error.</td><td>Choose genuinely diverse families when available, while recording what ancestry remains unknown.</td></tr>
+        <tr><td><strong>Evaluator</strong></td><td>One rubric, judge model, merge rule, acceptance test, or coordinator</td><td>Diverse outputs receive the same false pass.</td><td>Use a separate evidence check or evaluator for the failure that matters.</td></tr>
+        <tr><td><strong>Organizational incentives</strong></td><td>One sponsor, deadline, reporting line, or desired outcome</td><td>Both reviewers smooth the same inconvenient fact.</td><td>Add a reviewer or evidence owner who is not rewarded for the preferred answer.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>NASA fault-tolerance guidance makes the systems version of this point: a common cause can cross several nominal containment regions, and even the mechanism that manages redundancy can become a shared point of failure (<a href="https://ntrs.nasa.gov/citations/20080009026">NASA, 2008</a>). NIST likewise treats diversity as multidimensional—structure, behavior, interfaces, data and control flow, and technology—and warns that diversity adds cost and complexity that still need verification (<a href="https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final">NIST SP 800-160 Vol. 1 Rev. 1</a>).</p>
+
+  <p>One dependence cannot be removed without changing the job: the problem itself. Two paths can encounter the same difficult boundary, ambiguous real-world category, or common misconception even when every controllable layer differs. Record problem semantics under residual dependence. A new provider cannot isolate it; only clearer evidence, a better-specified decision, or accountable human judgment can reduce that risk.</p>
+
+  <h3>The frozen-control paradox</h3>
+  <p>Shared state is not automatically a defect. When you want to attribute differences to engines, a frozen brief and identical corpus are deliberate controls. Changing the brief, evidence, and model at once buys diversity but destroys the attribution. When you want independent corroboration of a claim, the shared corpus may be the exact dependence you need to reduce.</p>
+  <p>Write the purpose at the top of the ledger: <em>controlled engine comparison</em> or <em>diversified corroboration</em>. The first holds more constant. The second separates more evidence-producing stages. Both can be honest. Confusing them produces a comparison that answers neither question.</p>
+  <p>Use this bounded claim shape:</p>
+  <pre><code>For failure class [H], paths A and B differ in [dimensions].
+They still share [residual dependencies].
+Their agreement therefore corroborates against [bounded failure classes],
+but does not address [remaining common causes].</code></pre>
+</section>
+
+<figure data-resource-figure="mechanism"></figure>
+
+<section id="worked-case" class="resource-section">
+  <h2>Watch two engines inherit one missing incident</h2>
+  <p>A procurement team is preparing an advisory renewal note for a maintenance vendor. A human contracting officer retains the decision and signature. The question is whether the evidence supports sending the renewal forward without additional fact-finding.</p>
+  <p>Engine A and Engine B come from different providers and model families. Separate analysts write their supporting prompts. The team initially labels the planned outputs “two independent reviews.” Before dispatch, an operator draws the paths:</p>
+  <div class="table-scroll">
+    <table>
+      <caption>The apparent two-review architecture</caption>
+      <thead><tr><th>Stage</th><th>Path A</th><th>Path B</th><th>What is actually shared</th></tr></thead>
+      <tbody>
+        <tr><td>Evidence preparation</td><td><code>renewal-summary.md</code></td><td>Search results built from the same summary</td><td>One analyst summary derived from one filtered service export</td></tr>
+        <tr><td>Reasoning</td><td>Provider A, prompt author A</td><td>Provider B, prompt author B</td><td>Decision question, cutoff date, and missing evidence</td></tr>
+        <tr><td>Evaluation</td><td>Clarity and coverage rubric</td><td>The same rubric</td><td>One sponsor-written rubric checked only against the summary</td></tr>
+        <tr><td>Organizational pressure</td><td>Renewal packet due Friday</td><td>Renewal packet due Friday</td><td>Both outputs return to the team measured on schedule completion</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The architecture review collapses the independence label before either engine runs. The filtered export omitted three service-credit incidents. The summary therefore says “two qualifying disruptions,” although the raw incident ledger supports five. Both planned paths are unable to see the missing records, and the shared evaluator is unable to penalize the omission.</p>
+  <p>Predict before reading the ledger excerpt: which pre-dispatch change matters more for this failure—another provider, another prompt author, a raw-record path, or a second pass through the same rubric?</p>
+  <div class="table-scroll">
+    <table>
+      <caption>Independence ledger excerpt for the renewal claim</caption>
+      <thead><tr><th>Dimension</th><th>Shared state</th><th>Coupling path</th><th>Plausible common failure</th><th>Isolation move</th><th>Residual dependence</th><th>Evidence</th></tr></thead>
+      <tbody>
+        <tr><td>Source data</td><td>Shared uncontrolled: filtered export and summary</td><td>Export → summary → both paths</td><td>Both omit service-credit incidents.</td><td>Path B reads the executed contract and raw incident ledger.</td><td>Both still depend on the source system’s completeness and cutoff.</td><td>Source inventories for A and B; raw-ledger access record</td></tr>
+        <tr><td>Retrieval and tools</td><td>Shared uncontrolled: index built only from summary</td><td>Missing row never enters either retrieval surface.</td><td>Neither path can recover the absent evidence.</td><td>Build B’s critical-field check from raw files without the shared index.</td><td>The original scan and field definitions remain shared.</td><td>Index inventory; B’s cited raw records</td></tr>
+        <tr><td>Evaluator</td><td>Shared uncontrolled: one summary-bound rubric</td><td>Same incomplete reference judges both outputs.</td><td>Both wrong recommendations receive PASS.</td><td>Have a separate evidence owner check incident count and clause support against originals.</td><td>The renewal policy and decision authority remain shared.</td><td>Evaluator identity; rubric; evidence-check note</td></tr>
+        <tr><td>Provider/model ancestry</td><td>Separated in part</td><td>Different providers and families; training overlap unknown</td><td>Shared priors remain possible but do not explain the missing record alone.</td><td>Keep the engine split; do not credit it with fixing upstream absence.</td><td>Training-data relationship is unknown.</td><td>Declared model-family records</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The decisive pre-dispatch recovery is the raw-record path plus an evaluator that can see the originals. The team keeps the decision question, cutoff, and contract definition shared so the outputs still address the same job. If the repaired paths later agree, the strongest permissible conclusion is narrower than “independently confirmed”:</p>
+  <blockquote>Two differently hosted engines agreed after materially different source-preparation and retrieval paths. This reduces the shared-summary and shared-index failure, but both paths still depend on the service system, cutoff date, contract definition, and human evidence check. Agreement supports further human review; it does not prove the recommendation or establish statistical independence.</blockquote>
+  <p>Government intelligence guidance makes the same corroboration distinction in plain terms: information presented as corroboration should be independent and not descend from the same original source (<a href="https://www.gov.uk/government/publications/government-counter-fraud-profession-standards-and-guidance-standard-for-fraud-intelligence-practitioner/standard-for-fraud-intelligence-practitioner-html">UK Government Counter Fraud Profession</a>).</p>
+</section>
+
+<section id="failure-recovery" class="resource-section">
+  <h2>Break it on purpose: perform a brand swap</h2>
+  <p>To inject the failure, return Path B to the shared summary, shared index, and shared evaluator. Change only the provider and prompt wording, then run the non-acting review. The diagram still has two engine boxes, and the outputs may sound different. The observable symptom is more damning: both repeat the same wrong incident count, and the evaluator cannot detect it because its reference surface carries the same omission.</p>
+  <p>Diagnose against the pre-run ledger. The source-data, retrieval, and evaluator rows already name the paths capable of producing this joint failure; the observed count tells you those threats were not theoretical. A shared node that cannot cause this failure is a residual to record, not a reason to rebuild everything. If no ledger existed before dispatch, do not invent a clean pre-run story afterward—record the gap and run a separate <a href="./when-both-engines-agree.html">silent-agreement audit</a>.</p>
+  <p>Recover by splitting the path before that node. If raw evidence cannot be supplied safely, add a human check at the earliest approved boundary and narrow the claim. Do not add a third model to the same evidence pipe; that increases the appearance of support without changing the common cause.</p>
+  <p>Also guard against over-isolation. If you change the decision question for Path B, the two outputs no longer answer the same demand. Preserve the shared state needed for comparability, separate the state capable of causing the named failure, and record both choices.</p>
+</section>
+
+<figure data-resource-figure="diagnostic"></figure>
+
+<section id="practice" class="resource-section">
+  <h2>Map the threat before choosing a training venue</h2>
+  <p>Use this synthetic planning case. Two AI reviewers advise a human coordinator on whether Venue C belongs on a training-event shortlist. The fixed criteria are capacity of at least 40, a wheelchair-accessible route stated in the proposal, and total cost below the cap. The reviewers cannot contact venues, approve spending, or make a booking.</p>
+  <div class="table-scroll">
+    <table>
+      <caption>Supplied architecture for the two reviews</caption>
+      <thead><tr><th>Fact</th><th>Supplied condition</th></tr></thead>
+      <tbody>
+        <tr><td>Engines</td><td>Different providers and model families; separate clean contexts</td></tr>
+        <tr><td>Instructions</td><td>Same fixed criteria sheet; supporting prompts written by different coordinators</td></tr>
+        <tr><td>Evidence</td><td>Both receive an OCR package made from 12 proposals by one conversion service</td></tr>
+        <tr><td>Known defect</td><td>The conversion service skipped scanned Appendix B for Venue C; that appendix contains the accessible-route statement</td></tr>
+        <tr><td>Retrieval</td><td>Both query one index built from the OCR package; Path B’s “independent summary” was also built from that index</td></tr>
+        <tr><td>Cost calculation</td><td>Both packs use the same spreadsheet formula</td></tr>
+        <tr><td>Evaluation</td><td>One scoring model applies a rubric written by the program lead</td></tr>
+        <tr><td>Incentive</td><td>Every reviewer reports to the lead responsible for announcing a shortlist today</td></tr>
+        <tr><td>Isolation budget</td><td>A facilities coordinator outside that reporting line can inspect raw proposals for 20 minutes</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Failure of concern:</strong> both paths exclude Venue C because the accessible-route evidence appears absent, then the shared evaluator treats the agreement as confirmation.</p>
+  <ol>
+    <li><strong>Predict.</strong> Which dimensions are separated with evidence, shared by design, shared uncontrolled, or unknown? Decide before opening the reveal.</li>
+    <li><strong>Trace.</strong> Fill at least five ledger rows. Each plausible common failure must name a causal path, not merely say “bias.”</li>
+    <li><strong>Prioritize.</strong> Circle the shared node most capable of producing the named failure. Do not count rows; use causal relevance and consequence.</li>
+    <li><strong>Spend the isolation budget.</strong> Choose one move that breaks that path while keeping the fixed venue criteria comparable.</li>
+    <li><strong>Bound the claim.</strong> Complete the four-line corroboration statement and name what a human must still decide.</li>
+  </ol>
+  <details>
+    <summary><strong>Reveal the threat map after you commit</strong></summary>
+    <p>The engine and context dimensions are partly separated. The criteria sheet is shared by design. Source preparation, retrieval, evaluator, and reporting pressure are shared uncontrolled for the named failure. The strongest 20-minute move is not another engine: give the facilities coordinator the raw proposal and ask for an evidence-only check of the accessible-route criterion, then let Path B use that raw-field result without the shared OCR index. The spreadsheet formula remains a residual for cost, and the criteria, source authenticity, and coordinator judgment remain shared dependencies. Agreement may now corroborate against the OCR/index omission only; it still does not prove overall venue suitability.</p>
+  </details>
+  <div class="callout">
+    <strong>Stop conditions:</strong> stop if the raw proposal cannot be handled on an approved surface, if the criteria or decision authority are disputed, or if the available reviewer is not permitted to inspect the evidence. Return the venue decision to a human if a critical source remains unavailable, the residual dependence dominates the recommendation, or any contact, commitment, or spending action would follow.
+  </div>
+</section>
+
+<section id="artifact" class="resource-section">
+  <h2>Keep the independence ledger beside the comparison</h2>
+  <p>Copy this into <code>independence-ledger.md</code>. Use one ledger per decision claim and failure of concern. The four state labels are descriptive: <code>shared by design</code>, <code>shared uncontrolled</code>, <code>separated with evidence</code>, and <code>unknown</code>.</p>
+  <pre><code># Independence ledger
+
+decision_claim:
+comparison_purpose: controlled engine comparison / diversified corroboration
+failure_of_concern:
+consequence_if_both_wrong:
+path_A:
+path_B:
+operator_owner:
+
+| Dimension | Shared state | Coupling path | Plausible common failure | Isolation move | Residual dependence | Evidence |
+|---|---|---|---|---|---|---|
+| Prompt / instruction lineage | | | | | | |
+| Context / prior-output exposure | | | | | | |
+| Source data | | | | | | |
+| Retrieval / selection / ranking | | | | | | |
+| Tools / transformations | | | | | | |
+| Infrastructure | | | | | | |
+| Provider / model ancestry | | | | | | |
+| Evaluator / rubric / merge | | | | | | |
+| Organizational incentives | | | | | | |
+
+## Isolation choice
+highest_priority_coupling:
+why_this_can_cause_the_named_failure:
+move_selected:
+evidence_the_move_occurred:
+what_remains_shared:
+
+## Bounded corroboration statement
+For failure class [H], paths A and B differ in [dimensions].
+They still share [residual dependencies].
+Their agreement corroborates against [bounded failure classes].
+It does not address [remaining common causes].
+
+## Human return
+stop_if:
+decision_owner:
+next_non-model_check:</code></pre>
+  <p>Do not add the rows into an independence score. A shared OCR transform may dominate the exact claim while five separate low-relevance dimensions contribute almost nothing. Rank threats by whether they can cause the named joint failure and by the consequence if they do.</p>
+</section>
+
+<section id="self-check" class="resource-section">
+  <h2>Self-check: predict before revealing the label</h2>
+  <ol>
+    <li>Two different providers read the same analyst summary and use the same judge. Is their agreement independent corroboration?</li>
+    <li>Two paths share a frozen decision question but use separately prepared evidence packets. Is the shared question automatically contamination?</li>
+    <li>Eight of nine dimensions are separated. May the report call the paths “89% independent”?</li>
+    <li>Two evidence paths are diverse, but one rubric rewards the same unsupported shortcut in both. Where is the common cause?</li>
+  </ol>
+  <details>
+    <summary><strong>Reveal the answers after you commit</strong></summary>
+    <ol>
+      <li>No. The engine dimension differs, while evidence preparation and evaluation remain common paths capable of producing a shared-wrong result.</li>
+      <li>No. A common decision target may be required for comparability. Record it as shared by design and test whether the wording itself could cause the failure of concern.</li>
+      <li>No. The dimensions are neither equally important nor additive. A percentage would imply a measurement model the ledger does not provide.</li>
+      <li>The evaluator is the common cause. Diverse upstream work can collapse at a shared acceptance surface.</li>
+    </ol>
+  </details>
+</section>
+
+<section id="transfer" class="resource-section">
+  <h2>Transfer one claim without rebuilding your desk</h2>
+  <p>Choose one consequential claim you expect two reviewers or engines to examine this week. In 15 minutes, name one failure that could fool both, sketch each source-to-verdict path, and fill the three ledger rows most capable of producing that failure. Select one isolation move you can actually prove happened. If no feasible move breaks the dominant coupling, do not decorate the result as corroboration; narrow the claim and return it to the decision owner.</p>
+  <p>Keep run identity and reconstructable evidence with the work; use <a href="../p1/reproducible-runs.html">Reproducible Runs</a> for that record. If you need to know whether behavior holds across repeated generative trials, use <a href="../p2/one-run-is-a-probe.html">One Run Is a Probe, Not Proof</a>. Neither artifact substitutes for the dependency map here.</p>
+  <p>After the paths run, return to the P3 comparator and human adjudication process. The ledger tells you what agreement could mean; it does not decide whether the agreed claim is true.</p>
+  <div class="callout">
+    <strong>Human return:</strong> stop before action when a critical source is unavailable, protected data would cross an unapproved boundary, evaluator separation is impossible under material sponsor pressure, or the consequence of shared error exceeds what the remaining checks can bear. A human owner decides whether to gather new evidence, accept the bounded risk, or halt.
+  </div>
+</section>
+
+<section id="sources" class="resource-section">
+  <h2>Sources</h2>
+  <p>Use these as a compact shelf. They support the mechanism; they do not relieve the operator of naming the local failure and evidence path.</p>
+  <ul>
+    <li><a href="https://people.cs.rutgers.edu/~uli/cs673/papers/N-VersionFaultTolerant85.pdf">Algirdas Avizienis, “The N-Version Approach to Fault-Tolerant Software” (1985)</a> — the design-diversity architecture and its shared specification and support environment.</li>
+    <li><a href="https://people.cs.rutgers.edu/~uli/cs673/papers/EvaluationMultiVersionProgramming86.pdf">John C. Knight and Nancy G. Leveson, “An Experimental Evaluation of the Assumption of Independence in Multiversion Programming” (1986)</a> — the empirical challenge to assumed independent failures.</li>
+    <li><a href="https://ntrs.nasa.gov/citations/19870030726">Eckhardt and Lee, “A Theoretical Basis for the Analysis of Multiversion Software Subject to Coincident Errors”</a> — why reliability claims require a defined probabilistic model.</li>
+    <li><a href="https://ntrs.nasa.gov/citations/20080009026">NASA, <em>A Primer on Architectural Level Fault Tolerance</em> (2008)</a> — common-cause paths across nominal containment and redundancy mechanisms.</li>
+    <li><a href="https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final">NIST SP 800-160 Vol. 1 Rev. 1, <em>Engineering Trustworthy Secure Systems</em> (2022)</a> — diversity dimensions, costs, and verification consequences.</li>
+    <li><a href="https://www.gov.uk/government/publications/government-counter-fraud-profession-standards-and-guidance-standard-for-fraud-intelligence-practitioner/standard-for-fraud-intelligence-practitioner-html">UK Government Counter Fraud Profession, intelligence practitioner standard</a> — corroboration must not be mistaken for multiple retellings of one original source, and analysis must remain independent of political consideration.</li>
+    <li><a href="https://arxiv.org/abs/2506.07962">Kim, Garg, Peng, and Garg, “Correlated Errors in Large Language Models” (2025)</a> — large-scale evidence that different model labels and providers do not eliminate correlated error.</li>
+  </ul>
+</section>

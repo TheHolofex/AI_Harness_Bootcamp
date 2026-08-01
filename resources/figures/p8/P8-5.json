@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P8-5",
+  "figures": [
+    {
+      "id": "p8-5-orientation",
+      "role": "orientation",
+      "template": "fork",
+      "title": "One workload portfolio, four operating outcomes",
+      "desc": "A workload portfolio branches into a qualified endpoint route, a bounded degrade mode, a routing hold when no eligible mode remains, and an authorized manual procedure.",
+      "caption": "Portfolio topology begins with workload slices; each branch needs its own gates, evidence, owner, and trigger.",
+      "transcript": "The source is a portfolio of workload slices, each defined by an acceptance bar, hard constraints, priorities, and a degradation envelope. A route branch goes to a qualified primary endpoint and any separately qualified conditional alternate. A bounded degrade mode is separately evidenced and preserves every non-degradable invariant. A hold-routing branch stops the workload only when no eligible route, degrade, or manual mode remains. A manual branch goes to a named human procedure with authority, capacity, timing, and an inspectable record. These portfolio dispositions are different from P8 benchmark hold and degrade labels.",
+      "eyebrow": "ORIENTATION · PORTFOLIO TOPOLOGY",
+      "source": { "label": "WORKLOAD SLICES", "detail": "Gates · priorities · degradation envelope" },
+      "items": [
+        { "label": "ROUTE", "detail": "Primary + conditional alternate" },
+        { "label": "BOUNDED DEGRADE MODE", "detail": "Invariants preserved" },
+        { "label": "HOLD ROUTING", "detail": "No qualified mode remains" },
+        { "label": "MANUAL", "detail": "Reserved authority + qualified procedure" }
+      ]
+    },
+    {
+      "id": "p8-5-mechanism",
+      "role": "mechanism",
+      "template": "flow",
+      "title": "Route by gates before tradeoffs",
+      "desc": "A five-stage routing mechanism freezes workload requirements, attaches endpoint evidence, applies hard gates, compares only eligible candidates by declared preferences, and records the route plus contingencies.",
+      "caption": "Keep requirements and evidence separate; preferences begin only after every hard gate passes for that candidate-and-mode.",
+      "transcript": "First freeze one workload slice with acceptance, data, authority, deadline, evidence, resilience, cost, and degradation requirements. Second attach workload-specific endpoint evidence with conditions, date, sample, dependency tags, and uncertainty. Third make each candidate-and-mode with a failed or material unknown gate ineligible; hold the workload only if no qualified mode remains. Fourth compare only eligible candidates using the workload's declared priority or tradeoff; do not use a universal score. Fifth record the primary route, separately qualified alternate, bounded degrade or manual mode, exclusions, owner, and revisit trigger.",
+      "eyebrow": "MECHANISM · MULTICRITERIA ROUTING",
+      "items": [
+        { "label": "1 · REQUIRE", "detail": "Freeze workload card" },
+        { "label": "2 · EVIDENCE", "detail": "Attach scoped artifacts" },
+        { "label": "3 · GATE", "detail": "Candidate eligibility" },
+        { "label": "4 · COMPARE", "detail": "Declared preferences" },
+        { "label": "5 · RECORD", "detail": "Route · contingency · trigger" }
+      ]
+    },
+    {
+      "id": "p8-5-diagnostic",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Let the condition choose the operating outcome",
+      "desc": "A decision surface maps five portfolio conditions to route, bounded degrade mode, hold routing, manual, or stop-and-return actions.",
+      "caption": "Read the signal before choosing continuity; stopping or holding is correct when invariants or authority cannot be preserved.",
+      "transcript": "When every hard gate passes and a candidate wins the declared comparison, route the workload and record its conditions. When a separately evidenced reduced mode preserves all invariants inside its declared bounds, mark bounded degrade mode and record what was lost. A failed or material unknown gate makes that candidate-mode ineligible; mark hold routing only when no qualified route, degrade, or manual mode remains. When policy reserves authority and a named human procedure has capacity, timing, and a record, use manual. When available modes conflict with a legal, safety, data, or authority invariant, stop and return to the accountable authority.",
+      "eyebrow": "DIAGNOSTIC · DECISION SURFACE",
+      "columns": ["OBSERVED CONDITION", "OUTCOME", "REQUIRED ACTION"],
+      "rows": [
+        ["ALL GATES PASS + PREFERENCE WINS", "ROUTE", "RECORD CONDITIONS + TRIGGER"],
+        ["REDUCED MODE PRESERVES INVARIANTS", "BOUNDED DEGRADE MODE", "NAME BOUNDS + LOSS"],
+        ["NO QUALIFIED MODE REMAINS", "HOLD ROUTING", "ASSIGN OWNER + EVIDENCE"],
+        ["AUTHORITY RESERVED + PROCEDURE QUALIFIED", "MANUAL", "USE QUEUE + RECORD"],
+        ["INVARIANT CONFLICTS WITH ALL MODES", "STOP + RETURN", "ACCOUNTABLE AUTHORITY"]
+      ]
+    }
+  ]
+}

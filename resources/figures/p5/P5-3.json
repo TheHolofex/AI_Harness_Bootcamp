@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P5-3",
+  "figures": [
+    {
+      "id": "p5-3-orientation",
+      "role": "orientation",
+      "template": "stack",
+      "title": "Climb only as high as the evidence allows",
+      "desc": "A five-rung containment evidence ladder moves from pre and post manifests through canary tracing, targeted differences and effect checks, a controlled pair, and a fresh-context clean rerun. Each rung supports a bounded observation, not universal non-influence.",
+      "caption": "The ladder is cumulative: manifests establish what was inspected, canaries trace a detectable marker, diffs test declared surfaces, paired runs isolate one intervention, and a clean rerun tests repeatability.",
+      "transcript": "Rung one is pre and post manifests, which show which enumerated artifacts existed and changed but miss transient or unlisted effects. Rung two is a benign canary trace, which shows where that exact marker was observed but misses transformations and indirect effects. Rung three is targeted differences and effect checks, which show whether declared outputs or instrumented actions changed but say nothing about unobserved sinks. Rung four is a controlled pair whose runs differ only by the probe, supporting a bounded comparison unless hidden state or another confound changed. Rung five is a fresh-context rerun with a new canary and explicit residual uncertainty. Agreement strengthens repeatability under those conditions; it does not establish universal noninterference.",
+      "eyebrow": "ORIENTATION · CUMULATIVE EVIDENCE",
+      "items": [
+        { "label": "PRE / POST MANIFESTS", "detail": "Enumerated artifacts" },
+        { "label": "BENIGN CANARY TRACE", "detail": "Exact detectable marker" },
+        { "label": "DIFFS + EFFECT CHECKS", "detail": "Declared protected surfaces" },
+        { "label": "CONTROLLED A / B PAIR", "detail": "One recorded intervention" },
+        { "label": "FRESH-CONTEXT RERUN", "detail": "Repeatability + residuals" }
+      ]
+    },
+    {
+      "id": "p5-3-mechanism",
+      "role": "mechanism",
+      "template": "fork",
+      "title": "Trace the intervention across possible influence paths",
+      "desc": "One benign synthetic input intervention branches toward a protected output, an instrumented action recorder, expected working state, and persistent or unobserved paths. Each branch has a different observation and claim limit.",
+      "caption": "Declare expected, forbidden, and unobserved paths before the probe; the same canary appearance means success on an expected trace and failure on a forbidden surface.",
+      "transcript": "The source is one benign synthetic probe added to the intervention run while the control context stays fixed. Branch one reaches the protected output; compare the predeclared semantic invariant and treat any probe-dependent difference as a failed negative claim. Branch two reaches the instrumented action recorder; inspect it for zero or changed effects, while admitting that uninstrumented actions remain outside the claim. Branch three reaches expected working state such as the input manifest or exclusion record; the canary should appear there and does not itself defeat containment. Branch four covers next-run, persistent, and unobserved sinks; use a fresh-context rerun to test named persistence paths and carry everything without a reliable sensor as residual uncertainty.",
+      "eyebrow": "MECHANISM · PATHS AND INTERVENTIONS",
+      "source": { "label": "ONE SYNTHETIC PROBE", "detail": "Only changed input" },
+      "items": [
+        { "label": "PROTECTED OUTPUT", "detail": "Compare declared invariant" },
+        { "label": "ACTION RECORDER", "detail": "Inspect recorded effects" },
+        { "label": "EXPECTED WORKING PATH", "detail": "Canary should appear" },
+        { "label": "PERSISTENT / UNOBSERVED", "detail": "Rerun or carry residual" }
+      ]
+    },
+    {
+      "id": "p5-3-diagnostic",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Small observations support only small claims",
+      "desc": "A diagnostic matrix maps five common observations to the narrow claim each supports and the stronger conclusion it cannot support.",
+      "caption": "Read across before writing a verdict: name the observation, preserve its limit, and use the smallest claim that remains true.",
+      "transcript": "If manifests match, say the enumerated artifacts are unchanged; do not claim there were no transient effects. If a canary is absent from a protected surface, say the literal marker was not observed there; do not rule out transformed influence. If the semantic invariant and action recorder are clean, say the tested surfaces showed no observed effect; do not include uninstrumented sinks. If a fresh rerun agrees, say the result repeated under two recorded contexts; do not call it universal. If the probe crosses any forbidden path, the negative claim fails for that test. Stop and preserve the effect rather than weakening or averaging it away.",
+      "eyebrow": "DIAGNOSTIC · MINIMAL PROBE / CLAIM-STRENGTH",
+      "columns": ["OBSERVATION", "SUPPORTS", "CANNOT SUPPORT", "VERDICT"],
+      "rows": [
+        ["MANIFESTS MATCH", "ENUMERATED ITEMS", "TRANSIENT EFFECTS", "BOUNDED"],
+        ["CANARY ABSENT", "MARKER NOT SEEN", "TRANSFORMED EFFECT", "BOUNDED"],
+        ["INVARIANT CLEAN", "TESTED SURFACES", "UNSEEN SINKS", "BOUNDED"],
+        ["RERUN AGREES", "REPEATABILITY", "UNIVERSAL ABSENCE", "BOUNDED"],
+        ["FORBIDDEN CROSSING", "EFFECT OBSERVED", "NEGATIVE CLAIM", "REJECT"]
+      ]
+    }
+  ]
+}

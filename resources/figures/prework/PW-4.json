@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "PW-4",
+  "figures": [
+    {
+      "id": "pw-4-orientation",
+      "role": "orientation",
+      "template": "comparison",
+      "title": "Warm success and cold proof cross different boundaries",
+      "desc": "A three-part comparison separates temporary warm cargo, the declared cold reset, and durable workstation state that must still produce new evidence.",
+      "caption": "Read left to right: remove only the help the readiness claim should not need, then require durable state to generate a new artifact.",
+      "transcript": "Warm cargo includes open processes, session-only variables, a remembered working folder, running services, cached screens, and old proof files. The cold boundary closes relevant processes, restarts the machine when safe, opens a fresh shell and apps, removes old outputs from the observation folder, and withholds coaching. Durable state includes installed tools, saved user or machine settings, recorded configuration, intended credential state, and written instructions. A cold pass occurs only when that durable state generates new proof after the boundary; the old warm result remains evidence of an earlier activity, not the cold one.",
+      "eyebrow": "STATE BOUNDARY",
+      "items": [
+        { "label": "WARM CARGO", "detail": "Process · session · old proof · memory" },
+        { "label": "COLD BOUNDARY", "detail": "Restart · new shell · empty proofs" },
+        { "label": "DURABLE STATE", "detail": "Install · saved config · written path" }
+      ]
+    },
+    {
+      "id": "pw-4-mechanism",
+      "role": "mechanism",
+      "template": "flow",
+      "title": "A cold-start claim needs an evidence chain",
+      "desc": "A five-stage flow links a bounded readiness claim through state control and prediction to a newly generated artifact and an honest verdict.",
+      "caption": "Every link must be visible; a missing boundary, prediction, or new artifact turns a pass into an unsupported readiness claim.",
+      "transcript": "First, state one observable readiness claim and its pass invariant. Second, inventory warm state, durable state, held conditions, and uncontrolled external conditions. Third, cross the declared cold boundary and write predictions before inspecting saved state. Fourth, record the empty observation folder, run the canonical proof, and inspect a newly appearing file and its contents; file time supports chronology but does not prove origin or integrity alone. Fifth, issue a bounded verdict that names the tested reset, the dependencies that remained, the conditions not tested, and any handoff owner. The chain is broken when old output substitutes for new generation or when a repair is hidden inside the successful account.",
+      "eyebrow": "EVIDENCE CHAIN",
+      "items": [
+        { "label": "CLAIM", "detail": "Observable pass boundary" },
+        { "label": "INVENTORY", "detail": "Remove · hold · unknown" },
+        { "label": "RESET + PREDICT", "detail": "Cold start · prediction" },
+        { "label": "GENERATE + INSPECT", "detail": "New artifact · inspect" },
+        { "label": "VERDICT", "detail": "Durable · warm · blocked" }
+      ]
+    },
+    {
+      "id": "pw-4-diagnostic",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Hidden-state diagnosis surface",
+      "desc": "A matrix maps five warm-state clues to their cold observations and the durable promotion or handoff each observation requires.",
+      "caption": "Find the warm clue in the first column, inspect the cold result, then either promote the missing state into the written setup or hand it to its owner.",
+      "transcript": "For process environment, a warm-only variable becomes absent after reset, so save it through the approved user or machine path and retest. For an open app or inherited folder, reopening lands elsewhere, so record the project and working location in the procedure. For prior evidence, an old file survives without a new activity, so isolate old output and require a post-boundary artifact. For external service state, local setup reaches a quota, ACL, network, or provider boundary, so record the blocker and hand it to the responsible owner rather than reinstalling. For human memory, a second operator stalls without coaching, so promote the missing launch or decision step into the written path and repeat the transfer.",
+      "eyebrow": "DIAGNOSIS SURFACE",
+      "columns": ["WARM CLUE", "COLD OBSERVATION", "DURABLE MOVE"],
+      "rows": [
+        ["PROCESS VALUE", "ABSENT AFTER RESET", "SAVE APPROVED SCOPE"],
+        ["OPEN APP / FOLDER", "REOPENS ELSEWHERE", "RECORD LOCATION"],
+        ["OLD PROOF FILE", "NO NEW ACTIVITY", "ISOLATE + REGENERATE"],
+        ["EXTERNAL SERVICE", "QUOTA / ACL / NETWORK", "HAND TO OWNER"],
+        ["HUMAN MEMORY", "SECOND OPERATOR STALLS", "WRITE STEP + RETEST"]
+      ]
+    }
+  ]
+}

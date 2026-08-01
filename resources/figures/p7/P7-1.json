@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P7-1",
+  "figures": [
+    {
+      "id": "p7-1-orientation",
+      "role": "orientation",
+      "template": "matrix",
+      "title": "Read the workload before choosing the machine",
+      "desc": "A workload map connecting three observable work shapes to a provisional machine home and the evidence needed to defend that placement.",
+      "caption": "Read across a row from work shape to provisional home; the final column names the evidence that must remain visible.",
+      "transcript": "Stable, testable, repeated work provisionally pulls toward a gated pipeline and requires repeatable checks plus held-exception records. Goal-stable work whose path varies but remains traceable provisionally pulls toward an agent loop and requires an action trail, sources, and an operator verdict. Consequential or judgment-rich work provisionally pulls toward human judgment and requires an accountable reason plus a clear machine boundary. These are starting pulls, not automatic decisions; authority and consequence vetoes are applied afterward.",
+      "eyebrow": "ORIENTATION · WORKLOAD MAP",
+      "columns": ["OBSERVED WORK SHAPE", "PROVISIONAL HOME", "EVIDENCE TO KEEP"],
+      "rows": [
+        ["STABLE · TESTABLE · REPEATED", "GATED PIPELINE", "CHECKS + HELD EXCEPTIONS"],
+        ["GOAL STABLE · PATH VARIES · TRACEABLE", "AGENT LOOP", "TRAIL + SOURCES + VERDICT"],
+        ["AUTHORITY / JUDGMENT IS CORE", "HUMAN JUDGMENT", "ACCOUNTABLE REASON + MACHINE BOUNDARY"]
+      ]
+    },
+    {
+      "id": "p7-1-mechanism",
+      "role": "mechanism",
+      "template": "flow",
+      "title": "From factor evidence to a bounded placement",
+      "desc": "A five-stage scoring path that begins by slicing work, compares eight factor pulls, applies authority and consequence vetoes, and ends with an operating boundary and revisit trigger.",
+      "caption": "The total opens the comparison; vetoes, boundaries, and revisit triggers finish the decision.",
+      "transcript": "First slice the workload into one observable unit. Second record evidence for variability, volume, reversibility, latency, consequence, risk and authority, observability and testability, exception rate, and value of judgment. Third assign zero-to-two pull points to agent loop, gated pipeline, and human judgment; totals are prompts, not thresholds. Fourth apply the authority and consequence vetoes, which outrank totals. Fifth record the choice, machine boundary, human gate, exception route, and revisit trigger.",
+      "eyebrow": "MECHANISM · FACTOR-TO-CHOICE",
+      "items": [
+        { "label": "1 · SLICE", "detail": "One unit; clear start / finish" },
+        { "label": "2 · EVIDENCE", "detail": "8 factors from observed work" },
+        { "label": "3 · PULLS", "detail": "A / P / H compare; no threshold" },
+        { "label": "4 · VETO", "detail": "Veto outranks total" },
+        { "label": "5 · OPERATE", "detail": "Boundary · gate · route · revisit" }
+      ]
+    },
+    {
+      "id": "p7-1-diagnostic",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Borderline scores are instructions to inspect the edge",
+      "desc": "A diagnostic decision surface mapping four edge signals to an immediate operator move and an explicit condition for reconsidering the placement.",
+      "caption": "Use the edge signal to choose today’s bounded move, then preserve the event that forces a fresh decision.",
+      "transcript": "When totals are near each other, split the workload or run a small safe probe, and revisit when the unit and evidence are clearer. When a veto overrides the leading total, hold the consequential slice and return allocation to the responsible authority, revisiting only if authority or recoverability changes. Authority may keep the decision human or require a separately engineered automatic protection when human intervention would be too slow. When new exception families appear, hold expansion and rescore the affected slice, revisiting when the pattern is understood. When observability or rollback changes, narrow or expand the machine boundary only after the new check or recovery path is proven.",
+      "eyebrow": "DIAGNOSTIC · EDGE AND REVISIT",
+      "columns": ["EDGE SIGNAL", "DO NOW", "REVISIT WHEN"],
+      "rows": [
+        ["NEAR-TIE TOTALS", "SPLIT THE SLICE OR RUN A SAFE PROBE", "UNIT + EVIDENCE BECOME CLEARER"],
+        ["VETO OVERRIDES LEADER", "HOLD SLICE · AUTHORITY DECIDES", "AUTHORITY OR RECOVERABILITY CHANGES"],
+        ["NEW EXCEPTION FAMILIES", "HOLD EXPANSION + RESCORE", "PATTERN IS UNDERSTOOD"],
+        ["TEST OR ROLLBACK CHANGES", "NARROW / EXPAND BOUNDARY AFTER PROOF", "NEW CONTROL PASSES"]
+      ]
+    }
+  ]
+}

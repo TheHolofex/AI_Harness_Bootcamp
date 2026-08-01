@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "P1-2",
+  "figures": [
+    {
+      "id": "p1-2-orientation",
+      "role": "orientation",
+      "template": "flow",
+      "title": "A concise, learner-facing figure title",
+      "desc": "A complete description of the relationship the figure makes visible.",
+      "caption": "A visible interpretation cue that tells the learner what to inspect.",
+      "transcript": "Input enters the first stage. The operator makes the named move. Evidence at the final stage determines the next action.",
+      "eyebrow": "ORIENTATION",
+      "items": [
+        { "label": "INPUT", "detail": "What enters" },
+        { "label": "MOVE", "detail": "What changes" },
+        { "label": "EVIDENCE", "detail": "What decides" }
+      ]
+    },
+    {
+      "id": "p1-2-mechanism",
+      "role": "mechanism",
+      "template": "comparison",
+      "title": "A mechanism comparison",
+      "desc": "The exact distinction a learner should be able to inspect.",
+      "caption": "The evidence-bearing difference between the two patterns.",
+      "transcript": "The left side shows the weak pattern and its observable consequence. The right side shows the stronger pattern and the evidence it preserves.",
+      "eyebrow": "MECHANISM",
+      "items": [
+        { "label": "WEAK", "detail": "Observable weak pattern" },
+        { "label": "STRONG", "detail": "Observable strong pattern" }
+      ]
+    },
+    {
+      "id": "p1-2-diagnostic",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "A diagnostic decision surface",
+      "desc": "How evidence changes the operator’s next move.",
+      "caption": "Read across the signal row, then choose the move that fits the consequence of error.",
+      "transcript": "The matrix crosses signal strength with consequence. Weak signals call for a probe at low cost and a hold at high cost. Strong signals permit continuation at low cost and verification at high cost.",
+      "eyebrow": "DIAGNOSTIC",
+      "columns": ["SIGNAL", "LOW COST", "HIGH COST"],
+      "rows": [
+        ["WEAK", "PROBE", "HOLD"],
+        ["STRONG", "CONTINUE", "VERIFY"]
+      ]
+    }
+  ]
+}
