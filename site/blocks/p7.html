@@ -38,7 +38,7 @@
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
       <a href="#ideas">The ideas</a>
-      <a href="#mission">Mission · <span data-count-for="mission">0/8</span></a>
+      <a href="#mission">Mission · <span data-count-for="mission">0/9</span></a>
       <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/8</span></a>
       <a href="#depth">Going deeper</a>
       <a href="#stuck">If you get stuck</a>
@@ -137,10 +137,16 @@
         <h3>Stage 01 · Set the line's contract</h3>
         <p>Before a single node exists, the brief pins what this machine is for and what it must never do. The five-minute dialogue is where "automate the rows" becomes an artifact with a gate in its acceptance criteria.</p>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
-            <li>Open your course project — <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Open the chat <strong>Operator — Direction &amp; Log</strong></li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, look for <strong>Operator — Direction &amp; Log</strong>. If it is there, open it</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code></li>
+            <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
+            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <!-- Verbatim from operator/DIRECTION_BRIEF.md — operator-chat starter -->
@@ -193,7 +199,11 @@ challenge anything above you find vague.</code></pre>
         <h3>Stage 02 · Read the load before the machine does</h3>
         <p>You cannot judge what the gate catches if you never saw the rows raw. Two minutes with the file now buys you the whole exception drill later.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>PowerShell window</strong>:</p>
+          <p class="do-label">Open the <strong>P7 PowerShell window</strong>:</p>
+          <ul class="do-clicks">
+            <li>Press the <strong>Windows</strong> key, type <code>PowerShell</code>, and open <strong>Windows PowerShell</strong></li>
+            <li>Keep this window open. It becomes the n8n server window in Stage 03</li>
+          </ul>
           <pre><code>Get-Content "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\rows.csv"</code></pre>
         </div>
         <ol class="checklist">
@@ -215,13 +225,15 @@ challenge anything above you find vague.</code></pre>
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Click <strong>New chat</strong> — this is your <strong>build chat</strong>, separate from the operator chat</li>
-            <li>Rename it <code>Build — P7 Automation line</code> so you can find it again</li>
+            <li>Click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Build — P7 Automation line</code></li>
+            <li>Select the same course model used for the Direction Brief and confirm <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <p>First the engine room. n8n reads and writes disk files only inside a folder you point it at, so the start command below creates the line's <code>out</code> folder and fences file access to the course pack in the same breath.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>PowerShell window</strong> — all three lines together:</p>
+          <p class="do-label">Return to the <strong>P7 PowerShell window</strong> from Stage 02 and paste all three lines together:</p>
           <pre><code>New-Item -ItemType Directory -Force "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out" | Out-Null
 $env:N8N_RESTRICT_FILE_ACCESS_TO = "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
 n8n start</code></pre>
@@ -230,7 +242,9 @@ n8n start</code></pre>
         <div class="do-step">
           <p class="do-label">Now in your <strong>browser</strong>:</p>
           <ul class="do-clicks">
-            <li>Open <code>localhost:5678</code> and sign in with the owner account you recorded in pre-work</li>
+            <li>Open Microsoft Edge or Google Chrome from the Windows Start menu</li>
+            <li>Click the address bar, enter <code>http://localhost:5678</code>, and press <strong>Enter</strong></li>
+            <li>Sign in with the owner account you recorded during the install clinic. If n8n shows its first-run owner setup instead, create the local owner account now and record the sign-in details where your instructor directs</li>
             <li>Click <strong>Create Workflow</strong></li>
             <li>Click the workflow name at the top and rename it to <code>P7 automation line</code></li>
           </ul>
@@ -400,11 +414,16 @@ Report: {{ $json.text }}</code></pre>
             <li>Open the <strong>Executions</strong> tab and click the most recent run</li>
             <li>Click the <em>AI step</em> node and read its INPUT panel: <code>id</code>, <code>text</code>, and <code>region</code> only — <code>expected_gate</code> must be nowhere in it</li>
             <li>Return to the <strong>Editor</strong> tab</li>
+            <li>Confirm the workflow shows <strong>Saved</strong>. If a <strong>Save</strong> button appears, click it before leaving the editor</li>
           </ul>
         </div>
         <p>If <code>expected_gate</code> shows up, the exclude box in <em>Drop answer column</em> is misspelled — fix it and click <strong>Execute workflow</strong> again. Then open both output files and read what the gate did. Rows 4, 5, and 7 must be among the held; row 2 belongs in the master; the review-worthy rows (1, 3, 6, 8) will usually hold too — that is what review means. If one of those four cleared instead — row 3 reads close to a routine status — that is the checks reading it as routine, not a broken gate; the required checks are rows 4, 5, and 7.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>new PowerShell window</strong> — the first one is busy running n8n:</p>
+          <p class="do-label">Open a second <strong>PowerShell window</strong> — the P7 server window must stay busy running n8n:</p>
+          <ul class="do-clicks">
+            <li>Press the <strong>Windows</strong> key, type <code>PowerShell</code>, and open another <strong>Windows PowerShell</strong> window</li>
+            <li>Leave the P7 server window running in the background</li>
+          </ul>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out\held.csv"
 notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out\master.csv"</code></pre>
         </div>
@@ -449,6 +468,14 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_
         <h3>Stage 06 · Sort your real work</h3>
         <p>The line runs; now do the thing you will still be doing in ten years. Take your actual desk — not the classroom rows — and sort it. The prompt below turns the build chat into an interviewer that fills the template with you, workload by workload.</p>
         <div class="do-step">
+          <p class="do-label">Return to the <strong>Build — P7 Automation line</strong> chat:</p>
+          <ul class="do-clicks">
+            <li>Save both CSV files in Notepad, then click the ChatGPT app on the taskbar</li>
+            <li>Select <strong>Codex</strong> if needed and open <strong>Build — P7 Automation line</strong> in the sidebar</li>
+            <li>Confirm the course project is open before you continue</li>
+          </ul>
+        </div>
+        <div class="do-step">
           <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
           <pre><code>Open mission_flesh/p7/discrimination_template.md. We are filling it for my real
 desk, not the classroom rows. Interview me one workload at a time:
@@ -476,41 +503,14 @@ reasons beat ten sorted by instinct.</code></pre>
             <div class="check-detail"><code>mission_flesh/p7/discrimination_template.md</code> is filled for your own desk: per workload, agent loop or pipeline-plus-gate, why, and the judgment you will not automate — plus one row classifying the P1 brief machine or the P3 intel desk as stay-agent / move-pipeline / hybrid. "This feels like AI work" is a vibe; "same shape two hundred times a week, wrong costs a refund" is a criterion. If a why column reads thin, run the two questions again before checking off.</div>
           </li>
         </ol>
-        <p>The sorted list feeds straight into the outer loop: one workload to pipeline, one that must stay agentic, and the rule that produced the sort. Bank it as a seed now; you will draft the horizons from it, and from the seeds every earlier lesson left in the same file, in the reflection below.</p>
-        <div class="do-step">
-          <p class="do-label">Now paste this into the chat <strong>Operator — Transfer 30-60-90</strong>:</p>
-          <pre><code>Transfer chat - P7 machine choice. Read operator/TRANSFER_30_60_90.md.
-
-I have just finished the P7 mission. Fill the "From P7 - Machine choice" seed
-with me, one field at a time:
-1. One workload from my real desk that should become a pipeline + human gate
-   - and why.
-2. One workload that must stay an agent loop - and why.
-3. The judgment I will not automate.
-4. My discrimination rule, in one sentence.
-
-Write today's date beside the seed so the file shows when it was filled.
-Challenge vagueness - "use AI more" is void; every line must be checkable at my
-own desk. Do not draft the horizons yet; that is a separate sitting. I accept
-every line.</code></pre>
-        </div>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p7-p7-transfer" name="p7-p7-transfer" data-check-id="p7-transfer" />
-              <span class="check-num">8</span>
-              <span class="check-title">P7 machine-choice seed filled and dated</span>
-            </label>
-            <div class="check-detail">The <em>From P7 — Machine choice</em> seed in <code>operator/TRANSFER_30_60_90.md</code> holds one workload to pipeline, one that must stay agentic, the judgment you will not automate, and your one-sentence rule — with today's date beside it. A field that reads "use AI more" is void; every line should be checkable at your own desk. If a field comes back thin, run the two questions on that workload again before you check this off.</div>
-          </li>
-        </ol>
-
-
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
-          <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/5</span></h3>
+          <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
         <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and updating your transfer plan. <a href="../pulse.html">Lesson reflection guide →</a></p>
         <p class="reflection-question"><strong>Think back:</strong> What did the exception gate change about which work belongs in a pipeline versus an agent loop?</p>
         <p>The log is written where the brief lives. The mission runs elsewhere; this chat holds direction and verdicts.</p>
+        <div class="do-step">
+          <p class="do-label">Leave <strong>Build — P7 Automation line</strong> and open <strong>Operator — Direction &amp; Log</strong> in the Codex sidebar.</p>
+        </div>
         <!-- Verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
@@ -533,7 +533,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-log" name="p7-pulse-log" data-check-id="pulse-log" />
-              <span class="check-num">9</span>
+              <span class="check-num">8</span>
               <span class="check-title">Operator Log complete</span>
             </label>
             <div class="check-detail">The P7 entry holds: what you directed, what you changed mid-build, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers — execution views, the held rows and their reasons, the discrimination write-up — and what judgment you still own.</div>
@@ -552,7 +552,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-bars" name="p7-pulse-bars" data-check-id="pulse-bars" />
-              <span class="check-num">10</span>
+              <span class="check-num">9</span>
               <span class="check-title">Lesson outcomes marked from current evidence</span>
             </label>
             <div class="check-detail">The checked list is a forecast, not a summary: you are naming, in writing and before the independent review, which outcomes you believe the evidence supports. Every check needs an artifact you could open in front of someone — the outcome list’s evidence rule stands, and if the review questions an outcome, clear it until you fix the evidence.</div>
@@ -562,7 +562,10 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Start a new chat and title it <code>Adversarial — P7 — [TODAY'S DATE]</code>, with the bracket replaced by today's date</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — P7 — [TODAY'S DATE]</code>, with the bracket replaced by today&#x27;s date</li>
+            <li>Select the instructor-named reviewer model. If none was named, keep the visible default</li>
+            <li>Confirm the permission mode says <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <!-- Verbatim from operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
@@ -622,7 +625,7 @@ master contents directly.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-adv" name="p7-pulse-adv" data-check-id="pulse-adv" />
-              <span class="check-num">11</span>
+              <span class="check-num">10</span>
               <span class="check-title">Independent evidence review completed in a new chat</span>
             </label>
             <div class="check-detail">The review ran in the fresh chat, your verdict survived or changed on evidence, and the final line is copied into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded — and clear any outcome the review did not support until it is repaired. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
@@ -631,7 +634,7 @@ master contents directly.</code></pre>
         <p>Measurement follows attack — the row is written only after the adversarial line exists.</p>
         <!-- Verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>, with the bracketed slots filled:</p>
+          <p class="do-label">Now reopen <strong>Operator — Direction &amp; Log</strong> in the Codex sidebar and paste this with the bracketed slots filled:</p>
           <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
@@ -658,15 +661,56 @@ Do not start transfer until this row is written.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-measure" name="p7-pulse-measure" data-check-id="pulse-measure" />
-              <span class="check-num">12</span>
+              <span class="check-num">11</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
             <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes you marked complete that the adversarial ruled WOUNDED or DEAD over the number you marked complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and a one-sentence <strong>lesson reflection</strong> answering the question above. This block has no deep mark.</div>
           </li>
         </ol>
-        <p>Last beat, and this afternoon it is the heavy one. Every block this week has left a seed in <code>operator/TRANSFER_30_60_90.md</code>, under the heading <strong>Circuit seeds</strong> — a machine candidate from P1, harness craft from P2, verdict ownership from P3, trailed knowledge from P4, operating picture from P5, contract from P6, and the machine-choice seed you filled an hour ago. Each one already names which horizon it feeds. This is the sitting where they stop being seven notes and become three horizons.</p>
+        </div>
+
+        <h3>Finish Stage 06 · Bank what transfers</h3>
+        <p>The sorted list feeds straight into the outer loop: one workload to pipeline, one that must stay agentic, and the rule that produced the sort. The measurement row now exists, so bank that list as a seed before you draft the horizons in the next step.</p>
+        <div class="do-step">
+          <p class="do-label">Open the standing transfer chat:</p>
+          <ul class="do-clicks">
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>Operator — Transfer 30-60-90</strong> in the sidebar</li>
+            <li>If it is missing, click <strong>New chat</strong>, rename it <code>Operator — Transfer 30-60-90</code>, and pin it if <strong>Pin</strong> appears</li>
+            <li>Select the instructor-named course model. If none was named, keep the visible default</li>
+            <li>Confirm the permission mode says <strong>Ask for approval</strong></li>
+          </ul>
+        </div>
         <div class="do-step">
           <p class="do-label">Now paste this into the chat <strong>Operator — Transfer 30-60-90</strong>:</p>
+          <pre><code>Transfer chat - P7 machine choice. Read operator/TRANSFER_30_60_90.md.
+
+I have just finished the P7 mission. Fill the "From P7 - Machine choice" seed
+with me, one field at a time:
+1. One workload from my real desk that should become a pipeline + human gate
+   - and why.
+2. One workload that must stay an agent loop - and why.
+3. The judgment I will not automate.
+4. My discrimination rule, in one sentence.
+
+Write today's date beside the seed so the file shows when it was filled.
+Challenge vagueness - "use AI more" is void; every line must be checkable at my
+own desk. Do not draft the horizons yet; that is a separate sitting. I accept
+every line.</code></pre>
+        </div>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p7-p7-transfer" name="p7-p7-transfer" data-check-id="p7-transfer" />
+              <span class="check-num">12</span>
+              <span class="check-title">P7 machine-choice seed filled and dated</span>
+            </label>
+            <div class="check-detail">The <em>From P7 — Machine choice</em> seed in <code>operator/TRANSFER_30_60_90.md</code> holds one workload to pipeline, one that must stay agentic, the judgment you will not automate, and your one-sentence rule — with today's date beside it. A field that reads "use AI more" is void; every line should be checkable at your own desk. If a field comes back thin, run the two questions on that workload again before you check this off.</div>
+          </li>
+        </ol>
+        <p>Last beat, and this afternoon it is the heavy one. Every block this week has left a seed in <code>operator/TRANSFER_30_60_90.md</code>, under the heading <strong>Circuit seeds</strong> — a machine candidate from P1, harness craft from P2, verdict ownership from P3, trailed knowledge from P4, operating picture from P5, contract from P6, and the machine-choice seed you just filled. Each one already names which horizon it feeds. This is the sitting where they stop being seven notes and become three horizons.</p>
+        <div class="do-step">
+          <p class="do-label">Now reopen <strong>Operator — Transfer 30-60-90</strong> in the Codex sidebar and paste this:</p>
           <pre><code>Transfer chat - P7 horizon draft. Read operator/TRANSFER_30_60_90.md.
 
 Work only from the "Circuit seeds" section of that file. Read every seed
@@ -706,7 +750,6 @@ status to "Draft horizons complete" once I accept all three. I own every accept.
             <div class="check-detail">All three sections of <code>operator/TRANSFER_30_60_90.md</code> are drafted, and every line traces back to a named seed under <strong>Circuit seeds</strong> rather than to an ambition. The file's status reads <em>Draft horizons complete</em>. A horizon that says "use AI more" is void; a thin horizon over a thin seed is honest, and tomorrow's seal is easier to earn against three horizons you can check than against nine lines you invented.</div>
           </li>
         </ol>
-        </div>
       </section>
 
 

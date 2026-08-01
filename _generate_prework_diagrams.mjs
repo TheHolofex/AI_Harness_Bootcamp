@@ -177,7 +177,7 @@ function sectionSvg(kind, config) {
 }
 
 const metaphors = {
-  begin: `  <g aria-label="Calendar, setup log, and three key marks">
+  begin: `  <g aria-label="Calendar, install guide, and three key marks">
     <rect x="540" y="86" width="92" height="57" rx="2" fill="${C.panel}" stroke="${C.strong}"/>
     <path d="M540 101H632M558 82V93M614 82V93" class="line"/>
     <rect x="553" y="112" width="13" height="10" fill="${C.mark}"/>
@@ -187,7 +187,7 @@ const metaphors = {
     <path d="M656 76H741L756 91V145H656Z" fill="${C.paper}" stroke="${C.strong}"/>
     <path d="M741 76V91H756M670 102H737M670 113H737M670 124H720" class="hair"/>
     <path d="M670 134l4 4 7-9" class="redline"/>
-    <text x="706" y="93" class="tiny muted" text-anchor="middle">SETUP LOG</text>
+    <text x="706" y="93" class="tiny muted" text-anchor="middle">INSTALL GUIDE</text>
     <path d="M786 99H1063" class="hair"/>
     <rect x="800" y="87" width="77" height="27" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
     <circle cx="810" cy="100.5" r="4" fill="${C.mark}"/>
@@ -453,7 +453,7 @@ const metaphors = {
     <text x="1035" y="80.5" class="tiny white" text-anchor="middle">OPTIONAL</text>
   </g>
 `,
-  repair: `  <g aria-label="Repair loop from error to paste to fix to log">
+  repair: `  <g aria-label="Repair loop from error to paste to fix to shown result">
     <rect x="533" y="93" width="116" height="45" rx="2" fill="${C.paper}" stroke="${C.mark}"/>
     <text x="591" y="112" class="micro red" text-anchor="middle">ERROR</text>
     <text x="591" y="127" class="caption" text-anchor="middle">EXACT TEXT</text>
@@ -464,7 +464,7 @@ const metaphors = {
     <text x="873" y="112" class="micro white" text-anchor="middle">FIX</text>
     <text x="873" y="127" class="caption white" text-anchor="middle">ONE CHANGE</text>
     <rect x="956" y="93" width="116" height="45" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="1014" y="112" class="micro muted" text-anchor="middle">LOG</text>
+    <text x="1014" y="112" class="micro muted" text-anchor="middle">SHOW</text>
     <text x="1014" y="127" class="caption" text-anchor="middle">RESULT</text>
     <path d="M649 116H674M790 116H815M931 116H956" class="redline" marker-end="url(#arrow-red)"/>
     <path d="M1014 93V75H591V93" class="hair" marker-end="url(#arrow)"/>
@@ -552,8 +552,8 @@ const metaphors = {
     <text x="827" y="110" class="tiny muted">CODEX + OPENCODE</text>
     <text x="570" y="136" class="micro muted">LEAK PLAN</text>
     <text x="570" y="147" class="tiny muted">REVOKE · REPLACE</text>
-    <text x="827" y="136" class="micro muted">SETUP LOG</text>
-    <text x="827" y="147" class="tiny muted">REAL FAILURE + FIX</text>
+    <text x="827" y="136" class="micro muted">LOCAL SITE</text>
+    <text x="827" y="147" class="tiny muted">OPENS AT LOCALHOST</text>
     <circle cx="782" cy="96" r="4" fill="${C.mark}"/>
     <circle cx="1040" cy="96" r="4" fill="${C.mark}"/>
     <circle cx="782" cy="133" r="4" fill="${C.mark}"/>
@@ -584,8 +584,8 @@ const installSections = [
     file: "install-before-you-begin.svg",
     current: 0,
     stage: "Before you begin",
-    purpose: "Start the Monday clinic with a setup log and your three course keys at hand.",
-    steps: ["START THE CLINIC", "OPEN A LOG", "HAVE THREE KEYS", "KNOW THE SHAPE"],
+    purpose: "Start the Monday clinic with this guide open and your three course keys at hand.",
+    steps: ["START THE CLINIC", "OPEN THIS GUIDE", "HAVE THREE KEYS", "KNOW THE SHAPE"],
     metaphor: metaphors.begin,
     svgTitle: "Before you begin",
   },
@@ -729,8 +729,8 @@ file: "install-10-goose.svg",
     file: "install-when-something-breaks.svg",
     current: -1,
     stage: "When something breaks",
-    purpose: "Copy the full error, fix the environment, write what worked in your log.",
-    steps: ["COPY ERROR", "FIX ENV", "RE-TEST", "LOG IT"],
+    purpose: "Copy the full error, fix the environment, and re-run the check.",
+    steps: ["COPY ERROR", "FIX ENV", "RE-TEST", "SHOW RESULT"],
     metaphor: metaphors.repair,
     svgTitle: "When something breaks",
     crosscut: true,
@@ -763,8 +763,8 @@ function installOverview() {
     <text x="568" y="197" class="tiny muted">CODEX · OPENCODE · PI · GOOSE</text>
     <path d="M810 186H828" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="838" y="166" width="258" height="40" rx="2" fill="${C.ink}"/>
-    <text x="856" y="182" class="micro white">04 · FILES + SETUP RECORD</text>
-    <text x="856" y="197" class="tiny white">REPO · LOG · FINAL CHECK</text>
+    <text x="856" y="182" class="micro white">04 · COURSE FILES</text>
+    <text x="856" y="197" class="tiny white">REPO · OPERATOR FILES · LOCAL SITE</text>
   </g>
   <rect x="0" y="220" width="1120" height="60" fill="${C.warm}"/>
   <rect x="24" y="232" width="515" height="36" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
@@ -774,7 +774,7 @@ function installOverview() {
   <rect x="557" y="232" width="539" height="36" rx="2" fill="${C.paper}" stroke="${C.mark}" stroke-width="1.5"/>
   <circle cx="581" cy="250" r="7" fill="${C.mark}"/>
   <path d="M577 250l3 3 6-7" fill="none" stroke="${C.paper}" stroke-width="1.4"/>
-  <text x="603" y="247" class="micro red">VERIFIED = FOUR FILES + SETUP LOG</text>
+  <text x="603" y="247" class="micro red">VERIFIED = FOUR FILES + COURSE OPENS</text>
   <text x="603" y="260" class="caption">CODEX · OPENCODE · PI · GOOSE</text>
 </svg>
 `;

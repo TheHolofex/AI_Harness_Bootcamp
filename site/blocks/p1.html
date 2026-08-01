@@ -132,9 +132,16 @@
         <p>Everything downstream inherits its quality from this conversation. The AI interviews and challenges; you accept or rewrite every field. For this mission the outcome names an artifact and an audience — a daily status brief, fixed format, for a reader you can picture.</p>
 
         <div class="do-step">
-          <p class="do-label">Now in the Codex app:</p>
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
-            <li>Open your pinned chat <strong>Operator — Direction &amp; Log</strong></li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, look for <strong>Operator — Direction &amp; Log</strong>. If it is there, open it</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code></li>
+            <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
+            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -189,7 +196,8 @@ Audience: [YOUR AUDIENCE].</code></pre>
         <div class="do-step">
           <p class="do-label">Now in File Explorer:</p>
           <ul class="do-clicks">
-            <li>Open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p1\corpus</code></li>
+            <li>Press <strong>Windows+E</strong> to open File Explorer</li>
+            <li>Click the address bar, paste <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p1\corpus</code>, and press <strong>Enter</strong></li>
             <li>Open and read each of the seven files — they're a few lines each: <code>C1_release_notes.md</code> through <code>C6_billing_api.md</code>, plus <code>DELTA_patch.md</code></li>
           </ul>
         </div>
@@ -197,10 +205,13 @@ Audience: [YOUR AUDIENCE].</code></pre>
         <p>As you read, note which files qualify their own claims and which state facts flat — that difference will matter when you audit. <code>DELTA_patch.md</code> is tomorrow's news arriving early; you'll hold it back until the delta test. Now open the room where the build will happen — a separate chat, so the operator chat stays clean for judgment.</p>
 
         <div class="do-step">
-          <p class="do-label">Now in the Codex app:</p>
+          <p class="do-label">Return to the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
+            <li>Confirm <code>AI_Harness_Bootcamp</code> is still the open project</li>
             <li>Click <strong>New chat</strong> — this is your <strong>build chat</strong>, separate from the operator chat</li>
-            <li>Rename it <code>Build — P1 Daily Brief</code> so you can find it again</li>
+            <li>Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Build — P1 Daily Brief</code></li>
+            <li>Select the same course model you used for the Direction Brief and confirm permissions say <strong>Ask for approval</strong></li>
+            <li>Keep this chat open through Stage 05</li>
           </ul>
         </div>
 
@@ -265,7 +276,7 @@ command, nothing else. Then stop. I will run it myself.</code></pre>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Now run this in a <strong>PowerShell window</strong>. Replace <code>[YOUR REGENERATE COMMAND]</code> with the one command the machine just gave you (for example <code>python mission_flesh\p1\regenerate.py</code>):</p>
+          <p class="do-label">Open <strong>PowerShell</strong> from the Windows Start menu, then run this. Replace <code>[YOUR REGENERATE COMMAND]</code> with the one command the machine just gave you (for example <code>python mission_flesh\p1\regenerate.py</code>). Keep this window open through Stage 05:</p>
           <pre><code>cd $env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp
 [YOUR REGENERATE COMMAND]</code></pre>
         </div>
@@ -312,6 +323,7 @@ the citations are correct - I will read the files myself.</code></pre>
 |     |               |      |           |     |
 
 Correction forced: [WHICH CLAIM - BEFORE and AFTER]</code></pre>
+          <p>After pasting, choose <strong>File → Save As</strong>, enter the full path above, select <strong>All files</strong> as the file type, and click <strong>Save</strong>. Leave <code>AUDIT.md</code> open while you inspect the sources.</p>
         </div>
 
         <div class="do-step">
@@ -402,6 +414,14 @@ Rename-Item mission_flesh\p1\corpus\C4_finance_ask.md.hold C4_finance_ask.md</co
         <p>Close the loop where it started — in the operator chat, on the record.</p>
 
         <div class="do-step">
+          <p class="do-label">Return to the <strong>Codex app</strong> and switch chats:</p>
+          <ul class="do-clicks">
+            <li>Leave <strong>Build — P1 Daily Brief</strong></li>
+            <li>Open <strong>Operator — Direction &amp; Log</strong> in the course project's chat list</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
           <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
           <pre><code>Before the log entry: help me draw the draft-versus-judgment line for this
 brief. Ask me, one question at a time:
@@ -416,18 +436,6 @@ answer for me.</code></pre>
         </div>
 
         <p>One honest sentence per call is enough. If you can't name a judgment you made, look at how your brief handled the SSO rumor — someone decided that, and it wasn't the model.</p>
-
-        <p>One last entry, and it belongs to your desk rather than this one. The move you just ran — a pinned source folder, a fixed format, a citation rule, a rerun path — works on any recurring product you currently rewrite from memory. Name that product now, while the afternoon is still fresh, and date it so you can see later how long it sat.</p>
-
-        <div class="do-step">
-          <p class="do-label">Now open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md</code> in <strong>Notepad</strong> and write this under the heading <strong>From P1 — Machine candidate</strong>. Replace <code>[TODAY'S DATE]</code> with today's date, and <code>[PRODUCT]</code> with one recurring product you actually produce — the weekly rollup, the Monday status email, the watch report:</p>
-          <pre><code>Dated: [TODAY'S DATE]
-Machine candidate: [PRODUCT] - rebuild it as a machine: one source folder,
-fixed sections, a citation on every claim, one command to regenerate, visible
-failure when a source goes missing.</code></pre>
-        </div>
-
-        <p>One product, named and dated. If two came to mind, pick the one you rewrite most often — that is where the hours are.</p>
 
         <ol class="checklist">
 
@@ -508,9 +516,13 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
         <p>Now the attack. A fresh chat, so the reviewer never "helped you succeed" five minutes ago.</p>
 
         <div class="do-step">
-          <p class="do-label">Now in the Codex app:</p>
+          <p class="do-label">Now create the independent review chat in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Click <strong>New chat</strong> and rename it <code>Adversarial — P1 — [TODAY'S DATE]</code></li>
+            <li>Confirm <code>AI_Harness_Bootcamp</code> is the open project</li>
+            <li>Click <strong>New chat</strong></li>
+            <li>Rename it <code>Adversarial — P1 — [TODAY'S DATE]</code>, replacing the bracket with today's actual date</li>
+            <li>Select the instructor-named reviewer model, or keep the visible default if none was named</li>
+            <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -621,6 +633,28 @@ Do not start transfer until this row is written.</code></pre>
           </li>
         </ol>
         </div>
+
+        <h3>Finish Stage 06 · Bank what transfers</h3>
+        <p>One last entry, and it belongs to your desk rather than this one. The move you just ran — a pinned source folder, a fixed format, a citation rule, a rerun path — works on any recurring product you currently rewrite from memory. Name that product now, while the afternoon is still fresh, and date it so you can see later how long it sat.</p>
+
+        <div class="do-step">
+          <p class="do-label">Open the transfer file in <strong>Notepad</strong>:</p>
+          <ul class="do-clicks">
+            <li>Press the <strong>Windows</strong> key, type <code>Notepad</code>, and open the app</li>
+            <li>Choose <strong>File → Open</strong></li>
+            <li>Click the file window's address bar, enter <code>%USERPROFILE%\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator</code>, and press <strong>Enter</strong></li>
+            <li>Change the file type to <strong>All files</strong>, select <code>TRANSFER_30_60_90.md</code>, and click <strong>Open</strong></li>
+            <li>Find the heading <strong>From P1 — Machine candidate</strong></li>
+          </ul>
+          <p>Write this beneath that heading. Replace <code>[TODAY'S DATE]</code> with today's date, and <code>[PRODUCT]</code> with one recurring product you actually produce — the weekly rollup, the Monday status email, or the watch report:</p>
+          <pre><code>Dated: [TODAY'S DATE]
+Machine candidate: [PRODUCT] - rebuild it as a machine: one source folder,
+fixed sections, a citation on every claim, one command to regenerate, visible
+failure when a source goes missing.</code></pre>
+          <p>Paste the filled text beneath the existing heading, press <strong>Ctrl+S</strong>, and keep this same transfer file. Do not create a second copy.</p>
+        </div>
+
+        <p>One product, named and dated. If two came to mind, pick the one you rewrite most often — that is where the hours are.</p>
       </section>
 
 

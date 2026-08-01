@@ -38,7 +38,7 @@
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
       <a href="#ideas">The ideas</a>
-      <a href="#mission">Mission · <span data-count-for="mission">0/9</span></a>
+      <a href="#mission">Mission · <span data-count-for="mission">0/10</span></a>
       <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/9</span></a>
       <a href="#depth">Going deeper</a>
       <a href="#stuck">If you get stuck</a>
@@ -124,15 +124,21 @@
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Work the stages in order. Every block below is literal: copy it into the surface its label names — a chat, a PowerShell window, a file — and check each item off as its proof exists. Today runs on five chats — <strong>Operator — Direction &amp; Log</strong>, a <strong>P8 build</strong> chat, a fresh <strong>P8 cold run</strong> chat, a new <strong>Adversarial — P8</strong> chat, and <strong>Operator — Transfer 30-60-90</strong> — plus one PowerShell window and Notepad. Progress saves in this browser — the same tick shows on the home page.</p>
+        <p class="section-lede">Work the stages in order. Every block below is literal: copy it into the surface its label names — a chat, a PowerShell window, a file — and check each item off as its proof exists. Today runs on six chats — <strong>Operator — Direction &amp; Log</strong>, <strong>P8 build</strong>, <strong>P8 cold run</strong>, two fresh adversarial chats labelled <strong>open</strong> and <strong>home</strong>, and <strong>Operator — Transfer 30-60-90</strong> — plus one PowerShell window and Notepad. Progress saves in this browser — the same tick shows on the home page.</p>
 
         <h3>Stage 01 · Brief the close</h3>
         <p>Friday's brief names artifacts, not sentiment. The outcome is four things existing by lunch: a dated policy, a filled matrix, a refuse record, a sealed transfer file.</p>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
-            <li>Open the project <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> — click <strong>Open project</strong> and choose it if it isn't already open</li>
-            <li>Open the chat <strong>Operator — Direction &amp; Log</strong> — the chat that has held every brief this week</li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, look for <strong>Operator — Direction &amp; Log</strong>. If it is there, open it</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code></li>
+            <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
+            <li>Confirm the displayed model is the normal course model, not the open-endpoint model used later in this lesson</li>
+            <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <!-- Verbatim from operator/DIRECTION_BRIEF.md — operator-chat starter -->
@@ -187,19 +193,35 @@ Stop / hand-back: if the endpoint will not answer after the smoke check, stop th
           <img src="../assets/blocks/p8/p8-stage-policy.svg" alt="The AUP document — version, date, and six fields — signed off before the arrow to the re-point target fires" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
         <div class="do-step">
+          <p class="do-label">Confirm the home-model baseline exists while the app is still on the home model:</p>
+          <ul class="do-clicks">
+            <li>Press <strong>Windows+E</strong> to open File Explorer</li>
+            <li>Click the address bar, enter <code>%USERPROFILE%\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\SCORE_SHEET.md</code>, and press <strong>Enter</strong></li>
+            <li>Open the file and confirm all five rows in <strong>After P/F</strong> contain P or F</li>
+            <li>If any After cell is empty, stop here and finish P2&#x27;s cold rescore on the home model before continuing. Do not re-point without the comparison baseline</li>
+            <li>Close the score sheet after the five values are confirmed</li>
+          </ul>
+        </div>
+        <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Click <strong>New chat</strong> and title it <strong>P8 build</strong> — today's work chat, so the operator chat stays clean for judgment</li>
+            <li>Return to ChatGPT, select <strong>Codex</strong> if needed, and open the course project</li>
+            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P8 build</code></li>
+            <li>Confirm the displayed model is still the normal course model and the permission mode says <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <p>The policy starts as the course template, copied to your project root so the machine and you can both edit it.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>Windows PowerShell</strong> window:</p>
+          <p class="do-label">Open the <strong>P8 PowerShell window</strong>:</p>
+          <ul class="do-clicks">
+            <li>Press the <strong>Windows</strong> key, type <code>PowerShell</code>, and open <strong>Windows PowerShell</strong></li>
+            <li>Keep this window open for the rest of the lesson</li>
+          </ul>
           <pre><code>Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p8\AUP_ENDPOINT_TEMPLATE.md" "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\AUP_ENDPOINT.md"</code></pre>
         </div>
         <p>Now co-write the six sections. The AI drafts; you accept or rewrite every line — the obligations are yours, so the words have to be too.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>P8 build</strong> chat:</p>
+          <p class="do-label">Now return to Codex, open <strong>P8 build</strong>, and paste this:</p>
           <pre><code>We are writing my endpoint AUP before any re-point. Read AUP_ENDPOINT.md in the project root — it is the unfilled template.
 
 Work section by section: Allowed, Forbidden, Data that may not leave the laptop, Require human accept when, Legitimate refuse examples, Logging / retention. For each section, propose one or two concrete lines drafted against the five cases in instruments/p2_test_suite/[YOUR TRACK]/cases/ and against the data on my real desk — interview me when you need the desk facts. Challenge any line vague enough that it could never refuse a task.
@@ -223,7 +245,7 @@ Set Version to 1.0 and Effective to today's date. Leave the endpoint placeholder
         <h3 id="stage-3-repoint">Stage 03 · Re-point</h3>
         <p>Now — and only now — the app gets pointed at the open endpoint. <a href="#stage-3-repoint">The re-point steps in this section</a> are the full web runbook — config block, placeholder swap, smoke check, rollback. The cloned pack keeps its working copy at <code>mission_flesh/p8/REPOINT_RUNBOOK.md</code>. The real values come from the pin posted at the start of the block — if it isn't in front of you, ask before you reach the value swap; everything before that swap can be staged while you wait.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>Windows PowerShell</strong> window:</p>
+          <p class="do-label">Return to the <strong>P8 PowerShell window</strong> and paste this:</p>
           <pre><code>Copy-Item "$env:USERPROFILE\.codex\config.toml" "$env:USERPROFILE\.codex\config.toml.p8-backup"
 notepad "$env:USERPROFILE\.codex\config.toml"</code></pre>
         </div>
@@ -248,7 +270,7 @@ wire_api = "responses"</code></pre>
         </div>
         <p>Line by line: <code>model</code> names what to ask for, <code>model_provider</code> routes requests through the <code>openmodel</code> entry, <code>base_url</code> is where they go, and <code>env_key</code> names the environment variable that will hold the key — the key itself never goes in this file. <code>wire_api = "responses"</code> declares the endpoint speaks the Responses API, the only protocol the app supports.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>P8 build</strong> chat:</p>
+          <p class="do-label">Save <strong>config.toml</strong>, return to Codex, open <strong>P8 build</strong>, and paste this:</p>
           <pre><code>Re-point record. The pin values: endpoint [ENDPOINT FROM THE PIN], model name [MODEL NAME FROM THE PIN]. Do not ask for or record the key anywhere.
 
 1. In AUP_ENDPOINT.md, fill the endpoint placeholder block with those two values.
@@ -265,8 +287,10 @@ wire_api = "responses"</code></pre>
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Fully quit the app — not just its window — then reopen it and open the project again</li>
+            <li>Fully quit the app — not just its window — then reopen <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>Select <strong>Codex</strong>, open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>, and click <strong>P8 build</strong> in the sidebar</li>
             <li>Check the model picker or status line: it should show the pin's model name. If only the home models appear, the config never loaded — confirm the edit landed in <code>%USERPROFILE%\.codex\config.toml</code>, then restart again</li>
+            <li>Confirm the permission mode says <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <div class="do-step">
@@ -290,7 +314,9 @@ wire_api = "responses"</code></pre>
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Click <strong>New chat</strong> and title it <strong>P8 cold run</strong></li>
+            <li>Confirm the course project is open and the displayed model is the open-endpoint model from the pin</li>
+            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P8 cold run</code></li>
+            <li>Confirm the new chat still shows the open-endpoint model and <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <div class="do-step">
@@ -317,12 +343,12 @@ wire_api = "responses"</code></pre>
         </div>
         <p>Now the grading — which is yours, not the model's. The pass conditions are not inside the case files the endpoint just read; they sit in a grader file that only you open. That separation is what makes the numbers worth having: shown the standard, a model writes to the standard, and the score stops telling you anything about the endpoint.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>Windows PowerShell</strong> window:</p>
+          <p class="do-label">Return to the <strong>P8 PowerShell window</strong>. If it is closed, open PowerShell from the Windows Start menu. Then paste this:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\[YOUR TRACK]\GRADER.md"
 notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p8_hold_degrade\SCORE_SHEET.md"</code></pre>
           <p>In the first line, replace <code>[YOUR TRACK]</code> — brackets included — with <code>engineering</code> or <code>mission_ops</code>. Two Notepad windows open: the five pass conditions, and the sheet you score on.</p>
         </div>
-        <p>Score each deliverable against its case's pass condition in <code>GRADER.md</code>: fill the header fields and the Open column with P or F per case. The table has no notes column, so put each case's one-line note on its own line under the table — <code>D01: fluent summary, missed the citation check</code> — because fluent-but-wrong is a FAIL and the note is where you say so. Before you leave the chat, add one more line there — <code>Live walls: …</code> — naming which instructions and skills were actually loaded on the run; Stage 05's layer labels lean on that fact. Keep the P8 sheet open — the home column and the counts land in it next.</p>
+        <p>Score each deliverable against its case's pass condition in <code>GRADER.md</code>: fill the header fields and the Open column with P or F per case. The table has no notes column, so put each case's one-line note on its own line under the table — <code>D01: fluent summary, missed the citation check</code> — because fluent-but-wrong is a FAIL and the note is where you say so. Before you leave the chat, add one more line there — <code>Live walls: …</code> — naming which instructions and skills were actually loaded on the run; Stage 05's layer labels lean on that fact. Press <strong>Ctrl+S</strong> in the P8 score sheet, close <code>GRADER.md</code>, and keep the P8 score sheet open — the home column and the counts land in it next.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -337,10 +363,18 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instrume
         <h3>Stage 05 · Read the matrix</h3>
         <p>Two columns of scores become three counts and a set of layer labels. This is where "the open model feels weaker" becomes a sentence you can defend. First the home column — Tuesday's after scores, fetched from the sheet where you wrote them.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>Windows PowerShell</strong> window:</p>
+          <p class="do-label">Return to the <strong>P8 PowerShell window</strong> and paste this:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\SCORE_SHEET.md"</code></pre>
         </div>
-        <p>That is Tuesday's score sheet. Copy its <strong>After P/F</strong> column into the Home column of the P8 sheet, row by row — same IDs, no substitutions — then close it. If Tuesday's After column is empty, run the five cold-run dispatches once against the home model first; see If you get stuck.</p>
+        <div class="do-step">
+          <p class="do-label">Move the home scores into the P8 sheet, then return to the build chat:</p>
+          <ul class="do-clicks">
+            <li>Copy Tuesday's <strong>After P/F</strong> values into the Home column of the P8 sheet, row by row — same IDs, no substitutions</li>
+            <li>Press <strong>Ctrl+S</strong> in the P8 sheet, then close Tuesday's score sheet</li>
+            <li>If an After cell is empty, stop. The Stage 02 prerequisite was not complete; restore the home model and finish P2's cold rescore before continuing</li>
+            <li>Click the ChatGPT app on the taskbar, select <strong>Codex</strong> if needed, and open <strong>P8 build</strong></li>
+          </ul>
+        </div>
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>P8 build</strong> chat:</p>
           <pre><code>Matrix read. Two columns on the frozen suite — home is my P2 after column, open is today's cold run:
@@ -354,7 +388,14 @@ D05 home [P/F] open [P/F]
 Classify each row: hold = PASS on both, degrade = home PASS open FAIL, improve = home FAIL open PASS. Give me the three counts and a one-line totals sentence in the form "open n/5 vs home n/5". Then stop — layer labels are a separate pass.</code></pre>
           <p>Replace each <code>[P/F]</code> with P or F from the score sheet before sending.</p>
         </div>
-        <p>Copy the counts and the totals sentence into the score sheet. The arithmetic is trivial on purpose — what you're buying is a sentence you can say to a manager without flinching.</p>
+        <div class="do-step">
+          <p class="do-label">Record the matrix result, then return to <strong>P8 build</strong>:</p>
+          <ul class="do-clicks">
+            <li>Switch to the open P8 score sheet and copy in the three counts and the totals sentence</li>
+            <li>Press <strong>Ctrl+S</strong>, then return to <strong>P8 build</strong> in Codex</li>
+          </ul>
+        </div>
+        <p>The arithmetic is trivial on purpose — what you're buying is a sentence you can say to a manager without flinching.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -373,7 +414,7 @@ Classify each row: hold = PASS on both, degrade = home PASS open FAIL, improve =
 Non-hold rows: [LIST THEM, e.g. D02 degrade, D04 improve]</code></pre>
           <p>Replace the bracketed slot with your non-hold rows from the matrix read.</p>
         </div>
-        <p>Write each accepted label and its one-line why into the score sheet's failure-layer column as you go.</p>
+        <p>For each accepted label, switch to the P8 score sheet, write the label and its one-line why in the failure-layer column, press <strong>Ctrl+S</strong>, and return to <strong>P8 build</strong> before the next row.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -390,7 +431,13 @@ Non-hold rows: [LIST THEM, e.g. D02 degrade, D04 improve]</code></pre>
           <pre><code>Loop-close probe, under AUP_ENDPOINT.md. Run this end to end: [ONE PATH YOU ACTUALLY CARE ABOUT — e.g. "regenerate my P1 daily brief from its standing instructions" or "the full loop on case D03: deliverable, checks, fix, re-run"]. If any wall blocks the loop — instructions not loading, a missing tool, a check that cannot run — stop at the wall and name it exactly instead of working around it.</code></pre>
           <p>Replace the bracketed slot with the one path you care about most; a named workload beats a demo.</p>
         </div>
-        <p>Record the result on the score sheet's <code>Loop still closes on core path?</code> line — Y or N, and which path.</p>
+        <div class="do-step">
+          <p class="do-label">Record the loop result, then return to the build chat:</p>
+          <ul class="do-clicks">
+            <li>Switch to the P8 score sheet and fill <code>Loop still closes on core path?</code> with Y or N and the path you ran</li>
+            <li>Press <strong>Ctrl+S</strong>, then return to <strong>P8 build</strong> in Codex for Stage 06</li>
+          </ul>
+        </div>
 
         <h3>Stage 06 · Refuse under your policy</h3>
         <p>Your policy has to fire once, on record, against something you actually wanted — that's what separates governance from decoration.</p>
@@ -453,64 +500,14 @@ Evidence rules: every claim must trace to the matrix totals, the AUP version, on
           </li>
         </ol>
 
-        <h3>Stage 08 · Seal</h3>
-        <p>The transfer file closes under adversarial pressure, with the defense's evidence feeding it.</p>
-        <figure class="section-diagram">
-          <img src="../assets/blocks/p8/p8-stage-seal.svg" alt="Four evidence chips — matrix totals, policy version, one accept, one reject — feeding the transfer file marked SEALED with a date" width="1120" height="220" loading="lazy" decoding="async" />
-        </figure>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open the chat <strong>Operator — Transfer 30-60-90</strong> — the outer-loop chat that has taken a row after every block this week</li>
-          </ul>
-        </div>
-        <!-- Verbatim from operator/TRANSFER_30_60_90.md — every-AM/PM transfer prompt -->
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Operator — Transfer 30-60-90</strong> chat:</p>
-          <pre><code>Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
-
-Block I just finished: [B0/P1/…].
-I have finished Direction/Log and lesson-outcome check in the other operator chat.
-
-Run a short interactive update:
-1. What did this lesson prove you can now do (one sentence, no theater)?
-2. Map it onto MY real desk — interview me if missing.
-3. Update the matching seed and today’s row in the session log.
-4. Tighten at most three lines in identity or 30/60/90 if enough signal exists.
-5. Name one backslide risk if I do nothing at work.
-
-Do not seal. Do not invent a full plan from zero on a light block.
-Challenge vagueness. I own every accept.</code></pre>
-          <p>Two edits before sending: replace <code>[B0/P1/…]</code> with <code>P8</code>, and — because today the seal visit runs ahead of the log — replace the line <code>I have finished Direction/Log and lesson-outcome check in the other operator chat.</code> with <code>The Direction Brief is LIVE; the Operator Log and the lesson-outcome check follow right after this seal.</code> The prompt stays honest that way, and the reflection below keeps the promise it makes.</p>
-        </div>
-        <p>The session update writes today's row first — the prompt itself refuses to seal, which is right: the update and the seal are two separate acts, and the second one starts now.</p>
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Operator — Transfer 30-60-90</strong> chat:</p>
-          <pre><code>Seal gate. Read the seal checklist near the bottom of operator/TRANSFER_30_60_90.md and run it adversarially, one item at a time: attack the weakest evidence in the file before letting me claim the item, and I fix the line in the file or accept the risk in writing — in the file, not just here. Hold the line on the session log: if the week's rows are thin, we reconstruct honestly and record the gaps as gaps, never backfill. Only when every item holds, set Status to SEALED with today's date.</code></pre>
-        </div>
-        <p>You should see the checklist walked item by item and end with Status reading <strong>SEALED</strong> plus today's date. A Friday-invented plan fails the checklist's own session-log test — reconstruct honestly and log the gaps as scars, not secrets. And when the block is over and you want the home models back, the runbook's rollback section is two minutes: comment out the added config lines and restart.</p>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p8-p8-seal" name="p8-p8-seal" data-check-id="p8-seal" />
-              <span class="check-num">9</span>
-              <span class="check-title">Seal Transfer 30-60-90</span>
-            </label>
-            <div class="check-detail">SEALED requires session-log rows across the week, your real desk in the identity block, and at most three checkable outcomes per horizon — the AI attacks weak lines; you fix each one or accept the risk in writing. You should see status <strong>SEALED</strong> with today's date in <code>operator/TRANSFER_30_60_90.md</code>. If the seal stalls on a thin week, that's the checklist working — reconstruct, don't invent.</div>
-          </li>
-        </ol>
-
-        <div class="panel">
-          <p class="eyebrow">Stretch bridge · Endpoint portfolio</p>
-          <p class="full-measure">If you ran Thursday's local flip, fold the scored totals from <code>out/local_hold_degrade.md</code> into today's picture: API home · local · hosted open — each cell needs a score or an artifact path, not vibes. Guide: <code>mission_flesh/p6/local_endpoint_notes.md</code> · matrix: <code>instruments/p8_hold_degrade/</code>.</p>
-        </div>
-
-
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
-          <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/5</span></h3>
+          <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
         <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking fresh reviewers to challenge the evidence, and updating your transfer plan. <a href="../pulse.html">Lesson reflection guide →</a></p>
         <p class="reflection-question"><strong>Think back:</strong> What will you carry unchanged when the endpoint changes, and which layer still needs work?</p>
         <p>The log goes back in <strong>Operator — Direction &amp; Log</strong>. The mission runs elsewhere; this chat holds direction and verdicts.</p>
+        <div class="do-step">
+          <p class="do-label">Leave <strong>P8 build</strong> and open <strong>Operator — Direction &amp; Log</strong> in the Codex sidebar.</p>
+        </div>
         <!-- Verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>Operator — Direction &amp; Log</strong> chat:</p>
@@ -534,7 +531,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p8-pulse-log" name="p8-pulse-log" data-check-id="pulse-log" />
-              <span class="check-num">10</span>
+              <span class="check-num">9</span>
               <span class="check-title">Operator Log complete</span>
             </label>
             <div class="check-detail">The P8 entry holds what you directed, mid-run changes, a verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers — policy version, matrix path, refuse record — and what you still own. Today the verdict covers the endpoint too: fit for which work, on what evidence.</div>
@@ -552,7 +549,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p8-pulse-bars" name="p8-pulse-bars" data-check-id="pulse-bars" />
-              <span class="check-num">11</span>
+              <span class="check-num">10</span>
               <span class="check-title">Lesson outcomes marked from current evidence</span>
             </label>
             <div class="check-detail">The checked list is a forecast, not a summary: you are naming, in writing and before the independent review, which outcomes you believe the evidence supports. Every check needs an artifact you could open in front of someone — the outcome list’s evidence rule stands, and if the review questions an outcome, clear it until you fix the evidence.</div>
@@ -561,12 +558,15 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Click <strong>New chat</strong> and title it <strong>Adversarial — P8 — [today's date]</strong> — a brand-new chat, so the reviewer never "helped you succeed" five minutes ago</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Confirm the displayed model is the open-endpoint model from the pin</li>
+            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — P8 — open — [today's date]</code> with the actual date</li>
+            <li>Confirm the permission mode says <strong>Ask for approval</strong>. This must be a brand-new chat, so the reviewer never helped you succeed</li>
           </ul>
         </div>
         <!-- Verbatim from operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Adversarial — P8</strong> chat:</p>
+          <p class="do-label">Now paste this into <strong>Adversarial — P8 — open</strong>:</p>
           <pre><code>You are an adversarial operator reviewer for an operator’s school.
 Your job is NOT to help me feel successful. Your job is to stress-test my verdict and claimed lesson outcomes.
 
@@ -602,7 +602,7 @@ Rules for you:
         </div>
         <p>Then the paste pack — the reviewer only bites as hard as what you feed it.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Adversarial — P8</strong> chat:</p>
+          <p class="do-label">Now paste this into <strong>Adversarial — P8 — open</strong>:</p>
           <pre><code>Block: P8 — Operator-governed open model. Claimed outcome: a dated AUP, a scored hold/degrade matrix on D01-D05, a refuse-plus-control record, a SEALED 30-60-90.
 
 Artifacts: AUP_ENDPOINT.md (version, effective date) · instruments/p8_hold_degrade/SCORE_SHEET.md (both columns, counts, loop-close line) · REPOINT_NOTE.md · REFUSE_RECORD.md · operator/TRANSFER_30_60_90.md (status line, session log).
@@ -613,23 +613,41 @@ Lesson outcomes I marked complete: [PASTE THE LESSON OUTCOMES YOU MARKED COMPLET
 What I already know is weak: [ONE HONEST LINE]
 
 Attack the matrix and the refuse record first.</code></pre>
-          <p>Fill the four bracketed slots from your artifacts before sending.</p>
+          <p>Fill the four bracketed slots from your artifacts before sending. Stage 08 now follows measurement, so also replace <code>a SEALED 30-60-90</code> with <code>a 30-60-90 ready for its seal gate</code>, and replace <code>(status line, session log)</code> with <code>(current status, session log)</code>. Do not claim the seal before you run it.</p>
         </div>
-        <p>Copy the final <code>ADVERSARIAL:</code> line into your Operator Log. Wounded means fix now or downgrade the verdict — performatively "taking notes" and changing nothing is the collapse the ritual exists to prevent. Then the same evidence goes in front of a second reviewer.</p>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Save the open-endpoint review before changing models:</p>
           <ul class="do-clicks">
-            <li>Click <strong>New chat</strong> — still pointed at the open endpoint — and title it <strong>Adversarial — P8 — second pass</strong></li>
-            <li>Run the same frozen adversarial prompt on the same paste pack — the two blocks you just sent, unchanged. Same prompt, same pack, no softening</li>
-            <li>Record both final <code>ADVERSARIAL:</code> lines side by side in your P8 log entry, labelled by endpoint</li>
+            <li>Copy its final <code>ADVERSARIAL:</code> line and its SURVIVES / WOUNDED / DEAD rulings</li>
+            <li>Open <strong>Operator — Direction &amp; Log</strong> and add them to the P8 log entry under the label <strong>Open endpoint</strong></li>
           </ul>
         </div>
-        <p>It is a different model family from the one that has judged your work all week, reading the same evidence on a socket you configured this morning. Where the two verdicts disagree about an outcome, that disagreement is the finding — and the endpoint you are defending gets to attack your defense of it.</p>
+        <p>Wounded means fix now or downgrade the verdict — performatively "taking notes" and changing nothing is the collapse the ritual exists to prevent. Now restore the saved home configuration so the same evidence can face a genuinely different model family.</p>
+        <div class="do-step">
+          <p class="do-label">Restore the home-model configuration:</p>
+          <ul class="do-clicks">
+            <li>Return to the <strong>P8 PowerShell window</strong>. If it is closed, open PowerShell from the Windows Start menu</li>
+          </ul>
+          <pre><code>Copy-Item "$env:USERPROFILE\.codex\config.toml.p8-backup" "$env:USERPROFILE\.codex\config.toml" -Force</code></pre>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Restart Codex on the home model and create the second review:</p>
+          <ul class="do-clicks">
+            <li>Fully quit ChatGPT, reopen it from the Windows Start menu, and select <strong>Codex</strong></li>
+            <li>Open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> and confirm the displayed model is the normal course model, not the open-endpoint model</li>
+            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — P8 — home — [today's date]</code> with the actual date</li>
+            <li>Confirm <strong>Ask for approval</strong></li>
+            <li>Paste the same frozen adversarial prompt, then the same filled paste pack — the two blocks above, unchanged. Same evidence, no softening</li>
+            <li>When the review ends, copy its final <code>ADVERSARIAL:</code> line and its outcome rulings</li>
+            <li>Open <strong>Operator — Direction &amp; Log</strong> and add them beside the first result under the label <strong>Home endpoint</strong></li>
+          </ul>
+        </div>
+        <p>The two reviews now come from different model families against the same prompt and evidence. Where they disagree about an outcome, that disagreement is the finding. The app is also safely back on the home configuration before you close the lesson.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p8-pulse-adv" name="p8-pulse-adv" data-check-id="pulse-adv" />
-              <span class="check-num">12</span>
+              <span class="check-num">11</span>
               <span class="check-title">Independent evidence review completed in a new chat</span>
             </label>
             <div class="check-detail">A brand-new chat, the frozen prompt, and your artifacts — the matrix and the refuse record are the first things it should try to take from you. The final line is in your log: <code>ADVERSARIAL: stood | wounded | failed</code>, and today two of them, labelled by endpoint. Wounded means fix now or downgrade the verdict. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
@@ -637,7 +655,7 @@ Attack the matrix and the refuse record first.</code></pre>
         </ol>
         <!-- Verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Operator — Direction &amp; Log</strong> chat:</p>
+          <p class="do-label">Now stay in or reopen <strong>Operator — Direction &amp; Log</strong> and paste this:</p>
           <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
 Block: [B0/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
@@ -658,22 +676,88 @@ Fill this block's row:
 5. Deep mark if this block has one.
 Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
-          <p>Before sending: Block is <code>P8</code>; paste both <code>ADVERSARIAL:</code> lines, and under them the SURVIVES / WOUNDED / DEAD ruling each review gave each outcome — where the two reviewers ruled differently on an outcome, count the harsher one, because an overclaim you can argue away is still an overclaim; <code>[n]</code> is how many lesson outcomes you marked complete before the independent review; honest estimates are fine for the times; <code>[paths]</code> takes the four artifacts — <code>AUP_ENDPOINT.md</code>, <code>instruments/p8_hold_degrade/SCORE_SHEET.md</code>, <code>REFUSE_RECORD.md</code>, <code>operator/TRANSFER_30_60_90.md</code>. The deep mark takes the form <code>Hold-degrade: open n/5 vs home n/5; refuse: Y/N; transfer SEALED: Y/N</code>. The closing transfer rule is already satisfied — today's transfer visit ran at the seal, and the close-out below re-checks it from the file.</p>
+          <p>Before sending: Block is <code>P8</code>; paste both <code>ADVERSARIAL:</code> lines, and under them the SURVIVES / WOUNDED / DEAD ruling each review gave each outcome — where the two reviewers ruled differently on an outcome, count the harsher one, because an overclaim you can argue away is still an overclaim; <code>[n]</code> is how many lesson outcomes you marked complete before the independent review; honest estimates are fine for the times; <code>[paths]</code> takes the four artifacts — <code>AUP_ENDPOINT.md</code>, <code>instruments/p8_hold_degrade/SCORE_SHEET.md</code>, <code>REFUSE_RECORD.md</code>, <code>operator/TRANSFER_30_60_90.md</code>. The deep mark takes the form <code>Hold-degrade: open n/5 vs home n/5; refuse: Y/N; transfer SEALED: N</code> for this first write, because the seal gate has not run yet. Stage 08 returns to this row and changes only that final flag if the seal is earned.</p>
         </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p8-pulse-measure" name="p8-pulse-measure" data-check-id="pulse-measure" />
-              <span class="check-num">13</span>
+              <span class="check-num">12</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
             <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes you marked complete that the adversarial ruled WOUNDED or DEAD over the number you marked complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, a one-sentence <strong>lesson reflection</strong> answering the question above, and the deep mark <code>Hold-degrade: open n/5 vs home n/5; refuse: Y/N; transfer SEALED: Y/N</code>.</div>
           </li>
         </ol>
-        <p>The transfer visit already happened — Stage 08 pasted the every-session prompt and ran the seal gate in <strong>Operator — Transfer 30-60-90</strong>. Close the loop from the file itself.</p>
+        </div>
+
+        <h3>Stage 08 · Seal</h3>
+        <p>Both endpoint reviews and the measurement row now exist. The transfer file can close under that pressure, with the defense's evidence feeding it.</p>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p8/p8-stage-seal.svg" alt="Four evidence chips — matrix totals, policy version, one accept, one reject — feeding the transfer file marked SEALED with a date" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Open <strong>Operator — Transfer 30-60-90</strong> in the sidebar</li>
+            <li>If it is missing, click <strong>New chat</strong>, rename it <code>Operator — Transfer 30-60-90</code>, and pin it if <strong>Pin</strong> appears</li>
+            <li>Confirm the displayed model is the normal course model, not the open-endpoint model, and the permission mode says <strong>Ask for approval</strong></li>
+          </ul>
+        </div>
+        <!-- Verbatim from operator/TRANSFER_30_60_90.md — every-AM/PM transfer prompt -->
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>Operator — Transfer 30-60-90</strong> chat:</p>
+          <pre><code>Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
+
+Block I just finished: [B0/P1/…].
+I have finished Direction/Log and lesson-outcome check in the other operator chat.
+
+Run a short interactive update:
+1. What did this lesson prove you can now do (one sentence, no theater)?
+2. Map it onto MY real desk — interview me if missing.
+3. Update the matching seed and today’s row in the session log.
+4. Tighten at most three lines in identity or 30/60/90 if enough signal exists.
+5. Name one backslide risk if I do nothing at work.
+
+Do not seal. Do not invent a full plan from zero on a light block.
+Challenge vagueness. I own every accept.</code></pre>
+          <p>Replace <code>[B0/P1/…]</code> with <code>P8</code> before sending. Leave the next line unchanged: the Operator Log, lesson-outcome check, independent reviews, and measurement row are complete now.</p>
+        </div>
+        <p>The session update writes today's row first — the prompt itself refuses to seal, which is right: the update and the seal are two separate acts, and the second one starts now.</p>
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>Operator — Transfer 30-60-90</strong> chat:</p>
+          <pre><code>Seal gate. Read the seal checklist near the bottom of operator/TRANSFER_30_60_90.md and run it adversarially, one item at a time: attack the weakest evidence in the file before letting me claim the item, and I fix the line in the file or accept the risk in writing — in the file, not just here. Hold the line on the session log: if the week's rows are thin, we reconstruct honestly and record the gaps as gaps, never backfill. Only when every item holds, set Status to SEALED with today's date.</code></pre>
+        </div>
+        <p>You should see the checklist walked item by item and end with Status reading <strong>SEALED</strong> plus today's date. A Friday-invented plan fails the checklist's own session-log test — reconstruct honestly and log the gaps as gaps. The app stays on the verified home configuration.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p8-p8-seal" name="p8-p8-seal" data-check-id="p8-seal" />
+              <span class="check-num">13</span>
+              <span class="check-title">Seal Transfer 30-60-90</span>
+            </label>
+            <div class="check-detail">SEALED requires session-log rows across the week, your real desk in the identity block, and at most three checkable outcomes per horizon — the AI attacks weak lines; you fix each one or accept the risk in writing. You should see status <strong>SEALED</strong> with today's date in <code>operator/TRANSFER_30_60_90.md</code>. If the seal stalls on a thin week, that's the checklist working — reconstruct, don't invent.</div>
+          </li>
+        </ol>
+
+        <div class="panel">
+          <p class="eyebrow">Stretch bridge · Endpoint portfolio</p>
+          <p class="full-measure">If you ran Thursday's local flip, fold the scored totals from <code>out/local_hold_degrade.md</code> into today's picture: API home · local · hosted open — each cell needs a score or an artifact path, not vibes. Guide: <code>mission_flesh/p6/local_endpoint_notes.md</code> · matrix: <code>instruments/p8_hold_degrade/</code>.</p>
+        </div>
+
+        <p>Stage 08 has now pasted the every-session prompt and run the seal gate in <strong>Operator — Transfer 30-60-90</strong>. Close the loop from the file itself.</p>
+        <div class="do-step">
+          <p class="do-label">Now reopen <strong>Operator — Transfer 30-60-90</strong> in the Codex sidebar and paste this:</p>
           <pre><code>Lesson close-out for P8. Two questions, answered only from the file: does the session log carry a P8 row, and does Status read SEALED with today's date? Quote the row and the status line. If either is missing, we finish it now before I leave the lesson.</code></pre>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Carry the earned seal back to the measurement row and Operator Log:</p>
+          <ul class="do-clicks">
+            <li>Copy the quoted P8 session row and Status line from the transfer chat</li>
+            <li>Open <strong>Operator — Direction &amp; Log</strong> in the Codex sidebar</li>
+            <li>If Status is <strong>SEALED</strong> with today's date, tell the chat to change only the P8 deep mark's <code>transfer SEALED: N</code> flag to <code>transfer SEALED: Y</code> in <code>operator/MEASUREMENT_SPINE.md</code>. If the gate did not seal, leave N in place</li>
+            <li>Add the quoted Status line to the P8 Operator Log evidence pointers and update your verdict only if the seal result changed it</li>
+          </ul>
         </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
@@ -682,10 +766,9 @@ Do not start transfer until this row is written.</code></pre>
               <span class="check-num">14</span>
               <span class="check-title">Transfer plan updated</span>
             </label>
-            <div class="check-detail">Today the transfer update and the seal happen in one visit — Stage 08's every-session prompt wrote the P8 row before the gate ran. Check this once the row and the SEALED status are both quoted back from the file. If either is missing, finish it in that chat now.</div>
+            <div class="check-detail">Today the transfer update and the seal happen in one visit — Stage 08's every-session prompt wrote the P8 row before the gate ran. Check this once the row and the SEALED status are both quoted back from the file, and the measurement deep mark carries the earned Y/N result. If either file is incomplete, finish it now.</div>
           </li>
         </ol>
-        </div>
       </section>
 
 

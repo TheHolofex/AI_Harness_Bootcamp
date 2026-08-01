@@ -50,11 +50,11 @@
       <div>
         <h2 class="h-plain">Why this block exists</h2>
         <p>A <strong>harness</strong> is the setup around a model that lets it act: tools, files, permissions, instructions, and your accept/reject loop. Today you will feel that loop before we name every part of it.</p>
-        <p>We complete pre-work together during the <strong>install clinic</strong>. Follow the four phases in order, verify each tool before moving on, and record the result in the setup log. First Light begins after the course setup is complete.</p>
+        <p>We complete pre-work together during the <strong>install clinic</strong>. Follow the four phases in order and verify each tool before moving on. First Light begins after the course setup is complete.</p>
         <p>You will work in more than one chat today, and the split is deliberate. Build work — the machine reading files, writing code, rebuilding a page — runs in its own chat. Direction and verdicts — the brief you write before the run, the log you write after, the lesson-outcome checklist, the attack on that list — run in a separate operator chat. Keep them apart and your log’s evidence pointers stay checkable by someone who was not in the room. Let them merge and the chat that helped you build is the same chat you ask whether the build was any good; it will tell you yes, and you will have no trail that says otherwise. Each paste below names the chat it belongs in — follow the names and the split takes care of itself.</p>
         <h3>What you will leave with</h3>
         <ul>
-          <li>Course setup completed in clinic: four smoke files, setup log, OpenCode version, Codex app sandbox mode</li>
+          <li>Course setup completed in clinic: four smoke files, OpenCode version, Codex app sandbox mode</li>
           <li>Co-write a full LIVE Direction Brief (five fields)</li>
           <li>Ship a working map from the synthetic report folder (timeline and filters)</li>
           <li>Run a negative check and an update proof (or honest break + redirect)</li>
@@ -62,7 +62,7 @@
         </ul>
         <h3>Before you start</h3>
         <ul>
-          <li>The <a href="../prework.html">pre-work install guide</a> and setup log open</li>
+          <li>The <a href="../prework.html">pre-work install guide</a> open</li>
           <li>Three API keys — see <a href="../keys.html">Your API keys</a></li>
           <li>The Windows laptop you will use all week</li>
           <li>Work through the installation with the room; ask for help when a check does not match</li>
@@ -75,7 +75,7 @@
         </div>
         <div class="callout">
           <strong>Install clinic (first stretch of the morning)</strong>
-          Work through the four pre-work phases with the instructor. Open a fresh terminal after PATH changes and run every verification in the guide. The finish line is four files in <code>prework-smoke</code> that you can open in Explorer, working keys, Codex signed in with its API key, the course repo on disk, and a setup log that records what happened. A clean install can simply say <strong>PASS</strong>; do not invent a failure.
+          Work through the four pre-work phases with the instructor. Open a fresh terminal after PATH changes and run every verification in the guide. The finish line is four files in <code>prework-smoke</code> that you can open in Explorer, working keys, Codex signed in with its API key, and the course repo on disk. If a check fails, leave it unticked and show the instructor the exact error text.
         </div>
       </div>
     </section>
@@ -90,16 +90,29 @@
         <p>This is the final verification after the four pre-work phases. One command shows whether the four course tools left their proof on disk.</p>
 
         <div class="do-step">
-          <p class="do-label">Now run this in a <strong>new PowerShell window</strong>:</p>
+          <p class="do-label">Start here on the <strong>Windows desktop</strong>:</p>
+          <ul class="do-clicks">
+            <li>Press the <strong>Windows</strong> key, type <code>PowerShell</code>, and open <strong>Windows PowerShell</strong></li>
+            <li>Use a fresh window so it sees the tools and PATH changes made during the install clinic</li>
+            <li>Keep this window open through Stage 01; every command in this stage returns here</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the same <strong>PowerShell window</strong>:</p>
           <pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"</code></pre>
         </div>
 
-        <p>You should see four files: <code>from-codex.txt</code>, <code>from-opencode.txt</code>, <code>from-pi.txt</code>, <code>from-goose.txt</code>. If all four are there, skip ahead to the record-keeping step below. If one is missing, re-run only that tool’s proof — the next four steps are those re-runs, and each one you skip is time back.</p>
+        <p>You should see four files: <code>from-codex.txt</code>, <code>from-opencode.txt</code>, <code>from-pi.txt</code>, <code>from-goose.txt</code>. If all four are there, skip ahead to the version and config check below. If one is missing, re-run only that tool’s proof — the next four steps are those re-runs, and each one you skip is time back.</p>
 
         <div class="do-step">
-          <p class="do-label">Only if <code>from-codex.txt</code> is missing — now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Only if <code>from-codex.txt</code> is missing — open the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\prework-smoke</code></li>
+            <li>Click <strong>New chat</strong>. Rename it <code>Smoke check — B0</code> from the chat's <strong>…</strong> menu in the sidebar</li>
+            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
             <li>Confirm the permissions control under the message box says <strong>Ask for approval</strong></li>
           </ul>
         </div>
@@ -109,7 +122,15 @@
           <pre><code>Create a file named from-codex.txt in this folder containing exactly the text: codex works</code></pre>
         </div>
 
-        <p>Chat output is a claim; the file in Explorer is the evidence. Check the folder before you move on.</p>
+        <div class="do-step">
+          <p class="do-label">Verify the Codex proof on disk:</p>
+          <ul class="do-clicks">
+            <li>Press <strong>Windows+E</strong> to open File Explorer</li>
+            <li>Click the address bar, enter <code>%USERPROFILE%\Documents\HarnessBootcamp\prework-smoke</code>, and press <strong>Enter</strong></li>
+            <li>Confirm <code>from-codex.txt</code> is present. Open it and confirm it contains <code>codex works</code></li>
+            <li>If the file is missing, return to <strong>Smoke check — B0</strong>, approve the requested write, and check this folder again</li>
+          </ul>
+        </div>
 
         <div class="do-step">
           <p class="do-label">Only if <code>from-opencode.txt</code> is missing — now in <strong>PowerShell</strong>:</p>
@@ -136,12 +157,12 @@ Get-Content .\from-goose.txt</code></pre>
         <p>Any re-run that errors instead of writing: a <code>429</code> or quota message on a tool that worked yesterday means the key hit its cap — that is a capped key, not something a reinstall fixes. <code>'x' is not recognized</code> after a clean install almost always means the terminal opened before PATH updated — close every terminal and open a fresh one.</p>
 
         <div class="do-step">
-          <p class="do-label">Now record two facts for your <strong>setup log</strong> — run this in <strong>PowerShell</strong>, then paste both outputs into the log:</p>
+          <p class="do-label">Now in <strong>PowerShell</strong>, run both verification commands:</p>
           <pre><code>opencode --version
 Get-Content "$env:USERPROFILE\.codex\config.toml"</code></pre>
         </div>
 
-        <p>The first line is your OpenCode version. The second shows your Codex config: sandbox mode is <strong>elevated</strong> unless you see a <code>[windows]</code> section with <code>sandbox = "unelevated"</code>. These two facts are what differ between machines when something behaves oddly later in the week — write them down now, while they are one command away.</p>
+        <p>The first line is your OpenCode version. The second shows your Codex config: sandbox mode is <strong>elevated</strong> unless you see a <code>[windows]</code> section with <code>sandbox = "unelevated"</code>. If either command fails, leave the setup check unticked and show the instructor the exact output.</p>
 
         <div class="do-step">
           <p class="do-label">Now confirm the course repo landed — run this in <strong>PowerShell</strong>:</p>
@@ -163,7 +184,7 @@ git clone https://github.com/TheHolofex/AI_Harness_Bootcamp.git</code></pre>
               <span class="check-num">1</span>
               <span class="check-title">Course harnesses and tools installed and verified</span>
             </label>
-            <div class="check-detail">Proof: four smoke files in Explorer, setup log present, OpenCode version and Codex sandbox mode written down, and the course repo on disk. If a tool returns <code>429</code>, tell the instructor; a capped key is not something a reinstall fixes. First Light begins after this setup is complete.</div>
+            <div class="check-detail">Proof: four smoke files in Explorer, OpenCode version and Codex sandbox mode visible in PowerShell, and the course repo on disk. If a tool returns <code>429</code>, tell the instructor; a capped key is not something a reinstall fixes. First Light begins after this setup is complete.</div>
           </li>
         </ol>
 
@@ -171,14 +192,19 @@ git clone https://github.com/TheHolofex/AI_Harness_Bootcamp.git</code></pre>
         <p>The folder you open as a project is the machine’s whole world — it reads and writes inside that boundary and asks before reaching anywhere else. All week that world is the course repo, not the smoke folder.</p>
 
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Start the mission in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu if it is not already open</li>
+            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong>. Rename it <code>Project check — B0</code> from the chat's <strong>…</strong> menu in the sidebar</li>
+            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Confirm the permissions control under the message box says <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>new chat</strong> in that project:</p>
+          <p class="do-label">Now paste this into <strong>Project check — B0</strong>:</p>
           <pre><code>List the top-level contents of operator/ and mission_flesh/. Names only.</code></pre>
         </div>
 
@@ -188,9 +214,12 @@ git clone https://github.com/TheHolofex/AI_Harness_Bootcamp.git</code></pre>
         <p>Direction happens before the machine moves. The brief is five fields you and the AI write together in a dedicated chat — the AI interviews and challenges, you accept every word. Keep it separate from build work; the trail is the point.</p>
 
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Now create the standing <strong>operator chat</strong> in the Codex app:</p>
           <ul class="do-clicks">
-            <li>Start a <strong>new chat</strong> in this project and name it <strong>Operator — Direction &amp; Log</strong></li>
+            <li>Click <strong>New chat</strong></li>
+            <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code></li>
+            <li>Use the same menu to choose <strong>Pin</strong> if that option appears. If it does not, the exact name will still let you find the chat under Recents</li>
+            <li>Confirm the open project is <code>AI_Harness_Bootcamp</code> and permissions still say <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -255,7 +284,9 @@ Get-Content "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\miss
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Start a <strong>new chat</strong> in this project and name it <strong>Build — B0 First Light</strong></li>
+            <li>Click <strong>New chat</strong></li>
+            <li>Rename it <code>Build — B0 First Light</code> from the chat's <strong>…</strong> menu in the sidebar</li>
+            <li>Confirm the open project is <code>AI_Harness_Bootcamp</code> and permissions still say <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -389,6 +420,14 @@ after a report is added or removed.</code></pre>
         <p>A map you can trust is one that keeps up. A new report just “arrived” — it was sitting in the folder all along, excluded from the first build on purpose.</p>
 
         <div class="do-step">
+          <p class="do-label">Return from the browser to the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>In the course project's chat list, open <strong>Build — B0 First Light</strong></li>
+            <li>Do not create a new chat; this update belongs to the build conversation that created the viewer</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
           <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
           <pre><code>A new report just landed: mission_flesh/b0/reports/DELTA_new.md.
 Add it to the viewer's data and rebuild mission_flesh/b0/first_light/index.html.
@@ -419,6 +458,14 @@ Tell me exactly what changed in the data.</code></pre>
 
         <h3>Stage 09 · Say the loop out loud</h3>
         <p>You just ran a full harness loop. Naming it from your own run — not from slogans — is what makes it portable to Tuesday, and to your desk.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now switch chats in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Leave <strong>Build — B0 First Light</strong></li>
+            <li>Open <strong>Operator — Direction &amp; Log</strong> in the course project's chat list</li>
+          </ul>
+        </div>
 
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
@@ -636,7 +683,9 @@ Do not start transfer until this row is written.</code></pre>
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Start a <strong>new chat</strong> in this project and name it <strong>Operator — Transfer 30-60-90</strong> — this chat lives all week</li>
+            <li>Click <strong>New chat</strong></li>
+            <li>Rename it <code>Operator — Transfer 30-60-90</code> from the chat's <strong>…</strong> menu in the sidebar</li>
+            <li>Use the same menu to choose <strong>Pin</strong> if that option appears. This is the second standing operator chat used by later lessons</li>
           </ul>
         </div>
 
@@ -702,7 +751,7 @@ Do not seal. Do not draft horizons yet.</code></pre>
               <span class="check-num">16</span>
               <span class="check-title">Course setup completed and four tools verified</span>
             </label>
-            <div class="check-detail">Setup log complete · each install check passed · four smoke files visible on disk.</div>
+            <div class="check-detail">Each required install check passed · four smoke files visible on disk · course repo opens.</div>
           </li>
 
           <li class="check-item" data-check-item>

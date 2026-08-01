@@ -76,7 +76,7 @@
           </div>
           <div class="callout" id="case-talk">
             <strong>Before lunch · Harness case talk (45 min)</strong>
-            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; leave with one Transfer seed.
+            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; notice one idea you may carry into the transfer step after measurement.
           </div>
         </div>
       </div>
@@ -140,10 +140,16 @@
         <h3>Stage 01 · Set direction</h3>
         <p>Before you run a single case, you and the AI agree on what winning means. For this mission that is easy to say and easy to fumble: the outcome is a measured delta with named wall changes, not "make the assistant better."</p>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
-            <li>Open the course pack as your project: <strong>Open project</strong> → <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Open the chat <strong>Operator — Direction &amp; Log</strong> — the same standing chat you have used since B0</li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, look for <strong>Operator — Direction &amp; Log</strong>. If it is there, open it</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code></li>
+            <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
+            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <!-- Embedded verbatim from operator/DIRECTION_BRIEF.md — operator-chat starter -->
@@ -185,8 +191,10 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
         <div class="do-step">
           <p class="do-label">Now in <strong>File Explorer</strong>:</p>
           <ul class="do-clicks">
-            <li>Open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite</code></li>
-            <li>Open your track folder — <code>engineering</code> or <code>mission_ops</code>, the one you chose for the week — then its <code>cases</code> folder</li>
+            <li>Press <strong>Windows+E</strong> to open File Explorer</li>
+            <li>Click the address bar, paste <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite</code>, and press <strong>Enter</strong></li>
+            <li>If you have not chosen a track, choose <code>engineering</code> or <code>mission_ops</code> now and write the choice in your notes. Use that same folder every time <code>[TRACK]</code> appears</li>
+            <li>Open your track folder, then its <code>cases</code> folder</li>
             <li>Open each of the five case files once to see the task it sets — an input and an instruction, and nothing else</li>
             <li>Go back up one level to your track folder and open <code>GRADER.md</code> — it holds all five pass conditions, one per case</li>
             <li>Read all five pass conditions now, before you run anything — each one is the grader for its case, not your general impression of the answer</li>
@@ -205,9 +213,13 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
           </li>
         </ol>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Return to the <strong>Codex app</strong> and create the baseline chat:</p>
           <ul class="do-clicks">
-            <li>Open a <strong>new chat</strong> in the same project — this is your <strong>baseline build chat</strong>, kept free of coaching so nothing leaks into the measurement</li>
+            <li>Confirm <code>AI_Harness_Bootcamp</code> is the open project</li>
+            <li>Click <strong>New chat</strong> — keep this chat free of coaching so nothing leaks into the measurement</li>
+            <li>Rename it <code>Baseline — P2 — [TODAY'S DATE]</code>, replacing the bracket with today's actual date</li>
+            <li>Select the model tier now and write its displayed name in your notes. Every later P2 run uses this exact tier</li>
+            <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <div class="do-step">
@@ -217,13 +229,14 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
         </div>
         <p>You should get one answer per case. Read each against its pass condition in <code>GRADER.md</code> only — not against how helpful the answer feels. If the assistant says it can't find the file, the project is opened at the wrong folder: reopen it at the course pack root and resend the same dispatch. Don't correct or coach between cases; the baseline measures the unchanged harness, and the moment you explain what you wanted, the reading is contaminated.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>PowerShell window</strong> — it opens the score sheet:</p>
+          <p class="do-label">Open <strong>PowerShell</strong> from the Windows Start menu, keep this window open through Stage 03, and run this to open the score sheet:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\SCORE_SHEET.md"</code></pre>
         </div>
         <div class="do-step">
           <p class="do-label">Now in <strong>Notepad</strong> (SCORE_SHEET.md):</p>
           <ul class="do-clicks">
             <li>Fill the header lines — track, name, date, and what the unchanged harness included (note any <code>AGENTS.md</code> that already sat at the project root)</li>
+            <li>Under model or harness notes, record the exact model tier displayed in <strong>Baseline — P2</strong></li>
             <li>Write PASS or FAIL in the Baseline column for each of D01–D05, judged only against that case's pass condition in <code>GRADER.md</code></li>
             <li>Add a one-line note on every FAIL — those notes are the work order for the next stage</li>
             <li>Total the column out of 5 and save the file</li>
@@ -276,7 +289,7 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
           <p class="do-label">Now paste this into the <strong>PowerShell window</strong> — it creates <code>AGENTS.md</code> at the project root:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\AGENTS.md"</code></pre>
         </div>
-        <p>Notepad asks whether to create the file — click <strong>Yes</strong>. If an <code>AGENTS.md</code> already existed, it simply opens, and the starter below becomes an edit to it rather than a fresh file.</p>
+        <p>Notepad asks whether to create the file — click <strong>Yes</strong>. If <code>AGENTS.md</code> already contains rules, do not erase them. Edit or append only the rules tied to your baseline failures. Paste the full starter below only into a new, empty file.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Notepad</strong> (AGENTS.md), then save:</p>
           <pre><code># AGENTS.md — harness rules for this project
@@ -294,7 +307,10 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Open a <strong>new chat</strong> — <code>AGENTS.md</code> loads at session start, so only a fresh chat carries the new wall</li>
+            <li>Click <strong>New chat</strong> — <code>AGENTS.md</code> loads at session start, so only a fresh chat carries the new wall</li>
+            <li>Rename it <code>Wall spot-check — P2</code></li>
+            <li>Confirm the course project is open and select the exact model tier you recorded for the baseline</li>
+            <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <div class="do-step">
@@ -313,6 +329,7 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
           <p class="do-label">Now paste this into the <strong>PowerShell window</strong> — it creates <code>CHECKS.md</code> next to AGENTS.md:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\CHECKS.md"</code></pre>
         </div>
+        <p>If Notepad asks to create <code>CHECKS.md</code>, click <strong>Yes</strong>. If the file already exists, keep any checks you still need and replace only stale practice checks; do not paste a second copy of the starter under the first.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Notepad</strong> (CHECKS.md), then save:</p>
           <pre><code># CHECKS.md — authored checks. One predicate per line.
@@ -327,6 +344,7 @@ FORBID [Aa]s an AI</code></pre>
           <p class="do-label">Now paste this into the <strong>PowerShell window</strong> — it creates <code>answer.txt</code> for the runner:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\answer.txt"</code></pre>
         </div>
+        <p>If Notepad asks to create <code>answer.txt</code>, click <strong>Yes</strong>. If it opens an older answer, press <strong>Ctrl+A</strong> before the next step so this run cannot mix with the last one.</p>
         <div class="do-step">
           <p class="do-label">Now in the <strong>baseline build chat</strong> and <strong>Notepad</strong> (answer.txt):</p>
           <ul class="do-clicks">
@@ -359,6 +377,7 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
           <ul class="do-clicks">
             <li>Open <strong>Settings</strong> → <strong>Personalization</strong></li>
             <li>Turn on <strong>Enable memories</strong></li>
+            <li>If <strong>Personalization</strong> or <strong>Enable memories</strong> is unavailable, write <code>memory unavailable / off</code> in the score-sheet notes and continue</li>
           </ul>
         </div>
         <p>Note "memory enabled" in the notes column of the score sheet so this wall is an artifact you can point at. The discipline that matters: memory holds context worth recalling; rules that must <em>always</em> hold stay in <code>AGENTS.md</code>, the file you can read, diff, and commit.</p>
@@ -368,6 +387,7 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
           <pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.agents\skills\case-answer-standard"
 notepad "$env:USERPROFILE\.agents\skills\case-answer-standard\SKILL.md"</code></pre>
         </div>
+        <p>If Notepad asks to create <code>SKILL.md</code>, click <strong>Yes</strong>. If it already exists, replace the old practice version with the single complete version below; do not append a second YAML header.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Notepad</strong> (SKILL.md), then save:</p>
           <pre><code>---
@@ -388,8 +408,10 @@ When the task pastes an input and asks for triage, a review, a brief, or criteri
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Close the app completely and reopen it — it rescans the skills folder at startup</li>
-            <li>Reopen the project and check the <strong>Skills list</strong>: <code>case-answer-standard</code> should appear</li>
+            <li>Quit the app completely rather than only closing its window — it rescans the skills folder at startup</li>
+            <li>Open <strong>ChatGPT</strong> again from the Windows Start menu and select <strong>Codex</strong></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Open the <strong>Skills list</strong>: <code>case-answer-standard</code> should appear</li>
           </ul>
         </div>
         <p>The Skills list is the confirmation that matters — a sidebar entry beats any path claim. If yours is missing, check the folder path for typos; older builds read <code>%USERPROFILE%\.codex\skills</code> instead, so a copy there plus another restart is the fallback.</p>
@@ -415,9 +437,12 @@ When the task pastes an input and asks for triage, a review, a brief, or criteri
         <h3>Stage 04 · Re-measure cold</h3>
         <p>The after-score is only comparable to the baseline if it runs under the same conditions: same cases, same model tier, fresh chat. You already spot-checked each change against its target case in stage 03 — this is the full sweep that fills the after column.</p>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Now create the cold rescore chat in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Open a <strong>brand-new chat</strong> — the cold rescore chat — on the <strong>same model tier</strong> you used for baseline</li>
+            <li>Confirm the course project is open</li>
+            <li>Click <strong>New chat</strong> and rename it <code>Cold rescore — P2</code></li>
+            <li>Select the exact model tier you wrote down for the baseline</li>
+            <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <div class="do-step">
@@ -428,6 +453,7 @@ When the task pastes an input and asks for triage, a review, a brief, or criteri
         <div class="do-step">
           <p class="do-label">Now in <strong>Notepad</strong> (SCORE_SHEET.md — reopen it if you closed it):</p>
           <ul class="do-clicks">
+            <li>If the file is closed, return to the PowerShell window and run the Stage 02 score-sheet command again. Open the existing file; do not create another copy</li>
             <li>Write PASS or FAIL in the After column for each case, walking the requirements in <code>GRADER.md</code> one at a time exactly as you did on the re-score</li>
             <li>Total the column, fill the delta line — after minus baseline — and circle the walls you changed</li>
             <li>Save the file</li>
@@ -452,8 +478,11 @@ When the task pastes an input and asks for triage, a review, a brief, or criteri
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Close the app completely and reopen it — a real restart, so nothing survives except what is on disk</li>
-            <li>Reopen the project and open a <strong>new chat</strong></li>
+            <li>Quit the app completely — a real restart, so nothing survives except what is on disk</li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong> and rename it <code>Post-restart proof — P2</code></li>
+            <li>Select the exact baseline model tier and confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <div class="do-step">
@@ -488,36 +517,19 @@ Case suite: baseline [N]/5 → after [N]/5</code></pre>
           </li>
         </ol>
 
-        <h3>Stage 06 · Seed the transfer</h3>
-        <p>The measured win is fresh — this is the moment to map it onto your real desk, while you can still feel which wall did the work.</p>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open the chat <strong>Operator — Transfer 30-60-90</strong> — the standing outer-loop chat, not the build chat and not Direction &amp; Log</li>
-          </ul>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Operator — Transfer 30-60-90</strong>:</p>
-          <pre><code>Transfer chat — P2 harness seed. Read operator/TRANSFER_30_60_90.md.
-
-I just finished the P2 mission. Interview me in short turns until two
-things are filled in that file: the Identity section, and the full "From P2 —
-Harness craft" seed — the workload this harness serves, the walls I will keep,
-the case or check I will re-run cold, a calendar-real 30-day habit, and the
-first proof I will attach in week one.
-
-Attack vague lines. "Use AI more" is void. Do not end until every field holds
-a concrete entry I accepted. When the seed block is complete, write today's
-date on it.</code></pre>
-        </div>
-        <p>This dialogue is about your actual desk, not the classroom: the walls you'd build there first, the habit that survives a busy Monday, the first proof you'd accept from yourself. Give it the time it asks for, then open the file yourself before you leave the chat — the seed block should hold five concrete entries and today's date. If a field stays empty, name what's blocking it in the file rather than inventing an answer.</p>
-
-
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
           <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
         <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
         <p class="reflection-question"><strong>Think back:</strong> Which harness layer moved the result, and what will you change first next time?</p>
         <p>The mission runs elsewhere; this chat holds direction and verdicts.</p>
+        <div class="do-step">
+          <p class="do-label">Return from <strong>Notepad</strong> to the direction chat in <strong>Codex</strong>:</p>
+          <ul class="do-clicks">
+            <li>Press <strong>Ctrl+S</strong> in Notepad, then click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>, then open <strong>Operator — Direction &amp; Log</strong> in the sidebar</li>
+            <li>The next prompt goes there, not into the post-restart chat</li>
+          </ul>
+        </div>
         <!-- Embedded verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
@@ -567,9 +579,12 @@ adversarial review — do not soften a single not yet.</code></pre>
           </li>
         </ol>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Now create the independent review chat in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Open a <strong>new chat</strong> and title it <code>Adversarial — P2 — [today's date]</code> — a fresh reviewer, not the assistant that helped you succeed</li>
+            <li>Confirm <code>AI_Harness_Bootcamp</code> is the open project</li>
+            <li>Click <strong>New chat</strong> and title it <code>Adversarial — P2 — [TODAY'S DATE]</code>, replacing the bracket with today's actual date</li>
+            <li>Select the instructor-named reviewer model, or keep the visible default if none was named</li>
+            <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <!-- Embedded verbatim from operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
@@ -620,7 +635,7 @@ Known weak spots: [WHAT YOU ALREADY DOUBT].</code></pre>
           <p>Fill every bracket before sending. If the reviewer can't see your files, paste the score-sheet rows and the runner output directly into the chat — the attack is only as good as what you feed it.</p>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>, with the closing line from the review chat:</p>
+          <p class="do-label">Copy the complete <code>ADVERSARIAL:</code> closing line, reopen <strong>Operator — Direction &amp; Log</strong>, and paste this there with the line filled:</p>
           <pre><code>Add to the P2 log entry, field 6 — Adversarial:
 [PASTE THE FULL "ADVERSARIAL: ..." CLOSING LINE FROM THE REVIEW CHAT]</code></pre>
         </div>
@@ -669,6 +684,41 @@ Do not start transfer until this row is written.</code></pre>
             <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes you marked complete that the adversarial ruled WOUNDED or DEAD over the number you marked complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, a one-sentence <strong>lesson reflection</strong> answering the question above, and the deep mark <code>Case suite: baseline n/5 → after n/5</code> from the bottom of your score sheet.</div>
           </li>
         </ol>
+        </div>
+
+        <h3>Stage 06 · Seed the transfer</h3>
+        <p>The measured win is fresh — this is the moment to map it onto your real desk, while you can still feel which wall did the work.</p>
+        <div class="do-step">
+          <p class="do-label">Now switch to the standing transfer chat in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>In the course project's sidebar, look for <strong>Operator — Transfer 30-60-90</strong></li>
+            <li>If it is there, open it</li>
+            <li>If it is missing, click <strong>New chat</strong>, rename it <code>Operator — Transfer 30-60-90</code>, and choose <strong>Pin</strong> from its <strong>…</strong> menu if that option appears</li>
+          </ul>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Transfer 30-60-90</strong>:</p>
+          <pre><code>Transfer chat — P2 harness seed. Read operator/TRANSFER_30_60_90.md.
+
+I just finished the P2 mission. Interview me in short turns until two
+things are filled in that file: the Identity section, and the full "From P2 —
+Harness craft" seed — the workload this harness serves, the walls I will keep,
+the case or check I will re-run cold, a calendar-real 30-day habit, and the
+first proof I will attach in week one.
+
+Attack vague lines. "Use AI more" is void. Do not end until every field holds
+a concrete entry I accepted. When the seed block is complete, write today's
+date on it.</code></pre>
+        </div>
+        <p>This dialogue is about your actual desk, not the classroom: the walls you'd build there first, the habit that survives a busy Monday, the first proof you'd accept from yourself.</p>
+        <div class="do-step">
+          <p class="do-label">Open the transfer file yourself before leaving the chat:</p>
+          <ul class="do-clicks">
+            <li>Press <strong>Windows+E</strong>, click the address bar, and enter <code>%USERPROFILE%\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md</code></li>
+            <li>Press <strong>Enter</strong>, open the file, and find <strong>From P2 — Harness craft</strong></li>
+            <li>Confirm the seed holds five concrete entries and today&#x27;s date</li>
+            <li>If a field is empty, return to <strong>Operator — Transfer 30-60-90</strong> and record the blocker in the file instead of inventing an answer</li>
+          </ul>
         </div>
       </section>
 

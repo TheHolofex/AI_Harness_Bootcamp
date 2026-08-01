@@ -79,7 +79,7 @@
           </div>
           <div class="callout" id="case-talk">
             <strong>Before lunch · Harness case talk (45 min)</strong>
-            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; leave one Transfer seed.
+            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; notice one idea you may carry into the transfer step after measurement.
           </div>
           <div class="callout">
             <strong>Stretch · The endpoint is a wall</strong>
@@ -151,10 +151,16 @@
         <h3>Stage 01 · Set the watch</h3>
         <p>Before anything runs on its own, you say in writing what it is for and where it stops. Today the Bounds field earns its keep — what you write there becomes contract rows within the hour.</p>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
-            <li>Open your course project — <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Open the chat <strong>Operator — Direction &amp; Log</strong> — the same one you have used all week</li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, look for <strong>Operator — Direction &amp; Log</strong>. If it is there, open it</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code></li>
+            <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
+            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <div class="do-step">
@@ -197,6 +203,13 @@ Get-ChildItem
 Get-ChildItem .\feeder</code></pre>
         </div>
         <p>The first listing is the whole pack: the starter recipe <code>watch_officer.yaml</code>, the field notes and the local-endpoint notes, the contract template, a README, the <code>feeder/</code> folder of watch traffic, and an <code>out/</code> folder for evidence. The second listing shows four feeder files, <code>event_01</code> through <code>event_04</code> — dropping files in that folder simulates watch traffic. This window is your mission window; every command below goes here unless a do-label says otherwise. If the path does not exist, the pack is not on your machine — re-clone the course repo the way pre-work did.</p>
+        <div class="do-step">
+          <p class="do-label">Verify the model before the first run:</p>
+          <ul class="do-clicks">
+            <li>In the same PowerShell window, type <code>goose info -v</code> and press <strong>Enter</strong></li>
+            <li>Read the provider and model in the output. They must match the course setup; if they do not, stop and ask the instructor to correct the pin before continuing</li>
+          </ul>
+        </div>
         <div class="do-step">
           <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to read the traffic your agent is about to meet:</p>
           <pre><code>Get-Content .\feeder\event_04.txt</code></pre>
@@ -336,7 +349,7 @@ Copy-Item .\feeder\event_02.txt .\feeder\event_02b.txt</code></pre>
           <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to start the run you are about to interrupt:</p>
           <pre><code>goose run --recipe .\watch_officer.yaml</code></pre>
         </div>
-        <p>The mode is still approve — <code>$env:GOOSE_MODE</code> holds for as long as this window stays open. If you opened a fresh window, set it again before this run.</p>
+        <p>The mode is still approve — <code>$env:GOOSE_MODE</code> holds for as long as this window stays open. If you opened a fresh window, type <code>$env:GOOSE_MODE = "approve"</code>, press <strong>Enter</strong>, and then start this run.</p>
         <div class="do-step">
           <p class="do-label">Now in the same <strong>PowerShell window</strong>, mid-run:</p>
           <ul class="do-clicks">
@@ -458,6 +471,13 @@ goose schedule run-now</code></pre>
         <h3>Stage 08 · The minimal harness</h3>
         <p>Same folder, different harness. Pi has none of the rails you just configured — which makes it the honest place to learn what each layer of bound is actually worth. The model stays pinned the way pre-work set it: Pi can see every key on this machine, and naming the model is what keeps both runs on the same brain — and on the course key.</p>
         <div class="do-step">
+          <p class="do-label">Confirm Pi&#x27;s model pin before its first run:</p>
+          <ul class="do-clicks">
+            <li>In the same PowerShell window, type <code>$env:HB_OPENAI_MODEL</code> and press <strong>Enter</strong></li>
+            <li>If no model name prints, stop and ask for setup help. Do not run Pi without the course pin</li>
+          </ul>
+        </div>
+        <div class="do-step">
           <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> — the same tiny task, plain Pi first:</p>
           <pre><code>pi -p --model "openai/$env:HB_OPENAI_MODEL" "Read the files in feeder and tell me which one asks you to act outside the watch scope."</code></pre>
         </div>
@@ -571,30 +591,18 @@ Boundary rows today: none — and that is the honest entry.</code></pre>
             <div class="check-detail">Every row in <code>my_contract.md</code> now carries a layer tag. A <strong>contract</strong> removes the capability (<code>--tools</code>, the goose extensions list). A <strong>tripwire</strong> catches drift but can be defeated by what it polices (the retry check; your gate). A <strong>boundary</strong> is a container — you probably have none today, and writing "none" is the honest entry. Any row you first called tool-enforced that is really a tripwire is the finding — put it in your log in exactly those words.</div>
           </li>
         </ol>
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Operator — Transfer 30-60-90</strong> chat in the Codex app, with the brackets filled:</p>
-          <!-- seed fields verbatim from operator/TRANSFER_30_60_90.md — "From P6 — Contract" table -->
-          <pre><code>Transfer chat — P6 seed only. Read operator/TRANSFER_30_60_90.md, section "From P6 — Contract".
-
-Fill the P6 seed with me, one field at a time. My first pass:
-- Real process to put under autonomy contract: [ONE RECURRING PROCESS FROM MY DESK]
-- Tool-enforced vs procedure-enforced (sketch): [WHAT A TOOL COULD HOLD / WHAT A PERSON MUST]
-- Who holds stop authority: [NAME OR ROLE]
-- Exception path (who is woken): [NAME OR ROLE]
-- Date I filled this seed: [TODAY'S DATE]
-
-Write the four fields into the seed table and put the date beside them.
-
-Challenge anything vague. Do not seal anything — P8 is where the plan gets sealed.</code></pre>
-        </div>
-        <p>Replace every bracket before you send: four answers from your own desk, and today's date in <code>[TODAY'S DATE]</code> written the way your file already writes dates. Make it a process you actually run — a recurring report, a queue you triage, a sweep you do every morning — because a hypothetical cannot be put under contract.</p>
-
-
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
           <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
         <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
         <p class="reflection-question"><strong>Think back:</strong> What did stop/restart and the exception drill change about how you write autonomy bounds?</p>
-        <p>Back in the operator chat now, with the mission window and the build chats behind you. The mission runs elsewhere; this chat holds direction and verdicts.</p>
+        <div class="do-step">
+          <p class="do-label">Return to the operator log in <strong>Codex</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the Codex sidebar, click <strong>Operator — Direction &amp; Log</strong>. The mission ran elsewhere; this chat holds direction and verdicts</li>
+          </ul>
+        </div>
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
           <!-- verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
@@ -645,7 +653,10 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Create a <strong>new chat</strong> and name it <code>Adversarial — P6 — [today's date]</code> — not the build chat, not the log chat</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — P6 — [today's date]</code> with the actual date</li>
+            <li>Select the instructor-named reviewer model. If none was named, keep the visible default</li>
+            <li>Confirm <strong>Ask for approval</strong> — not the build chat, not the log chat</li>
           </ul>
         </div>
         <div class="do-step">
@@ -705,7 +716,7 @@ Known weak: [WHAT YOU ALREADY KNOW IS THIN]</code></pre>
           </li>
         </ol>
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>, with the brackets filled — Block is P6:</p>
+          <p class="do-label">Now reopen <strong>Operator — Direction &amp; Log</strong> in the Codex sidebar and paste this with the brackets filled — Block is P6:</p>
           <!-- verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
           <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
 Block: [B0/P1/…].
@@ -740,6 +751,36 @@ Do not start transfer until this row is written.</code></pre>
           </li>
         </ol>
         </div>
+
+        <h3>Finish Stage 08 · Bank the transfer seed</h3>
+        <p>The measurement row now exists, so the contract can move from this lesson into the standing plan for your own desk.</p>
+        <div class="do-step">
+          <p class="do-label">Open the standing transfer chat in <strong>Codex</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Open <strong>Operator — Transfer 30-60-90</strong> in the sidebar</li>
+            <li>If it is missing, click <strong>New chat</strong>, rename it <code>Operator — Transfer 30-60-90</code>, and pin it if <strong>Pin</strong> appears</li>
+            <li>Select the course model and confirm <strong>Ask for approval</strong></li>
+          </ul>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>Operator — Transfer 30-60-90</strong> chat in the Codex app, with the brackets filled:</p>
+          <!-- seed fields verbatim from operator/TRANSFER_30_60_90.md — "From P6 — Contract" table -->
+          <pre><code>Transfer chat — P6 seed only. Read operator/TRANSFER_30_60_90.md, section "From P6 — Contract".
+
+Fill the P6 seed with me, one field at a time. My first pass:
+- Real process to put under autonomy contract: [ONE RECURRING PROCESS FROM MY DESK]
+- Tool-enforced vs procedure-enforced (sketch): [WHAT A TOOL COULD HOLD / WHAT A PERSON MUST]
+- Who holds stop authority: [NAME OR ROLE]
+- Exception path (who is woken): [NAME OR ROLE]
+- Date I filled this seed: [TODAY'S DATE]
+
+Write the four fields into the seed table and put the date beside them.
+
+Challenge anything vague. Do not seal anything — P8 is where the plan gets sealed.</code></pre>
+        </div>
+        <p>Replace every bracket before you send: four answers from your own desk, and today's date in <code>[TODAY'S DATE]</code> written the way your file already writes dates. Make it a process you actually run — a recurring report, a queue you triage, a sweep you do every morning — because a hypothetical cannot be put under contract.</p>
       </section>
 
 

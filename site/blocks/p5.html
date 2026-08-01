@@ -133,10 +133,27 @@
         <p>Before any intake gets read, you and the AI freeze what "trusted" means and what evidence will count. The boundary has to exist before the poison does — a boundary drawn after the fact is a story, not a control.</p>
 
         <div class="do-step">
-          <p class="do-label">Now in the Codex app:</p>
+          <p class="do-label">Confirm the vault from P4 is present:</p>
           <ul class="do-clicks">
-            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> if the course project isn't already open</li>
-            <li>In the sidebar, click your pinned chat <strong>Operator — Direction &amp; Log</strong></li>
+            <li>Press <strong>Windows+E</strong> to open File Explorer</li>
+            <li>Click the address bar, enter <code>%USERPROFILE%\Documents\p4-vault</code>, and press <strong>Enter</strong></li>
+            <li>If that path does not exist because you saved the P4 vault somewhere else, browse to the vault you actually used in P4. Do not create an empty replacement</li>
+            <li>Confirm the vault contains both <code>MOC.md</code> and <code>Morning_Brief.md</code>. If either file is missing, stop here and complete P4 first</li>
+            <li>If your vault is not at the default path, copy its full path now and use it everywhere this page names <code>Documents\p4-vault</code></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, look for <strong>Operator — Direction &amp; Log</strong>. If it is there, open it</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code></li>
+            <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
+            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -222,10 +239,12 @@ Get-ChildItem "$env:USERPROFILE\Documents\p5-staging\intake"</code></pre>
         <p>The listing at the end should show seven <code>.md</code> files and nothing else. Staging sits outside the vault on purpose: the vault never reads it, so nothing in the batch can touch trusted material by path alone. If the listing is empty or errors, the course pack isn't at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> — find where you cloned it and fix the two source paths. If the listing also shows a folder named <code>intake</code>, this block ran twice and the second copy nested inside the first — delete <code>Documents\p5-staging</code> in File Explorer and paste the block again.</p>
 
         <div class="do-step">
-          <p class="do-label">Now in the Codex app:</p>
+          <p class="do-label">Return to the <strong>Codex app</strong> and create the build chat:</p>
           <ul class="do-clicks">
-            <li>Start a new chat and name it <strong>P5 build</strong></li>
+            <li>Click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
+            <li>Click <strong>New chat</strong>. Open the new chat&#x27;s <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P5 build</code></li>
             <li>Click <strong>Open project</strong> and choose your <code>Documents</code> folder — this chat must reach the vault, the baseline, staging, and the course pack, and <code>Documents</code> is the folder that contains all four</li>
+            <li>Select the same course model you used for the Direction Brief. If no model was named, keep the visible default</li>
             <li>Check the permission mode beneath the composer reads <strong>Ask for approval</strong> — if it reads something else, click the mode beneath the composer and choose <strong>Ask for approval</strong>; if no mode shows there at all, turn modes on in <strong>Settings &gt; General &gt; Permissions</strong> first, then set it</li>
           </ul>
         </div>
@@ -409,9 +428,11 @@ Report each as: demand · target · what you checked · found or absent.</code><
         <div class="do-step">
           <p class="do-label">Now in the Codex app:</p>
           <ul class="do-clicks">
-            <li>Start another new chat and name it <strong>P5 recheck</strong> — this chat must never have read the intake</li>
+            <li>Click <strong>New chat</strong>. Open the new chat&#x27;s <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P5 recheck</code> — this chat must never have read the intake</li>
             <li>Click <strong>Open project</strong> and choose your <code>Documents</code> folder</li>
+            <li>Select the same model used in <strong>P5 build</strong></li>
             <li>Leave the permission mode on <strong>Ask for approval</strong></li>
+            <li>Do not open or paste any intake item into this chat</li>
           </ul>
         </div>
 
@@ -425,7 +446,7 @@ nothing — report only.</code></pre>
 
         <p>One row is still open: the hostile item's Times cell has been waiting on its verify entry since Stage 03. Now that the absence checks have run, close it.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>P5 build</strong> chat, with the bracket filled:</p>
+          <p class="do-label">Now return to <strong>P5 build</strong> in the Codex sidebar and paste this, with the bracket filled:</p>
           <pre><code>Update the hostile item's row in Documents\p5-staging\triage_record.md:
 set the verify entry in its Times cell to [ROUGH TIME NOW], now that
 the absence checks have come back clean. Change nothing else in the
@@ -451,8 +472,9 @@ record.</code></pre>
         <div class="do-step">
           <p class="do-label">Now in the Codex app:</p>
           <ul class="do-clicks">
-            <li>In the <strong>P5 build</strong> chat, read the permission mode beneath the composer — expect <em>Ask for approval</em>, <em>Approve for me</em>, or <em>Full access</em></li>
-            <li>If no mode shows there, turn modes on in <strong>Settings &gt; General &gt; Permissions</strong>, then read it again</li>
+            <li>Open the <strong>P5 build</strong> chat and read the permission mode beneath the composer. It must say <strong>Ask for approval</strong> for the next probe</li>
+            <li>If it shows another mode, click it and choose <strong>Ask for approval</strong></li>
+            <li>If no mode shows there, turn modes on in <strong>Settings &gt; General &gt; Permissions</strong>, return to <strong>P5 build</strong>, and set <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -464,7 +486,7 @@ record.</code></pre>
         <p>In <em>Ask for approval</em> the app pauses and asks before the write lands — that pause is the approvals control, deciding <em>when it stops for you</em>. Approve it. What the sandbox blocks never asks at all; that silence is the other control, deciding <em>what's reachable</em>. Now the OpenCode side — prediction first, in writing, before anything runs.</p>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into the chat <strong>Operator — Direction &amp; Log</strong>, with your three calls filled in:</p>
+          <p class="do-label">Now open the course project, click <strong>Operator — Direction &amp; Log</strong> in the Codex sidebar, and paste this there with your three calls filled in:</p>
           <pre><code>OpenCode bounds prediction — recording this before any probe runs.
 Rule set, in order: read * allow · *.env deny · *.env.* deny ·
 *.env.example allow. Resolution is last-match-wins.
@@ -476,7 +498,7 @@ Hold me to these when I report the probe results.</code></pre>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>PowerShell window</strong> — it builds the scratch probe folder with one dummy file per prediction:</p>
+          <p class="do-label">Now return to the <strong>PowerShell window</strong> you opened in Stage 02. If it is closed, open a new one from the Windows Start menu. Paste this into that window:</p>
           <pre><code>New-Item -ItemType Directory -Path "$env:USERPROFILE\Documents\p5-bounds-probe" -Force
 Set-Content -Path "$env:USERPROFILE\Documents\p5-bounds-probe\.env" -Value "DUMMY_SECRET=nothing-real-here"
 Set-Content -Path "$env:USERPROFILE\Documents\p5-bounds-probe\.env.local" -Value "DUMMY_SECRET=nothing-real-here-either"
@@ -522,7 +544,7 @@ opencode run -m "xai/$env:HB_XAI_MODEL" "Read the file .env in this folder and s
         <p>This one should come back with the dummy line — <code>*.env.example</code> allow sits below the deny it beats, and the carve-out only works because of that position. Score all three probes against your written predictions, then put the comparison on the record.</p>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into the chat <strong>Operator — Direction &amp; Log</strong>, with the brackets filled:</p>
+          <p class="do-label">Now return to Codex, open the course project, click <strong>Operator — Direction &amp; Log</strong>, and paste this with the brackets filled:</p>
           <pre><code>Bounds comparison, for the record:
 - Codex app enforces: [ONE SENTENCE — what the sandbox makes
   reachable, and when approvals pause for me]
@@ -572,22 +594,6 @@ observable. Do not soften the rule. I own the final wording.</code></pre>
             <div class="check-detail">You should see the sentence survive all three tests — each of today's catches run through it, each caught. A rule that wouldn't have caught today's poison isn't finished; tighten the gate and test again until it holds.</div>
           </li>
         </ol>
-
-        <p>A rule is worth nothing on a page you close. It goes into the living transfer file now, pointed at your own desk and dated, while the run that produced it is still in front of you.</p>
-        <div class="do-step">
-          <p class="do-label">Now paste this into the chat <strong>Operator — Direction &amp; Log</strong>, with the brackets filled:</p>
-          <pre><code>P5 transfer seed. Read operator/TRANSFER_30_60_90.md and fill the
-table under "From P5 — Operating picture" with these three entries,
-then write the date beside that heading. Change nothing else.
-Date: [TODAY'S DATE]
-- Trusted knowledge boundary at work: [THE NOTES, WIKI, OR DRIVE
-  THAT ACTUALLY DRIVES DECISIONS]
-- Intake rule: [PASTE YOUR SEALED SENTENCE]
-- First corpus or inbox this applies to: [NAME IT]
-Challenge any entry that names a category instead of a named system.</code></pre>
-        </div>
-        <p>Type the date in yourself; a model has no reliable way to know what day it is. For the boundary and the corpus, a role's worth of specificity is enough — "the team wiki" beats a paragraph, and "knowledge management" is not a system anyone can put a gate in front of. Dating the entry as you write it is what keeps the file a record rather than a reconstruction weeks later.</p>
-
 
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
           <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
@@ -650,8 +656,10 @@ An unproven absence is a not-yet, not a probably.</code></pre>
         <div class="do-step">
           <p class="do-label">Now in the Codex app:</p>
           <ul class="do-clicks">
-            <li>Start a new chat and name it <strong>Adversarial — P5 — [today's date]</strong></li>
-            <li>Use a fresh chat every time — no build-chat cheerleading, no log-chat collusion</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — P5 — [today's date]</code> with the actual date</li>
+            <li>Select the instructor-named reviewer model. If none was named, keep the visible default</li>
+            <li>Confirm the permission mode says <strong>Ask for approval</strong>. Use a fresh chat every time — no build-chat cheerleading, no log-chat collusion</li>
           </ul>
         </div>
 
@@ -711,7 +719,7 @@ BOTH DIFF RESULTS]</code></pre>
         <p>That was one reviewer. Run the same frozen adversarial prompt and the same paste pack a second time in OpenCode. OpenCode cannot open your files, so reuse the excerpts you already pasted — the triage rows and both diff results — and do not thin them. Record both final ADVERSARIAL lines side by side in your P5 log entry, labelled by engine. If one engine accepts the absence-of-effect proof and the other does not, the second engine found the gap.</p>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>PowerShell window</strong> — it makes a folder for the second review and opens an empty pack file:</p>
+          <p class="do-label">Now return to the <strong>PowerShell window</strong> from Stage 02. If it is closed, open a new one from the Windows Start menu. Paste this into that window — it makes a folder for the second review and opens an empty pack file:</p>
           <pre><code>New-Item -ItemType Directory -Path "$env:USERPROFILE\Documents\p5-adversarial" -Force
 notepad "$env:USERPROFILE\Documents\p5-adversarial\pack.md"</code></pre>
         </div>
@@ -736,7 +744,7 @@ opencode run --pure -m "xai/$env:HB_XAI_MODEL" (Get-Content .\pack.md -Raw)</cod
         <p>PowerShell reads the file and passes the text across as one message, which is why the excerpts had to travel inside the pack. The purity flag holds installed plugins out of the run, so the second reviewer arrives carrying nothing you configured. If your build calls <code>--pure</code> an unknown flag, drop it and run the line again; <code>OPENCODE_PURE=1</code> is already set and does the same job. You should see the same protocol come back, ending in its own <code>ADVERSARIAL:</code> line. If the answer skips the protocol, the pack didn't save — reopen <code>pack.md</code> and check both blocks are in it. An error mentioning 429 or quota is usually a capped key, not a broken install — flag it rather than reinstalling.</p>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into the chat <strong>Operator — Direction &amp; Log</strong>, with both lines filled from the two reviews:</p>
+          <p class="do-label">Now return to Codex, open the course project, click <strong>Operator — Direction &amp; Log</strong>, and paste this with both lines filled from the two reviews:</p>
           <pre><code>Second adversarial pass, different engine, same pack. Add both final
 lines to my P5 log entry, labelled by engine, and leave my verdict
 alone until I say otherwise:
@@ -796,6 +804,21 @@ Do not start transfer until this row is written.</code></pre>
         </ol>
 
         </div>
+
+        <p>A rule is worth nothing on a page you close. It goes into the living transfer file now, pointed at your own desk and dated, while the run that produced it is still in front of you.</p>
+        <div class="do-step">
+          <p class="do-label">Now paste this into the chat <strong>Operator — Direction &amp; Log</strong>, with the brackets filled:</p>
+          <pre><code>P5 transfer seed. Read operator/TRANSFER_30_60_90.md and fill the
+table under "From P5 — Operating picture" with these three entries,
+then write the date beside that heading. Change nothing else.
+Date: [TODAY'S DATE]
+- Trusted knowledge boundary at work: [THE NOTES, WIKI, OR DRIVE
+  THAT ACTUALLY DRIVES DECISIONS]
+- Intake rule: [PASTE YOUR SEALED SENTENCE]
+- First corpus or inbox this applies to: [NAME IT]
+Challenge any entry that names a category instead of a named system.</code></pre>
+        </div>
+        <p>Type the date in yourself; a model has no reliable way to know what day it is. For the boundary and the corpus, a role's worth of specificity is enough — "the team wiki" beats a paragraph, and "knowledge management" is not a system anyone can put a gate in front of. Dating the entry as you write it is what keeps the file a record rather than a reconstruction weeks later.</p>
       </section>
 
 

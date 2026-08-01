@@ -26,7 +26,7 @@
       id: "basics", title: "Prepare the machine", time: "45–75 min", anchor: "phase-basics",
       summary: "Confirm the laptop and shell, then install Git, Node, and Python from their official download pages.",
       ids: [
-        "i-time", "i-log", "i-keys", "b-win11", "b-arm", "b-disk", "b-admin",
+        "i-time", "i-keys", "b-win11", "b-arm", "b-disk", "b-admin",
         "ps-open", "ps-version", "ps-policy", "dl-git", "dl-node", "dl-python",
         "git-install", "git-restart", "git-verify",
         "np-node", "np-python", "np-restart", "np-verify", "np-stub"
@@ -50,9 +50,9 @@
       ]
     },
     {
-      id: "files", title: "Open the course files and finish the setup record", time: "15–25 min", anchor: "phase-files",
-      summary: "Clone the course, find the operator files, open the local site, and finish the setup log.",
-      ids: ["rp-get", "rp-operator", "rp-site", "rp-gitignore", "g-log"]
+      id: "files", title: "Open the course files", time: "15–25 min", anchor: "phase-files",
+      summary: "Clone the course, find the operator files, open the local site, and confirm secrets stay out of Git.",
+      ids: ["rp-get", "rp-operator", "rp-site", "rp-gitignore"]
     }
   ];
 

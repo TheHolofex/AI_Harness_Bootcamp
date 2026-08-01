@@ -77,7 +77,7 @@
           </div>
           <div class="callout" id="case-talk">
             <strong>Before lunch · Harness case talk (45 min)</strong>
-            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence, and today especially for how the trails held when the answer was challenged — what the speaker&#x27;s system could not support is the interesting part. Bank one Transfer seed from that.
+            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence, and today especially for how the trails held when the answer was challenged — what the speaker&#x27;s system could not support is the interesting part. Notice one idea you may carry into the transfer step after measurement.
           </div>
         </div>
       </div>
@@ -132,9 +132,16 @@
         <p>Before the machine touches a note, you establish what it is working toward and what it can reach. The brief comes first, and it is written in the operator chat — never in the chat that will run the mission.</p>
 
         <div class="do-step">
-          <p class="do-label">Now in the Codex app:</p>
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
-            <li>Click <strong>Operator — Direction &amp; Log</strong> in the sidebar — the standing chat you named in B0; it lives on the course project, <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, look for <strong>Operator — Direction &amp; Log</strong>. If it is there, open it</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code></li>
+            <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
+            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -194,7 +201,11 @@ Challenge anything vague before you accept it. Then set Status to LIVE.</code></
         <p>Next, the vault itself. The seed ships with the course pack; you copy it out to a folder you own so the course copy stays clean and the machine works on files that are yours.</p>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>PowerShell window</strong>:</p>
+          <p class="do-label">Open <strong>PowerShell</strong>, then run the vault copy:</p>
+          <ul class="do-clicks">
+            <li>Press the <strong>Windows</strong> key, type <code>PowerShell</code>, and open <strong>Windows PowerShell</strong></li>
+            <li>Leave this window open. You will use it again when you bank the transfer seed</li>
+          </ul>
           <pre><code>Copy-Item -Recurse "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p4\vault_seed" "$env:USERPROFILE\Documents\p4-vault"
 Get-ChildItem "$env:USERPROFILE\Documents\p4-vault"</code></pre>
         </div>
@@ -202,8 +213,9 @@ Get-ChildItem "$env:USERPROFILE\Documents\p4-vault"</code></pre>
         <p>The listing should show <code>00_Inbox</code>, <code>Decisions.md</code>, <code>Events.md</code>, <code>MOC.md</code>, <code>People.md</code>, and <code>Systems.md</code>. If it shows a single <code>vault_seed</code> folder instead, the copy landed inside a folder that already existed — delete <code>Documents\p4-vault</code> in File Explorer and run the block again.</p>
 
         <div class="do-step">
-          <p class="do-label">Now in Obsidian:</p>
+          <p class="do-label">Open the copied folder in <strong>Obsidian</strong>:</p>
           <ul class="do-clicks">
+            <li>Press the <strong>Windows</strong> key, type <code>Obsidian</code>, and open the app</li>
             <li>If a vault is already open, click the <strong>vault switcher</strong> icon at the bottom of the left ribbon; on a fresh launch you are already at the vault screen</li>
             <li>Click <strong>Open folder as vault</strong>, browse to <code>Documents\p4-vault</code>, and click <strong>Select Folder</strong></li>
           </ul>
@@ -223,10 +235,12 @@ Get-ChildItem "$env:USERPROFILE\Documents\p4-vault"</code></pre>
         <p>Now the build chat — the separate chat where the mission runs. Opening the vault folder as its project is the structural half of your scope; the brief&#x27;s Bounds field is the written half. You are about to prove the structural half holds.</p>
 
         <div class="do-step">
-          <p class="do-label">Now in the Codex app:</p>
+          <p class="do-label">Return to the <strong>Codex app</strong> and create the build chat:</p>
           <ul class="do-clicks">
-            <li>Start a <strong>new chat</strong> — this is today&#x27;s build chat</li>
+            <li>Click the ChatGPT app on the taskbar. If it opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
+            <li>Click <strong>New chat</strong>. Open the new chat&#x27;s <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P4 build — [today&#x27;s date]</code> with the actual date</li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\p4-vault</code> — each chat keeps its own project, so your operator chats stay on the course project and you click between them all morning</li>
+            <li>Select the same course model you used for the Direction Brief. If no model was named, keep the visible default</li>
             <li>Leave the permission mode at <strong>Ask for approval</strong> — a machine is about to write into your knowledge base</li>
           </ul>
         </div>
@@ -297,6 +311,15 @@ from its hub and from MOC, and move each processed capture to
         </figure>
         <p>This is the payoff of the triage: questions no single note can answer. Both questions are embedded in <a href="#stage-3">this Stage 03 mission</a> and also live in the cloned pack at <code>mission_flesh/p4/director_questions.md</code>. Each answer lands as a note inside the vault — a <code>[[wiki-link]]</code> is only clickable where Obsidian renders it, and an answer that stays in the chat is just text with brackets. The machine will happily meet a lower standard if you let it; the pastes below do not let it.</p>
 
+        <div class="do-step">
+          <p class="do-label">Return from Obsidian to the <strong>P4 build</strong> chat:</p>
+          <ul class="do-clicks">
+            <li>Click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
+            <li>Open <strong>P4 build — [today&#x27;s date]</strong> in the sidebar</li>
+            <li>Confirm its project is <code>Documents\p4-vault</code> before you send the question</li>
+          </ul>
+        </div>
+
         <!-- Question 1 embedded verbatim from mission_flesh/p4/director_questions.md -->
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
@@ -331,6 +354,14 @@ unreproduced) into the answer. Where the vault is silent, say so.</code></pre>
         </ol>
 
         <!-- Question 2 embedded verbatim from mission_flesh/p4/director_questions.md -->
+        <div class="do-step">
+          <p class="do-label">Return from Obsidian to the <strong>P4 build</strong> chat:</p>
+          <ul class="do-clicks">
+            <li>Click the ChatGPT app on the taskbar</li>
+            <li>Open <strong>P4 build — [today&#x27;s date]</strong> in the sidebar and confirm the project is <code>Documents\p4-vault</code></li>
+          </ul>
+        </div>
+
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
           <pre><code>Same rules as the last answer. Write the answer as a note at
@@ -418,6 +449,14 @@ Claim after (or CUT):</code></pre>
         <p>Now act on the audit. Pick the claim whose verdict was partial or not supported — the SSO rumor stated as a live risk is the usual candidate. If every verdict honestly came back support, hold the answers to a harder line: a claim earns <strong>support</strong> only when the cited sentence carries it at the same strength, hedges and all — re-mark on that standard and one row will give. Then make the machine repair the failed claim against the trail, not against its own memory.</p>
 
         <div class="do-step">
+          <p class="do-label">Return from Obsidian to the <strong>P4 build</strong> chat:</p>
+          <ul class="do-clicks">
+            <li>Click the ChatGPT app on the taskbar</li>
+            <li>Open <strong>P4 build — [today&#x27;s date]</strong> and confirm the project is <code>Documents\p4-vault</code></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
           <p class="do-label">Now paste this into the <strong>build chat</strong> — put the answer note&#x27;s name in place of [ANSWER NOTE] and the failed claim&#x27;s text in place of [CLAIM]:</p>
           <pre><code>In [ANSWER NOTE], this claim failed my trail audit: "[CLAIM]".
 The cited note does not support it as stated. Revise the answer note:
@@ -427,7 +466,13 @@ Quote the exact supporting sentence under each claim you revise.
 Do not change claims I did not name.</code></pre>
         </div>
 
-        <p>Then fill the <strong>Revised or killed</strong> section of your Audit note: the claim before, the trail that failed, the claim after (or CUT). The adversarial chat will ask for exactly this.</p>
+        <div class="do-step">
+          <p class="do-label">After the write is approved, finish the record in <strong>Obsidian</strong>:</p>
+          <ul class="do-clicks">
+            <li>Return to Obsidian and open the revised answer note. Confirm the weak claim now matches its trail or is gone</li>
+            <li>Open <code>Audit</code> and fill the <strong>Revised or killed</strong> section: the claim before, the trail that failed, and the claim after (or CUT)</li>
+          </ul>
+        </div>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
@@ -442,6 +487,14 @@ Do not change claims I did not name.</code></pre>
 
         <h3 id="stage-5">Stage 05 · Generate the Morning Brief into the vault</h3>
         <p>Now the machine pattern: a regenerable product living inside the system, not a paste into a document. The brief lands as a note, so it can cite notes — and so tomorrow&#x27;s version can replace it without losing anything.</p>
+
+        <div class="do-step">
+          <p class="do-label">Return from Obsidian to the <strong>P4 build</strong> chat:</p>
+          <ul class="do-clicks">
+            <li>Click the ChatGPT app on the taskbar</li>
+            <li>Open <strong>P4 build — [today&#x27;s date]</strong> and confirm the project is <code>Documents\p4-vault</code></li>
+          </ul>
+        </div>
 
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
@@ -475,41 +528,6 @@ say so instead of filling the gap.</code></pre>
           </li>
         </ol>
 
-        <h3 id="stage-6">Stage 06 · Bank the transfer seed</h3>
-        <p>One written sentence now beats reconstruction later. You write it here while the morning is fresh, then land it in the file that carries your seeds from block to block.</p>
-
-        <div class="do-step">
-          <p class="do-label">Now in Obsidian:</p>
-          <ul class="do-clicks">
-            <li>Press <strong>Ctrl+N</strong> and name the new note <code>Transfer Seed</code></li>
-          </ul>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Now type your sentence into the <strong>Transfer Seed note</strong>, in this shape — replace each bracket with your own desk&#x27;s truth:</p>
-          <pre><code>At work, [WHAT KNOWLEDGE] currently lives in [MY HEAD / A CHAT
-SCROLLBACK / A PILE OF DOCUMENTS] and should live in a linked
-structure a machine can work inside.</code></pre>
-        </div>
-
-        <p>Decisions and their reasons? Client facts? Incident history? Whatever it is, it has to be yours — a hypothetical seed grows nothing. Now move it out of the vault and into the file that accumulates across the week, because this vault is a training ground and that file is not.</p>
-
-        <div class="do-step">
-          <p class="do-label">Now paste this into a <strong>PowerShell window</strong>:</p>
-          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md"</code></pre>
-        </div>
-
-        <p>Scroll down to the heading <strong>From P4 — Trailed knowledge</strong>. Under it sits a two-row table with both entry cells empty.</p>
-
-        <div class="do-step">
-          <p class="do-label">Now in <strong>Notepad</strong> (TRANSFER_30_60_90.md), replace those two rows with these, filled, then save:</p>
-          <pre><code>| Work knowledge that must live in a navigable system | [YOUR SENTENCE FROM THE TRANSFER SEED NOTE] — seeded [TODAY'S DATE] |
-| Citation/trail rule I'll keep | [THE STANDARD YOU WILL HOLD ANY AI-WRITTEN BRIEF TO] — seeded [TODAY'S DATE] |</code></pre>
-        </div>
-
-        <p>Fill the brackets before you save. The first takes the sentence you just wrote in the vault. The second takes the standard you will demand at work — <em>every claim I act on carries a trail I can walk in under a minute</em> is a workable starting rule, and you can tighten it later. Write the real date; a dated seed is the only kind that can be told apart from one reconstructed on Friday.</p>
-
-
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
           <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
         <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
@@ -517,9 +535,17 @@ structure a machine can work inside.</code></pre>
 
         <p>The mission runs elsewhere; this chat holds direction and verdicts. Triage, the two director answers, and the Morning Brief all happened in the build chat; the log is where you say what you make of them.</p>
 
+        <div class="do-step">
+          <p class="do-label">Return from Obsidian to <strong>Operator — Direction &amp; Log</strong>:</p>
+          <ul class="do-clicks">
+            <li>Leave Obsidian open, then click the ChatGPT app on the taskbar</li>
+            <li>Select <strong>Codex</strong> if needed, open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>, and click <strong>Operator — Direction &amp; Log</strong></li>
+          </ul>
+        </div>
+
         <!-- Embedded verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
         <div class="do-step">
-          <p class="do-label">Now click back to the <strong>Operator — Direction &amp; Log</strong> chat and paste this:</p>
+          <p class="do-label">Now in <strong>Operator — Direction &amp; Log</strong>, paste this:</p>
           <pre><code>We are writing the Operator Log entry for this block together.
 
 Read operator/DIRECTION_BRIEF.md (the LIVE brief) and operator/OPERATOR_LOG.md.
@@ -578,7 +604,10 @@ it cannot represent. Ask me for both before you write the entry.</code></pre>
         <div class="do-step">
           <p class="do-label">Now in the Codex app:</p>
           <ul class="do-clicks">
-            <li>Start a <strong>new chat</strong> on the course project and title it <code>Adversarial — P4 — [today&#x27;s date]</code> — a fresh chat every time, never the build chat</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — P4 — [today&#x27;s date]</code> with the actual date</li>
+            <li>Select the instructor-named reviewer model. If none was named, keep the visible default</li>
+            <li>Confirm the permission mode says <strong>Ask for approval</strong> — a fresh chat every time, never the build chat</li>
           </ul>
         </div>
 
@@ -646,7 +675,7 @@ before/after, Morning_Brief.md.</code></pre>
         <p>With all four in, let the review run its protocol. Thin pastes get polite reviews — a polite review means you under-fed the attacker, not that you passed. Argue back where you have evidence; the Audit table is your armor. The review ends with a single <code>ADVERSARIAL:</code> line, and that line belongs in your log, not just here.</p>
 
         <div class="do-step">
-          <p class="do-label">Now copy the review&#x27;s final line into <strong>Operator — Direction &amp; Log</strong> — it looks like this:</p>
+          <p class="do-label">Copy the review&#x27;s final line, reopen <strong>Operator — Direction &amp; Log</strong> on the course project, and paste it there — it looks like this:</p>
           <pre><code>ADVERSARIAL: [stood | wounded | failed] — [THE ONE-SENTENCE REASON FROM THE REVIEW CHAT]</code></pre>
         </div>
 
@@ -701,6 +730,44 @@ Do not start transfer until this row is written.</code></pre>
           </li>
         </ol>
         </div>
+
+        <h3 id="stage-6">Stage 06 · Bank the transfer seed</h3>
+        <p>One written sentence now beats reconstruction later. You write it here while the morning is fresh, then land it in the file that carries your seeds from block to block.</p>
+
+        <div class="do-step">
+          <p class="do-label">Return to Obsidian:</p>
+          <ul class="do-clicks">
+            <li>Click the Obsidian window on the taskbar, press <strong>Ctrl+N</strong>, and name the new note <code>Transfer Seed</code></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now type your sentence into the <strong>Transfer Seed note</strong>, in this shape — replace each bracket with your own desk&#x27;s truth:</p>
+          <pre><code>At work, [WHAT KNOWLEDGE] currently lives in [MY HEAD / A CHAT
+SCROLLBACK / A PILE OF DOCUMENTS] and should live in a linked
+structure a machine can work inside.</code></pre>
+        </div>
+
+        <p>Decisions and their reasons? Client facts? Incident history? Whatever it is, it has to be yours — a hypothetical seed grows nothing. Now move it out of the vault and into the file that accumulates across the week, because this vault is a training ground and that file is not.</p>
+
+        <div class="do-step">
+          <p class="do-label">Open the transfer file from <strong>PowerShell</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the PowerShell window you opened in Stage 01</li>
+            <li>If it is closed, press the <strong>Windows</strong> key, type <code>PowerShell</code>, and open <strong>Windows PowerShell</strong></li>
+          </ul>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md"</code></pre>
+        </div>
+
+        <p>Scroll down to the heading <strong>From P4 — Trailed knowledge</strong>. Under it sits a two-row table with both entry cells empty.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in <strong>Notepad</strong> (TRANSFER_30_60_90.md), replace those two rows with these, filled, then save:</p>
+          <pre><code>| Work knowledge that must live in a navigable system | [YOUR SENTENCE FROM THE TRANSFER SEED NOTE] — seeded [TODAY'S DATE] |
+| Citation/trail rule I'll keep | [THE STANDARD YOU WILL HOLD ANY AI-WRITTEN BRIEF TO] — seeded [TODAY'S DATE] |</code></pre>
+        </div>
+
+        <p>Fill the brackets before you save. The first takes the sentence you just wrote in the vault. The second takes the standard you will demand at work — <em>every claim I act on carries a trail I can walk in under a minute</em> is a workable starting rule, and you can tighten it later. Write the real date; a dated seed is the only kind that can be told apart from one reconstructed on Friday.</p>
       </section>
 
 

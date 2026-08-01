@@ -143,10 +143,16 @@
         <p class="full-measure">Before either engine sees the brief, you and the AI agree on what winning looks like. Five minutes of dialogue here saves an hour of drift later.</p>
 
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
-            <li>Choose <strong>Open project</strong> and pick the course pack: <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> (skip if it's already the open project)</li>
-            <li>Open the chat <strong>Operator — Direction &amp; Log</strong></li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, look for <strong>Operator — Direction &amp; Log</strong>. If it is there, open it</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code></li>
+            <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
+            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -187,7 +193,7 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
         <p class="full-measure">Now you set up the control: the brief read as a contract, and a working folder where nothing rides along that you haven't declared. What you should see at the end of this stage is a folder holding exactly five files — the brief and your track's four corpus files — and nothing else.</p>
 
         <div class="do-step">
-          <p class="do-label">Now run this in a <strong>PowerShell window</strong> — it opens the brief for reading:</p>
+          <p class="do-label">Open <strong>PowerShell</strong> from the Windows Start menu, keep this window open through the exercise, and run this to open the brief for reading:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\BRIEF-v1.md"</code></pre>
         </div>
 
@@ -204,7 +210,19 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
           </li>
         </ol>
 
-        <p class="full-measure">Next, the clean folder. Run exactly one of the next two blocks — the one matching the track you ran in P2. You circled it at the top of your P2 score sheet in <code>instruments/p2_test_suite/SCORE_SHEET.md</code>, so look there if you're unsure. The commands create <code>Documents\HarnessBootcamp\p3_desk</code> and copy in the brief plus your track's four corpus files.</p>
+        <p class="full-measure">Next, the clean folder. Run exactly one of the next two blocks — the one matching the track you ran in P2.</p>
+
+        <div class="do-step">
+          <p class="do-label">Confirm the track and start with an empty desk:</p>
+          <ul class="do-clicks">
+            <li>Press <strong>Windows+E</strong>, click the address bar, enter <code>%USERPROFILE%\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\SCORE_SHEET.md</code>, and press <strong>Enter</strong></li>
+            <li>Open the sheet, read the track recorded at the top, and write <code>engineering</code> or <code>mission_ops</code> in your notes. If no track is recorded, stop and complete the P2 baseline or ask the instructor to assign the track before continuing</li>
+            <li>In File Explorer, open <code>%USERPROFILE%\Documents\HarnessBootcamp</code></li>
+            <li>If <code>p3_desk</code> already exists, rename it <code>p3_desk_previous_[today's date]</code> with the actual date. The commands below need a new empty <code>p3_desk</code></li>
+          </ul>
+        </div>
+
+        <p class="full-measure">The matching command creates <code>Documents\HarnessBootcamp\p3_desk</code> and copies in the brief plus your track's four corpus files.</p>
 
         <div class="do-step">
           <p class="do-label">Now run this in the <strong>PowerShell window</strong> — <strong>engineering track</strong> only:</p>
@@ -230,7 +248,18 @@ Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instru
         <div class="do-step">
           <p class="do-label">Now in the <strong>Codex app</strong>, check what Engine A will carry:</p>
           <ul class="do-clicks">
+            <li>Keep this inventory on paper or in an unsaved Notepad window; do not add a sixth file to <code>p3_desk</code></li>
             <li>Open <strong>Settings &gt; Personalization</strong> and note whether <strong>memories</strong> are on or off — you'll declare it in the comparator either way</li>
+            <li>Open the app's <strong>Skills</strong> view and write down every enabled user-level skill, including the P2 skill if it appears</li>
+            <li>Do not treat a clean project folder as proof that memories or user-level skills are absent; record what the app actually shows</li>
+          </ul>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Now return to <strong>PowerShell</strong> and check the global Codex instruction file:</p>
+          <ul class="do-clicks">
+            <li>Run <code>Test-Path "$env:USERPROFILE\.codex\AGENTS.md"</code></li>
+            <li>If it returns <code>True</code>, run <code>Get-Content "$env:USERPROFILE\.codex\AGENTS.md"</code> and note that the file is live plus the instructions it adds</li>
+            <li>If it returns <code>False</code>, note <code>global AGENTS.md: absent</code></li>
           </ul>
         </div>
         <ol class="checklist">
@@ -241,7 +270,7 @@ Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instru
               <span class="check-num">3</span>
               <span class="check-title">Point both engines at the corpus</span>
             </label>
-            <div class="check-detail">The proof: <code>p3_desk</code> holds exactly five files — the frozen brief plus your track's <code>watchlist.csv</code> and three F-files — and the memories setting is noted for the comparator. Both engines read this folder and nothing else; joins use <code>watchlist.csv</code> IDs only — models do not invent join keys. Running in place instead is allowed, but then every live instruction file gets declared in the comparator.</div>
+            <div class="check-detail">The proof: <code>p3_desk</code> holds exactly five files — the frozen brief plus your track's <code>watchlist.csv</code> and three F-files — and global <code>AGENTS.md</code>, enabled skills, and memories are inventoried for the comparator. Both engines read the same five-file corpus; any additional Codex context is declared, and OpenCode runs with its disable and pure controls. Joins use <code>watchlist.csv</code> IDs only — models do not invent join keys.</div>
           </li>
         </ol>
 
@@ -260,7 +289,9 @@ Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instru
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
             <li>Choose <strong>Open project</strong> and pick <code>Documents\HarnessBootcamp\p3_desk</code></li>
-            <li>Start a <strong>new chat</strong> in that project — this is your build chat for Engine A</li>
+            <li>Click <strong>New chat</strong> and rename it <code>P3 — Engine A — [TODAY'S DATE]</code>, replacing the bracket with today's date</li>
+            <li>Select the intended course model and write its displayed name in your notes before sending anything</li>
+            <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -309,6 +340,14 @@ $env:OPENCODE_PURE = "1"</code></pre>
         <p class="full-measure">The second line prints the flag's value, and you should see <code>1</code> — pre-work set it. If it prints nothing, set it now with <code>$env:OPENCODE_DISABLE_CLAUDE_CODE = "1"</code>; without it OpenCode reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code>, adding an undeclared instruction path on Engine B. The provider-and-model split remains, but the run can no longer isolate its effect. <code>OPENCODE_PURE=1</code> rides alongside <code>--pure</code> because some builds silently ignore the flag on its own — a plugin loading unannounced would contaminate the comparison.</p>
 
         <div class="do-step">
+          <p class="do-label">Confirm the Engine B model pin before dispatch:</p>
+          <ul class="do-clicks">
+            <li>In the same PowerShell window, type <code>$env:HB_XAI_MODEL</code> and press <strong>Enter</strong></li>
+            <li>If no model ID prints, stop and ask for setup help. Do not run an unpinned comparison</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
           <p class="do-label">Now run this in the same <strong>PowerShell window</strong> — the Engine B dispatch:</p>
           <pre><code>opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder and follow it exactly."</code></pre>
         </div>
@@ -346,7 +385,7 @@ opencode --version
         <div class="do-step">
           <p class="do-label">Now in <strong>COMPARATOR.md</strong> (Notepad), fill the run-identity table before any side-by-side row:</p>
           <ul class="do-clicks">
-            <li>Engine A: the model id and app version from the top of <code>output_codex.md</code>, and tick which of <code>AGENTS.md</code> / skills / memories were live — for a clean <code>p3_desk</code> run that's your memories note and nothing else</li>
+            <li>Engine A: the model id and app version from the top of <code>output_codex.md</code>, and record which of <code>AGENTS.md</code> / skills / memories were live from the inventory you made before dispatch — a clean folder does not prove user-level context is absent</li>
             <li>Engine B: the pinned model id and OpenCode version from the top of <code>output_opencode.md</code>, and tick <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> and <code>--pure</code> — if your build made you drop <code>--pure</code>, write <code>OPENCODE_PURE=1</code> beside that box instead</li>
             <li>At the top, delete whichever track you didn't run so only yours remains, and add one line right under the run-identity table: <code>Folder both engines read: p3_desk</code> — or the folder you declared, if you ran in place</li>
           </ul>
@@ -420,16 +459,18 @@ Remove-Item "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk_kill\[CITED_FILE
         <p class="full-measure">If <code>p3_desk_kill</code> already existed from an earlier attempt, the copy just nested a second desk inside it — clear it with <code>Remove-Item "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk_kill" -Recurse -Force</code> and run the copy block again. Then rerun the brief on the engine that asserted the claim — one of the next two moves, not both. If you took a claim both engines agreed on, either engine is a fair target; pick one and run only its move.</p>
 
         <div class="do-step">
-          <p class="do-label">If the claim was OpenCode's, run this in the same <strong>PowerShell window</strong> (the cargo flags from Stage 03 are still set there; a new window needs them set again):</p>
+          <p class="do-label">If the claim was OpenCode's, use the same <strong>PowerShell window</strong>. If you opened a new one, first type <code>$env:OPENCODE_DISABLE_CLAUDE_CODE = "1"</code> and <code>$env:OPENCODE_PURE = "1"</code>, pressing <strong>Enter</strong> after each. Then run this:</p>
           <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk_kill"
 opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder and follow it exactly."</code></pre>
         </div>
 
         <div class="do-step">
-          <p class="do-label">If the claim was the Codex app's, in the <strong>Codex app</strong>:</p>
+          <p class="do-label">If the claim was the Codex app's, set up a controlled kill-test chat in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
             <li>Choose <strong>Open project</strong> and pick <code>Documents\HarnessBootcamp\p3_desk_kill</code></li>
-            <li>Start a <strong>new chat</strong> and paste the same dispatch line: <code>Read BRIEF-v1.md in this folder and follow it exactly.</code></li>
+            <li>Click <strong>New chat</strong> and rename it <code>P3 — Kill test — [TODAY'S DATE]</code>, replacing the bracket with today&#x27;s date</li>
+            <li>Select the same model and permission mode recorded for Engine A</li>
+            <li>Paste the same dispatch line: <code>Read BRIEF-v1.md in this folder and follow it exactly.</code></li>
           </ul>
         </div>
 
@@ -478,35 +519,6 @@ opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder 
             <div class="check-detail">The note at the bottom of the comparator reads cold: what is true, what is UNKNOWN and why, what you killed and on what evidence. This is the run's final watch product — the artifact your log points at. If a handover reader would need to ask you anything before acting on it, it isn't finished.</div>
           </li>
         </ol>
-
-        <h3>Stage 06 · Bank what transfers</h3>
-        <p class="full-measure">One minute of naming what transfers is what turns today's run into something you reach for on a real desk.</p>
-
-        <div class="do-step">
-          <p class="do-label">Now type this at the bottom of <strong>COMPARATOR.md</strong> (Notepad), filling each bracket in your own words — a role or decision type is enough:</p>
-          <pre><code>Transfer seed — P3
-- Single-engine ban: [THE DECISION TYPE AT WORK I WILL NOT SINGLE-ENGINE]
-- Kill rule: [WHEN I DISCARD A MODEL CLAIM]
-- Comparator habit: [HOW OFTEN / HOW LIGHT]
-- First real decision to run through this desk: [NAME IT]</code></pre>
-        </div>
-
-        <p class="full-measure">Save the file. Those four lines are the seed in your own words; the last move of the stage is carrying them into the file that outlives the week, dated, so the outer loop starts from something you wrote rather than a blank field.</p>
-
-        <div class="do-step">
-          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it opens the transfer file:</p>
-          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md"</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Now in <strong>TRANSFER_30_60_90.md</strong> (Notepad), find the table headed <strong>From P3 — Verdict ownership</strong>:</p>
-          <ul class="do-clicks">
-            <li>Fill its three rows from the seed you just wrote — decision type you must not single-engine, comparator habit, kill rule — in your own words, not the bracket text</li>
-            <li>Name the first real decision you'd run through this desk beside the decision-type row, so the seed points at something on your actual calendar</li>
-            <li>Write today's date at the end of the last row you filled, e.g. <code>— 2026-03-18</code>, then save with <strong>Ctrl+S</strong></li>
-          </ul>
-        </div>
-
 
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
           <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
@@ -579,9 +591,12 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
         </ol>
 
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Now create the first independent review in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Start a <strong>new chat</strong> and title it <strong>Adversarial — P3 — [today's date]</strong>, e.g. <code>Adversarial — P3 — 2026-03-18</code> — a fresh chat every block, never the build chat and never the log chat</li>
+            <li>Choose <strong>Open project</strong> and pick <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong> and title it <strong>Adversarial — P3 — [today's date]</strong>, e.g. <code>Adversarial — P3 — 2026-03-18</code> — a fresh chat every block, never the build chat and never the log chat</li>
+            <li>Select the instructor-named reviewer model, or keep the visible default if none was named</li>
+            <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -634,7 +649,23 @@ Comparator excerpts: [PASTE THE RUN-IDENTITY TABLE AND YOUR DISAGREEMENT ROWS]</
 
         <p class="full-measure">Expect attacks on undeclared cargo, cosmetic rows counted as material, and a cheap kill. If the reviewer is polite, you under-pasted — give it the comparator excerpts, not a summary of them.</p>
 
-        <p class="full-measure">Now run the review a second time, and this part is required rather than optional. A reviewer from the same model family as the one that wrote Engine A's output shares its habits — the phrasings it finds convincing, the gaps it does not think to look for — so a reviewer from a different family will take a claim the first one let stand. The PowerShell window from Stage 03 is still open with the cargo flags set, which puts the second reviewer one command away.</p>
+        <div class="do-step">
+          <p class="do-label">Save the first review before changing surfaces:</p>
+          <ul class="do-clicks">
+            <li>Copy the first review's final <code>ADVERSARIAL:</code> line and its SURVIVES / WOUNDED / DEAD rulings</li>
+            <li>Open <strong>Operator — Direction &amp; Log</strong> and add them to the P3 log entry under the label <strong>Codex reviewer</strong></li>
+          </ul>
+        </div>
+
+        <p class="full-measure">Now run the review a second time, and this part is required rather than optional. A reviewer from the same model family as the one that wrote Engine A's output shares its habits — the phrasings it finds convincing, the gaps it does not think to look for — so a reviewer from a different family will take a claim the first one let stand. Return to the PowerShell window from Stage 03. If you closed it, open a new PowerShell window; the command below re-enters the clean folder and restores the plugin guard before it starts the reviewer.</p>
+
+        <div class="do-step">
+          <p class="do-label">If you opened a new PowerShell window, restore the remaining cargo guard:</p>
+          <ul class="do-clicks">
+            <li>Type <code>$env:OPENCODE_DISABLE_CLAUDE_CODE = "1"</code> and press <strong>Enter</strong></li>
+            <li>The command below restores <code>OPENCODE_PURE</code> before the reviewer starts</li>
+          </ul>
+        </div>
 
         <div class="do-step">
           <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it opens a second reviewer running Grok:</p>
@@ -650,12 +681,13 @@ opencode --pure -m "xai/$env:HB_XAI_MODEL"</code></pre>
           <ul class="do-clicks">
             <li>Paste the same frozen adversarial prompt you used above — the one beginning <code>You are an adversarial operator reviewer</code> — and send it</li>
             <li>Paste the same pack after it: same artifacts, same provisional verdict, same checked outcomes, same comparator excerpts. Same prompt, same pack, no softening.</li>
-            <li>Read the second <code>ADVERSARIAL:</code> line it returns, then leave the session with <code>/exit</code> — <strong>Ctrl+C</strong> if your build does not take the command</li>
+            <li>Select and copy the second review's SURVIVES / WOUNDED / DEAD rulings and final <code>ADVERSARIAL:</code> line before leaving the session</li>
+            <li>Leave the session with <code>/exit</code> — <strong>Ctrl+C</strong> if your build does not take the command</li>
           </ul>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Now in <strong>Operator — Direction &amp; Log</strong>:</p>
+          <p class="do-label">Return to the <strong>Codex app</strong>, open the course project, and click <strong>Operator — Direction &amp; Log</strong>:</p>
           <ul class="do-clicks">
             <li>Record both final <code>ADVERSARIAL: stood | wounded | failed</code> lines side by side in your P3 log entry, labelled by engine</li>
             <li>Fix first if either line came back wounded, then log what changed under fire</li>
@@ -699,7 +731,7 @@ Do not score ritual health and do not give a quality label. Neither is in this r
 Do not start transfer until this row is written.</code></pre>
         </div>
 
-        <p class="full-measure">The per-claim rulings come from step 3 of the review you just ran — the <code>SURVIVES / WOUNDED / DEAD</code> list — so scroll back in the adversarial chat and paste the list itself rather than your memory of it. Mission outcome paths are both raw outputs and the comparator. P3's deep mark is one line — <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code> — counts and ruling, and what the disagreement rate taught you becomes the one-sentence lesson reflection.</p>
+        <p class="full-measure">Use the harsher of the two final lines in the prompt's singular <code>Adversarial line</code> field. Paste both ruling lists when they differ and count the harsher ruling for overclaim; both labelled results remain in the P3 log entry. Mission outcome paths are both raw outputs and the comparator. P3's deep mark is one line — <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code> — counts and ruling, and what the disagreement rate taught you becomes the one-sentence lesson reflection.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -711,6 +743,42 @@ Do not start transfer until this row is written.</code></pre>
             <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes you marked complete that the adversarial ruled WOUNDED or DEAD over the number you marked complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, a one-sentence <strong>lesson reflection</strong> answering the question above, and the deep mark <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code>.</div>
           </li>
         </ol>
+        </div>
+
+        <h3>Stage 06 · Bank what transfers</h3>
+        <p class="full-measure">One minute of naming what transfers is what turns today's run into something you reach for on a real desk.</p>
+
+        <div class="do-step">
+          <p class="do-label">First return to <strong>COMPARATOR.md</strong> in Notepad:</p>
+          <ul class="do-clicks">
+            <li>If it is still open, select its Notepad window from the taskbar</li>
+            <li>If you closed it, press <strong>Windows+E</strong>, enter <code>%USERPROFILE%\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\COMPARATOR.md</code> in the address bar, and open the file</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now type this at the bottom of <strong>COMPARATOR.md</strong> (Notepad), filling each bracket in your own words — a role or decision type is enough:</p>
+          <pre><code>Transfer seed — P3
+- Single-engine ban: [THE DECISION TYPE AT WORK I WILL NOT SINGLE-ENGINE]
+- Kill rule: [WHEN I DISCARD A MODEL CLAIM]
+- Comparator habit: [HOW OFTEN / HOW LIGHT]
+- First real decision to run through this desk: [NAME IT]</code></pre>
+        </div>
+
+        <p class="full-measure">Save the file. Those four lines are the seed in your own words; the last move of the stage is carrying them into the file that outlives the week, dated, so the outer loop starts from something you wrote rather than a blank field.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it opens the transfer file:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md"</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now in <strong>TRANSFER_30_60_90.md</strong> (Notepad), find the table headed <strong>From P3 — Verdict ownership</strong>:</p>
+          <ul class="do-clicks">
+            <li>Fill its three rows from the seed you just wrote — decision type you must not single-engine, comparator habit, kill rule — in your own words, not the bracket text</li>
+            <li>Name the first real decision you'd run through this desk beside the decision-type row, so the seed points at something on your actual calendar</li>
+            <li>Write today's date at the end of the last row you filled, e.g. <code>— 2026-03-18</code>, then save with <strong>Ctrl+S</strong></li>
+          </ul>
         </div>
       </section>
 
