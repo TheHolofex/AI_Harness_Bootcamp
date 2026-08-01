@@ -89,6 +89,8 @@ BLOCKED_PREFIXES = (
 )
 
 # Cohort password is shared with students — keep answer keys off HTTP.
+# operator/PASS_BARS.md is deliberately NOT here: every block page links to it
+# as the learner-facing MVP checklist.
 STAFF_ONLY_PATHS = {
     "lead/MANY_MINDS_ANSWER_KEY.md",
     "lead/COHORT_PIN.md",
@@ -264,8 +266,10 @@ LOGIN_PAGE = """<!DOCTYPE html>
 class BootcampHandler(SimpleHTTPRequestHandler):
     extensions_map = {
         **getattr(SimpleHTTPRequestHandler, "extensions_map", {}),
-        ".md": "text/markdown; charset=utf-8",
-        ".markdown": "text/markdown; charset=utf-8",
+        # text/plain, not text/markdown: browsers download an unknown type but
+        # render text/plain inline, and block pages link straight to .md files.
+        ".md": "text/plain; charset=utf-8",
+        ".markdown": "text/plain; charset=utf-8",
         ".yaml": "text/yaml; charset=utf-8",
         ".yml": "text/yaml; charset=utf-8",
         ".toml": "text/plain; charset=utf-8",
@@ -493,7 +497,7 @@ def main() -> int:
         password=password,
         open_mode=open_mode,
     )
-    mimetypes.add_type("text/markdown", ".md")
+    mimetypes.add_type("text/plain", ".md")
     mimetypes.add_type("text/yaml", ".yaml")
     mimetypes.add_type("text/yaml", ".yml")
 

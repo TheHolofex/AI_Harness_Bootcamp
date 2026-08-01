@@ -197,8 +197,8 @@ Close the terminal, open a **new** one, and verify:
 ```powershell
 'OPENAI_API_KEY','XAI_API_KEY','ANTHROPIC_API_KEY' | ForEach-Object {
   '{0}: user={1} session={2}' -f $_,
-    [Environment]::GetEnvironmentVariable($_,'User').Length,
-    (Get-Item "env:$_" -EA SilentlyContinue).Value.Length
+    ([string][Environment]::GetEnvironmentVariable($_,'User')).Length,
+    ([string](Get-Item "env:$_" -EA SilentlyContinue).Value).Length
 }
 ```
 
@@ -249,11 +249,17 @@ Confirm it took: open the profile menu, which should report that you are on an A
 Now lock the door behind you, so a stray click can never bounce you to a ChatGPT login you cannot complete:
 
 ```powershell
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex" | Out-Null
-Add-Content -Path "$env:USERPROFILE\.codex\config.toml" -Value 'forced_login_method = "api"'
+$cfg = "$env:USERPROFILE\.codex\config.toml"
+New-Item -ItemType Directory -Force -Path (Split-Path $cfg) | Out-Null
+$keep = @(if (Test-Path $cfg) { Get-Content $cfg | Where-Object { $_ -notmatch '^\s*forced_login_method\s*=' } })
+Set-Content -Path $cfg -Value (@('forced_login_method = "api"') + $keep)
 ```
 
 Restart the app after writing that line.
+
+Four lines rather than one, because this file has a shape you have to respect. In a TOML file, a line like `[windows]` opens a **table**, and every plain setting below it belongs to that table until the next one. So a setting appended to the bottom of a file that already has a table header stops being a top-level setting — it silently joins the table and stops doing its job. Nothing errors; the app just keeps asking you to sign in. Writing a second copy of the same key is a hard parse error instead.
+
+The commands above sidestep both: they drop any existing `forced_login_method` line and rewrite the setting at the **top**, above every table. That makes them safe to re-run whenever you want to confirm the lock is in place — which the rescue table at the end of this guide will ask you to do.
 
 ### Point it at your smoke folder
 
@@ -267,12 +273,14 @@ Beneath the message box is a permissions control. Set it to **Ask for approval**
 
 This is the setting that turns the Windows sandbox on, so do not skip it. On first use the app builds that sandbox and asks for an administrator prompt. Approve it — this is the strong `elevated` sandbox, and it is the one you want.
 
-If your laptop refuses the elevation, or you see an error mentioning `1385`, Codex can fall back to weaker but workable boundaries. Add this to the same `config.toml`:
+If your laptop refuses the elevation, or you see an error mentioning `1385`, Codex can fall back to weaker but workable boundaries. Add this to the **bottom** of the same `config.toml`, in a text editor:
 
 ```toml
 [windows]
 sandbox = "unelevated"
 ```
+
+That is a table header, so it has to be the last thing in the file — see the note above. If you later re-run the four-line command, it rewrites the top of the file and leaves this table where it is.
 
 Write down which mode you ended up on. It is one of the two details staff ask for when a machine behaves oddly mid-week.
 
@@ -301,17 +309,21 @@ Approve the write when it asks. Then look in Explorer.
 
 P3 runs the **same frozen brief** through Codex and OpenCode, then you adjudicate. P5 uses it again to compare how a second harness expresses permissions. OpenCode runs on **Grok** via your xAI key, so the two engines differ underneath and not just in name. Without it, P3 has nothing to compare.
 
-**Use the version staff pinned for your cohort.** OpenCode ships fast and its Windows support sometimes regresses between releases; staff test a build and pin it.
+**Use the exact build staff pinned for your cohort.** OpenCode ships fast and its Windows support sometimes regresses between releases, so staff test one build and pin it. The pin names two things — a **channel** and a **version** — because winget and npm publish this tool on their own schedules and are usually a few releases apart. A version number without a channel is ambiguous, and a room running two different builds is not one comparator in P3.
+
+Run **only** the line for the channel the pin names, substituting the pinned version:
 
 ```powershell
-winget install --id SST.opencode --exact --accept-package-agreements --accept-source-agreements
+# channel: winget
+winget install --id SST.opencode --exact --version <pinned version> --accept-package-agreements --accept-source-agreements
 ```
-
-Alternative if winget lacks it and Node is present:
 
 ```powershell
-npm install -g opencode-ai
+# channel: npm  — needs Node from section 4
+npm install -g opencode-ai@<pinned version>
 ```
+
+If the pin hasn't been posted yet, install nothing here and finish the other sections first — this is the one step where "latest" costs you the exercise rather than an afternoon. Say so in the pre-work channel and come back.
 
 **Do not use the `curl` install command from OpenCode's website.** It is a bash script and cannot run on plain Windows PowerShell; no PowerShell equivalent is published.
 
@@ -323,6 +335,8 @@ opencode models xai --refresh
 ```
 
 OpenCode reads `XAI_API_KEY` from the environment automatically — there is no login step. An empty model list means this window can't see the key.
+
+`opencode --version` must print the pinned version exactly. If it prints something newer, an older install is still on PATH or the channel was wrong — record both numbers in your log and raise it, rather than upgrading to whatever is current.
 
 **Keep this engine independent.** When OpenCode finds Claude Code's files it reads them: `~/.claude/CLAUDE.md` and any `.claude/skills` folder. If you add Claude Code in section 14, your second engine quietly starts working from the first one's notes, and two engines sharing one memory file will agree more than they should. Turn that off:
 
@@ -349,7 +363,7 @@ opencode run -m "xai/$env:HB_XAI_MODEL" "Create a file named from-opencode.txt i
 Get-Content .\from-opencode.txt
 ```
 
-- [ ] Version recorded in your log (Monday asks for it by name)
+- [ ] Channel and version recorded in your log, and they match the pin (Monday asks for both by name)
 - [ ] `$env:OPENCODE_DISABLE_CLAUDE_CODE` returns `1` in a new terminal
 - [ ] `from-opencode.txt` exists on disk
 
@@ -461,9 +475,14 @@ The project moved to **`aaif-goose`**; older instructions pointing at `block/goo
 The installer does not add itself to PATH — it only warns:
 
 ```powershell
+$bin = "$env:USERPROFILE\.local\bin"
 $userPath = [Environment]::GetEnvironmentVariable('PATH','User')
-[Environment]::SetEnvironmentVariable('PATH', "$userPath;$env:USERPROFILE\.local\bin", 'User')
+if (($userPath -split ';') -notcontains $bin) {
+  [Environment]::SetEnvironmentVariable('PATH', "$userPath;$bin".Trim(';'), 'User')
+}
 ```
+
+The `if` is there because this exact folder comes up again in section 14, and PATH is a list you append to rather than a value you set. Without the guard, running it twice leaves the same folder in your PATH twice — harmless today, confusing the first time you have to read it. Note that this reads and writes **your** user PATH only; it never touches the system one.
 
 New terminal, then:
 
@@ -549,6 +568,8 @@ Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\operator
 
 When you open a mission folder as a project during the week, bring `operator/` with you the same way.
 
+**This copy is a rehearsal, not your Monday workspace.** Monday you open the cloned repo itself as your Codex project, and the `operator/` inside it is the one you actually fill in. Anything you type into the smoke folder's copy between now and then stays behind — so read these templates here, and save the writing for Monday.
+
 Now serve the site. This one keeps running until you stop it:
 
 ```powershell
@@ -585,12 +606,7 @@ If you do install it, the `OPENCODE_DISABLE_CLAUDE_CODE` variable from step 8 is
 irm https://claude.ai/install.ps1 | iex
 ```
 
-New terminal, then `claude --version`. If not found:
-
-```powershell
-$userPath = [Environment]::GetEnvironmentVariable('PATH','User')
-[Environment]::SetEnvironmentVariable('PATH', "$userPath;$env:USERPROFILE\.local\bin", 'User')
-```
+New terminal, then `claude --version`. If not found, it installed to the same `%USERPROFILE%\.local\bin` that goose uses — re-run the guarded PATH block from section 10, which is safe whether or not that folder is already there.
 
 It reads `ANTHROPIC_API_KEY` on its own and asks you to approve the key once.
 
@@ -654,7 +670,7 @@ There is **no separate health-check checklist** to run. If something fails later
 | Still not recognized after two new windows | Installer didn't update PATH | Add the tool's folder (usually `%USERPROFILE%\.local\bin`) to User PATH |
 | `running scripts is disabled on this system` | Execution policy | Section 1. If `MachinePolicy`/`UserPolicy` are set, IT owns it — ticket them. Stopgap: `cmd /c npm install n8n -g` |
 | Tool won't authenticate | Key missing in this window, wrong prefix, or wrong key for that tool | Re-run the section 5 check; confirm prefix. The Codex app is the exception — it ignores the variable entirely and uses the key you pasted into *Sign in another way*. |
-| Codex app keeps asking you to sign in with ChatGPT | It was signed in to an account, or the key was never accepted | Profile menu → log out, then sign back in via *Sign in another way*. Confirm `forced_login_method = "api"` is in `%USERPROFILE%\.codex\config.toml` and restart the app. |
+| Codex app keeps asking you to sign in with ChatGPT | It was signed in to an account, or the key was never accepted | Profile menu → log out, then sign back in via *Sign in another way*. Confirm `forced_login_method = "api"` sits in `%USERPROFILE%\.codex\config.toml` **above** any `[table]` header — re-running section 7's four-line command puts it there safely — then restart the app. |
 | Codex app won't install — Store or `winget ... msstore` blocked | Group Policy blocks Microsoft app distribution | Download the Store-signed package directly: `https://persistent.oaistatic.com/codex-app-prod/ChatGPT-x64.msix`, then `Add-AppxPackage .\ChatGPT-x64.msix`. There is no plain MSI or EXE. If that is blocked too, it is an IT ticket. |
 | Worked yesterday, now `429` / quota / spend limit | Key hit its cap | Staff fix, not a reinstall. Message them with the key and what you ran. |
 | Tool claims it wrote a file that isn't there | Believe the folder, not the chat | `Get-Location`, `Get-ChildItem`. On OpenCode this is a known Windows defect — report version and exact wording. |
