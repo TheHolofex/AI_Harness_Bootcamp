@@ -87,7 +87,7 @@
       url: "blocks/p1.html", meta: "Codex app"
     },
     {
-      code: "P2", name: "The hot-rod morning", title: "The hot-rod morning", day: "Tuesday", slot: "AM",
+      code: "P2", name: "The measured harness", title: "The measured harness", day: "Tuesday", slot: "AM",
       key: "ahb-checklist-p2",
       ids: [
         "pulse-brief", "p2-open", "p2-base", "p2-walls",

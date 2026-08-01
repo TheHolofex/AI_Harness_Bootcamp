@@ -62,7 +62,7 @@
     { label: "Resource hub", path: "resources.html" },
     { label: "Pre-work", path: "resources/prework/index.html" },
     { label: "P1 · Daily Status Brief", path: "resources/p1/index.html" },
-    { label: "P2 · Hot-rod morning", path: "resources/p2/index.html" },
+    { label: "P2 · Measured harness", path: "resources/p2/index.html" },
     { label: "P3 · Twin-engine intel desk", path: "resources/p3/index.html" },
     { label: "P4 · Director’s second brain", path: "resources/p4/index.html" },
     { label: "P5 · Poisoned corpus", path: "resources/p5/index.html" },
@@ -348,9 +348,26 @@
     var key = form.getAttribute("data-storage-key");
     if (!key) return;
     var state = AHB.readState(key);
+    var b = null;
+    for (var i = 0; i < AHB.REGISTRY.length; i++) {
+      if (AHB.REGISTRY[i].key === key) { b = AHB.REGISTRY[i]; break; }
+    }
     var boxes = form.querySelectorAll('input[type="checkbox"][data-check-id]');
     Array.prototype.forEach.call(boxes, function (input) {
       var id = input.getAttribute("data-check-id");
+      var item = input.closest("[data-check-item]");
+      if (b && !isRequiredId(b, id) && item) {
+        var stretch = b.stretchIds.indexOf(id) !== -1;
+        item.classList.add(stretch ? "is-optional" : "is-conditional");
+        var title = item.querySelector(".check-title");
+        if (title && !title.querySelector(".check-kind")) {
+          var badge = document.createElement("span");
+          badge.className = "check-kind";
+          badge.textContent = stretch ? "Optional" :
+            (/^r-/.test(id) || id === "wg-fix" ? "Only if needed" : "Reference");
+          title.appendChild(badge);
+        }
+      }
       input.checked = !!state[id];
       applyItemState(input);
       input.addEventListener("change", function () {
