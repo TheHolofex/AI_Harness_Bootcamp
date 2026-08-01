@@ -455,10 +455,22 @@ answer for me.</code></pre>
         <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
         <p class="reflection-question"><strong>Think back:</strong> What did the delta and stale-source tests change about what you require before trusting a generated brief?</p>
 
-        <p>The log comes first, in the same chat as the brief, so the entry lands where the contract was set. The mission runs elsewhere; this chat holds direction and verdicts.</p>
+        <p><strong>Where your answer goes:</strong> You will write the one-sentence answer in the P1 row of <code>operator/MEASUREMENT_SPINE.md</code> through <strong>Operator — Direction &amp; Log</strong>, after the independent review. Do not start a separate reflection chat.</p>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Switch to <strong>ChatGPT</strong>. If it is closed, open it from the Windows Start menu</li>
+            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, find <strong>Operator — Direction &amp; Log</strong>, open it, and continue that conversation. Do not create a new chat when it is already there</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code>. Choose <strong>Pin</strong> from the same menu if that option appears</li>
+            <li>Confirm the open chat is <strong>Operator — Direction &amp; Log</strong>. The next prompt goes there, never into a Build chat</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the open <strong>Operator — Direction &amp; Log</strong> chat:</p>
           <!-- Verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
           <pre><code>We are writing the Operator Log entry for this block together.
 
@@ -484,7 +496,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p1-pulse-log" name="p1-pulse-log" data-check-id="pulse-log" />
               <span class="check-num">9</span>
-              <span class="check-title">Operator Log complete</span>
+              <span class="check-title">Provisional Operator Log entry written</span>
             </label>
             <div class="check-detail">What you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers a peer could follow, and what you still own. On this block, ACCEPT is only honest if the audit, delta, and stale evidence exist.</div>
           </li>
@@ -497,7 +509,8 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <ul class="do-clicks">
             <li>Open <strong>Lesson outcomes</strong> below and check only the outcomes you can prove with an artifact — right now, before the independent review.</li>
             <li>Leave any outcome you cannot evidence unticked. An honest not-yet costs nothing here and saves you at the next step.</li>
-            <li>Copy the checked list. It is your prediction, and the adversarial chat is about to rule on it one outcome at a time.</li>
+            <li>Open a blank Notepad window and type the title of each checked outcome into one short list. Do not include the unticked outcomes</li>
+            <li>Keep that list open. It is your prediction, and you will paste it into the <code>Lesson outcomes I marked complete</code> line in the adversarial chat</li>
           </ul>
         </div>
 
@@ -516,11 +529,10 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
         <p>Now the attack. A fresh chat, so the reviewer never "helped you succeed" five minutes ago.</p>
 
         <div class="do-step">
-          <p class="do-label">Now create the independent review chat in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Now create the independent review chat in <strong>Codex</strong>:</p>
           <ul class="do-clicks">
             <li>Confirm <code>AI_Harness_Bootcamp</code> is the open project</li>
-            <li>Click <strong>New chat</strong></li>
-            <li>Rename it <code>Adversarial — P1 — [TODAY'S DATE]</code>, replacing the bracket with today's actual date</li>
+            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — P1 — [TODAY'S DATE]</code> with today's actual date</li>
             <li>Select the instructor-named reviewer model, or keep the visible default if none was named</li>
             <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
@@ -578,8 +590,26 @@ Known weak spots: [ANYTHING YOU ALREADY DOUBT]</code></pre>
         <p>Let it attack. If the attack lands, fix or downgrade the verdict — and clear the outcome the review questioned below until it's fixed. Then carry the scar back to the record.</p>
 
         <div class="do-step">
-          <p class="do-label">Now copy the reviewer's final line into <strong>Operator — Direction &amp; Log</strong> — it looks like this:</p>
+          <p class="do-label">Before measurement, carry the complete review into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <ul class="do-clicks">
+            <li>In <strong>Adversarial — P1</strong>, copy the complete <code>SURVIVES / WOUNDED / DEAD</code> ruling list</li>
+            <li>In the sidebar, open <strong>Operator — Direction &amp; Log</strong>, paste the list unedited as a new message, and send it</li>
+            <li>Reopen <strong>Adversarial — P1</strong>, copy its complete final <code>ADVERSARIAL:</code> line, then reopen <strong>Operator — Direction &amp; Log</strong>, paste the line as the next message, and send it</li>
+            <li>Leave <strong>Operator — Direction &amp; Log</strong> open for the measurement step</li>
+          </ul>
+          <p>The final line you copy from the review has this shape:</p>
           <pre><code>ADVERSARIAL: [stood | wounded | failed] - [one sentence]</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now tell Codex to write those two pasted messages into the log file:</p>
+          <pre><code>Update operator/OPERATOR_LOG.md now.
+In the P1 entry, append the ruling-list message and final ADVERSARIAL-line
+message I just pasted to field 6, Adversarial, verbatim and in that order.
+Do not summarize, rewrite, or omit either message. Preserve fields 1–5.
+For each WOUNDED or DEAD outcome, ask what I did: fixed it, cleared the
+outcome, or kept it as a named gap. Append my answer, save the file, then
+tell me the exact section you updated.</code></pre>
         </div>
 
         <ol class="checklist">
@@ -595,7 +625,7 @@ Known weak spots: [ANYTHING YOU ALREADY DOUBT]</code></pre>
         </ol>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>. Write <code>P1</code> in the block slot, paste the per-claim <code>SURVIVES / WOUNDED / DEAD</code> rulings from the adversarial chat exactly as it wrote them, and fill the other brackets from your artifacts:</p>
+          <p class="do-label">Continue in the open <strong>Operator — Direction &amp; Log</strong> chat and paste this. Write <code>P1</code> in the block slot, use the per-claim <code>SURVIVES / WOUNDED / DEAD</code> rulings you just carried across, and fill the other brackets from your artifacts:</p>
           <!-- Verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
           <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
 Block: [B1/P1/…].
@@ -638,23 +668,33 @@ Do not start transfer until this row is written.</code></pre>
         <p>One last entry, and it belongs to your desk rather than this one. The move you just ran — a pinned source folder, a fixed format, a citation rule, a rerun path — works on any recurring product you currently rewrite from memory. Name that product now, while the afternoon is still fresh, and date it so you can see later how long it sat.</p>
 
         <div class="do-step">
-          <p class="do-label">Open the transfer file in <strong>Notepad</strong>:</p>
+          <p class="do-label">Open the standing transfer chat in <strong>Codex</strong>:</p>
           <ul class="do-clicks">
-            <li>Press the <strong>Windows</strong> key, type <code>Notepad</code>, and open the app</li>
-            <li>Choose <strong>File → Open</strong></li>
-            <li>Click the file window's address bar, enter <code>%USERPROFILE%\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator</code>, and press <strong>Enter</strong></li>
-            <li>Change the file type to <strong>All files</strong>, select <code>TRANSFER_30_60_90.md</code>, and click <strong>Open</strong></li>
-            <li>Find the heading <strong>From P1 — Machine candidate</strong></li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, open <strong>Operator — Transfer 30-60-90</strong> and continue that conversation</li>
+            <li>If it is missing, click <strong>New chat</strong>, rename it <code>Operator — Transfer 30-60-90</code>, and pin it if <strong>Pin</strong> appears</li>
+            <li>Do not put this seed in <strong>Operator — Direction &amp; Log</strong> or the P1 Build chat</li>
           </ul>
-          <p>Write this beneath that heading. Replace <code>[TODAY'S DATE]</code> with today's date, and <code>[PRODUCT]</code> with one recurring product you actually produce — the weekly rollup, the Monday status email, or the watch report:</p>
-          <pre><code>Dated: [TODAY'S DATE]
-Machine candidate: [PRODUCT] - rebuild it as a machine: one source folder,
-fixed sections, a citation on every claim, one command to regenerate, visible
-failure when a source goes missing.</code></pre>
-          <p>Paste the filled text beneath the existing heading, press <strong>Ctrl+S</strong>, and keep this same transfer file. Do not create a second copy.</p>
         </div>
 
-        <p>One product, named and dated. If two came to mind, pick the one you rewrite most often — that is where the hours are.</p>
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Transfer 30-60-90</strong>:</p>
+          <pre><code>P1 transfer seed. Read operator/TRANSFER_30_60_90.md.
+
+Ask me for today's date and one recurring product I actually produce and would
+rebuild as a machine. Reject a job category; accept a named product such as a
+weekly rollup, Monday status email, or watch report.
+
+When I accept the wording, update only the section "From P1 — Machine candidate":
+Dated: [TODAY'S DATE]
+Machine candidate: [PRODUCT] — rebuild it as a machine: one source folder,
+fixed sections, a citation on every claim, one command to regenerate, and
+visible failure when a source goes missing.
+
+Use the product name and date I gave you. Keep the same transfer file.</code></pre>
+        </div>
+
+        <p>Approve the write if the app asks. One product, named and dated. If two came to mind, pick the one you rewrite most often — that is where the hours are.</p>
       </section>
 
 

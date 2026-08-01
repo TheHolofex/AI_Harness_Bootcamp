@@ -597,13 +597,26 @@ observable. Do not soften the rule. I own the final wording.</code></pre>
 
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
           <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
-        <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
+        <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking fresh reviewers to challenge the evidence, and saving what you learned. <a href="../pulse.html">Lesson reflection guide →</a></p>
         <p class="reflection-question"><strong>Think back:</strong> What did the containment test change about what you require before untrusted material enters trusted knowledge?</p>
 
-        <p>The log entry gets written with the AI, in the operator chat, from the artifacts staging and triage produced. The mission runs elsewhere; this chat holds direction and verdicts.</p>
+        <p><strong>Where your answer goes:</strong> You will write the one-sentence answer in the P5 row of <code>operator/MEASUREMENT_SPINE.md</code> through <strong>Operator — Direction &amp; Log</strong>, after the independent reviews. Do not start a separate reflection chat.</p>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into the chat <strong>Operator — Direction &amp; Log</strong>:</p>
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu, then select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, open <strong>Operator — Direction &amp; Log</strong> — the standing chat you used for the P5 brief and intake rule</li>
+            <li>Only if it is missing, click <strong>New chat</strong>, rename it <code>Operator — Direction &amp; Log</code>, and pin it if <strong>Pin</strong> appears</li>
+            <li>Continue in that operator chat. Never use <strong>P5 build</strong>, <strong>P5 recheck</strong>, or another Build chat for the Operator Log, measurement row, or lesson-reflection answer</li>
+          </ul>
+        </div>
+
+        <p>The log entry gets written with the AI from the artifacts staging and triage produced. The mission ran elsewhere; the standing operator chat holds direction and verdicts.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
           <!-- Verbatim operator-chat starter from operator/OPERATOR_LOG.md -->
           <pre><code>We are writing the Operator Log entry for this block together.
 
@@ -626,20 +639,30 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-pulse-log" name="p5-pulse-log" data-check-id="pulse-log" />
               <span class="check-num">10</span>
-              <span class="check-title">Operator Log complete</span>
+              <span class="check-title">Provisional Operator Log entry written</span>
             </label>
             <div class="check-detail">All five fields land in the P5 section of the log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, what you still own. Here the verdict line <em>is</em> the containment claim, so the pointers must reach artifacts — triage record, diff result, quarantine listing — not chat moments.</div>
           </li>
         </ol>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into the chat <strong>Operator — Direction &amp; Log</strong>:</p>
+          <p class="do-label">Stay in <strong>Operator — Direction &amp; Log</strong> and paste this:</p>
           <pre><code>PASS_BARS self-check for P5. Read operator/PASS_BARS.md, section P5.
 Walk the lesson outcomes with me one outcome at a time. For each outcome I answer
 met or not yet and give an evidence pointer — a path, a row, a diff,
 a quoted pair. Challenge any pointer that is vibe instead of
-artifact. Write the result as a draft list I can paste into the log.
+artifact. Write the result as two lists: MET and NOT YET. I will sync
+both to the lesson page and paste only the MET titles into the
+independent adversarial review.
 An unproven absence is a not-yet, not a probably.</code></pre>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Sync that result to the visible <strong>Lesson outcomes</strong> on this page:</p>
+          <ul class="do-clicks">
+            <li>Return to this course page and open <strong>Lesson outcomes</strong> below</li>
+            <li>Check each outcome the operator chat marked <strong>met</strong>; leave or clear each outcome marked <strong>not yet</strong></li>
+            <li>Open <strong>Notepad</strong> and type only the exact <strong>MET</strong> titles, one per line. Keep this list open for both reviews</li>
+          </ul>
         </div>
         <ol class="checklist">
 
@@ -664,7 +687,7 @@ An unproven absence is a not-yet, not a probably.</code></pre>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Adversarial — P5</strong> chat:</p>
+          <p class="do-label">Now paste this into the new <strong>Adversarial — P5 — [today's date]</strong> chat you just created:</p>
           <!-- Verbatim frozen adversarial prompt from operator/ADVERSARIAL_REVIEW.md -->
           <pre><code>You are an adversarial operator reviewer for an operator’s school.
 Your job is NOT to help me feel successful. Your job is to stress-test my verdict and claimed lesson outcomes.
@@ -701,7 +724,7 @@ Rules for you:
         </div>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Adversarial — P5</strong> chat, with the brackets filled:</p>
+          <p class="do-label">Stay in the new <strong>Adversarial — P5 — [today's date]</strong> chat and paste this with the brackets filled:</p>
           <pre><code>Block: P5 — The poisoned corpus.
 Outcome: a containment verdict with mechanical evidence — three
 catches and an absence-of-effect proof.
@@ -710,13 +733,27 @@ vault vs Documents\p4-vault_baseline (exposed chat and fresh chat) ·
 quarantined item(s) still in Documents\p5-staging\intake · bounds
 prediction and probe results in the operator chat.
 Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
-Lesson outcomes I marked complete: [PASTE THE MET / NOT-YET LIST]
+Lesson outcomes I marked complete: [PASTE THE MET LIST]
 Known weak spot: [NAME ONE]
 Excerpts, since you cannot open files: [PASTE YOUR TRIAGE ROWS AND
 BOTH DIFF RESULTS]</code></pre>
+          <p>Before sending, return to Notepad, press <strong>Ctrl+A</strong> and <strong>Ctrl+C</strong>, and paste the stored titles into <code>[PASTE THE MET LIST]</code>. Fill the verdict, weak spot, and excerpts from your artifacts.</p>
         </div>
 
-        <p>That was one reviewer. Run the same frozen adversarial prompt and the same paste pack a second time in OpenCode. OpenCode cannot open your files, so reuse the excerpts you already pasted — the triage rows and both diff results — and do not thin them. Record both final ADVERSARIAL lines side by side in your P5 log entry, labelled by engine. If one engine accepts the absence-of-effect proof and the other does not, the second engine found the gap.</p>
+        <div class="do-step">
+          <p class="do-label">Save the Codex review before leaving its chat:</p>
+          <ul class="do-clicks">
+            <li>Copy the reviewer's complete response, including the full SURVIVES / WOUNDED / DEAD list and final <code>ADVERSARIAL:</code> line</li>
+            <li>Reopen <strong>Operator — Direction &amp; Log</strong>, paste that response unchanged as a new message, and send it</li>
+            <li>Then paste the compact filing command below</li>
+          </ul>
+          <pre><code>Read operator/OPERATOR_LOG.md. From my previous raw message, extract
+the complete per-outcome ruling list and final ADVERSARIAL line.
+Append both verbatim to my P5 log entry under "Codex app." Do not
+summarize, reconcile, or change my verdict.</code></pre>
+        </div>
+
+        <p>The Codex result is now stored, so nothing from that review has to stay on the clipboard. Run the same frozen adversarial prompt and the same paste pack a second time in OpenCode. OpenCode cannot open your files, so reuse the excerpts you already pasted — the triage rows and both diff results — and do not thin them.</p>
 
         <div class="do-step">
           <p class="do-label">Now return to the <strong>PowerShell window</strong> from Stage 02. If it is closed, open a new one from the Windows Start menu. Paste this into that window — it makes a folder for the second review and opens an empty pack file:</p>
@@ -728,7 +765,7 @@ notepad "$env:USERPROFILE\Documents\p5-adversarial\pack.md"</code></pre>
         <div class="do-step">
           <p class="do-label">Now in <strong>Notepad</strong> (pack.md):</p>
           <ul class="do-clicks">
-            <li>Paste the frozen adversarial prompt — the long block you sent into the <strong>Adversarial — P5</strong> chat first, unchanged</li>
+            <li>Paste the frozen adversarial prompt — the long block you sent into the new <strong>P5 adversarial review chat</strong> first, unchanged</li>
             <li>Press <strong>Enter</strong> twice to leave a blank line</li>
             <li>Paste the block you sent second, exactly as you filled it in: block, outcome, artifacts, provisional verdict, lesson outcomes I marked complete, weak spot, and the excerpts — your triage rows and both diff results</li>
             <li>Press <strong>Ctrl+S</strong> to save, then close Notepad</li>
@@ -744,15 +781,19 @@ opencode run --pure -m "xai/$env:HB_XAI_MODEL" (Get-Content .\pack.md -Raw)</cod
         <p>PowerShell reads the file and passes the text across as one message, which is why the excerpts had to travel inside the pack. The purity flag holds installed plugins out of the run, so the second reviewer arrives carrying nothing you configured. If your build calls <code>--pure</code> an unknown flag, drop it and run the line again; <code>OPENCODE_PURE=1</code> is already set and does the same job. You should see the same protocol come back, ending in its own <code>ADVERSARIAL:</code> line. If the answer skips the protocol, the pack didn't save — reopen <code>pack.md</code> and check both blocks are in it. An error mentioning 429 or quota is usually a capped key, not a broken install — flag it rather than reinstalling.</p>
 
         <div class="do-step">
-          <p class="do-label">Now return to Codex, open the course project, click <strong>Operator — Direction &amp; Log</strong>, and paste this with both lines filled from the two reviews:</p>
-          <pre><code>Second adversarial pass, different engine, same pack. Add both final
-lines to my P5 log entry, labelled by engine, and leave my verdict
-alone until I say otherwise:
-- Codex app: [PASTE THE ADVERSARIAL LINE FROM THE CODEX APP CHAT]
-- OpenCode: [PASTE THE ADVERSARIAL LINE FROM THE OPENCODE RUN]
-Where the two disagree about an outcome, name the disagreement in the
-entry in one line. Do not reconcile it for me.</code></pre>
+          <p class="do-label">Save the complete OpenCode result in <strong>Operator — Direction &amp; Log</strong>:</p>
+          <ul class="do-clicks">
+            <li>In PowerShell, copy the full OpenCode review output, including its complete ruling list and final <code>ADVERSARIAL:</code> line</li>
+            <li>Return to Codex, open the course project and <strong>Operator — Direction &amp; Log</strong>, paste the full output unchanged as a new message, and send it</li>
+            <li>Then paste the compact filing command below</li>
+          </ul>
+          <pre><code>Read operator/OPERATOR_LOG.md. From my previous raw message, extract
+the complete per-outcome ruling list and final ADVERSARIAL line.
+Append both verbatim to my P5 log entry under "OpenCode." Then name
+any disagreement with the stored Codex-app rulings in one line.
+Do not reconcile the disagreement or change my verdict.</code></pre>
         </div>
+        <p>Do not continue to measurement until the P5 log entry shows both engines' final <code>ADVERSARIAL:</code> lines and both complete ruling lists.</p>
         <p>Two <em>stood</em> lines are worth having and prove less than they feel like proving — either the evidence was strong enough for both, or the pack was thin enough that neither could bite. A disagreement is the more useful result: one engine saw something the other missed, and the outcome it names is the one to re-open before you close the block.</p>
         <ol class="checklist">
 
@@ -760,14 +801,14 @@ entry in one line. Do not reconcile it for me.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-pulse-adv" name="p5-pulse-adv" data-check-id="pulse-adv" />
               <span class="check-num">12</span>
-              <span class="check-title">Independent evidence review completed in a new chat</span>
+              <span class="check-title">Independent evidence reviews completed with two engines</span>
             </label>
-            <div class="check-detail">Expect the attack to land on absence of effect — "you checked the chat; did you check the targets?" Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded. If the reviewer is polite, you under-pasted — give it narrower, rawer excerpts, not a softer prompt. Both engines ruled on the same pack, so both final lines belong in the entry, labelled. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
+            <div class="check-detail">Expect the attack to land on absence of effect — "you checked the chat; did you check the targets?" Both engines ruled on the same pack, and both final <code>ADVERSARIAL: stood | wounded | failed</code> lines and both complete outcome-ruling lists are now in the P5 Operator Log, labelled by engine. Fix if wounded. If a reviewer is polite, you under-pasted — give it narrower, rawer excerpts, not a softer prompt. Before you close the Codex review chat or leave the OpenCode result, write down what each attack took away: name every claim ruled WOUNDED or DEAD and what you did about it. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
         </ol>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into the chat <strong>Operator — Direction &amp; Log</strong>, with the brackets filled:</p>
+          <p class="do-label">Stay in <strong>Operator — Direction &amp; Log</strong> and paste this with the brackets filled:</p>
           <!-- Verbatim end-of-block prompt from operator/MEASUREMENT_SPINE.md -->
           <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
 Block: [B1/P1/…].
@@ -790,7 +831,7 @@ Fill this block's row:
 Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
         </div>
-        <p>Replace <code>[B1/P1/…]</code> with <strong>P5</strong> and paste your actual <code>ADVERSARIAL:</code> line. The per-claim rulings are the SURVIVES / WOUNDED / DEAD list the reviewer produced in its evidence audit — paste it as it came back rather than summarising it, and where the two engines ruled differently on an outcome, paste both and say so. The outcome paths are your triage record and the two diff results. This block's deep mark is <code>Containment: 3/3 catches · absence-of-effect proof pointer</code>.</p>
+        <p>Replace <code>[B1/P1/…]</code> with <strong>P5</strong>. For the two review fields, write <code>use both engine-labelled P5 results stored verbatim in operator/OPERATOR_LOG.md</code>; the standing Operator chat can read them without another clipboard trip. The outcome paths are your triage record and the two diff results. This block's deep mark is <code>Containment: 3/3 catches · absence-of-effect proof pointer</code>.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -807,7 +848,15 @@ Do not start transfer until this row is written.</code></pre>
 
         <p>A rule is worth nothing on a page you close. It goes into the living transfer file now, pointed at your own desk and dated, while the run that produced it is still in front of you.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the chat <strong>Operator — Direction &amp; Log</strong>, with the brackets filled:</p>
+          <p class="do-label">Open the standing transfer chat in <strong>Codex</strong>:</p>
+          <ul class="do-clicks">
+            <li>In the course project's sidebar, open <strong>Operator — Transfer 30-60-90</strong> and continue that conversation</li>
+            <li>If it is missing, click <strong>New chat</strong>, rename it <code>Operator — Transfer 30-60-90</code>, and pin it if <strong>Pin</strong> appears</li>
+            <li>Do not put the transfer seed in <strong>Operator — Direction &amp; Log</strong> or a P5 Build chat</li>
+          </ul>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Transfer 30-60-90</strong>, with the brackets filled:</p>
           <pre><code>P5 transfer seed. Read operator/TRANSFER_30_60_90.md and fill the
 table under "From P5 — Operating picture" with these three entries,
 then write the date beside that heading. Change nothing else.

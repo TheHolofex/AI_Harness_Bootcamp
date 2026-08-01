@@ -507,10 +507,18 @@ reasons beat ten sorted by instinct.</code></pre>
           <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
         <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking a fresh reviewer to challenge the evidence, and updating your transfer plan. <a href="../pulse.html">Lesson reflection guide →</a></p>
         <p class="reflection-question"><strong>Think back:</strong> What did the exception gate change about which work belongs in a pipeline versus an agent loop?</p>
-        <p>The log is written where the brief lives. The mission runs elsewhere; this chat holds direction and verdicts.</p>
+        <p><strong>Where your answer goes:</strong> You will write the one-sentence answer in the P7 row of <code>operator/MEASUREMENT_SPINE.md</code> through <strong>Operator — Direction &amp; Log</strong>, after the independent review. Do not start a separate reflection chat.</p>
         <div class="do-step">
-          <p class="do-label">Leave <strong>Build — P7 Automation line</strong> and open <strong>Operator — Direction &amp; Log</strong> in the Codex sidebar.</p>
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu, then select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, switch from <strong>Build — P7 Automation line</strong> to <strong>Operator — Direction &amp; Log</strong> — the standing chat you used for the P7 brief</li>
+            <li>Only if it is missing, click <strong>New chat</strong>, rename it <code>Operator — Direction &amp; Log</code>, and pin it if <strong>Pin</strong> appears</li>
+            <li>Continue in that operator chat. Never use <strong>Build — P7 Automation line</strong> or another Build chat for the Operator Log, measurement row, or lesson-reflection answer</li>
+          </ul>
         </div>
+        <p>The standing operator chat holds direction and verdicts. The build chat holds the mission work.</p>
         <!-- Verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
@@ -534,7 +542,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-log" name="p7-pulse-log" data-check-id="pulse-log" />
               <span class="check-num">8</span>
-              <span class="check-title">Operator Log complete</span>
+              <span class="check-title">Provisional Operator Log entry written</span>
             </label>
             <div class="check-detail">The P7 entry holds: what you directed, what you changed mid-build, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers — execution views, the held rows and their reasons, the discrimination write-up — and what judgment you still own.</div>
           </li>
@@ -545,7 +553,8 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <ul class="do-clicks">
             <li>Open Lesson outcomes below and check only the outcomes you can prove with an artifact — right now, before the independent review.</li>
             <li>Leave any outcome you cannot evidence unticked. An honest not-yet costs nothing here and saves you at the next step.</li>
-            <li>Copy the checked list. It is your prediction, and the adversarial chat is about to rule on it one outcome at a time.</li>
+            <li>Open <strong>Notepad</strong> from the Windows Start menu and type the exact title of each checked outcome, one per line. Do not include unchecked outcomes; if none are checked, type <code>None</code></li>
+            <li>Keep Notepad open. This typed list is your prediction and will go into the adversarial paste pack</li>
           </ul>
         </div>
         <ol class="checklist">
@@ -570,7 +579,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
         </div>
         <!-- Verbatim from operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Adversarial — P7</strong>:</p>
+          <p class="do-label">Now paste this into the new <strong>Adversarial — P7 — [today's date]</strong> chat you just created:</p>
           <pre><code>You are an adversarial operator reviewer for an operator’s school.
 Your job is NOT to help me feel successful. Your job is to stress-test my verdict and claimed lesson outcomes.
 
@@ -605,7 +614,7 @@ Rules for you:
 - Short, sharp, specific.</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Adversarial — P7</strong>, with the bracketed slots filled:</p>
+          <p class="do-label">Stay in the new <strong>Adversarial — P7 — [today's date]</strong> chat and paste this with the bracketed slots filled:</p>
           <pre><code>Block: P7 - Automation line. Outcome: an n8n line - rows.csv in, AI step,
 machine checks, human gate - writing cleared rows to out/master.csv, plus a
 discrimination write-up.
@@ -620,7 +629,21 @@ Known weak spots: [NAME AT LEAST ONE]
 If you cannot read the files, say so and I will paste the held rows and the
 master contents directly.</code></pre>
         </div>
-        <p>Fill the three bracketed slots before sending: your provisional verdict, the lesson outcomes you marked complete, and at least one weak spot you already know about. Expect the two attacks this work invites — "your gate holds so much it proves nothing" and "your checks test format, not truth" — and answer with the artifacts.</p>
+        <p>Fill the three bracketed slots before sending. For the lesson outcomes, return to Notepad, press <strong>Ctrl+A</strong> and <strong>Ctrl+C</strong>, and paste the typed titles into the slot. Then add your provisional verdict and at least one weak spot you already know about. Expect the two attacks this work invites — "your gate holds so much it proves nothing" and "your checks test format, not truth" — and answer with the artifacts.</p>
+        <div class="do-step">
+          <p class="do-label">Move the P7 result into <strong>Operator — Direction &amp; Log</strong> in two trips:</p>
+          <ul class="do-clicks">
+            <li>In the P7 review chat, copy the complete SURVIVES / WOUNDED / DEAD list only</li>
+            <li>Open <strong>Operator — Direction &amp; Log</strong>, paste the list unchanged as a new message, and send it</li>
+            <li>Return to the same P7 review chat and copy its single final <code>ADVERSARIAL:</code> line</li>
+            <li>Return to <strong>Operator — Direction &amp; Log</strong>, paste that line unchanged as a new message, and send it</li>
+            <li>Then paste the compact filing command below</li>
+          </ul>
+          <pre><code>Read operator/OPERATOR_LOG.md. Append my two raw result messages
+immediately before this command to the P7 log entry, verbatim: first
+the complete outcome rulings, then the final ADVERSARIAL line. Do not
+summarize or change my verdict.</code></pre>
+        </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -628,13 +651,13 @@ master contents directly.</code></pre>
               <span class="check-num">10</span>
               <span class="check-title">Independent evidence review completed in a new chat</span>
             </label>
-            <div class="check-detail">The review ran in the fresh chat, your verdict survived or changed on evidence, and the final line is copied into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded — and clear any outcome the review did not support until it is repaired. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
+            <div class="check-detail">The review ran in the new <code>Adversarial — P7 — [today's date]</code> chat. Its final <code>ADVERSARIAL: stood | wounded | failed</code> line and complete outcome-ruling list are now in the P7 Operator Log entry. Fix if wounded — and clear any outcome the review did not support until it is repaired. Before you close the review chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
           </li>
         </ol>
         <p>Measurement follows attack — the row is written only after the adversarial line exists.</p>
         <!-- Verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
         <div class="do-step">
-          <p class="do-label">Now reopen <strong>Operator — Direction &amp; Log</strong> in the Codex sidebar and paste this with the bracketed slots filled:</p>
+          <p class="do-label">Stay in <strong>Operator — Direction &amp; Log</strong> and paste this with the bracketed slots filled:</p>
           <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
 Block: [B1/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
@@ -656,7 +679,7 @@ Fill this block's row:
 Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
         </div>
-        <p>Replace <code>[B1/P1/…]</code> with <code>P7</code>. Paste your ADVERSARIAL line, then the SURVIVES / WOUNDED / DEAD rulings the attack produced on each outcome, then the number of lesson outcomes you marked complete before it started. Name your output paths and give honest times — approx is allowed, fiction is not.</p>
+        <p>Replace <code>[B1/P1/…]</code> with <code>P7</code>, then fill the outcome count, output paths, and honest times — approx is allowed, fiction is not. For the final-line and ruling-list fields, write <code>use the verbatim P7 review result already stored in operator/OPERATOR_LOG.md</code>; do not copy them again.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">

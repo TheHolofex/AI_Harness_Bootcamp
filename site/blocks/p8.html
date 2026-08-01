@@ -504,10 +504,18 @@ Evidence rules: every claim must trace to the matrix totals, the AUP version, on
           <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
         <p class="section-lede">Close this lesson by recording what happened, checking the outcomes, asking fresh reviewers to challenge the evidence, and updating your transfer plan. <a href="../pulse.html">Lesson reflection guide →</a></p>
         <p class="reflection-question"><strong>Think back:</strong> What will you carry unchanged when the endpoint changes, and which layer still needs work?</p>
-        <p>The log goes back in <strong>Operator — Direction &amp; Log</strong>. The mission runs elsewhere; this chat holds direction and verdicts.</p>
+        <p><strong>Where your answer goes:</strong> You will write the one-sentence answer in the P8 row of <code>operator/MEASUREMENT_SPINE.md</code> through <strong>Operator — Direction &amp; Log</strong>, after both independent reviews. Do not start a separate reflection chat.</p>
         <div class="do-step">
-          <p class="do-label">Leave <strong>P8 build</strong> and open <strong>Operator — Direction &amp; Log</strong> in the Codex sidebar.</p>
+          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu, then select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, switch from <strong>P8 build</strong> to <strong>Operator — Direction &amp; Log</strong> — the standing chat you used for the P8 brief</li>
+            <li>Only if it is missing, click <strong>New chat</strong>, rename it <code>Operator — Direction &amp; Log</code>, and pin it if <strong>Pin</strong> appears</li>
+            <li>Continue in that operator chat. Never use <strong>P8 build</strong>, <strong>P8 cold run</strong>, or another Build chat for the Operator Log, measurement row, or lesson-reflection answer</li>
+          </ul>
         </div>
+        <p>The standing operator chat holds direction and verdicts. The build and cold-run chats hold the mission work.</p>
         <!-- Verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>Operator — Direction &amp; Log</strong> chat:</p>
@@ -532,7 +540,7 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p8-pulse-log" name="p8-pulse-log" data-check-id="pulse-log" />
               <span class="check-num">9</span>
-              <span class="check-title">Operator Log complete</span>
+              <span class="check-title">Provisional Operator Log entry written</span>
             </label>
             <div class="check-detail">The P8 entry holds what you directed, mid-run changes, a verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers — policy version, matrix path, refuse record — and what you still own. Today the verdict covers the endpoint too: fit for which work, on what evidence.</div>
           </li>
@@ -542,7 +550,8 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <ul class="do-clicks">
             <li>Open Lesson outcomes below and check only the outcomes you can prove with an artifact — right now, before the independent review.</li>
             <li>Leave any outcome you cannot evidence unticked. An honest not-yet costs nothing here and saves you at the next step.</li>
-            <li>Copy the checked list. It is your prediction, and the adversarial chat is about to rule on it one outcome at a time.</li>
+            <li>Open <strong>Notepad</strong> from the Windows Start menu and type the exact title of each checked outcome, one per line. Do not include unchecked outcomes; if none are checked, type <code>None</code></li>
+            <li>Keep Notepad open. This typed list is your prediction and will go into both adversarial paste packs unchanged</li>
           </ul>
         </div>
         <ol class="checklist">
@@ -559,14 +568,14 @@ Remind me: REJECT with real evidence is a successful operator act.</code></pre>
           <p class="do-label">Now in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
             <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Confirm the displayed model is the open-endpoint model from the pin</li>
             <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — P8 — open — [today's date]</code> with the actual date</li>
-            <li>Confirm the permission mode says <strong>Ask for approval</strong>. This must be a brand-new chat, so the reviewer never helped you succeed</li>
+            <li>In the new chat, confirm the displayed model is the open-endpoint model from the pin</li>
+            <li>In that same new chat, confirm the permission mode says <strong>Ask for approval</strong>. The reviewer must never have helped you succeed</li>
           </ul>
         </div>
         <!-- Verbatim from operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Adversarial — P8 — open</strong>:</p>
+          <p class="do-label">Now paste this into the new <strong>Adversarial — P8 — open — [today's date]</strong> chat you just created:</p>
           <pre><code>You are an adversarial operator reviewer for an operator’s school.
 Your job is NOT to help me feel successful. Your job is to stress-test my verdict and claimed lesson outcomes.
 
@@ -602,7 +611,7 @@ Rules for you:
         </div>
         <p>Then the paste pack — the reviewer only bites as hard as what you feed it.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Adversarial — P8 — open</strong>:</p>
+          <p class="do-label">Stay in the new <strong>Adversarial — P8 — open — [today's date]</strong> chat and paste this:</p>
           <pre><code>Block: P8 — Operator-governed open model. Claimed outcome: a dated AUP, a scored hold/degrade matrix on D01-D05, a refuse-plus-control record, a SEALED 30-60-90.
 
 Artifacts: AUP_ENDPOINT.md (version, effective date) · instruments/p8_hold_degrade/SCORE_SHEET.md (both columns, counts, loop-close line) · REPOINT_NOTE.md · REFUSE_RECORD.md · operator/TRANSFER_30_60_90.md (status line, session log).
@@ -613,16 +622,23 @@ Lesson outcomes I marked complete: [PASTE THE LESSON OUTCOMES YOU MARKED COMPLET
 What I already know is weak: [ONE HONEST LINE]
 
 Attack the matrix and the refuse record first.</code></pre>
-          <p>Fill the four bracketed slots from your artifacts before sending. Stage 08 now follows measurement, so also replace <code>a SEALED 30-60-90</code> with <code>a 30-60-90 ready for its seal gate</code>, and replace <code>(status line, session log)</code> with <code>(current status, session log)</code>. Do not claim the seal before you run it.</p>
+          <p>Fill the four bracketed slots from your artifacts before sending. For the lesson outcomes, return to Notepad, press <strong>Ctrl+A</strong> and <strong>Ctrl+C</strong>, and paste the typed titles into that slot. Stage 08 now follows measurement, so also replace <code>a SEALED 30-60-90</code> with <code>a 30-60-90 ready for its seal gate</code>, and replace <code>(status line, session log)</code> with <code>(current status, session log)</code>. Do not claim the seal before you run it.</p>
         </div>
         <div class="do-step">
-          <p class="do-label">Save the open-endpoint review before changing models:</p>
+          <p class="do-label">Move the open-endpoint result into <strong>Operator — Direction &amp; Log</strong> in two trips:</p>
           <ul class="do-clicks">
-            <li>Copy its final <code>ADVERSARIAL:</code> line and its SURVIVES / WOUNDED / DEAD rulings</li>
-            <li>Open <strong>Operator — Direction &amp; Log</strong> and add them to the P8 log entry under the label <strong>Open endpoint</strong></li>
+            <li>In the open-endpoint review chat, copy the complete SURVIVES / WOUNDED / DEAD list only</li>
+            <li>Open <strong>Operator — Direction &amp; Log</strong>, paste the list unchanged as a new message, and send it</li>
+            <li>Return to the same open-endpoint review chat and copy its single final <code>ADVERSARIAL:</code> line</li>
+            <li>Return to <strong>Operator — Direction &amp; Log</strong>, paste that line unchanged as a new message, and send it</li>
+            <li>Then paste the compact filing command below</li>
           </ul>
+          <pre><code>Read operator/OPERATOR_LOG.md. Append my two raw result messages
+immediately before this command to the P8 log entry under "Open
+endpoint," verbatim: first the complete outcome rulings, then the
+final ADVERSARIAL line. Do not summarize or change my verdict.</code></pre>
         </div>
-        <p>Wounded means fix now or downgrade the verdict — performatively "taking notes" and changing nothing is the collapse the ritual exists to prevent. Now restore the saved home configuration so the same evidence can face a genuinely different model family.</p>
+        <p><strong>Freeze the evidence now.</strong> Do not fix a wounded outcome, edit an artifact, or change the verdict yet. The home-endpoint reviewer must receive the same prompt, paste pack, and evidence. Save the finding, restore the home configuration, and defer every fix until both reviews finish.</p>
         <div class="do-step">
           <p class="do-label">Restore the home-model configuration:</p>
           <ul class="do-clicks">
@@ -634,23 +650,36 @@ Attack the matrix and the refuse record first.</code></pre>
           <p class="do-label">Restart Codex on the home model and create the second review:</p>
           <ul class="do-clicks">
             <li>Fully quit ChatGPT, reopen it from the Windows Start menu, and select <strong>Codex</strong></li>
-            <li>Open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> and confirm the displayed model is the normal course model, not the open-endpoint model</li>
+            <li>Open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
             <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — P8 — home — [today's date]</code> with the actual date</li>
-            <li>Confirm <strong>Ask for approval</strong></li>
+            <li>In the new chat, confirm the displayed model is the normal course model, not the open-endpoint model</li>
+            <li>In that same new chat, confirm <strong>Ask for approval</strong></li>
             <li>Paste the same frozen adversarial prompt, then the same filled paste pack — the two blocks above, unchanged. Same evidence, no softening</li>
-            <li>When the review ends, copy its final <code>ADVERSARIAL:</code> line and its outcome rulings</li>
-            <li>Open <strong>Operator — Direction &amp; Log</strong> and add them beside the first result under the label <strong>Home endpoint</strong></li>
           </ul>
         </div>
-        <p>The two reviews now come from different model families against the same prompt and evidence. Where they disagree about an outcome, that disagreement is the finding. The app is also safely back on the home configuration before you close the lesson.</p>
+        <div class="do-step">
+          <p class="do-label">Move the home-endpoint result into <strong>Operator — Direction &amp; Log</strong> in two trips:</p>
+          <ul class="do-clicks">
+            <li>In the home-endpoint review chat, copy the complete SURVIVES / WOUNDED / DEAD list only</li>
+            <li>Open <strong>Operator — Direction &amp; Log</strong>, paste the list unchanged as a new message, and send it</li>
+            <li>Return to the same home-endpoint review chat and copy its single final <code>ADVERSARIAL:</code> line</li>
+            <li>Return to <strong>Operator — Direction &amp; Log</strong>, paste that line unchanged as a new message, and send it</li>
+            <li>Then paste the compact filing command below</li>
+          </ul>
+          <pre><code>Read operator/OPERATOR_LOG.md. Append my two raw result messages
+immediately before this command to the P8 log entry under "Home
+endpoint," verbatim: first the complete outcome rulings, then the
+final ADVERSARIAL line. Do not summarize or change my verdict.</code></pre>
+        </div>
+        <p>The two reviews now come from different model families against the same frozen prompt and evidence. The evidence freeze ends here. Compare the rulings; where they disagree, that disagreement is the finding. Only now fix wounded evidence or downgrade the verdict, and record what changed. The app is also safely back on the home configuration before you close the lesson.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p8-pulse-adv" name="p8-pulse-adv" data-check-id="pulse-adv" />
               <span class="check-num">11</span>
-              <span class="check-title">Independent evidence review completed in a new chat</span>
+              <span class="check-title">Independent evidence reviews completed in two new chats</span>
             </label>
-            <div class="check-detail">A brand-new chat, the frozen prompt, and your artifacts — the matrix and the refuse record are the first things it should try to take from you. The final line is in your log: <code>ADVERSARIAL: stood | wounded | failed</code>, and today two of them, labelled by endpoint. Wounded means fix now or downgrade the verdict. Before you close the chat, write down what the attack took away: name every claim it ruled WOUNDED or DEAD and what you did about each one. An empty list is a legitimate answer and worth having on the record.</div>
+            <div class="check-detail">Two brand-new chats, the same frozen prompt, and unchanged artifacts produced two independent reviews. Both final <code>ADVERSARIAL: stood | wounded | failed</code> lines and both complete outcome-ruling lists are in the P8 Operator Log, labelled by endpoint. Now that both reviews are complete, fix wounded evidence or downgrade the verdict. Record every claim ruled WOUNDED or DEAD and what you did about it; an empty list is a legitimate answer and worth having on the record.</div>
           </li>
         </ol>
         <!-- Verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
@@ -676,7 +705,7 @@ Fill this block's row:
 5. Deep mark if this block has one.
 Do not score ritual health and do not give a quality label. Neither is in this row.
 Do not start transfer until this row is written.</code></pre>
-          <p>Before sending: Block is <code>P8</code>; paste both <code>ADVERSARIAL:</code> lines, and under them the SURVIVES / WOUNDED / DEAD ruling each review gave each outcome — where the two reviewers ruled differently on an outcome, count the harsher one, because an overclaim you can argue away is still an overclaim; <code>[n]</code> is how many lesson outcomes you marked complete before the independent review; honest estimates are fine for the times; <code>[paths]</code> takes the four artifacts — <code>AUP_ENDPOINT.md</code>, <code>instruments/p8_hold_degrade/SCORE_SHEET.md</code>, <code>REFUSE_RECORD.md</code>, <code>operator/TRANSFER_30_60_90.md</code>. The deep mark takes the form <code>Hold-degrade: open n/5 vs home n/5; refuse: Y/N; transfer SEALED: N</code> for this first write, because the seal gate has not run yet. Stage 08 returns to this row and changes only that final flag if the seal is earned.</p>
+          <p>Before sending: Block is <code>P8</code>. For the final-line and ruling-list fields, write <code>use both endpoint-labelled P8 results stored verbatim in operator/OPERATOR_LOG.md</code>; do not copy them again. Where the reviewers disagree, count the harsher ruling. <code>[n]</code> is how many lesson outcomes you marked complete before review; honest estimates are fine for the times; <code>[paths]</code> takes <code>AUP_ENDPOINT.md</code>, <code>instruments/p8_hold_degrade/SCORE_SHEET.md</code>, <code>REFUSE_RECORD.md</code>, and <code>operator/TRANSFER_30_60_90.md</code>. The deep mark is <code>Hold-degrade: open n/5 vs home n/5; refuse: Y/N; transfer SEALED: N</code> until Stage 08 runs the seal gate.</p>
         </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
