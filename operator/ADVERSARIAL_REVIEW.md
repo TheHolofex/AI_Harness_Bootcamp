@@ -23,7 +23,7 @@ This chat’s job is to try to take it away — with evidence rules, not vibes.
 4. Adversarial review  →  NEW chat every time (below)   ← you are here
 5. Fix or stand firm   →  update Log / bars if the attack lands
 6. Measurement spine   →  MEASUREMENT_SPINE.md row (three entries)
-7. Transfer            →  chat at B0, P7, P8; a dated seed line at the others
+7. Transfer            →  chat at B1, P7, P8; a dated seed line at the others
 ```
 
 **Why a new chat each time:** clean context. No build-chat cheerleading, no log-chat collusion. Paste artifacts in; the reviewer never “helped you succeed” five minutes ago.
@@ -53,7 +53,7 @@ One rule, and it has no exceptions:
 | **P3** | **OpenCode**, second pass on the same pack | OpenCode is already running from Stage 03 with the cargo flags set |
 | **P5** | **OpenCode**, second pass on the same pack | OpenCode is already running from the probe folder |
 | **P8** | **The re-pointed hosted open model**, second pass on the same pack | You wired that endpoint this morning and trusted it enough to run D01–D05 |
-| B0, P1, P2, P4, P6, P7 | New chat, same engine | No second engine is open, and opening one costs more than the pass is worth |
+| B1, P1, P2, P4, P6, P7 | New chat, same engine | No second engine is open, and opening one costs more than the pass is worth |
 
 At P3, P5 and P8 the second engine is a **second pass on the pack you already assembled** — same frozen prompt, same excerpts, no softening, run after the first review is done. It is not a replacement for the first pass and it is not a lighter one. Record **both** final `ADVERSARIAL:` lines in the log, side by side and labelled by engine or endpoint.
 
@@ -147,7 +147,7 @@ An empty list is a legitimate answer and is worth having on the record.
 That list is the only place the rulings survive, and the measurement row is counted from it: the bars that came back wounded or dead, over the number you marked met, is your **overclaim** for the block. Counting it from your own summary of the chat instead of from the rulings turns it back into a number you awarded yourself.
 
 Measurement spine row is written only after the adversarial line exists.  
-At B0, P7 and P8, the Transfer chat starts only after the measurement row exists.  
+At B1, P7 and P8, the Transfer chat starts only after the measurement row exists.
 The outer loop should not inherit unchallenged fantasy.
 
 ---

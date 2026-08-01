@@ -31,7 +31,7 @@ Brief (Log chat) → Mission (build) → Log + PASS_BARS draft (Log chat)
 
 | Block | Depth inside the pulse |
 |---|---|
-| B0 | Open file · Living · desk hints · session log row |
+| B1 | Open file · Living · desk hints · session log row |
 | P1 | Judgment-product machine at work · session log |
 | P2 | **Deep:** Identity + harness/30-day seed |
 | P3 | Verdict/kill/comparator seed |

@@ -22,7 +22,7 @@ A block without brief/log/adversarial is **not yet**, regardless of artifacts.
 
 Whichever way you do it, the list is written down **before** the attack, and you do not get to grade your own vibes unchallenged.
 
-**At B0, P2 and P5 — walk the list with the AI.** In `Operator — Direction & Log`, after the log, go one bar at a time. For each bar you answer *met* or *not yet* and give an evidence pointer, and the AI challenges any pointer that is a feeling rather than an artifact. Use the closer prompt at the bottom of this file. B0 and P2 are where an evidence pointer is still a new idea; P5's bars are the most mechanically specific in the week and the walk-through there earns its minutes.
+**At B1, P2 and P5 — walk the list with the AI.** In `Operator — Direction & Log`, after the log, go one bar at a time. For each bar you answer *met* or *not yet* and give an evidence pointer, and the AI challenges any pointer that is a feeling rather than an artifact. Use the closer prompt at the bottom of this file. B1 and P2 are where an evidence pointer is still a new idea; P5's bars are the most mechanically specific in the week and the walk-through there earns its minutes.
 
 **At P1, P3, P4, P6, P7 and P8 — tick the list yourself, then hand it to the attack.** Before you open the adversarial chat:
 
@@ -57,7 +57,7 @@ Acceptable: paths, commands, diffs, test output, score-sheet rows, opened citati
 
 | # | Graduate can… | Block |
 |---|---|---|
-| 1 | Direct messy reality → instrument + criteria | B0 |
+| 1 | Direct messy reality → instrument + criteria | B1 |
 | 2 | Machines that regenerate judgment products | P1 |
 | 3 | Measured harness craft | P2 |
 | 4 | Multi-engine verdict ownership | P3 |
@@ -71,13 +71,11 @@ Acceptable: paths, commands, diffs, test output, score-sheet rows, opened citati
 
 > **Course instruments:** shared kits in `instruments/` (P2 case suite, P3 frozen brief, P8 hold/degrade). Two tracks: `engineering`, `mission_ops`. Pick one track for the week. P8 reuses P2 case IDs D01–D05. These are class instruments — not personal portable evals.
 
-## B0 — First Light · Cap 1  
+## B1 — First Light · Cap 1
 **Mastery claim:** You can direct a thinking machine from operational mess to a working instrument, and you know how you’ll know it’s right.
 
 ### MVP
-- [ ] **Install clinic / pre-work verifies:** setup log present; per-step verifies done; four-agent smoke files on disk (student-owned stack — not a lab image). YELLOW only with a written workaround
 - [ ] **Full LIVE brief** (all five fields) — outcome is an instrument, not “explore the data”
-- [ ] Four-tool write proof confirmed in class (or re-run): Codex app, **OpenCode**, Pi, goose each touch the smoke folder (Claude optional)
 - [ ] Instrument works on the real messy folder: map loads; timeline **and** filters both do something observable
 - [ ] **Negative check:** at least one “done looks like / must not” that you verified (bad data, empty state, or wrong filter result)
 - [ ] **Update proof:** add or drop a file and show the instrument reflects it *or* document the exact break and the redirect you issued
@@ -92,7 +90,7 @@ Acceptable: paths, commands, diffs, test output, score-sheet rows, opened citati
 - [ ] Second instrument from the same folder under a new LIVE brief (dashboard or alert list) — prove direction skill transfers across product shape
 
 ### Not yet if
-No clinic/pre-work proof, demo-only success, thin brief, no negative check, or loop explanation is generic slogans.
+Demo-only success, thin brief, no negative check, or a loop explanation made of generic slogans.
 
 ---
 
@@ -313,7 +311,7 @@ Policy after the fact, vibe degrade (“it’s fine”), empty 30-60-90, no refu
 
 ---
 
-## Operator-chat closer (paste after the log at B0, P2 and P5)
+## Operator-chat closer (paste after the log at B1, P2 and P5)
 
 ```text
 Deep mastery self-check against operator/PASS_BARS.md for this block.

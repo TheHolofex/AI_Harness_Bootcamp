@@ -50,7 +50,7 @@ Operator chat: co-write Brief → status LIVE
 
 ## Facilitation notes
 
-- Teach the chat split on Monday (Block 0). First Light can use a thin brief; still co-written.
+- Teach the chat split during B1 First Light. The first brief can be thin; it is still co-written.
 - If students skip the operator chat and only build, interrupt: that is chat labor, not this school.
 - REJECT with evidence is success.
 - After log: self-check MVP against `PASS_BARS.md` with the AI (no inflation).
@@ -59,7 +59,7 @@ Operator chat: co-write Brief → status LIVE
 
 ## Pre-work
 
-Workstation install is **student-owned** before Monday (`../prework/`), verify-as-you-go. No golden image default. Monday AM is install clinic then First Light, then missions continue.
+Complete workstation setup together during the Monday B0 install clinic (`../prework/`), verifying each tool as you go. No golden image default. Move into B1 First Light once the setup works, then continue to P1 in the afternoon.
 
 ## Identity lock
 

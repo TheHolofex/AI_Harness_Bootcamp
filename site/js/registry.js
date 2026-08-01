@@ -1,5 +1,5 @@
 /**
- * AHB course registry — the single source of truth for Pre-work and B0–P8.
+ * AHB course registry — the single source of truth for B0, B1, and P1–P8.
  *
  * Every reader of progress (home dashboard, nav dots, block pages, the
  * pre-work hub) counts against the id lists declared here — never against
@@ -63,7 +63,7 @@
   }
 
   // Storage order is retained for compatibility. The visible path is
-  // Pre-work → B0 → P1 → … → P8; KEYS is a reference inside Pre-work.
+  // B0 install clinic → B1 First Light → P1 → … → P8.
   // `ids` = required ids (mission incl. pulse-brief, the 6 pulse beats, floor).
   var REGISTRY = [
     {
@@ -87,18 +87,19 @@
       url: "checklists/prework-install.html", meta: "Monday clinic · 2–4 hr"
     },
     {
-      code: "B0", name: "Clinic + First Light", title: "Install clinic + First Light", day: "Monday", slot: "AM",
+      code: "B1", name: "First Light", title: "First Light", day: "Monday", slot: "AM",
+      // Keep the legacy key and internal b0-* ids so existing browser progress survives the split.
       key: "ahb-checklist-b0",
       ids: [
-        "b0-gate", "pulse-brief", "b0-inventory", "b0-build",
+        "pulse-brief", "b0-inventory", "b0-build",
         "b0-open", "b0-timeline", "b0-filter", "b0-negative",
         "b0-delta", "b0-loop", "pulse-log", "pulse-bars",
-        "pulse-adv", "pulse-measure", "pulse-transfer", "mvp-prework",
-        "mvp-brief5", "mvp-four", "mvp-map", "mvp-neg",
+        "pulse-adv", "pulse-measure", "pulse-transfer", "mvp-brief5",
+        "mvp-map", "mvp-neg",
         "mvp-upd", "mvp-loop", "mvp-log"
       ],
       stretchIds: [],
-      url: "blocks/b0.html", meta: "Codex app"
+      url: "blocks/b1.html", meta: "Codex app"
     },
     {
       code: "P1", name: "Daily Status Brief", title: "The Daily Status Brief", day: "Monday", slot: "PM",
@@ -212,13 +213,14 @@
     }
   ];
 
-  var COURSE_CODES = ["B0", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"];
+  // Nine instructional modules. B0 is the required install-clinic stop before them.
+  var COURSE_CODES = ["B1", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"];
   var INSTALL = REGISTRY[1];
   var PREWORK_STOP = {
-    code: "PREWORK", name: "Install clinic", title: "Pre-work · Install clinic",
-    day: "Monday AM", slot: "clinic", key: INSTALL.key, ids: INSTALL.ids,
+    code: "B0", name: "Install clinic", title: "Pre-work Install Clinic", kind: "install",
+    day: "Monday", slot: "AM", key: INSTALL.key, ids: INSTALL.ids,
     conditionalIds: INSTALL.conditionalIds, stretchIds: INSTALL.stretchIds,
-    optionalLabel: INSTALL.optionalLabel, url: "prework.html", meta: "Monday clinic · 2–4 hr"
+    optionalLabel: INSTALL.optionalLabel, url: "checklists/prework-install.html", meta: "2–4 hr · guided setup"
   };
   var COURSE_BLOCKS = REGISTRY.filter(function (item) {
     return COURSE_CODES.indexOf(item.code) !== -1;
@@ -227,8 +229,8 @@
 
   // Journey board columns and day dropdowns are derived from these groups.
   var JOURNEY = [
-    { phase: "Monday AM", title: "Pre-work · Install clinic", codes: ["PREWORK"] },
-    { phase: "Monday", title: "Foundations", codes: ["B0", "P1"] },
+    { phase: "Monday AM", title: "Install Clinic → First Light", codes: ["B0", "B1"] },
+    { phase: "Monday PM", title: "Daily Status Brief", codes: ["P1"] },
     { phase: "Tuesday", title: "Craft + verdict", codes: ["P2", "P3"] },
     { phase: "Wednesday", title: "Knowledge", codes: ["P4", "P5"] },
     { phase: "Thursday", title: "Autonomy", codes: ["P6", "P7"] },
@@ -236,7 +238,7 @@
   ];
 
   var DAY_NAV = [
-    { label: "Monday", codes: ["B0", "P1"] },
+    { label: "Monday", codes: ["B0", "B1", "P1"] },
     { label: "Tuesday", codes: ["P2", "P3"] },
     { label: "Wednesday", codes: ["P4", "P5"] },
     { label: "Thursday", codes: ["P6", "P7"] },
@@ -244,7 +246,7 @@
   ];
 
   function block(code) {
-    if (code === "PREWORK") return PREWORK_STOP;
+    if (code === "PREWORK" || code === "B0") return PREWORK_STOP;
     for (var i = 0; i < REGISTRY.length; i++) {
       if (REGISTRY[i].code === code) return REGISTRY[i];
     }
@@ -317,7 +319,7 @@
     };
   }
 
-  // The current course stop: Pre-work first, then the nine live modules.
+  // The current course stop: B0 install clinic, then the nine instructional modules.
   function currentBlock() {
     if (!isComplete(PREWORK_STOP)) return PREWORK_STOP;
     for (var i = 0; i < COURSE_BLOCKS.length; i++) {
@@ -347,7 +349,7 @@
     COURSE_BLOCKS: COURSE_BLOCKS,
     CORE_PATH: CORE_PATH,
     TOTAL_MODULES: COURSE_BLOCKS.length,
-    TOTAL_BLOCKS: COURSE_BLOCKS.length,
+    TOTAL_BLOCKS: CORE_PATH.length,
     block: block,
     readState: readState,
     countDone: countDone,

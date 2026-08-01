@@ -38,7 +38,7 @@ Brief accuracy · Overclaim · Time to result · Lesson reflection
 Brief → Lesson work → Log + lesson-outcome check
   → Independent review (new chat)
   → Measurement spine row (this file)
-  → Transfer chat at B0, P7 and P8; a dated seed line at the other blocks
+  → Transfer chat at B1, P7 and P8; a dated seed line at the other blocks
 ```
 
 ---
@@ -121,7 +121,7 @@ Answer the question printed in the **Lesson reflection** panel on the current le
 
 | Block | Brief accuracy (HIT/PARTIAL/MISS + field named) | Overclaim `n/m` | Time (min) | Lesson reflection (one sentence) |
 |---|---|---|---|---|
-| B0 | | | | |
+| B1 | | | | |
 | P1 | | | | |
 | P2 | | | | |
 | P3 | | | | |
@@ -147,7 +147,7 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 | **P6** | Contract: stop/restart · exception drill pass/fail |
 | **P8** | Hold-degrade: open `n/5` vs home `n/5`; refuse: Y/N; transfer SEALED: Y/N |
 
-B0, P1, P4 and P7 carry no deep mark — for those blocks the four entries are the whole row.
+B1, P1, P4 and P7 carry no deep mark — for those blocks the four entries are the whole row.
 
 ---
 
@@ -155,7 +155,7 @@ B0, P1, P4 and P7 carry no deep mark — for those blocks the four entries are t
 
 ```text
 Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
-Block: [B0/P1/…].
+Block: [B1/P1/…].
 Adversarial line: [paste ADVERSARIAL: …].
 Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
 Lesson outcomes I marked complete before the review: [n].
@@ -194,7 +194,7 @@ Thin view lives in `FACILITATOR_ROLLUP.md`. One rule travels with the number: **
 | Overclaim near zero, completed outcomes rising, no fix list ever | Check the paste pack before you believe it. A reviewer handed thin evidence has nothing to challenge |
 | The same brief field named every block | That is where your brief-writing needs the work. *Done looks like* and *Evidence standard* are the usual two |
 | “None held better than expected” nine times running | Not credible across nine missions. You are defending the brief rather than scoring it |
-| Overclaim falling B0 → P8 | Your self-assessment is calibrating. This is the line to want |
+| Overclaim falling B1 → P8 | Your self-assessment is calibrating. This is the line to want |
 | Long times scattered across people and blocks | Individual pace. Not a finding |
 | Long times clustered on one block | That block is scoped too wide. A finding about the block |
 

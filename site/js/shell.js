@@ -59,7 +59,8 @@
   /* ---------- primary nav ---------- */
 
   function pageOwnerCode(current) {
-    if (current === "prework" || current === "keys" || current === "prework-install" ||
+    if (current === "prework-install") return "B0";
+    if (current === "prework" || current === "keys" ||
         current === "prework-setup-log") return "PREWORK";
     if (current.indexOf("block-") === 0) return current.replace("block-", "").toUpperCase();
     var module = document.body && document.body.getAttribute("data-module");
@@ -207,8 +208,8 @@
       var b = AHB.block(el.getAttribute("data-context-for"));
       if (!b) return;
       var nb = neighbors(b.code);
-      var label = b.code === "PREWORK"
-        ? "Monday morning · Pre-work install clinic"
+      var label = b.kind === "install"
+        ? "Monday AM · B0 · Pre-work Install Clinic"
         : dayLabel(b) + " · Module " + AHB.moduleNumber(b.code) +
           " of " + AHB.TOTAL_MODULES;
       var html = '<div class="context-strip-inner">';
@@ -629,19 +630,19 @@
       var done = AHB.countDone(cur);
       var total = cur.ids.length || 1;
       var pct = Math.round((done / total) * 100);
-      var isPrework = cur.code === "PREWORK";
-      var prework = isPrework ? AHB.preworkProgress() : null;
+      var isInstall = cur.kind === "install";
+      var prework = isInstall ? AHB.preworkProgress() : null;
       setText("[data-yah-eyebrow]", weekComplete
         ? "Friday · Course complete"
-        : isPrework
-        ? "Monday morning · Pre-work install clinic"
+        : isInstall
+        ? "Monday morning · B0 install clinic"
         : dayLabel(cur) + " · " + cur.code);
       setText("[data-yah-title]", weekComplete
         ? "Week complete"
-        : isPrework ? "Install and verify the course setup" : cur.title);
+        : isInstall ? "Install and verify the course setup" : cur.title);
       setText("[data-yah-line]", weekComplete
         ? AHB.TOTAL_MODULES + " / " + AHB.TOTAL_MODULES + " modules complete"
-        : isPrework
+        : isInstall
         ? prework.donePhases + " / " + prework.totalPhases + " phases complete"
         : done + " / " + total + " checks · " + pct + "%");
       var bar = document.querySelector("[data-yah-bar]");
@@ -650,8 +651,8 @@
       if (cta) {
         cta.textContent = weekComplete
           ? "Review the week map"
-          : isPrework
-          ? (done > 0 ? "Continue pre-work" : "Start pre-work")
+          : isInstall
+          ? (done > 0 ? "Continue B0" : "Start B0")
           : (done > 0 ? "Continue this module" : "Start this module");
         cta.setAttribute("href", weekComplete
           ? prefix + "/index.html#journey"
@@ -672,14 +673,14 @@
         col.codes.forEach(function (code) {
           var b = AHB.block(code);
           var st = statusOf(b, cur);
-          var meta = b.code === "PREWORK" ? b.meta : b.slot;
+          var meta = b.kind === "install" ? b.meta : b.slot;
           html += '<a class="journey-cell is-' + st + '"' +
             (st === "current" ? ' aria-current="step"' : "") +
             ' href="' + prefix + "/" + b.url + '">';
           html += dotHtml(st);
           html += "<span>";
           html += '<span class="journey-name">' +
-            (b.code === "PREWORK" ? "Install clinic" : b.code + " · " + b.name) + "</span>";
+            b.code + " · " + b.name + "</span>";
           html += '<span class="journey-meta">' + meta + "</span>";
           html += "</span></a>";
         });
@@ -717,7 +718,7 @@
     if (cta) {
       if (prework.complete) {
         cta.textContent = "Next · First Light";
-        cta.setAttribute("href", prefix + "/blocks/b0.html");
+        cta.setAttribute("href", prefix + "/blocks/b1.html");
       } else if (started) {
         cta.textContent = "Continue · " + prework.firstPhase.title;
         cta.setAttribute("href", prefix + "/checklists/prework-install.html#ahb-prework-install-" + prework.firstId);

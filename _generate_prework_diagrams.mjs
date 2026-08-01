@@ -86,7 +86,7 @@ function svgOpen(title, height) {
 function ribbon(kind, current, { overview = false, crosscut = false } = {}) {
   const install = kind === "install";
   const stages = installStages;
-  const label = install ? "PRE-WORK · GETTING SET UP" : "PRE-WORK · HEALTH CHECK";
+  const label = install ? "B0 · PRE-WORK · GETTING SET UP" : "PRE-WORK · HEALTH CHECK";
   const start = install ? 24 : 28;
   const width = install ? 62 : 138;
   const gap = install ? 5 : 18;
@@ -744,7 +744,7 @@ for (const section of installSections) {
 
 function installOverview() {
   return `${svgOpen("Install pre-work journey overview", 280)}${ribbon("install", 0, { overview: true })}
-  <text x="24" y="82" class="micro red">MONDAY MORNING · INSTALL CLINIC</text>
+  <text x="24" y="82" class="micro red">MONDAY MORNING · B0 INSTALL CLINIC</text>
   <text x="24" y="111" class="title">Install and verify the course harnesses and tools.</text>
   <text x="24" y="132" class="purpose">Work through four large phases with the instructor. Each phase ends with a result you can see.</text>
   <path d="M24 153H1096" class="hair"/>
@@ -770,7 +770,7 @@ function installOverview() {
   <rect x="24" y="232" width="515" height="36" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
   <circle cx="48" cy="250" r="7" fill="${C.ink}"/>
   <text x="68" y="247" class="micro muted">COMPLETE TOGETHER</text>
-  <text x="68" y="260" class="caption">MONDAY MORNING · INSTALL CLINIC</text>
+  <text x="68" y="260" class="caption">MONDAY MORNING · B0 INSTALL CLINIC</text>
   <rect x="557" y="232" width="539" height="36" rx="2" fill="${C.paper}" stroke="${C.mark}" stroke-width="1.5"/>
   <circle cx="581" cy="250" r="7" fill="${C.mark}"/>
   <path d="M577 250l3 3 6-7" fill="none" stroke="${C.paper}" stroke-width="1.4"/>

@@ -21,7 +21,7 @@ A method you cannot name a place for is a method you will not use on Monday. Thi
 |---|---|
 | **Where** | Standing file in the Codex app project |
 | **Chat** | **Own Codex app chat:** `Operator — Transfer 30-60-90` — **not** the build chat, **not** the Direction & Log chat |
-| **When the chat runs** | Three times: **B0**, **P7**, **P8**. See the schedule below |
+| **When the chat runs** | Three times: **B1**, **P7**, **P8**. See the schedule below |
 | **When the file gets written** | Every block. At the six blocks without a chat visit, you write one dated seed line in the block's own chat, straight into the matching seed section |
 | **Owner** | You. AI interviews, drafts, attacks fantasy and vagueness. You accept every line |
 | **Standard** | Specific to your work, checkable, bound. “Use AI more” is void |
@@ -31,7 +31,7 @@ A method you cannot name a place for is a method you will not use on Monday. Thi
 | Chat | Job |
 |---|---|
 | `Operator — Direction & Log` | LIVE brief before mission · log + pass-bar check after |
-| **`Operator — Transfer 30-60-90`** | Outer loop — map mastery onto the real desk. Opens at B0, P7, P8 |
+| **`Operator — Transfer 30-60-90`** | Outer loop — map mastery onto the real desk. Opens at B1, P7, P8 |
 | Build / mission chats | Execute the block |
 
 Direction/log is *this mission*.  
@@ -40,8 +40,8 @@ Mixing them produces either thin briefs or poster-quality 30-60-90s.
 
 ### Status
 
-- [ ] Dormant (before B0)
-- [ ] Living (B0 visit done; seeds accumulating with dates)
+- [ ] Dormant (before B1)
+- [ ] Living (B1 visit done; seeds accumulating with dates)
 - [ ] Draft horizons complete (P7)
 - [ ] **SEALED** — P8 MVP; defend-to-supervisor ready
 
@@ -51,11 +51,11 @@ Mixing them produces either thin briefs or poster-quality 30-60-90s.
 
 | Visit | Job |
 |---|---|
-| **B0** | Open the file. Fill **Identity** far enough to name the **one real workload** the week's seeds will land on. Status → Living |
+| **B1** | Open the file. Fill **Identity** far enough to name the **one real workload** the week's seeds will land on. Status → Living |
 | **P7** | Draft the full 30/60/90 from the seeds you have collected. Status → Draft horizons complete |
 | **P8** | Run the seal checklist adversarially. Status → **SEALED** |
 
-At B0 you are choosing the target. Pick a workload that is real, recurring, and yours — something you will still be doing in March. Every seed after this lands on it, so a vague choice here costs you all week.
+At B1 you are choosing the target. Pick a workload that is real, recurring, and yours — something you will still be doing in March. Every seed after this lands on it, so a vague choice here costs you all week.
 
 At P7 you are not inventing a plan. You are reading seven dated seeds and turning them into horizons. If a seed is empty, fill it before you draft. A horizon written over an empty seed is a commitment to a capability you never proved you had.
 
@@ -93,9 +93,9 @@ You are specifying how **direction + cothinking + evidence + bounds** will run o
 
 ---
 
-## Identity (open at B0; revise whenever the desk picture sharpens)
+## Identity (open at B1; revise whenever the desk picture sharpens)
 
-First serious pass at B0, tightened by end of **P2**.
+First serious pass at B1, tightened by end of **P2**.
 
 **Role / desk**  
 
@@ -305,12 +305,12 @@ Interactive in the **Transfer** chat. **SEALED** only when all hold.
 
 ## Transfer-chat prompts
 
-### B0 — open the file and name the target
+### B1 — open the file and name the target
 
 ```text
 Transfer opening — outer circuit. Read operator/TRANSFER_30_60_90.md.
 
-I have just finished B0: brief, mission, log, adversarial, measurement row.
+I have just finished B1: brief, mission, log, adversarial, measurement row.
 
 Interview me in short turns:
 1. What is on my desk? Role, and the 2-4 recurring workloads that are actually mine.

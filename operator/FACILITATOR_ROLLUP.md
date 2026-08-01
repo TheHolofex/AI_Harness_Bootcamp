@@ -59,7 +59,7 @@ Do not compute a median across a student's nine blocks and do not rank the cohor
 
 ## Cohort health (one glance)
 
-- Mean overclaim by block, B0 → P8 — the **slope** is the reading, not any single value
+- Mean overclaim by block, B1 → P8 — the **slope** is the reading, not any single value
 - Mean bars-met by block over the same range, read beside it
 - Share of rows carrying a named brief field
 - Which of the five brief fields the cohort names most often
@@ -71,7 +71,7 @@ Do not compute a median across a student's nine blocks and do not rank the cohor
 
 - **Evidence pointers at P4.** Read three students' pointers and confirm each one names a path, a score-sheet row, a comparator line, or a test name. Anything that names a feeling gets sent back.
 - **Adversarial paste packs.** A polite reviewer means the pack was thin or the build chat was reused. Fix the pack; never soften the prompt.
-- **Transfer seeds.** The chat runs at B0, P7 and P8. Elsewhere the seed is a dated line written in the block's own chat, so at P7 count the seeds and read the dates. Seven seeds all dated the same afternoon is a Friday dump with extra steps.
-- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B0, P2 and P5. At the other six the student ticks the floor themselves before the attack, so those are the blocks where a vibe pointer can survive longest.
+- **Transfer seeds.** The chat runs at B1, P7 and P8. Elsewhere the seed is a dated line written in the block's own chat, so at P7 count the seeds and read the dates. Seven seeds all dated the same afternoon is a Friday dump with extra steps.
+- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B1, P2 and P5. At the other six the student ticks the floor themselves before the attack, so those are the blocks where a vibe pointer can survive longest.
 
 If a cohort needs rescue, narrow the **scope of data**. Rescue is restoring the pulse and the evidence, not adding metrics.

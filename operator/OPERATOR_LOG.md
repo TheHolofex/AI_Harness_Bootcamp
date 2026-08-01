@@ -24,7 +24,7 @@ Five fields. Target: under five minutes of dialogue. Append one entry per block;
 
 ## Week log
 
-### B0 — First Light
+### B1 — First Light
 
 | Field | Note |
 |---|---|
