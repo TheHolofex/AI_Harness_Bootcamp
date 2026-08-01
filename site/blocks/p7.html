@@ -123,16 +123,62 @@
       <p>The lasting skill in this room is not wiring n8n nodes — it is the sort. Take any workload from your desk and place it in one of three bins: <strong>agent loop</strong>, <strong>pipeline with a gate</strong>, or <strong>stays human</strong>. The two questions you already have: what varies per item, and what a wrong answer costs — with volume, as before, the threshold that makes a pipeline worth building. The stays-human bin has its own test: when the verdict <em>is</em> the work product — a hiring call, a credibility judgment, an accept/reject that someone downstream relies on precisely because a person made it — then automating it does not speed the work up, it removes the thing that made it valuable.</p>
       <p>Both blanket policies fail. "Automate everything" quietly converts judgment work into rubber-stamped throughput and you discover the damage in an audit. "AI is a chat tool" leaves half your volume work on human keyboards out of habit. The sort is the discipline that beats both, and it is written down, per workload, with reasons — which is exactly what the template you fill in Stage 06 forces.</p>
       <p>n8n will rotate. So will the model in the AI step, and the vendor behind it. The sorted list — and the two questions that produced it — transfer to whatever replaces them.</p>
+
+      <h3>Field guide · choose from the workload evidence</h3>
+      <p><a href="../resources/p7/machine-choice-field-manual.html"><strong>The Machine-Choice Field Manual</strong></a> extends the three-bin sort into a scored portfolio method, with hard vetoes, routing boundaries, counterexamples, and revisit triggers for work that sits near an edge.</p>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p7" data-block="P7">
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Six stages, in order. Check each item off when its proof exists, not when you have read it. Progress saves in this browser — the same tick shows on the home page.</p>
+        <p class="section-lede">Six stages, in order. Every paste and every click you need is written out below — work the blocks top to bottom, and check each item off when its proof exists, not when you have read it. Progress saves in this browser — the same tick shows on the home page.</p>
 
         <h3>Stage 01 · Set the line's contract</h3>
         <p>Before a single node exists, the brief pins what this machine is for and what it must never do. The five-minute dialogue is where "automate the rows" becomes an artifact with a gate in its acceptance criteria.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open your course project — <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Open the chat <strong>Operator — Direction &amp; Log</strong></li>
+          </ul>
+        </div>
+        <!-- Verbatim from operator/DIRECTION_BRIEF.md — operator-chat starter -->
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <pre><code>We are writing the Direction Brief for this block together.
+
+Read operator/DIRECTION_BRIEF.md (or this file). Interview me in short turns.
+Do not dump all five fields at once unless I already gave you a clear mission.
+
+For each field:
+1. Ask one focused question.
+2. Propose tight wording from my answer.
+3. Challenge anything vague, uncheckable, or unbounded.
+4. Wait for me to accept or correct before moving on.
+
+When all five fields are accepted, write them into this file, set Status to LIVE,
+and remind me to run the mission in a separate build chat — not here.
+
+After the mission, we will write the Operator Log in this same chat.</code></pre>
+        </div>
+        <p>The interview works best when it starts from a clear mission. The seed below hands it the outcome, the done-checks, and the bounds for this line, and leaves the last two fields for the dialogue to sharpen.</p>
+        <div class="do-step">
+          <p class="do-label">Now paste this into the same chat, <strong>Operator — Direction &amp; Log</strong>:</p>
+          <pre><code>Block: P7 - the automation line. Here is the mission, so the interview can
+start from something concrete:
+
+Outcome: a working n8n line - rows.csv in, AI classify/extract, machine checks,
+human gate - writing cleared rows to out/master.csv, plus a discrimination
+write-up filled for my own desk.
+Done looks like: the three poisoned rows hold at the gate with written reasons;
+the master gains only rows that cleared the checks or that I promoted by hand.
+Bounds: the AI step never sees the expected_gate column; nothing reaches the
+master except the cleared branch or my own hand.
+
+Interview me for the Evidence standard and Stop / hand-back fields, and
+challenge anything above you find vague.</code></pre>
+        </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -140,12 +186,16 @@
               <span class="check-num">1</span>
               <span class="check-title">Co-write the Direction Brief until LIVE</span>
             </label>
-            <div class="check-detail">Open the chat <strong>Operator — Direction &amp; Log</strong> and paste the starter from <code>operator/DIRECTION_BRIEF.md</code>. Make the five fields name this machine: the outcome is a flow plus a gated master sheet, not "process the data." Put the gate into <em>Done looks like</em> (poisoned rows hold; the master gains only cleared rows) and the answer column into <em>Bounds</em> (the AI step never sees <code>expected_gate</code>). Status must read <strong>LIVE</strong> before you build. If the AI accepts a vague outcome without pushback, challenge it yourself — name the artifact.</div>
+            <div class="check-detail">The machine drafts; you accept or rewrite every field. Keep the gate in <em>Done looks like</em> (poisoned rows hold; the master gains only cleared rows) and the answer column in <em>Bounds</em> (the AI step never sees <code>expected_gate</code>). Status must read <strong>LIVE</strong> before you build. If the AI accepts a vague outcome without pushback, challenge it yourself — name the artifact.</div>
           </li>
         </ol>
 
         <h3>Stage 02 · Read the load before the machine does</h3>
         <p>You cannot judge what the gate catches if you never saw the rows raw. Two minutes with the file now buys you the whole exception drill later.</p>
+        <div class="do-step">
+          <p class="do-label">Now paste this into a <strong>PowerShell window</strong>:</p>
+          <pre><code>Get-Content "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\rows.csv"</code></pre>
+        </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -153,7 +203,7 @@
               <span class="check-num">2</span>
               <span class="check-title">Open rows.csv</span>
             </label>
-            <div class="check-detail">Open <code>mission_flesh/p7/rows.csv</code> and read all eight rows yourself. You should see columns <code>id, text, region, expected_gate</code> — a mix of clean rows, review-worthy ones, and three that must never land: a false all-clear (row 4), a payment request (row 5), and a false attack report (row 7). The <code>expected_gate</code> column is your grading key, not the machine's input — you will drop it in the next stage. If the file is missing, pull the course repo again; the path above is exact.</div>
+            <div class="check-detail">Eight rows print under the header <code>id,text,region,expected_gate</code> — a mix of clean rows, review-worthy ones, and three that must never land: a false all-clear (row 4), a payment request (row 5), and a false attack report (row 7). Read all eight yourself. The <code>expected_gate</code> column is your grading key, not the machine's input — the line drops it before the AI step ever runs. If PowerShell says the path does not exist, pull the course repo again.</div>
           </li>
         </ol>
 
@@ -161,18 +211,79 @@
         <figure class="section-diagram">
           <img src="../assets/blocks/p7/p7-stage-build.svg" alt="Node chain: read rows, AI step on a credential, checks that route failures down to the gate and cleared rows to the master sheet" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
-        <p>In the n8n editor at <code>localhost:5678</code>, create a new workflow. Every station gets added the same way: press <strong>Tab</strong> on the empty canvas (or click the <strong>+</strong>), type a search term into the node picker, and pick the node. Wire the path left to right:</p>
-        <ul>
-          <li><strong>Trigger</strong> — search <em>manual</em>: a Manual Trigger fires the line each time you click <strong>Execute workflow</strong>.</li>
-          <li><strong>Read the rows</strong> — search <em>files</em>: <strong>Read/Write Files from Disk</strong> pointed at <code>mission_flesh/p7/rows.csv</code>, then <strong>Extract from File</strong> to turn the CSV into items.</li>
-          <li><strong>Drop the answer column</strong> — search <em>edit fields</em>: an <strong>Edit Fields (Set)</strong> node that removes <code>expected_gate</code> before anything downstream can see it.</li>
-          <li><strong>AI step</strong> — search <em>openai</em>: the <strong>OpenAI</strong> node's message-a-model action. Open its <strong>Credential</strong> dropdown → <strong>Create new credential</strong> → paste your OpenAI key (<code>sk-proj-…</code>) → save. The key stays in n8n's local database on your laptop. If the first call fails with 429 or quota wording, that is a capped key reading like an auth failure — flag staff rather than re-pasting the key.</li>
-          <li><strong>Checks</strong> — search <em>if</em> or <em>switch</em>: an <strong>IF</strong> (or Switch) node carrying your written rules.</li>
-          <li><strong>The write</strong> — search <em>convert</em>, then <em>files</em>: <strong>Convert to File</strong> plus a second Read/Write Files from Disk node to write cleared rows out.</li>
-        </ul>
-        <p>Give the AI step a pinned output contract in its prompt — the exact fields and format you expect back, with values from a named set — because everything downstream depends on being able to parse what it returns. The panel below is a working starting contract; adapt the fields and allowed values to match the checks you intend to write.</p>
-        <div class="panel">
-          <p class="eyebrow">Paste-ready AI-step prompt</p>
+        <p>The line goes together left to right — trigger, read, drop the answer column, AI step, checks, write. The wiring happens in the n8n editor, but the untangling happens in a chat — open that room first, so every red node and every expression question has a home that is not your operator chat.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>New chat</strong> — this is your <strong>build chat</strong>, separate from the operator chat</li>
+            <li>Rename it <code>Build — P7 Automation line</code> so you can find it again</li>
+          </ul>
+        </div>
+        <p>First the engine room. n8n reads and writes disk files only inside a folder you point it at, so the start command below creates the line's <code>out</code> folder and fences file access to the course pack in the same breath.</p>
+        <div class="do-step">
+          <p class="do-label">Now paste this into a <strong>PowerShell window</strong> — all three lines together:</p>
+          <pre><code>New-Item -ItemType Directory -Force "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out" | Out-Null
+$env:N8N_RESTRICT_FILE_ACCESS_TO = "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
+n8n start</code></pre>
+        </div>
+        <p>The window fills with startup lines and ends by naming the editor address — leave it running; closing it stops n8n. If it exits immediately with a version message, that is the Node range talking, not a broken install — n8n wants Node 22.22 up to the current LTS line.</p>
+        <div class="do-step">
+          <p class="do-label">Now in your <strong>browser</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open <code>localhost:5678</code> and sign in with the owner account you recorded in pre-work</li>
+            <li>Click <strong>Create Workflow</strong></li>
+            <li>Click the workflow name at the top and rename it to <code>P7 automation line</code></li>
+          </ul>
+        </div>
+        <p>Forgot the owner password? Flag staff — n8n has a command-line reset; do not reinstall. From here every station goes in the same way: the first node from the empty canvas, each later one from the <strong>+</strong> on the previous node's right edge, so the wire draws itself.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the <strong>+</strong> on the empty canvas (or press <strong>Tab</strong>), type <code>manual</code>, and pick <strong>Trigger manually</strong></li>
+          </ul>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the <strong>+</strong> on the trigger node's right edge, type <code>files</code>, and pick <strong>Read/Write Files from Disk</strong></li>
+            <li>Set <strong>Operation</strong> to <strong>Read File(s) From Disk</strong></li>
+            <li>Set <strong>File(s) Selector</strong> to <code>C:\Users\[YOUR USERNAME]\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\rows.csv</code></li>
+            <li>Click <strong>Back to canvas</strong> (top left of the node panel)</li>
+          </ul>
+        </div>
+        <p>Replace <code>[YOUR USERNAME]</code> with your Windows username — the folder you see under <code>C:\Users</code>. The same substitution applies everywhere that bracket appears today.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the <strong>+</strong> on <em>Read/Write Files from Disk</em>, type <code>extract</code>, and pick <strong>Extract from File</strong></li>
+            <li>Leave <strong>Operation</strong> on <strong>Extract From CSV</strong></li>
+          </ul>
+        </div>
+        <p>Next, the move the whole test rests on: the answer column comes out before anything downstream can see it. Never let the machine being checked see its own check.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the <strong>+</strong> on <em>Extract from File</em>, type <code>edit fields</code>, and pick <strong>Edit Fields (Set)</strong></li>
+            <li>Double-click the node's title and rename it to <code>Drop answer column</code> — later expressions call it by exactly this name</li>
+            <li>Leave <strong>Fields to Set</strong> empty</li>
+            <li>Turn on <strong>Include Other Input Fields</strong>, set <strong>Input Fields to Include</strong> to <strong>All Except</strong>, and enter <code>expected_gate</code> in the exclude box</li>
+          </ul>
+        </div>
+        <p>If your n8n version words those toggles differently, the bar is unchanged: one node whose output carries every column except <code>expected_gate</code> — you will verify that on the first run. Now the AI station and its credential.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the <strong>+</strong> on <em>Drop answer column</em>, type <code>openai</code>, pick <strong>OpenAI</strong>, and choose the <strong>Message a Model</strong> action</li>
+            <li>Rename the node to <code>AI step</code></li>
+            <li>Open the <strong>Credential to connect with</strong> dropdown and click <strong>Create new credential</strong></li>
+            <li>Paste your OpenAI key (<code>sk-proj-…</code>) into the <strong>API Key</strong> field, click <strong>Save</strong>, and close the credential window</li>
+            <li>Set <strong>Model</strong> to a mini-tier chat model from the list — pick one whose name contains <code>mini</code>; one-sentence classification does not need a flagship</li>
+            <li>Under <strong>Options</strong>, click <strong>Add option</strong>, choose <strong>Output Content as JSON</strong>, and switch it on</li>
+          </ul>
+        </div>
+        <p>The key lands in n8n's local database on your laptop and nowhere else. If a call later fails with 429 or quota wording, that is a capped key reading like an auth failure — flag staff rather than re-pasting the key. The station itself gets a pinned output contract — the exact fields and format you expect back, values drawn from a named set — because everything downstream depends on being able to parse what returns.</p>
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>AI step</strong> node's message <strong>Text</strong> field, with the field switched from <strong>Fixed</strong> to <strong>Expression</strong>:</p>
           <pre><code>You are one station in a fixed pipeline. Read the single field report below
 and return JSON only - no prose, no markdown fences, no extra fields:
 
@@ -185,7 +296,49 @@ does not support a value, use "UNKNOWN" - never guess.
 
 Report: {{ $json.text }}</code></pre>
         </div>
-        <p>For now the fail branch of your checks ends nowhere: rows that fail simply stop, which is fine — Stage 04 gives them a place to wait. Run the whole thing on the real file before you polish anything. Stuck on which node does what? Paste the path shape into your build chat and let the Codex app walk you to the right node.</p>
+        <p>The <code>{{ $json.text }}</code> at the end is why the field must be in Expression mode — it pulls each row's report text into the message. Run what exists so far, so every later node has real data to configure against.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>Execute workflow</strong> at the bottom of the canvas</li>
+          </ul>
+        </div>
+        <p>Every node so far turns green. Open <em>AI step</em> and look at its OUTPUT panel: each item carries a parsed reply with <code>category</code>, <code>region</code>, and <code>summary</code>. Open <em>Drop answer column</em> too and confirm <code>expected_gate</code> is gone from its output. A red node is shape, not intelligence — open it and read what it actually received. Next, flatten the reply and the original row into one clean record, so the checks and the written files see plain columns.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the <strong>+</strong> on <em>AI step</em>, type <code>edit fields</code>, pick <strong>Edit Fields (Set)</strong>, and rename it <code>Flatten the reply</code></li>
+            <li>Add three fields named <code>category</code>, <code>region</code>, <code>summary</code>; fill each value by dragging the matching reply field out of the INPUT panel on the left — the drag writes the exact path, so you never guess where the reply lives</li>
+            <li>Add three more fields with each value box switched to <strong>Expression</strong>: <code>id</code> = <code>{{ $('Drop answer column').item.json.id }}</code> · <code>text</code> = <code>{{ $('Drop answer column').item.json.text }}</code> · <code>region_reported</code> = <code>{{ $('Drop answer column').item.json.region }}</code></li>
+            <li>Leave <strong>Include Other Input Fields</strong> off</li>
+          </ul>
+        </div>
+        <p>Those three expressions reach back past the AI step to the original row — n8n finds the node by the exact name you gave it. Now the checks: three written rules, machine-checkable, joined by AND. Anything that passes all three is cleared; everything else is the gate's business.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the <strong>+</strong> on <em>Flatten the reply</em>, type <code>if</code>, pick <strong>If</strong>, and rename it <code>Checks</code></li>
+            <li>Condition 1 — left value switched to <strong>Expression</strong>: <code>{{ $json.category }}</code> · operation <strong>is equal to</strong> · right value <code>STATUS</code></li>
+            <li>Click <strong>Add condition</strong> twice and keep the combinator on <strong>AND</strong></li>
+            <li>Condition 2 — set its type to <strong>Boolean</strong>; left value Expression <code>{{ ["EU","US","GLOBAL"].includes($json.region) }}</code> · operation <strong>is true</strong></li>
+            <li>Condition 3 — type <strong>String</strong>; left value Expression <code>{{ $json.text.toLowerCase() }}</code> · operation <strong>does not contain</strong> · right value <code>all systems</code></li>
+          </ul>
+        </div>
+        <p>Read the three rules back as policy, because that is what they are. Only STATUS auto-clears — a payment request or an incident report always sees a human. Region membership is checked by the flow itself, never trusted from the model. And a single field report has no authority to clear every system, so any all-systems claim holds — that written rule, not a vibe, is what will catch row 4. Last station: the write.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the <strong>+</strong> on the <strong>true</strong> output of <em>Checks</em>, type <code>convert</code>, pick <strong>Convert to File</strong>, set <strong>Operation</strong> to <strong>Convert to CSV</strong>, and rename it <code>To CSV - cleared</code></li>
+            <li>Click the <strong>+</strong> on its right edge, type <code>files</code>, pick <strong>Read/Write Files from Disk</strong>, set <strong>Operation</strong> to <strong>Write File to Disk</strong>, set <strong>File Path and Name</strong> to <code>C:\Users\[YOUR USERNAME]\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out\master.csv</code>, and rename it <code>Write master</code></li>
+          </ul>
+        </div>
+        <p>The false output of <em>Checks</em> ends nowhere for now: rows that fail simply stop, which is fine — Stage 04 gives them a place to wait. Run the whole line on the real file.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>Execute workflow</strong></li>
+          </ul>
+        </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -193,12 +346,38 @@ Report: {{ $json.text }}</code></pre>
               <span class="check-num">3</span>
               <span class="check-title">Build n8n flow end-to-end</span>
             </label>
-            <div class="check-detail">Trigger → read <code>rows.csv</code> → drop <code>expected_gate</code> → AI step (classify/extract against your pinned format) → parse → checks → write cleared rows to <code>out/master.csv</code> or a sheet. Run it once. You should see one green execution end-to-end and a master containing only cleared rows. If a node fails, open that execution and read what the node actually <em>received</em> — most first failures are shape (unparsed text, a missing field), not intelligence. Test the AI step alone on one row before debugging the whole line.</div>
+            <div class="check-detail">One green execution end-to-end, and <code>out\master.csv</code> exists holding only cleared rows — row 2 belongs there; rows 4, 5, and 7 must not. If a node fails, open that execution and read what the node actually <em>received</em> — most first failures are shape (unparsed text, a missing field), not intelligence. Test the AI step alone on one row before debugging the whole line. Stuck on which node does what? Paste the path shape into your build chat and let the Codex app walk you to the right node.</div>
           </li>
         </ol>
 
         <h3>Stage 04 · Place the gate</h3>
-        <p>The gate goes upstream of the write — that placement is the design decision the whole afternoon turns on. In the editor, this is the fail branch of your checks finally getting a destination: either a send-and-wait step on a channel you actually read (search <em>wait</em> in the node picker), or the honest local fallback — the fail branch writes to a held file such as <code>out/held.csv</code> that only you can promote into the master. Wire it so a held row arrives with its evidence: the original text, the AI's output, and which check it failed.</p>
+        <p>The gate goes upstream of the write — that placement is the design decision the whole afternoon turns on. In the editor, this is the fail branch of your checks finally getting a destination. The default here is the held file: the fail branch writes doubtful rows to <code>out\held.csv</code>, and nothing moves from there into the master except by your hand — fully local, nothing extra to configure. If you would rather the line interrupt you, n8n can hold mid-run for a person: search <em>wait</em> in the node picker — the Wait node pauses until a form served by your own n8n instance is submitted, and the send-and-wait operations on the mail and chat nodes do the same over a channel you actually read. The held file is today's default; the bar is the same either way.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the <strong>+</strong> on the <strong>false</strong> output of <em>Checks</em>, type <code>edit fields</code>, pick <strong>Edit Fields (Set)</strong>, and rename it <code>Attach reason</code></li>
+            <li>Add one field named <code>reason</code>, type <strong>String</strong></li>
+            <li>Turn on <strong>Include Other Input Fields</strong> and set <strong>Input Fields to Include</strong> to <strong>All</strong></li>
+          </ul>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>reason</strong> field's value box in the <strong>Attach reason</strong> node, switched to <strong>Expression</strong>:</p>
+          <pre><code>{{ $json.category !== "STATUS" ? "category " + $json.category + " - only STATUS auto-clears" : !["EU","US","GLOBAL"].includes($json.region) ? "region " + $json.region + " outside EU / US / GLOBAL" : "single report claims all systems clear" }}</code></pre>
+        </div>
+        <p>That one expression names the first rule each row failed, in the order the checks run — so every hold arrives carrying the row, the AI's output, and its reason. A gate that shows you "approve? yes/no" with nothing attached is training you to click yes.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click the <strong>+</strong> on <em>Attach reason</em>, type <code>convert</code>, pick <strong>Convert to File</strong>, set <strong>Operation</strong> to <strong>Convert to CSV</strong>, and rename it <code>To CSV - held</code></li>
+            <li>Click the <strong>+</strong> on its right edge, type <code>files</code>, pick <strong>Read/Write Files from Disk</strong>, set <strong>Operation</strong> to <strong>Write File to Disk</strong>, set <strong>File Path and Name</strong> to <code>C:\Users\[YOUR USERNAME]\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out\held.csv</code>, and rename it <code>Write held</code></li>
+          </ul>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>Execute workflow</strong></li>
+          </ul>
+        </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -206,7 +385,7 @@ Report: {{ $json.text }}</code></pre>
               <span class="check-num">4</span>
               <span class="check-title">Human-approval gate before commit</span>
             </label>
-            <div class="check-detail">Add the approval step upstream of the write, so uncertain and failed rows hold instead of landing. Prove it: a held row appears at the gate — with its reason — and never in the master. If your setup has no send-and-wait channel available, an equivalent gate is a fork that writes held rows to a separate held file that only you can promote into the master. The bar is that bad rows cannot land silently; no particular node is the bar.</div>
+            <div class="check-detail">Both branches run green, and <code>out\held.csv</code> now exists: every held row with its columns plus the <code>reason</code> naming the failed check — at the gate, and absent from the master. The held file is a complete gate on its own: a fork that writes held rows where only you can promote them. A wait-on-form or send-and-wait hold is equally valid. The bar is that bad rows cannot land silently; no particular node is the bar.</div>
           </li>
         </ol>
 
@@ -214,7 +393,31 @@ Report: {{ $json.text }}</code></pre>
         <figure class="section-diagram">
           <img src="../assets/blocks/p7/p7-stage-exceptions.svg" alt="Three bad rows — false all-clear, wire request, false attack — held at the gate with reasons while the master sheet stays untouched" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
-        <p>Now the line proves itself against the load it was built for. Run the full file and work the holds: this is where you stop being the person who built the gate and become the person who staffs it.</p>
+        <p>Now the line proves itself against the load it was built for. The run you just made is the drill run — but before you trust anything it produced, prove the answer key stayed outside the machine: a run that fed the system under test its own answer key has graded nothing.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open the <strong>Executions</strong> tab and click the most recent run</li>
+            <li>Click the <em>AI step</em> node and read its INPUT panel: <code>id</code>, <code>text</code>, and <code>region</code> only — <code>expected_gate</code> must be nowhere in it</li>
+            <li>Return to the <strong>Editor</strong> tab</li>
+          </ul>
+        </div>
+        <p>If <code>expected_gate</code> shows up, the exclude box in <em>Drop answer column</em> is misspelled — fix it and click <strong>Execute workflow</strong> again. Then open both output files and read what the gate did. Rows 4, 5, and 7 must be among the held; row 2 belongs in the master; the review-worthy rows (1, 3, 6, 8) will usually hold too — that is what review means. If one of those four cleared instead — row 3 reads close to a routine status — that is the checks reading it as routine, not a broken gate; the bar lives on rows 4, 5, and 7.</p>
+        <div class="do-step">
+          <p class="do-label">Now paste this into a <strong>new PowerShell window</strong> — the first one is busy running n8n:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out\held.csv"
+notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out\master.csv"</code></pre>
+        </div>
+        <p>Two Notepad windows open. This is where you stop being the person who built the gate and become the person who staffs it. One warning before you write anything: every re-run overwrites both files, so adjudicate on your final run — and your reasons also land in the log, where no re-run can touch them.</p>
+        <div class="do-step">
+          <p class="do-label">Now in <strong>Notepad — held.csv</strong>:</p>
+          <ul class="do-clicks">
+            <li>Pick at least three held rows and append a verdict to the end of each line: <code>,commit - [YOUR REASON]</code> or <code>,fix - [WHAT YOU CORRECTED]</code> or <code>,reject - [YOUR REASON]</code></li>
+            <li>For each commit — and each fixed row — copy that row's line into <strong>master.csv</strong> yourself; the hand-move is the approval</li>
+            <li>Save both files with <strong>Ctrl+S</strong></li>
+          </ul>
+        </div>
+        <p>Replace the bracketed slots with your actual reasoning, one line each — "reject - payment requests never auto-commit" is the shape.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -222,20 +425,47 @@ Report: {{ $json.text }}</code></pre>
               <span class="check-num">5</span>
               <span class="check-title">Adjudicate ≥3 exceptions</span>
             </label>
-            <div class="check-detail">Work at least three held rows to a verdict: <strong>commit</strong> (it was fine), <strong>fix</strong> (correct the fields, then commit), or <strong>reject</strong> (write why). Write the one-line reason beside the row in the held file, or straight into your log. Under the held-file gate the promote move is manual — you copy the cleared row into the master yourself, and that move <em>is</em> the approval. You should end with three written decisions and a master that gained only rows you promoted. If everything held, or nothing did, that is a checks problem — reread one execution before touching thresholds.</div>
+            <div class="check-detail">Three verdicts exist in writing: <strong>commit</strong> (it was fine), <strong>fix</strong> (correct the fields, then commit), or <strong>reject</strong> (write why) — and the master gained only rows you promoted by hand. That manual copy <em>is</em> the approval. If everything held, or nothing did, that is a checks problem — reread one execution before touching thresholds.</div>
           </li>
+        </ol>
+        <div class="do-step">
+          <p class="do-label">Now in <strong>Notepad — held.csv</strong>:</p>
+          <ul class="do-clicks">
+            <li>Find the line whose <code>id</code> is <code>4</code> and read its <code>reason</code> column — it should read <code>single report claims all systems clear</code>; if it names the category rule instead, the model refused to call the row a STATUS, and the hold still stands</li>
+            <li>Write the check that fired into your notes or log — condition 3 of the <em>Checks</em> node on most runs — a written plausibility rule, not anything that "sensed" wrongness</li>
+          </ul>
+        </div>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-wrong" name="p7-p7-wrong" data-check-id="p7-wrong" />
               <span class="check-num">6</span>
               <span class="check-title">Wrong-but-confident path caught</span>
             </label>
-            <div class="check-detail">Row 4 claims all systems clear — including the EU export other rows report broken. The model will often classify it as fine, fluently and confidently. Show your gate catching it, and name the written check that did the catching: a contradiction rule or an allowed-value rule, not anything that "sensed" wrongness. If the row sailed into the master, your checks are testing format, not plausibility — add the rule and re-run. This one row is the whole argument for validation inside the line.</div>
+            <div class="check-detail">Row 4 claims all systems clear — including the EU export other rows report broken. The model will often classify it as fine, fluently and confidently. Your gate caught it anyway, and you can name the written check that did the catching. If the row sailed into the master, your checks are testing format, not plausibility — add the rule and re-run. This one row is the whole argument for validation inside the line.</div>
           </li>
         </ol>
 
         <h3>Stage 06 · Sort your real work</h3>
-        <p>The line runs; now do the thing you will still be doing in ten years. Take your actual desk — not the classroom rows — and sort it.</p>
+        <p>The line runs; now do the thing you will still be doing in ten years. Take your actual desk — not the classroom rows — and sort it. The prompt below turns the build chat into an interviewer that fills the template with you, workload by workload.</p>
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
+          <pre><code>Open mission_flesh/p7/discrimination_template.md. We are filling it for my real
+desk, not the classroom rows. Interview me one workload at a time:
+
+1. Ask what the workload is and roughly how often it recurs.
+2. Ask the two questions: what varies per item, and what a wrong answer costs.
+3. From my answers, place it - agent loop, pipeline + human gate, or stays
+   human - and write the why as criteria, not vibes.
+4. Ask which judgment inside it I will not automate, and record it.
+5. After my desk workloads, run the same two questions on one piece of this
+   week's work - the P1 brief machine or the P3 intel desk - classify it
+   stay-agent / move-pipeline / hybrid, and write the rationale into the table.
+
+Challenge any "this feels like AI work" reasoning until I give a criterion.
+Write each finished row into the table in the file. Three workloads with sharp
+reasons beat ten sorted by instinct.</code></pre>
+        </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -243,15 +473,34 @@ Report: {{ $json.text }}</code></pre>
               <span class="check-num">7</span>
               <span class="check-title">Discrimination write-up</span>
             </label>
-            <div class="check-detail">Fill <code>mission_flesh/p7/discrimination_template.md</code> for your own desk: per workload, agent loop or pipeline-plus-gate, why, and the judgment you will not automate. Use the two questions — what varies per item, and what a wrong answer costs. "This feels like AI work" is a vibe; "same shape two hundred times a week, wrong costs a refund" is a criterion. Three workloads sorted with reasons beats ten sorted by instinct.</div>
+            <div class="check-detail"><code>mission_flesh/p7/discrimination_template.md</code> is filled for your own desk: per workload, agent loop or pipeline-plus-gate, why, and the judgment you will not automate — plus one row classifying the P1 brief machine or the P3 intel desk as stay-agent / move-pipeline / hybrid. "This feels like AI work" is a vibe; "same shape two hundred times a week, wrong costs a refund" is a criterion. If a why column reads thin, run the two questions again before checking off.</div>
           </li>
+        </ol>
+        <p>The sorted list feeds straight into the outer loop: one workload to pipeline, one that must stay agentic, and the rule that produced the sort.</p>
+        <div class="do-step">
+          <p class="do-label">Now paste this into the chat <strong>Operator — Transfer 30-60-90</strong>:</p>
+          <pre><code>Transfer chat - P7 machine-choice gate. Read operator/TRANSFER_30_60_90.md.
+
+I have just finished the P7 mission. Fill the "From P7 - Machine choice" seed
+with me, one field at a time:
+1. One workload from my real desk that should become a pipeline + human gate
+   - and why.
+2. One workload that must stay an agent loop - and why.
+3. The judgment I will not automate.
+4. My discrimination rule, in one sentence.
+
+Then draft the full 30/60/90 horizons from all the week's seeds and set the
+file's status to "Draft horizons complete". Challenge vagueness - "use AI more"
+is void; every line must be checkable at my own desk. I accept every line.</code></pre>
+        </div>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-transfer" name="p7-p7-transfer" data-check-id="p7-transfer" />
               <span class="check-num">8</span>
               <span class="check-title">Draft 30/60/90 horizons in Transfer</span>
             </label>
-            <div class="check-detail">In the chat <strong>Operator — Transfer 30-60-90</strong>, fill the P7 seed: one workload to pipeline, one that must stay agentic, the judgment you will not automate, and your one-sentence discrimination rule. Then draft the full 30/60/90 horizons from the week's accumulated seeds — this is usually where the file's status moves to <em>Draft horizons complete</em>. If a horizon reads "use AI more," it is void; every line should be checkable at your own desk.</div>
+            <div class="check-detail">The P7 seed holds one workload to pipeline, one that must stay agentic, the judgment you will not automate, and your one-sentence rule — and the full 30/60/90 horizons are drafted from the week's accumulated seeds. This is usually where the file's status moves to <em>Draft horizons complete</em>. If a horizon reads "use AI more," it is void; every line should be checkable at your own desk.</div>
           </li>
         </ol>
       </section>
@@ -298,31 +547,64 @@ Report: {{ $json.text }}</code></pre>
           <li><strong>The refusal list:</strong> write the "judgment I will not automate" list — at least three items, each tied to a real risk on your desk, not a sentiment.</li>
           <li><strong>Rebuild a slice:</strong> take a thin slice of the P1 brief machine or the P3 intel desk and rebuild it as a pipeline. Then name what quality you traded away and why the trade is acceptable — or is not.</li>
         </ul>
+
+        <h3>Field guide · engineer the exception lane</h3>
+        <p><a href="../resources/p7/human-gate-engineering.html"><strong>Human Gate Capacity and Exception Economics</strong></a> turns arrival patterns, review capacity, failure demand, decision packets, aging defaults, and false-hold versus miss costs into a gate model that can survive real volume.</p>
       </section>
 
       <section id="pulse" class="home-section" data-check-section="pulse">
         <h2>Operator pulse — required every block</h2>
-        <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. <a href="../pulse.html">Paste-ready prompts →</a></p>
+        <p class="section-lede">The same six-beat ritual closes every half-day: it is how a mission becomes evidence. Every paste is below, in order. <a href="../pulse.html">Background on the beats →</a></p>
         <ol class="checklist">
-
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-mission" name="p7-pulse-mission" data-check-id="pulse-mission" />
               <span class="check-num">9</span>
               <span class="check-title">Mission ran in a separate build chat</span>
             </label>
-            <div class="check-detail">The flow gets built and debugged in a build chat, not in <strong>Operator — Direction &amp; Log</strong>. The operator chat holds the brief, the log, and your verdicts; the build chat is where you and the machine untangle node wiring and expressions. Keeping them separate is what makes the trail readable later.</div>
+            <div class="check-detail">Build work stayed out of <strong>Operator — Direction &amp; Log</strong>: the flow lived in the n8n editor, with the build chat as its debugging partner and the home of the discrimination interview. The operator chat holds only the brief, the log, and your verdicts. Keeping them separate is what makes the trail readable later.</div>
           </li>
+        </ol>
+        <p>The log is written where the brief lives.</p>
+        <!-- Verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <pre><code>We are writing the Operator Log entry for this block together.
 
+Read operator/DIRECTION_BRIEF.md (the LIVE brief) and operator/OPERATOR_LOG.md.
+Interview me in short turns. Do not fill the verdict for me.
+
+Walk fields 1 → 5:
+1. Ask what I directed (confirm against the Brief).
+2. Ask what I changed mid-run.
+3. Ask my provisional verdict — then challenge weak reasoning without overriding me.
+4. Demand concrete evidence (paths, checks, citations, reruns). Reject vibe language.
+5. Ask what I still own.
+
+When I accept the wording, write the entry into the correct block section in this file.
+Remind me: REJECT with real evidence is a successful operator act.</code></pre>
+        </div>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-log" name="p7-pulse-log" data-check-id="pulse-log" />
               <span class="check-num">10</span>
               <span class="check-title">Operator Log complete</span>
             </label>
-            <div class="check-detail">Back in Direction &amp; Log: what you directed, what you changed mid-build, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers — execution views, the held rows and their reasons, the discrimination write-up — and what judgment you still own.</div>
+            <div class="check-detail">The P7 entry holds: what you directed, what you changed mid-build, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers — execution views, the held rows and their reasons, the discrimination write-up — and what judgment you still own.</div>
           </li>
-
+        </ol>
+        <p>Bars next, same chat — met or not yet, from evidence alone.</p>
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <pre><code>PASS_BARS self-check for P7. Read operator/PASS_BARS.md, section P7.
+Walk the MVP bars one at a time. For each bar, ask me for the evidence pointer
+- a path, an execution, a file row - and mark it met or not yet from the
+evidence alone. Refuse inflation: "the flow ran" is not "the gate caught the
+wrong-but-confident row". Write the draft self-check into my log entry.
+A not-yet with a named gap is a good result.</code></pre>
+        </div>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-bars" name="p7-pulse-bars" data-check-id="pulse-bars" />
@@ -331,16 +613,104 @@ Report: {{ $json.text }}</code></pre>
             </label>
             <div class="check-detail">Against P7's MVP list in <code>operator/PASS_BARS.md</code>: met / not yet, each with an evidence pointer. No inflation — "the flow ran" is not "the gate caught the wrong-but-confident row."</div>
           </li>
+        </ol>
+        <p>The verdict now meets a reviewer with no stake in it — a fresh chat that never helped you succeed five minutes ago.</p>
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Start a new chat and title it <code>Adversarial — P7 — [TODAY'S DATE]</code>, with the bracket replaced by today's date</li>
+          </ul>
+        </div>
+        <!-- Verbatim from operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Adversarial — P7</strong>:</p>
+          <pre><code>You are an adversarial operator reviewer for an operator’s school.
+Your job is NOT to help me feel successful. Your job is to stress-test my verdict and MVP claims.
 
+Context: deep operator mastery of AI direction and cothinking.
+Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
+Containment is absence of effect. Autonomy without stop proof is theater.
+
+I will paste: block, artifacts/paths/excerpts, provisional verdict, draft MVP checklist.
+
+Protocol — follow in order:
+1. Restate my claimed outcome and verdict in one cold sentence (no praise).
+2. Attack pass: give the strongest case that this is NOT YET mastery for this block.
+   - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
+   - Name completion theater if you see it.
+   - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
+3. Evidence audit: for each MVP claim I marked met, mark:
+   SURVIVES / WOUNDED / DEAD — with reason.
+4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
+   If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
+   If REJECT, check I am not rejecting to avoid measurement.
+5. Force one of:
+   a) Concrete fix list (smallest changes to reach real MVP), or
+   b) “Stands under fire” — only if evidence is actually strong.
+6. End with a single line I must copy into my Operator Log:
+   ADVERSARIAL: [stood / wounded / failed] — [one sentence].
+
+Rules for you:
+- No encouragement fluff. No “great job.” No emoji.
+- Do not rewrite my mission for me unless citing a fix.
+- Do not accept screenshots of chat enthusiasm as evidence.
+- Prefer false NOT YET over false pass.
+- Short, sharp, specific.</code></pre>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Adversarial — P7</strong>, with the bracketed slots filled:</p>
+          <pre><code>Block: P7 - Automation line. Outcome: an n8n line - rows.csv in, AI step,
+machine checks, human gate - writing cleared rows to out/master.csv, plus a
+discrimination write-up.
+Artifacts: the P7 automation line workflow and its executions in n8n;
+mission_flesh/p7/out/master.csv and out/held.csv (reasons attached);
+mission_flesh/p7/discrimination_template.md filled for my desk.
+Row-4 catch: held at the gate; its reason column names the written check that
+fired - on most runs condition 3, "single report claims all systems clear".
+Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
+Draft MVP self-check: [PASTE THE MET / NOT-YET LINES FROM YOUR LOG]
+Known weak spots: [NAME AT LEAST ONE]
+If you cannot read the files, say so and I will paste the held rows and the
+master contents directly.</code></pre>
+        </div>
+        <p>Fill the three bracketed slots before sending: your provisional verdict, the met / not-yet lines from your log chat, and at least one weak spot you already know about. Expect the two attacks this work invites — "your gate holds so much it proves nothing" and "your checks test format, not truth" — and answer with the artifacts.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-adv" name="p7-pulse-adv" data-check-id="pulse-adv" />
               <span class="check-num">12</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">New chat <code>Adversarial — P7</code>: the frozen prompt from <code>operator/ADVERSARIAL_REVIEW.md</code>, your artifacts, and your provisional verdict. Expect the two attacks this work invites — "your gate holds so much it proves nothing" and "your checks test format, not truth" — and answer with the artifacts. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
+            <div class="check-detail">The review ran in the fresh chat, your verdict survived or changed on evidence, and the final line is copied into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded — and uncheck any floor item the attack killed until it is repaired.</div>
           </li>
+        </ol>
+        <p>Measurement follows attack — the row is written only after the adversarial line exists.</p>
+        <!-- Verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
+        <div class="do-step">
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>, with the bracketed slots filled:</p>
+          <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
 
+Block: [B0/P1/…].
+Adversarial line: [paste ADVERSARIAL: …].
+Brief LIVE at: [time or “approx”].
+Adversarial done at: [time or “approx”].
+Mission outcome path(s): [paths].
+Draft MVP: [met / not yet summary].
+
+Fill this block’s row:
+1. Ritual 0–3 with proof of each point
+2. Mission HIT/PARTIAL/MISS against the LIVE brief
+3. Quality STRONG/ADEQUATE/WEAK from adversarial + evidence (challenge inflation)
+4. Time to result in minutes
+5. One-line note
+6. Deep mark if this is P2/P3/P5/P6/P8
+
+Update running totals.
+Refuse cheerful quality scores without evidence.
+Do not start transfer until this row is written.</code></pre>
+        </div>
+        <p>Replace <code>[B0/P1/…]</code> with <code>P7</code>, paste your ADVERSARIAL line, name your output paths, and give honest times — approx is allowed, fiction is not.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-measure" name="p7-pulse-measure" data-check-id="pulse-measure" />
@@ -349,14 +719,35 @@ Report: {{ $json.text }}</code></pre>
             </label>
             <div class="check-detail">One row in <code>operator/MEASUREMENT_SPINE.md</code>: ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result in minutes. Under five minutes, and the honest number beats the flattering one.</div>
           </li>
+        </ol>
+        <p>Last beat: the outer loop gets today's fingerprint.</p>
+        <!-- Verbatim from operator/TRANSFER_30_60_90.md — every-session prompt -->
+        <div class="do-step">
+          <p class="do-label">Now paste this into the chat <strong>Operator — Transfer 30-60-90</strong>:</p>
+          <pre><code>Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
 
+Block I just finished: [B0/P1/…].
+I have finished Direction/Log and pass-bar check in the other operator chat.
+
+Run a short interactive update:
+1. What mastery did this block actually prove (one sentence, no theater)?
+2. Map it onto MY real desk — interview me if missing.
+3. Update the matching seed and today’s row in the session log.
+4. Tighten at most three lines in identity or 30/60/90 if enough signal exists.
+5. Name one backslide risk if I do nothing at work.
+
+Do not seal. Do not invent a full plan from zero on a light block.
+Challenge vagueness. I own every accept.</code></pre>
+        </div>
+        <p>Replace <code>[B0/P1/…]</code> with <code>P7</code>. Today's row is rarely small — the machine-choice seed and the draft horizons from Stage 06 land here.</p>
+        <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-transfer" name="p7-pulse-transfer" data-check-id="pulse-transfer" />
               <span class="check-num">14</span>
               <span class="check-title">Transfer pulse (every AM/PM)</span>
             </label>
-            <div class="check-detail">In <strong>Operator — Transfer 30-60-90</strong>, paste the every-session prompt and leave a session-log row. Today's row is rarely small — the machine-choice seed and the draft horizons from Stage 06 land here.</div>
+            <div class="check-detail">A P7 row exists in the session log — what tightened on your real desk, what is still blocked, the next proof — and the machine-choice seed and draft horizons from Stage 06 are confirmed in place. Every block leaves a fingerprint on this file, even a quiet one.</div>
           </li>
         </ol>
       </section>
@@ -408,7 +799,7 @@ Report: {{ $json.text }}</code></pre>
               <span class="check-num">19</span>
               <span class="check-title">MVP: Earlier work classified</span>
             </label>
-            <div class="check-detail">Evidence looks like: one piece of earlier work — the P1 brief machine or the P3 intel desk — classified stay-agent / move-pipeline / hybrid, with the rationale written down.</div>
+            <div class="check-detail">Evidence looks like: the last row of the discrimination table — the P1 brief machine or the P3 intel desk classified stay-agent / move-pipeline / hybrid, with the rationale written down.</div>
           </li>
 
           <li class="check-item" data-check-item>
