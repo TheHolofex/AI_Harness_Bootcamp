@@ -162,18 +162,30 @@ winget install -e --id OpenJS.NodeJS.LTS
 
 ## 5. Your three API keys
 
-Read `site/keys.html` first. Then set each key. The `Read-Host` form keeps the secret out of your shell history:
+Read `site/keys.html` first. Then set each key in turn. The `Read-Host` form prompts you to paste the key rather than putting it in the command, which keeps the secret out of your shell history:
 
 ```powershell
-foreach ($name in 'OPENAI_API_KEY','XAI_API_KEY','ANTHROPIC_API_KEY') {
-  $key = Read-Host "Paste $name"
-  [Environment]::SetEnvironmentVariable($name, $key, 'User')
-  [Environment]::SetEnvironmentVariable($name, $key, 'Process')
-  $key = $null
-}
+$key = Read-Host 'Paste OPENAI_API_KEY'
+[Environment]::SetEnvironmentVariable('OPENAI_API_KEY', $key, 'User')
+$env:OPENAI_API_KEY = $key
+$key = $null
 ```
 
-That prompts you three times and names the key it wants each time, so paste them in the order it asks. `User` makes each one stick for future windows; `Process` applies it to this one.
+```powershell
+$key = Read-Host 'Paste XAI_API_KEY'
+[Environment]::SetEnvironmentVariable('XAI_API_KEY', $key, 'User')
+$env:XAI_API_KEY = $key
+$key = $null
+```
+
+```powershell
+$key = Read-Host 'Paste ANTHROPIC_API_KEY'
+[Environment]::SetEnvironmentVariable('ANTHROPIC_API_KEY', $key, 'User')
+$env:ANTHROPIC_API_KEY = $key
+$key = $null
+```
+
+In each block, line two saves the key permanently for your Windows account, and line three sets it in this window too, so you can keep working without reopening anything. The xAI key is the one that drives OpenCode — check it starts with `xai-` before you paste, because mixing up two keys produces an authentication error that never tells you which key was wrong.
 
 Prefer this to `setx`, which truncates values past 1024 characters and leaves the key in your command history.
 
@@ -275,7 +287,7 @@ Beneath the message box is a permissions control. Set it to **Ask for approval**
 
 This is the setting that turns the Windows sandbox on, so do not skip it. On first use the app builds that sandbox and asks for an administrator prompt. Approve it — this is the strong `elevated` sandbox, and it is the one you want.
 
-If your laptop refuses the elevation, or you see an error mentioning `1385`, Codex can fall back to weaker but workable boundaries. Add this to the **bottom** of the same `config.toml`, in a text editor:
+If your laptop refuses the elevation, or you see an error mentioning `1385`, Codex can fall back to weaker but workable boundaries. Add this to the **bottom** of the same `config.toml`, in a text editor — it is file content rather than a command to paste into PowerShell:
 
 ```toml
 [windows]
@@ -325,7 +337,13 @@ winget install --id SST.opencode --exact --version <pinned version> --accept-pac
 npm install -g opencode-ai@<pinned version>
 ```
 
-If there's no pin, don't stall on it. Install from winget without the `--version` flag, then write down the channel and the exact version you landed on and post it in the channel. Two people comparing notes is how the pin usually gets settled, and being able to say "I'm on winget 1.18.7" is what makes your result mean something on Tuesday. You may end up switching builds later; that's a two-minute reinstall, not a redo of this section.
+If there's no pin, don't stall on it. Install from winget without the `--version` flag:
+
+```powershell
+winget install --id SST.opencode --exact --accept-package-agreements --accept-source-agreements
+```
+
+Then write down the channel and the exact version you landed on and post it in the channel. Two people comparing notes is how the pin usually gets settled, and being able to say "I'm on winget 1.18.7" is what makes your result mean something on Tuesday. You may end up switching builds later; that's a two-minute reinstall, not a redo of this section.
 
 **Do not use the `curl` install command from OpenCode's website.** It is a bash script and cannot run on plain Windows PowerShell; no PowerShell equivalent is published.
 
@@ -338,7 +356,7 @@ opencode models xai --refresh
 
 OpenCode reads `XAI_API_KEY` from the environment automatically — there is no login step. An empty model list means this window can't see the key.
 
-If you installed against a pin, `opencode --version` should print that version exactly. If it prints something else, an older install is probably still on PATH, or the other channel got used — record both numbers in your log and mention it, rather than quietly upgrading to whatever is current.
+If you installed against a pin, `opencode --version` should print that version exactly. If it prints anything else — higher or lower — an older install is probably still on PATH, or the other channel got used. Record both numbers in your log and mention it, rather than quietly upgrading to whatever is current. With no pin, whatever it prints is your answer; just write it down.
 
 **Keep this engine independent.** When OpenCode finds Claude Code's files it reads them: `~/.claude/CLAUDE.md` and any `.claude/skills` folder. If you add Claude Code in section 14, your second engine quietly starts working from the first one's notes, and two engines sharing one memory file will agree more than they should. Turn that off:
 
@@ -628,8 +646,14 @@ Use the command-line tool, **not** the Claude desktop app — the desktop app's 
 
 A **model pin** (tag + minimum RAM) may be posted in the channel. If one is, use it — these downloads are several gigabytes, and picking your own tag on hotel Wi‑Fi is how you spend an evening on a model your laptop can't hold. If none appears, ask before pulling anything large.
 
-1. Install [Ollama for Windows](https://ollama.com), **or** LM Studio if the pin names it.
-2. New PowerShell: `ollama --version` (or confirm LM Studio server starts).
+1. Install Ollama — it is the path here, and LM Studio is only for a pin that names it:
+
+   ```powershell
+   winget install -e --id Ollama.Ollama --accept-package-agreements --accept-source-agreements
+   ```
+
+   Without winget, download the Windows installer from [ollama.com](https://ollama.com) and accept the defaults. If the pin names [LM Studio](https://lmstudio.ai) instead, install it from that page.
+2. New PowerShell: `ollama --version`. LM Studio has no version command — start its local server instead (the **Developer** tab, or `lms server start`) and confirm it reports listening, usually on `http://localhost:1234`.
 3. Once you have a tag, set it once and pull it:
 
    ```powershell
@@ -638,7 +662,8 @@ A **model pin** (tag + minimum RAM) may be posted in the channel. If one is, use
    ollama pull $env:HB_LOCAL_MODEL
    ```
 4. Smoke: `ollama run $env:HB_LOCAL_MODEL "Reply with exactly: local-brain-ok"`.
-5. Note free RAM and whether the smoke worked in your setup log.
+5. On LM Studio: set the same variable, download **only** the pinned tag, load it so the running server is not empty, and send `Reply with exactly: local-brain-ok` in the chat pane.
+6. Note free RAM and whether the smoke worked in your setup log.
 
 If pull fails or the machine thrashes, stop and write YELLOW. Cloud goose remains the Thursday floor.
 

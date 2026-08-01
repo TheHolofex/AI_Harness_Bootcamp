@@ -49,9 +49,10 @@ The course itself is a website, served from this repository.
 | `operator/` | Brief, log, pass bars, adversarial review, measurement, transfer |
 | `instruments/` | Shared kits for the comparator and scoring blocks |
 | `mission_flesh/` | Corpora and packs per block |
-| `lead/` | Facilitator helpers and the cohort pin sheet |
+| `lead/` | Facilitator material |
 | `server.py` | Password-gated host for deploying the site — see `HOSTING.md` |
 
-Facilitator keys and answer material are kept off the hosted site by `server.py`, but they are
-present in this repository, which students clone. See `lead/MANY_MINDS_ANSWER_KEY.md` for what
-follows from that.
+Facilitator material ships alongside the course material here, and `server.py` keeps it off the
+hosted site. A clone is not a sealed copy, though — during the week, the line between what you work
+out for yourself and what has already been worked out is one you hold, not one the repository holds
+for you.

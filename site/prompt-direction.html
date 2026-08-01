@@ -69,7 +69,7 @@
 
     <h2>3. Paste errors — still the #1 repair skill</h2>
     <p>When something breaks, paste the <strong>full</strong> error into the harness.</p>
-    <div class="diagram"><pre>The app crashed after I ran the health check. Full error:
+    <pre><code>The app crashed after I ran the health check. Full error:
 
 Traceback (most recent call last):
   File "app.py", line 42, in get_user
@@ -77,7 +77,7 @@ Traceback (most recent call last):
 AttributeError: 'NoneType' object has no attribute 'query'
 
 I was on the OpenCode session against the local repo.
-What does this mean and how do we fix it without changing unrelated files?</pre></div>
+What does this mean and how do we fix it without changing unrelated files?</code></pre>
     <p><strong>Tips:</strong> full traceback · nearby log lines · exact command · last change · which engine (Codex app vs OpenCode).</p>
 
     <h2>4. Iterate — small batches, testable steps</h2>
@@ -99,9 +99,9 @@ What does this mean and how do we fix it without changing unrelated files?</pre>
     <h2>6. When to restart (and when to go adversarial)</h2>
     <p><strong>Restart or compact when:</strong> same wrong fix loops · edits thrash · phantom files · long unfocused window · mission changed.</p>
     <p><strong>Before you leave:</strong> working diffs, last error, short works/broken/next note.</p>
-    <div class="diagram"><pre>New session. Working tree is at [path]. Done: [bullets]. Broken: [error].
+    <pre><code>New session. Working tree is at [path]. Done: [bullets]. Broken: [error].
 Non-goals: [list]. First task: [one slice].
-Review the tree, then propose a plan before editing.</pre></div>
+Review the tree, then propose a plan before editing.</code></pre>
     <p><strong>Adversarial (course move):</strong> for judgment calls, open a <strong>new chat</strong> with a frozen attack prompt. Do not argue with the same chat that built the artifact — that chat is contaminated by commitment.</p>
 
     <h2>7. Common mistakes</h2>
@@ -146,7 +146,7 @@ Review the tree, then propose a plan before editing.</pre></div>
     <p>Before the delta means anything, check what each side was carrying: instruction files, skills, memories, plugins, and which model actually answered. Both engines load context you didn't type, and neither announces it. One engine plus your notes is not two engines — run clean, or declare what was live.</p>
 
     <h2>9. Direction starters</h2>
-    <div class="diagram"><pre>I have a [stack] project at [path] that [mission in one sentence].
+    <pre><code>I have a [stack] project at [path] that [mission in one sentence].
 Constraints: [OS / offline / libs / style].
 Already true: [what works].
 Task: [one slice].
@@ -171,7 +171,7 @@ List gaps only. Do not rewrite yet.
 
 New adversarial chat. Artifact: [path or paste].
 Attack prompt: [frozen].
-Findings ranked by severity + one-line fix hypothesis each. No pep talk.</pre></div>
+Findings ranked by severity + one-line fix hypothesis each. No pep talk.</code></pre>
 
     <h2>10. Course instruments</h2>
     <ul>

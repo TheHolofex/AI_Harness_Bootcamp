@@ -556,8 +556,14 @@
   function wireCopyButtons() {
     var pres = document.querySelectorAll(".site-main pre");
     Array.prototype.forEach.call(pres, function (pre) {
+      // ASCII art inside .diagram is an illustration, not something to paste,
+      // so it stays without a button. Everything else in the main column gets
+      // one, whether or not the author wrapped the contents in <code>.
+      if (pre.closest(".diagram") || pre.querySelector(".copy-btn")) return;
       var code = pre.querySelector("code");
-      if (!code || pre.querySelector(".copy-btn")) return;
+      // Snapshot the text before the button becomes a child of the <pre>,
+      // so the button's own label can never end up in the copied text.
+      var plain = code ? null : pre.textContent;
       pre.classList.add("has-copy");
       var btn = document.createElement("button");
       btn.type = "button";
@@ -565,7 +571,7 @@
       btn.textContent = "Copy";
       btn.setAttribute("aria-label", "Copy this block to the clipboard");
       btn.addEventListener("click", function () {
-        var text = code.textContent.replace(/\s+$/, "");
+        var text = (code ? code.textContent : plain).replace(/\s+$/, "");
         function flash(ok) {
           btn.textContent = ok ? "Copied ✓" : "Press Ctrl+C";
           btn.classList.add("copied");

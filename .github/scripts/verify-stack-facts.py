@@ -205,6 +205,7 @@ WATCHED_WINGET = [
     ("Python.Python.3.14", False),  # minor floats between cohorts; soft
     ("Obsidian.Obsidian", False),
     ("Microsoft.PowerShell", False),  # optional PS7 install in guide section 1
+    ("Ollama.Ollama", False),  # optional local-model stretch in guide section 14b
 ]
 
 # Store-delivered ids have no winget-pkgs manifest, so they are not checkable here.

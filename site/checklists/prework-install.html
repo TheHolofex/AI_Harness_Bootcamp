@@ -39,7 +39,7 @@ You'll be issued three keys — OpenAI, xAI, and Anthropic. You will never sign 
 Every command in this guide is typed into PowerShell. You will also install Git Bash, which is a different kind of terminal — but that is a dependency other tools reach for on their own, not a second thing for you to learn. Step 9 shows how to tell at a glance which window you are looking at, because pasting a command into the wrong one produces errors that never say so.</div>
 
 <div class="checklist-toolbar">
-  <p>Check each step when <strong>you</strong> finish it — not when you've read it. Progress saves in this browser only, against the exact address in the bar — so stay on one address while you work. Reopening on <code>127.0.0.1</code> instead of <code>localhost</code>, or on the hosted site later, starts a fresh set of boxes rather than losing your old ones. Keep a setup log as you go; what broke and how you fixed it is the evidence you bring Monday.</p>
+  <p>Check each step when <strong>you</strong> finish it — not when you've read it. The steps you need run 1 to 79; five more are marked <strong>S1</strong> to <strong>S5</strong>, and those are optional extras that sit outside the 79. Progress saves in this browser only, against the exact address in the bar — so stay on one address while you work. Reopening on <code>127.0.0.1</code> instead of <code>localhost</code>, or on the hosted site later, starts a fresh set of boxes rather than losing your old ones. Keep a setup log as you go; what broke and how you fixed it is the evidence you bring Monday.</p>
   <div class="btn-row">
     <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a>
     <a class="btn btn-secondary" href="../keys.html">Keys reference</a>
@@ -168,7 +168,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <tbody>
       <tr><td><strong>PowerShell</strong></td><td><code>PS C:\Users\you&gt;</code> — note the <code>PS</code></td><td>Everything in this guide</td></tr>
       <tr><td>Command Prompt</td><td><code>C:\Users\you&gt;</code> — no <code>PS</code></td><td>Nothing here, unless a rescue step says so</td></tr>
-      <tr><td>Git Bash</td><td><code>you@machine ~ $</code> — a <code>$</code>, and <code>/</code> in paths</td><td>One goose fallback in step 54</td></tr>
+      <tr><td>Git Bash</td><td><code>you@machine ~ $</code> — a <code>$</code>, and <code>/</code> in paths</td><td>One goose fallback in step 55</td></tr>
     </tbody>
   </table>
   <p>Confirm you're in the right one:</p>
@@ -266,7 +266,7 @@ Repair-WinGetPackageManager -Force -Latest</code></pre>
     <span class="check-title">Install Git</span>
   </label>
   <div class="check-detail"><p>Git tracks changes to files, and you'll use it to fetch the course repository. It also installs <strong>Git Bash</strong>, a second kind of terminal that some tools reach for behind the scenes — which is the real reason Git comes this early.</p>
-  <p>To be clear about what you have to learn: <strong>you type everything in PowerShell.</strong> Git Bash is a dependency, not a second shell to get fluent in. Pi is the one tool that genuinely can't run without it, and it calls it for you. The only time you'd open Git Bash yourself is one goose fallback in step 54.</p>
+  <p>To be clear about what you have to learn: <strong>you type everything in PowerShell.</strong> Git Bash is a dependency, not a second shell to get fluent in. Pi is the one tool that genuinely can't run without it, and it calls it for you. The only time you'd open Git Bash yourself is one goose fallback in step 55.</p>
   <pre><code>winget install --id Git.Git -e --source winget --scope machine --accept-source-agreements --accept-package-agreements</code></pre>
   <p>Approve the elevation prompt. <code>--scope machine</code> puts Git at a predictable path other tools know to look in; without it Git can land somewhere they won't find. If winget isn't available, download from <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com/download/win</a> and accept the installer defaults.</p></div>
 </li>
@@ -494,7 +494,7 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
     <span class="check-title">Install the ChatGPT desktop app</span>
   </label>
   <div class="check-detail"><p>Codex isn't a separate download. It's a mode inside the <strong>ChatGPT desktop app</strong>, sitting alongside Chat and Work. When this course says <em>the Codex app</em>, that's what it means — and knowing that saves you hunting the Store for a product that doesn't exist.</p>
-  <p>Use the web installer at <a href="https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi">get.microsoft.com/installer/download/9PLM9XGG6VKS</a>, or install from PowerShell:</p>
+  <p>Use the web installer at <a href="https://get.microsoft.com/installer/download/9PLM9XGG6VKS">get.microsoft.com/installer/download/9PLM9XGG6VKS</a>, or install from PowerShell:</p>
   <pre><code>winget install --id 9PLM9XGG6VKS -s msstore</code></pre>
   <p>The package is Store-signed, so Store components may flash past while it installs. You don't need to browse the Store yourself, and you don't need a Microsoft account.</p>
   <p>If your laptop blocks Microsoft's distribution service entirely, there's a direct package — see <em>When something breaks</em> at the end. Unlike the rest of this stack, there's no second vendor to fall back on, so raise it early.</p></div>
@@ -556,9 +556,10 @@ Set-Content -Path $cfg -Value (@('forced_login_method = "api"') + $keep)</code><
   <div class="check-detail"><p>Beneath the message box is a permissions control. Set it to <strong>Ask for approval</strong>.</p>
   <p>Don't skip this one. That setting is what switches the Windows <strong>sandbox</strong> on — the boundaries limiting which files Codex can change and whether it can reach the network. Left alone, you get a capable assistant with none of the guardrails the rest of the week assumes.</p>
   <p>The first time it runs, the app builds that sandbox and asks for an administrator prompt. Approve it: that's the stronger <code>elevated</code> sandbox, and it's the one you want.</p>
-  <p>If your laptop refuses the elevation, or you see an error mentioning <code>1385</code>, Codex can run with weaker but workable boundaries. Add this to the same <code>config.toml</code>:</p>
-  <pre><code>[windows]
+  <p>If your laptop refuses the elevation, or you see an error mentioning <code>1385</code>, Codex can run with weaker but workable boundaries. Add this to the <strong>bottom</strong> of the same <code>config.toml</code>, in a text editor — it is file content rather than a command to paste into PowerShell:</p>
+  <pre><code class="language-toml">[windows]
 sandbox = "unelevated"</code></pre>
+  <p>That is a table header, so it has to be the last thing in the file — everything below it belongs to the table, which is the trap step 34 describes. If you later re-run that step's four-line command, it rewrites the top of the file and leaves this table where it is.</p>
   <p>Log which of the two you ended up on. Knowing your own boundaries matters during the week, and it comes up directly on Tuesday.</p></div>
 </li>
 
@@ -621,11 +622,13 @@ sandbox = "unelevated"</code></pre>
     <span class="check-num">41</span>
     <span class="check-title">Install OpenCode</span>
   </label>
-  <div class="check-detail"><p>Run <strong>only</strong> the line for the channel your pin names, substituting the pinned version:</p>
+  <div class="check-detail"><p>If there is a pin, run <strong>only</strong> the line for the channel it names, substituting the version:</p>
   <pre><code># channel: winget
 winget install --id SST.opencode --exact --version &lt;pinned version&gt; --accept-package-agreements --accept-source-agreements</code></pre>
   <pre><code># channel: npm  — needs Node from section 4
 npm install -g opencode-ai@&lt;pinned version&gt;</code></pre>
+  <p>If there's no pin, this is the whole command — the winget line without the version flag:</p>
+  <pre><code>winget install --id SST.opencode --exact --accept-package-agreements --accept-source-agreements</code></pre>
   <p><strong>Don't use the <code>curl</code> install command from OpenCode's website.</strong> That script is written for Mac and Linux shells and can't run on plain Windows PowerShell. There's no PowerShell version of it published, so the equivalent address just returns an error page.</p></div>
 </li>
 
@@ -636,7 +639,7 @@ npm install -g opencode-ai@&lt;pinned version&gt;</code></pre>
     <span class="check-title">New terminal, then verify OpenCode</span>
   </label>
   <div class="check-detail"><pre><code>opencode --version</code></pre>
-  <p>This must print the pinned version exactly. If it prints something newer, an older install is still on PATH or you used the wrong channel — record both numbers and raise it, rather than upgrading to whatever is current.</p>
+  <p>If you installed against a pin, this should print that version exactly. If it prints anything else — higher or lower — an older install is probably still on PATH, or the other channel got used. Record both numbers in your log and mention it, rather than quietly upgrading to whatever is current. With no pin, whatever it prints is your answer; just write it down.</p>
   <p>Record the channel and the version in your log. Monday's gate asks for both, because knowing exactly which build you're on is what makes Tuesday's comparison mean anything.</p></div>
 </li>
 
@@ -810,10 +813,11 @@ $env:GOOSE_MODEL = $env:HB_OPENAI_MODEL</code></pre>
     <span class="check-num">55</span>
     <span class="check-title">Install the goose command-line tool</span>
   </label>
-  <div class="check-detail"><pre><code>$env:CONFIGURE = "false"
-cd "$env:USERPROFILE\Downloads"
+  <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Downloads"
+$env:CONFIGURE = "false"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/goose/main/download_cli.ps1" -OutFile "download_cli.ps1"
 .\download_cli.ps1</code></pre>
+  <p>The <code>cd</code> matters only because the installer downloads into whatever folder you are standing in, and the last section left you in the smoke folder. Keep that one for evidence files.</p>
   <p>If PowerShell refuses to run the script, use this form instead:</p>
   <pre><code>powershell -ExecutionPolicy ByPass -File ".\download_cli.ps1"</code></pre>
   <p>And if execution policy is locked by your IT department so neither form works, goose publishes a Git Bash path — you installed Git Bash back in step 15. Open <strong>Git Bash</strong> from the Start menu and run:</p>
@@ -996,8 +1000,9 @@ Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\operator
     <span class="check-num">68</span>
     <span class="check-title">Run the course site locally</span>
   </label>
-  <div class="check-detail"><p>From the repository root:</p>
-  <pre><code>python -m http.server 8080</code></pre>
+  <div class="check-detail"><p>This one keeps running until you stop it, and it has to be started from the repository root:</p>
+  <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
+python -m http.server 8080</code></pre>
   <p>Open <a href="http://localhost:8080/site/" target="_blank" rel="noopener">http://localhost:8080/site/</a>. Stop it with <kbd>Ctrl</kbd>+<kbd>C</kbd> when you're done.</p>
   <p>Everything for the week lives here, and it works without a network — which matters more than it sounds like it should.</p></div>
 </li>
@@ -1026,7 +1031,7 @@ auth.json</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cc-optional" data-check-id="cc-optional" />
-    <span class="check-num">70</span>
+    <span class="check-num">S1</span>
     <span class="check-title">Decide whether to install it</span>
   </label>
   <div class="check-detail"><p><strong>Optional.</strong> Skipping it doesn't affect your gate — OpenCode is the required second engine, and Tuesday's comparison runs on Codex and OpenCode.</p>
@@ -1037,7 +1042,7 @@ auth.json</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cc-install" data-check-id="cc-install" />
-    <span class="check-num">71</span>
+    <span class="check-num">S2</span>
     <span class="check-title">Install Claude Code and prove it writes</span>
   </label>
   <div class="check-detail"><pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
@@ -1061,7 +1066,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-lm-decide" data-check-id="lm-decide" />
-    <span class="check-num">71a</span>
+    <span class="check-num">S3</span>
     <span class="check-title">Decide whether to prepare a local model</span>
   </label>
   <div class="check-detail"><p><strong>Skip freely.</strong> This is not required for Monday's gate, the install clinic, or passing the course. It only saves you time if you want Thursday's <em>endpoint wall</em> stretch, where you point a harness at a model running on your own machine instead of somebody's API.</p>
@@ -1071,18 +1076,21 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-lm-install" data-check-id="lm-install" />
-    <span class="check-num">71b</span>
+    <span class="check-num">S4</span>
     <span class="check-title">Install the runner</span>
   </label>
-  <div class="check-detail"><p>Install <a href="https://ollama.com" target="_blank" rel="noopener">Ollama for Windows</a>, or LM Studio if the pin names it. Then open a <strong>new</strong> PowerShell window:</p>
+  <div class="check-detail"><p>Ollama is the path here. LM Studio is only for a pin that names it.</p>
+  <pre><code>winget install -e --id Ollama.Ollama --accept-package-agreements --accept-source-agreements</code></pre>
+  <p>Without winget, download the Windows installer from <a href="https://ollama.com" target="_blank" rel="noopener">ollama.com</a> and accept the defaults. Then open a <strong>new</strong> PowerShell window:</p>
   <pre><code>ollama --version</code></pre>
-  <p>A version number means you're done here. For LM Studio, confirm instead that its local server starts.</p></div>
+  <p>A version number means you're done here.</p>
+  <p>If the pin names <a href="https://lmstudio.ai" target="_blank" rel="noopener">LM Studio</a> instead, install it from that page. It has no version command to run — start its local server instead (the <strong>Developer</strong> tab, or <code>lms server start</code>) and confirm it reports listening, usually on <code>http://localhost:1234</code>.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-lm-pull" data-check-id="lm-pull" />
-    <span class="check-num">71c</span>
+    <span class="check-num">S5</span>
     <span class="check-title">Pull the pinned tag and smoke it</span>
   </label>
   <div class="check-detail"><p>Once you have a tag, set it once so Thursday's commands can read it, then pull:</p>
@@ -1091,6 +1099,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 ollama pull $env:HB_LOCAL_MODEL</code></pre>
   <p>Then prove it answers:</p>
   <pre><code>ollama run $env:HB_LOCAL_MODEL "Reply with exactly: local-brain-ok"</code></pre>
+  <p>On LM Studio, run the first two lines above to set the variable, then do the rest in its own window: download <strong>only</strong> the pinned tag, load it so the running server isn't empty, and send <code>Reply with exactly: local-brain-ok</code> in the chat pane. You want the same answer back either way.</p>
   <p>Write your free RAM and whether the smoke worked into your setup log. If the pull fails or the machine starts thrashing, stop and log it YELLOW — that is a real result, and cloud goose remains Thursday's floor either way.</p></div>
 </li>
 </ol></section>
@@ -1104,17 +1113,17 @@ ollama pull $env:HB_LOCAL_MODEL</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-g-four" data-check-id="g-four" />
-    <span class="check-num">72</span>
+    <span class="check-num">70</span>
     <span class="check-title">Confirm all four required files exist together</span>
   </label>
-  <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"</code></pre>
+  <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"</code></pre>
   <p>You want <code>from-codex.txt</code>, <code>from-opencode.txt</code>, <code>from-pi.txt</code>, and <code>from-goose.txt</code> in one listing. Open the folder in Explorer and look at it too — that is what Monday clinic will ask for. You already proved each file when you installed that tool; this is only the roll-up.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-g-log" data-check-id="g-log" />
-    <span class="check-num">73</span>
+    <span class="check-num">71</span>
     <span class="check-title">Close the setup log honestly</span>
   </label>
   <div class="check-detail"><p>At least one real failure and fix. OpenCode version. Codex app sandbox mode. Any step still yellow, with what you will try in clinic. There is no separate health-check page to run — if a tool is wrong, re-run that section’s verify.</p></div>
@@ -1123,7 +1132,7 @@ ollama pull $env:HB_LOCAL_MODEL</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-g-pack" data-check-id="g-pack" />
-    <span class="check-num">74</span>
+    <span class="check-num">72</span>
     <span class="check-title">Pack for Monday clinic</span>
   </label>
   <div class="check-detail"><p>Bring the laptop, the four smoke files, and the setup log. Monday AM is an install clinic (~2 hours expected, no hard wall) then First Light. Clinic is for finishing gaps, not for starting from zero if pre-work was skipped.</p>
@@ -1140,7 +1149,7 @@ ollama pull $env:HB_LOCAL_MODEL</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-notfound" data-check-id="r-notfound" />
-    <span class="check-num">75</span>
+    <span class="check-num">73</span>
     <span class="check-title">"is not recognized" after a successful install</span>
   </label>
   <div class="check-detail"><p>Close every terminal and open a new one. That's the answer roughly nine times in ten, and it applies to every tool here.</p>
@@ -1155,7 +1164,7 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-window" data-check-id="r-window" />
-    <span class="check-num">76</span>
+    <span class="check-num">74</span>
     <span class="check-title">A command that should work doesn't — check which window you're in</span>
   </label>
   <div class="check-detail"><p>Before assuming an install is broken, confirm the terminal:</p>
@@ -1167,7 +1176,7 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-scripts" data-check-id="r-scripts" />
-    <span class="check-num">77</span>
+    <span class="check-num">75</span>
     <span class="check-title">"running scripts is disabled on this system"</span>
   </label>
   <div class="check-detail"><p>That's the execution policy from step 11. Re-run it, then check <code>Get-ExecutionPolicy -List</code>.</p>
@@ -1177,7 +1186,7 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-auth" data-check-id="r-auth" />
-    <span class="check-num">78</span>
+    <span class="check-num">76</span>
     <span class="check-title">A tool won't authenticate</span>
   </label>
   <div class="check-detail"><p>Work through these in order. Is the key set in <em>this</em> window (step 28)? Does it start with the right prefix for that provider? Is it the right key for that tool — <code>XAI_API_KEY</code> for OpenCode, <code>OPENAI_API_KEY</code> for the rest?</p>
@@ -1189,7 +1198,7 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-store" data-check-id="r-store" />
-    <span class="check-num">79</span>
+    <span class="check-num">77</span>
     <span class="check-title">The Codex app won't install — the Store is blocked</span>
   </label>
   <div class="check-detail"><p>Some managed laptops block the Microsoft Store and the <code>msstore</code> winget source outright. The ChatGPT desktop app ships only as a Store-signed package, so unlike everything else in this stack there's no second vendor to fall back on.</p>
@@ -1201,7 +1210,7 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-noclaim" data-check-id="r-noclaim" />
-    <span class="check-num">80</span>
+    <span class="check-num">78</span>
     <span class="check-title">The tool says it wrote a file that isn't there</span>
   </label>
   <div class="check-detail"><p>Believe the folder, not the chat. Check you're where you think you are with <code>Get-Location</code>, and list it with <code>Get-ChildItem</code>.</p>
@@ -1211,7 +1220,7 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-r-stuck" data-check-id="r-stuck" />
-    <span class="check-num">81</span>
+    <span class="check-num">79</span>
     <span class="check-title">You've been stuck on one step for 30 minutes</span>
   </label>
   <div class="check-detail"><p>Stop and post in the pre-work channel with the step number, the exact error text, and what you've already tried. Move on to the next section while you wait — most of these are independent, so one blocked tool doesn't block the rest.</p>

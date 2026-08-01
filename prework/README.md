@@ -69,7 +69,7 @@ During the week, **P3 Twin-engine** runs the same frozen brief on:
 1. **Codex** on your OpenAI key
 2. **OpenCode** on your xAI key (Grok)
 
-That is the required comparator pair. Claude Code is welcome as an optional extra mind. It substitutes for OpenCode only where a documented install failure makes that the sensible call — raise it rather than deciding quietly.
+That is the required comparator pair. Claude Code is welcome as an optional extra mind. It is not a stand-in for OpenCode — if an install failure looks like it might have to be, raise it before Monday so the swap is a decision someone made rather than one that happened.
 
 The pair only tells you something if the two engines are genuinely separate, and both of them load context you never typed. OpenCode reads `~/.claude/CLAUDE.md` and `.claude/skills` when it finds them, which is why step 8 sets `OPENCODE_DISABLE_CLAUDE_CODE=1`. The Codex app loads `AGENTS.md`, skills, and memories from wherever you run it. Neither announces what it picked up. You will handle the Codex side during P3 itself; the install-time half is step 8.
 
