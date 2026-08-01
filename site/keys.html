@@ -41,7 +41,7 @@
     <p>That distinction matters at the keyboard, because several tools you're about to install offer both doors on the same screen. When a tool asks how you want to authenticate, you always choose the API key path — never "Sign in with ChatGPT," "Sign in with Claude," or a browser login.</p>
 
     <div class="callout"><strong>A key is a credential, not a setting</strong>
-    Anyone holding your key can spend against it. Treat it the way you would treat a password: never paste one into a chat window, a shared document, a screenshot, a support ticket, or a git commit. If a key does end up somewhere it shouldn't, revoking it takes about thirty seconds — the steps are at the bottom of this page, and using them is routine rather than embarrassing.</div>
+    Anyone holding your key can spend against it. Treat it the way you would treat a password: never paste one into a chat window, a shared document, a screenshot, a support ticket, or a project file. If a key does end up somewhere it shouldn't, revoking it takes about thirty seconds — the steps are at the bottom of this page, and using them is routine rather than embarrassing.</div>
 
     <h2>The three keys and what each one drives</h2>
 
@@ -132,22 +132,15 @@ $key = $null</code></pre>
 
     <p>The habits that keep you well inside the cap are the same ones that make you a better operator, which is not a coincidence. Bound the work in your Direction Brief so the machine isn't looping on an unclear goal. Stop a run that has plainly lost the chat rather than watching it spend. Point at the folder that matters instead of the whole disk.</p>
 
-    <h2>Keeping keys out of your repository</h2>
+    <h2>Keeping keys out of the course files</h2>
 
-    <p>The single most common way keys leak is a commit. Before your first commit in any practice folder this week, make sure a <code>.gitignore</code> file sits in the project root containing at least:</p>
+    <p>Never paste a key value into the course repository, an operator file, a module exercise, or a chat transcript you plan to share. Use the Windows environment variables and each tool's sign-in flow instead. Those keep the credential separate from the work the AI reads and edits.</p>
 
-<pre><code>.env
-.env.*
-*.key
-auth.json</code></pre>
-
-    <p>Then run <code>git status</code> and confirm none of those files appear in the list. If one does, it is about to be committed.</p>
-
-    <p>Some of your tools do write keys to files on your own disk — Codex keeps one in <code>%USERPROFILE%\.codex\auth.json</code>, Pi in <code>%USERPROFILE%\.pi\agent\auth.json</code>, OpenCode in <code>%USERPROFILE%\.local\share\opencode\auth.json</code>. Those live in your user profile rather than in any project folder, so they don't get committed by accident. They're also why, on a shared or loaner laptop, deleting those folders at the end of the week is worth doing.</p>
+    <p>Some of your tools do write keys to files on your own disk — Codex keeps one in <code>%USERPROFILE%\.codex\auth.json</code>, Pi in <code>%USERPROFILE%\.pi\agent\auth.json</code>, OpenCode in <code>%USERPROFILE%\.local\share\opencode\auth.json</code>. Those live in your user profile rather than in any project folder, so the course files do not contain the credentials. They're also why, on a shared or loaner laptop, deleting those folders at the end of the week is worth doing.</p>
 
     <h2>Revoking a key</h2>
 
-    <p>If a key is exposed — pasted into the wrong window, committed, shared on a screen, or you simply aren't sure — report it straight away so it can be revoked. A revoked key stops working immediately and everywhere, and a replacement can be issued in its place. Say which key and roughly when — revoking and reissuing happens at the provider console, which is not somewhere you have access, so this is a message to send rather than a thing to attempt yourself.</p>
+    <p>If a key is exposed — pasted into the wrong window, saved into a project file, shared on a screen, or you simply aren't sure — report it straight away so it can be revoked. A revoked key stops working immediately and everywhere, and a replacement can be issued in its place. Say which key and roughly when — revoking and reissuing happens at the provider console, which is not somewhere you have access, so this is a message to send rather than a thing to attempt yourself.</p>
 
     <p>Once you have the replacement, set it exactly as you did the first time, then open a new PowerShell window so your tools pick it up. The Codex app needs signing in again through <em>Sign in another way</em>, since it stored the old key rather than reading the variable each time.</p>
 

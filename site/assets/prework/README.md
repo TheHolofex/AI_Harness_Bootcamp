@@ -21,7 +21,7 @@ Crisp, script-free SVG diagrams for the AI Harness Bootcamp install pages. All d
 | `install-10-goose.svg` | Install pre-work: 10 · goose — recipe, tools, mode, schedule |
 | `install-11-obsidian.svg` | Install pre-work: 11 · Obsidian |
 | `install-12-n8n.svg` | Install pre-work: 12 · n8n |
-| `install-13-repo.svg` | Install pre-work: 13 · Open and check the course files |
+| `install-13-repo.svg` | Install pre-work: 13 · Find the operator and module exercise files |
 | `install-14-claude-optional.svg` | Install pre-work: 14 · Claude Code — optional third engine |
 | `install-when-something-breaks.svg` | Install pre-work: When something breaks |
 

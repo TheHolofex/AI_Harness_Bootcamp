@@ -36,7 +36,7 @@
   <a href="#phase-basics"><span class="phase-number">1</span><strong>Machine</strong><span data-phase-stat="basics">0 / 21</span></a>
   <a href="#phase-keys"><span class="phase-number">2</span><strong>Keys</strong><span data-phase-stat="keys">0 / 6</span></a>
   <a href="#phase-tools"><span class="phase-number">3</span><strong>Harnesses + tools</strong><span data-phase-stat="tools">0 / 31</span></a>
-  <a href="#phase-files"><span class="phase-number">4</span><strong>Course files</strong><span data-phase-stat="files">0 / 3</span></a>
+  <a href="#phase-files"><span class="phase-number">4</span><strong>Course files</strong><span data-phase-stat="files">0 / 1</span></a>
 </nav>
 
 <div class="callout"><strong>Everything runs on API keys</strong>
@@ -319,7 +319,7 @@ cd AI_Harness_Bootcamp</code></pre>
     <span class="check-num">19</span>
     <span class="check-title">Install Python</span>
   </label>
-  <div class="check-detail"><p>You'll use Python mainly to serve the course site locally, and agents reach for it when a task suits a quick script.</p>
+  <div class="check-detail"><p>Several module exercises use Python scripts, and agents reach for it when a task suits a quick script.</p>
   <p>Open the Python 3.14 64-bit installer you downloaded in section 2. On its first screen, select <strong>Add python.exe to PATH</strong>, then choose <strong>Install Now</strong>.</p></div>
 </li>
 
@@ -962,57 +962,39 @@ Get-Content .\from-goose.txt</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section" id="phase-files"><h2>Phase 4 · Open the course files</h2>
+<section class="checklist-section" id="phase-files"><h2>Phase 4 · Find the operator and module exercise files</h2>
 <figure class="section-diagram">
   <img src="../assets/prework/install-13-repo.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
-<h3>13 · Open and check the course files</h3>
+<h3>13 · Find the files you will use in class</h3>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-operator" data-check-id="rp-operator" />
     <span class="check-num">67</span>
-    <span class="check-title">Find the operator files in the cloned course</span>
+    <span class="check-title">Find the operator and module exercise files</span>
   </label>
-  <div class="check-detail"><p>The <code>operator/</code> folder holds the Direction Brief and Operator Log you fill in before and after every lesson, plus the lesson outcomes, independent-review prompt, measurement spine, and transfer file.</p>
-  <p>List that folder now:</p>
-  <pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\operator"</code></pre>
-  <p>You should see the template files listed. The cloned repository becomes your Codex project for the course, so these files are already where the work will happen. Do not copy them into the smoke-test folder.</p></div>
-</li>
+  <div class="check-detail"><p>In Codex, choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>. This is the course repository you cloned earlier.</p>
+  <p>Start a new task and paste:</p>
+  <pre><code>Use Git to inspect this course repository.
+Do not change any files.
 
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-rp-site" data-check-id="rp-site" />
-    <span class="check-num">68</span>
-    <span class="check-title">Run the course site locally</span>
-  </label>
-  <div class="check-detail"><p>This one keeps running until you stop it, and it has to be started from the repository root:</p>
-  <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
-python -m http.server 8080</code></pre>
-  <p>Open <a href="http://localhost:8080/site/" target="_blank" rel="noopener">http://localhost:8080/site/</a>. Stop it with <kbd>Ctrl</kbd>+<kbd>C</kbd> when you're done.</p>
-  <p>Everything for the week lives here, and it works without a network — which matters more than it sounds like it should.</p></div>
-</li>
+Find and report:
+- the operator templates in operator/
+- the module files in mission_flesh/
+- the supporting exercise files in instruments/
 
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-rp-gitignore" data-check-id="rp-gitignore" />
-    <span class="check-num">69</span>
-    <span class="check-title">Protect your keys before your first commit</span>
-  </label>
-  <div class="check-detail"><p>In any folder where you'll commit work this week, make sure a <code>.gitignore</code> file exists containing at least:</p>
-  <pre><code>.env
-.env.*
-*.key
-auth.json</code></pre>
-  <p>Then run <code>git status</code> and confirm none of those appear in the list. A committed key is the most common way one leaks, and it's the easiest to prevent.</p></div>
+Show the read-only Git command you used.
+Tell me where B1 and each P1–P8 exercise starts.</code></pre>
+  <p>You should get a short map of the operator templates and the exercise folders for the week. P2 starts in <code>instruments/p2_test_suite</code>; several other modules use files from both locations. You have just used AI to inspect a Git repository without editing it.</p></div>
 </li>
 
 </ol></section>
 
 <p class="btn-row"><a class="btn" href="../blocks/b1.html">Continue to B1 · First Light</a> <a class="btn btn-secondary" href="../keys.html">Keys reference</a> <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a></p>
 <div class="callout"><strong>What you actually built</strong>
-Not a tidy install — a course setup you can rebuild. You know where each tool keeps its credentials, what its boundaries are, and how it fails. The finish line is observable: the required tools work, the four proof files exist, and the course opens.</div>
+Not a tidy install — a course setup you can rebuild. You know where each tool keeps its credentials, what its boundaries are, and how it fails. The finish line is observable: the required tools work, the four proof files exist, and you can find the operator and module exercise files.</div>
 
 <div data-plate-for="B0"></div>
 

@@ -421,7 +421,7 @@ const metaphors = {
     <circle cx="912" cy="116" r="3" fill="${C.mark}"/>
   </g>
 `,
-  repo: `  <g aria-label="Course repository containing the operator files">
+  repo: `  <g aria-label="Course repository containing operator and module exercise files">
     <rect x="548" y="82" width="194" height="68" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
     <path d="M570 100v32M570 108h27M597 108v24M570 124h14" class="line"/>
     <circle cx="570" cy="98" r="5" fill="${C.mark}"/>
@@ -431,13 +431,13 @@ const metaphors = {
     <text x="665" y="127" class="caption" text-anchor="middle">REPOSITORY</text>
     <path d="M742 116H816" class="redline" marker-end="url(#arrow-red)"/>
     <path d="M834 91H918L932 105H1065V149H834Z" fill="${C.warm}" stroke="${C.strong}"/>
-    <rect x="855" y="111" width="58" height="25" fill="${C.paper}" stroke="${C.rule}"/>
-    <rect x="923" y="111" width="58" height="25" fill="${C.paper}" stroke="${C.rule}"/>
-    <rect x="991" y="111" width="55" height="25" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="884" y="127" class="tiny muted" text-anchor="middle">BRIEFS</text>
-    <text x="952" y="127" class="tiny muted" text-anchor="middle">LOGS</text>
-    <text x="1018.5" y="127" class="tiny muted" text-anchor="middle">SITE</text>
-    <text x="949.5" y="103" class="micro muted" text-anchor="middle">OPERATOR FILES</text>
+    <rect x="849" y="111" width="62" height="25" fill="${C.paper}" stroke="${C.rule}"/>
+    <rect x="919" y="111" width="62" height="25" fill="${C.paper}" stroke="${C.rule}"/>
+    <rect x="989" y="111" width="62" height="25" fill="${C.paper}" stroke="${C.rule}"/>
+    <text x="880" y="127" class="tiny muted" text-anchor="middle">OPERATOR</text>
+    <text x="950" y="127" class="tiny muted" text-anchor="middle">MISSIONS</text>
+    <text x="1020" y="127" class="tiny muted" text-anchor="middle">INSTR.</text>
+    <text x="950" y="103" class="micro muted" text-anchor="middle">FILES FOR THE WEEK</text>
   </g>
 `,
   claude: `  <g aria-label="Optional Claude Code rail">
@@ -709,11 +709,11 @@ file: "install-10-goose.svg",
   {
     file: "install-13-repo.svg",
     current: 14,
-    stage: "Open the course files",
-    purpose: "Find the operator files, serve the site, and keep keys out of Git.",
-    steps: ["FIND OPERATOR FILES", "SERVE SITE", "CHECK GITIGNORE"],
+    stage: "Find the module files",
+    purpose: "Ask Codex to use Git to locate the operator and exercise files.",
+    steps: ["OPEN REPO", "ASK CODEX + GIT", "CHECK THE PATHS"],
     metaphor: metaphors.repo,
-    svgTitle: "13 · Open and check the course files",
+    svgTitle: "13 · Find the operator and module exercise files",
   },
   {
     file: "install-14-claude-optional.svg",
@@ -763,8 +763,8 @@ function installOverview() {
     <text x="568" y="197" class="tiny muted">CODEX · OPENCODE · PI · GOOSE</text>
     <path d="M810 186H828" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="838" y="166" width="258" height="40" rx="2" fill="${C.ink}"/>
-    <text x="856" y="182" class="micro white">04 · COURSE FILES</text>
-    <text x="856" y="197" class="tiny white">OPERATOR FILES · LOCAL SITE · SAFE KEYS</text>
+    <text x="856" y="182" class="micro white">04 · FIND THE FILES</text>
+    <text x="856" y="197" class="tiny white">OPERATOR · MODULE EXERCISES</text>
   </g>
   <rect x="0" y="220" width="1120" height="60" fill="${C.warm}"/>
   <rect x="24" y="232" width="515" height="36" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
@@ -774,7 +774,7 @@ function installOverview() {
   <rect x="557" y="232" width="539" height="36" rx="2" fill="${C.paper}" stroke="${C.mark}" stroke-width="1.5"/>
   <circle cx="581" cy="250" r="7" fill="${C.mark}"/>
   <path d="M577 250l3 3 6-7" fill="none" stroke="${C.paper}" stroke-width="1.4"/>
-  <text x="603" y="247" class="micro red">VERIFIED = FOUR FILES + COURSE OPENS</text>
+  <text x="603" y="247" class="micro red">VERIFIED = FOUR FILES + OPERATOR + EXERCISES FOUND</text>
   <text x="603" y="260" class="caption">CODEX · OPENCODE · PI · GOOSE</text>
 </svg>
 `;

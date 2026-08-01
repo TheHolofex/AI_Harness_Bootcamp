@@ -50,9 +50,9 @@
       ]
     },
     {
-      id: "files", title: "Open the course files", time: "15–25 min", anchor: "phase-files",
-      summary: "Find the operator files, open the local site, and confirm secrets stay out of Git.",
-      ids: ["rp-operator", "rp-site", "rp-gitignore"]
+      id: "files", title: "Find the operator and module exercise files", time: "5–10 min", anchor: "phase-files",
+      summary: "Find the operator templates and the module exercise files you will use during the week.",
+      ids: ["rp-operator"]
     }
   ];
 
