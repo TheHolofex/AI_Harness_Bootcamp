@@ -92,7 +92,7 @@
 
       <h3>Measure before you mod</h3>
       <p>A <strong>baseline</strong> is the score before you change anything. It sounds like bookkeeping; it is the whole game. A delta without a baseline is a story, not a measurement — "it's much better now" carries no information unless you can say better <em>than what</em>, on <em>which cases</em>, by <em>how much</em>.</p>
-      <p>The dyno makes the baseline honest by holding everything still. The five cases are fixed and you don't edit them, even when an edit would make your score prettier. Each case file opens with a <em>pass-if</em> line — an observable condition like "names the failing job, no invented file paths" — and that line is the grader, not your general impression of the answer. Baseline and after run on the same model tier, both in fresh chats. When every variable but one is pinned, the one that moved is the one you changed.</p>
+      <p>The dyno makes the baseline honest by holding everything still. The five cases are fixed and you don't edit them, even when an edit would make your score prettier. Each case has a <em>pass-if</em> line — an observable condition like "names the failing job, no invented file paths" — and that line is the grader, not your general impression of the answer. The pass-if lines live in your track's <code>GRADER.md</code>, not in the case files, so the harness under test never reads the rubric it is being scored against. Baseline and after run on the same model tier, both in fresh chats. When every variable but one is pinned, the one that moved is the one you changed.</p>
       <p>Going wrong looks like this: skipping the baseline because stock is "obviously bad," grading generously because you're rooting for your own harness, or letting the standard drift between the first run and the second. Each one quietly converts your instrument into a mirror — it reads back whatever you want it to say. When you're unsure whether a response passed, score FAIL and write why; a strict FAIL is worth more than a hopeful PASS, because fails are where your changes come from.</p>
       <p>At work, this is the ten-minute habit that converts tool arguments into arithmetic. Before you tune any assistant — or believe any vendor — write five fixed cases from your own desk and score what you have today. Every claim of improvement after that is a number, not a feeling.</p>
 
@@ -186,10 +186,12 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
           <p class="do-label">Now in <strong>File Explorer</strong>:</p>
           <ul class="do-clicks">
             <li>Open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_dyno</code></li>
-            <li>Open your track folder — <code>engineering</code> or <code>mission_ops</code>, the one you chose for the week — then its <code>cases</code> folder</li>
-            <li>Open each of the five case files once and read its <em>pass-if</em> line — that line is the grader, not your general impression of the answer</li>
+            <li>Open your track folder — <code>engineering</code> or <code>mission_ops</code>, the one you chose for the week</li>
+            <li>Open <code>GRADER.md</code> in that folder and read all five pass conditions once — those lines are the grader, not your general impression of the answer</li>
+            <li>Then open the <code>cases</code> folder and skim the five case files — input and task only</li>
           </ul>
         </div>
+        <p><strong>The pass conditions live apart from the cases on purpose.</strong> A model told to open a case file would read its own rubric in the same breath as the question — and a model shown "name the failing job, the root error line, and one next action" will name those three things. The baseline would measure the rubric, not your stock harness. You hold the grader; the machine under test never sees it. That rule comes back on Thursday, and it is worth keeping long after this week.</p>
         <p>The five cases, in run order — <strong>engineering</strong>: <code>D01_ci_failure.md</code> · <code>D02_ticket_to_ac.md</code> · <code>D03_code_review_security.md</code> · <code>D04_release_status_brief.md</code> · <code>D05_out_of_bounds.md</code>. <strong>mission_ops</strong>: <code>D01_sitrep_triage.md</code> · <code>D02_watch_criteria.md</code> · <code>D03_field_contradiction.md</code> · <code>D04_mission_daily_brief.md</code> · <code>D05_hostile_request.md</code>. The shared <a href="../../instruments/p2_dyno/SCORE_SHEET.md">SCORE_SHEET.md</a> sits at the top of <code>p2_dyno</code>, next to the track folders.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
@@ -198,7 +200,7 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
               <span class="check-num">2</span>
               <span class="check-title">Open the dyno kit</span>
             </label>
-            <div class="check-detail">You should have seen five case files, <code>D01</code> through <code>D05</code>, each opening with a <em>pass-if</em> line, plus <code>SCORE_SHEET.md</code> above the track folders. If you skimmed past any pass-if line, go back — you can't score strictly against a line you haven't read. If the folder isn't on your machine, pull the course repo or ask; don't reconstruct cases from memory.</div>
+            <div class="check-detail">You should have seen <code>GRADER.md</code> with five pass-if lines, five case files <code>D01</code> through <code>D05</code> holding input and task, plus <code>SCORE_SHEET.md</code> above the track folders. If you skimmed past any pass-if line, go back — you can't score strictly against a line you haven't read. If the folder isn't on your machine, pull the course repo or ask; don't reconstruct cases from memory.</div>
           </li>
         </ol>
         <div class="do-step">
@@ -212,7 +214,7 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
           <pre><code>Open the file instruments/p2_dyno/[TRACK]/cases/[CASE FILE] and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else.</code></pre>
           <p>Replace <code>[TRACK]</code> with your track folder — <code>engineering</code> or <code>mission_ops</code> — and <code>[CASE FILE]</code> with the case you are running, working D01 → D05 in order. This same dispatch comes back in every later stage.</p>
         </div>
-        <p>You should get one answer per case. Read each against its pass-if line only — not against how helpful the answer feels. If the assistant says it can't find the file, the project is opened at the wrong folder: reopen it at the course pack root and resend the same dispatch. Don't correct or coach between cases; the baseline measures stock, and the moment you explain what you wanted, the reading is contaminated.</p>
+        <p>You should get one answer per case. Read each against its <code>GRADER.md</code> pass-if line only — not against how helpful the answer feels. If the assistant says it can't find the file, the project is opened at the wrong folder: reopen it at the course pack root and resend the same dispatch. Don't correct or coach between cases; the baseline measures stock, and the moment you explain what you wanted, the reading is contaminated.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into a <strong>PowerShell window</strong> — it opens the score sheet:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_dyno\SCORE_SHEET.md"</code></pre>
@@ -221,7 +223,7 @@ After the mission, we will write the Operator Log in this same chat.</code></pre
           <p class="do-label">Now in <strong>Notepad</strong> (SCORE_SHEET.md):</p>
           <ul class="do-clicks">
             <li>Fill the header lines — track, name, date, and what "stock" included (note any <code>AGENTS.md</code> that already sat at the project root)</li>
-            <li>Write PASS or FAIL in the Baseline column for each of D01–D05, judged only against the pass-if line</li>
+            <li>Write PASS or FAIL in the Baseline column for each of D01–D05, judged only against the <code>GRADER.md</code> pass-if line</li>
             <li>Add a one-line note on every FAIL — those notes are the work order for the next stage</li>
             <li>Total the column out of 5 and save the file</li>
           </ul>
@@ -502,7 +504,7 @@ a concrete entry I accepted.</code></pre>
         <table>
           <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
           <tbody>
-            <tr><td>Baseline is 5/5</td><td>Soft grading — you read the answers as their author's friend</td><td>Re-read each pass-if line; rescore strictly; when unsure, FAIL with a note</td></tr>
+            <tr><td>Baseline is 5/5</td><td>Soft grading — you read the answers as their author's friend</td><td>Re-read each <code>GRADER.md</code> pass-if line; rescore strictly; when unsure, FAIL with a note</td></tr>
             <tr><td>After-score dropped</td><td>Instruction bloat — <code>AGENTS.md</code> became an essay the model skims</td><td>Cut to the few rules that target real fails; rescore</td></tr>
             <tr><td>Standard vanishes in the new chat</td><td>The craft lived in scrollback, not on disk</td><td>Move it into <code>AGENTS.md</code> or a skill; re-run the case cold</td></tr>
             <tr><td>Skill never fires</td><td>Description is a title, not trigger conditions</td><td>Rewrite the description as "use when…" conditions; test on a realistic task without naming it</td></tr>

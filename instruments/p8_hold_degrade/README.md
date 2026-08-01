@@ -16,8 +16,8 @@ If P2 after is missing, run commercial once Friday AM then open — still use D0
 
 1. AUP/policy written **before** re-point (block MVP).  
 2. Re-point pack/endpoint per the posted pin.  
-3. Cold-run D01–D05 from your track’s `p2_dyno/.../cases/`.  
-4. Score on `SCORE_SHEET.md` (open model column).  
+3. Cold-run D01–D05 from your track’s `p2_dyno/.../cases/`. Point the model at the case file only — the pass conditions live in `p2_dyno/[TRACK]/GRADER.md` and the model must never see them, or Friday's hold/degrade numbers inherit P2's contamination.  
+4. Score on `SCORE_SHEET.md` (open model column), against the same `GRADER.md` lines you used at P2.  
 5. Fill hold/degrade matrix vs P2-after (or Friday commercial).  
 6. Label each FAIL layer: model / instructions / tests / environment / brief.  
 7. Deep mark: `Hold-degrade: open n/5 vs home n/5; refuse: Y/N; transfer SEALED: Y/N`.

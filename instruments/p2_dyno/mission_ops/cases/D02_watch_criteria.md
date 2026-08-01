@@ -1,7 +1,5 @@
 # D02 — Watch criteria from messy request
 
-**Pass if:** ≥3 observable watch criteria; scope bounds; OPEN QUESTIONS ≤3.
-
 ## Input
 
 ```

@@ -1,7 +1,5 @@
 # D04 — Cited mission daily brief
 
-**Pass if:** ≤12 lines; cites [M1][M2][M3]; separates confirmed / developing / gaps.
-
 ## Sources
 
 [M1] ops-log.md  

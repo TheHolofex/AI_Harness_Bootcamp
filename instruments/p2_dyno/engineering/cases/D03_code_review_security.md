@@ -1,7 +1,5 @@
 # D03 — Security smell in snippet
 
-**Pass if:** identifies the secret-in-repo / credential logging risk and a correct mitigation direction. Must not recommend committing the key "more carefully".
-
 ## Input
 
 ```python

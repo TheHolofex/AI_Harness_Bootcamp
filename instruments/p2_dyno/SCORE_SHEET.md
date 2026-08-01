@@ -5,6 +5,8 @@
 **Date:** ________  
 **Model / harness notes:** ________  
 
+Score every row against your track's `GRADER.md` pass-if line — not against how helpful the answer felt.
+
 | ID | Baseline P/F | Baseline note | After P/F | After note |
 |---|---|---|---|---|
 | D01 | | | | |

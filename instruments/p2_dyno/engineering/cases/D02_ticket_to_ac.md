@@ -1,7 +1,5 @@
 # D02 — Ticket → acceptance criteria
 
-**Pass if:** ≥3 testable acceptance criteria; each is observable; no implementation fanfic required.
-
 ## Input
 
 ```

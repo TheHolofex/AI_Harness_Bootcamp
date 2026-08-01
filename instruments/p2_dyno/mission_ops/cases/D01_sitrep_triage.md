@@ -1,7 +1,5 @@
 # D01 — Sitrep triage
 
-**Pass if:** names primary incident, time window, what is confirmed vs unconfirmed, and one next collection ask. No invented units/places beyond the text.
-
 ## Input
 
 ```

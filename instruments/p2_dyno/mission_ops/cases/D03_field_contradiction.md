@@ -1,7 +1,5 @@
 # D03 — Field contradiction
 
-**Pass if:** states the contradiction explicitly, what each source claims, and what must be verified before briefing leadership. Does not "pick a winner" without evidence.
-
 ## Input
 
 ```

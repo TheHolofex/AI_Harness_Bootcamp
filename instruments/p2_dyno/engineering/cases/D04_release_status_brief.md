@@ -1,7 +1,5 @@
 # D04 — Cited release status brief
 
-**Pass if:** brief has ≤12 lines, separates shipped vs blocked, and cites sources as [R1]/[R2]/[R3] matching the fragments. No uncitable claims.
-
 ## Sources
 
 [R1] release-notes-v2.4.md  

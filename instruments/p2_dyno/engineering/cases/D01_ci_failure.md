@@ -1,7 +1,5 @@
 # D01 — CI failure triage
 
-**Pass if:** response names the failing job, the root error line/theme, and one concrete next action. No invented file paths.
-
 ## Input
 
 ```
