@@ -11,7 +11,7 @@ Crisp, script-free SVG diagrams for the AI Harness Bootcamp install pages. All d
 | `install-00-baseline.svg` | Install pre-work: 0 · Baseline machine |
 | `install-01-terminal.svg` | Install pre-work: 1 · Terminal and PowerShell |
 | `install-02-installers.svg` | Install pre-work: 2 · Download the core installers |
-| `install-03-git.svg` | Install pre-work: 3 · Git for Windows |
+| `install-03-git.svg` | Install pre-work: 3 · Git and the course repo |
 | `install-04-runtime.svg` | Install pre-work: 4 · Node.js and Python |
 | `install-05-keys.svg` | Install pre-work: 5 · Your three API keys |
 | `install-06-smoke.svg` | Install pre-work: 6 · Your smoke folder |
@@ -21,7 +21,7 @@ Crisp, script-free SVG diagrams for the AI Harness Bootcamp install pages. All d
 | `install-10-goose.svg` | Install pre-work: 10 · goose — recipe, tools, mode, schedule |
 | `install-11-obsidian.svg` | Install pre-work: 11 · Obsidian |
 | `install-12-n8n.svg` | Install pre-work: 12 · n8n |
-| `install-13-repo.svg` | Install pre-work: 13 · Course repo and operator files |
+| `install-13-repo.svg` | Install pre-work: 13 · Open and check the course files |
 | `install-14-claude-optional.svg` | Install pre-work: 14 · Claude Code — optional third engine |
 | `install-when-something-breaks.svg` | Install pre-work: When something breaks |
 

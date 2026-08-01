@@ -26,7 +26,7 @@ const installStages = [
   "0 Base",
   "1 Term",
   "2 Installers",
-  "3 Git",
+  "3 Git + repo",
   "4 Runtime",
   "5 Keys",
   "6 Smoke",
@@ -36,7 +36,7 @@ const installStages = [
   "10 goose",
   "11 Obsidian",
   "12 n8n",
-  "13 Repo",
+  "13 Files",
   "14 Claude*",
 ];
 
@@ -619,11 +619,11 @@ const installSections = [
   {
     file: "install-03-git.svg",
     current: 4,
-    stage: "Install Git",
-    purpose: "Install Git for the course repo. Git Bash comes along; you stay in PowerShell.",
-    steps: ["INSTALL GIT", "NEW TERMINAL", "FIND GIT BASH"],
+    stage: "Install Git, then clone the course",
+    purpose: "Verify Git, then clone the course before installing Node and Python.",
+    steps: ["INSTALL GIT", "NEW TERMINAL", "VERIFY GIT", "CLONE COURSE"],
     metaphor: metaphors.git,
-    svgTitle: "3 · Git for Windows",
+    svgTitle: "3 · Git and the course repo",
   },
   {
     file: "install-04-runtime.svg",
@@ -709,11 +709,11 @@ file: "install-10-goose.svg",
   {
     file: "install-13-repo.svg",
     current: 14,
-    stage: "Get the course repo",
-    purpose: "Clone the course, find the operator files, and serve the site once.",
-    steps: ["CLONE REPO", "FIND OPERATOR FILES", "SERVE SITE"],
+    stage: "Open the course files",
+    purpose: "Find the operator files, serve the site, and keep keys out of Git.",
+    steps: ["FIND OPERATOR FILES", "SERVE SITE", "CHECK GITIGNORE"],
     metaphor: metaphors.repo,
-    svgTitle: "13 · Course repo and operator files",
+    svgTitle: "13 · Open and check the course files",
   },
   {
     file: "install-14-claude-optional.svg",
@@ -752,7 +752,7 @@ function installOverview() {
     <rect x="24" y="166" width="235" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
     <rect x="24" y="166" width="7" height="40" fill="${C.mark}"/>
     <text x="42" y="182" class="micro muted">01 · PREPARE THE MACHINE</text>
-    <text x="42" y="197" class="tiny muted">WINDOWS · TERMINAL · INSTALLERS</text>
+    <text x="42" y="197" class="tiny muted">WINDOWS · GIT + REPO · RUNTIMES</text>
     <path d="M259 186H277" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="287" y="166" width="235" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
     <text x="305" y="182" class="micro muted">02 · INSTALL THE KEYS</text>
@@ -764,7 +764,7 @@ function installOverview() {
     <path d="M810 186H828" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="838" y="166" width="258" height="40" rx="2" fill="${C.ink}"/>
     <text x="856" y="182" class="micro white">04 · COURSE FILES</text>
-    <text x="856" y="197" class="tiny white">REPO · OPERATOR FILES · LOCAL SITE</text>
+    <text x="856" y="197" class="tiny white">OPERATOR FILES · LOCAL SITE · SAFE KEYS</text>
   </g>
   <rect x="0" y="220" width="1120" height="60" fill="${C.warm}"/>
   <rect x="24" y="232" width="515" height="36" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
