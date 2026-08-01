@@ -49,6 +49,7 @@ Each block (B0–P8) has a full step-by-step checklist with checkboxes. Progress
 - Install + verify as you go: http://localhost:8080/site/checklists/prework-install.html
 - Hub: http://localhost:8080/site/prework.html
 - Monday clinic + First Light: http://localhost:8080/site/blocks/b0.html
+- Monday morning, students open this repo's root folder as their Codex app project for the week (cloned in `prework/INSTALL_GUIDE.md` section 13) — not the smoke folder
 - Optional rescue re-test only: `prework/HEALTH_CHECK.md`
 
 ## Staff (before pre-work window)

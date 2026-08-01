@@ -28,6 +28,8 @@ You can prove all of the following on **your** Windows 11 machine:
 
 There is **no separate health-check pass**. Monday AM is an **install clinic** (~2 hours expected, no hard wall) to finish gaps under staff eyes, then First Light. Clinic is finish-and-prove — not a substitute for skipping pre-work.
 
+Before Monday, also make sure the course repo is cloned and you know its path (`INSTALL_GUIDE.md` section 13 walks it — `Documents\HarnessBootcamp\AI_Harness_Bootcamp`). Monday opens that folder as your Codex app project; the smoke folder was install proof only.
+
 ## Required stack (vanilla Windows 11, 64-bit — no WSL)
 
 | # | Component | Notes |

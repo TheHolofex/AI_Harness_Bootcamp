@@ -639,6 +639,8 @@ Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.t
 - [ ] OpenCode version and Codex sandbox mode written in the log
 - [ ] You know which step, if any, is still yellow — and what you will try in clinic
 
+One more thing to carry: the course repo from section 13. Monday morning you open `%USERPROFILE%\Documents\HarnessBootcamp\AI_Harness_Bootcamp` as your Codex app project — the week's missions read from `operator/` and `mission_flesh/` inside it, and the smoke folder was install proof only. If the clone never happened, run section 13 before Monday, or make it your first fix in clinic.
+
 There is **no separate health-check checklist** to run. If something fails later, re-run that section’s verify. Optional full re-test sheet (rescue only): `HEALTH_CHECK.md`.
 
 ---
