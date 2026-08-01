@@ -23,7 +23,7 @@
   <main class="site-main">
     <p class="eyebrow">Tuesday PM · P3 · AI Harness Bootcamp</p>
     <h1>The twin-engine intel desk</h1>
-    <p class="lede">You'll run one frozen brief through two independent engines, put their outputs side by side, and rule on every disagreement yourself. Agreement is not truth — but disagreement shows you exactly where your judgment is needed.</p>
+    <p class="lede">You'll run one frozen brief through two different engines, put their outputs side by side, and rule on every disagreement yourself. The provider-and-model split adds one dimension of diversity; any stronger independence claim must name and show the path separation that earns it. Agreement is not truth — but disagreement shows you exactly where your judgment is needed.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Tuesday PM</span></div>
@@ -104,12 +104,12 @@
       <figure class="section-diagram">
         <img src="../assets/blocks/p3/p3-idea-hidden-cargo.svg" alt="Both engines carry context you never typed — the Codex app loads AGENTS.md, skills, and memories; OpenCode reads Claude's files — and a declare-or-clear gate sits before any delta counts as evidence" width="1120" height="220" loading="lazy" decoding="async" />
       </figure>
-      <p class="full-measure">A two-engine comparison is only evidence if both engines got the same job with nothing extra riding along. Neither engine helps you with this. The Codex app loads <code>AGENTS.md</code> from whatever folder you open as the project — including the one you hot-rodded in P2 — plus <code>%USERPROFILE%\.codex\AGENTS.md</code>, any skills it discovers, and memories if you enabled them. OpenCode, for its part, reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set — pre-work set it, and today is the day that setting earns its keep. Neither product announces any of this at run time. The cargo is invisible until you go looking.</p>
-      <p class="full-measure">Here is what going wrong looks like, because it's the most common way this desk fails: you run the brief inside your P2 project, the Codex output comes back noticeably sharper, and you conclude the Codex app is the stronger engine. It wasn't the engine — it was your own instruction file riding along on one side. One engine plus your notes is not two engines. And the error cuts both ways: <strong>an advantage you didn't declare looks exactly like a capability you don't have</strong>. Every conclusion you draw from a contaminated delta is a finding about your setup wearing a costume.</p>
-      <p class="full-measure">The discipline is <strong>declare or clear</strong>, and either is honest — silence is the only wrong answer. Clear means a fresh folder holding only the frozen corpus, the disable flag set (<code>OPENCODE_DISABLE_CLAUDE_CODE=1</code>), and <code>--pure</code> on the OpenCode run so installed plugins stay out of the path. Declare means writing the run identity down like a lab notebook entry: engine, model id, version, folder, and which instruction files, skills, and memories were live. The comparator's first table exists for exactly this, and it gets filled before any side-by-side row. At work this habit generalizes far past today's two products: any time you compare AI outputs — models, prompts, vendors, versions — the first question is what each side was carrying.</p>
+      <p class="full-measure">For this controlled comparison to support a claim about engine differences, both engines must receive the same frozen job and every material difference in their run paths must be declared. Neither engine helps you with this. The Codex app loads <code>AGENTS.md</code> from whatever folder you open as the project — including the one you hot-rodded in P2 — plus <code>%USERPROFILE%\.codex\AGENTS.md</code>, any skills it discovers, and memories if you enabled them. OpenCode, for its part, reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set — pre-work set it, and today is the day that setting earns its keep. Neither product announces any of this at run time. The cargo is invisible until you go looking.</p>
+      <p class="full-measure">Here is what going wrong looks like, because it's the most common way this desk fails: you run the brief inside your P2 project, the Codex output comes back noticeably sharper, and you conclude the Codex app is the stronger engine. That comparison is contaminated: the product and model family changed, but so did the instruction path, so the observed delta cannot be attributed to the engine split. The run is still evidence about the combined setups; it is not clean evidence that one engine is stronger. <strong>An advantage you didn't declare looks exactly like a capability you don't have.</strong></p>
+      <p class="full-measure">The discipline is <strong>declare or clear</strong>, and either is honest — silence is the only wrong answer. Clear means a fresh folder holding only the frozen corpus, the disable flag set (<code>OPENCODE_DISABLE_CLAUDE_CODE=1</code>), and installed plugins held out of the OpenCode run with <code>OPENCODE_PURE=1</code> alongside <code>--pure</code> — some builds silently ignore the flag on its own. Declare means writing the run identity down like a lab notebook entry: engine, model id, version, folder, and which instruction files, skills, and memories were live. The comparator's first table exists for exactly this, and it gets filled before any side-by-side row. At work this habit generalizes far past today's two products: any time you compare AI outputs — models, prompts, vendors, versions — the first question is what each side was carrying.</p>
 
       <h3>The frozen brief is the control</h3>
-      <p class="full-measure">You're about to attribute output differences to the engines. That attribution is only valid if everything else is identical — the brief byte for byte, the corpus files, the join rule. In experiment terms the brief is the <strong>control</strong>: the thing held fixed so the remaining variation means something. This is why BRIEF-v1 is frozen and why editing it mid-run is the one move that ruins the afternoon quietly. A clarification you give one engine and not the other converts your comparison into a story about your prompting.</p>
+      <p class="full-measure">You're about to attribute output differences to the engines. That attribution is defensible only if the brief, corpus files, join rule, and other outcome-relevant conditions outside the named provider-and-model split are held fixed. Any residual difference stays in the run identity as a competing explanation. In experiment terms the brief is the <strong>control</strong>: the thing held fixed so the remaining variation means something. This is why BRIEF-v1 is frozen and why editing it mid-run is the one move that ruins the afternoon quietly. A clarification you give one engine and not the other converts your comparison into a story about your prompting.</p>
       <p class="full-measure">Read the brief once as a piece of engineering and you'll see each rule closing a degree of freedom. WatchIDs must come from <code>watchlist.csv</code> — so the join is deterministic and no model gets to guess which entity a paragraph is about. Status must be one of four values — so synonyms can't blur into unfalsifiable prose. Every factual cell needs a quote of twenty words or fewer — so checking a claim takes seconds, not minutes. Contradictions are kept, not resolved — so the model can't silently pick a side of a dispute that's yours to rule on. Unlisted entities are fenced into their own section — so scope creep is visible instead of woven in. Remove any of these and the comparator fills with noise you can't adjudicate.</p>
       <p class="full-measure">An underspecified brief fails differently, and the failure is instructive: both engines drift, but in <em>different directions</em>, and the disagreement count explodes. When that happens the divergence is telling you about the brief, not the engines — which is why a flood of disagreements is a diagnostic, not a jackpot. If you find yourself wanting to tighten the wording, the honest path is a labeled variant: BRIEF-v2, run as a stretch experiment on both engines, with the disagreement-rate change recorded. That experiment — v1 versus v2, measured — is one of the sharpest things you can bring back to any prompt-writing argument at work.</p>
 
@@ -122,26 +122,56 @@
       <p class="full-measure">Adjudication done this way produces a specific artifact: a note a supervisor can act on cold, with every ruling walkable back to a file and a line. That's the difference between “the AI said” and intelligence work. On a real desk the rulings are what you're paid for — the engines are interchangeable; the verdict column is you.</p>
 
       <h3>Three instruments that look alike</h3>
-      <p class="full-measure">Once you've run a second engine, it's easy to blur it together with two neighbors that look similar and aren't. A <strong>second engine</strong> is a different product and model family given the same frozen job — it buys independence, and it's the only one of the three that can catch a shared-vendor blind spot. A <strong>subagent</strong> is a specialist the Codex app spawns under your commander chat — same product, same model family, so it buys division of labor and clean context, never independence. A <strong>second human</strong> brings actual judgment and accountability — the one thing neither machine instrument carries, which is why a human challenger stays on your transfer list even after this desk works.</p>
+      <p class="full-measure">Once you've run a second engine, it's easy to blur it together with two neighbors that look similar and aren't. A <strong>second engine</strong> is a different product and model family given the same frozen job. It adds provider-and-model diversity and can expose a failure the first engine does not share. It does not establish whole-path independence; that requires a named failure, evidence that the path capable of causing it is separated, and a record of what remains shared. A <strong>subagent</strong> is a specialist the Codex app spawns under your commander chat — same product and model family, so it buys division of labor and clean context, not a new provider-and-model path. Any narrower separation still has to be named and evidenced. A <strong>second human</strong> brings actual judgment and accountability — the one thing neither machine instrument carries, which is why a human challenger stays on your transfer list even after this desk works.</p>
       <table>
         <thead><tr><th>Instrument</th><th>What it buys</th><th>What it cannot do</th></tr></thead>
         <tbody>
-          <tr><td>Second engine (OpenCode)</td><td>Independent failure modes; a real check on the first engine</td><td>Own the verdict; guarantee truth when it agrees</td></tr>
-          <tr><td>Subagent (Codex app)</td><td>Parallel specialist lenses; keeps the main chat clean</td><td>Provide independence — same model family, same cargo</td></tr>
-          <tr><td>Second human</td><td>Judgment and accountability; a challenge that doesn't share your incentives</td><td>Scale to every claim; be available on demand for every run</td></tr>
+          <tr><td>Second engine (OpenCode)</td><td>Provider-and-model diversity; another failure surface to compare</td><td>Own the verdict; guarantee truth; establish whole-path independence</td></tr>
+          <tr><td>Subagent (Codex app)</td><td>Parallel specialist lenses; keeps the main chat clean</td><td>Add provider-and-model diversity; establish independence from head count</td></tr>
+          <tr><td>Second human</td><td>Judgment and accountability; a potentially different challenge path</td><td>Scale to every claim; establish independence without disclosing evidence path, role, and incentives</td></tr>
         </tbody>
       </table>
-      <p class="full-measure">Here is what mistaking one for another looks like: three subagents converge on a finding and the report upstairs calls it “independently confirmed.” It is nothing of the kind — same product, same model family, same cargo; the agreement was manufactured, not found. The Many Minds stretch puts the middle row in your hands: one commander, three parallel lenses, and a measured answer to whether parallel helped. Whatever mix of instruments you run, the merges and the kills stay with the commander — the sentence to be able to say cold is <em>subagent ≠ second engine ≠ second human</em>.</p>
+      <p class="full-measure">Here is what mistaking one for another looks like: three subagents converge on a finding and the report upstairs calls it “independently confirmed.” It is not independent confirmation: the same product, model family, and cargo leave the dominant paths shared. The convergence can still surface useful issues, but head count adds no corroborative weight. The Many Minds stretch puts the middle row in your hands: one commander, three parallel lenses, and a measured answer to whether parallel helped. Whatever mix of instruments you run, the merges and the kills stay with the commander — the sentence to be able to say cold is <em>subagent ≠ second engine ≠ second human</em>.</p>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p3" data-block="P3">
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Six stages, in order. Check each item when its proof exists on disk, not when you've read it. Progress saves in this browser — the same tick shows on the home page.</p>
+        <p class="section-lede">Six stages, in order. Each block below names the surface it goes to — a chat, the Codex app, a PowerShell window, a file. Copy them top to bottom and every proof this desk requires will exist on disk. Check each item when its proof exists, not when you've read it. Progress saves in this browser — the same tick shows on the home page.</p>
 
         <h3>Stage 01 · Frame the run</h3>
         <p class="full-measure">Before either engine sees the brief, you and the AI agree on what winning looks like. Five minutes of dialogue here saves an hour of drift later.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Choose <strong>Open project</strong> and pick the course pack: <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> (skip if it's already the open project)</li>
+            <li>Open the chat <strong>Operator — Direction &amp; Log</strong></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <!-- Canonical source: operator/DIRECTION_BRIEF.md — operator-chat starter -->
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <pre><code>We are writing the Direction Brief for this block together.
+
+Read operator/DIRECTION_BRIEF.md (or this file). Interview me in short turns.
+Do not dump all five fields at once unless I already gave you a clear mission.
+
+For each field:
+1. Ask one focused question.
+2. Propose tight wording from my answer.
+3. Challenge anything vague, uncheckable, or unbounded.
+4. Wait for me to accept or correct before moving on.
+
+When all five fields are accepted, write them into this file, set Status to LIVE,
+and remind me to run the mission in a separate build chat — not here.
+
+After the mission, we will write the Operator Log in this same chat.</code></pre>
+        </div>
+
+        <p class="full-measure">The AI interviews you field by field; you accept or rewrite every line. The outcome to hold out for is two named artifacts — a filled comparator and an adjudication note someone could read cold. “Compare the models” is not an outcome, and the AI should challenge it; if it doesn't, tighten the wording yourself. Status must read <strong>LIVE</strong> before you touch either engine. If the dialogue passes eight minutes, accept the wording you have and move.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -150,12 +180,19 @@
               <span class="check-num">1</span>
               <span class="check-title">Co-write the Direction Brief until LIVE</span>
             </label>
-            <div class="check-detail">Open chat <strong>Operator — Direction &amp; Log</strong> and paste the brief starter from <a href="../../operator/DIRECTION_BRIEF.md"><code>operator/DIRECTION_BRIEF.md</code></a>. Fill all five fields: Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back. The outcome here is two named artifacts — a filled comparator and an adjudication note someone could read cold; “compare the models” is not an outcome, and the AI should challenge it. Status must read <strong>LIVE</strong> before you touch either engine. If the dialogue passes eight minutes, accept the wording you have and move.</div>
+            <div class="check-detail">All five fields accepted — Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back — and Status reads <strong>LIVE</strong> in <a href="../../operator/DIRECTION_BRIEF.md"><code>operator/DIRECTION_BRIEF.md</code></a>. The outcome names the comparator and the adjudication note. If the chat drifted into running the mission, pull it back — the mission runs in a separate build chat later.</div>
           </li>
         </ol>
 
         <h3>Stage 02 · Load the frozen brief</h3>
         <p class="full-measure">Now you set up the control: the brief read as a contract, and a working folder where nothing rides along that you haven't declared. What you should see at the end of this stage is a folder holding exactly five files — the brief and your track's four corpus files — and nothing else.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in a <strong>PowerShell window</strong> — it opens the brief for reading:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\BRIEF-v1.md"</code></pre>
+        </div>
+
+        <p class="full-measure">Read it as a contract and notice what each rule pins down: WatchIDs come from <code>watchlist.csv</code>, status has four allowed values, every factual cell needs a quote of twenty words or fewer, contradictions are kept rather than resolved, off-watchlist entities are fenced into Unlisted mentions. Do not edit a word — the moment the text drifts, the comparison stops being about the engines. If a rule seems ambiguous, write the ambiguity down; it's comparator material later. Close Notepad without saving.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -164,8 +201,40 @@
               <span class="check-num">2</span>
               <span class="check-title">Read BRIEF-v1 (do not edit)</span>
             </label>
-            <div class="check-detail">Open <code>instruments/p3_frozen_brief/BRIEF-v1.md</code> and read it as a contract. Notice what each rule pins down: WatchIDs come from <code>watchlist.csv</code>, status has four allowed values, every factual cell needs a quote of twenty words or fewer, contradictions are kept rather than resolved, off-watchlist entities are fenced into Unlisted mentions. Do not edit a word — the moment the text drifts, the comparison stops being about the engines. If a rule seems ambiguous, write the ambiguity down; it's comparator material later.</div>
+            <div class="check-detail">Read as a contract, edited not at all. You can say what each rule closes: deterministic WatchID join, four status values, twenty-word evidence quotes, contradictions kept, unlisted entities fenced. Any ambiguity you spotted is written down for the comparator, not resolved by editing the brief.</div>
           </li>
+        </ol>
+
+        <p class="full-measure">Next, the clean folder. Run exactly one of the next two blocks — the one matching the track you ran in P2. You circled it at the top of your dyno score sheet in <code>instruments/p2_dyno/SCORE_SHEET.md</code>, so look there if you're unsure. The commands create <code>Documents\HarnessBootcamp\p3_desk</code> and copy in the brief plus your track's four corpus files.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — <strong>engineering track</strong> only:</p>
+          <pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk" | Out-Null
+Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\BRIEF-v1.md" "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk\"
+Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\engineering\corpus\*" "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk\"</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — <strong>mission_ops track</strong> only (skip if you ran the engineering block):</p>
+          <pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk" | Out-Null
+Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\BRIEF-v1.md" "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk\"
+Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\mission_ops\corpus\*" "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk\"</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now confirm the folder in the same <strong>PowerShell window</strong>:</p>
+          <pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk"</code></pre>
+        </div>
+
+        <p class="full-measure">You should see exactly five files: <code>BRIEF-v1.md</code>, <code>watchlist.csv</code>, and your track's three F-files — engineering: <code>F1_status_page.md</code>, <code>F2_oncall_notes.md</code>, <code>F3_deploy_log.md</code>; mission_ops: <code>F1_ops_log.md</code>, <code>F2_field_hawk.md</code>, <code>F3_drone_snip.md</code>. Anything extra is undeclared cargo — delete it. If you ran the wrong track's block, remove the folder with <code>Remove-Item "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk" -Recurse -Force</code> and rerun the right one.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>Codex app</strong>, check what Engine A will carry:</p>
+          <ul class="do-clicks">
+            <li>Open <strong>Settings &gt; Personalization</strong> and note whether <strong>memories</strong> are on or off — you'll declare it in the comparator either way</li>
+          </ul>
+        </div>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -173,13 +242,13 @@
               <span class="check-num">3</span>
               <span class="check-title">Point both engines at the corpus</span>
             </label>
-            <div class="check-detail">Make a clean working folder and copy in <code>BRIEF-v1.md</code> plus your track's four files from <code>instruments/p3_frozen_brief/engineering/corpus/</code> (<code>watchlist.csv</code>, <code>F1_status_page.md</code>, <code>F2_oncall_notes.md</code>, <code>F3_deploy_log.md</code>) or <code>instruments/p3_frozen_brief/mission_ops/corpus/</code> (<code>watchlist.csv</code>, <code>F1_ops_log.md</code>, <code>F2_field_hawk.md</code>, <code>F3_drone_snip.md</code>). Same track as P2. Both engines read this folder and nothing else; joins use <code>watchlist.csv</code> IDs only — models do not invent join keys. Running in place instead is allowed, but then every live instruction file gets declared in the comparator.</div>
+            <div class="check-detail">The proof: <code>p3_desk</code> holds exactly five files — the frozen brief plus your track's <code>watchlist.csv</code> and three F-files — and the memories setting is noted for the comparator. Both engines read this folder and nothing else; joins use <code>watchlist.csv</code> IDs only — models do not invent join keys. Running in place instead is allowed, but then every live instruction file gets declared in the comparator.</div>
           </li>
         </ol>
 
         <div class="panel">
           <p class="eyebrow">Settle what each engine is carrying before either one runs</p>
-          <p class="full-measure">Both load context you never typed and neither announces it: the Codex app picks up <code>AGENTS.md</code>, skills, and memories from wherever you launch it — including the harness you hot-rodded in P2 — and OpenCode reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set. Run from a clean folder holding only the frozen corpus, or write down exactly what was live on each side. One engine plus your notes is not two engines. An advantage you didn't declare looks exactly like a capability you don't have — if the two sides ran with different context, that is a finding about your setup, not a disagreement between models.</p>
+          <p class="full-measure">Both load context you never typed and neither announces it: the Codex app picks up <code>AGENTS.md</code>, skills, and memories from wherever you launch it — including the harness you hot-rodded in P2 — and OpenCode reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set. Run from a clean folder holding only the frozen corpus, or write down exactly what was live on each side. Unequal hidden context leaves the provider-and-model split in place, but adds an instruction-path difference that can explain the result. An advantage you didn't declare looks exactly like a capability you don't have — if the two sides carried different context, the run is evidence about the combined setups unless you repeat it with that path held fixed.</p>
         </div>
 
         <h3>Stage 03 · Dispatch both engines</h3>
@@ -187,6 +256,36 @@
           <img src="../assets/blocks/p3/p3-stage-dispatch.svg" alt="BRIEF-v1 goes verbatim to the Codex app and to OpenCode running Grok; each produces a raw output file, with run identity declared on both sides" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
         <p class="full-measure">The same brief, verbatim, to each engine in turn. What you should see from each: the four-part shape the brief demands — table, contradictions, unlisted mentions, gaps. What you must not do between the two runs: explain, clarify, or coach. The brief does the talking; you take dictation and save files.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Choose <strong>Open project</strong> and pick <code>Documents\HarnessBootcamp\p3_desk</code></li>
+            <li>Start a <strong>new chat</strong> in that project — this is your build chat for Engine A</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now paste this into the <strong>build chat</strong> you just opened in <code>p3_desk</code>:</p>
+          <pre><code>Read BRIEF-v1.md in this folder and follow it exactly.</code></pre>
+        </div>
+
+        <p class="full-measure">One sentence is the whole dispatch — the brief does the talking, and Engine B will get the identical sentence. You should see the four-part shape: a table with one row per WatchID, then contradictions, unlisted mentions, gaps. If you get prose instead, paste the same verbatim line into a fresh chat once; do not explain or coach — a clarification you give one engine and not the other breaks the control.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it creates Engine A's output file:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\output_codex.md"</code></pre>
+        </div>
+
+        <p class="full-measure">Notepad asks whether to create the file — click <strong>Yes</strong>, then copy the engine's full response from the build chat and paste it in yourself; don't ask the engine to write its own transcript. The file lives in the course pack, not in <code>p3_desk</code>, on purpose: the second engine reads that folder next, and it must not find the first engine's answer waiting inside.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now record Engine A's run identity, in the <strong>Codex app</strong> and the open <strong>output_codex.md</strong> Notepad window:</p>
+          <ul class="do-clicks">
+            <li>Read the model name in the picker beneath the composer, and the app version from <strong>Settings</strong></li>
+            <li>Type both at the top of <strong>output_codex.md</strong>, then save with <strong>Ctrl+S</strong></li>
+          </ul>
+        </div>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -195,8 +294,37 @@
               <span class="check-num">4</span>
               <span class="check-title">Run BRIEF-v1 on Codex → output_codex.md</span>
             </label>
-            <div class="check-detail">Open the clean folder as a project in the Codex app, start a build chat, and give it BRIEF-v1 exactly — point it at the file or paste the text unaltered. Copy the full response into a new file <code>output_codex.md</code> yourself — Notepad is fine; don't ask the engine to write its own transcript. Record the model from the picker beneath the composer and the app version from Settings. You should see a table with one row per WatchID, then contradictions, unlisted mentions, gaps; if you get prose instead, rerun the same verbatim brief once — coaching one engine breaks the control.</div>
+            <div class="check-detail"><code>output_codex.md</code> holds the full response with the model id and app version at the top, pasted by you — not written by the engine. The response has the four-part shape: WatchID table, contradictions, unlisted mentions, gaps. If it came back as prose, rerun the same verbatim line once — coaching one engine breaks the control.</div>
           </li>
+        </ol>
+
+        <p class="full-measure">Now the second engine, from the same clean folder. The first block below prints the cargo flag and sets the plugin guard; the second is the dispatch itself.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it points OpenCode at the clean folder, prints the disable flag, and sets the plugin guard:</p>
+          <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk"
+$env:OPENCODE_DISABLE_CLAUDE_CODE
+$env:OPENCODE_PURE = "1"</code></pre>
+        </div>
+
+        <p class="full-measure">The second line prints the flag's value, and you should see <code>1</code> — pre-work set it. If it prints nothing, set it now with <code>$env:OPENCODE_DISABLE_CLAUDE_CODE = "1"</code>; without it OpenCode reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code>, adding an undeclared instruction path on Engine B. The provider-and-model split remains, but the run can no longer isolate its effect. <code>OPENCODE_PURE=1</code> rides alongside <code>--pure</code> because some builds silently ignore the flag on its own — a plugin loading unannounced would contaminate the comparison.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the same <strong>PowerShell window</strong> — the Engine B dispatch:</p>
+          <pre><code>opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder and follow it exactly."</code></pre>
+        </div>
+
+        <p class="full-measure">Same sentence, same corpus, second engine — <code>-m</code> pins the Grok id staff posted rather than inheriting whichever model ran last. You should see the same four-part shape. If the command fails calling <code>--pure</code> an unknown flag, your build predates it — drop the flag and rerun; <code>OPENCODE_PURE=1</code> is already set and does the same job, and you'll note the substitution in the run-identity table. An error mentioning 429 or quota is usually a capped key wearing an auth-failure costume — flag staff instead of reinstalling, and prep the comparator while you wait.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it creates Engine B's output file and prints the run identity to record:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\output_opencode.md"
+opencode --version
+"xai/$env:HB_XAI_MODEL"</code></pre>
+        </div>
+
+        <p class="full-measure">Click <strong>Yes</strong> to create the file. To lift the response out of the terminal, drag-select it with the mouse and press <strong>Ctrl+C</strong> — in the older blue-title console it's <strong>Enter</strong> instead — and scroll back up first if the response runs past the top of the window. Paste it into the Notepad file, then type the two printed values — the OpenCode version and the pinned model id — at the top before saving with <strong>Ctrl+S</strong>.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -204,12 +332,57 @@
               <span class="check-num">5</span>
               <span class="check-title">Run BRIEF-v1 on OpenCode → output_opencode.md</span>
             </label>
-            <div class="check-detail">Same brief, same corpus, second engine. In the terminal you'll run from, confirm <code>$env:OPENCODE_DISABLE_CLAUDE_CODE</code> prints <code>1</code> (pre-work set it). Then, from the clean folder: <code>opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder and follow it exactly."</code> — <code>--pure</code> keeps plugins out; <code>-m</code> pins the Grok id staff posted rather than inheriting whichever model ran last. Copy the response into a new <code>output_opencode.md</code> yourself, and record the <code>-m</code> value plus <code>opencode --version</code> beside it. An error mentioning 429 or quota is usually a capped key — flag staff instead of reinstalling.</div>
+            <div class="check-detail"><code>output_opencode.md</code> holds the full response with <code>opencode --version</code> and the pinned model id at the top. The run went out with <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> confirmed and <code>OPENCODE_PURE=1</code> alongside <code>--pure</code>. A 429 or quota error is usually a capped key — flag staff instead of reinstalling.</div>
           </li>
         </ol>
 
         <h3>Stage 04 · Compare on paper</h3>
         <p class="full-measure">Two outputs exist; now the desk earns its name. Identity first, then the side-by-side. A <strong>material</strong> disagreement changes an operational fact — a status flip, one engine asserting where the other says UNKNOWN, different evidence behind the same cell. A wording difference that changes no fact is cosmetic, and cosmetic rows are how comparators eat an hour.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it opens the comparator:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\COMPARATOR.md"</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now in <strong>COMPARATOR.md</strong> (Notepad), fill the run-identity table before any side-by-side row:</p>
+          <ul class="do-clicks">
+            <li>Engine A: the model id and app version from the top of <code>output_codex.md</code>, and tick which of <code>AGENTS.md</code> / skills / memories were live — for a clean <code>p3_desk</code> run that's your memories note and nothing else</li>
+            <li>Engine B: the pinned model id and OpenCode version from the top of <code>output_opencode.md</code>, and tick <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> and <code>--pure</code> — if your build made you drop <code>--pure</code>, write <code>OPENCODE_PURE=1</code> beside that box instead</li>
+            <li>At the top, delete whichever track you didn't run so only yours remains, and add one line right under the run-identity table: <code>Folder both engines read: p3_desk</code> — or the folder you declared, if you ran in place</li>
+          </ul>
+        </div>
+
+        <p class="full-measure">Identity goes down first because every conclusion you draw from the side-by-side rests on it — an undeclared advantage invalidates the comparison. With it written, work field by field down the WatchID tables in both outputs.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in <strong>COMPARATOR.md</strong> (Notepad), build the side-by-side:</p>
+          <ul class="do-clicks">
+            <li>Put <code>output_codex.md</code> and <code>output_opencode.md</code> side by side and walk the WatchID table field by field</li>
+            <li>Add one comparator row per <strong>material</strong> disagreement — status flip, assert vs UNKNOWN, different evidence behind the same cell — and skip cosmetic wording differences</li>
+            <li>Leave the verdict column empty for now; write the row count into <strong>Material disagreements</strong></li>
+          </ul>
+        </div>
+
+        <p class="full-measure">One more pass before the count is final: the join check. The brief's first rule — WatchIDs come from <code>watchlist.csv</code>, never invented — is a bar you verify, not assume.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — it opens the watchlist for the join check:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk\watchlist.csv"</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now with <strong>watchlist.csv</strong> open beside both outputs:</p>
+          <ul class="do-clicks">
+            <li>Tick every WatchID row in <code>output_codex.md</code> against the CSV's <code>WatchID</code> column, then do the same for <code>output_opencode.md</code></li>
+            <li>Any row whose ID is absent from the CSV — or any join made on a display name instead of an ID — gets its own comparator row, marked as a deterministic-join violation</li>
+            <li>If that added rows, update the <strong>Material disagreements</strong> count — a join violation is material even when the underlying fact happens to be right</li>
+          </ul>
+        </div>
+
+        <p class="full-measure">An engine that invents an ID or joins on a name has broken the one rule that makes the two tables comparable, and the violation itself is a finding — record it, then rerun that engine on the same verbatim brief. Close the CSV when every row is ticked.</p>
+
+        <p class="full-measure">Three or more rows: on to adjudication. Fewer: document where you searched and why the task separated so little — that written proof of search meets the bar honestly. Save with <strong>Ctrl+S</strong> and keep the file open; the next stage writes into it.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -218,7 +391,7 @@
               <span class="check-num">6</span>
               <span class="check-title">Fill COMPARATOR.md</span>
             </label>
-            <div class="check-detail">Open <code>instruments/p3_frozen_brief/COMPARATOR.md</code>. Fill the run-identity table before any side-by-side row: engine, model id, version, folder, and which instruction files, skills, or memories were live on each side. Then work field by field, one row per material disagreement, and count them. Three or more: on to adjudication. Fewer: document where you searched and why the task separated so little — that written proof of search meets the bar honestly.</div>
+            <div class="check-detail">Run-identity table filled for both engines before any side-by-side row, then one row per material disagreement, counted. Three or more: on to adjudication. Fewer: written proof of search naming the fields you checked and why separation was low — that meets the bar honestly. Cosmetic rows count toward neither.</div>
           </li>
         </ol>
 
@@ -226,7 +399,51 @@
         <figure class="section-diagram">
           <img src="../assets/blocks/p3/p3-stage-kill-test.svg" alt="The kill test: pull the file a claim cites from a copy of the corpus, rerun the brief, and see whether the claim honestly disappears or persists as confabulation" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
-        <p class="full-measure">Every disagreement row gets a ruling from the source file — which side, why, what evidence outside either model. Matched claims get sample-checked. And at least one asserted claim dies today, on evidence you can show. If nothing on the sheet deserves killing, run the kill test on the strongest claim both engines agree on and watch what happens.</p>
+        <p class="full-measure">Every disagreement row gets a ruling from the source file — which side, why, what evidence outside either model. Matched claims get sample-checked. And at least one asserted claim dies today, on evidence you can show.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in <strong>COMPARATOR.md</strong> (Notepad), rule each disagreement row:</p>
+          <ul class="do-clicks">
+            <li>Open the source file the row's quote points at and read the actual line — the quote rule means each engine told you where it thinks its evidence lives</li>
+            <li>Write the verdict — keep / discard / unknown — and the why, naming evidence outside either model; UNKNOWN is a ruling too</li>
+            <li>Sample-check two or three matched claims the same way — agreement is not truth</li>
+          </ul>
+        </div>
+
+        <p class="full-measure">Now the kill test. Pick a claim a model asserted that a quick source check can't settle — if nothing on the sheet deserves killing, take the strongest claim both engines agree on. The next block copies the corpus and deletes the file the claim cites.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now run this in the <strong>PowerShell window</strong> — replace <code>[CITED_FILE]</code> with the file the claim cites, e.g. <code>F2_oncall_notes.md</code>:</p>
+          <pre><code>Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk" "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk_kill" -Recurse
+Remove-Item "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk_kill\[CITED_FILE]"</code></pre>
+        </div>
+
+        <p class="full-measure">If <code>p3_desk_kill</code> already existed from an earlier attempt, the copy just nested a second desk inside it — clear it with <code>Remove-Item "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk_kill" -Recurse -Force</code> and run the copy block again. Then rerun the brief on the engine that asserted the claim — one of the next two moves, not both. If you took a claim both engines agreed on, either engine is a fair target; pick one and run only its move.</p>
+
+        <div class="do-step">
+          <p class="do-label">If the claim was OpenCode's, run this in the same <strong>PowerShell window</strong> (the cargo flags from Stage 03 are still set there; a new window needs them set again):</p>
+          <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk_kill"
+opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder and follow it exactly."</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">If the claim was the Codex app's, in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Choose <strong>Open project</strong> and pick <code>Documents\HarnessBootcamp\p3_desk_kill</code></li>
+            <li>Start a <strong>new chat</strong> and paste the same dispatch line: <code>Read BRIEF-v1.md in this folder and follow it exactly.</code></li>
+          </ul>
+        </div>
+
+        <p class="full-measure">Watch the claim's row in the new output. A grounded claim dies with its evidence — the field goes UNKNOWN or empties. A claim that survives losing its own source was never resting on it: the model was confabulating, decorating a plausible assertion with a citation after the fact. That's a kill, and it's the strongest kind, because you demonstrated the failure instead of suspecting it.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in <strong>COMPARATOR.md</strong> (Notepad), record the kill:</p>
+          <ul class="do-clicks">
+            <li>Quote the model's assert word for word</li>
+            <li>Write the discard reason naming the evidence — the source line, the missing watchlist ID, or the kill-test result</li>
+            <li>Update the <strong>Kills</strong> count</li>
+          </ul>
+        </div>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -235,8 +452,23 @@
               <span class="check-num">7</span>
               <span class="check-title">Kill at least one model-asserted claim</span>
             </label>
-            <div class="check-detail">Find a claim a model asserted that you can discard on evidence outside either model — the source line says otherwise, the watchlist has no such ID, or the kill test settles it: copy the corpus, delete the cited file, rerun, and watch whether the claim survives losing its own evidence. In the comparator, quote the assert and write the discard reason. “It seemed weak” is not a kill; a kill names its evidence.</div>
+            <div class="check-detail">In the comparator: the model's assert quoted, the discard reason naming evidence outside either model — a source line, a missing watchlist ID, or the kill-test result — and the Kills count updated. “It seemed weak” is not a kill; a kill names its evidence.</div>
           </li>
+        </ol>
+
+        <p class="full-measure">Last artifact of the stage: the ruling, written for someone who wasn't here.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in <strong>COMPARATOR.md</strong> (Notepad), write the note under <strong>Adjudication note (supervisor-readable)</strong>:</p>
+          <ul class="do-clicks">
+            <li>What is operationally true, WatchID by WatchID, as you now rule it</li>
+            <li>What is UNKNOWN and why</li>
+            <li>What you killed and on what evidence</li>
+          </ul>
+        </div>
+
+        <p class="full-measure">Test it by imagination: someone who has read nothing else picks this up during a handover. If they'd have to ask you a question before acting on it, it isn't finished — clarity, not length, is the measure. Save with <strong>Ctrl+S</strong>.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -244,12 +476,23 @@
               <span class="check-num">8</span>
               <span class="check-title">Supervisor-readable adjudication note</span>
             </label>
-            <div class="check-detail">Write the note at the bottom of the comparator: the operational picture as you now rule it — what is true, what is UNKNOWN and why, what you killed and on what evidence. This note is the run's final watch product, the artifact your log points at. Test it by imagination: someone who has read nothing else picks this up during a handover. If they'd have to ask you a question before acting on it, it isn't finished. A supervisor-readable note is measured in clarity, not length.</div>
+            <div class="check-detail">The note at the bottom of the comparator reads cold: what is true, what is UNKNOWN and why, what you killed and on what evidence. This is the run's final watch product — the artifact your log points at. If a handover reader would need to ask you anything before acting on it, it isn't finished.</div>
           </li>
         </ol>
 
         <h3>Stage 06 · Bank what transfers</h3>
         <p class="full-measure">One minute of naming what transfers is what turns today's run into something you reach for on a real desk.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now type this at the bottom of <strong>COMPARATOR.md</strong> (Notepad), filling each bracket in your own words — a role or decision type is enough:</p>
+          <pre><code>Transfer seed — P3
+- Single-engine ban: [THE DECISION TYPE AT WORK I WILL NOT SINGLE-ENGINE]
+- Kill rule: [WHEN I DISCARD A MODEL CLAIM]
+- Comparator habit: [HOW OFTEN / HOW LIGHT]
+- First real decision to run through this desk: [NAME IT]</code></pre>
+        </div>
+
+        <p class="full-measure">Save the file. These four lines are the seed the transfer chat grows at the end of the block — having them written means the outer loop starts from your words, not from a blank field.</p>
         <ol class="checklist">
 
           <li class="check-item" data-check-item>
@@ -258,7 +501,7 @@
               <span class="check-num">9</span>
               <span class="check-title">Transfer P3 seed</span>
             </label>
-            <div class="check-detail">Put the three portable habits in your own words before the pulse: no single-engine answer on consequential claims; a kill names non-model evidence; the comparator table beats “they basically agreed.” Then name the first real decision at work you'd run through this desk — that's the seed the transfer chat will grow.</div>
+            <div class="check-detail">The seed block sits at the bottom of the comparator with all four brackets filled in your own words: the single-engine ban, the kill rule, the comparator habit, and the first real decision at work you'd run through this desk. That's what the transfer chat will grow.</div>
           </li>
         </ol>
       </section>
@@ -284,7 +527,7 @@
         <ul>
           <li><strong>If the engines agree on every field, what did the second engine buy you?</strong> One answer: nothing, this run — cancel it. A better answer: the proof of search, the sample-checks, and the standing ability to catch the day they don't agree. Insurance you never claim on still priced the risk. Where's the line for your desk?</li>
           <li><strong>Which is worse: a wrong claim both engines agreed on, or a disagreement you ruled incorrectly?</strong> The first fails silently and scales; the second leaves a trail — your ruling, your reasoning, reviewable. What does that say about where checking effort should go?</li>
-          <li><strong>When is a third engine worth it?</strong> Each added engine buys diminishing independence and linearly growing adjudication cost. The comparator has an optional third-output slot — argue for a claim class where you'd actually pay that cost.</li>
+          <li><strong>When is a third engine worth it?</strong> Each added engine can add provider-and-model diversity, with diminishing value and linearly growing adjudication cost. The comparator has an optional third-output slot — argue for a claim class and a named path separation where you'd actually pay that cost.</li>
           <li><strong>What separates the kill test from simply distrusting the model?</strong> One is a falsifiable procedure with an observable outcome; the other is a mood. What else on your desk deserves the same upgrade from suspicion to procedure?</li>
         </ul>
 
@@ -302,6 +545,12 @@
         </figure>
         <p class="full-measure">After the twin-engine floor is met, a different kind of “many”: not two vendors, but several specialists under one commander — you — with a measured answer to whether parallel helped. A <strong>subagent</strong> is a specialist the Codex app starts for one bounded job; it works off to the side and returns a summary to your chat. The mastery path is three artifacts in order: a <strong>baseline</strong> single-chat review with no subagents, then three parallel lenses (correctness, test gaps, spec drift) merged with visible dedupe and at least one corpus-evidenced kill, then a <strong>delta sheet</strong> that defends a verdict — improved, duplicated, or noisy. Skipping the baseline turns the stretch into a product demo: without it you cannot say what parallel added.</p>
         <p class="full-measure">Two details worth noticing while you run it. The three-subagent cap lives in your prompt wording, which makes it procedure-enforced — it holds because the model cooperates and you're watching. The app also has a real setting, <code>agents.max_concurrent_threads_per_session</code>, which holds whether the prompt cooperates or not — tool-enforced. Feel the difference: a procedure-enforced bound is a promise, and a tool-enforced bound is a wall. And if two of your specialists ever needed to <em>write</em> at once, a <strong>worktree</strong> — a second checkout of the same repository — is the isolation instrument; since nothing in this run writes to the repo, the worktree proof stays the optional deeper cut. Full walkthrough: <a href="../../mission_flesh/p3/MANY_MINDS.md"><code>mission_flesh/p3/MANY_MINDS.md</code></a>; pack: <code>instruments/p3_multi_agent/</code>; the four stretch checks live on the mastery floor below.</p>
+
+        <h3>Field guide · audit suspicious agreement</h3>
+        <p><a href="../resources/p3/when-both-engines-agree.html"><strong>When Both Engines Agree</strong></a> separates shared evidence paths from claim truth, tests plausible common causes, and chooses the smallest observation that can change the decision.</p>
+
+        <h3>Field guide · design meaningful separation before dispatch</h3>
+        <p><a href="../resources/p3/independence-spectrum.html"><strong>Independence Is a Spectrum</strong></a> maps common-cause paths across evidence, retrieval, tools, infrastructure, model ancestry, evaluation, and incentives—then records the isolation that actually breaks a named failure path.</p>
       </section>
 
       <section id="pulse" class="home-section" data-check-section="pulse">
@@ -317,6 +566,37 @@
             </label>
             <div class="check-detail">Twin-engine work ran in build chats, not in <strong>Operator — Direction &amp; Log</strong>. The operator chat holds judgment; build chats hold the mess. If they mixed today, note it in the log rather than rewriting history — the trail is the point.</div>
           </li>
+        </ol>
+
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Choose <strong>Open project</strong> and pick the course pack again: <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Open the chat <strong>Operator — Direction &amp; Log</strong></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <!-- Canonical source: operator/OPERATOR_LOG.md — operator-chat starter -->
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <pre><code>We are writing the Operator Log entry for this block together.
+
+Read operator/DIRECTION_BRIEF.md (the LIVE brief) and operator/OPERATOR_LOG.md.
+Interview me in short turns. Do not fill the verdict for me.
+
+Walk fields 1 → 5:
+1. Ask what I directed (confirm against the Brief).
+2. Ask what I changed mid-run.
+3. Ask my provisional verdict — then challenge weak reasoning without overriding me.
+4. Demand concrete evidence (paths, checks, citations, reruns). Reject vibe language.
+5. Ask what I still own.
+
+When I accept the wording, write the entry into the correct block section in this file.
+Remind me: REJECT with real evidence is a successful operator act.</code></pre>
+        </div>
+
+        <p class="full-measure">Point the evidence field at <code>instruments/p3_frozen_brief/output_codex.md</code>, <code>output_opencode.md</code>, and the comparator — and name brief id <code>BRIEF-v1</code> so the run is identifiable later. What you still own, for this desk, is every ruling in the adjudication note.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -324,8 +604,18 @@
               <span class="check-num">11</span>
               <span class="check-title">Operator Log complete</span>
             </label>
-            <div class="check-detail">Back in Direction &amp; Log: what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), and evidence pointers to <code>output_codex.md</code>, <code>output_opencode.md</code>, and the comparator. Write what judgment you still own — for this desk, that is every ruling in the adjudication note.</div>
+            <div class="check-detail">The P3 entry holds what you directed, mid-run changes, verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers to both outputs and the comparator, and what judgment you still own. If the AI tried to assign the verdict, take it back — it argues; you rule.</div>
           </li>
+        </ol>
+
+        <div class="do-step">
+          <!-- The bars themselves live in operator/PASS_BARS.md · section P3 -->
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <pre><code>Draft my PASS_BARS self-check for P3. Read operator/PASS_BARS.md, section P3.
+For each MVP bar: met or not yet, with an evidence pointer — a path, a comparator row, a count.
+Challenge any claim that has no pointer. Do not soften a not-yet.</code></pre>
+        </div>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -335,6 +625,71 @@
             </label>
             <div class="check-detail">Against P3's MVP list: met / not yet, each with an evidence pointer. No inflation. The two bars most often claimed early here: three disagreements (were they material?) and the kill (was it earned, or polite?).</div>
           </li>
+        </ol>
+
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Start a <strong>new chat</strong> and title it <strong>Adversarial — P3 — [today's date]</strong>, e.g. <code>Adversarial — P3 — 2026-03-18</code> — a fresh chat every block, never the build chat and never the log chat</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <!-- Canonical source: operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
+          <p class="do-label">Now paste this into the <strong>Adversarial — P3 — [date]</strong> chat you just titled:</p>
+          <pre><code>You are an adversarial operator reviewer for an operator’s school.
+Your job is NOT to help me feel successful. Your job is to stress-test my verdict and MVP claims.
+
+Context: deep operator mastery of AI direction and cothinking.
+Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
+Containment is absence of effect. Autonomy without stop proof is theater.
+
+I will paste: block, artifacts/paths/excerpts, provisional verdict, draft MVP checklist.
+
+Protocol — follow in order:
+1. Restate my claimed outcome and verdict in one cold sentence (no praise).
+2. Attack pass: give the strongest case that this is NOT YET mastery for this block.
+   - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
+   - Name completion theater if you see it.
+   - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
+3. Evidence audit: for each MVP claim I marked met, mark:
+   SURVIVES / WOUNDED / DEAD — with reason.
+4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
+   If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
+   If REJECT, check I am not rejecting to avoid measurement.
+5. Force one of:
+   a) Concrete fix list (smallest changes to reach real MVP), or
+   b) “Stands under fire” — only if evidence is actually strong.
+6. End with a single line I must copy into my Operator Log:
+   ADVERSARIAL: [stood / wounded / failed] — [one sentence].
+
+Rules for you:
+- No encouragement fluff. No “great job.” No emoji.
+- Do not rewrite my mission for me unless citing a fix.
+- Do not accept screenshots of chat enthusiasm as evidence.
+- Prefer false NOT YET over false pass.
+- Short, sharp, specific.</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now paste your pack into the same <strong>Adversarial — P3 — [date]</strong> chat, filling each bracket from your artifacts:</p>
+          <pre><code>Block: P3 — twin-engine desk. Outcome: a filled comparator and a supervisor-readable adjudication note.
+Artifacts: instruments/p3_frozen_brief/output_codex.md · output_opencode.md · COMPARATOR.md
+Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
+Draft MVP self-check: [PASTE THE MET / NOT-YET LINES FROM THE LOG CHAT]
+Known weak spots: [ANYTHING YOU ALREADY DOUBT — E.G. A ROW THAT MIGHT BE COSMETIC]
+Comparator excerpts: [PASTE THE RUN-IDENTITY TABLE AND YOUR DISAGREEMENT ROWS]</code></pre>
+        </div>
+
+        <p class="full-measure">Expect attacks on undeclared cargo, cosmetic rows counted as material, and a cheap kill. If the reviewer is polite, you under-pasted — give it the comparator excerpts, not a summary of them.</p>
+
+        <div class="do-step">
+          <p class="do-label">Now in <strong>Operator — Direction &amp; Log</strong>:</p>
+          <ul class="do-clicks">
+            <li>Paste the review's final <code>ADVERSARIAL: stood | wounded | failed</code> line into your P3 log entry — fix first if wounded, then log what changed under fire</li>
+          </ul>
+        </div>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -342,8 +697,37 @@
               <span class="check-num">13</span>
               <span class="check-title">Adversarial review in a NEW chat</span>
             </label>
-            <div class="check-detail">Chat <code>Adversarial — P3</code>: frozen prompt + artifacts + provisional verdict. Expect attacks on undeclared cargo, cosmetic rows counted as material, and a cheap kill. Copy the final line into your log: <code>ADVERSARIAL: stood | wounded | failed</code>. Fix if wounded.</div>
+            <div class="check-detail">Chat <code>Adversarial — P3 — [date]</code>: frozen prompt + your pack + provisional verdict, and the final <code>ADVERSARIAL: stood | wounded | failed</code> line copied into your log. Fix if wounded — unchecking a floor item is the honest move, not a setback.</div>
           </li>
+        </ol>
+
+        <div class="do-step">
+          <!-- Canonical source: operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>, filling each bracket (Block is P3):</p>
+          <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
+
+Block: [B0/P1/…].
+Adversarial line: [paste ADVERSARIAL: …].
+Brief LIVE at: [time or “approx”].
+Adversarial done at: [time or “approx”].
+Mission outcome path(s): [paths].
+Draft MVP: [met / not yet summary].
+
+Fill this block’s row:
+1. Ritual 0–3 with proof of each point
+2. Mission HIT/PARTIAL/MISS against the LIVE brief
+3. Quality STRONG/ADEQUATE/WEAK from adversarial + evidence (challenge inflation)
+4. Time to result in minutes
+5. One-line note
+6. Deep mark if this is P2/P3/P5/P6/P8
+
+Update running totals.
+Refuse cheerful quality scores without evidence.
+Do not start transfer until this row is written.</code></pre>
+        </div>
+
+        <p class="full-measure">P3's deep mark is one line — <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code> — counts and ruling. What the disagreement rate taught you can ride along as an optional one-sentence note beside it.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -351,8 +735,38 @@
               <span class="check-num">14</span>
               <span class="check-title">Measurement spine updated</span>
             </label>
-            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes). P3 carries a deep mark: <code>Comparator on BRIEF-v1: disagreements n · kills n · verdict</code> — counts and ruling, one line. What the disagreement rate taught you can ride along as an optional one-sentence note beside the mark.</div>
+            <div class="check-detail">Ritual 0–3 · mission HIT/PARTIAL/MISS · quality STRONG/ADEQUATE/WEAK · time to result (minutes) — plus the P3 deep mark with its counts and ruling. The row is written only after the adversarial line exists; measurement follows attack.</div>
           </li>
+        </ol>
+
+        <div class="do-step">
+          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open the chat <strong>Operator — Transfer 30-60-90</strong></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <!-- Canonical source: operator/TRANSFER_30_60_90.md — every-session prompt -->
+          <p class="do-label">Now paste this into <strong>Operator — Transfer 30-60-90</strong>:</p>
+          <pre><code>Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
+
+Block I just finished: [B0/P1/…].
+I have finished Direction/Log and pass-bar check in the other operator chat.
+
+Run a short interactive update:
+1. What mastery did this block actually prove (one sentence, no theater)?
+2. Map it onto MY real desk — interview me if missing.
+3. Update the matching seed and today’s row in the session log.
+4. Tighten at most three lines in identity or 30/60/90 if enough signal exists.
+5. Name one backslide risk if I do nothing at work.
+
+Do not seal. Do not invent a full plan from zero on a light block.
+Challenge vagueness. I own every accept.</code></pre>
+        </div>
+
+        <p class="full-measure">Block is P3, and your seed is already drafted at the bottom of the comparator — read it into the P3 seed fields rather than improvising new answers. Do not end the chat with the P3 seed empty; this block's gate is a filled seed, not a polite row.</p>
+        <ol class="checklist">
 
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -360,7 +774,7 @@
               <span class="check-num">15</span>
               <span class="check-title">Transfer pulse (every AM/PM)</span>
             </label>
-            <div class="check-detail">Chat <strong>Operator — Transfer 30-60-90</strong>: paste the every-session prompt. A session-log row is required even if the seed is small today — and P3's usually isn't: the single-engine ban and the comparator habit go on the 30-day list with a named work claim to run first.</div>
+            <div class="check-detail">A session-log row exists even if the seed feels small today — and P3's usually isn't: the single-engine ban and the comparator habit go on the 30-day list with a named work claim to run first. The P3 seed fields in <code>operator/TRANSFER_30_60_90.md</code> are no longer empty.</div>
           </li>
         </ol>
       </section>
@@ -387,7 +801,7 @@
               <span class="check-num">17</span>
               <span class="check-title">MVP: Deterministic join/watchlist</span>
             </label>
-            <div class="check-detail">Evidence looks like: every WatchID row in both outputs matches an ID in <code>watchlist.csv</code>, with off-watchlist entities fenced into Unlisted mentions. A model that joined on a display name instead of an ID fails this bar even when the answer happens to be right.</div>
+            <div class="check-detail">Evidence looks like: the Stage 04 tick-through against <code>watchlist.csv</code> ran clean — every WatchID row in both outputs matches an ID in the CSV, with off-watchlist entities fenced into Unlisted mentions. A model that invented an ID or joined on a display name fails this bar even when the answer happens to be right — the violation goes on the comparator, and that engine reruns the verbatim brief.</div>
           </li>
 
           <li class="check-item" data-check-item>
