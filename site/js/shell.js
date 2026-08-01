@@ -333,6 +333,8 @@
           else link.removeAttribute("aria-current");
         }
       });
+      var preworkForm = document.querySelector('form[data-storage-key="ahb-prework-install"]');
+      if (preworkForm) updatePreworkSectionStatuses(preworkForm, b);
     }
   }
 
@@ -341,8 +343,91 @@
     if (li) li.classList.toggle("is-done", input.checked);
   }
 
+  function setPreworkSection(section, open) {
+    if (!section) return;
+    section.classList.toggle("is-section-collapsed", !open);
+    var button = section.querySelector("[data-phase-section-toggle]");
+    if (button) button.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  function updatePreworkSectionStatuses(form, b) {
+    if (!form || !b || b.code !== "INSTALL") return;
+    var sections = form.querySelectorAll("[data-phase-section]");
+    var currentSection = null;
+    Array.prototype.forEach.call(sections, function (section) {
+      var boxes = section.querySelectorAll('input[type="checkbox"][data-check-id]');
+      var done = 0, total = 0;
+      Array.prototype.forEach.call(boxes, function (box) {
+        if (!isRequiredId(b, box.getAttribute("data-check-id"))) return;
+        total++;
+        if (box.checked) done++;
+      });
+      var complete = total > 0 && done === total;
+      if (!complete && !currentSection) currentSection = section;
+      section.classList.toggle("is-section-done", complete);
+      section.classList.remove("is-section-current");
+      var stat = section.querySelector("[data-phase-section-stat]");
+      if (stat) stat.textContent = complete ? "✓ Ready" : done + " / " + total;
+    });
+    if (currentSection) {
+      currentSection.classList.add("is-section-current");
+      var currentStat = currentSection.querySelector("[data-phase-section-stat]");
+      if (currentStat) currentStat.textContent = "Current · " + currentStat.textContent;
+      setPreworkSection(currentSection, true);
+    }
+  }
+
+  function initPreworkSections(form, b) {
+    if (!b || b.code !== "INSTALL") return;
+    var sections = form.querySelectorAll(".checklist-section");
+    var sectionIndex = 0;
+    Array.prototype.forEach.call(sections, function (section) {
+      if (section.closest("details.lane-disclosure")) return;
+      var heading = section.querySelector("h3");
+      var list = section.querySelector("ol.checklist");
+      if (!heading || !list) return;
+      sectionIndex++;
+      section.setAttribute("data-phase-section", "");
+      heading.classList.add("phase-section-heading");
+
+      var title = heading.textContent;
+      heading.textContent = "";
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "phase-section-toggle";
+      var buttonId = "prework-section-toggle-" + sectionIndex;
+      button.setAttribute("id", buttonId);
+      button.setAttribute("data-phase-section-toggle", "");
+      button.setAttribute("aria-expanded", "false");
+
+      var label = document.createElement("span");
+      label.className = "phase-section-title";
+      label.textContent = title;
+      var stat = document.createElement("span");
+      stat.className = "phase-section-stat";
+      stat.setAttribute("data-phase-section-stat", "");
+      stat.textContent = "0 / 0";
+      var cue = document.createElement("span");
+      cue.className = "phase-section-cue";
+      cue.setAttribute("aria-hidden", "true");
+      button.appendChild(label);
+      button.appendChild(stat);
+      button.appendChild(cue);
+      heading.appendChild(button);
+
+      if (!list.getAttribute("id")) list.setAttribute("id", "prework-section-steps-" + sectionIndex);
+      list.setAttribute("aria-labelledby", buttonId);
+      button.setAttribute("aria-controls", list.getAttribute("id"));
+      setPreworkSection(section, false);
+      button.addEventListener("click", function () {
+        setPreworkSection(section, button.getAttribute("aria-expanded") !== "true");
+      });
+    });
+  }
+
   function setCheckDetail(detail, open) {
     if (!detail) return;
+    if (open) setPreworkSection(detail.closest("[data-phase-section]"), true);
     detail.hidden = !open;
     var item = detail.closest("[data-check-item]");
     var button = item && item.querySelector("[data-check-detail-toggle]");
@@ -463,6 +548,7 @@
         updateProgressOutputs(key);
       });
     });
+    initPreworkSections(form, b);
     initPreworkStepDetails(form, b);
     updateProgressOutputs(key);
   }
@@ -509,6 +595,10 @@
           Array.prototype.forEach.call(
             document.querySelectorAll(".check-detail"),
             function (el) { setCheckDetail(el, false); }
+          );
+          Array.prototype.forEach.call(
+            document.querySelectorAll("[data-phase-section]"),
+            function (section) { setPreworkSection(section, false); }
           );
           Array.prototype.forEach.call(
             document.querySelectorAll("details.lane-disclosure"),
