@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Password-gated static host for the AI Harness Bootcamp.
 
-Serves the **repo root** (not only site/) so relative links like
-../operator/ and ../instruments/ keep working the same way as:
+Serves the repository root and routes learners to the canonical website at
+`/site/`. Raw exercise files remain available to cloned workspaces, but the
+website does not use them as an alternate reading path.
 
     python3 -m http.server 8080
     → http://localhost:8080/site/
@@ -106,14 +107,13 @@ BLOCKED_PREFIXES = (
     ".github/",
     "node_modules/",
     "scripts/",
-    "docs/analysis/",
     "resources/handouts/",
     "resources/figures/",
 )
 
 # Cohort password is shared with students — keep answer keys off HTTP.
-# operator/PASS_BARS.md is deliberately NOT here: every block page links to it
-# as the learner-facing MVP checklist.
+# operator/PASS_BARS.md is deliberately NOT here because it is a working
+# exercise file used throughout the course.
 #
 # The key files now live under staff/ and are reachable only with a staff
 # login. Their former locations stay on this list so that a stray copy dropped

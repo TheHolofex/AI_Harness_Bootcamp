@@ -344,5 +344,5 @@ At the other six blocks you tick the list yourself instead, count the ticks, and
 
 ## Identity lock
 
-These bars exist to enforce `MEMORY.md`.  
-If MVP is achievable without direction, evidence, and owned verdict, the floor has failed — raise it again.
+These outcomes enforce the course evidence standard.
+If a lesson can be completed without direction, evidence, and an owned verdict, the outcomes are too weak — raise them again.

@@ -8,13 +8,13 @@ The owning block or pre-work page owns the concept's canonical statement. A reso
 
 Before drafting:
 
-1. Read `MEMORY.md` and the full owning learner page.
+1. Read the full live owning learner page at the catalog's `canonical.path` and fragment.
 2. Read the resource entry in `resources/catalog.json` and scope contract in `resources/scopes.json`.
-3. Follow the exact canonical link in the scope contract.
+3. Use the catalog path for current course facts and the scope's `canonicalOwner` for topic boundaries or exact working-file wording.
 4. Name the novel learner action and inspectable artifact.
 5. Check collision IDs before deciding what belongs here.
 
-When a tool fact matters, link to the owning block page. Teach the durable mechanism in the handout. `MEMORY.md` wins over prior knowledge, web recollection, and model belief.
+When a tool fact matters, link to the owning block page. Teach the durable mechanism in the handout. The live owning HTML page wins over prior knowledge, web recollection, model belief, and superseded repository notes when current course facts conflict.
 
 ## Required learning arc
 

@@ -60,8 +60,7 @@
 
   function pageOwnerCode(current) {
     if (current === "prework-install") return "B0";
-    if (current === "prework" || current === "keys" ||
-        current === "prework-setup-log") return "PREWORK";
+    if (current === "prework" || current === "keys") return "PREWORK";
     if (current.indexOf("block-") === 0) return current.replace("block-", "").toUpperCase();
     var module = document.body && document.body.getAttribute("data-module");
     if (module === "prework") return "PREWORK";

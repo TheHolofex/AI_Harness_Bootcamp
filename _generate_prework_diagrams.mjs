@@ -787,33 +787,6 @@ const allFiles = [
   ...installSections.map((section) => [section.file, section.svgTitle]),
 ];
 
-const readme = `# Pre-work section diagrams
-
-Crisp, script-free SVG diagrams for the AI Harness Bootcamp install pages. All diagrams use the paper-surface Starzl visual system, selectable text, and an internal \`<title>\` for standalone accessibility.
-
-## Asset index
-
-| File | Placement |
-|---|---|
-${allFiles.map(([file, placement]) => `| \`${file}\` | ${placement} |`).join("\n")}
-
-## Usage
-
-Place the matching figure immediately after its section \`<h2>\`:
-
-\`\`\`html
-<figure class="section-diagram">
-  <img src="../assets/prework/install-03-git.svg" alt="Diagram: 3 · Git for Windows — place in pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
-</figure>
-\`\`\`
-
-Use \`install-overview.svg\` at 1120 × 280. Section diagrams are 1120 × 220. Keep the surrounding figure border in CSS; the SVGs deliberately carry no outer border so they remain reusable in print and other paper surfaces.
-
-Claude Code is encoded with the gold optional treatment. Completed stages use a crimson disc; the current stage uses a filled crimson capsule. The repair diagram is intentionally marked “ANY STAGE” because recovery is cross-cutting rather than a numbered install stage.
-`;
-
-fs.writeFileSync(path.join(OUT, "README.md"), readme);
-
 const installRows = installSections
   .map((section) => `| \`${section.svgTitle}\` | \`${section.file}\` |`)
   .join("\n");
@@ -944,4 +917,4 @@ if (!css.includes(".section-diagram {")) {
   fs.writeFileSync(cssFile, css);
 }
 
-console.log(`Generated ${allFiles.length} SVG assets, README.md, INTEGRATE.md, and site integration.`);
+console.log(`Generated ${allFiles.length} SVG assets, INTEGRATE.md, and site integration.`);

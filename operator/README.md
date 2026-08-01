@@ -59,11 +59,11 @@ Operator chat: co-write Brief → status LIVE
 
 ## Pre-work
 
-Complete workstation setup together during the Monday B0 install clinic (`../prework/`), verifying each tool as you go. No golden image default. Move into B1 First Light once the setup works, then continue to P1 in the afternoon.
+Complete workstation setup together during the Monday B0 install clinic in `../site/checklists/prework-install.html`, verifying each tool as you go. Move into B1 First Light once the setup works, then continue to P1 in the afternoon.
 
 ## Identity lock
 
-See `../MEMORY.md`. If Brief/Log become solo forms or instructor worksheets, the design has regressed.
+The live module pages own the lesson sequence and current course facts. If Brief and Log become solo forms or instructor worksheets, the design has regressed.
 
 ## Chats
 

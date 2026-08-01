@@ -157,8 +157,6 @@ function returnToCourse(href, label) {
 </nav>`;
 }
 
-let catalog;
-
 function renderHandout(resource, allResources) {
   const sourcePath = path.join(ROOT, "resources", "handouts", resource.module, `${resource.slug}.html`);
   const figurePath = path.join(ROOT, "resources", "figures", resource.module, `${resource.id}.json`);
@@ -210,56 +208,6 @@ ${scripts("../..")}
 </html>`;
 }
 
-function resourceCard(resource, href) {
-  return `<li><a class="resource-card" href="${href}">
-  <span class="resource-card-top"><span class="resource-id">${html(resource.id)}</span><span>${html(resource.time)}</span></span>
-  <h3>${html(resource.title)}</h3>
-  <p>${html(resource.summary)}</p>
-  <dl><div><dt>Use when</dt><dd>${html(resource.useWhen)}</dd></div><div><dt>Artifact</dt><dd>${html(resource.artifact)}</dd></div></dl>
-</a></li>`;
-}
-
-function renderModulePage(module, moduleResources) {
-  const canonicalTarget = `../../${module.canonicalPath.replace(/^site\//, "")}`;
-  const existing = (catalog.existingResources || []).filter((item) => item.module === module.id);
-  return `${GENERATED}
-${pageHead(`${module.label} optional handouts`, "../..", ` data-section="resources" data-module="${html(module.id)}"`)}
-<a class="skip-link" href="#main-content">Skip to content</a>
-${brand("../..")}
-<main class="site-main resource-index" id="main-content">
-  <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="${canonicalTarget}">← Return to ${html(module.label)}</a></li><li aria-current="page">Optional handouts</li></ol></nav>
-  <header class="resource-index-hero"><p class="eyebrow">Optional handouts</p><h1>${html(module.label)} handouts</h1><p class="lede">Use a guide only when the live problem calls for more practice or a reusable instrument. The module page remains the course path.</p><p><a class="btn" href="${canonicalTarget}">← Return to ${html(module.label)}</a></p></header>
-  ${moduleResources.length ? `<ol class="resource-card-grid">${moduleResources.map((item) => resourceCard(item, `./${item.slug}.html`)).join("\n")}</ol>` : `<div class="callout"><strong>No field guide is published here yet.</strong> Use the module page for the current course path.</div>`}
-${existing.length ? `<section><h2>Optional course-wide companions</h2><div class="card-grid">${existing.map((item) => `<a class="card" href="../../${item.path.replace(/^site\//, "")}"><h3>${html(item.title)}</h3><p>${html(item.summary)}</p></a>`).join("\n")}</div></section>` : ""}
-  ${returnToCourse(canonicalTarget, module.label)}
-</main>
-${footer({ href: canonicalTarget, label: module.label })}
-${scripts("../..")}
-</body>
-</html>`;
-}
-
-function renderHub(resources) {
-  const liveModules = catalog.modules.filter((module) => resources.some((item) => item.module === module.id) || (catalog.existingResources || []).some((item) => item.module === module.id));
-  return `${GENERATED}
-${pageHead("Optional handouts", ".", ` data-section="resources"`)}
-<a class="skip-link" href="#main-content">Skip to content</a>
-${brand(".")}
-<main class="site-main resource-hub" id="main-content">
-  <header class="resource-index-hero"><p class="eyebrow">Optional reference library</p><h1>Optional handouts</h1><p class="lede">These guides are extra practice and desk references. They are not the course path; return to the day-by-day modules for the class sequence.</p><p><a class="btn" href="./index.html#journey">← Return to the day-by-day course</a></p></header>
-  <div class="callout"><strong>Use a handout when a module points you here or a live problem needs more depth.</strong> Each card states the time and the artifact you will leave with.</div>
-  <section aria-labelledby="module-shelves"><h2 id="module-shelves">Optional handouts by owning module</h2><div class="module-shelf-grid">${liveModules.map((module) => {
-    const count = resources.filter((item) => item.module === module.id).length + (catalog.existingResources || []).filter((item) => item.module === module.id).length;
-    return `<a class="module-shelf" href="./resources/${module.route}/index.html"><span class="resource-id">${html(module.code)}</span><h3>${html(module.label.replace(/^P\d · /, ""))}</h3><p>${count} ${count === 1 ? "handout" : "handouts"} · open the optional shelf</p></a>`;
-  }).join("\n")}</div></section>
-  <section aria-labelledby="field-guides"><h2 id="field-guides">All optional handouts</h2><ol class="resource-card-grid">${resources.map((item) => resourceCard(item, `./resources/${item.module}/${item.slug}.html`)).join("\n")}</ol></section>
-</main>
-${footer({ href: "./index.html#journey", label: "the day-by-day course" })}
-${scripts(".")}
-</body>
-</html>`;
-}
-
 function validateCatalog(value) {
   if (value.schemaVersion !== 1 || !Array.isArray(value.modules) || !Array.isArray(value.resources)) throw new Error("catalog schema is invalid");
   const ids = new Set();
@@ -284,19 +232,14 @@ function validateCatalog(value) {
 }
 
 function main() {
-  catalog = readJson(CATALOG_PATH);
+  const catalog = readJson(CATALOG_PATH);
   validateCatalog(catalog);
   const resources = publicResources(catalog);
   for (const resource of resources) {
     const output = renderHandout(resource, resources);
     write(path.join(ROOT, "site", "resources", resource.module, `${resource.slug}.html`), output);
   }
-  for (const module of catalog.modules) {
-    const moduleResources = resources.filter((resource) => resource.module === module.id);
-    write(path.join(ROOT, "site", "resources", module.route, "index.html"), renderModulePage(module, moduleResources));
-  }
-  write(path.join(ROOT, "site", "resources.html"), renderHub(resources));
-  process.stdout.write(`${CHECK_ONLY ? "Checked" : "Built"} ${resources.length} published resources across ${catalog.modules.length} module shelves.\n`);
+  process.stdout.write(`${CHECK_ONLY ? "Checked" : "Built"} ${resources.length} context-linked handouts and their figures.\n`);
 }
 
 main();

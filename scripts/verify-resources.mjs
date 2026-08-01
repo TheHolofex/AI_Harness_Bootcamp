@@ -253,7 +253,7 @@ function validateOwnerReturn(label, value, ownerHref) {
 
 function validateGenerated() {
   const published = CATALOG.resources.filter((item) => item.status === "published");
-  const expectedHtml = new Set(CATALOG.modules.map((module) => path.join(SITE, "resources", module.route, "index.html")));
+  const expectedHtml = new Set();
   const expectedSvg = new Set();
   for (const resource of published) {
     expectedHtml.add(path.join(SITE, "resources", resource.module, `${resource.slug}.html`));
@@ -281,9 +281,6 @@ function validateGenerated() {
       const fragment = resource.canonical.fragment ? `#${resource.canonical.fragment}` : "";
       const ownerHref = `../../${resource.canonical.path.replace(/^site\//, "")}${fragment}`;
       validateOwnerReturn(generatedPath, value, ownerHref);
-    } else {
-      const module = CATALOG.modules.find((item) => generatedPath === `site/resources/${item.route}/index.html`);
-      if (module) validateOwnerReturn(generatedPath, value, `../../${module.canonicalPath.replace(/^site\//, "")}`);
     }
     const tidy = spawnSync("/usr/bin/tidy", ["-qe", "--new-blocklevel-tags", "header,nav,main,section,article,footer,figure,figcaption,details,summary", file], { encoding: "utf8" });
     if (tidy.error) warn(`${rel(file)}: tidy unavailable; HTML structural checks still ran`);
@@ -292,11 +289,7 @@ function validateGenerated() {
   for (const file of expectedSvg) if (fs.existsSync(file)) validateSvg(file);
   const builtCorpus = [...expectedHtml, ...expectedSvg].filter(fs.existsSync).map(text).join("\n");
   if (/startsWherePageEnds|doNotRetell|canonicalOwner|portfolioCollisionRules/.test(builtCorpus)) fail("internal scope metadata appears in generated resource output");
-  const hub = text(path.join(SITE, "resources.html"));
-  if (!/<h1>Optional handouts<\/h1>/.test(hub)) fail("site/resources.html: hub must identify itself as optional handouts");
-  if (/id="course-shelves"|href="\.\/(?:operator|instruments|prework)\.html"|<h3>Week map<\/h3>/.test(hub)) {
-    fail("site/resources.html: hub exposes an alternate course-path menu");
-  }
+  if (fs.existsSync(path.join(SITE, "resources.html"))) fail("obsolete generated page site/resources.html");
 }
 
 function validateLinks() {

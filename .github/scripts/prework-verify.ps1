@@ -97,14 +97,14 @@ if ($arch -and $arch -match "ARM") {
 
 Write-Result -Name "os.ps_version" -Ok $true -Detail ("PS " + $PSVersionTable.PSVersion.ToString()) -Hard $false
 
-# --- Git Bash path (guide contract) ---
+# --- Git Bash path (install-clinic contract) ---
 $bash = "C:\Program Files\Git\bin\bash.exe"
 if (Test-Path -LiteralPath $bash) {
     Write-Result -Name "git.bash_path" -Ok $true -Detail $bash -Hard $true
 } else {
     $alt = Get-Command "bash.exe" -ErrorAction SilentlyContinue
     if ($alt) {
-        Write-Result -Name "git.bash_path" -Ok $false -Detail "guide path missing; found $($alt.Source) - Pi shellPath may need edit" -Hard $true
+        Write-Result -Name "git.bash_path" -Ok $false -Detail "checklist path missing; found $($alt.Source) - Pi shellPath may need edit" -Hard $true
     } else {
         Write-Result -Name "git.bash_path" -Ok $false -Detail "Git Bash not at guide path and bash.exe not on PATH" -Hard $true
     }
@@ -159,7 +159,7 @@ foreach ($g in @("goose", "goose.exe")) {
             $gout = & $c.Source "--version" 2>&1 | Out-String
             $gout = $gout.Trim()
             if ($gout -match "(?i)database|clickhouse|ibis") {
-                Write-Result -Name "bin.goose" -Ok $false -Detail "looks like wrong winget goose (database tool): $gout" -Hard $true
+                Write-Result -Name "bin.goose" -Ok $false -Detail "looks like the unrelated database tool named goose: $gout" -Hard $true
             } else {
                 Write-Result -Name "bin.goose" -Ok $true -Detail "$($c.Source) - $gout" -Hard $false
                 $gooseOk = $true
@@ -171,7 +171,7 @@ foreach ($g in @("goose", "goose.exe")) {
     }
 }
 if (-not $gooseOk -and -not ($script:Lines | Where-Object { $_ -match "bin\.goose" })) {
-    Write-Result -Name "bin.goose" -Ok $false -Detail "goose not on PATH (install aaif-goose path from guide)" -Hard $false
+    Write-Result -Name "bin.goose" -Ok $false -Detail "goose not on PATH (use the AAIF installer in the website checklist)" -Hard $false
 }
 
 # --- OPENCODE_DISABLE_CLAUDE_CODE round-trip ---
@@ -210,31 +210,6 @@ if (Test-Path -LiteralPath $codexCfg) {
     Write-Result -Name "codex.config_api_lock" -Ok $forced -Detail $(if ($forced) { $codexCfg } else { "config exists but forced_login_method = api missing" }) -Hard $false
 } else {
     Write-Result -Name "codex.config_api_lock" -Ok $false -Detail "no $codexCfg yet (GUI install still required)" -Hard $false
-}
-
-# --- winget ids resolve (soft if winget broken) ---
-$winget = Get-Command winget -ErrorAction SilentlyContinue
-if ($winget) {
-    foreach ($pair in @(
-            @{ Id = "SST.opencode"; Hard = $false },
-            @{ Id = "OpenJS.NodeJS.LTS"; Hard = $false },
-            @{ Id = "Git.Git"; Hard = $false }
-        )) {
-        try {
-            $show = & winget show --id $pair.Id -e --accept-source-agreements 2>&1 | Out-String
-            if ($LASTEXITCODE -eq 0 -and $show -match "Version") {
-                $vm = [regex]::Match($show, "(?im)^\s*Version:\s*(\S+)")
-                $ver = if ($vm.Success) { $vm.Groups[1].Value } else { "?" }
-                Write-Result -Name "winget.$($pair.Id)" -Ok $true -Detail "Version $ver" -Hard $pair.Hard
-            } else {
-                Write-Result -Name "winget.$($pair.Id)" -Ok $false -Detail "winget show failed" -Hard $pair.Hard
-            }
-        } catch {
-            Write-Result -Name "winget.$($pair.Id)" -Ok $false -Detail $_.Exception.Message -Hard $pair.Hard
-        }
-    }
-} else {
-    Write-Result -Name "winget.present" -Ok $false -Detail "winget not on PATH" -Hard $false
 }
 
 # --- Results file ---

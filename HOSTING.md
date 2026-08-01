@@ -1,17 +1,17 @@
 # Hosting the course site (Railway)
 
-Password-gated static host for the whole bootcamp repo. Learners open `/site/` after entering one shared password from an environment variable.
+Password-gated static host for the bootcamp website. Learners open `/site/` after entering one shared password from an environment variable.
 
-## Why the whole repo
+## Course surface
 
-Local and install-guide flow is:
+The repository root is the deployment working directory. The password-gated server sends learners to the canonical website:
 
 ```bash
-python3 -m http.server 8080
+python server.py
 # → http://localhost:8080/site/
 ```
 
-HTML pages link to `../operator/`, `../instruments/`, `../prework/`, etc. The host therefore serves the **repository root**, not `site/` alone.
+The learner navigation stays inside `site/`. Raw exercise files under `operator/`, `mission_flesh/`, and `instruments/` are working inputs in the cloned course repository, not an alternate web course.
 
 ## Environment variables
 
@@ -79,7 +79,8 @@ Change `SITE_PASSWORD` in Railway and redeploy (or restart). Existing cookies st
 | `/__login` | No | Password form |
 | `/__logout` | Cookie clear | End session |
 | `/` | Yes | Redirect → `/site/` |
-| `/site/…` and repo markdown | Yes | Course content |
+| `/site/…` | Yes | Canonical course website |
+| Unlinked repo files | Yes, unless blocked | Local exercise inputs; not course navigation |
 
 ## Smoke test
 
