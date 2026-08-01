@@ -261,6 +261,13 @@ th { font-size: 0.7rem; letter-spacing: var(--tracking-label); text-transform: u
   display: block;
 }
 
+.nav-drop-resource-shelves {
+  right: 0;
+  left: auto;
+  max-height: min(34rem, calc(100vh - 5rem));
+  overflow-y: auto;
+}
+
 .nav-drop-link {
   position: relative;
   display: block;
@@ -404,6 +411,30 @@ th { font-size: 0.7rem; letter-spacing: var(--tracking-label); text-transform: u
 .callout strong { display: block; font-size: 0.72rem; letter-spacing: var(--tracking-label); text-transform: uppercase; margin-bottom: 0.35rem; }
 
 .panel { background: var(--paper-panel); border: 1px solid var(--rule); padding: 1rem 1.1rem; margin: 1rem 0 1.25rem; max-width: var(--measure-wide); }
+
+/* ---------- do-steps: literal in-order procedure blocks ---------- */
+.do-step { margin: 1.1rem 0 1.35rem; max-width: var(--measure-wide); }
+.do-step .do-label { margin: 0 0 0.4rem; font-weight: 600; max-width: none; }
+.do-step .do-label::before {
+  content: "▸"; color: var(--accent-line); margin-right: 0.45rem; font-weight: 700;
+}
+.do-step pre { margin: 0; }
+.do-step .do-clicks { margin: 0; padding: 0.75rem 1.1rem 0.75rem 2.3rem; background: var(--paper-panel); border: 1px solid var(--rule); max-width: none; }
+.do-step .do-clicks li { margin: 0.25rem 0; }
+.do-step + .do-step { margin-top: 1.35rem; }
+
+/* copy button injected by shell.js on every code block */
+pre.has-copy { position: relative; padding-right: 5.2rem; }
+.copy-btn {
+  position: absolute; top: 0.5rem; right: 0.5rem;
+  font-family: inherit; font-size: 0.72rem; font-weight: 600; line-height: 1;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  background: var(--paper); color: var(--ink-muted);
+  border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 0.38rem 0.6rem; cursor: pointer;
+}
+.copy-btn:hover { color: var(--ink); border-color: var(--ink-muted); }
+.copy-btn.copied { color: var(--accent-line); border-color: var(--accent-line); }
 .steps { counter-reset: step; list-style: none; padding: 0; max-width: var(--measure); }
 .steps > li {
   counter-increment: step; position: relative; padding: 0 0 1.25rem 2.5rem;
@@ -1072,3 +1103,19 @@ a.plate-cell:hover { background: var(--paper-warm); }
 
 /* long install tokens and paths must never force page-level overflow */
 code, .meta-grid .v, .check-detail a { overflow-wrap: anywhere; }
+
+@media (pointer: coarse) {
+  .nav.nav-unified > a,
+  .nav-drop-btn { min-height: 2.75rem; }
+  .nav-drop-link { min-height: 2.75rem; padding-top: 0.72rem; padding-bottom: 0.72rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

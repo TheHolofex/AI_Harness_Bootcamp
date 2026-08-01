@@ -12,17 +12,16 @@
   var AHB = window.AHB;
   if (!AHB) return;
 
-  /* ---------- path depth ---------- */
+  /* ---------- site root ---------- */
 
-  function depthPrefix() {
-    var path = (location.pathname || "").replace(/\\/g, "/");
-    if (path.indexOf("/blocks/") !== -1 || path.indexOf("/checklists/") !== -1) {
-      return "..";
-    }
-    return ".";
+  function siteRootPrefix() {
+    var script = document.currentScript || document.querySelector('script[src*="/js/shell.js"], script[src$="js/shell.js"]');
+    if (!script || !script.src) return ".";
+    return new URL("../", script.src).href.replace(/\/$/, "");
   }
 
   function pageKey() {
+    if (document.body && document.body.getAttribute("data-section") === "resources") return "resources";
     var path = (location.pathname || "").replace(/\\/g, "/");
     var file = path.split("/").pop() || "index.html";
     if (!file || file === "site") file = "index.html";
@@ -58,6 +57,20 @@
   }
 
   /* ---------- primary nav ---------- */
+
+  var RESOURCE_SHELVES = [
+    { label: "Resource hub", path: "resources.html" },
+    { label: "Pre-work", path: "resources/prework/index.html" },
+    { label: "P1 · Daily Status Brief", path: "resources/p1/index.html" },
+    { label: "P2 · Hot-rod morning", path: "resources/p2/index.html" },
+    { label: "P3 · Twin-engine intel desk", path: "resources/p3/index.html" },
+    { label: "P4 · Director’s second brain", path: "resources/p4/index.html" },
+    { label: "P5 · Poisoned corpus", path: "resources/p5/index.html" },
+    { label: "P6 · Watch officer", path: "resources/p6/index.html" },
+    { label: "P7 · Automation line", path: "resources/p7/index.html" },
+    { label: "P8 · Operator-governed model", path: "resources/p8/index.html" },
+    { label: "Course-wide", path: "resources/course-wide/index.html" }
+  ];
 
   function navGroupFor(current) {
     if (current === "index") return "home";
@@ -108,7 +121,13 @@
     });
 
     html += '<span class="nav-sep" aria-hidden="true"></span>';
-    html += topLink(p + "/resources.html", "Resources", group === "resources", true);
+    html += '<div class="nav-drop nav-drop-resources' + (group === "resources" ? " is-active" : "") + '" data-nav-drop>';
+    html += '<button type="button" class="nav-drop-btn nav-quiet" aria-expanded="false" aria-controls="nav-resources">Resources<span class="caret" aria-hidden="true"></span></button>';
+    html += '<div class="nav-drop-panel nav-drop-resource-shelves" id="nav-resources" role="group" aria-label="Resource module shelves" hidden>';
+    RESOURCE_SHELVES.forEach(function (shelf) {
+      html += '<a class="nav-drop-link" href="' + p + "/" + shelf.path + '">' + shelf.label + '</a>';
+    });
+    html += "</div></div>";
     html += topLink(p + "/lead.html", "Lead", group === "lead", true);
     return html;
   }
@@ -120,9 +139,11 @@
 
     function closeDrop(drop) {
       var btn = buttonFor(drop);
+      var panel = drop.querySelector(".nav-drop-panel");
       drop.classList.remove("is-open");
       drop.removeAttribute("data-pinned");
       if (btn) btn.setAttribute("aria-expanded", "false");
+      if (panel) panel.hidden = true;
     }
 
     function closeAll(except) {
@@ -131,10 +152,12 @@
 
     function openDrop(drop, pinned) {
       var btn = buttonFor(drop);
+      var panel = drop.querySelector(".nav-drop-panel");
       closeAll(drop);
       drop.classList.add("is-open");
       if (pinned) drop.setAttribute("data-pinned", "true");
       if (btn) btn.setAttribute("aria-expanded", "true");
+      if (panel) panel.hidden = false;
     }
 
     drops.forEach(function (drop) {
@@ -187,7 +210,7 @@
     if (!nav) return;
     nav.setAttribute("aria-label", "Primary");
     nav.classList.add("nav", "nav-unified");
-    nav.innerHTML = buildNav(depthPrefix(), pageKey());
+    nav.innerHTML = buildNav(siteRootPrefix(), pageKey());
     wireDropdowns(nav);
   }
 
@@ -514,10 +537,60 @@
     setStage("monday", null, "Opens Monday", null);
   }
 
+  /* ---------- copy buttons on code blocks ---------- */
+
+  function copyFallback(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  function wireCopyButtons() {
+    var pres = document.querySelectorAll(".site-main pre");
+    Array.prototype.forEach.call(pres, function (pre) {
+      var code = pre.querySelector("code");
+      if (!code || pre.querySelector(".copy-btn")) return;
+      pre.classList.add("has-copy");
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "copy-btn";
+      btn.textContent = "Copy";
+      btn.setAttribute("aria-label", "Copy this block to the clipboard");
+      btn.addEventListener("click", function () {
+        var text = code.textContent.replace(/\s+$/, "");
+        function flash(ok) {
+          btn.textContent = ok ? "Copied ✓" : "Press Ctrl+C";
+          btn.classList.add("copied");
+          window.setTimeout(function () {
+            btn.textContent = "Copy";
+            btn.classList.remove("copied");
+          }, 1600);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(
+            function () { flash(true); },
+            function () { flash(copyFallback(text)); }
+          );
+        } else {
+          flash(copyFallback(text));
+        }
+      });
+      pre.appendChild(btn);
+    });
+  }
+
   /* ---------- boot ---------- */
 
   function init() {
-    var prefix = depthPrefix();
+    var prefix = siteRootPrefix();
     renderNav();
     renderContextStrips(prefix);
     renderPlates(prefix);
@@ -528,6 +601,7 @@
     wireChecklistTools();
     renderDashboard(prefix);
     renderPreworkHub(prefix);
+    wireCopyButtons();
   }
 
   if (document.readyState === "loading") {
