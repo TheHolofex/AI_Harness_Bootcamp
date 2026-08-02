@@ -20,6 +20,8 @@ Five fields. Target: under five minutes of dialogue. Append one entry per block;
 | **5. I still own** | Judgment, next action, or risk the machine must not carry alone. |
 | **6. Adversarial** | Paste final line: `ADVERSARIAL: stood / wounded / failed — …` (from review chat). |
 
+P3 uses **6. Decision review** instead: record the most consequential source-backed disposition from the comparator and MCP evidence packet. Its live page does not add a separate attack chat.
+
 ---
 
 ## Week log
@@ -59,7 +61,7 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 | 5. I still own | |
 | 6. Adversarial | |
 
-### P3 — Twin-engine
+### P3 — Twin-engine + MCP evidence
 
 | Field | Note |
 |---|---|
@@ -68,7 +70,7 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 | 3. Verdict | |
 | 4. Evidence | |
 | 5. I still own | |
-| 6. Adversarial | |
+| 6. Decision review | |
 
 ### P4 — Second brain
 

@@ -145,7 +145,7 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 | Block | Deep mark (one line) |
 |---|---|
 | **P2** | Case suite: baseline → after on `instruments/p2_test_suite` D01–D05 (`n/5`) |
-| **P3** | Comparator on `BRIEF-v1`: disagreements `n` · kills `n` · verdict |
+| **P3** | Comparator on `BRIEF-v1`: material differences `n` · dispositions `K/D/U` · release decision · packet source-checked/closed `Y/Y` |
 | **P5** | Containment: 3/3 catches · absence-of-effect proof pointer |
 | **P6** | Contract: stop/restart · exception drill pass/fail |
 | **P8** | Hold-degrade: open `n/5` vs home `n/5`; refuse: Y/N; transfer SEALED: Y/N |

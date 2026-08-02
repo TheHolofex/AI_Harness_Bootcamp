@@ -32,7 +32,7 @@ Each instrument has:
 |---|---|---|
 | D01–D05 | Baseline + after | Hold/degrade on open (or re-pointed) model |
 
-P3 uses its own frozen corpus + brief (`F-` sources, brief `BRIEF-v1`) on the **same track**.
+P3 uses its own frozen corpus + brief (`F-` sources, brief `BRIEF-v1`) on the **same track**. After the two clean engine runs are saved, `p3_mcp_evidence/` supplies the exact-pinned, read-only local MCP path used to build the decision's evidence packet; the live website carries the complete operating instructions.
 
 ## Facilitation
 

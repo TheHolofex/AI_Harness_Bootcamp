@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 220" role="img" aria-labelledby="title-p3-stage-mcp desc-p3-stage-mcp">
+  <title id="title-p3-stage-mcp">P3 bounded MCP evidence path</title>
+  <desc id="desc-p3-stage-mcp">The ChatGPT host sends planned, approved source reads through an MCP client to a local stdio server scoped to five evidence files. Claims are grouped by source, the evidence packet is saved, and the server is disabled before raw-file checking in Stage 05.</desc>
+  <defs>
+    <marker id="mcp-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 8 4 0 8Z" fill="#0A0A0A"/></marker>
+    <marker id="mcp-arrow-red" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 8 4 0 8Z" fill="#E31C23"/></marker>
+    <style>
+      text { font-family: system-ui, "Inter", "Helvetica Neue", Arial, sans-serif; fill: #0A0A0A; }
+      .micro { font-size: 8px; font-weight: 650; letter-spacing: 1.5px; }
+      .tiny { font-size: 7px; font-weight: 650; letter-spacing: .8px; }
+      .rail { font-size: 7.1px; font-weight: 650; }
+      .caption { font-size: 8.5px; font-weight: 650; letter-spacing: 1px; }
+      .body { font-size: 9px; font-weight: 520; }
+      .muted { fill: #6B6B6B; }
+      .white { fill: #FFFFFF; }
+      .red { fill: #E31C23; }
+      .hair { fill: none; stroke: #D0D0D0; stroke-width: 1; vector-effect: non-scaling-stroke; }
+      .line { fill: none; stroke: #0A0A0A; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+      .redline { fill: none; stroke: #E31C23; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+      .dash { stroke-dasharray: 5 4; }
+    </style>
+  </defs>
+  <rect width="1120" height="220" fill="#FFFFFF"/>
+  <rect width="1120" height="56" fill="#FAFAF8"/>
+  <text x="24" y="13" class="micro muted">P3 · TWIN-ENGINE INTEL DESK</text>
+  <text x="1096" y="13" class="micro muted" text-anchor="end">STAGE 04 OF 05</text>
+  <path d="M110 37H1006" class="hair"/>
+  <g aria-label="Five-stage exercise rail">
+    <rect x="24" y="25" width="204" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/><circle cx="32" cy="37" r="2.6" fill="#E31C23"/><text x="126" y="40" class="rail" text-anchor="middle">1 Control</text>
+    <rect x="234" y="25" width="204" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/><circle cx="242" cy="37" r="2.6" fill="#E31C23"/><text x="336" y="40" class="rail" text-anchor="middle">2 Dispatch</text>
+    <rect x="444" y="25" width="204" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/><circle cx="452" cy="37" r="2.6" fill="#E31C23"/><text x="546" y="40" class="rail" text-anchor="middle">3 Compare</text>
+    <rect x="654" y="25" width="204" height="24" rx="2" fill="#E31C23" stroke="#E31C23"/><text x="756" y="40" class="rail white" text-anchor="middle">4 Source packet</text>
+    <rect x="864" y="25" width="232" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/><text x="980" y="40" class="rail muted" text-anchor="middle">5 Decide</text>
+  </g>
+  <path d="M0 56H1120" class="hair"/>
+
+  <g aria-label="Bounded MCP evidence architecture">
+    <rect x="24" y="72" width="154" height="54" rx="2" fill="#FFFFFF" stroke="#0A0A0A"/>
+    <text x="101" y="90" class="micro" text-anchor="middle">HOST</text>
+    <text x="101" y="106" class="body" text-anchor="middle">ChatGPT · Codex</text>
+    <text x="101" y="119" class="tiny red" text-anchor="middle">HUMAN APPROVAL</text>
+
+    <path d="M178 99H228" class="line" marker-end="url(#mcp-arrow)"/>
+    <rect x="234" y="80" width="124" height="38" rx="19" fill="#FAFAF8" stroke="#0A0A0A"/>
+    <text x="296" y="96" class="micro" text-anchor="middle">MCP CLIENT</text>
+    <text x="296" y="109" class="tiny muted" text-anchor="middle">CALL + POLICY</text>
+
+    <path d="M358 99H414" class="line" marker-end="url(#mcp-arrow)"/>
+    <text x="386" y="91" class="tiny muted" text-anchor="middle">STDIO</text>
+    <rect x="420" y="72" width="178" height="54" rx="2" fill="#0A0A0A"/>
+    <text x="509" y="90" class="micro white" text-anchor="middle">P3_EVIDENCE</text>
+    <text x="509" y="106" class="body white" text-anchor="middle">2 read-only tools</text>
+    <text x="509" y="119" class="tiny white" text-anchor="middle">NO KEY · TOOL-ONLY</text>
+
+    <path d="M598 99H650" class="line" marker-end="url(#mcp-arrow)"/>
+    <rect x="656" y="72" width="184" height="54" rx="2" fill="#FFFFFF" stroke="#0A0A0A"/>
+    <text x="748" y="90" class="micro" text-anchor="middle">SCOPED ROOT</text>
+    <text x="748" y="106" class="body" text-anchor="middle">p3_desk · 5 files</text>
+    <text x="748" y="119" class="tiny muted" text-anchor="middle">BASENAMES ONLY</text>
+
+    <path d="M840 88H900" class="line" marker-end="url(#mcp-arrow)"/>
+    <rect x="906" y="68" width="190" height="36" rx="2" fill="#FFFFFF" stroke="#0A0A0A"/>
+    <text x="1001" y="84" class="micro" text-anchor="middle">SOURCE PACKET</text>
+    <text x="1001" y="97" class="tiny muted" text-anchor="middle">HASH + SHORT EXCERPTS</text>
+
+    <path d="M840 112H900" class="redline dash" marker-end="url(#mcp-arrow-red)"/>
+    <rect x="906" y="108" width="190" height="30" rx="2" fill="#FFF7F7" stroke="#E31C23"/>
+    <text x="1001" y="127" class="micro red" text-anchor="middle">UNPLANNED CALL · DENY</text>
+  </g>
+
+  <path d="M24 148H1096" class="hair"/>
+  <g aria-label="MCP operating sequence">
+    <text x="24" y="162" class="micro muted">WORK PRODUCT</text>
+    <rect x="24" y="172" width="164" height="30" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/><text x="106" y="190" class="caption" text-anchor="middle">1 · INSPECT COMMAND</text>
+    <path d="M188 187H204" class="redline" marker-end="url(#mcp-arrow-red)"/>
+    <rect x="212" y="172" width="164" height="30" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/><text x="294" y="190" class="caption" text-anchor="middle">2 · ALLOWLIST</text>
+    <path d="M376 187H392" class="redline" marker-end="url(#mcp-arrow-red)"/>
+    <rect x="400" y="172" width="164" height="30" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/><text x="482" y="190" class="caption" text-anchor="middle">3 · GROUP CLAIMS</text>
+    <path d="M564 187H580" class="redline" marker-end="url(#mcp-arrow-red)"/>
+    <rect x="588" y="172" width="164" height="30" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/><text x="670" y="190" class="caption" text-anchor="middle">4 · READ EACH ONCE</text>
+    <path d="M752 187H768" class="redline" marker-end="url(#mcp-arrow-red)"/>
+    <rect x="776" y="172" width="164" height="30" rx="2" fill="#FFFFFF" stroke="#D0D0D0"/><text x="858" y="190" class="caption" text-anchor="middle">5 · SAVE PACKET</text>
+    <path d="M940 187H956" class="redline" marker-end="url(#mcp-arrow-red)"/>
+    <rect x="964" y="172" width="132" height="30" rx="2" fill="#E31C23"/><text x="1030" y="190" class="caption white" text-anchor="middle">6 · DISABLE</text>
+  </g>
+</svg>

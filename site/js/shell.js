@@ -934,9 +934,12 @@
     var activeButton = activeRecord.button;
     var viewport = state.trackViewport;
     if (activeButton && viewport.clientWidth && viewport.scrollWidth > viewport.clientWidth) {
-      viewport.scrollLeft = Math.max(0,
-        activeRecord.node.offsetLeft + activeButton.offsetLeft -
-        (viewport.clientWidth - activeButton.offsetWidth) / 2);
+      var buttonRect = activeButton.getBoundingClientRect();
+      var viewportRect = viewport.getBoundingClientRect();
+      var targetScrollLeft = viewport.scrollLeft +
+        (buttonRect.left - viewportRect.left) -
+        (viewport.clientWidth - buttonRect.width) / 2;
+      viewport.scrollLeft = Math.max(0, targetScrollLeft);
     }
   }
 

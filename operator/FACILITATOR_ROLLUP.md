@@ -63,15 +63,15 @@ Do not compute a median across a student's nine blocks and do not rank the cohor
 - Mean bars-met by block over the same range, read beside it
 - Share of rows carrying a named brief field
 - Which of the five brief fields the cohort names most often
-- Engine-disagreement rate at P3, P5 and P8
+- P3 material-difference and source-disposition pattern; P5/P8 two-reviewer disagreement rate
 
-**On the disagreement rate.** At those three blocks the same paste pack is reviewed twice, by two engines. Near-zero disagreement across a cohort does not mean the work is clean — it usually means the packs are too thin to tell two reviewers apart. Read it the same way you read flag `R`, and go look at a pack.
+**On disagreement.** P3 compares two frozen outputs, then resolves consequential claims against raw sources; read its comparator and disposition pattern. P5 and P8 send the same review pack through two engines; read their reviewer-disagreement rate beside the underlying packs. Near-zero is a prompt to inspect, not evidence of either cleanliness or failure by itself.
 
 ## Spot-checks worth the minutes
 
 - **Evidence pointers at P4.** Read three students' pointers and confirm each one names a path, a score-sheet row, a comparator line, or a test name. Anything that names a feeling gets sent back.
 - **Adversarial paste packs.** A polite reviewer means the pack was thin or the build chat was reused. Fix the pack; never soften the prompt.
 - **Transfer seeds.** P1–P7 write dated seeds during their own module closeouts. Only P7 and P8 use the shared `P7–P8 — 30/60/90 Plan` chat, because both visits continue the same saved plan in the same role. At P7, count the seeds and read the dates. Seven seeds all dated the same afternoon is a Friday dump with extra steps.
-- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B1, P2 and P5. At the other six the student ticks the floor themselves before the attack, so those are the blocks where a vibe pointer can survive longest.
+- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B1, P2 and P5. At P1, P4, P6, P7 and P8 the student ticks the floor before the attack. P3 instead checks outcomes as their artifacts are produced, then uses its comparator, source packet, and raw-file adjudication as the review.
 
 If a cohort needs rescue, narrow the **scope of data**. Rescue is restoring the pulse and the evidence, not adding metrics.

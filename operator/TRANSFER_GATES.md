@@ -36,7 +36,7 @@ Follow the live module page
 | B1 | None; complete the guided First Light dashboard flow |
 | P1 | Judgment-product machine seed in the P1 closeout |
 | P2 | Harness/30-day seed in the P2 closeout |
-| P3 | Verdict/kill/comparator seed in the P3 closeout |
+| P3 | Comparator/disposition/MCP-boundary seed in the P3 closeout |
 | P4 | Trail/knowledge target in the P4 closeout |
 | P5 | Intake/trusted-picture seed in the P5 closeout |
 | P6 | Contract/stop seed in the P6 closeout |

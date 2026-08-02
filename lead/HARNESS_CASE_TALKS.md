@@ -65,7 +65,6 @@ Listen for the problem, the harness move, and the evidence — then spend discus
 
 ## Related stretch modules (not case talks)
 
-- **P3 Many Minds** — subagents/worktrees after twin-engine MVP: `mission_flesh/p3/MANY_MINDS.md`
+- **P3 Many Minds** — measured subagent review after the twin-engine + MCP MVP: `mission_flesh/p3/MANY_MINDS.md`
 - **P6/P8 endpoint wall** — local Ollama/LM Studio stretch: `mission_flesh/p6/local_endpoint_notes.md`
 - **Thu after lunch browser → deck** — `lead/BROWSER_DECK_DEMO.md`
-

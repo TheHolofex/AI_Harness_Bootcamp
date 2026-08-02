@@ -25,7 +25,7 @@ Whichever way you do it, the list is written down **before** the attack, and you
 
 **When the module page calls for an AI-assisted walk, use its exact module-specific closeout chat.** The generic direction-chat pattern is `[MODULE] — Direction & Closeout`; replace `[MODULE]` with the current module code and copy any date suffix shown on the page. Go one bar at a time. For each bar you answer *met* or *not yet* and give an evidence pointer, and the AI challenges any pointer that is a feeling rather than an artifact. Use the closer prompt at the bottom of this file.
 
-**At P1, P3, P4, P6, P7 and P8 — tick the list yourself, then hand it to the attack.** Before you open the adversarial chat:
+**At P1, P4, P6, P7 and P8 — tick the list yourself, then hand it to the attack.** Before you open the adversarial chat:
 
 1. Tick every bar you can point at an artifact for, right now.
 2. Leave unticked any bar you cannot evidence. An honest *not yet* costs nothing at this moment and saves you in the next one.
@@ -144,32 +144,29 @@ Single unmeasured tweak, no red→green test, or nothing survives restart.
 
 ---
 
-## P3 — Twin-engine · Cap 4  
-**Mastery claim:** You treat models as callable components. Disagreement is a sensor. The verdict is yours.
+## P3 — Twin-engine + MCP evidence · Cap 4
+**Mastery claim:** You treat models and tool paths as controlled components. Disagreement is a sensor, MCP is a bounded evidence route, and the verdict is yours.
 
 ### MVP
 - [ ] Course frozen brief `BRIEF-v1` + track corpus in `instruments/p3_frozen_brief` run unchanged on **Codex app** and **OpenCode**
 - [ ] **Run identity declared for both engines** — model id, version, folder, and which instruction files/skills/memories were live. Clean folder, or the loaded context written down. An undeclared advantage invalidates the comparison
+- [ ] User-configured and external MCP state declared and cleared before the frozen runs; unavoidable built-in surfaces listed but not invoked; the course server is connected only after both raw outputs and the comparator exist
 - [ ] Deterministic join/watchlist path where required — model does not “decide” the join key
-- [ ] Comparator artifact: side-by-side fields/claims table (not vibes)
-- [ ] ≥3 material disagreement rows **or**, if fewer, a written proof you searched for disagreement and why the task was low-separation
-- [ ] For each disagreement kept: **verdict rule** applied (which side, why, what evidence outside either model)
-- [ ] At least one claim **discarded** despite a model asserting it (show the assert + the kill)
+- [ ] Comparator artifact: side-by-side fields/claims table with one row per material difference; zero differences is valid when the inspected fields are recorded
+- [ ] `MCP_EVIDENCE_PACKET.md`: reviewed local server/root and two-tool allowlist; every material row plus every agreed claim driving release has one or more E-IDs with source hash, returned excerpt, raw-context check, and correction when needed; planned and actual reads match; shared-dependency note; server disabled after use
+- [ ] Every consequential claim receives a source-backed **keep / discard / unknown** disposition; zero discards is valid when the evidence supports every claim
 - [ ] Adjudication note a supervisor could read cold: what is operationally true for the watch
-- [ ] Log points at brief hash/version, both raw outputs, comparator, and final watch product
+- [ ] Log points at brief id and unmodified status, both raw outputs, comparator, MCP evidence packet, and final watch product
 
 ### Stretch
-- [ ] Underspecification experiment: v1 brief vs tightened v2; show disagreement rate or error change on both engines
 - [ ] 90-second peer defense using only the comparator (no rebuilding the story)
-- [ ] **Many Minds (subagents):** `mission_flesh/p3/MANY_MINDS.md` + `instruments/p3_multi_agent/` — **baseline** `out/baseline_single.md` (no subagents) **then** three parallel read-only lenses wait-for-all → `out/many_minds_synthesis.md` (deduped merge) → `out/many_minds_delta.md` with defended verdict; ≥1 **earned kill** with corpus evidence (not vibes); ≥2 adversarial seeds logged; sentence *subagent ≠ second engine ≠ second human*. Missing baseline ⇒ not yet for this stretch
-- [ ] **Worktree isolation (optional deeper):** only after the three artifacts above; proof file + when worktree vs subagent; or honest block (`instruments/p3_multi_agent/README.md`)
+- [ ] **Many Minds (subagents):** `mission_flesh/p3/MANY_MINDS.md` + `instruments/p3_multi_agent/` — **baseline** `out/baseline_single.md` (no subagents) **then** three parallel read-only lenses wait-for-all → `out/many_minds_synthesis.md` (deduped merge with a corpus-backed disposition for every finding) → `out/many_minds_delta.md` with defended verdict; sentence *MCP server ≠ engine ≠ subagent ≠ human*. Zero discards is valid; missing baseline ⇒ not yet for this stretch
 
 ### Side-quest
-- [ ] Add a third frozen source; re-adjudicate; show how new disagreement changed the watch
 - [ ] Custom agent TOML for one recurring lens (security or tests) under `.codex/agents/` — spawn it once; not required for stretch credit above
 
 ### Not yet if
-One engine only, “they basically agreed,” or verdict without a comparator.
+One engine only, “they basically agreed,” verdict without a comparator, MCP enabled during the frozen comparison, native file access silently substituted for a failed MCP call, or an MCP result accepted without boundary and raw-source checks.
 
 ---
 

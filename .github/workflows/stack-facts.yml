@@ -9,6 +9,8 @@ on:
       - "site/index.html"
       - "site/prework.html"
       - "site/checklists/prework-install.html"
+      - "site/blocks/p3.html"
+      - "site/assets/blocks/p3/**"
       - "site/js/registry.js"
       - "instruments/**"
       - "mission_flesh/**"
@@ -22,6 +24,8 @@ on:
       - "site/index.html"
       - "site/prework.html"
       - "site/checklists/prework-install.html"
+      - "site/blocks/p3.html"
+      - "site/assets/blocks/p3/**"
       - "site/js/registry.js"
       - "instruments/**"
       - "mission_flesh/**"
@@ -47,7 +51,44 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.22.0"
+          cache: npm
+          cache-dependency-path: instruments/p3_mcp_evidence/package-lock.json
+
       - name: Run rotting-facts harness
         # Local checks are hard gates. Network drift probes use the same public
         # Node, npm, and AAIF channels named by the canonical install page.
         run: python .github/scripts/verify-stack-facts.py
+
+      - name: Smoke-test the P3 MCP evidence boundary
+        working-directory: instruments/p3_mcp_evidence
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run smoke
+          npm audit --omit=dev
+
+  verify-p3-mcp-windows:
+    name: verify-p3-mcp-windows
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.22.0"
+          cache: npm
+          cache-dependency-path: instruments/p3_mcp_evidence/package-lock.json
+
+      - name: Install locked MCP dependencies
+        working-directory: instruments/p3_mcp_evidence
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Smoke-test the PowerShell 5.1 project configuration
+        working-directory: instruments/p3_mcp_evidence
+        run: npm run configure-smoke

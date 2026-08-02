@@ -126,11 +126,11 @@
       key: "ahb-checklist-p3",
       ids: [
         "p3-corpus", "p3-codex", "p3-claude", "mvp-briefv1",
-        "mvp-join", "mvp-comp", "mvp-3dis", "mvp-kill",
+        "mvp-join", "mvp-comp", "mvp-3dis", "mvp-mcp", "mvp-kill",
         "mvp-adj", "mvp-files", "p3-transfer"
       ],
-      stretchIds: ["stretch-many-baseline", "stretch-many-minds", "stretch-many-delta", "stretch-worktree"],
-      url: "blocks/p3.html", meta: "Codex + OpenCode"
+      stretchIds: ["stretch-many-baseline", "stretch-many-minds", "stretch-many-delta"],
+      url: "blocks/p3.html", meta: "Codex + OpenCode + bounded MCP"
     },
     {
       code: "P4", name: "Director’s second brain", title: "The director’s second brain", day: "Wednesday", slot: "AM",
