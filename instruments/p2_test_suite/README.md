@@ -7,11 +7,11 @@
 ## Student flow
 
 1. Confirm track folder.
-2. Run suite **baseline** on the unchanged harness (new chat/session recommended).
+2. Run the suite **baseline** on the unchanged harness in fresh Codex chats, all using `gpt-5.6-terra`.
 3. Record D01–D05 on `SCORE_SHEET.md` (PASS/FAIL + note).
 4. Save the baseline column, then re-mark those same five rows against your track's `GRADER.md` and record how many of your five calls matched it.
 5. Make harness changes (instructions/tests/memory/skills per block MVP).
-6. Run suite **after** cold (new chat if possible).
+6. Restart the app and run the suite **after** in fresh Codex chats, still using `gpt-5.6-terra`.
 7. Record after scores; compute delta.
 8. Deep mark on measurement spine: `Case suite: baseline n/5 → after n/5`.
 
@@ -30,7 +30,7 @@ and the score stops telling you anything about the harness.
 
 - Do not edit case files to make scores prettier.
 - Do not paste `GRADER.md` into a chat or point an assistant at it, on either run.
-- Same model tier for baseline and after unless told otherwise.
+- Use `gpt-5.6-terra` for every baseline, spot-check, and after chat. Do not use Default or Sol.
 - FAIL is useful — especially if it turns PASS after craft.
 
 ## Timing

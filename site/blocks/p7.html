@@ -29,7 +29,7 @@
       <div><span class="k">Day</span><span class="v">Thursday PM</span></div>
       <div><span class="k">Block</span><span class="v">P7</span></div>
       <div><span class="k">Time</span><span class="v">~3–3.5 hr after the 30 min lead demo</span></div>
-      <div><span class="k">Tools</span><span class="v">n8n + AI step · Codex app support</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex (<code>gpt-5.6-terra</code>) support · n8n + xAI step</span></div>
       <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p7">0 / 18 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
@@ -66,7 +66,7 @@
             <li>n8n starts and lets you in: run <code>n8n start</code> in PowerShell, open <code>localhost:5678</code>, and sign in with the owner account you recorded in pre-work — it lives only on your laptop. Forgot the password? Flag it — n8n has a command-line reset; do not reinstall. If <code>n8n start</code> exits immediately with a version message, that is the Node range talking, not a broken install — n8n wants Node 22.22 up to the current LTS line.</li>
             <li>Sample rows on disk: <code>mission_flesh/p7/rows.csv</code>, with <code>discrimination_template.md</code> beside it</li>
             <li>Operator templates present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
-            <li>Your OpenAI key (<code>sk-proj-…</code>) within reach — the AI step inside n8n runs on it, and Stage 03 is where you store it as your first n8n credential</li>
+            <li>Your xAI key (<code>xai-…</code>) within reach, plus the model ID printed by <code>$env:HB_XAI_MODEL</code> — Stage 03 stores the key as an xAI credential and pins that model</li>
           </ul>
         </div>
         <div class="orient-aside">
@@ -145,7 +145,7 @@
             <li>In the sidebar, look for <strong>P7 — Direction &amp; Closeout</strong>. If it is there, open it</li>
             <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P7 — Direction &amp; Closeout</code></li>
             <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
-            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Select <strong>gpt-5.6-terra</strong>. Do not leave this chat on the default or select <code>gpt-5.6-sol</code></li>
             <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
@@ -220,7 +220,7 @@ Preserve unrelated block sections. Show the exact P7 brief written.</code></pre>
               <li>Click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
               <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
               <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P7 — Automation Troubleshooting</code></li>
-              <li>Select the same course model used for the Direction Brief and confirm <strong>Ask for approval</strong></li>
+              <li>Select <strong>gpt-5.6-terra</strong>, the model used for the Direction Brief, and confirm <strong>Ask for approval</strong></li>
             </ul>
           </div>
           <div class="do-step">
@@ -240,10 +240,11 @@ or expression error caused the failure. Then stop so I can make and test the cha
         <div class="do-step">
           <p class="do-label">Return to the <strong>P7 PowerShell window</strong> from Stage 02 and paste all three lines together:</p>
           <pre><code>New-Item -ItemType Directory -Force "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out" | Out-Null
+$env:HB_XAI_MODEL
 $env:N8N_RESTRICT_FILE_ACCESS_TO = "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
 n8n start</code></pre>
         </div>
-        <p>The window fills with startup lines and ends by naming the editor address — leave it running; closing it stops n8n. If it exits immediately with a version message, that is the Node range talking, not a broken install — n8n wants Node 22.22 up to the current LTS line.</p>
+        <p>The xAI model ID prints first; keep it visible because you will select that exact model in the AI node. Then the window fills with startup lines and ends by naming the editor address — leave it running; closing it stops n8n. If the model line is blank, stop and restore the course pin before building. If n8n exits immediately with a version message, that is the Node range talking, not a broken install — n8n wants Node 22.22 up to the current LTS line.</p>
         <div class="do-step">
           <p class="do-label">Now in your <strong>browser</strong>:</p>
           <ul class="do-clicks">
@@ -288,21 +289,22 @@ n8n start</code></pre>
             <li>Turn on <strong>Include Other Input Fields</strong>, set <strong>Input Fields to Include</strong> to <strong>All Except</strong>, and enter <code>expected_gate</code> in the exclude box</li>
           </ul>
         </div>
-        <p>If your n8n version words those toggles differently, the requirement is unchanged: one node whose output carries every column except <code>expected_gate</code> — you will verify that on the first run. Now the AI station and its credential.</p>
+        <p>If your n8n version words those toggles differently, the requirement is unchanged: one node whose output carries every column except <code>expected_gate</code> — you will verify that on the first run. Now add the AI station, attach its xAI model, and store the xAI key locally in n8n.</p>
         <div class="do-step">
           <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
           <ul class="do-clicks">
-            <li>Click the <strong>+</strong> on <em>Drop answer column</em>, type <code>openai</code>, pick <strong>OpenAI</strong>, and choose the <strong>Message a Model</strong> action</li>
-            <li>Rename the node to <code>AI step</code></li>
-            <li>Open the <strong>Credential to connect with</strong> dropdown and click <strong>Create new credential</strong></li>
-            <li>Paste your OpenAI key (<code>sk-proj-…</code>) into the <strong>API Key</strong> field, click <strong>Save</strong>, and close the credential window</li>
-            <li>Set <strong>Model</strong> to a mini-tier chat model from the list — pick one whose name contains <code>mini</code>; one-sentence classification does not need a flagship</li>
-            <li>Under <strong>Options</strong>, click <strong>Add option</strong>, choose <strong>Output Content as JSON</strong>, and switch it on</li>
+            <li>Click the <strong>+</strong> on <em>Drop answer column</em>, type <code>basic llm chain</code>, and pick <strong>Basic LLM Chain</strong></li>
+            <li>Rename the chain to <code>AI step</code> and set <strong>Prompt</strong> to <strong>Define below</strong></li>
+            <li>Click the <strong>+</strong> on the <em>AI step</em> node's <strong>Model</strong> connector — an older build may call it <strong>Chat Model</strong> — type <code>xai</code>, and pick <strong>xAI Grok Chat Model</strong></li>
+            <li>In the xAI model node, open <strong>Credential to connect with</strong> and click <strong>Create new credential</strong></li>
+            <li>Paste your xAI key (<code>xai-…</code>) into the <strong>API Key</strong> field, click <strong>Save</strong>, and close the credential window</li>
+            <li>Set <strong>Model</strong> to the exact ID printed by <code>$env:HB_XAI_MODEL</code>. Do not choose a different model from the list</li>
+            <li>Under <strong>Options</strong>, add <strong>Response Format</strong> and set it to <strong>JSON</strong></li>
           </ul>
         </div>
-        <p>The key lands in n8n's local database on your laptop and nowhere else. If a call later fails with 429 or quota wording, that is a capped key reading like an auth failure — flag it rather than re-pasting the key. The station itself gets a pinned output contract — the exact fields and format you expect back, values drawn from a named set — because everything downstream depends on being able to parse what returns.</p>
+        <p>The xAI key lands in n8n's local database on your laptop and nowhere else. If a call later fails with 429 or quota wording, that is a capped key reading like an auth failure — flag it rather than re-pasting the key. The chain sends each row through the attached xAI model, and the JSON response setting turns the reply into fields the next node can inspect.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>AI step</strong> node's message <strong>Text</strong> field, with the field switched from <strong>Fixed</strong> to <strong>Expression</strong>:</p>
+          <p class="do-label">Now paste this into the <strong>AI step</strong> node's <strong>Prompt (User Message)</strong> field, with the field switched from <strong>Fixed</strong> to <strong>Expression</strong>:</p>
           <pre><code>You are one station in a fixed pipeline. Read the single field report below
 and return JSON only - no prose, no markdown fences, no extra fields:
 
@@ -322,7 +324,7 @@ Report: {{ $json.text }}</code></pre>
             <li>Click <strong>Execute workflow</strong> at the bottom of the canvas</li>
           </ul>
         </div>
-        <p>Every node so far turns green. Open <em>AI step</em> and look at its OUTPUT panel: each item carries a parsed reply with <code>category</code>, <code>region</code>, and <code>summary</code>. Open <em>Drop answer column</em> too and confirm <code>expected_gate</code> is gone from its output. A red node is shape, not intelligence — open it and read what it actually received. Next, flatten the reply and the original row into one clean record, so the checks and the written files see plain columns.</p>
+        <p>Every node so far turns green. Open <em>AI step</em> and look at its OUTPUT panel: each item carries <code>category</code>, <code>region</code>, and <code>summary</code> as separate fields. If you see one prose or <code>text</code> field instead, reopen <em>xAI Grok Chat Model</em> and set <strong>Response Format</strong> to <strong>JSON</strong>, then rerun. Open <em>Drop answer column</em> too and confirm <code>expected_gate</code> is gone from its output. A red node is shape, not intelligence — open it and read what it actually received. Next, flatten the reply and the original row into one clean record, so the checks and the written files see plain columns.</p>
         <div class="do-step">
           <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
           <ul class="do-clicks">
@@ -472,7 +474,7 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_
             <li>Save both CSV files in Notepad, then click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> if the course project is not already open</li>
             <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P7 — Workload Sort</code></li>
-            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Select <strong>gpt-5.6-terra</strong></li>
             <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
@@ -512,7 +514,7 @@ reasons beat ten sorted by instinct.</code></pre>
               <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> if the course project is not already open</li>
               <li>In the sidebar, open <strong>P7 — Direction &amp; Closeout</strong></li>
               <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P7 — Direction &amp; Closeout</code></li>
-              <li>Select the same course model used when this chat was created in Stage 01. Never continue this chat on a different model</li>
+              <li>Select <strong>gpt-5.6-terra</strong>, the model used when this chat was created in Stage 01. Never continue this chat on a different model</li>
               <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
             </ul>
             <p>The saved workflow and files carry the evidence into this closeout; no troubleshooting-chat context is required.</p>
@@ -573,7 +575,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
             <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> if the course project is not already open</li>
             <li>In the sidebar, look for <strong>P7–P8 — 30/60/90 Plan</strong>. If it is there, open it</li>
             <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P7–P8 — 30/60/90 Plan</code></li>
-            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Select <strong>gpt-5.6-terra</strong>. Do not leave this chat on the default or select <code>gpt-5.6-sol</code></li>
             <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
           <p>This is the one chat intentionally shared with P8 because both modules continue the same saved plan and the same planning role. The saved plan carries the continuity; the chat history is not required.</p>

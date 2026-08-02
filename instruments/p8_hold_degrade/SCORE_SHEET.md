@@ -2,7 +2,7 @@
 
 **Track:** engineering / mission_ops  
 **Student:** ________  
-**Home/commercial model (P2-after or Fri run):** ________ → **n/5**  
+**Home Codex model (P2-after or Friday run):** `gpt-5.6-terra` → **n/5**
 **Open/re-pointed model:** ________ → **n/5**  
 **Policy/AUP version:** ________  
 

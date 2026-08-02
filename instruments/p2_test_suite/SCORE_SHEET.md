@@ -3,7 +3,9 @@
 **Track:** engineering / mission_ops (circle one)  
 **Student:** ________  
 **Date:** ________  
-**Model / harness notes:** ________  
+**Model:** `gpt-5.6-terra`
+
+**Harness notes:** ________
 
 | ID | Baseline P/F | Baseline note | After P/F | After note |
 |---|---|---|---|---|

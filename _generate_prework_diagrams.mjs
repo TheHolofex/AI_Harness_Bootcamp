@@ -37,7 +37,6 @@ const installStages = [
   "11 Obsidian",
   "12 n8n",
   "13 Files",
-  "14 Claude*",
 ];
 
 function esc(value) {
@@ -177,7 +176,7 @@ function sectionSvg(kind, config) {
 }
 
 const metaphors = {
-  begin: `  <g aria-label="Calendar, install guide, and three key marks">
+  begin: `  <g aria-label="Calendar, install guide, and two key marks">
     <rect x="540" y="86" width="92" height="57" rx="2" fill="${C.panel}" stroke="${C.strong}"/>
     <path d="M540 101H632M558 82V93M614 82V93" class="line"/>
     <rect x="553" y="112" width="13" height="10" fill="${C.mark}"/>
@@ -189,16 +188,13 @@ const metaphors = {
     <path d="M670 134l4 4 7-9" class="redline"/>
     <text x="706" y="93" class="tiny muted" text-anchor="middle">INSTALL GUIDE</text>
     <path d="M786 99H1063" class="hair"/>
-    <rect x="800" y="87" width="77" height="27" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <circle cx="810" cy="100.5" r="4" fill="${C.mark}"/>
-    <text x="838" y="104" class="caption" text-anchor="middle">OPENAI</text>
-    <rect x="892" y="87" width="77" height="27" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <circle cx="902" cy="100.5" r="4" fill="${C.mark}"/>
-    <text x="930" y="104" class="caption" text-anchor="middle">XAI</text>
-    <rect x="984" y="87" width="91" height="27" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <circle cx="994" cy="100.5" r="4" fill="${C.mark}"/>
-    <text x="1031" y="104" class="caption" text-anchor="middle">ANTHROPIC</text>
-    <text x="937" y="136" class="tiny muted" text-anchor="middle">THREE KEYS IN HAND</text>
+    <rect x="824" y="87" width="103" height="27" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
+    <circle cx="838" cy="100.5" r="4" fill="${C.mark}"/>
+    <text x="880" y="104" class="caption" text-anchor="middle">OPENAI</text>
+    <rect x="944" y="87" width="103" height="27" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
+    <circle cx="958" cy="100.5" r="4" fill="${C.mark}"/>
+    <text x="996" y="104" class="caption" text-anchor="middle">XAI</text>
+    <text x="937" y="136" class="tiny muted" text-anchor="middle">TWO KEYS IN HAND</text>
   </g>
 `,
   baseline: `  <g aria-label="Windows laptop and disk capacity gauge">
@@ -287,25 +283,20 @@ const metaphors = {
     <path d="M1028 115H1080" class="redline" marker-end="url(#arrow-red)"/>
   </g>
 `,
-  keys: `  <g aria-label="Three sealed provider key tags">
+  keys: `  <g aria-label="Two sealed provider key tags and their assigned tools">
     <path d="M548 85H1060" class="hair"/>
-    <rect x="558" y="88" width="150" height="54" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
-    <circle cx="580" cy="115" r="9" fill="${C.mark}"/>
-    <path d="M589 115H605M600 115V121M605 115V119" class="line"/>
-    <text x="654" y="111" class="micro muted" text-anchor="middle">OPENAI</text>
-    <text x="654" y="127" class="caption" text-anchor="middle">USER VARIABLE</text>
-    <rect x="729" y="88" width="150" height="54" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
-    <circle cx="751" cy="115" r="9" fill="${C.mark}"/>
-    <path d="M760 115H776M771 115V121M776 115V119" class="line"/>
-    <text x="825" y="111" class="micro muted" text-anchor="middle">XAI</text>
-    <text x="825" y="127" class="caption" text-anchor="middle">USER VARIABLE</text>
-    <rect x="900" y="88" width="166" height="54" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
-    <circle cx="922" cy="115" r="9" fill="${C.mark}"/>
-    <path d="M931 115H947M942 115V121M947 115V119" class="line"/>
-    <text x="998" y="111" class="micro muted" text-anchor="middle">ANTHROPIC</text>
-    <text x="998" y="127" class="caption" text-anchor="middle">USER VARIABLE</text>
-    <path d="M558 149H1066" class="redline"/>
-    <text x="812" y="158" class="tiny red" text-anchor="middle">VERIFY IN A BRAND-NEW WINDOW</text>
+    <rect x="570" y="88" width="220" height="54" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
+    <circle cx="594" cy="115" r="9" fill="${C.mark}"/>
+    <path d="M603 115H619M614 115V121M619 115V119" class="line"/>
+    <text x="674" y="108" class="micro muted" text-anchor="middle">OPENAI</text>
+    <text x="674" y="126" class="caption" text-anchor="middle">CODEX · TERRA</text>
+    <rect x="826" y="88" width="240" height="54" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
+    <circle cx="850" cy="115" r="9" fill="${C.mark}"/>
+    <path d="M859 115H875M870 115V121M875 115V119" class="line"/>
+    <text x="940" y="108" class="micro muted" text-anchor="middle">XAI</text>
+    <text x="940" y="126" class="caption" text-anchor="middle">EVERY OTHER HARNESS</text>
+    <path d="M570 149H1066" class="redline"/>
+    <text x="818" y="158" class="tiny red" text-anchor="middle">ONE PROVIDER PER LANE · VERIFY FRESH</text>
   </g>
 `,
   smoke: `  <g aria-label="Shared smoke folder with four proof-file slots">
@@ -440,19 +431,6 @@ const metaphors = {
     <text x="950" y="103" class="micro muted" text-anchor="middle">FILES FOR THE WEEK</text>
   </g>
 `,
-  claude: `  <g aria-label="Optional Claude Code rail">
-    <path d="M552 116H1059" class="goldline dash"/>
-    <rect x="568" y="91" width="166" height="50" rx="2" fill="${C.paper}" stroke="${C.gold}" stroke-dasharray="5 4"/>
-    <text x="651" y="111" class="micro gold" text-anchor="middle">DECISION GATE</text>
-    <text x="651" y="128" class="caption" text-anchor="middle">NEEDED?</text>
-    <path d="M734 116H820" class="goldline dash" marker-end="url(#arrow)"/>
-    <rect x="837" y="79" width="220" height="74" rx="2" fill="${C.warm}" stroke="${C.gold}" stroke-width="1.5"/>
-    <text x="947" y="104" class="micro gold" text-anchor="middle">ENGINE 03 · OPTIONAL</text>
-    <text x="947" y="129" class="title" text-anchor="middle">CLAUDE CODE</text>
-    <rect x="1000" y="68" width="70" height="18" rx="2" fill="${C.gold}"/>
-    <text x="1035" y="80.5" class="tiny white" text-anchor="middle">OPTIONAL</text>
-  </g>
-`,
   repair: `  <g aria-label="Repair loop from error to paste to fix to shown result">
     <rect x="533" y="93" width="116" height="45" rx="2" fill="${C.paper}" stroke="${C.mark}"/>
     <text x="591" y="112" class="micro red" text-anchor="middle">ERROR</text>
@@ -488,19 +466,15 @@ const metaphors = {
     <text x="805" y="160" class="tiny red" text-anchor="middle">FOUNDATION HOLDS BEFORE AGENTS RUN</text>
   </g>
 `,
-  keyHeadroom: `  <g aria-label="Three saved keys and spend headroom gauge">
-    <rect x="544" y="87" width="126" height="52" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <rect x="683" y="87" width="126" height="52" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <rect x="822" y="87" width="139" height="52" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
+  keyHeadroom: `  <g aria-label="Two assigned keys and spend headroom gauge">
+    <rect x="544" y="87" width="180" height="52" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
+    <rect x="740" y="87" width="220" height="52" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
     <circle cx="565" cy="113" r="7" fill="${C.mark}"/>
-    <circle cx="704" cy="113" r="7" fill="${C.mark}"/>
-    <circle cx="843" cy="113" r="7" fill="${C.mark}"/>
-    <text x="619" y="111" class="micro muted" text-anchor="middle">OPENAI</text>
-    <text x="619" y="127" class="tiny muted" text-anchor="middle">SAVED</text>
-    <text x="758" y="111" class="micro muted" text-anchor="middle">XAI</text>
-    <text x="758" y="127" class="tiny muted" text-anchor="middle">SAVED</text>
-    <text x="907" y="111" class="micro muted" text-anchor="middle">ANTHROPIC</text>
-    <text x="907" y="127" class="tiny muted" text-anchor="middle">SAVED</text>
+    <circle cx="761" cy="113" r="7" fill="${C.mark}"/>
+    <text x="634" y="111" class="micro muted" text-anchor="middle">OPENAI</text>
+    <text x="634" y="127" class="tiny muted" text-anchor="middle">CODEX ONLY</text>
+    <text x="850" y="111" class="micro muted" text-anchor="middle">XAI</text>
+    <text x="850" y="127" class="tiny muted" text-anchor="middle">NON-CODEX TOOLS</text>
     <path d="M982 136A38 38 0 0 1 1057 136" class="line"/>
     <path d="M1019.5 136L1041 105" class="goldline"/>
     <circle cx="1019.5" cy="136" r="3.5" fill="${C.gold}"/>
@@ -523,8 +497,6 @@ const metaphors = {
     <text x="831" y="126" class="tiny muted" text-anchor="middle">OPEN</text>
     <text x="923" y="126" class="tiny muted" text-anchor="middle">PI</text>
     <text x="1015" y="126" class="tiny muted" text-anchor="middle">GOOSE</text>
-    <rect x="1008" y="75" width="60" height="18" rx="2" fill="${C.paper}" stroke="${C.gold}"/>
-    <text x="1038" y="87.5" class="tiny gold" text-anchor="middle">CLAUDE*</text>
   </g>
 `,
   support: `  <g aria-label="Supporting tool chain of Obsidian n8n and course site">
@@ -584,8 +556,8 @@ const installSections = [
     file: "install-before-you-begin.svg",
     current: 0,
     stage: "Before you begin",
-    purpose: "Start the Monday clinic with this guide open and your three course keys at hand.",
-    steps: ["START THE CLINIC", "OPEN THIS GUIDE", "HAVE THREE KEYS", "KNOW THE SHAPE"],
+    purpose: "Bring both course keys and keep this guide open during Monday's clinic.",
+    steps: ["START THE CLINIC", "OPEN THIS GUIDE", "HAVE TWO KEYS", "KNOW THE SHAPE"],
     metaphor: metaphors.begin,
     svgTitle: "Before you begin",
   },
@@ -637,11 +609,11 @@ const installSections = [
   {
     file: "install-05-keys.svg",
     current: 6,
-    stage: "Save your three keys",
-    purpose: "Store all three keys as Windows user variables, then verify in a new window.",
-    steps: ["READ KEYS PAGE", "OPENAI", "XAI", "ANTHROPIC", "MODEL IDS", "VERIFY FRESH"],
+    stage: "Connect your two keys",
+    purpose: "Keep OpenAI in Codex. Use xAI for every other harness.",
+    steps: ["READ KEYS PAGE", "OPENAI → CODEX", "XAI → OTHER TOOLS", "MODEL IDS", "VERIFY FRESH"],
     metaphor: metaphors.keys,
-    svgTitle: "5 · Your three API keys",
+    svgTitle: "5 · Your two API keys",
   },
   {
     file: "install-06-smoke.svg",
@@ -656,8 +628,8 @@ const installSections = [
     file: "install-07-codex.svg",
     current: 8,
     stage: "Set up Codex (home)",
-    purpose: "Install the ChatGPT desktop app, sign in with the key, write from-codex.txt.",
-    steps: ["INSTALL APP", "API-KEY SIGN-IN", "LOCK AUTH", "OPEN PROJECT", "PERMISSIONS", "WRITE PROOF"],
+    purpose: "Sign in with OpenAI, pin Terra, and write from-codex.txt.",
+    steps: ["INSTALL APP", "OPENAI SIGN-IN", "PIN TERRA", "OPEN PROJECT", "PERMISSIONS", "WRITE PROOF"],
     metaphor: metaphors.codex,
     svgTitle: "7 · Codex — your home for the week",
   },
@@ -665,8 +637,8 @@ const installSections = [
     file: "install-08-opencode.svg",
     current: 9,
     stage: "Set up OpenCode (second engine)",
-    purpose: "Pinned build on your xAI key, kept independent, then write from-opencode.txt.",
-    steps: ["INSTALL PINNED", "POINT AT XAI", "RUN IT CLEAN", "WRITE PROOF"],
+    purpose: "Install the course build, confirm xAI, and write proof.",
+    steps: ["PIN OR USE CURRENT", "LIST XAI MODELS", "PIN XAI MODEL", "WRITE PROOF"],
     metaphor: metaphors.opencode,
     svgTitle: "8 · OpenCode — your second engine",
   },
@@ -716,16 +688,6 @@ file: "install-10-goose.svg",
     svgTitle: "13 · Find the operator and module exercise files",
   },
   {
-    file: "install-14-claude-optional.svg",
-    current: 15,
-    stage: "Claude Code (optional)",
-    purpose: "Only if you want a third engine. Skip this and you can still go GREEN.",
-    steps: ["DECIDE", "INSTALL CLI", "OPTIONAL PROOF"],
-    metaphor: metaphors.claude,
-    svgTitle: "14 · Claude Code — optional third engine",
-    optional: true,
-  },
-  {
     file: "install-when-something-breaks.svg",
     current: -1,
     stage: "When something breaks",
@@ -755,8 +717,8 @@ function installOverview() {
     <text x="42" y="197" class="tiny muted">WINDOWS · GIT + REPO · RUNTIMES</text>
     <path d="M259 186H277" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="287" y="166" width="235" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="305" y="182" class="micro muted">02 · INSTALL THE KEYS</text>
-    <text x="305" y="197" class="tiny muted">OPENAI · XAI · ANTHROPIC</text>
+    <text x="305" y="182" class="micro muted">02 · CONNECT THE KEYS</text>
+    <text x="305" y="197" class="tiny muted">OPENAI → CODEX · XAI → OTHER TOOLS</text>
     <path d="M522 186H540" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="550" y="166" width="260" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
     <text x="568" y="182" class="micro muted">03 · HARNESSES + TOOLS</text>

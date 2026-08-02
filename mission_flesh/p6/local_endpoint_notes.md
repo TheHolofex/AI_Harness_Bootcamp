@@ -19,7 +19,7 @@ Now you hold the **recipe still** and change the **endpoint** — the place the 
 
 | Endpoint | Typical story | What you measure |
 |---|---|---|
-| API / cloud (course default) | Course key, spend cap, strong tool calling | Baseline P6 run (already done) |
+| API / cloud (course default) | xAI course key, spend cap, pinned Grok model | Baseline P6 run (already done) |
 | **Local** (this stretch) | Ollama or LM Studio on the laptop | Numeric hold/degrade vs baseline |
 | Hosted open (P8) | Operator-governed remote open model | Hold/degrade matrix on the same case IDs (D01–D05) |
 
@@ -90,10 +90,10 @@ $env:HB_LOCAL_MODEL = 'paste the tag from the LOCAL PIN line'
 [Environment]::SetEnvironmentVariable('HB_LOCAL_MODEL', $env:HB_LOCAL_MODEL, 'User')
 ```
 
-Your cloud model id is already set from pre-work, so you do not need to retype it. Confirm it is there rather than overwriting it:
+Your xAI cloud model id is already set from pre-work, so you do not need to retype it. Confirm it is there rather than overwriting it:
 
 ```powershell
-$env:HB_OPENAI_MODEL
+$env:HB_XAI_MODEL
 ```
 
 If that comes back empty, set it the same way as the local tag, using the pinned cloud model id. Part 10 uses it to flip back.
@@ -167,7 +167,7 @@ $env:GOOSE_MODEL = $env:HB_LOCAL_MODEL
 goose info -v
 ```
 
-Provider and model must show **local** — not OpenAI. If not, this window never took the env.
+Provider and model must show **local** — not xAI. If not, this window never took the env.
 
 Optional tiny tool smoke:
 
@@ -296,7 +296,7 @@ In the same `local_hold_degrade.md`, complete:
 ## Non-exfil / endpoint honesty
 - [ ] goose info -v showed local provider during the local run (paste one line)
 - [ ] I did not paste feeder text into a cloud chat “to compare”
-- [ ] I did not switch GOOSE_PROVIDER back to openai mid-local-run
+- [ ] I did not switch GOOSE_PROVIDER back to xai mid-local-run
 - [ ] Network extensions: none added / listed: ____
 - Claim I will make: data stayed local for this run · OR · I cannot claim that because: ____
 Label that claim: contract / tripwire / boundary — ____
@@ -323,8 +323,8 @@ Write the **endpoint decision rule** (transfer seed):
 ## Part 10 · Flip back (before you leave Thursday)
 
 ```powershell
-$env:GOOSE_PROVIDER = "openai"
-$env:GOOSE_MODEL = $env:HB_OPENAI_MODEL
+$env:GOOSE_PROVIDER = "xai"
+$env:GOOSE_MODEL = $env:HB_XAI_MODEL
 goose info -v
 ```
 
@@ -359,7 +359,7 @@ Confirm cloud pin returned.
 | No cloud baseline | Re-run cloud once; then local |
 | Local chat OK, no file | Score C2 Miss; do not force infinite retries |
 | Overwrite lost cloud file | Restore from `watch_summary.cloud.md` copy habit |
-| Claims air-gap with openai still in info -v | Reject stretch claim |
+| Claims air-gap with xai still in info -v | Reject stretch claim |
 | RAM thrash | YELLOW; finish decision rule |
 
 ---

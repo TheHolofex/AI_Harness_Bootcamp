@@ -1,10 +1,16 @@
 # Re-point runbook — Codex app to the open endpoint
 
-Re-pointing means changing where the Codex app sends its requests: the same app, the same project, and the same harness, now talking to a hosted open model at a different address instead of the home model. Nothing else about your setup moves — which is the whole test, because everything you built should keep working when only the engine changes. You can read this page and stage every edit before the real endpoint details exist; only the placeholder swap waits on the pin posted this morning.
+Re-pointing means changing where the Codex app sends its requests: the same app, the same project, and the same harness, now talking to a hosted open model at a different address instead of the course home model, `gpt-5.6-terra`. Nothing else about your setup moves — which is the whole test, because everything you built should keep working when only the engine changes. You can read this page and stage every edit before the real endpoint details exist; only the placeholder swap waits on the pin posted this morning.
 
 ## The file you edit
 
-The app reads its configuration from `%USERPROFILE%\.codex\config.toml` — the same file where `forced_login_method = "api"` already lives. Edit that file at that path; a `.codex\config.toml` inside a project folder cannot do this job, because provider definitions there are ignored and must live in the user-level file. Before you change anything, copy the file's current contents into your re-point note. That copy is your rollback and your old-value evidence in one move.
+The app reads its configuration from `%USERPROFILE%\.codex\config.toml` — the same file where `forced_login_method = "api"` and `model = "gpt-5.6-terra"` already live. Edit that file at that path; a `.codex\config.toml` inside a project folder cannot do this job, because provider definitions there are ignored and must live in the user-level file. Before you change anything, make a byte-for-byte backup:
+
+```powershell
+Copy-Item "$env:USERPROFILE\.codex\config.toml" "$env:USERPROFILE\.codex\config.toml.p8-backup"
+```
+
+The backup is your rollback. Record the old model and provider values in your re-point note as the old-value evidence.
 
 ## The provider block
 
@@ -47,7 +53,13 @@ Send one smoke request — a small task your AUP allows — and check two things
 
 ## Roll back after the block
 
-Put `#` in front of each line you added — `model` and `model_provider` are the two that actually route requests — save, and fully quit and reopen the app. The home models reappearing in the picker is your confirmation. Commented rather than deleted, the block stays on hand for the next endpoint worth evaluating. The environment variable can stay or go; remove it in Windows' Environment Variables dialog once the key it names is retired.
+Restore the exact configuration you backed up before the re-point:
+
+```powershell
+Copy-Item "$env:USERPROFILE\.codex\config.toml.p8-backup" "$env:USERPROFILE\.codex\config.toml" -Force
+```
+
+Fully quit and reopen the app. Select `gpt-5.6-terra`; seeing it in the picker and as the active model confirms that the Terra pin and API-key sign-in are both restored. Do not try to roll back by commenting the current `model` line: that line replaced the Terra line during the re-point, so commenting it would leave future chats on an unpinned default. The environment variable can stay or go; remove it in Windows' Environment Variables dialog once the key it names is retired.
 
 ## When it doesn't work
 

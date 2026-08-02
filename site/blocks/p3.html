@@ -29,7 +29,7 @@
       <div><span class="k">Day</span><span class="v">Tuesday PM</span></div>
       <div><span class="k">Block</span><span class="v">P3</span></div>
       <div><span class="k">Time</span><span class="v">~3–3.5 hr</span></div>
-      <div><span class="k">Tools</span><span class="v">Codex app + OpenCode (Grok) · instruments/p3_frozen_brief</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex (<code>gpt-5.6-terra</code>) + OpenCode (xAI/Grok) · instruments/p3_frozen_brief</span></div>
       <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p3">0 / 20 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
@@ -68,7 +68,7 @@
           <h3>Before you start</h3>
           <ul>
             <li>Operator templates present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
-            <li>Both engines alive on your keys: the Codex app opens a chat; <code>opencode</code> starts from a terminal</li>
+            <li>Both engines are live on their assigned keys: Codex uses the OpenAI API key stored in Codex sign-in; OpenCode reads <code>XAI_API_KEY</code> from the environment</li>
             <li>You know which track you ran in P2 — the desk uses the same one</li>
             <li>The Grok model id from the pin within reach — you'll pin it with <code>-m</code></li>
           </ul>
@@ -81,6 +81,10 @@
           <div class="callout">
             <strong>Stretch · Many Minds, one commander</strong>
             After the required twin-engine outcomes are complete: <strong>baseline</strong> single-chat review, then parallel <strong>subagents</strong>, then a <strong>delta sheet</strong> that records whether parallel helped. Three artifacts under <code>instruments/p3_multi_agent/out/</code>. Every retained or discarded finding needs corpus evidence. Guide: <a href="#many-minds">Many Minds walkthrough</a>. Naming lock: subagent ≠ second engine ≠ second human.
+          </div>
+          <div class="callout">
+            <strong>Two keys, fixed roles</strong>
+            Every Codex chat uses <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) with the OpenAI API key stored in Codex sign-in. Every OpenCode run uses the pinned <code>xai/$env:HB_XAI_MODEL</code> on <code>XAI_API_KEY</code>. P3 does not use an Anthropic key.
           </div>
         </div>
       </div>
@@ -101,11 +105,11 @@
 
       <h3>Independence hygiene — the cargo neither engine declares</h3>
       <figure class="section-diagram">
-        <img src="../assets/blocks/p3/p3-idea-hidden-cargo.svg" alt="Both engines carry context you never typed — the Codex app loads AGENTS.md, skills, and memories; OpenCode reads Claude's files — and a declare-or-clear gate sits before any delta counts as evidence" width="1120" height="220" loading="lazy" decoding="async" />
+        <img src="../assets/blocks/p3/p3-idea-hidden-cargo.svg" alt="Both engines carry context you never typed — the Codex app loads AGENTS.md, skills, and memories; OpenCode can import legacy compatibility files — and a declare-or-clear gate sits before any delta counts as evidence" width="1120" height="220" loading="lazy" decoding="async" />
       </figure>
-      <p class="full-measure">For this controlled comparison to support a claim about engine differences, both engines must receive the same frozen job and every material difference in their run paths must be declared. Neither engine helps you with this. The Codex app loads <code>AGENTS.md</code> from whatever folder you open as the project — including the P2 project whose harness you changed — plus <code>%USERPROFILE%\.codex\AGENTS.md</code>, any skills it discovers, and memories if you enabled them. OpenCode, for its part, reads <code>%USERPROFILE%\.claude\CLAUDE.md</code> and <code>.claude\skills</code> unless <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> is set — pre-work set it, and today is the day that setting earns its keep. Neither product announces any of this at run time. The cargo is invisible until you go looking.</p>
+      <p class="full-measure">For this controlled comparison to support a claim about engine differences, both engines must receive the same frozen job and every material difference in their run paths must be declared. Neither engine helps you with this. The Codex app loads <code>AGENTS.md</code> from whatever folder you open as the project — including the P2 project whose harness you changed — plus <code>%USERPROFILE%\.codex\AGENTS.md</code>, any skills it discovers, and memories if you enabled them. OpenCode can import Claude-named compatibility files even when no Anthropic key is present. The official guard <code>OPENCODE_DISABLE_CLAUDE_CODE=1</code> blocks those files; it does not enable or call Anthropic. Neither product announces this added context at run time. The cargo is invisible until you go looking.</p>
       <p class="full-measure">Here is what going wrong looks like, because it's the most common way this desk fails: you run the brief inside your P2 project, the Codex output comes back noticeably sharper, and you conclude the Codex app is the stronger engine. That comparison is contaminated: the product and model family changed, but so did the instruction path, so the observed delta cannot be attributed to the engine split. The run is still evidence about the combined setups; it is not clean evidence that one engine is stronger. <strong>An advantage you didn't declare looks exactly like a capability you don't have.</strong></p>
-      <p class="full-measure">The discipline is <strong>declare or clear</strong>, and either is honest — silence is the only wrong answer. Clear means a fresh folder holding only the frozen corpus, the disable flag set (<code>OPENCODE_DISABLE_CLAUDE_CODE=1</code>), and installed plugins held out of the OpenCode run with <code>OPENCODE_PURE=1</code> alongside <code>--pure</code> — some builds silently ignore the flag on its own. Declare means writing the run identity down like a lab notebook entry: engine, model id, version, folder, and which instruction files, skills, and memories were live. The comparator's first table exists for exactly this, and it gets filled before any side-by-side row. At work this habit generalizes far past today's two products: any time you compare AI outputs — models, prompts, vendors, versions — the first question is what each side was carrying.</p>
+      <p class="full-measure">The discipline is <strong>declare or clear</strong>, and either is honest — silence is the only wrong answer. Clear means a fresh folder holding only the frozen corpus, the compatibility guard set (<code>OPENCODE_DISABLE_CLAUDE_CODE=1</code>), and installed plugins held out of the OpenCode run with the documented <code>--pure</code> flag. Declare means writing the run identity down like a lab notebook entry: engine, model id, version, folder, and which instruction files, skills, and memories were live. The comparator's first table exists for exactly this, and it gets filled before any side-by-side row. At work this habit generalizes far past today's two products: any time you compare AI outputs — models, prompts, vendors, versions — the first question is what each side was carrying.</p>
 
       <h3>The frozen brief is the control</h3>
       <p class="full-measure">You're about to attribute output differences to the engines. That attribution is defensible only if the brief, corpus files, join rule, and other outcome-relevant conditions outside the named provider-and-model split are held fixed. Any residual difference stays in the run identity as a competing explanation. In experiment terms the brief is the <strong>control</strong>: the thing held fixed so the remaining variation means something. This is why BRIEF-v1 is frozen and why editing it mid-run is the one move that ruins the afternoon quietly. A clarification you give one engine and not the other converts your comparison into a story about your prompting.</p>
@@ -246,6 +250,7 @@ Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instru
             <li>Open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong> from the top-left switcher if needed</li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\p3_desk</code></li>
             <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Engine A — [TODAY'S DATE]</code></li>
+            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>)</li>
             <li>Record the displayed model name and app version in <code>COMPARATOR.md</code></li>
             <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
@@ -264,7 +269,7 @@ Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instru
             <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\p3_desk</code></li>
             <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Engine A Retry — [TODAY'S DATE]</code></li>
-            <li>Select the same model and leave permissions at <strong>Ask for approval</strong></li>
+            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and leave permissions at <strong>Ask for approval</strong></li>
             <li>Paste the same sentence once: <code>Read BRIEF-v1.md in this folder and follow it exactly.</code></li>
             <li>Record both chat names and the first failure in <code>COMPARATOR.md</code>. The response you preserve in the next step is now the retry response; if it also misses the required shape, preserve it unchanged and record that failure too</li>
           </ul>
@@ -291,11 +296,11 @@ Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instru
         <div class="do-step">
           <p class="do-label">Prepare Engine B in <strong>PowerShell</strong>:</p>
           <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\p3_desk"
-$env:OPENCODE_DISABLE_CLAUDE_CODE
-$env:OPENCODE_PURE = "1"</code></pre>
+if ([string]::IsNullOrWhiteSpace($env:XAI_API_KEY)) { "XAI_API_KEY: MISSING" } else { "XAI_API_KEY: SET" }
+$env:OPENCODE_DISABLE_CLAUDE_CODE</code></pre>
         </div>
 
-        <p>The printed disable flag should be <code>1</code>. If it is empty, set <code>$env:OPENCODE_DISABLE_CLAUDE_CODE = "1"</code>. Record the flag and pure-mode control in <code>COMPARATOR.md</code>.</p>
+        <p>The key check should print <code>XAI_API_KEY: SET</code>, and the disable flag should print <code>1</code>. If the key is missing, stop and ask for setup help. If the disable flag is empty, set <code>$env:OPENCODE_DISABLE_CLAUDE_CODE = "1"</code>. This flag blocks compatibility files; it does not require an Anthropic key. Record the flag and <code>--pure</code> control in <code>COMPARATOR.md</code>.</p>
 
         <div class="do-step">
           <p class="do-label">Confirm the Engine B model pin:</p>
@@ -310,7 +315,7 @@ $env:OPENCODE_PURE = "1"</code></pre>
           <pre><code>opencode run --pure -m "xai/$env:HB_XAI_MODEL" "Read BRIEF-v1.md in this folder and follow it exactly."</code></pre>
         </div>
 
-        <p>If <code>--pure</code> is not recognized, drop that flag and rerun; <code>OPENCODE_PURE=1</code> remains the control. Record the substitution. Treat a 429 or quota message as a service constraint, not an installation failure.</p>
+        <p>If <code>--pure</code> is not recognized, stop and ask for an OpenCode update; do not run the comparison with installed plugins active. Treat a 429 or quota message as a service constraint, not an installation failure.</p>
 
         <div class="do-step">
           <p class="do-label">Create Engine B's output file and print its run identity:</p>
@@ -412,7 +417,7 @@ opencode --version
               <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
               <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
               <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Evidence Review — [TODAY'S DATE]</code></li>
-              <li>Select the same course model and leave permissions at <strong>Ask for approval</strong></li>
+              <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and leave permissions at <strong>Ask for approval</strong></li>
             </ul>
           </div>
           <div class="do-step">
@@ -468,7 +473,7 @@ Do not manufacture disagreement and do not change files.</code></pre>
               <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
               <li>In the sidebar, look for <strong>P3 — Closeout — [TODAY'S DATE]</strong>. If it is there, open it</li>
               <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P3 — Closeout — [TODAY'S DATE]</code></li>
-              <li>Select the same course model and leave permissions at <strong>Ask for approval</strong></li>
+              <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and leave permissions at <strong>Ask for approval</strong></li>
             </ul>
           </div>
 
@@ -686,11 +691,11 @@ sections changed.</code></pre>
             <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
             <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Many Minds baseline</code></li>
-            <li>Select the instructor-named course model, or keep the visible default if none was named, and confirm permissions say <strong>Ask for approval</strong></li>
+            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and confirm permissions say <strong>Ask for approval</strong></li>
             <li>Tell the single reviewer not to spawn subagents or implement fixes. Point it only at the three files under <code>instruments/p3_multi_agent/corpus/</code></li>
             <li>Require at most eight findings in <code>instruments/p3_multi_agent/out/baseline_single.md</code>. Every finding must name a claim, corpus file and symbol or short quote, severity, and the lens it belongs to</li>
             <li>Open the saved file yourself. Confirm it exists, every finding carries corpus evidence, and no subagent ran</li>
-            <li>If a specialist spawned, do not reuse that chat. Open <strong>ChatGPT</strong>, select <strong>Codex</strong>, click <strong>Open project</strong>, and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>. Click <strong>New chat</strong>, rename it <code>P3 — Many Minds Baseline Retry — [TODAY'S DATE]</code>, select the same model, confirm <strong>Ask for approval</strong>, and repeat the baseline prompt without subagents</li>
+            <li>If a specialist spawned, do not reuse that chat. Open <strong>ChatGPT</strong>, select <strong>Codex</strong>, click <strong>Open project</strong>, and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>. Click <strong>New chat</strong>, rename it <code>P3 — Many Minds Baseline Retry — [TODAY'S DATE]</code>, select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>), confirm <strong>Ask for approval</strong>, and repeat the baseline prompt without subagents</li>
           </ul>
         </div>
 
@@ -699,7 +704,7 @@ sections changed.</code></pre>
           <ul class="do-clicks">
             <li>In the <strong>ChatGPT desktop app</strong>, select <strong>Codex</strong>, click <strong>Open project</strong>, and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
             <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Many Minds commander</code></li>
-            <li>Select the same model used for the baseline and confirm permissions say <strong>Ask for approval</strong></li>
+            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and confirm permissions say <strong>Ask for approval</strong></li>
             <li>Direct it to spawn exactly three subagents in parallel: <strong>correctness and edge cases</strong>, <strong>test gaps</strong>, and <strong>spec drift</strong>. Each reads only <code>instruments/p3_multi_agent/corpus/</code>, edits nothing, and returns at most five findings with corpus cues</li>
             <li>Require the commander to wait for all three, then write only <code>instruments/p3_multi_agent/out/many_minds_synthesis.md</code></li>
             <li>Require a lens-by-lens table, visible deduplication, a corpus-backed keep/discard/unknown disposition for every reported finding, what the operator still owns, and the sentence <code>subagent ≠ second engine ≠ second human</code></li>
@@ -724,7 +729,7 @@ sections changed.</code></pre>
             <li>Start only after S1–S3. Note the Local course-repository path</li>
             <li>Open <strong>ChatGPT</strong>, select <strong>Codex</strong>, click <strong>Open project</strong>, and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
             <li>Click <strong>New chat</strong>, select <strong>Worktree</strong>, then open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Many Minds Worktree — [TODAY'S DATE]</code></li>
-            <li>Select the same model used for the commander and confirm permissions say <strong>Ask for approval</strong></li>
+            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and confirm permissions say <strong>Ask for approval</strong></li>
             <li>Ask it to print its working directory and create only <code>instruments/p3_multi_agent/out/worktree_path.txt</code> containing that path and <code>purpose=many-minds-isolation</code></li>
             <li>Confirm the Local lesson files did not change</li>
             <li>Write one line explaining the choice: use a worktree for isolated writes; use subagents for read-split specialist context. If Worktree is unavailable, save an honest block note instead</li>

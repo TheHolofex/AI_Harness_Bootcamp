@@ -29,7 +29,7 @@
       <div><span class="k">Day</span><span class="v">Friday AM</span></div>
       <div><span class="k">Block</span><span class="v">P8</span></div>
       <div><span class="k">Time</span><span class="v">~3–3.5 hr (half-day close)</span></div>
-      <div><span class="k">Tools</span><span class="v">Codex app (re-pointed) · hosted open model · instruments/p8_hold_degrade</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex home (<code>gpt-5.6-terra</code>) · temporary hosted-open comparison · instruments/p8_hold_degrade</span></div>
       <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p8">0 / 20 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
@@ -114,6 +114,7 @@
       <h3>The method transfers across vendors</h3>
       <p>What transfers when the vendor changes is not the app — it is the assets: the brief, frozen tests, contract language, logs, and policy. An asset that names an outcome and a check can run against another engine. An asset that depends on one vendor's behavior is a porting job. The matrix and root-cause register show which kind you have.</p>
       <p>Two artifacts carry the decision out the door. <code>ENDPOINT_RECOMMENDATION.md</code> turns policy, counts, and unresolved tests into fit/not-fit guidance. The sealed 30-60-90 maps the method onto your desk and records BLOCKED when its evidence is incomplete.</p>
+      <p>In this lesson, <strong>home model</strong> means <strong>gpt-5.6-terra</strong> in Codex. The temporary hosted open model is the comparison endpoint; once the comparison is complete, you restore Terra before closeout.</p>
 
       <p class="eyebrow">Optional field guide · 60–75 min</p>
       <h3>Inspect the boundary behind the endpoint</h3>
@@ -137,7 +138,7 @@
             <li>In the sidebar, look for <strong>P8 — Direction &amp; Closeout</strong>. If it is there, open it</li>
             <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P8 — Direction &amp; Closeout</code></li>
             <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
-            <li>Confirm the displayed model is the normal course model, not the open-endpoint model used later in this lesson</li>
+            <li>Select <strong>gpt-5.6-terra</strong> and confirm it is displayed. Do not leave this home-model chat on the default or select <code>gpt-5.6-sol</code></li>
             <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
@@ -186,12 +187,12 @@ Preserve unrelated block sections. Show the exact P8 brief written.</code></pre>
           <img src="../assets/blocks/p8/p8-stage-policy.svg" alt="The AUP document — version, date, and six fields — signed off before the arrow to the re-point target fires" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
         <div class="do-step">
-          <p class="do-label">Confirm the home-model baseline exists while the app is still on the home model:</p>
+          <p class="do-label">Confirm the home-model baseline exists while the app is still on <strong>gpt-5.6-terra</strong>:</p>
           <ul class="do-clicks">
             <li>Press <strong>Windows+E</strong> to open File Explorer</li>
             <li>Click the address bar, enter <code>%USERPROFILE%\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\SCORE_SHEET.md</code>, and press <strong>Enter</strong></li>
             <li>Open the file and confirm all five rows in <strong>After P/F</strong> contain P or F</li>
-            <li>If any After cell is empty, stop here and finish P2&#x27;s cold rescore on the home model before continuing. Do not re-point without the comparison baseline</li>
+            <li>If any After cell is empty, stop here and finish P2&#x27;s cold rescore on <strong>gpt-5.6-terra</strong> before continuing. Do not re-point without the comparison baseline</li>
             <li>Close the score sheet after the five values are confirmed</li>
           </ul>
         </div>
@@ -201,7 +202,7 @@ Preserve unrelated block sections. Show the exact P8 brief written.</code></pre>
             <li>Return to ChatGPT and select <strong>Codex</strong> if needed</li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> if the course project is not already open</li>
             <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P8 — Policy &amp; Re-point</code></li>
-            <li>Confirm the displayed model is still the normal course model and the permission mode says <strong>Ask for approval</strong></li>
+            <li>Confirm the displayed model is still <strong>gpt-5.6-terra</strong> and the permission mode says <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <p>The policy starts as the course template, copied to your project root so the machine and you can both edit it.</p>
@@ -544,7 +545,7 @@ Use only those artifacts. Preserve uncertainty. Do not write a speech or simulat
           <pre><code>Copy-Item "$env:USERPROFILE\.codex\config.toml.p8-backup" "$env:USERPROFILE\.codex\config.toml" -Force</code></pre>
           <ul class="do-clicks">
             <li>Fully quit ChatGPT, reopen it from the Windows Start menu, and select <strong>Codex</strong></li>
-            <li>Click <strong>Open project</strong>, choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>, and confirm the displayed model is the normal course model, not the open-endpoint model</li>
+            <li>Click <strong>Open project</strong>, choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>, select <strong>gpt-5.6-terra</strong>, and confirm it is displayed instead of the open-endpoint model</li>
             <li>Confirm permissions say <strong>Ask for approval</strong> before closeout</li>
           </ul>
         </div>
@@ -560,7 +561,7 @@ Use only those artifacts. Preserve uncertainty. Do not write a speech or simulat
               <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> if the course project is not already open</li>
               <li>In the sidebar, open <strong>P8 — Direction &amp; Closeout</strong></li>
               <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P8 — Direction &amp; Closeout</code></li>
-              <li>Confirm the displayed model is the normal course model, not the open-endpoint model</li>
+              <li>Select <strong>gpt-5.6-terra</strong> and confirm it is displayed instead of the open-endpoint model</li>
               <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
             </ul>
             <p>Do not reopen <strong>P8 — Open Endpoint Run</strong> after restoring the home model. The saved artifacts carry the evidence into this closeout without crossing the model boundary.</p>
@@ -604,16 +605,15 @@ Do not interview me. Preserve unrelated sections. Show the exact P8 entry writte
           <img src="../assets/blocks/p8/p8-stage-seal.svg" alt="P8 evidence updates the transfer plan, checks twelve acceptance criteria, and synchronizes the operating record before SEALED" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
         <div class="do-step">
-          <p class="do-label">Reopen the shared <strong>P7–P8 — 30/60/90 Plan</strong> chat on the home model:</p>
+          <p class="do-label">Reopen the shared <strong>P7–P8 — 30/60/90 Plan</strong> chat on <strong>gpt-5.6-terra</strong>:</p>
           <ul class="do-clicks">
             <li>In the ChatGPT app, select <strong>Codex</strong> if needed</li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> if the course project is not already open</li>
-            <li>Confirm the displayed model is the same normal course model used for the P7 planning visit</li>
-            <li>If the model matches, open <strong>P7–P8 — 30/60/90 Plan</strong> in the sidebar. If it is missing, click <strong>New chat</strong>, rename it <code>P7–P8 — 30/60/90 Plan</code>, and continue from the saved file</li>
-            <li>If the course model changed after P7, do not reopen that chat. Click <strong>New chat</strong>, rename it <code>P7–P8 — 30/60/90 Plan — P8 Continuation</code>, and continue from the saved file on the current normal course model</li>
+            <li>Select <strong>gpt-5.6-terra</strong>, the same model used for the P7 planning visit</li>
+            <li>Open <strong>P7–P8 — 30/60/90 Plan</strong> in the sidebar. If it is missing, click <strong>New chat</strong>, rename it <code>P7–P8 — 30/60/90 Plan</code>, select <strong>gpt-5.6-terra</strong>, and continue from the saved file</li>
             <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
-          <p>Reuse the shared P7–P8 chat only when the planning role and model both match. The saved <code>operator/TRANSFER_30_60_90.md</code> file carries continuity either way; the chat history is not required.</p>
+          <p>Reuse the shared P7–P8 chat only when the planning role and <strong>gpt-5.6-terra</strong> model both match. The saved <code>operator/TRANSFER_30_60_90.md</code> file carries continuity either way; the chat history is not required.</p>
           <p class="do-label">Now paste:</p>
           <pre><code>Finalize the transfer plan and P8 operating record. Read:
 - AUP_ENDPOINT.md
@@ -840,7 +840,7 @@ Decision rule: I route [WORK] to [ENDPOINT] when [EVIDENCE GATE]. I hold or retu
         <h2>If you get stuck</h2>
         <ul>
           <li><strong>The endpoint won't answer.</strong> Check placeholder vs pin values first; a capped or mispasted credential can look like a login failure. Run the allowed control task, then escalate with the exact error text. Policy, the home column, and recommendation structure can still proceed.</li>
-          <li><strong>No home baseline.</strong> If your P2 after column is empty, run D01–D05 once on the home model first this morning, then open — same IDs, no substitutions. Both columns come from today; the comparison still holds.</li>
+          <li><strong>No home baseline.</strong> If your P2 after column is empty, run D01–D05 once on <strong>gpt-5.6-terra</strong> first this morning, then open — same IDs, no substitutions. Both columns come from today; the comparison still holds.</li>
           <li><strong>Everything degraded and it feels like the model's fault.</strong> Probe environment before verdict: did your instructions and skills load on the re-pointed run at all? Port the walls, re-run one case, and only then write layer labels. Narrow data scope if time is short — never the judgment standard.</li>
         </ul>
       </div>

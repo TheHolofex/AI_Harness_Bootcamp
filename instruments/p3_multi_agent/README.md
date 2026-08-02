@@ -3,6 +3,8 @@
 **When:** Tuesday PM, **after** twin-engine MVP.  
 **Not GREEN.** Guide: `mission_flesh/p3/MANY_MINDS.md` (repo root).
 
+Run every baseline, commander, and worktree chat in Codex with `gpt-5.6-terra`. Codex uses the OpenAI API key stored in its sign-in; this stretch does not use an Anthropic key.
+
 ## Mastery path (three artifacts)
 
 | File under `out/` | Role |

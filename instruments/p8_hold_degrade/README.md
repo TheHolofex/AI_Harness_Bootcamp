@@ -7,10 +7,10 @@
 
 | P2 | P8 |
 |---|---|
-| Baseline + after on commercial/home model | Open/re-pointed model on **same track & case IDs** |
+| Baseline + after in Codex on `gpt-5.6-terra` | Open/re-pointed model on **same track & case IDs** |
 
-Bring your P2 score sheet (after column) as the comparison baseline for “commercial/home.”  
-If P2 after is missing, run commercial once Friday AM then open — still use D01–D05.
+Bring your P2 score sheet (After column) as the comparison baseline for Codex on `gpt-5.6-terra`.
+If P2 After is missing, run D01–D05 once on `gpt-5.6-terra` Friday morning before the open-model run.
 
 ## Student flow
 

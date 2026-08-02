@@ -70,9 +70,12 @@ on Windows, where `test` does not exist. On macOS or Linux, replace it with
 New-Item -ItemType Directory -Force -Path .\out | Out-Null
 ```
 
-4. Run once from this directory (provider/model already set in pre-work):
+4. Lock goose to the xAI course pin, then run once from this directory:
 
 ```powershell
+$env:GOOSE_PROVIDER = "xai"
+$env:GOOSE_MODEL = $env:HB_XAI_MODEL
+goose info -v
 # Approve mode is the teaching default for the contract drill.
 # auto is fine for the smoke proof; P6 should show you can dial autonomy.
 $env:GOOSE_MODE = "approve"
@@ -159,11 +162,12 @@ Fill ≥3 rows in each column with **this feeder’s** real risks. No orphan ris
 
 ## Provider posture (course lock)
 
-- API keys only — OpenAI via `GOOSE_PROVIDER` / `GOOSE_MODEL` from pre-work.
-- goose’s provider list also offers ChatGPT / Copilot / Claude subscription
-  paths. **Do not use those** in this course.
-- Docs often note strongest tool-calling on Claude-class models; the course pin
-  is still your posted OpenAI (or alternate) model. Measure what you get.
+- API key only — xAI through `GOOSE_PROVIDER=xai`, `GOOSE_MODEL`, and the
+  `XAI_API_KEY` set during the install clinic.
+- Use the posted `HB_XAI_MODEL` value. Do not substitute another provider or a
+  subscription login. No additional provider key is required for P6.
+- Confirm the provider and model with `goose info -v` before the run. Measure
+  what the pinned xAI model actually does under the contract.
 
 ## Local endpoint stretch (optional)
 

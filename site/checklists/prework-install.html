@@ -34,13 +34,13 @@
 
 <nav class="checklist-phase-map" aria-label="Pre-work phases">
   <a href="#phase-basics"><span class="phase-number">1</span><strong>Machine</strong><span data-phase-stat="basics">0 / 21</span></a>
-  <a href="#phase-keys"><span class="phase-number">2</span><strong>Keys</strong><span data-phase-stat="keys">0 / 6</span></a>
-  <a href="#phase-tools"><span class="phase-number">3</span><strong>Harnesses + tools</strong><span data-phase-stat="tools">0 / 31</span></a>
+  <a href="#phase-keys"><span class="phase-number">2</span><strong>Keys</strong><span data-phase-stat="keys">0 / 5</span></a>
+  <a href="#phase-tools"><span class="phase-number">3</span><strong>Harnesses + tools</strong><span data-phase-stat="tools">0 / 30</span></a>
   <a href="#phase-files"><span class="phase-number">4</span><strong>Course files</strong><span data-phase-stat="files">0 / 1</span></a>
 </nav>
 
 <div class="callout"><strong>Everything runs on API keys</strong>
-You'll be issued three keys — OpenAI, xAI, and Anthropic. You will never sign into ChatGPT, Claude, or any monthly plan during this course. Several tools below offer a subscription login and an API key option on the same screen; always take the API key path. Keep <a href="../keys.html">Your API keys</a> open in another tab while you work.</div>
+You'll receive two keys. OpenAI is only for Codex, which runs <code>gpt-5.6-terra</code>. xAI runs OpenCode, Pi, goose, and the AI step in n8n. Do not sign into a consumer subscription. Anthropic is not part of setup; Claude access may be offered near the end as an optional exercise, with details still to be determined. Keep <a href="../keys.html">Your API keys</a> open in another tab while you work.</div>
 
 <div class="callout"><strong>You only need one shell: PowerShell</strong>
 Every command in this guide is typed into PowerShell. You will also install Git Bash, which is a different kind of terminal — but that is a dependency other tools reach for on their own, not a second thing for you to learn. Step 8 shows how to tell at a glance which window you are looking at, because pasting a command into the wrong one produces errors that never say so.</div>
@@ -79,10 +79,10 @@ Every command in this guide is typed into PowerShell. You will also install Git 
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-i-keys" data-check-id="i-keys" />
     <span class="check-num">2</span>
-    <span class="check-title">Confirm you have all three API keys in hand</span>
+    <span class="check-title">Confirm you have both course API keys in hand</span>
   </label>
-  <div class="check-detail"><p>You need an OpenAI key starting <code>sk-proj-</code>, an xAI key starting <code>xai-</code>, and an Anthropic key starting <code>sk-ant-api03-</code>.</p>
-  <p>If any are missing, tell the instructor and start with the machine steps anyway. The first four sections need no keys, so you can keep moving while the missing key is resolved.</p></div>
+  <div class="check-detail"><p>You need an OpenAI key starting <code>sk-proj-</code> and an xAI key starting <code>xai-</code>. Keep them separate: OpenAI goes only into Codex; xAI goes to every other cloud harness.</p>
+  <p>If either is missing, tell the instructor and start with the machine steps anyway. The first four sections need no keys, so you can keep moving while the missing key is resolved.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -91,9 +91,9 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <span class="check-num">3</span>
     <span class="check-title">Know the shape of what you're building</span>
   </label>
-  <div class="check-detail"><p>Foundations first: a terminal, the official installers for Git, Node, and Python, and a local copy of the course repository. You will clone the course as soon as Git works. After that you will install your three keys and verify the course harnesses and tools.</p>
+  <div class="check-detail"><p>Foundations first: a terminal, the official installers for Git, Node, and Python, and a local copy of the course repository. You will clone the course as soon as Git works. After that you will connect your two keys and verify the course harnesses and tools.</p>
   <p>All of it is driven from one window — a PowerShell terminal. You'll open it in step 8 and stay there for the rest of this guide.</p>
-<p><strong>The Codex app</strong> is your home for the week. <strong>OpenCode</strong> is the second harness you'll run the same brief through on Tuesday. <strong>Pi</strong> is a minimal, extensible coding harness — small defaults, then skills, packages, and tree-shaped sessions when you need more. <strong>goose</strong> is a local agent platform: packaged recipes, a tool surface (extensions), an autonomy dial (mode and max turns), and an unattended path (schedule) — Thursday’s autonomy-contract vehicle. <strong>Obsidian</strong> holds a knowledge base and <strong>n8n</strong> builds a fixed pipeline. Claude Code is optional.</p></div>
+<p><strong>The Codex app</strong> is your home for the week. <strong>OpenCode</strong> is the second harness you'll run the same brief through on Tuesday. <strong>Pi</strong> is a minimal, extensible coding harness — small defaults, then skills, packages, and tree-shaped sessions when you need more. <strong>goose</strong> is a local agent platform: packaged recipes, a tool surface (extensions), an autonomy dial (mode and max turns), and an unattended path (schedule) — Thursday’s autonomy-contract vehicle. <strong>Obsidian</strong> holds a knowledge base and <strong>n8n</strong> builds a fixed pipeline.</p></div>
 </li>
 </ol></section>
 
@@ -166,7 +166,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <tbody>
       <tr><td><strong>PowerShell</strong></td><td><code>PS C:\Users\you&gt;</code> — note the <code>PS</code></td><td>Everything in this guide</td></tr>
       <tr><td>Command Prompt</td><td><code>C:\Users\you&gt;</code> — no <code>PS</code></td><td>Nothing here, unless a rescue step says so</td></tr>
-      <tr><td>Git Bash</td><td><code>you@machine ~ $</code> — a <code>$</code>, and <code>/</code> in paths</td><td>One goose fallback in step 55</td></tr>
+      <tr><td>Git Bash</td><td><code>you@machine ~ $</code> — a <code>$</code>, and <code>/</code> in paths</td><td>One goose fallback in step 53</td></tr>
     </tbody>
   </table>
   <p>Confirm you're in the right one:</p>
@@ -251,7 +251,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <span class="check-title">Install Git</span>
   </label>
   <div class="check-detail"><p>Git tracks changes to files, and you'll use it to fetch the course repository. It also installs <strong>Git Bash</strong>, a second kind of terminal that some tools reach for behind the scenes — which is the real reason Git comes this early.</p>
-  <p>To be clear about what you have to learn: <strong>you type everything in PowerShell.</strong> Git Bash is a dependency, not a second shell to get fluent in. Pi is the one tool that genuinely can't run without it, and it calls it for you. The only time you'd open Git Bash yourself is one goose fallback in step 55.</p>
+  <p>To be clear about what you have to learn: <strong>you type everything in PowerShell.</strong> Git Bash is a dependency, not a second shell to get fluent in. Pi is the one tool that genuinely can't run without it, and it calls it for you. The only time you'd open Git Bash yourself is one goose fallback in step 53.</p>
   <p>Open the Git installer you downloaded in the previous section. Approve the elevation prompt and accept the installer defaults. If it offers a choice between installing for your account and for everyone on the machine, choose everyone so other tools find Git at the standard path.</p></div>
 </li>
 
@@ -357,11 +357,11 @@ python --version</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section" id="phase-keys"><h2>Phase 2 · Install your three API keys</h2>
+<section class="checklist-section" id="phase-keys"><h2>Phase 2 · Connect your two API keys</h2>
 <figure class="section-diagram">
   <img src="../assets/prework/install-05-keys.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
-<h3>5 · Your three API keys</h3>
+<h3>5 · Your two API keys</h3>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
@@ -371,21 +371,16 @@ python --version</code></pre>
     <span class="check-title">Read the keys reference first</span>
   </label>
   <div class="check-detail"><p>Open <a href="../keys.html"><strong>Your API keys</strong></a> and read it once through. It covers what a key is, what each one drives, and what to do if one leaks.</p>
-  <p>Everything below depends on these three variables being set correctly, so the five minutes pays for itself.</p></div>
+  <p>The provider split is simple: OpenAI stays inside Codex, while xAI drives every other cloud harness. Read the reference before you place either key.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-k-openai" data-check-id="k-openai" />
     <span class="check-num">24</span>
-    <span class="check-title">Set OPENAI_API_KEY</span>
+    <span class="check-title">Keep the OpenAI key ready for Codex</span>
   </label>
-  <div class="check-detail"><p>Run these four lines. The first prompts you to paste the key rather than putting it in the command, which keeps the secret out of your shell history:</p>
-  <pre><code>$key = Read-Host 'Paste OPENAI_API_KEY'
-[Environment]::SetEnvironmentVariable('OPENAI_API_KEY', $key, 'User')
-$env:OPENAI_API_KEY = $key
-$key = $null</code></pre>
-  <p>Line two saves it permanently for your Windows account. Line three also sets it in this window, so you can keep working without reopening anything.</p></div>
+  <div class="check-detail"><p>Confirm the OpenAI key starts with <code>sk-proj-</code>, then keep it ready for the Codex sign-in step. Do not paste it into PowerShell and do not create <code>OPENAI_API_KEY</code>. Codex stores this key through its own sign-in screen, and no other course harness should be able to select it.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -398,56 +393,42 @@ $key = $null</code></pre>
 [Environment]::SetEnvironmentVariable('XAI_API_KEY', $key, 'User')
 $env:XAI_API_KEY = $key
 $key = $null</code></pre>
-  <p>This one drives OpenCode. Check it starts with <code>xai-</code> before you paste — mixing up two keys produces an authentication error that never tells you which key was wrong.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-k-anthropic" data-check-id="k-anthropic" />
-    <span class="check-num">26</span>
-    <span class="check-title">Set ANTHROPIC_API_KEY</span>
-  </label>
-  <div class="check-detail"><pre><code>$key = Read-Host 'Paste ANTHROPIC_API_KEY'
-[Environment]::SetEnvironmentVariable('ANTHROPIC_API_KEY', $key, 'User')
-$env:ANTHROPIC_API_KEY = $key
-$key = $null</code></pre></div>
+  <p>This key drives OpenCode, Pi, goose, and the AI step in n8n. Check it starts with <code>xai-</code> before you paste — mixing up the two keys produces an authentication error that rarely names the real problem.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-k-models" data-check-id="k-models" />
-    <span class="check-num">27</span>
-    <span class="check-title">Set the pinned model ids</span>
+    <span class="check-num">26</span>
+    <span class="check-title">Set the shared xAI model id</span>
   </label>
-  <div class="check-detail"><p>The instructor will provide one model id per provider during the clinic. Set them once here and every later step picks them up &mdash; otherwise you'd be hand-editing four commands further down.</p>
-  <p>If the model ids have not been provided yet, ask the instructor. Meanwhile, use any current model id for that provider. These are two variables you can change in ten seconds later, not a decision you're locked into.</p>
-  <p>Change the two quoted values to the ids you're using, then run all four lines:</p>
-  <pre><code>$env:HB_OPENAI_MODEL = 'paste the OpenAI model id'
-$env:HB_XAI_MODEL    = 'paste the xAI model id'
-[Environment]::SetEnvironmentVariable('HB_OPENAI_MODEL', $env:HB_OPENAI_MODEL, 'User')
-[Environment]::SetEnvironmentVariable('HB_XAI_MODEL',    $env:HB_XAI_MODEL,    'User')</code></pre>
-  <p>The first two lines set them for this window; the last two make them stick for every future one. These two values are the only thing in this guide you type rather than paste. The <code>HB_</code> prefix keeps them from colliding with anything a tool reads on its own.</p></div>
+  <div class="check-detail"><p>The instructor will provide one xAI model id during the clinic. OpenCode, Pi, and goose all reuse it, so set it once instead of editing three later commands.</p>
+  <p>Codex does not use this variable. Its model is fixed separately to <code>gpt-5.6-terra</code>.</p>
+  <p>Replace the quoted placeholder with the xAI id provided by the instructor, then run both lines:</p>
+  <pre><code>$env:HB_XAI_MODEL = 'paste the xAI model id'
+[Environment]::SetEnvironmentVariable('HB_XAI_MODEL', $env:HB_XAI_MODEL, 'User')</code></pre>
+  <p>The first line sets the value for this window. The second makes it available in every new window. The <code>HB_</code> prefix keeps the course pin separate from settings a tool reads on its own.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-k-verify" data-check-id="k-verify" />
-    <span class="check-num">28</span>
-    <span class="check-title">Verify all three in a brand-new window</span>
+    <span class="check-num">27</span>
+    <span class="check-title">Verify xAI and its model id in a brand-new window</span>
   </label>
   <div class="check-detail"><p>Close the terminal, open a new one, and run:</p>
-  <pre><code>'OPENAI_API_KEY','XAI_API_KEY','ANTHROPIC_API_KEY' | ForEach-Object {
+  <pre><code>'XAI_API_KEY' | ForEach-Object {
   '{0}: user={1} session={2}' -f $_,
     ([string][Environment]::GetEnvironmentVariable($_,'User')).Length,
     ([string](Get-Item "env:$_" -EA SilentlyContinue).Value).Length
 }</code></pre>
-  <p>Three lines, each with two matching non-zero numbers. This prints only the <em>length</em> of each key, never the key, so it's safe to run on a shared screen.</p>
+  <p>One line with two matching non-zero numbers proves the xAI key is saved and available. This prints only its <em>length</em>, never the key, so it's safe to run on a shared screen.</p>
   <p><code>user=0</code> means it didn't save — re-run that key's step and check the variable name for typos. <code>session=0</code> means this window is older than the variable; open another one.</p>
-  <p>Model ids aren't secret, so check those by eye in the same window:</p>
-  <pre><code>'HB_OPENAI_MODEL','HB_XAI_MODEL' | ForEach-Object {
+  <p>The model id is not secret, so check it by eye in the same window:</p>
+  <pre><code>'HB_XAI_MODEL' | ForEach-Object {
   '{0} = {1}' -f $_, [Environment]::GetEnvironmentVariable($_,'User')
 }</code></pre>
-  <p>Both should read back the ids provided during the clinic. If either still says <code>paste the...</code>, go back to step 27 — four later steps depend on these.</p></div>
+  <p>It should read back the id provided during the clinic. If it still says <code>paste the...</code>, go back one step — OpenCode, Pi, and goose depend on this value.</p></div>
 </li>
 </ol></section>
 
@@ -460,7 +441,7 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-sf-make" data-check-id="sf-make" />
-    <span class="check-num">29</span>
+    <span class="check-num">28</span>
     <span class="check-title">Create the folder every tool will write into</span>
   </label>
   <div class="check-detail"><pre><code>New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"</code></pre>
@@ -471,7 +452,7 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-sf-why" data-check-id="sf-why" />
-    <span class="check-num">30</span>
+    <span class="check-num">29</span>
     <span class="check-title">Understand why a file on disk is the standard</span>
   </label>
   <div class="check-detail"><p>Every one of these tools will happily tell you it created a file it never created. Chat output is a claim; a file in Explorer is evidence.</p>
@@ -489,7 +470,7 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-install" data-check-id="cx-install" />
-    <span class="check-num">31</span>
+    <span class="check-num">30</span>
     <span class="check-title">Install the ChatGPT desktop app</span>
   </label>
   <div class="check-detail"><p>Codex isn't a separate download. It's a mode inside the <strong>ChatGPT desktop app</strong>, sitting alongside Chat and Work. When this course says <em>the Codex app</em>, that's what it means — and knowing that saves you hunting the Store for a product that doesn't exist.</p>
@@ -501,18 +482,18 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-signin" data-check-id="cx-signin" />
-    <span class="check-num">32</span>
+    <span class="check-num">31</span>
     <span class="check-title">Sign in with your API key</span>
   </label>
   <div class="check-detail"><p>Launch the app. You'll land on a signed-out screen whose main button offers to sign in with a ChatGPT account — which you don't have and won't use.</p>
   <p>Choose <strong>Sign in another way</strong> instead, paste your OpenAI key, and select <strong>Continue</strong>.</p>
-  <p>This is the one tool in the stack that ignores <code>OPENAI_API_KEY</code>. Everywhere else the variable is what does the work; here it's the key you paste that counts. Setting the variable and expecting the app to find it is the most common way to lose time on this step.</p></div>
+  <p>Do not create <code>OPENAI_API_KEY</code> for the course. Codex uses the key you paste here, while every command-line harness reads <code>XAI_API_KEY</code>. Keeping those paths separate prevents accidental OpenAI use outside Codex.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-status" data-check-id="cx-status" />
-    <span class="check-num">33</span>
+    <span class="check-num">32</span>
     <span class="check-title">Confirm you're on the key, not an account</span>
   </label>
   <div class="check-detail"><p>Open the profile menu. It should report that you're authenticated with an API key.</p>
@@ -522,28 +503,28 @@ $env:HB_XAI_MODEL    = 'paste the xAI model id'
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-lock" data-check-id="cx-lock" />
-    <span class="check-num">34</span>
-    <span class="check-title">Lock the app to API-key sign-in</span>
+    <span class="check-num">33</span>
+    <span class="check-title">Lock API-key sign-in and pin Terra</span>
   </label>
-  <div class="check-detail"><p>Now lock the door behind you, so a stray click can never bounce you to a ChatGPT login you can't complete:</p>
+  <div class="check-detail"><p>Set the two course-wide Codex defaults now: API-key sign-in and the lower-cost Terra model.</p>
   <pre><code>$cfg = "$env:USERPROFILE\.codex\config.toml"
 New-Item -ItemType Directory -Force -Path (Split-Path $cfg) | Out-Null
-$keep = @(if (Test-Path $cfg) { Get-Content $cfg | Where-Object { $_ -notmatch '^\s*forced_login_method\s*=' } })
-Set-Content -Path $cfg -Value (@('forced_login_method = "api"') + $keep)</code></pre>
-  <p>That writes one setting into <code>%USERPROFILE%\.codex\config.toml</code>. Restart the app afterwards so it reads the change. From then on, an accidental account sign-in fails politely and points you back to the key.</p>
-  <p>Four lines rather than one, because of how this file is shaped. A line like <code>[windows]</code> opens a <strong>table</strong>, and every plain setting below it belongs to that table. So a setting appended to the bottom of a file that already has a table header silently joins the table and stops working — nothing errors, the app just keeps asking you to sign in. These commands rewrite the setting at the <strong>top</strong>, above every table, which also makes them safe to run again any time you want to confirm the lock is still there.</p></div>
+$keep = @(if (Test-Path $cfg) { Get-Content $cfg | Where-Object { $_ -notmatch '^\s*(forced_login_method|model)\s*=' } })
+Set-Content -Path $cfg -Value (@('forced_login_method = "api"', 'model = "gpt-5.6-terra"') + $keep)</code></pre>
+  <p>Restart the app afterwards so it reads the change. <code>forced_login_method = "api"</code> keeps Codex on the course key. <code>model = "gpt-5.6-terra"</code> keeps new tasks on Terra instead of the more expensive Sol model or another visible default.</p>
+  <p>Four lines rather than one, because of how this file is shaped. A line like <code>[windows]</code> opens a <strong>table</strong>, and every plain setting below it belongs to that table. Appending either course setting to the bottom could silently put it in the wrong table. These commands rewrite both settings at the <strong>top</strong>, above every table, and preserve the rest of the file.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-project" data-check-id="cx-project" />
-    <span class="check-num">35</span>
+    <span class="check-num">34</span>
     <span class="check-title">Open your smoke folder and create the B0 smoke chat</span>
   </label>
   <div class="check-detail"><p>After the restart, open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong> from the top-left switcher if needed.</p>
   <p>Choose <strong>Open project</strong> and pick the smoke folder you made in section 6: <code>Documents\HarnessBootcamp\prework-smoke</code>.</p>
   <p>Click <strong>New chat</strong>. In the sidebar, open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>B0 — Codex Smoke Test</code>.</p>
-  <p>Use the instructor-named model, or keep the visible default if none was named.</p>
+  <p>Confirm the model picker says <strong>gpt-5.6-terra</strong>. If it says Sol or another default, select Terra before you send the smoke-test prompt.</p>
   <p>The folder you open is the boundary. Codex reads and writes inside it and has to ask before reaching anywhere else on your machine.</p>
   <p>That's worth pausing on, because it's the shape of everything you'll do this week: you decide what the machine can see before you give it work, not after.</p></div>
 </li>
@@ -551,7 +532,7 @@ Set-Content -Path $cfg -Value (@('forced_login_method = "api"') + $keep)</code><
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-sandbox" data-check-id="cx-sandbox" />
-    <span class="check-num">36</span>
+    <span class="check-num">35</span>
     <span class="check-title">Set the permission mode</span>
   </label>
   <div class="check-detail"><p>Beneath the message box is a permissions control. Set it to <strong>Ask for approval</strong>.</p>
@@ -560,31 +541,31 @@ Set-Content -Path $cfg -Value (@('forced_login_method = "api"') + $keep)</code><
   <p>If your laptop refuses the elevation, or you see an error mentioning <code>1385</code>, Codex can run with weaker but workable boundaries. Add this to the <strong>bottom</strong> of the same <code>config.toml</code>, in a text editor — it is file content rather than a command to paste into PowerShell:</p>
   <pre><code class="language-toml">[windows]
 sandbox = "unelevated"</code></pre>
-  <p>That is a table header, so it has to be the last thing in the file — everything below it belongs to the table, which is the trap step 34 describes. If you later re-run that step's four-line command, it rewrites the top of the file and leaves this table where it is.</p>
+  <p>That is a table header, so it has to be the last thing in the file — everything below it belongs to the table, which is the trap step 33 describes. If you later re-run that step's four-line command, it rewrites the top of the file and leaves this table where it is.</p>
   <p>Check which of the two modes you ended up on. Knowing your own boundaries matters during the week, and it comes up directly on Tuesday.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-write" data-check-id="cx-write" />
-    <span class="check-num">37</span>
+    <span class="check-num">36</span>
     <span class="check-title">Write proof: from-codex.txt</span>
   </label>
   <div class="check-detail"><p>In <strong>B0 — Codex Smoke Test</strong>, ask for the file in plain language:</p>
   <pre><code>Create a file named from-codex.txt in this folder containing exactly the text: codex works</code></pre>
   <p>Approve the write when it asks — that prompt is the sandbox doing its job. Then open the folder in Explorer and look.</p>
   <p>You want the file on disk, containing <code>codex works</code>. A confident <em>"I've created that for you"</em> with nothing in the folder is a fail, and noticing the difference is the first operator habit this course builds.</p>
-  <p>If it can't authenticate, the key is the problem rather than the sandbox — go back to step 32.</p></div>
+  <p>If it can't authenticate, the key is the problem rather than the sandbox — go back to step 31.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-limits" data-check-id="cx-limits" />
-    <span class="check-num">38</span>
+    <span class="check-num">37</span>
     <span class="check-title">Know what your key does and doesn't buy</span>
   </label>
   <div class="check-detail"><p>Worth reading once now, so nothing surprises you mid-week.</p>
-  <p>Your API key runs all of the app's <strong>local</strong> work, which is the whole course: projects, worktrees, code review, skills, scheduled tasks, the built-in browser, and the permission modes you just set.</p>
+  <p>Your OpenAI API key runs all of the app's <strong>local</strong> work, which is the whole course: projects, worktrees, code review, skills, scheduled tasks, the built-in browser, and the permission modes you just set. Every required Codex task uses <code>gpt-5.6-terra</code>.</p>
   <p>It does not unlock the cloud half of the product. Codex cloud, Sites, GitHub and Slack delegation, and voice all need a ChatGPT subscription, and you'll see them greyed out or absent. Nothing in this course needs them, so that's information rather than a problem — but if a tutorial online tells you to click something you can't find, this is usually why.</p></div>
 </li>
 </ol></section>
@@ -598,7 +579,7 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-why" data-check-id="oc-why" />
-    <span class="check-num">39</span>
+    <span class="check-num">38</span>
     <span class="check-title">Know what OpenCode is for</span>
   </label>
   <div class="check-detail"><p>On Tuesday you'll run the <em>same frozen brief</em> through the Codex app and through OpenCode, compare what comes back, and decide which you trust. That needs two genuinely different engines, so OpenCode runs on <strong>Grok</strong> via your xAI key while Codex runs on OpenAI.</p>
@@ -608,7 +589,7 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-version" data-check-id="oc-version" />
-    <span class="check-num">40</span>
+    <span class="check-num">39</span>
     <span class="check-title">Check for a pinned npm version</span>
   </label>
   <div class="check-detail"><p>Check the instructor’s screen for the current OpenCode npm pin, and prefer that over whatever is newest.</p>
@@ -619,7 +600,7 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-install" data-check-id="oc-install" />
-    <span class="check-num">41</span>
+    <span class="check-num">40</span>
     <span class="check-title">Install OpenCode</span>
   </label>
   <div class="check-detail"><p>If there is a pin, substitute its version in this npm command:</p>
@@ -632,7 +613,7 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-verify" data-check-id="oc-verify" />
-    <span class="check-num">42</span>
+    <span class="check-num">41</span>
     <span class="check-title">New terminal, then verify OpenCode</span>
   </label>
   <div class="check-detail"><pre><code>opencode --version</code></pre>
@@ -643,38 +624,22 @@ sandbox = "unelevated"</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-models" data-check-id="oc-models" />
-    <span class="check-num">43</span>
+    <span class="check-num">42</span>
     <span class="check-title">Confirm OpenCode sees your xAI key</span>
   </label>
   <div class="check-detail"><p>OpenCode picks up <code>XAI_API_KEY</code> from your environment on its own — there's no login step.</p>
   <pre><code>opencode models xai --refresh</code></pre>
-  <p>You should get a list of Grok models in <code>xai/…</code> form. Confirm the pinned one — or the one you chose — appears.</p>
-  <p>An empty list means this window can't see the key. Open a new terminal and try again; if it's still empty, re-check step 28.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-oc-independent" data-check-id="oc-independent" />
-    <span class="check-num">44</span>
-    <span class="check-title">Keep this engine independent</span>
-  </label>
-  <div class="check-detail"><p>When OpenCode finds Claude Code's files it reads them &mdash; <code>~/.claude/CLAUDE.md</code> and any <code>.claude/skills</code> folder. If you install the optional Claude Code later in this guide, your second engine quietly starts working from the first one's notes, and two engines sharing one memory file will agree more than they should.</p>
-  <p>Turn that off once as a user variable, so every window you open from now on inherits it:</p>
-  <pre><code>[Environment]::SetEnvironmentVariable("OPENCODE_DISABLE_CLAUDE_CODE", "1", "User")
-$env:OPENCODE_DISABLE_CLAUDE_CODE = "1"</code></pre>
-  <p>Two lines because they do different jobs. The first makes the setting stick for every window you open from now on; it doesn't reach the window you're in. The second applies it here, so the write proof below and anything else you do in this window are covered too.</p>
-  <p>New terminal, then check it took:</p>
-  <pre><code>$env:OPENCODE_DISABLE_CLAUDE_CODE</code></pre>
-  <p>You want <code>1</code> back. A blank line means it didn't stick &mdash; set it again and verify the command returns <code>1</code>.</p></div>
+  <p>You should get a list of Grok models in <code>xai/…</code> form. Confirm the instructor-provided value in <code>HB_XAI_MODEL</code> appears. If it does not, stop before the proof run and show the instructor the model list.</p>
+  <p>An empty list means this window can't see the key. Open a new terminal and try again; if it's still empty, re-check step 27.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-oc-write" data-check-id="oc-write" />
-    <span class="check-num">45</span>
+    <span class="check-num">43</span>
     <span class="check-title">Write proof: from-opencode.txt</span>
   </label>
-  <div class="check-detail"><p>This uses the xAI model id you set in step 27:</p>
+  <div class="check-detail"><p>This uses the xAI model id you set in step 26:</p>
   <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
 opencode run -m "xai/$env:HB_XAI_MODEL" "Create a file named from-opencode.txt in the current directory whose only contents are the text: opencode works"
 Get-Content .\from-opencode.txt</code></pre>
@@ -691,7 +656,7 @@ Get-Content .\from-opencode.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-why" data-check-id="pi-why" />
-    <span class="check-num">46</span>
+    <span class="check-num">44</span>
     <span class="check-title">Know what Pi is for</span>
   </label>
   <div class="check-detail"><p><a href="https://pi.dev" target="_blank" rel="noopener">Pi</a> is a <strong>minimal coding-agent harness</strong> you reshape to your workflow — not a sealed product with one opinion about how agents should work. Out of the box it is small on purpose: read, write, edit, and bash, plus a clean terminal UI. That is why this course starts you here — you can <em>see</em> the loop.</p>
@@ -705,7 +670,7 @@ Get-Content .\from-opencode.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-install" data-check-id="pi-install" />
-    <span class="check-num">47</span>
+    <span class="check-num">45</span>
     <span class="check-title">Install Pi</span>
   </label>
   <div class="check-detail"><pre><code>powershell -c "irm https://pi.dev/install.ps1 | iex"</code></pre>
@@ -716,7 +681,7 @@ Get-Content .\from-opencode.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-verify" data-check-id="pi-verify" />
-    <span class="check-num">48</span>
+    <span class="check-num">46</span>
     <span class="check-title">New terminal, then verify Pi</span>
   </label>
   <div class="check-detail"><pre><code>pi --version</code></pre></div>
@@ -725,25 +690,25 @@ Get-Content .\from-opencode.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-write" data-check-id="pi-write" />
-    <span class="check-num">49</span>
+    <span class="check-num">47</span>
     <span class="check-title">Write proof: from-pi.txt</span>
   </label>
-  <div class="check-detail"><p>Pi can see all three of your keys, so you <strong>must</strong> name the model. Left to itself it picks one you didn't expect, and bills that provider:</p>
+  <div class="check-detail"><p>Keep Pi on the shared xAI lane by naming both the provider and model:</p>
   <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
-pi -p --model "openai/$env:HB_OPENAI_MODEL" "Create a file named from-pi.txt in the current directory containing exactly: pi works"
+pi -p --provider xai --model "$env:HB_XAI_MODEL" "Create a file named from-pi.txt in the current directory containing exactly: pi works"
 Get-Content .\from-pi.txt</code></pre>
-  <p>Use the pinned OpenAI model, or run <code>pi --list-models</code> to see what your keys can reach. The <code>-p</code> flag runs one instruction and exits instead of opening the interactive screen.</p>
+  <p><code>--provider xai</code> makes the billing lane explicit. <code>--model</code> uses the xAI pin from phase 2. The <code>-p</code> flag runs one instruction and exits instead of opening the interactive screen.</p>
   <p>There's no <code>-m</code> shorthand despite what several guides claim — it has to be <code>--model</code>.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-pi-bash" data-check-id="pi-bash" />
-    <span class="check-num">50</span>
+    <span class="check-num">48</span>
     <span class="check-title">Verify that Pi can reach a shell</span>
   </label>
   <div class="check-detail"><p>Pi needs Git Bash to run shell commands, and it only looks for it at the moment it first needs one. A missing shell therefore fails <em>mid-exercise</em> rather than at setup, so force the problem out now:</p>
-  <pre><code>pi -p --model "openai/$env:HB_OPENAI_MODEL" "Run the shell command 'echo bash-ok > bash-check.txt' and tell me the result"
+  <pre><code>pi -p --provider xai --model "$env:HB_XAI_MODEL" "Run the shell command 'echo bash-ok > bash-check.txt' and tell me the result"
 Get-Content .\bash-check.txt</code></pre>
   <p>If it reports no bash shell found, point Pi at the Git Bash path that returned <code>True</code> in step 16 by creating <code>%USERPROFILE%\.pi\agent\settings.json</code> containing:</p>
   <pre><code>{ "shellPath": "C:\\Program Files\\Git\\bin\\bash.exe" }</code></pre>
@@ -760,7 +725,7 @@ Get-Content .\bash-check.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-gs-what" data-check-id="gs-what" />
-    <span class="check-num">51</span>
+    <span class="check-num">49</span>
     <span class="check-title">Know what goose is for</span>
   </label>
   <div class="check-detail"><p><a href="https://goose-docs.ai" target="_blank" rel="noopener"><strong>goose</strong></a> is a local-first agent platform (CLI required here; Desktop optional). It is more than a one-shot chat: you package a <strong>recipe</strong> (mission + parameters), choose a <strong>tool surface</strong> (extensions / MCP tools), set an <strong>autonomy dial</strong> (<code>GOOSE_MODE</code>, max turns), and optionally an <strong>unattended path</strong> (scheduler + retry).</p>
@@ -771,7 +736,7 @@ Get-Content .\bash-check.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-gs-official" data-check-id="gs-official" />
-    <span class="check-num">52</span>
+    <span class="check-num">50</span>
     <span class="check-title">Use the official AAIF goose installer</span>
   </label>
   <div class="check-detail"><p>The course uses goose from the Agentic AI Foundation (<code>aaif-goose</code>). Use only the installer in the next step. Current documentation lives at <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p></div>
@@ -780,7 +745,7 @@ Get-Content .\bash-check.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-keyring" data-check-id="gs-keyring" />
-    <span class="check-num">53</span>
+    <span class="check-num">51</span>
     <span class="check-title">Turn off the Windows keyring first</span>
   </label>
   <div class="check-detail"><p>Do this <strong>before</strong> installing. By default goose stores secrets in Windows Credential Manager, which fails often enough on managed laptops that its own documentation tells you to decline it. Setting this first means the installer never tries.</p>
@@ -792,21 +757,21 @@ $env:GOOSE_DISABLE_KEYRING = '1'</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-provider" data-check-id="gs-provider" />
-    <span class="check-num">54</span>
+    <span class="check-num">52</span>
     <span class="check-title">Tell goose which provider and model to use</span>
   </label>
-  <div class="check-detail"><p>goose reads your API keys from the environment, but it needs telling which provider to reach for. This reuses the OpenAI model id from step 27:</p>
-  <pre><code>[Environment]::SetEnvironmentVariable('GOOSE_PROVIDER','openai','User')
-[Environment]::SetEnvironmentVariable('GOOSE_MODEL',$env:HB_OPENAI_MODEL,'User')
-$env:GOOSE_PROVIDER = 'openai'
-$env:GOOSE_MODEL = $env:HB_OPENAI_MODEL</code></pre>
-  <p>Setting these means you never have to walk goose's provider list, which is worth avoiding: it mixes API-key providers together with subscription ones like ChatGPT Codex, GitHub Copilot and Cursor Agent that need consumer logins you don't have. This course is API keys only — stay on the OpenAI pin, or whichever model the instructor names.</p></div>
+  <div class="check-detail"><p>goose reads <code>XAI_API_KEY</code> from the environment, but it still needs an explicit provider and model. Reuse the xAI model id from phase 2:</p>
+  <pre><code>[Environment]::SetEnvironmentVariable('GOOSE_PROVIDER','xai','User')
+[Environment]::SetEnvironmentVariable('GOOSE_MODEL',$env:HB_XAI_MODEL,'User')
+$env:GOOSE_PROVIDER = 'xai'
+$env:GOOSE_MODEL = $env:HB_XAI_MODEL</code></pre>
+  <p>These settings keep goose on xAI in this window and every new one. If <code>goose info -v</code> later reports another provider, stop before running work and restore these two values.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-install" data-check-id="gs-install" />
-    <span class="check-num">55</span>
+    <span class="check-num">53</span>
     <span class="check-title">Install the goose command-line tool</span>
   </label>
   <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Downloads"
@@ -818,13 +783,13 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/goose/main/
   <pre><code>powershell -ExecutionPolicy ByPass -File ".\download_cli.ps1"</code></pre>
   <p>And if execution policy is locked by your IT department so neither form works, goose publishes a Git Bash path — you installed Git Bash back in step 14. Open <strong>Git Bash</strong> from the Start menu and run:</p>
   <pre><code>curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash</code></pre>
-  <p>Note the address in all three. The project moved to <code>aaif-goose</code>, and older instructions pointing at <code>block/goose</code> will either fail or fetch a stale build. Current documentation lives at <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p></div>
+  <p>Note the GitHub address in all three installer commands. The project moved to <code>aaif-goose</code>, and older instructions pointing at <code>block/goose</code> will either fail or fetch a stale build. Current documentation lives at <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-path" data-check-id="gs-path" />
-    <span class="check-num">56</span>
+    <span class="check-num">54</span>
     <span class="check-title">Add goose to your PATH</span>
   </label>
   <div class="check-detail"><p>The installer drops goose into <code>%USERPROFILE%\.local\bin</code> but doesn't add that folder to PATH — it only prints a warning that's easy to scroll past.</p>
@@ -833,14 +798,14 @@ $userPath = [Environment]::GetEnvironmentVariable('PATH','User')
 if (($userPath -split ';') -notcontains $bin) {
   [Environment]::SetEnvironmentVariable('PATH', "$userPath;$bin".Trim(';'), 'User')
 }</code></pre>
-  <p>The <code>if</code> is there because this same folder comes up again in section 14. PATH is a list you append to, not a value you set, so without the guard running it twice leaves the folder listed twice. Note that this reads and writes <strong>your</strong> user PATH only; it never touches the system one.</p>
+  <p>The <code>if</code> makes this PATH step safe to rerun during troubleshooting. PATH is a list you append to, not a value you set, so without the guard running it twice leaves the folder listed twice. Note that this reads and writes <strong>your</strong> user PATH only; it never touches the system one.</p>
   <p>Then close and reopen the terminal.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-verify" data-check-id="gs-verify" />
-    <span class="check-num">57</span>
+    <span class="check-num">55</span>
     <span class="check-title">Verify goose and check what it sees</span>
   </label>
   <div class="check-detail"><pre><code>goose --version
@@ -851,7 +816,7 @@ goose info -v</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-write" data-check-id="gs-write" />
-    <span class="check-num">58</span>
+    <span class="check-num">56</span>
     <span class="check-title">Write proof: from-goose.txt</span>
   </label>
   <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
@@ -872,7 +837,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ob-install" data-check-id="ob-install" />
-    <span class="check-num">59</span>
+    <span class="check-num">57</span>
     <span class="check-title">Install Obsidian</span>
   </label>
   <div class="check-detail"><p>Obsidian reads and writes ordinary Markdown files in a folder. On Wednesday you'll point an agent at that folder and build a knowledge system with citations you can walk.</p>
@@ -883,7 +848,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ob-vault" data-check-id="ob-vault" />
-    <span class="check-num">60</span>
+    <span class="check-num">58</span>
     <span class="check-title">Create a vault and confirm it opens</span>
   </label>
   <div class="check-detail"><p>A <strong>vault</strong> is just a folder Obsidian has adopted. Make one first:</p>
@@ -904,7 +869,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-node" data-check-id="n8n-node" />
-    <span class="check-num">61</span>
+    <span class="check-num">59</span>
     <span class="check-title">Re-check your Node version first</span>
   </label>
   <div class="check-detail"><pre><code>node -v</code></pre>
@@ -914,7 +879,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-install" data-check-id="n8n-install" />
-    <span class="check-num">62</span>
+    <span class="check-num">60</span>
     <span class="check-title">Install n8n</span>
   </label>
   <div class="check-detail"><pre><code>npm install n8n -g</code></pre>
@@ -925,7 +890,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-start" data-check-id="n8n-start" />
-    <span class="check-num">63</span>
+    <span class="check-num">61</span>
     <span class="check-title">Start n8n once and open the editor</span>
   </label>
   <div class="check-detail"><pre><code>n8n start</code></pre>
@@ -936,7 +901,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-owner" data-check-id="n8n-owner" />
-    <span class="check-num">64</span>
+    <span class="check-num">62</span>
     <span class="check-title">Create the local owner account, and skip the licence offer</span>
   </label>
   <div class="check-detail"><p>n8n shows what looks like a signup screen asking for an email and password. <strong>It is not a subscription and not a login to anything.</strong> It creates a record in a database file on your own laptop, nothing is transmitted, and no verification email is sent. It also can't be skipped.</p>
@@ -947,17 +912,17 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-stop" data-check-id="n8n-stop" />
-    <span class="check-num">65</span>
+    <span class="check-num">63</span>
     <span class="check-title">Learn how to stop it</span>
   </label>
   <div class="check-detail"><p>Press <kbd>Ctrl</kbd>+<kbd>C</kbd> in the window running n8n. The page at localhost:5678 stops answering, and your work stays saved on disk for next time.</p>
-  <p>You don't need to build anything during the clinic — Thursday covers that, including pasting your OpenAI key into an n8n credential. Getting it to start and stop once is the whole task.</p></div>
+  <p>You don't need to build anything during the clinic — Thursday covers that, including adding the xAI key to an xAI credential and connecting the native xAI Grok Chat Model node. Getting n8n to start and stop once is the whole task here.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-g-four" data-check-id="g-four" />
-    <span class="check-num">66</span>
+    <span class="check-num">64</span>
     <span class="check-title">Verify all four harness proof files together</span>
   </label>
   <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"</code></pre>
@@ -975,7 +940,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-operator" data-check-id="rp-operator" />
-    <span class="check-num">67</span>
+    <span class="check-num">65</span>
     <span class="check-title">Find the module exercise files and transfer plan</span>
   </label>
   <div class="check-detail"><p>Create a separate read-only task for the course map:</p>
@@ -984,7 +949,7 @@ Get-Content .\from-goose.txt</code></pre>
     <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>, the course repository you cloned earlier</li>
     <li>Click <strong>New chat</strong></li>
     <li>In the sidebar, open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>B0 — Course File Map</code></li>
-    <li>Use the instructor-named model, or keep the visible default if none was named</li>
+    <li>Confirm the model picker says <strong>gpt-5.6-terra</strong>; do not use Sol or the visible default</li>
     <li>Confirm the permission control under the message box says <strong>Ask for approval</strong></li>
   </ul>
   <p>Paste this into <strong>B0 — Course File Map</strong>:</p>
@@ -1020,48 +985,10 @@ Not a tidy install — a course setup you can rebuild. You know where each tool 
 </div>
 
 <details class="lane-disclosure">
-<summary>Optional tools · Claude Code + local model</summary>
-<h2 class="visually-hidden">Optional tools · Claude Code and local model</h2>
+<summary>Optional tool · local model</summary>
+<h2 class="visually-hidden">Optional local model</h2>
 <div class="callout optional-lane"><strong>Optional lane</strong>
-Claude Code and a local model never block the required setup. Add them only after the four required phases are complete and you want the extra capability.</div>
-
-<section class="checklist-section optional-section"><h3>Optional · Claude Code third engine</h3>
-<figure class="section-diagram">
-  <img src="../assets/prework/install-14-claude-optional.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
-</figure>
-<ol class="checklist">
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-cc-optional" data-check-id="cc-optional" />
-    <span class="check-num">S1</span>
-    <span class="check-title">Decide whether to install it</span>
-  </label>
-  <div class="check-detail"><p><strong>Optional.</strong> Skipping it does not affect the required setup — OpenCode is the required second engine, and Tuesday's comparison runs on Codex and OpenCode.</p>
-  <p>You have an Anthropic key, so if you'd like a third opinion available during the week it's about five minutes. If you're short on time, skip it and come back later.</p>
-  <p>If you do install it, the <code>OPENCODE_DISABLE_CLAUDE_CODE</code> variable from step 44 is what keeps the two apart. Claude Code writes a <code>CLAUDE.md</code> that OpenCode would otherwise read as its own standing instructions.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-cc-install" data-check-id="cc-install" />
-    <span class="check-num">S2</span>
-    <span class="check-title">Install Claude Code and verify a file write</span>
-  </label>
-  <div class="check-detail"><pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
-  <p>Open a new terminal and check <code>claude --version</code>. If the command isn't found, it installed into the same <code>%USERPROFILE%\.local\bin</code> goose uses, so this is the section 10 block again — safe to run whether or not the folder is already there:</p>
-  <pre><code>$bin = "$env:USERPROFILE\.local\bin"
-$userPath = [Environment]::GetEnvironmentVariable('PATH','User')
-if (($userPath -split ';') -notcontains $bin) {
-  [Environment]::SetEnvironmentVariable('PATH', "$userPath;$bin".Trim(';'), 'User')
-}</code></pre>
-  <p>It reads <code>ANTHROPIC_API_KEY</code> on its own and asks you to approve the key once. Then:</p>
-  <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
-claude --bare -p "Use the Write tool to create from-claude-optional.txt containing exactly: claude works" --allowedTools "Write"
-Get-Content .\from-claude-optional.txt</code></pre>
-  <p>Use the command-line tool, not the Claude desktop app. The desktop app's Code tab needs a subscription and won't accept your key.</p></div>
-</li>
-</ol></section>
+The local model never blocks the required setup. Add it only after the four required phases are complete and you want the extra capability. Anthropic and Claude are not part of the install clinic; optional access may be introduced near the end of the bootcamp, with details still to be determined.</div>
 
 <section class="checklist-section optional-section"><h3>Optional · Local model stretch prep</h3>
 <ol class="checklist">
@@ -1069,7 +996,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-lm-decide" data-check-id="lm-decide" />
-    <span class="check-num">S3</span>
+    <span class="check-num">S1</span>
     <span class="check-title">Decide whether to prepare a local model</span>
   </label>
   <div class="check-detail"><p><strong>Skip freely.</strong> This is not required for the course setup or for completing the bootcamp. Add it only after the four required phases are complete and only if you want Thursday's <em>endpoint wall</em> stretch, where you point a harness at a model running on your own machine instead of somebody's API.</p>
@@ -1079,7 +1006,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-lm-install" data-check-id="lm-install" />
-    <span class="check-num">S4</span>
+    <span class="check-num">S2</span>
     <span class="check-title">Install the runner</span>
   </label>
   <div class="check-detail"><p>Ollama is the path here. LM Studio is only for a pin that names it.</p>
@@ -1092,7 +1019,7 @@ Get-Content .\from-claude-optional.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-lm-pull" data-check-id="lm-pull" />
-    <span class="check-num">S5</span>
+    <span class="check-num">S3</span>
     <span class="check-title">Pull the pinned tag and smoke it</span>
   </label>
   <div class="check-detail"><p>Once you have a tag, set it once so Thursday's commands can read it, then pull:</p>
@@ -1159,9 +1086,9 @@ if (($userPath -split ';') -notcontains $bin) {
     <span class="check-num">T4</span>
     <span class="check-title">A tool won't authenticate</span>
   </label>
-  <div class="check-detail"><p>Work through these in order. Is the key set in <em>this</em> window (step 28)? Does it start with the right prefix for that provider? Is it the right key for that tool — <code>XAI_API_KEY</code> for OpenCode, <code>OPENAI_API_KEY</code> for the rest?</p>
-  <p>The Codex app is the exception to all of that: it never reads the variable. It uses the key you pasted into <em>Sign in another way</em>. Check the profile menu — it should say API key, not an account. If it's wrong, log out there and redo step 32.</p>
-  <p>If the Codex app keeps pushing you toward a ChatGPT login, confirm <code>forced_login_method = "api"</code> sits in <code>%USERPROFILE%\.codex\config.toml</code> <strong>above</strong> any <code>[table]</code> header — re-running step 34's four-line command puts it there safely — then restart the app.</p>
+  <div class="check-detail"><p>For OpenCode, Pi, or goose, first check that <code>XAI_API_KEY</code> is set in <em>this</em> window (step 27), starts with <code>xai-</code>, and that the command names the xAI provider. n8n uses the same xAI key through its own credential screen.</p>
+  <p>Codex uses the OpenAI key you pasted into <em>Sign in another way</em>, not an environment variable. Check the profile menu — it should say API key, not an account. If it's wrong, log out there and redo step 31.</p>
+  <p>If Codex keeps pushing you toward a ChatGPT login or opens on the wrong model, confirm <code>forced_login_method = "api"</code> and <code>model = "gpt-5.6-terra"</code> sit in <code>%USERPROFILE%\.codex\config.toml</code> <strong>above</strong> any <code>[table]</code> header. Re-running step 33's four-line command puts both there safely; restart the app afterwards.</p>
   <p>If a tool worked earlier and now fails with a <strong>429</strong> or a quota message, the key has hit its spending cap. That's not something a reinstall fixes — tell the instructor which key and command produced the error.</p></div>
 </li>
 

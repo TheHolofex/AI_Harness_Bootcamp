@@ -29,7 +29,7 @@
       <div><span class="k">Day</span><span class="v">Tuesday AM</span></div>
       <div><span class="k">Block</span><span class="v">P2</span></div>
       <div><span class="k">Time</span><span class="v">~3–3.5 hr + case talk</span></div>
-      <div><span class="k">Tools</span><span class="v">Codex app · instruments/p2_test_suite</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex app (<code>gpt-5.6-terra</code>) · instruments/p2_test_suite</span></div>
       <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p2">0 / 20 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
@@ -78,6 +78,10 @@
             <strong>Before lunch · Harness case talk (45 min)</strong>
             A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; notice one idea you may carry into the transfer step after measurement.
           </div>
+          <div class="callout">
+            <strong>Course model</strong>
+            P2 uses the OpenAI API key stored in Codex sign-in. Every baseline, spot-check, cold run, and closeout uses <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>); do not leave a chat on Default or Sol.
+          </div>
         </div>
       </div>
       <figure class="section-diagram">
@@ -91,7 +95,7 @@
 
       <h3>Measure before you change anything</h3>
       <p>A <strong>baseline</strong> is the score before you change anything. It sounds like bookkeeping; it is the whole game. A delta without a baseline is a story, not a measurement — "it's much better now" carries no information unless you can say better <em>than what</em>, on <em>which cases</em>, by <em>how much</em>.</p>
-      <p>The fixed set makes the baseline honest by holding everything still. The five cases are fixed and you don't edit them, even when an edit would make your score prettier. Each case comes with a <em>pass-if</em> line — an observable condition like "names the failing job, no invented file paths" — and that line is the grader, not your general impression of the answer. Baseline and after run on the same model tier, with each case isolated in its own fresh chat. When every variable but one is pinned, the one that moved is the one you changed.</p>
+      <p>The fixed set makes the baseline honest by holding everything still. The five cases are fixed and you don't edit them, even when an edit would make your score prettier. Each case comes with a <em>pass-if</em> line — an observable condition like "names the failing job, no invented file paths" — and that line is the grader, not your general impression of the answer. Baseline and after both run on <code>gpt-5.6-terra</code>, with each case isolated in its own fresh chat. When every variable but one is pinned, the one that moved is the one you changed.</p>
       <p>Those pass-if lines live in a file of their own, <code>GRADER.md</code>, one per track, holding all five conditions together. The case files the assistant reads carry only the input and the task. That separation is the point: a model shown "name the failing job, the root error line, and one concrete next action" will name exactly those three things, and you will have measured its reading comprehension rather than your harness. Never let the machine being checked see its own check — you read the conditions, it does not.</p>
       <p>Going wrong looks like this: skipping the baseline because the unchanged harness is "obviously bad," grading generously because you're rooting for your own harness, or letting the standard drift between the first run and the second. Each one quietly converts your instrument into a mirror — it reads back whatever you want it to say. When you're unsure whether a response passed, score FAIL and write why; a strict FAIL is worth more than a hopeful PASS, because fails are where your changes come from.</p>
       <p>At work, this is the ten-minute habit that converts tool claims into measurements. Before you change any assistant — or believe any vendor — write five fixed cases from your own desk and score what you have today. Every claim of improvement after that is a number, not a feeling.</p>
@@ -112,7 +116,7 @@
         <img src="../assets/blocks/p2/p2-attribution.svg" alt="Concept: editing one wall then rescoring gives a delta with a known cause; four edits at once give a delta whose cause is unknown" width="1120" height="220" loading="lazy" decoding="async" />
       </figure>
       <p><strong>Attribution</strong> means knowing which change caused which effect. It is the discipline the whole morning runs on: change a single wall, rescore, and the delta has exactly one candidate cause. Change four things at once and the delta is unreadable — the score moved, but you learned nothing you can use tomorrow, because you cannot say which edit earned its place and which three are decoration.</p>
-      <p>The mechanism is single-variable isolation, the same one behind any controlled comparison. The suite pins the cases, the model tier, and the cold-chat condition; your edit is the only free variable left. That is also why confounds matter: switch model tiers mid-morning and your delta measures the model change, not your craft — which is exactly why the suite's rule says same tier for baseline and after.</p>
+      <p>The mechanism is single-variable isolation, the same one behind any controlled comparison. The suite pins the cases, the model at <code>gpt-5.6-terra</code>, and the cold-chat condition; your edit is the only free variable left. That is also why confounds matter: switch models mid-morning and your delta measures the model change, not your craft — which is exactly why every P2 run stays on Terra.</p>
       <p>Several simultaneous changes feel productive. You rewrite the instructions, add three tests, enable memory, and draft a skill in one pass — and the after-score moves, but you cannot tell why. Worse is when it <em>doesn't</em> move: now you must un-pick four changes to find the one that hurt. The useful path is one change against one observed failure, a targeted check, then the cold final score.</p>
       <p>This discipline transfers to anything configurable: prompts, pipelines, team process. Anywhere someone says "we changed a bunch of things and it got better," you now hear what's missing.</p>
 
@@ -170,11 +174,11 @@
           <pre><code>Experiment
 - Track: [engineering / mission_ops]
 - Date: [TODAY]
-- Model tier: [FILL AFTER OPENING THE FIRST BASELINE CHAT]
+- Model: gpt-5.6-terra
 - Fixed cases: D01-D05
 - Baseline condition: course project before my P2 change
 - Change rule: one named baseline failure -> one smallest durable harness change
-- Final condition: full app restart, one fresh chat per case, same model tier, same five cases
+- Final condition: full app restart, one fresh chat per case, gpt-5.6-terra, same five cases
 - Acceptance: score strictly against GRADER.md; report the measured delta even if zero</code></pre>
         </div>
 
@@ -185,7 +189,7 @@
               <span class="check-num">2</span>
               <span class="check-title">SCORE_SHEET.md defines the experiment</span>
             </label>
-            <div class="check-detail">The sheet fixes the track, five cases, model tier, baseline condition, one-change rule, cold final condition, and grading rule.</div>
+            <div class="check-detail">The sheet fixes the track, five cases, <code>gpt-5.6-terra</code>, baseline condition, one-change rule, cold final condition, and grading rule.</div>
           </li>
         </ol>
 
@@ -217,7 +221,7 @@
           <ol class="do-clicks">
             <li>Click <strong>New chat</strong></li>
             <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter the exact name from the row</li>
-            <li>Select the model tier. For D01, copy its displayed name into the score-sheet experiment header; use that exact tier for D02–D05</li>
+            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) for D01 through D05</li>
             <li>Confirm permissions say <strong>Ask for approval</strong></li>
             <li>Paste the dispatch below with that row's case file and collect one answer</li>
             <li>Do not send another message in that chat. Create the next row's chat</li>
@@ -273,7 +277,7 @@ Smallest intended change: [ONE RULE]</code></pre>
             <li>If another project is open, choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
             <li>Click <strong>New chat</strong></li>
             <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P2 — Wall Spot-check</code></li>
-            <li>Select the baseline model tier and confirm permissions say <strong>Ask for approval</strong></li>
+            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -376,7 +380,7 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
           <ol class="do-clicks">
             <li>Click <strong>New chat</strong></li>
             <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter the exact name from the row</li>
-            <li>Select the exact baseline model tier and confirm permissions say <strong>Ask for approval</strong></li>
+            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and confirm permissions say <strong>Ask for approval</strong></li>
             <li>Paste the unchanged dispatch below with that row's case file</li>
             <li>Collect one answer, then stop using that chat and create the next row's chat</li>
           </ol>
@@ -402,7 +406,7 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
               <span class="check-num">6</span>
               <span class="check-title">SCORE_SHEET.md contains the cold final score for the same five cases</span>
             </label>
-            <div class="check-detail">The After column contains one result from each of the five isolated cold chats. The total and delta use the same track, model tier, dispatch, and grader as baseline. A zero or negative delta remains a valid result.</div>
+            <div class="check-detail">The After column contains one result from each of the five isolated cold chats. The total and delta use the same track, <code>gpt-5.6-terra</code>, dispatch, and grader as baseline. A zero or negative delta remains a valid result.</div>
           </li>
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -450,7 +454,7 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
               <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
               <li>Look for <strong>P2 — Closeout</strong> in the sidebar and open it if it already exists</li>
               <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P2 — Closeout</code></li>
-              <li>Select the instructor-named model, or keep the visible default if none was named</li>
+              <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>)</li>
               <li>Confirm permissions say <strong>Ask for approval</strong></li>
             </ul>
             <p>The score sheet and other saved files carry the evidence. None of the five baseline or five cold chats needs to be reused for closeout.</p>

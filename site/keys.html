@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your API keys · AI Harness Bootcamp · Starzl</title>
+  <title>Your two API keys · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="./css/course.css" />
 </head>
 <body>
@@ -18,115 +18,112 @@
   </header>
   <main class="site-main">
     <p class="eyebrow">Reference · keep this open during install</p>
-    <h1>Your API keys</h1>
+    <h1>Your two API keys</h1>
 
-    <p class="lede">Three keys run your whole week. This page explains what they are, where to put them on your laptop, how to check they work, and how to kill one if it leaks. Setting them takes about ten minutes.</p>
+    <p class="lede">Two keys run the required course setup. OpenAI is only for Codex. xAI runs every other cloud harness. This page shows where each key goes, how to check the setup, and what to do if one leaks. Plan for about ten minutes.</p>
     <figure class="section-diagram">
-      <img src="./assets/prework/install-05-keys.svg" alt="Diagram: Your three API keys in the pre-work journey" width="1120" height="220" loading="lazy" decoding="async" />
+      <img src="./assets/prework/install-05-keys.svg" alt="Diagram: OpenAI connects only to Codex while xAI connects to every other cloud harness" width="1120" height="220" loading="lazy" decoding="async" />
     </figure>
 
     <div class="meta-grid">
-      <div><span class="k">Keys</span><span class="v">OpenAI · xAI · Anthropic</span></div>
+      <div><span class="k">Keys</span><span class="v">OpenAI · xAI</span></div>
       <div><span class="k">Issued by</span><span class="v">Course staff</span></div>
-      <div><span class="k">Stored as</span><span class="v">Windows user variables</span></div>
+      <div><span class="k">Routing</span><span class="v">OpenAI → Codex · xAI → all others</span></div>
       <div><span class="k">Time</span><span class="v">~10 minutes</span></div>
     </div>
 
     <h2>What an API key is</h2>
 
-    <p>An <strong>API key</strong> is a long secret string that identifies you to an AI provider's servers. When one of your tools sends a request to OpenAI, xAI, or Anthropic, it attaches the key, and the provider bills that request to whoever owns the key.</p>
+    <p>An <strong>API key</strong> is a long secret string that identifies you to an AI provider's servers. When a tool sends a request to OpenAI or xAI, it attaches the matching key, and that provider bills the request to the course account.</p>
 
-    <p>This is a different door than the one most people use. Consumer apps like ChatGPT or Claude.ai are reached by signing in with an email and password against a monthly plan. A key skips all of that and talks straight to the provider's platform, metered per request. You will never sign into a consumer subscription anywhere in this course.</p>
+    <p>This is a different door from a consumer subscription. A key talks directly to a provider's metered platform. During setup, use the API-key path and do not sign into ChatGPT, SuperGrok, or another monthly plan.</p>
 
-    <p>That distinction matters at the keyboard, because several tools you're about to install offer both doors on the same screen. When a tool asks how you want to authenticate, you always choose the API key path — never "Sign in with ChatGPT," "Sign in with Claude," or a browser login.</p>
+    <p>The provider split matters just as much as the sign-in method. Keep the OpenAI key inside Codex. Use the xAI key for OpenCode, Pi, goose, and the AI step in n8n. That keeps the expensive OpenAI lane narrow and makes the source of each charge easy to identify.</p>
 
     <div class="callout"><strong>A key is a credential, not a setting</strong>
     Anyone holding your key can spend against it. Treat it the way you would treat a password: never paste one into a chat window, a shared document, a screenshot, a support ticket, or a project file. If a key does end up somewhere it shouldn't, revoking it takes about thirty seconds — the steps are at the bottom of this page, and using them is routine rather than embarrassing.</div>
 
-    <h2>The three keys and what each one drives</h2>
+    <h2>The two keys and what each one drives</h2>
 
     <div class="table-scroll">
 <table>
-      <thead><tr><th>Key</th><th>Starts with</th><th>Variable name</th><th>Drives</th></tr></thead>
+      <thead><tr><th>Key</th><th>Starts with</th><th>Where it goes</th><th>Drives</th></tr></thead>
       <tbody>
-        <tr><td>OpenAI</td><td><code>sk-proj-</code></td><td><code>OPENAI_API_KEY</code></td><td>The Codex app (your home tool all week), plus the LLM step in n8n</td></tr>
-        <tr><td>xAI</td><td><code>xai-</code></td><td><code>XAI_API_KEY</code></td><td>OpenCode, your second engine for the twin-engine work</td></tr>
-        <tr><td>Anthropic</td><td><code>sk-ant-api03-</code></td><td><code>ANTHROPIC_API_KEY</code></td><td>Claude Code, and an alternate provider for Pi and goose</td></tr>
+        <tr><td>OpenAI</td><td><code>sk-proj-</code></td><td>Codex API-key sign-in</td><td>Codex only, using <code>gpt-5.6-terra</code></td></tr>
+        <tr><td>xAI</td><td><code>xai-</code></td><td><code>XAI_API_KEY</code></td><td>OpenCode, Pi, goose, and the xAI Grok node in n8n</td></tr>
       </tbody>
     </table>
 </div>
 
-    <p>Pi and goose are deliberately provider-agnostic: each one talks to any of the three, and you choose which by naming a model when you run it. That flexibility is the point — part of what this course teaches is running the same demand through different engines and owning the verdict when they disagree.</p>
+    <p>Pi and goose can talk to several providers, but the course commands name xAI explicitly. OpenCode also runs on xAI. Codex is the one OpenAI lane, and its course model is <code>gpt-5.6-terra</code>—not Sol and not whichever model happens to be the visible default.</p>
 
-    <p>The prefixes are worth memorising. When a tool refuses to authenticate, the first thing to check is whether the string you pasted starts with the right characters for that provider. Pasting an OpenAI key where a tool expects an xAI one is the most common setup failure there is, and it produces an error message that rarely says so.</p>
+    <div class="callout"><strong>Anthropic is not part of setup</strong>
+    You will not receive an Anthropic key during the install clinic. Claude access may be introduced near the end of the bootcamp as an optional exercise. The timing and instructions are still to be determined.</div>
 
-    <h2>Where the keys live on your laptop</h2>
+    <h2>Put each key in the right place</h2>
 
-    <p>You'll store each key once as a <strong>Windows user environment variable</strong> — a named value that Windows hands to every program you launch. Set it once and every tool finds it, which is why you won't be pasting keys into individual apps all week.</p>
+    <p>The two keys take different paths. Paste the OpenAI key into Codex's API-key sign-in screen. Do not create <code>OPENAI_API_KEY</code> during setup; leaving it out prevents another harness from selecting OpenAI by accident.</p>
 
-    <p>"User" is the scope that matters here. It means the value belongs to your Windows account, persists across restarts, and needs no administrator rights to set.</p>
+    <p>Store the xAI key as a <strong>Windows user environment variable</strong> named <code>XAI_API_KEY</code>. A user variable belongs to your Windows account, survives a restart, and is available to each command-line harness you open.</p>
 
-    <h3>Set a key</h3>
+    <h3>Set the xAI key</h3>
 
-    <p>Open PowerShell and run this, one key at a time. It prompts you to paste the key rather than taking it as part of the command, which keeps the secret out of your shell history:</p>
+    <p>Open PowerShell and run these four lines. The prompt keeps the key itself out of your shell history:</p>
 
-<pre><code>$key = Read-Host 'Paste OPENAI_API_KEY'
-[Environment]::SetEnvironmentVariable('OPENAI_API_KEY', $key, 'User')
-$env:OPENAI_API_KEY = $key
+<pre><code>$key = Read-Host 'Paste XAI_API_KEY'
+[Environment]::SetEnvironmentVariable('XAI_API_KEY', $key, 'User')
+$env:XAI_API_KEY = $key
 $key = $null</code></pre>
 
-    <p>Those four lines do four things. The first collects the key without echoing it. The second writes it permanently for your Windows account. The third also sets it in the window you're sitting in, so you don't have to reopen anything to keep working. The fourth clears the temporary variable.</p>
-
-    <p>Repeat all four lines for <code>XAI_API_KEY</code> and <code>ANTHROPIC_API_KEY</code>, changing the name in the first two lines each time.</p>
+    <p>The first line collects the key without putting it in your shell history. The second saves it for your Windows account. The third makes it available in the window you are using now. The fourth clears the temporary variable.</p>
 
     <div class="callout"><strong>Why not <code>setx</code></strong>
     Most guides on the internet reach for <code>setx NAME "value"</code>. It works, but it silently truncates anything past 1024 characters and it puts the key itself into your command history where the next person at your keyboard can scroll back to it. The <code>Read-Host</code> form above has neither problem, and it is the form the course uses throughout.</div>
 
-    <h3>Check they landed</h3>
+    <h3>Check that xAI landed</h3>
 
     <p>Open a <strong>new</strong> PowerShell window — a fresh one, because a window that was already open when you set a variable never sees it — and run:</p>
 
-<pre><code>'OPENAI_API_KEY','XAI_API_KEY','ANTHROPIC_API_KEY' | ForEach-Object {
+<pre><code>'XAI_API_KEY' | ForEach-Object {
   '{0}: user={1} session={2}' -f $_,
-    [Environment]::GetEnvironmentVariable($_,'User').Length,
-    (Get-Item "env:$_" -EA SilentlyContinue).Value.Length
+    ([string][Environment]::GetEnvironmentVariable($_,'User')).Length,
+    ([string](Get-Item "env:$_" -EA SilentlyContinue).Value).Length
 }</code></pre>
 
-    <p>You want three lines, each showing two matching non-zero numbers. This prints only the <em>length</em> of each key, never the key itself, so it's safe to run with someone looking over your shoulder or on a shared screen.</p>
+    <p>You want one line with two matching non-zero numbers. This prints only the <em>length</em> of the key, never the key itself, so it is safe to run on a shared screen.</p>
 
     <p>If a line shows <code>user=0</code>, the key exists only in the window you typed it in and will vanish when you close it — run the set command again and check the variable name for typos. If it shows <code>session=0</code>, the value is saved correctly but this window predates it; open another new window.</p>
 
-    <h2>What your tools do with the keys</h2>
+    <h2>What each tool does with the keys</h2>
 
-    <p>Most of the stack reads these variables automatically the moment they're set. Two tools need a little more, and it's worth knowing which is which before you start installing.</p>
+    <p>The command-line harnesses read <code>XAI_API_KEY</code> from the environment. Codex and n8n use their own credential screens.</p>
 
     <div class="table-scroll">
 <table>
       <thead><tr><th>Tool</th><th>How it gets the key</th></tr></thead>
       <tbody>
-        <tr><td><strong>OpenCode</strong></td><td>Reads <code>XAI_API_KEY</code> from the environment and enables the provider on its own. Nothing to configure.</td></tr>
-        <tr><td><strong>Pi</strong></td><td>Reads all three from the environment. Because it sees more than one, you name the model explicitly when you run it.</td></tr>
-<tr><td><strong>goose</strong></td><td>Reads the provider key from the environment, and needs <code>GOOSE_PROVIDER</code> and <code>GOOSE_MODEL</code> so it knows which one to use. Thursday also uses <code>GOOSE_MODE</code> (approve vs auto) as a real autonomy dial — not only the key.</td></tr>
-        <tr><td><strong>Claude Code</strong></td><td>Reads <code>ANTHROPIC_API_KEY</code> and asks you to approve it once on first launch.</td></tr>
-        <tr><td><strong>Codex app</strong></td><td>Doesn't read the environment at all. You paste the key into its sign-in screen once — see below.</td></tr>
-        <tr><td><strong>n8n</strong></td><td>Doesn't read the environment. You paste the OpenAI key into a credential inside its browser UI during Thursday's exercise.</td></tr>
+        <tr><td><strong>Codex app</strong></td><td>Stores the OpenAI key from its API-key sign-in screen and runs <code>gpt-5.6-terra</code>.</td></tr>
+        <tr><td><strong>OpenCode</strong></td><td>Reads <code>XAI_API_KEY</code>; course commands select <code>xai/$env:HB_XAI_MODEL</code>.</td></tr>
+        <tr><td><strong>Pi</strong></td><td>Reads <code>XAI_API_KEY</code>; course commands use <code>--provider xai --model "$env:HB_XAI_MODEL"</code>.</td></tr>
+        <tr><td><strong>goose</strong></td><td>Reads <code>XAI_API_KEY</code> with <code>GOOSE_PROVIDER=xai</code> and <code>GOOSE_MODEL=$env:HB_XAI_MODEL</code>.</td></tr>
+        <tr><td><strong>n8n</strong></td><td>Uses an xAI credential and its native xAI Grok Chat Model node during Thursday's exercise.</td></tr>
       </tbody>
     </table>
 </div>
 
-    <p>The Codex app is the exception worth reading twice, because it surprises people. It is a window rather than a command line, and it never looks at <code>OPENAI_API_KEY</code>. Setting the variable does nothing for it.</p>
+    <p>The Codex app is the exception worth reading twice. It does not need <code>OPENAI_API_KEY</code> for this setup.</p>
 
     <p>Instead, on the app's signed-out screen you choose <strong>Sign in another way</strong>, paste the key, and select <strong>Continue</strong>. It stores the key from then on. The large button beside that option offers to sign in with a ChatGPT account — that is the subscription path, and it is not the one you have.</p>
 
     <p>You can confirm which path took hold from the profile menu, which reports either an API key or an account name. If it shows an account, log out there and sign in again the other way.</p>
 
-    <p>One line of configuration makes that mistake impossible to repeat, and the install guide has you write it: <code>forced_login_method = "api"</code> in <code>%USERPROFILE%\.codex\config.toml</code>. After that, an accidental account sign-in fails politely instead of stranding you on a screen you can't complete.</p>
+    <p>The install guide writes two top-level settings to <code>%USERPROFILE%\.codex\config.toml</code>: <code>forced_login_method = "api"</code> keeps Codex on key-based authentication, and <code>model = "gpt-5.6-terra"</code> keeps every new Codex task on Terra. If the model picker shows Sol or another default, change it back to Terra before you run the task.</p>
 
     <p>What the key buys you there is all of the app's local work — projects, worktrees, code review, skills, scheduled tasks, its built-in browser. What it doesn't buy is the cloud half of the product: Codex cloud, Sites, GitHub and Slack delegation, and voice all require a ChatGPT subscription. Nothing this week needs them, but it explains why an online tutorial may point at a button you don't have.</p>
 
     <h2>Spending, and why your key might stop working</h2>
 
-    <p>Every request you make costs a fraction of a cent against the key's account, and the keys you were issued carry a hard spending cap. A cap is a good thing: it means a runaway agent loop costs the course some money rather than an unbounded amount. But it does mean a key can stop working mid-week, and the failure looks like a sudden authentication error rather than a bill.</p>
+    <p>Every request spends against one of the two course accounts, and both keys have hard caps. Codex charges OpenAI. Every other required cloud harness charges xAI. The split makes a sudden spend increase easier to trace and limits how much can run through the OpenAI lane.</p>
 
     <p>The signature is an <strong>HTTP 429</strong> response, sometimes worded as <em>insufficient quota</em> or <em>spend limit exceeded</em>. If a tool that worked yesterday starts failing today and nothing else changed, check that before you start reinstalling anything. Post which key and roughly what you were running — raising a cap is a small change at the console end, so it's worth asking rather than assuming your install broke.</p>
 
@@ -136,13 +133,13 @@ $key = $null</code></pre>
 
     <p>Never paste a key value into the course repository, an operator file, a module exercise, or a chat transcript you plan to share. Use the Windows environment variables and each tool's sign-in flow instead. Those keep the credential separate from the work the AI reads and edits.</p>
 
-    <p>Some of your tools do write keys to files on your own disk — Codex keeps one in <code>%USERPROFILE%\.codex\auth.json</code>, Pi in <code>%USERPROFILE%\.pi\agent\auth.json</code>, OpenCode in <code>%USERPROFILE%\.local\share\opencode\auth.json</code>. Those live in your user profile rather than in any project folder, so the course files do not contain the credentials. They're also why, on a shared or loaner laptop, deleting those folders at the end of the week is worth doing.</p>
+    <p>Codex stores its OpenAI credential under <code>%USERPROFILE%\.codex</code>. The xAI key remains in your Windows user environment, outside every project folder. n8n stores the xAI credential you create later in its local data. None of those locations belongs in the course repository.</p>
 
     <h2>Revoking a key</h2>
 
     <p>If a key is exposed — pasted into the wrong window, saved into a project file, shared on a screen, or you simply aren't sure — report it straight away so it can be revoked. A revoked key stops working immediately and everywhere, and a replacement can be issued in its place. Say which key and roughly when — revoking and reissuing happens at the provider console, which is not somewhere you have access, so this is a message to send rather than a thing to attempt yourself.</p>
 
-    <p>Once you have the replacement, set it exactly as you did the first time, then open a new PowerShell window so your tools pick it up. The Codex app needs signing in again through <em>Sign in another way</em>, since it stored the old key rather than reading the variable each time.</p>
+    <p>For a replacement xAI key, repeat the four-line PowerShell step and open a new window. For a replacement OpenAI key, sign out of Codex and use <em>Sign in another way</em> again. Do not swap one provider's key into the other provider's lane.</p>
 
     <div class="callout"><strong>Reporting a leak is the correct move, always</strong>
     A key that is quietly still exposed is a real problem. A key that was exposed and revoked within the hour is a non-event. Operators keep trails and raise things early — that is the same instinct this whole course is built around, applied to your own credentials.</div>

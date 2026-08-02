@@ -2,7 +2,7 @@
 
 **Block:** P3 stretch (Tuesday PM)  
 **Time:** about 75–100 minutes for the full mastery path; do not skip the baseline  
-**Home tool:** Codex app  
+**Home tool:** Codex app with `gpt-5.6-terra`<br>
 **Pack:** `instruments/p3_multi_agent/`  
 **Pass bar home:** `operator/PASS_BARS.md` · P3 Stretch  
 
@@ -52,6 +52,8 @@ If you only have the synthesis file and a polite kill, you ran the product. You 
 
 Permission mode stays **Ask for approval**. Subagents inherit the parent’s permission mode and sandbox. Set the mode **before** you ask to spawn.
 
+Every Codex chat in this stretch uses **GPT-5.6 Terra** (`gpt-5.6-terra`) with the OpenAI API key stored in Codex sign-in. Do not leave a chat on Default or Sol. This stretch does not use an Anthropic key.
+
 Spend note: each subagent does its own model and tool work. Parallel is richer and **more expensive**. Cap at three specialists in class.
 
 Notice what kind of cap “three” is. It lives in the wording of a prompt, which makes it **procedure-enforced** — it holds because the model cooperates and you are watching. Codex also has a real setting, `agents.max_concurrent_threads_per_session`, which caps concurrent spawned threads whether the prompt cooperates or not. That one is **tool-enforced**. You will name that distinction formally on Thursday; today you are living on the procedural side of it, so keep an eye on the thread count yourself.
@@ -63,7 +65,7 @@ Prefer **read-only** review today so you do not invent merge conflicts for sport
 ## Before you start
 
 - [ ] Twin-engine MVP is done or within a few minutes of done (do not skip the floor for this stretch)
-- [ ] Codex app open; profile shows **API key**
+- [ ] Codex app open; sign-in uses the **OpenAI API key stored in Codex**; model is **GPT-5.6 Terra** (`gpt-5.6-terra`)
 - [ ] Permission mode: **Ask for approval**
 - [ ] You are in the **course repo root** (the folder that contains `instruments/` and `mission_flesh/`)
 - [ ] You can browse `instruments/p3_multi_agent/corpus/` in Explorer
@@ -102,6 +104,8 @@ Do this **before** any spawn. If you skip it, the stretch is not yet under the m
 ```text
 P3 — Many Minds baseline (no subagents)
 ```
+
+Create this chat in Codex and select **GPT-5.6 Terra** (`gpt-5.6-terra`) before you paste the baseline prompt.
 
 ### 2.2 Frozen baseline brief (paste exactly)
 
@@ -151,7 +155,7 @@ If the model spawns anyway, stop and restart the baseline chat. The comparison i
 P3 — Many Minds commander
 ```
 
-Keep baseline and twin-engine work in other chats.
+Create this chat in Codex and select **GPT-5.6 Terra** (`gpt-5.6-terra`). Keep baseline and twin-engine work in other chats.
 
 ### 3.2 Point at the pack
 
@@ -293,7 +297,7 @@ A **Git worktree** is a second checkout of the same repository: its own files on
 ### 5.2 Isolation proof with a real constraint
 
 1. Note your Local path (course repo root).  
-2. New chat with **Worktree** selected.  
+2. New Codex chat with **Worktree** and **GPT-5.6 Terra** (`gpt-5.6-terra`) selected.
 3. Prompt:
 
 ```text
@@ -321,7 +325,7 @@ Example at `instruments/p3_multi_agent/.worktreeinclude` — pattern for ignored
 
 Custom agent TOML under `%USERPROFILE%\.codex\agents\` or `.codex/agents/` (`name`, `description`, `developer_instructions`). Frozen lenses are enough for stretch credit. Pinning a security reviewer agent is a transfer seed, not a GREEN requirement.
 
-Claude Code may have its own subagent surfaces. Same craft idea. **Not** Cowork. Not required.
+Anthropic access is not part of P3. A late-course optional activity may add it only if the instructor confirms it.
 
 ---
 

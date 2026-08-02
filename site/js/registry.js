@@ -28,16 +28,16 @@
       ]
     },
     {
-      id: "keys", title: "Install the keys", time: "20–30 min", anchor: "phase-keys",
-      summary: "Store the three course keys safely and verify them in a fresh shell.",
-      ids: ["k-openai", "k-xai", "k-anthropic", "k-models", "k-verify", "sf-make"]
+      id: "keys", title: "Connect the two keys", time: "15–20 min", anchor: "phase-keys",
+      summary: "Keep OpenAI inside Codex, store xAI for every other harness, and verify the shared xAI model pin.",
+      ids: ["k-openai", "k-xai", "k-models", "k-verify", "sf-make"]
     },
     {
       id: "tools", title: "Install and verify the course harnesses and tools", time: "75–120 min", anchor: "phase-tools",
       summary: "Install Codex, OpenCode, Pi, goose, Obsidian, and n8n, then verify them with observable work.",
       ids: [
         "cx-install", "cx-signin", "cx-status", "cx-lock", "cx-project", "cx-sandbox", "cx-write",
-        "oc-version", "oc-install", "oc-verify", "oc-models", "oc-independent", "oc-write",
+        "oc-version", "oc-install", "oc-verify", "oc-models", "oc-write",
         "pi-install", "pi-verify", "pi-write", "pi-bash",
         "gs-keyring", "gs-provider", "gs-install", "gs-path", "gs-verify", "gs-write",
         "ob-install", "ob-vault", "n8n-node", "n8n-install", "n8n-start", "n8n-owner", "n8n-stop",
@@ -65,7 +65,7 @@
   // browser progress can be migrated by shell.js.
   var REGISTRY = [
     {
-      code: "KEYS", name: "Your API keys", title: "Your API keys", day: "Monday AM", slot: "clinic",
+      code: "KEYS", name: "Your two API keys", title: "Your two API keys", day: "Monday AM", slot: "clinic",
       key: null, ids: [], stretchIds: [],
       url: "keys.html", meta: "Reference · ~10 min"
     },
@@ -78,9 +78,8 @@
         "oc-why", "pi-why", "gs-what", "gs-official",
         "r-notfound", "r-window", "r-scripts", "r-auth", "r-store", "r-noclaim", "r-stuck"
       ],
-      // Claude Code and the local model are optional — skipping either never
-      // blocks the pre-work gate.
-      stretchIds: ["cc-optional", "cc-install", "lm-decide", "lm-install", "lm-pull"],
+      // The local model is optional — skipping it never blocks the pre-work gate.
+      stretchIds: ["lm-decide", "lm-install", "lm-pull"],
       optionalLabel: "optional",
       url: "checklists/prework-install.html", meta: "Monday clinic · 2–4 hr"
     },
