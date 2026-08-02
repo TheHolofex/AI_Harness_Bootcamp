@@ -85,14 +85,10 @@
       url: "checklists/prework-install.html", meta: "Monday clinic · 2–4 hr"
     },
     {
-      code: "B1", name: "First Light", title: "First Light", day: "Monday", slot: "AM",
-      // Keep the legacy key and internal b0-* ids so existing browser progress survives the split.
+      code: "B1", name: "First Light Dashboard", title: "First Light Dashboard", day: "Monday", slot: "AM",
+      // Retain the legacy storage bucket name; the simpler B1 workflow uses new outcome ids.
       key: "ahb-checklist-b0",
-      ids: [
-        "b0-inventory", "b0-build", "b0-open", "b0-timeline",
-        "mvp-brief5", "mvp-map", "mvp-neg", "mvp-upd",
-        "mvp-loop", "mvp-log"
-      ],
+      ids: ["b1-dashboard", "b1-polish", "b1-verify"],
       stretchIds: [],
       url: "blocks/b1.html", meta: "Codex app"
     },

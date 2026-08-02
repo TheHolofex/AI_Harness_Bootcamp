@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>First Light · AI Harness Bootcamp · Starzl</title>
+  <title>First Light Dashboard · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="../css/course.css" />
   <link rel="stylesheet" href="../css/checklist.css" />
 </head>
@@ -22,24 +22,24 @@
 
   <main class="site-main">
     <p class="eyebrow">Monday AM · B1 · AI Harness Bootcamp</p>
-    <h1>First Light</h1>
-    <p class="lede">With the course setup working, direct a thinking machine from a messy folder of reports into a live timeline-and-filter map, then test whether the result deserves your trust.</p>
+    <h1>First Light Dashboard</h1>
+    <p class="lede">Copy two supplied prompts and turn a ready-made report corpus into a polished, interactive operations dashboard. You do not write code, design a brief, or invent the prompts in this block.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Monday AM</span></div>
       <div><span class="k">Block</span><span class="v">B1</span></div>
-      <div><span class="k">Time</span><span class="v">Second block of the morning</span></div>
-      <div><span class="k">Tools</span><span class="v">Codex app · PowerShell · browser</span></div>
-      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-b0">0 / 20 · 0%</span></div>
+      <div><span class="k">Time</span><span class="v">~60–75 min</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex app · browser</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-b0">0 / 3 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
 
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
-      <a href="#mission">Run of exercise</a>
-      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/6</span></a>
-      <a href="#stuck">If you get stuck</a>
+      <a href="#mission">Copy, paste, build</a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/3</span></a>
+      <a href="#stuck">Repair prompts</a>
       <div class="page-nav-progress">
         <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-b0"></span></div>
         <span class="page-nav-pct" data-progress-for="ahb-checklist-b0" data-progress-format="pct">0%</span>
@@ -48,420 +48,326 @@
 
     <section id="orient" class="orient-grid">
       <div>
-        <h2 class="h-plain">Why this block exists</h2>
-        <p>A <strong>harness</strong> is the setup around a model that lets it act: tools, files, permissions, instructions, and your accept/reject loop. In First Light, you will feel that loop before we name every part of it.</p>
-        <p>You will use two chats. <strong>Operator — Direction &amp; Log</strong> holds the work specification and final release record; <strong>Build — B1 First Light</strong> reads the reports and changes the viewer. The observable browser checks decide whether the result is ready.</p>
-        <h3>What you will leave with</h3>
-        <ul>
-          <li>Save a complete B1 work specification before the build</li>
-          <li>Ship a working map from the synthetic report folder (timeline and filters)</li>
-          <li>Run an exclusion check and a current-source refresh</li>
-          <li>Leave a release note, status, residual risk, and reusable workplace rule</li>
-        </ul>
-        <h3>Before you start</h3>
-        <ul>
-          <li><a href="../checklists/prework-install.html">B0 · Pre-work Install Clinic</a> complete</li>
-          <li>Four harness check files visible in <code>Documents\HarnessBootcamp\prework-smoke</code></li>
-          <li>The course repository cloned into <code>Documents\HarnessBootcamp</code></li>
-        </ul>
+        <h2 class="h-plain">A guided first build</h2>
+        <p>B1 gives you the corpus, the complete build direction, the visual direction, and every prompt. Your job is to operate the Codex app: open the right project, paste each prompt unchanged, approve the work, and use the result.</p>
+        <p>The exercise is intentionally different from P1. Here, you experience how much a complete prompt can produce. In P1, you learn how to design and control a regenerable brief yourself.</p>
+
+        <div class="skill-grid" aria-label="First Light in four moves">
+          <div class="skill-cell"><span class="k">01 · Open</span><span class="n">One project, one chat</span><p>Open the course repository and create the supplied B1 build chat.</p></div>
+          <div class="skill-cell"><span class="k">02 · Build</span><span class="n">Paste the master prompt</span><p>Codex reads all seven reports and creates one offline dashboard.</p></div>
+          <div class="skill-cell"><span class="k">03 · Polish</span><span class="n">Paste the QA prompt</span><p>Codex inspects desktop and mobile renderings, fixes defects, and checks the facts.</p></div>
+          <div class="skill-cell"><span class="k">04 · Explore</span><span class="n">Use the product</span><p>Search, filter, open report details, and resize the finished dashboard.</p></div>
+        </div>
       </div>
       <div class="orient-aside">
         <div class="lead-box">
-          <p class="eyebrow">Lead operate-along</p>
-          <p>The lead runs this same page on screen — project opened from the beginning, work specification saved, viewer built, and browser checks narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+          <p class="eyebrow">What you will make</p>
+          <p><strong>First Light Operations Picture</strong>: a responsive, single-file dashboard at <code>mission_flesh/b1/first_light/index.html</code>. It opens offline and preserves the source filenames behind every record.</p>
+        </div>
+        <div class="callout">
+          <strong>Use the prompts exactly as written</strong>
+          Do not shorten or revise them, and do not add your own styling request. The detail is the lesson: data boundary, truth rules, layout, interactions, accessibility, and finish checks all sit in the prompt.
         </div>
         <div class="callout">
           <strong>B0 is the gate</strong>
-          Start First Light after the B0 checks pass: the four harness check files exist, the keys work in a fresh shell, and the course repository is on disk. If one of those is missing, return to the <a href="../checklists/prework-install.html">install clinic checklist</a> before starting this mission.
+          Start after the <a href="../checklists/prework-install.html">install clinic</a> has the Codex app working and the course repository openable as a project.
         </div>
       </div>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-b0" data-block="B1">
-
       <section id="mission" class="home-section" data-check-section="mission">
-        <h2>Run of exercise</h2>
-        <p class="section-lede">Build one working viewer, run the checks yourself, and leave a release record another person can follow. Check an item only when the named file or observed result exists.</p>
+        <h2>Copy, paste, build</h2>
+        <p class="section-lede">There are two required prompts. Paste them into the same B1 chat in order; the repair prompts later on this page are optional. The only course artifact this exercise creates is the finished dashboard.</p>
 
-        <h3>Stage 01 · Open the project and set the work specification</h3>
-        <p>The course project is the folder the assistant can work in. Start in the standing operator chat, confirm the project root, then save the specification that will govern the build.</p>
+        <h3>Stage 01 · Open the project and create the B1 chat</h3>
+        <p>This starts at the genuine beginning. The project is the folder Codex can read and write; the chat is the running conversation that builds and repairs the dashboard.</p>
 
         <div class="do-step">
-          <p class="do-label">Start in the <strong>ChatGPT desktop app</strong>:</p>
+          <p class="do-label">In the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
-            <li>Open <strong>ChatGPT</strong> from the Windows Start menu. Use the top-left switcher to select <strong>Codex</strong> if needed</li>
-            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Open <strong>Operator — Direction &amp; Log</strong> from the sidebar</li>
-            <li>If it is missing, click <strong>New chat</strong>, rename it <code>Operator — Direction &amp; Log</code>, and pin it if <strong>Pin</strong> appears</li>
-            <li>Select the instructor-named course model, or keep the visible default if none was named</li>
-            <li>Confirm the permissions control under the message box says <strong>Ask for approval</strong></li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>Use the top-left switcher to select <strong>Codex</strong> if needed</li>
+            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong></li>
+            <li>Open the chat’s <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and name it <code>B1 — First Light Dashboard</code></li>
+            <li>Use the instructor-named model, or keep the visible default if none was named</li>
+            <li>If a <strong>Local / Worktree</strong> control appears under the message box, choose <strong>Local</strong></li>
+            <li>Confirm the permission control under the message box says <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
-        <div class="do-step">
-          <p class="do-label">Paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
-          <pre><code>List the top-level contents of operator/ and mission_flesh/. Names only.</code></pre>
-        </div>
-
-        <p>You should see the operator files plus <code>b1/</code> and <code>p1/</code> through <code>p8/</code> inside <code>mission_flesh/</code>. If those folders are missing, reopen the project at <code>AI_Harness_Bootcamp</code> itself.</p>
+        <h3>Stage 02 · Paste Prompt 1 — build the dashboard</h3>
+        <p>This prompt supplies the complete product specification. It uses all seven example reports from the start, including <code>DELTA_new.md</code>; there is no staged source update in B1.</p>
 
         <div class="do-step">
-          <p class="do-label">Now save the B1 work specification in the same chat:</p>
-          <pre><code>Read operator/DIRECTION_BRIEF.md and replace its active brief with this B1 specification.
+          <p class="do-label">Copy this entire prompt into <strong>B1 — First Light Dashboard</strong>:</p>
+          <pre><code>Read mission_flesh/b1/README.md and every Markdown file in
+mission_flesh/b1/reports/, including DELTA_new.md.
 
-Outcome: a local timeline-and-filter viewer at mission_flesh/b1/first_light/index.html.
-Done looks like: the page opens offline, shows the six report_*.md files, orders dated
-events correctly, handles the undated report explicitly, and has two working filters.
-Bounds: read mission_flesh/b1/reports/; ignore DELTA_new.md until the update step; write
-only under mission_flesh/b1/first_light/.
-Evidence standard: I will open the page and check report count, time order, two filters,
-one named exclusion, and the later DELTA update myself.
-Stop / hand-back: propose the report data shape and source list before writing; stop if
-the source count or an undated-report rule is unclear.
+Build the finished product now at:
+mission_flesh/b1/first_light/index.html
 
-Write these five fields, set Status to LIVE, and report the exact file section changed.
-Do not start the build in this chat.</code></pre>
+Create a polished, responsive operations dashboard named
+“First Light Operations Picture.” It should feel like a high-end operational
+product, not a generic admin template.
+
+SOURCE RULES
+- Treat all seven report files as the complete provided example corpus.
+- Create exactly one canonical embedded data record per source file. The same
+  record may appear in the timeline and explorer; do not duplicate it in data.
+- Preserve the source wording and qualifiers. Never invent, smooth over, or
+  silently resolve a missing, uncertain, or conflicting fact.
+- Keep the exact source filename visible in every report detail.
+- report_06_export_eu.md has no DTG. Label it “Needs timestamp” and keep it out
+  of the chronological sequence instead of guessing a time.
+- Use this report-type map:
+  report_01_bridge.md → OPS REPORT
+  report_02_node_b.md → FIELD NOTE
+  report_03_media.md → OPEN SOURCE NOTE
+  report_04_restore.md → OPS REPORT
+  report_05_convoy.md → MOVEMENT LOG
+  report_06_export_eu.md → TICKET FRAGMENT
+  DELTA_new.md → LATE INSERT
+- The source-backed headline facts are 7 reports, 6 dated, 1 needing a
+  timestamp, and a dated window from 0340Z to 0600Z.
+
+DELIVERY
+- Create one self-contained HTML file with embedded CSS, JavaScript, and data.
+- It must open offline by double-click: no server, framework, package, CDN,
+  external font, library, fetch call, or network request.
+- Do not modify the reports or anything under operator/.
+- Do not create a brief, manifest, release note, log, or planning document.
+
+INFORMATION DESIGN
+- Use a restrained dark operations palette, crisp typography, generous spacing,
+  and a strong visual hierarchy. Reserve red for the explicitly high-severity
+  EU export issue; use status text as well as color.
+- Mark the dashboard visibly as “Synthetic training data.”
+- Start with a compact command header and four large metric cards: Reports,
+  Dated, Needs timestamp, and Time window.
+- Make the chronological timeline the main visual story. It must begin with the
+  convoy at 0340Z and end with the late insert at 0600Z.
+- Give the undated export ticket a prominent separate “Needs timestamp” lane.
+- Add a report explorer with full-text search, report-type filter chips,
+  Dated / Needs timestamp filters, a live visible-result count, Clear all,
+  and a useful empty state.
+- Let a user open and close every report to see all available source fields and
+  the exact filename.
+- Preserve operationally important phrases such as “likely unrelated,”
+  “do not amplify,” “Service CLEAR,” and “monitoring elevated 2 hours.”
+
+PRODUCT QUALITY
+- Use semantic HTML, visible keyboard focus, sufficient contrast, and controls
+  that work by keyboard as well as mouse.
+- Make the desktop layout feel composed at 1440 × 900 and stack cleanly at
+  390 × 844 with no horizontal scrolling, clipped controls, or unreadable text.
+- Use subtle motion only where it improves orientation, and honor reduced-motion
+  preferences.
+- Make every filter, search action, reset action, detail control, visible count,
+  and empty state work with embedded JavaScript.
+
+Do not pause to propose a plan or ask me to choose the design. Make sound design
+decisions and build the dashboard now. Before handing it back, verify that the
+embedded data has one canonical record for each of the seven source files, dated
+events are ordered correctly, the undated report remains explicit, and every
+interaction has working JavaScript.
+Report the exact dashboard path when finished.</code></pre>
         </div>
+
+        <p>Approve each requested write under <code>mission_flesh/b1/first_light/</code>. Keep the chat open when Codex reports that <code>index.html</code> is complete.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
-              <input type="checkbox" id="b0-pulse-brief" name="b0-pulse-brief" data-check-id="pulse-brief" />
+              <input type="checkbox" id="b1-step-build" name="b1-step-build" data-check-id="b1-build-pass" />
               <span class="check-num">1</span>
-              <span class="check-title">B1 work specification saved and marked LIVE</span>
+              <span class="check-title">Prompt 1 created the single-file dashboard</span>
             </label>
-            <div class="check-detail"><code>operator/DIRECTION_BRIEF.md</code> names the viewer, source boundary, acceptance checks, and proposal stop before any build work begins.</div>
+            <div class="check-detail"><code>mission_flesh/b1/first_light/index.html</code> exists, and the source reports remain unchanged.</div>
           </li>
         </ol>
 
-        <h3>Stage 02 · Inspect the reports</h3>
-        <p>Read the input before the assistant turns it into a data model. The source set contains six current reports and one later update.</p>
-
-        <div class="do-step">
-          <p class="do-label">Run this in <strong>PowerShell</strong>:</p>
-          <pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\b1\reports"
-Get-Content "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\b1\reports\report_01_bridge.md"</code></pre>
+        <div class="callout">
+          <strong>Why this prompt produces more than “make me a dashboard”</strong>
+          It fixes five things a vague request leaves open: the source boundary, the truth rules, the information hierarchy, the interactions, and the finish checks. “Beautiful” becomes actionable only after those decisions are named.
         </div>
 
-        <p>You should see six <code>report_*.md</code> files plus <code>DELTA_new.md</code>. The reports include a time, summary, and other fields, but <code>report_06_export_eu.md</code> has no DTG. Leave <code>DELTA_new.md</code> out of the first build.</p>
+        <h3>Stage 03 · Paste Prompt 2 — inspect and polish the rendered product</h3>
+        <p>The first prompt builds the product. The second prompt performs a real visual and functional pass against exact desktop, mobile, data, and interaction checks.</p>
+
+        <div class="do-step">
+          <p class="do-label">Paste this into the <strong>same B1 chat</strong>:</p>
+          <pre><code>Quality-check the actual rendered dashboard, not just its source code.
+
+Use the browser tools to inspect it at 1440 × 900 and 390 × 844. If the browser
+requires HTTP, start a temporary local server only for inspection and stop it
+when finished. The delivered HTML must still work offline by double-click.
+
+Exercise and verify:
+- seven reports total, with six dated and one needing a timestamp
+- report_05_convoy.md is earliest at 0340Z
+- DELTA_new.md is latest at 0600Z
+- searching for EU leaves only report_06_export_eu.md
+- the OPS REPORT type filter leaves exactly two reports
+- Clear all restores all seven
+- the restore detail shows 0510Z, Service CLEAR, monitoring elevated 2 hours,
+  and report_04_restore.md
+- each detail preserves every labeled field from its source: Classification,
+  Impact, Actions, and Reporter for report_01; Team and Assessment for report_02;
+  Handling for report_03; Status for report_04; Note for report_05; System and
+  Severity for report_06; and the complete DELTA summary, including its
+  monitoring-window condition
+- every report can be opened and closed
+- “Synthetic training data” is visible without opening a report
+- keyboard focus remains visible
+- no horizontal scrolling, clipped controls, overlapping text, or unreadable
+  cards at either viewport
+- no browser-console errors
+- no claim appears that the source files do not support
+
+Fix every failure you find in mission_flesh/b1/first_light/index.html, render
+again, and repeat the affected check. Do not change the source reports and do
+not create any additional course documents. Stop the temporary server when the
+checks finish.
+
+When the pass is complete, open mission_flesh/b1/first_light/index.html in my
+default browser. Then report the exact dashboard path and either ALL CHECKS PASS
+or a list of each unresolved check.</code></pre>
+        </div>
+
+        <p>Continue only after Codex reports <strong>ALL CHECKS PASS</strong>. If it lists an unresolved check, use the matching <a href="#stuck">repair prompt</a>, then paste Prompt 2 again. Approve the local open action if the app asks.</p>
+        <p>If Codex cannot open or inspect the rendered page, do not mark this outcome complete. Show the instructor the exact message; the repair prompts below assume the browser check can run.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
-              <input type="checkbox" id="b0-b0-inventory" name="b0-b0-inventory" data-check-id="b0-inventory" />
+              <input type="checkbox" id="b1-step-polish" name="b1-step-polish" data-check-id="b1-polish-pass" />
               <span class="check-num">2</span>
-              <span class="check-title">Inventory the seven source files</span>
+              <span class="check-title">Prompt 2 completed the visual and functional polish pass</span>
             </label>
-            <div class="check-detail">You saw six current reports, the held-back update, and the report with no DTG. If the listing differs, fix the project or repository path before building.</div>
+            <div class="check-detail">Codex inspected desktop and mobile renderings, repaired every failed check, opened the finished dashboard, and reported <strong>ALL CHECKS PASS</strong>.</div>
           </li>
         </ol>
 
-        <h3>Stage 03 · Approve the data shape and build</h3>
+        <h3>Stage 04 · Use the product for two minutes</h3>
+        <p>This is a guided product tour, not a second QA pass. Use the finished dashboard to answer questions from the corpus and see how the interface responds.</p>
+
         <div class="do-step">
-          <p class="do-label">Create the build chat in the <strong>Codex app</strong>:</p>
+          <p class="do-label">In the finished <strong>First Light Operations Picture</strong>:</p>
           <ul class="do-clicks">
-            <li>Click <strong>New chat</strong> and rename it <code>Build — B1 First Light</code></li>
-            <li>Confirm the open project is <code>AI_Harness_Bootcamp</code> and permissions say <strong>Ask for approval</strong></li>
+            <li>Scan the headline metrics and timeline to understand the operating picture</li>
+            <li>Search for <code>EU</code>, open the remaining record, and identify the blocked work, the unaffected region, and the source filename</li>
+            <li>Choose <strong>Clear all</strong>, apply <strong>OPS REPORT</strong>, and open the restore record to identify the current service state and monitoring period</li>
+            <li>Choose <strong>Clear all</strong>. If the browser is maximized, click <strong>Restore Down</strong> (the two overlapping squares), then drag its right edge left until the cards stack; confirm there is no horizontal scrolling</li>
           </ul>
         </div>
-
-        <div class="do-step">
-          <p class="do-label">Paste this into <strong>Build — B1 First Light</strong>:</p>
-          <pre><code>Read the reports in mission_flesh/b1/reports/. Use only the files named report_*.md —
-ignore DELTA_new.md; it arrives later as a live update.
-
-First, propose a minimal data shape for one report (time, tag or type, summary, source file)
-and show me the list of reports you found. Wait for my OK before building anything.
-
-Then build a single-page viewer at mission_flesh/b1/first_light/index.html with:
-- a timeline that orders or filters events by time
-- at least two filters that change the visible set
-Embed the report data directly in the page so it opens by double-click, fully offline —
-no fetch, no server, no external libraries.
-
-When it is built, tell me the exact file path and what I should ask you to do
-after a report is added or removed.</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Review the proposal before allowing file writes:</p>
-          <ul class="do-clicks">
-            <li>Confirm it found exactly six <code>report_*.md</code> files</li>
-            <li>Confirm the shape includes time, tag or type, summary, and source file</li>
-            <li>Confirm it states how the undated report will appear</li>
-            <li>If a condition fails, name the correction and ask for a revised proposal</li>
-            <li>If all conditions hold, tell the build chat to proceed</li>
-          </ul>
-        </div>
-
-        <p>Approve the file writes when the app asks. The acceptance point is the proposal you inspected, not a canned approval.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
-              <input type="checkbox" id="b0-b0-build" name="b0-b0-build" data-check-id="b0-build" />
+              <input type="checkbox" id="b1-step-smoke" name="b1-step-smoke" data-check-id="b1-smoke-pass" />
               <span class="check-num">3</span>
-              <span class="check-title">Build the approved timeline-and-filter viewer</span>
+              <span class="check-title">The finished dashboard answers source-backed questions</span>
             </label>
-            <div class="check-detail">The accepted data shape covers all six current reports and the build wrote <code>mission_flesh/b1/first_light/index.html</code>.</div>
+            <div class="check-detail">Search, filtering, report details, and the responsive layout make the supplied corpus usable without hiding its source files or qualifiers.</div>
           </li>
         </ol>
 
-        <h3>Stage 04 · Run the viewer checks</h3>
-        <div class="do-step">
-          <p class="do-label">Open the viewer from <strong>PowerShell</strong>:</p>
-          <pre><code>Start-Process "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\b1\first_light\index.html"</code></pre>
-        </div>
-
-        <p>The browser should show all six current reports and no DELTA item. If the page is blank or a file is missing, give the build chat the exact symptom and rerun this check after the repair.</p>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-b0-open" name="b0-b0-open" data-check-id="b0-open" />
-              <span class="check-num">4</span>
-              <span class="check-title">Viewer opens offline with all six current reports</span>
-            </label>
-            <div class="check-detail">The file opens directly in the browser and displays the complete initial set.</div>
-          </li>
-        </ol>
-
-        <div class="do-step">
-          <p class="do-label">Check the timeline in the <strong>browser</strong>:</p>
-          <ul class="do-clicks">
-            <li>Use the timeline control to order or filter events by time</li>
-            <li>Confirm the convoy log (0340Z) is earliest and the restore report (0510Z) is latest</li>
-            <li>Record where the undated export ticket appears</li>
-          </ul>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-b0-timeline" name="b0-b0-timeline" data-check-id="b0-timeline" />
-              <span class="check-num">5</span>
-              <span class="check-title">Timeline order and undated-report handling checked</span>
-            </label>
-            <div class="check-detail">The dated endpoints are correct and the undated report follows an explicit, observable rule.</div>
-          </li>
-        </ol>
-
-        <div class="do-step">
-          <p class="do-label">Check both filters in the <strong>browser</strong>:</p>
-          <ul class="do-clicks">
-            <li>Count the visible reports, apply the first filter, and confirm the resulting set matches its label</li>
-            <li>Clear it and confirm the full set returns</li>
-            <li>Repeat with the second filter</li>
-          </ul>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-b0-filter" name="b0-b0-filter" data-check-id="b0-filter" />
-              <span class="check-num">6</span>
-              <span class="check-title">Both filters return the correct report sets</span>
-            </label>
-            <div class="check-detail">Each filter changes the visible set as labeled, and clearing it restores all six reports.</div>
-          </li>
-        </ol>
-
-        <h3>Stage 05 · Check a report that must be excluded</h3>
-        <div class="do-step">
-          <p class="do-label">Run one exclusion check in the <strong>browser</strong>:</p>
-          <ul class="do-clicks">
-            <li>Apply a filter that must exclude a report you can name — for example, a movement filter that must not show the Relay-7 outage report</li>
-            <li>Confirm the named report is absent</li>
-            <li>Clear the filter and confirm it returns</li>
-          </ul>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-b0-negative" name="b0-b0-negative" data-check-id="b0-negative" />
-              <span class="check-num">7</span>
-              <span class="check-title">Named exclusion check passes</span>
-            </label>
-            <div class="check-detail">The named report stays out of the filtered view and returns when the filter is cleared.</div>
-          </li>
-        </ol>
-
-        <h3>Stage 06 · Refresh the viewer with a new report</h3>
-        <div class="do-step">
-          <p class="do-label">Return to <strong>Build — B1 First Light</strong> and paste:</p>
-          <pre><code>A new report just landed: mission_flesh/b1/reports/DELTA_new.md.
-Add it to the viewer's data and rebuild mission_flesh/b1/first_light/index.html.
-Tell me exactly what changed in the data.</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Reload the viewer in the <strong>browser</strong>:</p>
-          <ul class="do-clicks">
-            <li>Press <strong>Ctrl+R</strong></li>
-            <li>Confirm a seventh event appears at 2026-08-10 0600Z</li>
-            <li>Confirm it appears after the restore report</li>
-          </ul>
-        </div>
-
-        <p>If the event does not appear, report the observed result to the build chat and rerun after the repair. If the refresh remains broken, record that exact result and hold the release.</p>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-b0-delta" name="b0-b0-delta" data-check-id="b0-delta" />
-              <span class="check-num">8</span>
-              <span class="check-title">Current-source refresh checked with DELTA_new.md</span>
-            </label>
-            <div class="check-detail">The seventh event appears in the correct place, or the exact failure is recorded and the release is held.</div>
-          </li>
-        </ol>
-
-        <h3>Stage 07 · Write the release note</h3>
-        <div class="do-step">
-          <p class="do-label">In <strong>Build — B1 First Light</strong>, paste this after filling the brackets from your checks:</p>
-          <pre><code>Create mission_flesh/b1/first_light/RELEASE_NOTE.md.
-
-Artifact: mission_flesh/b1/first_light/index.html
-Contract status: [MET / PARTIAL / NOT MET] — [WHY]
-Observed checks:
-- Initial report count: [RESULT]
-- Timeline and undated-report rule: [RESULT]
-- Filter 1: [RESULT]
-- Filter 2: [RESULT]
-- Named exclusion: [RESULT]
-- DELTA refresh: [RESULT]
-Concrete correction made: [FINDING AND FIX, OR "none"]
-Release decision: [READY / READY WITH FIXES / HOLD]
-Residual risk or next action: [ONE LINE]
-
-Use only the results I supplied. Save the file and report its path.</code></pre>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-b0-loop" name="b0-b0-loop" data-check-id="b0-loop" />
-              <span class="check-num">9</span>
-              <span class="check-title">Release note ties the specification, checks, corrections, and decision together</span>
-            </label>
-            <div class="check-detail"><code>mission_flesh/b1/first_light/RELEASE_NOTE.md</code> records what shipped, the observed checks, any repair, the release decision, and the remaining risk.</div>
-          </li>
-        </ol>
-
-        <div id="pulse" class="lesson-reflection" data-check-section="pulse">
+        <div id="pulse" class="lesson-reflection">
           <h3>Lesson reflection</h3>
-          <p class="reflection-question"><strong>Closeout question:</strong> Which observed check most affected your release decision?</p>
-
-          <div class="do-step">
-            <p class="do-label">Open <strong>Operator — Direction &amp; Log</strong> and paste this once, with both brackets filled:</p>
-            <pre><code>Read operator/DIRECTION_BRIEF.md, mission_flesh/b1/first_light/RELEASE_NOTE.md,
-operator/OPERATOR_LOG.md, and operator/TRANSFER_30_60_90.md.
-
-Update the B1 entry in OPERATOR_LOG.md with:
-- final artifact and path
-- criterion-based status: READY / READY WITH FIXES / HOLD
-- the most consequential finding and fix, or the residual risk if no fix was needed
-- evidence pointers to the release note and viewer
-- lesson reflection: [WHICH OBSERVED CHECK MOST AFFECTED MY RELEASE DECISION, AND WHY]
-- reusable workplace rule: [ONE RULE I WILL APPLY TO A RECURRING WORK PRODUCT]
-
-Also update the Primary missions field and today's session row in TRANSFER_30_60_90.md
-with this recurring work product: [ONE SPECIFIC PRODUCT FROM MY DESK]. If that final
-bracket is still generic or blank, ask one focused question before writing. Preserve
-the rest of both files and report the exact sections changed.</code></pre>
-          </div>
-
-          <ol class="checklist">
-            <li class="check-item" data-check-item>
-              <label class="check-label">
-                <input type="checkbox" id="b0-pulse-log" name="b0-pulse-log" data-check-id="pulse-log" />
-                <span class="check-num">10</span>
-                <span class="check-title">Artifact-backed closeout saved</span>
-              </label>
-              <div class="check-detail">The B1 log points to the viewer and release note, records a release status and residual risk, and the transfer file names one real recurring product.</div>
-            </li>
-          </ol>
+          <p><strong>The useful pattern:</strong> the prompt fixed five things before the build began: source boundary, truth rules, information hierarchy, interactions, and finish checks. When an AI-built product is weak, find which of those five is underspecified. P1 will put that judgment in your hands.</p>
         </div>
       </section>
 
-
-
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Lesson outcomes</h2>
-        <p class="section-lede">This is a read-only summary of the Lesson outcome checkboxes beside the relevant instructions above. <strong>Complete</strong> means you checked the outcome where its evidence was produced; <strong>Not yet</strong> means it remains open. Select an outcome title to return to its inline checkbox.</p>
+        <p class="section-lede">This read-only summary follows the three outcome checkboxes beside the work above. Select an outcome title to return to the place where the result was produced.</p>
         <ol class="checklist">
-
-          <li class="check-item" data-check-item data-outcome-after="pulse-brief">
+          <li class="check-item" data-check-item data-outcome-after="b1-build-pass">
             <label class="check-label">
-              <input type="checkbox" id="b0-mvp-brief5" name="b0-mvp-brief5" data-check-id="mvp-brief5" />
-              <span class="check-num">15</span>
-              <span class="check-title">B1 work specification was saved before the build</span>
+              <input type="checkbox" id="b1-outcome-dashboard" name="b1-outcome-dashboard" data-check-id="b1-dashboard" />
+              <span class="check-num">1</span>
+              <span class="check-title">A polished offline dashboard represents the complete example corpus</span>
             </label>
-            <div class="check-detail">The viewer path, source boundary, acceptance checks, and stop condition are recorded in the LIVE brief.</div>
+            <div class="check-detail">The single HTML product contains seven source-backed records, six dated events, and one explicit needs-timestamp record.</div>
           </li>
 
-          <li class="check-item" data-check-item data-outcome-after="b0-filter">
+          <li class="check-item" data-check-item data-outcome-after="b1-polish-pass">
             <label class="check-label">
-              <input type="checkbox" id="b0-mvp-map" name="b0-mvp-map" data-check-id="mvp-map" />
-              <span class="check-num">16</span>
-              <span class="check-title">Timeline and filters both work</span>
+              <input type="checkbox" id="b1-outcome-polish" name="b1-outcome-polish" data-check-id="b1-polish" />
+              <span class="check-num">2</span>
+              <span class="check-title">The dashboard has been inspected and refined at desktop and mobile sizes</span>
             </label>
-            <div class="check-detail">Both do something observable.</div>
+            <div class="check-detail">The visual hierarchy, responsive layout, accessibility, interactions, source fidelity, and console state received a rendered-product QA pass.</div>
           </li>
 
-          <li class="check-item" data-check-item data-outcome-after="b0-negative">
+          <li class="check-item" data-check-item data-outcome-after="b1-smoke-pass">
             <label class="check-label">
-              <input type="checkbox" id="b0-mvp-neg" name="b0-mvp-neg" data-check-id="mvp-neg" />
-              <span class="check-num">17</span>
-              <span class="check-title">The must-not-appear check passes</span>
+              <input type="checkbox" id="b1-outcome-verify" name="b1-outcome-verify" data-check-id="b1-verify" />
+              <span class="check-num">3</span>
+              <span class="check-title">The dashboard can answer source-backed questions</span>
             </label>
-            <div class="check-detail">Must-not case checked.</div>
-          </li>
-
-          <li class="check-item" data-check-item data-outcome-after="b0-delta">
-            <label class="check-label">
-              <input type="checkbox" id="b0-mvp-upd" name="b0-mvp-upd" data-check-id="mvp-upd" />
-              <span class="check-num">18</span>
-              <span class="check-title">The viewer refreshes from the new report, or the release is held</span>
-            </label>
-            <div class="check-detail">The 0600Z event appears after the restore report, or the release note records the exact failure and HOLD decision.</div>
-          </li>
-
-          <li class="check-item" data-check-item data-outcome-after="b0-loop">
-            <label class="check-label">
-              <input type="checkbox" id="b0-mvp-loop" name="b0-mvp-loop" data-check-id="mvp-loop" />
-              <span class="check-num">19</span>
-              <span class="check-title">The release note connects the specification, observed checks, corrections, and decision</span>
-            </label>
-            <div class="check-detail"><code>RELEASE_NOTE.md</code> gives a later reader the artifact, results, repair history, status, and residual risk.</div>
-          </li>
-
-          <li class="check-item" data-check-item data-outcome-after="pulse-log">
-            <label class="check-label">
-              <input type="checkbox" id="b0-mvp-log" name="b0-mvp-log" data-check-id="mvp-log" />
-              <span class="check-num">20</span>
-              <span class="check-title">The closeout records the decision, evidence, residual risk, and workplace rule</span>
-            </label>
-            <div class="check-detail">The B1 log points to the viewer and release note; the transfer file names one specific recurring product.</div>
+            <div class="check-detail">Search, filtering, report details, and the responsive layout make the corpus usable while preserving source traceability.</div>
           </li>
         </ol>
       </section>
     </form>
 
-    <section id="stuck" class="split-2 home-section">
-      <div>
-        <h2>Before you move on</h2>
-        <p>Move on when the viewer passes its observable checks, the release note records any exception, and the closeout points to the files. Full list: <a href="#floor">these B1 lesson outcomes</a>.</p>
+    <section id="stuck" class="home-section">
+      <h2>Repair prompts</h2>
+      <p class="section-lede">Use one only when its matching check fails. Paste it unchanged into <strong>B1 — First Light Dashboard</strong>.</p>
+
+      <div class="callout">
+        <strong>If Prompt 1 cannot find the reports</strong>
+        Confirm the project header says <code>AI_Harness_Bootcamp</code>. If it does not, reopen <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>, return to the same B1 chat, and paste Prompt 1 again.
       </div>
-      <div>
-        <h2>If you get stuck</h2>
-        <ul>
-          <li>Narrow <em>data scope</em>, not the judgment standard</li>
-          <li>Re-read your LIVE brief — most chaos is an unbounded outcome</li>
-          <li>Ask for a lead diagram of the one concept blocking you, then continue on your chair</li>
-        </ul>
-      </div>
+
+      <details class="lane-disclosure">
+        <summary>The report count, facts, or timeline are wrong</summary>
+        <div class="checklist-section">
+          <div class="do-step">
+            <pre><code>Audit the embedded dashboard records against every Markdown file in
+mission_flesh/b1/reports/. Correct mission_flesh/b1/first_light/index.html so
+there is exactly one canonical embedded record for each of the seven files;
+the dated sequence is report_05_convoy.md at 0340Z–0400Z, report_01_bridge.md at
+0412Z, report_02_node_b.md at 0415Z, report_03_media.md at 0422Z,
+report_04_restore.md at 0510Z, then DELTA_new.md at 0600Z;
+report_06_export_eu.md remains in Needs timestamp; and every labeled field,
+qualifier, and source filename matches the corpus. Remove unsupported claims.
+Do not modify the reports or create another file. Reopen the dashboard when the
+correction is complete.</code></pre>
+          </div>
+        </div>
+      </details>
+
+      <details class="lane-disclosure">
+        <summary>Search, filters, Clear all, or report details do not work</summary>
+        <div class="checklist-section">
+          <div class="do-step">
+            <pre><code>Repair the interactions in mission_flesh/b1/first_light/index.html. Searching
+EU must leave only report_06_export_eu.md; the OPS REPORT filter must leave
+exactly two reports; Clear all must restore seven; every report detail must open
+and close by mouse and keyboard; the visible-result count and empty state must
+stay accurate. Keep the page offline and single-file. Test every repaired action
+and reopen the dashboard when all checks pass.</code></pre>
+          </div>
+        </div>
+      </details>
+
+      <details class="lane-disclosure">
+        <summary>The dashboard looks generic, cramped, or broken when narrow</summary>
+        <div class="checklist-section">
+          <div class="do-step">
+            <pre><code>Refine mission_flesh/b1/first_light/index.html as a high-end operational product.
+Inspect the rendered page at 1440 × 900 and 390 × 844. Strengthen the information
+hierarchy, typography, spacing, alignment, card composition, and control grouping;
+remove generic template styling; preserve every source fact and interaction. Fix
+all horizontal scrolling, clipping, overlap, weak contrast, and invisible focus.
+Keep it offline and single-file. Reinspect both sizes and reopen the dashboard.</code></pre>
+          </div>
+        </div>
+      </details>
     </section>
 
     <div data-plate-for="B1"></div>
