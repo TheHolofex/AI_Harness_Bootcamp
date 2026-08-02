@@ -35,7 +35,7 @@
 <nav class="checklist-phase-map" aria-label="Pre-work phases">
   <a href="#phase-basics"><span class="phase-number">1</span><strong>Machine</strong><span data-phase-stat="basics">0 / 21</span></a>
   <a href="#phase-keys"><span class="phase-number">2</span><strong>Keys</strong><span data-phase-stat="keys">0 / 5</span></a>
-  <a href="#phase-tools"><span class="phase-number">3</span><strong>Harnesses + tools</strong><span data-phase-stat="tools">0 / 30</span></a>
+  <a href="#phase-tools"><span class="phase-number">3</span><strong>Harnesses + tools</strong><span data-phase-stat="tools">0 / 31</span></a>
   <a href="#phase-files"><span class="phase-number">4</span><strong>Course files</strong><span data-phase-stat="files">0 / 1</span></a>
 </nav>
 
@@ -141,7 +141,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <span class="check-num">7</span>
     <span class="check-title">Establish whether you can install software</span>
   </label>
-  <div class="check-detail"><p>Most steps install into your own user profile and need no administrator rights. Three do prompt for elevation: Git, Node, and Codex's sandbox setup.</p>
+  <div class="check-detail"><p>Most steps install into your own user profile and need no administrator rights. Four prompt for elevation: Git, Node, the Microsoft Visual C++ runtime, and Codex's sandbox setup.</p>
   <p>If your laptop is corporate-managed and you can't approve an elevation prompt, tell the instructor. This may require an IT ticket that cannot be resolved from your seat during the clinic.</p></div>
 </li>
 </ol></section>
@@ -166,7 +166,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <tbody>
       <tr><td><strong>PowerShell</strong></td><td><code>PS C:\Users\you&gt;</code> — note the <code>PS</code></td><td>Everything in this guide</td></tr>
       <tr><td>Command Prompt</td><td><code>C:\Users\you&gt;</code> — no <code>PS</code></td><td>Nothing here, unless a rescue step says so</td></tr>
-      <tr><td>Git Bash</td><td><code>you@machine ~ $</code> — a <code>$</code>, and <code>/</code> in paths</td><td>One goose fallback in step 53</td></tr>
+      <tr><td>Git Bash</td><td><code>you@machine ~ $</code> — a <code>$</code>, and <code>/</code> in paths</td><td>One goose fallback in step 54</td></tr>
     </tbody>
   </table>
   <p>Confirm you're in the right one:</p>
@@ -251,7 +251,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
     <span class="check-title">Install Git</span>
   </label>
   <div class="check-detail"><p>Git tracks changes to files, and you'll use it to fetch the course repository. It also installs <strong>Git Bash</strong>, a second kind of terminal that some tools reach for behind the scenes — which is the real reason Git comes this early.</p>
-  <p>To be clear about what you have to learn: <strong>you type everything in PowerShell.</strong> Git Bash is a dependency, not a second shell to get fluent in. Pi is the one tool that genuinely can't run without it, and it calls it for you. The only time you'd open Git Bash yourself is one goose fallback in step 53.</p>
+  <p>To be clear about what you have to learn: <strong>you type everything in PowerShell.</strong> Git Bash is a dependency, not a second shell to get fluent in. Pi is the one tool that genuinely can't run without it, and it calls it for you. The only time you'd open Git Bash yourself is one goose fallback in step 54.</p>
   <p>Open the Git installer you downloaded in the previous section. Approve the elevation prompt and accept the installer defaults. If it offers a choice between installing for your account and for everyone on the machine, choose everyone so other tools find Git at the standard path.</p></div>
 </li>
 
@@ -404,10 +404,15 @@ $key = $null</code></pre>
   </label>
   <div class="check-detail"><p>The instructor will provide one xAI model id during the clinic. OpenCode, Pi, and goose all reuse it, so set it once instead of editing three later commands.</p>
   <p>Codex does not use this variable. Its model is fixed separately to <code>gpt-5.6-terra</code>.</p>
-  <p>Replace the quoted placeholder with the xAI id provided by the instructor, then run both lines:</p>
-  <pre><code>$env:HB_XAI_MODEL = 'paste the xAI model id'
-[Environment]::SetEnvironmentVariable('HB_XAI_MODEL', $env:HB_XAI_MODEL, 'User')</code></pre>
-  <p>The first line sets the value for this window. The second makes it available in every new window. The <code>HB_</code> prefix keeps the course pin separate from settings a tool reads on its own.</p></div>
+  <p>Run this block, then paste the exact model id when PowerShell asks:</p>
+  <pre><code>$model = (Read-Host 'Enter the xAI model id').Trim()
+if ([string]::IsNullOrWhiteSpace($model) -or $model -like 'paste *') {
+  throw 'No model id was saved. Enter the exact xAI model id from the instructor.'
+}
+$env:HB_XAI_MODEL = $model
+[Environment]::SetEnvironmentVariable('HB_XAI_MODEL', $model, 'User')
+$model = $null</code></pre>
+  <p>The block rejects a blank answer or placeholder instead of silently saving it. It then sets the value for this window and every new window. The <code>HB_</code> prefix keeps the course pin separate from settings a tool reads on its own.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -739,7 +744,7 @@ Get-Content .\bash-check.txt</code></pre>
     <span class="check-num">50</span>
     <span class="check-title">Use the official AAIF goose installer</span>
   </label>
-  <div class="check-detail"><p>The course uses goose from the Agentic AI Foundation (<code>aaif-goose</code>). Use only the installer in the next step. Current documentation lives at <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p></div>
+  <div class="check-detail"><p>The course uses goose from the Agentic AI Foundation (<code>aaif-goose</code>). Use only the AAIF installer in step 54. Current documentation lives at <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -761,17 +766,43 @@ $env:GOOSE_DISABLE_KEYRING = '1'</code></pre>
     <span class="check-title">Tell goose which provider and model to use</span>
   </label>
   <div class="check-detail"><p>goose reads <code>XAI_API_KEY</code> from the environment, but it still needs an explicit provider and model. Reuse the xAI model id from phase 2:</p>
-  <pre><code>[Environment]::SetEnvironmentVariable('GOOSE_PROVIDER','xai','User')
+  <pre><code>if ([string]::IsNullOrWhiteSpace($env:HB_XAI_MODEL) -or $env:HB_XAI_MODEL -like 'paste *') {
+  throw 'HB_XAI_MODEL is empty or still a placeholder. Return to step 26, set the xAI model id, then come back here.'
+}
+[Environment]::SetEnvironmentVariable('GOOSE_PROVIDER','xai','User')
 [Environment]::SetEnvironmentVariable('GOOSE_MODEL',$env:HB_XAI_MODEL,'User')
 $env:GOOSE_PROVIDER = 'xai'
 $env:GOOSE_MODEL = $env:HB_XAI_MODEL</code></pre>
-  <p>These settings keep goose on xAI in this window and every new one. If <code>goose info -v</code> later reports another provider, stop before running work and restore these two values.</p></div>
+  <p>The first check stops here instead of silently saving an empty model. The remaining lines keep goose on xAI in this window and every new one. If <code>goose info -v</code> later reports another provider, stop before running work and restore these two values.</p></div>
+</li>
+
+<li class="check-item" data-check-item>
+  <label class="check-label">
+<input type="checkbox" id="ahb-prework-install-gs-runtime" data-check-id="gs-runtime" />
+    <span class="check-num">53</span>
+    <span class="check-title">Install and verify the Windows runtime Goose needs</span>
+  </label>
+  <div class="check-detail"><p>Do this before installing Goose. The current Windows package contains <code>goose.exe</code>, but it does not contain the Microsoft C++ runtime files that Windows must load with it. Without them, Goose can appear installed and then quit with <code>0xC0000135</code>.</p>
+  <p><a class="btn btn-secondary" href="https://aka.ms/vc14/vc_redist.x64.exe">Download Microsoft&rsquo;s x64 runtime</a></p>
+  <p>Open the downloaded installer, approve the Windows prompt, and choose <strong>Install</strong>. If it offers <strong>Repair</strong>, choose that instead. Then return to PowerShell and run:</p>
+  <pre><code>$vcRuntime = @(
+  'HKLM:\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64'
+  'HKLM:\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x64'
+) | ForEach-Object {
+  $item = Get-ItemProperty -LiteralPath $_ -ErrorAction SilentlyContinue
+  if ($item -and [int]$item.Installed -eq 1) { $item }
+} | Select-Object -First 1
+if (-not $vcRuntime) {
+  throw 'Microsoft Visual C++ x64 runtime is not installed.'
+}
+"Microsoft Visual C++ x64 runtime $($vcRuntime.Version) is installed"</code></pre>
+  <p>The final line must print an installed version. This confirms Windows has registered an x64 v14 runtime; step 56 proves Goose can actually load it. Do not download individual DLL files from another site.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-install" data-check-id="gs-install" />
-    <span class="check-num">53</span>
+    <span class="check-num">54</span>
     <span class="check-title">Install the goose command-line tool</span>
   </label>
   <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Downloads"
@@ -789,7 +820,7 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/goose/main/
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-path" data-check-id="gs-path" />
-    <span class="check-num">54</span>
+    <span class="check-num">55</span>
     <span class="check-title">Add goose to your PATH</span>
   </label>
   <div class="check-detail"><p>The installer drops goose into <code>%USERPROFILE%\.local\bin</code> but doesn't add that folder to PATH — it only prints a warning that's easy to scroll past.</p>
@@ -805,18 +836,32 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-verify" data-check-id="gs-verify" />
-    <span class="check-num">55</span>
+    <span class="check-num">56</span>
     <span class="check-title">Verify goose and check what it sees</span>
   </label>
-  <div class="check-detail"><pre><code>goose --version
-goose info -v</code></pre>
-  <p>The second command shows the provider, model, and environment variables goose is actually using. Confirm they match what you set two steps ago.</p></div>
+  <div class="check-detail"><pre><code>$gooseCommand = Get-Command goose -CommandType Application -ErrorAction Stop
+$gooseVersion = &amp; $gooseCommand.Source --version 2&gt;&amp;1
+$gooseExit = $LASTEXITCODE
+if ($gooseExit -ne 0) {
+  if ($gooseExit -eq -1073741515 -or $gooseExit -eq 3221225781) {
+    throw 'Goose could not start because a required DLL is missing (0xC0000135). For this Goose build, first return to step 53 and install or repair the Microsoft Visual C++ x64 runtime.'
+  }
+  throw ('goose --version failed with exit code {0}: {1}' -f $gooseExit, ($gooseVersion -join ' '))
+}
+$gooseVersion
+$gooseInfo = &amp; $gooseCommand.Source info -v 2&gt;&amp;1
+$gooseInfoExit = $LASTEXITCODE
+if ($gooseInfoExit -ne 0) {
+  throw ('goose info failed with exit code {0}: {1}' -f $gooseInfoExit, ($gooseInfo -join ' '))
+}
+$gooseInfo</code></pre>
+  <p>You should see a Goose version, then provider <code>xai</code> and the xAI model from step 26. If the block stops, keep the exact error: it now separates a missing Windows runtime from a provider or model problem.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-write" data-check-id="gs-write" />
-    <span class="check-num">56</span>
+    <span class="check-num">57</span>
     <span class="check-title">Write proof: from-goose.txt</span>
   </label>
   <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
@@ -837,7 +882,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ob-install" data-check-id="ob-install" />
-    <span class="check-num">57</span>
+    <span class="check-num">58</span>
     <span class="check-title">Install Obsidian</span>
   </label>
   <div class="check-detail"><p>Obsidian reads and writes ordinary Markdown files in a folder. On Wednesday you'll point an agent at that folder and build a knowledge system with citations you can walk.</p>
@@ -848,7 +893,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ob-vault" data-check-id="ob-vault" />
-    <span class="check-num">58</span>
+    <span class="check-num">59</span>
     <span class="check-title">Create a vault and confirm it opens</span>
   </label>
   <div class="check-detail"><p>A <strong>vault</strong> is just a folder Obsidian has adopted. Make one first:</p>
@@ -869,7 +914,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-node" data-check-id="n8n-node" />
-    <span class="check-num">59</span>
+    <span class="check-num">60</span>
     <span class="check-title">Re-check your Node version first</span>
   </label>
   <div class="check-detail"><pre><code>node -v</code></pre>
@@ -879,7 +924,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-install" data-check-id="n8n-install" />
-    <span class="check-num">60</span>
+    <span class="check-num">61</span>
     <span class="check-title">Install n8n</span>
   </label>
   <div class="check-detail"><pre><code>npm install n8n -g</code></pre>
@@ -890,7 +935,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-start" data-check-id="n8n-start" />
-    <span class="check-num">61</span>
+    <span class="check-num">62</span>
     <span class="check-title">Start n8n once and open the editor</span>
   </label>
   <div class="check-detail"><pre><code>n8n start</code></pre>
@@ -901,7 +946,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-owner" data-check-id="n8n-owner" />
-    <span class="check-num">62</span>
+    <span class="check-num">63</span>
     <span class="check-title">Create the local owner account, and skip the licence offer</span>
   </label>
   <div class="check-detail"><p>n8n shows what looks like a signup screen asking for an email and password. <strong>It is not a subscription and not a login to anything.</strong> It creates a record in a database file on your own laptop, nothing is transmitted, and no verification email is sent. It also can't be skipped.</p>
@@ -912,7 +957,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-stop" data-check-id="n8n-stop" />
-    <span class="check-num">63</span>
+    <span class="check-num">64</span>
     <span class="check-title">Learn how to stop it</span>
   </label>
   <div class="check-detail"><p>Press <kbd>Ctrl</kbd>+<kbd>C</kbd> in the window running n8n. The page at localhost:5678 stops answering, and your work stays saved on disk for next time.</p>
@@ -922,7 +967,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-g-four" data-check-id="g-four" />
-    <span class="check-num">64</span>
+    <span class="check-num">65</span>
     <span class="check-title">Verify all four harness proof files together</span>
   </label>
   <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"</code></pre>
@@ -940,7 +985,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-operator" data-check-id="rp-operator" />
-    <span class="check-num">65</span>
+    <span class="check-num">66</span>
     <span class="check-title">Find the module exercise files and transfer plan</span>
   </label>
   <div class="check-detail"><p>Create a separate read-only task for the course map:</p>

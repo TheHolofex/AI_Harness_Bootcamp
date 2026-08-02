@@ -13,6 +13,7 @@ What it covers:
   - The course registry still routes B0 to that canonical page
   - The current Node LTS remains inside the range taught for n8n
   - The npm OpenCode package and AAIF goose installer remain available
+  - Goose's Windows runtime, model, and native-exit guards remain present
   - The repository still contains load-bearing exercise and facilitator paths
 
 What it does not cover (needs Windows, funded keys, and a person):
@@ -37,6 +38,8 @@ from typing import List, Optional, Tuple
 REPO_ROOT = Path(__file__).resolve().parents[2]
 INSTALL_PAGE = REPO_ROOT / "site" / "checklists" / "prework-install.html"
 REGISTRY = REPO_ROOT / "site" / "js" / "registry.js"
+WINDOWS_SMOKE = REPO_ROOT / ".github" / "scripts" / "prework-verify.ps1"
+WINDOWS_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "prework-smoke.yml"
 
 UA = "AI-Harness-Bootcamp-stack-facts/2.0 (+staff)"
 NODE_INDEX_URL = "https://nodejs.org/dist/index.json"
@@ -44,6 +47,7 @@ OPENCODE_NPM_URL = "https://registry.npmjs.org/opencode-ai/latest"
 GOOSE_INSTALLER_URL = (
     "https://raw.githubusercontent.com/aaif-goose/goose/main/download_cli.ps1"
 )
+VC_REDIST_X64_URL = "https://aka.ms/vc14/vc_redist.x64.exe"
 
 
 @dataclass
@@ -145,6 +149,7 @@ def check_canonical_install_surface(report: Report) -> None:
         ),
         "OpenCode npm channel": "npm install -g opencode-ai",
         "Pi PowerShell installer": "https://pi.dev/install.ps1",
+        "Microsoft Visual C++ x64 runtime": VC_REDIST_X64_URL,
         "AAIF goose PowerShell installer": GOOSE_INSTALLER_URL,
         "Obsidian official download": "https://obsidian.md/download",
         "n8n npm channel": "npm install n8n -g",
@@ -181,9 +186,78 @@ def check_canonical_install_surface(report: Report) -> None:
         )
 
 
+def check_goose_windows_guards(report: Report) -> None:
+    html = INSTALL_PAGE.read_text(encoding="utf-8")
+    smoke = WINDOWS_SMOKE.read_text(encoding="utf-8-sig")
+    workflow = WINDOWS_WORKFLOW.read_text(encoding="utf-8")
+    expected = {
+        "HTML rejects an empty xAI model": (
+            html,
+            "[string]::IsNullOrWhiteSpace($env:HB_XAI_MODEL)",
+        ),
+        "HTML rejects a bad xAI model before saving it": (
+            html,
+            "[string]::IsNullOrWhiteSpace($model)",
+        ),
+        "HTML checks the registered x64 runtime": (
+            html,
+            r"HKLM:\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64",
+        ),
+        "HTML checks the alternate x64 runtime registry view": (
+            html,
+            r"HKLM:\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x64",
+        ),
+        "HTML captures the Goose native exit code": (
+            html,
+            "$gooseExit = $LASTEXITCODE",
+        ),
+        "HTML diagnoses the missing-DLL status": (html, "-1073741515"),
+        "Windows smoke checks the x64 runtime": (smoke, "runtime.vcredist_x64"),
+        "Windows smoke captures the Goose native exit code": (
+            smoke,
+            "$gexit = $LASTEXITCODE",
+        ),
+        "Windows smoke makes an installed-but-broken Goose a hard failure": (
+            smoke,
+            'Write-Result -Name "bin.goose" -Ok $false -Detail "$($c.Source) - $detail" -Hard $true',
+        ),
+        "Windows smoke makes a missing Goose a hard failure": (
+            smoke,
+            'Write-Result -Name "bin.goose" -Ok $false -Detail "goose not on PATH (use the AAIF installer in the website checklist)" -Hard $true',
+        ),
+        "Windows workflow installs the x64 runtime": (
+            workflow,
+            VC_REDIST_X64_URL,
+        ),
+        "Windows workflow installs the official Goose CLI": (
+            workflow,
+            GOOSE_INSTALLER_URL,
+        ),
+    }
+    missing = [label for label, (surface, token) in expected.items() if token not in surface]
+    if missing:
+        report.add(
+            "setup.goose_windows_guards",
+            False,
+            "missing: " + ", ".join(missing),
+            hard=True,
+        )
+    else:
+        report.add(
+            "setup.goose_windows_guards",
+            True,
+            f"{len(expected)} model, runtime, and native-exit guards present",
+            hard=True,
+        )
+
+
 def check_registry_install_route(report: Report) -> None:
     registry = REGISTRY.read_text(encoding="utf-8")
-    expected = ['code: "B0"', 'url: "checklists/prework-install.html"']
+    expected = [
+        'code: "B0"',
+        'url: "checklists/prework-install.html"',
+        '"gs-runtime"',
+    ]
     missing = [needle for needle in expected if needle not in registry]
     if missing:
         report.add(
@@ -196,7 +270,7 @@ def check_registry_install_route(report: Report) -> None:
         report.add(
             "site.b0_route",
             True,
-            "B0 routes to checklists/prework-install.html",
+            "B0 routes to the install page and requires the Goose runtime step",
             hard=True,
         )
 
@@ -329,6 +403,7 @@ def main() -> int:
     try:
         check_repo_paths(report)
         check_canonical_install_surface(report)
+        check_goose_windows_guards(report)
         check_registry_install_route(report)
         check_node_lts_claim(report)
         check_opencode_npm_channel(report)

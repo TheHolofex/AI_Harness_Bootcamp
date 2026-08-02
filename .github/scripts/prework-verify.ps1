@@ -145,33 +145,64 @@ if (-not $py) {
     }
 }
 
+# --- Microsoft Visual C++ x64 runtime (goose prerequisite) ---
+$vcRuntimePaths = @(
+    "HKLM:\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64",
+    "HKLM:\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x64"
+)
+$vcRuntime = $null
+$vcRuntimePath = $null
+foreach ($path in $vcRuntimePaths) {
+    $candidate = Get-ItemProperty -LiteralPath $path -ErrorAction SilentlyContinue
+    if ($candidate -and [int]$candidate.Installed -eq 1) {
+        $vcRuntime = $candidate
+        $vcRuntimePath = $path
+        break
+    }
+}
+if ($vcRuntime) {
+    Write-Result -Name "runtime.vcredist_x64" -Ok $true -Detail "$($vcRuntime.Version) at $vcRuntimePath" -Hard $true
+} else {
+    Write-Result -Name "runtime.vcredist_x64" -Ok $false -Detail "Microsoft Visual C++ v14 x64 runtime not registered; install or repair https://aka.ms/vc14/vc_redist.x64.exe before starting goose" -Hard $true
+}
+
 # --- OpenCode ---
 $oc = Test-CommandVersion -Name "opencode" -Exe "opencode" -VersionArgs @("--version") -Hard $true
 
-# --- Pi / goose (soft if missing on partial install; hard preferred on staff candidate) ---
+# --- Pi (optional here) / goose (required for a complete setup) ---
 Test-CommandVersion -Name "pi" -Exe "pi" -VersionArgs @("--version") -Hard $false | Out-Null
 $gooseOk = $false
 foreach ($g in @("goose", "goose.exe")) {
-    $c = Get-Command $g -ErrorAction SilentlyContinue
+    $c = Get-Command $g -CommandType Application -ErrorAction SilentlyContinue
     if ($c) {
         # Avoid confusing with unrelated winget "goose" DB tool - version string heuristic
         try {
             $gout = & $c.Source "--version" 2>&1 | Out-String
+            $gexit = $LASTEXITCODE
             $gout = $gout.Trim()
-            if ($gout -match "(?i)database|clickhouse|ibis") {
+            if ($gexit -ne 0) {
+                $detail = "exited $gexit"
+                if ($gexit -eq -1073741515 -or $gexit -eq 3221225781) {
+                    $detail += " (0xC0000135: a required DLL was not found; for this Goose build, first install or repair the Microsoft Visual C++ v14 x64 runtime)"
+                }
+                if ($gout) { $detail += ": $gout" }
+                Write-Result -Name "bin.goose" -Ok $false -Detail "$($c.Source) - $detail" -Hard $true
+            } elseif (-not $gout) {
+                Write-Result -Name "bin.goose" -Ok $false -Detail "$($c.Source) returned no version text" -Hard $true
+            } elseif ($gout -match "(?i)database|clickhouse|ibis") {
                 Write-Result -Name "bin.goose" -Ok $false -Detail "looks like the unrelated database tool named goose: $gout" -Hard $true
             } else {
-                Write-Result -Name "bin.goose" -Ok $true -Detail "$($c.Source) - $gout" -Hard $false
+                Write-Result -Name "bin.goose" -Ok $true -Detail "$($c.Source) - $gout" -Hard $true
                 $gooseOk = $true
             }
         } catch {
-            Write-Result -Name "bin.goose" -Ok $false -Detail $_.Exception.Message -Hard $false
+            Write-Result -Name "bin.goose" -Ok $false -Detail $_.Exception.Message -Hard $true
         }
         break
     }
 }
 if (-not $gooseOk -and -not ($script:Lines | Where-Object { $_ -match "bin\.goose" })) {
-    Write-Result -Name "bin.goose" -Ok $false -Detail "goose not on PATH (use the AAIF installer in the website checklist)" -Hard $false
+    Write-Result -Name "bin.goose" -Ok $false -Detail "goose not on PATH (use the AAIF installer in the website checklist)" -Hard $true
 }
 
 # --- OPENCODE_DISABLE_CLAUDE_CODE round-trip ---

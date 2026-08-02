@@ -3,9 +3,9 @@ name: prework-smoke
 # Manual only. Windows runners bill at 2x, so this never fires on push.
 #
 # A CI runner is NOT a student laptop: Git, Node and Python arrive preinstalled,
-# there is no GUI, and no API keys are present. This run proves the harness
-# itself works and catches Windows-specific breakage in the checks; it does not
-# replace row B1 of lead/COHORT_PIN.md, which is the candidate cohort build.
+# there is no GUI, and no API keys are present. This run installs Goose and its
+# Windows runtime, proves the harness itself works, and catches loader failures;
+# it does not replace row B1 of lead/COHORT_PIN.md, the candidate cohort build.
 
 on:
   workflow_dispatch:
@@ -42,6 +42,33 @@ jobs:
           # npm's global bin is not on PATH for later steps by default
           $prefix = (npm prefix -g).Trim()
           "$prefix" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Install Goose Windows runtime and official CLI
+        shell: pwsh
+        run: |
+          $redist = Join-Path $env:RUNNER_TEMP 'vc_redist.x64.exe'
+          Invoke-WebRequest -Uri 'https://aka.ms/vc14/vc_redist.x64.exe' -OutFile $redist
+          $install = Start-Process -FilePath $redist -ArgumentList '/install', '/quiet', '/norestart' -Wait -PassThru
+          if ($install.ExitCode -notin @(0, 1638, 3010)) {
+            throw "Microsoft Visual C++ runtime installer failed with exit code $($install.ExitCode)."
+          }
+
+          $gooseInstaller = Join-Path $env:RUNNER_TEMP 'download_cli.ps1'
+          Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/aaif-goose/goose/main/download_cli.ps1' -OutFile $gooseInstaller
+          $env:CONFIGURE = 'false'
+          & powershell -NoProfile -ExecutionPolicy Bypass -File $gooseInstaller
+          $gooseInstallExit = $LASTEXITCODE
+          if ($gooseInstallExit -ne 0) {
+            throw "AAIF Goose installer failed with exit code $gooseInstallExit."
+          }
+
+          $gooseBin = Join-Path $env:USERPROFILE '.local\bin'
+          $env:PATH = "$gooseBin;$env:PATH"
+          $gooseBin | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          & (Join-Path $gooseBin 'goose.exe') --version
+          if ($LASTEXITCODE -ne 0) {
+            throw "Goose could not start after installation (exit code $LASTEXITCODE)."
+          }
 
       - name: Run prework smoke
         shell: pwsh

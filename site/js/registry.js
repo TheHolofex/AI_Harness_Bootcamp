@@ -40,7 +40,7 @@
         "cx-install", "cx-signin", "cx-status", "cx-lock", "cx-project", "cx-sandbox", "cx-write",
         "oc-version", "oc-install", "oc-verify", "oc-models", "oc-write",
         "pi-install", "pi-verify", "pi-write", "pi-bash",
-        "gs-keyring", "gs-provider", "gs-install", "gs-path", "gs-verify", "gs-write",
+        "gs-keyring", "gs-provider", "gs-runtime", "gs-install", "gs-path", "gs-verify", "gs-write",
         "ob-install", "ob-vault", "n8n-node", "n8n-install", "n8n-start", "n8n-owner", "n8n-stop",
         "g-four"
       ]
