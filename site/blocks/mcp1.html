@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MCP &amp; Agent Protocols in Production · AI Harness Bootcamp · Starzl</title>
+  <link rel="stylesheet" href="../css/course.css" />
+  <link rel="stylesheet" href="../css/checklist.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
+    </div>
+  </header>
+
+  <div data-context-for="MCP1"></div>
+
+  <main class="site-main">
+    <p class="eyebrow">Tuesday PM · MCP presentation 1 of 2 · AI Harness Bootcamp</p>
+    <h1>MCP &amp; Agent Protocols in Production</h1>
+    <p class="lede">Build the protocol map before touching configuration: where MCP belongs, which boundary it serves, what its primitives expose, and which operating costs and risks appear when a connection reaches production.</p>
+
+    <div class="meta-grid">
+      <div><span class="k">Day</span><span class="v">Tuesday afternoon</span></div>
+      <div><span class="k">Sequence</span><span class="v">After P2 · first of two · before P3</span></div>
+      <div><span class="k">Time</span><span class="v">30 minutes</span></div>
+      <div><span class="k">Format</span><span class="v">Instructor-led presentation</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-briefing-mcp-protocols">0 / 1 · 0%</span></div>
+    </div>
+    <hr class="rule-accent" />
+
+    <nav class="page-nav" aria-label="On this page">
+      <span class="page-nav-label">On this page</span>
+      <a href="#deck">Presentation</a>
+      <a href="#route">30-minute route</a>
+      <a href="#carry">Carry into P3</a>
+      <a href="#continue">Continue to MCP presentation 2</a>
+      <div class="page-nav-progress">
+        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-briefing-mcp-protocols"></span></div>
+        <span class="page-nav-pct" data-progress-for="ahb-briefing-mcp-protocols" data-progress-format="pct">0%</span>
+      </div>
+    </nav>
+
+    <section id="deck" class="home-section">
+      <h2>Open the presentation</h2>
+      <p class="section-lede">Keep this course page open. The presentation opens in a new tab; this page keeps the class on the route into the second presentation and P3.</p>
+      <a class="discussion-deck" href="https://gamma.app/docs/MCP-Agent-Protocols-in-Production-What-Senior-Engineers-Need-to-K-m00l40q9zxn86da" target="_blank" rel="noopener">
+        <span class="discussion-deck-eyebrow">MCP presentation 1 · protocol and architecture</span>
+        <span class="discussion-deck-title">MCP &amp; Agent Protocols in Production</span>
+        <span class="discussion-deck-subtitle">What senior engineers need to know</span>
+        <span class="discussion-deck-action">Open the presentation in Gamma ↗</span>
+      </a>
+    </section>
+
+    <section id="route" class="home-section">
+      <h2>Use the full 30 minutes</h2>
+      <div class="skill-grid" aria-label="Thirty-minute MCP protocol presentation route">
+        <div class="skill-cell">
+          <span class="k">00–07 min</span>
+          <span class="n">Name the boundary</span>
+          <p>Place MCP between a host and outside data or capabilities. Separate it from an in-process framework and from cross-organization agent delegation.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">07–14 min</span>
+          <span class="n">Choose the surface</span>
+          <p>Distinguish tools, resources, and prompts by who initiates the interaction and whether the operation performs work or supplies context.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">14–23 min</span>
+          <span class="n">See the production cost</span>
+          <p>Follow how tool descriptions, schemas, result size, routing, retries, and an oversized catalog consume context, time, and money.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">23–30 min</span>
+          <span class="n">Operate the connection</span>
+          <p>Review least privilege, server provenance, untrusted results, observability, version control, and a deliberate disable path.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="carry" class="home-section">
+      <h2>Carry four decisions into P3</h2>
+      <div class="skill-grid">
+        <div class="skill-cell">
+          <span class="k">Fit</span>
+          <span class="n">The connection must earn its overhead</span>
+          <p>Use MCP for a repeatable, shared capability boundary—not simply because a direct file read or ordinary API call feels less novel.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">Context</span>
+          <span class="n">Every loaded tool has a cost</span>
+          <p>Expose only the relevant surface, retrieve each useful source once, and keep output to what the work product actually needs.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">Trust</span>
+          <span class="n">Metadata describes; code enforces</span>
+          <p>Descriptions, annotations, schemas, and server instructions can guide the host, but they do not prove that code or returned content is safe or true.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">Operations</span>
+          <span class="n">A connection has an exit</span>
+          <p>Know what started, what it can reach, which calls ran, what failed, and exactly when the connection will be disabled or revoked.</p>
+        </div>
+      </div>
+    </section>
+
+    <form class="checklist-form" data-checklist data-storage-key="ahb-briefing-mcp-protocols" data-block="MCP1">
+      <section id="continue" class="home-section" data-check-section="briefing">
+        <h2>Continue to MCP presentation 2</h2>
+        <p class="section-lede">Mark the presentation complete, then move directly into the practical operating guide.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="mcp1-complete" name="mcp1-complete" data-check-id="mcp1-complete" />
+              <span class="check-num">1</span>
+              <span class="check-title">The MCP protocol and production overview is complete</span>
+            </label>
+            <div class="check-detail">The class has the boundary, primitive, cost, trust, and operating map needed for the practical guide.</div>
+          </li>
+        </ol>
+        <div class="btn-row">
+          <a class="btn" href="mcp2.html">Continue to MCP 2 · How to Use MCP</a>
+        </div>
+      </section>
+    </form>
+
+    <div data-plate-for="MCP1"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+
+  <script src="../js/registry.js"></script>
+  <script src="../js/shell.js"></script>
+</body>
+</html>

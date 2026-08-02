@@ -147,7 +147,7 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | Decision type I must not single-engine | |
 | Comparator habit (how often / how light) | |
 | Disposition rule (when I keep, qualify, discard, or mark a claim unknown) | |
-| MCP evidence boundary (source / root / allowed tools / approval) | |
+| MCP connect / do-not-connect rule (goal; owner + provenance; data + egress; tools + approval; error-stop; disable/revoke) | |
 | First real decision | |
 
 ### From P4 — Trailed knowledge (feeds **30–60**)

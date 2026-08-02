@@ -153,7 +153,7 @@ Single unmeasured tweak, no red→green test, or nothing survives restart.
 - [ ] User-configured and external MCP state declared and cleared before the frozen runs; unavoidable built-in surfaces listed but not invoked; the course server is connected only after both raw outputs and the comparator exist
 - [ ] Deterministic join/watchlist path where required — model does not “decide” the join key
 - [ ] Comparator artifact: side-by-side fields/claims table with one row per material difference; zero differences is valid when the inspected fields are recorded
-- [ ] `MCP_EVIDENCE_PACKET.md`: reviewed local server/root and two-tool allowlist; every material row plus every agreed claim driving release has one or more E-IDs with source hash, returned excerpt, raw-context check, and correction when needed; planned and actual reads match; shared-dependency note; server disabled after use
+- [ ] `MCP_EVIDENCE_PACKET.md`: connection fit, course origin and commit, local implementation fingerprints, server instructions, root, and two-tool contract; every material row plus every agreed claim driving release has one or more E-IDs with source hash, returned excerpt, raw-context check, and correction when needed; actual source basenames match the plan or name a real exception; shared-dependency note; server disabled after use
 - [ ] Every consequential claim receives a source-backed **keep / discard / unknown** disposition; zero discards is valid when the evidence supports every claim
 - [ ] Adjudication note a supervisor could read cold: what is operationally true for the watch
 - [ ] Log points at brief id and unmodified status, both raw outputs, comparator, MCP evidence packet, and final watch product

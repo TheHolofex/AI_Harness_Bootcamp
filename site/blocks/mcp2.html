@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to Use MCP in 2026 · AI Harness Bootcamp · Starzl</title>
+  <link rel="stylesheet" href="../css/course.css" />
+  <link rel="stylesheet" href="../css/checklist.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
+    </div>
+  </header>
+
+  <div data-context-for="MCP2"></div>
+
+  <main class="site-main">
+    <p class="eyebrow">Tuesday PM · MCP presentation 2 of 2 · AI Harness Bootcamp</p>
+    <h1>How to Use MCP in 2026</h1>
+    <p class="lede">Move from protocol map to operating method: decide whether to connect, choose the right primitive and transport, inspect the real contract, bound authority, diagnose failures, and leave an auditable exit.</p>
+
+    <div class="meta-grid">
+      <div><span class="k">Day</span><span class="v">Tuesday afternoon</span></div>
+      <div><span class="k">Sequence</span><span class="v">After MCP 1 · immediately before P3</span></div>
+      <div><span class="k">Time</span><span class="v">30 minutes</span></div>
+      <div><span class="k">Format</span><span class="v">Instructor-led presentation</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-briefing-mcp-practice">0 / 1 · 0%</span></div>
+    </div>
+    <hr class="rule-accent" />
+
+    <nav class="page-nav" aria-label="On this page">
+      <span class="page-nav-label">On this page</span>
+      <a href="#deck">Presentation</a>
+      <a href="#route">30-minute route</a>
+      <a href="#current">Current-version note</a>
+      <a href="#carry">Apply in P3</a>
+      <a href="#continue">Continue to P3</a>
+      <div class="page-nav-progress">
+        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-briefing-mcp-practice"></span></div>
+        <span class="page-nav-pct" data-progress-for="ahb-briefing-mcp-practice" data-progress-format="pct">0%</span>
+      </div>
+    </nav>
+
+    <section id="deck" class="home-section">
+      <h2>Open the presentation</h2>
+      <p class="section-lede">Keep this page open. The presentation opens in a new tab; P3 begins from the decisions on this page.</p>
+      <a class="discussion-deck" href="https://gamma.app/docs/How-to-Use-MCP-in-2026-From-First-Connection-to-Production-154vw4lwd2pdncf" target="_blank" rel="noopener">
+        <span class="discussion-deck-eyebrow">MCP presentation 2 · practical operating guide</span>
+        <span class="discussion-deck-title">How to Use MCP in 2026</span>
+        <span class="discussion-deck-subtitle">From first connection to production</span>
+        <span class="discussion-deck-action">Open the presentation in Gamma ↗</span>
+      </a>
+    </section>
+
+    <section id="route" class="home-section">
+      <h2>Use the full 30 minutes</h2>
+      <div class="skill-grid" aria-label="Thirty-minute practical MCP presentation route">
+        <div class="skill-cell">
+          <span class="k">00–07 min</span>
+          <span class="n">Use MCP—or skip it</span>
+          <p>Start from the work boundary. Choose tools, resources, prompts, a direct API, or no integration based on the actual job.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">07–14 min</span>
+          <span class="n">Choose and configure transport</span>
+          <p>Use local <code>stdio</code> for one host launching one process; use Streamable HTTP for a remote or multi-client service with real authorization.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">14–22 min</span>
+          <span class="n">Inspect the contract</span>
+          <p>Read the command, provenance, descriptions, input and output schemas, annotations, server instructions, result bounds, and error behavior.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">22–30 min</span>
+          <span class="n">Secure and operate</span>
+          <p>Set least privilege, approvals, timeouts, bounded retries, audit evidence, revocation, and a debugging order that starts with the visible failure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="current" class="home-section">
+      <h2>Use the current protocol, not a memorized handshake</h2>
+      <div class="callout">
+        <strong>Current-version note · MCP 2026-07-28</strong>
+        The <a href="https://modelcontextprotocol.io/specification/2026-07-28">current protocol</a> uses stateless, self-contained requests and no connection-scoped <code>initialize</code> handshake or protocol session. Compatible clients may still use an earlier negotiated revision. P3 is wire-version agnostic: inspect the effective surface, actual calls, and errors instead of assuming a memorized flow.
+      </div>
+    </section>
+
+    <section id="carry" class="home-section">
+      <h2>Apply the method to one real product</h2>
+      <p class="section-lede">P3 does not ask you to recite MCP or build a toy server. It uses one reviewed connection to produce a better adjudication packet.</p>
+      <div class="skill-grid">
+        <div class="skill-cell">
+          <span class="k">Decide</span>
+          <span class="n">Why this connection has this shape</span>
+          <p>Confirm why P3 uses tools rather than resources or prompts, and local <code>stdio</code> rather than Streamable HTTP. It exposes no credential, network, or write surface.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">Inspect</span>
+          <span class="n">See the effective contract</span>
+          <p>Verify the reviewed code and lockfile, startup command, root, server instructions, exact tools, schemas, annotations, allowlist, approvals, and timeouts.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">Use</span>
+          <span class="n">Retrieve only decision evidence</span>
+          <p>List once, read each planned source once, reuse it across every claim it supports, and stop on an unexpected call or uncorrectable error.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">Verify</span>
+          <span class="n">Shape is not truth</span>
+          <p>Use hashes and raw-source context to validate returned evidence, then disable the server and record whether the connection earned its overhead.</p>
+        </div>
+      </div>
+    </section>
+
+    <form class="checklist-form" data-checklist data-storage-key="ahb-briefing-mcp-practice" data-block="MCP2">
+      <section id="continue" class="home-section" data-check-section="briefing">
+        <h2>Continue to P3</h2>
+        <p class="section-lede">Mark the operating guide complete, then apply it inside the Twin-engine Intel Desk.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="mcp2-complete" name="mcp2-complete" data-check-id="mcp2-complete" />
+              <span class="check-num">1</span>
+              <span class="check-title">The practical MCP operating guide is complete</span>
+            </label>
+            <div class="check-detail">The class is ready to decide, inspect, bound, use, verify, and close the P3 connection without adding a separate protocol exercise.</div>
+          </li>
+        </ol>
+        <div class="btn-row">
+          <a class="btn" href="p3.html">Begin P3 · Twin-engine Intel Desk</a>
+        </div>
+      </section>
+    </form>
+
+    <div data-plate-for="MCP2"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+
+  <script src="../js/registry.js"></script>
+  <script src="../js/shell.js"></script>
+</body>
+</html>

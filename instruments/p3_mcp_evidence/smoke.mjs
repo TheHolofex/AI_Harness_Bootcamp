@@ -21,10 +21,12 @@ import { StdioClientTransport } from "@modelcontextprotocol/client/stdio";
 import {
   describeServer,
   EvidenceAccessError,
+  LIST_TOOL_DESCRIPTION,
   MAX_FILE_BYTES,
+  READ_TOOL_DESCRIPTION,
   READ_ONLY_ANNOTATIONS,
   readEvidenceFile,
-  SERVER_GUIDANCE,
+  SERVER_INSTRUCTIONS,
   SERVER_NAME,
   SERVER_VERSION,
   TOOL_NAMES,
@@ -101,11 +103,13 @@ async function testDescribeMode() {
       TOOL_NAMES,
     );
     assert.deepEqual(description.surface.tools[0].inputSchema, {
+      $schema: "https://json-schema.org/draft/2020-12/schema",
       type: "object",
       properties: {},
       additionalProperties: false,
     });
     assert.deepEqual(description.surface.tools[1].inputSchema, {
+      $schema: "https://json-schema.org/draft/2020-12/schema",
       type: "object",
       properties: {
         filename: {
@@ -117,10 +121,14 @@ async function testDescribeMode() {
       required: ["filename"],
       additionalProperties: false,
     });
+    assert.equal(description.surface.tools[0].description, LIST_TOOL_DESCRIPTION);
+    assert.equal(description.surface.tools[1].description, READ_TOOL_DESCRIPTION);
     for (const tool of description.surface.tools) {
       assert.deepEqual(tool.annotations, READ_ONLY_ANNOTATIONS);
+      assert.equal(tool.outputSchema.type, "object");
+      assert.equal(tool.outputSchema.additionalProperties, false);
     }
-    assert.equal(description.serverGuidance, SERVER_GUIDANCE);
+    assert.equal(description.serverInstructions, SERVER_INSTRUCTIONS);
     assert.match(description.enforcement.processBoundary, /user's privileges/);
     assert.match(description.enforcement.processBoundary, /no OS-level sandbox/);
   } finally {
@@ -243,7 +251,7 @@ async function runProtocolSession({ track, mode }) {
     const capabilities = client.getServerCapabilities() ?? {};
     assert.equal(capabilities.resources, undefined, `${mode}: no resources`);
     assert.equal(capabilities.prompts, undefined, `${mode}: no prompts`);
-    assert.equal(client.getInstructions(), SERVER_GUIDANCE);
+    assert.equal(client.getInstructions(), SERVER_INSTRUCTIONS);
 
     const originalDebug = console.debug;
     console.debug = () => {};
@@ -257,16 +265,34 @@ async function runProtocolSession({ track, mode }) {
     }
 
     const { tools } = await client.listTools();
+    const describedTools = describeServer(await validateEvidenceRoot(root)).surface.tools;
     assert.deepEqual(
       tools.map((tool) => tool.name),
       TOOL_NAMES,
       `${mode}: exact tool surface`,
     );
-    for (const tool of tools) {
+    for (const [index, tool] of tools.entries()) {
+      const describedTool = describedTools[index];
+      assert.equal(tool.title, describedTool.title, `${mode}: title matches describe`);
+      assert.equal(
+        tool.description,
+        describedTool.description,
+        `${mode}: description matches describe`,
+      );
+      assert.deepEqual(
+        tool.inputSchema,
+        describedTool.inputSchema,
+        `${mode}: input schema matches describe`,
+      );
+      assert.deepEqual(
+        tool.outputSchema,
+        describedTool.outputSchema,
+        `${mode}: output schema matches describe`,
+      );
       assert.deepEqual(
         tool.annotations,
-        READ_ONLY_ANNOTATIONS,
-        `${mode}: annotations`,
+        describedTool.annotations,
+        `${mode}: annotations match describe`,
       );
       assert.equal(
         tool.inputSchema.additionalProperties,

@@ -50,7 +50,16 @@
 
   function blockLabel(b) {
     if (b.kind === "discussion") return b.title + " · 30-minute discussion";
+    if (b.kind === "briefing") return b.code + " · " + b.title;
     return b.slot === "read" || b.slot === "pre" ? b.title : b.code + " · " + b.title;
+  }
+
+  function isScheduledBriefing(b) {
+    return b.kind === "discussion" || b.kind === "briefing";
+  }
+
+  function scheduledStopName(b) {
+    return b.kind === "discussion" ? "Discussion" : "Presentation";
   }
 
   function dayLabel(b) {
@@ -94,10 +103,10 @@
         var b = AHB.block(code);
         var st = statusOf(b, cur);
         var isHere = owner === code;
-        var navName = b.kind === "discussion"
-          ? "<strong>Discussion</strong> · " + b.name
+        var navName = isScheduledBriefing(b)
+          ? "<strong>" + scheduledStopName(b) + "</strong> · " + b.name
           : "<strong>" + b.code + "</strong> · " + b.name;
-        var navSlot = b.kind === "discussion" ? "30 min" : b.slot;
+        var navSlot = isScheduledBriefing(b) ? "30 min" : b.slot;
         html += '<a class="nav-drop-item' + (st === "done" ? " is-done" : "") + '"' +
           ' href="' + p + "/" + b.url + '"' + (isHere ? ' aria-current="page"' : "") + ">";
         html += dotHtml(st);
@@ -1527,14 +1536,14 @@
       var total = cur.ids.length || 1;
       var pct = Math.round((done / total) * 100);
       var isInstall = cur.kind === "install";
-      var isDiscussion = cur.kind === "discussion";
+      var isBriefing = isScheduledBriefing(cur);
       var prework = isInstall ? AHB.preworkProgress() : null;
       setText("[data-yah-eyebrow]", weekComplete
         ? "Friday · Course complete"
         : isInstall
         ? "Monday morning · B0 install clinic"
-        : isDiscussion
-        ? "Monday afternoon · 30-minute discussion"
+        : isBriefing
+        ? dayLabel(cur) + " · 30-minute " + scheduledStopName(cur).toLowerCase()
         : dayLabel(cur) + " · " + cur.code);
       setText("[data-yah-title]", weekComplete
         ? "Week complete"
@@ -1543,7 +1552,7 @@
         ? AHB.TOTAL_MODULES + " / " + AHB.TOTAL_MODULES + " modules complete"
         : isInstall
         ? prework.donePhases + " / " + prework.totalPhases + " phases complete"
-        : isDiscussion
+        : isBriefing
         ? cur.meta
         : done + " / " + total + " checks · " + pct + "%");
       var bar = document.querySelector("[data-yah-bar]");
@@ -1554,8 +1563,8 @@
           ? "Review the week map"
           : isInstall
           ? (done > 0 ? "Continue B0" : "Start B0")
-          : isDiscussion
-          ? "Open the discussion"
+          : isBriefing
+          ? "Open the " + scheduledStopName(cur).toLowerCase()
           : (done > 0 ? "Continue this module" : "Start this module");
         cta.setAttribute("href", weekComplete
           ? prefix + "/index.html#journey"
@@ -1576,9 +1585,9 @@
         col.codes.forEach(function (code) {
           var b = AHB.block(code);
           var st = statusOf(b, cur);
-          var meta = b.kind === "install" || b.kind === "discussion" ? b.meta : b.slot;
-          var journeyName = b.kind === "discussion"
-            ? "Discussion · " + b.name
+          var meta = b.kind === "install" || isScheduledBriefing(b) ? b.meta : b.slot;
+          var journeyName = isScheduledBriefing(b)
+            ? scheduledStopName(b) + " · " + b.name
             : b.code + " · " + b.name;
           html += '<a class="journey-cell is-' + st + '"' +
             (st === "current" ? ' aria-current="step"' : "") +

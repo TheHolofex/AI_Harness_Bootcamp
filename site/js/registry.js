@@ -1,6 +1,6 @@
 /**
  * AHB course registry — the single source of truth for B0, B1, the scheduled
- * Model Economics discussion, and P1–P8.
+ * Model Economics and MCP briefings, and P1–P8.
  *
  * Every reader of progress (home dashboard, nav dots, block pages, the
  * pre-work hub) counts against the id lists declared here — never against
@@ -59,7 +59,8 @@
   }
 
   // Storage order is retained for compatibility. The visible path is
-  // B0 install clinic → B1 First Light → Model Economics → P1 → … → P8.
+  // B0 install clinic → B1 First Light → Model Economics → P1 → P2 →
+  // two MCP briefings → P3 → … → P8.
   // `ids` contains the controls learners can actually see and complete. When an
   // inline lesson outcome replaces a procedural receipt, only the outcome id is
   // required; the duplicate procedural id is retained in the HTML solely so old
@@ -120,6 +121,20 @@
       ],
       stretchIds: [],
       url: "blocks/p2.html", meta: "Codex · p2_dyno"
+    },
+    {
+      code: "MCP1", name: "Protocol and production map", title: "MCP & Agent Protocols in Production", kind: "briefing",
+      day: "Tuesday", slot: "PM", key: "ahb-briefing-mcp-protocols",
+      ids: ["mcp1-complete"], stretchIds: [],
+      url: "blocks/mcp1.html", meta: "30 min · instructor-led presentation",
+      contextLabel: "Tuesday PM · MCP presentation 1 of 2 · Before P3"
+    },
+    {
+      code: "MCP2", name: "From connection to production", title: "How to Use MCP in 2026", kind: "briefing",
+      day: "Tuesday", slot: "PM", key: "ahb-briefing-mcp-practice",
+      ids: ["mcp2-complete"], stretchIds: [],
+      url: "blocks/mcp2.html", meta: "30 min · instructor-led presentation",
+      contextLabel: "Tuesday PM · MCP presentation 2 of 2 · Before P3"
     },
     {
       code: "P3", name: "Twin-engine intel desk", title: "The twin-engine intel desk", day: "Tuesday", slot: "PM",
@@ -203,7 +218,7 @@
     return COURSE_CODES.indexOf(item.code) !== -1;
   });
   var NAV_STOPS = REGISTRY.filter(function (item) {
-    return COURSE_CODES.indexOf(item.code) !== -1 || item.kind === "discussion";
+    return COURSE_CODES.indexOf(item.code) !== -1 || item.kind === "discussion" || item.kind === "briefing";
   });
   var CORE_PATH = [PREWORK_STOP].concat(NAV_STOPS);
 
@@ -211,7 +226,7 @@
   var JOURNEY = [
     { phase: "Monday AM", title: "Install Clinic → First Light", codes: ["B0", "B1"] },
     { phase: "Monday PM", title: "Model economics → Daily Status Brief", codes: ["ME", "P1"] },
-    { phase: "Tuesday", title: "Craft + verdict", codes: ["P2", "P3"] },
+    { phase: "Tuesday", title: "Harness craft → MCP → verdict", codes: ["P2", "MCP1", "MCP2", "P3"] },
     { phase: "Wednesday", title: "Knowledge", codes: ["P4", "P5"] },
     { phase: "Thursday", title: "Autonomy", codes: ["P6", "P7"] },
     { phase: "Friday", title: "Transfer", codes: ["P8"] }
@@ -219,7 +234,7 @@
 
   var DAY_NAV = [
     { label: "Monday", codes: ["B0", "B1", "ME", "P1"] },
-    { label: "Tuesday", codes: ["P2", "P3"] },
+    { label: "Tuesday", codes: ["P2", "MCP1", "MCP2", "P3"] },
     { label: "Wednesday", codes: ["P4", "P5"] },
     { label: "Thursday", codes: ["P6", "P7"] },
     { label: "Friday", codes: ["P8"] }
@@ -299,7 +314,7 @@
     };
   }
 
-  // The current course stop follows the visible path, including the discussion,
+  // The current course stop follows the visible path, including briefings,
   // while the numbered module count remains B1 plus P1–P8.
   function currentBlock() {
     for (var i = 0; i < CORE_PATH.length; i++) {
