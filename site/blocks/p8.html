@@ -23,7 +23,7 @@
   <main class="site-main">
     <p class="eyebrow">Friday AM · P8 · AI Harness Bootcamp</p>
     <h1>Operator-governed open model</h1>
-    <p class="lede">Move the week's method to a different endpoint: write policy before the first request, rerun the frozen suite, make a fit/not-fit recommendation, restore home, and certify the 30-60-90.</p>
+    <p class="lede">Move the week's method to a different endpoint: write policy before the first open-model request, capture Home and Open on the same frozen suite, make a fit/not-fit recommendation, restore home, and certify the 30-60-90.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Friday AM</span></div>
@@ -53,11 +53,11 @@
         <div>
           <h2 class="h-plain">The day the vendor changes</h2>
           <p>All week, every model behind your harnesses came from a commercial vendor, with that vendor's acceptable-use machinery standing between you and the raw engine. At work that arrangement is temporary by nature: models get deprecated mid-quarter, prices move, procurement changes vendors, a policy shop bans an endpoint overnight. When that day comes, the only question that matters is whether your craft was a method or a product habit.</p>
-          <p>Today you are handed a hosted open model — an endpoint where no vendor's guardrails stand between you and the model, so the governance is yours to author or it does not exist. You write the policy before the first request, re-run the same five fixed cases you scored on Tuesday — <code>D01–D05</code>, unedited — read the difference as counts, refuse one legitimate task under your own rules, and seal the plan that carries all of it to your desk.</p>
+          <p>Today you are handed a hosted open model — an endpoint where no vendor's guardrails stand between you and the model, so the governance is yours to author or it does not exist. You write the policy before the first open-model request, then capture Home and Open on the same day with <code>D01–D05</code>, unedited, in the same course-repository project and under the same dispatch prompt. You read the difference as counts, refuse one legitimate task under your own rules, and seal the plan that carries all of it to your desk.</p>
           <h3>What you will leave with</h3>
           <ul>
             <li>An endpoint AUP (acceptable-use policy) with a version and a date that precede your first request — a policy you can reuse the next time a new model shows up at work</li>
-            <li>A hold/degrade matrix on D01–D05, home vs open, as counts — every non-hold labeled with a failure layer</li>
+            <li>A same-day hold/degrade matrix on D01–D05, Home vs Open, as counts — with ten preserved raw outputs and every non-hold labeled with a failure layer</li>
             <li>A refusal on the record: one legitimate task your own policy blocked, with the reason, beside a control task that ran</li>
             <li><code>ENDPOINT_RECOMMENDATION.md</code> stating fit, not-fit, evidence, owner, and residual risk — plus a listener who could restate the decision</li>
             <li>Your 30-60-90 <strong>SEALED</strong>, with a session log proving it grew all week</li>
@@ -65,7 +65,7 @@
           </ul>
           <h3>Before you start</h3>
           <ul>
-            <li>Your P2 score sheet with the after column filled — that is the home baseline (if it's missing, you'll run home once this morning first)</li>
+            <li>The track recorded in your P3 comparator — <code>engineering</code> or <code>mission_ops</code>; P8 uses that same track for both endpoints</li>
             <li>Operator templates in your Codex app project: <code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code></li>
             <li><code>mission_flesh/p8/AUP_ENDPOINT_TEMPLATE.md</code> located and readable</li>
             <li>The endpoint pin — endpoint, model name, and key. The lead posts it at the start of the block, on the room screen or handed to you directly; it never ships in the pack, whose <code>mission_flesh/p8/</code> folder carries a placeholder endpoint only, so if you don't have it, ask. <code>mission_flesh/p8/REPOINT_RUNBOOK.md</code> lets you stage the whole re-point before the pin lands</li>
@@ -75,13 +75,17 @@
         <div class="orient-aside">
           <div class="lead-box">
             <p class="eyebrow">Lead operate-along</p>
-            <p>The lead runs this same page on screen — policy drafted live, isolated cold cases scored, non-holds entered in the root-cause register, and the seal gate evaluated PASS or BLOCK. You still run your own chair: your policy, matrix, recommendation, and seal.</p>
+            <p>The lead runs this same page on screen — policy drafted live, paired read-only case dispatches captured, both raw sets scored only after they exist, non-holds entered in the root-cause register, and the seal gate evaluated PASS or BLOCK. You still run your own chair: your policy, matrix, recommendation, and seal.</p>
           </div>
         </div>
       </div>
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p8/p8-overview.svg" alt="The whole block: policy first, re-point, cold run on D01–D05, matrix and refuse, then defend and seal" width="1120" height="280" loading="lazy" decoding="async" />
-      </figure>
+      <div class="skill-grid" aria-label="P8 endpoint-comparison route">
+        <div class="skill-cell"><span class="k">1 · Govern</span><span class="n">Write policy first</span><p>Date the AUP before the first open-model request.</p></div>
+        <div class="skill-cell"><span class="k">2 · Capture Home</span><span class="n">Read-only paired run</span><p>Five fresh subagents on Terra; save exact returns in a separate turn.</p></div>
+        <div class="skill-cell"><span class="k">3 · Change endpoint</span><span class="n">Re-point and verify</span><p>Record the configuration change and run one allowed smoke request.</p></div>
+        <div class="skill-cell"><span class="k">4 · Capture Open</span><span class="n">Exact same dispatch</span><p>Same day, project, track, cases, isolation, and concurrency.</p></div>
+        <div class="skill-cell"><span class="k">5 · Decide</span><span class="n">Score after capture</span><p>Grade both raw sets, classify differences, and make the endpoint recommendation.</p></div>
+      </div>
     </section>
 
     <section id="ideas" class="home-section">
@@ -94,15 +98,15 @@
       <p>What going wrong looks like: a policy with an empty Forbidden section, or one so vague it could never refuse anything. Both fail the same way — they cost nothing, so they govern nothing. At work, this discipline is the difference between "we tried the new model" and "we evaluated the new model under a policy I can show you." The second sentence is auditable; the first is not.</p>
 
       <h3>The capability tax is a number</h3>
-      <p>Moving off a frontier commercial model usually costs capability. The operator question is never <em>whether</em> there's a tax — it's <em>how much, on which work</em>. You answer that with the frozen suite: the same five case files you scored on Tuesday, unedited, re-run cold on the new endpoint. Each case scores PASS or FAIL against its own checks. A case that passes on both endpoints is a <strong>hold</strong>. Home PASS turning into open FAIL is a <strong>degrade</strong> — the tax, made visible. Home FAIL turning into open PASS is an <strong>improve</strong>, rare and worth reading closely.</p>
-      <p>The measurement is loop completion, not answer quality. A fluent, confident, beautifully organized answer that misses the case's check is a FAIL; a terse one that hits it is a PASS. That's deliberate: at work you don't ship prose, you ship closed loops, and open models are often better at sounding capable than at closing loops. The frozen part is equally load-bearing — edit a case to be "fairer" to the new model and the comparison stops meaning anything, because you're no longer measuring the same thing twice.</p>
+      <p>Moving off a frontier commercial model usually costs capability. The operator question is never <em>whether</em> there's a tax — it's <em>how much, on which work</em>. You answer that with a paired run: the same five frozen case files, on the same day, in the same project, under the exact same dispatch prompt. Each case scores PASS or FAIL against its own check. A case that passes on both endpoints is a <strong>hold</strong>. Home PASS turning into Open FAIL is a <strong>degrade</strong> — the tax, made visible. Home FAIL turning into Open PASS is an <strong>improve</strong>, rare and worth reading closely.</p>
+      <p>The measurement is loop completion, not answer quality. A fluent, confident, beautifully organized answer that misses the case's check is a FAIL; a terse one that hits it is a PASS. The frozen part is load-bearing: edit a case, change the dispatch, expose the grader, coach a retry, or let one case inherit another case's context and the paired comparison stops meaning what the matrix claims.</p>
       <figure class="section-diagram">
         <img src="../assets/blocks/p8/p8-concept-hold-degrade.svg" alt="Hold, degrade, and improve as three outcome lanes across two endpoints, with totals read as counts" width="1120" height="220" loading="lazy" decoding="async" />
       </figure>
 
       <h3>A degrade is a location, not a verdict</h3>
-      <p>When a case degrades, the interesting question is <em>where</em> it broke. Five layers can each kill a case on a new endpoint: the <strong>model</strong> (the new brain genuinely can't do it), the <strong>instructions</strong> (your <code>AGENTS.md</code> walls — the standing instructions the harness loads — and your skills never made it onto the re-pointed run), the <strong>tests</strong> (your check quietly asserts one vendor's formatting habits), the <strong>environment</strong> (endpoint config, missing tool surface, a path that changed), or the <strong>brief</strong> (a bound that silently assumed the old model's strengths).</p>
-      <p>The fix is different at every layer, which is why the label matters. A model-layer failure argues for a partial re-point — keep that workload on the commercial engine. An instructions-layer failure means your craft is portable and you simply haven't ported it yet. A test-layer failure means your suite was never measuring what you thought. The common miss is writing "model" in every row: the new brain gets blamed for a wall that never made the trip. Probe the cheap layers first — environment, then instructions — before you convict the expensive one. At work, this is the skill that turns "the new model is worse" (an argument) into "three of five degrades were harness gaps we can close" (a plan).</p>
+      <p>When a case degrades, the interesting question is <em>where</em> it broke. Five layers can each kill a case on a new endpoint: the <strong>model</strong> (the new brain genuinely can't do it), the <strong>instructions</strong> (standing <code>AGENTS.md</code> guidance or a needed skill did not load), the <strong>tests</strong> (your check quietly asserts one vendor's formatting habits), the <strong>environment</strong> (endpoint config, missing tool surface, a path that changed), or the <strong>brief</strong> (a bound that silently assumed the old model's strengths).</p>
+      <p>The fix is different at every layer, which is why the label matters. A model-layer failure argues for a partial re-point — keep that workload on the commercial engine. An instructions-layer failure means your method is portable and the required instructions have not been ported yet. A test-layer failure means your suite was never measuring what you thought. The common miss is writing "model" in every row: the new brain gets blamed for a control that was absent from the new run. Probe the cheap layers first — environment, then instructions — before you convict the expensive one. At work, this is the skill that turns "the new model is worse" (an argument) into "three of five degrades were harness gaps we can close" (a plan).</p>
       <figure class="section-diagram">
         <img src="../assets/blocks/p8/p8-concept-failure-layers.svg" alt="Five failure layers — model, instructions, tests, environment, brief — each with one probe question, four of the five marked as yours to port and fix" width="1120" height="220" loading="lazy" decoding="async" />
       </figure>
@@ -125,7 +129,7 @@
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Work in order: <strong>P8 — Direction &amp; Closeout</strong>, <strong>P8 — Policy &amp; Re-point</strong>, a fresh <strong>P8 — Open Endpoint Run</strong>, five isolated cold-case chats, restored-home closeout, and <strong>P7–P8 — 30/60/90 Plan</strong>. PowerShell and saved files carry evidence between chats. Check each item when its evidence exists.</p>
+        <p class="section-lede">Work in order: <strong>P8 — Direction &amp; Closeout</strong>, <strong>P8 — Policy &amp; Re-point</strong>, fresh Home and Open endpoint case chats, <strong>P8 — Open Endpoint Run</strong>, restored-home closeout, and <strong>P7–P8 — 30/60/90 Plan</strong>. Each endpoint case chat runs read-only first and saves exact raw outputs in a separate approval-gated turn. PowerShell and saved files carry evidence between chats.</p>
 
         <h3>Stage 01 · Brief the close</h3>
         <p>Friday's brief names five durable artifacts: policy, score sheet, refusal record, endpoint recommendation, and the certified transfer file.</p>
@@ -157,19 +161,21 @@ Outcome: produce these durable artifacts:
 Done looks like: each artifact opens; a peer can re-derive the scores, recommendation,
 refusal, and seal decision from the files alone.
 
-Bounds: do not change policy after first request without a version bump; keep credentials
-out of tracked files; do not edit D01–D05; run each case in a separate new chat with only
-that case in context; restore and verify the home configuration before closeout.
+Bounds: do not change policy after the first open-model request without a version bump;
+keep credentials out of tracked files; do not edit D01–D05; use the P3 track and the exact
+same dispatch for Home and Open; run one fresh read-only subagent per case with no more
+than two threads open; close completed threads before the next batch; restore and verify
+the home configuration before closeout.
 
-Evidence: exact paths, D01–D05 P/F cells, counts, root-cause rows, quoted AUP clause,
-recommendation criteria, and the transfer gate results.
+Evidence: ten exact raw-output paths, D01–D05 Home/Open P/F cells, counts, root-cause
+rows, quoted AUP clause, recommendation criteria, and the transfer gate results.
 
 Stop / hand-back: stop the re-point on a failed smoke request and record the exact error;
 set transfer status to BLOCKED, not SEALED, if any seal criterion fails.
 
 Preserve unrelated block sections. Show the exact P8 brief written.</code></pre>
         </div>
-        <p>Open <code>operator/DIRECTION_BRIEF.md</code> and confirm the five artifacts, isolated case rule, restore requirement, and deterministic seal condition are present.</p>
+        <p>Open <code>operator/DIRECTION_BRIEF.md</code> and confirm the five artifacts, paired-subagent rule, restore requirement, and deterministic seal condition are present.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -177,7 +183,7 @@ Preserve unrelated block sections. Show the exact P8 brief written.</code></pre>
               <span class="check-num">1</span>
               <span class="check-title">The P8 production spec is on record with Status LIVE</span>
             </label>
-            <div class="check-detail"><code>operator/DIRECTION_BRIEF.md</code> names the policy, score sheet, refusal record, endpoint recommendation, and transfer plan; isolated D01–D05 chats; home-config restoration; evidence; and the deterministic seal condition. Status reads <strong>LIVE</strong>.</div>
+            <div class="check-detail"><code>operator/DIRECTION_BRIEF.md</code> names the policy, score sheet, refusal record, endpoint recommendation, and transfer plan; the same-day paired run with one fresh subagent per case; ten raw outputs; home-config restoration; evidence; and the deterministic seal condition. Status reads <strong>LIVE</strong>.</div>
           </li>
         </ol>
 
@@ -187,13 +193,12 @@ Preserve unrelated block sections. Show the exact P8 brief written.</code></pre>
           <img src="../assets/blocks/p8/p8-stage-policy.svg" alt="The AUP document — version, date, and six fields — signed off before the arrow to the re-point target fires" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
         <div class="do-step">
-          <p class="do-label">Confirm the home-model baseline exists while the app is still on <strong>gpt-5.6-terra</strong>:</p>
+          <p class="do-label">Confirm the track you chose in P3:</p>
           <ul class="do-clicks">
             <li>Press <strong>Windows+E</strong> to open File Explorer</li>
-            <li>Click the address bar, enter <code>%USERPROFILE%\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\SCORE_SHEET.md</code>, and press <strong>Enter</strong></li>
-            <li>Open the file and confirm all five rows in <strong>After P/F</strong> contain P or F</li>
-            <li>If any After cell is empty, stop here and finish P2&#x27;s cold rescore on <strong>gpt-5.6-terra</strong> before continuing. Do not re-point without the comparison baseline</li>
-            <li>Close the score sheet after the five values are confirmed</li>
+            <li>Click the address bar, enter <code>%USERPROFILE%\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\COMPARATOR.md</code>, and press <strong>Enter</strong></li>
+            <li>Read the <strong>Track</strong> row and keep that exact value: <code>engineering</code> or <code>mission_ops</code></li>
+            <li>If the row is blank, recover the track from the P3 corpus and outputs you actually used. Do not choose a new track for P8</li>
           </ul>
         </div>
         <div class="do-step">
@@ -219,12 +224,12 @@ Preserve unrelated block sections. Show the exact P8 brief written.</code></pre>
           <p class="do-label">Now return to Codex, open <strong>P8 — Policy &amp; Re-point</strong>, and paste this:</p>
           <pre><code>We are writing my endpoint AUP before any re-point. Read AUP_ENDPOINT.md in the project root — it is the unfilled template.
 
-Work section by section: Allowed, Forbidden, Data that may not leave the laptop, Require human accept when, Legitimate refuse examples, Logging / retention. For each section, propose one or two concrete lines drafted against the five cases in instruments/p2_test_suite/[YOUR TRACK]/cases/ and against the data on my real desk — interview me when you need the desk facts. Challenge any line vague enough that it could never refuse a task.
+Work section by section: Allowed, Forbidden, Data that may not leave the laptop, Require human accept when, Legitimate refuse examples, Logging / retention. For each section, propose one or two concrete lines drafted against the five cases in instruments/endpoint_case_suite/[P3 TRACK]/cases/ and against the data on my real desk — interview me when you need the desk facts. Challenge any line vague enough that it could never refuse a task.
 
 Legitimate refuse examples needs at least two tasks I might genuinely want to run — one of them gets refused for real later, so no strawmen.
 
 Set Version to 1.0 and Effective to today's date. Leave the endpoint placeholder block untouched — it gets real values at re-point. Write each accepted line into the file as we go. Nothing goes to the new endpoint until this file is done.</code></pre>
-          <p>Replace <code>[YOUR TRACK]</code> with <code>engineering</code> or <code>mission_ops</code> — the track you scored on Tuesday.</p>
+          <p>Replace <code>[P3 TRACK]</code> with the exact track recorded in the P3 comparator.</p>
         </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
@@ -237,8 +242,65 @@ Set Version to 1.0 and Effective to today's date. Leave the endpoint placeholder
           </li>
         </ol>
 
-        <h3 id="stage-3-repoint">Stage 03 · Re-point</h3>
-        <p>Now — and only now — the app gets pointed at the open endpoint. <a href="#stage-3-repoint">The re-point steps in this section</a> are the full web runbook — config block, placeholder swap, smoke check, rollback. The cloned pack keeps its working copy at <code>mission_flesh/p8/REPOINT_RUNBOOK.md</code>. The real values come from the pin posted at the start of the block — if it isn't in front of you, ask before you reach the value swap; everything before that swap can be staged while you wait.</p>
+        <h3 id="stage-3-repoint">Stage 03 · Capture Home, then re-point</h3>
+        <p>Capture the Home side now, in the course-repository project and on <code>gpt-5.6-terra</code>. The parent chat stays read-only while it dispatches the cases. A separate approval-gated turn saves exactly what the five subagents returned. The grader remains closed until the Open side is also saved.</p>
+        <div class="do-step">
+          <p class="do-label">Create the fresh Home parent chat from the beginning:</p>
+          <ul class="do-clicks">
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong></li>
+            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong>, rename it <code>P8 — Home Endpoint Cases</code>, and select <strong>gpt-5.6-terra</strong></li>
+            <li>Set the parent chat's permissions to <strong>Read only</strong>. The fresh subagents inherit that boundary</li>
+          </ul>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Replace <code>[P3 TRACK]</code> with the track from P3, then paste this dispatch into <strong>P8 — Home Endpoint Cases</strong>:</p>
+          <pre><code>Paired endpoint case run. Track: [P3 TRACK].
+
+Read only. Do not create, edit, or delete files.
+
+Run D01 through D05 with one fresh subagent per case. Each subagent must:
+- read only its one matching case file under
+  instruments/endpoint_case_suite/[P3 TRACK]/cases/
+- complete only the Task in that file, using only its Input
+- never read GRADER.md, another case, or another subagent's answer
+- return exactly the answer the case requests, with no grading or commentary
+
+Keep no more than two subagent threads open at any time. Start D01 and D02;
+wait for both; then close both completed threads before starting D03 and D04.
+Wait for D03 and D04; close both completed threads; then start D05. Wait for D05
+and close its completed thread.
+
+After all five return, print five labeled raw-answer blocks in D01–D05 order.
+Use exact marker lines BEGIN D01 and END D01, then D02 through D05. Preserve
+each subagent's returned answer exactly between its matching marker lines.
+Do not summarize, revise, score, retry, or write any result to disk.</code></pre>
+          <p>The parent should finish with five raw-answer blocks and no file changes. A case failure remains part of the evidence; do not retry it.</p>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Save the Home returns in a separate approval-gated turn:</p>
+          <ol class="do-clicks">
+            <li>In the same <strong>P8 — Home Endpoint Cases</strong> chat, change permissions from <strong>Read only</strong> to <strong>Ask for approval</strong></li>
+            <li>Paste the save request below. This turn writes the prior returns; it does not run a case</li>
+          </ol>
+          <pre><code>Do not rerun, repair, summarize, or reformat any case.
+
+Create instruments/p8_hold_degrade/runs/[P3 TRACK]/home/. Save the exact text
+between each D01–D05 BEGIN and END marker from the immediately previous turn as
+D01.md through D05.md. Do not include the markers in the files.
+
+Create RUN_RECORD.md beside them with today's date, endpoint label Home, displayed
+model gpt-5.6-terra, project AI_Harness_Bootcamp, track [P3 TRACK], parent permission
+used for execution Read only, one fresh subagent per case, maximum open threads 2,
+and completed threads closed before each next batch. List the five raw-output paths.
+Do not open GRADER.md.</code></pre>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Confirm the five Home files exist before changing endpoints:</p>
+          <pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p8_hold_degrade\runs\[P3 TRACK]\home\D0*.md" | Select-Object Name, Length</code></pre>
+          <p>Replace <code>[P3 TRACK]</code>. You should see D01 through D05, each with a nonzero length. Do not open the grader yet.</p>
+        </div>
+        <p>Home is now frozen. Now — and only now — point the app at the open endpoint. <a href="#stage-3-repoint">The remaining steps in this section</a> are the full web runbook: config block, placeholder swap, smoke check, and rollback. The cloned pack keeps its working copy at <code>mission_flesh/p8/REPOINT_RUNBOOK.md</code>. The real values come from the pin posted at the start of the block; if it is not in front of you, ask before the value swap.</p>
         <div class="do-step">
           <p class="do-label">Return to the <strong>P8 PowerShell window</strong> and paste this:</p>
           <pre><code>Copy-Item "$env:USERPROFILE\.codex\config.toml" "$env:USERPROFILE\.codex\config.toml.p8-backup"
@@ -306,101 +368,88 @@ wire_api = "responses"</code></pre>
           </li>
         </ol>
 
-        <h3>Stage 04 · Cold run</h3>
-        <p>Run each frozen case in its own new chat. No case may inherit another case's prompts, answers, corrections, or grader context.</p>
-        <p>In every prompt below, replace <code>[YOUR TRACK]</code> with <code>engineering</code> or <code>mission_ops</code> — the same track you scored Tuesday.</p>
+        <h3>Stage 04 · Capture Open, then score both endpoints</h3>
+        <p>Use a fresh Open parent chat so neither endpoint inherits setup discussion or a prior case. The execution turn is read-only and uses the exact Home dispatch. A separate approval-gated turn saves the five returns. Only after all ten raw files exist do you open the grader and score either endpoint.</p>
         <div class="do-step">
-          <p class="do-label">Set the cold-run boundary before creating the five case chats:</p>
+          <p class="do-label">Create the fresh Open parent chat from the beginning:</p>
           <ul class="do-clicks">
-            <li>Open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong> from the top-left switcher if needed</li>
-            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
-            <li>Keep that project and model selected while you create <strong>P8 — Cold D01</strong> through <strong>P8 — Cold D05</strong></li>
+            <li>Confirm the open project is <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong>, rename it <code>P8 — Open Endpoint Cases</code>, and confirm the displayed model is the open model from the pin</li>
+            <li>Set the parent chat's permissions to <strong>Read only</strong>. Do not reuse the smoke-test chat</li>
           </ul>
         </div>
         <div class="do-step">
-          <p class="do-label">Create the isolated <strong>P8 — Cold D01</strong> chat:</p>
-          <ul class="do-clicks">
-            <li>Confirm <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> is the open project. If it is not, click <strong>Open project</strong> and choose it before continuing</li>
-            <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P8 — Cold D01</code></li>
-            <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
-            <li>Paste only the D01 request below. Never run a second case in this chat</li>
-          </ul>
-          <pre><code>Cold run — case D01. Open the case file whose name starts with D01_ in instruments/p2_test_suite/[YOUR TRACK]/cases/ and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else. Do not edit the case.</code></pre>
+          <p class="do-label">Replace <code>[P3 TRACK]</code> with the same P3 track, then paste this exact dispatch into <strong>P8 — Open Endpoint Cases</strong>:</p>
+          <pre><code>Paired endpoint case run. Track: [P3 TRACK].
+
+Read only. Do not create, edit, or delete files.
+
+Run D01 through D05 with one fresh subagent per case. Each subagent must:
+- read only its one matching case file under
+  instruments/endpoint_case_suite/[P3 TRACK]/cases/
+- complete only the Task in that file, using only its Input
+- never read GRADER.md, another case, or another subagent's answer
+- return exactly the answer the case requests, with no grading or commentary
+
+Keep no more than two subagent threads open at any time. Start D01 and D02;
+wait for both; then close both completed threads before starting D03 and D04.
+Wait for D03 and D04; close both completed threads; then start D05. Wait for D05
+and close its completed thread.
+
+After all five return, print five labeled raw-answer blocks in D01–D05 order.
+Use exact marker lines BEGIN D01 and END D01, then D02 through D05. Preserve
+each subagent's returned answer exactly between its matching marker lines.
+Do not summarize, revise, score, retry, or write any result to disk.</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Create the isolated <strong>P8 — Cold D02</strong> chat:</p>
-          <ul class="do-clicks">
-            <li>Confirm <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> is the open project. If it is not, click <strong>Open project</strong> and choose it before continuing</li>
-            <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P8 — Cold D02</code></li>
-            <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
-            <li>Paste only the D02 request below. Never run a second case in this chat</li>
-          </ul>
-          <pre><code>Cold run — case D02. Open the case file whose name starts with D02_ in instruments/p2_test_suite/[YOUR TRACK]/cases/ and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else. Do not edit the case.</code></pre>
+          <p class="do-label">Save the Open returns in a separate approval-gated turn:</p>
+          <ol class="do-clicks">
+            <li>In the same <strong>P8 — Open Endpoint Cases</strong> chat, change permissions from <strong>Read only</strong> to <strong>Ask for approval</strong></li>
+            <li>Paste the save request below. This turn writes the prior returns; it does not run a case</li>
+          </ol>
+          <pre><code>Do not rerun, repair, summarize, or reformat any case.
+
+Create instruments/p8_hold_degrade/runs/[P3 TRACK]/open/. Save the exact text
+between each D01–D05 BEGIN and END marker from the immediately previous turn as
+D01.md through D05.md. Do not include the markers in the files.
+
+Create RUN_RECORD.md beside them with today's date, endpoint label Open, displayed
+model [OPEN MODEL FROM PIN], project AI_Harness_Bootcamp, track [P3 TRACK], parent
+permission used for execution Read only, one fresh subagent per case, maximum open
+threads 2, and completed threads closed before each next batch. List the five
+raw-output paths. Do not open GRADER.md.</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Create the isolated <strong>P8 — Cold D03</strong> chat:</p>
-          <ul class="do-clicks">
-            <li>Confirm <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> is the open project. If it is not, click <strong>Open project</strong> and choose it before continuing</li>
-            <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P8 — Cold D03</code></li>
-            <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
-            <li>Paste only the D03 request below. Never run a second case in this chat</li>
-          </ul>
-          <pre><code>Cold run — case D03. Open the case file whose name starts with D03_ in instruments/p2_test_suite/[YOUR TRACK]/cases/ and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else. Do not edit the case.</code></pre>
+          <p class="do-label">Confirm both five-file raw sets exist before grading:</p>
+          <pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p8_hold_degrade\runs\[P3 TRACK]\home\D0*.md", "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p8_hold_degrade\runs\[P3 TRACK]\open\D0*.md" | Select-Object DirectoryName, Name, Length</code></pre>
+          <p>Replace <code>[P3 TRACK]</code>. Continue only when the command shows ten nonempty files: D01–D05 under <code>home</code> and D01–D05 under <code>open</code>.</p>
         </div>
+        <p>Now grading begins. The endpoint runs are already frozen on disk, so the grader cannot influence either answer set.</p>
         <div class="do-step">
-          <p class="do-label">Create the isolated <strong>P8 — Cold D04</strong> chat:</p>
-          <ul class="do-clicks">
-            <li>Confirm <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> is the open project. If it is not, click <strong>Open project</strong> and choose it before continuing</li>
-            <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P8 — Cold D04</code></li>
-            <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
-            <li>Paste only the D04 request below. Never run a second case in this chat</li>
-          </ul>
-          <pre><code>Cold run — case D04. Open the case file whose name starts with D04_ in instruments/p2_test_suite/[YOUR TRACK]/cases/ and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else. Do not edit the case.</code></pre>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Create the isolated <strong>P8 — Cold D05</strong> chat:</p>
-          <ul class="do-clicks">
-            <li>Confirm <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> is the open project. If it is not, click <strong>Open project</strong> and choose it before continuing</li>
-            <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P8 — Cold D05</code></li>
-            <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
-            <li>Paste only the D05 request below. Never run a second case in this chat</li>
-          </ul>
-          <pre><code>Cold run — case D05. Open the case file whose name starts with D05_ in instruments/p2_test_suite/[YOUR TRACK]/cases/ and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else. Do not edit the case.</code></pre>
-        </div>
-        <p>Now the grading — which is yours, not the model's. The pass conditions are not inside the case files the endpoint just read; they sit in a grader file that only you open. That separation is what makes the numbers worth having: shown the standard, a model writes to the standard, and the score stops telling you anything about the endpoint.</p>
-        <div class="do-step">
-          <p class="do-label">Return to the <strong>P8 PowerShell window</strong>. If it is closed, open PowerShell from the Windows Start menu. Then paste this:</p>
-          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\[YOUR TRACK]\GRADER.md"
+          <p class="do-label">Open the grader and paired score sheet from the <strong>P8 PowerShell window</strong>:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\endpoint_case_suite\[P3 TRACK]\GRADER.md"
 notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p8_hold_degrade\SCORE_SHEET.md"</code></pre>
-          <p>In the first line, replace <code>[YOUR TRACK]</code> — brackets included — with <code>engineering</code> or <code>mission_ops</code>. Two Notepad windows open: the five pass conditions, and the sheet you score on.</p>
+          <p>Replace <code>[P3 TRACK]</code>. Fill the score-sheet metadata from the two run records. For each ID, read the Home raw file and the Open raw file, score each once against the same matching grader condition, and record one concrete evidence note for each endpoint. Do not ask either model to score itself and do not rerun a failed case.</p>
         </div>
-        <p>Score each deliverable against its case's pass condition in <code>GRADER.md</code>. Fill the Open column with P or F, and add one evidence note per case below the table — for example, <code>D01: missed the citation check</code>. Record which standing instructions or skills were actually available to the isolated chats. Save the P8 score sheet and close <code>GRADER.md</code>.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p8-p8-run" name="p8-p8-run" data-check-id="p8-run" />
               <span class="check-num">4</span>
-              <span class="check-title">D01–D05 each have an isolated open-model result</span>
+              <span class="check-title">D01–D05 have saved, isolated Home and Open results</span>
             </label>
-            <div class="check-detail"><code>SCORE_SHEET.md</code> has five Open P/F cells scored against <code>GRADER.md</code>, with one evidence note per case. Five separately named one-case chats — <code>P8 — Cold D01</code> through <code>P8 — Cold D05</code> — isolate the runs, while the saved sheet carries the result and the case files remain unedited.</div>
+            <div class="check-detail">Ten raw files exist under <code>instruments/p8_hold_degrade/runs/[track]/</code>. The Home and Open parent chats used the same read-only dispatch, one fresh subagent per case, no more than two open threads, and separate approval-gated save turns. Both P/F columns were scored only after all ten files existed.</div>
           </li>
         </ol>
 
         <h3>Stage 05 · Read the matrix</h3>
-        <p>Do this comparison directly in the two score sheets.</p>
-        <div class="do-step">
-          <p class="do-label">Open the home and P8 score sheets from the <strong>P8 PowerShell window</strong>:</p>
-          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\SCORE_SHEET.md"
-notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p8_hold_degrade\SCORE_SHEET.md"</code></pre>
-        </div>
+        <p>Both endpoint columns are already scored from same-day raw evidence. Classify the five paired rows, compute the counts, and investigate only the differences that affect the endpoint decision.</p>
         <div class="do-step">
           <p class="do-label">Complete the matrix once in <strong>P8 Hold/degrade score sheet</strong>:</p>
           <ul class="do-clicks">
-            <li>Write D01–D05 from the home sheet's <strong>After P/F</strong> column once into the P8 <strong>Home P/F</strong> column, matching IDs</li>
             <li>For each row write <code>Hold</code> for P/P, <code>Degrade</code> for P/F, <code>Improve</code> for F/P, or <code>Fail/fail</code> for F/F</li>
             <li>Count Home PASS, Open PASS, Hold, Degrade, and Improve directly from the five rows and fill the totals fields</li>
-            <li>Save the P8 sheet. If a home cell is empty, stop and restore the home model before completing the missing baseline</li>
+            <li>Confirm every row points to its Home and Open raw-output paths, then save the sheet</li>
           </ul>
         </div>
         <ol class="checklist">
@@ -414,17 +463,9 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instrume
           </li>
         </ol>
         <div class="do-step">
-          <p class="do-label">Add this structured section below the matrix in <strong>P8 Hold/degrade score sheet</strong>:</p>
-          <pre><code>## Root-cause register
-
-| Case | Layer | Evidence | Next discriminating test | Owner |
-|---|---|---|---|---|
-| [NON-HOLD CASE] | [model / instructions / tests / environment / brief] | [PATH OR OBSERVATION] | [ONE TEST THAT SEPARATES THE LIKELY CAUSES] | [NAME OR ROLE] |</code></pre>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Fill one row for every non-hold case, then save:</p>
+          <p class="do-label">Fill the existing root-cause register for every non-hold case, then save:</p>
           <ul class="do-clicks">
-            <li>Use the case output, <code>GRADER.md</code>, and recorded live walls as evidence</li>
+            <li>Use the case output, <code>GRADER.md</code>, and recorded instructions, skills, tools, and environment as evidence</li>
             <li>Choose the cheapest next test that would distinguish environment, instructions, tests, brief, and model</li>
             <li>Name the person responsible for running that test or accepting the residual risk</li>
           </ul>
@@ -439,7 +480,7 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instrume
             <div class="check-detail">Each non-hold has a structured row naming the layer, evidence, next discriminating test, and owner. A layer label without a test or owner is not a root-cause record.</div>
           </li>
         </ol>
-        <p class="full-measure">Before you leave the matrix, one more measurement: pick one path you genuinely care about — a P1-style brief regeneration, one P2 case's full loop — and run it end to end on the open endpoint. Either the harness loop closes, or you write down exactly which walls must change before it can. "Mostly works" is neither answer.</p>
+        <p class="full-measure">Before you leave the matrix, run one real path you care about — such as regenerating the P1 daily brief or completing the P3 evidence-desk workflow — end to end on the open endpoint. Either the harness loop closes, or you write down exactly which instructions, skills, tools, checks, or environment settings must change before it can. "Mostly works" is neither answer.</p>
         <div class="do-step">
           <p class="do-label">Return to <strong>P8 — Open Endpoint Run</strong> after the isolated cases:</p>
           <ul class="do-clicks">
@@ -449,11 +490,11 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instrume
             <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P8 — Open Endpoint Run</code></li>
             <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
           </ul>
-          <p>The score sheet and policy carry the evidence back into this task-scoped chat; none of the five cold-case chats supplies context.</p>
+          <p>The score sheet and policy carry the evidence back into this task-scoped chat; neither endpoint case parent supplies context.</p>
         </div>
         <div class="do-step">
           <p class="do-label">Now paste this into <strong>P8 — Open Endpoint Run</strong>:</p>
-          <pre><code>Loop-close probe, under AUP_ENDPOINT.md. Run this end to end: [ONE PATH YOU ACTUALLY CARE ABOUT — e.g. "regenerate my P1 daily brief from its standing instructions" or "the full loop on case D03: deliverable, checks, fix, re-run"]. If any wall blocks the loop — instructions not loading, a missing tool, a check that cannot run — stop at the wall and name it exactly instead of working around it.</code></pre>
+          <pre><code>Loop-close probe, under AUP_ENDPOINT.md. Run this end to end: [ONE REAL PATH YOU ACTUALLY CARE ABOUT — e.g. "regenerate my P1 daily brief from its standing instructions" or "complete my P3 evidence-desk workflow from source lookup through checked brief"]. If any component blocks the loop — instructions not loading, a missing tool, a check that cannot run — stop there and name it exactly instead of working around it.</code></pre>
           <p>Replace the bracketed slot with the one path you care about most; a named workload beats a demo.</p>
         </div>
         <div class="do-step" id="p8-loop-outcome-point">
@@ -578,8 +619,9 @@ Use only those artifacts. Preserve uncertainty. Do not write a speech or simulat
 Update the P8 section of operator/OPERATOR_LOG.md with:
 - every artifact and exact path;
 - SHIP FOR LIMITED USE or HOLD, matching ENDPOINT_RECOMMENDATION.md and these
-  criteria: policy predates first request; D01–D05 ran in five isolated chats;
-  both matrix columns and counts are complete; every non-hold has evidence, next
+  criteria: policy predates the first open-model request; Home and Open use the
+  same P3 track, project, dispatch, and five fresh read-only case subagents; ten
+  exact raw outputs, both matrix columns, and counts are complete; every non-hold has evidence, next
   test, and owner; the refusal and allowed control are recorded; the recommendation
   names fit/not-fit work; and the home configuration is restored and verified;
 - the most important finding and fix, or the residual risk;
@@ -704,7 +746,7 @@ criteria results, and P8 log entry written. Do not interview me.</code></pre>
               <span class="check-num">17</span>
               <span class="check-title">All five cases have scores for both endpoints</span>
             </label>
-            <div class="check-detail">Evidence looks like: <code>instruments/p8_hold_degrade/SCORE_SHEET.md</code> with both columns scored on D01–D05 and the hold, degrade, and improve counts computed — numbers a peer could re-derive from your notes. "It felt weaker" is not a cell.</div>
+            <div class="check-detail">Evidence looks like: ten same-day raw files plus <code>instruments/p8_hold_degrade/SCORE_SHEET.md</code> with both columns scored only after capture, under the same P3 track, project, dispatch, cases, and subagent boundary. The comparison counts can be re-derived from those files.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p8-layer">
@@ -731,7 +773,7 @@ criteria results, and P8 log entry written. Do not interview me.</code></pre>
               <span class="check-num">20</span>
               <span class="check-title">The important workflow works end to end, or its exact remaining gaps are recorded</span>
             </label>
-            <div class="check-detail">Evidence looks like: one core path you actually care about closing end to end on the open endpoint — or a written list of exactly which walls must change before it can. "Mostly works" is neither.</div>
+            <div class="check-detail">Evidence looks like: one core path you actually care about closing end to end on the open endpoint — or a written list of exactly which instructions, skills, tools, checks, or environment settings must change before it can. "Mostly works" is neither.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p8-defense">
@@ -773,7 +815,7 @@ criteria results, and P8 log entry written. Do not interview me.</code></pre>
           <tbody>
             <tr><td>Open endpoint answers nothing, or errors on everything</td><td>Placeholder never swapped for the pin, or a capped/mispasted credential failing with an error that reads like a login problem</td><td>Re-check pin values character by character; run the allowed control task; escalate with the exact error text, not a paraphrase</td></tr>
             <tr><td>After the re-point, a stray click bounces the app to a ChatGPT login</td><td>The provider table was pasted above existing lines — every line below a <code>[bracketed]</code> header joins that table, so <code>forced_login_method = "api"</code> stopped being a root key even though it still reads fine in the file</td><td>Move the <code>[model_providers.openmodel]</code> block to the very bottom of <code>config.toml</code>, keep only the two <code>model</code> lines at the top, save, fully restart the app</td></tr>
-            <tr><td>Every case degrades at once</td><td>Harness walls didn't make the trip — instructions or skills not loaded on the re-pointed run</td><td>Probe environment before model: confirm what the re-pointed run can actually see, port the walls, re-run one case</td></tr>
+            <tr><td>Every case degrades at once</td><td>Required instructions or skills did not load on the re-pointed run</td><td>Freeze the matrix, confirm what the Open run could see, then run one separately labeled diagnostic after porting the missing controls; never replace the original cell</td></tr>
             <tr><td>Open answers read fluent but the matrix says FAIL</td><td>You're grading prose instead of loop completion</td><td>Score the case's check, nothing else — fluent-but-wrong is exactly the failure the suite exists to catch</td></tr>
             <tr><td>Hold count is suspiciously perfect</td><td>Tests too loose to notice a model change at all</td><td>Re-read what each check asserts; a suite that can't detect a model swap can't defend one either</td></tr>
             <tr><td>The refusal feels performative</td><td>Task chosen that nobody would ever actually run</td><td>Pick from your AUP's own refuse examples; if none touches real work, the policy needs a written amendment, not a softer test</td></tr>
@@ -813,7 +855,7 @@ criteria results, and P8 log entry written. Do not interview me.</code></pre>
 
 | Endpoint | Score or evidence path | Fit for | Do not use for |
 |---|---|---|---|
-| API home | instruments/p2_test_suite/SCORE_SHEET.md — [AFTER n/5] | [WORK] | [LIMIT] |
+| API home | instruments/p8_hold_degrade/SCORE_SHEET.md — [HOME n/5] | [WORK] | [LIMIT] |
 | Local | mission_flesh/p6/out/local_hold_degrade.md — [n/7 OR NOT RUN] | [WORK OR NO CLAIM] | [LIMIT OR UNKNOWN] |
 | Hosted open | instruments/p8_hold_degrade/SCORE_SHEET.md — [OPEN n/5 VS HOME n/5] | [WORK] | [LIMIT] |
 
@@ -834,14 +876,14 @@ Decision rule: I route [WORK] to [ENDPOINT] when [EVIDENCE GATE]. I hold or retu
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Before you move on</h2>
-        <p>Before moving on, confirm the dated policy, isolated case runs, completed matrix, root-cause rows, refusal record, endpoint recommendation, home restore, and transfer certification meet the <a href="#floor">P8 lesson outcomes</a>.</p>
+        <p>Before moving on, confirm the dated policy, same-day paired run, ten raw outputs, completed matrix, root-cause rows, refusal record, endpoint recommendation, home restore, and transfer certification meet the <a href="#floor">P8 lesson outcomes</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>
         <ul>
           <li><strong>The endpoint won't answer.</strong> Check placeholder vs pin values first; a capped or mispasted credential can look like a login failure. Run the allowed control task, then escalate with the exact error text. Policy, the home column, and recommendation structure can still proceed.</li>
-          <li><strong>No home baseline.</strong> If your P2 after column is empty, run D01–D05 once on <strong>gpt-5.6-terra</strong> first this morning, then open — same IDs, no substitutions. Both columns come from today; the comparison still holds.</li>
-          <li><strong>Everything degraded and it feels like the model's fault.</strong> Probe environment before verdict: did your instructions and skills load on the re-pointed run at all? Port the walls, re-run one case, and only then write layer labels. Narrow data scope if time is short — never the judgment standard.</li>
+          <li><strong>A paired raw set is incomplete.</strong> Do not score either column. If the endpoint parent already returned all five answers, use a separate Ask-for-approval turn to save the missing exact files. If a case never ran, tell the instructor and restart the complete paired capture under the two identical read-only dispatches; do not patch the matrix with a coached one-off retry.</li>
+          <li><strong>Everything degraded and it feels like the model's fault.</strong> Freeze the scored matrix first. Check whether instructions and skills loaded, then run one separately labeled diagnostic after restoring the missing control. Keep the original endpoint result unchanged and use the diagnostic only to locate the failure layer.</li>
         </ul>
       </div>
     </section>

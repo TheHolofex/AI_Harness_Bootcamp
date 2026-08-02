@@ -23,10 +23,10 @@
 | Run label | `P3 — Engine A — [TODAY'S DATE]` | exact OpenCode command |
 | Retry / failure record | none / first chat + failure + retry chat | none / describe service failure |
 | Run separation and shared paths recorded | clean folder ☐ · or instruction files declared below ☐ | `OPENCODE_DISABLE_CLAUDE_CODE=1` ☐ · `--pure` ☐ |
-| Context loaded (Codex app) | `AGENTS.md` ☐ · skills ☐ · memories ☐ — list which: ________ | — |
+| Context loaded (Codex app) | `AGENTS.md` ☐ · skills ☐ · plugins/hooks ☐ · custom agents ☐ · memories ☐ — list which: ________ | — |
 | MCP surface during frozen run | no user-configured/external server active confirmed with `/mcp verbose` ☐ · unavoidable built-ins listed but not invoked ☐ · or list every exception below | — |
 
-The Codex app loads `AGENTS.md`, skills, and memories from wherever you run it. Run P3 in your P2 project and Engine A is carrying the craft you built in P2 while Engine B runs bare — that is one engine plus your notes, not two engines. Declare it or run clean.
+The Codex app can load `AGENTS.md`, skills, plugins and hooks, custom agents, memories, and MCP surfaces. Run P3 in your P2 project and Engine A is carrying the control plane you built while Engine B runs bare — that is one engine plus your harness, not two engines. Declare it or run clean.
 
 ## Side-by-side (add rows as needed)
 

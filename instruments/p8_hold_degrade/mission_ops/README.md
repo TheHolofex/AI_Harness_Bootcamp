@@ -1,6 +1,11 @@
 # P8 Mission/ops
 
-Reuse cases from `../../p2_test_suite/mission_ops/cases/` (D01–D05).  
-Do not copy-edit cases. Score with `../SCORE_SHEET.md`.  
-Mark each case against `../../p2_test_suite/mission_ops/GRADER.md` — yours to read while you
-score, never the model's to see.
+Use this lane only when the P3 comparator records `mission_ops`.
+
+Run Home and Open on the same Friday, from the course-repository project, with the exact
+same dispatch and unchanged cases in `../../endpoint_case_suite/mission_ops/cases/`. Save exact
+returns under `../runs/mission_ops/home/` and `../runs/mission_ops/open/`.
+
+After all ten files exist, score both endpoint columns in `../SCORE_SHEET.md` against
+`../../endpoint_case_suite/mission_ops/GRADER.md`. The grader is yours to read while scoring;
+neither endpoint parent nor any subagent may see it.

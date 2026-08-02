@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harness Control Plane · AI Harness Bootcamp · Starzl</title>
+  <link rel="stylesheet" href="../css/course.css" />
+  <link rel="stylesheet" href="../css/checklist.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
+    </div>
+  </header>
+
+  <div data-context-for="HCP"></div>
+
+  <main class="site-main">
+    <p class="eyebrow">Tuesday AM · 30-minute presentation · AI Harness Bootcamp</p>
+    <h1>Harness Control Plane</h1>
+    <p class="lede">Stop treating every improvement as more prompt text. Place each durable behavior where it loads at the right time, costs the least context, and provides the kind of control the work actually needs.</p>
+
+    <div class="meta-grid">
+      <div><span class="k">Day</span><span class="v">Tuesday morning</span></div>
+      <div><span class="k">Sequence</span><span class="v">After P1 · immediately before P2</span></div>
+      <div><span class="k">Time</span><span class="v">30 minutes</span></div>
+      <div><span class="k">Format</span><span class="v">Instructor-led presentation</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-briefing-harness-control-plane">0 / 1 · 0%</span></div>
+    </div>
+    <hr class="rule-accent" />
+
+    <nav class="page-nav" aria-label="On this page">
+      <span class="page-nav-label">On this page</span>
+      <a href="#deck">Presentation</a>
+      <a href="#route">30-minute route</a>
+      <a href="#map">Control-plane map</a>
+      <a href="#continue">Continue to P2</a>
+      <div class="page-nav-progress">
+        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-briefing-harness-control-plane"></span></div>
+        <span class="page-nav-pct" data-progress-for="ahb-briefing-harness-control-plane" data-progress-format="pct">0%</span>
+      </div>
+    </nav>
+
+    <section id="deck" class="home-section">
+      <h2>Open the presentation</h2>
+      <p class="section-lede">Keep this course page open. The presentation opens in a new tab; this page holds the route into the build.</p>
+      <a class="discussion-deck" href="https://gamma.app/docs/Harness-Prompt-Folklore-Design-the-Control-Plane-Not-Just-the-Pro-74204eoe255uss1" target="_blank" rel="noopener">
+        <span class="discussion-deck-eyebrow">Harness engineering · control-plane design</span>
+        <span class="discussion-deck-title">Design the Control Plane</span>
+        <span class="discussion-deck-subtitle">Skills, plugins, hooks, subagents, MCP, permissions, and context</span>
+        <span class="discussion-deck-action">Open the presentation in Gamma ↗</span>
+      </a>
+    </section>
+
+    <section id="route" class="home-section">
+      <h2>Use the full 30 minutes</h2>
+      <div class="skill-grid" aria-label="Thirty-minute Harness Control Plane presentation route">
+        <div class="skill-cell">
+          <span class="k">00–07 min</span>
+          <span class="n">Start with load timing</span>
+          <p>Separate what must always be present from what should load only for a matching job, event, agent, or external capability.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">07–15 min</span>
+          <span class="n">Place the behavior</span>
+          <p>Use instructions for durable guidance, a skill for reusable procedure, and a hook when the check must run whether the model remembers it or not.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">15–23 min</span>
+          <span class="n">Add capability with bounds</span>
+          <p>Use subagents for isolated work and compressed returns; use MCP for live data or controlled action; keep approvals and least privilege visible.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">23–30 min</span>
+          <span class="n">Distribute only what is stable</span>
+          <p>Keep a personal workflow as a local skill while it changes. Package it as a plugin only when installation and reuse by other people are real needs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="map" class="home-section">
+      <h2>Carry this map into P2</h2>
+      <div class="skill-grid">
+        <div class="skill-cell"><span class="k">Always on</span><span class="n">AGENTS.md</span><p>Short project conventions, constraints, commands, and review expectations.</p></div>
+        <div class="skill-cell"><span class="k">On demand</span><span class="n">Skill</span><p>A focused workflow whose description states exactly when it should and should not load.</p></div>
+        <div class="skill-cell"><span class="k">On event</span><span class="n">Hook</span><p>A reviewed command that deterministically checks or blocks at a lifecycle point.</p></div>
+        <div class="skill-cell"><span class="k">On delegation</span><span class="n">Subagent</span><p>A narrow worker with its own context and token cost, returning a concise result to the main writer.</p></div>
+        <div class="skill-cell"><span class="k">On capability</span><span class="n">MCP</span><p>A bounded connection to live data or actions, with provenance, tools, approvals, and an exit.</p></div>
+        <div class="skill-cell"><span class="k">On installation</span><span class="n">Plugin</span><p>A distribution bundle for stable skills, hooks, MCP servers, or other shared capability.</p></div>
+      </div>
+      <div class="callout"><strong>The placement test</strong>What job does this component do, when must it load, what does it cost, what does it enforce, and how is it disabled? If those answers are vague, do not add the component yet.</div>
+    </section>
+
+    <form class="checklist-form" data-checklist data-storage-key="ahb-briefing-harness-control-plane" data-block="HCP">
+      <section id="continue" class="home-section" data-check-section="briefing">
+        <h2>Continue to P2</h2>
+        <p class="section-lede">Mark the presentation complete, then turn the P1 daily-brief machine into a working personal control plane.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="hcp-hcp-complete" name="hcp-hcp-complete" data-check-id="hcp-complete" />
+              <span class="check-num">1</span>
+              <span class="check-title">The control-plane presentation is complete</span>
+            </label>
+            <div class="check-detail">The class can place instructions, skills, hooks, plugins, subagents, and MCP by load timing, control strength, cost, and scope.</div>
+          </li>
+        </ol>
+        <div class="btn-row">
+          <a class="btn" href="p2.html">Begin P2 · Build the personal control plane</a>
+        </div>
+      </section>
+    </form>
+
+    <div data-plate-for="HCP"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+
+  <script src="../js/registry.js"></script>
+  <script src="../js/shell.js"></script>
+</body>
+</html>

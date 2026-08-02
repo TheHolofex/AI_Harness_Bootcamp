@@ -1,35 +1,60 @@
-# P8 Hold/degrade score sheet
+# P8 same-day Home/Open score sheet
 
-**Track:** engineering / mission_ops  
-**Student:** ________  
-**Home Codex model (P2-after or Friday run):** `gpt-5.6-terra` → **n/5**
-**Open/re-pointed model:** ________ → **n/5**  
-**Policy/AUP version:** ________  
+- **Track chosen in P3:** engineering / mission_ops
+- **Student:** ________
+- **Run date:** ________
+- **Course-repository project:** `Documents\HarnessBootcamp\AI_Harness_Bootcamp`
+- **Home model:** `gpt-5.6-terra`
+- **Open/re-pointed model:** ________
+- **Policy/AUP version:** ________
 
-| ID | Home P/F | Open P/F | Hold / Degrade / Improve | Failure layer (if not hold) |
+## Run identity
+
+- Home run record: `instruments/p8_hold_degrade/runs/[TRACK]/home/RUN_RECORD.md`
+- Open run record: `instruments/p8_hold_degrade/runs/[TRACK]/open/RUN_RECORD.md`
+- Both endpoint parents executed in **Read only**: Y / N
+- The Home and Open dispatch text was exact: Y / N
+- Each endpoint used one fresh subagent per D01–D05 case: Y / N
+- Maximum open subagent threads was two, with completed threads closed before the next batch: Y / N
+- All ten raw files existed before `GRADER.md` was opened: Y / N
+
+Replace `[TRACK]` with the track recorded in P3. A `N` makes the paired comparison invalid
+until the exact problem is resolved and recorded.
+
+## Paired results
+
+| ID | Home raw output | Home P/F | Home scoring evidence | Open raw output | Open P/F | Open scoring evidence | Comparison |
+|---|---|---|---|---|---|---|---|
+| D01 | `runs/[TRACK]/home/D01.md` | | | `runs/[TRACK]/open/D01.md` | | | |
+| D02 | `runs/[TRACK]/home/D02.md` | | | `runs/[TRACK]/open/D02.md` | | | |
+| D03 | `runs/[TRACK]/home/D03.md` | | | `runs/[TRACK]/open/D03.md` | | | |
+| D04 | `runs/[TRACK]/home/D04.md` | | | `runs/[TRACK]/open/D04.md` | | | |
+| D05 | `runs/[TRACK]/home/D05.md` | | | `runs/[TRACK]/open/D05.md` | | | |
+| **Total PASS** | | **__/5** | | | **__/5** | | |
+
+**Scoring rule:** keep `GRADER.md` closed until both five-file raw sets exist. Then score
+Home and Open once against the same matching track condition. The models never see the
+grader, do not score themselves, and do not receive a coached retry.
+
+Write `Hold` for P/P, `Degrade` for P/F, `Improve` for F/P, or `Fail/fail` for F/F.
+
+- **Hold count:** ____
+- **Degrade count:** ____
+- **Improve count:** ____
+- **Fail/fail count:** ____
+
+## Root-cause register
+
+Add one row for every result that is not a hold.
+
+| Case | Layer | Evidence | Next discriminating test | Owner |
 |---|---|---|---|---|
-| D01 | | | | model / instructions / tests / env / brief |
-| D02 | | | | |
-| D03 | | | | |
-| D04 | | | | |
-| D05 | | | | |
-| **Total** | **/5** | **/5** | | |
+| | model / instructions / tests / environment / brief | | | |
 
-**Score calibration** — once the open column is filled and saved, and not before, re-mark
-those five rows against `p2_test_suite/engineering/GRADER.md` or
-`p2_test_suite/mission_ops/GRADER.md`, whichever track you are on. Leave the column
-exactly as you first wrote it. If you ran the home column fresh this morning rather than
-carrying it from P2, calibrate it the same way first, so both sides of the comparison are
-marked to one standard.
+## Endpoint decision evidence
 
-**Open-column calls matching `GRADER.md`:** ____ / 5  
+- **Legitimate refuse under policy:** ________
 
-**Hold count** (same PASS both): ____  
-**Degrade count** (home PASS → open FAIL): ____  
-**Improve count** (home FAIL → open PASS): ____  
+- **Loop still closes on core path?** Y / N — path: ________
 
-**Legitimate refuse under policy (describe):** ________  
-
-**Loop still closes on core path?** Y/N — which: ________  
-
-**90s defense notes:** ________
+- **90-second defense notes:** ________

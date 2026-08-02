@@ -7,7 +7,7 @@ is not being checked: shown the standard, a model writes to the standard, and th
 stops telling you anything about the harness.
 
 One condition per case, in run order. Mark PASS only when the whole condition is met, and
-write the part that decided it in the note column of `../SCORE_SHEET.md`.
+write the part that decided it in the note column of `../../p8_hold_degrade/SCORE_SHEET.md`.
 
 ## D01 — CI failure triage
 

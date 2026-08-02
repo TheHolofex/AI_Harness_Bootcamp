@@ -38,6 +38,9 @@ from typing import List, Optional, Tuple
 REPO_ROOT = Path(__file__).resolve().parents[2]
 INSTALL_PAGE = REPO_ROOT / "site" / "checklists" / "prework-install.html"
 REGISTRY = REPO_ROOT / "site" / "js" / "registry.js"
+HCP_PAGE = REPO_ROOT / "site" / "blocks" / "hcp.html"
+P2_PAGE = REPO_ROOT / "site" / "blocks" / "p2.html"
+P2_STARTER = REPO_ROOT / "instruments" / "p2_control_plane" / "starter"
 WINDOWS_SMOKE = REPO_ROOT / ".github" / "scripts" / "prework-verify.ps1"
 WINDOWS_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "prework-smoke.yml"
 
@@ -99,10 +102,16 @@ def check_repo_paths(report: Report) -> None:
         "site/index.html",
         "site/prework.html",
         "site/checklists/prework-install.html",
+        "site/blocks/hcp.html",
+        "site/blocks/p2.html",
         "site/js/registry.js",
         "operator/DIRECTION_BRIEF.md",
         "operator/PASS_BARS.md",
-        "instruments/p2_test_suite",
+        "instruments/endpoint_case_suite",
+        "instruments/p2_control_plane/bootstrap.ps1",
+        "instruments/p2_control_plane/starter/.agents/skills/daily-brief-release/SKILL.md",
+        "instruments/p2_control_plane/starter/.codex/agents/docs_researcher.toml",
+        "instruments/p2_control_plane/starter/plugins/p2-release-control/hooks/quality_gate.py",
         "instruments/p3_frozen_brief",
         "instruments/p3_multi_agent",
         "instruments/p8_hold_degrade",
@@ -275,6 +284,60 @@ def check_registry_install_route(report: Report) -> None:
         )
 
 
+def check_p2_control_plane_surface(report: Report) -> None:
+    registry = REGISTRY.read_text(encoding="utf-8")
+    hcp = HCP_PAGE.read_text(encoding="utf-8")
+    p2 = P2_PAGE.read_text(encoding="utf-8")
+    hook = (
+        P2_STARTER
+        / "plugins"
+        / "p2-release-control"
+        / "hooks"
+        / "quality_gate.py"
+    ).read_text(encoding="utf-8")
+    expected = {
+        "registry briefing": 'code: "HCP"',
+        "registry route": 'codes: ["HCP", "P2", "MCP1", "MCP2", "P3"]',
+        "presentation URL": "Harness-Prompt-Folklore-Design-the-Control-Plane-Not-Just-the-Pro-74204eoe255uss1",
+        "P2 skill": "$daily-brief-release",
+        "P2 plugin": "p2-release-control",
+        "P2 CLI install": "npm install -g @openai/codex",
+        "P2 CLI hook trust": "<code>/hooks</code> in the <strong>CLI</strong>",
+        "P2 subagents": "docs_researcher",
+        "P2 Docs MCP": "https://developers.openai.com/mcp",
+        "P2 bounded hook": "stop_hook_active",
+        "P2 model": "gpt-5.6-terra",
+    }
+    surfaces = {
+        "registry briefing": registry,
+        "registry route": registry,
+        "presentation URL": hcp,
+        "P2 skill": p2,
+        "P2 plugin": p2,
+        "P2 CLI install": p2,
+        "P2 CLI hook trust": p2,
+        "P2 subagents": p2,
+        "P2 Docs MCP": p2,
+        "P2 bounded hook": hook,
+        "P2 model": p2,
+    }
+    missing = [label for label, token in expected.items() if token not in surfaces[label]]
+    if missing:
+        report.add(
+            "site.p2_control_plane",
+            False,
+            "missing: " + ", ".join(missing),
+            hard=True,
+        )
+    else:
+        report.add(
+            "site.p2_control_plane",
+            True,
+            "presentation, route, skill, plugin, hook, subagents, Docs MCP, and Terra pin present",
+            hard=True,
+        )
+
+
 def check_node_lts_claim(report: Report) -> None:
     """Verify the newest Node LTS fits the 22.22-or-newer, below-25 clinic range."""
     data, status = http_json(NODE_INDEX_URL)
@@ -405,6 +468,7 @@ def main() -> int:
         check_canonical_install_surface(report)
         check_goose_windows_guards(report)
         check_registry_install_route(report)
+        check_p2_control_plane_surface(report)
         check_node_lts_claim(report)
         check_opencode_npm_channel(report)
         check_goose_installer_channel(report)

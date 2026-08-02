@@ -124,6 +124,8 @@ STAFF_ONLY_PATHS = {
     "lead/COHORT_PIN.md",
     "instruments/p2_test_suite/engineering/FACILITATOR_KEY.md",
     "instruments/p2_test_suite/mission_ops/FACILITATOR_KEY.md",
+    "instruments/endpoint_case_suite/engineering/FACILITATOR_KEY.md",
+    "instruments/endpoint_case_suite/mission_ops/FACILITATOR_KEY.md",
     "instruments/p3_frozen_brief/engineering/FACILITATOR_KEY.md",
     "instruments/p3_frozen_brief/mission_ops/FACILITATOR_KEY.md",
     "instruments/p8_hold_degrade/FACILITATOR_KEY.md",

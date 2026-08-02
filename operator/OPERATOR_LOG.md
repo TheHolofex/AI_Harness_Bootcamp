@@ -50,7 +50,7 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 | 5. I still own | |
 | 6. Adversarial | |
 
-### P2 — Improve the harness
+### P2 — Personal control plane
 
 | Field | Note |
 |---|---|

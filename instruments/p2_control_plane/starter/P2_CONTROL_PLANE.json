@@ -1,0 +1,31 @@
+{
+  "enabled": false,
+  "deliverable": "out/FINAL_DAILY_BRIEF.md",
+  "receipt": "out/QUALITY_GATE_RECEIPT.json",
+  "required_files": [
+    "inputs/p1/SOURCE_MANIFEST.md",
+    "inputs/p1/AUDIT.md",
+    "inputs/p1/RELEASE_RECORD.md",
+    "out/PLUGIN_REVIEW.md",
+    "out/EVIDENCE_MAP.md",
+    "out/CONFIG_EVIDENCE.md",
+    "out/DECISION_REVIEW.md",
+    "out/RUN_RECEIPT.md"
+  ],
+  "required_headings": [
+    "Shipped",
+    "Broken",
+    "Blocked",
+    "Asks"
+  ],
+  "citation_pattern": "\\[C[1-9][0-9]*\\]",
+  "minimum_citations": 5,
+  "maximum_nonblank_lines": 24,
+  "forbidden_patterns": [
+    "\\bTODO\\b",
+    "\\bTBD\\b",
+    "INSERT HERE",
+    "sk-[A-Za-z0-9_-]{16,}",
+    "xai-[A-Za-z0-9_-]{16,}"
+  ]
+}

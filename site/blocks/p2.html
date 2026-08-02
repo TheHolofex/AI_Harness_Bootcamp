@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The measured harness · AI Harness Bootcamp · Starzl</title>
+  <title>The personal control plane · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="../css/course.css" />
   <link rel="stylesheet" href="../css/checklist.css" />
 </head>
@@ -22,471 +22,401 @@
 
   <main class="site-main">
     <p class="eyebrow">Tuesday AM · P2 · AI Harness Bootcamp</p>
-    <h1>The measured harness</h1>
-    <p class="lede">You measure the harness as it ships against five fixed cases, improve one failed condition with a durable change, and record what the number did. This is the craft that makes competence compound across days instead of resetting every session.</p>
+    <h1>The personal control plane</h1>
+    <p class="lede">Turn yesterday's daily-brief machine into a durable system that carries your method, reaches current capability when needed, delegates bounded work, and refuses to release a product that misses its contract.</p>
 
     <div class="meta-grid">
-      <div><span class="k">Day</span><span class="v">Tuesday AM</span></div>
+      <div><span class="k">Day</span><span class="v">Tuesday morning</span></div>
       <div><span class="k">Block</span><span class="v">P2</span></div>
-      <div><span class="k">Time</span><span class="v">~3–3.5 hr + case talk</span></div>
-      <div><span class="k">Tools</span><span class="v">Codex app (<code>gpt-5.6-terra</code>) · instruments/p2_test_suite</span></div>
-      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p2">0 / 20 · 0%</span></div>
+      <div><span class="k">Time</span><span class="v">~2.5 hr + 45-min case talk</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex app + CLI · <code>gpt-5.6-terra</code> · Python · official Docs MCP</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p2-control-plane">0 / 10 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
 
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
-      <a href="#ideas">The ideas</a>
+      <a href="#ideas">Control-plane map</a>
       <a href="#mission">Run of exercise</a>
-      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/8</span></a>
-      <a href="#depth">Going deeper</a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/9</span></a>
+      <a href="#depth">Operating notes</a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
-        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p2"></span></div>
-        <span class="page-nav-pct" data-progress-for="ahb-checklist-p2" data-progress-format="pct">0%</span>
+        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p2-control-plane"></span></div>
+        <span class="page-nav-pct" data-progress-for="ahb-checklist-p2-control-plane" data-progress-format="pct">0%</span>
       </div>
     </nav>
 
     <section id="orient" class="home-section">
       <div class="orient-grid">
         <div>
-          <h2 class="h-plain">Why this matters</h2>
-          <p>Most people meet the same assistant fresh every morning. They re-explain their standards, re-paste their rules, and get the same generic first draft they got last week — because everything they taught it lived in a chat that is now closed. A <strong>harness</strong> is everything durable you build around the model — its four walls: the instructions it loads, the tests that check it, the memory it keeps, the skills it carries. The model is rented. The harness is yours.</p>
-          <p>This morning you treat the harness as something you can change and measure on purpose. The measurement is a fixed set of five cases, <code>D01–D05</code> — five realistic tasks from your track, each shipped with a written pass condition someone other than you wrote, so an answer either meets it or does not. You score the harness as it ships against those five, change one durable instruction against an actual failure, and score the same five again after a full restart. Scoring one fixed set twice is the only way to know whether the result changed: if the cases move between runs, the standard drifts, or you only ever score after, a higher number could just as easily come from an easier test as from a better harness. The delta is the result. Numbers beat "feels smarter," and by lunch you will have the numbers.</p>
+          <h2 class="h-plain">Make the system carry the method</h2>
+          <p>P1 proved that a serious work product can be regenerated from controlled sources. P2 makes that ability durable. You will move the procedure into a focused skill, keep the always-on instructions short, install a reviewed plugin that supplies a deterministic release hook, use read-only specialists where separate context helps, and use MCP only where current external information is actually required.</p>
+          <p>The result is not a component collection. It is one working production line for the P1 daily brief. Every addition has a named job, a cost, an evidence path, and a way to turn it off.</p>
+
           <h3>What you will leave with</h3>
           <ul>
-            <li>A score sheet with an experiment header, baseline, one targeted durable change, cold final score, and measured conclusion</li>
-            <li>At least two machine-checkable tests you authored, including one that distinguishes the baseline from the improved result</li>
-            <li>A restart result showing whether the targeted standard remained effective without a reminder</li>
-            <li>The judgment to baseline any assistant at work, name its four walls, and improve one on purpose</li>
-            <li>Your Transfer file's Identity section plus the harness seed, written while the win is fresh</li>
+            <li>A clean personal project that contains the P1 source packet, a short project policy, and one focused daily-brief skill</li>
+            <li>A course-distributed plugin whose reviewed <code>Stop</code> hook checks the saved product and writes a release receipt</li>
+            <li>Evidence, documentation, and review agents, all pinned to <code>gpt-5.6-terra</code>, run under a read-only parent turn, and limited to two open agent threads</li>
+            <li>A real release-ready daily brief, its source map, configuration evidence, quality-gate receipt, and observed run cost</li>
+            <li>An active-component manifest that shows what stays on, what remains available on demand, and what is disabled until a named need appears</li>
           </ul>
+
           <h3>Before you start</h3>
           <ul>
-            <li>Confirm the operator templates are in your Codex app project: <code>DIRECTION_BRIEF.md</code> and <code>OPERATOR_LOG.md</code></li>
-            <li>Open <code>instruments/p2_test_suite/README.md</code> in your cloned course folder and find your track folder — <code>engineering</code> or <code>mission_ops</code>, the one you chose for the week</li>
-            <li>Know what your project loads today: if an <code>AGENTS.md</code> already sits at the project root, it is part of the harness as it ships — note that on the score sheet</li>
+            <li>Complete the <a href="hcp.html"><strong>Harness Control Plane</strong></a> presentation immediately before this module</li>
+            <li>Use the P1 files you built yesterday; the bootstrap also copies the provided corpus if one generated artifact needs to be rebuilt</li>
+            <li>Begin with <strong>Ask for approval</strong> and use <strong>GPT-5.6 Terra</strong> for the main thread and every subagent; Stages 03 and 05 name the exact read-only parent turns and when to switch back</li>
+            <li>Keep the Codex app as the work surface; Stage 02 adds the Codex CLI only because current hook review and trust live under its <code>/hooks</code> command</li>
           </ul>
         </div>
         <div class="orient-aside">
           <div class="lead-box">
-            <p class="eyebrow">Lead operate-along</p>
-            <p>The lead runs this same page on screen — baseline scored live, wall changes narrated, at least one change that doesn't move the number. You still run your own chair. Check a box when <em>you</em> finish the step, not when you watch it happen.</p>
+            <p class="eyebrow">The line you are building</p>
+            <p><strong>P1 sources</strong> → focused skill → read-only evidence scout → main writer → independent reviewer → deterministic quality gate → operator release.</p>
+          </div>
+          <div class="callout">
+            <strong>One writer</strong>
+            Subagents research and review. The main agent alone edits the product. Parallel writes create coordination cost without improving this result.
           </div>
           <div class="callout" id="case-talk">
             <strong>Before lunch · Harness case talk (45 min)</strong>
-            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; notice one idea you may carry into the transfer step after measurement.
+            The lead shows a real control plane in use: the job, the component choices, the evidence that mattered, what it cost, and what still required human judgment.
           </div>
           <div class="callout">
-            <strong>After P2 · two MCP presentations (60 min)</strong>
-            Finish the measured harness and case talk, then follow the course route through the protocol overview and practical MCP guide immediately before P3.
-          </div>
-          <div class="callout">
-            <strong>Course model</strong>
-            P2 uses the OpenAI API key stored in Codex sign-in. Every baseline, spot-check, cold run, and closeout uses <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>); do not leave a chat on Default or Sol.
+            <strong>After P2</strong>
+            Two MCP presentations deepen the protocol and operating method before P3. P2 uses one narrow Docs MCP connection; P3 owns production evidence-server setup, tool-contract inspection, approvals, provenance, and shutdown.
           </div>
         </div>
       </div>
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p2/p2-overview.svg" alt="The morning at a glance: fix the experiment conditions, baseline D01–D05, target one real failure, run external checks, restart, complete the cold final score, and record the measured conclusion" width="1120" height="280" loading="lazy" decoding="async" />
-      </figure>
+
+      <div class="skill-grid" aria-label="P2 control-plane route">
+        <div class="skill-cell"><span class="k">1 · Define</span><span class="n">One real product</span><p>Reader, evidence, acceptance, budget, approval boundary, and release decision.</p></div>
+        <div class="skill-cell"><span class="k">2 · Place</span><span class="n">The smallest useful controls</span><p>Always-on guidance, on-demand procedure, event enforcement, bounded capability.</p></div>
+        <div class="skill-cell"><span class="k">3 · Run</span><span class="n">One integrated line</span><p>Evidence first, one main writer, one independent review, one bounded repair.</p></div>
+        <div class="skill-cell"><span class="k">4 · Release</span><span class="n">Measured and reversible</span><p>Saved product, PASS receipt, observed cost, residual risk, and an enacted keep/revise/leave-off decision.</p></div>
+      </div>
     </section>
 
     <section id="ideas" class="home-section">
-      <h2>How a harness actually gets better</h2>
-      <p class="section-lede">Five ideas carry everything you're about to do. Read them once now, then come back whenever a step feels arbitrary — each one names the mechanism behind a move you'll make before lunch.</p>
+      <h2>Put each behavior where it belongs</h2>
+      <p class="section-lede">The strongest harness is not the one with the most parts. It is the one that loads each necessary behavior at the narrowest useful scope.</p>
 
-      <h3>Measure before you change anything</h3>
-      <p>A <strong>baseline</strong> is the score before you change anything. It sounds like bookkeeping; it is the whole game. A delta without a baseline is a story, not a measurement — "it's much better now" carries no information unless you can say better <em>than what</em>, on <em>which cases</em>, by <em>how much</em>.</p>
-      <p>The fixed set makes the baseline honest by holding everything still. The five cases are fixed and you don't edit them, even when an edit would make your score prettier. Each case comes with a <em>pass-if</em> line — an observable condition like "names the failing job, no invented file paths" — and that line is the grader, not your general impression of the answer. Baseline and after both run on <code>gpt-5.6-terra</code>, with each case isolated in its own fresh chat. When every variable but one is pinned, the one that moved is the one you changed.</p>
-      <p>Those pass-if lines live in a file of their own, <code>GRADER.md</code>, one per track, holding all five conditions together. The case files the assistant reads carry only the input and the task. That separation is the point: a model shown "name the failing job, the root error line, and one concrete next action" will name exactly those three things, and you will have measured its reading comprehension rather than your harness. Never let the machine being checked see its own check — you read the conditions, it does not.</p>
-      <p>Going wrong looks like this: skipping the baseline because the unchanged harness is "obviously bad," grading generously because you're rooting for your own harness, or letting the standard drift between the first run and the second. Each one quietly converts your instrument into a mirror — it reads back whatever you want it to say. When you're unsure whether a response passed, score FAIL and write why; a strict FAIL is worth more than a hopeful PASS, because fails are where your changes come from.</p>
-      <p>At work, this is the ten-minute habit that converts tool claims into measurements. Before you change any assistant — or believe any vendor — write five fixed cases from your own desk and score what you have today. Every claim of improvement after that is a number, not a feeling.</p>
+      <table>
+        <thead><tr><th>Surface</th><th>When it loads</th><th>Use it for</th><th>Do not mistake it for</th></tr></thead>
+        <tbody>
+          <tr><td><strong><code>AGENTS.md</code></strong></td><td>Every turn in scope</td><td>Short project conventions, constraints, commands, and ownership</td><td>A storage bin for every procedure</td></tr>
+          <tr><td><strong>Skill</strong></td><td>When named or matched by its description</td><td>One reusable workflow with inputs, decisions, output, and stopping rules</td><td>Deterministic enforcement</td></tr>
+          <tr><td><strong>Hook</strong></td><td>At a lifecycle event</td><td>A mechanical check that must run even when the model forgets</td><td>A complete security boundary or another prompt</td></tr>
+          <tr><td><strong>Subagent</strong></td><td>When delegated</td><td>Isolated read-heavy research, tests, or review with a compressed return</td><td>A second independent engine or free compute</td></tr>
+          <tr><td><strong>MCP</strong></td><td>When a connected capability is needed</td><td>Live external data or controlled action with a declared tool surface</td><td>A workflow, a trust seal, or another opinion</td></tr>
+          <tr><td><strong>Plugin</strong></td><td>When installed and enabled</td><td>Distributing stable skills, hooks, MCP configuration, and related assets</td><td>A new reasoning layer</td></tr>
+          <tr><td><strong>Config + approval</strong></td><td>At project/session runtime</td><td>Model, concurrency, sandbox, permissions, and tool policy</td><td>Evidence that the output is correct</td></tr>
+        </tbody>
+      </table>
 
-      <h3>The four walls of a harness</h3>
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p2/p2-four-walls.svg" alt="Concept: the loop (act, observe, correct) surrounded by four wall artifacts — instructions in AGENTS.md, tests you authored, memory as a recall layer, and skills that fire on a trigger" width="1120" height="220" loading="lazy" decoding="async" />
-      </figure>
-      <p>Loop quality tracks the harness around the model, not model magic. The same model inside a better harness can do visibly better work — which means "the AI isn't good at this" may be a claim about the setup, not the model. The four common levers are instructions, tests, memory, and skills. Instructions and tests are inspectable project artifacts; memory is a recall setting; skills are packaged procedures.</p>
-      <p><strong>Instructions</strong> live in <code>AGENTS.md</code> at the project root. The app loads that file into every session that opens the project — it is the difference between a rule you re-type each morning and a rule the machine already has before you say hello. Instructions are cheap to add and cost attention to obey, so the best files are short: a handful of rules, each traceable to a failure you've actually seen.</p>
-      <p><strong>Tests</strong> are checks that live outside the model and pass or fail without your judgment in the loop — a count, a required string, a forbidden pattern. Give them a file: a <code>CHECKS.md</code> at the project root, one predicate per line, that any session — including a cold one — can load and run against its own answer. Their power comes from independence: the system under test never grades itself. A model asked "was that good?" says yes; a test asked the same question has no opinion to flatter you with.</p>
-      <p><strong>Memory</strong> is a recall layer — off by default until you switch it on in the app's Settings, and limited on an API key, so treat it as a convenience rather than a foundation. The distinction that matters: memory is for context worth recalling; rules that must <em>always</em> hold belong in <code>AGENTS.md</code>, the artifact you can read, diff, and commit. A must-hold rule stored in memory is a rule with an unreliable landlord.</p>
-      <p><strong>Skills</strong> are packaged procedure: a folder holding a <code>SKILL.md</code> that describes a move you make repeatedly, and when to make it. The app discovers them from <code>%USERPROFILE%\.agents\skills</code> — one folder per skill, so that's where yours goes; older builds read <code>%USERPROFILE%\.codex\skills</code> instead. The confirmation that matters is the app's Skills list: a skill in the right place appears there, and that sidebar check beats any path claim — if yours is missing, restart the app so it rescans. They are how a checklist stops being something you remember and starts being something the harness carries.</p>
-      <p>When you hear "my assistant is just better at this," audit the walls before you credit the model. Two colleagues on the same tool, one producing sharp work and one producing mush, are almost always separated by artifacts, not accounts.</p>
-
-      <h3>One change, one re-measure</h3>
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p2/p2-attribution.svg" alt="Concept: editing one wall then rescoring gives a delta with a known cause; four edits at once give a delta whose cause is unknown" width="1120" height="220" loading="lazy" decoding="async" />
-      </figure>
-      <p><strong>Attribution</strong> means knowing which change caused which effect. It is the discipline the whole morning runs on: change a single wall, rescore, and the delta has exactly one candidate cause. Change four things at once and the delta is unreadable — the score moved, but you learned nothing you can use tomorrow, because you cannot say which edit earned its place and which three are decoration.</p>
-      <p>The mechanism is single-variable isolation, the same one behind any controlled comparison. The suite pins the cases, the model at <code>gpt-5.6-terra</code>, and the cold-chat condition; your edit is the only free variable left. That is also why confounds matter: switch models mid-morning and your delta measures the model change, not your craft — which is exactly why every P2 run stays on Terra.</p>
-      <p>Several simultaneous changes feel productive. You rewrite the instructions, add three tests, enable memory, and draft a skill in one pass — and the after-score moves, but you cannot tell why. Worse is when it <em>doesn't</em> move: now you must un-pick four changes to find the one that hurt. The useful path is one change against one observed failure, a targeted check, then the cold final score.</p>
-      <p>This discipline transfers to anything configurable: prompts, pipelines, team process. Anywhere someone says "we changed a bunch of things and it got better," you now hear what's missing.</p>
-
-      <h3>Durable work after restart</h3>
-      <p><strong>Durable</strong> means still there when the session dies. Everything you teach an assistant inside a chat lives in that chat's context — a working memory that is genuinely impressive and genuinely gone the moment the chat closes. Artifacts on disk are the other side of the line: <code>AGENTS.md</code>, test files, and skill folders are loaded fresh into every new session, with no dependence on what you said yesterday.</p>
-      <p>The cold re-run is the only honest test of which side of the line your standard lives on. Close the chat where you did the coaching. Open a new one. Run one case. If the standard still fires — the rule applied, the format held, the skill offered — it lives in an artifact and you own it. If the output reverts to what you saw before any changes, your craft was living in scrollback, and what felt like an improved harness was an improved <em>conversation</em>.</p>
-      <p>The classic self-deception here is demonstrating improvement in the same long chat where the coaching happened. Of course it performs — the entire lesson is still sitting in context. That result says nothing about tomorrow. The test that means something is the one after the app restarts and the new chat has none of your coaching.</p>
-      <p>At work, the practical test is: could a colleague open your project cold and get your standard from the machine? If yes, you've built something the team owns. If your standard only lives in the chat scrollback, you do not own it yet — you're renting it one session at a time.</p>
-
-      <h3>Use a skill only for reusable procedure</h3>
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p2/p2-skill-fire.svg" alt="Concept: a task arrives, the SKILL.md description line decides — trigger conditions fire unprompted, a vague title never fires" width="1120" height="220" loading="lazy" decoding="async" />
-      </figure>
-      <p>A <strong>skill</strong> is a folder with a <code>SKILL.md</code> inside: a named, packaged procedure plus a description of when to use it. Its description is the trigger surface. A description written as a title ("Review helper") gives the assistant little to match; a description written as conditions ("Use when reviewing a diff or code snippet for security issues…") can load on a matching task.</p>
-      <p>Do not create a skill merely to satisfy this lesson. The required change belongs in <code>AGENTS.md</code>. Add a skill only when the failed requirement is a reusable multi-step procedure, record it as another variable, and rerun the affected case before attributing an effect to it.</p>
+      <h3>Six engineering rules that save real work</h3>
+      <div class="skill-grid">
+        <div class="skill-cell"><span class="k">Context</span><span class="n">Keep always-on guidance thin</span><p>Skill names and descriptions can load before their bodies. A bloated catalog still consumes context and may be shortened or omitted. Narrow descriptions are routing contracts.</p></div>
+        <div class="skill-cell"><span class="k">Guarantee</span><span class="n">Use code for must-run checks</span><p>A skill can tell the model to check. A hook can make the check run at <code>Stop</code>. Current Codex hooks execute reviewed command handlers; they are useful guardrails, not complete containment.</p></div>
+        <div class="skill-cell"><span class="k">Topology</span><span class="n">Parallelize reads, serialize judgment</span><p>Run independent evidence and documentation research together. Review only after a candidate exists. Keep one writer so the product has one owner.</p></div>
+        <div class="skill-cell"><span class="k">Capability</span><span class="n">Give MCP one bounded job</span><p>The Docs MCP server verifies changing product behavior from primary documentation. It is read-only here; no business system or write-capable tool is added merely to demonstrate a connection.</p></div>
+        <div class="skill-cell"><span class="k">Distribution</span><span class="n">Package only stable controls</span><p>Your daily-brief skill stays local while it changes. The course quality gate is already stable and shared, so it earns plugin packaging.</p></div>
+        <div class="skill-cell"><span class="k">Release</span><span class="n">Measure the integrated outcome</span><p>Record acceptance, time, turns, approvals, repairs, quality-gate result, and residual risk from the actual product run.</p></div>
+      </div>
     </section>
 
-    <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p2" data-block="P2">
+    <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p2-control-plane" data-block="P2">
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Measure the unchanged harness, change one layer against a named failure, run external checks, then restart and score the full suite once under the same conditions.</p>
+        <p class="section-lede">Upgrade the real P1 daily-brief machine. The course supplies the plumbing; your work is choosing, directing, running, measuring, and releasing the system.</p>
 
-        <h3>Stage 01 · Record the experiment</h3>
-        <p>The score sheet is the experiment record. Fix the track, model, cases, and acceptance rule before running the baseline so the after-score remains comparable.</p>
-
-        <div class="do-step">
-          <p class="do-label">Open the case suite in <strong>File Explorer</strong>:</p>
-          <ul class="do-clicks">
-            <li>Press <strong>Windows+E</strong> and enter <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite</code> in the address bar</li>
-            <li>Choose <code>engineering</code> or <code>mission_ops</code>. Use that same folder every time <code>[TRACK]</code> appears</li>
-            <li>Open the track's <code>cases</code> folder and inspect D01 through D05</li>
-            <li>Open <code>GRADER.md</code> beside that folder and read each case's exact pass condition</li>
-          </ul>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p2-p2-open" name="p2-p2-open" data-check-id="p2-open" />
-              <span class="check-num">1</span>
-              <span class="check-title">One track and all five pass conditions are identified</span>
-            </label>
-            <div class="check-detail">One track is selected, and all five case tasks and their written pass conditions are open for reference before the model runs.</div>
-          </li>
-        </ol>
+        <h3>Stage 01 · Create the project and set the contract</h3>
+        <p>Build outside the course repository so P2's skills, agents, plugin, and hook do not silently become cargo in later modules. The bootstrap copies your completed P1 folder and refuses to overwrite an existing P2 project.</p>
 
         <div class="do-step">
-          <p class="do-label">Open the shared score sheet from <strong>PowerShell</strong>:</p>
-          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\SCORE_SHEET.md"</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Add this experiment header near the top of <strong>SCORE_SHEET.md</strong>, fill every bracket, and save:</p>
-          <pre><code>Experiment
-- Track: [engineering / mission_ops]
-- Date: [TODAY]
-- Model: gpt-5.6-terra
-- Fixed cases: D01-D05
-- Baseline condition: course project before my P2 change
-- Change rule: one named baseline failure -> one smallest durable harness change
-- Final condition: full app restart, one fresh chat per case, gpt-5.6-terra, same five cases
-- Acceptance: score strictly against GRADER.md; report the measured delta even if zero</code></pre>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p2-pulse-brief" name="p2-pulse-brief" data-check-id="pulse-brief" />
-              <span class="check-num">2</span>
-              <span class="check-title">SCORE_SHEET.md defines the experiment</span>
-            </label>
-            <div class="check-detail">The sheet fixes the track, five cases, <code>gpt-5.6-terra</code>, baseline condition, one-change rule, cold final condition, and grading rule.</div>
-          </li>
-        </ol>
-
-        <h3>Stage 02 · Score the unchanged harness</h3>
-        <p>Each case gets a clean chat so one answer cannot teach the next case. The score sheet carries the measurement across those chats.</p>
-
-        <div class="do-step">
-          <p class="do-label">Open the baseline condition in the <strong>ChatGPT desktop app</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
-            <li>Select <strong>Codex</strong> from the top-left switcher if needed</li>
-            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Keep this project open while you run D01 through D05</li>
-          </ul>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Run this cycle once for each row, in order:</p>
-          <table>
-            <thead><tr><th>Case</th><th>Exact chat name</th></tr></thead>
-            <tbody>
-              <tr><td>D01</td><td><code>P2 — Baseline D01</code></td></tr>
-              <tr><td>D02</td><td><code>P2 — Baseline D02</code></td></tr>
-              <tr><td>D03</td><td><code>P2 — Baseline D03</code></td></tr>
-              <tr><td>D04</td><td><code>P2 — Baseline D04</code></td></tr>
-              <tr><td>D05</td><td><code>P2 — Baseline D05</code></td></tr>
-            </tbody>
-          </table>
+          <p class="do-label">Open the P2 PowerShell window from the beginning:</p>
           <ol class="do-clicks">
-            <li>Click <strong>New chat</strong></li>
-            <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter the exact name from the row</li>
-            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) for D01 through D05</li>
-            <li>Confirm permissions say <strong>Ask for approval</strong></li>
-            <li>Paste the dispatch below with that row's case file and collect one answer</li>
-            <li>Do not send another message in that chat. Create the next row's chat</li>
+            <li>Press the <strong>Windows</strong> key, type <strong>PowerShell</strong>, and open <strong>Windows PowerShell</strong></li>
+            <li>Paste the commands below</li>
+            <li>Keep this PowerShell window open through Stage 06</li>
           </ol>
-          <pre><code>Open the file instruments/p2_test_suite/[TRACK]/cases/[CASE FILE] and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else.</code></pre>
-          <p>Replace <code>[TRACK]</code> and <code>[CASE FILE]</code> each time. Keep the dispatch identical. Each named chat receives only its matching case; never paste a second case or a coaching message into it.</p>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Score the five answers in <strong>SCORE_SHEET.md</strong>:</p>
-          <ul class="do-clicks">
-            <li>For each answer, walk its <code>GRADER.md</code> requirements one at a time</li>
-            <li>Write PASS only when every requirement holds; otherwise write FAIL and name the missed requirement</li>
-            <li>Total the Baseline column out of 5 and save</li>
-            <li>Do not revise the baseline later</li>
-          </ul>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p2-p2-base" name="p2-p2-base" data-check-id="p2-base" />
-              <span class="check-num">3</span>
-              <span class="check-title">SCORE_SHEET.md contains the D01-D05 baseline before any change</span>
-            </label>
-            <div class="check-detail">The Baseline column contains five strict PASS/FAIL calls from five isolated named chats, a note naming the missed requirement for every FAIL, and a total out of 5.</div>
-          </li>
-        </ol>
-
-        <h3>Stage 03 · Change one wall against one failure</h3>
-        <p>Choose one failed grader requirement that matters. The instruction and the external predicates below must target that exact failure; a generic improvement cannot support a causal claim.</p>
-
-        <div class="do-step">
-          <p class="do-label">In <strong>SCORE_SHEET.md</strong>, add this target record and fill it:</p>
-          <pre><code>Target case: [D0X]
-Failed grader requirement: [EXACT REQUIREMENT]
-Observed baseline failure: [ONE LINE FROM THE ANSWER]
-Chosen wall: instructions
-Smallest intended change: [ONE RULE]</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Open or create the project instruction file from <strong>PowerShell</strong>:</p>
-          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\AGENTS.md"</code></pre>
-        </div>
-
-        <p>If <code>AGENTS.md</code> already contains rules, preserve them. Add only the smallest rule that closes the failed requirement. Put the target case id in a comment beside it so the reason for the rule remains visible.</p>
-
-        <div class="do-step">
-          <p class="do-label">Create <strong>P2 — Wall Spot-check</strong> in <strong>Codex</strong>:</p>
-          <ul class="do-clicks">
-            <li>In <strong>ChatGPT</strong>, select <strong>Codex</strong> from the top-left switcher if needed</li>
-            <li>If another project is open, choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Click <strong>New chat</strong></li>
-            <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P2 — Wall Spot-check</code></li>
-            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and confirm permissions say <strong>Ask for approval</strong></li>
-          </ul>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Run only the targeted case in <strong>P2 — Wall Spot-check</strong>:</p>
-          <pre><code>Open the file instruments/p2_test_suite/[TRACK]/cases/[CASE FILE] and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else.</code></pre>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p2-p2-walls" name="p2-p2-walls" data-check-id="p2-walls" />
-              <span class="check-num">4</span>
-              <span class="check-title">One durable instruction change targets the named baseline failure</span>
-            </label>
-            <div class="check-detail">The rule lives in <code>AGENTS.md</code>, names its target case, and is no broader than the failed requirement needs.</div>
-          </li>
-        </ol>
-
-        <p>Now turn the actual failed condition into external checks. Use predicates that can distinguish the baseline answer from the improved answer without asking the model to grade itself.</p>
-
-        <div class="do-step">
-          <p class="do-label">Open or create <code>CHECKS.md</code> from <strong>PowerShell</strong>:</p>
-          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\CHECKS.md"</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Write at least two predicates tied to the failed requirement:</p>
-          <pre><code># Target: [CASE ID] — [FAILED GRADER REQUIREMENT]
-# REQUIRE passes when the pattern appears in the answer.
-# FORBID passes when the pattern does not.
-REQUIRE [PATTERN THE REQUIREMENT NEEDS]
-FORBID [PATTERN THE REQUIREMENT PROHIBITS]</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Open the runner input from <strong>PowerShell</strong>:</p>
-          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\answer.txt"</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Copy the targeted <strong>baseline</strong> answer into <code>answer.txt</code>, save, then run:</p>
           <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
-python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></pre>
-        </div>
-
-        <p>At least one predicate should fail on the observed baseline failure. If both pass, revise the predicates to represent the grader condition more faithfully; do not invent a new defect.</p>
-
-        <div class="do-step">
-          <p class="do-label">Replace <code>answer.txt</code> with the improved spot-check answer, save, and run the same command again:</p>
-          <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
-python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></pre>
-        </div>
-
-        <p>The predicate that was red should now be green. If it remains red, align the <code>AGENTS.md</code> rule, the grader requirement, and the predicate before moving on. Use <code>py</code> instead of <code>python</code> if needed.</p>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p2-p2-tests" name="p2-p2-tests" data-check-id="p2-tests" />
-              <span class="check-num">5</span>
-              <span class="check-title">External checks reproduce the real red-to-green change</span>
-            </label>
-            <div class="check-detail"><code>CHECKS.md</code> contains at least two predicates derived from the failed grader condition, with runner output showing the baseline failure and improved result.</div>
-          </li>
-        </ol>
-
-        <div class="callout">
-          <strong>Add memory or a skill only when the failure calls for it.</strong>
-          Do not change Memory during this experiment; it introduces another variable. Create a skill only if the failed requirement is a reusable multi-step procedure that does not belong in one project rule. Record that added variable in the score sheet and rerun the affected baseline case before claiming its effect.
-        </div>
-
-        <h3>Stage 04 · Restart and run the cold final score</h3>
-        <figure class="section-diagram">
-          <img src="../assets/blocks/p2/p2-cold-restart.svg" alt="The app restarts, five fresh case chats load the durable project rule from disk, and the same five cases produce the final score" width="1120" height="220" loading="lazy" decoding="async" />
-        </figure>
-
-        <div class="do-step">
-          <p class="do-label">Start the cold final condition in the <strong>Codex app</strong>:</p>
-          <ul class="do-clicks">
-            <li>Quit the ChatGPT app completely</li>
-            <li>Open <strong>ChatGPT</strong> again from the Windows Start menu</li>
-            <li>Select <strong>Codex</strong> from the top-left switcher if needed</li>
-            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-          </ul>
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\instruments\p2_control_plane\bootstrap.ps1"</code></pre>
+          <p>The final line must name <code>Documents\HarnessBootcamp\P2_Control_Plane</code>. If that folder already exists, the bootstrap stops rather than replacing your work.</p>
+          <p>If P1 was completed in another Codex project, rerun the command with <code>-P1Source "C:\path\to\that\project\mission_flesh\p1"</code>. The bootstrap stops and names any missing manifest, audit, release record, or corpus instead of silently creating a partial P2 project.</p>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Run this cycle once for each row, in order:</p>
-          <table>
-            <thead><tr><th>Case</th><th>Exact chat name</th></tr></thead>
-            <tbody>
-              <tr><td>D01</td><td><code>P2 — Cold D01</code></td></tr>
-              <tr><td>D02</td><td><code>P2 — Cold D02</code></td></tr>
-              <tr><td>D03</td><td><code>P2 — Cold D03</code></td></tr>
-              <tr><td>D04</td><td><code>P2 — Cold D04</code></td></tr>
-              <tr><td>D05</td><td><code>P2 — Cold D05</code></td></tr>
-            </tbody>
-          </table>
+          <p class="do-label">Open the new project and create its first chat:</p>
           <ol class="do-clicks">
-            <li>Click <strong>New chat</strong></li>
-            <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter the exact name from the row</li>
-            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and confirm permissions say <strong>Ask for approval</strong></li>
-            <li>Paste the unchanged dispatch below with that row's case file</li>
-            <li>Collect one answer, then stop using that chat and create the next row's chat</li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong></li>
+            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\P2_Control_Plane</code></li>
+            <li>If Codex asks whether to trust this project, verify that exact path and choose <strong>Trust</strong>. This enables the reviewed project configuration and custom agents; it does not trust the plugin hook</li>
+            <li>Click <strong>New chat</strong>, open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P2 — Control Plane Build</code></li>
+            <li>Select <strong>GPT-5.6 Terra</strong> and confirm <strong>Ask for approval</strong></li>
           </ol>
-          <pre><code>Open the file instruments/p2_test_suite/[TRACK]/cases/[CASE FILE] and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else.</code></pre>
-          <p>Replace <code>[TRACK]</code> and <code>[CASE FILE]</code> for the matching row. Each cold chat receives exactly one case and no coaching.</p>
+        </div>
+
+        <div class="do-step" id="p2-profile-proof">
+          <p class="do-label">Paste this into <strong>P2 — Control Plane Build</strong>:</p>
+          <pre><code>We are defining the production control plane for the P1 daily status brief.
+Do not draft the brief yet.
+
+Read AGENTS.md, HARNESS_PROFILE.md, P2_CONTROL_PLANE.json, the existing skill,
+and everything under inputs/p1/. Find the actual P1 reader, source manifest,
+regenerate path, audit, release record, and current brief.
+
+If a generated P1 artifact is missing, reconstruct only that necessary artifact
+from inputs/p1/corpus and label the recovery in HARNESS_PROFILE.md. Do not invent
+workplace facts.
+
+Replace every bracket in HARNESS_PROFILE.md that can be resolved now. Check that
+the acceptance contract matches the real P1 product. Keep AGENTS.md short and
+project-wide. Keep P2_CONTROL_PLANE.json disabled. Return a compact routing table:
+need → surface → why it loads there → runtime cost → how to disable it.
+Stop after the profile, contract, and routing are coherent.</code></pre>
+          <p>Open the changed profile in the file preview. The reader, source boundary, acceptance conditions, runtime limits, and disable path must describe one real product rather than a generic assistant.</p>
+        </div>
+
+        <h3>Stage 02 · Personalize the skill and install the plugin</h3>
+        <p>The skill owns the repeatable method. The plugin owns distribution of a stable release check. They are deliberately separate: the first is still personal and changing; the second is course-tested shared infrastructure.</p>
+
+        <div class="do-step" id="p2-skill-proof">
+          <p class="do-label">In <strong>P2 — Control Plane Build</strong>, paste:</p>
+          <pre><code>Use $skill-creator to review and improve the existing
+.agents/skills/daily-brief-release/SKILL.md for this actual P1 product.
+
+Keep one focused skill. Its description must say when the workflow should and
+should not trigger. Its body must define inputs, source limits, evidence work,
+the saved output, the independent review, the deterministic release gate, and
+the HOLD condition. Use a script only for a genuinely deterministic operation.
+Do not create a second skill and do not move project-wide rules out of AGENTS.md.
+
+Show me the final description, the expected trigger request, and one nearby
+request that should not trigger it.</code></pre>
+          <p>Open <strong>Skills</strong> in the app sidebar and find <strong>daily-brief-release</strong>. Its short description should identify this workflow without reading like a title or matching unrelated summary work. If the updated skill does not appear, restart the app and reopen the project.</p>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Complete the final measurement in <strong>SCORE_SHEET.md</strong>:</p>
+          <p class="do-label">Inspect the plugin before installing it:</p>
+          <pre><code>Review plugins/p2-release-control as an untrusted local package.
+Read its manifest, hook definition, Python handler, and smoke test.
+Report: the lifecycle event; the exact command on Windows; files read and
+written; network or credential access; behavior when disabled; behavior on the
+first and second failure; and the uninstall or disable path.
+Do not install, trust, or change it. Save the completed review to
+out/PLUGIN_REVIEW.md.</code></pre>
+          <p>Open <code>out/PLUGIN_REVIEW.md</code>. It should show one <code>Stop</code> command hook, local project files only, no network or credentials, an inert default, one bounded continuation, and a saved JSON receipt.</p>
+        </div>
+
+        <div class="do-step" id="p2-plugin-proof">
+          <p class="do-label">Test, install, and trust the reviewed package:</p>
+          <ol class="do-clicks">
+            <li>Open the app's integrated terminal with the terminal icon in the top-right or <strong>Ctrl+`</strong></li>
+            <li>Run the smoke test below; continue only when it prints <code>PASS p2-release-control</code></li>
+            <li>Run <code>codex --version</code>. If PowerShell cannot find it, install the current official CLI with the npm command below, close and reopen the terminal, and run the version check again</li>
+            <li>Run <code>codex login status</code>. It should report the API-key login already configured for the app. If it does not, stop and ask the instructor to restore that course login; do not paste a key into the terminal or create <code>OPENAI_API_KEY</code></li>
+            <li>Restart the ChatGPT desktop app so it discovers the project's local marketplace</li>
+            <li>Reopen <code>P2_Control_Plane</code>, open <strong>Plugins</strong>, choose <strong>AI Harness Bootcamp</strong>, and install <strong>P2 Release Control</strong></li>
+            <li>Open the integrated terminal again and run <code>codex</code> from the P2 project. If the CLI asks to trust the project, verify the path and accept; project trust loads its config, but still does not trust a hook</li>
+            <li>Type <code>/hooks</code> in the <strong>CLI</strong>. Open the <strong>Stop</strong> handler, compare its command with the one you reviewed, and separately trust that exact definition</li>
+            <li>Type <code>/exit</code> to leave the CLI. Stage 03 creates the fresh app chat that loads the installed plugin</li>
+          </ol>
+          <pre><code>py -3 .\plugins\p2-release-control\tests\smoke_test.py
+codex --version
+codex login status</code></pre>
+          <p>If <code>codex --version</code> is not recognized, install the CLI and then reopen the terminal:</p>
+          <pre><code>npm install -g @openai/codex</code></pre>
+          <p>The desktop app installs the local plugin; the CLI exposes the current <code>/hooks</code> trust browser. Installation alone does not trust a hook. Trust is recorded against the exact definition, so a later change must be reviewed again.</p>
+        </div>
+
+        <h3>Stage 03 · Delegate evidence and current configuration research</h3>
+        <p>Use parallelism where it removes real waiting: the source analyst can inspect the P1 packet while the documentation specialist verifies current Codex behavior. Set the permission mode on the parent turn before delegation; a role file is useful configuration, but it is not a substitute for the live boundary you select.</p>
+
+        <div class="do-step">
+          <p class="do-label">Create the assembly chat after the restart:</p>
+          <ol class="do-clicks">
+            <li>Confirm the open project is <code>Documents\HarnessBootcamp\P2_Control_Plane</code></li>
+            <li>Click <strong>New chat</strong>, rename it <code>P2 — Control Plane Assembly</code>, and select <strong>GPT-5.6 Terra</strong></li>
+            <li>Change the permission control beneath the composer to <strong>Read only</strong> before sending the research request</li>
+          </ol>
+        </div>
+
+        <div class="do-step" id="p2-delegation-proof">
+          <p class="do-label">Paste this read-only research request into <strong>P2 — Control Plane Assembly</strong>:</p>
+          <pre><code>Run two read-only subagents in parallel and wait for both.
+
+1. evidence_scout: inspect inputs/p1 and return the material claims, exact
+C-number sources, qualifiers, contradictions, and missing support needed for
+the daily brief. Do not draft or edit.
+
+2. docs_researcher: use only the official OpenAI Developer Docs MCP server to
+verify this project's current skill location and trigger behavior, plugin
+manifest and marketplace paths, Stop command-hook behavior and trust, custom
+agent schema, Terra pins, open-thread cap, and MCP scope. Return official links
+and flag any mismatch. Do not edit.
+
+After both return, give me two concise, clearly labeled result blocks. List the
+subagents used, whether they overlapped in time, and the MCP server used. Do not
+write or change any file. Close both completed agent threads before you stop;
+the configured cap counts open threads, not only agents still running.</code></pre>
+          <p>Read both returned blocks. The configuration result must name the official Docs MCP server and contain primary links. The evidence result must preserve source qualifiers rather than turning uncertain inputs into settled facts.</p>
+          <div class="callout"><strong>If the Docs MCP server is unavailable</strong>Stop and show the visible connection error to the instructor. Do not silently substitute model memory or web search and call the configuration verified.</div>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Save the returned evidence under a write-capable main turn:</p>
+          <ol class="do-clicks">
+            <li>Keep <strong>P2 — Control Plane Assembly</strong> open</li>
+            <li>Change the permission control back to <strong>Ask for approval</strong></li>
+            <li>Paste the request below</li>
+          </ol>
+          <pre><code>Using only the two result blocks returned in the previous turn, write the source
+result to out/EVIDENCE_MAP.md and the configuration result to
+out/CONFIG_EVIDENCE.md. Correct only a configuration mismatch supported by an
+official link. List the files changed by the main agent. Do not spawn another
+agent.</code></pre>
+          <p>Open both saved files and compare them with the read-only returns still visible in the chat.</p>
+        </div>
+
+        <h3>Stage 04 · Review the deterministic release gate</h3>
+        <p>The smoke test proved the handler's inert, fail, bounded-repair, and pass paths. Review the actual product contract while it is still disabled. Arming it in this turn would make the not-yet-created product fail before production begins.</p>
+
+        <div class="do-step" id="p2-hook-proof">
+          <p class="do-label">In <strong>P2 — Control Plane Assembly</strong>, paste:</p>
+          <pre><code>Read HARNESS_PROFILE.md, P2_CONTROL_PLANE.json, out/PLUGIN_REVIEW.md, and
+out/CONFIG_EVIDENCE.md. Confirm the contract checks the actual daily-brief
+requirements and that every path stays inside this project.
+
+Keep enabled set to false. Do not weaken a requirement, add a new hook, or run
+another path in this turn. Show the exact contract that will run at Stop, the first
+safe moment to enable it, and how to disarm it after release.</code></pre>
+          <p>Open <code>P2_CONTROL_PLANE.json</code> and confirm <code>enabled</code> is still <code>false</code>. The output, receipt, release evidence, four headings, distinct-citation minimum, line limit, forbidden placeholders, and both course key shapes should all be visible before production begins.</p>
+        </div>
+
+        <h3>Stage 05 · Run the integrated production line</h3>
+        <p>This is the serious product run. One chat moves through three purposeful turns: a write-capable candidate, a read-only review, then a write-capable release that arms the hook only after every required artifact exists. One focused hook continuation is allowed; a second failure remains a HOLD.</p>
+
+        <div class="do-step">
+          <p class="do-label">Create the production chat from the beginning:</p>
+          <ol class="do-clicks">
+            <li>In <code>P2_Control_Plane</code>, click <strong>New chat</strong></li>
+            <li>Rename it <code>P2 — Daily Brief Release</code></li>
+            <li>Select <strong>GPT-5.6 Terra</strong> and <strong>Ask for approval</strong></li>
+            <li>Write the local start time in <code>HARNESS_PROFILE.md</code></li>
+          </ol>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">First produce the candidate while the gate remains disabled:</p>
+          <pre><code>Use $daily-brief-release to regenerate today's daily status brief through the
+saved-candidate phase only.
+Use the declared P1 source set, out/EVIDENCE_MAP.md, and HARNESS_PROFILE.md.
+The main thread owns every write. Save the candidate at the declared final path,
+but keep P2_CONTROL_PLANE.json disabled. Do not spawn the reviewer, do not claim
+release, and do not estimate hidden usage or cost. Stop when the candidate is
+ready for an independent review.</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Run the independent review under a real read-only boundary:</p>
+          <ol class="do-clicks">
+            <li>Keep <strong>P2 — Daily Brief Release</strong> open</li>
+            <li>Change the permission control to <strong>Read only</strong></li>
+            <li>Paste the request below</li>
+          </ol>
+          <pre><code>Run the decision_reviewer against out/FINAL_DAILY_BRIEF.md, the declared P1
+sources, HARNESS_PROFILE.md, and P2_CONTROL_PLANE.json. Wait for its PASS or HOLD
+result and return that result exactly. Do not write or change a file. Close the
+completed reviewer thread before you stop.</code></pre>
+        </div>
+
+        <div class="do-step" id="p2-product-proof">
+          <p class="do-label">Release the reviewed product and arm the gate at the safe moment:</p>
+          <ol class="do-clicks">
+            <li>Change the permission control back to <strong>Ask for approval</strong></li>
+            <li>Paste the release request below</li>
+          </ol>
+          <pre><code>Use the decision_reviewer result from the previous turn. Save that exact result
+to out/DECISION_REVIEW.md. Make only material, source-supported repairs.
+Complete out/RUN_RECEIPT.md with observed time, turns, subagent runs, approvals,
+repairs, and visible usage or "not exposed".
+
+Confirm every required release file exists. Then, as the last configuration
+change before stopping, change only enabled from false to true in
+P2_CONTROL_PLANE.json. Do not weaken the contract. Stop for the deterministic
+release gate.</code></pre>
+          <p>If the hook continues the turn, read its named failures and watch the one repair pass. When the turn ends, open:</p>
           <ul class="do-clicks">
-            <li>Score D01-D05 against <code>GRADER.md</code> with the same strictness as baseline</li>
-            <li>Fill and total the After column</li>
-            <li>Compute <code>Delta = After - Baseline</code></li>
-            <li>Record whether the targeted case kept its improved result after restart</li>
-            <li>Save the file</li>
+            <li><code>out/FINAL_DAILY_BRIEF.md</code> — the actual work product</li>
+            <li><code>out/DECISION_REVIEW.md</code> — the independent PASS or HOLD result and material findings</li>
+            <li><code>out/QUALITY_GATE_RECEIPT.json</code> — status, each check, timestamp, and product hash</li>
+            <li><code>out/RUN_RECEIPT.md</code> — observed time, turns, subagents, approvals, repairs, and visible usage or <code>not exposed</code></li>
           </ul>
+          <p>Release requires a PASS receipt and your own reading of the brief. The hook proves its checks ran; it does not prove that the judgment is wise.</p>
         </div>
 
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p2-p2-after" name="p2-p2-after" data-check-id="p2-after" />
-              <span class="check-num">6</span>
-              <span class="check-title">SCORE_SHEET.md contains the cold final score for the same five cases</span>
-            </label>
-            <div class="check-detail">The After column contains one result from each of the five isolated cold chats. The total and delta use the same track, <code>gpt-5.6-terra</code>, dispatch, and grader as baseline. A zero or negative delta remains a valid result.</div>
-          </li>
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p2-p2-durable" name="p2-p2-durable" data-check-id="p2-durable" />
-              <span class="check-num">7</span>
-              <span class="check-title">The targeted improvement remains after a full restart</span>
-            </label>
-            <div class="check-detail">The cold final chats load the durable rule from disk, and the score sheet shows whether the targeted case keeps the change.</div>
-          </li>
-        </ol>
+        <h3>Stage 06 · Disarm the gate and enact the keep decision</h3>
+        <p>The released brief is the evidence for the component decision. Leave stable source files available, but keep only the controls whose job, cost, and boundary you can defend. Friday captures Home and Open endpoint evidence just in time under the same project, prompts, and agent topology.</p>
 
-        <h3>Stage 05 · Write the measured conclusion</h3>
         <div class="do-step">
-          <p class="do-label">Append this to <strong>SCORE_SHEET.md</strong>, fill every bracket from the recorded results, and save:</p>
-          <pre><code>Measured conclusion
-- Final artifact: instruments/p2_test_suite/SCORE_SHEET.md
-- Baseline -> after: [N]/5 -> [N]/5 (delta [N])
-- Change tested: [AGENTS.md RULE OR OTHER ARTIFACT]
-- Targeted condition: [CASE ID AND GRADER REQUIREMENT]
-- Concrete finding and fix: [WHAT FAILED, WHAT CHANGED, WHAT THE CHECKS SHOWED]
-- Remaining failure or residual risk: [CASE/REQUIREMENT, OR "none observed in D01-D05"]
-- Release decision: [KEEP CHANGE / REVISE AND RETEST / REVERT]
-- Reusable workplace rule: [ONE LINE]</code></pre>
+          <p class="do-label">Disarm the daily-brief hook in <strong>P2 — Daily Brief Release</strong>:</p>
+          <pre><code>In P2_CONTROL_PLANE.json, change only enabled from true to false. Confirm the
+quality-gate receipt remains on disk. Do not change the released product.</code></pre>
+          <p>The plugin can remain available because it is inert in projects without an enabled P2 contract. The product receipt does not disappear when the hook is disabled.</p>
         </div>
 
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p2-p2-claim" name="p2-p2-claim" data-check-id="p2-claim" />
-              <span class="check-num">8</span>
-              <span class="check-title">The measured conclusion names the effect and remaining risk</span>
-            </label>
-            <div class="check-detail">The score sheet identifies the changed artifact, targeted requirement, baseline and final scores, external check result, release decision, and unresolved risk.</div>
-          </li>
-        </ol>
+        <div class="do-step" id="p2-release-proof">
+          <p class="do-label">Make and apply the component decision in <strong>P2 — Daily Brief Release</strong>:</p>
+          <pre><code>Read HARNESS_PROFILE.md and the completed artifacts it names. Update its release
+record from observed evidence only. For each control-plane component, decide:
+KEEP, REVISE, or LEAVE OFF UNTIL NEEDED. Include its job, context or token cost,
+permission surface, evidence, disable path, and residual risk.
 
-        <div id="pulse" class="lesson-reflection" data-check-section="pulse">
+Keep the local daily-brief skill editable. Do not package it for distribution
+unless another real person needs to install the stable workflow. Save
+out/ACTIVE_CONTROL_PLANE.md with three sections: ACTIVE NOW, AVAILABLE ON DEMAND,
+and DISABLED. Put every component in exactly one section and name its activation
+trigger. Finish with one sentence naming the smallest system that still produces
+the released brief.</code></pre>
+          <p>Open <code>out/ACTIVE_CONTROL_PLANE.md</code>. Confirm the release contract is disabled. If the plugin is listed under <strong>DISABLED</strong>, open <strong>Plugins</strong> in the app and turn <strong>P2 Release Control</strong> off now; keep its reviewed source in the project so the decision is reversible. “Installed” is not evidence of value.</p>
+        </div>
+
+        <div class="lesson-reflection">
           <h3>Lesson reflection</h3>
-          <p class="reflection-question"><strong>Closeout question:</strong> Which measured harness change is worth carrying into your real work?</p>
+          <p class="reflection-question"><strong>Closeout question:</strong> Which control earned a permanent place in your work, and which control should remain off until a specific need appears?</p>
 
           <div class="do-step">
-            <p class="do-label">Open or create <strong>P2 — Closeout</strong>:</p>
-            <ul class="do-clicks">
-              <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <p class="do-label">Create a separate reflection chat from the beginning:</p>
+            <ol class="do-clicks">
+              <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong></li>
               <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-              <li>Look for <strong>P2 — Closeout</strong> in the sidebar and open it if it already exists</li>
-              <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P2 — Closeout</code></li>
-              <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>)</li>
-              <li>Confirm permissions say <strong>Ask for approval</strong></li>
-            </ul>
-            <p>The score sheet and other saved files carry the evidence. None of the five baseline or five cold chats needs to be reused for closeout.</p>
+              <li>Click <strong>New chat</strong>, rename it <code>P2 — Control Plane Reflection</code>, and select <strong>GPT-5.6 Terra</strong></li>
+              <li>Keep <strong>Ask for approval</strong> selected</li>
+            </ol>
           </div>
 
-          <div class="do-step">
-            <p class="do-label">Fill the brackets, then paste this once into <strong>P2 — Closeout</strong>:</p>
-            <pre><code>Read instruments/p2_test_suite/SCORE_SHEET.md, operator/OPERATOR_LOG.md,
-and operator/TRANSFER_30_60_90.md.
+          <div class="do-step" id="p2-transfer-proof">
+            <p class="do-label">Paste this into <strong>P2 — Control Plane Reflection</strong>:</p>
+            <pre><code>Read operator/OPERATOR_LOG.md and operator/TRANSFER_30_60_90.md. Also inspect
+the completed P2 project at
+%USERPROFILE%\Documents\HarnessBootcamp\P2_Control_Plane.
 
 Update the P2 entry in OPERATOR_LOG.md with:
-- final artifact and path
-- baseline, final score, and delta
-- the targeted grader condition and durable artifact changed
-- the concrete red-to-green finding, or the residual risk if it did not improve
-- release decision from the measured conclusion
-- lesson reflection: [THE MEASURED CHANGE WORTH CARRYING INTO MY WORK]
-- reusable workplace rule: [ONE LINE]
+- the released daily-brief path and quality-gate receipt
+- the independent review and active-component manifest
+- the skill, plugin/hook, subagents, permission modes, and Docs MCP role used
+- observed time, turns, approvals, and repair count
+- my keep/revise/leave-off decisions and residual risk
+- lesson reflection: [WHICH CONTROL STAYS AND WHICH WAITS]
 
-Update "From P2 — Harness craft" in TRANSFER_30_60_90.md with:
-- workload: [ONE SPECIFIC RECURRING WORK PRODUCT]
-- wall to keep: [THE DURABLE ARTIFACT]
-- cold check: [THE CASE OR CHECK TO RERUN]
-- 30-day habit: [A CALENDAR-REAL HABIT]
-- week-one result to save: [THE RESULT I WILL SAVE IN WEEK ONE]
-- date: [TODAY]
-
-Use my filled values, preserve the rest of both files, and report the exact
+Update only "From P2 — Personal control plane" in TRANSFER_30_60_90.md with
+one concrete 30-day harness habit, its first proof, and a calendar-real date.
+Do not create a new setup log or a second reflection file. Show the exact
 sections changed.</code></pre>
           </div>
 
@@ -494,165 +424,141 @@ sections changed.</code></pre>
             <li class="check-item" data-check-item>
               <label class="check-label">
                 <input type="checkbox" id="p2-pulse-log" name="p2-pulse-log" data-check-id="pulse-log" />
-                <span class="check-num">9</span>
-                <span class="check-title">The P2 closeout points to its saved evidence</span>
+                <span class="check-num">R</span>
+                <span class="check-title">The P2 artifact-backed closeout is in the Operator Log</span>
               </label>
-              <div class="check-detail">The P2 log points to the score sheet and external checks, records the release decision and residual risk, and names one reusable rule.</div>
+              <div class="check-detail">The entry points to the product and receipts, records observed operating cost, distinguishes every component's job, and answers which control stays versus waits.</div>
             </li>
           </ol>
-
-          <div class="do-step" id="p2-transfer-proof">
-            <p class="do-label">Open <code>operator/TRANSFER_30_60_90.md</code> and verify the P2 entry:</p>
-            <ul class="do-clicks">
-              <li>The workload names a real recurring product, not a role or department</li>
-              <li>The durable artifact, cold check, 30-day habit, week-one result, and date are all filled</li>
-              <li>If a value is not yet known, the file names the blocker instead of inventing an answer</li>
-            </ul>
-          </div>
         </div>
       </section>
 
-
-
-
-
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Lesson outcomes</h2>
-        <p class="section-lede">This is a read-only summary of the Lesson outcome checkboxes beside the relevant instructions above. <strong>Complete</strong> means you checked the outcome where its evidence was produced; <strong>Not yet</strong> means it remains open. Select an outcome title to return to its inline checkbox.</p>
+        <p class="section-lede">This display follows the checkboxes placed beside the work. Use it to see what is complete and what still needs evidence.</p>
         <ol class="checklist">
-
-          <li class="check-item" data-check-item data-outcome-after="p2-base">
-            <label class="check-label">
-              <input type="checkbox" id="p2-mvp-baseline" name="p2-mvp-baseline" data-check-id="mvp-baseline" />
-              <span class="check-num">13</span>
-              <span class="check-title">All five course cases have a baseline score</span>
-            </label>
-            <div class="check-detail">Evidence looks like: the Baseline column in <code>SCORE_SHEET.md</code> contains a score for D01–D05 on your chosen track. Each case has its own named fresh chat, and every FAIL names a missed requirement.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-profile-proof">
+            <label class="check-label"><input type="checkbox" id="p2-mvp-control-plane" name="p2-mvp-control-plane" data-check-id="mvp-control-plane" /><span class="check-num">1</span><span class="check-title">The control plane serves one named work product and reader</span></label>
+            <div class="check-detail">The profile fixes the source boundary, acceptance contract, runtime budget, approval boundary, evidence paths, and disable path before production begins.</div>
           </li>
-
-          <li class="check-item" data-check-item data-outcome-after="p2-walls">
-            <label class="check-label">
-              <input type="checkbox" id="p2-mvp-2walls" name="p2-mvp-2walls" data-check-id="mvp-2walls" />
-              <span class="check-num">14</span>
-              <span class="check-title">One durable instruction change targets an observed failure</span>
-            </label>
-            <div class="check-detail">Evidence looks like: one small rule in <code>AGENTS.md</code> tied to the exact case and grader requirement the baseline answer misses. Memory remains fixed; a skill is added only when the failure requires a reusable procedure.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-skill-proof">
+            <label class="check-label"><input type="checkbox" id="p2-mvp-skill" name="p2-mvp-skill" data-check-id="mvp-skill" /><span class="check-num">2</span><span class="check-title">The daily-brief skill contains the reusable method</span></label>
+            <div class="check-detail">Its description identifies matching and nonmatching work; its body names inputs, workflow, output, review, and HOLD condition without swallowing project-wide rules.</div>
           </li>
-
-          <li class="check-item" data-check-item data-outcome-after="p2-after">
-            <label class="check-label">
-              <input type="checkbox" id="p2-mvp-measure" name="p2-mvp-measure" data-check-id="mvp-measure" />
-              <span class="check-num">15</span>
-              <span class="check-title">The unchanged and final harness have before-and-after scores</span>
-            </label>
-            <div class="check-detail">Evidence looks like: the unchanged-harness baseline total and the cold final-harness total — strict pass/fail counts on the same sheet, not adjectives — and a delta line that contains the difference.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-plugin-proof">
+            <label class="check-label"><input type="checkbox" id="p2-mvp-plugin" name="p2-mvp-plugin" data-check-id="mvp-plugin" /><span class="check-num">3</span><span class="check-title">The shared release control is installed as a reviewed plugin</span></label>
+            <div class="check-detail">The manifest, command, file access, inert state, bounded repair, and disable path are understood; the smoke test passes and the exact hook definition is trusted.</div>
           </li>
-
-          <li class="check-item" data-check-item data-outcome-after="p2-tests">
-            <label class="check-label">
-              <input type="checkbox" id="p2-mvp-2tests" name="p2-mvp-2tests" data-check-id="mvp-2tests" />
-              <span class="check-num">16</span>
-              <span class="check-title">At least two tests run independently; one fails before the change and passes after it</span>
-            </label>
-            <div class="check-detail">Evidence looks like: at least two named checks you accept as valid and can run without your judgment in the loop; at least one catches the original defect and passes after the targeted change.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-delegation-proof">
+            <label class="check-label"><input type="checkbox" id="p2-mvp-delegation" name="p2-mvp-delegation" data-check-id="mvp-delegation" /><span class="check-num">4</span><span class="check-title">Read-only specialists return useful evidence to one writer</span></label>
+            <div class="check-detail">The evidence and documentation agents run in parallel on Terra, the main agent waits, the Docs agent uses the official MCP server, and only the main agent writes the saved evidence.</div>
           </li>
-
-          <li class="check-item" data-check-item data-outcome-after="p2-durable">
-            <label class="check-label">
-              <input type="checkbox" id="p2-mvp-cold" name="p2-mvp-cold" data-check-id="mvp-cold" />
-              <span class="check-num">17</span>
-              <span class="check-title">The targeted improvement remains after a full restart</span>
-            </label>
-            <div class="check-detail">Evidence looks like: <code>SCORE_SHEET.md</code> with five After results and restart notes, including whether the targeted case keeps the changed result and which saved artifact carries the rule. The five cold chats are isolated run environments, not the lasting evidence.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-hook-proof">
+            <label class="check-label"><input type="checkbox" id="p2-mvp-hook" name="p2-mvp-hook" data-check-id="mvp-hook" /><span class="check-num">5</span><span class="check-title">The release gate is reviewed without firing before production</span></label>
+            <div class="check-detail">The trusted Stop definition and actual contract are inspected while disabled; the first safe enable point, bounded repair, credential checks, receipt path, and disable path are explicit.</div>
           </li>
-
-          <li class="check-item" data-check-item data-outcome-after="p2-claim">
-            <label class="check-label">
-              <input type="checkbox" id="p2-mvp-wallclaim" name="p2-mvp-wallclaim" data-check-id="mvp-wallclaim" />
-              <span class="check-num">18</span>
-              <span class="check-title">The measured conclusion records the release decision and residual risk</span>
-            </label>
-            <div class="check-detail">Evidence looks like: the measured conclusion names the changed artifact, targeted condition, baseline and final scores, external check result, release decision, and any remaining failure or residual risk.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-product-proof">
+            <label class="check-label"><input type="checkbox" id="p2-mvp-product" name="p2-mvp-product" data-check-id="mvp-product" /><span class="check-num">6</span><span class="check-title">The integrated harness produces a release-ready work product</span></label>
+            <div class="check-detail">The final daily brief, independent review, PASS receipt, hash, and observed run receipt exist; the operator reads the product before release.</div>
           </li>
-
+          <li class="check-item" data-check-item data-outcome-after="#p2-release-proof">
+            <label class="check-label"><input type="checkbox" id="p2-mvp-release" name="p2-mvp-release" data-check-id="mvp-release" /><span class="check-num">7</span><span class="check-title">Every component has an enacted keep, revise, or leave-off decision</span></label>
+            <div class="check-detail">The profile and active-component manifest record each job, cost, permission surface, evidence, activation or disable path, and residual risk; the release gate is off and any deferred plugin is disabled.</div>
+          </li>
           <li class="check-item" data-check-item data-outcome-after="#p2-transfer-proof">
-            <label class="check-label">
-              <input type="checkbox" id="p2-mvp-30seed" name="p2-mvp-30seed" data-check-id="mvp-30seed" />
-              <span class="check-num">19</span>
-              <span class="check-title">One specific 30-day work habit is recorded</span>
-            </label>
-            <div class="check-detail">Evidence looks like: Identity is filled in and the Transfer file contains one concrete 30-day harness habit — specific to your desk, checkable, bound. "Use AI more" is void.</div>
+            <label class="check-label"><input type="checkbox" id="p2-mvp-30seed" name="p2-mvp-30seed" data-check-id="mvp-30seed" /><span class="check-num">8</span><span class="check-title">A concrete 30-day harness habit has a date and first proof</span></label>
+            <div class="check-detail">The habit names a real recurring product, when the control runs, what evidence is kept, and the first calendar date it will be checked.</div>
           </li>
-
           <li class="check-item" data-check-item data-outcome-after="#p2-transfer-proof">
-            <label class="check-label">
-              <input type="checkbox" id="p2-p2-transfer" name="p2-p2-transfer" data-check-id="p2-transfer" />
-              <span class="check-num">20</span>
-              <span class="check-title">The P2 transfer plan is complete and dated</span>
-            </label>
-            <div class="check-detail">Evidence looks like: the five fields under <em>From P2 — Harness craft</em> in <code>operator/TRANSFER_30_60_90.md</code> — workload, durable artifact, cold check, 30-day habit, and week-one result — each contains a concrete entry you accept, with today's date on the block. A field left blank is not yet; name what is blocking it in the file instead.</div>
+            <label class="check-label"><input type="checkbox" id="p2-p2-transfer" name="p2-p2-transfer" data-check-id="p2-transfer" /><span class="check-num">9</span><span class="check-title">The P2 transfer record points to the working control plane</span></label>
+            <div class="check-detail">The Operator Log and 30-60-90 plan cite the real product, receipts, operating cost, component decisions, and residual risk.</div>
           </li>
         </ol>
       </section>
 
       <section id="depth" class="home-section">
-        <h2>Going deeper while a rescore runs</h2>
-        <p class="section-lede">Material for the gaps — between runs, over the case talk, or back at your desk next month.</p>
+        <h2>Operating notes for real harnesses</h2>
+        <p class="section-lede">Use these after the core run when you decide what belongs in a personal setup, a repository, or a team-distributed plugin.</p>
 
-        <h3>Failure catalog</h3>
+        <h3>Cost and control signals</h3>
         <table>
-          <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+          <thead><tr><th>Signal</th><th>Likely design problem</th><th>Practical move</th></tr></thead>
           <tbody>
-            <tr><td>Baseline is 5/5</td><td>Soft grading — you read the answers as their author's friend</td><td>Re-read each pass condition in <code>GRADER.md</code> one requirement at a time; rescore strictly; when unsure, FAIL with a note</td></tr>
-            <tr><td>After-score dropped</td><td>Instruction bloat — <code>AGENTS.md</code> became an essay the model skims</td><td>Cut to the few rules that target real fails; rescore</td></tr>
-            <tr><td>Standard vanishes in the new chat</td><td>The craft lived in scrollback, not on disk</td><td>Move it into <code>AGENTS.md</code> or a skill; re-run the case cold</td></tr>
-            <tr><td>Skill never fires</td><td>Description is a title, not trigger conditions</td><td>Rewrite the description as "use when…" conditions; test on a realistic task without naming it</td></tr>
-            <tr><td>Delta unreadable</td><td>Several walls changed between measurements</td><td>Revert, change one, rescore; repeat — slower per step, faster to real knowledge</td></tr>
-            <tr><td>Test "passes" but you had to interpret</td><td>Predicate isn't machine-checkable</td><td>Tighten to an observable check: a count, a required string, a forbidden pattern</td></tr>
-            <tr><td>Memory rule ignored next session</td><td>A must-hold rule stored in the recall layer</td><td>Move it to <code>AGENTS.md</code>; keep memory for context, not law</td></tr>
+            <tr><td>Every task receives a long policy block</td><td>Conditional procedure sits in always-on instructions</td><td>Keep the project rule short and move the workflow into one focused skill</td></tr>
+            <tr><td>A skill fires on unrelated work</td><td>Description states a topic, not a trigger boundary</td><td>Front-load the exact job and add a clear non-trigger condition</td></tr>
+            <tr><td>The model sometimes skips a mandatory check</td><td>Enforcement lives only in prose</td><td>Use a reviewed deterministic hook or external check at the relevant event</td></tr>
+            <tr><td>More agents create more cleanup</td><td>Overlapping tasks or parallel writers</td><td>Give each agent a bounded read-only question; wait; keep one writer</td></tr>
+            <tr><td>MCP adds many tools but little evidence</td><td>Connection chosen before the work need</td><td>Allow only the server and tools the product requires; disable the rest</td></tr>
+            <tr><td>A personal plugin changes every week</td><td>Distribution started before the workflow stabilized</td><td>Move it back to a repo or user skill until another installer is a real customer</td></tr>
+            <tr><td>The hook keeps the agent alive indefinitely</td><td>No continuation bound</td><td>Read <code>stop_hook_active</code>, permit one repair, then leave a visible HOLD receipt</td></tr>
           </tbody>
         </table>
 
-        <h3>Measurement decisions worth examining</h3>
-        <p><strong>What should happen after a 5/5 score?</strong> Add a case from a real failure class the suite does not cover. The current <code>D05</code> already checks refusal, so the next case should cover ambiguity, conflicting sources, or a difficult shape from your own desk. This keeps the score sensitive to work that can still go wrong.</p>
-        <p><strong>When does <code>AGENTS.md</code> become too big?</strong> Every rule costs a slice of the model's attention, and twenty rules obeyed at 80% can lose to six rules obeyed at 100%. A rule you can't tie to a fail you've seen is a candidate to cut. The deeper trade: an instruction tells the machine what to do; a test catches it when it doesn't. Standards you can check belong in tests, which never get skimmed.</p>
-        <p><strong>Who should author the tests — you or the machine?</strong> The machine can draft them, and drafting is real work saved. But the system under test must never own its own grader: a harness that writes, runs, and interprets its own checks can quietly optimize for passing them. You accept every predicate personally, the way you'd sign any acceptance criterion. That rule holds for any system you'll ever automate, not just this one.</p>
-        <p><strong>Is memory a wall or a leak?</strong> Both, depending on discipline. As a recall layer it saves re-explaining context. But an assistant that quietly carries yesterday's context into today's work can also carry it into places you didn't intend — including comparisons where you needed a clean machine. Knowing exactly what your harness loads, and being able to turn it off, is part of owning it.</p>
+        <h3>Choose the lifecycle event by the failure</h3>
+        <table>
+          <thead><tr><th>Event</th><th>Real job</th><th>Important boundary</th></tr></thead>
+          <tbody>
+            <tr><td><code>UserPromptSubmit</code></td><td>Catch a credential-like string before it enters the turn</td><td>Use a short deterministic scanner; never echo the suspected secret in hook output</td></tr>
+            <tr><td><code>PreToolUse</code></td><td>Deny or rewrite a specific local tool call before execution</td><td>It covers many local tools, including MCP calls, but not every hosted or specialized path; treat it as a guardrail</td></tr>
+            <tr><td><code>PostToolUse</code></td><td>Attach evidence or stop normal processing after a tool returns</td><td>It cannot undo the side effect that already occurred</td></tr>
+            <tr><td><code>PreCompact</code> / <code>PostCompact</code></td><td>Save and restore the small state that must survive context compaction</td><td>Do not dump the transcript back into context; preserve decisions, open risks, and artifact paths</td></tr>
+            <tr><td><code>SubagentStart</code> / <code>SubagentStop</code></td><td>Add a role-specific boundary or require one focused completion pass</td><td>A subagent still inherits parent runtime permissions; a hook does not make it independent</td></tr>
+            <tr><td><code>Stop</code></td><td>Check the saved product before the main turn is allowed to finish</td><td>Read <code>stop_hook_active</code> and bound continuation or the gate can create a loop</td></tr>
+          </tbody>
+        </table>
 
-        <h3>At your desk</h3>
-        <p><strong>An analyst desk:</strong> five report fragments from last quarter become your five cases; <code>AGENTS.md</code> holds the citation standard; a skill fires whenever a briefing task appears. The Monday version of you stops re-teaching the Friday version's standards.</p>
-        <p><strong>An engineering desk:</strong> the repo's <code>AGENTS.md</code> carries review and style standards for every session anyone opens there; your authored checks grow into CI habits; cases come from last month's incidents, so the harness is aimed at what actually goes wrong on your team.</p>
-        <p><strong>An ops or intel desk:</strong> watch criteria written as pass-if lines; a standing hostile-request case so the refusal behavior is measured, not assumed; the daily brief regenerated inside walls instead of re-prompted from memory.</p>
-        <p><strong>A manager's desk:</strong> you can't read every output your team's assistants produce. Walls are how your standard scales to work you never see — and "show me the score sheet" is a better question than "is the AI helping?"</p>
+        <h3>Use the cheapest subagent topology that helps</h3>
+        <table>
+          <thead><tr><th>Work shape</th><th>Topology</th><th>Operator rule</th></tr></thead>
+          <tbody>
+            <tr><td>Independent source and documentation research</td><td>Two read-only agents in parallel, then wait for both</td><td>Ask for concise evidence summaries; do not flood the main context with raw exploration</td></tr>
+            <tr><td>Candidate plus challenge</td><td>Main writer first, independent reviewer second</td><td>Review cannot run in parallel with a draft that does not exist</td></tr>
+            <tr><td>More jobs than the open-thread cap</td><td>Run a bounded batch, wait, preserve returns, close completed threads, then start the next batch</td><td>The cap counts open spawned threads, including completed threads that have not been closed</td></tr>
+            <tr><td>Overlapping edits to one product</td><td>Do not parallelize the writes</td><td>The merge cost and ownership ambiguity usually exceed the time saved</td></tr>
+          </tbody>
+        </table>
 
-        <h3>Stretch lanes</h3>
-        <p>After the required outcomes are complete, the same capability goes deeper. Get a skill to fire unprompted on a realistic task — the description line is the lever. Author a sixth case of your own beyond the fixed five — the suite's <code>D05</code> already probes refusal, so add a shape it doesn't cover: an ambiguity case, conflicting sources, or a second hostility pattern from your real desk. Or take the side-quest: improve someone else's harness one measured notch, with their confirmation of the delta as the evidence. P2 depth counts toward distinction, and the peer version is the hardest and most honest of the three.</p>
+        <h3>Install another plugin only when the desk supplies the job</h3>
+        <p class="full-measure">Start with the real information or action the product lacks. An available plugin is a candidate, not a reason to widen the harness.</p>
+        <table>
+          <thead><tr><th>Real missing job</th><th>Candidate capability</th><th>Proof that earns installation</th><th>Leave it off when</th></tr></thead>
+          <tbody>
+            <tr><td>Current repository, pull-request, or CI state</td><td>An approved GitHub plugin</td><td>One source-backed status item reaches the brief with the repository and item identity intact</td><td>The declared P1 files remain the only authorized source set</td></tr>
+            <tr><td>Controlled documents outside the project</td><td>An approved Google Drive or SharePoint plugin</td><td>One named document is retrieved with owner, provenance, and access boundary visible</td><td>The connector would expose a broader drive or site than the product needs</td></tr>
+            <tr><td>Delivering an approved brief to a team</td><td>An approved Slack or Teams plugin</td><td>A draft reaches the exact destination only after explicit human approval</td><td>No real destination exists, or the plugin turns a drafting job into an unreviewed external write</td></tr>
+            <tr><td>Repository security evidence</td><td>An approved security plugin</td><td>A real scan returns coverage and findings artifacts that can support a decision</td><td>The work product is not a code-risk decision or the scan cannot declare coverage</td></tr>
+          </tbody>
+        </table>
+        <p class="full-measure">Before installing, inspect bundled skills, MCP or connector tools, hooks, authentication, data boundary, approvals, and uninstall path. Install from the approved source, start a new chat, prove the serious outcome above, and then keep or remove it. Some connector-backed plugins are unavailable under API-key sign-in because their authorization flow is not supported. Verify that constraint; do not install a substitute just to fill the slot.</p>
 
-        <p class="eyebrow">Optional field guide · 60–75 min</p>
-        <h3>Build an eval with explicit invalidation rules</h3>
-        <p><a href="../resources/p2/eval-surprise.html"><strong>Build a Decision-Grade Evaluation</strong></a> turns a bounded construct, risk-based coverage, an independent decision set, and fixed invalidation rules into an eval charter tied to a real release decision.</p>
+        <h3>Current primary references</h3>
+        <p class="full-measure">Use these when product behavior changes: <a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md" target="_blank" rel="noopener">AGENTS.md</a>, <a href="https://learn.chatgpt.com/docs/build-skills" target="_blank" rel="noopener">skills</a>, <a href="https://learn.chatgpt.com/docs/plugins" target="_blank" rel="noopener">plugins</a>, <a href="https://learn.chatgpt.com/docs/hooks" target="_blank" rel="noopener">hooks</a>, <a href="https://learn.chatgpt.com/docs/codex/cli" target="_blank" rel="noopener">Codex CLI</a>, <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents" target="_blank" rel="noopener">subagents</a>, and <a href="https://learn.chatgpt.com/docs/extend/mcp" target="_blank" rel="noopener">Codex MCP</a>. The P2 Docs agent uses the official <a href="https://developers.openai.com/mcp" target="_blank" rel="noopener">OpenAI Developer Docs MCP server</a> so these checks can be repeated without relying on a remembered product snapshot.</p>
 
-        <p class="eyebrow">Optional field guide · 45–60 min</p>
-        <h3>Treat one run as a probe</h3>
-        <p><a href="../resources/p2/one-run-is-a-probe.html"><strong>Measure Reliability Across Repeated Runs</strong></a> uses paired runs, sequence-aware order control, visible spread, and bounded conclusions to keep one attractive score from becoming a capability claim.</p>
+        <h3>When a real release decision needs stronger measurement</h3>
+        <p class="full-measure">The core P2 result answers whether this integrated control plane produced this product inside its contract and operating budget. If a consequential deployment decision requires a broader capability claim, use <a href="../resources/p2/eval-surprise.html"><strong>Build a Decision-Grade Evaluation</strong></a> to define the claim, risk coverage, independent decision set, and invalidation rules.</p>
+        <p class="full-measure">If the decision specifically depends on run-to-run stability, use <a href="../resources/p2/one-run-is-a-probe.html"><strong>Measure Reliability Across Repeated Runs</strong></a> after a valid A/B comparison exists. It shows how to pair conditions, expose order effects and spread, and keep the conclusion no larger than the observed trials.</p>
       </section>
-    </form>
 
-    <section id="stuck" class="split-2 home-section">
-      <div>
-        <h2>Before you move on</h2>
-        <p>A completed lesson includes the fixed experiment conditions, unchanged baseline, targeted durable change, external red→green check, cold final score, measured conclusion, and saved closeout. Full list: <a href="#floor">these P2 lesson outcomes</a>.</p>
-      </div>
-      <div>
-        <h2>If you get stuck</h2>
-        <ul>
-          <li><strong>The baseline is eating the morning.</strong> Twenty to twenty-five minutes covers one strict scoring pass against the five written conditions — use one-line notes and do not polish the answers. The baseline is a reading, not a deliverable.</li>
-          <li><strong>You don't know what to change.</strong> Your FAIL notes are the work order. Pick the single fail that annoys you most and write one rule or one test aimed at exactly that.</li>
-          <li><strong>The after-score didn't move.</strong> First check the wall actually loads cold: is <code>AGENTS.md</code> at the project root, and did the new chat open the same project? If it loads and still doesn't move the score, that's a finding — write it in the claim and pick a different wall.</li>
-          <li><strong>Time is short.</strong> Keep the one targeted change and use only its case for intermediate checks, but still run the required five-case cold final score. Never loosen the pass conditions.</li>
-        </ul>
-      </div>
-    </section>
+      <section id="stuck" class="split-2 home-section">
+        <div>
+          <h2>Before you move on</h2>
+          <p>The final daily brief, independent review, PASS receipt, and active-component manifest exist; observed time, turns, approvals, repairs, and residual risk are recorded; the hook is disarmed; and each component has an enacted keep, revise, or leave-off decision.</p>
+        </div>
+        <div>
+          <h2>If you get stuck</h2>
+          <ul>
+            <li><strong>The P2 folder already exists.</strong> Open and continue that project, or move it to a dated archive. The bootstrap will not overwrite it.</li>
+            <li><strong>The skill is missing.</strong> Confirm the file is under <code>.agents\skills\daily-brief-release\SKILL.md</code>, then restart the app and reopen the project.</li>
+            <li><strong>The plugin does not appear.</strong> Confirm <code>.agents\plugins\marketplace.json</code> and <code>plugins\p2-release-control</code> exist at the P2 project root, then restart the app.</li>
+            <li><strong>The hook is skipped.</strong> In a terminal opened at <code>P2_Control_Plane</code>, run <code>codex</code>, type <code>/hooks</code> in the CLI, inspect the Stop handler, and trust the current definition. A changed command requires new trust.</li>
+            <li><strong>The Docs agent has no MCP tool.</strong> Confirm its TOML contains <code>https://developers.openai.com/mcp</code>, read the visible connection error, and fix that connection. Do not substitute memory.</li>
+            <li><strong>A subagent edits files.</strong> Stop it. A role file does not override the parent turn's live permission profile. Set the parent to <strong>Read only</strong>, rerun the bounded research or review, close the completed thread, then use a separate <strong>Ask for approval</strong> main-writer turn to save the return.</li>
+            <li><strong>The receipt stays FAIL after one repair.</strong> HOLD. Read the failing checks and ask the operator whether to repair the product, change a genuinely wrong contract, or stop. Do not loop or lower the bar.</li>
+          </ul>
+        </div>
+      </section>
+
+    </form>
 
     <div data-plate-for="P2"></div>
   </main>

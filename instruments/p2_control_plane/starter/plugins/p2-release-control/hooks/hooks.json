@@ -1,0 +1,18 @@
+{
+  "description": "P2 daily-brief release gate. Inert unless P2_CONTROL_PLANE.json enables it.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/quality_gate.py\"",
+            "commandWindows": "py -3 \"%PLUGIN_ROOT%\\hooks\\quality_gate.py\"",
+            "timeout": 30,
+            "statusMessage": "Checking the saved daily brief"
+          }
+        ]
+      }
+    ]
+  }
+}

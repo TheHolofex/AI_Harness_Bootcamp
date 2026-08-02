@@ -67,7 +67,7 @@ During the artifact-backed closeout on each live module page, write **one entry 
 | Block | Seed section to fill |
 |---|---|
 | **P1** | From P1 — Machine candidate |
-| **P2** | From P2 — Harness craft |
+| **P2** | From P2 — Personal control plane |
 | **P3** | From P3 — Verdict ownership |
 | **P4** | From P4 — Trailed knowledge |
 | **P5** | From P5 — Operating picture |
@@ -85,7 +85,7 @@ You are not listing tools to try.
 You are specifying how **direction + cothinking + evidence + bounds** will run on *your* desk:
 
 1. What judgment products become machines  
-2. What harness walls you will keep  
+2. Which instructions, skills, hooks, agents, and tool connections you will keep
 3. What you will never accept without evidence  
 4. What runs under contract vs pipeline  
 5. What policy you carry when the model changes  
@@ -128,14 +128,15 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | Recurring judgment product on my desk that should become a machine | |
 | What has to be true for it to regenerate rather than be rewritten | |
 
-### From P2 — Harness craft (feeds **30 days**)
+### From P2 — Personal control plane (feeds **30 days**)
 
 | Field | Entry |
 |---|---|
 | Date | |
-| Workload this harness serves | |
-| Walls I will keep (instructions / tests / memory / skills) | |
-| Case or check I will re-run cold | |
+| Recurring work product and reader | |
+| Controls I will keep (instructions / skill / hook / subagents / MCP / plugin) | |
+| Control I will leave off until a named need appears | |
+| Product and receipt I will inspect | |
 | 30-day habit (calendar-real) | |
 | First proof of habit (what I’ll attach week 1) | |
 
@@ -215,7 +216,7 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | Weekly | Case suite or frozen check + self-calibration | |
 | As needed | Intake rule / single-engine ban on named decisions | |
 
-### 30-day walls
+### 30-day control plane
 
 What I install in month one:  
 
@@ -353,7 +354,7 @@ name any that are empty or undated and make me fix those before we draft.
 Then, from the seeds only:
 1. Draft 30 / 60 / 90 outcomes — at most three per horizon, each observable in
    that horizon by someone who is not me.
-2. Fill the 30-day rhythm, walls, bounds, and not-yet risks.
+2. Fill the 30-day rhythm, control plane, bounds, and not-yet risks.
 3. Attack every line that could survive without me doing anything differently.
 4. Set Status to Draft horizons complete.
 

@@ -25,7 +25,7 @@ Students have spent the morning *inside* a capability (craft, knowledge, autonom
 
 | Morning | Block just run | Case-talk theme (pick a real story that fits) |
 |---|---|---|
-| **Tuesday** | P2 harness craft | Craft that compounded: measured harness change, tests, memory/skills that survived restart. *Optional bridge to PM:* a time you used parallel specialists (subagents), not a second vendor |
+| **Tuesday** | P2 personal control plane | One real product made dependable by correctly placed instructions, skills, hooks, plugins, subagents, or MCP—only the controls that actually earned their runtime cost. Show the product, release receipt, component decision, and human judgment that remained. |
 | **Wednesday** | P4 second brain | Knowledge under a harness: trails, citations, intake bounds — or a near-miss with poison |
 | **Thursday** | P6 watch officer | Autonomy under contract: tool vs procedure bounds, stop authority, unattended path honesty. *Optional:* air-gap / local endpoint story (endpoint is a wall) |
 

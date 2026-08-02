@@ -1,6 +1,6 @@
 /**
  * AHB course registry — the single source of truth for B0, B1, the scheduled
- * Model Economics and MCP briefings, and P1–P8.
+ * Model Economics, Harness Control Plane, and MCP briefings, and P1–P8.
  *
  * Every reader of progress (home dashboard, nav dots, block pages, the
  * pre-work hub) counts against the id lists declared here — never against
@@ -59,8 +59,8 @@
   }
 
   // Storage order is retained for compatibility. The visible path is
-  // B0 install clinic → B1 First Light → Model Economics → P1 → P2 →
-  // two MCP briefings → P3 → … → P8.
+  // B0 install clinic → B1 First Light → Model Economics → P1 →
+  // Harness Control Plane → P2 → two MCP briefings → P3 → … → P8.
   // `ids` contains the controls learners can actually see and complete. When an
   // inline lesson outcome replaces a procedural receipt, only the outcome id is
   // required; the duplicate procedural id is retained in the HTML solely so old
@@ -112,15 +112,22 @@
       url: "blocks/p1.html", meta: "Codex app"
     },
     {
-      code: "P2", name: "The measured harness", title: "The measured harness", day: "Tuesday", slot: "AM",
-      key: "ahb-checklist-p2",
+      code: "HCP", name: "Skills, hooks, plugins & subagents", title: "Harness Control Plane", kind: "briefing",
+      day: "Tuesday", slot: "AM", key: "ahb-briefing-harness-control-plane",
+      ids: ["hcp-complete"], stretchIds: [],
+      url: "blocks/hcp.html", meta: "30 min · instructor-led presentation",
+      contextLabel: "Tuesday AM · 30-minute presentation · Before P2"
+    },
+    {
+      code: "P2", name: "The personal control plane", title: "The personal control plane", day: "Tuesday", slot: "AM",
+      key: "ahb-checklist-p2-control-plane",
       ids: [
-        "p2-open", "pulse-brief", "pulse-log", "mvp-baseline",
-        "mvp-2walls", "mvp-measure", "mvp-2tests", "mvp-cold",
-        "mvp-wallclaim", "mvp-30seed", "p2-transfer"
+        "pulse-log", "mvp-control-plane", "mvp-skill", "mvp-plugin",
+        "mvp-delegation", "mvp-hook", "mvp-product", "mvp-release",
+        "mvp-30seed", "p2-transfer"
       ],
       stretchIds: [],
-      url: "blocks/p2.html", meta: "Codex · p2_dyno"
+      url: "blocks/p2.html", meta: "Codex · skills + hooks + plugins + subagents + MCP"
     },
     {
       code: "MCP1", name: "Protocol and production map", title: "MCP & Agent Protocols in Production", kind: "briefing",
@@ -226,7 +233,7 @@
   var JOURNEY = [
     { phase: "Monday AM", title: "Install Clinic → First Light", codes: ["B0", "B1"] },
     { phase: "Monday PM", title: "Model economics → Daily Status Brief", codes: ["ME", "P1"] },
-    { phase: "Tuesday", title: "Harness craft → MCP → verdict", codes: ["P2", "MCP1", "MCP2", "P3"] },
+    { phase: "Tuesday", title: "Control plane → MCP → verdict", codes: ["HCP", "P2", "MCP1", "MCP2", "P3"] },
     { phase: "Wednesday", title: "Knowledge", codes: ["P4", "P5"] },
     { phase: "Thursday", title: "Autonomy", codes: ["P6", "P7"] },
     { phase: "Friday", title: "Transfer", codes: ["P8"] }
@@ -234,7 +241,7 @@
 
   var DAY_NAV = [
     { label: "Monday", codes: ["B0", "B1", "ME", "P1"] },
-    { label: "Tuesday", codes: ["P2", "MCP1", "MCP2", "P3"] },
+    { label: "Tuesday", codes: ["HCP", "P2", "MCP1", "MCP2", "P3"] },
     { label: "Wednesday", codes: ["P4", "P5"] },
     { label: "Thursday", codes: ["P6", "P7"] },
     { label: "Friday", codes: ["P8"] }

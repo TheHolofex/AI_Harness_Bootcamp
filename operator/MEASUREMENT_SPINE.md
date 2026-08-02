@@ -144,7 +144,7 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 
 | Block | Deep mark (one line) |
 |---|---|
-| **P2** | Case suite: baseline → after on `instruments/p2_test_suite` D01–D05 (`n/5`) |
+| **P2** | Control plane: product released/HOLD · gate PASS/FAIL · elapsed min · repairs `n` · active controls `n` |
 | **P3** | Comparator on `BRIEF-v1`: material differences `n` · dispositions `K/D/U` · release decision · packet source-checked/closed `Y/Y` |
 | **P5** | Containment: 3/3 catches · absence-of-effect proof pointer |
 | **P6** | Contract: stop/restart · exception drill pass/fail |

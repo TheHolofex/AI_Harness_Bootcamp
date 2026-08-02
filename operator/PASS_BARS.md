@@ -60,7 +60,7 @@ Acceptable: paths, commands, diffs, test output, score-sheet rows, opened citati
 |---|---|---|
 | 1 | Direct messy reality → instrument + criteria | B1 |
 | 2 | Machines that regenerate judgment products | P1 |
-| 3 | Measured harness craft | P2 |
+| 3 | Engineer a personal control plane | P2 |
 | 4 | Multi-engine verdict ownership | P3 |
 | 5 | Knowledge system with walkable trails | P4 |
 | 6 | Poison / containment by absence of effect | P5 |
@@ -70,7 +70,7 @@ Acceptable: paths, commands, diffs, test output, score-sheet rows, opened citati
 
 ---
 
-> **Course instruments:** shared kits in `instruments/` (P2 case suite, P3 frozen brief, P8 hold/degrade). Two tracks: `engineering`, `mission_ops`. Pick one track for the week. P8 reuses P2 case IDs D01–D05. These are class instruments — not personal portable evals.
+> **Course instruments:** shared kits in `instruments/` (P3 frozen brief and P8 hold/degrade). Two tracks: `engineering`, `mission_ops`. Choose one in P3 and keep it through P8. P8 runs the course D01–D05 suite on both endpoints. These are class instruments — not personal portable evals.
 
 ## B1 — First Light · Cap 1
 **Mastery claim:** You can direct a thinking machine from operational mess to a working instrument, and you know how you’ll know it’s right.
@@ -119,28 +119,29 @@ Paste job, citations unchecked, no delta, or silent failure on broken sources.
 
 ---
 
-## P2 — Harness craft · Cap 3  
-**Mastery claim:** Loop quality is something you can change on purpose and prove — craft compounds instead of resetting every session.
+## P2 — Personal control plane · Cap 3
+**Mastery claim:** You can place durable behavior at the right scope and run it as one measured system that produces a serious work product.
 
 ### MVP
-- [ ] Score sheet with **baseline** on the course case suite `instruments/p2_test_suite` (D01–D05, chosen track) before and after
-- [ ] ≥2 harness changes across distinct layers (e.g. instructions *and* tests, or memory *and* skill) — not one lucky prompt tweak
-- [ ] Each change has before/after measurement on the case suite (numeric or strict pass/fail counts)
-- [ ] ≥2 machine-checkable tests **you authored**; at least one fails on the unchanged harness and passes after the change (or equivalent red→green story)
-- [ ] Durability proof: **new chat or restart** still carries instructions/memory/skill; re-run one case cold. Each wall must point at a real artifact — `AGENTS.md` for instructions, a `SKILL.md` folder for skills, memory explicitly enabled — not a habit you promise to keep
-- [ ] Written claim: which wall improved (instructions / tests / memory / skills) and what still fails
-- [ ] Log cites score-sheet rows and test names — “feels smarter” is automatic not yet
-- [ ] **30-day seed:** one concrete habit for keeping a harness at work (feeds Move 3)
+- [ ] `HARNESS_PROFILE.md` names one real reader and work product, its source and permission boundaries, acceptance contract, runtime budget, evidence paths, disable paths, and residual risk
+- [ ] One focused repo skill under `.agents/skills/` captures the repeatable P1 daily-brief workflow; its description names both the trigger and the nearby work it must not claim
+- [ ] The course release-control plugin is inspected before installation, passes its smoke test, and has its exact `Stop` command hook reviewed and trusted
+- [ ] The deterministic gate checks the real saved brief, writes a receipt with the artifact hash and individual results, permits at most one repair continuation, and remains FAIL/HOLD rather than looping or weakening the contract
+- [ ] Evidence and documentation subagents run together while the live parent turn is **Read only**; the documentation role uses the official OpenAI Developer Docs MCP server; the reviewer runs only after the candidate exists under another read-only parent turn; separate **Ask for approval** turns perform the writes
+- [ ] Every main and subagent run is pinned to `gpt-5.6-terra`; no more than two spawned threads remain open; completed threads are closed before another batch; external writes require operator approval
+- [ ] Released daily brief + evidence map + configuration evidence + independent review + PASS quality-gate receipt + run receipt with observed time, turns, subagents, approvals, repairs, and visible usage or `not exposed`
+- [ ] Keep / revise / leave-off decision for every installed component, with its job, cost, permission surface, evidence, disable path, and remaining risk; `out/ACTIVE_CONTROL_PLANE.md` records and enacts the resulting active, on-demand, and disabled set
+- [ ] Log cites the product and receipts; **30-day seed** names one calendar-real harness habit and its first proof
 
 ### Stretch
-- [ ] Skill fires unprompted or via a minimal trigger on a realistic task — the `description` line in `SKILL.md` is what decides this, so tune it as trigger conditions rather than a title
-- [ ] The suite includes a hostility or ambiguity case, not only happy path
+- [ ] A second real consumer installs the now-stable skill as a plugin, completes the same work, and reports what the package still assumes about your environment
+- [ ] A write-capable MCP or connector is added only for a real workflow need, with explicit tool allowlists, approvals, credentials, audit evidence, and disable/revoke steps
 
 ### Side-quest
-- [ ] Blind-ish peer scoring run: improve someone else’s harness one measured notch; they confirm the delta
+- [ ] Remove one component from the integrated system and show that quality holds while context, time, approvals, or cost improve
 
 ### Not yet if
-Single unmeasured tweak, no red→green test, or nothing survives restart.
+Components are installed but do not serve the product; subagents write over one another; MCP is present only for novelty; the hook is untrusted, loops, or has no saved receipt; the final judgment product or observed run evidence is missing.
 
 ---
 
@@ -149,7 +150,7 @@ Single unmeasured tweak, no red→green test, or nothing survives restart.
 
 ### MVP
 - [ ] Course frozen brief `BRIEF-v1` + track corpus in `instruments/p3_frozen_brief` run unchanged on **Codex app** and **OpenCode**
-- [ ] **Run identity declared for both engines** — model id, version, folder, and which instruction files/skills/memories were live. Clean folder, or the loaded context written down. An undeclared advantage invalidates the comparison
+- [ ] **Run identity declared for both engines** — model id, version, folder, and which instruction files, skills, plugins/hooks, custom agents, memories, and tool surfaces were live. Clean folder, or the loaded context written down. An undeclared advantage invalidates the comparison
 - [ ] User-configured and external MCP state declared and cleared before the frozen runs; unavoidable built-in surfaces listed but not invoked; the course server is connected only after both raw outputs and the comparator exist
 - [ ] Deterministic join/watchlist path where required — model does not “decide” the join key
 - [ ] Comparator artifact: side-by-side fields/claims table with one row per material difference; zero differences is valid when the inspected fields are recorded
@@ -285,10 +286,10 @@ Happy-path only, no human gate, or “automation is always better” with no dis
 ### MVP
 - [ ] **AUP/endpoint policy written and accepted before** any re-point (no retroactive policy)
 - [ ] Re-point pack + frozen suite to hosted open model; config diff or settings evidence retained
-- [ ] **Hold/degrade matrix** on P2 IDs D01–D05 via `instruments/p8_hold_degrade` — commercial/home vs open (numbers)
+- [ ] **Hold/degrade matrix** on course IDs D01–D05 via `instruments/p8_hold_degrade` — commercial/home vs open (numbers)
 - [ ] Layered read of failures: model vs instructions vs tests vs environment vs operator brief (label each fail)
 - [ ] Legitimate task **refused under your policy** with recorded reason; contrast with a allowed task that still runs
-- [ ] Loop still closes on a core path you care about — or you document which walls must change for it to close
+- [ ] Loop still closes on a core path you care about — or you document which instructions, skills, tools, or environment settings must change for it to close
 - [ ] **90-second defense delivered to a live listener** — a person, not a model, who was not in your build chat. Ninety seconds on a clock, from evidence only: the matrix, the policy, one task you accepted and one you refused. **It passes when the listener states back, unprompted and without asking you a single question, which work this endpoint is fit for and which it is not.** If they cannot, the defense failed: change what you led with and run it again. Rehearse against a model first if you like — the model is a rehearsal, never the judge
 - [ ] **30-60-90 SEALED** via `TRANSFER_30_60_90.md` checklist (grown all week — not invented Friday)
 - [ ] Log points at policy version, matrix, refuse record, 30-60-90, and who listened to the defense
