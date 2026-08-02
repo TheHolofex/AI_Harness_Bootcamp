@@ -20,50 +20,49 @@ A method you cannot name a place for is a method you will not use on Monday. Thi
 | Rule | Detail |
 |---|---|
 | **Where** | Standing file in the Codex app project |
-| **Chat** | **Own Codex app chat:** `Operator — Transfer 30-60-90` — **not** the build chat, **not** the Direction & Log chat |
-| **When the chat runs** | Three times: **B1**, **P7**, **P8**. See the schedule below |
-| **When the file gets written** | Every block. At the six blocks without a chat visit, you write one dated seed line in the block's own chat, straight into the matching seed section |
+| **Shared chat** | `P7–P8 — 30/60/90 Plan` — used only to draft the horizons at P7 and finalize the same saved plan at P8 |
+| **When the shared chat runs** | Twice: **P7** and **P8**, when the planning role and course model match. If the model changed, P8 starts the fresh continuation named on its live page. Chat history is convenient but not required; this file carries continuity |
+| **When the file gets written** | P1–P7 module closeouts write dated seeds; P7 drafts the horizons; P8 finalizes and seals or blocks |
 | **Owner** | You. AI interviews, drafts, attacks fantasy and vagueness. You accept every line |
 | **Standard** | Specific to your work, checkable, bound. “Use AI more” is void |
 
-### Three chats (do not collapse)
+### Chat roles (do not collapse)
 
 | Chat | Job |
 |---|---|
-| `Operator — Direction & Log` | LIVE brief before mission · log + pass-bar check after |
-| **`Operator — Transfer 30-60-90`** | Outer loop — map mastery onto the real desk. Opens at B1, P7, P8 |
-| Build / mission chats | Execute the block |
+| `[MODULE] — Direction & Closeout` | Module-scoped brief and closeout when the live module page calls for it. Replace `[MODULE]` with the current code and follow the page's exact suffix |
+| **`P7–P8 — 30/60/90 Plan`** | Outer loop — draft at P7 and finalize at P8 over this same saved artifact |
+| Module build / mission chats | Execute that module's work |
 
-Direction/log is *this mission*.  
+The live HTML module page is authoritative for the learner path and exact name. B1 stays in `B1 — First Light Dashboard`; it does not use the direction pattern or open this transfer chat.
+
+Module direction/closeout is *this mission*.
 Transfer is *my job after Friday*.  
-Mixing them produces either thin briefs or poster-quality 30-60-90s.
+The files carry information between those roles; no global chat history is part of the method.
 
 ### Status
 
-- [ ] Dormant (before B1)
-- [ ] Living (B1 visit done; seeds accumulating with dates)
+- [ ] Dormant (before the first dated P1 seed)
+- [ ] Living (dated module seeds accumulating)
 - [ ] Draft horizons complete (P7)
 - [ ] **SEALED** — P8 MVP; defend-to-supervisor ready
 
 ---
 
-## The three chat visits
+## The two shared-chat visits
 
 | Visit | Job |
 |---|---|
-| **B1** | Open the file. Fill **Identity** far enough to name the **one real workload** the week's seeds will land on. Status → Living |
 | **P7** | Draft the full 30/60/90 from the seeds you have collected. Status → Draft horizons complete |
 | **P8** | Run the seal checklist adversarially. Status → **SEALED** |
 
-At B1 you are choosing the target. Pick a workload that is real, recurring, and yours — something you will still be doing in March. Every seed after this lands on it, so a vague choice here costs you all week.
-
 At P7 you are not inventing a plan. You are reading seven dated seeds and turning them into horizons. If a seed is empty, fill it before you draft. A horizon written over an empty seed is a commitment to a capability you never proved you had.
 
-At P8 you are defending, not writing.
+At P8 you finalize only what the saved evidence supports, then defend it. You do not invent missing seeds.
 
-## The other six blocks — one dated seed line
+## P1–P6 — one dated seed in each module closeout
 
-After the log, the adversarial, and the measurement row, write **one line into the matching seed section below and put today's date on it**. That happens in the block's own chat. No second chat, no second conversation.
+During the artifact-backed closeout on each live module page, write **one entry into the matching seed section below and put today's date on it**. Use that module's exact closeout chat; do not open the P7–P8 planning chat early.
 
 | Block | Seed section to fill |
 |---|---|
@@ -74,7 +73,7 @@ After the log, the adversarial, and the measurement row, write **one line into t
 | **P5** | From P5 — Operating picture |
 | **P6** | From P6 — Contract |
 
-P7 fills its own seed in the same way and then opens the chat for the horizons.
+P7 fills its own seed in its module closeout, then opens `P7–P8 — 30/60/90 Plan` for the horizons.
 
 **The dates are the proof this file is living.** Seven seeds all dated Friday afternoon is a Friday dump, and it reads exactly like one at seal. A seed written on the day the block ran carries what you actually learned that day; a seed reconstructed on Friday carries what you remember about it.
 
@@ -93,9 +92,9 @@ You are specifying how **direction + cothinking + evidence + bounds** will run o
 
 ---
 
-## Identity (open at B1; revise whenever the desk picture sharpens)
+## Identity (complete from saved module evidence before the P7 horizon draft)
 
-First serious pass at B1, tightened by end of **P2**.
+Use the real workload named across the P1 and P2 seeds, then revise whenever the desk picture sharpens. Do not create a separate B1 transfer session.
 
 **Role / desk**  
 
@@ -286,7 +285,7 @@ Outer circuit closed when:
 
 ## Seal checklist (P8 — required for MVP)
 
-Interactive in the **Transfer** chat. **SEALED** only when all hold.
+Interactive in **`P7–P8 — 30/60/90 Plan`** during P8. **SEALED** only when all hold.
 
 - [ ] Every seed section carries a **date**, and the dates are spread across the week — not all the same afternoon
 - [ ] Identity is **my** desk, and it names one real recurring workload
@@ -303,14 +302,16 @@ Interactive in the **Transfer** chat. **SEALED** only when all hold.
 
 ---
 
-## Transfer-chat prompts
+## Reference prompts
 
-### B1 — open the file and name the target
+The live HTML module page supplies the prompt to use in class. These patterns explain the artifact's roles; they do not create additional chats.
+
+### Before P7 — complete Identity in the current module closeout if needed
 
 ```text
-Transfer opening — outer circuit. Read operator/TRANSFER_30_60_90.md.
+Identity check — outer circuit. Read operator/TRANSFER_30_60_90.md.
 
-I have just finished B1: brief, mission, log, adversarial, measurement row.
+I have completed the dated P1-P6 seed sections. Use those saved entries as evidence.
 
 Interview me in short turns:
 1. What is on my desk? Role, and the 2-4 recurring workloads that are actually mine.
@@ -318,12 +319,12 @@ Interview me in short turns:
    Reject anything I would not still be doing in three months.
    Reject anything I cannot describe as a repeating product with a reader.
 3. Write Identity from my answers, including the named workload.
-4. Set Status to Living.
+4. Keep Status Living.
 
 Do not draft horizons. Do not fill any seed section. One workload, named, is the whole job.
 ```
 
-### P1–P7 — the dated seed line (in the block's own chat, after the measurement row)
+### P1–P7 — the dated seed line (in the exact module closeout named on the HTML page)
 
 ```text
 Seed line for operator/TRANSFER_30_60_90.md.
@@ -339,7 +340,7 @@ The workload my seeds land on: [from Identity].
 Do not open the horizons. Do not seal. I own every line.
 ```
 
-### P7 — draft the horizons
+### P7 — draft the horizons in `P7–P8 — 30/60/90 Plan`
 
 ```text
 Transfer horizons. Read operator/TRANSFER_30_60_90.md.
@@ -357,7 +358,7 @@ Then, from the seeds only:
 Do not seal. Do not invent a seed I did not write.
 ```
 
-### P8 — seal
+### P8 — finalize and seal in `P7–P8 — 30/60/90 Plan`
 
 ```text
 Transfer seal. Read operator/TRANSFER_30_60_90.md and run the seal checklist adversarially.
@@ -374,7 +375,9 @@ Attack specifically:
 Only when every item holds: set Status to SEALED with today's date.
 ```
 
-### Monthly (after the course)
+### Monthly (after the course, in a fresh work-specific chat)
+
+The saved plan and recent logs carry continuity; do not depend on the P7–P8 chat history after the course.
 
 ```text
 Transfer review. Read TRANSFER_30_60_90.md and recent operator logs.
@@ -388,13 +391,13 @@ Smallest revision to keep the outer circuit closed. I own accepts.
 
 | Artifact | Relationship |
 |---|---|
-| Direction & Log chat | Inner mission pulse — finishes before adversarial |
-| `ADVERSARIAL_REVIEW.md` | Every-block verdict attack in a **new** chat — required before the measurement row |
-| `MEASUREMENT_SPINE.md` | Three entries after adversarial — brief accuracy · overclaim · time to result |
+| `[MODULE] — Direction & Closeout` or the exact closeout name on the module page | Module-scoped inner mission pulse; saved files carry its result forward |
+| `ADVERSARIAL_REVIEW.md` | Module-specific verdict attack in a **new** chat when the live page directs it |
+| `MEASUREMENT_SPINE.md` | Measurement row when the live page directs it |
 | `PASS_BARS.md` | Evidence that transfer claims are earned |
 | P8 matrix + AUP | The method can move; this file says where it moves *to* |
 
 ## Identity lock
 
-If this file is only touched at the three chat visits, the seeds are empty and the horizons are fiction.  
-**Every block leaves a dated line here.** Three of them open a chat; the rest cost one minute in the chat you already have open — until P8 seals it.
+If this file is only touched in the P7–P8 shared planning chat, the earlier seeds are empty and the horizons are fiction.
+**Every P1–P7 module leaves a dated seed here through its own closeout.** Only P7 and P8 use the intentionally shared `P7–P8 — 30/60/90 Plan` chat.

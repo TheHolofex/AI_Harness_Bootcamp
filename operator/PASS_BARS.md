@@ -12,9 +12,10 @@ Clearable the same day with serious work. Not clearable by watching a demo, acce
 | **Side-quest** | Optional alternate mission — same capability, different shape. |
 | **Not yet** | Capability not demonstrated. Fix and re-log. No soft pass. |
 
-**Always required (Move 1):** full LIVE Direction Brief (all five fields) before the run · Operator Log after with verdict, evidence, and what you still own.  
-**Always required (adversarial):** new chat + `ADVERSARIAL_REVIEW.md` prompt after log/pass-bar draft; `ADVERSARIAL:` line in the log. MVP items marked met must **survive** or be marked wounded/fixed. At **P3, P5 and P8** the same paste pack runs a second time in the second engine already open at that block, and both verdicts go in the log.  
-A block without brief/log/adversarial is **not yet**, regardless of artifacts.
+**When required by the live module page (Move 1):** full LIVE Direction Brief (all five fields) before the run · Operator Log after with verdict, evidence, and what you still own.
+
+**When required by the live module page (adversarial):** new module-specific review chat + `ADVERSARIAL_REVIEW.md` prompt after log/pass-bar draft; `ADVERSARIAL:` line in the log. MVP items marked met must **survive** or be marked wounded/fixed. When the page assigns a second engine, the same paste pack runs there and both verdicts go in the log.
+The HTML module page owns the learner sequence and exact chat names. B1 stays in `B1 — First Light Dashboard`; it does not open a generic direction/log chat.
 
 ---
 
@@ -22,7 +23,7 @@ A block without brief/log/adversarial is **not yet**, regardless of artifacts.
 
 Whichever way you do it, the list is written down **before** the attack, and you do not get to grade your own vibes unchallenged.
 
-**At B1, P2 and P5 — walk the list with the AI.** In `Operator — Direction & Log`, after the log, go one bar at a time. For each bar you answer *met* or *not yet* and give an evidence pointer, and the AI challenges any pointer that is a feeling rather than an artifact. Use the closer prompt at the bottom of this file. B1 and P2 are where an evidence pointer is still a new idea; P5's bars are the most mechanically specific in the week and the walk-through there earns its minutes.
+**When the module page calls for an AI-assisted walk, use its exact module-specific closeout chat.** The generic direction-chat pattern is `[MODULE] — Direction & Closeout`; replace `[MODULE]` with the current module code and copy any date suffix shown on the page. Go one bar at a time. For each bar you answer *met* or *not yet* and give an evidence pointer, and the AI challenges any pointer that is a feeling rather than an artifact. Use the closer prompt at the bottom of this file.
 
 **At P1, P3, P4, P6, P7 and P8 — tick the list yourself, then hand it to the attack.** Before you open the adversarial chat:
 
@@ -79,7 +80,7 @@ Acceptable: paths, commands, diffs, test output, score-sheet rows, opened citati
 - [ ] Instrument works on the real messy folder: map loads; timeline **and** filters both do something observable
 - [ ] **Negative check:** at least one “done looks like / must not” that you verified (bad data, empty state, or wrong filter result)
 - [ ] **Update proof:** add or drop a file and show the instrument reflects it *or* document the exact break and the redirect you issued
-- [ ] In the operator chat, explain the harness loop using *this* run (goal → act → observe → correct → accept) — AI may challenge hand-waving
+- [ ] In `B1 — First Light Dashboard`, explain the harness loop using *this* run (goal → act → observe → correct → accept) — AI may challenge hand-waving
 - [ ] Log: verdict + evidence pointers + what judgment you still own (e.g. whether the map is mission-true)
 
 ### Stretch
@@ -311,7 +312,7 @@ Policy after the fact, vibe degrade (“it’s fine”), empty 30-60-90, no refu
 
 ---
 
-## Operator-chat closer (paste after the log at B1, P2 and P5)
+## Module-closeout prompt (use only when the live module page calls for it)
 
 ```text
 Deep mastery self-check against operator/PASS_BARS.md for this block.
@@ -332,7 +333,7 @@ Do not treat MVP as met if adversarial review did not run.
 Next: adversarial in a new chat, then the MEASUREMENT_SPINE.md row.
 ```
 
-At the other six blocks you tick the list yourself instead, count the ticks, and paste the ticked list into the adversarial chat as your stated prediction.
+When the live module page directs a self-check instead, tick the list yourself, count the ticks, and paste the ticked list into the module-specific review chat as your stated prediction.
 
 ## Facilitator stance
 

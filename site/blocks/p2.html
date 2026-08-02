@@ -91,7 +91,7 @@
 
       <h3>Measure before you change anything</h3>
       <p>A <strong>baseline</strong> is the score before you change anything. It sounds like bookkeeping; it is the whole game. A delta without a baseline is a story, not a measurement — "it's much better now" carries no information unless you can say better <em>than what</em>, on <em>which cases</em>, by <em>how much</em>.</p>
-      <p>The fixed set makes the baseline honest by holding everything still. The five cases are fixed and you don't edit them, even when an edit would make your score prettier. Each case comes with a <em>pass-if</em> line — an observable condition like "names the failing job, no invented file paths" — and that line is the grader, not your general impression of the answer. Baseline and after run on the same model tier, both in fresh chats. When every variable but one is pinned, the one that moved is the one you changed.</p>
+      <p>The fixed set makes the baseline honest by holding everything still. The five cases are fixed and you don't edit them, even when an edit would make your score prettier. Each case comes with a <em>pass-if</em> line — an observable condition like "names the failing job, no invented file paths" — and that line is the grader, not your general impression of the answer. Baseline and after run on the same model tier, with each case isolated in its own fresh chat. When every variable but one is pinned, the one that moved is the one you changed.</p>
       <p>Those pass-if lines live in a file of their own, <code>GRADER.md</code>, one per track, holding all five conditions together. The case files the assistant reads carry only the input and the task. That separation is the point: a model shown "name the failing job, the root error line, and one concrete next action" will name exactly those three things, and you will have measured its reading comprehension rather than your harness. Never let the machine being checked see its own check — you read the conditions, it does not.</p>
       <p>Going wrong looks like this: skipping the baseline because the unchanged harness is "obviously bad," grading generously because you're rooting for your own harness, or letting the standard drift between the first run and the second. Each one quietly converts your instrument into a mirror — it reads back whatever you want it to say. When you're unsure whether a response passed, score FAIL and write why; a strict FAIL is worth more than a hopeful PASS, because fails are where your changes come from.</p>
       <p>At work, this is the ten-minute habit that converts tool claims into measurements. Before you change any assistant — or believe any vendor — write five fixed cases from your own desk and score what you have today. Every claim of improvement after that is a number, not a feeling.</p>
@@ -170,11 +170,11 @@
           <pre><code>Experiment
 - Track: [engineering / mission_ops]
 - Date: [TODAY]
-- Model tier: [FILL AFTER OPENING THE BASELINE CHAT]
+- Model tier: [FILL AFTER OPENING THE FIRST BASELINE CHAT]
 - Fixed cases: D01-D05
 - Baseline condition: course project before my P2 change
 - Change rule: one named baseline failure -> one smallest durable harness change
-- Final condition: full app restart, fresh chat, same model tier, same five cases
+- Final condition: full app restart, one fresh chat per case, same model tier, same five cases
 - Acceptance: score strictly against GRADER.md; report the measured delta even if zero</code></pre>
         </div>
 
@@ -190,21 +190,40 @@
         </ol>
 
         <h3>Stage 02 · Score the unchanged harness</h3>
+        <p>Each case gets a clean chat so one answer cannot teach the next case. The score sheet carries the measurement across those chats.</p>
+
         <div class="do-step">
-          <p class="do-label">Create the baseline chat in the <strong>ChatGPT desktop app</strong>:</p>
+          <p class="do-label">Open the baseline condition in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
-            <li>Open <strong>ChatGPT</strong>, select <strong>Codex</strong>, and open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Click <strong>New chat</strong> and rename it <code>Baseline — P2 — [TODAY'S DATE]</code></li>
-            <li>Select the model tier and copy its displayed name into the score-sheet experiment header</li>
-            <li>Confirm permissions say <strong>Ask for approval</strong></li>
-            <li>Do not coach or correct this chat between cases</li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
+            <li>Select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Keep this project open while you run D01 through D05</li>
           </ul>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Paste this into the <strong>baseline chat</strong> once per case, D01 through D05:</p>
+          <p class="do-label">Run this cycle once for each row, in order:</p>
+          <table>
+            <thead><tr><th>Case</th><th>Exact chat name</th></tr></thead>
+            <tbody>
+              <tr><td>D01</td><td><code>P2 — Baseline D01</code></td></tr>
+              <tr><td>D02</td><td><code>P2 — Baseline D02</code></td></tr>
+              <tr><td>D03</td><td><code>P2 — Baseline D03</code></td></tr>
+              <tr><td>D04</td><td><code>P2 — Baseline D04</code></td></tr>
+              <tr><td>D05</td><td><code>P2 — Baseline D05</code></td></tr>
+            </tbody>
+          </table>
+          <ol class="do-clicks">
+            <li>Click <strong>New chat</strong></li>
+            <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter the exact name from the row</li>
+            <li>Select the model tier. For D01, copy its displayed name into the score-sheet experiment header; use that exact tier for D02–D05</li>
+            <li>Confirm permissions say <strong>Ask for approval</strong></li>
+            <li>Paste the dispatch below with that row's case file and collect one answer</li>
+            <li>Do not send another message in that chat. Create the next row's chat</li>
+          </ol>
           <pre><code>Open the file instruments/p2_test_suite/[TRACK]/cases/[CASE FILE] and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else.</code></pre>
-          <p>Replace <code>[TRACK]</code> and <code>[CASE FILE]</code> each time. Keep the dispatch identical.</p>
+          <p>Replace <code>[TRACK]</code> and <code>[CASE FILE]</code> each time. Keep the dispatch identical. Each named chat receives only its matching case; never paste a second case or a coaching message into it.</p>
         </div>
 
         <div class="do-step">
@@ -224,7 +243,7 @@
               <span class="check-num">3</span>
               <span class="check-title">Baseline scored for D01-D05 before any change</span>
             </label>
-            <div class="check-detail">The Baseline column contains five strict PASS/FAIL calls, a note naming the missed requirement for every FAIL, and a total out of 5.</div>
+            <div class="check-detail">The Baseline column contains five strict PASS/FAIL calls from five isolated named chats, a note naming the missed requirement for every FAIL, and a total out of 5.</div>
           </li>
         </ol>
 
@@ -248,16 +267,18 @@ Smallest intended change: [ONE RULE]</code></pre>
         <p>If <code>AGENTS.md</code> already contains rules, preserve them. Add only the smallest rule that closes the failed requirement. Put the target case id in a comment beside it so the reason for the rule remains visible.</p>
 
         <div class="do-step">
-          <p class="do-label">Create a fresh spot-check chat in <strong>Codex</strong>:</p>
+          <p class="do-label">Create <strong>P2 — Wall Spot-check</strong> in <strong>Codex</strong>:</p>
           <ul class="do-clicks">
-            <li>Click <strong>New chat</strong> and rename it <code>Wall spot-check — P2</code></li>
-            <li>Confirm the course project and the baseline model tier are selected</li>
-            <li>Confirm permissions say <strong>Ask for approval</strong></li>
+            <li>In <strong>ChatGPT</strong>, select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>If another project is open, choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong></li>
+            <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P2 — Wall Spot-check</code></li>
+            <li>Select the baseline model tier and confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Run only the targeted case in the <strong>spot-check chat</strong>:</p>
+          <p class="do-label">Run only the targeted case in <strong>P2 — Wall Spot-check</strong>:</p>
           <pre><code>Open the file instruments/p2_test_suite/[TRACK]/cases/[CASE FILE] and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else.</code></pre>
         </div>
 
@@ -327,22 +348,40 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
 
         <h3>Stage 04 · Restart and run the cold final score</h3>
         <figure class="section-diagram">
-          <img src="../assets/blocks/p2/p2-cold-restart.svg" alt="The app restarts, a fresh chat loads the durable project rule from disk, and the same five cases produce the final score" width="1120" height="220" loading="lazy" decoding="async" />
+          <img src="../assets/blocks/p2/p2-cold-restart.svg" alt="The app restarts, five fresh case chats load the durable project rule from disk, and the same five cases produce the final score" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
 
         <div class="do-step">
-          <p class="do-label">Create the cold final condition in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Start the cold final condition in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Quit the app completely</li>
-            <li>Open <strong>ChatGPT</strong>, select <strong>Codex</strong>, and open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Click <strong>New chat</strong> and rename it <code>Cold final score — P2</code></li>
-            <li>Select the exact baseline model tier and confirm permissions say <strong>Ask for approval</strong></li>
+            <li>Quit the ChatGPT app completely</li>
+            <li>Open <strong>ChatGPT</strong> again from the Windows Start menu</li>
+            <li>Select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
           </ul>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Paste the same dispatch once per case in the <strong>cold final chat</strong>, D01 through D05:</p>
+          <p class="do-label">Run this cycle once for each row, in order:</p>
+          <table>
+            <thead><tr><th>Case</th><th>Exact chat name</th></tr></thead>
+            <tbody>
+              <tr><td>D01</td><td><code>P2 — Cold D01</code></td></tr>
+              <tr><td>D02</td><td><code>P2 — Cold D02</code></td></tr>
+              <tr><td>D03</td><td><code>P2 — Cold D03</code></td></tr>
+              <tr><td>D04</td><td><code>P2 — Cold D04</code></td></tr>
+              <tr><td>D05</td><td><code>P2 — Cold D05</code></td></tr>
+            </tbody>
+          </table>
+          <ol class="do-clicks">
+            <li>Click <strong>New chat</strong></li>
+            <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter the exact name from the row</li>
+            <li>Select the exact baseline model tier and confirm permissions say <strong>Ask for approval</strong></li>
+            <li>Paste the unchanged dispatch below with that row's case file</li>
+            <li>Collect one answer, then stop using that chat and create the next row's chat</li>
+          </ol>
           <pre><code>Open the file instruments/p2_test_suite/[TRACK]/cases/[CASE FILE] and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else.</code></pre>
+          <p>Replace <code>[TRACK]</code> and <code>[CASE FILE]</code> for the matching row. Each cold chat receives exactly one case and no coaching.</p>
         </div>
 
         <div class="do-step">
@@ -363,7 +402,7 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
               <span class="check-num">6</span>
               <span class="check-title">Cold final score completed on the same five cases</span>
             </label>
-            <div class="check-detail">The After column, total, and delta use the same track, model tier, dispatch, and grader as baseline. A zero or negative delta remains a valid result.</div>
+            <div class="check-detail">The After column contains one result from each of the five isolated cold chats. The total and delta use the same track, model tier, dispatch, and grader as baseline. A zero or negative delta remains a valid result.</div>
           </li>
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -371,7 +410,7 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
               <span class="check-num">7</span>
               <span class="check-title">Targeted improvement remains after a full restart</span>
             </label>
-            <div class="check-detail">The cold final run loaded the durable rule from disk and the score sheet records whether the targeted case retained the change.</div>
+            <div class="check-detail">The cold final chats loaded the durable rule from disk and the score sheet records whether the targeted case retained the change.</div>
           </li>
         </ol>
 
@@ -405,7 +444,20 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
           <p class="reflection-question"><strong>Closeout question:</strong> Which measured harness change is worth carrying into your real work?</p>
 
           <div class="do-step">
-            <p class="do-label">Open <strong>Operator — Direction &amp; Log</strong>, fill the brackets, and paste this once:</p>
+            <p class="do-label">Open or create <strong>P2 — Closeout</strong>:</p>
+            <ul class="do-clicks">
+              <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
+              <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+              <li>Look for <strong>P2 — Closeout</strong> in the sidebar and open it if it already exists</li>
+              <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P2 — Closeout</code></li>
+              <li>Select the instructor-named model, or keep the visible default if none was named</li>
+              <li>Confirm permissions say <strong>Ask for approval</strong></li>
+            </ul>
+            <p>The score sheet and other saved files carry the evidence. None of the five baseline or five cold chats needs to be reused for closeout.</p>
+          </div>
+
+          <div class="do-step">
+            <p class="do-label">Fill the brackets, then paste this once into <strong>P2 — Closeout</strong>:</p>
             <pre><code>Read instruments/p2_test_suite/SCORE_SHEET.md, operator/OPERATOR_LOG.md,
 and operator/TRANSFER_30_60_90.md.
 
@@ -467,7 +519,7 @@ sections changed.</code></pre>
               <span class="check-num">13</span>
               <span class="check-title">All five course cases have a baseline score</span>
             </label>
-            <div class="check-detail">Evidence looks like: <code>SCORE_SHEET.md</code> with the Baseline column filled for D01–D05 on your chosen track, scored once in a fresh chat before any change, with a missed requirement named for every FAIL.</div>
+            <div class="check-detail">Evidence looks like: <code>SCORE_SHEET.md</code> with the Baseline column filled for D01–D05 on your chosen track, each case scored in its own named fresh chat before any change, with a missed requirement named for every FAIL.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p2-walls">
@@ -503,7 +555,7 @@ sections changed.</code></pre>
               <span class="check-num">17</span>
               <span class="check-title">The targeted improvement remains after a full restart</span>
             </label>
-            <div class="check-detail">Evidence looks like: the cold final run after a full app restart, with the score sheet recording whether the targeted case retained the changed result and which artifact carried the rule.</div>
+            <div class="check-detail">Evidence looks like: <code>SCORE_SHEET.md</code> with five After results and notes recorded after the full app restart, including whether the targeted case retained the changed result and which saved artifact carried the rule. The five cold chats are isolated run environments, not the lasting evidence.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p2-claim">

@@ -2,7 +2,9 @@
 
 **Mandate:** deep operator mastery requires verdicts that survive attack — not only self-check.
 
-The challenger you can always get is a **fresh AI chat with a frozen adversarial prompt**, run **every block** after you have results. It is available at eleven at night, it has no stake in your feelings, and it will read the whole pack.
+The challenger you can always get is a **fresh AI chat with a frozen adversarial prompt**, run after you have results whenever the live module page calls for this pass. It is available at eleven at night, it has no stake in your feelings, and it will read the whole pack.
+
+This file is a reference pattern. The live HTML module page is authoritative for whether the review runs and for the exact module-specific chat name.
 
 A human who can challenge your verdicts is a different and better thing, and it is what you are building toward on the job (see `TRANSFER_30_60_90.md`). One does not replace the other. At P8 the ninety-second defense goes to a live listener precisely because a person can refuse to be convinced in a way a prompt cannot.
 
@@ -16,14 +18,15 @@ This chat’s job is to try to take it away — with evidence rules, not vibes.
 ## Where it sits in the half-day pulse
 
 ```text
-1. Direction Brief     →  chat: Operator — Direction & Log
+1. Direction Brief     →  [MODULE] — Direction & Closeout, when the module page uses it
 2. Mission             →  build chat(s)
 3. Operator Log
-   + PASS_BARS draft   →  Direction & Log
+   + PASS_BARS draft   →  same module-specific closeout chat
 4. Adversarial review  →  NEW chat every time (below)   ← you are here
 5. Fix or stand firm   →  update Log / bars if the attack lands
 6. Measurement spine   →  MEASUREMENT_SPINE.md row (three entries)
-7. Transfer            →  chat at B1, P7, P8; a dated seed line at the others
+7. Transfer            →  dated seed in each P1–P7 module closeout;
+                           shared P7–P8 plan chat only at P7 and P8
 ```
 
 **Why a new chat each time:** clean context. No build-chat cheerleading, no log-chat collusion. Paste artifacts in; the reviewer never “helped you succeed” five minutes ago.
@@ -34,7 +37,7 @@ This chat’s job is to try to take it away — with evidence rules, not vibes.
 
 | Do | Don’t |
 |---|---|
-| New chat every block (title below) | Reuse the build chat for “review” |
+| New module-specific chat for each directed review (title below) | Reuse the build chat for “review” |
 | Paste **outputs + paths + your provisional verdict** | Ask “does this look good?” |
 | Require the model to argue **not yet** hard | Accept praise or summary-only feedback |
 | Change the log if the attack is valid | Performatively “take notes” and change nothing |
@@ -53,7 +56,7 @@ One rule, and it has no exceptions:
 | **P3** | **OpenCode**, second pass on the same pack | OpenCode is already running from Stage 03 with the cargo flags set |
 | **P5** | **OpenCode**, second pass on the same pack | OpenCode is already running from the probe folder |
 | **P8** | **The re-pointed hosted open model**, second pass on the same pack | You wired that endpoint this morning and trusted it enough to run D01–D05 |
-| B1, P1, P2, P4, P6, P7 | New chat, same engine | No second engine is open, and opening one costs more than the pass is worth |
+| P1, P2, P4, P6, P7 | New module-specific review chat, same engine | No second engine is open, and opening one costs more than the pass is worth |
 
 At P3, P5 and P8 the second engine is a **second pass on the pack you already assembled** — same frozen prompt, same excerpts, no softening, run after the first review is done. It is not a replacement for the first pass and it is not a lighter one. Record **both** final `ADVERSARIAL:` lines in the log, side by side and labelled by engine or endpoint.
 
@@ -65,9 +68,11 @@ A third pass in a third engine is available if you want it and proves nothing ex
 
 ## Chat title pattern
 
-`Adversarial — [block] — [date]`  
+`[MODULE] — Adversarial Review — [DATE]`
 
-Example: `Adversarial — P3 Twin-engine — 2026-03-18`
+Example: `P3 — Adversarial Review — 2026-03-18`
+
+Replace `[MODULE]` with the current module code. If the live module page supplies a different exact review name, use the page's name.
 
 One block · one chat · then archive. Do not keep a single season-long adversarial chat.
 
@@ -130,7 +135,7 @@ Rules for you:
 
 ## After the attack (required)
 
-Back in `Operator — Direction & Log` (or edit files directly):
+Back in the module-specific closeout chat named on the live page, or edit the saved files directly. The generic direction-chat pattern is `[MODULE] — Direction & Closeout`; replace `[MODULE]` with the current module code:
 
 | If review says… | You must… |
 |---|---|
@@ -147,7 +152,7 @@ An empty list is a legitimate answer and is worth having on the record.
 That list is the only place the rulings survive, and the measurement row is counted from it: the bars that came back wounded or dead, over the number you marked met, is your **overclaim** for the block. Counting it from your own summary of the chat instead of from the rulings turns it back into a number you awarded yourself.
 
 Measurement spine row is written only after the adversarial line exists.  
-At B1, P7 and P8, the Transfer chat starts only after the measurement row exists.
+At P7 and P8, the shared `P7–P8 — 30/60/90 Plan` chat starts only after the module closeout evidence exists.
 The outer loop should not inherit unchallenged fantasy.
 
 ---
@@ -156,7 +161,7 @@ The outer loop should not inherit unchallenged fantasy.
 
 | Setting | Challenger |
 |---|---|
-| **Every block** | Adversarial AI chat, new every time (this file) |
+| **When directed by the module page** | Module-specific adversarial AI chat, new for that review (this file) |
 | **P3, P5, P8** | A second engine on the same pack — required, not a stretch. See *Which engine reviews you* above |
 | **Pair moments (optional)** | Human peer uses the same frozen prompt on your paste pack |
 | **After course (transfer seed)** | Named human who can challenge verdicts on the job |

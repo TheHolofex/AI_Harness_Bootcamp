@@ -78,7 +78,7 @@
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-b0" data-block="B1">
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Copy, paste, build</h2>
-        <p class="section-lede">There are two required prompts. Paste them into the same B1 chat in order; the repair prompts later on this page are optional. The only course artifact this exercise creates is the finished dashboard.</p>
+        <p class="section-lede">There are two required prompts. Paste them into <strong>B1 — First Light Dashboard</strong> in order; the repair prompts later on this page are optional. The only course artifact this exercise creates is the finished dashboard.</p>
 
         <h3>Stage 01 · Open the project and create the B1 chat</h3>
         <p>This starts at the genuine beginning. The project is the folder Codex can read and write; the chat is the running conversation that builds and repairs the dashboard.</p>
@@ -197,7 +197,7 @@ Report the exact dashboard path when finished.</code></pre>
         <p>The first prompt builds the product. The second prompt performs a real visual and functional pass against exact desktop, mobile, data, and interaction checks.</p>
 
         <div class="do-step">
-          <p class="do-label">Paste this into the <strong>same B1 chat</strong>:</p>
+          <p class="do-label">Paste this into <strong>B1 — First Light Dashboard</strong>:</p>
           <pre><code>Quality-check the actual rendered dashboard, not just its source code.
 
 Use the browser tools to inspect it at 1440 × 900 and 390 × 844. If the browser
@@ -316,11 +316,19 @@ or a list of each unresolved check.</code></pre>
 
     <section id="stuck" class="home-section">
       <h2>Repair prompts</h2>
-      <p class="section-lede">Use one only when its matching check fails. Paste it unchanged into <strong>B1 — First Light Dashboard</strong>.</p>
+      <p class="section-lede">Use one only when its matching check fails. Keep using <strong>B1 — First Light Dashboard</strong> unless the project itself was wrong; that repair starts a clean retry below.</p>
 
       <div class="callout">
         <strong>If Prompt 1 cannot find the reports</strong>
-        Confirm the project header says <code>AI_Harness_Bootcamp</code>. If it does not, reopen <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>, return to the same B1 chat, and paste Prompt 1 again.
+        <p>Confirm the project header says <code>AI_Harness_Bootcamp</code>. If it does not:</p>
+        <ol>
+          <li>Open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong> from the top-left switcher if needed</li>
+          <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+          <li>Click <strong>New chat</strong>, then use its <strong>…</strong> menu to rename it <code>B1 — First Light Dashboard Retry</code></li>
+          <li>Use the same model as the first attempt, choose <strong>Local</strong> if that control appears, and confirm <strong>Ask for approval</strong></li>
+          <li>Paste Prompt 1 into the retry chat</li>
+        </ol>
+        <p>Do not reuse the wrong-project chat. Its folder boundary cannot be repaired by changing the project afterward.</p>
       </div>
 
       <details class="lane-disclosure">

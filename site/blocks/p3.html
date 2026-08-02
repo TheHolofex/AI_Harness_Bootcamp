@@ -76,7 +76,7 @@
         <div class="orient-aside">
           <div class="lead-box">
             <p class="eyebrow">Lead operate-along</p>
-            <p>The lead runs this same page on screen — brief co-written live, the mission run in a build chat you can see, accepts and rejects narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+            <p>The lead runs this same page on screen — one frozen brief dispatched unchanged to both engines, both raw outputs saved, material differences compared, and source-backed dispositions narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
           </div>
           <div class="callout">
             <strong>Stretch · Many Minds, one commander</strong>
@@ -138,6 +138,7 @@
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
         <p class="section-lede">Send the same frozen brief and corpus to two engines, save both raw outputs with provenance, compare only material differences, and adjudicate every consequential claim against the source files.</p>
+        <p><strong>Dated names:</strong> wherever this page shows <code>[TODAY'S DATE]</code>, replace it with today's date in <code>YYYY-MM-DD</code> form, without brackets. Use that same date in every P3 chat and folder name.</p>
 
         <h3>Stage 01 · Freeze the run controls</h3>
         <p><code>BRIEF-v1.md</code> is the contract for both engines. Do not edit it. Choose a track explicitly, create a clean five-file working folder, and record any hidden context before either engine runs.</p>
@@ -147,7 +148,7 @@
           <ul class="do-clicks">
             <li>Select <code>engineering</code> or <code>mission_ops</code></li>
             <li>Write that choice at the top of your notes and use the matching copy command below</li>
-            <li>If <code>Documents\HarnessBootcamp\p3_desk</code> already exists, rename it in File Explorer to <code>p3_desk_previous_[today's date]</code></li>
+            <li>If <code>Documents\HarnessBootcamp\p3_desk</code> already exists, rename it in File Explorer to <code>p3_desk_previous_[TODAY'S DATE]</code></li>
           </ul>
         </div>
 
@@ -242,8 +243,9 @@ Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instru
         <div class="do-step">
           <p class="do-label">Run Engine A in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\p3_desk</code></li>
-            <li>Click <strong>New chat</strong> and rename it <code>P3 — Engine A — [TODAY'S DATE]</code></li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\p3_desk</code></li>
+            <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Engine A — [TODAY'S DATE]</code></li>
             <li>Record the displayed model name and app version in <code>COMPARATOR.md</code></li>
             <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
@@ -254,14 +256,26 @@ Copy-Item "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instru
           <pre><code>Read BRIEF-v1.md in this folder and follow it exactly.</code></pre>
         </div>
 
-        <p>Do not clarify or coach. If the output misses the required shape, rerun the same sentence once in a fresh chat and record the failure.</p>
+        <p>Do not clarify or coach. If the output misses the required shape, record the failed run in <code>COMPARATOR.md</code> before trying once more.</p>
+
+        <div class="do-step">
+          <p class="do-label">Only if the first Engine A run fails, create its one allowed retry:</p>
+          <ul class="do-clicks">
+            <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\p3_desk</code></li>
+            <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Engine A Retry — [TODAY'S DATE]</code></li>
+            <li>Select the same model and leave permissions at <strong>Ask for approval</strong></li>
+            <li>Paste the same sentence once: <code>Read BRIEF-v1.md in this folder and follow it exactly.</code></li>
+            <li>Record both chat names and the first failure in <code>COMPARATOR.md</code>. The response you preserve in the next step is now the retry response; if it also misses the required shape, preserve it unchanged and record that failure too</li>
+          </ul>
+        </div>
 
         <div class="do-step">
           <p class="do-label">Create Engine A's raw output file from <strong>PowerShell</strong>:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\output_codex.md"</code></pre>
         </div>
 
-        <p>Paste the full response into <code>output_codex.md</code>, add the displayed model name and app version at the top, and save. Keep the output outside <code>p3_desk</code> so Engine B cannot read it.</p>
+        <p>Paste the first Engine A response into <code>output_codex.md</code>, or the retry response if you used the named retry. Add the displayed model name and app version at the top; label a retry as <code>RETRY</code>, then save. Keep the first failure in <code>COMPARATOR.md</code> and keep this output outside <code>p3_desk</code> so Engine B cannot read it.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
@@ -391,9 +405,18 @@ opencode --version
 
         <details>
           <summary>Conditional independent review · only when a material judgment is still unresolved</summary>
-          <p>Use at most one fresh reviewer. Give it the frozen row and source excerpt, then use its analysis as input to your decision rather than as a vote.</p>
+          <p>Use only <strong>P3 — Evidence Review — [TODAY'S DATE]</strong> for this check. Give it the frozen row and source excerpt, then use its analysis as input to your decision rather than as a vote.</p>
           <div class="do-step">
-            <p class="do-label">Create one new review chat on the course project and paste:</p>
+            <p class="do-label">Create the evidence-review chat in the <strong>ChatGPT desktop app</strong>:</p>
+            <ul class="do-clicks">
+              <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
+              <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+              <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Evidence Review — [TODAY'S DATE]</code></li>
+              <li>Select the same course model and leave permissions at <strong>Ask for approval</strong></li>
+            </ul>
+          </div>
+          <div class="do-step">
+            <p class="do-label">Paste this into <strong>P3 — Evidence Review — [TODAY'S DATE]</strong>:</p>
             <pre><code>Review only this unresolved row from instruments/p3_frozen_brief/COMPARATOR.md:
 [PASTE ROW]
 
@@ -439,7 +462,18 @@ Do not manufacture disagreement and do not change files.</code></pre>
           <p class="reflection-question"><strong>Closeout question:</strong> Which kind of decision at work now warrants a second engine or source adjudication?</p>
 
           <div class="do-step">
-            <p class="do-label">Open <strong>Operator — Direction &amp; Log</strong> on the course project, fill the brackets, and paste this once:</p>
+            <p class="do-label">Start the P3 closeout in the <strong>ChatGPT desktop app</strong>:</p>
+            <ul class="do-clicks">
+              <li>Open <strong>ChatGPT</strong> from the Windows Start menu, then select <strong>Codex</strong> from the top-left switcher if needed</li>
+              <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+              <li>In the sidebar, look for <strong>P3 — Closeout — [TODAY'S DATE]</strong>. If it is there, open it</li>
+              <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P3 — Closeout — [TODAY'S DATE]</code></li>
+              <li>Select the same course model and leave permissions at <strong>Ask for approval</strong></li>
+            </ul>
+          </div>
+
+          <div class="do-step">
+            <p class="do-label">Fill the brackets, then paste this once into <strong>P3 — Closeout — [TODAY'S DATE]</strong>:</p>
             <pre><code>Read instruments/p3_frozen_brief/output_codex.md,
 instruments/p3_frozen_brief/output_opencode.md,
 instruments/p3_frozen_brief/COMPARATOR.md,
@@ -573,7 +607,7 @@ sections changed.</code></pre>
               <span class="check-num">S1</span>
               <span class="check-title"><span class="tag">Stretch</span> Baseline single-chat review on disk</span>
             </label>
-            <div class="check-detail"><code>out/baseline_single.md</code> under <code>instruments/p3_multi_agent/</code> — one reviewer, no subagents, every finding carrying corpus evidence. If the model spawned specialists anyway, restart the baseline chat; the comparison is ruined otherwise. Guide: <code>mission_flesh/p3/MANY_MINDS.md</code>.</div>
+            <div class="check-detail"><code>out/baseline_single.md</code> under <code>instruments/p3_multi_agent/</code> — one reviewer, no subagents, every finding carrying corpus evidence. If the model spawned specialists anyway, rerun S1 in <strong>P3 — Many Minds Baseline Retry — [TODAY'S DATE]</strong>; the comparison is ruined otherwise. Guide: <code>mission_flesh/p3/MANY_MINDS.md</code>.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="#p3-stretch-synthesis-proof">
@@ -649,17 +683,23 @@ sections changed.</code></pre>
           <p class="do-label">Stretch S1 · Run the single-chat baseline before spawning anything:</p>
           <ul class="do-clicks">
             <li>In PowerShell at the course repository root, run <code>New-Item -ItemType Directory -Force -Path ".\instruments\p3_multi_agent\out" | Out-Null</code></li>
-            <li>In the Codex app, open the course project, create a new chat named <code>P3 — Many Minds baseline</code>, and keep permissions at <strong>Ask for approval</strong></li>
+            <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Many Minds baseline</code></li>
+            <li>Select the instructor-named course model, or keep the visible default if none was named, and confirm permissions say <strong>Ask for approval</strong></li>
             <li>Tell the single reviewer not to spawn subagents or implement fixes. Point it only at the three files under <code>instruments/p3_multi_agent/corpus/</code></li>
             <li>Require at most eight findings in <code>instruments/p3_multi_agent/out/baseline_single.md</code>. Every finding must name a claim, corpus file and symbol or short quote, severity, and the lens it belongs to</li>
-            <li>Open the saved file yourself. Confirm it exists, every finding carries corpus evidence, and no subagent ran. If a specialist spawned, restart the baseline chat</li>
+            <li>Open the saved file yourself. Confirm it exists, every finding carries corpus evidence, and no subagent ran</li>
+            <li>If a specialist spawned, do not reuse that chat. Open <strong>ChatGPT</strong>, select <strong>Codex</strong>, click <strong>Open project</strong>, and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>. Click <strong>New chat</strong>, rename it <code>P3 — Many Minds Baseline Retry — [TODAY'S DATE]</code>, select the same model, confirm <strong>Ask for approval</strong>, and repeat the baseline prompt without subagents</li>
           </ul>
         </div>
 
         <div class="do-step" id="p3-stretch-synthesis-proof">
           <p class="do-label">Stretch S2 · Run three read-only lenses and make the commander synthesize:</p>
           <ul class="do-clicks">
-            <li>Create a separate Codex chat named <code>P3 — Many Minds commander</code> on the course project</li>
+            <li>In the <strong>ChatGPT desktop app</strong>, select <strong>Codex</strong>, click <strong>Open project</strong>, and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Many Minds commander</code></li>
+            <li>Select the same model used for the baseline and confirm permissions say <strong>Ask for approval</strong></li>
             <li>Direct it to spawn exactly three subagents in parallel: <strong>correctness and edge cases</strong>, <strong>test gaps</strong>, and <strong>spec drift</strong>. Each reads only <code>instruments/p3_multi_agent/corpus/</code>, edits nothing, and returns at most five findings with corpus cues</li>
             <li>Require the commander to wait for all three, then write only <code>instruments/p3_multi_agent/out/many_minds_synthesis.md</code></li>
             <li>Require a lens-by-lens table, visible deduplication, a corpus-backed keep/discard/unknown disposition for every reported finding, what the operator still owns, and the sentence <code>subagent ≠ second engine ≠ second human</code></li>
@@ -681,7 +721,10 @@ sections changed.</code></pre>
         <div class="do-step" id="p3-stretch-worktree-proof">
           <p class="do-label">Optional Stretch S4 · Record when a worktree is the right isolation tool:</p>
           <ul class="do-clicks">
-            <li>Start only after S1–S3. Note the Local course-repository path, then create a new Codex chat with <strong>Worktree</strong> selected</li>
+            <li>Start only after S1–S3. Note the Local course-repository path</li>
+            <li>Open <strong>ChatGPT</strong>, select <strong>Codex</strong>, click <strong>Open project</strong>, and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong>, select <strong>Worktree</strong>, then open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P3 — Many Minds Worktree — [TODAY'S DATE]</code></li>
+            <li>Select the same model used for the commander and confirm permissions say <strong>Ask for approval</strong></li>
             <li>Ask it to print its working directory and create only <code>instruments/p3_multi_agent/out/worktree_path.txt</code> containing that path and <code>purpose=many-minds-isolation</code></li>
             <li>Confirm the Local lesson files did not change</li>
             <li>Write one line explaining the choice: use a worktree for isolated writes; use subagents for read-split specialist context. If Worktree is unavailable, save an honest block note instead</li>

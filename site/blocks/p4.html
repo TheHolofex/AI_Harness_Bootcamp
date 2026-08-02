@@ -127,24 +127,25 @@
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
         <p class="section-lede">Create a scoped vault, approve its organization, answer two director questions with walkable citations, audit every trail, and publish a Morning Brief from supported material.</p>
+        <p><strong>Dated names:</strong> wherever this page shows <code>[TODAY'S DATE]</code>, replace it with today's date in <code>YYYY-MM-DD</code> form, without brackets. Use that same date in every P4 chat name.</p>
 
         <h3 id="stage-1">Stage 01 · Save the scope and open the vault</h3>
         <p>The folder boundary controls what the assistant can reach. The written contract adds the output, evidence, and stop conditions for this specific build.</p>
 
         <div class="do-step">
-          <p class="do-label">Open the standing operator chat in the <strong>ChatGPT desktop app</strong>:</p>
+          <p class="do-label">Start the P4 direction chat in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
             <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
-            <li>Open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> as the project</li>
-            <li>Open <strong>Operator — Direction &amp; Log</strong> from the sidebar</li>
-            <li>If it is missing, click <strong>New chat</strong>, rename it <code>Operator — Direction &amp; Log</code>, and pin it if <strong>Pin</strong> appears</li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>In the sidebar, look for <strong>P4 — Direction — [TODAY'S DATE]</strong>. If it is there, open it</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P4 — Direction — [TODAY'S DATE]</code></li>
             <li>Select the instructor-named model, or keep the visible default if none was named</li>
             <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Paste this populated contract into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <p class="do-label">Paste this populated contract into <strong>P4 — Direction — [TODAY'S DATE]</strong>:</p>
           <pre><code>Read operator/DIRECTION_BRIEF.md and replace its active brief with this P4 contract.
 
 Outcome: an Obsidian vault at Documents\p4-vault that answers two director
@@ -207,14 +208,15 @@ Get-ChildItem "$env:USERPROFILE\Documents\p4-vault"</code></pre>
         <div class="do-step">
           <p class="do-label">Create the scoped build chat in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Click <strong>New chat</strong> and rename it <code>P4 build — [today's date]</code></li>
+            <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\p4-vault</code></li>
+            <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P4 — Build — [TODAY'S DATE]</code></li>
             <li>Select the same course model and leave permissions at <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Confirm the project boundary in the <strong>build chat</strong>:</p>
+          <p class="do-label">Confirm the project boundary in <strong>P4 — Build — [TODAY'S DATE]</strong>:</p>
           <pre><code>Before we start: list every file and folder you can see from the
 project root, as a tree. Do not open or change anything yet.</code></pre>
         </div>
@@ -238,7 +240,7 @@ project root, as a tree. Do not open or change anything yet.</code></pre>
         </figure>
 
         <div class="do-step">
-          <p class="do-label">Ask the <strong>build chat</strong> for a proposal:</p>
+          <p class="do-label">Ask <strong>P4 — Build — [TODAY'S DATE]</strong> for a proposal:</p>
           <pre><code>Vault root: this project's root folder — the folder that contains MOC.md.
 Only read and write inside this vault.
 Process each file in 00_Inbox into notes under People / Systems /
@@ -279,7 +281,7 @@ originals; move processed captures to 00_Inbox/processed/.</code></pre>
         </figure>
 
         <div class="do-step">
-          <p class="do-label">In <strong>P4 build — [today's date]</strong>, ask the first question:</p>
+          <p class="do-label">In <strong>P4 — Build — [TODAY'S DATE]</strong>, ask the first question:</p>
           <pre><code>Answer from the vault only. Write the answer as a note at
 Answers/Q1 Risks.md inside the vault, dated today at the top.
 Cite notes as [[Note Name]] and, for each claim, quote the sentence
@@ -309,7 +311,7 @@ unreproduced) into the answer. Where the vault is silent, say so.</code></pre>
         </ol>
 
         <div class="do-step">
-          <p class="do-label">Return to the <strong>P4 build</strong> chat and ask the second question:</p>
+          <p class="do-label">Return to <strong>P4 — Build — [TODAY'S DATE]</strong> and ask the second question:</p>
           <pre><code>Same rules as the last answer. Write the answer as a note at
 Answers/Q2 Blocked Decision.md inside the vault, dated today at the top.
 Cite notes as [[Note Name]] and quote the supporting sentence per claim.
@@ -386,7 +388,7 @@ answer. Where the vault is silent, say so.</code></pre>
         <p>Revise only actual partial or unsupported claims. If every citation supports its claim at the same strength, record <code>NO CHANGES REQUIRED</code> and the completed audit is the evidence.</p>
 
         <div class="do-step">
-          <p class="do-label">Use this in the <strong>P4 build</strong> chat for each partial or unsupported claim; skip it when none exist:</p>
+          <p class="do-label">Use this in <strong>P4 — Build — [TODAY'S DATE]</strong> for each partial or unsupported claim; skip it when none exist:</p>
           <pre><code>In [ANSWER NOTE], this claim did not pass my trail audit: "[CLAIM]".
 The cited note supports it only as: [SUPPORT / PARTIAL / NOT SUPPORTED].
 Revise the answer note to match the source at the same strength, including
@@ -416,7 +418,7 @@ note supports it. Do not change claims I did not name.</code></pre>
 
         <h3 id="stage-5">Stage 05 · Publish the Morning Brief</h3>
         <div class="do-step">
-          <p class="do-label">In the <strong>P4 build</strong> chat, paste:</p>
+          <p class="do-label">In <strong>P4 — Build — [TODAY'S DATE]</strong>, paste:</p>
           <pre><code>Vault root: this project's root folder. Only read and write inside
 this vault.
 Write Morning_Brief.md into the vault: today's date, short.
@@ -451,7 +453,7 @@ say so instead of filling the gap.</code></pre>
           <p>Do not create a review package for a fully resolved audit. When a consequential claim still depends on judgment, freeze just the evidence needed for that decision.</p>
 
           <div class="do-step">
-            <p class="do-label">In the <strong>P4 build</strong> chat, create one review bundle:</p>
+            <p class="do-label">In <strong>P4 — Build — [TODAY'S DATE]</strong>, create one review bundle:</p>
             <pre><code>Create Review_Pack.md inside this vault for this unresolved judgment only:
 [PASTE THE QUESTION OR CLAIM]
 
@@ -464,7 +466,17 @@ Do not add new facts or change any source note. Save the bundle.</code></pre>
           </div>
 
           <div class="do-step">
-            <p class="do-label">Open one fresh review chat on <code>Documents\p4-vault</code> and paste:</p>
+            <p class="do-label">Create the evidence-review chat in the <strong>ChatGPT desktop app</strong>:</p>
+            <ul class="do-clicks">
+              <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
+              <li>Click <strong>Open project</strong> and choose <code>Documents\p4-vault</code></li>
+              <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P4 — Evidence Review — [TODAY'S DATE]</code></li>
+              <li>Select the same course model and leave permissions at <strong>Ask for approval</strong></li>
+            </ul>
+          </div>
+
+          <div class="do-step">
+            <p class="do-label">Paste this into <strong>P4 — Evidence Review — [TODAY'S DATE]</strong>:</p>
             <pre><code>Read Review_Pack.md. Review only the unresolved judgment it names.
 
 For each claim, state:
@@ -485,10 +497,28 @@ Do not manufacture a problem and do not change files.</code></pre>
           <p class="reflection-question"><strong>Closeout question:</strong> What trail rule will you require before acting on an AI-written brief?</p>
 
           <div class="do-step">
-            <p class="do-label">Open <strong>Operator — Direction &amp; Log</strong> on the course project, fill the brackets, and paste this once:</p>
-            <pre><code>Read operator/OPERATOR_LOG.md and operator/TRANSFER_30_60_90.md.
+            <p class="do-label">Create a fresh P4 closeout with access to both the course files and the vault:</p>
+            <ul class="do-clicks">
+              <li>Open <strong>ChatGPT</strong> from the Windows Start menu, then select <strong>Codex</strong> from the top-left switcher if needed</li>
+              <li>Click <strong>Open project</strong> and choose your <code>Documents</code> folder so this chat can read both <code>p4-vault</code> and the course repository</li>
+              <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P4 — Closeout — [TODAY'S DATE]</code></li>
+              <li>Select the same course model and leave permissions at <strong>Ask for approval</strong></li>
+            </ul>
+            <p>The vault artifacts and operator files carry the evidence. Neither the direction chat nor the build chat is needed for closeout.</p>
+          </div>
 
-Update the P4 entry in OPERATOR_LOG.md with:
+          <div class="do-step">
+            <p class="do-label">Fill the brackets, then paste this once into <strong>P4 — Closeout — [TODAY'S DATE]</strong>:</p>
+            <pre><code>Read these saved P4 artifacts:
+- p4-vault\Answers\Q1 Risks.md
+- p4-vault\Answers\Q2 Blocked Decision.md
+- p4-vault\Audit.md
+- p4-vault\Morning_Brief.md
+- HarnessBootcamp\AI_Harness_Bootcamp\operator\OPERATOR_LOG.md
+- HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md
+
+Update the P4 entry in
+HarnessBootcamp\AI_Harness_Bootcamp\operator\OPERATOR_LOG.md with:
 - final artifacts: Documents\p4-vault\Answers\Q1 Risks.md,
   Answers\Q2 Blocked Decision.md, Audit.md, and Morning_Brief.md
 - criterion-based status: READY / READY WITH FIXES / HOLD
@@ -498,7 +528,8 @@ Update the P4 entry in OPERATOR_LOG.md with:
 - lesson reflection: [THE TRAIL RULE I WILL REQUIRE BEFORE ACTING]
 - reusable workplace rule: [ONE LINE]
 
-Update only "From P4 — Trailed knowledge" in TRANSFER_30_60_90.md:
+Update only "From P4 — Trailed knowledge" in
+HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md:
 - work knowledge that belongs in a navigable system: [ONE SPECIFIC BODY OF KNOWLEDGE]
 - citation/trail rule: [THE STANDARD I WILL KEEP]
 - date: [TODAY]

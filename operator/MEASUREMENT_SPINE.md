@@ -3,6 +3,8 @@
 **Ultra-light week scoreboard.** Living Markdown in the Codex app project.  
 Updated **once per block, after adversarial review**.
 
+The live HTML module page is authoritative for whether this row is part of the learner flow and which exact module-specific closeout chat to use.
+
 Not a second curriculum. Not a metrics religion.  
 Four entries that answer: *Was the brief I wrote any good, how much of what I claimed survived review, what did the lesson cost in time, and what will I change next?*
 
@@ -27,7 +29,7 @@ Brief accuracy · Overclaim · Time to result · Lesson reflection
 | Rule | Detail |
 |---|---|
 | **Where** | `operator/MEASUREMENT_SPINE.md` in the Codex app project |
-| **Chat** | Prefer a short update in `Operator — Direction & Log` after adversarial (or a dedicated `Operator — Measurement` chat if the log chat is crowded) |
+| **Chat** | Use the exact closeout chat named on the module page. The generic direction-chat pattern is `[MODULE] — Direction & Closeout`; replace `[MODULE]` with the current module code. The saved file, not chat history, carries the row forward |
 | **When** | **End of every block only**, after the `ADVERSARIAL:` line exists |
 | **How** | Interactive with AI: you paste the facts, the AI counts overclaim from the rulings and refuses “the brief was fine” |
 | **Weight** | Four short entries and a deep mark on the lessons that carry one. More than two or three minutes means you are over-measuring |
@@ -38,7 +40,8 @@ Brief accuracy · Overclaim · Time to result · Lesson reflection
 Brief → Lesson work → Log + lesson-outcome check
   → Independent review (new chat)
   → Measurement spine row (this file)
-  → Transfer chat at B1, P7 and P8; a dated seed line at the other blocks
+  → Dated transfer seed in the module closeout for P1–P7
+  → Shared P7–P8 plan chat only when the P7 or P8 page directs it
 ```
 
 ---

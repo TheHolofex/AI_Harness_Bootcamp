@@ -538,9 +538,12 @@ Set-Content -Path $cfg -Value (@('forced_login_method = "api"') + $keep)</code><
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-project" data-check-id="cx-project" />
     <span class="check-num">35</span>
-    <span class="check-title">Open your smoke folder as a project</span>
+    <span class="check-title">Open your smoke folder and create the B0 smoke chat</span>
   </label>
-  <div class="check-detail"><p>Choose <strong>Open project</strong> and pick the smoke folder you made in section 6: <code>Documents\HarnessBootcamp\prework-smoke</code>.</p>
+  <div class="check-detail"><p>After the restart, open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong> from the top-left switcher if needed.</p>
+  <p>Choose <strong>Open project</strong> and pick the smoke folder you made in section 6: <code>Documents\HarnessBootcamp\prework-smoke</code>.</p>
+  <p>Click <strong>New chat</strong>. In the sidebar, open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>B0 — Codex Smoke Test</code>.</p>
+  <p>Use the instructor-named model, or keep the visible default if none was named.</p>
   <p>The folder you open is the boundary. Codex reads and writes inside it and has to ask before reaching anywhere else on your machine.</p>
   <p>That's worth pausing on, because it's the shape of everything you'll do this week: you decide what the machine can see before you give it work, not after.</p></div>
 </li>
@@ -567,7 +570,7 @@ sandbox = "unelevated"</code></pre>
     <span class="check-num">37</span>
     <span class="check-title">Write proof: from-codex.txt</span>
   </label>
-  <div class="check-detail"><p>In the message box, ask for the file in plain language:</p>
+  <div class="check-detail"><p>In <strong>B0 — Codex Smoke Test</strong>, ask for the file in plain language:</p>
   <pre><code>Create a file named from-codex.txt in this folder containing exactly the text: codex works</code></pre>
   <p>Approve the write when it asks — that prompt is the sandbox doing its job. Then open the folder in Explorer and look.</p>
   <p>You want the file on disk, containing <code>codex works</code>. A confident <em>"I've created that for you"</em> with nothing in the folder is a fail, and noticing the difference is the first operator habit this course builds.</p>
@@ -975,8 +978,16 @@ Get-Content .\from-goose.txt</code></pre>
     <span class="check-num">67</span>
     <span class="check-title">Find the module exercise files and transfer plan</span>
   </label>
-  <div class="check-detail"><p>In Codex, choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>. This is the course repository you cloned earlier.</p>
-  <p>Start a new task and paste:</p>
+  <div class="check-detail"><p>Create a separate read-only task for the course map:</p>
+  <ul class="do-clicks">
+    <li>Open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong> from the top-left switcher if needed</li>
+    <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>, the course repository you cloned earlier</li>
+    <li>Click <strong>New chat</strong></li>
+    <li>In the sidebar, open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>B0 — Course File Map</code></li>
+    <li>Use the instructor-named model, or keep the visible default if none was named</li>
+    <li>Confirm the permission control under the message box says <strong>Ask for approval</strong></li>
+  </ul>
+  <p>Paste this into <strong>B0 — Course File Map</strong>:</p>
   <pre><code>Use Git to inspect this course repository.
 Do not change any files.
 

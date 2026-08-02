@@ -54,7 +54,7 @@
           <h2 class="h-plain">What this is worth at work</h2>
           <p>By Friday of a normal week, Monday's status document is wrong. Numbers moved, one blocker cleared, a new one landed — and somewhere a page still says otherwise. Most people handle that by asking a chat model to "summarize the latest" and getting a fresh essay every time: different structure, different emphasis, no way to tell what actually changed, no way to tell whether any of it is true.</p>
           <p>This afternoon you build the other thing: a thinking machine that does the heavy lifting in knowledge work under your direction. One folder of source reports, one fixed format, a citation on every claim, and a saved path that regenerates the whole brief on command. When the world changes, you rerun it — and you can show why you trust the new brief, because you built the checks that catch it lying.</p>
-          <p>You will use two chats. The operator chat saves the release contract and final artifact-backed closeout. The build chat creates, refreshes, and repairs the brief. The source manifest, audit, and release record keep the decision readable a month from now.</p>
+          <p>You will use two P1 chats. <strong>P1 — Direction &amp; Closeout</strong> saves the release contract and final artifact-backed closeout. <strong>P1 — Daily Brief Build</strong> creates, refreshes, and repairs the brief. The saved source manifest, audit, and release record carry the work between chats and keep the decision readable a month from now.</p>
           <h3>What you will leave with</h3>
           <ul>
             <li>A Direction Brief marked LIVE that pins audience, format, citation rule, accept checks, and stop conditions</li>
@@ -66,7 +66,7 @@
           </ul>
           <h3>Before you start</h3>
           <ul>
-            <li>B1 complete enough that the Codex app feels like home — your project open, operator chats pinned</li>
+            <li>B1 complete enough that you can open the Codex app and select the course project</li>
             <li>Operator templates present in the project: <code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code></li>
             <li>The course repo inside the project Codex has open — open the repo folder as your project, or copy <code>mission_flesh/p1/</code> into it, so <code>mission_flesh/p1/corpus/</code> resolves from where the machine works</li>
           </ul>
@@ -131,19 +131,19 @@
         <p>The contract fixes the audience, output, sources, and release checks before the first draft. P1 uses a filled specification rather than another interview.</p>
 
         <div class="do-step">
-          <p class="do-label">Open the standing operator chat in the <strong>ChatGPT desktop app</strong>:</p>
+          <p class="do-label">Open or create <strong>P1 — Direction &amp; Closeout</strong> in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
             <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Open <strong>Operator — Direction &amp; Log</strong> from the sidebar</li>
-            <li>If it is missing, click <strong>New chat</strong>, rename it <code>Operator — Direction &amp; Log</code>, and pin it if <strong>Pin</strong> appears</li>
+            <li>Look for <strong>P1 — Direction &amp; Closeout</strong> in the sidebar and open it if it already exists</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P1 — Direction &amp; Closeout</code></li>
             <li>Select the instructor-named model, or keep the visible default if none was named</li>
             <li>Confirm permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Replace <code>[YOUR AUDIENCE]</code>, then paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <p class="do-label">Replace <code>[YOUR AUDIENCE]</code>, then paste this into <strong>P1 — Direction &amp; Closeout</strong>:</p>
           <pre><code>Read operator/DIRECTION_BRIEF.md and replace its active brief with this P1 contract.
 
 Outcome: a daily status brief for [YOUR AUDIENCE], built only from the current
@@ -188,17 +188,19 @@ section changed. Do not start the mission in this chat.</code></pre>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Create the P1 build chat in <strong>Codex</strong>:</p>
+          <p class="do-label">Create <strong>P1 — Daily Brief Build</strong> in <strong>Codex</strong>:</p>
           <ul class="do-clicks">
-            <li>Confirm <code>AI_Harness_Bootcamp</code> is the open project</li>
-            <li>Click <strong>New chat</strong> and rename it <code>Build — P1 Daily Brief</code></li>
+            <li>In <strong>ChatGPT</strong>, select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong></li>
+            <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P1 — Daily Brief Build</code></li>
             <li>Select the same model used for the contract and confirm permissions say <strong>Ask for approval</strong></li>
             <li>Keep this chat open through the release record</li>
           </ul>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Paste this into <strong>Build — P1 Daily Brief</strong>:</p>
+          <p class="do-label">Paste this into <strong>P1 — Daily Brief Build</strong>:</p>
           <pre><code>Before drafting, inspect mission_flesh/p1/corpus/.
 
 Create mission_flesh/p1/SOURCE_MANIFEST.md. List C1-C6 as the required current
@@ -242,7 +244,7 @@ Do not draft the brief yet.</code></pre>
         </figure>
 
         <div class="do-step">
-          <p class="do-label">Replace <code>[YOUR AUDIENCE]</code>, then paste this into the <strong>build chat</strong>:</p>
+          <p class="do-label">Return to <strong>P1 — Daily Brief Build</strong>. Replace <code>[YOUR AUDIENCE]</code>, then paste:</p>
           <pre><code>Using the current sources in mission_flesh/p1/SOURCE_MANIFEST.md, build a
 regenerable daily status brief.
 Audience: [YOUR AUDIENCE]. Fixed sections: Shipped / Broken / Blocked / Asks.
@@ -267,7 +269,7 @@ Output: the brief in markdown plus a script or one documented regenerate command
         </ol>
 
         <div class="do-step">
-          <p class="do-label">Ask the <strong>build chat</strong> for the run command:</p>
+          <p class="do-label">Ask <strong>P1 — Daily Brief Build</strong> for the run command:</p>
           <pre><code>Show me the exact regenerate command and the folder to run it from - one
 command, nothing else. Then stop. I will run it myself.</code></pre>
         </div>
@@ -297,7 +299,7 @@ command, nothing else. Then stop. I will run it myself.</code></pre>
         </figure>
 
         <div class="do-step">
-          <p class="do-label">Ask the <strong>build chat</strong> for the audit map:</p>
+          <p class="do-label">Return to <strong>P1 — Daily Brief Build</strong> and ask for the audit map:</p>
           <pre><code>List every citation in the current brief as a table: the tag, the exact
 sentence carrying it, and the source filename it maps to. Do not judge whether
 the citations are correct - I will read the files myself.</code></pre>
@@ -328,10 +330,10 @@ Finding and action: [NO CHANGE REQUIRED / CLAIM BEFORE -> CLAIM AFTER]</code></p
           </ul>
         </div>
 
-        <p>If a row fails, send the exact claim, filename, and source text to the build chat and direct the smallest correction. If all five pass, record <code>NO CHANGE REQUIRED</code>; a sound audit does not need to manufacture a defect.</p>
+        <p>If a row fails, return to <strong>P1 — Daily Brief Build</strong>, send the exact claim, filename, and source text, and direct the smallest correction. If all five pass, record <code>NO CHANGE REQUIRED</code>; a sound audit does not need to manufacture a defect.</p>
 
         <div class="do-step">
-          <p class="do-label">Use this only for a failed row, after filling its brackets:</p>
+          <p class="do-label">In <strong>P1 — Daily Brief Build</strong>, use this only for a failed row after filling its brackets:</p>
           <pre><code>Audit result: the claim "[PASTE THE CLAIM]" cites [FILENAME], but the file
 actually says: [WHAT THE FILE SAYS]. Correct the brief. Keep the format and
 every other claim unchanged, and show me the corrected line.</code></pre>
@@ -375,7 +377,7 @@ Copy-Item mission_flesh\p1\corpus\DELTA_patch.md mission_flesh\p1\corpus\C7_patc
         <p>The release record separates generated content from the decisions you own: which claims are safe to publish, what <em>Blocked</em> means for this audience, what stays out, and whether the brief ships.</p>
 
         <div class="do-step">
-          <p class="do-label">Fill the brackets, then paste this into <strong>Build — P1 Daily Brief</strong>:</p>
+          <p class="do-label">Return to <strong>P1 — Daily Brief Build</strong>, fill the brackets, then paste:</p>
           <pre><code>Create mission_flesh/p1/RELEASE_RECORD.md using only the results I supply.
 
 Audience: [AUDIENCE]
@@ -411,7 +413,20 @@ Save the file. Do not change the brief.</code></pre>
           <p class="reflection-question"><strong>Closeout question:</strong> Which source check will you require before releasing a generated brief at work?</p>
 
           <div class="do-step">
-            <p class="do-label">Open <strong>Operator — Direction &amp; Log</strong>, fill the brackets, and paste this once:</p>
+            <p class="do-label">Return to <strong>P1 — Direction &amp; Closeout</strong>:</p>
+            <ul class="do-clicks">
+              <li>In <strong>ChatGPT</strong>, select <strong>Codex</strong> from the top-left switcher if needed</li>
+              <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+              <li>Look for <strong>P1 — Direction &amp; Closeout</strong> in the sidebar and open it if it exists</li>
+              <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P1 — Direction &amp; Closeout</code></li>
+              <li>Select the same model used for the P1 contract, or use the instructor-named model / visible default if the chat had to be recreated</li>
+              <li>Confirm permissions say <strong>Ask for approval</strong></li>
+            </ul>
+            <p>The saved P1 files carry the evidence, so this closeout still works if the earlier chat had to be recreated.</p>
+          </div>
+
+          <div class="do-step">
+            <p class="do-label">Fill the brackets, then paste this once into <strong>P1 — Direction &amp; Closeout</strong>:</p>
             <pre><code>Read mission_flesh/p1/RELEASE_RECORD.md, mission_flesh/p1/AUDIT.md,
 operator/OPERATOR_LOG.md, and operator/TRANSFER_30_60_90.md.
 

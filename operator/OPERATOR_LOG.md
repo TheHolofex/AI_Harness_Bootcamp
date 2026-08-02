@@ -1,7 +1,7 @@
 # Operator Log
 
 Standing operator file. Same project as the Direction Brief.  
-Written only in the **`Operator — Direction & Log`** chat — **after** the mission run.
+When a module page uses this file, write the entry in the exact module-specific closeout chat named on that page, after the mission run. The generic direction-chat pattern is **`[MODULE] — Direction & Closeout`**: replace `[MODULE]` with the current module code and follow the page when it names a shorter closeout chat or adds a date. Saved files carry continuity; no global operator chat is required.
 
 **How it gets written:** you and the AI produce each entry **interactively**. The AI helps reconstruct what happened and stress-tests your evidence. **You** assign the verdict. The AI may argue; it does not grade you.
 
@@ -25,6 +25,8 @@ Five fields. Target: under five minutes of dialogue. Append one entry per block;
 ## Week log
 
 ### B1 — First Light
+
+Reserved template section. The current B1 page stays in `B1 — First Light Dashboard` and does not route the learner here.
 
 | Field | Note |
 |---|---|
@@ -125,7 +127,7 @@ Five fields. Target: under five minutes of dialogue. Append one entry per block;
 
 ---
 
-## Operator-chat starter (paste after the mission)
+## Module-closeout starter (paste after the mission)
 
 ```text
 We are writing the Operator Log entry for this block together.

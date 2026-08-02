@@ -1,7 +1,7 @@
 # Direction Brief
 
 Standing operator file in the Codex app project.  
-Maintained only in the **`Operator — Direction & Log`** chat — not in build chats.
+When a module page uses this file, maintain it in the exact module-specific direction chat named on that page — not in a build chat. Some modules reuse **`[MODULE] — Direction & Closeout`**; others name separate direction and closeout chats. Replace `[MODULE]` with the current code and copy the page's exact suffix or date. B1 does not use this pattern; it stays in `B1 — First Light Dashboard`.
 
 **How it gets written:** you and the AI produce this **interactively**. The AI interviews, drafts, and challenges vagueness. **You** accept or rewrite every field. The machine does not run the mission until you say the brief is live.
 
@@ -47,7 +47,7 @@ When the machine stops and returns control — failure modes, time box, or “as
 
 ---
 
-## Operator-chat starter (paste this to begin)
+## Direction chat starter (paste this to begin)
 
 ```text
 We are writing the Direction Brief for this block together.
@@ -64,7 +64,9 @@ For each field:
 When all five fields are accepted, write them into this file, set Status to LIVE,
 and remind me to run the mission in a separate build chat — not here.
 
-After the mission, we will write the Operator Log in this same chat.
+After the mission, follow the live module page for closeout. It may return to
+this direction/closeout chat or create a separate named closeout chat. In either
+case, the saved artifacts — not this transcript — carry the evidence.
 ```
 
 ## Transfer
