@@ -203,6 +203,22 @@ ol.outcome-summary {
 .check-item.is-conditional .check-num,
 .check-item.is-optional .check-num { background: var(--ink-faint); }
 .checklist-section[data-phase-section] { margin-bottom: 0.75rem; }
+.exercise-stage-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1.1rem 0 1rem;
+  max-width: var(--measure-wide);
+}
+.exercise-stage-tools .btn {
+  min-height: 2.6rem;
+  font-size: 0.8rem;
+}
+.exercise-stage {
+  margin: 0 0 0.75rem;
+  scroll-margin-top: 6rem;
+}
+.exercise-stage-heading { scroll-margin-top: 6rem; }
 .phase-section-heading { margin: 0; }
 .phase-section-toggle {
   display: grid;
@@ -234,16 +250,27 @@ ol.outcome-summary {
 .is-section-collapsed .phase-section-cue::before { content: "+"; }
 .phase-section-cue { color: var(--ink-faint); font-size: 1.15rem; text-align: center; }
 .checklist-section[data-phase-section].is-section-collapsed > :not(h2):not(h3) { display: none; }
-.checklist-section.is-section-current .phase-section-toggle {
+.exercise-stage-body {
+  padding: 1rem 1rem 1.25rem;
+  border: 1px solid var(--rule);
+  border-top: 0;
+  background: var(--paper);
+}
+.exercise-stage-body > :last-child { margin-bottom: 0; }
+.checklist-section.is-section-current .phase-section-toggle,
+.exercise-stage.is-section-current .phase-section-toggle {
   border-left-color: var(--mark);
   background: var(--current-tint);
 }
-.checklist-section.is-section-current .phase-section-stat { color: var(--mark); }
-.checklist-section.is-section-done .phase-section-toggle {
+.checklist-section.is-section-current .phase-section-stat,
+.exercise-stage.is-section-current .phase-section-stat { color: var(--mark); }
+.checklist-section.is-section-done .phase-section-toggle,
+.exercise-stage.is-section-done .phase-section-toggle {
   border-left-color: var(--ok);
   background: var(--done-tint);
 }
-.checklist-section.is-section-done .phase-section-stat { color: var(--ok); }
+.checklist-section.is-section-done .phase-section-stat,
+.exercise-stage.is-section-done .phase-section-stat { color: var(--ok); }
 .optional-lane { margin-top: 2rem; }
 .optional-section,
 .conditional-section { opacity: 0.92; }
@@ -284,4 +311,5 @@ ol.outcome-summary {
   .phase-section-toggle { grid-template-columns: minmax(0, 1fr) 1.5rem; }
   .phase-section-stat { grid-column: 1; grid-row: 2; }
   .phase-section-cue { grid-column: 2; grid-row: 1 / 3; }
+  .exercise-stage-body { padding: 0.8rem 0.75rem 1rem; }
 }

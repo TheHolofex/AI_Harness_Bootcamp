@@ -338,6 +338,8 @@
       });
     });
 
+    if (form) updateExerciseStageStatuses(form, b);
+
     if (key === "ahb-prework-install") {
       var prework = AHB.preworkProgress();
       Array.prototype.forEach.call(document.querySelectorAll("[data-phase-stat]"), function (el) {
@@ -469,6 +471,8 @@
       summaryTitle.addEventListener("click", function () {
         var lane = input.closest("details");
         if (lane) lane.open = true;
+        var exerciseStage = input.closest("[data-exercise-stage]");
+        if (exerciseStage) setExerciseStage(exerciseStage, true);
       });
       if (optional) {
         var optionalBadge = document.createElement("span");
@@ -543,6 +547,210 @@
     section.classList.toggle("is-section-collapsed", !open);
     var button = section.querySelector("[data-phase-section-toggle]");
     if (button) button.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  function isProjectExercise(b) {
+    return !!(b && /^P[1-8]$/.test(b.code));
+  }
+
+  function setExerciseStage(stage, open) {
+    if (!stage) return;
+    var body = stage.querySelector("[data-exercise-stage-body]");
+    var button = stage.querySelector("[data-exercise-stage-toggle]");
+    stage.classList.toggle("is-section-collapsed", !open);
+    if (body) body.hidden = !open;
+    if (button) button.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  function updateExerciseStageStatuses(form, b) {
+    if (!form || !isProjectExercise(b)) return;
+    var stages = Array.prototype.slice.call(
+      form.querySelectorAll("[data-exercise-stage]")
+    );
+    if (!stages.length) return;
+
+    var progress = stages.map(function (stage) {
+      var boxes = stage.querySelectorAll('input[type="checkbox"][data-check-id]');
+      var done = 0, total = 0, pendingReflection = 0;
+      Array.prototype.forEach.call(boxes, function (box) {
+        if (!isRequiredId(b, box.getAttribute("data-check-id"))) return;
+        if (box.closest('[data-check-section="pulse"]')) {
+          if (!box.checked) pendingReflection++;
+          return;
+        }
+        total++;
+        if (box.checked) done++;
+      });
+      return {
+        stage: stage,
+        done: done,
+        total: total,
+        pendingReflection: pendingReflection,
+        complete: total > 0 && done === total && pendingReflection === 0,
+        laterStageStarted: false
+      };
+    });
+
+    // A stage with no receipt stays visually neutral. Later progress can move
+    // the current marker forward, but it cannot manufacture completion evidence.
+    for (var i = 0; i < progress.length; i++) {
+      if (progress[i].total > 0) continue;
+      for (var j = i + 1; j < progress.length; j++) {
+        if (progress[j].done > 0) {
+          progress[i].laterStageStarted = true;
+          break;
+        }
+      }
+    }
+
+    var current = null;
+    progress.forEach(function (item) {
+      if (!item.complete && !item.laterStageStarted && !current) current = item;
+      item.stage.classList.toggle("is-section-done", item.complete);
+      item.stage.classList.remove("is-section-current");
+    });
+
+    progress.forEach(function (item) {
+      var stat = item.stage.querySelector("[data-exercise-stage-stat]");
+      var isCurrent = current === item;
+      if (isCurrent) item.stage.classList.add("is-section-current");
+      if (stat) {
+        if (item.complete) stat.textContent = "✓ Complete";
+        else if (isCurrent && item.done === item.total && item.pendingReflection) {
+          stat.textContent = "Current · Reflection remains";
+        } else if (!item.total) {
+          stat.textContent = isCurrent
+            ? "Current · Run this stage"
+            : (item.laterStageStarted ? "Instructions" : "Run this stage");
+        } else if (isCurrent) {
+          stat.textContent = "Current · " + item.done + " / " + item.total;
+        } else {
+          stat.textContent = item.done + " / " + item.total;
+        }
+      }
+    });
+
+    if (current) setExerciseStage(current.stage, true);
+  }
+
+  function initExerciseStages(form, b) {
+    if (!form || !isProjectExercise(b)) return;
+    var mission = form.querySelector('#mission[data-check-section="mission"]');
+    if (!mission) return;
+
+    var headings = [];
+    Array.prototype.forEach.call(mission.children, function (child) {
+      if (child.tagName === "H3" && /^Stage\s+\d+\s*·/i.test(child.textContent.trim())) {
+        headings.push(child);
+      }
+    });
+    if (!headings.length) return;
+
+    headings.forEach(function (heading, index) {
+      var nextHeading = headings[index + 1] || null;
+      var boundary = nextHeading;
+      var stageNumber = (heading.textContent.trim().match(/^Stage\s+(\d+)/i) || [])[1];
+      var reflection = null;
+      var continuation = false;
+      var scan = heading.nextElementSibling;
+      while (scan && scan !== nextHeading) {
+        if (scan.matches && scan.matches('.lesson-reflection[data-check-section="pulse"]')) {
+          reflection = scan;
+        } else if (reflection && scan.tagName === "H3" && stageNumber &&
+          new RegExp("^Finish\\s+Stage\\s+0*" + parseInt(stageNumber, 10) + "\\b", "i")
+            .test(scan.textContent.trim())) {
+          continuation = true;
+        }
+        scan = scan.nextElementSibling;
+      }
+      if (reflection && !continuation) boundary = reflection;
+
+      var stage = document.createElement("section");
+      stage.className = "exercise-stage is-section-collapsed";
+      stage.setAttribute("data-exercise-stage", "");
+      mission.insertBefore(stage, heading);
+      stage.appendChild(heading);
+
+      var stageSlug = b.code.toLowerCase() + "-stage-" + (index + 1);
+      if (!heading.id) heading.id = stageSlug;
+      heading.classList.add("phase-section-heading", "exercise-stage-heading");
+
+      var title = document.createElement("span");
+      title.className = "phase-section-title";
+      while (heading.firstChild) title.appendChild(heading.firstChild);
+
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "phase-section-toggle";
+      button.id = stageSlug + "-toggle";
+      button.setAttribute("data-exercise-stage-toggle", "");
+      button.setAttribute("aria-expanded", "false");
+
+      var stat = document.createElement("span");
+      stat.className = "phase-section-stat";
+      stat.setAttribute("data-exercise-stage-stat", "");
+      stat.textContent = "0 / 0";
+      var cue = document.createElement("span");
+      cue.className = "phase-section-cue";
+      cue.setAttribute("aria-hidden", "true");
+      button.appendChild(title);
+      button.appendChild(stat);
+      button.appendChild(cue);
+      heading.appendChild(button);
+
+      var body = document.createElement("div");
+      body.className = "exercise-stage-body";
+      body.id = stageSlug + "-body";
+      body.setAttribute("data-exercise-stage-body", "");
+      button.setAttribute("aria-controls", body.id);
+      stage.appendChild(body);
+
+      while (stage.nextSibling && stage.nextSibling !== boundary) {
+        body.appendChild(stage.nextSibling);
+      }
+      setExerciseStage(stage, false);
+      button.addEventListener("click", function () {
+        setExerciseStage(stage, button.getAttribute("aria-expanded") !== "true");
+      });
+    });
+
+    var tools = document.createElement("div");
+    tools.className = "exercise-stage-tools";
+    tools.setAttribute("role", "group");
+    tools.setAttribute("aria-label", "Stage controls");
+    var openAll = document.createElement("button");
+    openAll.type = "button";
+    openAll.className = "btn btn-secondary";
+    openAll.textContent = "Open all stages";
+    var closeAll = document.createElement("button");
+    closeAll.type = "button";
+    closeAll.className = "btn btn-secondary";
+    closeAll.textContent = "Close all stages";
+    tools.appendChild(openAll);
+    tools.appendChild(closeAll);
+    mission.insertBefore(tools, mission.querySelector("[data-exercise-stage]"));
+
+    var stages = mission.querySelectorAll("[data-exercise-stage]");
+    openAll.addEventListener("click", function () {
+      Array.prototype.forEach.call(stages, function (stage) { setExerciseStage(stage, true); });
+    });
+    closeAll.addEventListener("click", function () {
+      Array.prototype.forEach.call(stages, function (stage) { setExerciseStage(stage, false); });
+    });
+
+    function openHashTarget(rawHash) {
+      var hash = "";
+      try { hash = decodeURIComponent((rawHash || "").replace(/^#/, "")); }
+      catch (e) { hash = (rawHash || "").replace(/^#/, ""); }
+      var target = hash ? document.getElementById(hash) : null;
+      var stage = target && target.closest ? target.closest("[data-exercise-stage]") : null;
+      if (!stage) return;
+      setExerciseStage(stage, true);
+      window.setTimeout(function () { target.scrollIntoView({ block: "start" }); }, 0);
+    }
+
+    openHashTarget(location.hash);
+    window.addEventListener("hashchange", function () { openHashTarget(location.hash); });
   }
 
   function migrateReplacedOutcomeState(form, key, state) {
@@ -780,6 +988,7 @@
       });
     });
     initPreworkSections(form, b);
+    initExerciseStages(form, b);
     initPreworkStepDetails(form, b);
     updateProgressOutputs(key);
   }
