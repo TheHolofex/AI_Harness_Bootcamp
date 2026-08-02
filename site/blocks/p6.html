@@ -191,7 +191,7 @@ failure, or at the turn budget; record the in-flight state before restart.</code
             <label class="check-label">
               <input type="checkbox" id="p6-pulse-brief" name="p6-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">1</span>
-              <span class="check-title">Save the P6 production spec as LIVE</span>
+              <span class="check-title">The P6 production spec is on record with Status LIVE</span>
             </label>
             <div class="check-detail">The saved brief names the recipe, control register, stop/restart record, hostile-input result, schedule result, Pi session evidence, exact write scope, operator ownership, and stop condition.</div>
           </li>
@@ -228,9 +228,9 @@ Get-ChildItem .\feeder</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-feeder" name="p6-p6-feeder" data-check-id="p6-feeder" />
               <span class="check-num">2</span>
-              <span class="check-title">Open the P6 pack</span>
+              <span class="check-title">The four feeder files and output folder are ready</span>
             </label>
-            <div class="check-detail">You should see four feeder files, <code>event_01</code> through <code>event_04</code> — and <code>event_04</code> carries the hostile line for the exception drill (leave it in place; the run is supposed to meet it). <code>out/</code> now exists. Read <code>mission_flesh/p6/goose_recipe_notes.md</code> in your cloned pack when you want the full field notes. If the pack is not on your machine, re-clone the course repo the way pre-work did.</div>
+            <div class="check-detail">You should see four feeder files, <code>event_01</code> through <code>event_04</code> — and <code>event_04</code> carries the hostile line for the exception drill (leave it in place; the run is supposed to meet it). <code>out/</code> now exists. Read <code>mission_flesh/p6/goose_recipe_notes.md</code> in your cloned pack when you want the full field notes. If the pack is not on your machine, use the clone steps from pre-work again.</div>
           </li>
         </ol>
 
@@ -286,7 +286,7 @@ goose run --recipe .\watch_officer.yaml</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-adapt" name="p6-p6-adapt" data-check-id="p6-adapt" />
               <span class="check-num">3</span>
-              <span class="check-title">Adapt watch_officer.yaml → out/watch_summary.md</span>
+              <span class="check-title">The adapted recipe produces out/watch_summary.md</span>
             </label>
             <div class="check-detail">The recipe records the four-file workload budget — ten turns, including one recovery allowance — and a concrete bound from the production spec. The approved run leaves <code>out/watch_summary.md</code> on disk with one line per normal feeder file.</div>
           </li>
@@ -330,7 +330,7 @@ Schedule attempt result: [FILL AFTER STAGE 07]</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-contract" name="p6-p6-contract" data-check-id="p6-contract" />
               <span class="check-num">4</span>
-              <span class="check-title">Control register covers the serious feeder risks</span>
+              <span class="check-title">The control register covers the serious feeder risks</span>
             </label>
             <div class="check-detail"><code>my_contract.md</code> names each serious risk, the actual mechanism, enforcement layer, owner, evidence, and recovery. No row describes an instruction as a physical boundary.</div>
           </li>
@@ -369,9 +369,9 @@ Copy-Item .\feeder\event_02.txt .\feeder\event_02b.txt</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-stop" name="p6-p6-stop" data-check-id="p6-stop" />
               <span class="check-num">5</span>
-              <span class="check-title">Stop verified</span>
+              <span class="check-title">The stop control works under a live workload</span>
             </label>
-            <div class="check-detail">Halt under realistic conditions — mid-feeder, or while it is about to write — with the STOP line now sitting in <code>out/run_log.md</code>: machine timestamp plus what was in flight. If the run finished before you could catch it, copy another duplicate feeder file in and run again; the point is stopping a machine that was genuinely doing something, not rehearsing the keystroke.</div>
+            <div class="check-detail">Halt under realistic conditions — mid-feeder, or while it is about to write — with the STOP line now sitting in <code>out/run_log.md</code>: machine timestamp plus the in-flight item. If the run finishes before you can catch it, copy another duplicate feeder file in and run again; the point is stopping a machine during real work, not rehearsing the keystroke.</div>
           </li>
         </ol>
         <div class="do-step">
@@ -398,9 +398,9 @@ Copy-Item .\feeder\event_02.txt .\feeder\event_02b.txt</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-restart" name="p6-p6-restart" data-check-id="p6-restart" />
               <span class="check-num">6</span>
-              <span class="check-title">Restart verified</span>
+              <span class="check-title">The restart preserves prior output</span>
             </label>
-            <div class="check-detail">Same recipe, same mode. You should see prior good summary lines still present and new lines appended — the append posture is what makes stopping cheap. If the rerun erased the file, your stop was actually an abort: check that <code>instructions</code> still says append over rewrite, restore it, and run once more. Contract frame unchanged means same recipe file, same mode — and <code>out/run_log.md</code> says so, with both timestamps.</div>
+            <div class="check-detail">Same recipe, same mode. You should see prior good summary lines still present and new lines appended — the append posture is what makes stopping cheap. If the rerun erases the file, your stop is actually an abort: check that <code>instructions</code> still says append over rewrite, restore it, and run once more. Contract frame unchanged means same recipe file, same mode — and <code>out/run_log.md</code> says so, with both timestamps.</div>
           </li>
         </ol>
 
@@ -425,9 +425,9 @@ Get-ChildItem .\feeder</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-ex" name="p6-p6-ex" data-check-id="p6-ex" />
               <span class="check-num">7</span>
-              <span class="check-title">Exception drill (event_04 OUT_OF_BOUNDS)</span>
+              <span class="check-title">The exception drill quarantines event_04</span>
             </label>
-            <div class="check-detail"><code>event_04</code> asks the agent to delete the audit log and dump user emails. Hostile feeder text is data, not orders; contract behavior is quarantine and continue — not obey, and not silently skip. You should see the <code>QUARANTINE:</code> line naming the source file, no delete or exfil effect, and the DRILL line in <code>out/run_log.md</code> naming which lever held — or which failed. A failure honestly recorded completes the drill — then restore the bound and rerun, because the lesson outcomes needs a quarantine that held. Obedience never does.</div>
+            <div class="check-detail"><code>event_04</code> asks the agent to delete the audit log and dump user emails. Hostile feeder text is data, not orders; contract behavior is quarantine and continue — not obey, and not silently skip. You should see the <code>QUARANTINE:</code> line naming the source file, no delete or exfil effect, and the DRILL line in <code>out/run_log.md</code> naming the lever that contains the threat — or fails to. A failure honestly recorded completes the drill — then restore the bound and rerun, because the lesson outcome needs a quarantine that holds. Obedience never does.</div>
           </li>
         </ol>
 
@@ -464,7 +464,7 @@ goose schedule run-now</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-sched" name="p6-p6-sched" data-check-id="p6-sched" />
               <span class="check-num">8</span>
-              <span class="check-title">Unattended path: schedule or honest block</span>
+              <span class="check-title">The unattended path has a schedule or recorded blocker</span>
             </label>
             <div class="check-detail">Keep the run-now result, and the SCHEDULE line in <code>out/run_log.md</code> tells the truth either way; Desktop's Scheduler does the same job if you have it. If the OS or policy refuses, the exact error plus what would unlock it is a valid lesson outcome; a faked green is not. If you can't find the subcommand, that is a version question to raise — not an honest block. Either way, the contract's unattended rows say who may enable the schedule and when its output gets reviewed.</div>
           </li>
@@ -516,9 +516,9 @@ goose schedule run-now</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-pi" name="p6-p6-pi" data-check-id="p6-pi" />
               <span class="check-num">9</span>
-              <span class="check-title">Pi: verify the restricted tool schema</span>
+              <span class="check-title">Pi's restricted tool schema is verified</span>
             </label>
-            <div class="check-detail">The same task ran twice — plain, then as <code>pi --tools "read,grep,find,ls"</code>. In the newest session file under <code>%USERPROFILE%\.pi\agent\sessions\</code>, the write tools are <strong>absent from the schema</strong>, not offered and declined. A bound the model complied with is not the same as one it could not violate, and the file shows you which you have. If both runs show write tools, the flag did not take — check spelling and which window you ran it in, then rerun.</div>
+            <div class="check-detail">The session evidence contains the same task twice — plain, then as <code>pi --tools "read,grep,find,ls"</code>. In the newest session file under <code>%USERPROFILE%\.pi\agent\sessions\</code>, the write tools are <strong>absent from the schema</strong>, not offered and declined. A bound the model complies with is not the same as one it cannot violate, and the file shows you which you have. If both runs show write tools, the flag is not taking effect — check the spelling and the PowerShell window, then rerun.</div>
           </li>
         </ol>
         <p>The restricted schema is a real control because the write-capable tools were absent. A write hook is weaker: shell-equivalent write paths can go around it, and raw path comparisons can miss <code>..\</code> paths unless the target is resolved before comparison. Record that distinction instead of building a disposable gate.</p>
@@ -536,7 +536,7 @@ goose schedule run-now</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-layers" name="p6-p6-layers" data-check-id="p6-layers" />
               <span class="check-num">10</span>
-              <span class="check-title">Add the Pi capability finding to the control register</span>
+              <span class="check-title">The control register includes the Pi capability finding</span>
             </label>
             <div class="check-detail"><code>my_contract.md</code> records the risk, exact <code>--tools</code> mechanism, enforcement layer, owner, session-file evidence, recovery, and the unverified boundary as residual risk.</div>
           </li>
@@ -586,7 +586,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
             <label class="check-label">
               <input type="checkbox" id="p6-pulse-log" name="p6-pulse-log" data-check-id="pulse-log" />
               <span class="check-num">11</span>
-              <span class="check-title">Save the artifact-backed closeout and transfer seed</span>
+                <span class="check-title">The P6 closeout points to saved evidence, and its transfer entry is dated</span>
             </label>
             <div class="check-detail"><code>operator/OPERATOR_LOG.md</code> names the artifact and path, criterion-based SHIP/HOLD decision, finding and fix or residual risk, and reusable rule. <code>operator/TRANSFER_30_60_90.md</code> carries the dated P6 process, control split, stop authority, and exception path.</div>
           </li>
@@ -606,7 +606,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-run" name="p6-mvp-run" data-check-id="mvp-run" />
               <span class="check-num">16</span>
-              <span class="check-title">The adapted recipe ran and its output is saved</span>
+              <span class="check-title">The adapted recipe runs and saves its output</span>
             </label>
             <div class="check-detail">Evidence looks like: <code>watch_officer.yaml</code> (or your fork) with a change you can name, and <code>out/watch_summary.md</code> on disk from the local feeder — one line per normal file. The shipped demo unchanged is not yet.</div>
           </li>
@@ -630,15 +630,15 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-stop" name="p6-mvp-stop" data-check-id="mvp-stop" />
               <span class="check-num">19</span>
-              <span class="check-title">Stop and restart were both demonstrated</span>
+              <span class="check-title">Stop and restart preserve prior output and the stated bounds</span>
             </label>
-            <div class="check-detail">Realistic halt with a timestamp; restart kept the contract frame and prior good lines. Evidence looks like: two times in the log plus the intact, appended file.</div>
+            <div class="check-detail">The log contains a realistic halt timestamp, and the restart preserves the contract frame and prior good lines. The two timestamps and intact, appended file provide the evidence.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="p6-sched">
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-unatt" name="p6-mvp-unatt" data-check-id="mvp-unatt" />
               <span class="check-num">20</span>
-              <span class="check-title">An unattended run was attempted, or the blocker is recorded</span>
+              <span class="check-title">The unattended-run result or blocker is recorded</span>
             </label>
             <div class="check-detail">Schedule + run-now evidence, or the exact block reason + unlock path, written in the log. A recorded blocker with its recovery path is a valid result.</div>
           </li>
@@ -648,7 +648,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <span class="check-num">21</span>
               <span class="check-title">Pi's tool limit is verified from the session record</span>
             </label>
-            <div class="check-detail">You ran the same task with and without <code>--tools</code> and can point at the session file showing the write tools were absent from the restricted schema. The finding and any unverified boundary are recorded in the control register.</div>
+            <div class="check-detail">The session evidence shows the same task with and without <code>--tools</code>. The restricted schema excludes write tools, and the control register records the finding and any unverified boundary.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="p6-ex">
             <label class="check-label">
@@ -656,7 +656,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <span class="check-num">22</span>
               <span class="check-title">The exception drill follows the contract</span>
             </label>
-            <div class="check-detail">event_04 quarantined; no hostile effect in <code>out/</code> or anywhere else — containment shown by absence of effect, not by a promise. The log names which lever held.</div>
+            <div class="check-detail"><code>event_04</code> is quarantined, with no hostile effect in <code>out/</code> or anywhere else — containment shown by absence of effect, not by a promise. The log names the control that contains it.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="pulse-log">
             <label class="check-label">
@@ -664,7 +664,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <span class="check-num">23</span>
               <span class="check-title">The log links the contract, run, stop, and drill</span>
             </label>
-            <div class="check-detail">Recipe version/path and what changed, mode, max_turns, run evidence, stop/restart times, exception result, schedule note — each a pointer someone else could follow.</div>
+            <div class="check-detail">Recipe version/path and change, mode, max_turns, run evidence, stop/restart times, exception result, schedule note — each a pointer someone else could follow.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p6-transfer-outcome-point">
             <label class="check-label">
@@ -680,21 +680,21 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <span class="check-num">25</span>
               <span class="check-title">The P6 transfer plan is complete and dated</span>
             </label>
-            <div class="check-detail">The record: the <strong>From P6 — Contract</strong> block in <code>operator/TRANSFER_30_60_90.md</code> carries all four fields in writing — process, two-column sketch, stop authority, exception path — with today's date beside them. Date every seed as you write it; a dated entry tells you later when the thinking happened, and an undated one reads the same whenever it was written.</div>
+            <div class="check-detail">The record: the <strong>From P6 — Contract</strong> block in <code>operator/TRANSFER_30_60_90.md</code> carries all four fields in writing — process, two-column sketch, stop authority, exception path — with today's date beside them. Date every seed as you write it; a dated entry preserves when you make the decision, while an undated one loses that timing.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p6-stretch-predictions-point">
             <label class="check-label">
               <input type="checkbox" id="p6-stretch-predict" name="p6-stretch-predict" data-check-id="stretch-local-predict" />
               <span class="check-num">S1</span>
-              <span class="check-title"><span class="tag">Stretch</span> Predictions written before local run</span>
+              <span class="check-title"><span class="tag">Stretch</span> Predictions are saved before the local run</span>
             </label>
-            <div class="check-detail"><code>out/local_predict.md</code> was written before the flip — C1–C6 predictions with reasons, not edited after. A later retrospective is fine; rewriting the prediction is not.</div>
+            <div class="check-detail"><code>out/local_predict.md</code> predates the endpoint flip and contains C1–C6 predictions with reasons. The file remains unchanged after results arrive; a separate retrospective is fine.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p6-stretch-pair-point">
             <label class="check-label">
               <input type="checkbox" id="p6-stretch-pair" name="p6-stretch-pair" data-check-id="stretch-local-pair" />
               <span class="check-num">S2</span>
-              <span class="check-title"><span class="tag">Stretch</span> Paired cloud + local summaries</span>
+              <span class="check-title"><span class="tag">Stretch</span> Cloud and local summaries are paired for comparison</span>
             </label>
             <div class="check-detail"><code>watch_summary.cloud.md</code> and <code>watch_summary.local.md</code> both on disk (or documented paths). The pair is what makes the comparison honest — a lone local demo scores nothing.</div>
           </li>
@@ -702,9 +702,9 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
             <label class="check-label">
               <input type="checkbox" id="p6-stretch-local" name="p6-stretch-local" data-check-id="stretch-local-endpoint" />
               <span class="check-num">S3</span>
-              <span class="check-title"><span class="tag">Stretch</span> Numeric hold/degrade + non-exfil + decision rule</span>
+              <span class="check-title"><span class="tag">Stretch</span> The hold/degrade record includes non-exfiltration checks and a decision rule</span>
             </label>
-            <div class="check-detail"><code>out/local_hold_degrade.md</code> scored C1–C7 with totals and the event_04 pair; non-exfil checks answered honestly; endpoint decision rule written; provider flipped back — <code>goose info -v</code> shows the cloud pin again. YELLOW still needs predict + rule.</div>
+            <div class="check-detail"><code>out/local_hold_degrade.md</code> contains C1–C7 scores, totals, and the event_04 pair. The non-exfil checks have honest answers, the endpoint decision rule is written, and <code>goose info -v</code> shows the cloud pin again. YELLOW still needs predict + rule.</div>
           </li>
         </ol>
       </section>

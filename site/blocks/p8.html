@@ -174,7 +174,7 @@ Preserve unrelated block sections. Show the exact P8 brief written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p8-pulse-brief" name="p8-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">1</span>
-              <span class="check-title">Save the P8 production spec as LIVE</span>
+              <span class="check-title">The P8 production spec is on record with Status LIVE</span>
             </label>
             <div class="check-detail"><code>operator/DIRECTION_BRIEF.md</code> names the policy, score sheet, refusal record, endpoint recommendation, and transfer plan; isolated D01–D05 chats; home-config restoration; evidence; and the deterministic seal condition. Status reads <strong>LIVE</strong>.</div>
           </li>
@@ -230,7 +230,7 @@ Set Version to 1.0 and Effective to today's date. Leave the endpoint placeholder
             <label class="check-label">
               <input type="checkbox" id="p8-p8-aup" name="p8-p8-aup" data-check-id="p8-aup" />
               <span class="check-num">2</span>
-              <span class="check-title">Write AUP/policy BEFORE re-point</span>
+              <span class="check-title">The acceptable-use policy is saved before the endpoint changes</span>
             </label>
             <div class="check-detail">You should see <code>AUP_ENDPOINT.md</code> in your project with all six sections filled, Version 1.0, and today's Effective date — before any request goes out. At least two refuse examples must be tasks you might actually want to run; Stage 06 draws from that list. If the fields feel abstract, write them against D01–D05 and the data on your real desk — an empty Forbidden section costs nothing, so it governs nothing.</div>
           </li>
@@ -299,7 +299,7 @@ wire_api = "responses"</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p8-p8-repoint" name="p8-p8-repoint" data-check-id="p8-repoint" />
               <span class="check-num">3</span>
-              <span class="check-title">Re-point pack/endpoint (placeholder OK)</span>
+              <span class="check-title">The pack and settings point to the intended endpoint (placeholder OK)</span>
             </label>
             <div class="check-detail">You should see one allowed smoke request answered by the open model, the pin's model name showing in the app, <code>REPOINT_NOTE.md</code> holding old value → new value, and the AUP's endpoint block filled — with credentials out of git and out of the AUP itself. If it errors: a capped or mispasted credential reads like a login failure — re-check the pin values character by character, then escalate with the exact error text.</div>
           </li>
@@ -380,9 +380,9 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instrume
             <label class="check-label">
               <input type="checkbox" id="p8-p8-run" name="p8-p8-run" data-check-id="p8-run" />
               <span class="check-num">4</span>
-              <span class="check-title">Cold-run D01–D05 on open/re-pointed model</span>
+              <span class="check-title">D01–D05 each have an isolated open-model result</span>
             </label>
-            <div class="check-detail"><code>SCORE_SHEET.md</code> has five Open P/F cells scored against <code>GRADER.md</code>, with one evidence note per case. The run used five separately named one-case chats — <code>P8 — Cold D01</code> through <code>P8 — Cold D05</code> — but the saved sheet carries the result and the case files remain unedited.</div>
+            <div class="check-detail"><code>SCORE_SHEET.md</code> has five Open P/F cells scored against <code>GRADER.md</code>, with one evidence note per case. Five separately named one-case chats — <code>P8 — Cold D01</code> through <code>P8 — Cold D05</code> — isolate the runs, while the saved sheet carries the result and the case files remain unedited.</div>
           </li>
         </ol>
 
@@ -407,7 +407,7 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instrume
             <label class="check-label">
               <input type="checkbox" id="p8-p8-matrix" name="p8-p8-matrix" data-check-id="p8-matrix" />
               <span class="check-num">5</span>
-              <span class="check-title">Complete the hold/degrade matrix</span>
+              <span class="check-title">The hold/degrade matrix is complete</span>
             </label>
             <div class="check-detail"><code>instruments/p8_hold_degrade/SCORE_SHEET.md</code> carries both D01–D05 columns, a direct classification for every row, Home/Open totals, and Hold/Degrade/Improve counts that can be recomputed from the cells.</div>
           </li>
@@ -433,7 +433,7 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instrume
             <label class="check-label">
               <input type="checkbox" id="p8-p8-layer" name="p8-p8-layer" data-check-id="p8-layer" />
               <span class="check-num">6</span>
-              <span class="check-title">Record a next test and owner for every non-hold</span>
+              <span class="check-title">Every non-hold has a next test and owner</span>
             </label>
             <div class="check-detail">Each non-hold has a structured row naming the layer, evidence, next discriminating test, and owner. A layer label without a test or owner is not a root-cause record.</div>
           </li>
@@ -488,9 +488,9 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instrume
             <label class="check-label">
               <input type="checkbox" id="p8-p8-refuse" name="p8-p8-refuse" data-check-id="p8-refuse" />
               <span class="check-num">7</span>
-              <span class="check-title">Legitimate refuse under your policy</span>
+              <span class="check-title">A legitimate refusal follows the policy</span>
             </label>
-            <div class="check-detail"><code>REFUSE_RECORD.md</code> holds a useful but prohibited task, the controlling clause and reason, plus an allowed control task that ran. Together they distinguish policy enforcement from a broken endpoint. If the policy is wrong, amend it in writing with a version bump.</div>
+            <div class="check-detail"><code>REFUSE_RECORD.md</code> holds a useful but prohibited task, the controlling clause and reason, plus the result of an allowed control task. Together they distinguish policy enforcement from a broken endpoint. If the policy is wrong, amend it in writing with a version bump.</div>
           </li>
         </ol>
 
@@ -536,7 +536,7 @@ Use only those artifacts. Preserve uncertainty. Do not write a speech or simulat
               <span class="check-num">8</span>
               <span class="check-title">A listener can restate the endpoint recommendation</span>
             </label>
-            <div class="check-detail"><code>ENDPOINT_RECOMMENDATION.md</code> records fit, not-fit, evidence, conditions, owner, next review, and residual risk. A named listener heard it and could restate both halves of the decision.</div>
+            <div class="check-detail"><code>ENDPOINT_RECOMMENDATION.md</code> records fit, not-fit, evidence, conditions, owner, next review, and residual risk. A named listener can restate both halves of the decision.</div>
           </li>
         </ol>
         <div class="do-step">
@@ -591,7 +591,7 @@ Do not interview me. Preserve unrelated sections. Show the exact P8 entry writte
               <label class="check-label">
                 <input type="checkbox" id="p8-pulse-log" name="p8-pulse-log" data-check-id="pulse-log" />
                 <span class="check-num">9</span>
-                <span class="check-title">Save the artifact-backed endpoint closeout</span>
+                <span class="check-title">The P8 closeout points to its saved endpoint evidence</span>
               </label>
               <div class="check-detail"><code>operator/OPERATOR_LOG.md</code> names every P8 artifact, criterion-based SHIP FOR LIMITED USE or HOLD, the finding and fix or residual risk, the restored home configuration, and a reusable endpoint-change rule.</div>
             </li>
@@ -664,7 +664,7 @@ criteria results, and P8 log entry written. Do not interview me.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p8-p8-seal" name="p8-p8-seal" data-check-id="p8-seal" />
               <span class="check-num">10</span>
-              <span class="check-title">Transfer plan certified and P8 record synchronized</span>
+              <span class="check-title">The transfer plan is SEALED, and the P8 record matches it</span>
             </label>
             <div class="check-detail"><code>operator/TRANSFER_30_60_90.md</code> carries twelve evidence-linked PASS results and Status <strong>SEALED</strong> with today's date. <code>operator/OPERATOR_LOG.md</code> matches the recommendation, artifact paths, seal date, and residual risk. Leave this unchecked while any criterion remains BLOCK.</div>
           </li>
@@ -684,9 +684,9 @@ criteria results, and P8 log entry written. Do not interview me.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p8-mvp-aup" name="p8-mvp-aup" data-check-id="mvp-aup" />
               <span class="check-num">15</span>
-              <span class="check-title">The acceptable-use policy was written before changing endpoints</span>
+              <span class="check-title">The acceptable-use policy is in place before the endpoint changes</span>
             </label>
-            <div class="check-detail">Evidence looks like: an AUP with Version and Effective date that precede your first open request. Retroactive policy — written after you saw the behavior — fails this outcome no matter how good the text is.</div>
+            <div class="check-detail">Evidence looks like: an AUP with Version and Effective date that precede your first open request. A retroactive policy — one created only after viewing the behavior — fails this outcome no matter how good the text is.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p8-repoint">
@@ -695,14 +695,14 @@ criteria results, and P8 log entry written. Do not interview me.</code></pre>
               <span class="check-num">16</span>
               <span class="check-title">The endpoint change is recorded without exposing credentials</span>
             </label>
-            <div class="check-detail">Evidence looks like: config or settings notes showing what changed to point at the open endpoint — file or setting, old value → new value — with <code>YOUR_ENDPOINT</code> and <code>YOUR_MODEL_NAME</code> recorded and no credentials in any tracked file. If the endpoint was down through no fault of yours, log the exact steps you would have run and the real error text, and let the lead rule on the outcome — a not-yet with a pointer beats a self-granted met.</div>
+            <div class="check-detail">Evidence looks like: config or settings notes showing what changes to point at the open endpoint — file or setting, old value → new value — with <code>YOUR_ENDPOINT</code> and <code>YOUR_MODEL_NAME</code> recorded and no credentials in any tracked file. If the endpoint is unavailable through no fault of yours, log the exact planned steps and the real error text, and let the lead rule on the outcome — a not-yet with a pointer beats a self-granted met.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p8-matrix">
             <label class="check-label">
               <input type="checkbox" id="p8-mvp-hd" name="p8-mvp-hd" data-check-id="mvp-hd" />
               <span class="check-num">17</span>
-              <span class="check-title">All five cases were scored for both endpoints</span>
+              <span class="check-title">All five cases have scores for both endpoints</span>
             </label>
             <div class="check-detail">Evidence looks like: <code>instruments/p8_hold_degrade/SCORE_SHEET.md</code> with both columns scored on D01–D05 and the hold, degrade, and improve counts computed — numbers a peer could re-derive from your notes. "It felt weaker" is not a cell.</div>
           </li>
@@ -722,14 +722,14 @@ criteria results, and P8 log entry written. Do not interview me.</code></pre>
               <span class="check-num">19</span>
               <span class="check-title">A policy-based refusal is recorded beside an allowed task</span>
             </label>
-            <div class="check-detail">Evidence looks like: the refused task, the policy clause that blocked it, the recorded reason — and the allowed control task that ran beside it. Both in the log.</div>
+            <div class="check-detail">Evidence looks like: the refused task, the policy clause that blocks it, the recorded reason, and the allowed control result beside it. Both are in the log.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="#p8-loop-outcome-point">
             <label class="check-label">
               <input type="checkbox" id="p8-mvp-loop8" name="p8-mvp-loop8" data-check-id="mvp-loop8" />
               <span class="check-num">20</span>
-              <span class="check-title">The important workflow works end to end, or lists its exact remaining gaps</span>
+              <span class="check-title">The important workflow works end to end, or its exact remaining gaps are recorded</span>
             </label>
             <div class="check-detail">Evidence looks like: one core path you actually care about closing end to end on the open endpoint — or a written list of exactly which walls must change before it can. "Mostly works" is neither.</div>
           </li>
@@ -738,9 +738,9 @@ criteria results, and P8 log entry written. Do not interview me.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p8-mvp-90s" name="p8-mvp-90s" data-check-id="mvp-90s" />
               <span class="check-num">21</span>
-              <span class="check-title">The endpoint recommendation is durable and understood</span>
+              <span class="check-title">The endpoint recommendation is saved, and a listener can restate it</span>
             </label>
-            <div class="check-detail"><code>ENDPOINT_RECOMMENDATION.md</code> records fit, not-fit, evidence, conditions, owner, next review, and residual risk. A named listener could restate both halves of the recommendation.</div>
+            <div class="check-detail"><code>ENDPOINT_RECOMMENDATION.md</code> records fit, not-fit, evidence, conditions, owner, next review, and residual risk. A named listener can restate both halves of the recommendation.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p8-seal">
@@ -756,7 +756,7 @@ criteria results, and P8 log entry written. Do not interview me.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p8-stretch-ep" name="p8-stretch-ep" data-check-id="stretch-endpoint-portfolio" />
               <span class="check-num">S1</span>
-              <span class="check-title"><span class="tag">Stretch</span> Endpoint portfolio note</span>
+              <span class="check-title"><span class="tag">Stretch</span> The endpoint portfolio note is saved</span>
             </label>
             <div class="check-detail">Optional — it does not count toward the block total. <code>ENDPOINT_PORTFOLIO.md</code> maps API home · local · hosted open, and every row cites a score or says Not run. The decision rule names both an evidence gate and a stop condition; "attempted" is not a route.</div>
           </li>

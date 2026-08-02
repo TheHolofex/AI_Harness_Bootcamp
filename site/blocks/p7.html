@@ -180,7 +180,7 @@ Preserve unrelated block sections. Show the exact P7 brief written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-brief" name="p7-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">1</span>
-              <span class="check-title">Save the P7 production spec as LIVE</span>
+              <span class="check-title">The P7 production spec is on record with Status LIVE</span>
             </label>
             <div class="check-detail"><code>operator/DIRECTION_BRIEF.md</code> names both output paths, the held-before-cleared build order, poisoned-row criteria, answer-key bound, evidence, and stop condition. Status reads <strong>LIVE</strong>.</div>
           </li>
@@ -201,7 +201,7 @@ Preserve unrelated block sections. Show the exact P7 brief written.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-rows" name="p7-p7-rows" data-check-id="p7-rows" />
               <span class="check-num">2</span>
-              <span class="check-title">Open rows.csv</span>
+              <span class="check-title">The rows.csv input is open and its shape is confirmed</span>
             </label>
             <div class="check-detail">Eight rows print under the header <code>id,text,region,expected_gate</code> — a mix of clean rows, review-worthy ones, and three that must never land: a false all-clear (row 4), a payment request (row 5), and a false attack report (row 7). Read all eight yourself. The <code>expected_gate</code> column is your grading key, not the machine's input — the line drops it before the AI step ever runs. If PowerShell says the path does not exist, pull the course repo again.</div>
           </li>
@@ -396,17 +396,17 @@ Report: {{ $json.text }}</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-flow" name="p7-p7-flow" data-check-id="p7-flow" />
               <span class="check-num">3</span>
-              <span class="check-title">Run the complete line on the real batch</span>
+              <span class="check-title">The full n8n path runs on the real batch</span>
             </label>
-            <div class="check-detail">The same saved execution runs from <code>rows.csv</code> through both branches. <code>out\master.csv</code> and <code>out\held.csv</code> exist, and the n8n execution shows which rows took each path.</div>
+            <div class="check-detail">The same saved execution runs from <code>rows.csv</code> through both branches. <code>out\master.csv</code> and <code>out\held.csv</code> exist, and the n8n execution shows which rows follow each path.</div>
           </li>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-gate" name="p7-p7-gate" data-check-id="p7-gate" />
               <span class="check-num">4</span>
-              <span class="check-title">Human-approval gate before commit</span>
+              <span class="check-title">The human-approval gate blocks commits until review</span>
             </label>
-            <div class="check-detail">The false branch was built before the true branch and before the first writable run. <code>out\held.csv</code> contains each held row and its <code>reason</code>; those rows are absent from <code>out\master.csv</code> unless you later promote them by hand.</div>
+            <div class="check-detail">The saved workflow places the false branch before the true branch and before any writable path. <code>out\held.csv</code> contains each held row and its <code>reason</code>; those rows are absent from <code>out\master.csv</code> unless you later promote them by hand.</div>
           </li>
         </ol>
 
@@ -450,17 +450,17 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_
             <label class="check-label">
               <input type="checkbox" id="p7-p7-ex3" name="p7-p7-ex3" data-check-id="p7-ex3" />
               <span class="check-num">5</span>
-              <span class="check-title">Adjudicate ≥3 exceptions</span>
+              <span class="check-title">At least three exceptions have written decisions</span>
             </label>
-            <div class="check-detail">Three verdicts, including row 4, exist in <code>out\held.csv</code> with reasons: <strong>commit</strong>, <strong>fix</strong>, or <strong>reject</strong>. <code>out\master.csv</code> gained only rows you promoted by hand.</div>
+            <div class="check-detail">Three verdicts, including row 4, exist in <code>out\held.csv</code> with reasons: <strong>commit</strong>, <strong>fix</strong>, or <strong>reject</strong>. <code>out\master.csv</code> contains only rows you promote by hand.</div>
           </li>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-wrong" name="p7-p7-wrong" data-check-id="p7-wrong" />
               <span class="check-num">6</span>
-              <span class="check-title">Wrong-but-confident path caught</span>
+              <span class="check-title">The gate catches the wrong-but-confident path</span>
             </label>
-            <div class="check-detail">The same adjudicated <code>out\held.csv</code> shows row 4 held and names the written rule that caught it. If row 4 reached the master, repair the check and rerun before completing either outcome.</div>
+            <div class="check-detail">The same adjudicated <code>out\held.csv</code> contains row 4 and names the written rule that catches it. If row 4 appears in the master, repair the check and rerun before completing either outcome.</div>
           </li>
         </ol>
 
@@ -496,7 +496,7 @@ reasons beat ten sorted by instinct.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p7-p7-disc" name="p7-p7-disc" data-check-id="p7-disc" />
               <span class="check-num">7</span>
-              <span class="check-title">Discrimination write-up</span>
+              <span class="check-title">The discrimination rule is written for real workloads</span>
             </label>
             <div class="check-detail"><code>mission_flesh/p7/discrimination_template.md</code> is filled for your own desk: per workload, agent loop, pipeline-plus-gate, or stays human; the operational criteria; and the high-consequence judgment you will not automate. "Same shape two hundred times a week, wrong costs a refund" is a criterion.</div>
           </li>
@@ -549,7 +549,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <label class="check-label">
                 <input type="checkbox" id="p7-pulse-log" name="p7-pulse-log" data-check-id="pulse-log" />
                 <span class="check-num">8</span>
-                <span class="check-title">Save the artifact-backed closeout</span>
+                <span class="check-title">The P7 closeout points to its saved evidence</span>
               </label>
               <div class="check-detail"><code>operator/OPERATOR_LOG.md</code> names the workflow and file paths, criterion-based SHIP/HOLD decision, finding and fix or residual risk, and reusable machine-choice rule.</div>
             </li>
@@ -557,7 +557,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <label class="check-label">
                 <input type="checkbox" id="p7-p7-transfer" name="p7-p7-transfer" data-check-id="p7-transfer" />
                 <span class="check-num">9</span>
-                <span class="check-title">Save the dated P7 machine-choice seed</span>
+                <span class="check-title">The P7 machine-choice entry is saved and dated</span>
               </label>
               <div class="check-detail">The <em>From P7 — Machine choice</em> section of <code>operator/TRANSFER_30_60_90.md</code> names a real pipeline candidate, a real workload that must stay agentic, a high-consequence human judgment, and one checkable rule.</div>
             </li>
@@ -605,7 +605,7 @@ Set Status to "Draft horizons complete" and show the exact sections written.</co
             <label class="check-label">
               <input type="checkbox" id="p7-pulse-transfer" name="p7-pulse-transfer" data-check-id="pulse-transfer" />
               <span class="check-num">10</span>
-              <span class="check-title">30/60/90 horizons drafted from the week's seeds</span>
+              <span class="check-title">Each 30/60/90 horizon traces to dated evidence from the week</span>
             </label>
             <div class="check-detail">All three horizons in <code>operator/TRANSFER_30_60_90.md</code> trace each checkable outcome to a dated seed and completion evidence. Missing support is named as a gap, and status reads <em>Draft horizons complete</em>.</div>
           </li>
@@ -634,16 +634,16 @@ Set Status to "Draft horizons complete" and show the exact sections written.</co
             <label class="check-label">
               <input type="checkbox" id="p7-mvp-gate" name="p7-mvp-gate" data-check-id="mvp-gate" />
               <span class="check-num">15</span>
-              <span class="check-title">Exceptions stop at a human review gate</span>
+              <span class="check-title">Exceptions remain at the human review gate until decided</span>
             </label>
-            <div class="check-detail">No silent bad commit. Evidence looks like: you can point at where a bad row held — with its reason attached — and show it absent from the master.</div>
+            <div class="check-detail">No silent bad commit. Evidence looks like: you can point at the gate holding a bad row with its reason attached and show that row absent from the master.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p7-ex3">
             <label class="check-label">
               <input type="checkbox" id="p7-mvp-3ex" name="p7-mvp-3ex" data-check-id="mvp-3ex" />
               <span class="check-num">16</span>
-              <span class="check-title">At least three exceptions were decided with written reasons</span>
+              <span class="check-title">At least three exceptions have written decisions and reasons</span>
             </label>
             <div class="check-detail">Evidence looks like: three recorded decisions — commit / fix / reject — each with a written reason, not three clicks.</div>
           </li>
@@ -670,9 +670,9 @@ Set Status to "Draft horizons complete" and show the exact sections written.</co
             <label class="check-label">
               <input type="checkbox" id="p7-mvp-conf" name="p7-mvp-conf" data-check-id="mvp-conf" />
               <span class="check-num">19</span>
-              <span class="check-title">A wrong-but-confident result was caught</span>
+              <span class="check-title">The gate catches a wrong-but-confident result</span>
             </label>
-            <div class="check-detail">Evidence looks like: the false all-clear row (row 4) held at the gate, and you can name the written check that caught it.</div>
+            <div class="check-detail">Evidence looks like: the false all-clear row (row 4) is held at the gate, and you can name the written check that catches it.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="pulse-log">

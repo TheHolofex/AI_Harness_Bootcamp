@@ -189,7 +189,7 @@ the Documents project that has never opened any intake file.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-pulse-brief" name="p5-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">1</span>
-              <span class="check-title">Save the P5 production spec as LIVE</span>
+              <span class="check-title">The P5 production spec is on record with Status LIVE</span>
             </label>
             <div class="check-detail">The saved brief names the seven-row triage record, the three catches, two clean diffs, the exact folders, and the stop/restore condition. Status reads <strong>LIVE</strong> before any intake file is opened.</div>
           </li>
@@ -198,7 +198,7 @@ the Documents project that has never opened any intake file.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-p5-boundary" name="p5-p5-boundary" data-check-id="p5-boundary" />
               <span class="check-num">2</span>
-              <span class="check-title">Define trusted boundary before intake</span>
+              <span class="check-title">The trusted boundary is set before intake begins</span>
             </label>
             <div class="check-detail">The Bounds field carries the real vault, baseline, staging, and corpus paths plus the crossing rule. A path restriction limits effects; citation and contradiction checks establish truth; neither substitutes for the other.</div>
           </li>
@@ -273,9 +273,9 @@ Copy-Item -Recurse "$env:USERPROFILE\Documents\p4-vault_baseline" "$env:USERPROF
             <label class="check-label">
               <input type="checkbox" id="p5-p5-stage" name="p5-p5-stage" data-check-id="p5-stage" />
               <span class="check-num">3</span>
-              <span class="check-title">Stage poisoned intake (do not blind-merge)</span>
+              <span class="check-title">The intake is staged outside the trusted vault</span>
             </label>
-            <div class="check-detail">You should see: the baseline folder on disk, seven items in staging, <strong>P5 — Build — [TODAY'S DATE]</strong> confirming the boundary, and a diff that comes back with no differences. If the diff already shows changes — or the assistant summarized intake into the vault — run the restore paste above, restate the boundary paste, and re-run the diff before continuing.</div>
+            <div class="check-detail">You should see: the baseline folder on disk, seven items in staging, <strong>P5 — Build — [TODAY'S DATE]</strong> confirming the boundary, and a diff with no differences. If the diff shows changes — or the assistant summarizes intake into the vault — run the restore paste above, restate the boundary paste, and re-run the diff before continuing.</div>
           </li>
         </ol>
 
@@ -317,9 +317,9 @@ source line · flag. Flag only — no verdicts, no edits.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-p5-false" name="p5-p5-false" data-check-id="p5-false" />
               <span class="check-num">4</span>
-              <span class="check-title">Catch false citation with evidence</span>
+              <span class="check-title">The false citation is documented with source evidence</span>
             </label>
-            <div class="check-detail">A citation fails two ways: the source exists but says otherwise, or it resolves nowhere after both searches. The triage row quotes the claim beside the source line or failed lookup. If a flag passed because the note merely exists, reopen it and verify the cited content.</div>
+            <div class="check-detail">A citation fails two ways: the source exists but says otherwise, or it resolves nowhere after both searches. The triage row quotes the claim beside the source line or failed lookup. If a flag passes because the note merely exists, reopen it and verify the cited content.</div>
           </li>
         </ol>
 
@@ -341,9 +341,9 @@ Flag only — no verdicts, no edits.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-p5-contra" name="p5-p5-contra" data-check-id="p5-contra" />
               <span class="check-num">5</span>
-              <span class="check-title">Catch field contradiction with evidence</span>
+              <span class="check-title">The field contradiction is documented with source evidence</span>
             </label>
-            <div class="check-detail">You should see the side-by-side extract land in your triage record as the evidence cell, with rough detect / isolate / verify times on the row. If the whole batch came back with no flagged pairs, the extraction ran as summary — re-paste the direction and check the output really lists one claim per line before it groups.</div>
+            <div class="check-detail">You should see the side-by-side extract land in your triage record as the evidence cell, with rough detect / isolate / verify times on the row. If the batch contains no flagged pairs, the extraction is acting as summary — re-paste the direction and check the output really lists one claim per line before it groups.</div>
           </li>
         </ol>
 
@@ -378,9 +378,9 @@ rewrite a disposition on my behalf.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-p5-hostile" name="p5-p5-hostile" data-check-id="p5-hostile" />
               <span class="check-num">6</span>
-              <span class="check-title">Catch hostile instruction</span>
+              <span class="check-title">The hostile instruction is quarantined</span>
             </label>
-            <div class="check-detail">You should see the instruction-shaped lines named in the triage record — disposition quarantine, times noted — and none of them executed. The item stays in staging, which the vault never reads; that is the isolation. Before moving on, confirm every intake item now has a row: seven files, seven verdicts, accept recorded rather than assumed.</div>
+            <div class="check-detail">You should see the instruction-shaped lines named in the triage record — disposition quarantine, times noted — and none of them run. The item stays in staging, which the vault never reads; that is the isolation. Before moving on, confirm every intake item now has a row: seven files, seven verdicts, accept recorded rather than assumed.</div>
           </li>
         </ol>
 
@@ -449,9 +449,9 @@ record.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-p5-absent" name="p5-p5-absent" data-check-id="p5-absent" />
               <span class="check-num">7</span>
-              <span class="check-title">Verify no hostile effect reached the trusted vault</span>
+              <span class="check-title">The trusted vault remains unchanged by hostile instructions</span>
             </label>
-            <div class="check-detail">Every demand is checked at its target and found absent, both diffs are clean, and the hostile row's verify time is filled in. The diff from <strong>P5 — Independent Recheck — [TODAY'S DATE]</strong> supplies independent evidence. If any target changed, run the Stage 02 restore, record the finding, and rerun both diffs.</div>
+            <div class="check-detail">Every demand is checked at its target and is absent, both diffs are clean, and the hostile row's verify time is filled in. The diff from <strong>P5 — Independent Recheck — [TODAY'S DATE]</strong> supplies independent evidence. If any target differs from the baseline, run the Stage 02 restore, record the finding, and rerun both diffs.</div>
           </li>
         </ol>
 
@@ -477,7 +477,7 @@ section without adding a claim the evidence does not support.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-p5-perm" name="p5-p5-perm" data-check-id="p5-perm" />
               <span class="check-num">8</span>
-              <span class="check-title">Record the controls and residual risks</span>
+              <span class="check-title">The controls and residual risks are recorded</span>
             </label>
             <div class="check-detail"><code>triage_record.md</code> names the path boundary, approval gate, content checks, independent recheck result, the evidence each supports, and what remains outside that evidence.</div>
           </li>
@@ -505,7 +505,7 @@ final wording.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p5-p5-rule" name="p5-p5-rule" data-check-id="p5-rule" />
               <span class="check-num">9</span>
-              <span class="check-title">Write reusable intake rule</span>
+              <span class="check-title">The reusable intake rule is written and testable</span>
             </label>
             <div class="check-detail"><code>triage_record.md</code> contains one observable intake rule and a three-row check showing that each real failure class is stopped before trusted knowledge.</div>
           </li>
@@ -561,7 +561,7 @@ metrics, or add a reviewer opinion. Preserve every other log and transfer row.</
             <label class="check-label">
               <input type="checkbox" id="p5-pulse-log" name="p5-pulse-log" data-check-id="pulse-log" />
               <span class="check-num">10</span>
-              <span class="check-title">Save the artifact-backed close-out</span>
+                <span class="check-title">The P5 closeout points to its saved evidence</span>
             </label>
             <div class="check-detail">The P5 log entry names the artifact paths, criterion-based SHIP/HOLD decision, one concrete finding or residual risk, and the reusable workplace rule. The dated P5 transfer seed names a real boundary and intake source.</div>
           </li>
@@ -583,36 +583,36 @@ metrics, or add a reviewer opinion. Preserve every other log and transfer row.</
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-trusted" name="p5-mvp-trusted" data-check-id="mvp-trusted" />
               <span class="check-num">14</span>
-              <span class="check-title">The trusted-data boundary was set before intake</span>
+              <span class="check-title">The trusted-data boundary is set before intake begins</span>
             </label>
-            <div class="check-detail">Evidence looks like: the saved brief's Bounds field naming the vault path, staging path, and crossing rule, with Status set to <strong>LIVE</strong> before the intake-copy step began. The saved brief, not the chat transcript, carries that boundary. A boundary written after the poison arrived is a not-yet.</div>
+            <div class="check-detail">Evidence looks like: the saved brief's Bounds field names the vault path, staging path, and crossing rule, with Status set to <strong>LIVE</strong> before the intake-copy step begins. The saved brief, not the chat transcript, carries that boundary. A boundary added after intake reaches the trusted data is a not-yet.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p5-false">
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-fc" name="p5-mvp-fc" data-check-id="mvp-fc" />
               <span class="check-num">15</span>
-              <span class="check-title">A false citation was detected and documented</span>
+              <span class="check-title">The triage record exposes and documents a false citation</span>
             </label>
-            <div class="check-detail">Evidence looks like: the claimed line and the source's own line quoted side by side in the triage record, plus any citation that resolved to no file at all flagged as such. "The model said it was wrong" is not mechanical — the quoted pair is.</div>
+            <div class="check-detail">Evidence looks like: the claimed line and the source's own line appear side by side in the triage record, and any citation that resolves to no file is flagged as such. "The model calls it wrong" is not mechanical — the quoted pair is.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p5-contra">
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-cd" name="p5-mvp-cd" data-check-id="mvp-cd" />
               <span class="check-num">16</span>
-              <span class="check-title">A contradiction was detected and held for review</span>
+              <span class="check-title">A contradiction is visible and held for review</span>
             </label>
-            <div class="check-detail">Evidence looks like: both assertions extracted side by side with a disposition of hold or reject. If the merged note quietly picked one version, the contradiction wasn't caught — it was silently resolved, which is worse.</div>
+            <div class="check-detail">Evidence looks like: both assertions appear side by side with a disposition of hold or reject. If the merged note quietly picks one version, the process does not catch the contradiction; it silently resolves it, which is worse.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p5-absent">
             <label class="check-label">
               <input type="checkbox" id="p5-mvp-hi" name="p5-mvp-hi" data-check-id="mvp-hi" />
               <span class="check-num">17</span>
-              <span class="check-title">Hostile instructions were quarantined with no side effects</span>
+              <span class="check-title">Hostile instructions are quarantined with no side effects</span>
             </label>
-            <div class="check-detail">Evidence looks like: the hostile file in quarantine, none of its instructions executed, and the absence checks from step 7 — clean diff, nothing exfiltrated, logs intact. The quarantine record and target checks are both required.</div>
+            <div class="check-detail">Evidence looks like: the hostile file remains in quarantine, its instructions never run, and the Step 7 absence checks show a clean diff, no exfiltration, and intact logs. The quarantine record and target checks are both required.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p5-absent">
@@ -621,7 +621,7 @@ metrics, or add a reviewer opinion. Preserve every other log and transfer row.</
               <span class="check-num">18</span>
               <span class="check-title">The detect → isolate → verify sequence is recorded</span>
             </label>
-            <div class="check-detail">Evidence looks like: the log or triage record showing detect → isolate → verify clean for each class, in time order. If verification actually ran before isolation, say so honestly — an order violation found now is cheaper than one found at work.</div>
+            <div class="check-detail">Evidence looks like: the log or triage record shows detect → isolate → verify clean for each class, in time order. If verification appears before isolation, record the order violation honestly — catching it here is cheaper than finding it at work.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p5-perm">
@@ -639,7 +639,7 @@ metrics, or add a reviewer opinion. Preserve every other log and transfer row.</
               <span class="check-num">20</span>
               <span class="check-title">A reusable intake rule is written and tested</span>
             </label>
-            <div class="check-detail">Evidence looks like: the completed "until ___" sentence with an observable gate in the blank, plus the test — each of today's three catches run against it, each caught. A gate you can't observe isn't a gate.</div>
+            <div class="check-detail">Evidence looks like: the "until ___" sentence contains an observable gate, and today's three catches all fail at that gate. A gate you can't observe isn't a gate.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="pulse-log">
@@ -657,7 +657,7 @@ metrics, or add a reviewer opinion. Preserve every other log and transfer row.</
               <span class="check-num">22</span>
               <span class="check-title">The P5 transfer rule is recorded and dated</span>
             </label>
-            <div class="check-detail">Evidence looks like: the three fields under <strong>From P5 — Operating picture</strong> in <code>operator/TRANSFER_30_60_90.md</code> filled and carrying today's date — the trusted knowledge boundary at work, the intake rule in its "never accept into trusted until ___" form, and the first corpus or inbox it applies to. An entry naming a category rather than a system you could put a gate in front of on Monday is a not-yet.</div>
+            <div class="check-detail">Evidence looks like: the three fields under <strong>From P5 — Operating picture</strong> in <code>operator/TRANSFER_30_60_90.md</code> contain today's date, the trusted knowledge boundary at work, the intake rule in its "never accept into trusted until ___" form, and the first corpus or inbox it applies to. An entry naming a category rather than a system you could put a gate in front of on Monday is a not-yet.</div>
           </li>
         </ol>
       </section>

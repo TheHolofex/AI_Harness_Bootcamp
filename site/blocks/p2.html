@@ -154,9 +154,9 @@
             <label class="check-label">
               <input type="checkbox" id="p2-p2-open" name="p2-p2-open" data-check-id="p2-open" />
               <span class="check-num">1</span>
-              <span class="check-title">Case suite and grader inspected</span>
+              <span class="check-title">One track and all five pass conditions are identified</span>
             </label>
-            <div class="check-detail">You selected one track and read all five case tasks and their written pass conditions before running the model.</div>
+            <div class="check-detail">One track is selected, and all five case tasks and their written pass conditions are open for reference before the model runs.</div>
           </li>
         </ol>
 
@@ -183,7 +183,7 @@
             <label class="check-label">
               <input type="checkbox" id="p2-pulse-brief" name="p2-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">2</span>
-              <span class="check-title">Experiment header saved in SCORE_SHEET.md</span>
+              <span class="check-title">SCORE_SHEET.md defines the experiment</span>
             </label>
             <div class="check-detail">The sheet fixes the track, five cases, model tier, baseline condition, one-change rule, cold final condition, and grading rule.</div>
           </li>
@@ -241,7 +241,7 @@
             <label class="check-label">
               <input type="checkbox" id="p2-p2-base" name="p2-p2-base" data-check-id="p2-base" />
               <span class="check-num">3</span>
-              <span class="check-title">Baseline scored for D01-D05 before any change</span>
+              <span class="check-title">SCORE_SHEET.md contains the D01-D05 baseline before any change</span>
             </label>
             <div class="check-detail">The Baseline column contains five strict PASS/FAIL calls from five isolated named chats, a note naming the missed requirement for every FAIL, and a total out of 5.</div>
           </li>
@@ -287,9 +287,9 @@ Smallest intended change: [ONE RULE]</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p2-p2-walls" name="p2-p2-walls" data-check-id="p2-walls" />
               <span class="check-num">4</span>
-              <span class="check-title">One durable wall change targets the named baseline failure</span>
+              <span class="check-title">One durable instruction change targets the named baseline failure</span>
             </label>
-            <div class="check-detail">The changed rule lives in <code>AGENTS.md</code>, names its target case, and is no broader than the failed requirement needs.</div>
+            <div class="check-detail">The rule lives in <code>AGENTS.md</code>, names its target case, and is no broader than the failed requirement needs.</div>
           </li>
         </ol>
 
@@ -400,7 +400,7 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
             <label class="check-label">
               <input type="checkbox" id="p2-p2-after" name="p2-p2-after" data-check-id="p2-after" />
               <span class="check-num">6</span>
-              <span class="check-title">Cold final score completed on the same five cases</span>
+              <span class="check-title">SCORE_SHEET.md contains the cold final score for the same five cases</span>
             </label>
             <div class="check-detail">The After column contains one result from each of the five isolated cold chats. The total and delta use the same track, model tier, dispatch, and grader as baseline. A zero or negative delta remains a valid result.</div>
           </li>
@@ -408,9 +408,9 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
             <label class="check-label">
               <input type="checkbox" id="p2-p2-durable" name="p2-p2-durable" data-check-id="p2-durable" />
               <span class="check-num">7</span>
-              <span class="check-title">Targeted improvement remains after a full restart</span>
+              <span class="check-title">The targeted improvement remains after a full restart</span>
             </label>
-            <div class="check-detail">The cold final chats loaded the durable rule from disk and the score sheet records whether the targeted case retained the change.</div>
+            <div class="check-detail">The cold final chats load the durable rule from disk, and the score sheet shows whether the targeted case keeps the change.</div>
           </li>
         </ol>
 
@@ -433,7 +433,7 @@ python instruments\p2_test_suite\checks_runner.py CHECKS.md answer.txt</code></p
             <label class="check-label">
               <input type="checkbox" id="p2-p2-claim" name="p2-p2-claim" data-check-id="p2-claim" />
               <span class="check-num">8</span>
-              <span class="check-title">Measured conclusion names the effect and remaining risk</span>
+              <span class="check-title">The measured conclusion names the effect and remaining risk</span>
             </label>
             <div class="check-detail">The score sheet identifies the changed artifact, targeted requirement, baseline and final scores, external check result, release decision, and unresolved risk.</div>
           </li>
@@ -487,7 +487,7 @@ sections changed.</code></pre>
               <label class="check-label">
                 <input type="checkbox" id="p2-pulse-log" name="p2-pulse-log" data-check-id="pulse-log" />
                 <span class="check-num">9</span>
-                <span class="check-title">Artifact-backed P2 closeout saved</span>
+                <span class="check-title">The P2 closeout points to its saved evidence</span>
               </label>
               <div class="check-detail">The P2 log points to the score sheet and external checks, records the release decision and residual risk, and names one reusable rule.</div>
             </li>
@@ -519,7 +519,7 @@ sections changed.</code></pre>
               <span class="check-num">13</span>
               <span class="check-title">All five course cases have a baseline score</span>
             </label>
-            <div class="check-detail">Evidence looks like: <code>SCORE_SHEET.md</code> with the Baseline column filled for D01–D05 on your chosen track, each case scored in its own named fresh chat before any change, with a missed requirement named for every FAIL.</div>
+            <div class="check-detail">Evidence looks like: the Baseline column in <code>SCORE_SHEET.md</code> contains a score for D01–D05 on your chosen track. Each case has its own named fresh chat, and every FAIL names a missed requirement.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p2-walls">
@@ -528,7 +528,7 @@ sections changed.</code></pre>
               <span class="check-num">14</span>
               <span class="check-title">One durable instruction change targets an observed failure</span>
             </label>
-            <div class="check-detail">Evidence looks like: one small rule in <code>AGENTS.md</code> tied to the exact case and grader requirement that failed. Memory remains fixed; a skill is added only when the failure requires a reusable procedure.</div>
+            <div class="check-detail">Evidence looks like: one small rule in <code>AGENTS.md</code> tied to the exact case and grader requirement the baseline answer misses. Memory remains fixed; a skill is added only when the failure requires a reusable procedure.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p2-after">
@@ -537,16 +537,16 @@ sections changed.</code></pre>
               <span class="check-num">15</span>
               <span class="check-title">The unchanged and final harness have before-and-after scores</span>
             </label>
-            <div class="check-detail">Evidence looks like: the unchanged-harness baseline total and the cold final-harness total — strict pass/fail counts on the same sheet, not adjectives — with the delta line filled in.</div>
+            <div class="check-detail">Evidence looks like: the unchanged-harness baseline total and the cold final-harness total — strict pass/fail counts on the same sheet, not adjectives — and a delta line that contains the difference.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p2-tests">
             <label class="check-label">
               <input type="checkbox" id="p2-mvp-2tests" name="p2-mvp-2tests" data-check-id="mvp-2tests" />
               <span class="check-num">16</span>
-              <span class="check-title">At least two tests were written, and one changed from fail to pass</span>
+              <span class="check-title">At least two tests run independently; one fails before the change and passes after it</span>
             </label>
-            <div class="check-detail">Evidence looks like: at least two named checks you authored and accepted, runnable without your judgment in the loop; at least one catches the original defect and passes after the targeted change.</div>
+            <div class="check-detail">Evidence looks like: at least two named checks you accept as valid and can run without your judgment in the loop; at least one catches the original defect and passes after the targeted change.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p2-durable">
@@ -555,7 +555,7 @@ sections changed.</code></pre>
               <span class="check-num">17</span>
               <span class="check-title">The targeted improvement remains after a full restart</span>
             </label>
-            <div class="check-detail">Evidence looks like: <code>SCORE_SHEET.md</code> with five After results and notes recorded after the full app restart, including whether the targeted case retained the changed result and which saved artifact carried the rule. The five cold chats are isolated run environments, not the lasting evidence.</div>
+            <div class="check-detail">Evidence looks like: <code>SCORE_SHEET.md</code> with five After results and restart notes, including whether the targeted case keeps the changed result and which saved artifact carries the rule. The five cold chats are isolated run environments, not the lasting evidence.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p2-claim">
@@ -564,7 +564,7 @@ sections changed.</code></pre>
               <span class="check-num">18</span>
               <span class="check-title">The measured conclusion records the release decision and residual risk</span>
             </label>
-            <div class="check-detail">Evidence looks like: the measured conclusion naming the changed artifact, targeted condition, baseline and final scores, external check result, release decision, and any remaining failure or residual risk.</div>
+            <div class="check-detail">Evidence looks like: the measured conclusion names the changed artifact, targeted condition, baseline and final scores, external check result, release decision, and any remaining failure or residual risk.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="#p2-transfer-proof">
@@ -573,7 +573,7 @@ sections changed.</code></pre>
               <span class="check-num">19</span>
               <span class="check-title">One specific 30-day work habit is recorded</span>
             </label>
-            <div class="check-detail">Evidence looks like: Identity filled and one concrete 30-day harness habit in the Transfer file — specific to your desk, checkable, bound. "Use AI more" is void.</div>
+            <div class="check-detail">Evidence looks like: Identity is filled in and the Transfer file contains one concrete 30-day harness habit — specific to your desk, checkable, bound. "Use AI more" is void.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="#p2-transfer-proof">
@@ -582,7 +582,7 @@ sections changed.</code></pre>
               <span class="check-num">20</span>
               <span class="check-title">The P2 transfer plan is complete and dated</span>
             </label>
-            <div class="check-detail">Evidence looks like: the five fields under <em>From P2 — Harness craft</em> in <code>operator/TRANSFER_30_60_90.md</code> — workload, durable artifact, cold check, 30-day habit, and week-one result — each holding a concrete entry you accepted, with today's date on the block. A field left blank is not yet; name what is blocking it in the file instead.</div>
+            <div class="check-detail">Evidence looks like: the five fields under <em>From P2 — Harness craft</em> in <code>operator/TRANSFER_30_60_90.md</code> — workload, durable artifact, cold check, 30-day habit, and week-one result — each contains a concrete entry you accept, with today's date on the block. A field left blank is not yet; name what is blocking it in the file instead.</div>
           </li>
         </ol>
       </section>
