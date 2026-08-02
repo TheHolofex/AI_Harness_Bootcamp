@@ -33,7 +33,7 @@
     <p class="course-connection"><a class="btn" href="../../blocks/p6.html#depth">← Return to P6 · Going deeper</a></p>
     <p class="course-connection"><strong>This page is optional.</strong> The owning module remains the live course path and source for current tool details.</p>
   </header>
-  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">When the bounds hold but the supervision fails</a></li><li><a href="#mechanism">Design supervision as an active control task</a></li><li><a href="#worked-case">Worked case: the climate controller that behaved correctly</a></li><li><a href="#practice">Guided practice: supervise the greenhouse copy</a></li><li><a href="#artifact">Copy the supervision risk map and rehearsal record</a></li><li><a href="#self-check">Self-check: is intervention readiness real?</a></li><li><a href="#transfer">Put one bounded desk task under supervision</a></li></ol></nav>
+  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">When the bounds hold but the supervision fails</a></li><li><a href="#mechanism">Design supervision as an active control task</a></li><li><a href="#worked-case">Worked case: the climate controller that behaved correctly</a></li><li><a href="#practice">Read the greenhouse control state and act</a></li><li><a href="#artifact">Copy the supervision risk map and rehearsal record</a></li><li><a href="#self-check">Readiness requirements before unattended time</a></li><li><a href="#transfer">Put one bounded desk task under supervision</a></li></ol></nav>
   <article class="resource-body">
 <section id="purpose" class="resource-section">
   <h2>When the bounds hold but the supervision fails</h2>
@@ -85,7 +85,7 @@
 
   <h3>Rehearse the vulnerable skill, not the generic one</h3>
   <p>Skill decay is selective. In a simulator study of 16 airline pilots, <a href="https://gwern.net/doc/technology/2014-casner.pdf" target="_blank" rel="noopener">Casner and colleagues</a> found that some manual control skills were largely retained while cognitive tasks that depended on active engagement were more vulnerable. The useful conclusion is not that every manual skill inevitably decays. It is that a rehearsal must target the exact intervention: recognizing the mode, rebuilding the system picture, choosing the authorized action, performing it before the deadline, and handing over a stable state.</p>
-  <p>A briefing is not a rehearsal. Inject a real mode transition in a safe simulation or test copy; hide nothing the live interface would show; start the clock; require the supervisor to call out the mode and responsibility; execute the stop, takeover, or escalation; and record the observed time, missed cues, state after action, and evidence of recovery. A missed deadline is useful evidence when it leads to redesign and a retest.</p>
+  <p>A briefing is not a rehearsal. Schedule a representative mode transition in a safe simulation or test copy; show exactly what the live interface would show; start the clock; require the supervisor to call out the mode and responsibility; execute the stop, takeover, or escalation; and record the observed time, missed cues, state after action, and evidence of recovery. Use a scenario drawn from the real exception path rather than introducing a defect solely to create a failure.</p>
 </section>
 
 <figure class="resource-figure" id="figure-p6-5-mechanism">
@@ -115,8 +115,8 @@
   </div>
   <p>The controller did what its contract required. The supervisor did what the interface had repeatedly rewarded: clear banners and return to productive work. The failure belongs to the supervision system. Its mode cue was weak, the alarm set trained acknowledgment without action, the acknowledgment control hid the unresolved condition, responsibility changed without a clear handoff, and takeover had not been rehearsed recently.</p>
 
-  <h3>Inject the failure, preserve the evidence, then recover</h3>
-  <p>The training lead reproduces the sequence in the disconnected copy. At minute 70, nine advisory alarms have appeared. The lead injects a sensor disagreement and starts an eight-minute clock. The observed supervisor notices the alarm after three minutes, calls the overall state “green,” acknowledges it, and begins the reference-probe procedure at minute nine. The symptom is not “carelessness.” The evidence shows a mode-model mismatch, an alarm-action mismatch, and an intervention that takes longer than the response window.</p>
+  <h3>Diagnostic replay: the hold was visible but not actionable</h3>
+  <p>The training lead replays the captured sequence in the disconnected copy. At minute 70, after nine advisory alarms, the recorded sensor disagreement moves the controller into <code>SENSOR-HOLD</code> and starts an eight-minute clock. The observed supervisor notices the alarm after three minutes, calls the overall state “green,” acknowledges it, and begins the reference-probe procedure at minute nine. The symptom is not “carelessness.” The evidence shows a mode-model mismatch, an alarm-action mismatch, and an intervention that takes longer than the response window.</p>
   <p>The team stops the exercise and preserves the event timeline, mode-transition log, acknowledgment event, screen recording, spoken callouts, and intervention time. It then makes five corrections:</p>
   <ol>
     <li>The mode cue reads <code>ROOM C · SENSOR-HOLD · AUTO ADJUSTMENT OFF · HUMAN VERIFY BY 13:30</code>.</li>
@@ -129,7 +129,7 @@
 </section>
 
 <section id="practice" class="resource-section">
-  <h2>Guided practice: supervise the greenhouse copy</h2>
+  <h2>Read the greenhouse control state and act</h2>
   <p>Use only the supplied facts. This is a disconnected greenhouse simulator; no live device, customer data, purchase, message, or external system is in scope.</p>
   <p><strong>Mode card:</strong> <code>AUTO-WATER</code> means the controller may adjust watering inside its bounds. <code>SENSOR-HOLD</code> means automatic adjustment is off and a human verification is required. <code>MANUAL-VERIFY</code> means the named operator owns the prescribed check. Acknowledgment silences a sound; it does not change a mode or close a condition.</p>
   <div class="table-scroll">
@@ -143,17 +143,9 @@
       </tbody>
     </table>
   </div>
-  <p><strong>Predict before revealing:</strong> write the actual mode, what the automation is not doing, the responsible role, the deadline, and the first authorized action. Then choose:</p>
-  <ol type="A">
-    <li>Use <code>ACK ALL</code> and wait for automatic watering to resume.</li>
-    <li>Call out the actual mode, responsibility, and deadline; begin the prescribed probe verification; stop the simulator if the check cannot finish safely before 08:20; hand over the unresolved state if responsibility changes.</li>
-    <li>Force <code>AUTO-WATER</code> so the green banner and Bay 2 mode agree.</li>
-  </ol>
+  <p><strong>Required action:</strong> call out <code>SENSOR-HOLD</code>, state that automatic watering is off, name the on-duty operator, and state the 08:20 deadline. Begin the prescribed probe verification. Stop the simulator if the check cannot finish safely before 08:20, and hand over the unresolved state if responsibility changes. <code>ACK ALL</code> changes only the notice state; forcing <code>AUTO-WATER</code> would override the protective mode without evidence.</p>
   <p><strong>Stop condition:</strong> stop the exercise if the supplied procedure is unavailable, the mode cannot be confirmed, the responsible role is absent, or the verification cannot complete before 08:20. Do not invent a bypass.</p>
-  <details>
-    <summary><strong>Reveal the intervention</strong></summary>
-    <p><strong>B</strong> is the defensible choice. At 08:14 the actual mode is <code>SENSOR-HOLD</code>; automatic watering is off; the on-duty operator owns verification or stop; and six minutes remain. The first move is a mode/responsibility/deadline callout followed by the prescribed check. A fails because acknowledgment does not change the mode or resolve the condition. C overrides the protective state without evidence. If the check cannot finish, stop preserves the boundary; a handover must carry the actual mode, unresolved alarm, deadline or expired deadline, action already taken, protected state, and named restart authority.</p>
-  </details>
+  <p>A complete handover carries the actual mode, unresolved alarm, deadline or expired deadline, action already taken, protected state, relevant evidence, and named restart authority.</p>
 </section>
 
 <section id="artifact" class="resource-section">
@@ -181,7 +173,7 @@ Condition that invalidates this map:</code></pre>
 
 Scenario ID / date:
 Initial actual mode:
-Injected mode transition or exception:
+Planned mode transition or exception scenario:
 Visible mode cues:
 Expected spoken callout (mode / automation action / human responsibility):
 Active monitoring task and trigger:
@@ -214,29 +206,19 @@ Next rehearsal trigger or date:</code></pre>
 </figure>
 
 <section id="self-check" class="resource-section">
-  <h2>Self-check: is intervention readiness real?</h2>
-  <ol>
-    <li>The overall dashboard is green while one component is in a protected hold requiring human action. Which cue governs the intervention decision?</li>
-    <li>An alarm has a sound, severity color, and acknowledgment button. What information is still required?</li>
-    <li>A supervisor can explain the stop procedure but has never performed it against a clock. What evidence is missing?</li>
-    <li>The system reaches harm in 20 seconds; representative rehearsals require 55 seconds from detection to safe state. Is a human response an adequate control?</li>
-    <li>After a correct stop, responsibility changes at shift handover. What must travel with it?</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the readiness test</strong></summary>
-    <ol>
-      <li>The component’s actual mode, consequence, owner, and deadline. “Green” may mean containment worked, not that no human action remains.</li>
-      <li>The condition and consequence, required response, response deadline, responsible role, and whether acknowledgment changes anything besides notice state.</li>
-      <li>A timed intervention record showing detection, correct mode model, authorized action, final protected state, handover, misses, and retest.</li>
-      <li>No. The system needs an automatic safe state because the time-to-effect is shorter than demonstrated human detection, decision, and action time.</li>
-      <li>Actual mode, unresolved condition, clock or expired deadline, action already taken, current protected state, relevant evidence, and who owns restart.</li>
-    </ol>
-  </details>
+  <h2>Readiness requirements before unattended time</h2>
+  <ul>
+    <li>The component’s actual mode, consequence, owner, and deadline govern action; a green overall banner may only mean containment worked.</li>
+    <li>Every alarm states the condition, consequence, required response, deadline, responsible role, and what acknowledgment changes.</li>
+    <li>A timed record shows detection, the correct mode model, authorized action, final protected state, handover, missed cues, and any retest.</li>
+    <li>If demonstrated human detection, decision, and action take longer than time-to-effect, the system—not the supervisor—must enter a safe state.</li>
+    <li>Every handover carries the actual mode, unresolved condition, clock, action already taken, protected state, evidence, and restart owner.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section resource-transfer">
   <h2>Put one bounded desk task under supervision</h2>
-  <p>Choose a low-consequence task that already has technical bounds and produces only a draft, local analysis, or synthetic result. Use a copy of the inputs and keep every output in a draft-only location. Map one nominal mode, one exception mode, one mode transition, one active monitoring task, one actionable alarm, and one stop or handover. Then run a five-minute injected exception with a second person or in a self-contained simulation.</p>
+  <p>Choose a low-consequence task that already has technical bounds and produces only a draft, local analysis, or synthetic result. Use a copy of the inputs and keep every output in a draft-only location. Map one nominal mode, one exception mode, one mode transition, one active monitoring task, one actionable alarm, and one stop or handover. Then run a five-minute scheduled exception scenario with a second person or in a self-contained simulation.</p>
   <p>Stop if the current mode cannot be proven, the alarm lacks meaning or deadline, responsibility is shared only by implication, the intervention procedure is missing, or the required action cannot complete before the consequence. Those findings mean the human layer is not yet a control. Return the task to attended, low-consequence operation while the supervision design is repaired.</p>
   <p>Return to a human authority before applying this pattern to safety, personnel, money, access, privacy, legal position, external communications, irreversible records, or any system where stopping itself changes operational risk. Bring the completed map, the failed and passed rehearsal records, and the timing evidence. <a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener">NIST’s AI Risk Management Framework Core</a> supports this division of labor: distinguish human and system oversight roles, assign responsibility for superseding or deactivating a system, and connect post-deployment monitoring to incident response, recovery, and change management.</p>
 
@@ -258,7 +240,7 @@ Next rehearsal trigger or date:</code></pre>
   <p>Stay on the live module unless another guide answers a problem you have now.</p>
   <div class="card-grid"><a class="card" href="./fmea-agent-work.html"><span class="resource-id">P6-2</span><h3>From Risk List to Contract: FMEA for Agent Work</h3><p>A failure-mode analysis that turns severity, likelihood, detectability, ownership, evidence, and recovery into contract rows.</p></a>
 <a class="card" href="../p7/human-gate-engineering.html"><span class="resource-id">P7-4</span><h3>Human Gate Capacity and Exception Economics</h3><p>A capacity and exception-economics method for arrivals, service rate, queue age, defaults, escalation, false holds, and misses.</p></a>
-<a class="card" href="../course-wide/operators-pocket-card.html"><span class="resource-id">PC-1</span><h3>Operator’s Pocket Card</h3><p>A one-page field reference for the five-part brief, six-step lesson flow, evidence standard, and stop conditions.</p></a></div>
+<a class="card" href="../course-wide/operators-pocket-card.html"><span class="resource-id">PC-1</span><h3>Operator’s Pocket Card</h3><p>A one-page field reference for specifying, building, checking, releasing, and handing off serious AI-assisted work.</p></a></div>
 </section>
   <nav class="resource-plate" aria-label="Return to the live course module">
   <a href="../../blocks/p6.html#depth"><span>← Return to the live module</span><strong>P6 · Going deeper</strong></a>

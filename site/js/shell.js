@@ -385,12 +385,14 @@
       var input = item.querySelector('input[type="checkbox"][data-check-id]');
       var title = item.querySelector(".check-title");
       var anchor = null;
+      var replacedItem = null;
       if (target && target.charAt(0) === "#") {
         anchor = form.querySelector(target);
       } else if (target) {
         var targetInput = form.querySelector('input[data-check-id="' + target + '"]');
         var targetItem = targetInput && targetInput.closest("[data-check-item]");
         anchor = targetItem && targetItem.closest("ol.checklist");
+        replacedItem = targetItem;
       }
       if (!input || !title || !target || !anchor || section.contains(anchor)) {
         valid = false;
@@ -401,6 +403,7 @@
       entry.detail = item.querySelector(".check-detail");
       entry.target = target;
       entry.anchor = anchor;
+      entry.replacedItem = replacedItem;
     });
     if (!valid) return;
 
@@ -486,6 +489,9 @@
       source.appendChild(summary);
 
       input.setAttribute("data-check-group", "floor");
+      if (entry.replacedItem) {
+        input.setAttribute("data-replaces-check-id", entry.target);
+      }
       item.classList.add("outcome-check");
       item.setAttribute("data-outcome-item", "");
       var number = item.querySelector(".check-num");
@@ -495,6 +501,20 @@
         number.textContent = optional ? "Optional outcome" : "Lesson outcome";
       }
       group.querySelector("ol").appendChild(item);
+    });
+
+    // A lesson outcome is the receipt for the evidence-producing step. When an
+    // outcome targets a procedural checkbox, showing both controls asks the
+    // learner to confirm the same evidence twice. Keep the instructions in
+    // place, move the outcome control beside them, and hide only the duplicate
+    // procedural receipt. Hash targets are ordinary anchors and stay visible.
+    var replacedItems = [];
+    entries.forEach(function (entry) {
+      var replacedItem = entry.replacedItem;
+      if (!replacedItem || replacedItems.indexOf(replacedItem) !== -1) return;
+      replacedItems.push(replacedItem);
+      replacedItem.hidden = true;
+      replacedItem.setAttribute("data-replaced-by-outcome", "");
     });
 
     if (location.hash) {
@@ -518,6 +538,41 @@
     section.classList.toggle("is-section-collapsed", !open);
     var button = section.querySelector("[data-phase-section-toggle]");
     if (button) button.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  function migrateReplacedOutcomeState(form, key, state) {
+    var outcomes = form.querySelectorAll(
+      'input[data-check-id][data-replaces-check-id]'
+    );
+    var replacements = {};
+    Array.prototype.forEach.call(outcomes, function (input) {
+      var oldId = input.getAttribute("data-replaces-check-id");
+      var newId = input.getAttribute("data-check-id");
+      if (!oldId || !newId || oldId === newId) return;
+      if (!replacements[oldId]) replacements[oldId] = [];
+      replacements[oldId].push(newId);
+    });
+
+    var changed = false;
+    Object.keys(replacements).forEach(function (oldId) {
+      if (!Object.prototype.hasOwnProperty.call(state, oldId)) return;
+      if (state[oldId] === true) {
+        replacements[oldId].forEach(function (newId) {
+          if (state[newId] !== true) {
+            state[newId] = true;
+            changed = true;
+          }
+        });
+      }
+      delete state[oldId];
+      changed = true;
+    });
+
+    if (changed) {
+      state._updated = new Date().toISOString();
+      saveState(key, state);
+    }
+    return state;
   }
 
   function updatePreworkSectionStatuses(form, b) {
@@ -691,7 +746,7 @@
       if (AHB.REGISTRY[i].key === key) { b = AHB.REGISTRY[i]; break; }
     }
     prepareOutcomeLayout(form, b);
-    var state = AHB.readState(key);
+    var state = migrateReplacedOutcomeState(form, key, AHB.readState(key));
     var boxes = form.querySelectorAll('input[type="checkbox"][data-check-id]');
     Array.prototype.forEach.call(boxes, function (input) {
       var id = input.getAttribute("data-check-id");

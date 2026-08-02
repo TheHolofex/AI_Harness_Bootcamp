@@ -33,7 +33,7 @@
     <p class="course-connection"><a class="btn" href="../../blocks/p6.html#ideas">← Return to P6 · Watch officer</a></p>
     <p class="course-connection"><strong>This page is optional.</strong> The owning module remains the live course path and source for current tool details.</p>
   </header>
-  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">When a risk list still leaves the agent loose</a></li><li><a href="#mechanism">Turn each risk into a failure path and a response contract</a></li><li><a href="#worked-case">Worked case: the maintenance packet that looks ready</a></li><li><a href="#practice">Practice: contract a replenishment-draft agent</a></li><li><a href="#transfer">Put one low-consequence desk task under failure analysis</a></li></ol></nav>
+  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">When a risk list still leaves the agent loose</a></li><li><a href="#mechanism">Turn each risk into a failure path and a response contract</a></li><li><a href="#worked-case">Worked case: the maintenance packet that looks ready</a></li><li><a href="#practice">Build the contract for a replenishment-draft agent</a></li><li><a href="#transfer">Put one low-consequence desk task under failure analysis</a></li></ol></nav>
   <article class="resource-body">
 <section id="purpose" class="resource-section">
   <h2>When a risk list still leaves the agent loose</h2>
@@ -128,14 +128,9 @@
     </table>
   </div>
 
-  <h3>Inject the failure: sort by product and stop thinking</h3>
+  <h3>Diagnostic example: product-only ranking hides the release risk</h3>
   <p>Before the table above was repaired, the first analyst multiplied the ratings. M-02 was scored <code>4/3/3 = 36</code>, while M-03 was scored <code>5/1/2 = 10</code>. The table sorted M-02 to the top. Because M-03 looked numerically small, its owner and recovery cells remained blank; “tell the agent not to publish” was entered as its only control.</p>
-  <div class="callout"><strong>Predict before the reveal</strong>
-  Which row must block unattended use first: M-02 at RPN 36, or M-03 at the reported RPN 10? Write the row ID and the missing contract bearings before opening the answer.</div>
-  <details>
-    <summary><strong>Reveal the diagnosis</strong></summary>
-    <p><strong>M-03 blocks first.</strong> Its S = 5 effect cannot be traded away, and owner and recovery are blank. Its O = 1 and D = 2 ratings are unsupported: no prevention was evidenced, destination inheritance is normal variation, and no pre-effect record exists. Re-anchored, the uncontrolled condition is <code>5/3/4 = 60</code>. The jump from 10 to 60 exposes how fragile the product is to optimistic ratings.</p>
-  </details>
+  <p><strong>M-03 blocks unattended use first.</strong> Its S = 5 effect cannot be traded away, and owner and recovery are blank. Its O = 1 and D = 2 ratings are unsupported: no prevention was evidenced, destination inheritance is normal variation, and no pre-effect record exists. Re-anchored, the uncontrolled condition is <code>5/3/4 = 60</code>. The jump from 10 to 60 exposes how fragile the product is to optimistic ratings.</p>
   <p>Recovery corrects the vector to <code>5/3/4</code>, marks the severity override, and adds the fixed draft root plus pre-write rejection. The release authority places the asset on hold, withdraws the packet, checks actual equipment status, recalls it and starts incident action if service resumed, restores a non-released state, and owns restart. Only a later verified run may support lower O or D in a separate residual assessment; the manual-copy risk remains visible.</p>
   <p>The unusual lesson is that M-03’s low occurrence estimate is partly a statement about the controls the row did not yet have. Ratings and controls can become circular: “unlikely because we control it,” followed by a blank control cell. Evidence breaks that circle.</p>
 </section>
@@ -149,7 +144,7 @@
 </figure>
 
 <section id="practice" class="resource-section">
-  <h2>Practice: contract a replenishment-draft agent</h2>
+  <h2>Build the contract for a replenishment-draft agent</h2>
   <p>Plan 20–25 minutes. A synthetic agent reads an inventory snapshot, a supplier catalog, and reorder rules. It may write <code>draft/restock.csv</code>. It may not place an order, enter an outbound purchasing queue, or change source records.</p>
   <p>Use these supplied conditions. Do not add facts:</p>
   <div class="table-scroll">
@@ -170,15 +165,15 @@
     <li>Circle every orphan. A row remains orphaned if a cell says “monitor,” “review,” “be careful,” or “the agent should” without a mechanism, artifact, condition, and actor.</li>
   </ol>
   <p><strong>Stop condition:</strong> do not run even a synthetic unattended trial if any S = 5 row lacks prevention, pre-effect evidence, an owner, or recovery. Keep the task draft-only. No order may leave the exercise.</p>
-  <details>
-    <summary><strong>Reveal one defensible analysis</strong></summary>
+  <div class="callout">
+    <strong>Reference analysis</strong>
     <ul>
       <li><strong>A:</strong> <strong>Mode/cause:</strong> stale state enters because age is unchecked. <strong>Local/downstream:</strong> duplicate line → possible duplicate order. <strong>3/3/4; no override:</strong> bounded disruption, stale trial input, downstream-only signal. <strong>Control/proof:</strong> reject age &gt;24 hours; manifest records source time, age, and <code>fresh=true</code>. <strong>Owner/recovery:</strong> data owner quarantines, refreshes, rebuilds, and diffs. <strong>Residual/status:</strong> a false source timestamp remains; HOLD until freshness proof passes.</li>
       <li><strong>B:</strong> <strong>Mode/cause:</strong> quantity uses the wrong unit because conversion is missing. <strong>Local/downstream:</strong> 12× line → unauthorized commitment. <strong>5/3/4; override:</strong> authority effect, observed missing maps, downstream-only signal. <strong>Control/proof:</strong> reject absent mappings; conversion manifest and line/total bounds all pass. <strong>Owner/recovery:</strong> rules owner invalidates, corrects, rebuilds, and sends the delta to purchasing authority. <strong>Residual/status:</strong> a wrong authoritative mapping remains possible; HOLD pending source-owner confirmation and proof.</li>
       <li><strong>C:</strong> <strong>Mode/cause:</strong> draft reaches outbound because destination is inherited. <strong>Local/downstream:</strong> unapproved queue item → possible order. <strong>5/3/4; override:</strong> authority effect, normal configuration path, queue-receipt signal. <strong>Control/proof:</strong> fixed allowlisted draft root with pre-write rejection; manifest records resolved path, <code>path_check=PASS</code>, and zero outbound attempts. <strong>Owner/recovery:</strong> purchasing authority stops, withdraws, reconciles queue and supplier state, then owns restart. <strong>Residual/status:</strong> manual copying remains; HOLD until path test and rollback rehearsal pass.</li>
     </ul>
     <p>Another rating is defensible only if it maps to a supplied condition; do not invent a control or observation. S = 5 for B and C survives any reasonable O or D disagreement.</p>
-  </details>
+  </div>
 
   <h3>Copy the FMEA-to-contract table</h3>
   <pre><code>| ID | Function / step | Failure mode | Local effect | Downstream effect | Cause / mechanism | S | O | D | Severity override? | Owner | Preventive control | Detection evidence + pass condition | Recovery / rollback | Residual or orphan risk | Decision / status |
@@ -195,24 +190,14 @@ Control verification artifact and date:
 Residual assessment (do not overwrite original):
 Change or incident that forces this row to be reopened:</code></pre>
 
-  <h3>Self-check: can the row survive a bad day?</h3>
-  <ol>
-    <li>A row has <code>S/O/D = 5/1/2</code>; another has <code>3/3/3</code>. Which one can a product-only ranking hide?</li>
-    <li>“Validate every packet” is in the detection-evidence cell. What is missing?</li>
-    <li>A preventive control and passing test exist, but the rollback cell is blank. Is the risk owned?</li>
-    <li>A planned control would reduce occurrence. May you lower O before the control is implemented and its evidence passes?</li>
-    <li>Every listed row is complete, but nobody checked for failure modes at the interfaces between source ingestion, agent reasoning, and downstream use. What kind of risk remains?</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the self-check</strong></summary>
-    <ol>
-      <li>The <code>5/1/2</code> row. Its high-severity dimension must survive regardless of the lower product.</li>
-      <li>An inspectable artifact, exact passing condition, timing, and response when the condition fails.</li>
-      <li>No. The alarm can fire while the bad state remains in place. Name an authorized owner and recovery or rollback.</li>
-      <li>No. Keep the original assessment. Verify the implemented control, then record a separate residual assessment with its evidence.</li>
-      <li>An unlisted failure path—an analysis orphan. Reopen scope and walk each interface; row completeness cannot compensate for missing rows.</li>
-    </ol>
-  </details>
+  <h3>Acceptance rules for each FMEA row</h3>
+  <ul>
+    <li>Keep high severity visible even when the score product is low; <code>5/1/2</code> can carry a consequence that <code>3/3/3</code> does not.</li>
+    <li>Replace “validate every packet” with an inspectable artifact, exact pass condition, timing, and response when the condition fails.</li>
+    <li>A passing detection test does not own the risk when recovery is blank. Name the authorized owner and rollback.</li>
+    <li>Do not lower occurrence or detection ratings for a planned control. Verify the implemented control, then record a separate residual assessment.</li>
+    <li>Walk the interfaces between source ingestion, agent reasoning, and downstream use. Complete rows cannot compensate for an unlisted failure path.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section resource-transfer">
@@ -237,7 +222,7 @@ Change or incident that forces this row to be reopened:</code></pre>
   <section class="resource-related" aria-labelledby="related-heading">
   <h2 id="related-heading">Optional related handouts</h2>
   <p>Stay on the live module unless another guide answers a problem you have now.</p>
-  <div class="card-grid"><a class="card" href="../p5/containment-evidence-ladder.html"><span class="resource-id">P5-3</span><h3>Proving a Negative: The Containment Evidence Ladder</h3><p>An evidence ladder for bounding claims that an untrusted input did not affect protected outputs or actions.</p></a>
+  <div class="card-grid"><a class="card" href="../p5/containment-evidence-ladder.html"><span class="resource-id">P5-3</span><h3>The Containment Evidence Ladder</h3><p>A containment method that combines manifests, canaries, diffs, effect checks, and clean reruns to bound what an untrusted input affected.</p></a>
 <a class="card" href="./human-factors-autonomy.html"><span class="resource-id">P6-5</span><h3>The Human Factors of Supervising Autonomy</h3><p>A supervision field guide for mode confusion, stop reluctance, alarm fatigue, exception overload, and skill decay.</p></a>
 <a class="card" href="../p7/human-gate-engineering.html"><span class="resource-id">P7-4</span><h3>Human Gate Capacity and Exception Economics</h3><p>A capacity and exception-economics method for arrivals, service rate, queue age, defaults, escalation, false holds, and misses.</p></a></div>
 </section>

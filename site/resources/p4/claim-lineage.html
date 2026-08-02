@@ -33,7 +33,7 @@
     <p class="course-connection"><a class="btn" href="../../blocks/p4.html#ideas">← Return to P4 · Director’s second brain</a></p>
     <p class="course-connection"><strong>This page is optional.</strong> The owning module remains the live course path and source for current tool details.</p>
   </header>
-  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">Use it when a pile of notes starts to look like corroboration</a></li><li><a href="#mechanism">Trace the claim as a graph of artifacts and transformations</a></li><li><a href="#worked-case">Follow one rumor through five notes</a></li><li><a href="#failure-recovery">Break it on purpose: let the last note confirm the first</a></li><li><a href="#practice">Reconstruct the roots before deciding whether Bay 4 reopens</a></li><li><a href="#artifact">Keep the lineage graph and ledger beside the claim</a></li><li><a href="#self-check">Self-check: predict before revealing the verdict</a></li><li><a href="#transfer">Transfer one live claim in 20 minutes</a></li><li><a href="#sources">Sources</a></li></ol></nav>
+  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">Use it when a pile of notes starts to look like corroboration</a></li><li><a href="#mechanism">Trace the claim as a graph of artifacts and transformations</a></li><li><a href="#worked-case">Follow one rumor through five notes</a></li><li><a href="#failure-recovery">Diagnose a later note cited by an earlier note</a></li><li><a href="#practice">Applied example: a note loop does not reopen Bay 4</a></li><li><a href="#artifact">Keep the lineage graph and ledger beside the claim</a></li><li><a href="#self-check">Apply five lineage rules</a></li><li><a href="#transfer">Transfer one live claim in 20 minutes</a></li><li><a href="#sources">Sources</a></li></ol></nav>
   <article class="resource-body">
 <section id="purpose" class="resource-section">
   <h2>Use it when a pile of notes starts to look like corroboration</h2>
@@ -112,7 +112,7 @@
   <h2>Follow one rumor through five notes</h2>
   <p>A training coordinator is preparing a non-acting space-planning brief. The claim under review is:</p>
   <blockquote><strong>Claim C-7:</strong> North Annex will close on 30 September.</blockquote>
-  <p>The brief cites five internal notes. Before reading the table, predict the maximum number of distinct evidence roots those five notes could represent from their titles alone. The honest answer is a range from one to five. Titles and locations do not reveal genealogy; only the edges do.</p>
+  <p>The brief cites five internal notes. Their titles alone permit anywhere from one to five distinct evidence roots. Only the derivation edges reveal the actual count.</p>
 
   <div class="table-scroll">
     <table>
@@ -144,10 +144,10 @@ Authoritative, direct confirmation established: 0</code></pre>
 </section>
 
 <section id="failure-recovery" class="resource-section">
-  <h2>Break it on purpose: let the last note confirm the first</h2>
-  <p>Inject a circular-sourcing failure. After N5 is published, edit N1 in place to add, “Confirmed by Director Note N5.” The visible graph now contains <code>N1 → N5 → N3 → N2 → N1</code>. A reader entering at any node can walk in a loop and mistake persistence for confirmation. No edge reaches new evidence.</p>
+  <h2>Diagnose a later note cited by an earlier note</h2>
+  <p>If an earlier note cites a later derivative, the visible graph can form a loop such as <code>N1 → N5 → N3 → N2 → N1</code>. A reader entering at any node can mistake persistence for confirmation even though no edge reaches new evidence.</p>
   <p>The symptom is mechanical: backward traversal revisits an artifact already on the current path. Mark the repeated node, stop that branch, and set <code>cycle flag: yes</code>. Do not keep clicking until the loop feels persuasive, and do not count either side of the loop as a new root.</p>
-  <p>First diagnose identity. The <a href="https://www.w3.org/TR/prov-primer/">W3C PROV primer</a> treats each revision as a new entity, and the <a href="https://www.w3.org/TR/prov-constraints/">PROV constraints</a> require a derived entity’s generation to follow the original’s generation. The apparent cycle often means mutable note names hid versions. Recover N1 as two artifacts: <code>N1-v1</code> existed before N5; <code>N1-v2</code> was created later from N1-v1 and N5. The repaired edges are:</p>
+  <p>First diagnose identity. The <a href="https://www.w3.org/TR/prov-primer/">W3C PROV primer</a> treats each revision as a new entity, and the <a href="https://www.w3.org/TR/prov-constraints/">PROV constraints</a> require a derived entity’s generation to follow the original’s generation. The apparent cycle often means mutable note names hid versions. Preserve versions and timestamps, then represent N1 as two artifacts: <code>N1-v1</code> existed before N5; <code>N1-v2</code> was created later from N1-v1 and N5. The repaired edges are:</p>
   <pre><code>N5 → N3 → N2 → N1-v1 → R0
   ↘ N4 ↗
 N1-v2 → N1-v1
@@ -167,47 +167,17 @@ Root count for C-7 remains 1: R0.</code></pre>
 </figure>
 
 <section id="practice" class="resource-section">
-  <h2>Reconstruct the roots before deciding whether Bay 4 reopens</h2>
-  <p>This synthetic exercise is advisory. No message, facility action, or schedule change may follow from it. The scoped claim is: <strong>Bay 4 reopens Monday.</strong> Use the supplied excerpts and links exactly as written.</p>
-
-  <div class="table-scroll">
-    <table>
-      <caption>Supplied artifacts for root reconstruction</caption>
-      <thead><tr><th>Artifact</th><th>Excerpt and source link</th></tr></thead>
-      <tbody>
-        <tr><td><code>R-17 · Call Log</code></td><td>“Facilities technician: Monday is possible if inspection clears.” No inspection result or authorization is recorded. Source link: none known.</td></tr>
-        <tr><td><code>A · Shift Handover</code></td><td>“Bay 4 expected Monday (tentative).” Source: <code>[[Call Log R-17]]</code>.</td></tr>
-        <tr><td><code>B · Daily Digest</code></td><td>“Bay 4 reopens Monday.” Source: <code>[[Shift Handover A]]</code>.</td></tr>
-        <tr><td><code>C · Schedule Card</code></td><td>“Bay 4 — open Monday.” Imported from <code>[[Daily Digest B]]</code>.</td></tr>
-        <tr><td><code>D · Planning Note</code></td><td>“Two sources say Monday.” Sources: <code>[[Schedule Card C]]</code> and <code>[[Team Message E]]</code>.</td></tr>
-        <tr><td><code>E · Team Message</code></td><td>“Monday confirmed in the plan.” Source: <code>[[Planning Note D]]</code>.</td></tr>
-        <tr><td><code>R-44 · Inspection Work Order</code></td><td>Signed by the facilities inspector: “Inspection booked Tuesday 09:00. Reopening requires a passed inspection.” Source link: none known.</td></tr>
-        <tr><td><code>F · Safety Note</code></td><td>“Do not reopen before inspection approval.” Source: <code>[[Inspection Work Order R-44]]</code>.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <ol>
-    <li><strong>Predict.</strong> Before drawing, write the apparent artifact count and your predicted root count as a range.</li>
-    <li><strong>Trace.</strong> Draw one derived-artifact-to-source edge for every supplied link. Put the transformation on each edge: paraphrase, summary, import, merge, or quotation-like restatement.</li>
-    <li><strong>Detect the loop.</strong> Mark the first repeated node during backward traversal. Collapse that circular cluster for root counting.</li>
-    <li><strong>Classify roots.</strong> For each reachable root, record authority, directness, support or contradict, and uncertainty. Do not use artifact count as support count.</li>
-    <li><strong>Correct the claim.</strong> Write one sentence proportionate to the roots, followed by one next check and one human return condition.</li>
-  </ol>
-
-  <details>
-    <summary><strong>Reveal the reconstruction after you commit</strong></summary>
-    <pre><code>D → C → B → A → R-17
+  <h2>Applied example: a note loop does not reopen Bay 4</h2>
+  <p>A planning note claims “Bay 4 reopens Monday” through a chain of handover, digest, and schedule-card derivatives. Two downstream notes cite each other, while the earliest call log says Monday is only possible if inspection clears. A separate signed work order schedules that inspection for Tuesday and requires a pass before reopening.</p>
+  <pre><code>D → C → B → A → R-17
 D ↔ E                    cycle; adds no root
 F → R-44
 
-Distinct reachable roots: R-17 and R-44
 R-17: tentative support; indirect; authority unclear; inspection condition open
 R-44: direct, signed process evidence; contradicts Monday reopening
 Corrected conclusion: Monday reopening is not supported for action.
 Next check: obtain the passed inspection record and authorized reopening notice.</code></pre>
-    <p>The D/E loop is round-tripping, not a third source. R-17 supports only a possibility conditioned on inspection. R-44 directly states that inspection occurs Tuesday and must pass before reopening, so it contradicts the Monday claim at a stronger authority and directness. A human facilities owner must adjudicate any real schedule; the graph only shows why the current note cluster cannot settle it.</p>
-  </details>
+  <p>The D/E loop is round-tripping, not a third source. The signed work order carries stronger authority and directness than the derivative note cluster. A facilities owner still owns any real schedule decision.</p>
 
   <div class="callout">
     <strong>Stop conditions:</strong> stop if an artifact cannot be opened, a cited excerpt does not match its carrier, versions or timestamps cannot order the edges, the root source remains unknown, or acting would affect a real person, facility, commitment, or safety condition. Record the gap and return the claim to the accountable human owner.
@@ -260,31 +230,21 @@ next_non-derivative_check:</code></pre>
 </section>
 
 <section id="self-check" class="resource-section">
-  <h2>Self-check: predict before revealing the verdict</h2>
-  <ol>
-    <li>Five notes all trace to one anonymous report. How many distinct roots and confirmed supports exist?</li>
-    <li>A signed executive summary traces to an unverified blog. Does the executive’s authority make the underlying claim authoritative?</li>
-    <li>Two roots interview the same witness independently. May the lineage ledger call them two independent evidence paths?</li>
-    <li>A backward walk returns to an earlier note. What should happen to the support count?</li>
-    <li>One derivative cluster supports a date and one direct work order contradicts it. Should artifact majority decide?</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the answers after you commit</strong></summary>
-    <ol>
-      <li>One known root. Confirmed supports may still be zero because the root’s authority, directness, and truth have not been established.</li>
-      <li>No. Responsibility for publishing the summary is not direct evidence for the blog’s proposition. Record the executive as an agent in the transformation and assess the root separately.</li>
-      <li>Not from this ledger alone. It shows two artifact roots, but the shared witness may couple them. Test that broader dependence with the P3 independence method.</li>
-      <li>Flag the cycle, stop the branch, repair versions and timestamps, and collapse the loop for counting. A circular edge adds no root.</li>
-      <li>No. Preserve support and contradiction separately, compare authority and directness, and return the decision to the accountable human owner.</li>
-    </ol>
-  </details>
+  <h2>Apply five lineage rules</h2>
+  <ul>
+    <li>Five notes tracing to one anonymous report produce one known root and may still produce zero confirmed supports.</li>
+    <li>A signed executive summary does not make an unverified underlying source authoritative; assess the root separately from the publishing agent.</li>
+    <li>Two artifact roots that interview the same witness may share a broader evidence path. Use the P3 independence method when that dependence matters.</li>
+    <li>When a backward walk returns to an earlier note, flag the cycle, stop the branch, recover versions and timestamps, and add no root.</li>
+    <li>Artifact majority does not resolve a direct contradiction. Preserve both stances, compare authority and directness, and return the decision to its accountable owner.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section">
   <h2>Transfer one live claim in 20 minutes</h2>
   <p>Choose one consequential claim that appears in at least three approved notes on your real desk. Freeze its wording, then fill the ledger until every branch reaches a root, a cycle, or an explicit unknown. Compare wording at each transformation. Correct the visible support count and rewrite the claim at the strength the roots can bear.</p>
   <p>Keep the move small. Do not redesign note statuses here, establish broader system-path independence, or treat the graph as a containment proof. If the lineage exposes those needs, link the open question to the owning workflow and stop this pass with a bounded finding.</p>
-  <p>Return to the P4 answer and audit record with two lines: <code>artifact mentions → distinct roots</code>, and <code>claim before → claim after</code>. That is the proof that navigation changed judgment rather than merely producing a prettier graph.</p>
+  <p>Return to the P4 answer and audit record with two lines: <code>artifact mentions → distinct roots</code>, and <code>claim before → claim after</code>. This concise record shows how tracing changed the claim.</p>
   <div class="callout">
     <strong>Human return:</strong> stop before any action when a decisive root is unavailable, identity or access rules prohibit following the trail, a circular cluster cannot be ordered, roots materially contradict, or no authorized source can resolve the claim. The accountable owner chooses whether to gather evidence, carry a named uncertainty, or halt the decision.
   </div>
@@ -308,7 +268,7 @@ next_non-derivative_check:</code></pre>
   <p>Stay on the live module unless another guide answers a problem you have now.</p>
   <div class="card-grid"><a class="card" href="../p3/independence-spectrum.html"><span class="resource-id">P3-1</span><h3>Independence Is a Spectrum</h3><p>A common-mode risk map for shared prompts, context, tools, data, infrastructure, and model ancestry.</p></a>
 <a class="card" href="./negative-knowledge.html"><span class="resource-id">P4-5</span><h3>Negative Knowledge and Honest Refusal</h3><p>A practical method for representing unknown, disputed, withheld, stale, and not-yet-observed facts without filling gaps.</p></a>
-<a class="card" href="../p5/containment-evidence-ladder.html"><span class="resource-id">P5-3</span><h3>Proving a Negative: The Containment Evidence Ladder</h3><p>An evidence ladder for bounding claims that an untrusted input did not affect protected outputs or actions.</p></a></div>
+<a class="card" href="../p5/containment-evidence-ladder.html"><span class="resource-id">P5-3</span><h3>The Containment Evidence Ladder</h3><p>A containment method that combines manifests, canaries, diffs, effect checks, and clean reruns to bound what an untrusted input affected.</p></a></div>
 </section>
   <nav class="resource-plate" aria-label="Return to the live course module">
   <a href="../../blocks/p4.html#ideas"><span>← Return to the live module</span><strong>P4 · Director’s second brain</strong></a>

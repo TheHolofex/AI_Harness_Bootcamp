@@ -67,9 +67,6 @@
     <li>The proposal identifies the inference cluster as Region A. It does not identify telemetry, backup, support, or subprocessor locations. Backup scope and deletion propagation are unspecified.</li>
     <li>The organization can disable the route and revoke its service credential. The provider controls the runtime and its administrator identities. A contract section says customer inputs and outputs are not used to train provider models.</li>
   </ul>
-  <div class="callout"><strong>Predict before the reveal</strong>
-  Which proposal claim fails first: <em>private</em>, <em>encrypted</em>, <em>zero retention</em>, <em>customer controlled</em>, or <em>region locked</em>? Write one answer and the evidence you would use before reading the dossier.</div>
-
   <div class="table-scroll">
     <table>
       <thead><tr><th>Claim or flow</th><th>Control and supplied evidence</th><th>State and unresolved question</th><th>Owner and decision effect</th></tr></thead>
@@ -84,18 +81,18 @@
       </tbody>
     </table>
   </div>
-  <p><strong>Reveal:</strong> none of the five claims simply “fails first.” Each is underspecified. The operator’s first move is to scope it, not accuse the provider of violating it. Cedar Ridge can defend <em>encrypted transport on the gateway-to-ingress crossing</em>, <em>customer revocation of the organization service credential</em>, <em>primary-queue deletion after response as described by the architecture record</em>, and <em>inference compute in Region A as described by the proposal</em>. It cannot expand any of those into a whole-endpoint conclusion.</p>
+  <p><strong>What matters:</strong> none of the five claims simply “fails first.” Each is underspecified. The operator’s first move is to scope it, not accuse the provider of violating it. Cedar Ridge can defend <em>encrypted transport on the gateway-to-ingress crossing</em>, <em>customer revocation of the organization service credential</em>, <em>primary-queue deletion after response as described by the architecture record</em>, and <em>inference compute in Region A as described by the proposal</em>. It cannot expand any of those into a whole-endpoint conclusion.</p>
   <p>The disposition is <code>CLEAR FOR SYNTHETIC PROBE</code> for generated maintenance records, subject to the existing acceptable-use authority. It is simultaneously <code>HOLD SENSITIVE USE</code> until the telemetry content, safety-record scope, backup and deletion behavior, provider privilege controls, tenant isolation, and relevant locations and organizations have acceptable evidence and owners. If law or policy requires all processing and access to remain in an approved jurisdiction, the unresolved location row becomes <code>STOP / RETURN TO AUTHORITY</code>, not an engineering guess.</p>
 
-  <h3>Inject the failure: mistake the gateway for the boundary</h3>
-  <p>The team’s first diagram ends at the organization gateway. It labels the arrangement “local gateway; no egress; zero retention.” During an authorized synthetic probe, the gateway record shows an outbound request to the provider ingress, and the provider support view can find the request ID in central telemetry. The probe does not reveal whether content reached that telemetry. The observed records contradict the diagram’s completeness, not necessarily the provider’s scoped statements.</p>
+  <h3>Diagnostic example: the diagram stops before the real boundary</h3>
+  <p>An earlier boundary review captured a diagram that ended at the organization gateway and labeled the arrangement “local gateway; no egress; zero retention.” An authorized synthetic observation later showed an outbound request to provider ingress, while the provider support view could find the request ID in central telemetry. The observation did not establish whether content reached that telemetry. The records contradicted the diagram’s completeness, not necessarily the provider’s scoped statements.</p>
   <p>The failure is conceptual: the team treated the visible network hop as the service boundary, the customer’s inability to inspect provider logs as proof that none existed, and primary-queue deletion as total deletion. Recovery is to reopen all four planes, add provider ingress, inference, telemetry, support, safety records, and backups, replace blanket phrases with scoped rows, and preserve the content question as <code>UNKNOWN</code>. The team keeps real records on hold, assigns evidence requests, and reruns only the smallest permitted synthetic probe after the dossier names every expected egress and principal.</p>
 </section>
 
 <figure data-resource-figure="diagnostic"></figure>
 
 <section id="practice" class="resource-section">
-  <h2>Practice: inspect an appliance that “runs in our cloud”</h2>
+  <h2>Build the trust-boundary dossier for an appliance that “runs in our cloud”</h2>
   <p>Valley Transit is considering a vendor-operated model appliance for summarizing generated maintenance notes. Use only these supplied facts:</p>
   <ul>
     <li>The appliance compute and primary disk run in Valley Transit’s organization-managed cloud account in Region W. The application connects to a private address over an organization VPN.</li>
@@ -106,8 +103,6 @@
     <li>The vendor support role can restore a snapshot. Valley Transit cannot inspect the appliance’s provider-admin audit record in the supplied interface.</li>
     <li>The contract says inputs and outputs are not used for vendor model training. Vendor support locations, subcontractors, and the legal organization operating the collector are not listed.</li>
   </ul>
-  <div class="callout"><strong>Predict before you map</strong>
-  Is “runs in our cloud” enough to mark the arrangement local? Predict which locality—compute, persistence, administration, legal organization, or evidence—will break the single-word claim first.</div>
   <ol>
     <li>Draw all four planes. For every crossing, record data or credential, purpose, acting principal, transport, source owner, destination owner, and known egress.</li>
     <li>Write separate dossier rows for <em>local</em>, <em>customer controlled</em>, <em>encrypted</em>, <em>no customer content leaves the account</em>, and <em>not used for training</em>. Do not mark a row true or false until you have scoped it.</li>
@@ -115,8 +110,8 @@
     <li>Issue one status for a generated-data probe and another for actual maintenance notes. Name the condition that changes each status.</li>
   </ol>
   <p><strong>Stop condition:</strong> do not send even generated data if credential privilege, intended egress, or authorization to probe is unresolved. Do not send real data while a required flow, retention path, administrator, location, or responsible owner remains unknown. Return credential and egress questions to security; data class and purpose to the data owner; retention and location to privacy, records, or legal authority; and provider evidence to the contract or vendor owner.</p>
-  <details>
-    <summary><strong>Reveal one defensible analysis</strong></summary>
+  <div class="callout">
+    <strong>Reference analysis</strong>
     <ul>
       <li><strong>Local:</strong> compute and primary persistence are documented in the organization account and Region W. Administration is shared, telemetry crosses to a vendor collector, support organization and location are unknown, and evidence locality is weak because Valley Transit cannot inspect the provider-admin record. The unqualified claim is unsupported.</li>
       <li><strong>Customer controlled:</strong> Valley Transit controls its account, route, disk key, and tenant-credential revocation. The vendor controls software operation, support identity issuance, and the telemetry collector. Write split control, not total control.</li>
@@ -125,7 +120,7 @@
       <li><strong>Not used for training:</strong> the contract supports a scoped organizational-use claim. It does not settle telemetry, support access, retention, or restored snapshots.</li>
       <li><strong>Status:</strong> a generated-data probe may be cleared after authority, credential privilege, and expected collector egress are confirmed. Actual notes remain on hold until support access and audit, collector content and organization, retention after restore, subcontractors, and relevant location requirements are resolved.</li>
     </ul>
-  </details>
+  </div>
 
   <h3>Copy the endpoint trust-boundary dossier</h3>
   <pre><code>ENDPOINT ARRANGEMENT / VERSION:
@@ -151,24 +146,14 @@ Smallest permitted probe and expected evidence:
 Stop conditions:
 Revisit trigger:</code></pre>
 
-  <h3>Self-check: predict before you reveal</h3>
-  <ol>
-    <li>A private network path and customer-owned gateway are documented. Can the dossier mark the endpoint private?</li>
-    <li>Transport encryption and customer-managed storage keys are configured. What important access remains possible?</li>
-    <li>A contract says inputs are not used for training. Which three questions does that statement not answer?</li>
-    <li>A provider states that prompts are deleted after response. What stores must the retention row still inspect?</li>
-    <li>A synthetic observation shows no content in the customer-visible log. What conclusion is defensible?</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the self-check</strong></summary>
-    <ol>
-      <li>Only with a narrow scope, such as “the app-to-gateway path uses the private organization network.” Provider isolation, telemetry, administration, retention, and organizational boundaries remain separate.</li>
-      <li>Authorized plaintext processing and privileged human or service access at runtime can remain. Key coverage also may exclude telemetry, memory, caches, or backups.</li>
-      <li>Operational logging, retention or deletion, and administrator or support access. It also does not establish location.</li>
-      <li>Primary request stores, queues, caches, safety or abuse logs, error traces, telemetry, replicas, snapshots, backups, archives, and restored copies.</li>
-      <li>Only that the inspected record contained no content during that bounded observation. You have not proved that provider-internal records or other failure paths contain none.</li>
-    </ol>
-  </details>
+  <h3>Rules for claims that survive review</h3>
+  <ul>
+    <li>A private network path and customer-owned gateway support only a narrow path claim. Provider isolation, telemetry, administration, retention, and organizational boundaries remain separate.</li>
+    <li>Transport encryption and customer-managed storage keys do not remove authorized plaintext processing or privileged human and service access at runtime.</li>
+    <li>“Not used for training” does not answer operational logging, retention or deletion, administrator or support access, or location.</li>
+    <li>A retention row covers primary stores, queues, caches, safety records, error traces, telemetry, replicas, snapshots, backups, archives, and restored copies.</li>
+    <li>No content observed in one customer-visible log supports only that bounded observation. It says nothing about provider-internal records or unobserved failure paths.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section resource-transfer">

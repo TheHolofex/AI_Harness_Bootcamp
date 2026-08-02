@@ -33,7 +33,7 @@
     <p class="course-connection"><a class="btn" href="../../blocks/p7.html#ideas">← Return to P7 · Automation line</a></p>
     <p class="course-connection"><strong>This page is optional.</strong> The owning module remains the live course path and source for current tool details.</p>
   </header>
-  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">Choose the machine from the work, not the demo</a></li><li><a href="#mechanism">Score the work slice, then apply the veto</a></li><li><a href="#worked-case">Worked portfolio: four slices in a field-service group</a></li><li><a href="#practice">Practice: sort four research-administration workloads</a></li><li><a href="#transfer">Map one desk portfolio without deploying anything</a></li></ol></nav>
+  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">Choose the machine from the work, not the demo</a></li><li><a href="#mechanism">Score the work slice, then apply the veto</a></li><li><a href="#worked-case">Worked portfolio: four slices in a field-service group</a></li><li><a href="#practice">Build a portfolio map for four research-administration workloads</a></li><li><a href="#transfer">Map one desk portfolio without deploying anything</a></li></ol></nav>
   <article class="resource-body">
 <section id="purpose" class="resource-section">
   <h2>Choose the machine from the work, not the demo</h2>
@@ -106,9 +106,6 @@
 <section id="worked-case" class="resource-section">
   <h2>Worked portfolio: four slices in a field-service group</h2>
   <p>A regional equipment service group is deciding where to place four workloads. The group scores the work as it operates today, not the tool it hopes to buy. Each points cell shows <code>A/P/H</code> for agent loop, gated pipeline, and human judgment. The eight entries follow this order: variability (<code>V</code>), volume (<code>N</code>), reversibility (<code>R</code>), latency (<code>L</code>), consequence/authority (<code>C</code>), observability (<code>O</code>), exceptions (<code>E</code>), and judgment value (<code>J</code>).</p>
-  <div class="callout"><strong>Predict before the reveal</strong>
-  Which workload is most likely to attract an agent because it looks like “AI work,” even though its actual shape belongs on a fixed line? Which urgent workload must remain human-led? Write both IDs before reading the placement column.</div>
-
   <div class="table-scroll">
     <table>
       <thead><tr><th>ID and observed work</th><th>Factor points <code>A/P/H</code></th><th>Total <code>A/P/H</code></th><th>Veto</th><th>Placement, boundary, and return</th></tr></thead>
@@ -121,11 +118,11 @@
     </table>
   </div>
 
-  <p><strong>Reveal:</strong> W-01 is the counterintuitive placement. Its reports contain language, so an agent can demonstrate the task impressively. Yet the work’s low variability, high volume, deterministic checks, reversible staging, and typed exceptions make a fixed path easier to replay and defend. W-03 remains human-led despite urgency. Latency creates a reason for bounded machine support; it does not confer publication authority.</p>
+  <p><strong>What matters:</strong> W-01 contains language, so an agent can demonstrate it impressively. Yet low variability, high volume, deterministic checks, reversible staging, and typed exceptions make a fixed path easier to replay and defend. W-03 remains human-led despite urgency. Latency creates a reason for bounded machine support; it does not confer publication authority.</p>
   <p>W-04 exposes a second useful result: a close comparison is not a command to average the machines. It is a diagnostic. The workload boundary contains three different functions, and the authority veto identifies the seam that must stay human.</p>
 
-  <h3>Inject the failure: choose the glamorous machine</h3>
-  <p>The group initially assigns W-01 to an agent loop because a demo handled ten reports end to end. On the first production rehearsal, the agent chooses different extraction paths for similar files, renames a field in one batch, silently omits two rows after a parse error, and produces no stable reconciliation record. Every output looks plausible. Re-running changes which rows need hand repair.</p>
+  <h3>Diagnostic example: the machine form does not fit the work</h3>
+  <p>An earlier W-01 production-rehearsal record shows what happened after the group chose an agent loop because a demo handled ten reports end to end. The agent used different extraction paths for similar files, renamed a field in one batch, silently omitted two rows after a parse error, and produced no stable reconciliation record. Every output looked plausible, while reruns changed which rows needed hand repair.</p>
   <p>The symptom is not “the model is weak.” The machine form is wrong for the work shape. The team reopens the scorecard: all eight factors pull toward a pipeline, and none requires run-time path selection. Recovery is to freeze the schema and path, make row counts and reconciliation deterministic, stage all writes, and route failed checks with evidence to the report steward. A language model may remain at one bounded extraction station; it no longer chooses the route.</p>
   <p>This recovery also shows why tool capability is poor placement evidence. A machine can do a task without being the machine you should operate.</p>
 </section>
@@ -139,7 +136,7 @@
 </figure>
 
 <section id="practice" class="resource-section">
-  <h2>Practice: sort four research-administration workloads</h2>
+  <h2>Build a portfolio map for four research-administration workloads</h2>
   <p>Plan 20 minutes. Use only the supplied facts. For each item, score all eight factors, check the two vetoes, choose a home or split the slice, and write a boundary, human gate, exception route, and revisit trigger.</p>
   <div class="table-scroll">
     <table>
@@ -160,15 +157,15 @@
     <li>Add one trigger that would make today’s placement stale.</li>
   </ol>
   <p><strong>Stop condition:</strong> stop and mark <code>UNKNOWN</code> when a missing fact could change the choice—for example, whether a write is reversible or who holds authority. Do not invent a convenient answer to finish the table.</p>
-  <details>
-    <summary><strong>Reveal one defensible portfolio</strong></summary>
+  <div class="callout">
+    <strong>Reference placement</strong>
     <ul>
       <li><strong>A → gated pipeline.</strong> Low variability, high volume, reversible staging, deterministic reconciliation, typed exceptions, and rules designed once create a strong P pull. The controller releases; unmatched codes route to the expense owner. Revisit on schema, rule, or exception-family change.</li>
       <li><strong>B → agent loop.</strong> The goal is stable while evidence paths vary. Source-linked intermediate work is observable, and the draft is reversible. The agent stops before institutional assertion; contradictions return to the program officer. Revisit if the source set becomes standardized enough for a fixed path.</li>
       <li><strong>C → human judgment.</strong> The authority veto decides the consequential slice, and high judgment value, weak reversibility, low observability, and exception-rich context agree. A machine may organize records without recommending or executing revocation. Disputed facts return to the safety officer and required specialists.</li>
       <li><strong>D → split the work.</strong> A fixed pipeline can validate stable eligibility facts and prepare a held record; an agent loop may assemble cited evidence for ambiguous restrictions; an authorized person changes entitlement. The authority veto survives the two-hour target. Revisit if exception families, policy, or pre-commit tests change.</li>
     </ul>
-  </details>
+  </div>
 
   <h3>Copy the machine-choice scorecard and portfolio map</h3>
   <pre><code>WORK SLICE: [verb + object]
@@ -197,24 +194,14 @@ Unknowns that could change the choice:
 Smallest safe probe, if needed:
 Placement owner and date:</code></pre>
 
-  <h3>Self-check: predict before you open the answer</h3>
-  <ol>
-    <li>A pipeline leads 13 to 9, but it would commit a personnel decision reserved to a manager. What wins?</li>
-    <li>An agent and a pipeline tie because “process customer complaints” includes intake, investigation, refund approval, and response. What should you do next?</li>
-    <li>A stable pipeline’s untyped exception share rises for three weeks. Is the original score still evidence?</li>
-    <li>A human-led task becomes fully reversible and gains a deterministic pre-effect test. Must it move to automation?</li>
-    <li>The scorecard names a choice but leaves boundary, gate, and exception owner blank. Is the allocation complete?</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the self-check</strong></summary>
-    <ol>
-      <li>The authority veto. The decision stays human-led; machine support may stop before that seam.</li>
-      <li>Split the workload into observable slices and score each. The tie is evidence that the unit is too broad.</li>
-      <li>No. Exception drift is a revisit trigger. Hold expansion, inspect the new families, and rescore the affected slice.</li>
-      <li>No. Those facts remove barriers; they do not create an obligation to automate. Reassess all eight factors and the cost of building and maintaining the machine.</li>
-      <li>No. The label does not say how work runs or how failure returns to a person.</li>
-    </ol>
-  </details>
+  <h3>Rules that override or invalidate a placement</h3>
+  <ul>
+    <li>An authority veto wins over the score. Machine support stops before the reserved personnel, release, payment, access, or publication decision.</li>
+    <li>A near tie often means the slice is too broad. Split intake, investigation, consequential decision, and response before scoring again.</li>
+    <li>Exception drift invalidates the old evidence. Hold expansion, inspect the new families, and rescore the affected slice.</li>
+    <li>Reversibility and deterministic tests remove barriers; they do not create an obligation to automate. Reassess all eight factors and maintenance cost.</li>
+    <li>A choice without a machine boundary, human gate, exception owner, and revisit trigger is not an operating allocation.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section resource-transfer">

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Proving a Negative: The Containment Evidence Ladder · AI Harness Bootcamp</title>
+  <title>The Containment Evidence Ladder · AI Harness Bootcamp</title>
   <link rel="stylesheet" href="../../css/course.css" />
   <link rel="stylesheet" href="../../css/resources.css" />
 </head>
@@ -23,8 +23,8 @@
   <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../../blocks/p5.html#ideas">← Return to P5 · Poisoned corpus</a></li><li>Optional handout</li><li aria-current="page">P5-3</li></ol></nav>
   <header class="resource-hero">
     <p class="eyebrow">Optional handout · P5-3</p>
-    <h1>Proving a Negative: The Containment Evidence Ladder</h1>
-    <p class="lede">An evidence ladder for bounding claims that an untrusted input did not affect protected outputs or actions.</p>
+    <h1>The Containment Evidence Ladder</h1>
+    <p class="lede">A containment method that combines manifests, canaries, diffs, effect checks, and clean reruns to bound what an untrusted input affected.</p>
     <div class="meta-grid resource-meta">
       <div><span class="k">Use when</span><span class="v">Use when containment must be demonstrated from artifacts rather than asserted from instructions.</span></div>
       <div><span class="k">Working time</span><span class="v">60–75 min</span></div>
@@ -33,7 +33,7 @@
     <p class="course-connection"><a class="btn" href="../../blocks/p5.html#ideas">← Return to P5 · Poisoned corpus</a></p>
     <p class="course-connection"><strong>This page is optional.</strong> The owning module remains the live course path and source for current tool details.</p>
   </header>
-  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">Use it when you must defend a sentence that contains “did not”</a></li><li><a href="#mechanism">Turn a vague negative into a comparison between runs</a></li><li><a href="#worked-case">Test a non-acting archive classifier without mistaking noise for influence</a></li><li><a href="#practice">Practice: decide what the supplied observations can carry</a></li><li><a href="#artifact">Copy the containment proof packet</a></li><li><a href="#self-check">Self-check: keep the claim below the evidence ceiling</a></li><li><a href="#transfer">Transfer the ladder to one low-consequence desk workflow</a></li><li><a href="#sources">Sources</a></li></ol></nav>
+  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">Use it when you must defend a sentence that contains “did not”</a></li><li><a href="#mechanism">Turn a vague negative into a comparison between runs</a></li><li><a href="#worked-case">Test a non-acting archive classifier without mistaking noise for influence</a></li><li><a href="#practice">Read a containment result without overstating it</a></li><li><a href="#artifact">Copy the containment proof packet</a></li><li><a href="#self-check">Rules for a defensible containment verdict</a></li><li><a href="#transfer">Transfer the ladder to one low-consequence desk workflow</a></li><li><a href="#sources">Sources</a></li></ol></nav>
   <article class="resource-body">
 <section id="purpose" class="resource-section">
   <h2>Use it when you must defend a sentence that contains “did not”</h2>
@@ -73,7 +73,7 @@ Bounded finding:  no observed probe effect there, under the recorded conditions<
     <li><strong>Unobserved:</strong> the test has no reliable sensor here; carry this as residual uncertainty.</li>
   </ul>
   <p>Use a <strong>benign synthetic canary</strong>: a unique, inert marker created only for this test. It should contain no real identifier, secret, instruction, destination, or plausible action language. Use a different token on a clean rerun. A canary is a tracer, not a shield. Its absence rules out only the forms and surfaces your checks can detect; a system might transform, summarize, encode, or indirectly respond to it.</p>
-  <p>Calibrate silence before trusting it. Exercise each protected sensor with a harmless positive-control fixture and confirm that the known test difference appears. A canary visible in an input log proves that the input-log search works; it does <em>not</em> prove that the protected-output diff or action recorder could detect a crossing. The claim ceiling is therefore the lower of two ceilings: the intervention you tried and the sensor you demonstrated.</p>
+  <p>Validate each protected sensor against an existing reference fixture or independently known difference before relying on silence. Use reference evidence rather than altering the workflow solely to exercise the detector. A canary visible in an input log proves that the input-log search works; it does <em>not</em> prove that the protected-output diff or action recorder could detect a crossing. The claim ceiling is therefore the lower of two ceilings: the intervention you tried and the sensor you validated.</p>
 
   <h3>The evidence ladder is cumulative</h3>
   <p>Each rung answers a different objection. A higher rung does not repair a missing foundation or replace the lower evidence.</p>
@@ -106,7 +106,7 @@ Bounded finding:  no observed probe effect there, under the recorded conditions<
   <p>A fictional archive desk has a local, non-acting classifier. It sorts synthetic document records for human review. It cannot publish, send, approve, or modify any real archive. The operator wants to test this bounded claim:</p>
   <blockquote>Within run <code>ARC-17</code>, adding one <code>reference_only</code> record does not change the semantic set of identifiers in <code>release_candidates.json</code> and does not add a line to <code>action_requests.jsonl</code>.</blockquote>
   <p>The first protected surface is an <em>output</em>: the set of candidate identifiers, ignoring ordering and the declared volatile field <code>generated_at</code>. The second is an <em>action surface</em>: an instrumented recorder that must remain empty. The input manifest and <code>excluded_records.log</code> are expected paths. A working scratch summary is observed but not protected. Process memory and undeclared caches are outside the current sensors and must appear under residual uncertainty.</p>
-  <p>Before the paired test, the operator calibrates both protected sensors with harmless fixtures. One fixture creates a known candidate-ID difference; the semantic diff catches it. A second fixture sends one inert <code>TEST-ONLY</code> event through the same instrumented recording path; it produces one sandbox recorder line, and the effect check catches it. The operator preserves those calibration results, removes both fixtures, starts a fresh context, and records an empty action-recorder baseline before <code>ARC-17-C</code>. Silence in the later pairs can now be interpreted relative to demonstrated sensors.</p>
+  <p>Before the paired test, the operator validates both protected sensors against existing reference fixtures. One fixture contains a known candidate-ID difference; the semantic diff catches it. A second contains one previously recorded inert <code>TEST-ONLY</code> event; the effect check catches the known recorder line. The operator preserves those validation results, starts a fresh context, and records an empty action-recorder baseline before <code>ARC-17-C</code>. Silence in the later pairs can now be interpreted relative to sensors that have detected known evidence.</p>
 
   <div class="table-scroll">
     <table>
@@ -123,8 +123,8 @@ Bounded finding:  no observed probe effect there, under the recorded conditions<
   <p>The first intervention run produces two visible changes. The canary appears in <code>excluded_records.log</code>, and the byte hash of <code>release_candidates.json</code> differs from the control. An operator calls both “leakage” and rejects the claim.</p>
   <p>That verdict outruns the plan. The exclusion log was an expected path; seeing the marker there shows the tracer worked. The output hash changed because <code>generated_at</code> contains the run time, while the protected candidate-ID set stayed identical. The byte diff is real, but it is not a change to the predeclared invariant. Preserve the byte diff, run the promised semantic comparison, record the timestamp as an alternative explanation, and correct the verdict without erasing the noisy observation. If the operator had invented the “ignore timestamps” rule only after seeing the difference, the pair would instead be inconclusive and would need a rerun with that rule declared in advance.</p>
 
-  <h3>Failure: make the forbidden path observable</h3>
-  <p>Next, the tester deliberately seeds a routing defect in a separate test build: the candidate list receives every input identifier before the <code>reference_only</code> filter runs. The intervention adds <code>DOC-R-17</code> to the protected candidate-ID set while the control does not contain it. That one discriminating observation is enough to reject the negative claim for the tested build. The packet verdict becomes <code>NOT SUPPORTED — EFFECT OBSERVED</code>. Testing stops; no extra rerun can average the effect away.</p>
+  <h3>Diagnostic example: a real defect crosses the forbidden path</h3>
+  <p>An earlier test-build record captures a routing defect: the candidate list received every input identifier before the <code>reference_only</code> filter ran. Its intervention added <code>DOC-R-17</code> to the protected candidate-ID set while the control did not contain it. That one discriminating observation rejects the negative claim for that build. The packet verdict is <code>NOT SUPPORTED — EFFECT OBSERVED</code>. No extra rerun can average the effect away.</p>
   <p>Recovery is evidence-preserving: retain the failed pair, identify and correct the ordering defect, establish a new control in a fresh context, and use a new canary so stale state cannot imitate the new probe. Two clean pairs with <code>ASTER-8R4</code> and <code>ASTER-9S5</code> then show:</p>
   <ul>
     <li>each canary appears in its input manifest and exclusion record, the declared expected path;</li>
@@ -134,7 +134,7 @@ Bounded finding:  no observed probe effect there, under the recorded conditions<
   </ul>
   <p>The repaired verdict is deliberately narrow:</p>
   <blockquote>For classifier build <code>ARC-17b</code>, under the recorded configuration and ordinary synthetic record set, two fresh-context pairs showed no observed effect from the stated <code>reference_only</code> probes on the candidate-ID set or instrumented action recorder. The probes remained visible on declared expected paths. Uninstrumented memory, undeclared caches, transformed-marker paths, other input classes, and future builds were not established.</blockquote>
-  <p>Calibration showed that both protected sensors could report known changes; the seeded failure then showed the candidate sensor catching a real forbidden crossing. A test that has never shown its alarm path can produce reassuring silence simply because its observation is broken.</p>
+  <p>The reference fixtures established that both sensors recognized known evidence; the captured defect established what a forbidden crossing looks like. Together they keep the final silence from being mistaken for more than the instruments can observe.</p>
 </section>
 
 <figure class="resource-figure" id="figure-p5-3-diagnostic">
@@ -146,7 +146,7 @@ Bounded finding:  no observed probe effect there, under the recorded conditions<
 </figure>
 
 <section id="practice" class="resource-section">
-  <h2>Practice: decide what the supplied observations can carry</h2>
+  <h2>Read a containment result without overstating it</h2>
   <p>A synthetic meeting-note sorter runs locally and produces drafts only. The proposed claim is: <strong>a <code>reference_only</code> note does not affect the semantic action rows in <code>approved_actions.md</code> or the lines in <code>action_requests.jsonl</code>.</strong> The protected surfaces were declared before testing. The input manifest, index log, and scratch summary are expected working paths.</p>
   <div class="table-scroll">
     <table>
@@ -164,17 +164,8 @@ Bounded finding:  no observed probe effect there, under the recorded conditions<
       </tbody>
     </table>
   </div>
-  <p><strong>Predict before revealing:</strong> Which ladder rungs are supported? Which of these verdicts is defensible?</p>
-  <ol>
-    <li>The probe influenced nothing.</li>
-    <li>No probe effect was observed on the two protected surfaces in the two stated pairs.</li>
-    <li>The sorter is contained for every possible note and future run.</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the evidence reading after you commit</strong></summary>
-    <p>Verdict 2 is defensible. Verdict 1 is contradicted by the expected-path observations: the probe plainly influenced the input manifest, index, and scratch summary. Verdict 3 universalizes beyond the tested note class, states, sensors, and versions.</p>
-    <p>The supplied record supports all five rungs: manifests and run identities exist; literal canaries were traced; semantic diffs and action effects were checked; each control/intervention pair holds its recorded context fixed; and a fresh-context pair agreed. The bounded claim must still name the two protected surfaces, the two tested probes, and the sensor gaps. If the fixed-context row were absent, rung 4—and therefore the cumulative rung 5 verdict—would be inconclusive even though the outputs matched.</p>
-  </details>
+  <p><strong>Defensible verdict:</strong> no probe effect was observed on the semantic action rows or action recorder in the two stated pairs. The probe did affect the expected input, index, and scratch paths, so “the probe influenced nothing” is false. The result also cannot establish containment for other note classes, states, sensors, or future versions.</p>
+  <p>The supplied record supports all five rungs: manifests and run identities exist; literal canaries were traced; semantic diffs and action effects were checked; each control/intervention pair holds its recorded context fixed; and a fresh-context pair agreed. The verdict must still name the two protected surfaces, the two tested probes, and the sensor gaps. Without the fixed-context row, rung 4—and therefore the cumulative rung 5 verdict—would be inconclusive even though the outputs matched.</p>
   <div class="callout">
     <strong>A clean protected surface can coexist with influence elsewhere.</strong>
     That is not a contradiction. Containment is always relative to a declared boundary and observation surface. Write the expected influence into the packet so a successful canary trace is not later misreported as a forbidden crossing.
@@ -262,24 +253,14 @@ remain untested. Owner: [human]. Stop/retest when: [trigger].</code></pre>
 </section>
 
 <section id="self-check" class="resource-section">
-  <h2>Self-check: keep the claim below the evidence ceiling</h2>
-  <ol>
-    <li>A canary is absent from the protected file. What kinds of influence remain possible?</li>
-    <li>The control and intervention hashes match. What must you know before treating that as a meaningful comparison?</li>
-    <li>The protected output changes only in a run timestamp. Is the negative claim supported, rejected, or inconclusive?</li>
-    <li>The canary appears on an expected working path but no protected surface changes. Is containment defeated?</li>
-    <li>Two clean paired runs agree. What words still do not belong in the verdict?</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the answers after you commit</strong></summary>
-    <ol>
-      <li>Transformed, encoded, semantic, indirect, delayed, transient, and unobserved-path influence remain possible.</li>
-      <li>The exact protected surface, manifest completeness, run identity, fixed conditions, hash scope, and whether the sensor could detect a real effect.</li>
-      <li>Inconclusive until the timestamp is handled according to a predeclared invariant or the pair is rerun under controlled time behavior. The byte difference is real; its causal meaning is unresolved.</li>
-      <li>No. Expected-path influence is part of the test design. Record it and keep the verdict limited to the protected surfaces.</li>
-      <li>Avoid “proved impossible,” “no influence anywhere,” “fully contained,” and “safe for all inputs.” Name the runs, surfaces, limits, and residuals instead.</li>
-    </ol>
-  </details>
+  <h2>Rules for a defensible containment verdict</h2>
+  <ul>
+    <li>An absent canary does not rule out transformed, encoded, semantic, indirect, delayed, transient, or unobserved-path influence.</li>
+    <li>Matching hashes matter only when the protected surface, manifest completeness, run identity, fixed conditions, hash scope, and sensor sensitivity are known.</li>
+    <li>A timestamp-only difference is inconclusive until the volatile field is handled by a predeclared invariant or a controlled-time rerun.</li>
+    <li>Expected-path influence is not a containment failure. Record it and keep the verdict limited to the protected surfaces.</li>
+    <li>Avoid “proved impossible,” “no influence anywhere,” “fully contained,” and “safe for all inputs.” Name the runs, surfaces, detection limits, and residual uncertainty.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section">
@@ -312,7 +293,7 @@ remain untested. Owner: [human]. Stop/retest when: [trigger].</code></pre>
   <nav class="resource-plate" aria-label="Return to the live course module">
   <a href="../../blocks/p5.html#ideas"><span>← Return to the live module</span><strong>P5 · Poisoned corpus</strong></a>
 </nav>
-  <p class="print-source" aria-hidden="true">P5-3 · Proving a Negative: The Containment Evidence Ladder · /site/resources/p5/containment-evidence-ladder.html</p>
+  <p class="print-source" aria-hidden="true">P5-3 · The Containment Evidence Ladder · /site/resources/p5/containment-evidence-ladder.html</p>
 </main>
 <footer class="site-footer">
   <div class="site-footer-inner">

@@ -55,7 +55,7 @@
 <figure data-resource-figure="mechanism"></figure>
 
 <section id="worked-case" class="resource-section">
-  <h2>Find the swapped release contract behind the same path</h2>
+  <h2>Diagnostic example: the path matched but the contract did not</h2>
   <p>A museum registrar prepares an outbound-loan dispatch certificate for loan <code>ML-042</code>. The fixed certificate fields are Loan ID, Disposition, Release holds, Responsible functions, Dispatch review, and Evidence gaps. The original run, <code>ML-RUN-014</code>, reports HOLD because a conservation courier is unassigned. Its manifest records four source snapshots and <code>machine/release-contract.md</code>.</p>
   <p>One week later, Mina replays the run for an audit. She copies the named files, uses the same saved run path, and receives RELEASE. The structure is complete and every source filename matches. Her first diagnosis is: “The model changed, so this machine is not reproducible.” That is a plausible overclaim. She has not yet shown that she reconstructed the run.</p>
   <p>The digest values in the comparison below are shortened only to keep the table readable. The underlying manifests retain the algorithm name and every digest character.</p>
@@ -83,7 +83,7 @@
 <figure data-resource-figure="diagnostic"></figure>
 
 <section id="practice" class="resource-section">
-  <h2>Build and break one replay bundle</h2>
+  <h2>Build one replayable run bundle</h2>
   <p>Use a scratch copy of your saved P1 machine. Treat <code>replay-practice/current/</code> and <code>replay-practice/machine/</code> as working copies. Give every attempt an evidence bundle at <code>replay-practice/runs/[run-id]/</code> and make it immutable when the manifest closes. Do not tune the machine between runs. Work only on these supplied practice files.</p>
 
   <p>Save the first block as <code>S1-intake.md</code>, the second as <code>S2-moisture.md</code>, the third as <code>S3-storage.md</code>, and the fourth as <code>S4-window.md</code>:</p>
@@ -114,12 +114,6 @@ RELEASE TO COLD VAULT requires barcode reconciliation passed,
 moisture screening passed, a vault shelf assigned, and a custody witness assigned.
 Otherwise report QUARANTINE. Preserve every supplied value; never invent a missing field.</code></pre>
 
-  <p>Save this as <code>replay-practice/swaps/contract.md</code> and keep it outside the machine folder until Step 6:</p>
-  <pre><code>Record fields: Batch ID / Packet count / Storage disposition / Custody state / Transfer window
-RELEASE TO COLD VAULT requires barcode reconciliation passed,
-moisture screening passed, and a vault shelf assigned.
-Otherwise report QUARANTINE. Preserve every supplied value; never invent a missing field.</code></pre>
-
   <h3>Use one byte-hashing contract</h3>
   <p>For every run, calculate SHA-256 over the stored file bytes and retain all 64 hexadecimal characters. Use the same byte-preserving method for original and replay; record that method and each exact stored path. Hash stored inputs, configuration, and procedure before execution, then hash the raw output immediately after. Do not open, resave, re-encode, or normalize a file before hashing it. Recompute and compare digests exactly. A mismatch means the bytes differ: inspect or stop. It does not by itself mean the meaning changed.</p>
 
@@ -128,16 +122,13 @@ Otherwise report QUARANTINE. Preserve every supplied value; never invent a missi
     <li><strong>Mint the original ID.</strong> Use <code>RP-[date]-001</code> only inside a controlled practice namespace, or use your team’s normal immutable scheme. Record its namespace, allocator, purpose, operator, start time, saved run path, working folder, and exposed execution identity.</li>
     <li><strong>Create the original bundle.</strong> Before execution, copy the exact bytes into <code>runs/RP-[date]-001/inputs/</code>, <code>runs/RP-[date]-001/config/contract.md</code>, and <code>runs/RP-[date]-001/procedure/procedure.md</code>. Hash those stored copies. Confirm the working copies match them, point the manifest to the stored paths, and record IDs, roles, full digests, method, and any <code>not exposed</code> fields.</li>
     <li><strong>Run and seal the result.</strong> Execute once from the verified working copies. Save the untouched raw output inside the same run bundle, hash it immediately, reduce it to the five storage-record fields, and close the manifest. Do not edit or overwrite the stored evidence.</li>
-    <li><strong>Predict the replay.</strong> Before changing anything, write: “With matching source, procedure, and configuration bytes, the storage disposition should remain QUARANTINE; exact wording and output hash may vary.”</li>
-    <li><strong>Inject and preserve the swap.</strong> Mint a second ID linked by <code>replay_of</code>. Build a separate bundle containing the same four inputs and procedure but the supplied swapped contract. Hash its stored bytes, verify matching working copies, run once, store its raw output and manifest, and close it as immutable. Never mutate the original bundle.</li>
-    <li><strong>Diagnose before blaming generation.</strong> Compare the recorded bundles before outputs. Record the first mismatch and apply the ordered classification rule. This attempt is <strong>not established</strong> because required configuration bytes differ.</li>
-    <li><strong>Recover from evidence.</strong> Mint a third ID. Copy the original bundle’s stored inputs, configuration, and procedure into a new bundle and restore the working copies from them. Verify every digest against the original <em>before</em> execution, run once, and store the new raw output and manifest. Compare output digest, decision surface, and acceptance checks separately.</li>
+    <li><strong>Declare the replay comparison.</strong> Record the decision-bearing fields that must remain stable: storage disposition, custody state, and transfer window. Treat exact wording and the output hash as separate comparison surfaces.</li>
+    <li><strong>Create a verified replay.</strong> Mint a second ID linked by <code>replay_of</code>. Copy the original bundle’s stored inputs, configuration, and procedure into the replay bundle and restore the working copies from those stored bytes. Verify every digest against the original <em>before</em> execution, run once, and store the untouched raw output and manifest.</li>
+    <li><strong>Issue the bounded verdict.</strong> Compare input and configuration digests first, then the decision surface, acceptance checks, and output digest. Record <strong>behavior stood</strong>, <strong>byte stood</strong>, <strong>diverged</strong>, or <strong>not established</strong> with the exact first mismatch and any unexposed execution state.</li>
   </ol>
 
-  <details>
-    <summary><strong>Reveal the expected baseline, break, and recovery</strong></summary>
-    <p>The original storage record is: batch ID <code>SB-74</code>; packet count 18; storage disposition <code>QUARANTINE</code>; custody state: witness unassigned; transfer window: Wednesday 14:30. The swapped contract can yield <code>RELEASE TO COLD VAULT</code> even though every source file is unchanged. The correct first result is <strong>not established—configuration mismatch</strong>, because the contract path matches but its digest does not. After the original contract bytes are restored, <code>QUARANTINE</code> should return while the other four fields remain fixed. If prose or the output digest differs while those five fields and their checks match, record <strong>behavior stood</strong>; if the output digest also matches, record <strong>byte stood</strong>.</p>
-  </details>
+  <h3>Expected decision surface</h3>
+  <p>The source record is: batch ID <code>SB-74</code>; packet count 18; storage disposition <code>QUARANTINE</code>; custody state: witness unassigned; transfer window: Wednesday 14:30. When the stored inputs, contract, and procedure all match, those five fields and their acceptance checks should hold. If only prose or the output digest differs, record <strong>behavior stood</strong>; if the output digest also matches, record <strong>byte stood</strong>. Any required input or configuration mismatch makes the replay <strong>not established</strong> until the recorded bundle is reconstructed.</p>
 
   <div class="callout">
     <strong>Stop and return control</strong> if the original bytes cannot be recovered, an influential setting is unknown and outcome-critical, hashing or storing the record would violate data policy, or replay could trigger a live action. Preserve the manifest with <code>not established</code>; do not repair the historical record by guessing.
@@ -225,28 +216,13 @@ manifest_closed_utc:</code></pre>
 </section>
 
 <section id="self-check" class="resource-section">
-  <h2>Predict before you reveal</h2>
-  <p>Write one sentence before opening each answer.</p>
-
-  <details>
-    <summary><strong>1.</strong> Two inputs have the same filename and different SHA-256 digests. Are they the same recorded input?</summary>
-    <p>No. The path is the same locator, but the observed bytes differ. Inspect the diff, correct the reconstruction, or record that the original input is unavailable.</p>
-  </details>
-
-  <details>
-    <summary><strong>2.</strong> Every recorded input and configuration digest matches. The replay uses different sentences but preserves every decision field and check. Did replay fail?</summary>
-    <p>The replay did not achieve <strong>byte stood</strong>, but it can achieve <strong>behavior stood</strong>. Record the single ordered result and the output-digest mismatch. Do not convert prose variation into a broad capability failure.</p>
-  </details>
-
-  <details>
-    <summary><strong>3.</strong> An output’s digest matches the manifest. Has the brief been proven correct?</summary>
-    <p>No. You have evidence that the output bytes match the referenced bytes. Source support, authority, inclusion, safety, and the operator verdict still require their own checks.</p>
-  </details>
-
-  <details>
-    <summary><strong>4.</strong> A failed replay is rerun after a fix. May the operator reuse the failed attempt’s run ID?</summary>
-    <p>No. Preserve the failed activity under its original ID, mint a new ID, and link the relationship. Reuse erases the evidence needed to explain the recovery.</p>
-  </details>
+  <h2>Apply four replay rules consistently</h2>
+  <ul>
+    <li>The same filename with a different SHA-256 digest is a different recorded input. Inspect the diff, correct the reconstruction, or record that the original bytes are unavailable.</li>
+    <li>Matching inputs and configuration with different prose can still achieve <strong>behavior stood</strong> when every decision field and check holds. Record the output-digest mismatch separately.</li>
+    <li>A matching output digest establishes byte identity, not factual correctness. Source support, authority, inclusion, safety, and the operator verdict still need their own checks.</li>
+    <li>Every attempt keeps its own run ID. After a fix, preserve the failed activity, mint a new ID, and link the relationship.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section resource-transfer">

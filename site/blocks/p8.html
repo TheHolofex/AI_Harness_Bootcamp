@@ -23,14 +23,14 @@
   <main class="site-main">
     <p class="eyebrow">Friday AM · P8 · AI Harness Bootcamp</p>
     <h1>Operator-governed open model</h1>
-    <p class="lede">Everything the week built gets moved to a brain nobody sold you: policy written before the first request, the frozen suite re-run as numbers, the 30-60-90 sealed. If the method survives the move, it was never a rental.</p>
+    <p class="lede">Move the week's method to a different endpoint: write policy before the first request, rerun the frozen suite, make a fit/not-fit recommendation, restore home, and certify the 30-60-90.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Friday AM</span></div>
       <div><span class="k">Block</span><span class="v">P8</span></div>
       <div><span class="k">Time</span><span class="v">~3–3.5 hr (half-day close)</span></div>
       <div><span class="k">Tools</span><span class="v">Codex app (re-pointed) · hosted open model · instruments/p8_hold_degrade</span></div>
-      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p8">0 / 23 · 0%</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p8">0 / 20 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
 
@@ -38,7 +38,7 @@
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
       <a href="#ideas">The ideas</a>
-      <a href="#mission">Mission · <span data-count-for="mission">0/10</span></a>
+      <a href="#mission">Run of exercise</a>
       <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/9</span></a>
       <a href="#depth">Going deeper</a>
       <a href="#stuck">If you get stuck</a>
@@ -59,7 +59,7 @@
             <li>An endpoint AUP (acceptable-use policy) with a version and a date that precede your first request — a policy you can reuse the next time a new model shows up at work</li>
             <li>A hold/degrade matrix on D01–D05, home vs open, as counts — every non-hold labeled with a failure layer</li>
             <li>A refusal on the record: one legitimate task your own policy blocked, with the reason, beside a control task that ran</li>
-            <li>A 90-second defense you can deliver from evidence alone, and a listener who heard it and could say back which work this endpoint is fit for — no slides, no story</li>
+            <li><code>ENDPOINT_RECOMMENDATION.md</code> stating fit, not-fit, evidence, owner, and residual risk — plus a listener who could restate the decision</li>
             <li>Your 30-60-90 <strong>SEALED</strong>, with a session log proving it grew all week</li>
             <li>You can treat a model swap as a measurement exercise instead of a leap of faith</li>
           </ul>
@@ -75,7 +75,7 @@
         <div class="orient-aside">
           <div class="lead-box">
             <p class="eyebrow">Lead operate-along</p>
-            <p>The lead runs this same page on screen — policy drafted live, the cold run scored in a build chat you can see, degrades attributed out loud, the seal run adversarially. You still run your own chair: your policy, your matrix, your seal. Check a box when <em>you</em> finish the step, not when you watch it happen.</p>
+            <p>The lead runs this same page on screen — policy drafted live, isolated cold cases scored, non-holds entered in the root-cause register, and the seal gate evaluated PASS or BLOCK. You still run your own chair: your policy, matrix, recommendation, and seal.</p>
           </div>
         </div>
       </div>
@@ -91,7 +91,7 @@
       <h3>Policy before touch</h3>
       <p>An acceptable-use policy — an AUP — is the written rule set for an endpoint: what may be asked of it, what may not, what data may never leave your laptop on its way there, when a human must approve before results are used, and what gets logged. All week a vendor supplied most of that invisibly. On an operator-governed endpoint, nobody does. The guardrails are yours to author, and an unauthored guardrail is not a guardrail — it's a hope.</p>
       <p>The order matters more than the text. A policy written <em>after</em> you've seen the endpoint behave is shaped by what the endpoint did — you end up describing behavior and calling it governance. A policy written <em>before</em> first touch is shaped by your obligations: the data you hold, the people your outputs affect, the failure you can't afford. That's why the AUP carries a version and an effective date, and why the date has to precede your first request. The dated version is also your evidence: anyone auditing the work later can see the rules existed before the behavior they governed.</p>
-      <p>What going wrong looks like: a policy with an empty Forbidden section, or one so vague it could never refuse anything. Both fail the same way — they cost nothing, so they govern nothing. At work, this discipline is the difference between "we tried the new model" and "we evaluated the new model under a policy I can show you." The second sentence survives an audit; the first one starts one.</p>
+      <p>What going wrong looks like: a policy with an empty Forbidden section, or one so vague it could never refuse anything. Both fail the same way — they cost nothing, so they govern nothing. At work, this discipline is the difference between "we tried the new model" and "we evaluated the new model under a policy I can show you." The second sentence is auditable; the first is not.</p>
 
       <h3>The capability tax is a number</h3>
       <p>Moving off a frontier commercial model usually costs capability. The operator question is never <em>whether</em> there's a tax — it's <em>how much, on which work</em>. You answer that with the frozen suite: the same five case files you scored on Tuesday, unedited, re-run cold on the new endpoint. Each case scores PASS or FAIL against its own checks. A case that passes on both endpoints is a <strong>hold</strong>. Home PASS turning into open FAIL is a <strong>degrade</strong> — the tax, made visible. Home FAIL turning into open PASS is an <strong>improve</strong>, rare and worth reading closely.</p>
@@ -107,13 +107,13 @@
         <img src="../assets/blocks/p8/p8-concept-failure-layers.svg" alt="Five failure layers — model, instructions, tests, environment, brief — each with one probe question, four of the five marked as yours to port and fix" width="1120" height="220" loading="lazy" decoding="async" />
       </figure>
 
-      <h3>The refusal that proves ownership</h3>
-      <p>A policy is only load-bearing when it costs you something you wanted. So you run the cost on purpose: pick a genuinely useful task that your own AUP forbids, ask for it, let the policy say no, and record the refusal with the reason. Then run an allowed control task beside it — proof that the endpoint works and the refusal was governance, not breakage.</p>
-      <p>The trap is the strawman: refusing a task nobody would ever run proves nothing and feels like compliance theater, because it is. The refusal should sting a little. And when the policy blocks something it shouldn't, the answer is never a quiet exception — it's an amendment, in writing, with a version bump. That's what operating your own governance actually feels like: the rules bind you too, and changing them leaves a trail. At work this is the habit that makes your policy credible to the people who audit it — and to you, six months later, wondering why a rule exists.</p>
+      <h3>A refusal verifies policy ownership</h3>
+      <p>A policy is only load-bearing when it costs you something you wanted. Pick a genuinely useful task that your AUP forbids, ask for it, and record the refusal with the controlling clause. Then run an allowed control task beside it so the record separates governance from endpoint breakage.</p>
+      <p>Refusing a task nobody would ever run provides no useful evidence. When the policy blocks something it should allow, amend it in writing and bump the version. The rules bind the operator too, and every change leaves a trail.</p>
 
-      <h3>The method survives the vendor</h3>
-      <p>What transfers when the vendor changes is not the app — it's the assets: the brief discipline, the frozen tests, the contract language, the logs, and now the policy. The line between what ports and what stays is what the asset names. An asset that names an outcome and a check — the summary must cite its sources, and here is the test that looks — runs against any engine, because outcomes and checks belong to your work, not to a vendor. An asset that names vendor behavior — a skill leaning on one app's tool surface, a test that quietly asserts one model's formatting habits — dies with the vendor, and that second kind is exactly what the matrix's tests layer catches. Every asset on the list above passes the first sort, which is why all of them work this morning on a model you had never touched before today. That's the proof the week was building a capability and not a product habit. Run the same sort on your own harness: any skill or check in it that names a vendor is a porting job waiting to be discovered on a worse day than this one.</p>
-      <p>Two artifacts carry that proof out the door. The 90-second defense forces you to argue the endpoint decision from evidence alone — matrix totals, policy version, one accept, one reject — the exact shape of every model-choice conversation you'll ever have with a manager. And the sealed 30-60-90 is the method mapped onto your actual desk, grown one session at a time all week. The failure mode here is Friday theater: demo the open model, feel the novelty, call it transfer. Numbers and a seal are the antidote — neither can be faked in an afternoon, and the seal checklist checks for exactly that.</p>
+      <h3>The method transfers across vendors</h3>
+      <p>What transfers when the vendor changes is not the app — it is the assets: the brief, frozen tests, contract language, logs, and policy. An asset that names an outcome and a check can run against another engine. An asset that depends on one vendor's behavior is a porting job. The matrix and root-cause register show which kind you have.</p>
+      <p>Two artifacts carry the decision out the door. <code>ENDPOINT_RECOMMENDATION.md</code> turns policy, counts, and unresolved tests into fit/not-fit guidance. The sealed 30-60-90 maps the method onto your desk and records BLOCKED when its evidence is incomplete.</p>
 
       <p class="eyebrow">Optional field guide · 60–75 min</p>
       <h3>Inspect the boundary behind the endpoint</h3>
@@ -124,10 +124,10 @@
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Work the stages in order. Every block below is literal: copy it into the surface its label names — a chat, a PowerShell window, a file — and check each item off as its proof exists. Today runs on six chats — <strong>Operator — Direction &amp; Log</strong>, <strong>P8 build</strong>, <strong>P8 cold run</strong>, two fresh adversarial chats labelled <strong>open</strong> and <strong>home</strong>, and <strong>Operator — Transfer 30-60-90</strong> — plus one PowerShell window and Notepad. Progress saves in this browser — the same tick shows on the home page.</p>
+        <p class="section-lede">Work in order: Operator Direction &amp; Log, P8 build, five isolated cold-case chats, Operator Transfer 30-60-90, PowerShell, and the saved Markdown artifacts. Check each item when its evidence exists.</p>
 
         <h3>Stage 01 · Brief the close</h3>
-        <p>Friday's brief names artifacts, not sentiment. The outcome is four things existing by lunch: a dated policy, a filled matrix, a refuse record, a sealed transfer file.</p>
+        <p>Friday's brief names five durable artifacts: policy, score sheet, refusal record, endpoint recommendation, and the certified transfer file.</p>
         <div class="do-step">
           <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
@@ -141,49 +141,42 @@
             <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
-        <!-- Verbatim from operator/DIRECTION_BRIEF.md — operator-chat starter -->
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Operator — Direction &amp; Log</strong> chat:</p>
-          <pre><code>We are writing the Direction Brief for this block together.
+          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
+          <pre><code>Write the P8 production spec into operator/DIRECTION_BRIEF.md and set Status to LIVE.
 
-Read operator/DIRECTION_BRIEF.md (or this file). Interview me in short turns.
-Do not dump all five fields at once unless I already gave you a clear mission.
+Outcome: produce these durable artifacts:
+- AUP_ENDPOINT.md, Version 1.0 and dated before the first open-endpoint request;
+- instruments/p8_hold_degrade/SCORE_SHEET.md, with home/open D01–D05 scores,
+  hold/degrade/improve counts, and structured root-cause rows;
+- REFUSE_RECORD.md, with one policy refusal and one allowed control;
+- ENDPOINT_RECOMMENDATION.md, with fit, not-fit, evidence, owner, and residual risk;
+- operator/TRANSFER_30_60_90.md, updated from evidence and sealed only if every gate passes.
 
-For each field:
-1. Ask one focused question.
-2. Propose tight wording from my answer.
-3. Challenge anything vague, uncheckable, or unbounded.
-4. Wait for me to accept or correct before moving on.
+Done looks like: each artifact opens; a peer can re-derive the scores, recommendation,
+refusal, and seal decision from the files alone.
 
-When all five fields are accepted, write them into this file, set Status to LIVE,
-and remind me to run the mission in a separate build chat — not here.
+Bounds: do not change policy after first request without a version bump; keep credentials
+out of tracked files; do not edit D01–D05; run each case in a separate new chat with only
+that case in context; restore and verify the home configuration before closeout.
 
-After the mission, we will write the Operator Log in this same chat.</code></pre>
+Evidence: exact paths, D01–D05 P/F cells, counts, root-cause rows, quoted AUP clause,
+recommendation criteria, and the transfer gate results.
+
+Stop / hand-back: stop the re-point on a failed smoke request and record the exact error;
+set transfer status to BLOCKED, not SEALED, if any seal criterion fails.
+
+Preserve unrelated block sections. Show the exact P8 brief written.</code></pre>
         </div>
-        <p>The AI starts interviewing you field by field. Friday's answers are largely known, so hand it the raw material in one paste and spend your energy on the wording fights instead of the typing.</p>
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Operator — Direction &amp; Log</strong> chat:</p>
-          <pre><code>Brief material for P8 — interview me field by field against this, and challenge anything vague:
-
-Outcome: four artifacts exist by lunch — AUP_ENDPOINT.md with a version and effective date that precede the first open-endpoint request; instruments/p8_hold_degrade/SCORE_SHEET.md with both columns scored on D01-D05 and the hold/degrade/improve counts; REFUSE_RECORD.md holding one refused task and one allowed control task; operator/TRANSFER_30_60_90.md with status SEALED and today's date.
-
-Done looks like: each artifact opens, and a peer could re-derive the counts, the refusal reason, and the seal date from the files alone.
-
-Bounds: the policy does not change after the first request without a version bump; no credentials in any tracked file; the five case files stay unedited; the cold run happens in a fresh chat.
-
-Evidence standard: paths, counts, and quoted clauses — model self-assessment does not count.
-
-Stop / hand-back: if the endpoint will not answer after the smoke check, stop the re-point and hand back with the exact error text; policy, home column, and defense prep continue without the socket.</code></pre>
-        </div>
-        <p>You should end with all five fields accepted in your own words and Status set to <strong>LIVE</strong>. If the AI accepts "prove the method transfers" as an outcome without a fight, push back yourself — that's activity, not an artifact.</p>
+        <p>Open <code>operator/DIRECTION_BRIEF.md</code> and confirm the five artifacts, isolated case rule, restore requirement, and deterministic seal condition are present.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p8-pulse-brief" name="p8-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">1</span>
-              <span class="check-title">Co-write the Direction Brief until LIVE</span>
+              <span class="check-title">Save the P8 production spec as LIVE</span>
             </label>
-            <div class="check-detail">Status must read <strong>LIVE</strong> before you touch anything, and the outcome must name the four artifacts: dated AUP, hold/degrade matrix, refuse record, sealed 30-60-90. The Friday-specific bound matters most — the policy does not change after the first request without a version bump. If a field can't be checked by opening a file, it isn't done yet; tighten it before accepting.</div>
+            <div class="check-detail"><code>operator/DIRECTION_BRIEF.md</code> names the policy, score sheet, refusal record, endpoint recommendation, and transfer plan; isolated D01–D05 chats; home-config restoration; evidence; and the deterministic seal condition. Status reads <strong>LIVE</strong>.</div>
           </li>
         </ol>
 
@@ -297,7 +290,7 @@ wire_api = "responses"</code></pre>
           <p class="do-label">Now paste this into the <strong>P8 build</strong> chat:</p>
           <pre><code>Smoke request under AUP_ENDPOINT.md: list the file names inside operator/ in this project — names only, one per line, nothing else.</code></pre>
         </div>
-        <p>You should see the open model answer with the file list — one small allowed task, nothing more. Don't ask the model what it is: models answer that question from training data, so it proves nothing. The displayed model name plus the <code>model_provider</code> line is the real proof. If requests error in a way that reads like a login failure, a capped or mispasted key does exactly that — re-check endpoint, model name, and key character by character, confirm the variable name matches <code>env_key</code>, then escalate with the exact error text.</p>
+        <p>You should see the open model answer with the file list — one small allowed task, nothing more. Do not ask the model to identify itself; use the displayed model name plus the <code>model_provider</code> line as the endpoint evidence. If requests error like a login failure, re-check endpoint, model name, key, and the variable named by <code>env_key</code>, then escalate with the exact error text.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -310,35 +303,51 @@ wire_api = "responses"</code></pre>
         </ol>
 
         <h3>Stage 04 · Cold run</h3>
-        <p>The same five cases from Tuesday, unedited, in a fresh chat. Cold means no warm-up context doing secret work on the suite's behalf — the new chat carries your standing walls and nothing else.</p>
+        <p>Run each frozen case in its own new chat. No case may inherit another case's prompts, answers, corrections, or grader context.</p>
+        <p>In every prompt below, replace <code>[YOUR TRACK]</code> with <code>engineering</code> or <code>mission_ops</code> — the same track you scored Tuesday.</p>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Create the isolated <strong>P8 cold D01</strong> chat:</p>
           <ul class="do-clicks">
-            <li>Confirm the course project is open and the displayed model is the open-endpoint model from the pin</li>
-            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P8 cold run</code></li>
-            <li>Confirm the new chat still shows the open-endpoint model and <strong>Ask for approval</strong></li>
+            <li>Click <strong>New chat</strong>, rename it <code>P8 cold D01</code>, and open it</li>
+            <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
+            <li>Paste only the D01 request below. Never run a second case in this chat</li>
           </ul>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>P8 cold run</strong> chat:</p>
           <pre><code>Cold run — case D01. Open the case file whose name starts with D01_ in instruments/p2_test_suite/[YOUR TRACK]/cases/ and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else. Do not edit the case.</code></pre>
-          <p>Replace <code>[YOUR TRACK]</code> with <code>engineering</code> or <code>mission_ops</code> — the same track you scored Tuesday.</p>
         </div>
-        <p>One case per paste, in order, waiting for each deliverable before sending the next. Five tasks piled into one message is not how Tuesday ran, so it is not how today runs either.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>P8 cold run</strong> chat (same <code>[YOUR TRACK]</code> replacement):</p>
+          <p class="do-label">Create the isolated <strong>P8 cold D02</strong> chat:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>New chat</strong>, rename it <code>P8 cold D02</code>, and open it</li>
+            <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
+            <li>Paste only the D02 request below. Never run a second case in this chat</li>
+          </ul>
           <pre><code>Cold run — case D02. Open the case file whose name starts with D02_ in instruments/p2_test_suite/[YOUR TRACK]/cases/ and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else. Do not edit the case.</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>P8 cold run</strong> chat (same <code>[YOUR TRACK]</code> replacement):</p>
+          <p class="do-label">Create the isolated <strong>P8 cold D03</strong> chat:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>New chat</strong>, rename it <code>P8 cold D03</code>, and open it</li>
+            <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
+            <li>Paste only the D03 request below. Never run a second case in this chat</li>
+          </ul>
           <pre><code>Cold run — case D03. Open the case file whose name starts with D03_ in instruments/p2_test_suite/[YOUR TRACK]/cases/ and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else. Do not edit the case.</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>P8 cold run</strong> chat (same <code>[YOUR TRACK]</code> replacement):</p>
+          <p class="do-label">Create the isolated <strong>P8 cold D04</strong> chat:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>New chat</strong>, rename it <code>P8 cold D04</code>, and open it</li>
+            <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
+            <li>Paste only the D04 request below. Never run a second case in this chat</li>
+          </ul>
           <pre><code>Cold run — case D04. Open the case file whose name starts with D04_ in instruments/p2_test_suite/[YOUR TRACK]/cases/ and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else. Do not edit the case.</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>P8 cold run</strong> chat (same <code>[YOUR TRACK]</code> replacement):</p>
+          <p class="do-label">Create the isolated <strong>P8 cold D05</strong> chat:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>New chat</strong>, rename it <code>P8 cold D05</code>, and open it</li>
+            <li>Confirm the displayed model is the open-endpoint model and permissions say <strong>Ask for approval</strong></li>
+            <li>Paste only the D05 request below. Never run a second case in this chat</li>
+          </ul>
           <pre><code>Cold run — case D05. Open the case file whose name starts with D05_ in instruments/p2_test_suite/[YOUR TRACK]/cases/ and run the task in it exactly as written. Use only the input inside the file — no outside facts, no invented names or paths. Give the answer the task asks for, in the format it asks for, and nothing else. Do not edit the case.</code></pre>
         </div>
         <p>Now the grading — which is yours, not the model's. The pass conditions are not inside the case files the endpoint just read; they sit in a grader file that only you open. That separation is what makes the numbers worth having: shown the standard, a model writes to the standard, and the score stops telling you anything about the endpoint.</p>
@@ -348,7 +357,7 @@ wire_api = "responses"</code></pre>
 notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p8_hold_degrade\SCORE_SHEET.md"</code></pre>
           <p>In the first line, replace <code>[YOUR TRACK]</code> — brackets included — with <code>engineering</code> or <code>mission_ops</code>. Two Notepad windows open: the five pass conditions, and the sheet you score on.</p>
         </div>
-        <p>Score each deliverable against its case's pass condition in <code>GRADER.md</code>: fill the header fields and the Open column with P or F per case. The table has no notes column, so put each case's one-line note on its own line under the table — <code>D01: fluent summary, missed the citation check</code> — because fluent-but-wrong is a FAIL and the note is where you say so. Before you leave the chat, add one more line there — <code>Live walls: …</code> — naming which instructions and skills were actually loaded on the run; Stage 05's layer labels lean on that fact. Press <strong>Ctrl+S</strong> in the P8 score sheet, close <code>GRADER.md</code>, and keep the P8 score sheet open — the home column and the counts land in it next.</p>
+        <p>Score each deliverable against its case's pass condition in <code>GRADER.md</code>. Fill the Open column with P or F, and add one evidence note per case below the table — for example, <code>D01: missed the citation check</code>. Record which standing instructions or skills were actually available to the isolated chats. Save the P8 score sheet and close <code>GRADER.md</code>.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -356,73 +365,60 @@ notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instrume
               <span class="check-num">4</span>
               <span class="check-title">Cold-run D01–D05 on open/re-pointed model</span>
             </label>
-            <div class="check-detail">You should see five deliverables in the fresh chat, five P/F cells in the open column of <code>instruments/p8_hold_degrade/SCORE_SHEET.md</code> scored against your track's <code>GRADER.md</code>, and a one-line note per case under the table — fluent-but-wrong is a FAIL. The cases stay unedited; editing one to be "fairer" ends the comparison. If the endpoint dies mid-suite, re-run the smoke request; if it stays dead, keep the partial column and work policy and defense — see If you get stuck.</div>
+            <div class="check-detail">Five separately named chats — <code>P8 cold D01</code> through <code>P8 cold D05</code> — each contain exactly one case. The Open column has five P/F cells scored against <code>GRADER.md</code>, with one evidence note per case. The case files remain unedited.</div>
           </li>
         </ol>
 
         <h3>Stage 05 · Read the matrix</h3>
-        <p>Two columns of scores become three counts and a set of layer labels. This is where "the open model feels weaker" becomes a sentence you can defend. First the home column — Tuesday's after scores, fetched from the sheet where you wrote them.</p>
+        <p>Do this comparison directly in the two score sheets.</p>
         <div class="do-step">
-          <p class="do-label">Return to the <strong>P8 PowerShell window</strong> and paste this:</p>
-          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\SCORE_SHEET.md"</code></pre>
+          <p class="do-label">Open the home and P8 score sheets from the <strong>P8 PowerShell window</strong>:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p2_test_suite\SCORE_SHEET.md"
+notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p8_hold_degrade\SCORE_SHEET.md"</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Move the home scores into the P8 sheet, then return to the build chat:</p>
+          <p class="do-label">Complete the matrix once in <strong>P8 Hold/degrade score sheet</strong>:</p>
           <ul class="do-clicks">
-            <li>Copy Tuesday's <strong>After P/F</strong> values into the Home column of the P8 sheet, row by row — same IDs, no substitutions</li>
-            <li>Press <strong>Ctrl+S</strong> in the P8 sheet, then close Tuesday's score sheet</li>
-            <li>If an After cell is empty, stop. The Stage 02 prerequisite was not complete; restore the home model and finish P2's cold rescore before continuing</li>
-            <li>Click the ChatGPT app on the taskbar, select <strong>Codex</strong> if needed, and open <strong>P8 build</strong></li>
+            <li>Write D01–D05 from the home sheet's <strong>After P/F</strong> column once into the P8 <strong>Home P/F</strong> column, matching IDs</li>
+            <li>For each row write <code>Hold</code> for P/P, <code>Degrade</code> for P/F, <code>Improve</code> for F/P, or <code>Fail/fail</code> for F/F</li>
+            <li>Count Home PASS, Open PASS, Hold, Degrade, and Improve directly from the five rows and fill the totals fields</li>
+            <li>Save the P8 sheet. If a home cell is empty, stop and restore the home model before completing the missing baseline</li>
           </ul>
         </div>
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>P8 build</strong> chat:</p>
-          <pre><code>Matrix read. Two columns on the frozen suite — home is my P2 after column, open is today's cold run:
-
-D01 home [P/F] open [P/F]
-D02 home [P/F] open [P/F]
-D03 home [P/F] open [P/F]
-D04 home [P/F] open [P/F]
-D05 home [P/F] open [P/F]
-
-Classify each row: hold = PASS on both, degrade = home PASS open FAIL, improve = home FAIL open PASS. Give me the three counts and a one-line totals sentence in the form "open n/5 vs home n/5". Then stop — layer labels are a separate pass.</code></pre>
-          <p>Replace each <code>[P/F]</code> with P or F from the score sheet before sending.</p>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Record the matrix result, then return to <strong>P8 build</strong>:</p>
-          <ul class="do-clicks">
-            <li>Switch to the open P8 score sheet and copy in the three counts and the totals sentence</li>
-            <li>Press <strong>Ctrl+S</strong>, then return to <strong>P8 build</strong> in Codex</li>
-          </ul>
-        </div>
-        <p>The arithmetic is trivial on purpose — what you're buying is a sentence you can say to a manager without flinching.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p8-p8-matrix" name="p8-p8-matrix" data-check-id="p8-matrix" />
               <span class="check-num">5</span>
-              <span class="check-title">Hold/degrade matrix vs home</span>
+              <span class="check-title">Complete the hold/degrade matrix</span>
             </label>
-            <div class="check-detail">You should see both columns scored, the hold / degrade / improve counts computed, and totals like <code>open 3/5 vs home 5/5</code> on the sheet — a sentence you can defend. The home column comes from P2 after scores, or from a same-day home run if those are missing. If the numbers embarrass the open model, good: that is a measured capability tax, which is the point.</div>
+            <div class="check-detail"><code>instruments/p8_hold_degrade/SCORE_SHEET.md</code> carries both D01–D05 columns, a direct classification for every row, Home/Open totals, and Hold/Degrade/Improve counts that can be recomputed from the cells.</div>
           </li>
         </ol>
-        <p>Now the labels. The interesting question about every non-hold is <em>where</em> it broke — and the cheap layers get probed before the expensive one gets blamed.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>P8 build</strong> chat:</p>
-          <pre><code>Layer labels. Take each non-hold row below one at a time. Before any label lands, probe me in this order: environment (did my instruction walls and skills actually load on the re-pointed run?), then instructions, then tests, then brief — and only let "model" stand if the cheaper layers survived the probe. Challenge me if I reach for model without evidence. Each final label is one of model / instructions / tests / environment / brief plus one line of why, and I say accept before we move to the next row.
+          <p class="do-label">Add this structured section below the matrix in <strong>P8 Hold/degrade score sheet</strong>:</p>
+          <pre><code>## Root-cause register
 
-Non-hold rows: [LIST THEM, e.g. D02 degrade, D04 improve]</code></pre>
-          <p>Replace the bracketed slot with your non-hold rows from the matrix read.</p>
+| Case | Layer | Evidence | Next discriminating test | Owner |
+|---|---|---|---|---|
+| [NON-HOLD CASE] | [model / instructions / tests / environment / brief] | [PATH OR OBSERVATION] | [ONE TEST THAT SEPARATES THE LIKELY CAUSES] | [NAME OR ROLE] |</code></pre>
         </div>
-        <p>For each accepted label, switch to the P8 score sheet, write the label and its one-line why in the failure-layer column, press <strong>Ctrl+S</strong>, and return to <strong>P8 build</strong> before the next row.</p>
+        <div class="do-step">
+          <p class="do-label">Fill one row for every non-hold case, then save:</p>
+          <ul class="do-clicks">
+            <li>Use the case output, <code>GRADER.md</code>, and recorded live walls as evidence</li>
+            <li>Choose the cheapest next test that would distinguish environment, instructions, tests, brief, and model</li>
+            <li>Name the person responsible for running that test or accepting the residual risk</li>
+          </ul>
+        </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p8-p8-layer" name="p8-p8-layer" data-check-id="p8-layer" />
               <span class="check-num">6</span>
-              <span class="check-title">Label each non-hold failure layer</span>
+              <span class="check-title">Record a next test and owner for every non-hold</span>
             </label>
-            <div class="check-detail">Every non-hold cell carries one layer — model / instructions / tests / environment / brief — plus one line of why, and you accepted each label after the probe. A degrade caused by a wall that never made the trip is portable craft, not a model verdict, and the fix is completely different. "Model" in every row is a red flag, not a finding.</div>
+            <div class="check-detail">Each non-hold has a structured row naming the layer, evidence, next discriminating test, and owner. A layer label without a test or owner is not a root-cause record.</div>
           </li>
         </ol>
         <p class="full-measure">Before you leave the matrix, one more measurement: pick one path you genuinely care about — a P1-style brief regeneration, one P2 case's full loop — and run it end to end on the open endpoint. Either the harness loop closes, or you write down exactly which walls must change before it can. "Mostly works" is neither answer.</p>
@@ -449,12 +445,12 @@ Non-hold rows: [LIST THEM, e.g. D02 degrade, D04 improve]</code></pre>
           <pre><code>Gate check before running. Read AUP_ENDPOINT.md. The task I want: [ONE TASK FROM YOUR AUP'S Legitimate refuse examples SECTION, PHRASED AS A REAL REQUEST]. Check it against Allowed, Forbidden, and the data rules. If a clause forbids it: refuse, quote the exact clause, and do no part of the task. If nothing forbids it, do not run it either — name the clause that should have caught it, because a refuse example that passes the gate means the policy has a hole.</code></pre>
           <p>Replace the bracketed slot with one of the refuse examples you wrote in Stage 02, phrased as the real request you would actually send.</p>
         </div>
-        <p>The refusal should sting a little — if it costs you nothing, pick a harder example from your own list. If the gate found a hole instead, that's a real finding: amend the AUP in writing, bump the version, and run the gate again. No silent exceptions in either direction.</p>
+        <p>Use a task that would be genuinely useful but violates a written data or use constraint. That tests whether the policy holds when refusal has an operational cost. If the task passes because the policy has a hole, amend the AUP, bump the version, and run the gate again.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>P8 build</strong> chat:</p>
           <pre><code>Gate check before running. Read AUP_ENDPOINT.md. The task I want: summarize instruments/p8_hold_degrade/SCORE_SHEET.md in three bullets — the two totals, the three counts, and the loop-close line. Check it against the policy; if it is allowed, say which section allows it, then run it.</code></pre>
         </div>
-        <p>You should see the control task pass the gate and run — proof the endpoint works and the refusal was governance, not breakage. Now put both on the record.</p>
+        <p>The allowed control result shows the endpoint worked while the policy blocked the forbidden task. Put both results on the record.</p>
         <div class="do-step">
           <p class="do-label">Now paste this into the <strong>P8 build</strong> chat:</p>
           <pre><code>Create REFUSE_RECORD.md in the project root with five lines: (1) the refused task, quoted; (2) the AUP clause that blocked it, quoted; (3) the reason in one line; (4) the control task that ran and one line of its result; (5) the AUP version and today's date.</code></pre>
@@ -466,331 +462,163 @@ Non-hold rows: [LIST THEM, e.g. D02 degrade, D04 improve]</code></pre>
               <span class="check-num">7</span>
               <span class="check-title">Legitimate refuse under your policy</span>
             </label>
-            <div class="check-detail">You should see <code>REFUSE_RECORD.md</code> holding a refusal that cost you something — task, clause, reason — beside a control task that ran, proving governance rather than breakage. If the refusal costs you nothing, pick a harder example. No silent exceptions — if the policy is wrong, amend it in writing with a version bump.</div>
+            <div class="check-detail"><code>REFUSE_RECORD.md</code> holds a useful but prohibited task, the controlling clause and reason, plus an allowed control task that ran. Together they distinguish policy enforcement from a broken endpoint. If the policy is wrong, amend it in writing with a version bump.</div>
           </li>
         </ol>
 
-        <h3>Stage 07 · Defend</h3>
-        <p>Ninety seconds of argument from evidence. Everything above is the ammunition; nothing else is allowed in. The model gives you a rehearsal; a person hears the delivery, and what that person understands afterward is what decides whether the defense worked.</p>
+        <h3>Stage 07 · Write and deliver the endpoint recommendation</h3>
+        <p>Turn the policy, matrix, refusal, and root-cause register into the decision artifact a manager can act on.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>P8 build</strong> chat:</p>
-          <pre><code>90-second defense rehearsal. You are a skeptical manager deciding whether this endpoint may be used, and for which work. I will deliver my defense in my next message.
+          <p class="do-label">Now paste this into <strong>P8 build</strong>:</p>
+          <pre><code>Read AUP_ENDPOINT.md, instruments/p8_hold_degrade/SCORE_SHEET.md, and
+REFUSE_RECORD.md. Create ENDPOINT_RECOMMENDATION.md with:
 
-Evidence rules: every claim must trace to the matrix totals, the AUP version, one accept, or one reject — nothing else is admissible. After my defense: (1) name any claim that reached past those artifacts; (2) ask the one question a budget holder would ask next; (3) judge the length — if it would not fit in ninety seconds spoken, tell me what to cut.</code></pre>
+- Date and evaluated endpoint/model
+- Decision: FIT FOR LIMITED USE / NOT FIT FOR USE
+- Fit for: named workload types and the criteria they meet
+- Not fit for: named workload types and the controlling policy or score evidence
+- Evidence: Home n/5, Open n/5, Hold/Degrade/Improve counts, one allowed control,
+  one refused task, and the unresolved root-cause rows
+- Conditions before broader use
+- Owner and next review date
+- Residual risk
+
+Use only those artifacts. Preserve uncertainty. Do not write a speech or simulate a manager.</code></pre>
         </div>
-        <p>Type your defense as the next message and take the critique. If you reach for a claim with no path behind it, cut the claim. Then find a live listener — a peer at the next chair, the lead, anyone in the room — because the rehearsal decides nothing.</p>
         <div class="do-step">
-          <p class="do-label">Now, out loud, with your listener:</p>
+          <p class="do-label">Open the recommendation and check the decision:</p>
+          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\ENDPOINT_RECOMMENDATION.md"</code></pre>
           <ul class="do-clicks">
-            <li>Say the fixed version once against a clock — ninety seconds, no slides, nothing handed over for them to read</li>
-            <li>Stop, and ask nothing. Do not explain, summarize, or fill the pause</li>
-            <li>Have them tell you, in their own words and without asking you a question first, which work this endpoint is fit for and which work it is not</li>
-            <li>If they cannot, cut whatever lost them, and deliver it again to the same listener</li>
+            <li>Confirm every number matches the score sheet and every restriction points to policy or test evidence</li>
+            <li>Correct the file before presenting if any claim reaches beyond the artifacts</li>
           </ul>
         </div>
-        <p>What is being judged is what the listener can restate, not how you sounded. A nervous ninety seconds that leaves them able to name both halves of the verdict passes; a smooth ninety seconds that leaves them guessing does not, and a re-delivery is a normal outcome rather than a mark against you. When someone hesitates, the missing piece is almost always the split itself — say the two halves in plain words early, then spend the remaining time on the evidence under each. A listener who cannot restate the verdict is telling you something no model will — take that finding here, rather than in front of a budget holder.</p>
+        <div class="do-step">
+          <p class="do-label">Deliver the recommendation to a live listener:</p>
+          <ul class="do-clicks">
+            <li>Name the listener and read the decision, fit-for work, not-fit-for work, and controlling evidence aloud in no more than ninety seconds</li>
+            <li>Ask the listener to state which work is fit and which is not, in their own words</li>
+            <li>If either half is missing, revise <code>ENDPOINT_RECOMMENDATION.md</code> and deliver the corrected recommendation once</li>
+          </ul>
+        </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p8-p8-defense" name="p8-p8-defense" data-check-id="p8-defense" />
               <span class="check-num">8</span>
-              <span class="check-title">90s defense delivered to a listener</span>
+              <span class="check-title">A listener can restate the endpoint recommendation</span>
             </label>
-            <div class="check-detail">Ninety seconds, out loud, to a live listener, from evidence only: the matrix totals, the policy version, one accept you stand behind, one reject and why. The chat was the rehearsal; the listener is the pass condition. They must state back, unprompted and without asking you a question first, which work this endpoint is fit for and which it is not. If they cannot, the defense failed, not the listener — cut what lost them and deliver it again.</div>
-          </li>
-        </ol>
-
-        <div id="pulse" class="lesson-reflection" data-check-section="pulse">
-          <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/4</span></h3>
-        <p class="section-lede">Close this lesson by recording what happened, reviewing the outcome summary, asking fresh reviewers to challenge the evidence, and updating your transfer plan. <a href="../pulse.html">Lesson reflection guide →</a></p>
-        <p class="reflection-question"><strong>Think back:</strong> What will you carry unchanged when the endpoint changes, and which layer still needs work?</p>
-        <p><strong>Where your answer goes:</strong> You will write the one-sentence answer in the P8 row of <code>operator/MEASUREMENT_SPINE.md</code> through <strong>Operator — Direction &amp; Log</strong>, after both independent reviews. Do not start a separate reflection chat.</p>
-        <div class="do-step">
-          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open <strong>ChatGPT</strong> from the Windows Start menu, then select <strong>Codex</strong> from the top-left switcher if needed</li>
-            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>In the sidebar, switch from <strong>P8 build</strong> to <strong>Operator — Direction &amp; Log</strong> — the standing chat you used for the P8 brief</li>
-            <li>Only if it is missing, click <strong>New chat</strong>, rename it <code>Operator — Direction &amp; Log</code>, and pin it if <strong>Pin</strong> appears</li>
-            <li>Continue in that operator chat. Never use <strong>P8 build</strong>, <strong>P8 cold run</strong>, or another Build chat for the Operator Log, measurement row, or lesson-reflection answer</li>
-          </ul>
-        </div>
-        <p>The standing operator chat holds direction and verdicts. The build and cold-run chats hold the mission work.</p>
-        <!-- Verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Operator — Direction &amp; Log</strong> chat:</p>
-          <pre><code>We are writing the Operator Log entry for this block together.
-
-Read operator/DIRECTION_BRIEF.md (the LIVE brief) and operator/OPERATOR_LOG.md.
-Interview me in short turns. Do not fill the verdict for me.
-
-Walk fields 1 → 5:
-1. Ask what I directed (confirm against the Brief).
-2. Ask what I changed mid-run.
-3. Ask my provisional verdict — then challenge weak reasoning without overriding me.
-4. Demand concrete evidence (paths, checks, citations, reruns). Reject vibe language.
-5. Ask what I still own.
-
-When I accept the wording, write the entry into the correct block section in this file.
-Remind me: REJECT with real evidence is a successful operator act.</code></pre>
-        </div>
-        <p>Your evidence pointers today are the four artifacts: policy version, matrix path, refuse record, transfer file. The verdict covers the endpoint too — fit for which work, on what evidence.</p>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p8-pulse-log" name="p8-pulse-log" data-check-id="pulse-log" />
-              <span class="check-num">9</span>
-              <span class="check-title">Provisional Operator Log entry written</span>
-            </label>
-            <div class="check-detail">The P8 entry holds what you directed, mid-run changes, a verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers — policy version, matrix path, refuse record — and what you still own. Today the verdict covers the endpoint too: fit for which work, on what evidence.</div>
+            <div class="check-detail"><code>ENDPOINT_RECOMMENDATION.md</code> records fit, not-fit, evidence, conditions, owner, next review, and residual risk. A named listener heard it and could restate both halves of the decision.</div>
           </li>
         </ol>
         <div class="do-step">
-          <p class="do-label">Review the <strong>Lesson outcomes</strong> summary and capture your pre-review snapshot:</p>
-          <ul class="do-clicks">
-            <li>Open <strong>Lesson outcomes</strong> below. It reflects the outcome boxes you completed beside the run instructions; there is nothing to check in the summary</li>
-            <li>If a status is wrong, return to that outcome's inline checkbox beside the relevant instructions. Check it only when the artifact exists; clear it while the evidence is missing</li>
-            <li>Open <strong>Notepad</strong> from the Windows Start menu and type the exact title of each outcome shown as <strong>Complete</strong>, one per line. If none are complete, type <code>None</code></li>
-            <li>Keep Notepad open. This is your pre-review snapshot and will go into both adversarial paste packs unchanged</li>
-          </ul>
-        </div>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p8-pulse-bars" name="p8-pulse-bars" data-check-id="pulse-bars" />
-              <span class="check-num">10</span>
-              <span class="check-title">Pre-review outcome snapshot captured</span>
-            </label>
-            <div class="check-detail">The read-only summary reflects the inline outcome boxes, and Notepad holds the exact titles shown as Complete before review. Every completed outcome needs an artifact you could open in front of someone.</div>
-          </li>
-        </ol>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — P8 — open — [today's date]</code> with the actual date</li>
-            <li>In the new chat, confirm the displayed model is the open-endpoint model from the pin</li>
-            <li>In that same new chat, confirm the permission mode says <strong>Ask for approval</strong>. The reviewer must never have helped you succeed</li>
-          </ul>
-        </div>
-        <!-- Verbatim from operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
-        <div class="do-step">
-          <p class="do-label">Now paste this into the new <strong>Adversarial — P8 — open — [today's date]</strong> chat you just created:</p>
-          <pre><code>You are an adversarial operator reviewer for an operator’s school.
-Your job is NOT to help me feel successful. Your job is to stress-test my verdict and claimed lesson outcomes.
-
-Context: careful, evidence-based AI direction and shared reasoning.
-Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
-Containment is absence of effect. Autonomy without stop proof is theater.
-
-I will paste: block, artifacts/paths/excerpts, provisional verdict, and the lesson outcomes completed before review.
-
-Protocol — follow in order:
-1. Restate my claimed outcome and verdict in one cold sentence (no praise).
-2. Attack pass: give the strongest case that this is NOT YET complete for this lesson.
-   - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
-   - Name completion theater if you see it.
-   - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
-3. Evidence audit: for each lesson outcome completed before review, mark:
-   SURVIVES / WOUNDED / DEAD — with reason.
-4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
-   If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
-   If REJECT, check I am not rejecting to avoid measurement.
-5. Force one of:
-   a) Concrete fix list (smallest changes to complete the lesson outcomes), or
-   b) “Stands under fire” — only if evidence is actually strong.
-6. End with a single line I must copy into my Operator Log:
-   ADVERSARIAL: [stood / wounded / failed] — [one sentence].
-
-Rules for you:
-- No encouragement fluff. No “great job.” No emoji.
-- Do not rewrite my mission for me unless citing a fix.
-- Do not accept screenshots of chat enthusiasm as evidence.
-- Prefer false NOT YET over false pass.
-- Short, sharp, specific.</code></pre>
-        </div>
-        <p>Then the paste pack — the reviewer only bites as hard as what you feed it.</p>
-        <div class="do-step">
-          <p class="do-label">Stay in the new <strong>Adversarial — P8 — open — [today's date]</strong> chat and paste this:</p>
-          <pre><code>Block: P8 — Operator-governed open model. Claimed outcome: a dated AUP, a scored hold/degrade matrix on D01-D05, a refuse-plus-control record, a SEALED 30-60-90.
-
-Artifacts: AUP_ENDPOINT.md (version, effective date) · instruments/p8_hold_degrade/SCORE_SHEET.md (both columns, counts, loop-close line) · REPOINT_NOTE.md · REFUSE_RECORD.md · operator/TRANSFER_30_60_90.md (status line, session log).
-
-Matrix totals: [OPEN n/5 VS HOME n/5, PLUS THE THREE COUNTS]
-Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
-Lesson outcomes completed before review: [PASTE THE COMPLETED OUTCOME TITLES]
-What I already know is weak: [ONE HONEST LINE]
-
-Attack the matrix and the refuse record first.</code></pre>
-          <p>Fill the four bracketed slots from your artifacts before sending. For the lesson outcomes, return to Notepad, press <strong>Ctrl+A</strong> and <strong>Ctrl+C</strong>, and paste the pre-review titles into that slot. Stage 08 now follows measurement, so also replace <code>a SEALED 30-60-90</code> with <code>a 30-60-90 ready for its seal gate</code>, and replace <code>(status line, session log)</code> with <code>(current status, session log)</code>. Do not claim the seal before you run it.</p>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Move the open-endpoint result into <strong>Operator — Direction &amp; Log</strong> in two trips:</p>
-          <ul class="do-clicks">
-            <li>In the open-endpoint review chat, copy the complete SURVIVES / WOUNDED / DEAD list only</li>
-            <li>Open <strong>Operator — Direction &amp; Log</strong>, paste the list unchanged as a new message, and send it</li>
-            <li>Return to the same open-endpoint review chat and copy its single final <code>ADVERSARIAL:</code> line</li>
-            <li>Return to <strong>Operator — Direction &amp; Log</strong>, paste that line unchanged as a new message, and send it</li>
-            <li>Then paste the compact filing command below</li>
-          </ul>
-          <pre><code>Read operator/OPERATOR_LOG.md. Append my two raw result messages
-immediately before this command to the P8 log entry under "Open
-endpoint," verbatim: first the complete outcome rulings, then the
-final ADVERSARIAL line. Do not summarize or change my verdict.</code></pre>
-        </div>
-        <p><strong>Freeze the evidence now.</strong> Do not fix a wounded outcome, edit an artifact, or change the verdict yet. The home-endpoint reviewer must receive the same prompt, paste pack, and evidence. Save the finding, restore the home configuration, and defer every fix until both reviews finish.</p>
-        <div class="do-step">
-          <p class="do-label">Restore the home-model configuration:</p>
-          <ul class="do-clicks">
-            <li>Return to the <strong>P8 PowerShell window</strong>. If it is closed, open PowerShell from the Windows Start menu</li>
-          </ul>
+          <p class="do-label">Restore the home-model configuration immediately after the live delivery:</p>
           <pre><code>Copy-Item "$env:USERPROFILE\.codex\config.toml.p8-backup" "$env:USERPROFILE\.codex\config.toml" -Force</code></pre>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Restart Codex on the home model and create the second review:</p>
           <ul class="do-clicks">
             <li>Fully quit ChatGPT, reopen it from the Windows Start menu, and select <strong>Codex</strong></li>
-            <li>Open <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — P8 — home — [today's date]</code> with the actual date</li>
-            <li>In the new chat, confirm the displayed model is the normal course model, not the open-endpoint model</li>
-            <li>In that same new chat, confirm <strong>Ask for approval</strong></li>
-            <li>Paste the same frozen adversarial prompt, then the same filled paste pack — the two blocks above, unchanged. Same evidence, no softening</li>
+            <li>Open the course project and confirm the displayed model is the normal course model, not the open-endpoint model</li>
+            <li>Confirm permissions say <strong>Ask for approval</strong> before closeout</li>
           </ul>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Move the home-endpoint result into <strong>Operator — Direction &amp; Log</strong> in two trips:</p>
-          <ul class="do-clicks">
-            <li>In the home-endpoint review chat, copy the complete SURVIVES / WOUNDED / DEAD list only</li>
-            <li>Open <strong>Operator — Direction &amp; Log</strong>, paste the list unchanged as a new message, and send it</li>
-            <li>Return to the same home-endpoint review chat and copy its single final <code>ADVERSARIAL:</code> line</li>
-            <li>Return to <strong>Operator — Direction &amp; Log</strong>, paste that line unchanged as a new message, and send it</li>
-            <li>Then paste the compact filing command below</li>
-          </ul>
-          <pre><code>Read operator/OPERATOR_LOG.md. Append my two raw result messages
-immediately before this command to the P8 log entry under "Home
-endpoint," verbatim: first the complete outcome rulings, then the
-final ADVERSARIAL line. Do not summarize or change my verdict.</code></pre>
-        </div>
-        <p>The two reviews now come from different model families against the same frozen prompt and evidence. The evidence freeze ends here. Compare the rulings; where they disagree, that disagreement is the finding. Only now fix wounded evidence or downgrade the verdict, and record what changed. The app is also safely back on the home configuration before you close the lesson.</p>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p8-pulse-adv" name="p8-pulse-adv" data-check-id="pulse-adv" />
-              <span class="check-num">11</span>
-              <span class="check-title">Independent evidence reviews completed in two new chats</span>
-            </label>
-            <div class="check-detail">Two brand-new chats, the same frozen prompt, and unchanged artifacts produced two independent reviews. Both final <code>ADVERSARIAL: stood | wounded | failed</code> lines and both complete outcome-ruling lists are in the P8 Operator Log, labelled by endpoint. For each wounded outcome, return to its inline checkbox beside the relevant run instructions, clear it while you repair the evidence, and check it again only when the proof exists. Record every claim ruled WOUNDED or DEAD and what you did about it; an empty list is a legitimate answer and worth having on the record.</div>
-          </li>
-        </ol>
-        <!-- Verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
-        <div class="do-step">
-          <p class="do-label">Now stay in or reopen <strong>Operator — Direction &amp; Log</strong> and paste this:</p>
-          <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
-Block: [B1/P1/…].
-Adversarial line: [paste ADVERSARIAL: …].
-Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
-Lesson outcomes completed before the review: [n].
-Brief LIVE at: [time or "approx"].
-Adversarial done at: [time or "approx"].
-Mission outcome path(s): [paths].
-Fill this block's row:
-1. Brief accuracy — did the artifact match the "done looks like" I wrote before the
-   run, and which one of the five brief fields would I write differently now?
-   Refuse "the brief was fine": make me name a field, or say none and name what
-   held better than expected.
-2. Overclaim n/m — count the lesson outcomes completed before review that came back WOUNDED or DEAD,
-   over the number completed before review. Count from the rulings I pasted, not from my summary.
-3. Time to result in minutes.
-4. Lesson reflection (one sentence) — What will I carry unchanged when the endpoint changes, and which layer still needs work?
-5. Deep mark if this block has one.
-Do not score ritual health and do not give a quality label. Neither is in this row.
-Do not start transfer until this row is written.</code></pre>
-          <p>Before sending: Block is <code>P8</code>. For the final-line and ruling-list fields, write <code>use both endpoint-labelled P8 results stored verbatim in operator/OPERATOR_LOG.md</code>; do not copy them again. Where the reviewers disagree, count the harsher ruling. <code>[n]</code> is how many lesson outcomes were shown as Complete in your pre-review snapshot; honest estimates are fine for the times; <code>[paths]</code> takes <code>AUP_ENDPOINT.md</code>, <code>instruments/p8_hold_degrade/SCORE_SHEET.md</code>, <code>REFUSE_RECORD.md</code>, and <code>operator/TRANSFER_30_60_90.md</code>. The deep mark is <code>Hold-degrade: open n/5 vs home n/5; refuse: Y/N; transfer SEALED: N</code> until Stage 08 runs the seal gate.</p>
-        </div>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p8-pulse-measure" name="p8-pulse-measure" data-check-id="pulse-measure" />
-              <span class="check-num">12</span>
-              <span class="check-title">Measurement spine updated</span>
-            </label>
-            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of lesson outcomes completed before review that the adversarial ruled WOUNDED or DEAD over the number completed before review, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, a one-sentence <strong>lesson reflection</strong> answering the question above, and the deep mark <code>Hold-degrade: open n/5 vs home n/5; refuse: Y/N; transfer SEALED: Y/N</code>.</div>
-          </li>
-        </ol>
         </div>
 
-        <h3>Stage 08 · Seal</h3>
-        <p>Both endpoint reviews and the measurement row now exist. The transfer file can close under that pressure, with the defense's evidence feeding it.</p>
+        <div id="pulse" class="lesson-reflection" data-check-section="pulse">
+          <h3>Lesson reflection</h3>
+          <p class="section-lede">Close the endpoint evaluation from the durable artifacts before certifying the transfer plan. <a href="../pulse.html">Lesson reflection guide →</a></p>
+          <p class="reflection-question"><strong>Think back:</strong> What carries unchanged when the endpoint changes, and which layer still needs work?</p>
+          <div class="do-step">
+            <p class="do-label">Open <strong>Operator — Direction &amp; Log</strong> on the restored home model. If it is missing, create a new chat with that exact name. Then paste:</p>
+            <pre><code>Close the P8 endpoint evaluation from saved evidence. Read:
+- operator/DIRECTION_BRIEF.md
+- AUP_ENDPOINT.md
+- REPOINT_NOTE.md
+- instruments/p8_hold_degrade/SCORE_SHEET.md
+- REFUSE_RECORD.md
+- ENDPOINT_RECOMMENDATION.md
+- operator/OPERATOR_LOG.md
+
+Update the P8 section of operator/OPERATOR_LOG.md with:
+- every artifact and exact path;
+- SHIP FOR LIMITED USE or HOLD, matching ENDPOINT_RECOMMENDATION.md and these
+  criteria: policy predates first request; D01–D05 ran in five isolated chats;
+  both matrix columns and counts are complete; every non-hold has evidence, next
+  test, and owner; the refusal and allowed control are recorded; the recommendation
+  names fit/not-fit work; and the home configuration is restored and verified;
+- the most important finding and fix, or the residual risk;
+- one reusable endpoint-change rule.
+
+Do not interview me. Preserve unrelated sections. Show the exact P8 entry written.</code></pre>
+          </div>
+          <ol class="checklist">
+            <li class="check-item" data-check-item>
+              <label class="check-label">
+                <input type="checkbox" id="p8-pulse-log" name="p8-pulse-log" data-check-id="pulse-log" />
+                <span class="check-num">9</span>
+                <span class="check-title">Save the artifact-backed endpoint closeout</span>
+              </label>
+              <div class="check-detail"><code>operator/OPERATOR_LOG.md</code> names every P8 artifact, criterion-based SHIP FOR LIMITED USE or HOLD, the finding and fix or residual risk, the restored home configuration, and a reusable endpoint-change rule.</div>
+            </li>
+          </ol>
+        </div>
+
+        <h3>Stage 08 · Finalize the transfer plan and operating record</h3>
+        <p>Use the endpoint evidence to finish the plan, run its acceptance criteria, and synchronize the P8 log in one bounded update. Unsupported gaps remain explicit blockers; the task does not invent missing work.</p>
         <figure class="section-diagram">
-          <img src="../assets/blocks/p8/p8-stage-seal.svg" alt="Four evidence chips — matrix totals, policy version, one accept, one reject — feeding the transfer file marked SEALED with a date" width="1120" height="220" loading="lazy" decoding="async" />
+          <img src="../assets/blocks/p8/p8-stage-seal.svg" alt="P8 evidence updates the transfer plan, checks twelve acceptance criteria, and synchronizes the operating record before SEALED" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open the course project at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Open <strong>Operator — Transfer 30-60-90</strong> in the sidebar</li>
-            <li>If it is missing, click <strong>New chat</strong>, rename it <code>Operator — Transfer 30-60-90</code>, and pin it if <strong>Pin</strong> appears</li>
-            <li>Confirm the displayed model is the normal course model, not the open-endpoint model, and the permission mode says <strong>Ask for approval</strong></li>
-          </ul>
-        </div>
-        <!-- Verbatim from operator/TRANSFER_30_60_90.md — every-AM/PM transfer prompt -->
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Operator — Transfer 30-60-90</strong> chat:</p>
-          <pre><code>Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
+          <p class="do-label">Open <strong>Operator — Transfer 30-60-90</strong> on the home model. If it is missing, create a new chat with that exact name. Then paste:</p>
+          <pre><code>Finalize the transfer plan and P8 operating record. Read:
+- AUP_ENDPOINT.md
+- instruments/p8_hold_degrade/SCORE_SHEET.md
+- REFUSE_RECORD.md
+- ENDPOINT_RECOMMENDATION.md
+- operator/TRANSFER_30_60_90.md
+- operator/OPERATOR_LOG.md
 
-Block I just finished: [B1/P1/…].
-I have finished Direction/Log and captured the pre-review lesson-outcome snapshot in the other operator chat.
+First update operator/TRANSFER_30_60_90.md:
+1. Add a dated P8 session-log row naming the policy version, Home/Open totals,
+   Hold/Degrade/Improve counts, recommendation, refusal result, and residual risk.
+2. Tighten only the 30/60/90 lines supported by those artifacts. Keep at most three
+   checkable outcomes per horizon; name owner and completion evidence.
+3. Preserve every dated circuit seed and every unrelated line.
 
-Run a short interactive update:
-1. What did this lesson prove you can now do (one sentence, no theater)?
-2. Map it onto MY real desk — interview me if missing.
-3. Update the matching seed and today’s row in the session log.
-4. Tighten at most three lines in identity or 30/60/90 if enough signal exists.
-5. Name one backslide risk if I do nothing at work.
+Then evaluate these acceptance criteria against the updated file. Write PASS or
+BLOCK with the exact supporting line or exact missing field:
 
-Do not seal. Do not invent a full plan from zero on a light block.
-Challenge vagueness. I own every accept.</code></pre>
-          <p>Replace <code>[B1/P1/…]</code> with <code>P8</code> before sending. Leave the next line unchanged: the Operator Log, pre-review outcome snapshot, independent reviews, and measurement row are complete now.</p>
+1. Every seed section is dated, with dates spread across the week.
+2. Identity names my real desk and one recurring workload.
+3. Each horizon has at most three outcomes; every outcome is observable in that
+   horizon and names completion evidence.
+4. P2, P6, and P7 seeds are visible in the 30/60/90 horizons.
+5. P3 and P5 appear as standing operating rules.
+6. P1 names a recurring judgment product.
+7. Self-calibration names a real failure mode.
+8. Bounds and refusals are explicit.
+9. No generic "explore AI" or "be more productive" line remains.
+10. The endpoint recommendation can be delivered from the file and evidence paths.
+11. Weak lines carry a fix or an explicit accepted residual risk.
+12. The P8 session row and today's evidence paths exist.
+
+Repair only gaps supported by the listed artifacts. Never invent a seed, result,
+owner, or evidence path. Write the final PASS/BLOCK results under the seal checklist.
+If all twelve are PASS, set Status to SEALED with today's date. If any remain BLOCK,
+leave the existing status unchanged and add "Seal review — [TODAY'S DATE]: BLOCKED"
+with the blocking items.
+
+Finally, update only the P8 entry in operator/OPERATOR_LOG.md so its transfer status,
+endpoint decision, artifact paths, seal date or blockers, and residual risk match the
+final files exactly. Preserve all unrelated content. Show the exact transfer sections,
+criteria results, and P8 log entry written. Do not interview me.</code></pre>
         </div>
-        <p>The session update writes today's row first — the prompt itself refuses to seal, which is right: the update and the seal are two separate acts, and the second one starts now.</p>
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Operator — Transfer 30-60-90</strong> chat:</p>
-          <pre><code>Seal gate. Read the seal checklist near the bottom of operator/TRANSFER_30_60_90.md and run it adversarially, one item at a time: attack the weakest evidence in the file before letting me claim the item, and I fix the line in the file or accept the risk in writing — in the file, not just here. Hold the line on the session log: if the week's rows are thin, we reconstruct honestly and record the gaps as gaps, never backfill. Only when every item holds, set Status to SEALED with today's date.</code></pre>
-        </div>
-        <p>You should see the checklist walked item by item and end with Status reading <strong>SEALED</strong> plus today's date. A Friday-invented plan fails the checklist's own session-log test — reconstruct honestly and log the gaps as gaps. The app stays on the verified home configuration.</p>
+        <p>Open both files. Confirm every PASS points to a real line, the status is SEALED only when all twelve pass, and the P8 log matches the endpoint recommendation and transfer status.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p8-p8-seal" name="p8-p8-seal" data-check-id="p8-seal" />
-              <span class="check-num">13</span>
-              <span class="check-title">Seal Transfer 30-60-90</span>
+              <span class="check-num">10</span>
+              <span class="check-title">Transfer plan certified and P8 record synchronized</span>
             </label>
-            <div class="check-detail">SEALED requires session-log rows across the week, your real desk in the identity block, and at most three checkable outcomes per horizon — the AI attacks weak lines; you fix each one or accept the risk in writing. You should see status <strong>SEALED</strong> with today's date in <code>operator/TRANSFER_30_60_90.md</code>. If the seal stalls on a thin week, that's the checklist working — reconstruct, don't invent.</div>
-          </li>
-        </ol>
-
-        <p>Stage 08 has now pasted the every-session prompt and run the seal gate in <strong>Operator — Transfer 30-60-90</strong>. Close the loop from the file itself.</p>
-        <div class="do-step">
-          <p class="do-label">Now reopen <strong>Operator — Transfer 30-60-90</strong> in the Codex sidebar and paste this:</p>
-          <pre><code>Lesson close-out for P8. Two questions, answered only from the file: does the session log carry a P8 row, and does Status read SEALED with today's date? Quote the row and the status line. If either is missing, we finish it now before I leave the lesson.</code></pre>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Carry the earned seal back to the measurement row and Operator Log:</p>
-          <ul class="do-clicks">
-            <li>Copy the quoted P8 session row and Status line from the transfer chat</li>
-            <li>Open <strong>Operator — Direction &amp; Log</strong> in the Codex sidebar</li>
-            <li>If Status is <strong>SEALED</strong> with today's date, tell the chat to change only the P8 deep mark's <code>transfer SEALED: N</code> flag to <code>transfer SEALED: Y</code> in <code>operator/MEASUREMENT_SPINE.md</code>. If the gate did not seal, leave N in place</li>
-            <li>Add the quoted Status line to the P8 Operator Log evidence pointers and update your verdict only if the seal result changed it</li>
-          </ul>
-        </div>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p8-pulse-transfer" name="p8-pulse-transfer" data-check-id="pulse-transfer" />
-              <span class="check-num">14</span>
-              <span class="check-title">Transfer plan updated</span>
-            </label>
-            <div class="check-detail">Today the transfer update and the seal happen in one visit — Stage 08's every-session prompt wrote the P8 row before the gate ran. Check this once the row and the SEALED status are both quoted back from the file, and the measurement deep mark carries the earned Y/N result. If either file is incomplete, finish it now.</div>
+            <div class="check-detail"><code>operator/TRANSFER_30_60_90.md</code> carries twelve evidence-linked PASS results and Status <strong>SEALED</strong> with today's date. <code>operator/OPERATOR_LOG.md</code> matches the recommendation, artifact paths, seal date, and residual risk. Leave this unchecked while any criterion remains BLOCK.</div>
           </li>
         </ol>
       </section>
@@ -835,9 +663,9 @@ Challenge vagueness. I own every accept.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p8-mvp-layer" name="p8-mvp-layer" data-check-id="mvp-layer" />
               <span class="check-num">18</span>
-              <span class="check-title">Each failure is assigned to the responsible layer</span>
+              <span class="check-title">Each non-hold has a root-cause test and owner</span>
             </label>
-            <div class="check-detail">Evidence looks like: every non-hold cell carries one of model / instructions / tests / environment / brief, plus a one-line reason. "The model is worse" on every row is a red flag, not a finding.</div>
+            <div class="check-detail">The score sheet's root-cause register names the case, layer, evidence, next discriminating test, and owner for every non-hold.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p8-refuse">
@@ -862,27 +690,18 @@ Challenge vagueness. I own every accept.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="p8-mvp-90s" name="p8-mvp-90s" data-check-id="mvp-90s" />
               <span class="check-num">21</span>
-              <span class="check-title">A listener can restate the 90-second recommendation</span>
+              <span class="check-title">The endpoint recommendation is durable and understood</span>
             </label>
-            <div class="check-detail">Evidence looks like: a named listener who heard the ninety seconds — matrix totals, policy version, one accept, one reject, nothing reaching past your artifacts — and then said back, in their own words and without asking you a question first, which work this endpoint is fit for and which it is not. Nerves, pauses, and a plain voice do not fail this outcome; a listener left guessing does. If you cut and delivered again, the outcome counts on the delivery that landed.</div>
+            <div class="check-detail"><code>ENDPOINT_RECOMMENDATION.md</code> records fit, not-fit, evidence, conditions, owner, next review, and residual risk. A named listener could restate both halves of the recommendation.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p8-seal">
             <label class="check-label">
               <input type="checkbox" id="p8-mvp-sealed" name="p8-mvp-sealed" data-check-id="mvp-sealed" />
               <span class="check-num">22</span>
-              <span class="check-title">The 30/60/90 plan is reviewed, complete, and dated</span>
+              <span class="check-title">The 30/60/90 plan and P8 operating record are complete and consistent</span>
             </label>
-            <div class="check-detail">Evidence looks like: status SEALED with today's date, session-log rows spanning the week, the P2/P6/P7 seeds visible inside the 30/60/90 horizons, and the P3 and P5 seeds standing as rules rather than class memories. A Friday dump fails the seal checklist's own tests.</div>
-          </li>
-
-          <li class="check-item" data-check-item data-outcome-after="pulse-transfer">
-            <label class="check-label">
-              <input type="checkbox" id="p8-mvp-log8" name="p8-mvp-log8" data-check-id="mvp-log8" />
-              <span class="check-num">23</span>
-              <span class="check-title">The log links the policy, score matrix, refusal, and plan</span>
-            </label>
-            <div class="check-detail">Evidence looks like: the P8 log entry carries four pointers — policy version, matrix, refuse record, 30-60-90 — that a peer could follow without asking you anything.</div>
+            <div class="check-detail">Twelve acceptance criteria read PASS, status is SEALED with today's date, each horizon traces to dated seeds and completion evidence, and the P8 log matches the recommendation and transfer decision.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="#p8-stretch-endpoint-outcome-point">
@@ -898,7 +717,7 @@ Challenge vagueness. I own every accept.</code></pre>
 
       <section id="depth" class="home-section">
         <h2>Going deeper while you work</h2>
-        <p class="section-lede">Use this between stages and for the argument afterward — none of it is required to check a box, and all of it makes the boxes worth checking.</p>
+        <p class="section-lede">Use this between stages to diagnose failures or extend the endpoint decision.</p>
 
         <h3>Failure catalog — symptom, cause, move</h3>
         <table>
@@ -910,13 +729,13 @@ Challenge vagueness. I own every accept.</code></pre>
             <tr><td>Open answers read fluent but the matrix says FAIL</td><td>You're grading prose instead of loop completion</td><td>Score the case's check, nothing else — fluent-but-wrong is exactly the failure the suite exists to catch</td></tr>
             <tr><td>Hold count is suspiciously perfect</td><td>Tests too loose to notice a model change at all</td><td>Re-read what each check asserts; a suite that can't detect a model swap can't defend one either</td></tr>
             <tr><td>The refusal feels performative</td><td>Task chosen that nobody would ever actually run</td><td>Pick from your AUP's own refuse examples; if none touches real work, the policy needs a written amendment, not a softer test</td></tr>
-            <tr><td>The seal stalls</td><td>Transfer file is a Friday dump, not a living file</td><td>Reconstruct the week's rows honestly in the Transfer chat and log the gaps — a recorded gap survives adversarial review; a fabricated week does not</td></tr>
+            <tr><td>The seal is blocked</td><td>Transfer evidence or a dated seed is missing</td><td>Record the exact BLOCK items, repair only from real evidence, and rerun certification</td></tr>
           </tbody>
         </table>
 
-        <h3>Questions worth arguing about</h3>
+        <h3>Operational questions</h3>
         <ul>
-          <li><strong>What degrade count would you accept?</strong> Independence from a vendor has a price. If open holds 3/5, is that a yes for low-stakes drafting and a no for anything shipped? Name the count and the workload split before someone with a budget asks you to.</li>
+          <li><strong>What degrade count would you accept?</strong> If open holds 3/5, define which low-stakes work remains fit and which shipped work stays out.</li>
           <li><strong>Who writes the AUP at work — you, security, or legal?</strong> Probably all three eventually. But an operator-authored draft, dated before first touch, changes the conversation: you arrive with governance to review instead of behavior to excuse.</li>
           <li><strong>Is an improve cell good news?</strong> A case your home model failed that the open model passes says something — but about which layer? Before celebrating, ask whether the test was measuring capability or one vendor's habits.</li>
           <li><strong>What would you not re-point even if every number held?</strong> Some workloads stay put for reasons no matrix captures — data classification, contractual terms, a person downstream. A portfolio answer beats a loyalty answer.</li>
@@ -926,7 +745,7 @@ Challenge vagueness. I own every accept.</code></pre>
         <ul>
           <li><strong>Engineering desk:</strong> the vendor deprecates your model mid-quarter. You already have a frozen suite; migration day is a cold run and a matrix, and the memo to your lead is counts plus layer labels — not "the new one seems fine."</li>
           <li><strong>Mission-ops desk:</strong> a policy shop bans external endpoints for one data class. Your AUP plus refuse record is the compliance story that already exists; the partial re-point strategy — what stays commercial and why — is the plan you table the same day.</li>
-          <li><strong>Management desk:</strong> model-choice briefings up the chain take the 90-second defense's shape — totals, policy version, one accept, one reject. Practice it now, while the audience is peers instead of a budget holder.</li>
+          <li><strong>Management desk:</strong> model-choice briefings use the recommendation's shape — decision, workload split, totals, policy version, conditions, owner, and residual risk.</li>
         </ul>
 
         <h3>Stretch lanes</h3>
@@ -967,12 +786,12 @@ Decision rule: I route [WORK] to [ENDPOINT] when [EVIDENCE GATE]. I hold or retu
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Before you move on</h2>
-        <p>A completed lesson means more than a successful run. Evidence must survive adversarial review — policy dated before touch, numbers on the matrix, a refusal on record, a seal that grew all week. Full list: <a href="#floor">these P8 lesson outcomes</a>.</p>
+        <p>Before moving on, confirm the dated policy, isolated case runs, completed matrix, root-cause rows, refusal record, endpoint recommendation, home restore, and transfer certification meet the <a href="#floor">P8 lesson outcomes</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>
         <ul>
-          <li><strong>The endpoint won't answer.</strong> Check placeholder vs pin values first; a capped or mispasted credential errors in a way that reads like a login failure. Run the allowed control task, then escalate with the exact error text. Meanwhile the block doesn't idle: policy, home column, refuse rationale, and defense prep all proceed without the socket.</li>
+          <li><strong>The endpoint won't answer.</strong> Check placeholder vs pin values first; a capped or mispasted credential can look like a login failure. Run the allowed control task, then escalate with the exact error text. Policy, the home column, and recommendation structure can still proceed.</li>
           <li><strong>No home baseline.</strong> If your P2 after column is empty, run D01–D05 once on the home model first this morning, then open — same IDs, no substitutions. Both columns come from today; the comparison still holds.</li>
           <li><strong>Everything degraded and it feels like the model's fault.</strong> Probe environment before verdict: did your instructions and skills load on the re-pointed run at all? Port the walls, re-run one case, and only then write layer labels. Narrow data scope if time is short — never the judgment standard.</li>
         </ul>

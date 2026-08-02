@@ -63,7 +63,7 @@
   <p>The raw differences are <code>+2, +2, +3, 0, +1, +2</code>. Sorted, they are <code>0, +1, +2, +2, +2, +3</code>. The two middle values are both +2, so the median paired difference is <strong>+2 checks</strong>. The observed span is <strong>0 to +3</strong>. Five pairs favor B, one ties, and none favors A.</p>
   <p>For MAD, measure each difference’s distance from the median of +2: <code>0, 0, 1, 2, 1, 0</code>. Sorted, those distances are <code>0, 0, 0, 1, 1, 2</code>; the middle two are 0 and 1, so MAD is <strong>0.5 check</strong>. That decimal comes from the midpoint of two central distances, not from half-check scoring precision. The A-first differences are <code>+2, +3, +1</code>, with median +2. The B-first differences are <code>+2, 0, +2</code>, also with median +2. That split shows no obvious order separation in these six pairs. It does not prove that order is harmless.</p>
 
-  <h3>Inject the failure: promote the winner</h3>
+  <h3>Diagnostic example: cherry-picking the winning pair</h3>
   <p>An eager operator selects pair 03 and reports, “Version B improves the handover by three checks.” The sentence is arithmetically true for that run and misleading as a summary. Pair 03 is the largest observed difference. Choosing it after seeing all six is <strong>cherry-picking</strong>: the selection rule favors a winner and discards the variation that qualifies it.</p>
   <p>The symptom is easy to spot: the headline number cannot be reconstructed from a predeclared summary rule, and five logged pairs have vanished from the claim. Recovery is not to average away the mistake. Restore every run, show the raw differences, apply the summary chosen for all pairs, and narrow the language.</p>
   <blockquote>Across six alternated-order, fresh-session pairs on one frozen handover packet, version B scored higher in five and tied in one. The median paired difference was +2 checks, with observed differences from 0 to +3 and MAD 0.5. This supports a limited shadow-use trial on this packet; it does not establish performance on other packet shapes or a long-run improvement probability.</blockquote>
@@ -87,19 +87,19 @@
     </table>
   </div>
   <ol>
-    <li>Calculate every paired difference. Predict whether “B is reliably better” will survive before calculating any summary.</li>
+    <li>Calculate every paired difference and keep all rows visible.</li>
     <li>Find the median difference, observed span, MAD, and counts of improvement, tie, and regression.</li>
     <li>Split the differences by order: A-first versus B-first. What diagnostic signal appears?</li>
     <li>Write one descriptive sentence the rows support and one inferential sentence they do <em>not</em> support.</li>
     <li>Choose the next move: deploy, hold, rerun with a stronger reset and an interleaved-or-randomized order plan, or abandon the metric. State the stop condition.</li>
   </ol>
-  <details>
-    <summary><strong>Reveal only after you write the predictions</strong></summary>
+  <div class="callout">
+    <strong>Reference analysis</strong>
     <p>The differences are <code>+2, +2, 0, −1</code>. Sorted, they are <code>−1, 0, +2, +2</code>, so the median is <strong>+1</strong>. The observed span is <strong>−1 to +2</strong>. Distances from the median are <code>1, 1, 1, 2</code>, giving MAD <strong>1</strong>. Two pairs improve, one ties, and one regresses.</p>
     <p>The A-first differences are <code>+2, +2</code>, with median +2. The B-first differences are <code>0, −1</code>, with median −0.5. Equal counts do not make the sequence clean: the two A-first assignments occurred in the early pairs and the two B-first assignments occurred in the late pairs. The observed A-first/B-first split is therefore confounded with pair sequence and time. These rows cannot distinguish a within-pair order or carryover effect from drift or another time-linked condition. With only two pairs in each order, they do not prove any of those mechanisms; they do wound the headline.</p>
     <p>A defensible description is: “In four fresh pairs, the median observed difference was +1 check, with results from −1 to +2; both A-first pairs favored B, while neither B-first pair did.” The rows do not support “B has a 75% chance of winning,” “B will improve future packets by one check,” or a statistical-significance claim.</p>
     <p>The next move is to hold deployment and inspect the reset and sequence trail. Before another run, write a count-balanced schedule whose A-first and B-first assignments are interleaved across pair sequence, or randomize those assignments under an equal-count constraint. Name the state reset, record the actual schedule, and keep the metric fixed. If the split persists after that predeclared follow-up, stop adding convenient runs and return the unresolved mechanism to the evaluation owner. Return sooner if the next trial would touch real operational data, exceed the approved evaluation budget, or influence a consequential workflow before the signal is understood.</p>
-  </details>
+  </div>
 
   <h3>Copy the repeated-run worksheet</h3>
   <p>Write exclusions and the stop rule before the first result. A failed or interrupted run still belongs in the trail; mark its outcome and reason. Exclude only under the predeclared rule, never because the score is inconvenient.</p>
@@ -135,22 +135,13 @@ Decision: continue / hold / another probe / return to human:
 Next discriminating probe:
 Return-to-human trigger and owner:</code></pre>
 
-  <h3>Self-check: make the claim smaller or the design stronger</h3>
-  <ol>
-    <li>You run the same deterministic replay six times without changing input, state, or seed and receive the same answer. What did repetition establish, and what variation did it leave untested?</li>
-    <li>Ten rows came from one chat that was corrected after row three. How many fresh trials do you have?</li>
-    <li>Version B wins four of five pairs, but every B run came second. What must appear in the conclusion?</li>
-    <li>One pair fails because the source file was missing. Can you delete it?</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the self-check</strong></summary>
-    <ol>
-      <li>It established repeatability under one fixed replay condition. It did not sample run-to-run randomness, input diversity, evaluator variation, changed operating conditions, or other seeds.</li>
-      <li>At most one evolving dependent sequence, not ten independent trials. Preserve the rows, mark the intervention, and restart under a design whose trial boundary is real.</li>
-      <li>State that version and order are confounded. The result can motivate a predeclared follow-up whose equal-count order assignments are interleaved or randomized across pair sequence, but it cannot distinguish a version effect from a second-position advantage.</li>
-      <li>Only if “missing required source before execution” was a predeclared exclusion and the event is still logged. Otherwise it remains part of observed operational behavior. In either case, do not erase it.</li>
-    </ol>
-  </details>
+  <h3>Four rules for defensible repeated-run claims</h3>
+  <ul>
+    <li>Six identical deterministic replays establish repeatability under one fixed condition; they do not sample input, evaluator, environment, or seed variation.</li>
+    <li>Ten rows from one chat corrected after row three form one evolving dependent sequence, not ten fresh trials. Preserve the rows, mark the intervention, and restart with a real trial boundary.</li>
+    <li>If every B run came second, version and order are confounded. Report that limitation and use an interleaved or randomized equal-count order plan for the next comparison.</li>
+    <li>A run with a missing required source stays in the trail. Exclude it from the summary only under a rule written before the runs, and always preserve the event and reason.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section resource-transfer">

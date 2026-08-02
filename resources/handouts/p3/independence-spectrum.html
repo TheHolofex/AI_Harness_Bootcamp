@@ -72,7 +72,7 @@ but does not address [remaining common causes].</code></pre>
     </table>
   </div>
   <p>The architecture review collapses the independence label before either engine runs. The filtered export omitted three service-credit incidents. The summary therefore says “two qualifying disruptions,” although the raw incident ledger supports five. Both planned paths are unable to see the missing records, and the shared evaluator is unable to penalize the omission.</p>
-  <p>Predict before reading the ledger excerpt: which pre-dispatch change matters more for this failure—another provider, another prompt author, a raw-record path, or a second pass through the same rubric?</p>
+  <p>For this failure, a raw-record path matters more than another provider, another prompt author, or a second pass through the same summary-bound rubric.</p>
   <div class="table-scroll">
     <table>
       <caption>Independence ledger excerpt for the renewal claim</caption>
@@ -91,47 +91,18 @@ but does not address [remaining common causes].</code></pre>
 </section>
 
 <section id="failure-recovery" class="resource-section">
-  <h2>Break it on purpose: perform a brand swap</h2>
-  <p>To inject the failure, return Path B to the shared summary, shared index, and shared evaluator. Change only the provider and prompt wording, then run the non-acting review. The diagram still has two engine boxes, and the outputs may sound different. The observable symptom is more damning: both repeat the same wrong incident count, and the evaluator cannot detect it because its reference surface carries the same omission.</p>
-  <p>Diagnose against the pre-run ledger. The source-data, retrieval, and evaluator rows already name the paths capable of producing this joint failure; the observed count tells you those threats were not theoretical. A shared node that cannot cause this failure is a residual to record, not a reason to rebuild everything. If no ledger existed before dispatch, do not invent a clean pre-run story afterward—record the gap and run a separate <a href="./when-both-engines-agree.html">silent-agreement audit</a>.</p>
-  <p>Recover by splitting the path before that node. If raw evidence cannot be supplied safely, add a human check at the earliest approved boundary and narrow the claim. Do not add a third model to the same evidence pipe; that increases the appearance of support without changing the common cause.</p>
+  <h2>Diagnose matching errors through the shared path</h2>
+  <p>If two providers repeat the same wrong incident count, inspect the shared evidence, retrieval, and evaluation paths before attributing the error to model behavior. The ledger should identify the earliest shared node capable of producing that exact result. A shared node that cannot cause the observed error is a residual dependency, not a reason to rebuild everything.</p>
+  <p>Split the path before the dominant node. If raw evidence cannot be supplied safely, add a human evidence check at the earliest approved boundary and narrow the claim. A third model on the same evidence pipe increases the appearance of support without changing the common cause. If no pre-run ledger exists, record that gap and use the <a href="./when-both-engines-agree.html">silent-agreement audit</a> against the completed outputs.</p>
   <p>Also guard against over-isolation. If you change the decision question for Path B, the two outputs no longer answer the same demand. Preserve the shared state needed for comparability, separate the state capable of causing the named failure, and record both choices.</p>
 </section>
 
 <figure data-resource-figure="diagnostic"></figure>
 
 <section id="practice" class="resource-section">
-  <h2>Map the threat before choosing a training venue</h2>
-  <p>Use this synthetic planning case. Two AI reviewers advise a human coordinator on whether Venue C belongs on a training-event shortlist. The fixed criteria are capacity of at least 40, a wheelchair-accessible route stated in the proposal, and total cost below the cap. The reviewers cannot contact venues, approve spending, or make a booking.</p>
-  <div class="table-scroll">
-    <table>
-      <caption>Supplied architecture for the two reviews</caption>
-      <thead><tr><th>Fact</th><th>Supplied condition</th></tr></thead>
-      <tbody>
-        <tr><td>Engines</td><td>Different providers and model families; separate clean contexts</td></tr>
-        <tr><td>Instructions</td><td>Same fixed criteria sheet; supporting prompts written by different coordinators</td></tr>
-        <tr><td>Evidence</td><td>Both receive an OCR package made from 12 proposals by one conversion service</td></tr>
-        <tr><td>Known defect</td><td>The conversion service skipped scanned Appendix B for Venue C; that appendix contains the accessible-route statement</td></tr>
-        <tr><td>Retrieval</td><td>Both query one index built from the OCR package; Path B’s “independent summary” was also built from that index</td></tr>
-        <tr><td>Cost calculation</td><td>Both packs use the same spreadsheet formula</td></tr>
-        <tr><td>Evaluation</td><td>One scoring model applies a rubric written by the program lead</td></tr>
-        <tr><td>Incentive</td><td>Every reviewer reports to the lead responsible for announcing a shortlist today</td></tr>
-        <tr><td>Isolation budget</td><td>A facilities coordinator outside that reporting line can inspect raw proposals for 20 minutes</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p><strong>Failure of concern:</strong> both paths exclude Venue C because the accessible-route evidence appears absent, then the shared evaluator treats the agreement as confirmation.</p>
-  <ol>
-    <li><strong>Predict.</strong> Which dimensions are separated with evidence, shared by design, shared uncontrolled, or unknown? Decide before opening the reveal.</li>
-    <li><strong>Trace.</strong> Fill at least five ledger rows. Each plausible common failure must name a causal path, not merely say “bias.”</li>
-    <li><strong>Prioritize.</strong> Circle the shared node most capable of producing the named failure. Do not count rows; use causal relevance and consequence.</li>
-    <li><strong>Spend the isolation budget.</strong> Choose one move that breaks that path while keeping the fixed venue criteria comparable.</li>
-    <li><strong>Bound the claim.</strong> Complete the four-line corroboration statement and name what a human must still decide.</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the threat map after you commit</strong></summary>
-    <p>The engine and context dimensions are partly separated. The criteria sheet is shared by design. Source preparation, retrieval, evaluator, and reporting pressure are shared uncontrolled for the named failure. The strongest 20-minute move is not another engine: give the facilities coordinator the raw proposal and ask for an evidence-only check of the accessible-route criterion, then let Path B use that raw-field result without the shared OCR index. The spreadsheet formula remains a residual for cost, and the criteria, source authenticity, and coordinator judgment remain shared dependencies. Agreement may now corroborate against the OCR/index omission only; it still does not prove overall venue suitability.</p>
-  </details>
+  <h2>Applied example: shared OCR dominates a venue review</h2>
+  <p>Two providers review the same OCR package and index against fixed venue criteria. The conversion service skipped a scanned appendix containing the accessible-route statement, so both paths exclude Venue C and the shared evaluator treats agreement as confirmation. Different engines and prompts do not address the dominant coupling.</p>
+  <p>The useful isolation move is an authorized raw-proposal check by the facilities coordinator, routed to one path without the shared OCR index. Keep the criteria fixed for comparability. Record the spreadsheet formula, source authenticity, and coordinator judgment as residual dependencies. The resulting agreement can corroborate against the OCR/index omission only; it does not establish overall venue suitability.</p>
   <div class="callout">
     <strong>Stop conditions:</strong> stop if the raw proposal cannot be handled on an approved surface, if the criteria or decision authority are disputed, or if the available reviewer is not permitted to inspect the evidence. Return the venue decision to a human if a critical source remains unavailable, the residual dependence dominates the recommendation, or any contact, commitment, or spending action would follow.
   </div>
@@ -183,28 +154,19 @@ next_non-model_check:</code></pre>
 </section>
 
 <section id="self-check" class="resource-section">
-  <h2>Self-check: predict before revealing the label</h2>
-  <ol>
-    <li>Two different providers read the same analyst summary and use the same judge. Is their agreement independent corroboration?</li>
-    <li>Two paths share a frozen decision question but use separately prepared evidence packets. Is the shared question automatically contamination?</li>
-    <li>Eight of nine dimensions are separated. May the report call the paths “89% independent”?</li>
-    <li>Two evidence paths are diverse, but one rubric rewards the same unsupported shortcut in both. Where is the common cause?</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the answers after you commit</strong></summary>
-    <ol>
-      <li>No. The engine dimension differs, while evidence preparation and evaluation remain common paths capable of producing a shared-wrong result.</li>
-      <li>No. A common decision target may be required for comparability. Record it as shared by design and test whether the wording itself could cause the failure of concern.</li>
-      <li>No. The dimensions are neither equally important nor additive. A percentage would imply a measurement model the ledger does not provide.</li>
-      <li>The evaluator is the common cause. Diverse upstream work can collapse at a shared acceptance surface.</li>
-    </ol>
-  </details>
+  <h2>Apply four independence rules</h2>
+  <ul>
+    <li>Different providers reading the same analyst summary and using the same judge do not create independent corroboration; evidence preparation and evaluation remain common paths.</li>
+    <li>A frozen decision question may be shared by design for comparability. Record it and check whether its wording could cause the failure of concern.</li>
+    <li>Do not convert separated dimensions into an independence percentage. The dimensions are neither equally important nor additive.</li>
+    <li>A shared rubric can become the common cause when it rewards the same unsupported shortcut in otherwise diverse work.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section">
   <h2>Transfer one claim without rebuilding your desk</h2>
   <p>Choose one consequential claim you expect two reviewers or engines to examine this week. In 15 minutes, name one failure that could fool both, sketch each source-to-verdict path, and fill the three ledger rows most capable of producing that failure. Select one isolation move you can actually prove happened. If no feasible move breaks the dominant coupling, do not decorate the result as corroboration; narrow the claim and return it to the decision owner.</p>
-  <p>Keep run identity and reconstructable evidence with the work; use <a href="../p1/reproducible-runs.html">Reproducible Runs</a> for that record. If you need to know whether behavior holds across repeated generative trials, use <a href="../p2/one-run-is-a-probe.html">One Run Is a Probe, Not Proof</a>. Neither artifact substitutes for the dependency map here.</p>
+  <p>Keep run identity and reconstructable evidence with the work; use <a href="../p1/reproducible-runs.html">Reproducible Runs</a> for that record. If you need to know whether behavior holds across repeated generative trials, use <a href="../p2/one-run-is-a-probe.html">Measure Reliability Across Repeated Runs</a>. Neither artifact substitutes for the dependency map here.</p>
   <p>After the paths run, return to the P3 comparator and human adjudication process. The ledger tells you what agreement could mean; it does not decide whether the agreed claim is true.</p>
   <div class="callout">
     <strong>Human return:</strong> stop before action when a critical source is unavailable, protected data would cross an unapproved boundary, evaluator separation is impossible under material sponsor pressure, or the consequence of shared error exceeds what the remaining checks can bear. A human owner decides whether to gather new evidence, accept the bounded risk, or halt.

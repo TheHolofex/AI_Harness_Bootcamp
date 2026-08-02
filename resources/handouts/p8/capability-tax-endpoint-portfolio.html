@@ -65,9 +65,6 @@
       </tbody>
     </table>
   </div>
-  <div class="callout"><strong>Predict before the reveal</strong>
-  The highest capability count belongs to A on W2, while B is slower and passes exactly 18 of 20 cases. Which endpoint should receive W2 if both pass every hard gate? What evidence must remain separate before you answer?</div>
-
   <h3>2. Read evidence without changing the gates</h3>
   <div class="table-scroll">
     <table>
@@ -95,17 +92,17 @@
       </tbody>
     </table>
   </div>
-  <p><strong>Reveal:</strong> W2 routes to B. The route is not a claim that B is globally better. It says B satisfies this slice’s gates and wins its declared cost preference under the recorded conditions. Inspection minutes remain visible rather than being converted into fictional service credits. A remains useful, but its shared <code>I1</code> dependency limits the failures for which it can be called an alternate.</p>
+  <p><strong>What matters:</strong> W2 routes to B. The route is not a claim that B is globally better. It says B satisfies this slice’s gates and wins its declared cost preference under the recorded conditions. Inspection minutes remain visible rather than being converted into fictional service credits. A remains useful, but its shared <code>I1</code> dependency limits the failures for which it can be called an alternate.</p>
 
-  <h3>Inject the failure: three endpoints, no qualified machine alternate</h3>
-  <p>The first portfolio draft labels C “the public-data fallback” for W1 because C was fast and public-data approved. It omits the failed source-trail gate and the shared <code>N1</code> tag. At 07:42, <code>N1</code> becomes unavailable. A and C both time out. B responds, but its recorded W1 evidence still misses the fact and latency gates. Endpoint count gave the appearance of resilience; the route record has no qualified machine alternate.</p>
+  <h3>Diagnostic example: three endpoints, no qualified machine alternate</h3>
+  <p>An earlier portfolio record labeled C “the public-data fallback” for W1 because C was fast and public-data approved. It omitted the failed source-trail gate and the shared <code>N1</code> tag. When a recorded <code>N1</code> outage made A and C time out, B responded but still missed the W1 fact and latency gates. Endpoint count had created the appearance of resilience; the route record had no qualified machine alternate.</p>
   <p>The observable symptom is not merely “endpoint down.” It is “every machine route available under this failure either shares the failed dependency or violates a frozen gate.” Recovery does not waive the fact or release invariants. The duty officer invokes the already qualified facts-only manual bulletin, records <code>BOUNDED DEGRADE MODE</code>, publishes in 10 minutes, and notes the lost narrative breadth. The portfolio owner then removes C as an <code>N1</code>-outage alternate, records the source-trail failure, and assigns an owner to seek a genuinely independent contingency. No endpoint becomes equivalent by being called fallback.</p>
 </section>
 
 <figure data-resource-figure="diagnostic"></figure>
 
 <section id="practice" class="resource-section">
-  <h2>Practice: route four workloads for Stonehaven Food Cooperative</h2>
+  <h2>Build the route set for Stonehaven Food Cooperative</h2>
   <p>Use only the supplied facts. Endpoint North is organization-hosted with dependency tags <code>I7 + P4</code>. Endpoint East is managed-hosted with <code>N2 + I7</code>. Endpoint Civic is public-data-only with <code>N2 + S9</code>. All evidence is dated to the same decision window unless a row says otherwise.</p>
   <div class="table-scroll">
     <table>
@@ -118,8 +115,6 @@
       </tbody>
     </table>
   </div>
-  <div class="callout"><strong>Predict before you route</strong>
-  Write one outcome for each slice. Then name both endpoint pairs that look different but share a dependency. Do not open the reveal until every <code>UNKNOWN</code> has a decision effect and owner.</div>
   <ol>
     <li>Copy each requirement into a requirement card. Underline the hard gates, box the preference order, and list non-degradable invariants separately from degradable dimensions.</li>
     <li>Build an evidence row for every candidate. Mark <code>PASS</code>, <code>FAIL</code>, or <code>UNKNOWN</code>; cite the supplied fact; and keep dependency tags visible.</li>
@@ -127,8 +122,8 @@
     <li>Record <code>ROUTE</code>, <code>HOLD ROUTING</code>, <code>BOUNDED DEGRADE MODE</code>, or <code>MANUAL</code>. For every alternate, state the failures it does and does not cover.</li>
   </ol>
   <p><strong>Stop condition:</strong> stop if using the route would violate a data, authority, legal, safety, or release invariant; if a material hard-gate artifact is missing or no longer applicable; if the route would depend on unapproved real data; or if no named person can accept the residual decision. Return data and retention questions to privacy or the data owner, access and dependency questions to security or operations, consequential authority to the accountable policy owner, and capacity or cost tradeoffs to the service owner.</p>
-  <details>
-    <summary><strong>Reveal one defensible route set</strong></summary>
+  <div class="callout">
+    <strong>Reference route set</strong>
     <ul>
       <li><strong>S1: <code>ROUTE EAST</code>.</strong> East alone passes all machine gates. Civic’s speed cannot compensate for the missing source trail; North fails facts and latency. On East loss, use the separately qualified manual notice as <code>BOUNDED DEGRADE MODE</code>. Civic is not an <code>N2</code>-outage alternate because East and Civic share <code>N2</code>.</li>
       <li><strong>S2: <code>HOLD ROUTING</code>.</strong> North’s prior dossier no longer establishes the changed administrator boundary, East has a material support-location unknown, Civic is prohibited, and no manual capacity is approved. Return the evidence decisions to security/privacy and the service owner.</li>
@@ -136,7 +131,7 @@
       <li><strong>S4: <code>MANUAL</code>.</strong> The contracting-officer procedure has authority, capacity, timing, and a signed artifact. Endpoint capability is irrelevant to the reserved determination.</li>
       <li><strong>Shared dependencies:</strong> North and East share <code>I7</code>; East and Civic share <code>N2</code>. A contingency claim must exclude the corresponding identity or network failure even though the arrangements otherwise differ.</li>
     </ul>
-  </details>
+  </div>
 
   <h3>Copy the routing matrix and decision record</h3>
   <pre><code>PORTFOLIO / VERSION / DATE:
@@ -174,26 +169,15 @@ Trigger / observable signal / action / decision owner:
 Revisit events:
 Residual uncertainty:</code></pre>
 
-  <h3>Self-check: predict before you reveal</h3>
-  <ol>
-    <li>An endpoint is cheapest and fastest but its retention evidence is unknown for restricted data. May a weighted total route the work there?</li>
-    <li>Endpoint A and B both pass. A is better on capability; B is better on cost and latency. What makes the choice defensible?</li>
-    <li>Two endpoints use different runtimes but share identity and network dependencies. What resilience claim survives?</li>
-    <li>A fixed template drops stylistic variety but preserves required facts, data rules, source trail, deadline, and release authority. What status can it receive?</li>
-    <li>A named person has authority but no queue rule or capacity. Is that a manual route?</li>
-    <li>A configuration change invalidates one endpoint’s trust dossier. What happens to its existing route?</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the self-check</strong></summary>
-    <ol>
-      <li>No. The unknown makes that candidate-and-mode ineligible; preferences operate only among eligible candidates. Issue <code>HOLD ROUTING</code> only if no qualified route, bounded-degrade mode, or manual mode remains.</li>
-      <li>The requirement card’s predeclared priority or tradeoff statement, plus comparable evidence and an explicit rationale. “Highest overall score” hides the disagreement.</li>
-      <li>Only a bounded claim for failures outside the shared dependencies. They are not alternatives for loss of the shared identity or network path.</li>
-      <li><code>BOUNDED DEGRADE MODE</code>, if the reduced mode is pre-authorized, separately evidenced, and stays inside the declared bounds.</li>
-      <li>No. It is an unstaffed hope until authority, capacity, timing, trigger, and evidence trail are recorded.</li>
-      <li>The changed candidate-and-mode becomes ineligible until new evidence passes the gate and the decision owner reauthorizes it. Reroute to another qualified mode if one exists; otherwise issue <code>HOLD ROUTING</code>.</li>
-    </ol>
-  </details>
+  <h3>Routing rules that prevent false confidence</h3>
+  <ul>
+    <li>A material unknown in a hard gate makes that candidate-and-mode ineligible. Cost or speed cannot compensate.</li>
+    <li>When two eligible endpoints trade capability, cost, or latency, use the requirement card’s declared priority and comparable evidence; do not manufacture a total score.</li>
+    <li>Endpoints with shared identity, network, gateway, power, or control-plane dependencies are alternatives only for failures outside those shared causes.</li>
+    <li>A reduced mode qualifies as <code>BOUNDED DEGRADE MODE</code> only when it is pre-authorized, separately evidenced, and preserves every invariant.</li>
+    <li>A person is not a manual route until authority, capacity, timing, trigger, and an evidence trail are recorded.</li>
+    <li>A configuration change that invalidates a trust dossier makes the route ineligible until new evidence passes and the decision owner reauthorizes it.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section resource-transfer">

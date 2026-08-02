@@ -33,7 +33,7 @@
     <p class="course-connection"><a class="btn" href="../../blocks/p7.html#depth">← Return to P7 · Going deeper</a></p>
     <p class="course-connection"><strong>This page is optional.</strong> The owning module remains the live course path and source for current tool details.</p>
   </header>
-  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">When the human gate becomes the bottleneck</a></li><li><a href="#mechanism">Model the gate as a service system</a></li><li><a href="#worked-case">Worked case: the calendar gate with a disappearing queue</a></li><li><a href="#practice">Guided practice: size the terminology gate</a></li><li><a href="#artifact">Copy the gate model and packet specification</a></li><li><a href="#self-check">Self-check: can the gate survive its own success?</a></li><li><a href="#transfer">Measure one real exception lane without changing it</a></li></ol></nav>
+  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">When the human gate becomes the bottleneck</a></li><li><a href="#mechanism">Model the gate as a service system</a></li><li><a href="#worked-case">Worked case: the calendar gate with a disappearing queue</a></li><li><a href="#practice">Capacity diagnosis for the terminology gate</a></li><li><a href="#artifact">Copy the gate model and packet specification</a></li><li><a href="#self-check">Gate-model acceptance rules</a></li><li><a href="#transfer">Measure one real exception lane without changing it</a></li></ol></nav>
   <article class="resource-body">
 <section id="purpose" class="resource-section">
   <h2>When the human gate becomes the bottleneck</h2>
@@ -149,8 +149,8 @@ end backlog = max(0, start backlog + effective arrivals − completed items)</co
   </div>
   <p>The first three hours contain unused capacity that cannot review future arrivals. The day ends with 43 planning-equivalent touches in backlog. Several updates expire; some submitters resend by email. The gate dashboard counts neither outcome, so its reported hold queue falls the next morning even though the service created more work.</p>
 
-  <h3>Inject the failure: loosen the gate until the queue looks healthy</h3>
-  <p>The team responds by switching to a looser trigger. It preserves the rule packages but does not sample the cleared lane or tag outcomes with the rule version that produced them. The visible queue drops. Later, published conflicts require corrections and notifications. The observable symptom is a local success metric—fewer holds—paired with rising downstream rework, duplicate contact, and no defensible miss rate.</p>
+  <h3>Diagnostic example: a smaller queue hides more downstream work</h3>
+  <p>A prior gate-change record shows the team switching to a looser trigger without sampling the cleared lane or tagging outcomes with the rule version that produced them. The visible queue dropped. Published conflicts later required corrections and notifications. The diagnostic signal is a local success metric—fewer holds—paired with rising downstream rework, duplicate contact, and no defensible miss rate.</p>
   <p>The team restores the last measured rule, freezes a labeled comparison set, and diagnoses the whole system. The table below uses three candidate rules on the same labeled 800-item synthetic sample, which contains 80 items that should hold. After packet repair, the observed mean review touch is 1.815 minutes. Each miss is assumed to create 80 minutes of direct correction work. For this comparison, <code>direct total = all holds × 1.815 + misses × 80</code>. Four re-entries and other work common to all candidates are excluded; false-hold delay and attendee disruption remain unpriced and visible rather than being called zero.</p>
   <div class="table-scroll">
     <table>
@@ -170,7 +170,7 @@ end backlog = max(0, start backlog + effective arrivals − completed items)</co
 </section>
 
 <section id="practice" class="resource-section">
-  <h2>Guided practice: size the terminology gate</h2>
+  <h2>Capacity diagnosis for the terminology gate</h2>
   <p>A synthetic product-description line holds terminology conflicts before an internal catalog draft. Nothing publishes, sends, purchases, or changes a live record. Use only the supplied facts.</p>
   <ul>
     <li>1,200 descriptions arrive over six hours.</li>
@@ -180,18 +180,10 @@ end backlog = max(0, start backlog + effective arrivals − completed items)</co
     <li>Six missing-source items return once during hours five and six. Effective arrivals by hour are therefore <code>6, 8, 10, 18, 31, 29</code>. For this exercise, returning touches use the same measured service-time mix; split them in real data when they differ.</li>
     <li>Any item still undecided at the six-hour boundary remains out of the draft.</li>
   </ul>
-  <p><strong>Predict before revealing:</strong> calculate weighted mean service time, hourly capacity, effective arrival rate, utilization, and end backlog. Use capacity rounded down to 12 touches per hour in the interval replay. Then choose the first response:</p>
-  <ol type="A">
-    <li>Cut the hold rate in half without measuring misses.</li>
-    <li>Specify a complete packet and return reason, sample service times again, add bounded overflow capacity for the late burst if needed, and preserve the hold default while testing false holds and misses.</li>
-    <li>Keep the design and ask the reviewer to work faster.</li>
-  </ol>
+  <p>Calculate weighted mean service time, hourly capacity, effective arrival rate, utilization, and end backlog. Use capacity rounded down to 12 touches per hour in the interval replay.</p>
   <p><strong>Stop condition:</strong> stop the exercise if you cannot keep first-touch and re-entry demand separate, if service-time classes do not sum to 100%, or if the default for an undecided item is missing. Do not invent an approval to empty the queue.</p>
-  <details>
-    <summary><strong>Reveal the capacity diagnosis</strong></summary>
-    <p>Weighted mean service time is <code>.60×2 + .30×5 + .10×10 = 3.7 minutes</code>. Capacity is <code>48 ÷ 3.7 = 12.97 touches/hour</code>. Effective arrivals are <code>(96+6) ÷ 6 = 17/hour</code>, so <code>ρ = 17 ÷ 12.97 = 1.31</code>. Using the requested conservative capacity of 12, end backlogs by hour are <code>0, 0, 0, 6, 25, 42</code>. The lane cannot recover under these assumptions.</p>
-    <p><strong>B</strong> is the defensible first response. It attacks missing-evidence service time and re-entry, preserves the current safety behavior, and creates evidence for any threshold change. Overflow capacity may still be needed for the late burst, but add it from the replay rather than as a permanent guess. A hides misses; C treats a system design problem as personal effort.</p>
-  </details>
+  <p><strong>Result:</strong> weighted mean service time is <code>.60×2 + .30×5 + .10×10 = 3.7 minutes</code>. Capacity is <code>48 ÷ 3.7 = 12.97 touches/hour</code>. Effective arrivals are <code>(96+6) ÷ 6 = 17/hour</code>, so <code>ρ = 17 ÷ 12.97 = 1.31</code>. Using the conservative capacity of 12, end backlogs by hour are <code>0, 0, 0, 6, 25, 42</code>. The lane cannot recover under these assumptions.</p>
+  <p><strong>First response:</strong> specify a complete packet and return reason, sample service times again, add bounded overflow capacity for the measured late burst if needed, and preserve the hold default while testing false holds and misses. Cutting the hold rate without measuring misses hides the downstream cost; asking the reviewer to work faster treats a system-design problem as personal effort.</p>
 </section>
 
 <section id="artifact" class="resource-section">
@@ -259,24 +251,14 @@ Packet field still missing that forces return or escalation:</code></pre>
 </figure>
 
 <section id="self-check" class="resource-section">
-  <h2>Self-check: can the gate survive its own success?</h2>
-  <ol>
-    <li>A gate averages 20 effective arrivals an hour and can complete 25. Does <code>ρ=.8</code> prove deadlines will be met?</li>
-    <li>A stable queue boundary averages 30 items and completes 12 an hour. What average time does Little’s Law imply?</li>
-    <li>Ten percent of held items return because the hold reason did not name the missing source. Is that new customer demand?</li>
-    <li>A threshold change halves false holds and doubles misses. Which policy is cheaper?</li>
-    <li>An item has a deadline and escalation contact but no declared state when nobody acts. Is the control complete?</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the gate test</strong></summary>
-    <ol>
-      <li>No. Average capacity exceeds average demand, but bursts, service-time spread, priority work, and re-entry can still break a deadline. Replay intervals and age.</li>
-      <li><code>W = L ÷ λ = 30 ÷ 12 = 2.5 hours</code>, provided the system is stable and all three measures use the same boundary.</li>
-      <li>No. It is failure demand created by an incomplete decision interface. Count it in arrivals, then repair the packet or return reason.</li>
-      <li>Unknown. You need representative counts and the local time, delay, recovery, impact, and tail consequences of each error type. A rate alone cannot choose.</li>
-      <li>No. Escalation may also fail. Precommit the resulting state—hold, return, expire, or explicitly authorized proceed—and who owns it.</li>
-    </ol>
-  </details>
+  <h2>Gate-model acceptance rules</h2>
+  <ul>
+    <li><code>ρ &lt; 1</code> does not prove deadlines will hold. Replay bursts, service-time spread, priority work, re-entry, and age.</li>
+    <li>Use Little’s Law only for a stable window with one consistent boundary. For <code>L=30</code> and <code>λ=12/hour</code>, <code>W=2.5 hours</code>.</li>
+    <li>Returns caused by missing evidence are failure demand, not new customer demand. Count them, then repair the packet or return reason.</li>
+    <li>A false-hold or miss rate cannot choose a rule by itself. Compare representative counts and the local time, delay, recovery, impact, and tail consequences.</li>
+    <li>A deadline and escalation contact are incomplete without a precommitted resulting state—hold, return, expire, or explicitly authorized proceed—and its owner.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section resource-transfer">

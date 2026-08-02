@@ -33,7 +33,7 @@
     <p class="course-connection"><a class="btn" href="../../blocks/p1.html#ideas">← Return to P1 · The Daily Status Brief</a></p>
     <p class="course-connection"><strong>This page is optional.</strong> The owning module remains the live course path and source for current tool details.</p>
   </header>
-  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">Use it when a plausible answer is not enough</a></li><li><a href="#mechanism">Replace the missing exact answer with a relation</a></li><li><a href="#worked-case">Work a readiness brief across five transformations</a></li><li><a href="#localize">Treat a violation as an alarm, not a diagnosis</a></li><li><a href="#practice">Build a four-relation suite</a></li><li><a href="#artifact">Keep the metamorphic test sheet</a></li><li><a href="#self-check">Predict before you reveal</a></li><li><a href="#transfer">Carry it to one live desk product</a></li><li><a href="#sources">Sources worth keeping</a></li></ol></nav>
+  <nav class="resource-toc" aria-label="On this page"><p>On this page</p><ol><li><a href="#purpose">Use it when a plausible answer is not enough</a></li><li><a href="#mechanism">Replace the missing exact answer with a relation</a></li><li><a href="#worked-case">Work a readiness brief across five transformations</a></li><li><a href="#localize">Treat a violation as an alarm, not a diagnosis</a></li><li><a href="#practice">Build a reusable four-relation acceptance sheet</a></li><li><a href="#artifact">Keep the metamorphic test sheet</a></li><li><a href="#self-check">Interpret the result without overclaiming</a></li><li><a href="#transfer">Carry it to one live desk product</a></li><li><a href="#sources">Sources worth keeping</a></li></ol></nav>
   <article class="resource-body">
 <section id="purpose" class="resource-section">
   <h2>Use it when a plausible answer is not enough</h2>
@@ -74,7 +74,7 @@
     </table>
   </div>
 
-  <p>Keep those parts separate. “Change the inputs and see what happens” is exploration. “Shuffle only semantically unordered files; the decision and blocker set must remain the same” is a test. The prediction creates the possibility of an unwelcome result.</p>
+  <p>Keep those parts separate. “Change the inputs and see what happens” is exploration. “Shuffle only semantically unordered files; the decision and blocker set must remain the same” is a test because its acceptance condition is inspectable.</p>
 
   <h3>Compare the product’s decision surface, not its punctuation</h3>
   <p>Free text makes exact string comparison too brittle. Before testing, reduce each output to the fields people act on. For a readiness brief, that comparison record might be:</p>
@@ -87,7 +87,7 @@
     <li><strong>KEEP — representation invariance.</strong> Reorder a set whose order has no meaning, change harmless formatting, or make a meaning-preserving rewrite. Decision-bearing fields should hold.</li>
     <li><strong>IGNORE — scope invariance.</strong> Add material that is clearly outside the product’s declared scope. In-scope decisions should hold, and the irrelevant item should not become a risk merely because it was nearby.</li>
     <li><strong>MOVE — local or directional sensitivity.</strong> Change one fact with a known consequence. The affected field must move in the predicted direction while unrelated fields hold. A top-line decision may legitimately remain unchanged when another blocker still controls it.</li>
-    <li><strong>STOP — exception response.</strong> Remove a required input, introduce a declared conflict, or break a required field. The machine should expose a gap, conflict, or hand-back instead of smoothing the condition away.</li>
+    <li><strong>STOP — exception response.</strong> Use an approved boundary case with a missing required input, a declared conflict, or an invalid required field. The machine should expose a gap, conflict, or hand-back instead of smoothing the condition away.</li>
   </ul>
   <p>These are prompts for domain judgment, not universal laws. “Reordering never matters” is false for a timeline. “More evidence always increases confidence” is false when the new material conflicts. A relation earns use only when its precondition and consequence are true for this product.</p>
 </section>
@@ -142,9 +142,9 @@ gaps: none</code></pre>
 
   <p>The suite exposed three different defects without requiring a gold paragraph. <code>MR-2</code> points toward a scope or relevance fault. <code>MR-3</code> points toward weak status-change handling or stale state. <code>MR-4</code> points toward the same fault family on a different source and field, which strengthens the next diagnosis without proving its cause. <code>MR-5</code> passing does not erase either violation; each relation tests a different necessary behavior.</p>
 
-  <h3>Inject a test that lies to you</h3>
+  <h3>Diagnostic example: a coarse relation hides stale output</h3>
   <p>Suppose you change only <code>N4</code>, moving the gate review from Thursday at 14:00 to Friday at 14:00. You predict only: “The decision should remain HOLD.” The machine ignores the changed time, emits the old checkpoint, and the test passes.</p>
-  <p>The machine did not pass a useful test. The relation was too weak. It watched only the top-line decision, which another blocker already pinned. Repair it by stating both halves:</p>
+  <p>The relation was too weak: another blocker pinned the top-line decision while the changed checkpoint went stale. A useful relation states both halves:</p>
   <ul>
     <li><strong>Expected change:</strong> next checkpoint moves Thursday 14:00 → Friday 14:00.</li>
     <li><strong>Expected hold:</strong> decision remains HOLD; blocker set, cleared conditions, and cutover time remain unchanged.</li>
@@ -168,13 +168,13 @@ gaps: none</code></pre>
     <li><strong>Recheck the precondition.</strong> Ask whether order, time, authority, scope, or duplication really is irrelevant in this case.</li>
     <li><strong>Compare the right fields.</strong> Normalize both outputs to the decision surface. Separate wording drift from operational drift.</li>
     <li><strong>Hold the run path fixed.</strong> Use the same saved machine and input boundary. If the machine changed between runs, the result is inconclusive.</li>
-    <li><strong>Make the next probe smaller.</strong> If an irrelevant addition caused drift, try a shorter irrelevant note, then a blank file, then a renamed copy. Each follow-up separates content sensitivity from file-count or ordering sensitivity.</li>
+    <li><strong>Make the next probe smaller.</strong> If an irrelevant addition caused drift, compare approved fixture variants that isolate content, file count, naming, and order. Each follow-up should separate one plausible cause without modifying live sources.</li>
   </ol>
   <p>The decision surface in the figure gives you a first routing move. Stability under irrelevant changes plus response to relevant ones is the expected pattern. Drift under irrelevant changes points toward scope, ordering, formatting, or hidden-context sensitivity. Ignoring relevant changes points toward input selection, stale state, or a relation aimed at the wrong field. If both go wrong, inspect the test setup before making a broad claim about the machine.</p>
 </section>
 
 <section id="practice" class="resource-section">
-  <h2>Build a four-relation suite</h2>
+  <h2>Build a reusable four-relation acceptance sheet</h2>
   <p>Use a scratch fixture so the exercise does not touch live sources. Create <code>launch-mr-practice/source/</code> and save these four blocks as <code>L1.md</code> through <code>L4.md</code>:</p>
   <pre><code># L1 · Product QA
 Owner: Product QA
@@ -205,23 +205,23 @@ Otherwise report HOLD. Never fill a missing required field silently.</code></pre
     <li><strong>Write one KEEP relation.</strong> Choose a meaning-preserving transformation and state its precondition.</li>
     <li><strong>Write one IGNORE relation.</strong> Add a clearly out-of-scope note and name what must remain absent.</li>
     <li><strong>Write one MOVE relation.</strong> Change exactly one gate fact. Name the field that must change and the fields that must hold.</li>
-    <li><strong>Write one STOP relation.</strong> Remove a required fact or introduce an explicit conflict. Predict the visible gap or hand-back.</li>
-    <li><strong>Predict before running.</strong> Fill every precondition, exact input diff, expected-change, and expected-hold cell. Make a separate case snapshot for each relation.</li>
+    <li><strong>Write one STOP relation.</strong> Use a prepared boundary case in which a required fact is absent or two supplied facts conflict. Require a visible gap or hand-back.</li>
+    <li><strong>Define acceptance before running.</strong> Fill every precondition, exact input diff, expected-change, and expected-hold cell. Keep a separate case snapshot for each relation.</li>
     <li><strong>Run one path.</strong> Before each relation, restore <code>current/</code> from the untouched <code>source/</code> fixture, apply only that relation’s change, and save the changed case under a separate snapshot name. Then use the same saved machine and contract. Never tune instructions between a source and follow-up run.</li>
     <li><strong>Localize one surprise.</strong> Use the five-step diagnosis path above and write the smallest next probe.</li>
   </ol>
 
-  <details>
-    <summary><strong>Reveal the expected baseline and one defensible suite</strong></summary>
+  <div class="callout">
+    <strong>Reference decision surface and suite</strong>
     <p>The baseline comparison record is: <strong>HOLD</strong>; blockers are mobile checkout not run, European approval pending, and Tuesday support unfilled; active owners are Product QA, Legal, and Support Operations; next review is Monday at 15:00; explicit gaps are none.</p>
     <ul>
       <li><strong>KEEP:</strong> in <code>L1</code>, replace “has not been run” with “remains untested.” Precondition: the two phrases have the same gate meaning. All five output fields should hold.</li>
       <li><strong>IGNORE:</strong> add a note about an office elevator inspection that explicitly says it is unrelated to launch. All five fields should hold, and the inspection should stay absent.</li>
       <li><strong>MOVE:</strong> change only European review from pending to approved. The European blocker and Legal active owner should disappear; decision remains HOLD because two other blockers remain; next review and gaps hold.</li>
-      <li><strong>STOP:</strong> remove <code>L4</code>. Decision and existing blockers hold; Next review must be marked missing under Explicit gaps rather than invented.</li>
+      <li><strong>STOP:</strong> use a separate intake fixture in which the review note is unavailable. Decision and existing blockers hold; Next review must be marked missing under Explicit gaps rather than invented.</li>
     </ul>
     <p>Other suites can be valid. They must preserve the same gate semantics, change one property at a time, and make both movement and stability inspectable.</p>
-  </details>
+  </div>
 
   <div class="callout">
     <strong>Stop and return to human judgment</strong> if the transformation changes more than one operational fact, the precondition is disputed, or the verdict requires deciding which source tells the truth. Narrow the transformation or move the claim into evidence adjudication. Do not make the relation “pass” by quietly changing the rule after seeing the output.
@@ -258,28 +258,13 @@ Otherwise report HOLD. Never fill a missing required field silently.</code></pre
 </section>
 
 <section id="self-check" class="resource-section">
-  <h2>Predict before you reveal</h2>
-  <p>Write your answer to each prompt before opening its explanation.</p>
-
-  <details>
-    <summary><strong>1.</strong> A shuffled, semantically unordered source set produces the same decision and blockers but different sentences. Pass or fail?</summary>
-    <p><strong>STOOD</strong>, if the relation was written against decision-bearing fields and the precondition that order is meaningless is true. Exact prose equality would create a brittle comparator.</p>
-  </details>
-
-  <details>
-    <summary><strong>2.</strong> One blocker is cleared. The overall decision remains HOLD because another blocker remains. A decision-only test passes. What did you learn?</summary>
-    <p>Very little. The relation is too coarse to prove sensitivity. Check that the cleared blocker disappeared, its owner changed or closed, and unrelated fields held. A pinned top-line decision can hide an ignored update.</p>
-  </details>
-
-  <details>
-    <summary><strong>3.</strong> Reordering events in an incident timeline changes the brief. Is the machine unstable?</summary>
-    <p>Not from this evidence. Timeline order carries meaning, so the invariance precondition is false. Mark the relation invalid, restore the source order, and choose a representation change that preserves chronology.</p>
-  </details>
-
-  <details>
-    <summary><strong>4.</strong> All four relations stand. Is the judgment product correct?</summary>
-    <p>No. You have evidence that the machine satisfied four necessary relations on these cases. Other failure modes remain. Metamorphic tests complement direct source checks, fixed acceptance criteria, and human judgment; they do not transfer the verdict to the test suite.</p>
-  </details>
+  <h2>Interpret the result without overclaiming</h2>
+  <ul>
+    <li>Different sentences can still satisfy an invariance relation when the decision-bearing fields hold and order truly carries no meaning.</li>
+    <li>A decision-only check is too coarse when another blocker pins the top-line verdict. Inspect the changed field, its owner, and the fields expected to hold.</li>
+    <li>A changed result after reordering a timeline does not show instability; chronology carries meaning, so the invariance precondition was false.</li>
+    <li>Four standing relations show four necessary behaviors on the observed cases. They do not prove factual correctness or cover failure modes outside the suite.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section resource-transfer">
@@ -288,7 +273,7 @@ Otherwise report HOLD. Never fill a missing required field silently.</code></pre
   <ol>
     <li>one harmless transformation that should leave the decision surface stable;</li>
     <li>one relevant fact change that should move a named field while other fields hold;</li>
-    <li>one missing or conflicting input that should force a visible gap or hand-back.</li>
+    <li>one naturally observed or policy-approved fixture with a missing or conflicting input that should produce a visible gap or hand-back.</li>
   </ol>
   <p>Keep the sheet with the machine and rerun the suite after you change its instructions, input boundary, or product schema. Stop before using synthetic changes in a live source system, and return to the product owner when the expected relation depends on policy or domain truth you do not own. NIST’s AI risk framework calls for documented test methods and criteria under conditions similar to intended use; the sheet is the smallest practical record of that discipline for one machine (<a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/">NIST AI RMF, Measure</a>).</p>
 </section>
@@ -310,7 +295,7 @@ Otherwise report HOLD. Never fill a missing required field silently.</code></pre
   <h2 id="related-heading">Optional related handouts</h2>
   <p>Stay on the live module unless another guide answers a problem you have now.</p>
   <div class="card-grid"><a class="card" href="./reproducible-runs.html"><span class="resource-id">P1-5</span><h3>Reproducible Runs: Stable IDs, Manifests, and Hashes</h3><p>A run-evidence pattern that binds inputs, configuration, identity, and outputs into a replayable record.</p></a>
-<a class="card" href="../p2/eval-surprise.html"><span class="resource-id">P2-1</span><h3>Build an Eval That Can Still Surprise You</h3><p>An eval-design method that protects coverage, hostile cases, holdouts, and the possibility of an unwelcome result.</p></a>
+<a class="card" href="../p2/eval-surprise.html"><span class="resource-id">P2-1</span><h3>Build a Decision-Grade Evaluation</h3><p>A practical evaluation method with fixed decision criteria, risk-based coverage, protected holdouts, and explicit invalidation rules.</p></a>
 <a class="card" href="../p3/when-both-engines-agree.html"><span class="resource-id">P3-3</span><h3>When Both Engines Agree</h3><p>A risk-based audit for correlated error hidden behind fluent agreement.</p></a></div>
 </section>
   <nav class="resource-plate" aria-label="Return to the live course module">

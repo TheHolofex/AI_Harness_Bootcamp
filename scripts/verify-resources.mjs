@@ -117,11 +117,22 @@ const driftPatterns = [
   /\b(?:winget|choco|scoop|npm|pip)\s+install\b/i,
   /\bversion\s+\d+\.\d+(?:\.\d+)?\b/i
 ];
+const ritualPatterns = [
+  /break it on purpose/i,
+  /deliberately\s+(?:break|delete|remove|fail)/i,
+  /inject\s+(?:a|the)\s+failure/i,
+  /\bpredict(?:ion)?\b[^.]{0,120}\breveal\b/i,
+  /\breveal\b[^.]{0,120}\bpredict(?:ion)?\b/i,
+  /forced disagreement/i,
+  /adversarial review/i,
+  /cannot make[^.]{0,100}fail/i
+];
 
 function scanLearnerText(label, value, resourceId = "") {
   for (const pattern of makingOf) if (pattern.test(value)) fail(`${label}: making-of language matched ${pattern}`);
   for (const pattern of staffLeak) if (pattern.test(value)) fail(`${label}: staff/answer material matched ${pattern}`);
   for (const pattern of driftPatterns) if (pattern.test(stripMarkup(value))) fail(`${label}: tool/version drift pattern matched ${pattern}`);
+  for (const pattern of ritualPatterns) if (pattern.test(stripMarkup(value))) fail(`${label}: forced-failure or reveal ritual matched ${pattern}`);
   if (resourceId === "P5-3") {
     const p5Patterns = [
       /\b(?:which|these|the)\s+intake\s+(?:items?|files?)\s+(?:is|are|were)\s+(?:poisoned|hostile|false)/i,
@@ -157,8 +168,11 @@ function validateSourcesAndFigures() {
     }
     if (resource.id !== "PC-1") {
       const words = wordCount(body);
-      if (words < 1800 || words > 4000) fail(`${resource.id}: ${words} words; expected 1,800–4,000`);
-      if (!/self-check/i.test(body)) fail(`${resource.id}: missing explicit self-check`);
+      // A linked field guide may be a short troubleshooting route or a deeper
+      // technical reference. Production completeness is enforced by the
+      // required mechanism, worked-case, practice, transfer, and Sources
+      // sections—not by padding every guide to a classroom-sized word count.
+      if (words < 700 || words > 4000) fail(`${resource.id}: ${words} words; expected 700–4,000`);
       if (!/>Sources\b/i.test(body)) fail(`${resource.id}: missing Sources shelf`);
       if (!/<table\b/i.test(body)) warn(`${resource.id}: no table found; confirm the evidence artifact is still inspectable`);
     } else {

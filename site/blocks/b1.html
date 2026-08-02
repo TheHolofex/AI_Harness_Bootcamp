@@ -37,7 +37,7 @@
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
-      <a href="#mission">Mission · <span data-count-for="mission">0/9</span></a>
+      <a href="#mission">Run of exercise</a>
       <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/6</span></a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
@@ -50,29 +50,29 @@
       <div>
         <h2 class="h-plain">Why this block exists</h2>
         <p>A <strong>harness</strong> is the setup around a model that lets it act: tools, files, permissions, instructions, and your accept/reject loop. In First Light, you will feel that loop before we name every part of it.</p>
-        <p>You will work in more than one chat today, and the split is deliberate. Build work — the machine reading files, writing code, rebuilding a page — runs in its own chat. Direction and verdicts — the brief you write before the run, the log you write after, the lesson-outcome checklist, the attack on that list — run in a separate operator chat. Keep them apart and your log’s evidence pointers stay checkable by someone who was not in the room. Let them merge and the chat that helped you build is the same chat you ask whether the build was any good; it will tell you yes, and you will have no trail that says otherwise. Each paste below names the chat it belongs in — follow the names and the split takes care of itself.</p>
+        <p>You will use two chats. <strong>Operator — Direction &amp; Log</strong> holds the work specification and final release record; <strong>Build — B1 First Light</strong> reads the reports and changes the viewer. The observable browser checks decide whether the result is ready.</p>
         <h3>What you will leave with</h3>
         <ul>
-          <li>Co-write a full LIVE Direction Brief (five fields)</li>
+          <li>Save a complete B1 work specification before the build</li>
           <li>Ship a working map from the synthetic report folder (timeline and filters)</li>
-          <li>Run a negative check and an update proof (or honest break + redirect)</li>
-          <li>Explain the harness loop from this run; complete log, adversarial, measure, transfer</li>
+          <li>Run an exclusion check and a current-source refresh</li>
+          <li>Leave a release note, status, residual risk, and reusable workplace rule</li>
         </ul>
         <h3>Before you start</h3>
         <ul>
           <li><a href="../checklists/prework-install.html">B0 · Pre-work Install Clinic</a> complete</li>
-          <li>Four harness proof files visible in <code>Documents\HarnessBootcamp\prework-smoke</code></li>
+          <li>Four harness check files visible in <code>Documents\HarnessBootcamp\prework-smoke</code></li>
           <li>The course repository cloned into <code>Documents\HarnessBootcamp</code></li>
         </ul>
       </div>
       <div class="orient-aside">
         <div class="lead-box">
           <p class="eyebrow">Lead operate-along</p>
-          <p>The lead runs this same page on screen — brief co-written live, mission run in a build chat you can see, accepts and rejects narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+          <p>The lead runs this same page on screen — project opened from the beginning, work specification saved, viewer built, and browser checks narrated. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
         </div>
         <div class="callout">
           <strong>B0 is the gate</strong>
-          Start First Light after the B0 checks pass: the four proof files exist, the keys work in a fresh shell, and the course repository is on disk. If one of those is missing, return to the <a href="../checklists/prework-install.html">install clinic checklist</a> before starting this mission.
+          Start First Light after the B0 checks pass: the four harness check files exist, the keys work in a fresh shell, and the course repository is on disk. If one of those is missing, return to the <a href="../checklists/prework-install.html">install clinic checklist</a> before starting this mission.
         </div>
       </div>
     </section>
@@ -81,113 +81,92 @@
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Work top to bottom. Every block below is something you paste or run, in order; the prose between blocks tells you what you should see and the recovery if you don’t. Check each item off as its proof exists — progress saves in this browser, and the same tick shows on the home page.</p>
+        <p class="section-lede">Build one working viewer, run the checks yourself, and leave a release record another person can follow. Check an item only when the named file or observed result exists.</p>
 
-
-        <h3>Stage 01 · Open the mission project</h3>
-        <p>The folder you open as a project is the machine’s whole world — it reads and writes inside that boundary and asks before reaching anywhere else. All week that world is the course repo, not the smoke folder.</p>
+        <h3>Stage 01 · Open the project and set the work specification</h3>
+        <p>The course project is the folder the assistant can work in. Start in the standing operator chat, confirm the project root, then save the specification that will govern the build.</p>
 
         <div class="do-step">
-          <p class="do-label">Start the mission in the <strong>ChatGPT desktop app</strong>:</p>
+          <p class="do-label">Start in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
-            <li>Open <strong>ChatGPT</strong> from the Windows Start menu if it is not already open</li>
-            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
+            <li>Open <strong>ChatGPT</strong> from the Windows Start menu. Use the top-left switcher to select <strong>Codex</strong> if needed</li>
             <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>Click <strong>New chat</strong>. Rename it <code>Project check — B1</code> from the chat's <strong>…</strong> menu in the sidebar</li>
-            <li>Select the instructor-named course model. If no model was named, keep the visible default</li>
+            <li>Open <strong>Operator — Direction &amp; Log</strong> from the sidebar</li>
+            <li>If it is missing, click <strong>New chat</strong>, rename it <code>Operator — Direction &amp; Log</code>, and pin it if <strong>Pin</strong> appears</li>
+            <li>Select the instructor-named course model, or keep the visible default if none was named</li>
             <li>Confirm the permissions control under the message box says <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Project check — B1</strong>:</p>
+          <p class="do-label">Paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
           <pre><code>List the top-level contents of operator/ and mission_flesh/. Names only.</code></pre>
         </div>
 
-        <p>You should see the operator files — <code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>, <code>PASS_BARS.md</code>, and friends — plus <code>b1/</code> and <code>p1/</code> through <code>p8/</code> inside <code>mission_flesh/</code>. If the assistant says it can’t find those folders, the project is opened at the wrong place: repeat the Open project click and make sure you picked <code>AI_Harness_Bootcamp</code> itself, not <code>HarnessBootcamp</code> above it or <code>prework-smoke</code> beside it.</p>
-
-        <h3>Stage 02 · Co-write the brief until LIVE</h3>
-        <p>Direction happens before the machine moves. The brief is five fields you and the AI write together in a dedicated chat — the AI interviews and challenges, you accept every word. Keep it separate from build work; the trail is the point.</p>
+        <p>You should see the operator files plus <code>b1/</code> and <code>p1/</code> through <code>p8/</code> inside <code>mission_flesh/</code>. If those folders are missing, reopen the project at <code>AI_Harness_Bootcamp</code> itself.</p>
 
         <div class="do-step">
-          <p class="do-label">Now create the standing <strong>operator chat</strong> in the Codex app:</p>
-          <ul class="do-clicks">
-            <li>Click <strong>New chat</strong></li>
-            <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code></li>
-            <li>Use the same menu to choose <strong>Pin</strong> if that option appears. If it does not, the exact name will still let you find the chat under Recents</li>
-            <li>Confirm the open project is <code>AI_Harness_Bootcamp</code> and permissions still say <strong>Ask for approval</strong></li>
-          </ul>
+          <p class="do-label">Now save the B1 work specification in the same chat:</p>
+          <pre><code>Read operator/DIRECTION_BRIEF.md and replace its active brief with this B1 specification.
+
+Outcome: a local timeline-and-filter viewer at mission_flesh/b1/first_light/index.html.
+Done looks like: the page opens offline, shows the six report_*.md files, orders dated
+events correctly, handles the undated report explicitly, and has two working filters.
+Bounds: read mission_flesh/b1/reports/; ignore DELTA_new.md until the update step; write
+only under mission_flesh/b1/first_light/.
+Evidence standard: I will open the page and check report count, time order, two filters,
+one named exclusion, and the later DELTA update myself.
+Stop / hand-back: propose the report data shape and source list before writing; stop if
+the source count or an undated-report rule is unclear.
+
+Write these five fields, set Status to LIVE, and report the exact file section changed.
+Do not start the build in this chat.</code></pre>
         </div>
-
-        <!-- Verbatim from operator/DIRECTION_BRIEF.md — operator-chat starter -->
-        <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
-          <pre><code>We are writing the Direction Brief for this block together.
-
-Read operator/DIRECTION_BRIEF.md (or this file). Interview me in short turns.
-Do not dump all five fields at once unless I already gave you a clear mission.
-
-For each field:
-1. Ask one focused question.
-2. Propose tight wording from my answer.
-3. Challenge anything vague, uncheckable, or unbounded.
-4. Wait for me to accept or correct before moving on.
-
-When all five fields are accepted, write them into this file, set Status to LIVE,
-and remind me to run the mission in a separate build chat — not here.
-
-After the mission, we will write the Operator Log in this same chat.</code></pre>
-        </div>
-
-        <p>The interview takes about five minutes. Your outcome for this block is an instrument: a local timeline-and-filter viewer over <code>mission_flesh/b1/reports/</code>. Answer in your own words, but keep every field checkable — “explore the data” will get challenged, and it should. When the AI writes the five fields into the file and sets Status to <strong>LIVE</strong>, this stage is done.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-pulse-brief" name="b0-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">1</span>
-              <span class="check-title">Co-write the Direction Brief until LIVE</span>
+              <span class="check-title">B1 work specification saved and marked LIVE</span>
             </label>
-            <div class="check-detail">Proof: all five fields — Outcome, Done looks like, Bounds, Evidence standard, Stop/hand-back — written into <code>operator/DIRECTION_BRIEF.md</code> with Status <strong>LIVE</strong>. Outcome names the artifact, not an activity. If the interview stalls on a field, give the smallest checkable version and tighten later — a live narrow brief beats a perfect draft.</div>
+            <div class="check-detail"><code>operator/DIRECTION_BRIEF.md</code> names the viewer, source boundary, acceptance checks, and proposal stop before any build work begins.</div>
           </li>
         </ol>
 
-        <h3>Stage 03 · Meet the reports</h3>
-        <p>Look at the raw material with your own eyes before the machine summarizes it for you. Six synthetic mission reports, deliberately messy.</p>
+        <h3>Stage 02 · Inspect the reports</h3>
+        <p>Read the input before the assistant turns it into a data model. The source set contains six current reports and one later update.</p>
 
         <div class="do-step">
-          <p class="do-label">Now run this in <strong>PowerShell</strong>:</p>
+          <p class="do-label">Run this in <strong>PowerShell</strong>:</p>
           <pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\b1\reports"
 Get-Content "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\b1\reports\report_01_bridge.md"</code></pre>
         </div>
 
-        <p>You should see seven files — six <code>report_*.md</code> plus <code>DELTA_new.md</code> — and then the first report’s contents: a <strong>DTG</strong> (date-time group), a <strong>Summary</strong>, and a few other fields. Skim two or three more in Explorer if you like. Notice the mess on purpose: <code>report_06_export_eu.md</code> has no DTG at all, and the formats drift between reports. Where an undated event lands on a timeline is a decision, and it will be yours. Leave <code>DELTA_new.md</code> alone — it plays the part of a report that arrives <em>after</em> your map is built.</p>
+        <p>You should see six <code>report_*.md</code> files plus <code>DELTA_new.md</code>. The reports include a time, summary, and other fields, but <code>report_06_export_eu.md</code> has no DTG. Leave <code>DELTA_new.md</code> out of the first build.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-b0-inventory" name="b0-b0-inventory" data-check-id="b0-inventory" />
               <span class="check-num">2</span>
-              <span class="check-title">Inventory synthetic reports</span>
+              <span class="check-title">Inventory the seven source files</span>
             </label>
-            <div class="check-detail">Proof: you saw the seven files and can name the fields you’ll map — time, tag or type, summary. You noticed the report with no DTG. Your outcome is a small local timeline+filter view over these reports; if the folder listing failed, the repo path is wrong — re-run the Stage 01 repo check.</div>
+            <div class="check-detail">You saw six current reports, the held-back update, and the report with no DTG. If the listing differs, fix the project or repository path before building.</div>
           </li>
         </ol>
 
-        <h3>Stage 04 · Direct the build</h3>
-        <p>Mission work runs in its own chat so the operator trail stays clean. The prompt below makes the machine propose before it builds — you get an accept moment before any file exists.</p>
-
+        <h3>Stage 03 · Approve the data shape and build</h3>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Create the build chat in the <strong>Codex app</strong>:</p>
           <ul class="do-clicks">
-            <li>Click <strong>New chat</strong></li>
-            <li>Rename it <code>Build — B1 First Light</code> from the chat's <strong>…</strong> menu in the sidebar</li>
-            <li>Confirm the open project is <code>AI_Harness_Bootcamp</code> and permissions still say <strong>Ask for approval</strong></li>
+            <li>Click <strong>New chat</strong> and rename it <code>Build — B1 First Light</code></li>
+            <li>Confirm the open project is <code>AI_Harness_Bootcamp</code> and permissions say <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>build chat</strong> — if your LIVE brief names different filters or bounds, edit this to match before pasting; the brief wins:</p>
+          <p class="do-label">Paste this into <strong>Build — B1 First Light</strong>:</p>
           <pre><code>Read the reports in mission_flesh/b1/reports/. Use only the files named report_*.md —
 ignore DELTA_new.md; it arrives later as a live update.
 
@@ -204,77 +183,75 @@ When it is built, tell me the exact file path and what I should ask you to do
 after a report is added or removed.</code></pre>
         </div>
 
-        <p>The machine should come back with a proposed shape and a list of six reports. Read the shape against what you saw in Stage 03 — does it have a time field, and what does it do with the report that has none? If anything is off, say so in your own words and let it re-propose. When the shape matches, accept it.</p>
-
         <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
-          <pre><code>The shape looks right — build it now.</code></pre>
+          <p class="do-label">Review the proposal before allowing file writes:</p>
+          <ul class="do-clicks">
+            <li>Confirm it found exactly six <code>report_*.md</code> files</li>
+            <li>Confirm the shape includes time, tag or type, summary, and source file</li>
+            <li>Confirm it states how the undated report will appear</li>
+            <li>If a condition fails, name the correction and ask for a revised proposal</li>
+            <li>If all conditions hold, tell the build chat to proceed</li>
+          </ul>
         </div>
 
-        <p>Approve the file writes when the app asks — that is the permission mode doing its job, not an error. If the machine starts building without ever waiting for your OK, that is your first live correction: stop it and re-state that it waits for acceptance. Directing is exactly this.</p>
+        <p>Approve the file writes when the app asks. The acceptance point is the proposal you inspected, not a canned approval.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-b0-build" name="b0-b0-build" data-check-id="b0-build" />
               <span class="check-num">3</span>
-              <span class="check-title">Direct build of timeline + filter viewer</span>
+              <span class="check-title">Build the approved timeline-and-filter viewer</span>
             </label>
-            <div class="check-detail">Proof: in the <strong>build</strong> chat — never the operator chat — the machine proposed a data shape, you accepted or corrected it, and it wrote <code>mission_flesh/b1/first_light/index.html</code>. If it claims success, the file’s existence on disk is the evidence, not the claim.</div>
+            <div class="check-detail">The accepted data shape covers all six current reports and the build wrote <code>mission_flesh/b1/first_light/index.html</code>.</div>
           </li>
         </ol>
 
-        <h3>Stage 05 · Run your accept checks</h3>
-        <p>The next three checks are yours to run by hand. The machine built the instrument; only you can accept it.</p>
-
+        <h3>Stage 04 · Run the viewer checks</h3>
         <div class="do-step">
-          <p class="do-label">Now open the viewer — run this in <strong>PowerShell</strong>:</p>
+          <p class="do-label">Open the viewer from <strong>PowerShell</strong>:</p>
           <pre><code>Start-Process "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\b1\first_light\index.html"</code></pre>
         </div>
 
-        <p>Your browser opens and you should see six reports at once — DELTA is deliberately not among them yet. A blank page usually means the data didn’t actually get embedded; a file-not-found means the build wrote the page somewhere else. Either way, tell the build chat the symptom you saw, not your guess at the cause, and let it fix its own work.</p>
+        <p>The browser should show all six current reports and no DELTA item. If the page is blank or a file is missing, give the build chat the exact symptom and rerun this check after the repair.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-b0-open" name="b0-b0-open" data-check-id="b0-open" />
               <span class="check-num">4</span>
-              <span class="check-title">Open the viewer and confirm multi-report display</span>
+              <span class="check-title">Viewer opens offline with all six current reports</span>
             </label>
-            <div class="check-detail">Proof: the page opens by double-click, offline, and shows all six reports at once. If only some appear, ask the build chat which files it read — a silent skip now becomes a silent lie later.</div>
+            <div class="check-detail">The file opens directly in the browser and displays the complete initial set.</div>
           </li>
         </ol>
 
         <div class="do-step">
-          <p class="do-label">Now in the <strong>browser</strong>, on the viewer page:</p>
+          <p class="do-label">Check the timeline in the <strong>browser</strong>:</p>
           <ul class="do-clicks">
             <li>Use the timeline control to order or filter events by time</li>
-            <li>Confirm the convoy log (0340Z) sits earliest and the restore report (0510Z) latest</li>
-            <li>Find where the undated export ticket landed — first, last, or a spot the machine chose</li>
+            <li>Confirm the convoy log (0340Z) is earliest and the restore report (0510Z) is latest</li>
+            <li>Record where the undated export ticket appears</li>
           </ul>
         </div>
-
-        <p>Where that undated ticket landed is a decision someone made — and if you didn’t make it, the machine did. Note the answer; it feeds your log and possibly a redirect.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-b0-timeline" name="b0-b0-timeline" data-check-id="b0-timeline" />
               <span class="check-num">5</span>
-              <span class="check-title">Timeline control works</span>
+              <span class="check-title">Timeline order and undated-report handling checked</span>
             </label>
-            <div class="check-detail">Proof: the timeline sorts or filters events by time in a way you can observe — 0340Z convoy earliest, 0510Z restore latest — and you know where the undated report went. If order looks wrong, that is a REJECT-worthy finding, not a shrug.</div>
+            <div class="check-detail">The dated endpoints are correct and the undated report follows an explicit, observable rule.</div>
           </li>
         </ol>
 
         <div class="do-step">
-          <p class="do-label">Now in the <strong>browser</strong>, on the viewer page:</p>
+          <p class="do-label">Check both filters in the <strong>browser</strong>:</p>
           <ul class="do-clicks">
-            <li>Count the visible reports, then apply the first filter</li>
-            <li>Confirm the visible set changed and matches what that filter promises</li>
-            <li>Clear the filter and confirm the full set returns</li>
-            <li>Apply a second filter. Confirm that it also changes the visible set and shows only the reports it promises</li>
-            <li>Clear the second filter and confirm the full set returns again</li>
+            <li>Count the visible reports, apply the first filter, and confirm the resulting set matches its label</li>
+            <li>Clear it and confirm the full set returns</li>
+            <li>Repeat with the second filter</li>
           </ul>
         </div>
 
@@ -283,389 +260,128 @@ after a report is added or removed.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-b0-filter" name="b0-b0-filter" data-check-id="b0-filter" />
               <span class="check-num">6</span>
-              <span class="check-title">Both filters change the visible set correctly</span>
+              <span class="check-title">Both filters return the correct report sets</span>
             </label>
-            <div class="check-detail">Proof: you tested two different filters. Each changed the visible set as promised, and clearing each one restored all reports. A filter that changes nothing, or hides things it shouldn’t, goes back to the build chat as a symptom.</div>
+            <div class="check-detail">Each filter changes the visible set as labeled, and clearing it restores all six reports.</div>
           </li>
         </ol>
 
-        <h3>Stage 06 · Prove what must not appear</h3>
-        <p>Positive checks show the instrument can succeed; a negative check shows it can be trusted. You prove an absence: a slice of the view where a report you can name must <em>not</em> show up.</p>
-
+        <h3>Stage 05 · Check a report that must be excluded</h3>
         <div class="do-step">
-          <p class="do-label">Now in the <strong>browser</strong>, on the viewer page:</p>
+          <p class="do-label">Run one exclusion check in the <strong>browser</strong>:</p>
           <ul class="do-clicks">
-            <li>Apply a filter that must exclude a report you can name — for example, a movement or convoy filter that must not show the Relay-7 outage report</li>
-            <li>Confirm the excluded report is absent from the visible set — actually look for it</li>
-            <li>Clear the filter and confirm it comes back</li>
+            <li>Apply a filter that must exclude a report you can name — for example, a movement filter that must not show the Relay-7 outage report</li>
+            <li>Confirm the named report is absent</li>
+            <li>Clear the filter and confirm it returns</li>
           </ul>
         </div>
-
-        <p>Your tag names may differ from this example — the machine chose them from the data shape you accepted. The move is the same regardless: name the report that must stay out, look for it, and see with your own eyes that it isn’t there. If it leaks through, you have found a real defect before it found you.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-b0-negative" name="b0-b0-negative" data-check-id="b0-negative" />
               <span class="check-num">7</span>
-              <span class="check-title">Negative check verified</span>
+              <span class="check-title">Named exclusion check passes</span>
             </label>
-            <div class="check-detail">Proof: a must-not case you verified yourself — the named excluded report stayed out of the filtered view and returned when cleared. “It probably filters right” is not a verification; the absence has to be observed.</div>
+            <div class="check-detail">The named report stays out of the filtered view and returns when the filter is cleared.</div>
           </li>
         </ol>
 
-        <h3>Stage 07 · Change the world and prove the map follows</h3>
-        <p>A map you can trust is one that keeps up. A new report just “arrived” — it was sitting in the folder all along, excluded from the first build on purpose.</p>
-
+        <h3>Stage 06 · Refresh the viewer with a new report</h3>
         <div class="do-step">
-          <p class="do-label">Return from the browser to the <strong>Codex app</strong>:</p>
-          <ul class="do-clicks">
-            <li>In the course project's chat list, open <strong>Build — B1 First Light</strong></li>
-            <li>Do not create a new chat; this update belongs to the build conversation that created the viewer</li>
-          </ul>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>build chat</strong>:</p>
+          <p class="do-label">Return to <strong>Build — B1 First Light</strong> and paste:</p>
           <pre><code>A new report just landed: mission_flesh/b1/reports/DELTA_new.md.
 Add it to the viewer's data and rebuild mission_flesh/b1/first_light/index.html.
 Tell me exactly what changed in the data.</code></pre>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Now in the <strong>browser</strong>, on the viewer page:</p>
+          <p class="do-label">Reload the viewer in the <strong>browser</strong>:</p>
           <ul class="do-clicks">
-            <li>Press <strong>Ctrl+R</strong> to reload the page</li>
-            <li>Confirm a seventh event appears — the late insert at 2026-08-10 0600Z</li>
-            <li>Confirm it lands after the restore report on the timeline</li>
+            <li>Press <strong>Ctrl+R</strong></li>
+            <li>Confirm a seventh event appears at 2026-08-10 0600Z</li>
+            <li>Confirm it appears after the restore report</li>
           </ul>
         </div>
 
-        <p>If the new event doesn’t appear: reload once more, then ask the build chat whether it actually rewrote <code>index.html</code> — a confident “done” with an untouched file is the same lie as the missing smoke file, wearing better clothes. If the rebuild genuinely breaks the page, that is not a failed step: document the exact break and the redirect you issued in your log. An honest break plus a redirect passes; silence does not.</p>
+        <p>If the event does not appear, report the observed result to the build chat and rerun after the repair. If the refresh remains broken, record that exact result and hold the release.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-b0-delta" name="b0-b0-delta" data-check-id="b0-delta" />
               <span class="check-num">8</span>
-              <span class="check-title">Update proof with DELTA_new.md</span>
+              <span class="check-title">Current-source refresh checked with DELTA_new.md</span>
             </label>
-            <div class="check-detail">Proof: the 0600Z late-insert event shows on the reloaded timeline — or the exact break and your redirect are written in the log. Both count. What doesn’t count is an instrument that silently ignored a change to the world it claims to map.</div>
+            <div class="check-detail">The seventh event appears in the correct place, or the exact failure is recorded and the release is held.</div>
           </li>
         </ol>
 
-        <h3>Stage 08 · Say the loop out loud</h3>
-        <p>You just ran a full harness loop. Naming it from your own run — not from slogans — is what makes it portable to Tuesday, and to your desk.</p>
-
+        <h3>Stage 07 · Write the release note</h3>
         <div class="do-step">
-          <p class="do-label">Now switch chats in the <strong>Codex app</strong>:</p>
-          <ul class="do-clicks">
-            <li>Leave <strong>Build — B1 First Light</strong></li>
-            <li>Open <strong>Operator — Direction &amp; Log</strong> in the course project's chat list</li>
-          </ul>
+          <p class="do-label">In <strong>Build — B1 First Light</strong>, paste this after filling the brackets from your checks:</p>
+          <pre><code>Create mission_flesh/b1/first_light/RELEASE_NOTE.md.
+
+Artifact: mission_flesh/b1/first_light/index.html
+Contract status: [MET / PARTIAL / NOT MET] — [WHY]
+Observed checks:
+- Initial report count: [RESULT]
+- Timeline and undated-report rule: [RESULT]
+- Filter 1: [RESULT]
+- Filter 2: [RESULT]
+- Named exclusion: [RESULT]
+- DELTA refresh: [RESULT]
+Concrete correction made: [FINDING AND FIX, OR "none"]
+Release decision: [READY / READY WITH FIXES / HOLD]
+Residual risk or next action: [ONE LINE]
+
+Use only the results I supplied. Save the file and report its path.</code></pre>
         </div>
-
-        <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Operator — Direction &amp; Log</strong>:</p>
-          <pre><code>Before the log: I want to explain the harness loop from this run in my own words —
-goal, act, observe, correct, accept.
-
-Ask me for one beat at a time. For every beat, make me point at a specific moment
-from today's build chat or my viewer checks. Challenge anything that sounds like
-a generic slogan instead of something that actually happened at my keyboard.</code></pre>
-        </div>
-
-        <p>Good answers sound like “I corrected the data shape before the build because the undated report had nowhere to land” — a moment, not a motto. Expect pushback on anything vague; that pushback is the point.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="b0-b0-loop" name="b0-b0-loop" data-check-id="b0-loop" />
               <span class="check-num">9</span>
-              <span class="check-title">Explain harness loop from this run</span>
+              <span class="check-title">Release note ties the specification, checks, corrections, and decision together</span>
             </label>
-            <div class="check-detail">Proof: five beats — goal → act → observe → correct → accept — each pinned to a real moment from <em>this</em> mission, and your explanation survived the AI’s challenge. Generic slogans get sent back; that’s the check working.</div>
+            <div class="check-detail"><code>mission_flesh/b1/first_light/RELEASE_NOTE.md</code> records what shipped, the observed checks, any repair, the release decision, and the remaining risk.</div>
           </li>
         </ol>
-
 
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
-          <h3>Lesson reflection <span class="section-count" data-count-for="pulse">0/5</span></h3>
-        <p class="section-lede">Close this lesson by recording what happened, reviewing the outcome status created during the run, asking a fresh reviewer to challenge the evidence, and updating your transfer plan. <a href="../pulse.html">Lesson reflection guide →</a></p>
-        <p class="reflection-question"><strong>Think back:</strong> What did this first run change about how you will brief and verify an AI-built instrument?</p>
+          <h3>Lesson reflection</h3>
+          <p class="reflection-question"><strong>Closeout question:</strong> Which observed check most affected your release decision?</p>
 
-        <p><strong>Where your answer goes:</strong> You will write the one-sentence answer in the B1 row of <code>operator/MEASUREMENT_SPINE.md</code> through <strong>Operator — Direction &amp; Log</strong>, after the independent review. Do not start a separate reflection chat.</p>
+          <div class="do-step">
+            <p class="do-label">Open <strong>Operator — Direction &amp; Log</strong> and paste this once, with both brackets filled:</p>
+            <pre><code>Read operator/DIRECTION_BRIEF.md, mission_flesh/b1/first_light/RELEASE_NOTE.md,
+operator/OPERATOR_LOG.md, and operator/TRANSFER_30_60_90.md.
 
-        <div class="do-step">
-          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
-          <ul class="do-clicks">
-            <li>Switch to <strong>ChatGPT</strong>. If it is closed, open it from the Windows Start menu</li>
-            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
-            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>In the sidebar, find <strong>Operator — Direction &amp; Log</strong>, open it, and continue that conversation. Do not create a new chat when it is already there</li>
-            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Operator — Direction &amp; Log</code>. Choose <strong>Pin</strong> from the same menu if that option appears</li>
-            <li>Confirm the open chat is <strong>Operator — Direction &amp; Log</strong>. The next prompt goes there, never into a Build chat</li>
-          </ul>
-        </div>
+Update the B1 entry in OPERATOR_LOG.md with:
+- final artifact and path
+- criterion-based status: READY / READY WITH FIXES / HOLD
+- the most consequential finding and fix, or the residual risk if no fix was needed
+- evidence pointers to the release note and viewer
+- lesson reflection: [WHICH OBSERVED CHECK MOST AFFECTED MY RELEASE DECISION, AND WHY]
+- reusable workplace rule: [ONE RULE I WILL APPLY TO A RECURRING WORK PRODUCT]
 
-        <!-- Verbatim from operator/OPERATOR_LOG.md — operator-chat starter -->
-        <div class="do-step">
-          <p class="do-label">Now paste this into the open <strong>Operator — Direction &amp; Log</strong> chat:</p>
-          <pre><code>We are writing the Operator Log entry for this block together.
+Also update the Primary missions field and today's session row in TRANSFER_30_60_90.md
+with this recurring work product: [ONE SPECIFIC PRODUCT FROM MY DESK]. If that final
+bracket is still generic or blank, ask one focused question before writing. Preserve
+the rest of both files and report the exact sections changed.</code></pre>
+          </div>
 
-Read operator/DIRECTION_BRIEF.md (the LIVE brief) and operator/OPERATOR_LOG.md.
-Interview me in short turns. Do not fill the verdict for me.
-
-Walk fields 1 → 5:
-1. Ask what I directed (confirm against the Brief).
-2. Ask what I changed mid-run.
-3. Ask my provisional verdict — then challenge weak reasoning without overriding me.
-4. Demand concrete evidence (paths, checks, citations, reruns). Reject vibe language.
-5. Ask what I still own.
-
-When I accept the wording, write the entry into the correct block section in this file.
-Remind me: REJECT with real evidence is a successful operator act.</code></pre>
-        </div>
-
-        <p>Five minutes of dialogue. The verdict is yours — ACCEPT, REJECT, or ACCEPT WITH FIXES — and the AI’s job is to interrogate your evidence, not to grade you. Your viewer checks from Stages 05–07 are the evidence pointers.</p>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-pulse-log" name="b0-pulse-log" data-check-id="pulse-log" />
-              <span class="check-num">10</span>
-              <span class="check-title">Provisional Operator Log entry written</span>
-            </label>
-            <div class="check-detail">Proof: the B1 entry in <code>operator/OPERATOR_LOG.md</code> holds what you directed, mid-run changes, your verdict (ACCEPT / REJECT / ACCEPT WITH FIXES), evidence pointers, and what you still own. “Looked good” is not evidence — a path or a check you ran is.</div>
-          </li>
-        </ol>
-
-        <div class="do-step">
-          <p class="do-label">Continue in the same <strong>Operator — Direction &amp; Log</strong> chat and paste this:</p>
-          <pre><code>Pre-review outcome snapshot for B1.
-
-I will paste the lesson-outcome titles that the website currently shows as Complete.
-Do not decide the status again and do not add outcomes to my list. Ask me for one
-evidence pointer — a path, a file, or a check I ran — for each title I paste.
-Challenge any title whose evidence is weak. Then return the same titles with their
-evidence pointers as my pre-review snapshot.</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Now capture the outcome status already shown on this page:</p>
-          <ul class="do-clicks">
-            <li>Open <strong>Lesson outcomes</strong> below. It now displays which inline outcomes are <strong>Complete</strong> and which are <strong>Not yet</strong></li>
-            <li>If a status is wrong, return to that outcome beside its relevant run instruction and correct the inline checkbox there. Do not change status in the summary</li>
-            <li>Open Notepad and type the title of every outcome shown <strong>Complete</strong>. Do not include <strong>Not yet</strong> titles</li>
-            <li>Return to <strong>Operator — Direction &amp; Log</strong>, paste those titles, answer the evidence questions, then save the returned snapshot in Notepad for the adversarial pack</li>
-          </ul>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-pulse-bars" name="b0-pulse-bars" data-check-id="pulse-bars" />
-              <span class="check-num">11</span>
-              <span class="check-title">Pre-review outcome snapshot saved</span>
-            </label>
-            <div class="check-detail">Proof: the titles shown Complete in the read-only summary were copied before review, and each title now carries an evidence pointer. The snapshot records the website state; it does not ask you to decide every outcome a second time.</div>
-          </li>
-        </ol>
-
-        <p>Now the attack. A fresh chat has no memory of helping you succeed — that is exactly why it can challenge your verdict honestly.</p>
-
-        <div class="do-step">
-          <p class="do-label">Now create the independent review chat in <strong>Codex</strong>:</p>
-          <ul class="do-clicks">
-            <li>Confirm <code>AI_Harness_Bootcamp</code> is still the open project</li>
-            <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Adversarial — B1 — [today's date]</code> with the actual date</li>
-            <li>Confirm permissions say <strong>Ask for approval</strong>. This fresh chat is only for review; never use the Build chat</li>
-          </ul>
-        </div>
-
-        <!-- Verbatim from operator/ADVERSARIAL_REVIEW.md — frozen adversarial prompt -->
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>Adversarial — B1</strong> chat:</p>
-          <pre><code>You are an adversarial operator reviewer for an operator’s school.
-Your job is NOT to help me feel successful. Your job is to stress-test my verdict and claimed lesson outcomes.
-
-Context: careful, evidence-based AI direction and shared reasoning.
-Evidence beats vibe. Model self-praise is not evidence. Agreement is not truth.
-Containment is absence of effect. Autonomy without stop proof is theater.
-
-I will paste: block, artifacts/paths/excerpts, provisional verdict, and my pre-review lesson-outcome snapshot.
-
-Protocol — follow in order:
-1. Restate my claimed outcome and verdict in one cold sentence (no praise).
-2. Attack pass: give the strongest case that this is NOT YET complete for this lesson.
-   - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
-   - Name completion theater if you see it.
-   - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
-3. Evidence audit: for each lesson outcome in my pre-review snapshot, mark:
-   SURVIVES / WOUNDED / DEAD — with reason.
-4. Verdict challenge: argue whether my ACCEPT/REJECT/ACCEPT WITH FIXES is earned.
-   If ACCEPT, try to force ACCEPT WITH FIXES or REJECT.
-   If REJECT, check I am not rejecting to avoid measurement.
-5. Force one of:
-   a) Concrete fix list (smallest changes to complete the lesson outcomes), or
-   b) “Stands under fire” — only if evidence is actually strong.
-6. End with a single line I must copy into my Operator Log:
-   ADVERSARIAL: [stood / wounded / failed] — [one sentence].
-
-Rules for you:
-- No encouragement fluff. No “great job.” No emoji.
-- Do not rewrite my mission for me unless citing a fix.
-- Do not accept screenshots of chat enthusiasm as evidence.
-- Prefer false NOT YET over false pass.
-- Short, sharp, specific.</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Now paste your pack into the same <strong>Adversarial — B1</strong> chat:</p>
-          <pre><code>Block: B1 — First Light. Outcome: [ONE LINE FROM YOUR LIVE BRIEF].
-Artifacts: mission_flesh/b1/first_light/index.html · operator/DIRECTION_BRIEF.md · operator/OPERATOR_LOG.md (B1 entry)
-Checks I ran: [WHAT YOU SAW IN THE TIMELINE, FILTER, NEGATIVE, AND DELTA CHECKS]
-Provisional verdict: [ACCEPT / REJECT / ACCEPT WITH FIXES]
-Lesson outcomes shown Complete before review: [PASTE THE SNAPSHOT FROM DIRECTION &amp; LOG]
-Known weak spots: [ANYTHING YOU ALREADY DOUBT]</code></pre>
-        </div>
-
-        <p>Fill every bracket before sending: your brief’s outcome line, what you actually observed in each check, your verdict, the draft lesson-outcome list, and anything you already doubt. For the outcome slot, return to Notepad, press <strong>Ctrl+A</strong> and <strong>Ctrl+C</strong>, then paste the saved list. Thin pastes get polite reviews — and a polite review means you under-fed the attacker, not that you passed.</p>
-
-        <div class="do-step">
-          <p class="do-label">Before measurement, carry the complete review into <strong>Operator — Direction &amp; Log</strong>:</p>
-          <ul class="do-clicks">
-            <li>In <strong>Adversarial — B1</strong>, scroll to step 3 and copy the complete <code>SURVIVES / WOUNDED / DEAD</code> ruling list</li>
-            <li>In the sidebar, open <strong>Operator — Direction &amp; Log</strong>, paste the list unedited as a new message, and send it</li>
-            <li>Reopen <strong>Adversarial — B1</strong>, copy its complete final <code>ADVERSARIAL:</code> line, then reopen <strong>Operator — Direction &amp; Log</strong>, paste the line as the next message, and send it</li>
-            <li>Leave <strong>Operator — Direction &amp; Log</strong> open for the measurement step</li>
-          </ul>
-          <p>The final line you copy from the review has this shape:</p>
-          <pre><code>ADVERSARIAL: [stood | wounded | failed] — [THE ONE-SENTENCE REASON FROM THE REVIEW CHAT]</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Now tell Codex to write those two pasted messages into the log file:</p>
-          <pre><code>Update operator/OPERATOR_LOG.md now.
-In the B1 entry, append the ruling-list message and final ADVERSARIAL-line
-message I just pasted to field 6, Adversarial, verbatim and in that order.
-Do not summarize, rewrite, or omit either message. Preserve fields 1–5.
-For each WOUNDED or DEAD outcome, ask what I did: fixed it, cleared its
-inline Lesson outcome checkbox, or kept it as a named gap. Append my answer, save the file, then
-tell me the exact section you updated.</code></pre>
-        </div>
-
-        <p>Use the review chat's exact final line, not the template. Wounded means fix now or downgrade to ACCEPT WITH FIXES; failed means return to the relevant run instruction and clear that inline Lesson outcome checkbox until you repair the evidence. The ruling list is what the next step counts, so it has to exist in writing rather than memory.</p>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-pulse-adv" name="b0-pulse-adv" data-check-id="pulse-adv" />
-              <span class="check-num">12</span>
-              <span class="check-title">Independent evidence review completed in a new chat</span>
-            </label>
-            <div class="check-detail">Proof: a fresh <code>Adversarial — B1</code> chat ran the frozen prompt against your real paste pack, and the final <code>ADVERSARIAL: stood | wounded | failed</code> line is copied into your log. Reusing the build chat for “review” doesn’t count — it helped you five minutes ago. For every WOUNDED or DEAD outcome, return to its inline checkbox beside the relevant run instruction and clear it until the evidence is repaired. Before you close the chat, write down what the attack took away. An empty list is a legitimate answer and worth having on the record.</div>
-          </li>
-        </ol>
-
-        <!-- Verbatim from operator/MEASUREMENT_SPINE.md — end-of-block prompt -->
-        <div class="do-step">
-          <p class="do-label">Continue in the open <strong>Operator — Direction &amp; Log</strong> chat and paste this:</p>
-          <pre><code>Measurement spine update. Read operator/MEASUREMENT_SPINE.md.
-Block: [B1/P1/…].
-Adversarial line: [paste ADVERSARIAL: …].
-Per-claim rulings from the adversarial: [PASTE THE SURVIVES / WOUNDED / DEAD LIST].
-Lesson outcomes shown Complete before the review: [n].
-Brief LIVE at: [time or "approx"].
-Adversarial done at: [time or "approx"].
-Mission outcome path(s): [paths].
-Fill this block's row:
-1. Brief accuracy — did the artifact match the "done looks like" I wrote before the
-   run, and which one of the five brief fields would I write differently now?
-   Refuse "the brief was fine": make me name a field, or say none and name what
-   held better than expected.
-2. Overclaim n/m — count the lesson outcomes shown Complete before review that came back WOUNDED or DEAD,
-   over the number shown Complete. Count from the rulings I pasted, not from my summary.
-3. Time to result in minutes.
-4. Lesson reflection (one sentence) — What did this first run change about how I will brief and verify an AI-built instrument?
-5. Deep mark if this block has one.
-Do not score ritual health and do not give a quality label. Neither is in this row.
-Do not start transfer until this row is written.</code></pre>
-        </div>
-
-        <p>Before sending, fill the brackets. Block is <strong>B1</strong>. The adversarial line and the rulings list are both sitting in this chat already — paste the rulings whole rather than summarizing them, because the count in step 2 is only honest if it comes off the review’s own words. The completion count is how many lesson outcomes the website showed Complete <em>before</em> the review, not how many the review supported. The outcome path is <code>mission_flesh/b1/first_light/index.html</code>, and honest approximate times are fine — fiction is not. B1 carries no deep mark, so step 5 is answered “none.”</p>
-
-        <p>Expect step 1 to push back. Naming a brief field you would write differently is harder than it sounds on your first block, and “the brief was fine” will not be accepted — if every field genuinely held, say which one held better than you expected and why. Expect the overclaim number to be non-zero today. It is supposed to be. The number worth watching is not this morning’s value but whether it falls by Friday.</p>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-pulse-measure" name="b0-pulse-measure" data-check-id="pulse-measure" />
-              <span class="check-num">13</span>
-              <span class="check-title">Measurement spine updated</span>
-            </label>
-            <div class="check-detail">Today's row in <code>operator/MEASUREMENT_SPINE.md</code> carries <strong>brief accuracy</strong> — did the artifact match the "done looks like" you wrote before the run, and which one of the brief's five fields (Outcome, Done looks like, Bounds, Evidence standard, Stop / hand-back) would you write differently now, named outright or answered "none — [field] held better than expected, because …" — then <strong>overclaim n/m</strong>, the number of outcomes shown Complete before review that the adversarial ruled WOUNDED or DEAD over the number shown Complete, then <strong>time to result</strong> in minutes from LIVE brief to adversarial line, and a one-sentence <strong>lesson reflection</strong> answering the question above. This block has no deep mark.</div>
-          </li>
-        </ol>
-
-        <p>One chat left, and it is the only one that is not about today. The rest of the week produces seeds — a harness you would keep, a habit of comparing two engines before you believe either, a rule about what you never accept into trusted material. Every one of those has to land somewhere real or it dies on Friday. So B1’s job in this chat is to name the landing site: <strong>one recurring piece of work from your own desk</strong> that the week’s seeds will attach to. Not a job title and not a department — one thing you produce more than once, that you could describe to a stranger in a sentence.</p>
-
-        <div class="do-step">
-          <p class="do-label">Now open the standing transfer chat in <strong>Codex</strong>:</p>
-          <ul class="do-clicks">
-            <li>In the course project's sidebar, look for <strong>Operator — Transfer 30-60-90</strong></li>
-            <li>If it is there, open it and continue that conversation. Do not create a duplicate</li>
-            <li>If it is missing, click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>Operator — Transfer 30-60-90</code></li>
-            <li>Choose <strong>Pin</strong> from the same menu if that option appears. This is the second standing operator chat used by later lessons</li>
-          </ul>
-        </div>
-
-        <!-- Verbatim from operator/TRANSFER_30_60_90.md — every-session prompt -->
-        <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Operator — Transfer 30-60-90</strong>:</p>
-          <pre><code>Transfer session — outer circuit. Read operator/TRANSFER_30_60_90.md.
-
-Block I just finished: [B1/P1/…].
-I have finished Direction/Log and the inline lesson outcomes in the other operator chat.
-
-Run a short interactive update:
-1. What did this lesson prove you can now do (one sentence, no theater)?
-2. Map it onto MY real desk — interview me if missing.
-3. Update the matching seed and today’s row in the session log.
-4. Tighten at most three lines in identity or 30/60/90 if enough signal exists.
-5. Name one backslide risk if I do nothing at work.
-
-Do not seal. Do not invent a full plan from zero on a light block.
-Challenge vagueness. I own every accept.</code></pre>
-        </div>
-
-        <p>Replace <code>[B1/P1/…]</code> with <strong>B1</strong>. Step 2 is where the workload gets named, and the chat will push on a vague answer. Expect “reporting” and “analysis” to come back challenged — those are categories, and a category cannot be handed to anything. “The Thursday readiness summary I write for the section chief” is a workload. So is “the intake triage on every new supplier request.” If two or three come to mind, name them all and mark the one you would carry first.</p>
-
-        <div class="do-step">
-          <p class="do-label">Then paste this into <strong>Operator — Transfer 30-60-90</strong> — fill the bracket with the workload in your own accepted wording before you send it:</p>
-          <pre><code>The workload is: [ONE RECURRING PIECE OF WORK FROM MY OWN DESK, IN MY WORDS].
-
-Write it into the Primary missions field of the Identity section in
-operator/TRANSFER_30_60_90.md, in my wording and not yours.
-Add today's row to the session log: date, what I named, what is still blocked.
-Set Status to Living.
-Then name one thing about this workload that would make it hard to hand to a machine.
-
-Do not seal. Do not draft horizons yet.</code></pre>
-        </div>
-
-        <p>Approve the write when the app asks. Small is fine today — one workload, named, dated. What must not happen is a blank: every seed the rest of the week produces gets attached to what you write here, and a seed with nothing to land on is a note you will never open again.</p>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="b0-pulse-transfer" name="b0-pulse-transfer" data-check-id="pulse-transfer" />
-              <span class="check-num">14</span>
-              <span class="check-title">Your real workload named in the Transfer chat</span>
-            </label>
-            <div class="check-detail">Proof: one recurring piece of work from your own desk written into the Identity section of <code>operator/TRANSFER_30_60_90.md</code> in your wording, with today’s dated row in the session log and Status set to Living. A category is not a workload — if what you wrote would equally describe forty other people’s jobs, it is not yet specific enough for a seed to land on.</div>
-          </li>
-        </ol>
+          <ol class="checklist">
+            <li class="check-item" data-check-item>
+              <label class="check-label">
+                <input type="checkbox" id="b0-pulse-log" name="b0-pulse-log" data-check-id="pulse-log" />
+                <span class="check-num">10</span>
+                <span class="check-title">Artifact-backed closeout saved</span>
+              </label>
+              <div class="check-detail">The B1 log points to the viewer and release note, records a release status and residual risk, and the transfer file names one real recurring product.</div>
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -680,9 +396,9 @@ Do not seal. Do not draft horizons yet.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-brief5" name="b0-mvp-brief5" data-check-id="mvp-brief5" />
               <span class="check-num">15</span>
-              <span class="check-title">Five-part direction brief marked LIVE</span>
+              <span class="check-title">B1 work specification was saved before the build</span>
             </label>
-            <div class="check-detail">Outcome is an instrument, not “explore the data.”</div>
+            <div class="check-detail">The viewer path, source boundary, acceptance checks, and stop condition are recorded in the LIVE brief.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="b0-filter">
@@ -707,27 +423,27 @@ Do not seal. Do not draft horizons yet.</code></pre>
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-upd" name="b0-mvp-upd" data-check-id="mvp-upd" />
               <span class="check-num">18</span>
-              <span class="check-title">Changed input updates the result, or the failure is recorded</span>
+              <span class="check-title">The viewer refreshes from the new report, or the release is held</span>
             </label>
-            <div class="check-detail">DELTA or documented failure path.</div>
+            <div class="check-detail">The 0600Z event appears after the restore report, or the release note records the exact failure and HOLD decision.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="b0-loop">
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-loop" name="b0-mvp-loop" data-check-id="mvp-loop" />
               <span class="check-num">19</span>
-              <span class="check-title">You can explain the harness loop using this run</span>
+              <span class="check-title">The release note connects the specification, observed checks, corrections, and decision</span>
             </label>
-            <div class="check-detail">AI may challenge hand-waving.</div>
+            <div class="check-detail"><code>RELEASE_NOTE.md</code> gives a later reader the artifact, results, repair history, status, and residual risk.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="pulse-log">
             <label class="check-label">
               <input type="checkbox" id="b0-mvp-log" name="b0-mvp-log" data-check-id="mvp-log" />
               <span class="check-num">20</span>
-              <span class="check-title">The log records your decision, evidence, and remaining responsibility</span>
+              <span class="check-title">The closeout records the decision, evidence, residual risk, and workplace rule</span>
             </label>
-            <div class="check-detail">Peer-auditable pointers.</div>
+            <div class="check-detail">The B1 log points to the viewer and release note; the transfer file names one specific recurring product.</div>
           </li>
         </ol>
       </section>
@@ -736,7 +452,7 @@ Do not seal. Do not draft horizons yet.</code></pre>
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Before you move on</h2>
-        <p>A completed lesson means more than a successful run. Evidence must survive adversarial review. Full list: <a href="#floor">these B1 lesson outcomes</a>.</p>
+        <p>Move on when the viewer passes its observable checks, the release note records any exception, and the closeout points to the files. Full list: <a href="#floor">these B1 lesson outcomes</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>

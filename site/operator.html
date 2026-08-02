@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Operator reference · AI Harness Bootcamp · Starzl</title>
+  <title>Production workflow reference · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="./css/course.css" />
 </head>
 <body>
@@ -17,79 +17,56 @@
     </div>
   </header>
   <main class="site-main">
-    <p class="eyebrow">Reference · six records · every half-day</p>
-    <h1>Operator reference</h1>
+    <p class="eyebrow">Optional reference · use when a module needs it</p>
+    <h1>Production workflow reference</h1>
 
-    <p class="lede">Use this page when you need to remember what each operator record proves. The six records follow one mission from intent to evidence, then carry the lesson back to your desk.</p>
+    <p class="lede">The module page is the main path. This reference explains the few moves that consistently improve AI-assisted work: specify the deliverable, build it, inspect real evidence, make the release decision, and leave a usable handoff.</p>
     <div class="callout">
       <strong>Run the module, not this page</strong>
-      Your current module contains the exact prompt and the next action. This page is a quick reference when a field or verdict is unclear.
+      Your current module contains the exact prompt, command, acceptance checks, and recovery. Use this page only when you need the reasoning behind a move.
     </div>
-    <div class="btn-row">
-      <a class="btn" href="pulse.html">Open the lesson reflection guide</a>
-    </div>
-
-    <h2>Keep judgment separate from building</h2>
-    <div class="table-scroll">
-    <table>
-      <thead><tr><th>Chat</th><th>Create or continue?</th><th>Job</th></tr></thead>
-      <tbody>
-        <tr><td><code>Operator — Direction &amp; Log</code></td><td>Continue the standing chat; create it only if missing.</td><td>Write the brief before the mission; record the verdict after it.</td></tr>
-        <tr><td>Build / mission</td><td>Use the lesson's Build chat.</td><td>Do the work inside the agreed bounds.</td></tr>
-        <tr><td><code>Adversarial — [block] — [date]</code> or another clean reviewer</td><td>Always start fresh; some lessons require two reviewers.</td><td>Attack the same evidence without the Build chat's history.</td></tr>
-        <tr><td><code>Operator — Transfer 30-60-90</code></td><td>Continue the standing chat; create it only if missing.</td><td>Turn the block result into one action at your real desk.</td></tr>
-      </tbody>
-    </table>
+    <div class="card-grid" aria-label="Production workflow">
+      <a class="card" href="#specify"><p class="eyebrow">1 · Specify</p><h3>Name the work product</h3><p>Artifact, audience, source boundary, acceptance checks, and hand-back condition.</p></a>
+      <a class="card" href="#build"><p class="eyebrow">2 · Build</p><h3>Work in the real surface</h3><p>Use the module’s files, tool, and exact run path.</p></a>
+      <a class="card" href="#check"><p class="eyebrow">3 · Check</p><h3>Inspect observable evidence</h3><p>Open, run, compare, count, trace, or diff.</p></a>
+      <a class="card" href="#decide"><p class="eyebrow">4 · Decide</p><h3>Release, fix, or hold</h3><p>Let the finding change what happens next.</p></a>
+      <a class="card" href="#deliver"><p class="eyebrow">5 · Deliver</p><h3>Leave a usable handoff</h3><p>Path, decision, evidence, residual risk, owner, next move.</p></a>
     </div>
 
-    <div class="card-grid" aria-label="Operator records">
-      <a class="card" href="#direction-brief"><p class="eyebrow">1 · Before</p><h3>Direction Brief</h3><p>Freeze the outcome, bounds, evidence, and hand-back.</p></a>
-      <a class="card" href="#operator-log"><p class="eyebrow">2 · After</p><h3>Operator Log</h3><p>Record what happened and assign the verdict.</p></a>
-      <a class="card" href="#pass-bars"><p class="eyebrow">3 · As you work</p><h3>Lesson outcomes</h3><p>Complete each outcome beside the step that proves it.</p></a>
-      <a class="card" href="#adversarial-review"><p class="eyebrow">4 · Attack</p><h3>Adversarial review</h3><p>Try to break each claimed bar in a clean chat.</p></a>
-      <a class="card" href="#measurement-spine"><p class="eyebrow">5 · Measure</p><h3>Measurement spine</h3><p>Close the block with comparable numbers.</p></a>
-      <a class="card" href="#transfer-30-60-90"><p class="eyebrow">6 · Transfer</p><h3>Transfer 30-60-90</h3><p>Choose what moves to your desk next.</p></a>
-    </div>
-
-    <section id="direction-brief" class="home-section">
-      <p class="eyebrow">1 · Before the mission</p>
-      <h2>Direction Brief</h2>
-      <p>This brief freezes the agreement before the build chat starts. Capture the outcome, what done looks like, the bounds, the evidence standard, and the stop or hand-back condition. Mark it <strong>LIVE</strong> only after those five fields are specific enough to test.</p>
+    <section id="specify" class="home-section">
+      <p class="eyebrow">1 · Before work starts</p>
+      <h2>Specify the deliverable</h2>
+      <p>Write only the requirements that change the build: what must exist, who uses it, which sources are allowed, what must never happen, how you will inspect the result, and when the AI must stop for you. From P1 onward, the module supplies most of this; make the learner-owned choices and start.</p>
     </section>
 
-    <section id="operator-log" class="home-section">
-      <p class="eyebrow">2 · After the lesson work</p>
-      <h2>Operator Log</h2>
-      <p>The log is the record a peer can audit later. Point to the artifacts and observed results, note what changed, and assign <strong>ACCEPT</strong>, <strong>REJECT</strong>, or <strong>ACCEPT WITH FIXES</strong>. A model can argue; the operator owns the verdict.</p>
+    <section id="build" class="home-section">
+      <p class="eyebrow">2 · Produce the artifact</p>
+      <h2>Build in the real surface</h2>
+      <p>A serious result lives outside a persuasive chat. Save the page, workflow, configuration, score sheet, comparator, policy, or report at the path the module names. Keep generated output separate from the criteria and answer key used to judge it.</p>
     </section>
 
-    <section id="pass-bars" class="home-section">
-      <p class="eyebrow">3 · During the lesson</p>
-      <h2>Lesson outcomes</h2>
-      <p>Lesson outcomes turn a broad success claim into accomplishments you can inspect. Check each one directly after the exercise step produces its file, command result, measurement, or visible behavior. The Lesson outcomes section later on the page is a read-only Complete / Not yet summary. If review finds a gap, return to the matching inline outcome, repair the evidence, or clear it.</p>
+    <section id="check" class="home-section">
+      <p class="eyebrow">3 · Inspect the result</p>
+      <h2>Use the strongest available check</h2>
+      <p>Prefer direct evidence over another opinion: open the artifact, run the saved command, walk the citation, compare against the source, inspect the diff, score the fixed cases, or confirm the held row never reached the irreversible write. Check the failure mode that matters for this product, not a generic classroom trick.</p>
+      <p>Use a fresh reviewer only when an important judgment remains after those checks. Give it frozen inputs and ask for <strong>criterion · evidence · status · severity · required fix</strong>. A useful review changes the artifact or release decision; mandatory disagreement does not improve either.</p>
     </section>
 
-    <section id="adversarial-review" class="home-section">
-      <p class="eyebrow">4 · New chat every lesson</p>
-      <h2>Independent evidence review</h2>
-      <p>Open a clean chat and ask it to challenge the artifact against the lesson outcomes. Mark each outcome <strong>SURVIVES</strong>, <strong>WOUNDED</strong>, or <strong>DEAD</strong>. Fix the artifact or downgrade the verdict when the review finds a gap.</p>
+    <section id="decide" class="home-section">
+      <p class="eyebrow">4 · Act on the finding</p>
+      <h2>Release, fix, or hold</h2>
+      <p><strong>Release</strong> when the listed checks pass. <strong>Fix before release</strong> when the defect is bounded and repairable now. <strong>Hold</strong> when a material claim, control, or source remains unresolved. The status follows evidence; it is not a grade on effort.</p>
     </section>
 
-    <section id="measurement-spine" class="home-section">
-      <p class="eyebrow">5 · After the review</p>
-      <h2>Measurement spine</h2>
-      <p>Record the same four fields after every lesson: brief accuracy, overclaim, elapsed time, and one-sentence lesson reflection. Comparable fields matter more than false precision; use an honest time estimate when you did not track the minutes directly.</p>
-    </section>
-
-    <section id="transfer-30-60-90" class="home-section">
+    <section id="deliver" class="home-section">
       <span id="transfer" aria-hidden="true"></span>
-      <p class="eyebrow">6 · Carry it into your work</p>
-      <h2>Transfer 30-60-90</h2>
-      <p>Choose one real workflow and decide what you will try in 30 days, stabilize in 60, and measure or retire by 90. Name the owner, next action, evidence, and gate. Transfer stays open until those fields describe work you can actually schedule.</p>
+      <p class="eyebrow">5 · Make the result reusable</p>
+      <h2>Leave one handoff</h2>
+      <p>Record the artifact path, release decision, strongest evidence, remaining risk and owner, and the next run or update path. Add one rule you will reuse at work. P7 and P8 turn those concrete rules into the 30/60/90 plan; earlier modules should contribute a direct seed, not another interview.</p>
     </section>
 
     <div class="btn-row">
-      <a class="btn" href="pulse.html">Practice the lesson reflection</a>
+      <a class="btn" href="pulse.html">Open the five-minute closeout</a>
       <a class="btn btn-secondary" href="index.html#journey">Return to the course journey</a>
     </div>
 

@@ -3,8 +3,8 @@
   <p>A question arrives in yes-or-no form: “Did anything fail?”, “Is the supplier current?”, or “Has the change been approved?” Your knowledge system finds no matching record. The empty result creates pressure to answer <em>no</em>, even though the record may be incomplete, stale, disputed, or outside your authority.</p>
   <p>Give this work 45–60 minutes. You will leave with a <strong>negative-knowledge and refusal record</strong>: the exact claim sought, the search and coverage boundary, source authority, time boundary, answer state, supporting and contrary evidence, a decision-safe refusal, the next discriminating observation, and a named owner.</p>
   <p>First build a navigable vault and learn to walk its citations in <a href="/site/blocks/p4.html#depth">P4 · Going deeper</a>. Continue when a walked trail ends without an answer. The goal is not to make every note carry a new status system. It is to represent what one bounded question does—and does not—permit you to say.</p>
-  <div class="callout"><strong>Your finish line</strong>
-  You can distinguish five kinds of missing knowledge, refuse the unsupported conclusion without hiding useful evidence, and name the smallest observation that could turn the refusal into a bounded answer.</div>
+  <div class="callout"><strong>Work product</strong>
+  A bounded answer or refusal that names coverage, authority, time, detection limits, the next decisive observation, and its owner.</div>
 </section>
 
 <figure data-resource-figure="orientation"></figure>
@@ -64,7 +64,7 @@
   <p>The knowledge system searches the incident register. It finds no temperature-excursion ticket and produces:</p>
   <blockquote>No excursion occurred. The incident register contains no temperature alert for either pallet, so both pallets are clear for release.</blockquote>
 
-  <h3>Inject the failure: treat the ticket register as the world</h3>
+  <h3>Diagnose the false all-clear</h3>
   <p>The sentence contains a false negative. It silently assumes that every excursion would produce a ticket and that every relevant sensor reached the ticketing service. Neither assumption appears in the answer. The observable symptoms are a universal “no,” no event window attached to the cited register, no coverage check, and a release action resting on a derivative reporting channel.</p>
   <p>The operator reopens the query and records what exists:</p>
   <div class="table-scroll">
@@ -80,7 +80,7 @@
   </div>
   <p>The exact negative claim is not supported. The correct answer state is <strong>NOT OBSERVED</strong>: no excursion was observed in the incident register, but the observation surface could not detect alerts during a known gap. It is not UNKNOWN because a targeted search did occur. It is not bounded absence because coverage and detection both failed.</p>
 
-  <h3>Write predictions before the next observation</h3>
+  <h3>Check the source that can decide the question</h3>
   <p>The smallest discriminating observation is the two device-side buffers, owned by the quality technician.</p>
   <ul>
     <li><strong>If no qualifying excursion occurred:</strong> both buffers should show continuous readings at or below 8°C throughout 00:00–06:00.</li>
@@ -94,39 +94,21 @@
 <figure data-resource-figure="diagnostic"></figure>
 
 <section id="practice" class="resource-section">
-  <h2>Practice: label the gap before you answer</h2>
-  <p>Plan 20 minutes. For each supplied case, predict the answer state, write one bounded answer or refusal, and name the next discriminating observation. Use only the facts in the table.</p>
+  <h2>Use the evidence state that matches the gap</h2>
+  <p>These reference cases show the safe response and next check for common empty-result patterns.</p>
   <div class="table-scroll">
     <table>
-      <thead><tr><th>Case</th><th>Question</th><th>Available record</th></tr></thead>
+      <thead><tr><th>Question and record</th><th>Evidence state</th><th>Safe response</th><th>Next check</th></tr></thead>
       <tbody>
-        <tr><td>A</td><td>Has vendor Beta passed the required penetration test?</td><td>The vault contains the contract and a note saying the test was planned. Neither names the authoritative result repository or result owner, and no such source has yet been identified or searched.</td></tr>
-        <tr><td>B</td><td>Is Gate 4 open now?</td><td>Facilities logged “open” at 08:10. Safety Control independently logged “closed pending inspection” at 08:25. Both are authorized for their own action, neither record acknowledges the other, and policy assigns current-state resolution to the control room. No control-room entry exists.</td></tr>
-        <tr><td>C</td><td>Does the contract’s controlled annex permit re-export?</td><td>The contract index confirms an annex exists under counsel-only access. The operator is authorized to disclose the access restriction, but not to read the annex.</td></tr>
-        <tr><td>D</td><td>Is the supplier’s insurance current on 1 August?</td><td>The latest certificate in the vault expired 30 June. No renewal or cancellation record is present.</td></tr>
-        <tr><td>E</td><td>Did Tank K exceed its pressure limit from 12:00 to 14:00?</td><td>The alarm dashboard shows no alarm, but the historian has no readings from 12:20 to 12:37. A controller-local log exists.</td></tr>
-        <tr><td>F</td><td>Were any access approvals outstanding in the official queue at 17:00?</td><td>Policy requires every request to enter this queue. The intake reconciliation is 126 of 126, the snapshot is current at 17:00, and a query returns zero outstanding records.</td></tr>
+        <tr><td>Did Beta pass the required penetration test? The vault has a plan but no identified result repository or owner.</td><td><strong>UNKNOWN</strong></td><td>The plan does not establish pass or failure; hold any decision requiring a passed test.</td><td>Identify the result owner and obtain the signed report or current determination.</td></tr>
+        <tr><td>Is Gate 4 open now? Facilities says open; Safety Control says closed; policy assigns resolution to the control room.</td><td><strong>DISPUTED</strong></td><td>Preserve both records and do not choose by timestamp alone.</td><td>Obtain the operative state from the control-room authority.</td></tr>
+        <tr><td>Does a counsel-only annex permit re-export? The operator may disclose the restriction but may not read the annex.</td><td><strong>RESTRICTED</strong></td><td>Restriction implies neither permission nor prohibition.</td><td>Return the question through the authorized counsel path.</td></tr>
+        <tr><td>Is supplier insurance current on 1 August? The latest certificate expired 30 June; no renewal or cancellation is present.</td><td><strong>STALE</strong></td><td>The record supports “insured through 30 June,” not “uninsured on 1 August.”</td><td>Request a current certificate or registry confirmation.</td></tr>
+        <tr><td>Did Tank K exceed its pressure limit from 12:00 to 14:00? The alarm dashboard is clear but the historian has a 17-minute gap.</td><td><strong>NOT OBSERVED</strong></td><td>No alarm was observed on an incomplete detection surface.</td><td>Retrieve the controller-local log.</td></tr>
+        <tr><td>Were approvals outstanding in the official queue at 17:00? Mandatory intake reconciles 126 of 126 and the current query returns zero.</td><td><strong>BOUNDED ABSENCE</strong></td><td>No outstanding approvals were present in that reconciled queue at 17:00.</td><td>No further search is needed for that exact queue and timestamp.</td></tr>
       </tbody>
     </table>
   </div>
-  <ol>
-    <li>Write the exact yes/no claim each question is trying to force.</li>
-    <li>Assign the controlling gap state. Use BOUNDED ABSENCE only when no gap remains and the negative answer has earned its warrant.</li>
-    <li>Name the failed or satisfied absence-warrant bounds: question, coverage, authority, time, detection.</li>
-    <li>Write the answer or refusal. Include what the result does <em>not</em> establish.</li>
-    <li>Name the next observation, owner, and stop condition. For F, explain why another search is not required for the bounded question.</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal only after all six predictions are written</strong></summary>
-    <ol>
-      <li><strong>A — UNKNOWN.</strong> No defined result surface has been identified or searched. “I cannot support that Beta passed the required test. The vault contains a plan, not a result; that does not establish failure. Identify the security result owner and authoritative repository, then obtain the signed report or current determination. Hold any decision that requires a passed test.” This is not NOT OBSERVED because no targeted observation of the result surface has occurred.</li>
-      <li><strong>B — DISPUTED.</strong> Two current operational records conflict. Preserve both timestamps and ask the control-room authority for the operative state. Do not average the records or choose the later timestamp without knowing which authority controls reopening.</li>
-      <li><strong>C — WITHHELD/RESTRICTED.</strong> “I cannot determine whether re-export is permitted because the controlling annex is outside my authorized access. Restriction does not imply permission or prohibition. Return the question to counsel.” If even the annex’s existence were sensitive, the safe response would be the organization’s authorized neither-confirm-nor-deny path.</li>
-      <li><strong>D — STALE.</strong> The old certificate supports “insured through 30 June,” not “uninsured on 1 August.” Request a current certificate or registry confirmation from the supplier-risk owner; hold any action requiring current coverage.</li>
-      <li><strong>E — NOT OBSERVED.</strong> No alarm was observed on a surface with a 17-minute gap. Retrieve the controller-local log. If that log is also missing or cannot detect the event, return the claim as unresolved rather than repeating the dashboard search.</li>
-      <li><strong>F — BOUNDED ABSENCE.</strong> The exact answer is: “No outstanding approvals were present in the reconciled official queue at 17:00.” Coverage is complete for the named queue and time, the source is authoritative, mandatory capture supplies the detection rule, and reconciliation closes the expected record count. Do not expand the claim beyond that queue or timestamp.</li>
-    </ol>
-  </details>
 
   <h3>Copy the negative-knowledge and refusal record</h3>
   <pre><code># Negative-knowledge / refusal record
@@ -157,27 +139,18 @@ Bounded absence earned? (yes / no) — cite the satisfied warrant:
 Bounded answer or refusal sentence:
 What this does not establish:
 Next discriminating observation:
-Prediction if claim is true:
-Prediction if claim is false:
+Result that would support the claim:
+Result that would contradict the claim:
 Owner:
 Stop / return-to-human trigger:</code></pre>
 
-  <h3>Self-check: is “none” earned?</h3>
-  <ol>
-    <li>A complete search of an unofficial notes folder finds no approval. Which absence-warrant bound still fails?</li>
-    <li>A current authoritative register contains no event, but its ingestion monitor shows a gap. Which state fits?</li>
-    <li>Two authoritative records conflict. Can a third unowned summary turn the state into supported?</li>
-    <li>A restricted source probably contains the answer. May the access restriction be used as support for or against the claim?</li>
-  </ol>
-  <details>
-    <summary><strong>Reveal the self-check</strong></summary>
-    <ol>
-      <li><strong>Authority</strong> fails. Folder completeness does not make the folder entitled to establish approval.</li>
-      <li><strong>NOT OBSERVED.</strong> The query ran, but the detection and coverage warrant is broken.</li>
-      <li>No. A derivative summary adds prose, not resolution. The conflict needs an authority rule, a direct observation, or the accountable owner.</li>
-      <li>No. Access restriction does not license an inference about the source’s undisclosed content. Return through the authorized path.</li>
-    </ol>
-  </details>
+  <h3>Apply four absence rules</h3>
+  <ul>
+    <li>A complete unofficial folder still fails the authority bound; completeness does not make the folder entitled to establish approval.</li>
+    <li>A clear authoritative register with an ingestion gap is <strong>NOT OBSERVED</strong>, because detection and coverage remain broken.</li>
+    <li>A derivative summary cannot resolve two conflicting authoritative records. Use the authority rule, a direct observation, or the accountable owner.</li>
+    <li>Access restriction supports no inference about undisclosed content. Return through the authorized path.</li>
+  </ul>
 </section>
 
 <section id="transfer" class="resource-section resource-transfer">
