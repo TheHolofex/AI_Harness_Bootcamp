@@ -1,5 +1,6 @@
 /**
- * AHB course registry — the single source of truth for B0, B1, and P1–P8.
+ * AHB course registry — the single source of truth for B0, B1, the scheduled
+ * Model Economics discussion, and P1–P8.
  *
  * Every reader of progress (home dashboard, nav dots, block pages, the
  * pre-work hub) counts against the id lists declared here — never against
@@ -58,7 +59,7 @@
   }
 
   // Storage order is retained for compatibility. The visible path is
-  // B0 install clinic → B1 First Light → P1 → … → P8.
+  // B0 install clinic → B1 First Light → Model Economics → P1 → … → P8.
   // `ids` contains the controls learners can actually see and complete. When an
   // inline lesson outcome replaces a procedural receipt, only the outcome id is
   // required; the duplicate procedural id is retained in the HTML solely so old
@@ -90,6 +91,13 @@
       ids: ["b1-dashboard", "b1-polish", "b1-verify"],
       stretchIds: [],
       url: "blocks/b1.html", meta: "Codex app"
+    },
+    {
+      code: "ME", name: "Model Economics", title: "Model Economics", kind: "discussion",
+      day: "Monday", slot: "PM", key: "ahb-discussion-model-economics",
+      ids: ["me-discussed"], stretchIds: [],
+      url: "blocks/me.html", meta: "30 min · instructor-led discussion",
+      contextLabel: "Monday PM · 30-minute discussion · Before P1"
     },
     {
       code: "P1", name: "Daily Status Brief", title: "The Daily Status Brief", day: "Monday", slot: "PM",
@@ -194,12 +202,15 @@
   var COURSE_BLOCKS = REGISTRY.filter(function (item) {
     return COURSE_CODES.indexOf(item.code) !== -1;
   });
-  var CORE_PATH = [PREWORK_STOP].concat(COURSE_BLOCKS);
+  var NAV_STOPS = REGISTRY.filter(function (item) {
+    return COURSE_CODES.indexOf(item.code) !== -1 || item.kind === "discussion";
+  });
+  var CORE_PATH = [PREWORK_STOP].concat(NAV_STOPS);
 
   // Journey board columns and day dropdowns are derived from these groups.
   var JOURNEY = [
     { phase: "Monday AM", title: "Install Clinic → First Light", codes: ["B0", "B1"] },
-    { phase: "Monday PM", title: "Daily Status Brief", codes: ["P1"] },
+    { phase: "Monday PM", title: "Model economics → Daily Status Brief", codes: ["ME", "P1"] },
     { phase: "Tuesday", title: "Craft + verdict", codes: ["P2", "P3"] },
     { phase: "Wednesday", title: "Knowledge", codes: ["P4", "P5"] },
     { phase: "Thursday", title: "Autonomy", codes: ["P6", "P7"] },
@@ -207,7 +218,7 @@
   ];
 
   var DAY_NAV = [
-    { label: "Monday", codes: ["B0", "B1", "P1"] },
+    { label: "Monday", codes: ["B0", "B1", "ME", "P1"] },
     { label: "Tuesday", codes: ["P2", "P3"] },
     { label: "Wednesday", codes: ["P4", "P5"] },
     { label: "Thursday", codes: ["P6", "P7"] },
@@ -288,19 +299,19 @@
     };
   }
 
-  // The current course stop: B0 install clinic, then the nine instructional modules.
+  // The current course stop follows the visible path, including the discussion,
+  // while the numbered module count remains B1 plus P1–P8.
   function currentBlock() {
-    if (!isComplete(PREWORK_STOP)) return PREWORK_STOP;
-    for (var i = 0; i < COURSE_BLOCKS.length; i++) {
-      if (!isComplete(COURSE_BLOCKS[i])) return COURSE_BLOCKS[i];
+    for (var i = 0; i < CORE_PATH.length; i++) {
+      if (!isComplete(CORE_PATH[i])) return CORE_PATH[i];
     }
     return COURSE_BLOCKS[COURSE_BLOCKS.length - 1];
   }
 
   function courseComplete() {
-    if (!isComplete(PREWORK_STOP) || !COURSE_BLOCKS.length) return false;
-    for (var i = 0; i < COURSE_BLOCKS.length; i++) {
-      if (!isComplete(COURSE_BLOCKS[i])) return false;
+    if (!CORE_PATH.length) return false;
+    for (var i = 0; i < CORE_PATH.length; i++) {
+      if (!isComplete(CORE_PATH[i])) return false;
     }
     return true;
   }

@@ -841,6 +841,97 @@ a.plate-cell:hover { background: var(--paper-warm); }
   color: var(--ink-muted);
 }
 
+/* --- Monday Model Economics bridge --- */
+.discussion-spotlight {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 1.25rem 0 0;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--mark);
+  background: var(--paper-warm);
+  color: var(--ink);
+  text-decoration: none;
+}
+.discussion-spotlight:hover,
+.discussion-spotlight:focus-visible {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: var(--current-tint);
+}
+.discussion-spotlight-eyebrow,
+.discussion-deck-eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+.discussion-spotlight-eyebrow { color: var(--ink-faint); }
+.discussion-spotlight-title {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+.discussion-spotlight-copy {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+}
+.discussion-spotlight-action {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.discussion-deck {
+  display: flex;
+  min-height: 15rem;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1.25rem 0 0;
+  padding: clamp(1.4rem, 4vw, 2.5rem);
+  border: 1px solid var(--field);
+  background: var(--field);
+  color: var(--field-text);
+  text-decoration: none;
+}
+.discussion-deck:hover,
+.discussion-deck:focus-visible {
+  border-color: var(--mark);
+  color: var(--field-text);
+  background: var(--field-panel);
+}
+.discussion-deck-eyebrow { color: var(--gold); }
+.discussion-deck-title {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: clamp(1.8rem, 5vw, 3.35rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+.discussion-deck-subtitle {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--sand);
+  font-size: 1rem;
+}
+.discussion-deck-action {
+  display: block;
+  margin-top: 2rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 /* --- simple grid helpers (cards, 2/3/4-col strips) --- */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; }
@@ -1081,6 +1172,8 @@ a.plate-cell:hover { background: var(--paper-warm); }
     justify-content: center;
   }
   .plate-next { text-align: left; }
+  .discussion-spotlight { grid-template-columns: 1fr; gap: 0.75rem; }
+  .discussion-spotlight-action { white-space: normal; }
 }
 @media (max-width: 560px) {
   .nav.nav-unified { position: relative; }

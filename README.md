@@ -1,6 +1,6 @@
 # AI Harness Bootcamp
 
-The website is the course. Open [`site/index.html`](site/index.html) through the hosted course URL and follow the large day-by-day module cards from B0 through P8.
+The website is the course. Open [`site/index.html`](site/index.html) through the hosted course URL and follow the large day-by-day cards: B0, B1, the Model Economics discussion, then P1 through P8.
 
 Markdown in this repository is not a second reading path. It remains only where a lesson asks a student or an AI harness to work with real files:
 

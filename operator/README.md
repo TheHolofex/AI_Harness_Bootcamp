@@ -63,7 +63,7 @@ The direction and closeout names may be the same when the live page deliberately
 
 ## Pre-work
 
-Complete workstation setup together during the Monday B0 install clinic in `../site/checklists/prework-install.html`, verifying each tool as you go. Move into B1 First Light once the setup works, then continue to P1 in the afternoon.
+Complete workstation setup together during the Monday B0 install clinic in `../site/checklists/prework-install.html`, verifying each tool as you go. Move into B1 First Light once the setup works. Monday afternoon starts with the 30-minute Model Economics discussion in `../site/blocks/me.html`, followed immediately by P1.
 
 ## Identity lock
 

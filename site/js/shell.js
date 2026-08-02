@@ -49,6 +49,7 @@
   }
 
   function blockLabel(b) {
+    if (b.kind === "discussion") return b.title + " · 30-minute discussion";
     return b.slot === "read" || b.slot === "pre" ? b.title : b.code + " · " + b.title;
   }
 
@@ -93,11 +94,15 @@
         var b = AHB.block(code);
         var st = statusOf(b, cur);
         var isHere = owner === code;
+        var navName = b.kind === "discussion"
+          ? "<strong>Discussion</strong> · " + b.name
+          : "<strong>" + b.code + "</strong> · " + b.name;
+        var navSlot = b.kind === "discussion" ? "30 min" : b.slot;
         html += '<a class="nav-drop-item' + (st === "done" ? " is-done" : "") + '"' +
           ' href="' + p + "/" + b.url + '"' + (isHere ? ' aria-current="page"' : "") + ">";
         html += dotHtml(st);
-        html += '<span class="nav-drop-name"><strong>' + b.code + "</strong> · " + b.name + "</span>";
-        html += '<span class="nav-drop-slot">' + b.slot + "</span>";
+        html += '<span class="nav-drop-name">' + navName + "</span>";
+        html += '<span class="nav-drop-slot">' + navSlot + "</span>";
         html += "</a>";
       });
       html += "</div></div>";
@@ -207,10 +212,10 @@
       var b = AHB.block(el.getAttribute("data-context-for"));
       if (!b) return;
       var nb = neighbors(b.code);
-      var label = b.kind === "install"
+      var label = b.contextLabel || (b.kind === "install"
         ? "Monday AM · B0 · Pre-work Install Clinic"
         : dayLabel(b) + " · Module " + AHB.moduleNumber(b.code) +
-          " of " + AHB.TOTAL_MODULES;
+          " of " + AHB.TOTAL_MODULES);
       var html = '<div class="context-strip-inner">';
       html += nb.prev
         ? '<a class="context-prev" href="' + prefix + "/" + nb.prev.url + '">← ' +
@@ -855,11 +860,14 @@
       var total = cur.ids.length || 1;
       var pct = Math.round((done / total) * 100);
       var isInstall = cur.kind === "install";
+      var isDiscussion = cur.kind === "discussion";
       var prework = isInstall ? AHB.preworkProgress() : null;
       setText("[data-yah-eyebrow]", weekComplete
         ? "Friday · Course complete"
         : isInstall
         ? "Monday morning · B0 install clinic"
+        : isDiscussion
+        ? "Monday afternoon · 30-minute discussion"
         : dayLabel(cur) + " · " + cur.code);
       setText("[data-yah-title]", weekComplete
         ? "Week complete"
@@ -868,6 +876,8 @@
         ? AHB.TOTAL_MODULES + " / " + AHB.TOTAL_MODULES + " modules complete"
         : isInstall
         ? prework.donePhases + " / " + prework.totalPhases + " phases complete"
+        : isDiscussion
+        ? cur.meta
         : done + " / " + total + " checks · " + pct + "%");
       var bar = document.querySelector("[data-yah-bar]");
       if (bar) bar.style.width = (weekComplete ? 100 : pct) + "%";
@@ -877,6 +887,8 @@
           ? "Review the week map"
           : isInstall
           ? (done > 0 ? "Continue B0" : "Start B0")
+          : isDiscussion
+          ? "Open the discussion"
           : (done > 0 ? "Continue this module" : "Start this module");
         cta.setAttribute("href", weekComplete
           ? prefix + "/index.html#journey"
@@ -897,14 +909,16 @@
         col.codes.forEach(function (code) {
           var b = AHB.block(code);
           var st = statusOf(b, cur);
-          var meta = b.kind === "install" ? b.meta : b.slot;
+          var meta = b.kind === "install" || b.kind === "discussion" ? b.meta : b.slot;
+          var journeyName = b.kind === "discussion"
+            ? "Discussion · " + b.name
+            : b.code + " · " + b.name;
           html += '<a class="journey-cell is-' + st + '"' +
             (st === "current" ? ' aria-current="step"' : "") +
             ' href="' + prefix + "/" + b.url + '">';
           html += dotHtml(st);
           html += "<span>";
-          html += '<span class="journey-name">' +
-            b.code + " · " + b.name + "</span>";
+          html += '<span class="journey-name">' + journeyName + "</span>";
           html += '<span class="journey-meta">' + meta + "</span>";
           html += "</span></a>";
         });
