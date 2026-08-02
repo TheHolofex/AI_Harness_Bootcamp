@@ -20,12 +20,12 @@
   var PREWORK_PHASES = [
     {
       id: "basics", title: "Prepare the machine", time: "45–75 min", anchor: "phase-basics",
-      summary: "Confirm the laptop and shell, install Git, clone the course repository, then install Node and Python.",
+      summary: "Confirm the laptop and shell, install Git and Node, keep or add one working Python, then clone the course repository.",
       ids: [
         "i-time", "i-keys", "b-win11", "b-arm", "b-disk", "b-admin",
-        "ps-open", "ps-version", "ps-policy", "dl-git", "dl-node", "dl-python",
-        "git-install", "git-restart", "git-verify", "rp-get",
-        "np-node", "np-python", "np-restart", "np-verify", "np-stub"
+        "ps-open", "ps-version", "ps-policy",
+        "git-install", "np-node", "np-python", "git-restart", "git-verify", "rp-get",
+        "np-verify", "np-stub"
       ]
     },
     {
@@ -37,11 +37,11 @@
       id: "tools", title: "Install and verify the course harnesses and tools", time: "75–120 min", anchor: "phase-tools",
       summary: "Install Codex, OpenCode, Pi, goose, Obsidian, and n8n, then verify them with observable work.",
       ids: [
-        "cx-install", "cx-signin", "cx-status", "cx-lock", "cx-project", "cx-sandbox", "cx-write",
-        "oc-version", "oc-install", "oc-verify", "oc-models", "oc-write",
+        "cx-install", "cx-signin", "cx-lock", "cx-project", "cx-sandbox", "cx-write",
+        "oc-install", "oc-verify", "oc-models", "oc-write",
         "pi-install", "pi-verify", "pi-write", "pi-bash",
-        "gs-keyring", "gs-provider", "gs-runtime", "gs-install", "gs-path", "gs-verify", "gs-write",
-        "ob-install", "ob-vault", "n8n-node", "n8n-install", "n8n-start", "n8n-owner", "n8n-stop",
+        "gs-runtime", "gs-keyring", "gs-provider", "gs-install", "gs-path", "gs-verify", "gs-write",
+        "ob-install", "ob-vault", "n8n-install", "n8n-start", "n8n-owner", "n8n-stop",
         "g-four"
       ]
     },
@@ -76,8 +76,8 @@
       key: "ahb-prework-install",
       ids: preworkRequiredIds(),
       conditionalIds: [
-        "i-shape", "k-read", "sf-why", "cx-limits",
-        "oc-why", "pi-why", "gs-what", "gs-official",
+        "i-shape", "k-read", "cx-limits",
+        "oc-why", "pi-why", "gs-what",
         "r-notfound", "r-window", "r-scripts", "r-auth", "r-store", "r-noclaim", "r-stuck"
       ],
       // The local model is optional — skipping it never blocks the pre-work gate.

@@ -3,17 +3,12 @@ name: prework-smoke
 # Manual only. Windows runners bill at 2x, so this never fires on push.
 #
 # A CI runner is NOT a student laptop: Git, Node and Python arrive preinstalled,
-# there is no GUI, and no API keys are present. This run installs Goose and its
-# Windows runtime, proves the harness itself works, and catches loader failures;
+# there is no GUI, and no API keys are present. This run installs the pinned
+# OpenCode build plus Goose and its Windows runtime, then catches loader failures;
 # it does not replace row B1 of lead/COHORT_PIN.md, the candidate cohort build.
 
 on:
   workflow_dispatch:
-    inputs:
-      install_opencode:
-        description: "Install OpenCode from the npm channel used by the website checklist"
-        type: boolean
-        default: true
 
 permissions:
   contents: read
@@ -34,11 +29,10 @@ jobs:
           "PS       : $($PSVersionTable.PSVersion)"
           "Image    : $env:ImageVersion"
 
-      - name: Install OpenCode from the npm channel
-        if: ${{ inputs.install_opencode }}
+      - name: Install the course-pinned OpenCode build
         shell: pwsh
         run: |
-          npm install -g opencode-ai
+          npm install -g opencode-ai@1.18.11
           # npm's global bin is not on PATH for later steps by default
           $prefix = (npm prefix -g).Trim()
           "$prefix" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append

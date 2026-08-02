@@ -46,7 +46,8 @@ WINDOWS_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "prework-smoke.yml"
 
 UA = "AI-Harness-Bootcamp-stack-facts/2.0 (+staff)"
 NODE_INDEX_URL = "https://nodejs.org/dist/index.json"
-OPENCODE_NPM_URL = "https://registry.npmjs.org/opencode-ai/latest"
+OPENCODE_PIN = "1.18.11"
+OPENCODE_NPM_URL = f"https://registry.npmjs.org/opencode-ai/{OPENCODE_PIN}"
 GOOSE_INSTALLER_URL = (
     "https://raw.githubusercontent.com/aaif-goose/goose/main/download_cli.ps1"
 )
@@ -156,7 +157,7 @@ def check_canonical_install_surface(report: Report) -> None:
         "ChatGPT/Codex installer": (
             "https://get.microsoft.com/installer/download/9PLM9XGG6VKS"
         ),
-        "OpenCode npm channel": "npm install -g opencode-ai",
+        "OpenCode pinned npm channel": f"npm install -g opencode-ai@{OPENCODE_PIN}",
         "Pi PowerShell installer": "https://pi.dev/install.ps1",
         "Microsoft Visual C++ x64 runtime": VC_REDIST_X64_URL,
         "AAIF goose PowerShell installer": GOOSE_INSTALLER_URL,
@@ -204,9 +205,9 @@ def check_goose_windows_guards(report: Report) -> None:
             html,
             "[string]::IsNullOrWhiteSpace($env:HB_XAI_MODEL)",
         ),
-        "HTML rejects a bad xAI model before saving it": (
+        "HTML pins the current xAI model before saving it": (
             html,
-            "[string]::IsNullOrWhiteSpace($model)",
+            "$env:HB_XAI_MODEL = 'grok-4.5'",
         ),
         "HTML checks the registered x64 runtime": (
             html,
@@ -411,7 +412,7 @@ def check_opencode_npm_channel(report: Report) -> None:
     name = data.get("name")
     version = str(data.get("version", ""))
     valid_version = re.fullmatch(r"\d+\.\d+\.\d+(?:[-+].*)?", version)
-    if name == "opencode-ai" and valid_version:
+    if name == "opencode-ai" and valid_version and version == OPENCODE_PIN:
         report.add(
             "opencode.npm_channel",
             True,
@@ -422,7 +423,7 @@ def check_opencode_npm_channel(report: Report) -> None:
         report.add(
             "opencode.npm_channel",
             False,
-            f"unexpected package metadata: name={name!r}, version={version!r}",
+            f"unexpected pinned package metadata: name={name!r}, version={version!r}, expected={OPENCODE_PIN!r}",
             hard=True,
         )
 

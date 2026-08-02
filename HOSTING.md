@@ -61,6 +61,30 @@ ALLOW_OPEN=1 python server.py
 
 `railway.toml`, `Procfile`, and `nixpacks.toml` start `python server.py`. No extra dependencies.
 
+## Cohort repository visibility
+
+Learners clone the exercise files without GitHub accounts during B0, so the repository must be public for the bootcamp window. The password gate still protects the hosted course navigation; repository visibility is a separate control.
+
+Before the install clinic, verify the setting and make the repository public if needed:
+
+```bash
+gh repo view TheHolofex/AI_Harness_Bootcamp --json visibility --jq .visibility
+gh repo edit TheHolofex/AI_Harness_Bootcamp \
+  --visibility public \
+  --accept-visibility-change-consequences
+```
+
+After the bootcamp, make it private again and verify the result:
+
+```bash
+gh repo edit TheHolofex/AI_Harness_Bootcamp \
+  --visibility private \
+  --accept-visibility-change-consequences
+gh repo view TheHolofex/AI_Harness_Bootcamp --json visibility --jq .visibility
+```
+
+Changing visibility affects every anonymous clone and existing fork relationship. Run the private command only after the final learner download window has closed.
+
 ### Rotate password
 
 Change `SITE_PASSWORD` in Railway and redeploy (or restart). Existing cookies stop working immediately because the token is tied to the password (and `SITE_SECRET` if set).

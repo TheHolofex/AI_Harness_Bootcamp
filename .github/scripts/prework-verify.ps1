@@ -98,15 +98,18 @@ if ($arch -and $arch -match "ARM") {
 Write-Result -Name "os.ps_version" -Ok $true -Detail ("PS " + $PSVersionTable.PSVersion.ToString()) -Hard $false
 
 # --- Git Bash path (install-clinic contract) ---
-$bash = "C:\Program Files\Git\bin\bash.exe"
-if (Test-Path -LiteralPath $bash) {
+$bash = @(
+    "C:\Program Files\Git\bin\bash.exe",
+    (Join-Path $env:LOCALAPPDATA "Programs\Git\bin\bash.exe")
+) | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
+if ($bash) {
     Write-Result -Name "git.bash_path" -Ok $true -Detail $bash -Hard $true
 } else {
     $alt = Get-Command "bash.exe" -ErrorAction SilentlyContinue
     if ($alt) {
-        Write-Result -Name "git.bash_path" -Ok $false -Detail "checklist path missing; found $($alt.Source) - Pi shellPath may need edit" -Hard $true
+        Write-Result -Name "git.bash_path" -Ok $true -Detail "nonstandard path: $($alt.Source) - use this path if Pi needs shellPath" -Hard $true
     } else {
-        Write-Result -Name "git.bash_path" -Ok $false -Detail "Git Bash not at guide path and bash.exe not on PATH" -Hard $true
+        Write-Result -Name "git.bash_path" -Ok $false -Detail "Git Bash not at either guide path and bash.exe not on PATH" -Hard $true
     }
 }
 
@@ -138,7 +141,9 @@ if (-not $py) {
     } else {
         try {
             $pv = & python --version 2>&1 | Out-String
-            Write-Result -Name "bin.python" -Ok $true -Detail "$src - $($pv.Trim())" -Hard $true
+            $pythonVersion = $pv.Trim()
+            $pythonOk = ($LASTEXITCODE -eq 0 -and $pythonVersion -match '^Python\s+3(?:\.|$)')
+            Write-Result -Name "bin.python" -Ok $pythonOk -Detail "$src - $pythonVersion (want Python 3)" -Hard $true
         } catch {
             Write-Result -Name "bin.python" -Ok $false -Detail $_.Exception.Message -Hard $true
         }
@@ -167,7 +172,11 @@ if ($vcRuntime) {
 }
 
 # --- OpenCode ---
-$oc = Test-CommandVersion -Name "opencode" -Exe "opencode" -VersionArgs @("--version") -Hard $true
+$script:OpenCodePin = "1.18.11"
+$oc = Test-CommandVersion -Name "opencode" -Exe "opencode" -VersionArgs @("--version") -Hard $true -Validator {
+    param($output)
+    $output.Trim() -eq $script:OpenCodePin
+}
 
 # --- Pi (optional here) / goose (required for a complete setup) ---
 Test-CommandVersion -Name "pi" -Exe "pi" -VersionArgs @("--version") -Hard $false | Out-Null
@@ -209,6 +218,7 @@ if (-not $gooseOk -and -not ($script:Lines | Where-Object { $_ -match "bin\.goos
 if (-not $SkipOpenCodeDisableRoundTrip) {
     $varName = "OPENCODE_DISABLE_CLAUDE_CODE"
     $priorUser = [Environment]::GetEnvironmentVariable($varName, "User")
+    $priorProcess = [Environment]::GetEnvironmentVariable($varName, "Process")
     try {
         [Environment]::SetEnvironmentVariable($varName, "1", "User")
         $env:OPENCODE_DISABLE_CLAUDE_CODE = "1"
@@ -223,11 +233,9 @@ if (-not $SkipOpenCodeDisableRoundTrip) {
     } catch {
         Write-Result -Name "env.OPENCODE_DISABLE_CLAUDE_CODE" -Ok $false -Detail $_.Exception.Message -Hard $true
     } finally {
-        # Restore prior User value if we changed a non-1 prior; leave 1 if that is the course default
-        if ($null -ne $priorUser -and $priorUser -ne "1") {
-            [Environment]::SetEnvironmentVariable($varName, $priorUser, "User")
-        }
-        # If prior was empty and this is a CI-like ephemeral account, leave 1 (course-correct).
+        # This is a diagnostic round trip, so restore both scopes exactly.
+        [Environment]::SetEnvironmentVariable($varName, $priorUser, "User")
+        [Environment]::SetEnvironmentVariable($varName, $priorProcess, "Process")
     }
 } else {
     Write-Result -Name "env.OPENCODE_DISABLE_CLAUDE_CODE" -Ok $true -Detail "skipped by switch" -Hard $false
@@ -282,7 +290,7 @@ if ($script:SoftFails.Count -gt 0) {
 }
 $md += "## Not covered (still need a person + keys)"
 $md += "- Codex GUI sign-in and from-codex.txt write proof"
-$md += "- Funded key write proofs (OpenCode/Pi/goose/Claude)"
+$md += "- Funded key write proofs (OpenCode/Pi/goose)"
 $md += "- xAI ACL end-to-end"
 $md += "- Browser -> deck cold-smoke (lead/BROWSER_DECK_DEMO.md)"
 $md += "- LOCAL PIN Ollama quality"

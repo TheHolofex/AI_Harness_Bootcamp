@@ -204,8 +204,7 @@ Chat answers with fake or unopened cites, or vault is dump-shaped.
 - [ ] **Field contradiction** caught the same way — not “I noticed”
 - [ ] **Hostile instruction** caught; prove **absence of effect** in trusted vault/notes/outputs (show where it would have landed and that it didn’t)
 - [ ] All three logged with time order: detect → isolate → verify clean
-- [ ] Permission-mode comparison (**Codex app vs OpenCode**): what each tool actually enforces vs what remains procedure. In the Codex app, name the two controls separately — the **sandbox** sets what is reachable, **approvals** set when it pauses — and state which of your three catches a mode would have stopped and which needed your judgment
-- [ ] **Read an OpenCode rule set and predict what it permits before running it.** Its rules resolve **last-match-wins**, so a later `allow` overrides an earlier `deny` and rule order carries the meaning. A wrong prediction you wrote down beats a right one you assumed
+- [ ] Control map names the path boundary, approval gate, content checks, independent recheck, and residual risk separately; no permission control is credited with deciding whether a claim is true
 - [ ] Written rule you’ll reuse: “I never accept intake into trusted knowledge until ___”
 - [ ] Log verdict = containment proof; anything less is not yet
 

@@ -54,13 +54,13 @@ When the live module page calls for a separate review, use this routing rule:
 | Block | Reviewer | Why it is free there |
 |---|---|---|
 | **P3** | **No separate attack pass** | The comparator and source packet already put every consequential claim through a second engine and raw evidence; do not manufacture another review step |
-| **P5** | **OpenCode**, second pass on the same pack | OpenCode is already running from the probe folder |
+| **P5** | **No separate attack pass** | The exposed run, clean unexposed recheck, saved before/after diffs, and operator dispositions already form the containment review boundary |
 | **P8** | **The re-pointed hosted open model**, second pass on the same pack | You wired that endpoint this morning and trusted it enough to run D01–D05 |
 | P1, P2, P4, P6, P7 | New module-specific review chat, same engine | No second engine is open, and opening one costs more than the pass is worth |
 
-At P5 and P8 the second engine is a **second pass on the pack you already assembled** — same frozen prompt, same excerpts, no softening, run after the first review is done. It is not a replacement for the first pass and it is not a lighter one. Record **both** final `ADVERSARIAL:` lines in the log, side by side and labelled by engine or endpoint.
+At P8 the second engine is a **second pass on the pack you already assembled** — same frozen prompt, same excerpts, no softening, run after the first review is done. It is not a replacement for the first pass and it is not a lighter one. Record **both** final `ADVERSARIAL:` lines in the log, side by side and labelled by engine or endpoint.
 
-P3 is the exception because its work product already contains the useful review: two frozen outputs, a material-difference comparator, an MCP source packet, and a human disposition against the raw files. Adding another attack chat would repeat the evidence rather than improve the decision.
+P3 and P5 are exceptions because useful review is already part of each work product. P3 contains two frozen outputs, a material-difference comparator, an MCP source packet, and a human disposition against the raw files. P5 contains an exposed run, an unexposed recheck, target checks, and before/after diffs. Adding another attack chat would repeat evidence rather than improve these decisions.
 
 **Where the two engines disagree about a bar, the disagreement is the finding.** Name it in the log. One reviewer accepting an absence-of-effect proof that the other rejects tells you which of the two had the blind spot, and it is not always the one you expect. If they agree, that is information too — it does not make the claim true, it makes it un-attacked by two readers of the same pack.
 
@@ -165,7 +165,8 @@ The outer loop should not inherit unchallenged fantasy.
 |---|---|
 | **When directed by the module page** | Module-specific adversarial AI chat, new for that review (this file) |
 | **P3** | The twin-engine comparator, MCP source packet, and raw-file adjudication are the review; no separate attack pass |
-| **P5, P8** | A second engine on the same pack — required, not a stretch. See *Which engine reviews you* above |
+| **P5** | The exposed run, unexposed recheck, target checks, and saved diffs are the review; no separate attack pass |
+| **P8** | A second engine on the same pack — required, not a stretch. See *Which engine reviews you* above |
 | **Pair moments (optional)** | Human peer uses the same frozen prompt on your paste pack |
 | **After course (transfer seed)** | Named human who can challenge verdicts on the job |
 
@@ -176,9 +177,9 @@ A human challenger trains *institutional* honesty: someone whose good opinion co
 
 ## Facilitator notes
 
-- **At P3, inspect the material differences between the two frozen outputs and the source dispositions. At P5 and P8, watch the two-reviewer disagreement rate.** Near-zero disagreement can be legitimate; check the saved tables and evidence before drawing a cohort conclusion.
+- **At P3, inspect the material differences between the two frozen outputs and the source dispositions. At P5, inspect the exposed and unexposed containment evidence. At P8, watch the two-reviewer disagreement rate.** Near-zero disagreement can be legitimate; check the saved tables and evidence before drawing a cohort conclusion.
 - A polite reviewer is the same signal one engine at a time: the student under-pasted or reused the build chat.
-- Time box the separate attack pass at **5–8 minutes** standard and **10–12** at P5 and P8, where the pack is reviewed twice. P3's review time is already inside its comparator and adjudication stages.
+- Time box the separate attack pass at **5–8 minutes** standard and **10–12** at P8, where the pack is reviewed twice. P3 and P5 carry their review time inside the product workflow.
 - Rescue: narrower artifact paste, not a softer prompt.
 - Never replace PASS_BARS with “the AI said it’s fine.” Bars still need evidence pointers.
 

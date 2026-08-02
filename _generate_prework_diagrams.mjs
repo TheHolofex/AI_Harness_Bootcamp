@@ -262,7 +262,7 @@ const metaphors = {
     <circle cx="882" cy="87" r="7" fill="${C.paper}" stroke="${C.strong}"/>
     <circle cx="950" cy="123" r="8" fill="${C.ink}"/>
     <circle cx="1067" cy="123" r="7" fill="${C.paper}" stroke="${C.strong}"/>
-    <text x="558" y="94" class="tiny muted" text-anchor="middle">INSTALL</text>
+    <text x="558" y="94" class="tiny muted" text-anchor="middle">NEW PS</text>
     <text x="758" y="155" class="tiny red" text-anchor="middle">GIT BASH</text>
     <text x="950" y="105" class="tiny muted" text-anchor="middle">VERIFY</text>
   </g>
@@ -582,29 +582,29 @@ const installSections = [
   {
     file: "install-02-installers.svg",
     current: 3,
-    stage: "Download the core installers",
-    purpose: "Use the official Git, Node, and Python download pages for the core installers.",
-    steps: ["GIT", "NODE LTS", "PYTHON 3.14"],
+    stage: "Install the core tools",
+    purpose: "Install Git and Node from official sources; keep or add one working Python.",
+    steps: ["GIT", "NODE LTS", "CHECK PYTHON"],
     metaphor: metaphors.installers,
-    svgTitle: "2 · Download the core installers",
+    svgTitle: "2 · Install the core tools",
   },
   {
     file: "install-03-git.svg",
     current: 4,
-    stage: "Install Git, then clone the course",
-    purpose: "Verify Git, then clone the course before installing Node and Python.",
-    steps: ["INSTALL GIT", "NEW TERMINAL", "VERIFY GIT", "CLONE COURSE"],
+    stage: "Verify Git, then clone the course",
+    purpose: "Open a fresh terminal, verify Git and Git Bash, then clone the public course repository.",
+    steps: ["NEW TERMINAL", "VERIFY GIT", "FIND GIT BASH", "CLONE COURSE"],
     metaphor: metaphors.git,
     svgTitle: "3 · Git and the course repo",
   },
   {
     file: "install-04-runtime.svg",
     current: 5,
-    stage: "Install Node and Python",
-    purpose: "Put Node LTS and real Python on your PATH, then check in a fresh terminal.",
-    steps: ["NODE LTS", "PYTHON", "NEW TERMINAL", "VERIFY BOTH"],
+    stage: "Verify Node and Python",
+    purpose: "Confirm Node, npm, and a real Python executable are on PATH.",
+    steps: ["NODE VERSION", "NPM VERSION", "PYTHON VERSION", "REAL PATH"],
     metaphor: metaphors.runtime,
-    svgTitle: "4 · Node.js and Python",
+    svgTitle: "4 · Verify Node.js and Python",
   },
   {
     file: "install-05-keys.svg",
@@ -620,7 +620,7 @@ const installSections = [
     current: 7,
     stage: "Make a smoke folder",
     purpose: "One shared folder where every tool drops a proof file you can see in Explorer.",
-    steps: ["CREATE FOLDER", "WHY FILES MATTER"],
+    steps: ["CREATE FOLDER", "VERIFY ON DISK"],
     metaphor: metaphors.smoke,
     svgTitle: "6 · Your smoke folder",
   },
@@ -638,7 +638,7 @@ const installSections = [
     current: 9,
     stage: "Set up OpenCode (second engine)",
     purpose: "Install the course build, confirm xAI, and write proof.",
-    steps: ["PIN OR USE CURRENT", "LIST XAI MODELS", "PIN XAI MODEL", "WRITE PROOF"],
+    steps: ["INSTALL PINNED BUILD", "VERIFY VERSION", "LIST XAI MODELS", "WRITE PROOF"],
     metaphor: metaphors.opencode,
     svgTitle: "8 · OpenCode — your second engine",
   },
@@ -656,7 +656,7 @@ file: "install-10-goose.svg",
     current: 11,
     stage: "Set up goose",
     purpose: "Install the Windows runtime and official AAIF CLI, then verify goose can start and work.",
-    steps: ["KEYRING + PROVIDER", "RUNTIME + CLI", "PATH + VERIFY", "WRITE PROOF"],
+    steps: ["RUNTIME", "KEYRING + MODEL", "OFFICIAL CLI + PATH", "VERIFY + PROOF"],
     metaphor: metaphors.goose,
     svgTitle: "10 · goose — recipe, tools, mode, schedule",
   },
