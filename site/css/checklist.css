@@ -257,10 +257,13 @@ ol.outcome-summary {
   background: var(--paper);
 }
 .exercise-stage-body > :last-child { margin-bottom: 0; }
-.checklist-section.is-section-current .phase-section-toggle,
-.exercise-stage.is-section-current .phase-section-toggle {
+.checklist-section.is-section-current .phase-section-toggle {
   border-left-color: var(--mark);
   background: var(--current-tint);
+}
+.exercise-stage.is-section-current .phase-section-toggle {
+  border-left-color: var(--mark);
+  background: var(--paper);
 }
 .checklist-section.is-section-current .phase-section-stat,
 .exercise-stage.is-section-current .phase-section-stat { color: var(--mark); }
@@ -271,6 +274,204 @@ ol.outcome-summary {
 }
 .checklist-section.is-section-done .phase-section-stat,
 .exercise-stage.is-section-done .phase-section-stat { color: var(--ok); }
+.exercise-stage.is-stage-active .phase-section-toggle {
+  box-shadow: inset 0 0 0 2px var(--mark);
+}
+.exercise-stage.is-stage-active.is-section-current .phase-section-toggle {
+  background: var(--current-tint);
+}
+.lesson-reflection.is-stage-active {
+  outline: 3px solid var(--mark);
+  outline-offset: 3px;
+}
+
+/* Floating run navigator: location and evidence are deliberately separate. */
+body.has-exercise-navigator { padding-bottom: 10rem; }
+.exercise-progress {
+  position: fixed;
+  right: 1rem;
+  bottom: max(0.75rem, env(safe-area-inset-bottom));
+  left: 1rem;
+  z-index: 35;
+  width: min(var(--measure-wide), calc(100% - 2rem));
+  margin: 0 auto;
+  border: 1px solid var(--rule-strong);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 16px 40px rgba(10, 10, 10, 0.18);
+}
+.exercise-progress[hidden] { display: none; }
+.exercise-progress-head {
+  display: flex;
+  align-items: center;
+  min-height: 4.1rem;
+  padding: 0.65rem 1rem 0.55rem;
+  border-bottom: 1px solid var(--rule);
+}
+.exercise-progress-current {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  width: 100%;
+  gap: 0.15rem 0.75rem;
+  align-items: baseline;
+}
+.exercise-progress-kicker {
+  color: var(--mark);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.exercise-progress-title {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 1.03rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.exercise-progress-summary {
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+.exercise-progress-controls {
+  display: grid;
+  grid-template-columns: minmax(7.75rem, auto) minmax(0, 1fr) minmax(7.75rem, auto);
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.6rem;
+}
+.exercise-progress-direction {
+  display: flex;
+  min-height: 3.25rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.exercise-progress-previous {
+  background: var(--paper);
+  color: var(--ink);
+}
+.exercise-progress-next { align-items: flex-end; text-align: right; }
+.exercise-progress-direction:hover { border-color: var(--mark); background: var(--mark); }
+.exercise-progress-previous:hover { background: var(--paper-warm); color: var(--mark); }
+.exercise-progress-direction:disabled {
+  border-color: var(--rule);
+  background: var(--paper-panel);
+  color: var(--ink-faint);
+  cursor: default;
+}
+.exercise-progress-direction-main {
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.exercise-progress-direction-target {
+  margin-top: 0.25rem;
+  font-size: 0.66rem;
+  line-height: 1.1;
+  opacity: 0.82;
+  white-space: nowrap;
+}
+.exercise-progress-direction:focus-visible,
+.exercise-progress-node-button:focus-visible {
+  outline: 3px solid var(--mark);
+  outline-offset: 2px;
+}
+.exercise-progress-track-viewport {
+  min-width: 0;
+  padding: 0.2rem 0.1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+.exercise-progress-track {
+  display: flex;
+  min-width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.exercise-progress-node {
+  position: relative;
+  display: flex;
+  width: 3.75rem;
+  flex: 1 0 3.75rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+.exercise-progress-node::after {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 1.25rem);
+  z-index: 0;
+  width: calc(100% - 2.5rem);
+  height: 2px;
+  background: var(--rule);
+  content: "";
+  transform: translateY(-50%);
+}
+.exercise-progress-node:last-child::after { display: none; }
+.exercise-progress-node.is-done::after { background: var(--ok); }
+.exercise-progress-node-button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 2px solid var(--rule);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink-muted);
+  font: inherit;
+  cursor: pointer;
+}
+.exercise-progress-node-button:hover { border-color: var(--ink); color: var(--ink); }
+.exercise-progress-node-mark {
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.exercise-progress-node.is-instructions::after { background: var(--ink-faint); }
+.exercise-progress-node.is-instructions .exercise-progress-node-button {
+  border-color: var(--ink-faint);
+  background: var(--ink-faint);
+  color: var(--paper);
+}
+.exercise-progress-node.is-next .exercise-progress-node-button {
+  border-color: var(--mark);
+  color: var(--mark);
+}
+.exercise-progress-node.is-done .exercise-progress-node-button {
+  border-color: var(--ok);
+  background: var(--ok);
+  color: var(--paper);
+}
+.exercise-progress-node.is-active .exercise-progress-node-button {
+  border-color: var(--mark);
+  background: var(--mark);
+  color: var(--paper);
+  outline: 3px solid var(--paper);
+  box-shadow: 0 0 0 5px var(--mark);
+}
+.exercise-progress-node.is-active.is-done .exercise-progress-node-button {
+  border-color: var(--ok);
+  background: var(--ok);
+}
 .optional-lane { margin-top: 2rem; }
 .optional-section,
 .conditional-section { opacity: 0.92; }
@@ -312,4 +513,67 @@ ol.outcome-summary {
   .phase-section-stat { grid-column: 1; grid-row: 2; }
   .phase-section-cue { grid-column: 2; grid-row: 1 / 3; }
   .exercise-stage-body { padding: 0.8rem 0.75rem 1rem; }
+  .exercise-stage,
+  .exercise-stage-heading,
+  .lesson-reflection { scroll-margin-top: 1rem; }
+  body.has-exercise-navigator { padding-bottom: 11rem; }
+  .exercise-progress {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+  }
+  .exercise-progress-head { min-height: 4.2rem; padding: 0.5rem 0.75rem 0.4rem; }
+  .exercise-progress-current {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.05rem 0.55rem;
+  }
+  .exercise-progress-title {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.92rem;
+    line-height: 1.15;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .exercise-progress-summary { grid-column: 1 / -1; font-size: 0.64rem; }
+  .exercise-progress-controls {
+    grid-template-columns: 5.5rem minmax(0, 1fr) 5.5rem;
+    gap: 0.35rem;
+    padding: 0.45rem 0.5rem calc(0.45rem + env(safe-area-inset-bottom));
+  }
+  .exercise-progress-direction { min-height: 3rem; padding: 0.35rem 0.45rem; }
+  .exercise-progress-direction-main { font-size: 0.7rem; }
+  .exercise-progress-direction-target {
+    max-width: 4.5rem;
+    overflow: hidden;
+    font-size: 0.6rem;
+    text-overflow: ellipsis;
+  }
+  .exercise-progress-node { width: 3.15rem; flex-basis: 3.15rem; }
+  .exercise-progress-node-button { width: 2.75rem; height: 2.75rem; }
+  .exercise-progress-node::after {
+    left: calc(50% + 1.15rem);
+    width: calc(100% - 2.3rem);
+  }
+}
+
+@media (pointer: coarse) {
+  .exercise-progress-direction { min-height: 3.25rem; }
+  .exercise-progress-node-button { min-width: 2.75rem; min-height: 2.75rem; }
+}
+
+@media (forced-colors: active) {
+  .exercise-progress-node.is-active .exercise-progress-node-button {
+    outline: 3px solid Highlight;
+  }
+}
+
+@media print {
+  .exercise-progress { display: none !important; }
+  body.has-exercise-navigator { padding-bottom: 0; }
 }

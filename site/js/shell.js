@@ -338,7 +338,10 @@
       });
     });
 
-    if (form) updateExerciseStageStatuses(form, b);
+    if (form) {
+      updateExerciseStageStatuses(form, b);
+      updateExerciseNavigator(form, b);
+    }
 
     if (key === "ahb-prework-install") {
       var prework = AHB.preworkProgress();
@@ -549,8 +552,8 @@
     if (button) button.setAttribute("aria-expanded", open ? "true" : "false");
   }
 
-  function isProjectExercise(b) {
-    return !!(b && /^P[1-8]$/.test(b.code));
+  function isStagedExercise(b) {
+    return !!(b && /^(?:B1|P[1-8])$/.test(b.code));
   }
 
   function setExerciseStage(stage, open) {
@@ -563,7 +566,9 @@
   }
 
   function updateExerciseStageStatuses(form, b) {
-    if (!form || !isProjectExercise(b)) return;
+    if (!form || !isStagedExercise(b)) return;
+    var mission = form.querySelector('#mission[data-check-section="mission"]');
+    if (!mission) return;
     var stages = Array.prototype.slice.call(
       form.querySelectorAll("[data-exercise-stage]")
     );
@@ -582,6 +587,8 @@
         if (box.checked) done++;
       });
       return {
+        type: "stage",
+        root: stage,
         stage: stage,
         done: done,
         total: total,
@@ -591,50 +598,100 @@
       };
     });
 
-    // A stage with no receipt stays visually neutral. Later progress can move
-    // the current marker forward, but it cannot manufacture completion evidence.
-    for (var i = 0; i < progress.length; i++) {
-      if (progress[i].total > 0) continue;
-      for (var j = i + 1; j < progress.length; j++) {
-        if (progress[j].done > 0) {
-          progress[i].laterStageStarted = true;
+    var sequence = [];
+    Array.prototype.forEach.call(
+      mission.querySelectorAll("[data-exercise-stage], .lesson-reflection"),
+      function (root) {
+        if (root.matches("[data-exercise-stage]")) {
+          for (var si = 0; si < progress.length; si++) {
+            if (progress[si].stage === root) {
+              sequence.push(progress[si]);
+              break;
+            }
+          }
+          return;
+        }
+        if (root.closest("[data-exercise-stage]")) return;
+        var boxes = root.querySelectorAll('input[type="checkbox"][data-check-id]');
+        var done = 0, total = 0;
+        Array.prototype.forEach.call(boxes, function (box) {
+          if (!isRequiredId(b, box.getAttribute("data-check-id"))) return;
+          total++;
+          if (box.checked) done++;
+        });
+        sequence.push({
+          type: "reflection",
+          root: root,
+          done: done,
+          total: total,
+          pendingReflection: 0,
+          complete: total > 0 && done === total,
+          laterStageStarted: false
+        });
+      }
+    );
+
+    // A route item with no receipt stays visually neutral. Later progress can
+    // move the current marker forward, but it cannot manufacture evidence.
+    for (var i = 0; i < sequence.length; i++) {
+      if (sequence[i].total > 0) continue;
+      for (var j = i + 1; j < sequence.length; j++) {
+        if (sequence[j].done > 0) {
+          sequence[i].laterStageStarted = true;
           break;
         }
       }
     }
 
     var current = null;
-    progress.forEach(function (item) {
+    sequence.forEach(function (item) {
       if (!item.complete && !item.laterStageStarted && !current) current = item;
-      item.stage.classList.toggle("is-section-done", item.complete);
-      item.stage.classList.remove("is-section-current");
+      item.root.classList.toggle("is-section-done", item.complete);
+      item.root.classList.toggle("is-section-past", item.laterStageStarted);
+      item.root.classList.remove("is-section-current");
+      item.root.setAttribute("data-exercise-done", item.done);
+      item.root.setAttribute("data-exercise-total", item.total);
+      item.root.setAttribute("data-exercise-status", item.complete
+        ? "complete"
+        : (item.laterStageStarted
+          ? "instructions"
+          : (item.type === "reflection" && !item.total ? "review" : "not-complete")));
     });
 
     progress.forEach(function (item) {
       var stat = item.stage.querySelector("[data-exercise-stage-stat]");
       var isCurrent = current === item;
-      if (isCurrent) item.stage.classList.add("is-section-current");
+      if (isCurrent) {
+        item.stage.classList.add("is-section-current");
+        item.stage.setAttribute("data-exercise-status", "next");
+      }
       if (stat) {
         if (item.complete) stat.textContent = "✓ Complete";
         else if (isCurrent && item.done === item.total && item.pendingReflection) {
-          stat.textContent = "Current · Reflection remains";
+          stat.textContent = "Next unfinished · Reflection remains";
         } else if (!item.total) {
           stat.textContent = isCurrent
-            ? "Current · Run this stage"
+            ? "Next unfinished · Run this stage"
             : (item.laterStageStarted ? "Instructions" : "Run this stage");
         } else if (isCurrent) {
-          stat.textContent = "Current · " + item.done + " / " + item.total;
+          stat.textContent = "Next unfinished · " + item.done + " / " + item.total;
         } else {
           stat.textContent = item.done + " / " + item.total;
         }
       }
     });
 
-    if (current) setExerciseStage(current.stage, true);
+    sequence.forEach(function (item) {
+      if (item.type !== "reflection" || current !== item) return;
+      item.root.classList.add("is-section-current");
+      item.root.setAttribute("data-exercise-status", item.total ? "next" : "review");
+    });
+
+    if (current && current.type === "stage") setExerciseStage(current.stage, true);
   }
 
   function initExerciseStages(form, b) {
-    if (!form || !isProjectExercise(b)) return;
+    if (!form || !isStagedExercise(b)) return;
     var mission = form.querySelector('#mission[data-check-section="mission"]');
     if (!mission) return;
 
@@ -654,7 +711,7 @@
       var continuation = false;
       var scan = heading.nextElementSibling;
       while (scan && scan !== nextHeading) {
-        if (scan.matches && scan.matches('.lesson-reflection[data-check-section="pulse"]')) {
+        if (scan.matches && scan.matches(".lesson-reflection")) {
           reflection = scan;
         } else if (reflection && scan.tagName === "H3" && stageNumber &&
           new RegExp("^Finish\\s+Stage\\s+0*" + parseInt(stageNumber, 10) + "\\b", "i")
@@ -751,6 +808,403 @@
 
     openHashTarget(location.hash);
     window.addEventListener("hashchange", function () { openHashTarget(location.hash); });
+  }
+
+  function exerciseNavigatorTitle(text) {
+    return (text || "")
+      .replace(/^Stage\s+\d+\s*·\s*/i, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function exerciseReflectionTitle(root) {
+    var question = root && root.querySelector(".reflection-question");
+    if (!question) return "Review the lesson pattern before moving on";
+    return (question.textContent || "")
+      .replace(/^(?:Closeout question|Think back|Workplace rule):\s*/i, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function replaceExerciseHash(id) {
+    if (!id || !window.history || !window.history.replaceState) return;
+    try {
+      window.history.replaceState(window.history.state, "", "#" + encodeURIComponent(id));
+    } catch (e) { /* file previews can deny History API writes */ }
+  }
+
+  function exerciseRouteStatus(record) {
+    return record.root.getAttribute("data-exercise-status") || "not-complete";
+  }
+
+  function exerciseRouteLabel(record) {
+    return record.type === "stage"
+      ? "Stage " + record.stageNumber
+      : "Lesson reflection";
+  }
+
+  function setExerciseNavigatorVisible(state, visible) {
+    var wasHidden = state.nav.hidden;
+    state.nav.hidden = !visible;
+    document.body.classList.toggle("has-exercise-navigator", visible);
+    if (visible && wasHidden) {
+      window.setTimeout(function () {
+        updateExerciseNavigator(state.form, state.block);
+      }, 0);
+    }
+  }
+
+  function setExerciseNavigatorText(element, value) {
+    if (element.textContent !== value) element.textContent = value;
+  }
+
+  function updateExerciseNavigator(form, b) {
+    var state = form && form._exerciseNavigator;
+    if (!state || !isStagedExercise(b)) return;
+
+    var finishedStages = 0;
+    state.records.forEach(function (record) {
+      var status = exerciseRouteStatus(record);
+      var done = parseInt(record.root.getAttribute("data-exercise-done") || "0", 10);
+      var total = parseInt(record.root.getAttribute("data-exercise-total") || "0", 10);
+      var active = state.records[state.activeIndex] === record;
+      var complete = status === "complete";
+      if (record.type === "stage" && (complete || status === "instructions")) {
+        finishedStages++;
+      }
+
+      record.node.classList.toggle("is-active", active);
+      record.node.classList.toggle("is-done", complete);
+      record.node.classList.toggle("is-next", status === "next");
+      record.node.classList.toggle("is-instructions", status === "instructions");
+      record.root.classList.toggle("is-stage-active", active);
+      record.mark.textContent = complete ? "✓" :
+        (record.type === "stage" ? record.stageNumber : "R");
+
+      var statusLabel = complete
+        ? "complete"
+        : (status === "next"
+          ? "next unfinished step"
+          : (status === "instructions"
+            ? "instructions passed; no checkbox required"
+            : (status === "review"
+              ? "read before moving on"
+              : (total ? done + " of " + total + " receipts complete" : "not complete"))));
+      var activeLabel = active ? ", currently viewed" : "";
+      var name = record.type === "stage"
+        ? "Stage " + record.stageNumber + " of " + state.stageCount + ", " + record.title
+        : "Lesson reflection, " + record.title;
+      record.button.setAttribute("aria-label", name + ", " + statusLabel + activeLabel);
+      record.button.setAttribute("title", exerciseRouteLabel(record) + " · " + record.title);
+      if (active) record.button.setAttribute("aria-current", "step");
+      else record.button.removeAttribute("aria-current");
+    });
+
+    var activeRecord = state.records[state.activeIndex] || state.records[0];
+    if (!activeRecord) return;
+    setExerciseNavigatorText(state.kicker, activeRecord.type === "stage"
+      ? "Stage " + activeRecord.stageNumber + " of " + state.stageCount
+      : "Lesson reflection");
+    setExerciseNavigatorText(state.title, activeRecord.title);
+    var summary = finishedStages + " of " + state.stageCount + " stages finished";
+    if (activeRecord.type === "reflection") {
+      var reflectionDone = parseInt(activeRecord.root.getAttribute("data-exercise-done") || "0", 10);
+      var reflectionTotal = parseInt(activeRecord.root.getAttribute("data-exercise-total") || "0", 10);
+      if (reflectionTotal) summary += " · Reflection " + reflectionDone + "/" + reflectionTotal;
+    }
+    setExerciseNavigatorText(state.summary, summary);
+
+    var previous = state.activeIndex > 0 ? state.records[state.activeIndex - 1] : null;
+    var next = state.activeIndex < state.records.length - 1
+      ? state.records[state.activeIndex + 1]
+      : null;
+    state.previous.disabled = !previous;
+    setExerciseNavigatorText(state.previousTarget,
+      previous ? exerciseRouteLabel(previous) : "Start");
+    state.previous.setAttribute("aria-label", previous
+      ? "Previous: " + exerciseRouteLabel(previous) + " — " + previous.title
+      : "Previous step unavailable");
+    state.next.disabled = !next && !state.outcomes;
+    setExerciseNavigatorText(state.nextTarget,
+      next ? exerciseRouteLabel(next) : "Lesson outcomes");
+    state.next.setAttribute("aria-label", next
+      ? "Next: " + exerciseRouteLabel(next) + " — " + next.title
+      : "Next: Lesson outcomes");
+
+    var activeButton = activeRecord.button;
+    var viewport = state.trackViewport;
+    if (activeButton && viewport.clientWidth && viewport.scrollWidth > viewport.clientWidth) {
+      viewport.scrollLeft = Math.max(0,
+        activeRecord.node.offsetLeft + activeButton.offsetLeft -
+        (viewport.clientWidth - activeButton.offsetWidth) / 2);
+    }
+  }
+
+  function activateExerciseRoute(state, index, updateHash) {
+    if (!state || index < 0 || index >= state.records.length) return;
+    state.activeIndex = index;
+    state.lockUntil = Date.now() + 650;
+    if (updateHash) replaceExerciseHash(state.records[index].target.id);
+    updateExerciseNavigator(state.form, state.block);
+  }
+
+  function navigateToExerciseRoute(state, index) {
+    var record = state && state.records[index];
+    if (!record) return;
+    if (record.stage) setExerciseStage(record.stage, true);
+    activateExerciseRoute(state, index, true);
+    setExerciseNavigatorVisible(state, true);
+    record.target.scrollIntoView({ block: "start" });
+  }
+
+  function navigateToExerciseOutcomes(state) {
+    if (!state || !state.outcomes) return;
+    var heading = state.outcomes.querySelector("h2") || state.outcomes;
+    if (!heading.hasAttribute("tabindex")) heading.setAttribute("tabindex", "-1");
+    replaceExerciseHash(state.outcomes.id);
+    state.lockUntil = Date.now() + 650;
+    state.hideUntil = Date.now() + 1200;
+    heading.focus();
+    heading.scrollIntoView({ block: "start" });
+    setExerciseNavigatorVisible(state, false);
+    window.setTimeout(function () { syncExerciseNavigatorFromViewport(state); }, 1250);
+  }
+
+  function syncExerciseNavigatorFromViewport(state) {
+    if (!state || !state.records.length) return;
+    if (Date.now() < state.hideUntil) {
+      setExerciseNavigatorVisible(state, false);
+      return;
+    }
+    var start = state.mission.querySelector("h2") || state.records[0].target;
+    var end = state.records[state.records.length - 1].root;
+    // Desktop combines the document scroll padding with each stage's scroll
+    // margin, so the stable reading line sits below both sticky nav rows.
+    var anchor = window.innerWidth <= 760
+      ? 88
+      : Math.max(180, Math.min(230, window.innerHeight * 0.34));
+    var visible = start.getBoundingClientRect().top <= window.innerHeight * 0.62 &&
+      end.getBoundingClientRect().bottom >= anchor;
+    setExerciseNavigatorVisible(state, visible);
+    if (!visible || Date.now() < state.lockUntil) return;
+
+    var activeIndex = 0;
+    for (var i = 0; i < state.records.length; i++) {
+      if (state.records[i].target.getBoundingClientRect().top <= anchor) activeIndex = i;
+      else break;
+    }
+    if (activeIndex !== state.activeIndex) {
+      state.activeIndex = activeIndex;
+      updateExerciseNavigator(state.form, state.block);
+    }
+  }
+
+  function initExerciseNavigator(form, b) {
+    if (!form || !isStagedExercise(b)) return;
+    var mission = form.querySelector('#mission[data-check-section="mission"]');
+    if (!mission) return;
+    var stageCount = mission.querySelectorAll("[data-exercise-stage]").length;
+    if (!stageCount) return;
+
+    var records = [];
+    var stageNumber = 0;
+    Array.prototype.forEach.call(
+      mission.querySelectorAll("[data-exercise-stage], .lesson-reflection"),
+      function (root) {
+        var stage = root.matches("[data-exercise-stage]") ? root : null;
+        if (!stage && root.closest("[data-exercise-stage]")) return;
+        if (stage) {
+          stageNumber++;
+          var heading = stage.querySelector(".exercise-stage-heading");
+          var title = heading && heading.querySelector(".phase-section-title");
+          if (!heading || !title) return;
+          records.push({
+            type: "stage",
+            root: root,
+            stage: stage,
+            target: heading,
+            title: exerciseNavigatorTitle(title.textContent),
+            stageNumber: stageNumber
+          });
+          return;
+        }
+        if (!root.id) root.id = b.code.toLowerCase() + "-lesson-reflection";
+        records.push({
+          type: "reflection",
+          root: root,
+          stage: null,
+          target: root,
+          title: exerciseReflectionTitle(root),
+          stageNumber: null
+        });
+      }
+    );
+    if (!records.length) return;
+
+    var nav = document.createElement("nav");
+    nav.className = "exercise-progress";
+    nav.setAttribute("data-exercise-navigator", "");
+    nav.setAttribute("aria-label", "Run of exercise progress");
+    nav.hidden = true;
+
+    var head = document.createElement("div");
+    head.className = "exercise-progress-head";
+    var current = document.createElement("div");
+    current.className = "exercise-progress-current";
+    var kicker = document.createElement("span");
+    kicker.className = "exercise-progress-kicker";
+    var currentTitle = document.createElement("strong");
+    currentTitle.className = "exercise-progress-title";
+    currentTitle.setAttribute("aria-live", "polite");
+    currentTitle.setAttribute("aria-atomic", "true");
+    var progressSummary = document.createElement("span");
+    progressSummary.className = "exercise-progress-summary";
+    current.appendChild(kicker);
+    current.appendChild(currentTitle);
+    current.appendChild(progressSummary);
+    head.appendChild(current);
+    nav.appendChild(head);
+
+    var controls = document.createElement("div");
+    controls.className = "exercise-progress-controls";
+
+    function directionButton(direction, label) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "exercise-progress-direction exercise-progress-" + direction;
+      var main = document.createElement("span");
+      main.className = "exercise-progress-direction-main";
+      main.textContent = direction === "previous" ? "← " + label : label + " →";
+      var target = document.createElement("span");
+      target.className = "exercise-progress-direction-target";
+      button.appendChild(main);
+      button.appendChild(target);
+      return { button: button, target: target };
+    }
+
+    var previousParts = directionButton("previous", "Previous");
+    var nextParts = directionButton("next", "Next");
+    controls.appendChild(previousParts.button);
+
+    var trackViewport = document.createElement("div");
+    trackViewport.className = "exercise-progress-track-viewport";
+    var track = document.createElement("ol");
+    track.className = "exercise-progress-track";
+    track.setAttribute("aria-label", "Exercise timeline");
+    records.forEach(function (record, index) {
+      var node = document.createElement("li");
+      node.className = "exercise-progress-node";
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "exercise-progress-node-button";
+      if (record.stage) {
+        var body = record.stage.querySelector("[data-exercise-stage-body]");
+        if (body && body.id) button.setAttribute("aria-controls", body.id);
+      } else {
+        button.setAttribute("aria-controls", record.root.id);
+      }
+      var mark = document.createElement("span");
+      mark.className = "exercise-progress-node-mark";
+      mark.setAttribute("aria-hidden", "true");
+      button.appendChild(mark);
+      button.addEventListener("click", function () { navigateToExerciseRoute(state, index); });
+      node.appendChild(button);
+      track.appendChild(node);
+      record.node = node;
+      record.button = button;
+      record.mark = mark;
+    });
+    trackViewport.appendChild(track);
+    controls.appendChild(trackViewport);
+    controls.appendChild(nextParts.button);
+    nav.appendChild(controls);
+    mission.insertBefore(nav, mission.querySelector("[data-exercise-stage]"));
+
+    var outcomes = form.querySelector('#floor[data-check-section="floor"]');
+    var state = {
+      form: form,
+      block: b,
+      mission: mission,
+      outcomes: outcomes,
+      records: records,
+      stageCount: stageCount,
+      nav: nav,
+      kicker: kicker,
+      title: currentTitle,
+      summary: progressSummary,
+      previous: previousParts.button,
+      previousTarget: previousParts.target,
+      next: nextParts.button,
+      nextTarget: nextParts.target,
+      trackViewport: trackViewport,
+      activeIndex: -1,
+      lockUntil: 0,
+      hideUntil: 0,
+      scrollTimer: null
+    };
+    form._exerciseNavigator = state;
+
+    var hashTarget = null;
+    if (location.hash) {
+      var hash = "";
+      try { hash = decodeURIComponent(location.hash.replace(/^#/, "")); }
+      catch (e) { hash = location.hash.replace(/^#/, ""); }
+      hashTarget = hash ? document.getElementById(hash) : null;
+    }
+    records.forEach(function (record, index) {
+      if (state.activeIndex === -1 && hashTarget && record.root.contains(hashTarget)) {
+        state.activeIndex = index;
+      }
+      if (record.stage) {
+        var toggle = record.stage.querySelector("[data-exercise-stage-toggle]");
+        if (toggle) toggle.addEventListener("click", function () {
+          activateExerciseRoute(state, index, true);
+        });
+      }
+    });
+    if (state.activeIndex === -1) {
+      for (var i = 0; i < records.length; i++) {
+        if (records[i].root.classList.contains("is-section-current")) {
+          state.activeIndex = i;
+          break;
+        }
+      }
+    }
+    if (state.activeIndex === -1) state.activeIndex = 0;
+
+    previousParts.button.addEventListener("click", function () {
+      navigateToExerciseRoute(state, state.activeIndex - 1);
+    });
+    nextParts.button.addEventListener("click", function () {
+      if (state.activeIndex < state.records.length - 1) {
+        navigateToExerciseRoute(state, state.activeIndex + 1);
+      } else {
+        navigateToExerciseOutcomes(state);
+      }
+    });
+
+    function scheduleViewportSync() {
+      if (state.scrollTimer) return;
+      state.scrollTimer = window.setTimeout(function () {
+        state.scrollTimer = null;
+        syncExerciseNavigatorFromViewport(state);
+      }, 60);
+    }
+    window.addEventListener("scroll", scheduleViewportSync);
+    window.addEventListener("resize", scheduleViewportSync);
+    window.addEventListener("hashchange", function () {
+      var raw = "";
+      try { raw = decodeURIComponent(location.hash.replace(/^#/, "")); }
+      catch (e) { raw = location.hash.replace(/^#/, ""); }
+      var target = raw ? document.getElementById(raw) : null;
+      records.forEach(function (record, index) {
+        if (target && record.root.contains(target)) activateExerciseRoute(state, index, false);
+      });
+      scheduleViewportSync();
+    });
+
+    updateExerciseNavigator(form, b);
+    window.setTimeout(function () { syncExerciseNavigatorFromViewport(state); }, 0);
   }
 
   function migrateReplacedOutcomeState(form, key, state) {
@@ -991,6 +1445,7 @@
     initExerciseStages(form, b);
     initPreworkStepDetails(form, b);
     updateProgressOutputs(key);
+    initExerciseNavigator(form, b);
   }
 
   function wireChecklistTools() {
