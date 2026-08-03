@@ -23,7 +23,7 @@
   <main class="site-main">
     <p class="eyebrow">Monday AM · B1 · AI Harness Bootcamp</p>
     <h1>First Light Dashboard</h1>
-    <p class="lede">Copy two supplied prompts and turn a ready-made report corpus into a polished, interactive operations dashboard. You do not write code, design a brief, or invent the prompts in this block.</p>
+    <p class="lede">Copy two supplied prompts and turn a ready-made report corpus into a polished, interactive operations dashboard — rich ticket panels, relationship chips, and light timeline connectors included. You do not write code, design a brief, or invent the prompts in this block.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Monday AM</span></div>
@@ -54,15 +54,15 @@
 
         <div class="skill-grid" aria-label="First Light in four moves">
           <div class="skill-cell"><span class="k">01 · Open</span><span class="n">One project, one chat</span><p>Open the course repository and create the supplied B1 build chat.</p></div>
-          <div class="skill-cell"><span class="k">02 · Build</span><span class="n">Paste the master prompt</span><p>Codex reads all seven reports and creates one offline dashboard.</p></div>
-          <div class="skill-cell"><span class="k">03 · Polish</span><span class="n">Paste the QA prompt</span><p>Codex inspects desktop and mobile renderings, fixes defects, and checks the facts.</p></div>
-          <div class="skill-cell"><span class="k">04 · Explore</span><span class="n">Use the product</span><p>Search, filter, open report details, and resize the finished dashboard.</p></div>
+          <div class="skill-cell"><span class="k">02 · Build</span><span class="n">Paste the master prompt</span><p>Codex reads all seven richer reports and creates one offline dashboard with linked tickets.</p></div>
+          <div class="skill-cell"><span class="k">03 · Polish</span><span class="n">Paste the QA prompt</span><p>Codex inspects desktop and mobile renderings, relationship highlights, fixes defects, and checks the facts.</p></div>
+          <div class="skill-cell"><span class="k">04 · Explore</span><span class="n">Use the product</span><p>Search, filter, open rich detail panels, trace related reports, and resize the finished dashboard.</p></div>
         </div>
       </div>
       <div class="orient-aside">
         <div class="lead-box">
           <p class="eyebrow">What you will make</p>
-          <p><strong>First Light Operations Picture</strong>: a responsive, single-file dashboard at <code>mission_flesh/b1/first_light/index.html</code>. It opens offline and preserves the source filenames behind every record.</p>
+          <p><strong>First Light Operations Picture</strong>: a responsive, single-file dashboard at <code>mission_flesh/b1/first_light/index.html</code>. It opens offline, shows rich ticket fields, lights related reports from chips and timeline connectors, and preserves the source filenames behind every record.</p>
         </div>
         <div class="callout">
           <strong>Use the prompts exactly as written</strong>
@@ -102,7 +102,7 @@
         </div>
 
         <h3>Stage 02 · Paste Prompt 1 — build the dashboard</h3>
-        <p>This prompt supplies the complete product specification. It uses all seven example reports from the start, including <code>DELTA_new.md</code>; there is no staged source update in B1.</p>
+        <p>This prompt supplies the complete product specification. It uses all seven richer example reports from the start, including <code>DELTA_new.md</code>; there is no staged source update in B1.</p>
 
         <div class="do-step">
           <p class="do-label">Copy this entire prompt into <strong>B1 — First Light Dashboard</strong>:</p>
@@ -114,7 +114,7 @@ mission_flesh/b1/first_light/index.html
 
 Create a polished, responsive operations dashboard named
 “First Light Operations Picture.” It should feel like a high-end operational
-product, not a generic admin template.
+product — quiet, dense, and beautiful — not a generic admin template.
 
 SOURCE RULES
 - Treat all seven report files as the complete provided example corpus.
@@ -125,6 +125,13 @@ SOURCE RULES
 - Keep the exact source filename visible in every report detail.
 - report_06_export_eu.md has no DTG. Label it “Needs timestamp” and keep it out
   of the chronological sequence instead of guessing a time.
+- Parse every labeled field from each source file into the embedded record,
+  including shared ticket fields when present: Classification, Entities,
+  Location, Status, Severity, Summary, Related, Reporter, plus type-specific
+  lines (Impact, Actions, Team, Assessment, Handling, Note, System,
+  Status detail, Severity detail).
+- Parse each Related line into structured links: target source filename plus
+  the short reason in parentheses. If Related is “none …”, store zero links.
 - Use this report-type map:
   report_01_bridge.md → OPS REPORT
   report_02_node_b.md → FIELD NOTE
@@ -135,29 +142,59 @@ SOURCE RULES
   DELTA_new.md → LATE INSERT
 - The source-backed headline facts are 7 reports, 6 dated, 1 needing a
   timestamp, and a dated window from 0340Z to 0600Z.
+- Primary incident thread entities include Relay-7 and vb-07. The EU export
+  ticket is a standalone high-severity thread and must not be drawn into the
+  bridge timeline connectors.
 
 DELIVERY
 - Create one self-contained HTML file with embedded CSS, JavaScript, and data.
 - It must open offline by double-click: no server, framework, package, CDN,
-  external font, library, fetch call, or network request.
+  external font, library, fetch call, canvas graph engine, or network request.
 - Do not modify the reports or anything under operator/.
 - Do not create a brief, manifest, release note, log, or planning document.
 
-INFORMATION DESIGN
-- Use a restrained dark operations palette, crisp typography, generous spacing,
-  and a strong visual hierarchy. Reserve red for the explicitly high-severity
-  EU export issue; use status text as well as color.
+VISUAL CRAFT
+- Use a restrained dark operations palette, one cool accent, crisp typography,
+  generous spacing, and a strong visual hierarchy. Prefer system UI fonts with
+  careful size/weight/tracking — no external fonts.
+- Mono or tabular styling for DTGs, IDs, and filenames; quiet labels above
+  stronger values.
+- Reserve red only for explicit High severity (the EU export issue). Use status
+  and severity as text as well as color.
 - Mark the dashboard visibly as “Synthetic training data.”
 - Start with a compact command header and four large metric cards: Reports,
-  Dated, Needs timestamp, and Time window.
-- Make the chronological timeline the main visual story. It must begin with the
-  convoy at 0340Z and end with the late insert at 0600Z.
-- Give the undated export ticket a prominent separate “Needs timestamp” lane.
+  Dated, Needs timestamp, and Time window. Give cards a subtle top-edge status
+  treatment and composed alignment.
+- Make the chronological timeline the main visual story and hero. It must begin
+  with the convoy at 0340Z and end with the late insert at 0600Z, with clear
+  time ticks and severity dots.
+- Give the undated export ticket a prominent separate “Needs timestamp” lane
+  that never joins the chrono spine.
+
+RELATIONSHIPS (low-risk, required)
+- In every detail panel, show Related as chips (target report label + short
+  reason). Chips are keyboard-focusable buttons.
+- Activating a related chip, or selecting a timeline/explorer record, highlights
+  the active record and all directly related records in both the timeline and
+  explorer; dim non-related records. Provide a clear way to clear the highlight
+  (Clear all already resets filters; also clear highlight when appropriate).
+- Draw light timeline connectors only among currently highlighted dated nodes
+  that are directly related — simple straight or gently elbowed lines/marks
+  along or beside the spine. No force-directed graph, no particle system, no
+  auto-playing relationship movie, no bezier spaghetti across the whole page.
+- The EU export record may show Related: none and must not receive bridge-thread
+  connectors.
+- Motion: panel open/close and highlight/connector transitions at about
+  150–250ms. Honor prefers-reduced-motion: reduce by cutting motion to instant
+  state changes while keeping highlights and connectors visible/usable.
+
+INFORMATION DESIGN
 - Add a report explorer with full-text search, report-type filter chips,
   Dated / Needs timestamp filters, a live visible-result count, Clear all,
   and a useful empty state.
-- Let a user open and close every report to see all available source fields and
-  the exact filename.
+- Detail panels must feel like real tickets: labeled field grid covering every
+  source field for that report, entity pills, status/severity badges, related
+  chips, and the exact source filename.
 - Preserve operationally important phrases such as “likely unrelated,”
   “do not amplify,” “Service CLEAR,” and “monitoring elevated 2 hours.”
 
@@ -166,16 +203,18 @@ PRODUCT QUALITY
   that work by keyboard as well as mouse.
 - Make the desktop layout feel composed at 1440 × 900 and stack cleanly at
   390 × 844 with no horizontal scrolling, clipped controls, or unreadable text.
-- Use subtle motion only where it improves orientation, and honor reduced-motion
-  preferences.
-- Make every filter, search action, reset action, detail control, visible count,
-  and empty state work with embedded JavaScript.
+- Connectors may simplify or hide at the mobile width if they would cause
+  clutter or overflow; chips and highlights must still work at both sizes.
+- Make every filter, search action, reset action, detail control, related-chip
+  highlight, visible count, and empty state work with embedded JavaScript.
 
 Do not pause to propose a plan or ask me to choose the design. Make sound design
 decisions and build the dashboard now. Before handing it back, verify that the
-embedded data has one canonical record for each of the seven source files, dated
-events are ordered correctly, the undated report remains explicit, and every
-interaction has working JavaScript.
+embedded data has one canonical record for each of the seven source files with
+parsed fields and related links, dated events are ordered correctly, the undated
+report remains explicit and unconnected to the bridge spine, related chips and
+highlights work, light connectors appear only for highlighted direct relations,
+and every interaction has working JavaScript.
 Report the exact dashboard path when finished.</code></pre>
         </div>
 
@@ -214,21 +253,34 @@ Exercise and verify:
 - DELTA_new.md is latest at 0600Z
 - searching for EU leaves only report_06_export_eu.md
 - the OPS REPORT type filter leaves exactly two reports
-- Clear all restores all seven
+- Clear all restores all seven and clears relationship highlight state
 - the restore detail shows 0510Z, Service CLEAR, monitoring elevated 2 hours,
-  and report_04_restore.md
-- each detail preserves every labeled field from its source: Classification,
-  Impact, Actions, and Reporter for report_01; Team and Assessment for report_02;
-  Handling for report_03; Status for report_04; Note for report_05; System and
-  Severity for report_06; and the complete DELTA summary, including its
-  monitoring-window condition
+  Entities Relay-7 and vb-07, Status Monitoring, related chips to
+  report_01_bridge.md and DELTA_new.md, and filename report_04_restore.md
+- each detail preserves every labeled field from its source, including shared
+  ticket fields (Classification, Entities, Location, Status, Severity, Summary,
+  Related, Reporter) and type-specific lines (Impact/Actions on report_01; Team
+  and Assessment with “likely unrelated” on report_02; Handling “do not amplify”
+  on report_03; Status detail on report_04; Note on report_05; System and
+  Severity detail on report_06; monitoring-window condition on DELTA)
+- related chips are keyboard reachable; activating the restore→bridge chip
+  (or selecting restore) highlights restore, bridge, and DELTA in timeline and
+  explorer, dims unrelated records, and shows light connectors only among the
+  highlighted directly related dated nodes
+- report_06_export_eu.md shows Related none / zero bridge connectors and stays
+  in the Needs timestamp lane
 - every report can be opened and closed
 - “Synthetic training data” is visible without opening a report
+- red is reserved for the High severity EU issue; status/severity also appear
+  as text
+- with prefers-reduced-motion simulated or honored, highlights and connectors
+  still work without relying on motion
 - keyboard focus remains visible
 - no horizontal scrolling, clipped controls, overlapping text, or unreadable
   cards at either viewport
 - no browser-console errors
 - no claim appears that the source files do not support
+- no CDN, external font, framework, fetch, or canvas graph engine is used
 
 Fix every failure you find in mission_flesh/b1/first_light/index.html, render
 again, and repeat the affected check. Do not change the source reports and do
@@ -261,8 +313,9 @@ or a list of each unresolved check.</code></pre>
           <p class="do-label">In the finished <strong>First Light Operations Picture</strong>:</p>
           <ul class="do-clicks">
             <li>Scan the headline metrics and timeline to understand the operating picture</li>
-            <li>Search for <code>EU</code>, open the remaining record, and identify the blocked work, the unaffected region, and the source filename</li>
-            <li>Choose <strong>Clear all</strong>, apply <strong>OPS REPORT</strong>, and open the restore record to identify the current service state and monitoring period</li>
+            <li>Search for <code>EU</code>, open the remaining record, and identify the blocked work, the unaffected region, severity, and the source filename</li>
+            <li>Choose <strong>Clear all</strong>, apply <strong>OPS REPORT</strong>, and open the restore record to identify service state, monitoring period, entities, and related chips</li>
+            <li>Activate a related chip on restore (bridge or DELTA) and confirm the timeline highlights the linked reports with light connectors while unrelated nodes dim</li>
             <li>Choose <strong>Clear all</strong>. If the browser is maximized, click <strong>Restore Down</strong> (the two overlapping squares), then drag its right edge left until the cards stack; confirm there is no horizontal scrolling</li>
           </ul>
         </div>
@@ -274,7 +327,7 @@ or a list of each unresolved check.</code></pre>
               <span class="check-num">3</span>
               <span class="check-title">The finished dashboard answers source-backed questions</span>
             </label>
-            <div class="check-detail">Search, filtering, report details, and the responsive layout make the supplied corpus usable without hiding its source files or qualifiers.</div>
+            <div class="check-detail">Search, filtering, rich report details, relationship highlights, and the responsive layout make the supplied corpus usable without hiding its source files or qualifiers.</div>
           </li>
         </ol>
 
@@ -294,7 +347,7 @@ or a list of each unresolved check.</code></pre>
               <span class="check-num">1</span>
               <span class="check-title">A polished offline dashboard represents the complete example corpus</span>
             </label>
-            <div class="check-detail">The single HTML product contains seven source-backed records, six dated events, and one explicit needs-timestamp record.</div>
+            <div class="check-detail">The single HTML product contains seven source-backed records with rich ticket fields, six dated events, one explicit needs-timestamp record, and working related-chip highlights with light timeline connectors.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="b1-polish-pass">
@@ -303,7 +356,7 @@ or a list of each unresolved check.</code></pre>
               <span class="check-num">2</span>
               <span class="check-title">The dashboard passes desktop and mobile quality checks</span>
             </label>
-            <div class="check-detail">The visual hierarchy, responsive layout, accessibility, interactions, source fidelity, and console state all pass rendered-product QA.</div>
+            <div class="check-detail">The visual hierarchy, relationship highlights/connectors, responsive layout, accessibility, interactions, source fidelity, and console state all pass rendered-product QA.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="b1-smoke-pass">
@@ -312,7 +365,7 @@ or a list of each unresolved check.</code></pre>
               <span class="check-num">3</span>
               <span class="check-title">The dashboard can answer source-backed questions</span>
             </label>
-            <div class="check-detail">Search, filtering, report details, and the responsive layout make the corpus usable while preserving source traceability.</div>
+            <div class="check-detail">Search, filtering, rich report details, relationship tracing, and the responsive layout make the corpus usable while preserving source traceability.</div>
           </li>
         </ol>
       </section>
@@ -345,10 +398,12 @@ there is exactly one canonical embedded record for each of the seven files;
 the dated sequence is report_05_convoy.md at 0340Z–0400Z, report_01_bridge.md at
 0412Z, report_02_node_b.md at 0415Z, report_03_media.md at 0422Z,
 report_04_restore.md at 0510Z, then DELTA_new.md at 0600Z;
-report_06_export_eu.md remains in Needs timestamp; and every labeled field,
-qualifier, and source filename matches the corpus. Remove unsupported claims.
-Do not modify the reports or create another file. Reopen the dashboard when the
-correction is complete.</code></pre>
+report_06_export_eu.md remains in Needs timestamp with Related none and no bridge
+connectors; every labeled field (including Entities, Location, Status, Severity,
+Related links with reasons, Reporter, and type-specific lines), qualifier, and
+source filename matches the corpus. Remove unsupported claims. Do not modify the
+reports or create another file. Reopen the dashboard when the correction is
+complete.</code></pre>
           </div>
         </div>
       </details>
@@ -359,10 +414,14 @@ correction is complete.</code></pre>
           <div class="do-step">
             <pre><code>Repair the interactions in mission_flesh/b1/first_light/index.html. Searching
 EU must leave only report_06_export_eu.md; the OPS REPORT filter must leave
-exactly two reports; Clear all must restore seven; every report detail must open
-and close by mouse and keyboard; the visible-result count and empty state must
-stay accurate. Keep the page offline and single-file. Test every repaired action
-and reopen the dashboard when all checks pass.</code></pre>
+exactly two reports; Clear all must restore seven and clear relationship
+highlights; every report detail must open and close by mouse and keyboard;
+related chips must highlight the active record plus direct relations in timeline
+and explorer, dim the rest, and show light connectors only among highlighted
+directly related dated nodes; EU must stay unconnected to the bridge spine; the
+visible-result count and empty state must stay accurate. Keep the page offline
+and single-file with no graph library. Test every repaired action and reopen the
+dashboard when all checks pass.</code></pre>
           </div>
         </div>
       </details>
@@ -373,10 +432,13 @@ and reopen the dashboard when all checks pass.</code></pre>
           <div class="do-step">
             <pre><code>Refine mission_flesh/b1/first_light/index.html as a high-end operational product.
 Inspect the rendered page at 1440 × 900 and 390 × 844. Strengthen the information
-hierarchy, typography, spacing, alignment, card composition, and control grouping;
-remove generic template styling; preserve every source fact and interaction. Fix
-all horizontal scrolling, clipping, overlap, weak contrast, and invisible focus.
-Keep it offline and single-file. Reinspect both sizes and reopen the dashboard.</code></pre>
+hierarchy, typography, spacing, alignment, card composition, ticket detail grids,
+related chips, and light timeline connectors; remove generic template styling;
+preserve every source fact and interaction. Keep motion subtle (150–250ms) and
+honor reduced-motion with instant state changes. Fix all horizontal scrolling,
+clipping, overlap, weak contrast, and invisible focus. Keep it offline and
+single-file with no CDN, external fonts, or graph engine. Reinspect both sizes
+and reopen the dashboard.</code></pre>
           </div>
         </div>
       </details>
