@@ -841,6 +841,37 @@ a.plate-cell:hover { background: var(--paper-warm); }
   color: var(--ink-muted);
 }
 
+.course-progression-figure {
+  width: min(96vw, 120rem);
+  margin: 1.4rem 0 1.75rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid var(--field-panel);
+  background: var(--field);
+}
+.course-progression-scroll {
+  overflow-x: auto;
+}
+.course-progression-figure img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+.course-progression-figure figcaption {
+  margin: 0;
+  padding: 0.6rem 0.75rem;
+  border-top: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  max-width: none;
+}
+.course-progression-hint {
+  display: none;
+}
+
 /* --- Monday Model Economics bridge --- */
 .discussion-spotlight {
   display: grid;
@@ -1143,6 +1174,32 @@ a.plate-cell:hover { background: var(--paper-warm); }
 }
 
 /* --- responsive --- */
+@media (max-width: 1400px) {
+  .course-progression-figure {
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+  }
+  .course-progression-hint {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0;
+    padding: 0.55rem 0.75rem;
+    background: var(--field);
+    color: var(--sand);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    max-width: none;
+  }
+  .course-progression-hint strong {
+    color: var(--field-text);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+  }
+  .course-progression-scroll img { width: 114rem; }
+}
 @media (max-width: 960px) {
   .journey { grid-template-columns: repeat(3, 1fr); }
   .journey-col:nth-child(3n) { border-right: 0; }
