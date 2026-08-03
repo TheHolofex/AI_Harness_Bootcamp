@@ -26,7 +26,7 @@ function Resolve-PythonForSmoke {
 
 function Invoke-PythonForSmoke {
     param([Parameter(Mandatory = $true)][string[]]$Arguments)
-    $Launcher = Resolve-PythonForSmoke
+    $Launcher = @(Resolve-PythonForSmoke)
     $Command = $Launcher[0]
     $Prefix = @()
     if ($Launcher.Count -gt 1) {
