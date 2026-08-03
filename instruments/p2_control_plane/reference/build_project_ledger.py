@@ -303,7 +303,8 @@ def build_ledger(project_root: Path, *, rebuild: bool = False) -> Path:
     os.close(descriptor)
     temporary = Path(temporary_name)
     try:
-        with sqlite3.connect(str(temporary)) as connection:
+        connection = sqlite3.connect(str(temporary))
+        try:
             connection.execute("PRAGMA foreign_keys = ON")
             connection.execute("PRAGMA journal_mode = DELETE")
             connection.execute("PRAGMA synchronous = FULL")
@@ -339,6 +340,8 @@ def build_ledger(project_root: Path, *, rebuild: bool = False) -> Path:
             if integrity != ("ok",):
                 raise BuildError(f"Integrity check failed: {integrity!r}")
             connection.commit()
+        finally:
+            connection.close()
         os.replace(str(temporary), str(target))
     except Exception:
         if temporary.exists():

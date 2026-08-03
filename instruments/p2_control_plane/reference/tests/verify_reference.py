@@ -317,18 +317,30 @@ def test_builder_and_schema_mutations(parent: Path) -> None:
     deliverables.write_text(original, encoding="utf-8")
 
     database = root / "project_ledger.sqlite3"
-    with sqlite3.connect(database) as connection:
+    connection = sqlite3.connect(database)
+    try:
         connection.execute("UPDATE deliverables SET owner = ? WHERE deliverable_id = ?", ("Invented Owner", "DLV-002"))
+        connection.commit()
+    finally:
+        connection.close()
     assert "deliverables values differ" in verify(root, expected=1).stdout
     build(root, rebuild=True)
 
-    with sqlite3.connect(database) as connection:
+    connection = sqlite3.connect(database)
+    try:
         connection.execute("DROP INDEX idx_decisions_queue")
+        connection.commit()
+    finally:
+        connection.close()
     assert "Required index is missing" in verify(root, expected=1).stdout
     build(root, rebuild=True)
 
-    with sqlite3.connect(database) as connection:
+    connection = sqlite3.connect(database)
+    try:
         connection.execute("PRAGMA user_version = 0")
+        connection.commit()
+    finally:
+        connection.close()
     assert "user_version must be 1" in verify(root, expected=1).stdout
 
 
