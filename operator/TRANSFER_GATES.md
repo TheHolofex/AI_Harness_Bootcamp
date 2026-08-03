@@ -37,13 +37,13 @@ Follow the live module page
 | P1 | Judgment-product machine seed in the P1 closeout |
 | P2 | Harness/30-day seed in the P2 closeout |
 | P3 | Comparator/disposition/MCP-boundary seed in the P3 closeout |
-| P4 | Trail/knowledge target in the P4 closeout |
+| P4 | Personal-harness goal, boundary, owner, pattern, acceptance/stop rule, and first trial in the P4 handoff |
 | P5 | Intake/trusted-picture seed in the P5 closeout |
 | P6 | Contract/stop seed in the P6 closeout |
 | P7 | Machine-choice seed, then draft 30/60/90 horizons in the shared plan chat |
 | P8 | Finalize evidence, run the seal criteria, and seal or block |
 
-An empty major seed on P2/P3/P5/P6/P7 day remains **not yet** until the module closeout names the missing value or its unblock.
+An empty major seed on P2/P3/P4/P5/P6/P7 day remains **not yet** until the module closeout names the missing value or its unblock.
 
 ## Time
 

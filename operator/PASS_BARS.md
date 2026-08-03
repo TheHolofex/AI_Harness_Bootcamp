@@ -21,11 +21,13 @@ The HTML module page owns the learner sequence and exact chat names. B1 stays in
 
 ## How this list gets ticked
 
-Whichever way you do it, the list is written down **before** the attack, and you do not get to grade your own vibes unchallenged.
+Whichever way you do it, the list is written down **before** the final review or release decision, and you do not get to grade your own vibes unchallenged.
 
 **When the module page calls for an AI-assisted walk, use its exact module-specific closeout chat.** The generic direction-chat pattern is `[MODULE] — Direction & Closeout`; replace `[MODULE]` with the current module code and copy any date suffix shown on the page. Go one bar at a time. For each bar you answer *met* or *not yet* and give an evidence pointer, and the AI challenges any pointer that is a feeling rather than an artifact. Use the closer prompt at the bottom of this file.
 
-**At P1, P4, P6, P7 and P8 — tick the list yourself, then hand it to the attack.** Before you open the adversarial chat:
+**P4 checks the product inside the build.** It uses a human raw-source audit, a configured read-only evaluator with an exact receipt, a deterministic vault verifier, and a real resume from saved state. Its live page does not add a separate adversarial chat.
+
+**At P1, P6, P7 and P8 — tick the list yourself, then hand it to the attack.** Before you open the adversarial chat:
 
 1. Tick every bar you can point at an artifact for, right now.
 2. Leave unticked any bar you cannot evidence. An honest *not yet* costs nothing at this moment and saves you in the next one.
@@ -171,27 +173,28 @@ One engine only, “they basically agreed,” verdict without a comparator, MCP 
 
 ---
 
-## P4 — Second brain · Cap 5  
-**Mastery claim:** A thinking machine works inside *your* knowledge structure with trails you can walk — synthesis is not a black box.
+## P4 — Personal operating harness · Cap 5
+**Mastery claim:** You can encode how useful work gets done for you, run the least-complex loop that can finish it, preserve recoverable state, and prove the resulting product meets its evidence bar.
 
 ### MVP
-- [ ] LIVE brief scopes the vault, allowed actions, and what must never leave the vault
-- [ ] Inbox processed into a **link graph** you can navigate (not a pile of AI-named files)
-- [ ] ≥2 director-level questions answered with **clickable note-link citations** spanning multiple notes each
-- [ ] **Trail audit:** for every cited note in those answers, you open it and mark support / partial / not supported
-- [ ] At least one answer revised or killed because the trail failed the audit
-- [ ] Morning Brief note is generated **into** the vault and itself cites notes you verified
-- [ ] Log: what the machine retrieved vs what you judged — and one thing the vault cannot yet support
+- [ ] <code>AGENTS.md</code> and <code>Harness/HARNESS_CARD.md</code> save the real reader, decision priority, output shape, evidence/escalation rule, folder boundary, authority, budgets, and terminal reasons before execution; at least two personal settings change the work rather than its tone
+- [ ] The selected hybrid is explicit: fixed scope/approval/check/release outside, bounded adaptive evidence traversal inside; every packet open is earned by an observed reference, the six-open budget holds, and at least three unnecessary components are rejected with workload-specific reasons
+- [ ] Inbox becomes a navigable, source-preserving graph; every generated knowledge note links to unchanged raw roots; each director answer uses at least two distinct, direct, earned <code>Source_Packet</code> roots; status and missing evidence remain visible
+- [ ] Every decision-driving claim has a stable ID; the human opens its raw citation and records a verbatim carrying sentence plus **support / partial / not supported** in <code>Audit.md</code>; adverse rows remain after qualification or removal, and generator-authored summaries never certify themselves
+- [ ] <code>Morning_Brief.md</code> serves the named decision from claim-level audited support and raw evidence; the configured read-only evaluator saves an exact receipt bound to <code>EVAL.md</code>; after audit-driven qualification, at most one evaluator/verifier repair occurs
+- [ ] The untouched verifier under the course seed returns <code>PASS P4 candidate</code> against <code>Documents\p4-vault</code> before the evaluator runs; after the scoped handoff is complete, the same trusted verifier writes <code>Harness/BASELINE_MANIFEST.json</code>; outcome claims never rely on the builder saying “done”
+- [ ] <code>RUN_STATE.md</code> and <code>RUN_TRACE.md</code> preserve completed/open work, observable actions, interventions, remaining budget, terminal reason, and next permitted action; a fresh goal verifies completed artifacts and resumes after the human-audit pause without duplicate writes, recorded in <code>RESUME_RECEIPT.md</code>
+- [ ] The log separates machine execution, human evidence judgment, and residual risk; the transfer seed names one real workplace goal, data boundary, decision owner, pattern, acceptance/stop rule, and first trial date
 
 ### Stretch
-- [ ] Director question that requires reconciling two conflicting notes; conflict surfaces explicitly
-- [ ] Vault IA you’d keep at work for 90 days (naming + MOC/hub note)
+- [ ] Run the same harness on a second representative capture set and compare verified completion, human interventions, elapsed time, and repairs
+- [ ] Remove one component, rerun the representative case, and keep it removed if quality holds while context, approvals, time, or cost improve
 
 ### Side-quest
-- [ ] Loaded/hostile director question; answer only with trails; log refusal where vault is silent
+- [ ] Turn one real HOLD or verifier failure into a regression case before changing the harness
 
 ### Not yet if
-Chat answers with fake or unopened cites, or vault is dump-shaped.
+The procedure still depends on copied chat history; personalization changes only voice; state lives only in conversation; a router, worker team, plugin, MCP server, or reflection loop was added without an observed need; citations are unopened; the evaluator can edit its evidence; the verifier or fresh-context handoff fails; or the trace is long but cannot point to an accepted artifact.
 
 ---
 
@@ -204,7 +207,7 @@ Chat answers with fake or unopened cites, or vault is dump-shaped.
 - [ ] **Field contradiction** caught the same way — not “I noticed”
 - [ ] **Hostile instruction** caught; prove **absence of effect** in trusted vault/notes/outputs (show where it would have landed and that it didn’t)
 - [ ] All three logged with time order: detect → isolate → verify clean
-- [ ] Control map names the path boundary, approval gate, content checks, independent recheck, and residual risk separately; no permission control is credited with deciding whether a claim is true
+- [ ] Control map names the exact <code>p5-staging</code> project scope, approval gate, content checks, trusted external before/after manifest receipts, and residual risk separately; no permission control is credited with deciding whether a claim is true
 - [ ] Written rule you’ll reuse: “I never accept intake into trusted knowledge until ___”
 - [ ] Log verdict = containment proof; anything less is not yet
 

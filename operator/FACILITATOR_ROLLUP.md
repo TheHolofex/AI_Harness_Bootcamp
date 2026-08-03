@@ -29,7 +29,7 @@ The number that matters is the **slope of `n` down the week** while `m` holds or
 
 | Code | Meaning |
 |---|---|
-| `A` | No `ADVERSARIAL:` line for a block |
+| `A` | No required review-boundary evidence: `ADVERSARIAL:` or P4 audit/evaluator/verifier set |
 | `B` | Brief accuracy entered with no named field — “the brief was fine” in longer words |
 | `M` | Brief accuracy MISS |
 | `O` | Overclaim near zero while bars-met falls — claiming less to protect the ratio |
@@ -41,7 +41,7 @@ The number that matters is the **slope of `n` down the week** while `m` holds or
 
 | Flag | Move |
 |---|---|
-| `A` | Stop content. Restore the pulse: brief → mission → log → adversarial. Nothing downstream is real without the attack |
+| `A` | Stop content. Restore the module&#x27;s real review boundary. Do not add a generic attack where the live page already integrates review. |
 | `B` | Sit with the student and their brief. Make them name a field out loud and say what they would write instead. One minute, and it usually lands on *Done looks like* |
 | `M` | Narrow the scope of data. Never narrow the evidence standard |
 | `O` | Read the mastery floor with them. An unticked bar is *not yet*, and *not yet* holds the floor open — the ratio bought them nothing |
@@ -63,15 +63,15 @@ Do not compute a median across a student's nine blocks and do not rank the cohor
 - Mean bars-met by block over the same range, read beside it
 - Share of rows carrying a named brief field
 - Which of the five brief fields the cohort names most often
-- P3 material-difference and source-disposition pattern; P5/P8 two-reviewer disagreement rate
+- P3 material-difference and source-disposition pattern; P4 evaluator/trusted-verifier/terminal pattern; P5 external manifest drift and scope-escape evidence; P8 two-reviewer disagreement rate
 
-**On disagreement.** P3 compares two frozen outputs, then resolves consequential claims against raw sources; read its comparator and disposition pattern. P5 and P8 send the same review pack through two engines; read their reviewer-disagreement rate beside the underlying packs. Near-zero is a prompt to inspect, not evidence of either cleanliness or failure by itself.
+**On disagreement.** P3 compares two frozen outputs, then resolves consequential claims against raw sources; read its comparator and disposition pattern. P8 sends the same review pack through two engines; read its reviewer-disagreement rate beside the underlying pack. Near-zero is a prompt to inspect, not evidence of either cleanliness or failure by itself. P4 uses a configured evaluator for a different job, and P5 uses deterministic integrity receipts rather than a second model.
 
 ## Spot-checks worth the minutes
 
-- **Evidence pointers at P4.** Read three students' pointers and confirm each one names a path, a score-sheet row, a comparator line, or a test name. Anything that names a feeling gets sent back.
+- **P4 completion evidence.** Read three students&#x27; <code>RUN_STATE.md</code>, <code>RUN_TRACE.md</code>, <code>Audit.md</code>, <code>EVAL.md</code>, trusted-verifier output, and external baseline copy. Confirm the brief serves the prewritten decision, the evaluator was read-only, the shared post-audit repair count stayed within one, and the terminal reason points to artifacts rather than effort.
 - **Adversarial paste packs.** A polite reviewer means the pack was thin or the build chat was reused. Fix the pack; never soften the prompt.
 - **Transfer seeds.** P1–P7 write dated seeds during their own module closeouts. Only P7 and P8 use the shared `P7–P8 — 30/60/90 Plan` chat, because both visits continue the same saved plan in the same role. At P7, count the seeds and read the dates. Seven seeds all dated the same afternoon is a Friday dump with extra steps.
-- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B1, P2 and P5. At P1, P4, P6, P7 and P8 the student ticks the floor before the attack. P3 instead checks outcomes as their artifacts are produced, then uses its comparator, source packet, and raw-file adjudication as the review.
+- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B1, P2 and P5. P4 uses its human raw-source audit, configured read-only evaluator, deterministic verifier, and a real mid-run resume from saved state. Do not add a separate attack. At P1, P6, P7 and P8 the student ticks the floor before the attack. P3 checks outcomes as artifacts are produced, then uses its comparator, source packet, and raw-file adjudication as the review.
 
 If a cohort needs rescue, narrow the **scope of data**. Rescue is restoring the pulse and the evidence, not adding metrics.

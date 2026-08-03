@@ -1,12 +1,12 @@
 # Measurement spine — Move 4
 
 **Ultra-light week scoreboard.** Living Markdown in the Codex app project.  
-Updated **once per block, after adversarial review**.
+Updated **once per block, after that block&#x27;s review boundary**. P4 uses its human raw-source audit, configured read-only evaluator receipt, deterministic verifier, resume receipt, and terminal state. It does not add a separate adversarial chat.
 
 The live HTML module page is authoritative for whether this row is part of the learner flow and which exact module-specific closeout chat to use.
 
 Not a second curriculum. Not a metrics religion.  
-Four entries that answer: *Was the brief I wrote any good, how much of what I claimed survived review, what did the lesson cost in time, and what will I change next?*
+Four entries that answer: *Was the contract I wrote any good, how much of the first-pass claim survived review, what did accepted completion cost in time, and what will I change next?*
 
 ```text
 Brief accuracy · Overclaim · Time to result · Lesson reflection
@@ -87,8 +87,8 @@ Write it as `n/m`, for example `2/7`.
 
 | Symbol | What it is | Where it comes from |
 |---|---|---|
-| **m** | How many lesson outcomes you marked **complete** | Your outcome check, counted **before** the review chat opened |
-| **n** | How many of *those same outcomes* came back **WOUNDED** or **DEAD** | Step 3 of the frozen prompt in `ADVERSARIAL_REVIEW.md` — the per-claim `SURVIVES / WOUNDED / DEAD` ruling |
+| **m** | How many lesson outcomes you marked **complete** | Your outcome check, counted **before** the review boundary |
+| **n** | How many of *those same outcomes* the reviewer rejected on first pass | The saved per-criterion ruling from the module&#x27;s required review boundary |
 
 Counting rules, in order:
 
@@ -102,11 +102,11 @@ Counting rules, in order:
 
 Expect overclaim to be highest early. It is the one line in this file that should **fall** across the week, and a falling line is the first hard evidence you get that your own read of your own evidence is getting better.
 
-### 3. Time to result — how long from live brief to adversarial line?
+### 3. Time to result — how long from live contract to terminal review evidence?
 
 Record **minutes** (integer):
 
-`time_to_result = clock from Direction Brief status LIVE → ADVERSARIAL line written`
+`time_to_result = clock from the saved contract becoming active → the module&#x27;s terminal review evidence`
 
 If timing needs context, keep it in this field: `42 min — setup drag`, `35 min — clean run`.
 
@@ -134,6 +134,8 @@ Answer the question printed in the **Lesson reflection** panel on the current le
 | P7 | | | | |
 | P8 | | | | |
 
+For P4, read the first-pass and final criterion tables from `Harness/EVAL.md` and the run facts from `Harness/RUN_TRACE.md`. In the overclaim cell, put `n/m`, where `m` is the number of criteria the generator presented as ready on first pass and `n` is the number the fresh evaluator returned HOLD. Preserve that first-pass result even when the one permitted repair clears it. Time ends at the explicit PASS/HOLD terminal record, not at the later transfer edit.
+
 Nine rows is the whole scoreboard. Do not average them and do not add a totals line: a median across nine unlike missions has no referent, because the missions are not repeats of one another. The reading that carries a decision is the **shape of the overclaim column down the page**, and you get that by looking at it.
 
 ---
@@ -146,15 +148,18 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 |---|---|
 | **P2** | Control plane: product released/HOLD · gate PASS/FAIL · elapsed min · repairs `n` · active controls `n` |
 | **P3** | Comparator on `BRIEF-v1`: material differences `n` · dispositions `K/D/U` · release decision · packet source-checked/closed `Y/Y` |
+| **P4** | Personal harness: terminal PASS/HOLD · human interventions `n` · first-pass evaluator HOLD `n/m` · trusted verifier PASS/HOLD · post-audit repairs `0/1` · mid-run resume PASS/HOLD · external manifest Y/N |
 | **P5** | Containment: 3/3 catches · absence-of-effect proof pointer |
 | **P6** | Contract: stop/restart · exception drill pass/fail |
 | **P8** | Hold-degrade: open `n/5` vs home `n/5`; refuse: Y/N; transfer SEALED: Y/N |
 
-B1, P1, P4 and P7 carry no deep mark — for those blocks the four entries are the whole row.
+B1, P1 and P7 carry no deep mark — for those blocks the four entries are the whole row.
 
 ---
 
-## End-of-block prompt (paste after adversarial)
+## End-of-block prompt (paste after a separate adversarial review)
+
+P4 does not use this prompt; its live page writes the row from integrated receipts.
 
 ```text
 Measurement spine update. Read operator/MEASUREMENT_SPINE.md.

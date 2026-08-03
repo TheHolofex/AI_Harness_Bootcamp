@@ -94,6 +94,7 @@
         <img src="../assets/blocks/p7/p7-two-machines.svg" alt="Agent loop adapting mid-run beside a pipeline repeating one designed path through a gate to a sheet" width="1120" height="220" loading="lazy" decoding="async" />
       </figure>
       <p>An agent loop decides its next move at run time: the model reads what just happened and picks what to do next, every run, inside your guardrails. A pipeline's path is decided at <em>design</em> time, by you, once. That is the whole difference, and everything else follows from it. In the loop, the model owns the path and you own the bounds; in the line, you own the path and the model fills exactly one station you built for it.</p>
+      <p>P4 chose the smallest fitting control pattern <em>inside</em> one genuinely adaptive knowledge job. P7 asks the higher-order question: should this workload use a model-directed loop at all, or will a fixed line with one bounded AI station finish it more reliably?</p>
       <p>Choosing wrong costs you in both directions. Put a free-roaming agent on five hundred near-identical rows and you pay for five hundred separately-reasoned paths — slow, expensive, and worst of all unauditable, because the path is different every time and drift accumulates where you cannot see it. Put a pipeline on judgment work and the opposite failure appears: the path cannot adapt, so everything unusual either fails outright or gets forced through a shape that does not fit it — and the human at the gate, facing a wall of forced-through items, degrades into a stamp.</p>
       <p>At work the choice comes down to two questions you can ask of any workload — what varies per item, and what a wrong answer costs — with volume as the threshold that makes a pipeline worth building at all. A varying path points at an agent. Same shape at volume points at a pipeline. A high cost of error points at a gate — or at keeping the work human entirely.</p>
 
@@ -586,7 +587,7 @@ from every dated section under "Circuit seeds":
 - From P1 — Machine candidate (30 days)
 - From P2 — Personal control plane (30 days)
 - From P3 — Verdict ownership (30–60 days)
-- From P4 — Trailed knowledge (30–60 days)
+- From P4 — Personal operating harness (30–60 days)
 - From P5 — Operating picture (30–60 days)
 - From P6 — Contract (60 days)
 - From P7 — Machine choice (90 days)

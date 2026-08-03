@@ -69,7 +69,7 @@ During the artifact-backed closeout on each live module page, write **one entry 
 | **P1** | From P1 — Machine candidate |
 | **P2** | From P2 — Personal control plane |
 | **P3** | From P3 — Verdict ownership |
-| **P4** | From P4 — Trailed knowledge |
+| **P4** | From P4 — Personal operating harness |
 | **P5** | From P5 — Operating picture |
 | **P6** | From P6 — Contract |
 
@@ -151,13 +151,16 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | MCP connect / do-not-connect rule (goal; owner + provenance; data + egress; tools + approval; error-stop; disable/revoke) | |
 | First real decision | |
 
-### From P4 — Trailed knowledge (feeds **30–60**)
+### From P4 — Personal operating harness (feeds **30–60**)
 
 | Field | Entry |
 |---|---|
 | Date | |
-| Work knowledge that must live in a navigable system | |
-| Citation/trail rule I’ll keep | |
+| Real recurring goal and accepted work product | |
+| Data boundary and human decision owner | |
+| Chosen control pattern and why it fits | |
+| Acceptance, stop, and hand-back rule | |
+| First workplace trial date | |
 
 ### From P5 — Operating picture (feeds **30–60**)
 
@@ -216,7 +219,7 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | Weekly | Case suite or frozen check + self-calibration | |
 | As needed | Intake rule / single-engine ban on named decisions | |
 
-### 30-day control plane
+### 30-day control plane and personal harness
 
 What I install in month one:  
 
@@ -354,7 +357,7 @@ name any that are empty or undated and make me fix those before we draft.
 Then, from the seeds only:
 1. Draft 30 / 60 / 90 outcomes — at most three per horizon, each observable in
    that horizon by someone who is not me.
-2. Fill the 30-day rhythm, control plane, bounds, and not-yet risks.
+2. Fill the 30-day rhythm, control plane and personal harness, bounds, and not-yet risks.
 3. Attack every line that could survive without me doing anything differently.
 4. Set Status to Draft horizons complete.
 

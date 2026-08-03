@@ -20,7 +20,7 @@ Five fields. Target: under five minutes of dialogue. Append one entry per block;
 | **5. I still own** | Judgment, next action, or risk the machine must not carry alone. |
 | **6. Adversarial** | Paste final line: `ADVERSARIAL: stood / wounded / failed — …` (from review chat). |
 
-P3 uses **6. Decision review** instead: record the most consequential source-backed disposition from the comparator and MCP evidence packet. Its live page does not add a separate attack chat.
+P3 uses **6. Decision review** instead: record the most consequential source-backed disposition from the comparator and MCP evidence packet. P4 uses **6. Integrated evaluation** instead: point to the human raw-source audit, configured read-only evaluator receipt, deterministic verifier, resume receipt, terminal reason, intervention and repair counts, and residual risk. Neither live page adds a separate attack chat.
 
 ---
 
@@ -72,7 +72,7 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 | 5. I still own | |
 | 6. Decision review | |
 
-### P4 — Second brain
+### P4 — Personal operating harness
 
 | Field | Note |
 |---|---|
@@ -81,7 +81,7 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 | 3. Verdict | |
 | 4. Evidence | |
 | 5. I still own | |
-| 6. Adversarial | |
+| 6. Integrated evaluation | Human raw-source audit + configured read-only evaluator receipt + deterministic verifier + resume receipt; terminal reason, interventions, repairs, and residual risk |
 
 ### P5 — Poisoned corpus
 

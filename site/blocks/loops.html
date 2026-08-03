@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Control Flow Is the Product · AI Harness Bootcamp · Starzl</title>
+  <link rel="stylesheet" href="../css/course.css" />
+  <link rel="stylesheet" href="../css/checklist.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
+    </div>
+  </header>
+
+  <div data-context-for="LOOPS"></div>
+
+  <main class="site-main">
+    <p class="eyebrow">Wednesday AM · 30-minute presentation · AI Harness Bootcamp</p>
+    <h1>Control Flow Is the Product</h1>
+    <p class="lede">An agent becomes useful when its loop can turn a goal into finished, checked work. Before P4, learn how to choose the smallest control pattern that can close that loop—and how to stop adding machinery when the result already passes.</p>
+
+    <div class="meta-grid">
+      <div><span class="k">Day</span><span class="v">Wednesday morning</span></div>
+      <div><span class="k">Sequence</span><span class="v">After P3 · immediately before P4</span></div>
+      <div><span class="k">Time</span><span class="v">30 minutes</span></div>
+      <div><span class="k">Format</span><span class="v">Instructor-led presentation</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-briefing-agent-loops">0 / 1 · 0%</span></div>
+    </div>
+    <hr class="rule-accent" />
+
+    <nav class="page-nav" aria-label="On this page">
+      <span class="page-nav-label">On this page</span>
+      <a href="#deck">Presentation</a>
+      <a href="#route">30-minute route</a>
+      <a href="#patterns">Choose a pattern</a>
+      <a href="#carry">Carry into P4</a>
+      <a href="#sources">Primary sources</a>
+      <a href="#continue">Continue to P4</a>
+      <div class="page-nav-progress">
+        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-briefing-agent-loops"></span></div>
+        <span class="page-nav-pct" data-progress-for="ahb-briefing-agent-loops" data-progress-format="pct">0%</span>
+      </div>
+    </nav>
+
+    <section id="deck" class="home-section">
+      <h2>Open the presentation</h2>
+      <p class="section-lede">Keep this course page open. The presentation opens in a new tab; this page holds the decision rules you will apply in P4.</p>
+      <a class="discussion-deck" href="https://gamma.app/docs/Control-Flow-Is-the-Product-nnbb430p72cg1wa" target="_blank" rel="noopener">
+        <span class="discussion-deck-eyebrow">Agent loops · agentic patterns · harness engineering</span>
+        <span class="discussion-deck-title">Control Flow Is the Product</span>
+        <span class="discussion-deck-subtitle">Choose, bound, observe, correct, and finish</span>
+        <span class="discussion-deck-action">Open the presentation in Gamma ↗</span>
+      </a>
+    </section>
+
+    <section id="route" class="home-section">
+      <h2>Use the full 30 minutes</h2>
+      <div class="skill-grid" aria-label="Thirty-minute Agent Loops and Agentic Patterns presentation route">
+        <div class="skill-cell">
+          <span class="k">00–05 min</span>
+          <span class="n">See the loop</span>
+          <p>Follow one complete cycle: goal → act → observe → judge → adapt or finish. Another turn is useful only when the observation can change what happens next.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">05–12 min</span>
+          <span class="n">Place control deliberately</span>
+          <p>Use a fixed workflow when you know the path in advance. Let the model choose the next step only when the work genuinely depends on what it discovers.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">12–21 min</span>
+          <span class="n">Choose by evidence</span>
+          <p>Match routing, parallel work, orchestrator–workers, handoffs, or evaluator–optimizer to an observed need. A pattern must remove a bottleneck or improve the accepted result.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">21–27 min</span>
+          <span class="n">Engineer the finish</span>
+          <p>Set acceptance checks, turn and cost limits, failure handling, and a human hand-back. A loop without a credible finish condition is an expense, not a capability.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">27–30 min</span>
+          <span class="n">Carry one rule into P4</span>
+          <p>Build the least elaborate personal harness that completes the P4 goal, leaves evidence you can inspect, and can run again without reconstructing the method from chat history.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="patterns" class="home-section">
+      <h2>Choose a pattern from the shape of the work</h2>
+      <p class="section-lede">Start with one capable agent and a clear finish line. Add a pattern only when the current run shows why you need it.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Evidence in the work</th><th>Smallest fitting pattern</th><th>What must be true</th></tr></thead>
+          <tbody>
+            <tr><td>The steps and their order are known</td><td><strong>Sequence or prompt chain</strong></td><td>Each step produces a checkable input for the next. Keep path selection in code or procedure.</td></tr>
+            <tr><td>Inputs fall into stable, distinct classes</td><td><strong>Routing</strong></td><td>A wrong route is visible, and each route has a genuinely different prompt, tool set, or process.</td></tr>
+            <tr><td>Several tasks do not depend on one another</td><td><strong>Parallel work</strong></td><td>The tasks can run independently, and one named owner or rule merges the results without hiding disagreement.</td></tr>
+            <tr><td>The necessary subtasks emerge only after inspection</td><td><strong>Orchestrator–workers</strong></td><td>The split reduces context or time, worker scopes do not overlap wastefully, and the orchestrator can verify the return.</td></tr>
+            <tr><td>A specialist should own the next part of the interaction</td><td><strong>Handoff</strong></td><td>Ownership changes explicitly, and the next agent receives only the context and authority it needs.</td></tr>
+            <tr><td>A draft can improve against explicit criteria</td><td><strong>Evaluator–optimizer</strong></td><td>The evaluator can point to a correctable gap. Cap the revisions and stop on pass, budget, or hand-back.</td></tr>
+            <tr><td>The path cannot be known until tools return observations</td><td><strong>Agent loop</strong></td><td>Tool results can change the next action, available tools are bounded, and completion is checked outside the model’s confidence.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout"><strong>The operating test:</strong> Compare the accepted result, elapsed time, model and tool calls, and human review before and after a pattern is added. If it does not improve the goal enough to justify its cost and failure surface, remove it.</div>
+    </section>
+
+    <section id="carry" class="home-section">
+      <h2>Turn the P4 knowledge system into your harness</h2>
+      <p class="section-lede">P4 gives the loop a real job: turn bounded source material into director-ready knowledge with trails you can inspect. The finished product—not the number of agent features you used—is the measure of success.</p>
+      <div class="skill-grid">
+        <div class="skill-cell">
+          <span class="k">Goal</span>
+          <span class="n">Define the accepted result first</span>
+          <p>Name the question, saved product, evidence standard, and decision the result must support before the loop starts.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">Context</span>
+          <span class="n">Load what this job needs</span>
+          <p>Personalization means preserving your source boundaries, recurring rules, preferred output, and known constraints—not pouring every note into every run.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">Control</span>
+          <span class="n">Add one justified pattern</span>
+          <p>Let the evidence choose. Parallelize independent retrieval, route distinct questions, or use an evaluator when a checkable draft can improve.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">Observation</span>
+          <span class="n">Inspect the state the work changed</span>
+          <p>Open the saved files, walk the citations, read the carrying sentences, and treat tool errors or missing evidence as observations the next step must address.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">Finish</span>
+          <span class="n">Stop on evidence, not momentum</span>
+          <p>Accept when the product passes. Hand back when evidence is missing or judgment remains yours. Stop when another turn cannot change either condition.</p>
+        </div>
+        <div class="skill-cell">
+          <span class="k">Reuse</span>
+          <span class="n">Keep the method outside chat</span>
+          <p>Land durable instructions, procedures, and acceptance rules in the harness you own so the next real goal starts from the working method.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources" class="home-section">
+      <h2>Primary sources behind the pattern map</h2>
+      <p class="section-lede">These references use different frameworks, but they agree on the useful distinction: some paths are defined in advance, while an agent loop chooses actions from observations at run time.</p>
+      <ul>
+        <li><a href="https://openai.github.io/openai-agents-python/multi_agent/" target="_blank" rel="noopener"><strong>OpenAI Agents SDK · Agent orchestration</strong></a> — model-led and code-led orchestration, including managers, handoffs, evaluator loops, and parallel work.</li>
+        <li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener"><strong>Anthropic · Building effective agents</strong></a> — the simplest-system rule and practical routing, parallelization, orchestrator–workers, and evaluator–optimizer patterns.</li>
+        <li><a href="https://adk.dev/agents/workflow-agents/" target="_blank" rel="noopener"><strong>Google Agent Development Kit · Template agent workflows</strong></a> — deterministic sequential, loop, and parallel control-flow structures, with current guidance toward graph and dynamic workflows.</li>
+        <li><a href="https://docs.langchain.com/oss/python/langgraph/workflows-agents" target="_blank" rel="noopener"><strong>LangGraph · Workflows and agents</strong></a> — implementations of chaining, routing, parallelization, orchestrator–worker, evaluator–optimizer, and tool-using agent loops.</li>
+        <li><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener"><strong>Yao et al. · ReAct</strong></a> — the original reasoning-and-acting pattern in which external observations inform the next reasoning and action step.</li>
+      </ul>
+    </section>
+
+    <form class="checklist-form" data-checklist data-storage-key="ahb-briefing-agent-loops" data-block="LOOPS">
+      <section id="continue" class="home-section" data-check-section="briefing">
+        <h2>Continue to P4</h2>
+        <p class="section-lede">Mark the presentation complete, then apply the pattern-selection rule while building your personalized, evidence-bearing knowledge harness.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="loops-complete" name="loops-complete" data-check-id="loops-complete" />
+              <span class="check-num">1</span>
+              <span class="check-title">The Agent Loops and Agentic Patterns presentation is complete</span>
+            </label>
+            <div class="check-detail">You can identify the loop, choose a pattern from evidence in the work, name its cost and finish condition, and carry the smallest useful design into P4.</div>
+          </li>
+        </ol>
+        <div class="btn-row">
+          <a class="btn" href="p4.html">Begin P4 · The Director’s Operating Harness</a>
+        </div>
+      </section>
+    </form>
+
+    <div data-plate-for="LOOPS"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+
+  <script src="../js/registry.js"></script>
+  <script src="../js/shell.js"></script>
+</body>
+</html>

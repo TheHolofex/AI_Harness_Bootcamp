@@ -1,6 +1,7 @@
 /**
  * AHB course registry — the single source of truth for B0, B1, the scheduled
- * Model Economics, Harness Control Plane, and MCP briefings, and P1–P8.
+ * Model Economics, Harness Control Plane, MCP, and Agent Loops briefings,
+ * and P1–P8.
  *
  * Every reader of progress (home dashboard, nav dots, block pages, the
  * pre-work hub) counts against the id lists declared here — never against
@@ -60,7 +61,8 @@
 
   // Storage order is retained for compatibility. The visible path is
   // B0 install clinic → B1 First Light → Model Economics → P1 →
-  // Harness Control Plane → P2 → two MCP briefings → P3 → … → P8.
+  // Harness Control Plane → P2 → two MCP briefings → P3 → Agent Loops →
+  // P4 → … → P8.
   // `ids` contains the controls learners can actually see and complete. When an
   // inline lesson outcome replaces a procedural receipt, only the outcome id is
   // required; the duplicate procedural id is retained in the HTML solely so old
@@ -155,15 +157,22 @@
       url: "blocks/p3.html", meta: "Codex + OpenCode + bounded MCP"
     },
     {
-      code: "P4", name: "Director’s second brain", title: "The director’s second brain", day: "Wednesday", slot: "AM",
+      code: "LOOPS", name: "Agent loops & agentic patterns", title: "Control Flow Is the Product", kind: "briefing",
+      day: "Wednesday", slot: "AM", key: "ahb-briefing-agent-loops",
+      ids: ["loops-complete"], stretchIds: [],
+      url: "blocks/loops.html", meta: "30 min · instructor-led presentation",
+      contextLabel: "Wednesday AM · 30-minute presentation · Immediately before P4"
+    },
+    {
+      code: "P4", name: "Director’s operating harness", title: "The director’s operating harness", day: "Wednesday", slot: "AM",
       key: "ahb-checklist-p4",
       ids: [
-        "pulse-brief", "p4-vault", "p4-q1", "mvp-scope",
-        "mvp-graph", "mvp-2q", "mvp-trail", "mvp-revise",
-        "mvp-morning", "mvp-own4", "p4-transfer"
+        "p4-vault", "mvp-scope", "mvp-pattern", "mvp-graph",
+        "mvp-2q", "mvp-trail", "mvp-revise", "mvp-morning",
+        "mvp-verified", "mvp-handoff", "mvp-own4", "p4-transfer"
       ],
       stretchIds: [],
-      url: "blocks/p4.html", meta: "Codex + Obsidian"
+      url: "blocks/p4.html", meta: "Codex + Obsidian + deterministic verifier"
     },
     {
       code: "P5", name: "The poisoned corpus", title: "The poisoned corpus", day: "Wednesday", slot: "PM",
@@ -234,7 +243,7 @@
     { phase: "Monday AM", title: "Install Clinic → First Light", codes: ["B0", "B1"] },
     { phase: "Monday PM", title: "Model economics → Daily Status Brief", codes: ["ME", "P1"] },
     { phase: "Tuesday", title: "Control plane → MCP → verdict", codes: ["HCP", "P2", "MCP1", "MCP2", "P3"] },
-    { phase: "Wednesday", title: "Knowledge", codes: ["P4", "P5"] },
+    { phase: "Wednesday", title: "Control flow → personal harness → trusted knowledge", codes: ["LOOPS", "P4", "P5"] },
     { phase: "Thursday", title: "Autonomy", codes: ["P6", "P7"] },
     { phase: "Friday", title: "Transfer", codes: ["P8"] }
   ];
@@ -242,7 +251,7 @@
   var DAY_NAV = [
     { label: "Monday", codes: ["B0", "B1", "ME", "P1"] },
     { label: "Tuesday", codes: ["HCP", "P2", "MCP1", "MCP2", "P3"] },
-    { label: "Wednesday", codes: ["P4", "P5"] },
+    { label: "Wednesday", codes: ["LOOPS", "P4", "P5"] },
     { label: "Thursday", codes: ["P6", "P7"] },
     { label: "Friday", codes: ["P8"] }
   ];

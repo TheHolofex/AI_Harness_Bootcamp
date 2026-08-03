@@ -26,7 +26,7 @@ Students have spent the morning *inside* a capability (craft, knowledge, autonom
 | Morning | Block just run | Case-talk theme (pick a real story that fits) |
 |---|---|---|
 | **Tuesday** | P2 personal control plane | One real product made dependable by correctly placed instructions, skills, hooks, plugins, subagents, or MCP—only the controls that actually earned their runtime cost. Show the product, release receipt, component decision, and human judgment that remained. |
-| **Wednesday** | P4 second brain | Knowledge under a harness: trails, citations, intake bounds — or a near-miss with poison |
+| **Wednesday** | P4 personal operating harness | One real goal carried by a bounded loop: why the control pattern fit, where durable state mattered, which human gate earned its interruption, what evidence ended the run, and which tempting component was left out or removed. |
 | **Thursday** | P6 watch officer | Autonomy under contract: tool vs procedure bounds, stop authority, unattended path honesty. *Optional:* air-gap / local endpoint story (endpoint is a wall) |
 
 You may swap stories if a better live example fits the room. Keep the **capability** of that morning’s block audible in the story.
@@ -37,7 +37,7 @@ You may swap stories if a better live example fits the room. Keep the **capabili
 - Where would this have failed on *your* desk without a harness?
 - What evidence would your supervisor accept — and what would they reject as vibe?
 - What would you **not** automate next time, and why?
-- One seed for your Transfer 30-60-90 from this talk (write it before you leave for lunch).
+- One change this story makes to the morning module&#x27;s existing Transfer 30-60-90 seed. Amend that same row before lunch; do not create a second seed.
 
 ## Lead posture
 

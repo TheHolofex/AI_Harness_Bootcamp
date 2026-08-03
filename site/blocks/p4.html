@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The director&#x27;s second brain · AI Harness Bootcamp · Starzl</title>
+  <title>The director&#x27;s operating harness · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="../css/course.css" />
   <link rel="stylesheet" href="../css/checklist.css" />
 </head>
@@ -22,26 +22,26 @@
 
   <main class="site-main">
     <p class="eyebrow">Wednesday AM · P4 · AI Harness Bootcamp</p>
-    <h1>The director&#x27;s second brain</h1>
-    <p class="lede">You put a thinking machine inside a knowledge structure you own, so its answers arrive as links you can walk instead of prose you must trust. By lunch, your vault answers director-level questions with citations that pass a recorded audit.</p>
+    <h1>The director&#x27;s operating harness</h1>
+    <p class="lede">Turn one recurring knowledge goal into a personal, bounded system that can finish useful work, prove the result, survive a fresh context, and stop cleanly. The vault is the work product. The loop, state, evaluator, and verifier are the harness that make it dependable.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Wednesday AM</span></div>
       <div><span class="k">Block</span><span class="v">P4</span></div>
-      <div><span class="k">Time</span><span class="v">~3–3.5 hr + 45 min case talk</span></div>
-      <div><span class="k">Tools</span><span class="v">Codex app (<code>gpt-5.6-terra</code>) + Obsidian · mission_flesh vault seed</span></div>
-      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p4">0 / 21 · 0%</span></div>
+      <div><span class="k">Time</span><span class="v">~2 hr 45 min + 45 min case talk</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex app (<code>gpt-5.6-terra</code>) + Obsidian + Python verifier</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p4">0 / 12 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
 
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
-      <a href="#ideas">The ideas</a>
-      <a href="#mission">Run of exercise</a>
-      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/8</span></a>
+      <a href="#ideas">Harness method</a>
+      <a href="#mission">Build and run</a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/11</span></a>
       <a href="#depth">Going deeper</a>
-      <a href="#stuck">If you get stuck</a>
+      <a href="#stuck">Recovery</a>
       <div class="page-nav-progress">
         <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p4"></span></div>
         <span class="page-nav-pct" data-progress-for="ahb-checklist-p4" data-progress-format="pct">0%</span>
@@ -49,152 +49,106 @@
     </nav>
 
     <section id="orient" class="home-section">
-      <h2 class="h-plain">Prose you must trust, or links you can walk</h2>
-      <p>Ask a chatbot a hard question and you get prose. It may be right, it may be confident and wrong, and either way the answer dies in a scrollback you&#x27;ll never search again. Today you build the alternative: an assistant working inside a <strong>vault</strong> — Obsidian&#x27;s name for a folder of plain-text notes that link to each other, displayed as a web you can navigate. When the machine works inside your structure, every claim in its answer can point at a note you can open. The difference between the two is not intelligence. It is the trail.</p>
-      <p>The scenario is close to most real desks. A director needs a straight picture of export risk versus SSO stability before Thursday&#x27;s steering meeting, and the raw material is four messy captures sitting in an inbox: a Slack thread, an on-call paste, an undecided ship-order question, and the director&#x27;s own ask. The facts exist, scattered, and the question spans all of them. You will turn the scatter into a system that answers — and then hold that system to a standard chat never meets: citations you personally walked.</p>
+      <h2 class="h-plain">The presentation gave you the map. Now make it carry a goal.</h2>
+      <p><a href="loops.html">Control Flow Is the Product</a> separated fixed workflows from model-directed loops and showed why every loop needs budgets, observable state, and a stop rule. P4 applies that reasoning to one job worth keeping: convert four messy captures and their branching source packet into a linked director&#x27;s vault, answer two consequential questions, audit the raw evidence, and release a Morning Brief only when the saved artifacts pass.</p>
+      <p>You will not try every agent pattern. You will operate one deliberately small hybrid: a fixed outer workflow around a bounded adaptive retrieval loop. Each inbox capture names initial source references; each opened raw record may reveal one next reference. The loop may open no more than six packet files, so the latest observation genuinely determines the next useful action. Scope, approval, evaluation, verification, and release stay fixed because their order is already known.</p>
 
       <div class="orient-grid">
         <div>
-          <h3>What you will leave with</h3>
+          <h3>What you leave with</h3>
           <ul>
-            <li>A vault that answers director-level questions with citations you can click, walk, and verify — plus the audit habit that keeps it honest</li>
-            <li>A triage method that turns raw captures into titled, linked notes a machine can navigate</li>
-            <li>The scope craft: you can bound an assistant&#x27;s reach to exactly what you can audit, in the project and in the brief</li>
-            <li>A Morning Brief note you can regenerate Monday at work, inside your own system</li>
-            <li>A written audit trail: which claims were supported, qualified, removed, or left unresolved, and why</li>
+            <li>A useful <code>Morning_Brief.md</code> whose claims lead to unchanged raw records you personally audited</li>
+            <li>A short project <code>AGENTS.md</code> for stable rules, an on-demand <code>$director-loop</code> skill, and one configured read-only evaluator role</li>
+            <li>A harness card that names the goal, personal preferences, bounds, terminal reasons, and complexity you rejected</li>
+            <li>Durable run state, an observable action trace, criterion-level evaluation, and a deterministic PASS/HOLD result</li>
+            <li>An immutable-source manifest plus a final hash baseline P5 can check without asking a model to compare folders</li>
+            <li>A real mid-run resume receipt that proves the system can continue without replay or duplicate writes</li>
           </ul>
           <h3>Before you start</h3>
           <ul>
-            <li>Obsidian installed during pre-work. If it&#x27;s missing, install it now — it&#x27;s a short install and needs no key</li>
-            <li>The course repo on disk, so you can copy <code>mission_flesh/p4/vault_seed/</code></li>
-            <li>Operator templates in your Codex app project: <code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code></li>
+            <li>Complete the 30-minute loops presentation immediately before this module</li>
+            <li>Have Obsidian, Codex, and one working Python installed from pre-work</li>
+            <li>Keep the course repository on disk so you can copy <code>mission_flesh/p4/vault_seed/</code></li>
           </ul>
         </div>
         <div class="orient-aside">
           <div class="lead-box">
-            <p class="eyebrow">Lead operate-along</p>
-            <p>The lead runs this same page on screen — scope saved live, organization proposed and approved, and a citation trail audited against the source notes. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+            <p class="eyebrow">The governing test</p>
+            <p>Every harness component must advance the goal, reduce material uncertainty, verify the outcome, preserve recoverable state, or enforce a real boundary. If it does none of those jobs, remove it.</p>
           </div>
           <div class="callout" id="case-talk">
             <strong>Before lunch · Harness case talk (45 min)</strong>
-            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence, and today especially for how the trails held when the answer was challenged — what the speaker&#x27;s system could not support is the interesting part. Notice one idea you may carry into the transfer step after measurement.
+            Listen for the real goal, the control-flow choice, the failure that changed the harness, and the evidence that ended the run. The interesting part is not how many agents ran. It is what reached accepted completion with less human attention.
           </div>
           <div class="callout">
-            <strong>Course model</strong>
-            P4 uses the OpenAI API key stored in Codex sign-in. Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) for every P4 chat; Obsidian uses no API key.
+            <strong>One model, two roles</strong>
+            The builder may write. The configured <code>director_evaluator</code> gets a fresh, read-only context and a default-fail rubric, then returns an exact saved receipt. Separation is justified here because generation and judgment should not share the same incentives.
           </div>
         </div>
       </div>
-
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p4/p4-overview.svg" alt="Overview: scope the vault, triage the inbox into linked notes, answer two director questions, audit every trail, generate a Morning Brief into the vault" width="1120" height="280" loading="lazy" decoding="async" />
-      </figure>
     </section>
 
     <section id="ideas" class="home-section">
-      <h2>How a second brain actually works</h2>
-      <p class="section-lede">Five ideas make a second brain trustworthy, and every one of them outlives this particular app.</p>
+      <h2>Engineer the loop around accepted completion</h2>
+      <p class="section-lede">A harness is not a personality prompt. It is the control system around a model: goal, context, tools, state, budgets, approvals, verification, and the conditions that end the run.</p>
 
-      <h3>Your structure, the machine&#x27;s reach</h3>
-      <p>A note in the vault is an ordinary Markdown file on disk. A <strong>wikilink</strong> — <code>[[Note Name]]</code> written inside a note — is plain text that Obsidian turns into a clickable connection to the note with that title. Nothing is hidden in a database: the assistant and Obsidian are looking at the same files, so when the assistant writes or links a note, it appears in Obsidian immediately. That shared ground is the whole trick. An answer built from your files can cite your files, and a citation to a file is something you can open.</p>
-      <p>Compare that with asking the same question in a bare chat. The model answers from whatever it absorbed in training plus whatever you pasted, the reasoning is invisible, and next month the exchange is unfindable. The chat is a workroom; the vault is the record. What goes wrong when people skip this distinction is a familiar graveyard: months of genuinely good AI conversations trapped in scrollback, none of it linked, none of it citable, all of it dead the day the chat history is cleared. At work, the rule that follows is simple — anything that must outlive the conversation gets landed in the structure before the conversation ends.</p>
+      <h3>Start from a success contract</h3>
+      <p>The loop needs an outcome it can test. State the artifact, decision it serves, evidence bar, allowed actions, budget, and terminal reasons before execution. “Make a good brief” invites self-grading. “Release <code>Morning_Brief.md</code> only when every decision-driving claim resolves to an audited source and the verifier returns PASS” gives the run somewhere real to stop. OpenAI&#x27;s current guidance makes the same distinction: humans define acceptance and validate outcomes while agents execute inside the harness. See <a href="https://openai.com/index/harness-engineering/" target="_blank" rel="noopener">Harness engineering</a>.</p>
 
-      <h3>Scoped access is knowledge governance</h3>
-      <p>In the Codex app, a <strong>project</strong> is a folder you open — and that folder is the assistant&#x27;s working world. Open the vault folder as the project and the vault is what the assistant can reach; your tax returns, your other clients, and your credentials are not in the folder, so they are not in play. That is the structural layer. Your Direction Brief adds a written layer on top: what the assistant may read, what it may write, and what must never leave the vault — names, incident details, anything you would not paste into a status email.</p>
+      <h3>Use the least-complex control flow that clears the bar</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Work shape</th><th>Smallest useful pattern</th><th>What justifies it</th></tr></thead>
+          <tbody>
+            <tr><td>Known, stable steps</td><td>Code or fixed workflow</td><td>The order is already known; model choice adds variance without information</td></tr>
+            <tr><td>One changing line of inquiry</td><td>Bounded single-agent loop</td><td>The next action depends on the latest observation</td></tr>
+            <tr><td>Distinct input classes</td><td>Router</td><td>Each class truly needs a different downstream contract</td></tr>
+            <tr><td>Independent work with a real merge</td><td>Parallel fan-out / fan-in</td><td>Tasks do not share mutable state and concurrency saves measured time</td></tr>
+            <tr><td>Unknown decomposition</td><td>Orchestrator–workers</td><td>The task cannot be usefully partitioned before inspection</td></tr>
+            <tr><td>Output can improve against a concrete oracle</td><td>Generator–evaluator</td><td>A rubric, test, or external state can identify the smallest repair</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Start with one agent. Add another only for true parallelism, context isolation, adversarial role separation, or a distinct tool boundary—and keep it only if accepted outcomes improve enough to justify the coordination and token cost. This follows current primary guidance from <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Anthropic</a>, <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank" rel="noopener">OpenAI</a>, and <a href="https://developers.googleblog.com/en/why-we-built-adk-20/" target="_blank" rel="noopener">Google ADK</a>.</p>
 
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p4/p4-idea-scope.svg" alt="Concept: the project boundary holds the vault files the assistant can reach; other clients, personal files, and credentials sit outside it; the brief adds written rules on top" width="1120" height="220" loading="lazy" decoding="async" />
-      </figure>
+      <h3>P4&#x27;s chosen pattern: fixed outside, adaptive inside</h3>
+      <div class="skill-grid">
+        <div class="skill-cell"><span class="k">1 · Fixed</span><span class="n">Load contract and state</span><p>Read the stable rules, success checks, allowed files, budget, prior work, and next permitted action.</p></div>
+        <div class="skill-cell"><span class="k">2 · Fixed gate</span><span class="n">Propose before writing</span><p>Show the note map and preservation plan. Human approval matters because the note structure changes what later retrieval can find.</p></div>
+        <div class="skill-cell"><span class="k">3 · Adaptive</span><span class="n">Follow earned references</span><p>Open only an inbox-named raw record or a next reference revealed by a record already opened. Stop at six packet opens, answered questions, or a missing edge.</p></div>
+        <div class="skill-cell"><span class="k">4 · Human oracle</span><span class="n">Audit claims</span><p>You open every cited note and mark support, partial, or not supported. The model cannot certify its own evidence.</p></div>
+        <div class="skill-cell"><span class="k">5 · Fixed checks</span><span class="n">Verify and evaluate</span><p>A deterministic script checks structure and links; a fresh read-only evaluator checks the decision product against the rubric.</p></div>
+        <div class="skill-cell"><span class="k">6 · Terminal</span><span class="n">Pass, hold, or hand back</span><p>After the human audit, merge the candidate and evaluator findings into at most one repair cycle. Then finish explicitly, preserve state, and stop instead of polishing forever.</p></div>
+      </div>
 
-      <p>Two layers, two different guarantees. The folder edge governs what <em>can</em> happen; the brief governs what <em>may</em> happen, and it only binds because you check it. The classic failure is opening the project one level too high &quot;to be safe&quot; — now the assistant&#x27;s reach includes everything in your user folder, and you can no longer say what informed an answer. The craft here is the same one used to scope any aide&#x27;s clearance: enough access to be useful, and no more than you can audit. It is worth pausing on how rare this move is — most people either lock the machine out of everything or open everything to it. Operators scope.</p>
+      <h3>Personalization changes decisions, not just tone</h3>
+        <p>Your personal harness records who the brief serves, which decision deserves the top line, how much evidence you require, what uncertainty must be escalated, which actions require approval, and how terse the product should be. Those choices alter retrieval, ordering, qualification, and stopping. A persona adjective does not. Keep always-loaded guidance short in <code>AGENTS.md</code>; put the detailed recurring procedure in the on-demand skill. That keeps context useful instead of turning every run into a policy dump. Current Codex guidance describes the same split in <a href="https://developers.openai.com/codex/guides/agents-md" target="_blank" rel="noopener">AGENTS.md</a> and <a href="https://developers.openai.com/codex/skills" target="_blank" rel="noopener">skills</a>.</p>
+        <p>The evidence boundary is equally important. Generated knowledge notes help people navigate, but they cannot certify their own claims. Every normalized note must carry a <code>Raw sources:</code> edge to an unchanged capture or <code>Source_Packet</code> record. Answers and the Morning Brief cite those raw roots; the human audit quotes the carrying sentence from the raw file itself.</p>
 
-      <h3>Retrieval is agentic search over your links</h3>
-      <p>The assistant hasn&#x27;t memorized your vault. When you ask a cross-vault question, it searches for likely files, opens them, and follows wikilinks from note to note — the same walk you would do by clicking, done at machine speed. That style of retrieval is called <strong>agentic search</strong>: the machine navigates and reads rather than matching keywords once. The practical consequence is easy to miss and changes everything about how you organize: folders alone are closets, links are roads. A question about export risk finds <code>EU-Export-v2</code> because your Systems hub links to it and the Slack-thread note links to it — not because it sits in a well-named folder.</p>
-      <p>This is why triage quality decides answer quality before any question is asked. A vault of two hundred orphan notes with no links gives the machine nothing to walk, and cross-vault answers come back thin — or worse, confidently padded with invention where the roads ran out. A seeded hub note like <code>MOC.md</code> (a map of content — a note whose job is to link out to everything important) is the trailhead the machine starts from. At work, the ontology you would hand a new analyst on day one — people, systems, events, decisions, or whatever fits your desk — is exactly the map the machine navigates. Build it for the human and the machine gets it free.</p>
-
-      <h3>A citation you verify by navigation</h3>
-      <p>A note-link citation is a claim plus a door. The audit discipline is the one you built Monday — check citations with your own eyes, never by asking the model whether it is sure, which measures confidence, not truth — with the cite upgraded from a file tag to a link you can walk. The move has four beats: click the link, read the note, find the sentence that actually carries the claim, and mark a verdict in writing: <strong>support</strong>, <strong>partial</strong>, or <strong>not supported</strong>. Partial matters more than it sounds — a note that says a rumor is <em>unreproduced</em> only partially supports an answer that lists it as a live risk, and partial counts as failed when the answer stated the claim as fact.</p>
-
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p4/p4-idea-citation.svg" alt="Concept: the walkable citation — an answer links to a note, the note holds the sentence that carries the claim, and you mark support, partial, or not supported" width="1120" height="220" loading="lazy" decoding="async" />
-      </figure>
-
-      <p>What going wrong looks like: a citation to a note that does not exist (Obsidian renders those links faded, and clicking one offers to create an empty note instead of showing evidence), or a citation to a real note that never says what the answer claims. Plausible, cited, and wrong is the most dangerous combination in AI-assisted work, because the citation costume defeats the skepticism a bare claim would trigger. The only tell for an unwalked citation is that you never walked it. At work this becomes the standard you demand of any AI-produced brief, including ones other people hand you: every claim someone will act on carries a trail a skeptic can walk in under a minute. An answer that spans many notes with walkable links is a different product from a summary — a summary asks for trust; a trailed answer offers inspection.</p>
-
-      <h3>The Morning Brief: a knowledge product that regenerates</h3>
-      <p>On Monday you built a thinking machine that does the heavy lifting in knowledge work under your direction, instead of settling for a one-shot answer. The Morning Brief is that same pattern moved inside your own knowledge system: a dated note the assistant regenerates from the current state of the vault, every claim citing the note it stands on. Because the brief is generated <em>from</em> notes, it inherits the audit trail — and because the knowledge lives in the notes rather than the brief, you can delete the brief and regenerate it tomorrow after new intake without losing anything. The brief is disposable; the vault is not. That asymmetry is what makes it a product, not a document.</p>
-      <p>Two failure shapes to know. A brief that summarizes the chat instead of citing notes looks identical on day one and drifts silently by day five, because it regenerates from conversation memory instead of from the record. And a brief whose citations you never audit becomes a laundering machine: unverified claims acquire the costume of your own system and walk into your operating picture wearing it. The daily habit only compounds if the trails stay walked. At work, this is how a personal knowledge system starts earning its keep daily — the Morning Brief is the first regenerable product, and watchlists, decision logs, and handoff notes follow the same pattern.</p>
+      <h3>Evaluate the outcome and the trajectory</h3>
+      <p>The outcome is the state of the vault: files exist, links resolve, unsupported claims are absent, and the brief serves the named decision. The trajectory is how the run got there: actions, observations, approvals, retries, repairs, budget use, and terminal reason. You need both. A good artifact reached through duplicate writes and uncontrolled retries is not a dependable harness; a tidy trace that ends in a weak brief is not success. Anthropic&#x27;s current eval guidance calls for grading both <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents" target="_blank" rel="noopener">outcome and trajectory</a>.</p>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p4" data-block="P4">
-
       <section id="mission" class="home-section" data-check-section="mission">
-        <h2>Run of exercise</h2>
-        <p class="section-lede">Create a scoped vault, approve its organization, answer two director questions with walkable citations, audit every trail, and publish a Morning Brief from supported material.</p>
-        <p><strong>Dated names:</strong> wherever this page shows <code>[TODAY'S DATE]</code>, replace it with today's date in <code>YYYY-MM-DD</code> form, without brackets. Use that same date in every P4 chat name.</p>
+        <h2>Build and run one personal director loop</h2>
+        <p class="section-lede">One goal, one meaningful approval gate, one human evidence audit, one fresh evaluator, at most one post-audit evaluator/verifier repair, and an explicit terminal state.</p>
+        <p><strong>Dated names:</strong> replace <code>[TODAY]</code> with today&#x27;s date in <code>YYYY-MM-DD</code> form.</p>
 
-        <h3 id="stage-1">Stage 01 · Save the scope and open the vault</h3>
-        <p>The folder boundary controls what the assistant can reach. The written contract adds the output, evidence, and stop conditions for this specific build.</p>
+        <h3 id="stage-1">Stage 01 · Copy the harness and make the contract yours · 25 min</h3>
+        <div class="do-step">
+          <p class="do-label">Open <strong>PowerShell</strong>. From the course repository, copy the complete seed—including the hidden <code>.agents</code> folder:</p>
+          <pre><code>Copy-Item -LiteralPath ".\mission_flesh\p4\vault_seed" -Destination "$env:USERPROFILE\Documents\p4-vault" -Recurse -Force
+Get-ChildItem "$env:USERPROFILE\Documents\p4-vault" -Force</code></pre>
+        </div>
+        <p>The listing must include <code>.agents</code>, <code>.codex</code>, <code>00_Inbox</code>, <code>AGENTS.md</code>, <code>Harness</code>, <code>MOC.md</code>, <code>Source_Packet</code>, and <code>tools</code>. <code>Harness/SOURCE_MANIFEST.json</code> fingerprints the untouched captures and packet; the release check later uses the course repository's untouched verifier and manifest as its trust anchor. If <code>p4-vault</code> already contains an earlier attempt, use the fresh-start instructions below instead of copying over it.</p>
 
         <div class="do-step">
-          <p class="do-label">Start the P4 direction chat in the <strong>ChatGPT desktop app</strong>:</p>
+          <p class="do-label">Open the copied folder twice:</p>
           <ul class="do-clicks">
-            <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
-            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-            <li>In the sidebar, look for <strong>P4 — Direction — [TODAY'S DATE]</strong>. If it is there, open it</li>
-            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P4 — Direction — [TODAY'S DATE]</code></li>
-            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>)</li>
-            <li>Confirm permissions say <strong>Ask for approval</strong></li>
-          </ul>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Paste this populated contract into <strong>P4 — Direction — [TODAY'S DATE]</strong>:</p>
-          <pre><code>Read operator/DIRECTION_BRIEF.md and replace its active brief with this P4 contract.
-
-Outcome: an Obsidian vault at Documents\p4-vault that answers two director
-questions with walkable citations and produces Morning_Brief.md.
-Done looks like: both answer notes open in Obsidian; every [[citation]] reaches
-an existing note; Audit records support / partial / not supported for every
-citation; Morning_Brief.md uses supported material only.
-Bounds: read and write only inside Documents\p4-vault. Names and incident details
-never leave the vault. Do not delete captures; move them to 00_Inbox/processed/.
-Never change .obsidian.
-Evidence standard: I open every answer citation and record the supporting sentence
-and disposition in Audit.
-Stop / hand-back: propose titles and links before writing during triage; stop when
-the vault cannot answer a question or a material judgment remains unresolved.
-
-Check this contract for an internal conflict or an uncheckable condition. If one
-exists, name it and wait. Otherwise write the five fields, set Status to LIVE,
-and report the exact section changed. Do not start the vault work in this chat.</code></pre>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p4-pulse-brief" name="p4-pulse-brief" data-check-id="pulse-brief" />
-              <span class="check-num">1</span>
-              <span class="check-title">The P4 contract is LIVE and records the scope and acceptance criteria</span>
-            </label>
-            <div class="check-detail"><code>operator/DIRECTION_BRIEF.md</code> records the vault boundary, outputs, citation audit, and stop conditions with Status <strong>LIVE</strong>.</div>
-          </li>
-        </ol>
-
-        <div class="do-step">
-          <p class="do-label">Open <strong>PowerShell</strong> and copy the vault seed:</p>
-          <pre><code>Copy-Item -Recurse "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p4\vault_seed" "$env:USERPROFILE\Documents\p4-vault"
-Get-ChildItem "$env:USERPROFILE\Documents\p4-vault"</code></pre>
-        </div>
-
-        <p>The listing should show <code>00_Inbox</code>, <code>Decisions.md</code>, <code>Events.md</code>, <code>MOC.md</code>, <code>People.md</code>, and <code>Systems.md</code>. If the copy landed inside an existing folder, remove that copy in File Explorer and run the command again.</p>
-
-        <div class="do-step">
-          <p class="do-label">Open the copied folder in <strong>Obsidian</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open Obsidian from the Windows Start menu</li>
-            <li>Use the vault switcher if another vault is open</li>
-            <li>Choose <strong>Open folder as vault</strong> and select <code>Documents\p4-vault</code></li>
+            <li>In <strong>Obsidian</strong>, choose <strong>Open folder as vault</strong> and select <code>Documents\p4-vault</code></li>
+            <li>In <strong>Codex</strong>, choose <strong>Open project</strong> and select that exact same <code>p4-vault</code> folder</li>
+            <li>Start a new chat named <code>P4 — Harness Setup — [TODAY]</code>, select <strong>GPT-5.6 Terra</strong>, and keep permissions at <strong>Ask for approval</strong></li>
           </ul>
         </div>
 
@@ -202,104 +156,92 @@ Get-ChildItem "$env:USERPROFILE\Documents\p4-vault"</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-vault" name="p4-p4-vault" data-check-id="p4-vault" />
+              <span class="check-num">1</span>
+              <span class="check-title">The complete seed is open at the vault root</span>
+            </label>
+            <div class="check-detail">Codex and Obsidian point to the folder that directly contains <code>AGENTS.md</code>, <code>MOC.md</code>, <code>Harness</code>, and <code>.agents</code>. Nothing above the vault is in project scope.</div>
+          </li>
+        </ol>
+
+        <div class="do-step">
+          <p class="do-label">In <strong>P4 — Harness Setup — [TODAY]</strong>, personalize the supplied contract before any source work:</p>
+          <pre><code>Read AGENTS.md and Harness/HARNESS_CARD.md. Do not process the inbox yet.
+
+Help me replace every [REPLACE: ...] field with operational choices for this run.
+My brief serves [REAL READER OR ROLE].
+The decision I need at the top is [REAL DECISION PRIORITY].
+My evidence/escalation rule is [WHEN TO QUALIFY, HOLD, OR WAKE ME].
+My preferred product shape is [LENGTH / ORDER / FORMAT].
+
+Keep the supplied fixed-outer / bounded-adaptive-inner pattern unless a saved
+constraint contradicts it. Preserve the component ledger, budgets, terminal
+reasons, and rejected-complexity section. Show the proposed edits and wait for
+my approval before writing them.</code></pre>
+        </div>
+        <p>Inspect the proposal. Your reader and product preference must change the output; your evidence rule must change qualification, escalation, or stopping. Approve only those edits. Cosmetic voice alone does not count as personalization.</p>
+
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-pulse-brief" name="p4-pulse-brief" data-check-id="pulse-brief" />
               <span class="check-num">2</span>
-              <span class="check-title">The vault seed is in place and open in Obsidian</span>
+              <span class="check-title">The personal success contract is complete before execution</span>
             </label>
-            <div class="check-detail">The vault root directly contains the five hub files and <code>00_Inbox</code>; all work remains in <code>Documents\p4-vault</code>.</div>
+            <div class="check-detail"><code>AGENTS.md</code> and <code>HARNESS_CARD.md</code> contain no replacement markers. They name the reader, decision, evidence rule, product shape, scope, budgets, terminal reasons, and rejected complexity.</div>
           </li>
         </ol>
 
+        <h3 id="stage-2">Stage 02 · Start one goal and approve the control flow · 15 min</h3>
         <div class="do-step">
-          <p class="do-label">Create the scoped build chat in the <strong>Codex app</strong>:</p>
+          <p class="do-label">Start the run with the finalized project instructions:</p>
           <ul class="do-clicks">
-            <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
-            <li>Click <strong>Open project</strong> and choose <code>Documents\p4-vault</code></li>
-            <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P4 — Build — [TODAY'S DATE]</code></li>
-            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and leave permissions at <strong>Ask for approval</strong></li>
+            <li>Start a new chat at the same <code>p4-vault</code> project and name it <code>P4 — Director Loop — [TODAY]</code></li>
+            <li>Keep <strong>GPT-5.6 Terra</strong> and <strong>Ask for approval</strong></li>
+            <li>The fresh run now loads the finalized <code>AGENTS.md</code>; the setup chat has no further job</li>
+            <li>Type <code>/goal</code> and use the objective below</li>
+          </ul>
+          <pre><code>Use $director-loop to turn the four files in 00_Inbox into a linked,
+source-preserving vault and release Morning_Brief.md for the reader and decision
+in Harness/HARNESS_CARD.md. Produce both director answers, pause for my citation
+audit, evaluate from a fresh read-only context, run the deterministic verifier,
+and finish PASS or HOLD within the saved budgets. Durable files, not this chat,
+must contain state, evidence, trace, and the next permitted action.</code></pre>
+        </div>
+        <p>The skill should first return a compact preflight: goal, fixed steps, adaptive step, proposed note map, one approval point, budgets, finish conditions, and the unnecessary patterns it will not use. If it starts writing immediately, stop it; approving the note structure is the one consequential gate in this job.</p>
+
+        <div class="do-step">
+          <p class="do-label">Approve or correct the preflight:</p>
+          <ul class="do-clicks">
+            <li>Every inbox capture remains recoverable under <code>00_Inbox/processed/</code>, and the raw-source manifest remains unchanged</li>
+            <li>Proposed notes connect through <code>MOC</code> and the correct hubs</li>
+            <li>Every proposed knowledge note carries a <code>Raw sources:</code> link to the capture or packet record it derives from</li>
+            <li>Status words such as <em>rumor</em>, <em>unreproduced</em>, and <em>ignore for prod</em> remain visible</li>
+            <li>The plan uses no router, parallel worker team, plugin, new MCP server, or free-running reflection loop</li>
+            <li>The loop stops for missing evidence, repeated no-progress, exhausted budget, verifier HOLD, or completed PASS</li>
           </ul>
         </div>
-
-        <div class="do-step">
-          <p class="do-label">Confirm the project boundary in <strong>P4 — Build — [TODAY'S DATE]</strong>:</p>
-          <pre><code>Before we start: list every file and folder you can see from the
-project root, as a tree. Do not open or change anything yet.</code></pre>
-        </div>
-
-        <p>The tree should show the seeded entries plus <code>.obsidian</code>, which Obsidian created for its settings. If anything outside the vault appears, reopen the project at <code>Documents\p4-vault</code> before continuing.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
-              <input type="checkbox" id="p4-p4-scope" name="p4-p4-scope" data-check-id="p4-scope" />
+              <input type="checkbox" id="p4-p4-harness" name="p4-p4-harness" data-check-id="p4-harness" />
               <span class="check-num">3</span>
-              <span class="check-title">The assistant's reach matches the vault boundary</span>
+              <span class="check-title">The chosen pattern and one meaningful approval gate are explicit</span>
             </label>
-            <div class="check-detail">The project tree contains only the vault content and Obsidian settings, while the contract states the same read/write boundary and never-leave rule.</div>
+            <div class="check-detail">The saved harness distinguishes fixed and adaptive work, gives each component one job, rejects workload-inappropriate complexity, and waits for approval before changing the knowledge structure.</div>
           </li>
         </ol>
 
-        <h3 id="stage-2">Stage 02 · Approve the vault organization</h3>
-        <figure class="section-diagram">
-          <img src="../assets/blocks/p4/p4-stage-triage.svg" alt="Stage 2: four raw inbox captures become titled notes linked under the People, Systems, Events, and Decisions hubs" width="1120" height="220" loading="lazy" decoding="async" />
-        </figure>
+        <h3 id="stage-3">Stage 03 · Let the bounded retrieval loop work to the human gate · 35 min</h3>
+        <p>Approve the preflight. The loop now organizes the inbox, follows only earned raw-record references as evidence changes the next useful action, writes both answer notes, prepares <code>Audit.md</code>, and updates <code>RUN_STATE.md</code> and <code>RUN_TRACE.md</code>. It should then stop at <code>AWAITING_HUMAN_AUDIT</code>. Do not feed it extra prompts while it is making useful progress.</p>
 
         <div class="do-step">
-          <p class="do-label">Ask <strong>P4 — Build — [TODAY'S DATE]</strong> for a proposal:</p>
-          <pre><code>Vault root: this project's root folder — the folder that contains MOC.md.
-Only read and write inside this vault.
-Process each file in 00_Inbox into notes under People / Systems /
-Events / Decisions.
-For each capture: propose the note title(s) and links first; wait for my OK.
-Preserve status words exactly (rumor, unreproduced, ignore for prod).
-Link every new note from its hub and from MOC. Do not delete the
-originals; move processed captures to 00_Inbox/processed/.</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Review the proposal before authorizing writes:</p>
+          <p class="do-label">When it pauses, inspect the saved state before reading its prose response:</p>
           <ul class="do-clicks">
-            <li>Confirm every capture has a title you could find later</li>
-            <li>Confirm every proposed note has the right hub and a link from <code>MOC</code></li>
-            <li>Confirm the proposal preserves <em>rumor</em>, <em>unreproduced</em>, and <em>ignore for prod</em></li>
-            <li>If any condition fails, state the correction and ask for a revised proposal</li>
-            <li>If all conditions hold, authorize the approved titles and links to be written, with originals moved to <code>00_Inbox/processed/</code></li>
-          </ul>
-        </div>
-
-        <p>Approve the file writes when the app asks. In Obsidian, open one hub, follow a new link, and view the graph. The organization is accepted because it meets your retrieval criteria, not because the assistant proposed it.</p>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p4-p4-inbox" name="p4-p4-inbox" data-check-id="p4-inbox" />
-              <span class="check-num">4</span>
-              <span class="check-title">The inbox is organized into approved, linked notes</span>
-            </label>
-            <div class="check-detail">The hubs and <code>MOC</code> reach the new notes, processed captures remain under <code>00_Inbox/processed/</code>, and source status words remain intact.</div>
-          </li>
-        </ol>
-
-        <h3 id="stage-3">Stage 03 · Answer two director questions with walkable citations</h3>
-        <figure class="section-diagram">
-          <img src="../assets/blocks/p4/p4-stage-question.svg" alt="Stage 3: one director question fans out across several notes and converges into a single answer whose claims each cite a note" width="1120" height="220" loading="lazy" decoding="async" />
-        </figure>
-
-        <div class="do-step">
-          <p class="do-label">In <strong>P4 — Build — [TODAY'S DATE]</strong>, ask the first question:</p>
-          <pre><code>Answer from the vault only. Write the answer as a note at
-Answers/Q1 Risks.md inside the vault, dated today at the top.
-Cite notes as [[Note Name]] and, for each claim, quote the sentence
-in the note that supports it.
-The question: What are the top operational risks this week and which notes support each?
-Do not cite a note that does not exist. Carry status words (rumor,
-unreproduced) into the answer. Where the vault is silent, say so.</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Smoke-test Q1 in <strong>Obsidian</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open <code>Answers/Q1 Risks</code></li>
-            <li>Click any two citations; each must open an existing note rather than offer to create one</li>
+            <li><code>Harness/RUN_STATE.md</code> says what is complete, what remains open, and that your citation audit is the next permitted action</li>
+            <li><code>Harness/RUN_TRACE.md</code> records each packet open, the reference that earned it, the observation, and the remaining six-open budget—not hidden chain-of-thought</li>
+            <li><code>Answers/Q1 Risks.md</code> and <code>Answers/Q2 Blocked Decision.md</code> label every decision-driving claim with a stable ID and each cite at least two distinct, earned <code>Source_Packet</code> records</li>
+            <li>In Obsidian, <code>MOC</code> → hub → knowledge note → raw source is navigable and processed captures still exist</li>
           </ul>
         </div>
 
@@ -307,74 +249,22 @@ unreproduced) into the answer. Where the vault is silent, say so.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-q1" name="p4-p4-q1" data-check-id="p4-q1" />
-              <span class="check-num">5</span>
-              <span class="check-title">The Q1 answer is saved with resolvable multi-note citations</span>
+              <span class="check-num">4</span>
+              <span class="check-title">The integrated loop reaches the human audit gate with useful artifacts</span>
             </label>
-            <div class="check-detail"><code>Answers/Q1 Risks.md</code> spans the relevant notes, keeps status qualifiers, and its sampled links resolve.</div>
+            <div class="check-detail">The vault is linked, both answers exist with multi-note citations, and durable state—not chat memory—names the remaining work and next action.</div>
           </li>
         </ol>
 
+        <h3 id="stage-4">Stage 04 · Be the evidence oracle, then evaluate with one repair ceiling · 45 min</h3>
         <div class="do-step">
-          <p class="do-label">Return to <strong>P4 — Build — [TODAY'S DATE]</strong> and ask the second question:</p>
-          <pre><code>Same rules as the last answer. Write the answer as a note at
-Answers/Q2 Blocked Decision.md inside the vault, dated today at the top.
-Cite notes as [[Note Name]] and quote the supporting sentence per claim.
-The question: What decision is blocked and what evidence is missing?
-Do not cite a note that does not exist. Carry status words into the
-answer. Where the vault is silent, say so.</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Smoke-test Q2 in <strong>Obsidian</strong>:</p>
+          <p class="do-label">Walk every distinct answer citation to its raw evidence root in <strong>Obsidian</strong>:</p>
           <ul class="do-clicks">
-            <li>Open <code>Answers/Q2 Blocked Decision</code></li>
-            <li>Click any two citations and confirm they open real notes</li>
-            <li>Confirm the answer names missing evidence instead of inventing an owner or resolution</li>
-          </ul>
-        </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p4-p4-q2" name="p4-p4-q2" data-check-id="p4-q2" />
-              <span class="check-num">6</span>
-              <span class="check-title">The Q2 answer preserves the blocked decision and missing evidence</span>
-            </label>
-            <div class="check-detail"><code>Answers/Q2 Blocked Decision.md</code> has resolvable citations and keeps the decision open where the vault lacks evidence.</div>
-          </li>
-        </ol>
-
-        <h3 id="stage-4">Stage 04 · Audit every citation and resolve findings</h3>
-        <figure class="section-diagram">
-          <img src="../assets/blocks/p4/p4-stage-audit.svg" alt="Stage 4: an audit ledger where every cited note is opened and marked support, partial, or not supported; actual findings drive claim changes" width="1120" height="220" loading="lazy" decoding="async" />
-        </figure>
-
-        <div class="do-step">
-          <p class="do-label">Create a note named <code>Audit</code> in <strong>Obsidian</strong>, then paste this with today's date:</p>
-          <pre><code># Audit — [TODAY]
-
-## Answers/Q1 Risks
-| Citation | Sentence that carries the claim | Verdict |
-|---|---|---|
-|  |  |  |
-
-## Answers/Q2 Blocked Decision
-| Citation | Sentence that carries the claim | Verdict |
-|---|---|---|
-|  |  |  |
-
-## Claim changes
-- [CLAIM BEFORE -> CLAIM AFTER / CUT / NO CHANGES REQUIRED]
-- Reason: [TRAIL RESULT]</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Walk every answer trail yourself in <strong>Obsidian</strong>:</p>
-          <ul class="do-clicks">
-            <li>For every citation in both answer notes, open the cited note and locate the sentence that carries the claim</li>
-            <li>Copy that sentence into the matching Audit row</li>
-            <li>Mark <strong>support</strong>, <strong>partial</strong>, or <strong>not supported</strong></li>
-            <li>Use <strong>partial</strong> when the source is weaker or more qualified than the answer</li>
+            <li>Open the cited file under <code>Source_Packet</code> or <code>00_Inbox/processed</code>—never stop at a generated summary</li>
+            <li>In <code>Audit.md</code>, record the stable claim ID, exact claim, evidence root, verbatim source excerpt, <strong>support</strong>, <strong>partial</strong>, or <strong>not supported</strong> disposition, and the Resolution</li>
+            <li>Use <strong>partial</strong> when the answer is stronger than the source; a rumor cited as fact fails</li>
+            <li>Preserve every audit row. When a claim is cut or qualified later, record that resolution under the same ID instead of erasing the adverse finding</li>
+            <li>Do not ask the generator whether its own citations are correct</li>
           </ul>
         </div>
 
@@ -382,327 +272,358 @@ answer. Where the vault is silent, say so.</code></pre>
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-audit" name="p4-p4-audit" data-check-id="p4-audit" />
-              <span class="check-num">7</span>
-              <span class="check-title">Every cited trail has a written disposition</span>
+              <span class="check-num">5</span>
+              <span class="check-title">Every decision-driving claim has a preserved human disposition</span>
             </label>
-            <div class="check-detail">The Audit note contains the supporting sentence and support/partial/not-supported result for every citation in both answers.</div>
+            <div class="check-detail"><code>Audit.md</code> holds a stable claim ID, verbatim sentence from an unchanged raw file, human verdict, and any removal or qualification for every decision-driving claim. Generated notes never certify themselves, and adverse findings remain visible.</div>
           </li>
         </ol>
 
-        <p>Revise only actual partial or unsupported claims. If every citation supports its claim at the same strength, record <code>NO CHANGES REQUIRED</code> and the completed audit is the evidence.</p>
-
         <div class="do-step">
-          <p class="do-label">Use this in <strong>P4 — Build — [TODAY'S DATE]</strong> for each partial or unsupported claim; skip it when none exist:</p>
-          <pre><code>In [ANSWER NOTE], this claim did not pass my trail audit: "[CLAIM]".
-The cited note supports it only as: [SUPPORT / PARTIAL / NOT SUPPORTED].
-Revise the answer note to match the source at the same strength, including
-status words such as rumor or unreproduced, or remove the claim when no
-note supports it. Do not change claims I did not name.</code></pre>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Finish <strong>Audit</strong> in Obsidian:</p>
+          <p class="do-label">Resume from a genuinely fresh context instead of continuing the build chat:</p>
           <ul class="do-clicks">
-            <li>For each changed claim, record the before, after or removal, and trail result</li>
-            <li>If no claim changed, record <code>NO CHANGES REQUIRED — every claim matched its cited sentence at the same strength</code></li>
-            <li>Reopen every changed answer and confirm it now matches the source</li>
+            <li>Leave <code>P4 — Director Loop — [TODAY]</code> paused; do not paste the audit into it</li>
+            <li>Start a new chat at the same <code>p4-vault</code> project named <code>P4 — Resume — [TODAY]</code></li>
+            <li>Keep <strong>GPT-5.6 Terra</strong> and <strong>Ask for approval</strong>; type <code>/goal</code> and use the objective below</li>
           </ul>
+          <pre><code>Use $director-loop to resume the existing P4 run from Harness/RUN_STATE.md.
+Audit.md is complete. Before writing, verify the saved paths and hashes for every
+stage already marked complete. Do not reprocess captures, rewrite normalized
+notes, or regenerate the two answers. Save Harness/RESUME_RECEIPT.md showing the
+state read, completed artifacts verified, next permitted action, and duplicate
+writes avoided. Then qualify or cut partial and unsupported claims while
+preserving their claim IDs and audit rows; generate Morning_Brief.md from
+supported claim IDs and raw evidence only; update durable state to
+AWAITING_CANDIDATE_CHECK with Status HAND_BACK and Terminal reason
+HUMAN_HAND_BACK. Keep the resumed Run ID; point to both answers, Audit.md,
+Morning_Brief.md, and Harness/RESUME_RECEIPT.md; make the trusted candidate
+check the only next action; and stop. Do not run the evaluator until that
+external candidate check has run.</code></pre>
         </div>
-
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p4-p4-kill" name="p4-p4-kill" data-check-id="p4-kill" />
-              <span class="check-num">8</span>
-              <span class="check-title">Every audit finding has an honest resolution</span>
-            </label>
-            <div class="check-detail">Every real partial or unsupported claim is qualified or removed with a before/after record; if none existed, Audit explicitly records that result.</div>
-          </li>
-        </ol>
-
-        <h3 id="stage-5">Stage 05 · Publish the Morning Brief</h3>
-        <div class="do-step">
-          <p class="do-label">In <strong>P4 — Build — [TODAY'S DATE]</strong>, paste:</p>
-          <pre><code>Vault root: this project's root folder. Only read and write inside
-this vault.
-Write Morning_Brief.md into the vault: today's date, short.
-Every claim cites a [[note]] — vault notes only, never this chat.
-Include only claims whose trails I marked support in my Audit note;
-carry status words (rumor, unreproduced). Where the vault is silent,
-say so instead of filling the gap.</code></pre>
-        </div>
+        <p>Audit-driven qualification happens before evaluation and is recorded separately. The next check runs outside the editable vault, so a modified in-vault checker or source fingerprint cannot certify the work.</p>
 
         <div class="do-step">
-          <p class="do-label">Accept the Morning Brief in <strong>Obsidian</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open <code>Morning_Brief</code> and read it once through</li>
-            <li>Click any two citations; each must land on a note already covered by the Audit</li>
-            <li>If a claim cites chat context or an unaudited note, regenerate it from the vault</li>
-          </ul>
+          <p class="do-label">When the resume goal pauses, run the untouched course verifier in <strong>PowerShell</strong> and save its receipt:</p>
+          <pre><code>$courseRepo = "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
+$vault = "$env:USERPROFILE\Documents\p4-vault"
+$courseVerifier = "$courseRepo\mission_flesh\p4\vault_seed\tools\verify_vault.py"
+py -3 $courseVerifier $vault --candidate | Tee-Object "$vault\Harness\CANDIDATE_CHECK_FIRST.txt"
+$candidateExit = $LASTEXITCODE
+if ($candidateExit -ne 0) { Write-Host "Candidate HOLD — return the saved finding to the resume goal." }</code></pre>
         </div>
+
+        <div class="do-step">
+          <p class="do-label">Return to <strong>P4 — Resume — [TODAY]</strong> and paste:</p>
+          <pre><code>Read Harness/CANDIDATE_CHECK_FIRST.txt. The trusted check has now run.
+Run the configured director_evaluator in a fresh read-only context even if the
+candidate receipt says HOLD. It must copy both the full-candidate fingerprint
+and stable-content fingerprint from that receipt. Save its exact FIRST receipt
+and bind it to Harness/EVAL.md.
+
+Collect every blocker from the first candidate receipt and first evaluator
+receipt. If there are none, record zero repairs and finish PASS. If blockers
+exist, propose one combined, smallest evidence-driven repair and wait for my
+approval. Record CONTENT when stable mission content changes. Use CONTROL_ONLY
+only for retrieval-control, resume, state, or trace blockers, and preserve every
+exact first blocker as the justification; never edit content just to change a
+hash. After that single repair cycle, stop at AWAITING_CANDIDATE_CHECK so I
+can save Harness/CANDIDATE_CHECK_FINAL.txt. Then rerun the evaluator once, save
+its FINAL receipt, and finish PASS only if both final checks pass; otherwise
+finish HOLD with the exact residual risk. Preserve every first-pass finding.</code></pre>
+        </div>
+        <p>If the goal returns to <code>AWAITING_CANDIDATE_CHECK</code> after the one combined repair, rerun the PowerShell command with only the final path changed to <code>Harness\CANDIDATE_CHECK_FINAL.txt</code>; never overwrite the first receipt. Tell the goal the final receipt is saved so it can run the final evaluator against the new fingerprint pair. The configured <code>director_evaluator</code> is the only additional agent role. It reads the saved candidate without generation history under a read-only sandbox and returns an exact receipt that the verifier binds to <code>EVAL.md</code>. The full-candidate fingerprint proves which complete check snapshot it saw; the stable-content fingerprint is recomputed at release so mission content cannot change after approval. The parent may save the return; the evaluator cannot edit evidence. If one repair cycle cannot clear both prewritten bars, the correct result is HOLD—not another loop.</p>
 
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-morning" name="p4-p4-morning" data-check-id="p4-morning" />
-              <span class="check-num">9</span>
-              <span class="check-title">Morning_Brief.md uses audited vault evidence</span>
+              <span class="check-num">6</span>
+              <span class="check-title">The brief and evaluator reflect the audited evidence</span>
             </label>
-            <div class="check-detail">The dated brief cites vault notes only, carries status qualifiers, and two sampled links reach audited material.</div>
+            <div class="check-detail"><code>Morning_Brief.md</code> serves the named reader and decision, uses audited raw evidence only, and the exact read-only evaluator receipt is bound to criterion-level PASS/HOLD findings in <code>EVAL.md</code>.</div>
           </li>
         </ol>
 
-        <details>
-          <summary>Conditional review bundle · only when a material judgment remains unresolved</summary>
-          <p>Do not create a review package for a fully resolved audit. When a consequential claim still depends on judgment, freeze just the evidence needed for that decision.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-handoff" name="p4-p4-handoff" data-check-id="p4-handoff" />
+              <span class="check-num">7</span>
+              <span class="check-title">A fresh context resumes at the next permitted action without duplicate work</span>
+            </label>
+            <div class="check-detail"><code>RESUME_RECEIPT.md</code> distinguishes each artifact's saved-at-pause hash, fresh-context opening hash, and final hash; it binds any final answer change to an audited claim ID and shows no source or normalized note was duplicated.</div>
+          </li>
+        </ol>
 
-          <div class="do-step">
-            <p class="do-label">In <strong>P4 — Build — [TODAY'S DATE]</strong>, create one review bundle:</p>
-            <pre><code>Create Review_Pack.md inside this vault for this unresolved judgment only:
-[PASTE THE QUESTION OR CLAIM]
+        <h3 id="stage-5">Stage 05 · Verify, fingerprint, and scope the handoff · 25 min</h3>
+        <p>Before handoff, confirm <code>CANDIDATE_CHECK_FIRST.txt</code> is preserved, the latest candidate receipt—<code>CANDIDATE_CHECK_FINAL.txt</code> only when a repair occurred—says PASS, <code>EVAL.md</code> binds the exact evaluator receipt, and <code>RUN_STATE.md</code> carries an exact Harness Card terminal reason. A releasable run ends in <code>SUCCESS</code>; any other reason is a hand-back, not a baseline. The candidate check and evaluator share one post-audit repair budget; do not reopen it here.</p>
 
-Include:
-- the relevant answer excerpt
-- the matching Audit rows
-- the cited source excerpts
-- my current disposition and the exact uncertainty
-Do not add new facts or change any source note. Save the bundle.</code></pre>
-          </div>
+        <div class="do-step">
+          <p class="do-label">Complete the scoped handoff and seal the final P4 baseline:</p>
+          <ul class="do-clicks">
+            <li>In Obsidian, fill <code>Harness/HANDOFF_RECEIPT.md</code> by copying the exact terminal, artifact, pattern, intervention, repair, evaluator, resume, candidate-verifier, residual-risk, reflection, and workplace-trial fields from the saved evidence</li>
+            <li>After the handoff is complete, append the exact <code>Closeout after evaluation</code> block specified by <code>$director-loop</code> to <code>RUN_TRACE.md</code>; never rewrite an evaluator-bound trace prefix</li>
+            <li>Do not add a conclusion that is absent from the evidence; this scoped receipt and the final baseline manifest are the only P4 files that will cross into the course repository</li>
+            <li>Return to PowerShell at <code>Documents\p4-vault</code> and run the command below</li>
+          </ul>
+          <pre><code>$courseRepo = "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
+$vault = "$env:USERPROFILE\Documents\p4-vault"
+py -3 "$courseRepo\mission_flesh\p4\vault_seed\tools\verify_vault.py" "$vault" --write-manifest</code></pre>
+        </div>
 
-          <div class="do-step">
-            <p class="do-label">Create the evidence-review chat in the <strong>ChatGPT desktop app</strong>:</p>
-            <ul class="do-clicks">
-              <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
-              <li>Click <strong>Open project</strong> and choose <code>Documents\p4-vault</code></li>
-              <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P4 — Evidence Review — [TODAY'S DATE]</code></li>
-              <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and leave permissions at <strong>Ask for approval</strong></li>
-            </ul>
-          </div>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p4-p4-verify" name="p4-p4-verify" data-check-id="p4-verify" />
+              <span class="check-num">8</span>
+              <span class="check-title">The deterministic verifier passes and the complete baseline is fingerprinted</span>
+            </label>
+            <div class="check-detail">The command returns PASS only after the run, raw provenance, evaluator-approved stable content, immutable evaluated trace prefixes, resume, and scoped handoff evidence pass, then writes <code>Harness/BASELINE_MANIFEST.json</code>. Stage 06 copies that manifest outside the vault so P5 can use it as a trust anchor.</div>
+          </li>
+        </ol>
 
-          <div class="do-step">
-            <p class="do-label">Paste this into <strong>P4 — Evidence Review — [TODAY'S DATE]</strong>:</p>
-            <pre><code>Read Review_Pack.md. Review only the unresolved judgment it names.
-
-For each claim, state:
-1. required evidence
-2. observed evidence
-3. supported / partial / unsupported
-4. recommended disposition
-5. residual risk
-
-Do not manufacture a problem and do not change files.</code></pre>
-          </div>
-
-          <p>Record the review finding and your final decision in the Audit note. Use <strong>not supported</strong> or leave the question open when the evidence remains insufficient.</p>
-        </details>
+        <h3 id="stage-6">Stage 06 · Prune the harness and transfer the useful pattern · 20 min</h3>
+        <p>Read the component ledger in <code>HARNESS_CARD.md</code>. Keep a component only when its saved evidence shows one of the governing jobs. Record any component you disabled or rejected and why. Do not add another pattern to make the architecture look sophisticated.</p>
 
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
           <h3>Lesson reflection</h3>
-          <p class="reflection-question"><strong>Closeout question:</strong> What trail rule will you require before acting on an AI-written brief?</p>
+          <p class="reflection-question"><strong>Closeout question:</strong> Which harness control most reduced human attention per verified result—and what evidence would make you remove it?</p>
 
           <div class="do-step">
-            <p class="do-label">Create a fresh P4 closeout with access to both the course files and the vault:</p>
-            <ul class="do-clicks">
-              <li>Open <strong>ChatGPT</strong> from the Windows Start menu, then select <strong>Codex</strong> from the top-left switcher if needed</li>
-              <li>Click <strong>Open project</strong> and choose your <code>Documents</code> folder so this chat can read both <code>p4-vault</code> and the course repository</li>
-              <li>Click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P4 — Closeout — [TODAY'S DATE]</code></li>
-              <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and leave permissions at <strong>Ask for approval</strong></li>
-            </ul>
-            <p>The vault artifacts and operator files carry the evidence. Neither the direction chat nor the build chat is needed for closeout.</p>
+            <p class="do-label">Move only the scoped receipt and external trust anchor into the course project:</p>
+            <pre><code>$courseRepo = "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
+$vault = "$env:USERPROFILE\Documents\p4-vault"
+$dateStamp = Get-Date -Format "yyyy-MM-dd"
+$evidenceDir = "$courseRepo\operator\evidence"
+$courseVerifier = "$courseRepo\mission_flesh\p4\vault_seed\tools\verify_vault.py"
+$externalHandoff = "$evidenceDir\P4_HANDOFF_$dateStamp.md"
+$externalManifest = "$evidenceDir\P4_BASELINE_$dateStamp.json"
+New-Item -ItemType Directory -Path $evidenceDir -Force
+if ((Test-Path $externalHandoff) -or (Test-Path $externalManifest)) {
+  throw "P4 evidence already exists for $dateStamp. Archive it explicitly; never overwrite a trust anchor."
+}
+Copy-Item "$vault\Harness\HANDOFF_RECEIPT.md" $externalHandoff
+Copy-Item "$vault\Harness\BASELINE_MANIFEST.json" $externalManifest
+Get-Item $externalHandoff, $externalManifest
+py -3 $courseVerifier $vault --check-manifest $externalManifest
+if ($LASTEXITCODE -ne 0) { throw "External P4 baseline check failed. Stop before P5." }</code></pre>
           </div>
+          <p>The last command must return <code>PASS P4 baseline</code>. That proves the external file is a usable trust anchor before P5 depends on it.</p>
 
           <div class="do-step">
-            <p class="do-label">Fill the brackets, then paste this once into <strong>P4 — Closeout — [TODAY'S DATE]</strong>:</p>
-            <pre><code>Read these saved P4 artifacts:
-- p4-vault\Answers\Q1 Risks.md
-- p4-vault\Answers\Q2 Blocked Decision.md
-- p4-vault\Audit.md
-- p4-vault\Morning_Brief.md
-- HarnessBootcamp\AI_Harness_Bootcamp\operator\OPERATOR_LOG.md
-- HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md
+            <p class="do-label">Open Codex at the <strong>course repository</strong>—not <code>Documents</code>—and update the three course records:</p>
+            <ul class="do-clicks">
+              <li>Start a new chat named <code>P4 — Course Handoff — [TODAY]</code></li>
+              <li>Keep <strong>Ask for approval</strong>; the chat can see the copied receipt but cannot reach the private vault</li>
+              <li>Paste the prompt below</li>
+            </ul>
+            <pre><code>Read operator/evidence/P4_HANDOFF_[TODAY].md and
+operator/evidence/P4_BASELINE_[TODAY].json. If any required receipt field is
+missing or HOLD, or the baseline manifest is absent, stop and name it. Otherwise
+use only those two scoped files to propose
+exact edits to:
+- operator/OPERATOR_LOG.md, P4 section
+- operator/MEASUREMENT_SPINE.md, P4 row and P4 deep mark
+- operator/TRANSFER_30_60_90.md, "From P4 — Personal operating harness"
 
-Update the P4 entry in
-HarnessBootcamp\AI_Harness_Bootcamp\operator\OPERATOR_LOG.md with:
-- final artifacts: Documents\p4-vault\Answers\Q1 Risks.md,
-  Answers\Q2 Blocked Decision.md, Audit.md, and Morning_Brief.md
-- criterion-based status: READY / READY WITH FIXES / HOLD
-- the most consequential audit finding and fix, or the residual risk if no fix was needed
-- what the machine retrieved versus the judgment I made
-- one thing the vault still cannot support
-- lesson reflection: [THE TRAIL RULE I WILL REQUIRE BEFORE ACTING]
-- reusable workplace rule: [ONE LINE]
-
-Update only "From P4 — Trailed knowledge" in
-HarnessBootcamp\AI_Harness_Bootcamp\operator\TRANSFER_30_60_90.md:
-- work knowledge that belongs in a navigable system: [ONE SPECIFIC BODY OF KNOWLEDGE]
-- citation/trail rule: [THE STANDARD I WILL KEEP]
-- date: [TODAY]
-
-Use my filled values, preserve the rest of both files, and report the exact
-sections changed.</code></pre>
+The log must separate machine execution, human raw-evidence judgment, and
+residual risk. The measurement row must preserve first-pass evaluator overclaim,
+terminal time, interventions, repairs, verifier, resume, and manifest status.
+The transfer row must name the real recurring goal, data boundary, human decision
+owner, pattern, acceptance/stop rule, and first trial date. Show all three proposed
+edits and wait for my approval before writing. Change nothing else.</code></pre>
           </div>
 
           <ol class="checklist">
             <li class="check-item" data-check-item>
               <label class="check-label">
                 <input type="checkbox" id="p4-pulse-log" name="p4-pulse-log" data-check-id="pulse-log" />
-                <span class="check-num">10</span>
-                <span class="check-title">The P4 closeout points to its saved evidence</span>
+                <span class="check-num">9</span>
+                <span class="check-title">The closeout records measured work, judgment, and remaining risk</span>
               </label>
-              <div class="check-detail">The P4 log points to the answer, audit, and brief artifacts; it records status, finding or residual risk, retrieval versus judgment, and a reusable trail rule.</div>
+              <div class="check-detail">The copied receipt keeps the vault boundary narrow; the log and measurement row record terminal status, human intervention, repair count, machine work, human judgment, unresolved risk, verifier, resume, and manifest evidence.</div>
             </li>
           </ol>
 
-          <p id="p4-transfer-complete">Open <code>operator/TRANSFER_30_60_90.md</code> and confirm the P4 entry contains one specific body of work knowledge, the trail rule, and today's date.</p>
+          <p id="p4-transfer-complete">Open <code>operator/TRANSFER_30_60_90.md</code> and confirm the P4 seed names a real recurring goal, data boundary, decision owner, control pattern, acceptance/stop rule, and first trial date. The Wednesday case-talk discussion may pressure-test and amend this same row; do not create a second seed.</p>
         </div>
       </section>
 
-
-
-
-
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Lesson outcomes</h2>
-        <p class="section-lede">This is a read-only summary of the Lesson outcome checkboxes beside the relevant instructions above. <strong>Complete</strong> means you checked the outcome where its evidence was produced; <strong>Not yet</strong> means it remains open. Select an outcome title to return to its inline checkbox.</p>
+        <p class="section-lede">These outcome checks move beside the step where their evidence is produced. P4 is complete when the useful product passes—not when every loop was busy.</p>
         <ol class="checklist">
-
-          <li class="check-item" data-check-item data-outcome-after="p4-scope">
+          <li class="check-item" data-check-item data-outcome-after="pulse-brief">
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-scope" name="p4-mvp-scope" data-check-id="mvp-scope" />
-              <span class="check-num">14</span>
-              <span class="check-title">The scope and allowed actions are set before work begins</span>
+              <span class="check-num">10</span>
+              <span class="check-title">The goal, personal operating choices, authority, evidence, and finish conditions were saved before execution</span>
             </label>
-            <div class="check-detail">Evidence looks like: the brief text names the vault root, the allowed read/write actions, and the never-leave list before the mission starts; it is not a reconstruction.</div>
+            <div class="check-detail">Two personal settings visibly affect decisions or evidence—not tone alone—and every replacement marker is gone.</div>
           </li>
 
-          <li class="check-item" data-check-item data-outcome-after="p4-inbox">
+          <li class="check-item" data-check-item data-outcome-after="p4-harness">
+            <label class="check-label">
+              <input type="checkbox" id="p4-mvp-pattern" name="p4-mvp-pattern" data-check-id="mvp-pattern" />
+              <span class="check-num">11</span>
+              <span class="check-title">The least-complex useful pattern is chosen and unnecessary machinery is rejected</span>
+            </label>
+            <div class="check-detail">Fixed and adaptive steps are distinct; the trace stays within six packet opens and every later open is earned by an observed reference; budgets and terminal reasons are explicit; at least three rejected components have workload-specific reasons.</div>
+          </li>
+
+          <li class="check-item" data-check-item data-outcome-after="p4-q1">
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-graph" name="p4-mvp-graph" data-check-id="mvp-graph" />
-              <span class="check-num">15</span>
-              <span class="check-title">The inbox is organized into a working link graph</span>
+              <span class="check-num">12</span>
+              <span class="check-title">The inbox becomes a source-preserving graph a human can navigate</span>
             </label>
-            <div class="check-detail">Evidence looks like: you can navigate <code>MOC</code> → hub → note by clicking, and the graph view shows a connected structure. A pile of AI-named files with no links is not yet, however tidy the names.</div>
+            <div class="check-detail"><code>MOC</code> → hub → knowledge note → raw source works by clicking; every generated note declares its raw roots; captures remain recoverable and hash-clean; evidence status survives triage.</div>
           </li>
 
-          <li class="check-item" data-check-item data-outcome-after="p4-q2">
+          <li class="check-item" data-check-item data-outcome-after="p4-q1">
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-2q" name="p4-mvp-2q" data-check-id="mvp-2q" />
-              <span class="check-num">16</span>
-              <span class="check-title">Two answers combine and cite multiple notes</span>
+              <span class="check-num">13</span>
+              <span class="check-title">Both director questions are answered from multiple raw evidence roots</span>
             </label>
-            <div class="check-detail">Evidence looks like: both director answers live as notes in the vault, each spans multiple notes, and every citation is a clickable link that resolves to a real note. One-note answers are summaries and do not complete the outcome.</div>
+            <div class="check-detail">Each saved answer uses at least two resolvable wikilinks to distinct, unchanged <code>Source_Packet</code> roots reached through the earned retrieval ledger and leaves unsupported decisions open.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p4-audit">
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-trail" name="p4-mvp-trail" data-check-id="mvp-trail" />
-              <span class="check-num">17</span>
-              <span class="check-title">Every cited note has a recorded check and disposition</span>
+              <span class="check-num">14</span>
+              <span class="check-title">Every decision-driving claim has a human source-support verdict</span>
             </label>
-            <div class="check-detail">Evidence looks like: a written support / partial / not supported mark and the carrying sentence for every citation in both answers. A verbal assurance without entries in the Audit note is not complete.</div>
+            <div class="check-detail"><code>Audit.md</code> records a stable claim ID, a verbatim carrying sentence from the raw file, the human support, partial, or not-supported disposition, and any later qualification or removal; generated notes cannot certify themselves.</div>
           </li>
 
-          <li class="check-item" data-check-item data-outcome-after="p4-kill">
+          <li class="check-item" data-check-item data-outcome-after="p4-morning">
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-revise" name="p4-mvp-revise" data-check-id="mvp-revise" />
-              <span class="check-num">18</span>
-              <span class="check-title">Every real audit finding has a resolution, or the audit says no changes are needed</span>
+              <span class="check-num">15</span>
+              <span class="check-title">Only evidence-driven repairs occur, with one post-audit repair maximum</span>
             </label>
-            <div class="check-detail">Evidence looks like: a before/after or removal record for every partial or unsupported claim. If all citations support their claims at the same strength, Audit records <code>NO CHANGES REQUIRED</code>.</div>
+            <div class="check-detail">Audit-driven qualification is recorded before evaluation; after that gate, at most one evaluator/verifier-driven repair occurs. No-change is valid when every criterion already passes.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="p4-morning">
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-morning" name="p4-mvp-morning" data-check-id="mvp-morning" />
-              <span class="check-num">19</span>
-              <span class="check-title">The Morning Brief is saved and verified</span>
+              <span class="check-num">16</span>
+              <span class="check-title">The personal Morning Brief serves the named decision from audited evidence</span>
             </label>
-            <div class="check-detail">Evidence looks like: <code>Morning_Brief.md</code> inside the vault, dated, every claim citing a note. Its citations come from trails with completed audit entries, and two links pass your acceptance spot-check.</div>
+            <div class="check-detail">Reader, order, evidence posture, and escalation rule visibly affect the product.</div>
+          </li>
+
+          <li class="check-item" data-check-item data-outcome-after="p4-verify">
+            <label class="check-label">
+              <input type="checkbox" id="p4-mvp-verified" name="p4-mvp-verified" data-check-id="mvp-verified" />
+              <span class="check-num">17</span>
+              <span class="check-title">Outcome and trajectory clear independent checks</span>
+            </label>
+            <div class="check-detail">The configured read-only evaluator&#x27;s exact receipt is bound to <code>EVAL.md</code>, the deterministic verifier passes, and the clean baseline manifest exists.</div>
+          </li>
+
+          <li class="check-item" data-check-item data-outcome-after="p4-handoff">
+            <label class="check-label">
+              <input type="checkbox" id="p4-mvp-handoff" name="p4-mvp-handoff" data-check-id="mvp-handoff" />
+              <span class="check-num">18</span>
+              <span class="check-title">Durable state resumes real work from a fresh context</span>
+            </label>
+            <div class="check-detail"><code>RESUME_RECEIPT.md</code> shows a new goal verified completed artifacts, continued at the next permitted action, and avoided duplicate processing or rewrites.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="pulse-log">
             <label class="check-label">
               <input type="checkbox" id="p4-mvp-own4" name="p4-mvp-own4" data-check-id="mvp-own4" />
-              <span class="check-num">20</span>
-              <span class="check-title">The log separates retrieved material, your judgment, and known gaps</span>
+              <span class="check-num">19</span>
+              <span class="check-title">The record separates machine execution, human judgment, and residual risk</span>
             </label>
-            <div class="check-detail">Evidence looks like: a log line that identifies what comes from retrieval, what comes from your judgment, and one named thing the vault cannot yet support — a question the current vault answers thinly, or a status it cannot represent.</div>
+            <div class="check-detail">The scoped receipt and course records point to product, raw-audit, evaluator, resume, trace, verifier, and manifest evidence—not a model&#x27;s “done” claim.</div>
           </li>
 
           <li class="check-item" data-check-item data-outcome-after="#p4-transfer-complete">
             <label class="check-label">
               <input type="checkbox" id="p4-p4-transfer" name="p4-p4-transfer" data-check-id="p4-transfer" />
-              <span class="check-num">21</span>
-              <span class="check-title">The P4 transfer rule is recorded and dated</span>
+              <span class="check-num">20</span>
+              <span class="check-title">The personal harness has a real workplace trial</span>
             </label>
-            <div class="check-detail">Evidence looks like: the <strong>From P4 — Trailed knowledge</strong> block in <code>operator/TRANSFER_30_60_90.md</code> contains complete, dated entries for both rows — the work knowledge that must live in a navigable system, and the citation rule you use for an AI-written brief. It has to name your own desk; a hypothetical seed has nothing to grow from in the weeks after the course.</div>
+            <div class="check-detail">The dated transfer seed names the goal, data boundary, human decision owner, pattern, acceptance/stop rule, and first trial date.</div>
           </li>
         </ol>
-        <p>Leave the vault exactly where it is and keep its path handy — this afternoon&#x27;s block works inside this same vault.</p>
+        <p>Leave <code>p4-vault</code> in place. P5 checks it against the external <code>operator/evidence/P4_BASELINE_[TODAY].json</code> copy using the untouched course verifier; do not rebuild a second baseline.</p>
       </section>
 
       <section id="depth" class="home-section">
         <h2>Going deeper while you work</h2>
-        <p class="section-lede">Use these when something breaks, when you finish early, or when you need to decide how much structure and checking the work warrants.</p>
+        <p class="section-lede">Use the failure signal to choose the next control. Do not respond to every problem by adding more autonomy.</p>
 
-        <h3>Failure catalog — symptom, cause, move</h3>
+        <h3>Failure signal → smallest useful intervention</h3>
         <div class="table-scroll">
           <table>
-            <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+            <thead><tr><th>Observed failure</th><th>Intervention</th><th>Why this, not more machinery</th></tr></thead>
             <tbody>
-              <tr><td>Answers come back thin, or &quot;I can&#x27;t find that in the vault&quot;</td><td>Project opened at the wrong level, or the notes involved are unlinked</td><td>Ask the assistant to list what it can see; confirm the project root is the vault root; check <code>MOC</code> links out to the hubs and the hubs to the notes</td></tr>
-              <tr><td>A citation opens to a note that never says that</td><td>The model paraphrased past the note — or invented the support</td><td>Mark <em>not supported</em>; re-direct with &quot;quote the exact supporting sentence per claim&quot;; remove claims that still lack a supporting sentence</td></tr>
-              <tr><td>A cited link is faded and clicking it offers to create a new note</td><td>The cited note does not exist — an invented title, or a rename broke it</td><td>That is a fake cite; treat the whole answer as suspect, audit the rest hard, and re-ask with &quot;cite only notes that exist&quot;</td></tr>
-              <tr><td>The vault fills with files like <code>summary_v2_final.md</code></td><td>You delegated the ontology instead of the typing</td><td>State the ontology and naming scheme in the direction; require proposed titles before writing; rename the offenders via Obsidian so backlinks update</td></tr>
-              <tr><td>The unreproduced SSO rumor shows up as a confirmed risk</td><td>Retrieval treats every note as equally true; status words got dropped in triage</td><td>Fix the notes first — status in the note text — then require answers to carry status forward; this is the partial-verdict case from Stage 4</td></tr>
-              <tr><td>Morning Brief reads well but cites nothing, or cites the conversation</td><td>Generation anchored on chat memory instead of the vault</td><td>Reject; regenerate with &quot;every claim cites a [[note]], vault only&quot;; spot-walk two links before accepting the redo</td></tr>
+              <tr><td>The same invalid tool action repeats</td><td>Stop after the error ceiling; repair the tool contract</td><td>Retries cannot make an invalid request valid</td></tr>
+              <tr><td>The next step depends on the last note</td><td>Keep a bounded single-agent retrieval loop</td><td>One context can carry the dependency; workers would duplicate reading</td></tr>
+              <tr><td>Claims sound good but overstate sources</td><td>Human trail audit plus default-fail evaluator</td><td>The missing control is an oracle, not more generation</td></tr>
+              <tr><td>A restart cannot tell what happened</td><td>Improve <code>RUN_STATE.md</code> and step records that make safe re-runs visible</td><td>A larger prompt does not create durable state</td></tr>
+              <tr><td>The verifier passes but the brief is not useful</td><td>Tighten the success contract and human rubric</td><td>Mechanical validity and decision quality are different checks</td></tr>
+              <tr><td>A component adds context and approvals but no lift</td><td>Disable it and rerun the representative case</td><td>Architecture is a hypothesis; measured removal is evidence</td></tr>
             </tbody>
           </table>
         </div>
 
-        <h3>Knowledge-system decisions worth examining</h3>
+        <h3>Metrics that point at better completion</h3>
         <ul>
-          <li><strong>When is agreement not evidence?</strong> Two notes that both trace to the same Slack thread are one source wearing two costumes, and a cited answer built on them looks better-supported than it is. What would your vault have to record — a source line per note? a provenance link? — for the machine to be unable to launder one rumor into three citations?</li>
-          <li><strong>What belongs in the vault versus the chat?</strong> Everything-in-the-vault drowns the structure in noise; nothing-in-the-vault starves it. Draw your line: what earned a durable note today, and what should remain temporary in the workroom?</li>
-          <li><strong>Where does &quot;unverified&quot; live?</strong> The seed carries a rumor, an unreproduced report, and a note explicitly marked to ignore for production. If your structure has no home for evidence status, every note ranks as equally true when retrieval touches it. Is status a word in the text, a tag, or a folder — and which remains clear after a machine rewrites the note?</li>
-          <li><strong>Would you hand this vault to a new deputy on day one?</strong> If not, name the gap precisely: missing notes, or missing links? The answer usually embarrasses one specific stage of this morning&#x27;s work — and tells you which habit to keep.</li>
+          <li><strong>Verified completion:</strong> how often the outcome clears the same acceptance bar across repeated runs</li>
+          <li><strong>Human attention per verified result:</strong> meaningful approvals, evidence judgments, and repairs—not keystrokes</li>
+          <li><strong>Efficiency after quality holds:</strong> elapsed time, turns, tokens, and cost per accepted result</li>
+          <li><strong>Recovery:</strong> whether a fresh context resumes without duplicate side effects or lost state</li>
+          <li><strong>Control quality:</strong> no-progress stops, approval correctness, regression failures, and unresolved-risk honesty</li>
+        </ul>
+        <p>Do not reward number of agents, turns, tool calls, files, or words. Fewer calls are an improvement only when the accepted-result rate still holds.</p>
+
+        <h3>Optional field guides for a real failure</h3>
+        <p>Open these only when the run exposes the corresponding problem. If the vault cannot support an answer, use <a href="../resources/p4/negative-knowledge.html"><strong>Negative Knowledge and Honest Refusal</strong></a> to distinguish unknown, disputed, restricted, stale, and not-observed states and to design a useful hand-back. If several notes appear to corroborate one another, use <a href="../resources/p4/claim-lineage.html"><strong>Claim Lineage: One Rumor, Five Notes</strong></a> to count root evidence, expose circular sourcing, and stop duplicated claims from masquerading as independent support.</p>
+
+        <h3>Current primary references</h3>
+        <ul>
+          <li><a href="https://openai.com/index/harness-engineering/" target="_blank" rel="noopener">OpenAI · Harness engineering</a> — repository knowledge, mechanical feedback, legibility, and human acceptance</li>
+          <li><a href="https://openai.github.io/openai-agents-python/running_agents/" target="_blank" rel="noopener">OpenAI Agents SDK · Running agents</a> — formal loop, turn limits, sessions, and durable integrations</li>
+          <li><a href="https://openai.github.io/openai-agents-python/human_in_the_loop/" target="_blank" rel="noopener">OpenAI Agents SDK · Human in the loop</a> — pause, approve, reject, and resume</li>
+          <li><a href="https://openai.github.io/openai-agents-python/tracing/" target="_blank" rel="noopener">OpenAI Agents SDK · Tracing</a> — model, tool, handoff, guardrail, and failure traces</li>
+          <li><a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic · Harness design for long-running apps</a> — structured handoffs, evaluator separation, and removal tests</li>
+          <li><a href="https://docs.langchain.com/oss/python/langgraph/functional-api" target="_blank" rel="noopener">LangGraph · Functional API</a> — checkpointing, determinism, replay, and safe nonduplicating re-runs</li>
+          <li><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">ReAct</a> — the foundational reasoning-and-action loop</li>
         </ul>
 
         <h3>At your desk</h3>
         <ul>
-          <li><strong>Program or project lead:</strong> a vault of decisions, owners, and risks; the Monday brief regenerated before standup instead of rebuilt from memory; &quot;what changed since Friday?&quot; becomes a cited answer.</li>
-          <li><strong>Analyst:</strong> source notes carrying provenance and status; the standing watch question re-asked each morning; every claim in the product traceable to a source note a reviewer can walk.</li>
-          <li><strong>Consultant:</strong> one vault per client, opened as its own project — the boundary is the confidentiality control, and the never-leave list is in the brief before the first question.</li>
-          <li><strong>Ops or on-call lead:</strong> incident notes linked to system notes; the handoff brief regenerated at shift change, citing the incidents it summarizes so the next shift can walk what it inherits.</li>
+          <li><strong>Program lead:</strong> a weekly decision brief with a stable evidence bar, bounded retrieval, one exception gate, and a saved handoff</li>
+          <li><strong>Analyst:</strong> a source-grounded watch product whose evaluator challenges claims but cannot rewrite sources</li>
+          <li><strong>Consultant:</strong> one project-root harness per client, each with separate data boundaries and approval rules</li>
+          <li><strong>Operations lead:</strong> a shift brief that can resume after interruption without repeating notifications or inventing incident status</li>
         </ul>
-
-        <h3>Stretch, after the required outcomes are complete</h3>
-        <p>Three directions, in rough order of value. Reconciliation: ask a real question that brings two conflicting notes into the same answer — the director&#x27;s ask treats the cyber rumor as possibly live while the on-call paste records it as unreproduced — and require the conflict to remain visible. Durability: rework the vault&#x27;s naming and hub structure into an information architecture you would still be using in 90 days, and write down why. Evidence boundaries: use the third question in <code>director_questions.md</code> — where are we over-confident? — and record a bounded refusal whenever the vault lacks enough support.</p>
-
-        <p class="eyebrow">Optional field guide · 45–60 min</p>
-        <h3>Turn missing evidence into a useful refusal</h3>
-        <p><a href="../resources/p4/negative-knowledge.html"><strong>Negative Knowledge and Honest Refusal</strong></a> distinguishes unknown, disputed, restricted, stale, and not-observed states, then records the bounded search and next observation needed before saying “none.”</p>
-
-        <p class="eyebrow">Optional field guide · 60–75 min</p>
-        <h3>Count evidence roots, not document volume</h3>
-        <p><a href="../resources/p4/claim-lineage.html"><strong>Claim Lineage: One Rumor, Five Notes</strong></a> reconstructs derivation paths, detects circular sourcing and false corroboration, and separates five artifacts from the one evidentiary root beneath them.</p>
       </section>
     </form>
 
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Before you move on</h2>
-        <p>A completed lesson includes the scoped vault, approved organization, two cited answers, a disposition for every citation, all real findings resolved, a checked Morning Brief, and the saved closeout. Full list: <a href="#floor">these P4 lesson outcomes</a>.</p>
+        <p>The useful product, raw-evidence audit, bound evaluator receipt, verifier, manifest, terminal state, real mid-run resume, scoped handoff, and workplace trial must all exist. Effort and architecture do not substitute for accepted completion. Review the <a href="#floor">P4 lesson outcomes</a>.</p>
       </div>
       <div>
-        <h2>If you get stuck</h2>
-        <ul>
-          <li><strong>&quot;The assistant can&#x27;t see my vault.&quot;</strong> The project is almost always opened at the wrong folder. Reopen it at the vault root — the folder that directly contains <code>MOC.md</code> — then ask the assistant to list what it sees and compare with Explorer.</li>
-          <li><strong>&quot;My answers keep citing one giant note.&quot;</strong> Triage collapsed the inbox into a single summary file, and a question cannot span notes that do not exist. Split the material back into separate titled notes, link them from the hubs, and re-ask.</li>
-          <li><strong>&quot;My links don&#x27;t resolve.&quot;</strong> Wikilinks match note titles exactly — <code>[[Billing API]]</code> and <code>[[Billing-API]]</code> are different notes. Pick one naming convention and rename via Obsidian itself, which updates the links that point at the renamed note.</li>
-          <li><strong>Assistant suddenly erroring mid-morning?</strong> A capped API key fails as a 429 quota error that reads like an auth failure. Don&#x27;t reinstall anything — flag it and check the key first.</li>
-          <li>When narrowing, narrow the <em>data scope</em>, not the judgment standard: fewer notes, same audit.</li>
-        </ul>
+        <h2>Uninstall and start fresh</h2>
+        <p>P4 installs no application, package, plugin, or MCP server. A reset removes only the disposable vault copy:</p>
+        <ol>
+          <li>Close the <code>p4-vault</code> project in Codex and switch Obsidian to another vault</li>
+          <li>In File Explorer, rename <code>Documents\p4-vault</code> to <code>p4-vault-backup-[TODAY]</code>; keep it until the new run passes</li>
+          <li>If same-date <code>P4_HANDOFF_*.md</code> or <code>P4_BASELINE_*.json</code> files already exist under <code>operator\evidence</code>, rename them with an <code>-archive-HHMM</code> suffix; never overwrite a prior trust anchor</li>
+          <li>Repeat Stage 01 from the untouched course seed; confirm <code>.agents</code> appears with <code>Get-ChildItem -Force</code></li>
+          <li>After the replacement run passes and its manifest exists, delete the backup in File Explorer if you no longer need it</li>
+        </ol>
+        <p><strong>Do not reinstall Codex, Obsidian, or Python for a failed loop.</strong> Reset the scoped run state first.</p>
       </div>
     </section>
 
