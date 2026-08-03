@@ -121,15 +121,14 @@
       contextLabel: "Tuesday AM · 30-minute presentation · Before P2"
     },
     {
-      code: "P2", name: "The personal control plane", title: "The personal control plane", day: "Tuesday", slot: "AM",
-      key: "ahb-checklist-p2-control-plane",
+      code: "P2", name: "Project Organizer", title: "Build the Project Organizer", day: "Tuesday", slot: "AM",
+      key: "ahb-checklist-p2-project-organizer",
       ids: [
-        "pulse-log", "mvp-control-plane", "mvp-skill", "mvp-plugin",
-        "mvp-delegation", "mvp-hook", "mvp-product", "mvp-release",
-        "mvp-30seed", "p2-transfer"
+        "project-open", "sqlite-ledger", "local-mcp", "bounded-team",
+        "organizer-plugin", "released-board", "pulse-log"
       ],
       stretchIds: [],
-      url: "blocks/p2.html", meta: "Codex · skills + hooks + plugins + subagents + MCP"
+      url: "blocks/p2.html", meta: "Codex · SQLite + local MCP + skill + plugin + subagents + hook"
     },
     {
       code: "MCP1", name: "Protocol and production map", title: "MCP & Agent Protocols in Production", kind: "briefing",
@@ -242,7 +241,7 @@
   var JOURNEY = [
     { phase: "Monday AM", title: "Install Clinic → First Light", codes: ["B0", "B1"] },
     { phase: "Monday PM", title: "Model economics → Daily Status Brief", codes: ["ME", "P1"] },
-    { phase: "Tuesday", title: "Control plane → MCP → verdict", codes: ["HCP", "P2", "MCP1", "MCP2", "P3"] },
+    { phase: "Tuesday", title: "Harness → Project Organizer → MCP → verdict", codes: ["HCP", "P2", "MCP1", "MCP2", "P3"] },
     { phase: "Wednesday", title: "Control flow → personal harness → trusted knowledge", codes: ["LOOPS", "P4", "P5"] },
     { phase: "Thursday", title: "Autonomy", codes: ["P6", "P7"] },
     { phase: "Friday", title: "Transfer", codes: ["P8"] }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The personal control plane · AI Harness Bootcamp · Starzl</title>
+  <title>Build the Project Organizer · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="../css/course.css" />
   <link rel="stylesheet" href="../css/checklist.css" />
 </head>
@@ -22,538 +22,608 @@
 
   <main class="site-main">
     <p class="eyebrow">Tuesday AM · P2 · AI Harness Bootcamp</p>
-    <h1>The personal control plane</h1>
-    <p class="lede">Turn yesterday's daily-brief machine into a durable system that carries your method, reaches current capability when needed, delegates bounded work, and refuses to release a product that misses its contract.</p>
+    <h1>Build the Project Organizer</h1>
+    <p class="lede">Direct Codex to turn scattered project files into a local visual board backed by SQLite, four read-only MCP tools, a focused skill, bounded subagents, and a deterministic release check.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Tuesday morning</span></div>
       <div><span class="k">Block</span><span class="v">P2</span></div>
       <div><span class="k">Time</span><span class="v">~2.5 hr + 45-min case talk</span></div>
-      <div><span class="k">Tools</span><span class="v">Codex app + CLI · <code>gpt-5.6-terra</code> · Python · official Docs MCP</span></div>
-      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p2-control-plane">0 / 10 · 0%</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex app + CLI · <code>gpt-5.6-terra</code> · Python/SQLite · local MCP</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p2-project-organizer">0 / 7 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
 
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
-      <a href="#orient">Orientation</a>
-      <a href="#ideas">Control-plane map</a>
+      <a href="#orient">The result</a>
+      <a href="#ideas">System map</a>
       <a href="#mission">Run of exercise</a>
-      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/9</span></a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/7</span></a>
       <a href="#depth">Operating notes</a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
-        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p2-control-plane"></span></div>
-        <span class="page-nav-pct" data-progress-for="ahb-checklist-p2-control-plane" data-progress-format="pct">0%</span>
+        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p2-project-organizer"></span></div>
+        <span class="page-nav-pct" data-progress-for="ahb-checklist-p2-project-organizer" data-progress-format="pct">0%</span>
       </div>
     </nav>
 
     <section id="orient" class="home-section">
       <div class="orient-grid">
         <div>
-          <h2 class="h-plain">Make the system carry the method</h2>
-          <p>P1 proved that a serious work product can be regenerated from controlled sources. P2 makes that ability durable. You will move the procedure into a focused skill, keep the always-on instructions short, install a reviewed plugin that supplies a deterministic release hook, use read-only specialists where separate context helps, and use MCP only where current external information is actually required.</p>
-          <p>The result is not a component collection. It is one working production line for the P1 daily brief. Every addition has a named job, a cost, an evidence path, and a way to turn it off.</p>
+          <h2 class="h-plain">Build one useful local system</h2>
+          <p>The supplied packet looks like real project work: a charter, a deliverable list, dependency notes, decisions, status updates, and a source register. The facts are spread across formats. By the end of P2, one local board shows what is ready, what is blocked, what decision is needed, and which source supports each item.</p>
+          <p>You direct the build with six complete prompts. Codex writes and tests the SQLite, MCP, skill, agent, plugin, renderer, and hook code. You inspect the evidence and make the release decision; you do not hand-author Python, TOML, JSON, or SQL.</p>
 
-          <h3>What you will leave with</h3>
+          <h3>The three files you release</h3>
           <ul>
-            <li>A clean personal project that contains the P1 source packet, a short project policy, and one focused daily-brief skill</li>
-            <li>A course-distributed plugin whose reviewed <code>Stop</code> hook checks the saved product and writes a release receipt</li>
-            <li>Evidence, documentation, and review agents, all pinned to <code>gpt-5.6-terra</code>, run under a read-only parent turn, and limited to two open agent threads</li>
-            <li>A real release-ready daily brief, its source map, configuration evidence, quality-gate receipt, and observed run cost</li>
-            <li>An active-component manifest that shows what stays on, what remains available on demand, and what is disabled until a named need appears</li>
+            <li><code>PROJECT_BOARD.html</code> — the visual board a lead can use at a glance</li>
+            <li><code>PROJECT_STATE.json</code> — the board's structured, source-linked state</li>
+            <li><code>RUN_RECEIPT.json</code> — the release check, hashes, labeled measured/reported run facts, and PASS or HOLD result</li>
           </ul>
 
           <h3>Before you start</h3>
           <ul>
             <li>Complete the <a href="hcp.html"><strong>Harness Control Plane</strong></a> presentation immediately before this module</li>
-            <li>Use the P1 files you built yesterday; the bootstrap also copies the provided corpus if one generated artifact needs to be rebuilt</li>
-            <li>Begin with <strong>Ask for approval</strong> and use <strong>GPT-5.6 Terra</strong> for the main thread and every subagent; Stages 03 and 05 name the exact read-only parent turns and when to switch back</li>
-            <li>Keep the Codex app as the work surface; Stage 02 adds the Codex CLI only because current hook review and trust live under its <code>/hooks</code> command</li>
+            <li>Use <strong>GPT-5.6 Terra</strong> for the main chat and all three custom agents</li>
+            <li>Keep <strong>Ask for approval</strong> selected. Approve only project-local build and test commands named in the prompt</li>
+            <li>No external account or cloud document is required. The database, MCP server, plugin, and board stay on this computer</li>
           </ul>
         </div>
         <div class="orient-aside">
           <div class="lead-box">
-            <p class="eyebrow">The line you are building</p>
-            <p><strong>P1 sources</strong> → focused skill → read-only evidence scout → main writer → independent reviewer → deterministic quality gate → operator release.</p>
+            <p class="eyebrow">The system you are building</p>
+            <p><strong>Messy project files</strong> → SQLite ledger → four read-only MCP tools → skill + two workers → visual board → sequential review → deterministic release hook.</p>
           </div>
           <div class="callout">
             <strong>One writer</strong>
-            Subagents research and review. The main agent alone edits the product. Parallel writes create coordination cost without improving this result.
+            Two workers inspect separate parts of the project in parallel. The main thread alone invokes the deterministic renderer. The reviewer runs after the board exists and never edits it.
+          </div>
+          <div class="callout">
+            <strong>No invented project state</strong>
+            Missing or conflicting information stays visible as unknown or needs-decision. A polished guess is a database error with better typography.
           </div>
           <div class="callout" id="case-talk">
             <strong>Before lunch · Harness case talk (45 min)</strong>
-            The lead shows a real control plane in use: the job, the component choices, the evidence that mattered, what it cost, and what still required human judgment.
-          </div>
-          <div class="callout">
-            <strong>After P2</strong>
-            Two MCP presentations deepen the protocol and operating method before P3. P2 uses one narrow Docs MCP connection; P3 owns production evidence-server setup, tool-contract inspection, approvals, provenance, and shutdown.
+            The lead shows a real personalized harness in use: the job, component choices, evidence, operating cost, and decisions that remain human.
           </div>
         </div>
       </div>
 
-      <div class="skill-grid" aria-label="P2 control-plane route">
-        <div class="skill-cell"><span class="k">1 · Define</span><span class="n">One real product</span><p>Reader, evidence, acceptance, budget, approval boundary, and release decision.</p></div>
-        <div class="skill-cell"><span class="k">2 · Place</span><span class="n">The smallest useful controls</span><p>Always-on guidance, on-demand procedure, event enforcement, bounded capability.</p></div>
-        <div class="skill-cell"><span class="k">3 · Run</span><span class="n">One integrated line</span><p>Evidence first, one main writer, one independent review, one bounded repair.</p></div>
-        <div class="skill-cell"><span class="k">4 · Release</span><span class="n">Measured and reversible</span><p>Saved product, PASS receipt, observed cost, residual risk, and an enacted keep/revise/leave-off decision.</p></div>
+      <div class="skill-grid" aria-label="P2 project-organizer route">
+        <div class="skill-cell"><span class="k">1 · Normalize</span><span class="n">SQLite ledger</span><p>Stable records, relationships, source identity, explicit unknowns, and a deterministic rebuild.</p></div>
+        <div class="skill-cell"><span class="k">2 · Expose</span><span class="n">Local MCP</span><p>Four decision-sized, read-only questions instead of broad database access.</p></div>
+        <div class="skill-cell"><span class="k">3 · Orchestrate</span><span class="n">Skill + agents</span><p>Two parallel inspections, one write-capable main thread, and one sequential reviewer.</p></div>
+        <div class="skill-cell"><span class="k">4 · Release</span><span class="n">Board + receipt</span><p>A visual operating picture and a deterministic check of the saved artifacts.</p></div>
       </div>
     </section>
 
     <section id="ideas" class="home-section">
-      <h2>Put each behavior where it belongs</h2>
-      <p class="section-lede">The strongest harness is not the one with the most parts. It is the one that loads each necessary behavior at the narrowest useful scope.</p>
+      <h2>Each layer removes a real bottleneck</h2>
+      <p class="section-lede">The organizer is useful because the layers work as one line. None of them is present merely to demonstrate a feature.</p>
 
       <table>
-        <thead><tr><th>Surface</th><th>When it loads</th><th>Use it for</th><th>Do not mistake it for</th></tr></thead>
+        <thead><tr><th>Layer</th><th>Job in this system</th><th>Important boundary</th></tr></thead>
         <tbody>
-          <tr><td><strong><code>AGENTS.md</code></strong></td><td>Every turn in scope</td><td>Short project conventions, constraints, commands, and ownership</td><td>A storage bin for every procedure</td></tr>
-          <tr><td><strong>Skill</strong></td><td>When named or matched by its description</td><td>One reusable workflow with inputs, decisions, output, and stopping rules</td><td>Deterministic enforcement</td></tr>
-          <tr><td><strong>Hook</strong></td><td>At a lifecycle event</td><td>A mechanical check that must run even when the model forgets</td><td>A complete security boundary or another prompt</td></tr>
-          <tr><td><strong>Subagent</strong></td><td>When delegated</td><td>Isolated read-heavy research, tests, or review with a compressed return</td><td>A second independent engine or free compute</td></tr>
-          <tr><td><strong>MCP</strong></td><td>When a connected capability is needed</td><td>Live external data or controlled action with a declared tool surface</td><td>A workflow, a trust seal, or another opinion</td></tr>
-          <tr><td><strong>Plugin</strong></td><td>When installed and enabled</td><td>Distributing stable skills, hooks, MCP configuration, and related assets</td><td>A new reasoning layer</td></tr>
-          <tr><td><strong>Config + approval</strong></td><td>At project/session runtime</td><td>Model, concurrency, sandbox, permissions, and tool policy</td><td>Evidence that the output is correct</td></tr>
+          <tr><td><strong>Source packet</strong></td><td>Holds the facts as received, including gaps and conflicts</td><td>Never rewrite a source to make the board cleaner</td></tr>
+          <tr><td><strong>SQLite ledger</strong></td><td>Normalizes projects, deliverables, dependencies, decisions, updates, and sources once</td><td>Every material record keeps its source identity; unknown stays unknown</td></tr>
+          <tr><td><strong>Local MCP</strong></td><td>Answers four recurring project questions through a small read-only tool surface</td><td>No arbitrary SQL, writes, network listener, or silent fallback to model memory</td></tr>
+          <tr><td><strong>Skill</strong></td><td>Carries the repeatable organizer workflow and stop conditions</td><td>One focused workflow, not another always-on policy manual</td></tr>
+          <tr><td><strong>Subagents</strong></td><td>Inspect scope/state and dependency/ready-work in parallel; review after assembly</td><td>Read-only roles on Terra; the main thread alone invokes the renderer</td></tr>
+          <tr><td><strong>Plugin</strong></td><td>Packages the stable skill, renderer, and one release hook</td><td>Inspect before installing; trust the exact hook separately</td></tr>
+          <tr><td><strong>Release hook</strong></td><td>Checks the real saved board, state, ledger, and contract when the renderer creates the release set</td><td>It proves checks ran; it does not choose priorities or approve a decision</td></tr>
         </tbody>
       </table>
 
-      <h3>Six engineering rules that save real work</h3>
       <div class="skill-grid">
-        <div class="skill-cell"><span class="k">Context</span><span class="n">Keep always-on guidance thin</span><p>Skill names and descriptions can load before their bodies. A bloated catalog still consumes context and may be shortened or omitted. Narrow descriptions are routing contracts.</p></div>
-        <div class="skill-cell"><span class="k">Guarantee</span><span class="n">Use code for must-run checks</span><p>A skill can tell the model to check. A hook can make the check run at <code>Stop</code>. Current Codex hooks execute reviewed command handlers; they are useful guardrails, not complete containment.</p></div>
-        <div class="skill-cell"><span class="k">Topology</span><span class="n">Parallelize reads, serialize judgment</span><p>Run independent evidence and documentation research together. Review only after a candidate exists. Keep one writer so the product has one owner.</p></div>
-        <div class="skill-cell"><span class="k">Capability</span><span class="n">Give MCP one bounded job</span><p>The Docs MCP server verifies changing product behavior from primary documentation. It is read-only here; no business system or write-capable tool is added merely to demonstrate a connection.</p></div>
-        <div class="skill-cell"><span class="k">Distribution</span><span class="n">Package only stable controls</span><p>Your daily-brief skill stays local while it changes. The course quality gate is already stable and shared, so it earns plugin packaging.</p></div>
-        <div class="skill-cell"><span class="k">Release</span><span class="n">Measure the integrated outcome</span><p>Record acceptance, time, turns, approvals, repairs, quality-gate result, and residual risk from the actual product run.</p></div>
+        <div class="skill-cell"><span class="k">Data design</span><span class="n">Compile facts before asking for judgment</span><p>The model should not reread six files and reconstruct relationships differently on every question. Build the ledger once, verify it, then query it.</p></div>
+        <div class="skill-cell"><span class="k">Tool design</span><span class="n">Expose questions, not machinery</span><p><code>get_ready_work</code> is a useful contract. An unrestricted “run SQL” tool widens risk and pushes schema trivia into every turn.</p></div>
+        <div class="skill-cell"><span class="k">Agent design</span><span class="n">Parallelize independent reads</span><p>Scope and dependencies can be inspected together. Review must wait for the candidate because reviewing a board that does not exist saves no time.</p></div>
+        <div class="skill-cell"><span class="k">Release design</span><span class="n">Separate correctness from judgment</span><p>The gate can verify structure, provenance, consistency, and hashes. A person still owns priority, escalation, and the decision to act.</p></div>
       </div>
     </section>
 
-    <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p2-control-plane" data-block="P2">
+    <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p2-project-organizer" data-block="P2">
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Upgrade the real P1 daily-brief machine. The course supplies the plumbing; your work is choosing, directing, running, measuring, and releasing the system.</p>
+        <p class="section-lede">Paste one substantial direction per stage. Let Codex create and test the implementation; your job is to inspect the named result and keep the project facts honest.</p>
 
-        <h3>Stage 01 · Create the project and set the contract</h3>
-        <p>Build outside the course repository so P2's skills, agents, plugin, and hook do not silently become cargo in later modules. The bootstrap copies your completed P1 folder and refuses to overwrite an existing P2 project.</p>
+        <h3>Stage 01 · Open the project and read the source contract</h3>
+        <p>The bootstrap creates a separate learner project and refuses to overwrite an earlier run. Start there so plugin, agent, and MCP configuration do not leak into the course repository.</p>
 
         <div class="do-step">
-          <p class="do-label">Open the P2 PowerShell window from the beginning:</p>
+          <p class="do-label">Create the learner project from the beginning:</p>
           <ol class="do-clicks">
             <li>Press the <strong>Windows</strong> key, type <strong>PowerShell</strong>, and open <strong>Windows PowerShell</strong></li>
-            <li>Paste the commands below</li>
-            <li>Keep this PowerShell window open through Stage 06</li>
+            <li>Paste the two lines below</li>
+            <li>Keep this PowerShell window open. The final message must name <code>Documents\HarnessBootcamp\P2_Project_Organizer</code></li>
           </ol>
           <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
 powershell -NoProfile -ExecutionPolicy Bypass -File ".\instruments\p2_control_plane\bootstrap.ps1"</code></pre>
-          <p>The final line must name <code>Documents\HarnessBootcamp\P2_Control_Plane</code>. If that folder already exists, the bootstrap stops rather than replacing your work.</p>
-          <p>If P1 was completed in another Codex project, rerun the command with <code>-P1Source "C:\path\to\that\project\mission_flesh\p1"</code>. The bootstrap stops and names any missing manifest, audit, release record, or corpus instead of silently creating a partial P2 project.</p>
+          <p>If the destination already exists, the script stops instead of replacing it. Open that project to continue, or move the old folder to a dated archive and run the bootstrap again.</p>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Open the new project and create its first chat:</p>
+          <p class="do-label">Open the new project and create the build chat:</p>
           <ol class="do-clicks">
-            <li>Open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong></li>
-            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\P2_Control_Plane</code></li>
-            <li>If Codex asks whether to trust this project, verify that exact path and choose <strong>Trust</strong>. This enables the reviewed project configuration and custom agents; it does not trust the plugin hook</li>
-            <li>Click <strong>New chat</strong>, open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P2 — Control Plane Build</code></li>
+            <li>Open <strong>ChatGPT</strong> from the Start menu and select <strong>Codex</strong></li>
+            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\P2_Project_Organizer</code></li>
+            <li>If Codex asks for trust, verify that exact path and choose <strong>Trust</strong></li>
+            <li>Click <strong>New chat</strong>, open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P2 — Project Organizer Build</code></li>
             <li>Select <strong>GPT-5.6 Terra</strong> and confirm <strong>Ask for approval</strong></li>
           </ol>
         </div>
 
-        <div class="do-step" id="p2-profile-proof">
-          <p class="do-label">Paste this into <strong>P2 — Control Plane Build</strong>:</p>
-          <pre><code>We are defining the production control plane for the P1 daily status brief.
-Do not draft the brief yet.
+        <div class="do-step" id="p2-project-open-proof">
+          <p class="do-label">Paste this into <strong>P2 — Project Organizer Build</strong>:</p>
+          <pre><code>We are building the local P2 Project Organizer. Do not implement it yet.
 
-Read AGENTS.md, HARNESS_PROFILE.md, P2_CONTROL_PLANE.json, the existing skill,
-and everything under inputs/p1/. Find the actual P1 reader, source manifest,
-regenerate path, audit, release record, and current brief.
+Read AGENTS.md, PROJECT_ORGANIZER_CONTRACT.md, .codex/config.toml, and every
+file under source_packet/. Treat the packet as the complete source boundary.
 
-If a generated P1 artifact is missing, reconstruct only that necessary artifact
-from inputs/p1/corpus and label the recovery in HARNESS_PROFILE.md. Do not invent
-workplace facts.
+Return one compact build brief with:
+1. the project, deliverables, dependencies, decisions, updates, and sources
+   actually present;
+2. conflicts, missing values, and phrases that must remain unknown;
+3. the three release files and what each one must prove;
+4. the six build stages, the exact files each stage creates, and the command
+   that will verify that stage;
+5. a clear statement that no source file will be rewritten and no project fact
+   will be invented.
 
-Replace every bracket in HARNESS_PROFILE.md that can be resolved now. Check that
-the acceptance contract matches the real P1 product. Keep AGENTS.md short and
-project-wide. Keep P2_CONTROL_PLANE.json disabled. Return a compact routing table:
-need → surface → why it loads there → runtime cost → how to disable it.
-Stop after the profile, contract, and routing are coherent.</code></pre>
-          <p>Open the changed profile in the file preview. The reader, source boundary, acceptance conditions, runtime limits, and disable path must describe one real product rather than a generic assistant.</p>
+Check the plan against PROJECT_ORGANIZER_CONTRACT.md. Stop after the brief so I
+can inspect the source interpretation before code is created.</code></pre>
+          <p>Compare the returned inventory with the six files in <code>source_packet</code>. Resolve a real mismatch now. Do not fill a missing owner, date, status, or decision with a plausible guess.</p>
         </div>
 
-        <h3>Stage 02 · Personalize the skill and install the plugin</h3>
-        <p>The skill owns the repeatable method. The plugin owns distribution of a stable release check. They are deliberately separate: the first is still personal and changing; the second is course-tested shared infrastructure.</p>
+        <h3>Stage 02 · Build and verify the SQLite ledger</h3>
+        <p>The ledger turns mixed files into stable, queryable records. Python already includes <code>sqlite3</code>; this stage needs no database server, account, or additional package.</p>
 
-        <div class="do-step" id="p2-skill-proof">
-          <p class="do-label">In <strong>P2 — Control Plane Build</strong>, paste:</p>
-          <pre><code>Use $skill-creator to review and improve the existing
-.agents/skills/daily-brief-release/SKILL.md for this actual P1 product.
+        <div class="do-step" id="p2-sqlite-proof">
+          <p class="do-label">In <strong>P2 — Project Organizer Build</strong>, paste:</p>
+          <pre><code>Build the verified SQLite layer for the P2 Project Organizer from the approved
+source interpretation. You own all SQL and Python implementation; do not ask me
+to hand-edit code.
 
-Keep one focused skill. Its description must say when the workflow should and
-should not trigger. Its body must define inputs, source limits, evidence work,
-the saved output, the independent review, the deterministic release gate, and
-the HOLD condition. Use a script only for a genuinely deterministic operation.
-Do not create a second skill and do not move project-wide rules out of AGENTS.md.
+Create at the project root:
+- schema.sql
+- build_project_ledger.py
+- verify_project_ledger.py
+- project_ledger.sqlite3
 
-Show me the final description, the expected trigger request, and one nearby
-request that should not trigger it.</code></pre>
-          <p>Open <strong>Skills</strong> in the app sidebar and find <strong>daily-brief-release</strong>. Its short description should identify this workflow without reading like a title or matching unrelated summary work. If the updated skill does not appear, restart the app and reopen the project.</p>
+Requirements:
+- Use Python's standard-library sqlite3 only for the database layer.
+- Create exactly these domain tables: projects, deliverables, dependencies,
+  decisions, updates, and sources. Use stable ids, declared foreign keys, useful
+  indexes, and source identity on every material record.
+- Use parameterized SQL for values, enable foreign-key checks, use transactions,
+  and preserve UTF-8 text. Preserve an explicit source value such as
+  "Not assigned in source" literally; it is an honest unknown, not SQL NULL or a
+  placeholder. Never infer an owner, date, dependency, status, or decision.
+- Make rebuild deterministic. Build a temporary database, verify it, then replace
+  the target atomically. Refuse to overwrite an existing ledger unless --rebuild
+  is explicit.
+- Make errors name the source file and record. Fail on orphan relationships,
+  duplicate ids, invalid enumerated values, missing provenance, or a source count
+  that disagrees with the packet.
+
+Run these commands yourself from the project root:
+  py -3 build_project_ledger.py --rebuild
+  py -3 verify_project_ledger.py
+
+Then run a focused smoke test that opens the database read-only and reports table
+counts, foreign-key status, ready deliverables, blocked deliverables, and unresolved
+decisions. Repair real implementation defects and rerun until it passes. Do not
+alter the source packet to make a test pass. Return the final PASS evidence and
+the ledger counts; do not start the MCP server yet.</code></pre>
+          <p>Open the verification output in the chat. It should name all six tables, report intact foreign keys and provenance, and preserve unresolved information rather than smoothing it away.</p>
         </div>
+
+        <h3>Stage 03 · Build the four-tool local MCP server</h3>
+        <p>MCP gives the harness a narrow, reusable way to ask the ledger for decision-ready evidence. The server is local and read-only. It does not expose arbitrary SQL or accept writes.</p>
 
         <div class="do-step">
-          <p class="do-label">Inspect the plugin before installing it:</p>
-          <pre><code>Review plugins/p2-release-control as an untrusted local package.
-Read its manifest, hook definition, Python handler, and smoke test.
-Report: the lifecycle event; the exact command on Windows; files read and
-written; network or credential access; behavior when disabled; behavior on the
-first and second failure; and the uninstall or disable path.
-Do not install, trust, or change it. Save the completed review to
-out/PLUGIN_REVIEW.md.</code></pre>
-          <p>Open <code>out/PLUGIN_REVIEW.md</code>. It should show one <code>Stop</code> command hook, local project files only, no network or credentials, an inert default, one bounded continuation, and a saved JSON receipt.</p>
+          <p class="do-label">In <strong>P2 — Project Organizer Build</strong>, paste:</p>
+          <pre><code>Build and register the local read-only MCP server for this verified ledger. Lock
+the tested runtime exactly in package.json and package-lock.json:
+- engines.node: ">=22.22 <25";
+- dependencies: @modelcontextprotocol/server 2.0.0 and zod 4.4.3;
+- devDependencies: @modelcontextprotocol/client 2.0.0.
+Use exact versions with no caret, tilde, tag, or other range. Let the SDK
+negotiate the protocol with Codex. Do not hand-roll JSON-RPC framing, pin a
+remembered protocol version, open a network listener, or add a cloud service.
+
+Expose exactly four tools:
+- get_project_snapshot: project identity, delivery state, source coverage, and
+  explicit unknowns—do not duplicate the path, blocked-work array, or decision
+  queue owned by the other tools;
+- get_ready_work: deliverables whose declared dependencies are satisfied, with
+  readiness_evidence that names the dependency, predecessor and its status, and
+  both source IDs;
+- get_dependency_path: the longest declared launch path for a named deliverable;
+  the packet has no durations, so describe only its declared relationship sequence;
+- get_decision_queue: open decisions, options/status if supplied, owner if
+  supplied, and affected work.
+
+Every tool must open project_ledger.sqlite3 in read-only mode, use parameterized
+queries, return stable ids and source ids, distinguish empty results from errors,
+include the same current source_fingerprint, and fail visibly if the ledger is
+missing or invalid. Declare read-only and non-destructive tool hints, but do not
+treat hints as a security boundary.
+
+Create the locked SDK package and server at:
+- plugins/project-organizer/package.json and its lockfile;
+- plugins/project-organizer/mcp/server.mjs;
+- plugins/project-organizer/mcp/query_ledger.py, the bounded read-only SQLite
+  adapter;
+- plugins/project-organizer/lib/ledger_verifier.py, the shared data-only verifier;
+- plugins/project-organizer/tests/smoke.mjs.
+
+Make every MCP request use the bundled verifier before it returns data. It must
+check the exact schema, all six current source hashes, and full source-row-to-ledger
+value parity. Design this verifier for reuse by the trusted hook. The hook must
+never import or run project-root verify_project_ledger.py; learner Python, schema,
+sources, SQLite, evidence reports, and release files stay untrusted data.
+
+Define no install-time lifecycle scripts such as preinstall, install,
+postinstall, or prepare. Keep package scripts limited to the explicit start and
+test commands; dependency installation must never execute package scripts.
+
+Create an idempotent configure_project_organizer.ps1 that writes this project's
+absolute server, project-root, and Python paths into .codex/config.toml, places
+the interpreter in PROJECT_ORGANIZER_PYTHON, allows only the four tools, and
+preserves unrelated configuration.
+
+Run the installation, configuration, and tests yourself, including:
+  npm ci --prefix plugins/project-organizer --ignore-scripts --no-audit --no-fund
+  powershell -NoProfile -ExecutionPolicy Bypass -File .\configure_project_organizer.ps1
+  npm test --prefix plugins/project-organizer
+
+Test a real SDK initialize/negotiation followed by tools/list and tools/call for
+all four tools. Confirm that no tool can mutate the ledger and no response loses
+source identity. Repair implementation defects and rerun until every check passes.
+Return the exact PASS summary, registration name, four tool names, and restart
+step. The smoke summary must say "PASS project-organizer MCP: 4 read-only tools,
+bounded SQLite queries, no write surface". Do not build the board yet.</code></pre>
+        </div>
+
+        <div class="do-step" id="p2-mcp-proof">
+          <p class="do-label">Load and inspect the project-scoped MCP registration:</p>
+          <ol class="do-clicks">
+            <li>Completely quit and reopen the ChatGPT desktop app, choose <strong>Codex</strong>, and reopen <code>P2_Project_Organizer</code></li>
+            <li>Open the integrated terminal, run <code>codex</code>, then type <code>/mcp</code></li>
+            <li>Confirm one local <code>project_organizer</code> server exposes exactly the four expected tools, then type <code>/exit</code></li>
+            <li>Return to <strong>P2 — Project Organizer Build</strong></li>
+          </ol>
+        </div>
+
+        <h3>Stage 04 · Create the organizer skill and bounded agent team</h3>
+        <p>The two workers have genuinely separate jobs: one reconciles scope, status, decisions, and source coverage; the other resolves ready work and dependency paths. They can run together. The reviewer cannot run until the board exists.</p>
+
+        <div class="do-step" id="p2-team-proof">
+          <p class="do-label">After the restart, paste this into <strong>P2 — Project Organizer Build</strong>:</p>
+          <pre><code>Read the exact "Agent evidence contract" and release lifecycle in
+PROJECT_ORGANIZER_CONTRACT.md. Use $skill-creator to create one focused
+project-organizer skill at
+plugins/project-organizer/skills/project-organizer/SKILL.md. Then create exactly:
+  .codex/agents/scope_mapper.toml
+  .codex/agents/dependency_planner.toml
+  .codex/agents/board_reviewer.toml
+
+Pin all three agents to gpt-5.6-terra and a read-only filesystem. Copy the exact
+JSON report schemas, fixed field names, tool arrays, verdicts, checked_sections,
+finding rules, and HOLD behavior from the contract into their return contracts.
+
+Keep the work disjoint:
+- scope_mapper alone calls get_project_snapshot and get_decision_queue, then its
+  exact JSON-only return is saved without rewriting at
+  .project-organizer/evidence/scope_mapper.json;
+- dependency_planner alone calls get_ready_work and get_dependency_path for
+  DLV-004, uses launch_path_ids for the longest declared launch path, then its
+  exact JSON-only return is saved without rewriting at
+  .project-organizer/evidence/dependency_planner.json;
+- the parent does not repeat any of those four MCP calls. It waits for both
+  workers and invokes the deterministic renderer;
+- board_reviewer runs only after the candidate state and board exist. It checks
+  the exact contract sections, including launch_path and worker_reconciliation,
+  binds the candidate state and board hashes, and saves its exact JSON-only return
+  at .project-organizer/evidence/board_reviewer.json. It never edits or runs the
+  release gate.
+
+The skill owns that full procedure: verify the ledger; confirm one four-tool MCP
+server; run the two workers concurrently; preserve their reports; render the
+CANDIDATE board and PENDING receipt; run the reviewer sequentially; never rerender
+after review; stop normally so the trusted hook can act; and return only the
+candidate, reviewer result, and artifact paths. It must preserve an explicit
+"Not assigned in source" value and HOLD on a stale fingerprint, malformed report,
+overlapping tool ownership, worker HOLD, or reviewer HOLD.
+
+Validate the skill and agent files using current Codex rules. Run a focused
+routing/report-schema test and repair implementation defects until it passes.
+Return the final routing table, the three save paths, and PASS evidence. Do not
+run the production organizer in this stage.</code></pre>
+          <p>Inspect the returned routing table. There should be two concurrent read jobs, one later review job, and one writer. If two roles can change the same artifact, the boundary is not finished.</p>
+        </div>
+
+        <h3>Stage 05 · Package, inspect, and trust the plugin</h3>
+        <p>The plugin makes the working pieces installable as one unit. Installation is not trust: you inspect the package, install it, then separately trust the exact hook definition.</p>
+
+        <div class="do-step">
+          <p class="do-label">In <strong>P2 — Project Organizer Build</strong>, paste:</p>
+          <pre><code>Read PROJECT_ORGANIZER_CONTRACT.md again. Use $plugin-creator to finish one
+installable plugin at plugins/project-organizer and one local marketplace entry.
+Keep one skill, the existing MCP source, the bundled data-only verifier, one
+deterministic renderer, exactly one Stop hook, and their tests. Keep the only MCP
+runtime registration in this project's .codex/config.toml; add no second server.
+
+Implement the exact contract, with these trust boundaries:
+- plugins/project-organizer/lib/ledger_verifier.py is the shared verifier for
+  every MCP request and the hook. The installed hook may execute only reviewed
+  code bundled in the installed plugin. It must never import or run project-root
+  verify_project_ledger.py; project Python, schema, sources, SQLite, reports, and
+  release files are data.
+- The renderer requires the two exact PASS worker reports at their fixed paths.
+  It rejects stale fingerprints, malformed JSON, overlapping tool ownership, or
+  anything other than the full four-tool partition. It binds both report hashes,
+  puts their useful source-cited findings on the board, and writes state and board
+  as CANDIDATE followed by a PENDING receipt. Each destination uses its own
+  temporary-file replacement; do not claim the trio is one atomic transaction.
+- The board visibly answers the contract's eight practical questions, including
+  Ready now, the longest declared launch path, decision ownership, Source
+  coverage, explicit unknowns, and a visible Scope and sequence findings section.
+  Keep it offline and
+  script-free. Preserve "Not assigned in source" literally.
+- The Stop hook stays inert until the trio exists. It verifies exact schema and
+  full source-row parity with the bundled verifier, current worker reports, exact
+  deterministic state-to-board bytes, the offline boundary, and a current
+  board_reviewer report whose source fingerprint and candidate hashes match. It
+  requires REVIEW: PASS before it writes status PASS, gate_status PASS, and
+  board_status RELEASE.
+- The final receipt binds all three report hashes. Its evidence object carries
+  agent_reports_bound, mcp_tools_reported, mcp_tools_basis set to
+  "validated worker reports", and usage_visibility. Only elapsed_seconds and
+  release-gate repairs are measured. Do not claim the gate independently watched
+  agent runs or tool calls.
+- Allow one focused repair request. Never issue a second block, even if a later
+  event resets stop_hook_active. REVIEW: HOLD or any remaining failure leaves a
+  visible HOLD receipt.
+
+Run the package, skill, MCP, renderer, verifier, hook, and full release tests in a
+temporary project. Use the real packet and repair only real implementation
+defects. Leave the learner project's release files absent.
+
+Review the finished package as untrusted. Return the exact Stop command; installed
+code executed; project data read and written; network and credential access;
+inert behavior; one-repair boundary; marketplace root; disable/uninstall paths;
+and this conditional recovery rule: a source-data or generated-artifact repair
+does not reinstall the plugin, but a plugin-code repair requires validation,
+remove/add or uninstall/install, app restart, /hooks inspection, and new trust.
+Do not register the marketplace, install the plugin, or trust the hook for me.</code></pre>
         </div>
 
         <div class="do-step" id="p2-plugin-proof">
-          <p class="do-label">Test, install, and trust the reviewed package:</p>
+          <p class="do-label">Register the marketplace, then install and trust only what you reviewed:</p>
           <ol class="do-clicks">
-            <li>Open the app's integrated terminal with the terminal icon in the top-right or <strong>Ctrl+`</strong></li>
-            <li>Run the smoke test below; continue only when it prints <code>PASS p2-release-control</code></li>
-            <li>Run <code>codex --version</code>. If PowerShell cannot find it, install the current official CLI with the npm command below, close and reopen the terminal, and run the version check again</li>
-            <li>Run <code>codex login status</code>. It should report the API-key login already configured for the app. If it does not, stop and ask the instructor to restore that course login; do not paste a key into the terminal or create <code>OPENAI_API_KEY</code></li>
-            <li>Restart the ChatGPT desktop app so it discovers the project's local marketplace</li>
-            <li>Reopen <code>P2_Control_Plane</code>, open <strong>Plugins</strong>, choose <strong>AI Harness Bootcamp</strong>, and install <strong>P2 Release Control</strong></li>
-            <li>Open the integrated terminal again and run <code>codex</code> from the P2 project. If the CLI asks to trust the project, verify the path and accept; project trust loads its config, but still does not trust a hook</li>
-            <li>Type <code>/hooks</code> in the <strong>CLI</strong>. Open the <strong>Stop</strong> handler, compare its command with the one you reviewed, and separately trust that exact definition</li>
-            <li>Type <code>/exit</code> to leave the CLI. Stage 03 creates the fresh app chat that loads the installed plugin</li>
+            <li>In the ChatGPT desktop app, choose <strong>Codex</strong>, open <code>Documents\HarnessBootcamp\P2_Project_Organizer</code>, and return to <strong>P2 — Project Organizer Build</strong></li>
+            <li>Open the integrated terminal with the terminal icon or <strong>Ctrl+`</strong>. At its PowerShell prompt, paste <code>codex plugin marketplace add "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Project_Organizer"</code></li>
+            <li>Run <code>codex plugin marketplace list</code>. Confirm it lists <code>ai-harness-bootcamp</code> at that exact project root; an <code>already added</code> result is fine only when the root matches</li>
+            <li>Completely quit and restart the ChatGPT desktop app. Choose <strong>Codex</strong> and reopen <code>Documents\HarnessBootcamp\P2_Project_Organizer</code></li>
+            <li>Open <strong>Plugins</strong>, choose <strong>AI Harness Bootcamp</strong>, open <strong>Project Organizer</strong>, and select <strong>Install plugin</strong></li>
+            <li>Return to the project, open the integrated terminal, run <code>codex</code>, and verify the project path if the CLI asks for trust</li>
+            <li>Type <code>/hooks</code>. Open the <strong>Stop</strong> handler and compare the command, files, and inert-before-output behavior with the review returned above</li>
+            <li>Trust that exact hook definition, then type <code>/exit</code></li>
           </ol>
-          <pre><code>py -3 .\plugins\p2-release-control\tests\smoke_test.py
-codex --version
-codex login status</code></pre>
-          <p>If <code>codex --version</code> is not recognized, install the CLI and then reopen the terminal:</p>
-          <pre><code>npm install -g @openai/codex</code></pre>
-          <p>The desktop app installs the local plugin; the CLI exposes the current <code>/hooks</code> trust browser. Installation alone does not trust a hook. Trust is recorded against the exact definition, so a later change must be reviewed again.</p>
+          <p>Bundled hooks do not become trusted merely because a plugin is installed. If the command differs from the reviewed command, stop and inspect the change. To pause the plugin later, open it under <strong>Plugins</strong> and turn it off. To remove it, choose <strong>Uninstall plugin</strong>. Those actions are separate from removing the marketplace source with <code>codex plugin marketplace remove ai-harness-bootcamp</code>.</p>
+          <p><strong>If a later repair changes plugin code:</strong> validate the package again, uninstall and reinstall it in <strong>Plugins</strong>—or run <code>codex plugin remove project-organizer@ai-harness-bootcamp</code> followed by <code>codex plugin add project-organizer@ai-harness-bootcamp</code>—then restart the app, inspect <code>/hooks</code>, and trust the reviewed definition again. Rerun the workers, renderer, and reviewer afterward. A source-data or generated-artifact repair does not use this reinstall branch.</p>
         </div>
 
-        <h3>Stage 03 · Delegate evidence and current configuration research</h3>
-        <p>Use parallelism where it removes real waiting: the source analyst can inspect the P1 packet while the documentation specialist verifies current Codex behavior. Set the permission mode on the parent turn before delegation; a role file is useful configuration, but it is not a substitute for the live boundary you select.</p>
-
-        <div class="do-step">
-          <p class="do-label">Create the assembly chat after the restart:</p>
-          <ol class="do-clicks">
-            <li>Confirm the open project is <code>Documents\HarnessBootcamp\P2_Control_Plane</code></li>
-            <li>Click <strong>New chat</strong>, rename it <code>P2 — Control Plane Assembly</code>, and select <strong>GPT-5.6 Terra</strong></li>
-            <li>Change the permission control beneath the composer to <strong>Read only</strong> before sending the research request</li>
-          </ol>
-        </div>
-
-        <div class="do-step" id="p2-delegation-proof">
-          <p class="do-label">Paste this read-only research request into <strong>P2 — Control Plane Assembly</strong>:</p>
-          <pre><code>Run two read-only subagents in parallel and wait for both.
-
-1. evidence_scout: inspect inputs/p1 and return the material claims, exact
-C-number sources, qualifiers, contradictions, and missing support needed for
-the daily brief. Do not draft or edit.
-
-2. docs_researcher: use only the official OpenAI Developer Docs MCP server to
-verify this project's current skill location and trigger behavior, plugin
-manifest and marketplace paths, Stop command-hook behavior and trust, custom
-agent schema, Terra pins, open-thread cap, and MCP scope. Return official links
-and flag any mismatch. Do not edit.
-
-After both return, give me two concise, clearly labeled result blocks. List the
-subagents used, whether they overlapped in time, and the MCP server used. Do not
-write or change any file. Close both completed agent threads before you stop;
-the configured cap counts open threads, not only agents still running.</code></pre>
-          <p>Read both returned blocks. The configuration result must name the official Docs MCP server and contain primary links. The evidence result must preserve source qualifiers rather than turning uncertain inputs into settled facts.</p>
-          <div class="callout"><strong>If the Docs MCP server is unavailable</strong>Stop and show the visible connection error to the instructor. Do not silently substitute model memory or web search and call the configuration verified.</div>
-        </div>
-
-        <div class="do-step">
-          <p class="do-label">Save the returned evidence under a write-capable main turn:</p>
-          <ol class="do-clicks">
-            <li>Keep <strong>P2 — Control Plane Assembly</strong> open</li>
-            <li>Change the permission control back to <strong>Ask for approval</strong></li>
-            <li>Paste the request below</li>
-          </ol>
-          <pre><code>Using only the two result blocks returned in the previous turn, write the source
-result to out/EVIDENCE_MAP.md and the configuration result to
-out/CONFIG_EVIDENCE.md. Correct only a configuration mismatch supported by an
-official link. List the files changed by the main agent. Do not spawn another
-agent.</code></pre>
-          <p>Open both saved files and compare them with the read-only returns still visible in the chat.</p>
-        </div>
-
-        <h3>Stage 04 · Review the deterministic release gate</h3>
-        <p>The smoke test proved the handler's inert, fail, bounded-repair, and pass paths. Review the actual product contract while it is still disabled. Arming it in this turn would make the not-yet-created product fail before production begins.</p>
-
-        <div class="do-step" id="p2-hook-proof">
-          <p class="do-label">In <strong>P2 — Control Plane Assembly</strong>, paste:</p>
-          <pre><code>Read HARNESS_PROFILE.md, P2_CONTROL_PLANE.json, out/PLUGIN_REVIEW.md, and
-out/CONFIG_EVIDENCE.md. Confirm the contract checks the actual daily-brief
-requirements and that every path stays inside this project.
-
-Keep enabled set to false. Do not weaken a requirement, add a new hook, or run
-another path in this turn. Show the exact contract that will run at Stop, the first
-safe moment to enable it, and how to disarm it after release.</code></pre>
-          <p>Open <code>P2_CONTROL_PLANE.json</code> and confirm <code>enabled</code> is still <code>false</code>. The output, receipt, release evidence, four headings, distinct-citation minimum, line limit, forbidden placeholders, and both course key shapes should all be visible before production begins.</p>
-        </div>
-
-        <h3>Stage 05 · Run the integrated production line</h3>
-        <p>This is the serious product run. One chat moves through three purposeful turns: a write-capable candidate, a read-only review, then a write-capable release that arms the hook only after every required artifact exists. One focused hook continuation is allowed; a second failure remains a HOLD.</p>
+        <h3>Stage 06 · Run the organizer and release the visual board</h3>
+        <p>This is the integrated production run. The two workers read in parallel, the main thread invokes the renderer, the reviewer checks its output afterward, and the deterministic hook records the release result.</p>
 
         <div class="do-step">
           <p class="do-label">Create the production chat from the beginning:</p>
           <ol class="do-clicks">
-            <li>In <code>P2_Control_Plane</code>, click <strong>New chat</strong></li>
-            <li>Rename it <code>P2 — Daily Brief Release</code></li>
+            <li>In <code>P2_Project_Organizer</code>, click <strong>New chat</strong></li>
+            <li>Rename it <code>P2 — Project Organizer Run</code></li>
             <li>Select <strong>GPT-5.6 Terra</strong> and <strong>Ask for approval</strong></li>
-            <li>Write the local start time in <code>HARNESS_PROFILE.md</code></li>
+            <li>Confirm the <strong>Project Organizer</strong> plugin is enabled</li>
           </ol>
         </div>
 
         <div class="do-step">
-          <p class="do-label">First produce the candidate while the gate remains disabled:</p>
-          <pre><code>Use $daily-brief-release to regenerate today's daily status brief through the
-saved-candidate phase only.
-Use the declared P1 source set, out/EVIDENCE_MAP.md, and HARNESS_PROFILE.md.
-The main thread owns every write. Save the candidate at the declared final path,
-but keep P2_CONTROL_PLANE.json disabled. Do not spawn the reviewer, do not claim
-release, and do not estimate hidden usage or cost. Stop when the candidate is
-ready for an independent review.</code></pre>
+          <p class="do-label">Paste this into <strong>P2 — Project Organizer Run</strong>:</p>
+          <pre><code>Use $project-organizer.
+
+Goal: build the local HarborLight Project Organizer so the board makes the
+outcome, now, next, Ready now, longest declared launch path, blocked work,
+decision queue, next commitment, Source coverage, worker findings, and explicit
+unknowns useful at a glance.
+
+Source boundary: rebuild only from source_packet and the verified SQLite ledger.
+Preserve every source ID and the literal "Not assigned in source" value. The two
+workers own the four MCP calls; the parent must not repeat them or replace their
+saved JSON reports with a summary.
+
+Release boundary: follow the skill's worker → candidate render → sequential
+reviewer procedure exactly. Do not rerender after the reviewer binds the candidate
+hashes. Do not hand-edit generated artifacts or source evidence. Finish the turn
+normally so the installed, trusted Stop hook can validate the saved candidate.
+
+In the production response, return only:
+- CANDIDATE: the candidate board path;
+- REVIEW: PASS or HOLD and the board_reviewer report path;
+- ARTIFACTS: absolute paths to PROJECT_STATE.json, PROJECT_BOARD.html, and
+  RUN_RECEIPT.json;
+- STOP: "The trusted Stop hook updates RUN_RECEIPT.json after this response."
+
+Do not claim a final receipt, gate, or release result in this response.</code></pre>
+          <p>The model can report the candidate and reviewer result. After that response, the trusted Stop hook records the deterministic gate and final receipt result. You inspect that saved result in the next step; priorities, escalation, and every open decision remain yours.</p>
         </div>
 
-        <div class="do-step">
-          <p class="do-label">Run the independent review under a real read-only boundary:</p>
+        <div class="do-step" id="p2-board-proof">
+          <p class="do-label">Open the work product and make the release decision:</p>
           <ol class="do-clicks">
-            <li>Keep <strong>P2 — Daily Brief Release</strong> open</li>
-            <li>Change the permission control to <strong>Read only</strong></li>
-            <li>Paste the request below</li>
+            <li>Press <strong>Windows+E</strong> and enter <code>%USERPROFILE%\Documents\HarnessBootcamp\P2_Project_Organizer</code> in the address bar</li>
+            <li>Double-click <code>PROJECT_BOARD.html</code></li>
+            <li>Read <strong>Ready now</strong>, <strong>Longest declared launch path</strong>, <strong>Blocked work</strong>, <strong>Decision queue</strong>, <strong>Unknowns</strong>, <strong>Scope and sequence findings</strong>, and <strong>Source coverage</strong>. Follow at least one material claim to its source ID</li>
+            <li>Open <code>RUN_RECEIPT.json</code>. Release requires <code>status: PASS</code>, <code>gate_status: PASS</code>, and <code>board_status: RELEASE</code></li>
+            <li>In <code>evidence</code>, confirm <code>agent_reports_bound</code> is <code>3</code>, <code>mcp_tools_reported</code> lists four tools, <code>mcp_tools_basis</code> says <code>validated worker reports</code>, and <code>usage_visibility</code> is explicit. These are bound report facts, not claims that the gate watched the calls happen</li>
           </ol>
-          <pre><code>Run the decision_reviewer against out/FINAL_DAILY_BRIEF.md, the declared P1
-sources, HARNESS_PROFILE.md, and P2_CONTROL_PLANE.json. Wait for its PASS or HOLD
-result and return that result exactly. Do not write or change a file. Close the
-completed reviewer thread before you stop.</code></pre>
-        </div>
-
-        <div class="do-step" id="p2-product-proof">
-          <p class="do-label">Release the reviewed product and arm the gate at the safe moment:</p>
-          <ol class="do-clicks">
-            <li>Change the permission control back to <strong>Ask for approval</strong></li>
-            <li>Paste the release request below</li>
-          </ol>
-          <pre><code>Use the decision_reviewer result from the previous turn. Save that exact result
-to out/DECISION_REVIEW.md. Make only material, source-supported repairs.
-Complete out/RUN_RECEIPT.md with observed time, turns, subagent runs, approvals,
-repairs, and visible usage or "not exposed".
-
-Confirm every required release file exists. Then, as the last configuration
-change before stopping, change only enabled from false to true in
-P2_CONTROL_PLANE.json. Do not weaken the contract. Stop for the deterministic
-release gate.</code></pre>
-          <p>If the hook continues the turn, read its named failures and watch the one repair pass. When the turn ends, open:</p>
-          <ul class="do-clicks">
-            <li><code>out/FINAL_DAILY_BRIEF.md</code> — the actual work product</li>
-            <li><code>out/DECISION_REVIEW.md</code> — the independent PASS or HOLD result and material findings</li>
-            <li><code>out/QUALITY_GATE_RECEIPT.json</code> — status, each check, timestamp, and product hash</li>
-            <li><code>out/RUN_RECEIPT.md</code> — observed time, turns, subagents, approvals, repairs, and visible usage or <code>not exposed</code></li>
-          </ul>
-          <p>Release requires a PASS receipt and your own reading of the brief. The hook proves its checks ran; it does not prove that the judgment is wise.</p>
-        </div>
-
-        <h3>Stage 06 · Disarm the gate and enact the keep decision</h3>
-        <p>The released brief is the evidence for the component decision. Leave stable source files available, but keep only the controls whose job, cost, and boundary you can defend. Friday captures Home and Open endpoint evidence just in time under the same project, prompts, and agent topology.</p>
-
-        <div class="do-step">
-          <p class="do-label">Disarm the daily-brief hook in <strong>P2 — Daily Brief Release</strong>:</p>
-          <pre><code>In P2_CONTROL_PLANE.json, change only enabled from true to false. Confirm the
-quality-gate receipt remains on disk. Do not change the released product.</code></pre>
-          <p>The plugin can remain available because it is inert in projects without an enabled P2 contract. The product receipt does not disappear when the hook is disabled.</p>
-        </div>
-
-        <div class="do-step" id="p2-release-proof">
-          <p class="do-label">Make and apply the component decision in <strong>P2 — Daily Brief Release</strong>:</p>
-          <pre><code>Read HARNESS_PROFILE.md and the completed artifacts it names. Update its release
-record from observed evidence only. For each control-plane component, decide:
-KEEP, REVISE, or LEAVE OFF UNTIL NEEDED. Include its job, context or token cost,
-permission surface, evidence, disable path, and residual risk.
-
-Keep the local daily-brief skill editable. Do not package it for distribution
-unless another real person needs to install the stable workflow. Save
-out/ACTIVE_CONTROL_PLANE.md with three sections: ACTIVE NOW, AVAILABLE ON DEMAND,
-and DISABLED. Put every component in exactly one section and name its activation
-trigger. Finish with one sentence naming the smallest system that still produces
-the released brief.</code></pre>
-          <p>Open <code>out/ACTIVE_CONTROL_PLANE.md</code>. Confirm the release contract is disabled. If the plugin is listed under <strong>DISABLED</strong>, open <strong>Plugins</strong> in the app and turn <strong>P2 Release Control</strong> off now; keep its reviewed source in the project so the decision is reversible. “Installed” is not evidence of value.</p>
+          <p>If the receipt says HOLD, use its named failed check to direct the smallest correction in <strong>P2 — Project Organizer Run</strong>. Rerun the full workers → renderer → reviewer line when evidence changes. Do not edit the database, reports, board, or receipt by hand, and do not change the source packet to silence a real gap. If the repair changes plugin code, use the reinstall and retrust branch from Stage 05 before relying on Stop again.</p>
         </div>
 
         <div class="lesson-reflection">
           <h3>Lesson reflection</h3>
-          <p class="reflection-question"><strong>Closeout question:</strong> Which control earned a permanent place in your work, and which control should remain off until a specific need appears?</p>
+          <p class="reflection-question"><strong>Closeout question:</strong> Which recurring project-organizing job should this system take over, and which project decision must remain yours?</p>
 
           <div class="do-step">
-            <p class="do-label">Create a separate reflection chat from the beginning:</p>
+            <p class="do-label">Create the separate reflection chat from the beginning:</p>
             <ol class="do-clicks">
               <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong></li>
               <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-              <li>Click <strong>New chat</strong>, rename it <code>P2 — Control Plane Reflection</code>, and select <strong>GPT-5.6 Terra</strong></li>
-              <li>Keep <strong>Ask for approval</strong> selected</li>
+              <li>Click <strong>New chat</strong>, open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P2 — Project Organizer Reflection</code></li>
+              <li>Select <strong>GPT-5.6 Terra</strong> and keep <strong>Ask for approval</strong> selected</li>
             </ol>
           </div>
 
-          <div class="do-step" id="p2-transfer-proof">
-            <p class="do-label">Paste this into <strong>P2 — Control Plane Reflection</strong>:</p>
-            <pre><code>Read operator/OPERATOR_LOG.md and operator/TRANSFER_30_60_90.md. Also inspect
-the completed P2 project at
-%USERPROFILE%\Documents\HarnessBootcamp\P2_Control_Plane.
+          <div class="do-step" id="p2-reflection-proof">
+            <p class="do-label">Fill the two brackets, then paste this into <strong>P2 — Project Organizer Reflection</strong>:</p>
+            <pre><code>Read operator/OPERATOR_LOG.md, operator/MEASUREMENT_SPINE.md, and
+operator/TRANSFER_30_60_90.md. Inspect the completed P2 project at
+%USERPROFILE%\Documents\HarnessBootcamp\P2_Project_Organizer, including
+PROJECT_BOARD.html, PROJECT_STATE.json, RUN_RECEIPT.json, and the plugin/config.
 
-Update the P2 entry in OPERATOR_LOG.md with:
-- the released daily-brief path and quality-gate receipt
-- the independent review and active-component manifest
-- the skill, plugin/hook, subagents, permission modes, and Docs MCP role used
-- observed time, turns, approvals, and repair count
-- my keep/revise/leave-off decisions and residual risk
-- lesson reflection: [WHICH CONTROL STAYS AND WHICH WAITS]
+Update only the P2 Project Organizer entry in OPERATOR_LOG.md. Fill all six rows:
+1. Directed — the local organizer and its source boundary;
+2. Mid-run — the SQLite, MCP, skill, two-worker report paths, sequential reviewer
+   report, installed plugin, and trusted hook line;
+3. Verdict — the reviewer result plus receipt status, gate_status, and board_status;
+4. Evidence — the three release files, the three report hashes bound by the
+   receipt, and the most useful source-cited worker finding;
+5. I still own — [THE PROJECT DECISION THAT MUST REMAIN MINE], plus my lesson
+   reflection that this system should take over [THE RECURRING ORGANIZING JOB];
+6. Release check — status, gate_status, board_status, ledger_status,
+   schema_status, and any named HOLD or residual risk from RUN_RECEIPT.json.
 
-Update only "From P2 — Personal control plane" in TRANSFER_30_60_90.md with
-one concrete 30-day harness habit, its first proof, and a calendar-real date.
-Do not create a new setup log or a second reflection file. Show the exact
-sections changed.</code></pre>
+Update the single P2 row and deep mark in MEASUREMENT_SPINE.md from the exact
+receipt fields. Record board_status, ledger_status, schema_status, and gate_status.
+From evidence, record agent_reports_bound as n/3, mcp_tools_reported as n/4,
+mcp_tools_basis exactly as "validated worker reports", and usage_visibility.
+From measured_observations, record elapsed_seconds and repairs. Convert elapsed
+seconds to minutes by dividing by 60 and rounding up; keep 0 seconds as 0 minutes.
+Do not describe bound reports as independently observed runs or calls, and do not
+create a separate measurement or reflection file.
+
+Update only "From P2 — Project Organizer" in TRANSFER_30_60_90.md. Use today's
+date, the local project demonstrated here, the project facts and source boundary,
+the four read-only MCP questions, the two-worker plus sequential-review split,
+the three saved report paths, the board and receipt inspected, and one concrete
+30-day reuse rule with its first proof. Preserve every other module section and
+report the exact rows changed.</code></pre>
           </div>
-
-          <ol class="checklist">
-            <li class="check-item" data-check-item>
-              <label class="check-label">
-                <input type="checkbox" id="p2-pulse-log" name="p2-pulse-log" data-check-id="pulse-log" />
-                <span class="check-num">R</span>
-                <span class="check-title">The P2 artifact-backed closeout is in the Operator Log</span>
-              </label>
-              <div class="check-detail">The entry points to the product and receipts, records observed operating cost, distinguishes every component's job, and answers which control stays versus waits.</div>
-            </li>
-          </ol>
         </div>
       </section>
 
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Lesson outcomes</h2>
-        <p class="section-lede">This display follows the checkboxes placed beside the work. Use it to see what is complete and what still needs evidence.</p>
+        <p class="section-lede">This display follows the confirmation beside each build result. Use it to see what is complete and what still needs evidence.</p>
         <ol class="checklist">
-          <li class="check-item" data-check-item data-outcome-after="#p2-profile-proof">
-            <label class="check-label"><input type="checkbox" id="p2-mvp-control-plane" name="p2-mvp-control-plane" data-check-id="mvp-control-plane" /><span class="check-num">1</span><span class="check-title">The control plane serves one named work product and reader</span></label>
-            <div class="check-detail">The profile fixes the source boundary, acceptance contract, runtime budget, approval boundary, evidence paths, and disable path before production begins.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-project-open-proof">
+            <label class="check-label"><input type="checkbox" id="p2-project-open" name="p2-project-open" data-check-id="project-open" /><span class="check-num">1</span><span class="check-title">The project boundary and source interpretation are clear</span></label>
+            <div class="check-detail">The build chat names the six source files, preserves conflicts and unknowns, and maps every planned layer to a release need before code begins.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-skill-proof">
-            <label class="check-label"><input type="checkbox" id="p2-mvp-skill" name="p2-mvp-skill" data-check-id="mvp-skill" /><span class="check-num">2</span><span class="check-title">The daily-brief skill contains the reusable method</span></label>
-            <div class="check-detail">Its description identifies matching and nonmatching work; its body names inputs, workflow, output, review, and HOLD condition without swallowing project-wide rules.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-sqlite-proof">
+            <label class="check-label"><input type="checkbox" id="p2-sqlite-ledger" name="p2-sqlite-ledger" data-check-id="sqlite-ledger" /><span class="check-num">2</span><span class="check-title">The SQLite ledger is deterministic, relational, and source-linked</span></label>
+            <div class="check-detail">All six domain tables verify with foreign keys, stable IDs, full source-row parity, provenance, a safe rebuild, and literal preservation of explicit unknowns such as <code>Not assigned in source</code>.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#p2-mcp-proof">
+            <label class="check-label"><input type="checkbox" id="p2-local-mcp" name="p2-local-mcp" data-check-id="local-mcp" /><span class="check-num">3</span><span class="check-title">The local MCP server answers four bounded read-only questions</span></label>
+            <div class="check-detail">Every request runs the bundled data-only verifier, all four results share one source fingerprint, readiness keeps dependency evidence, and the server exposes no arbitrary SQL or write surface.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#p2-team-proof">
+            <label class="check-label"><input type="checkbox" id="p2-bounded-team" name="p2-bounded-team" data-check-id="bounded-team" /><span class="check-num">4</span><span class="check-title">The organizer skill routes two bounded workers and one sequential reviewer</span></label>
+            <div class="check-detail">The two worker reports preserve the exact JSON schemas and disjoint four-tool ownership; the parent does not repeat their calls, and the later reviewer binds the candidate hashes with the exact checked sections.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p2-plugin-proof">
-            <label class="check-label"><input type="checkbox" id="p2-mvp-plugin" name="p2-mvp-plugin" data-check-id="mvp-plugin" /><span class="check-num">3</span><span class="check-title">The shared release control is installed as a reviewed plugin</span></label>
-            <div class="check-detail">The manifest, command, file access, inert state, bounded repair, and disable path are understood; the smoke test passes and the exact hook definition is trusted.</div>
+            <label class="check-label"><input type="checkbox" id="p2-organizer-plugin" name="p2-organizer-plugin" data-check-id="organizer-plugin" /><span class="check-num">5</span><span class="check-title">The Project Organizer plugin is tested, inspected, installed, and trusted</span></label>
+            <div class="check-detail">One plugin packages the skill, MCP source, bundled verifier, renderer, and one inert-before-output Stop hook; project config holds the only MCP registration, and the installed hook definition is reviewed and trusted separately.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-delegation-proof">
-            <label class="check-label"><input type="checkbox" id="p2-mvp-delegation" name="p2-mvp-delegation" data-check-id="mvp-delegation" /><span class="check-num">4</span><span class="check-title">Read-only specialists return useful evidence to one writer</span></label>
-            <div class="check-detail">The evidence and documentation agents run in parallel on Terra, the main agent waits, the Docs agent uses the official MCP server, and only the main agent writes the saved evidence.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-board-proof">
+            <label class="check-label"><input type="checkbox" id="p2-released-board" name="p2-released-board" data-check-id="released-board" /><span class="check-num">6</span><span class="check-title">The visual project board is released from verified local evidence</span></label>
+            <div class="check-detail">The operator opens the board and receipt; release shows <code>status: PASS</code>, <code>gate_status: PASS</code>, <code>board_status: RELEASE</code>, three bound reports, four tools derived from validated worker reports, and source IDs beside material findings.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-hook-proof">
-            <label class="check-label"><input type="checkbox" id="p2-mvp-hook" name="p2-mvp-hook" data-check-id="mvp-hook" /><span class="check-num">5</span><span class="check-title">The release gate is reviewed without firing before production</span></label>
-            <div class="check-detail">The trusted Stop definition and actual contract are inspected while disabled; the first safe enable point, bounded repair, credential checks, receipt path, and disable path are explicit.</div>
-          </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-product-proof">
-            <label class="check-label"><input type="checkbox" id="p2-mvp-product" name="p2-mvp-product" data-check-id="mvp-product" /><span class="check-num">6</span><span class="check-title">The integrated harness produces a release-ready work product</span></label>
-            <div class="check-detail">The final daily brief, independent review, PASS receipt, hash, and observed run receipt exist; the operator reads the product before release.</div>
-          </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-release-proof">
-            <label class="check-label"><input type="checkbox" id="p2-mvp-release" name="p2-mvp-release" data-check-id="mvp-release" /><span class="check-num">7</span><span class="check-title">Every component has an enacted keep, revise, or leave-off decision</span></label>
-            <div class="check-detail">The profile and active-component manifest record each job, cost, permission surface, evidence, activation or disable path, and residual risk; the release gate is off and any deferred plugin is disabled.</div>
-          </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-transfer-proof">
-            <label class="check-label"><input type="checkbox" id="p2-mvp-30seed" name="p2-mvp-30seed" data-check-id="mvp-30seed" /><span class="check-num">8</span><span class="check-title">A concrete 30-day harness habit has a date and first proof</span></label>
-            <div class="check-detail">The habit names a real recurring product, when the control runs, what evidence is kept, and the first calendar date it will be checked.</div>
-          </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-transfer-proof">
-            <label class="check-label"><input type="checkbox" id="p2-p2-transfer" name="p2-p2-transfer" data-check-id="p2-transfer" /><span class="check-num">9</span><span class="check-title">The P2 transfer record points to the working control plane</span></label>
-            <div class="check-detail">The Operator Log and 30-60-90 plan cite the real product, receipts, operating cost, component decisions, and residual risk.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-reflection-proof">
+            <label class="check-label"><input type="checkbox" id="p2-pulse-log" name="p2-pulse-log" data-check-id="pulse-log" /><span class="check-num">7</span><span class="check-title">The P2 closeout records the system, evidence, measurement, and human boundary</span></label>
+            <div class="check-detail">The Operator Log, measurement spine, and 30-day transfer seed point to the real artifacts and distinguish organizing work the system can carry from decisions the person still owns.</div>
           </li>
         </ol>
       </section>
 
       <section id="depth" class="home-section">
-        <h2>Operating notes for real harnesses</h2>
-        <p class="section-lede">Use these after the core run when you decide what belongs in a personal setup, a repository, or a team-distributed plugin.</p>
+        <h2>Operating notes for a real local utility</h2>
+        <p class="section-lede">These are the design choices worth carrying into your own project organizer, tracker, intake queue, or operating dashboard.</p>
 
-        <h3>Cost and control signals</h3>
+        <h3>Keep the ledger trustworthy</h3>
         <table>
-          <thead><tr><th>Signal</th><th>Likely design problem</th><th>Practical move</th></tr></thead>
+          <thead><tr><th>Practice</th><th>Why it matters</th><th>Release evidence</th></tr></thead>
           <tbody>
-            <tr><td>Every task receives a long policy block</td><td>Conditional procedure sits in always-on instructions</td><td>Keep the project rule short and move the workflow into one focused skill</td></tr>
-            <tr><td>A skill fires on unrelated work</td><td>Description states a topic, not a trigger boundary</td><td>Front-load the exact job and add a clear non-trigger condition</td></tr>
-            <tr><td>The model sometimes skips a mandatory check</td><td>Enforcement lives only in prose</td><td>Use a reviewed deterministic hook or external check at the relevant event</td></tr>
-            <tr><td>More agents create more cleanup</td><td>Overlapping tasks or parallel writers</td><td>Give each agent a bounded read-only question; wait; keep one writer</td></tr>
-            <tr><td>MCP adds many tools but little evidence</td><td>Connection chosen before the work need</td><td>Allow only the server and tools the product requires; disable the rest</td></tr>
-            <tr><td>A personal plugin changes every week</td><td>Distribution started before the workflow stabilized</td><td>Move it back to a repo or user skill until another installer is a real customer</td></tr>
-            <tr><td>The hook keeps the agent alive indefinitely</td><td>No continuation bound</td><td>Read <code>stop_hook_active</code>, permit one repair, then leave a visible HOLD receipt</td></tr>
+            <tr><td>Stable ids and declared foreign keys</td><td>Relationships survive file order, display changes, and repeated builds</td><td>Foreign-key verification and orphan count</td></tr>
+            <tr><td>Source identity on material records</td><td>A lead can trace the board instead of trusting generated phrasing</td><td>Source ids in MCP results, state, and board</td></tr>
+            <tr><td>Explicit unknowns</td><td>The system does not turn missing ownership, dates, or decisions into invented facts</td><td>The board preserves source language such as <code>Not assigned in source</code></td></tr>
+            <tr><td>Temporary build plus atomic replacement</td><td>A failed rebuild cannot leave a half-written live database</td><td>Verifier passes before the target is replaced</td></tr>
+            <tr><td>Parameterized queries</td><td>Data values stay data, and inputs cannot reshape the query</td><td>Tests exercise real and empty inputs</td></tr>
           </tbody>
         </table>
 
-        <h3>Choose the lifecycle event by the failure</h3>
+        <h3>Keep MCP smaller than the database</h3>
         <table>
-          <thead><tr><th>Event</th><th>Real job</th><th>Important boundary</th></tr></thead>
+          <thead><tr><th>Boundary</th><th>Working rule</th></tr></thead>
           <tbody>
-            <tr><td><code>UserPromptSubmit</code></td><td>Catch a credential-like string before it enters the turn</td><td>Use a short deterministic scanner; never echo the suspected secret in hook output</td></tr>
-            <tr><td><code>PreToolUse</code></td><td>Deny or rewrite a specific local tool call before execution</td><td>It covers many local tools, including MCP calls, but not every hosted or specialized path; treat it as a guardrail</td></tr>
-            <tr><td><code>PostToolUse</code></td><td>Attach evidence or stop normal processing after a tool returns</td><td>It cannot undo the side effect that already occurred</td></tr>
-            <tr><td><code>PreCompact</code> / <code>PostCompact</code></td><td>Save and restore the small state that must survive context compaction</td><td>Do not dump the transcript back into context; preserve decisions, open risks, and artifact paths</td></tr>
-            <tr><td><code>SubagentStart</code> / <code>SubagentStop</code></td><td>Add a role-specific boundary or require one focused completion pass</td><td>A subagent still inherits parent runtime permissions; a hook does not make it independent</td></tr>
-            <tr><td><code>Stop</code></td><td>Check the saved product before the main turn is allowed to finish</td><td>Read <code>stop_hook_active</code> and bound continuation or the gate can create a loop</td></tr>
+            <tr><td>Tool surface</td><td>Expose the four questions the organizer needs, not arbitrary SQL or table dumps</td></tr>
+            <tr><td>Permissions</td><td>Open the database read-only and omit mutation tools; annotations help the client but do not replace enforcement</td></tr>
+            <tr><td>Provenance</td><td>Return stable record and source IDs plus the same source fingerprint from every tool so later layers cannot join different source states</td></tr>
+            <tr><td>Freshness</td><td>Run the bundled data-only verifier on every request; exact schema, source hashes, and source-row parity must pass before a tool answers</td></tr>
+            <tr><td>Errors</td><td>Distinguish no matching work from a missing, stale, or invalid ledger; never answer from memory when the tool fails</td></tr>
+            <tr><td>Protocol</td><td>Use the current SDK's negotiation and schemas; do not hard-code a protocol snapshot into lesson logic</td></tr>
+            <tr><td>State</td><td>Treat tool calls as stateless; derive every answer from the current verified ledger rather than server-process memory</td></tr>
+            <tr><td>Shutdown</td><td>Keep the local server bound to stdio, with no listener or background service to remember after class</td></tr>
           </tbody>
         </table>
 
-        <h3>Use the cheapest subagent topology that helps</h3>
+        <h3>Keep orchestration proportional to the work</h3>
         <table>
-          <thead><tr><th>Work shape</th><th>Topology</th><th>Operator rule</th></tr></thead>
+          <thead><tr><th>Need</th><th>Right control</th><th>Common mistake</th></tr></thead>
           <tbody>
-            <tr><td>Independent source and documentation research</td><td>Two read-only agents in parallel, then wait for both</td><td>Ask for concise evidence summaries; do not flood the main context with raw exploration</td></tr>
-            <tr><td>Candidate plus challenge</td><td>Main writer first, independent reviewer second</td><td>Review cannot run in parallel with a draft that does not exist</td></tr>
-            <tr><td>More jobs than the open-thread cap</td><td>Run a bounded batch, wait, preserve returns, close completed threads, then start the next batch</td><td>The cap counts open spawned threads, including completed threads that have not been closed</td></tr>
-            <tr><td>Overlapping edits to one product</td><td>Do not parallelize the writes</td><td>The merge cost and ownership ambiguity usually exceed the time saved</td></tr>
+            <tr><td>A repeatable organizer run</td><td>One focused skill with source, tool, output, and HOLD rules</td><td>Loading the entire method into every project turn</td></tr>
+            <tr><td>Two independent inspections</td><td>Two read-only workers partition four calls and save exact JSON reports</td><td>The parent repeats calls or rewrites their evidence as a summary</td></tr>
+            <tr><td>A candidate check</td><td>One read-only reviewer binds the candidate state and board hashes</td><td>Rerendering after review and silently invalidating those hashes</td></tr>
+            <tr><td>A must-run release check</td><td>The installed hook runs reviewed bundled code and treats learner files as data</td><td>Importing a project-root verifier into the trusted path</td></tr>
+            <tr><td>Reuse and installation</td><td>Reinstall and retrust only after a plugin-code change</td><td>Assuming an edited source package changed the installed hook copy</td></tr>
           </tbody>
         </table>
-
-        <h3>Install another plugin only when the desk supplies the job</h3>
-        <p class="full-measure">Start with the real information or action the product lacks. An available plugin is a candidate, not a reason to widen the harness.</p>
-        <table>
-          <thead><tr><th>Real missing job</th><th>Candidate capability</th><th>Proof that earns installation</th><th>Leave it off when</th></tr></thead>
-          <tbody>
-            <tr><td>Current repository, pull-request, or CI state</td><td>An approved GitHub plugin</td><td>One source-backed status item reaches the brief with the repository and item identity intact</td><td>The declared P1 files remain the only authorized source set</td></tr>
-            <tr><td>Controlled documents outside the project</td><td>An approved Google Drive or SharePoint plugin</td><td>One named document is retrieved with owner, provenance, and access boundary visible</td><td>The connector would expose a broader drive or site than the product needs</td></tr>
-            <tr><td>Delivering an approved brief to a team</td><td>An approved Slack or Teams plugin</td><td>A draft reaches the exact destination only after explicit human approval</td><td>No real destination exists, or the plugin turns a drafting job into an unreviewed external write</td></tr>
-            <tr><td>Repository security evidence</td><td>An approved security plugin</td><td>A real scan returns coverage and findings artifacts that can support a decision</td><td>The work product is not a code-risk decision or the scan cannot declare coverage</td></tr>
-          </tbody>
-        </table>
-        <p class="full-measure">Before installing, inspect bundled skills, MCP or connector tools, hooks, authentication, data boundary, approvals, and uninstall path. Install from the approved source, start a new chat, prove the serious outcome above, and then keep or remove it. Some connector-backed plugins are unavailable under API-key sign-in because their authorization flow is not supported. Verify that constraint; do not install a substitute just to fill the slot.</p>
 
         <h3>Current primary references</h3>
-        <p class="full-measure">Use these when product behavior changes: <a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md" target="_blank" rel="noopener">AGENTS.md</a>, <a href="https://learn.chatgpt.com/docs/build-skills" target="_blank" rel="noopener">skills</a>, <a href="https://learn.chatgpt.com/docs/plugins" target="_blank" rel="noopener">plugins</a>, <a href="https://learn.chatgpt.com/docs/hooks" target="_blank" rel="noopener">hooks</a>, <a href="https://learn.chatgpt.com/docs/codex/cli" target="_blank" rel="noopener">Codex CLI</a>, <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents" target="_blank" rel="noopener">subagents</a>, and <a href="https://learn.chatgpt.com/docs/extend/mcp" target="_blank" rel="noopener">Codex MCP</a>. The P2 Docs agent uses the official <a href="https://developers.openai.com/mcp" target="_blank" rel="noopener">OpenAI Developer Docs MCP server</a> so these checks can be repeated without relying on a remembered product snapshot.</p>
-
-        <h3>When a real release decision needs stronger measurement</h3>
-        <p class="full-measure">The core P2 result answers whether this integrated control plane produced this product inside its contract and operating budget. If a consequential deployment decision requires a broader capability claim, use <a href="../resources/p2/eval-surprise.html"><strong>Build a Decision-Grade Evaluation</strong></a> to define the claim, risk coverage, independent decision set, and invalidation rules.</p>
-        <p class="full-measure">If the decision specifically depends on run-to-run stability, use <a href="../resources/p2/one-run-is-a-probe.html"><strong>Measure Reliability Across Repeated Runs</strong></a> after a valid A/B comparison exists. It shows how to pair conditions, expose order effects and spread, and keep the conclusion no larger than the observed trials.</p>
+        <p class="full-measure">Use current primary documentation when adapting this build: <a href="https://docs.python.org/3/library/sqlite3.html" target="_blank" rel="noopener">Python <code>sqlite3</code></a>, <a href="https://learn.chatgpt.com/docs/build-skills" target="_blank" rel="noopener">Codex skills</a>, <a href="https://learn.chatgpt.com/docs/plugins" target="_blank" rel="noopener">plugins</a>, <a href="https://learn.chatgpt.com/docs/hooks" target="_blank" rel="noopener">hooks</a>, <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents" target="_blank" rel="noopener">subagents</a>, and <a href="https://learn.chatgpt.com/docs/extend/mcp" target="_blank" rel="noopener">Codex MCP</a>. The project uses SDK negotiation so a dated protocol number is not copied into the workflow.</p>
       </section>
 
       <section id="stuck" class="split-2 home-section">
         <div>
           <h2>Before you move on</h2>
-          <p>The final daily brief, independent review, PASS receipt, and active-component manifest exist; observed time, turns, approvals, repairs, and residual risk are recorded; the hook is disarmed; and each component has an enacted keep, revise, or leave-off decision.</p>
+          <p>The local board opens cleanly; the receipt says PASS / PASS / RELEASE; its evidence binds three reports and derives four MCP tools from validated worker reports; source IDs are visible; and the Operator Log records what the system carries versus what you still decide.</p>
         </div>
         <div>
           <h2>If you get stuck</h2>
           <ul>
-            <li><strong>The P2 folder already exists.</strong> Open and continue that project, or move it to a dated archive. The bootstrap will not overwrite it.</li>
-            <li><strong>The skill is missing.</strong> Confirm the file is under <code>.agents\skills\daily-brief-release\SKILL.md</code>, then restart the app and reopen the project.</li>
-            <li><strong>The plugin does not appear.</strong> Confirm <code>.agents\plugins\marketplace.json</code> and <code>plugins\p2-release-control</code> exist at the P2 project root, then restart the app.</li>
-            <li><strong>The hook is skipped.</strong> In a terminal opened at <code>P2_Control_Plane</code>, run <code>codex</code>, type <code>/hooks</code> in the CLI, inspect the Stop handler, and trust the current definition. A changed command requires new trust.</li>
-            <li><strong>The Docs agent has no MCP tool.</strong> Confirm its TOML contains <code>https://developers.openai.com/mcp</code>, read the visible connection error, and fix that connection. Do not substitute memory.</li>
-            <li><strong>A subagent edits files.</strong> Stop it. A role file does not override the parent turn's live permission profile. Set the parent to <strong>Read only</strong>, rerun the bounded research or review, close the completed thread, then use a separate <strong>Ask for approval</strong> main-writer turn to save the return.</li>
-            <li><strong>The receipt stays FAIL after one repair.</strong> HOLD. Read the failing checks and ask the operator whether to repair the product, change a genuinely wrong contract, or stop. Do not loop or lower the bar.</li>
+            <li><strong>The P2 folder already exists.</strong> Open it and continue, or move it to a dated archive. The bootstrap will not overwrite it.</li>
+            <li><strong><code>py -3</code> is not recognized.</strong> Return to the Pre-work install clinic and repair the Python launcher before changing any script.</li>
+            <li><strong>The ledger verifier fails.</strong> Give Codex the exact error and named source record. Repair the parser, schema, or relationship; do not edit the database or source packet by hand.</li>
+            <li><strong>The MCP server is missing.</strong> Rerun the idempotent configuration script, restart Codex, and inspect <code>/mcp</code>. Confirm one local server and the four allowed tools.</li>
+            <li><strong>An MCP call returns no provenance.</strong> Stop the run and repair the tool contract. Do not let the next layer reconstruct source identity.</li>
+            <li><strong>The plugin does not appear.</strong> Confirm <code>.agents\plugins\marketplace.json</code> and <code>plugins\project-organizer</code> exist. Run <code>codex plugin marketplace list</code>; if the P2 project root is absent, add it with <code>codex plugin marketplace add "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Project_Organizer"</code>. Then completely restart the app and reopen the project.</li>
+            <li><strong>The Stop hook is skipped.</strong> Open the CLI in this project, use <code>/hooks</code>, inspect the installed command, and trust that exact definition. Then finish a normal organizer turn. The Stop event—not a manual command—is the release path.</li>
+            <li><strong>You need source-package diagnosis.</strong> Only for instructor testing or hook recovery, ask Codex to run <code>py -3 plugins\project-organizer\hooks\release_gate.py --check</code>. The command does not write the receipt, release files, evidence, or repair count. A PASS checks the learner source package; it does not prove the installed hook copy is current or that Stop released the board.</li>
+            <li><strong>The receipt says HOLD.</strong> Read the named failed check and direct one source-backed repair. Never lower the check or manufacture a project fact. If plugin code changes, validate it, remove/add the plugin, restart, review and trust <code>/hooks</code>, then run the normal Stop path. An older installed renderer can still HOLD even when the edited source-package check passes.</li>
           </ul>
         </div>
       </section>

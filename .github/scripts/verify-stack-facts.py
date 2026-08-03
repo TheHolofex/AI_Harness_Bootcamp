@@ -14,6 +14,8 @@ What it covers:
   - The current Node LTS remains inside the range taught for n8n
   - The npm OpenCode package and AAIF goose installer remain available
   - Goose's Windows runtime, model, and native-exit guards remain present
+  - The P2 Project Organizer surface and reference package remain wired
+  - The Agent Loops briefing and P4 personal harness remain wired in sequence
   - The repository still contains load-bearing exercise and facilitator paths
 
 What it does not cover (needs Windows, funded keys, and a person):
@@ -40,7 +42,12 @@ INSTALL_PAGE = REPO_ROOT / "site" / "checklists" / "prework-install.html"
 REGISTRY = REPO_ROOT / "site" / "js" / "registry.js"
 HCP_PAGE = REPO_ROOT / "site" / "blocks" / "hcp.html"
 P2_PAGE = REPO_ROOT / "site" / "blocks" / "p2.html"
+LOOPS_PAGE = REPO_ROOT / "site" / "blocks" / "loops.html"
+P4_PAGE = REPO_ROOT / "site" / "blocks" / "p4.html"
+P5_PAGE = REPO_ROOT / "site" / "blocks" / "p5.html"
 P2_STARTER = REPO_ROOT / "instruments" / "p2_control_plane" / "starter"
+P2_REFERENCE = REPO_ROOT / "instruments" / "p2_control_plane" / "reference"
+P4_SEED = REPO_ROOT / "mission_flesh" / "p4" / "vault_seed"
 WINDOWS_SMOKE = REPO_ROOT / ".github" / "scripts" / "prework-verify.ps1"
 WINDOWS_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "prework-smoke.yml"
 
@@ -110,9 +117,30 @@ def check_repo_paths(report: Report) -> None:
         "operator/PASS_BARS.md",
         "instruments/endpoint_case_suite",
         "instruments/p2_control_plane/bootstrap.ps1",
-        "instruments/p2_control_plane/starter/.agents/skills/daily-brief-release/SKILL.md",
-        "instruments/p2_control_plane/starter/.codex/agents/docs_researcher.toml",
-        "instruments/p2_control_plane/starter/plugins/p2-release-control/hooks/quality_gate.py",
+        "instruments/p2_control_plane/starter/PROJECT_ORGANIZER_CONTRACT.md",
+        "instruments/p2_control_plane/starter/source_packet/01_project_charter.md",
+        "instruments/p2_control_plane/starter/source_packet/06_source_register.csv",
+        "instruments/p2_control_plane/reference/schema.sql",
+        "instruments/p2_control_plane/reference/build_project_ledger.py",
+        "instruments/p2_control_plane/reference/verify_project_ledger.py",
+        "instruments/p2_control_plane/reference/configure_project_organizer.ps1",
+        "instruments/p2_control_plane/reference/.codex/agents/scope_mapper.toml",
+        "instruments/p2_control_plane/reference/.codex/agents/dependency_planner.toml",
+        "instruments/p2_control_plane/reference/.codex/agents/board_reviewer.toml",
+        "instruments/p2_control_plane/reference/.agents/plugins/marketplace.json",
+        "instruments/p2_control_plane/reference/tests/verify_reference.py",
+        "instruments/p2_control_plane/reference/tests/configure_smoke.ps1",
+        "instruments/p2_control_plane/reference/plugins/project-organizer/package.json",
+        "instruments/p2_control_plane/reference/plugins/project-organizer/package-lock.json",
+        "instruments/p2_control_plane/reference/plugins/project-organizer/.codex-plugin/plugin.json",
+        "instruments/p2_control_plane/reference/plugins/project-organizer/skills/project-organizer/SKILL.md",
+        "instruments/p2_control_plane/reference/plugins/project-organizer/mcp/server.mjs",
+        "instruments/p2_control_plane/reference/plugins/project-organizer/mcp/query_ledger.py",
+        "instruments/p2_control_plane/reference/plugins/project-organizer/lib/ledger_verifier.py",
+        "instruments/p2_control_plane/reference/plugins/project-organizer/scripts/render_project_board.py",
+        "instruments/p2_control_plane/reference/plugins/project-organizer/hooks/hooks.json",
+        "instruments/p2_control_plane/reference/plugins/project-organizer/hooks/release_gate.py",
+        "instruments/p2_control_plane/reference/plugins/project-organizer/tests/smoke.mjs",
         "instruments/p3_frozen_brief",
         "instruments/p3_multi_agent",
         "instruments/p8_hold_degrade",
@@ -285,56 +313,150 @@ def check_registry_install_route(report: Report) -> None:
         )
 
 
-def check_p2_control_plane_surface(report: Report) -> None:
+def check_p2_project_organizer_surface(report: Report) -> None:
     registry = REGISTRY.read_text(encoding="utf-8")
     hcp = HCP_PAGE.read_text(encoding="utf-8")
     p2 = P2_PAGE.read_text(encoding="utf-8")
-    hook = (
-        P2_STARTER
-        / "plugins"
-        / "p2-release-control"
-        / "hooks"
-        / "quality_gate.py"
-    ).read_text(encoding="utf-8")
+    contract = (P2_STARTER / "PROJECT_ORGANIZER_CONTRACT.md").read_text(
+        encoding="utf-8"
+    )
+    schema = (P2_REFERENCE / "schema.sql").read_text(encoding="utf-8")
     expected = {
         "registry briefing": 'code: "HCP"',
         "registry route": 'codes: ["HCP", "P2", "MCP1", "MCP2", "P3"]',
+        "registry title": 'title: "Build the Project Organizer"',
+        "registry storage": 'key: "ahb-checklist-p2-project-organizer"',
         "presentation URL": "Harness-Prompt-Folklore-Design-the-Control-Plane-Not-Just-the-Pro-74204eoe255uss1",
-        "P2 skill": "$daily-brief-release",
-        "P2 plugin": "p2-release-control",
-        "P2 CLI install": "npm install -g @openai/codex",
-        "P2 CLI hook trust": "<code>/hooks</code> in the <strong>CLI</strong>",
-        "P2 subagents": "docs_researcher",
-        "P2 Docs MCP": "https://developers.openai.com/mcp",
-        "P2 bounded hook": "stop_hook_active",
+        "P2 bootstrap": "instruments\\p2_control_plane\\bootstrap.ps1",
+        "P2 skill creation": "$skill-creator",
+        "P2 plugin creation": "$plugin-creator",
+        "P2 plugin": "project-organizer",
+        "P2 read-only MCP": "get_project_snapshot",
+        "P2 trusted verifier": "plugins/project-organizer/lib/ledger_verifier.py",
+        "P2 two workers": "scope_mapper",
+        "P2 sequential reviewer": "board_reviewer",
+        "P2 scope report": ".project-organizer/evidence/scope_mapper.json",
+        "P2 dependency report": ".project-organizer/evidence/dependency_planner.json",
+        "P2 reviewer report": ".project-organizer/evidence/board_reviewer.json",
+        "P2 launch path": "longest declared launch path",
+        "P2 report basis": "validated worker reports",
+        "P2 marketplace registration": "codex plugin marketplace add",
+        "P2 board": "PROJECT_BOARD.html",
+        "P2 state": "PROJECT_STATE.json",
+        "P2 receipt": "RUN_RECEIPT.json",
         "P2 model": "gpt-5.6-terra",
+        "P2 contract source boundary": "source_packet",
+        "P2 schema sources": "CREATE TABLE sources",
     }
     surfaces = {
         "registry briefing": registry,
         "registry route": registry,
+        "registry title": registry,
+        "registry storage": registry,
         "presentation URL": hcp,
-        "P2 skill": p2,
+        "P2 bootstrap": p2,
+        "P2 skill creation": p2,
+        "P2 plugin creation": p2,
         "P2 plugin": p2,
-        "P2 CLI install": p2,
-        "P2 CLI hook trust": p2,
-        "P2 subagents": p2,
-        "P2 Docs MCP": p2,
-        "P2 bounded hook": hook,
+        "P2 read-only MCP": p2,
+        "P2 trusted verifier": p2,
+        "P2 two workers": p2,
+        "P2 sequential reviewer": p2,
+        "P2 scope report": p2,
+        "P2 dependency report": p2,
+        "P2 reviewer report": p2,
+        "P2 launch path": p2.lower(),
+        "P2 report basis": p2,
+        "P2 marketplace registration": p2,
+        "P2 board": p2,
+        "P2 state": p2,
+        "P2 receipt": p2,
         "P2 model": p2,
+        "P2 contract source boundary": contract,
+        "P2 schema sources": schema,
     }
     missing = [label for label, token in expected.items() if token not in surfaces[label]]
     if missing:
         report.add(
-            "site.p2_control_plane",
+            "site.p2_project_organizer",
             False,
             "missing: " + ", ".join(missing),
             hard=True,
         )
     else:
         report.add(
-            "site.p2_control_plane",
+            "site.p2_project_organizer",
             True,
-            "presentation, route, skill, plugin, hook, subagents, Docs MCP, and Terra pin present",
+            "presentation, route, starter, SQLite, local MCP, skill, plugin, agents, outputs, and Terra pin present",
+            hard=True,
+        )
+
+
+def check_p4_agent_loop_surface(report: Report) -> None:
+    registry = REGISTRY.read_text(encoding="utf-8")
+    loops = LOOPS_PAGE.read_text(encoding="utf-8")
+    p4 = P4_PAGE.read_text(encoding="utf-8")
+    p5 = P5_PAGE.read_text(encoding="utf-8")
+    expected = {
+        "registry briefing": (registry, 'code: "LOOPS"'),
+        "Wednesday route": (registry, 'codes: ["LOOPS", "P4", "P5"]'),
+        "Gamma deck": (loops, "Control-Flow-Is-the-Product-nnbb430p72cg1wa"),
+        "briefing completion": (loops, 'data-check-id="loops-complete"'),
+        "P4 goal": (p4, "/goal"),
+        "P4 skill": (p4, "$director-loop"),
+        "P4 verifier": (p4, "tools\\verify_vault.py"),
+        "P4 raw-source manifest": (p4, "SOURCE_MANIFEST.json"),
+        "P4 configured evaluator": (p4, "director_evaluator"),
+        "P4 real resume": (p4, "P4 — Resume"),
+        "P4 resume receipt": (p4, "RESUME_RECEIPT.md"),
+        "P4 external candidate check": (p4, "mission_flesh\\p4\\vault_seed\\tools\\verify_vault.py"),
+        "P4 preserved first candidate receipt": (p4, "CANDIDATE_CHECK_FIRST.txt"),
+        "P4 stable-content release binding": (p4, "stable-content fingerprint"),
+        "P4 immutable evaluated trace": (p4, "evaluator-bound trace prefix"),
+        "P4 non-performative control repair": (p4, "CONTROL_ONLY"),
+        "P4 scoped handoff": (p4, "HANDOFF_RECEIPT.md"),
+        "P4 manifest": (p4, "--write-manifest"),
+        "P4 trust-anchor overwrite guard": (p4, "never overwrite a trust anchor"),
+        "P5 pre/post manifest check": (p5, "--check-manifest"),
+        "P5 external manifest anchor": (p5, "operator\\evidence\\P4_BASELINE_[TODAY].json"),
+        "P5 isolated project": (p5, "choose exactly <code>Documents\\p5-staging</code>"),
+        "P5 recovery verified before replacement": (p5, "Recovery copy failed the trusted baseline"),
+        "P5 payload-free handoff": (p5, "P5_HANDOFF_[TODAY].md"),
+    }
+    required_files = [
+        P4_SEED / "AGENTS.md",
+        P4_SEED / ".agents" / "skills" / "director-loop" / "SKILL.md",
+        P4_SEED / ".codex" / "agents" / "director_evaluator.toml",
+        P4_SEED / "Harness" / "HARNESS_CARD.md",
+        P4_SEED / "Harness" / "RUN_STATE.md",
+        P4_SEED / "Harness" / "RUN_TRACE.md",
+        P4_SEED / "Harness" / "EVAL.md",
+        P4_SEED / "Harness" / "HANDOFF_RECEIPT.md",
+        P4_SEED / "Harness" / "SOURCE_MANIFEST.json",
+        P4_SEED / "tools" / "verify_vault.py",
+    ]
+    missing = [label for label, (surface, token) in expected.items() if token not in surface]
+    forbidden = {
+        "P4 obsolete cold-start demo": (p4, "P4 — Cold Start"),
+        "P5 obsolete model diff baseline": (p5, "p4-vault_baseline"),
+        "P5 broad exposed project": (p5, "choose your <code>Documents</code> folder"),
+    }
+    missing.extend(
+        f"forbidden: {label}" for label, (surface, token) in forbidden.items() if token in surface
+    )
+    missing.extend(str(path.relative_to(REPO_ROOT)) for path in required_files if not path.is_file())
+    if missing:
+        report.add(
+            "site.p4_personal_harness",
+            False,
+            "missing: " + ", ".join(missing),
+            hard=True,
+        )
+    else:
+        report.add(
+            "site.p4_personal_harness",
+            True,
+            "deck, route, goal, skill, raw-source controls, bound evaluation, real resume, verifier, guarded manifest, recovery, and scoped handoff present",
             hard=True,
         )
 
@@ -469,7 +591,8 @@ def main() -> int:
         check_canonical_install_surface(report)
         check_goose_windows_guards(report)
         check_registry_install_route(report)
-        check_p2_control_plane_surface(report)
+        check_p2_project_organizer_surface(report)
+        check_p4_agent_loop_surface(report)
         check_node_lts_claim(report)
         check_opencode_npm_channel(report)
         check_goose_installer_channel(report)

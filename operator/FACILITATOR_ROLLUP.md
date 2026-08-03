@@ -29,7 +29,7 @@ The number that matters is the **slope of `n` down the week** while `m` holds or
 
 | Code | Meaning |
 |---|---|
-| `A` | No required review-boundary evidence: `ADVERSARIAL:` or P4 audit/evaluator/verifier set |
+| `A` | No required review-boundary evidence: `ADVERSARIAL:`, integrated reviewer receipt, or P4 audit/evaluator/verifier set |
 | `B` | Brief accuracy entered with no named field — “the brief was fine” in longer words |
 | `M` | Brief accuracy MISS |
 | `O` | Overclaim near zero while bars-met falls — claiming less to protect the ratio |
@@ -70,8 +70,9 @@ Do not compute a median across a student's nine blocks and do not rank the cohor
 ## Spot-checks worth the minutes
 
 - **P4 completion evidence.** Read three students&#x27; <code>RUN_STATE.md</code>, <code>RUN_TRACE.md</code>, <code>Audit.md</code>, <code>EVAL.md</code>, trusted-verifier output, and external baseline copy. Confirm the brief serves the prewritten decision, the evaluator was read-only, the shared post-audit repair count stayed within one, and the terminal reason points to artifacts rather than effort.
+- **P2 release receipts.** Confirm `board_status`, `ledger_status`, `schema_status`, and `gate_status` are explicit; `evidence.agent_reports_bound` reads `n/3`; `evidence.mcp_tools_reported` reads `n/4`; `evidence.mcp_tools_basis` says `validated worker reports`; and `usage_visibility` is present. Read `elapsed_seconds` and repairs as measured. Do not turn bound reports into a claim that the gate independently observed calls or runs, and keep priorities and decisions with people.
 - **Adversarial paste packs.** A polite reviewer means the pack was thin or the build chat was reused. Fix the pack; never soften the prompt.
 - **Transfer seeds.** P1–P7 write dated seeds during their own module closeouts. Only P7 and P8 use the shared `P7–P8 — 30/60/90 Plan` chat, because both visits continue the same saved plan in the same role. At P7, count the seeds and read the dates. Seven seeds all dated the same afternoon is a Friday dump with extra steps.
-- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B1, P2 and P5. P4 uses its human raw-source audit, configured read-only evaluator, deterministic verifier, and a real mid-run resume from saved state. Do not add a separate attack. At P1, P6, P7 and P8 the student ticks the floor before the attack. P3 checks outcomes as artifacts are produced, then uses its comparator, source packet, and raw-file adjudication as the review.
+- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B1 and P5. P2 uses its integrated read-only board reviewer and deterministic release gate. P4 uses its human raw-source audit, configured read-only evaluator, deterministic verifier, and a real mid-run resume from saved state. Do not add a separate attack to either. At P1, P6, P7 and P8 the student ticks the floor before the attack. P3 checks outcomes as artifacts are produced, then uses its comparator, source packet, and raw-file adjudication as the review.
 
 If a cohort needs rescue, narrow the **scope of data**. Rescue is restoring the pulse and the evidence, not adding metrics.

@@ -20,7 +20,7 @@ Five fields. Target: under five minutes of dialogue. Append one entry per block;
 | **5. I still own** | Judgment, next action, or risk the machine must not carry alone. |
 | **6. Adversarial** | Paste final line: `ADVERSARIAL: stood / wounded / failed — …` (from review chat). |
 
-P3 uses **6. Decision review** instead: record the most consequential source-backed disposition from the comparator and MCP evidence packet. P4 uses **6. Integrated evaluation** instead: point to the human raw-source audit, configured read-only evaluator receipt, deterministic verifier, resume receipt, terminal reason, intervention and repair counts, and residual risk. Neither live page adds a separate attack chat.
+P2 uses **6. Release check** instead: record `status`, `gate_status`, `board_status`, `ledger_status`, and `schema_status` from `RUN_RECEIPT.json`, then name any failed check. Its evidence line distinguishes the receipt's hash-bound `agent_reports_bound`, `mcp_tools_reported`, `mcp_tools_basis`, and `usage_visibility` from measured `elapsed_seconds` and repairs; these are not independently observed agent runs or tool calls. P3 uses **6. Decision review**: record the most consequential source-backed disposition from the comparator and MCP evidence packet. P4 uses **6. Integrated evaluation**: point to the human raw-source audit, configured read-only evaluator receipt, deterministic verifier, resume receipt, terminal reason, intervention and repair counts, and residual risk. None of those live pages adds a separate attack chat.
 
 ---
 
@@ -50,7 +50,7 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 | 5. I still own | |
 | 6. Adversarial | |
 
-### P2 — Personal control plane
+### P2 — Project Organizer
 
 | Field | Note |
 |---|---|
@@ -59,7 +59,7 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 | 3. Verdict | |
 | 4. Evidence | |
 | 5. I still own | |
-| 6. Adversarial | |
+| 6. Release check | |
 
 ### P3 — Twin-engine + MCP evidence
 

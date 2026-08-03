@@ -1,7 +1,7 @@
 # Measurement spine — Move 4
 
 **Ultra-light week scoreboard.** Living Markdown in the Codex app project.  
-Updated **once per block, after that block&#x27;s review boundary**. P4 uses its human raw-source audit, configured read-only evaluator receipt, deterministic verifier, resume receipt, and terminal state. It does not add a separate adversarial chat.
+Updated **once per block, after that block&#x27;s review boundary**. P2 uses its built-in `REVIEW:` line and receipt. P4 uses its human raw-source audit, configured read-only evaluator receipt, deterministic verifier, resume receipt, and terminal state. Neither adds a separate adversarial chat.
 
 The live HTML module page is authoritative for whether this row is part of the learner flow and which exact module-specific closeout chat to use.
 
@@ -134,6 +134,8 @@ Answer the question printed in the **Lesson reflection** panel on the current le
 | P7 | | | | |
 | P8 | | | | |
 
+For P2, read the row from `RUN_RECEIPT.json`. Put `board_status`, `ledger_status`, and `schema_status` in the first cell. In the second, record `gate_status` plus `evidence.agent_reports_bound` as `n/3`, `evidence.mcp_tools_reported` as `n/4`, `evidence.mcp_tools_basis` exactly as `validated worker reports`, and `evidence.usage_visibility`. These fields are bound evidence, not an assertion that the gate independently watched agent runs or tool calls. Convert `measured_observations.elapsed_seconds` to minutes by dividing by 60 and rounding up to the next whole minute, while keeping 0 seconds as 0 minutes; record measured repairs in the deep mark. Do not add an overclaim exercise.
+
 For P4, read the first-pass and final criterion tables from `Harness/EVAL.md` and the run facts from `Harness/RUN_TRACE.md`. In the overclaim cell, put `n/m`, where `m` is the number of criteria the generator presented as ready on first pass and `n` is the number the fresh evaluator returned HOLD. Preserve that first-pass result even when the one permitted repair clears it. Time ends at the explicit PASS/HOLD terminal record, not at the later transfer edit.
 
 Nine rows is the whole scoreboard. Do not average them and do not add a totals line: a median across nine unlike missions has no referent, because the missions are not repeats of one another. The reading that carries a decision is the **shape of the overclaim column down the page**, and you get that by looking at it.
@@ -146,7 +148,7 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 
 | Block | Deep mark (one line) |
 |---|---|
-| **P2** | Control plane: product released/HOLD · gate PASS/FAIL · elapsed min · repairs `n` · active controls `n` |
+| **P2** | Project Organizer receipt: board RELEASE/HOLD · ledger PASS/FAIL · schema PASS/FAIL · gate PASS/FAIL · bound reports `n/3` · MCP tools `n/4` · basis `validated worker reports` · usage visibility · measured elapsed min · measured repairs `n` |
 | **P3** | Comparator on `BRIEF-v1`: material differences `n` · dispositions `K/D/U` · release decision · packet source-checked/closed `Y/Y` |
 | **P4** | Personal harness: terminal PASS/HOLD · human interventions `n` · first-pass evaluator HOLD `n/m` · trusted verifier PASS/HOLD · post-audit repairs `0/1` · mid-run resume PASS/HOLD · external manifest Y/N |
 | **P5** | Containment: 3/3 catches · absence-of-effect proof pointer |
@@ -159,7 +161,7 @@ B1, P1 and P7 carry no deep mark — for those blocks the four entries are the w
 
 ## End-of-block prompt (paste after a separate adversarial review)
 
-P4 does not use this prompt; its live page writes the row from integrated receipts.
+P2 and P4 do not use this prompt; their live pages write the row from integrated receipts.
 
 ```text
 Measurement spine update. Read operator/MEASUREMENT_SPINE.md.

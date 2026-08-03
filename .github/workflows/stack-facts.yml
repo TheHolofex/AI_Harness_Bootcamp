@@ -60,18 +60,23 @@ jobs:
         with:
           node-version: "22.22.0"
           cache: npm
-          cache-dependency-path: instruments/p3_mcp_evidence/package-lock.json
+          cache-dependency-path: |
+            instruments/p2_control_plane/reference/plugins/project-organizer/package-lock.json
+            instruments/p3_mcp_evidence/package-lock.json
 
       - name: Run rotting-facts harness
         # Local checks are hard gates. Network drift probes use the same public
         # Node, npm, and AAIF channels named by the canonical install page.
         run: python .github/scripts/verify-stack-facts.py
 
-      - name: Smoke-test the P2 release-control plugin
-        run: python instruments/p2_control_plane/starter/plugins/p2-release-control/tests/smoke_test.py
+      - name: Verify the P2 Project Organizer reference
+        run: python instruments/p2_control_plane/reference/tests/verify_reference.py
 
-      - name: Verify the P2 package wiring
-        run: python instruments/p2_control_plane/starter/plugins/p2-release-control/tests/verify_package.py
+      - name: Install the locked P2 plugin dependencies
+        run: npm ci --prefix instruments/p2_control_plane/reference/plugins/project-organizer --ignore-scripts --no-audit --no-fund
+
+      - name: Smoke-test the P2 Project Organizer plugin
+        run: npm test --prefix instruments/p2_control_plane/reference/plugins/project-organizer
 
       - name: Smoke-test the P3 MCP evidence boundary
         working-directory: instruments/p3_mcp_evidence
@@ -103,8 +108,8 @@ jobs:
         working-directory: instruments/p3_mcp_evidence
         run: npm run configure-smoke
 
-  verify-p2-control-plane-windows:
-    name: verify-p2-control-plane-windows
+  verify-p2-project-organizer-windows:
+    name: verify-p2-project-organizer-windows
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
@@ -116,94 +121,65 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.22.0"
+          cache: npm
+          cache-dependency-path: instruments/p2_control_plane/reference/plugins/project-organizer/package-lock.json
+
       - name: Smoke-test the isolated P2 bootstrap
         shell: powershell
         run: |
-          $p1Source = Join-Path $env:RUNNER_TEMP "Completed P1 with spaces"
-          New-Item -ItemType Directory -Path $p1Source | Out-Null
-          Copy-Item ".\mission_flesh\p1\*" $p1Source -Recurse -Force
-          Set-Content -LiteralPath (Join-Path $p1Source "SOURCE_MANIFEST.md") -Encoding UTF8 -Value "# Source manifest`n`n- C1: corpus/C1_release_notes.md`n- C2: corpus/C2_oncall.md"
-          Set-Content -LiteralPath (Join-Path $p1Source "AUDIT.md") -Encoding UTF8 -Value "# Audit`n`nP1 release checks complete."
-          Set-Content -LiteralPath (Join-Path $p1Source "RELEASE_RECORD.md") -Encoding UTF8 -Value "# Release record`n`nDecision: RELEASE"
-
-          $target = Join-Path $env:RUNNER_TEMP "P2 Control Plane with spaces"
-          .\instruments\p2_control_plane\bootstrap.ps1 -P1Source $p1Source -Destination $target
+          $target = Join-Path $env:RUNNER_TEMP "P2 Project Organizer with spaces"
+          .\instruments\p2_control_plane\bootstrap.ps1 -Destination $target
           $required = @(
             "AGENTS.md",
-            "HARNESS_PROFILE.md",
-            "P2_CONTROL_PLANE.json",
-            ".agents\skills\daily-brief-release\SKILL.md",
+            "PROJECT_ORGANIZER_CONTRACT.md",
             ".agents\plugins\marketplace.json",
             ".codex\config.toml",
-            ".codex\agents\evidence_scout.toml",
-            ".codex\agents\docs_researcher.toml",
-            ".codex\agents\decision_reviewer.toml",
-            "plugins\p2-release-control\hooks\quality_gate.py",
-            "inputs\p1\corpus\C1_release_notes.md",
-            "inputs\p1\SOURCE_MANIFEST.md",
-            "inputs\p1\AUDIT.md",
-            "inputs\p1\RELEASE_RECORD.md"
+            "source_packet\01_project_charter.md",
+            "source_packet\02_deliverables.csv",
+            "source_packet\03_dependency_notes.md",
+            "source_packet\04_decision_log.md",
+            "source_packet\05_status_updates.md",
+            "source_packet\06_source_register.csv"
           )
           foreach ($relative in $required) {
             if (-not (Test-Path -LiteralPath (Join-Path $target $relative))) {
               throw "P2 bootstrap missing $relative"
             }
           }
-          $agentFiles = @(Get-ChildItem -LiteralPath (Join-Path $target ".codex\agents") -Filter "*.toml")
-          if ($agentFiles.Count -ne 3) {
-            throw "P2 bootstrap should contain exactly three custom agents; found $($agentFiles.Count)"
+          if (Test-Path -LiteralPath (Join-Path $target "reference")) {
+            throw "P2 bootstrap copied the maintainer reference into the learner project"
           }
-          $docsAgent = Get-Content -LiteralPath (Join-Path $target ".codex\agents\docs_researcher.toml") -Raw
-          if ($docsAgent -notmatch "https://developers.openai.com/mcp") {
-            throw "P2 bootstrap lost the official Developer Docs MCP server"
+          foreach ($generated in @("project_ledger.sqlite3", "PROJECT_BOARD.html", "PROJECT_STATE.json", "RUN_RECEIPT.json", "plugins")) {
+            if (Test-Path -LiteralPath (Join-Path $target $generated)) {
+              throw "P2 bootstrap included generated work: $generated"
+            }
           }
-          if (Test-Path -LiteralPath (Join-Path $target "HOME_REFERENCE.md")) {
-            throw "P2 bootstrap still contains the retired endpoint reference"
-          }
+
+          $sentinel = Join-Path $target "STUDENT_WORK.txt"
+          Set-Content -LiteralPath $sentinel -Encoding UTF8 -Value "preserve me"
           $refused = $false
           try {
-            .\instruments\p2_control_plane\bootstrap.ps1 -P1Source $p1Source -Destination $target
+            .\instruments\p2_control_plane\bootstrap.ps1 -Destination $target
           } catch {
             $refused = $true
           }
-          if (-not $refused) {
-            throw "P2 bootstrap overwrote an existing project"
+          if (-not $refused -or -not (Test-Path -LiteralPath $sentinel)) {
+            throw "P2 bootstrap did not preserve an existing project"
           }
 
-          $incompleteP1 = Join-Path $env:RUNNER_TEMP "Incomplete P1"
-          New-Item -ItemType Directory -Path (Join-Path $incompleteP1 "corpus") -Force | Out-Null
-          $badTarget = Join-Path $env:RUNNER_TEMP "P2 should not exist"
-          $failed = $false
-          try {
-            .\instruments\p2_control_plane\bootstrap.ps1 -P1Source $incompleteP1 -Destination $badTarget
-          } catch {
-            $failed = $true
-          }
-          if (-not $failed -or (Test-Path -LiteralPath $badTarget)) {
-            throw "P2 bootstrap created a final project from incomplete P1 evidence"
-          }
+      - name: Verify the P2 Project Organizer reference
+        run: python instruments/p2_control_plane/reference/tests/verify_reference.py
 
-      - name: Verify the P2 package wiring
-        run: python instruments/p2_control_plane/starter/plugins/p2-release-control/tests/verify_package.py
+      - name: Install the locked P2 Project Organizer plugin dependencies
+        run: npm ci --prefix instruments/p2_control_plane/reference/plugins/project-organizer --ignore-scripts --no-audit --no-fund
 
-      - name: Run the exact Windows hook command from a path with spaces
+      - name: Smoke-test the P2 Windows project configuration
         shell: powershell
-        run: |
-          $target = Join-Path $env:RUNNER_TEMP "P2 Control Plane with spaces"
-          $env:PLUGIN_ROOT = Join-Path $target "plugins\p2-release-control"
-          $eventPath = Join-Path $env:RUNNER_TEMP "p2 stop event.json"
-          $eventJson = @{ cwd = $target; stop_hook_active = $false } | ConvertTo-Json -Compress
-          $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
-          [System.IO.File]::WriteAllText($eventPath, $eventJson, $utf8NoBom)
-          $command = 'type "' + $eventPath + '" | py -3 "%PLUGIN_ROOT%\hooks\quality_gate.py"'
-          $output = & cmd.exe /D /S /C $command
-          if ($LASTEXITCODE -ne 0) {
-            throw "Windows hook command exited $LASTEXITCODE`: $output"
-          }
-          $parsed = $output | ConvertFrom-Json
-          if ($null -eq $parsed -or @($parsed.PSObject.Properties).Count -ne 0) {
-            throw "Disabled Windows hook should return an empty object; got: $output"
-          }
+        run: .\instruments\p2_control_plane\reference\tests\configure_smoke.ps1
 
-      - name: Smoke-test the P2 release-control hook
-        run: python instruments/p2_control_plane/starter/plugins/p2-release-control/tests/smoke_test.py
+      - name: Smoke-test the P2 Project Organizer plugin
+        run: npm test --prefix instruments/p2_control_plane/reference/plugins/project-organizer

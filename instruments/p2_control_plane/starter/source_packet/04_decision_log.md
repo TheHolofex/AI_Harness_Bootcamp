@@ -1,0 +1,7 @@
+# Decision log
+
+| decision_id | project_id | title | question | decision_owner | needed_by | status | options | recommendation | consequence_of_delay | source_id |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| DEC-001 | PRJ-001 | North Yard offline fallback | When North Yard loses connectivity, should technicians use a queued mobile form or a paper response card with later reconciliation? | Elena Vasquez | 2026-08-05 | open | Queued mobile form; paper card and reconciliation; no offline launch | Use the queued mobile form, with the paper card as a documented contingency. | DLV-003 cannot publish accurate fallback steps, compressing technician practice before go-live. | SRC-004 |
+| DEC-002 | PRJ-001 | Pilot alert-routing threshold | Is 90% of seeded alerts inside 15 minutes sufficient for pilot go-live, or must the team reach 95% before either site launches? | Not assigned in source | 2026-08-10 | open | GO at 90% with misses explained; require 95%; phase North Yard after River Annex | Keep the charter's 90% threshold and require a named corrective action for every miss. | DLV-004 cannot state a defensible GO or HOLD rule, and the sponsor review may slip. | SRC-004 |
+| DEC-003 | PRJ-001 | Seeded data use | May the tabletop use synthetic alert values mapped to the 12 real asset IDs? | Luis Ortega | 2026-08-02 | resolved | Synthetic values on real IDs; production alert copy | Use synthetic values on real IDs. | Resolved; no current delay. | SRC-004 |

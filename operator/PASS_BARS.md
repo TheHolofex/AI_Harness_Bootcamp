@@ -25,7 +25,7 @@ Whichever way you do it, the list is written down **before** the final review or
 
 **When the module page calls for an AI-assisted walk, use its exact module-specific closeout chat.** The generic direction-chat pattern is `[MODULE] — Direction & Closeout`; replace `[MODULE]` with the current module code and copy any date suffix shown on the page. Go one bar at a time. For each bar you answer *met* or *not yet* and give an evidence pointer, and the AI challenges any pointer that is a feeling rather than an artifact. Use the closer prompt at the bottom of this file.
 
-**P4 checks the product inside the build.** It uses a human raw-source audit, a configured read-only evaluator with an exact receipt, a deterministic vault verifier, and a real resume from saved state. Its live page does not add a separate adversarial chat.
+**P2 and P4 check the product inside the build.** P2 uses read-only workers, a sequential reviewer, and a deterministic release hook. P4 uses a human raw-source audit, a configured read-only evaluator with an exact receipt, a deterministic vault verifier, and a real resume from saved state. Their live pages do not add a separate adversarial chat.
 
 **At P1, P6, P7 and P8 — tick the list yourself, then hand it to the attack.** Before you open the adversarial chat:
 
@@ -62,7 +62,7 @@ Acceptable: paths, commands, diffs, test output, score-sheet rows, opened citati
 |---|---|---|
 | 1 | Direct messy reality → instrument + criteria | B1 |
 | 2 | Machines that regenerate judgment products | P1 |
-| 3 | Engineer a personal control plane | P2 |
+| 3 | Build a dependable local Project Organizer | P2 |
 | 4 | Multi-engine verdict ownership | P3 |
 | 5 | Knowledge system with walkable trails | P4 |
 | 6 | Poison / containment by absence of effect | P5 |
@@ -121,29 +121,26 @@ Paste job, citations unchecked, no delta, or silent failure on broken sources.
 
 ---
 
-## P2 — Personal control plane · Cap 3
-**Mastery claim:** You can place durable behavior at the right scope and run it as one measured system that produces a serious work product.
+## P2 — Project Organizer · Cap 3
+**Mastery claim:** You can direct AI to turn messy project files into a local project system whose data, tools, review, and release checks work together.
 
 ### MVP
-- [ ] `HARNESS_PROFILE.md` names one real reader and work product, its source and permission boundaries, acceptance contract, runtime budget, evidence paths, disable paths, and residual risk
-- [ ] One focused repo skill under `.agents/skills/` captures the repeatable P1 daily-brief workflow; its description names both the trigger and the nearby work it must not claim
-- [ ] The course release-control plugin is inspected before installation, passes its smoke test, and has its exact `Stop` command hook reviewed and trusted
-- [ ] The deterministic gate checks the real saved brief, writes a receipt with the artifact hash and individual results, permits at most one repair continuation, and remains FAIL/HOLD rather than looping or weakening the contract
-- [ ] Evidence and documentation subagents run together while the live parent turn is **Read only**; the documentation role uses the official OpenAI Developer Docs MCP server; the reviewer runs only after the candidate exists under another read-only parent turn; separate **Ask for approval** turns perform the writes
-- [ ] Every main and subagent run is pinned to `gpt-5.6-terra`; no more than two spawned threads remain open; completed threads are closed before another batch; external writes require operator approval
-- [ ] Released daily brief + evidence map + configuration evidence + independent review + PASS quality-gate receipt + run receipt with observed time, turns, subagents, approvals, repairs, and visible usage or `not exposed`
-- [ ] Keep / revise / leave-off decision for every installed component, with its job, cost, permission surface, evidence, disable path, and remaining risk; `out/ACTIVE_CONTROL_PLANE.md` records and enacts the resulting active, on-demand, and disabled set
-- [ ] Log cites the product and receipts; **30-day seed** names one calendar-real harness habit and its first proof
+- [ ] The SQLite ledger builds deterministically from the six supplied files only, passes exact schema and full source-row parity checks, preserves stable IDs and source hashes, and keeps an explicit value such as `Not assigned in source` literal
+- [ ] The local MCP server exposes only snapshot, ready work, dependency path, and decision queue; every request runs the bundled data-only verifier, every result shares one source fingerprint, and ready work carries dependency and predecessor evidence
+- [ ] One focused skill and one reviewed plugin package the organizer workflow, MCP source, bundled verifier, renderer, and Stop hook; project config holds the only MCP registration, and the installed hook command is inspected and trusted before it runs
+- [ ] Two read-only Terra workers save the exact contracted JSON reports and partition the four MCP calls without parent duplication; the sequential Terra reviewer binds the exact candidate state and board hashes after rendering
+- [ ] `PROJECT_BOARD.html` opens locally as a CANDIDATE with a generated-at time, source IDs, **Ready now**, the longest declared launch path, blockers, decisions, unknowns, **Scope and sequence findings**, and **Source coverage**
+- [ ] The inspected `RUN_RECEIPT.json` shows status PASS, gate PASS, board RELEASE, three bound agent reports, four MCP tools whose basis is `validated worker reports`, explicit usage visibility, and measured elapsed time and repairs; the log and transfer seed point to that evidence
 
 ### Stretch
-- [ ] A second real consumer installs the now-stable skill as a plugin, completes the same work, and reports what the package still assumes about your environment
-- [ ] A write-capable MCP or connector is added only for a real workflow need, with explicit tool allowlists, approvals, credentials, audit evidence, and disable/revoke steps
+- [ ] Run the same organizer on a second real project packet and record which source or schema assumptions needed to change
+- [ ] Add one new read-only MCP question only because a real project decision needs it; define the answer contract and smoke test before adding the tool
 
 ### Side-quest
-- [ ] Remove one component from the integrated system and show that quality holds while context, time, approvals, or cost improve
+- [ ] Adapt the visual board for a real team handoff while keeping the same source-linked ledger and release checks
 
 ### Not yet if
-Components are installed but do not serve the product; subagents write over one another; MCP is present only for novelty; the hook is untrusted, loops, or has no saved receipt; the final judgment product or observed run evidence is missing.
+The board is hand-written rather than deterministically rendered; records lose source identity; MCP can write or answer without full parity; the parent repeats worker calls; reports are summarized instead of saved exactly; the reviewer is stale or followed by a rerender; the installed hook executes learner Python; or the receipt does not bind all three reports.
 
 ---
 

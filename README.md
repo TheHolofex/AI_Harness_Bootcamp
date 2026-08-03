@@ -1,6 +1,6 @@
 # AI Harness Bootcamp
 
-The website is the course. Open [`site/index.html`](site/index.html) through the hosted course URL and follow the large day-by-day cards: B0, B1, Model Economics, P1, the Harness Control Plane presentation, P2, two MCP presentations, P3, the Agent Loops & Agentic Patterns presentation, then P4 through P8.
+The website is the course. Open [`site/index.html`](site/index.html) through the hosted course URL and follow the large day-by-day cards: B0, B1, Model Economics, P1, the Harness Control Plane presentation, P2 Project Organizer, two MCP presentations, P3, the Agent Loops & Agentic Patterns presentation, then P4 through P8.
 
 Markdown in this repository is not a second reading path. It remains only where a lesson asks a student or an AI harness to work with real files:
 
@@ -8,7 +8,7 @@ Markdown in this repository is not a second reading path. It remains only where 
 |---|---|
 | `operator/` | Direction briefs, logs, pass bars, adversarial review, measurement, and transfer files |
 | `mission_flesh/` | Module corpora, starter files, and exercise inputs |
-| `instruments/` | Test suites, comparison packs, graders, and score sheets |
+| `instruments/` | Exercise kits, test suites, comparison packs, graders, and score sheets |
 
 The optional handouts under `site/resources/` are linked directly from the module that owns them. They add depth but do not form a separate course path.
 

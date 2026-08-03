@@ -67,7 +67,7 @@ During the artifact-backed closeout on each live module page, write **one entry 
 | Block | Seed section to fill |
 |---|---|
 | **P1** | From P1 — Machine candidate |
-| **P2** | From P2 — Personal control plane |
+| **P2** | From P2 — Project Organizer |
 | **P3** | From P3 — Verdict ownership |
 | **P4** | From P4 — Personal operating harness |
 | **P5** | From P5 — Operating picture |
@@ -94,7 +94,7 @@ You are specifying how **direction + cothinking + evidence + bounds** will run o
 
 ## Identity (complete from saved module evidence before the P7 horizon draft)
 
-Use the real workload named across the P1 and P2 seeds, then revise whenever the desk picture sharpens. Do not create a separate B1 transfer session.
+Use the real work named across the P1 and P2 seeds, then revise whenever the desk picture sharpens. Do not create a separate B1 transfer session.
 
 **Role / desk**  
 
@@ -128,17 +128,17 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | Recurring judgment product on my desk that should become a machine | |
 | What has to be true for it to regenerate rather than be rewritten | |
 
-### From P2 — Personal control plane (feeds **30 days**)
+### From P2 — Project Organizer (feeds **30 days**)
 
 | Field | Entry |
 |---|---|
 | Date | |
-| Recurring work product and reader | |
-| Controls I will keep (instructions / skill / hook / subagents / MCP / plugin) | |
-| Control I will leave off until a named need appears | |
-| Product and receipt I will inspect | |
-| 30-day habit (calendar-real) | |
-| First proof of habit (what I’ll attach week 1) | |
+| Real project whose status is spread across files or people | |
+| Project facts the SQLite ledger must keep, with their source files | |
+| Four read-only MCP questions that help me decide what moves next | |
+| Disjoint worker split, exact saved report paths, and hash-bound review I keep before release | |
+| Candidate board and PASS/HOLD release receipt I inspect | |
+| 30-day reuse rule and its first proof | |
 
 ### From P3 — Verdict ownership (feeds **30–60**)
 
@@ -219,7 +219,7 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | Weekly | Case suite or frozen check + self-calibration | |
 | As needed | Intake rule / single-engine ban on named decisions | |
 
-### 30-day control plane and personal harness
+### 30-day organizer and harness
 
 What I install in month one:  
 
@@ -357,7 +357,7 @@ name any that are empty or undated and make me fix those before we draft.
 Then, from the seeds only:
 1. Draft 30 / 60 / 90 outcomes — at most three per horizon, each observable in
    that horizon by someone who is not me.
-2. Fill the 30-day rhythm, control plane and personal harness, bounds, and not-yet risks.
+2. Fill the 30-day rhythm, organizer and harness, bounds, and not-yet risks.
 3. Attack every line that could survive without me doing anything differently.
 4. Set Status to Draft horizons complete.
 
