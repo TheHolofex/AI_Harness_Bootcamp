@@ -243,20 +243,26 @@ if ($freeGB -lt 25) { Write-Warning 'Free at least 25 GB before continuing.' }</
     <span class="check-num">13</span>
     <span class="check-title">Keep a working Python install; add it only if needed</span>
   </label>
-  <div class="check-detail"><p>First refresh this window's copy of PATH, then check whether Node's optional tools or an earlier setup already installed real Python:</p>
+  <div class="check-detail"><p>First refresh this window's copy of PATH, then check whether Node's optional tools or an earlier setup already installed a working interpreter:</p>
   <pre><code>$env:Path = @(
   [Environment]::GetEnvironmentVariable('Path','Machine')
   [Environment]::GetEnvironmentVariable('Path','User')
 ) -join ';'
 $python = Get-Command python -ErrorAction SilentlyContinue
-if ($python -and $python.Source -notlike '*\WindowsApps\*') {
+if ($python) {
   python --version
-  $python.Source
+  if ($LASTEXITCODE -eq 0) {
+    python -c "import sys; print(sys.executable)"
+  } else {
+    'Install Python 3.14 before continuing.'
+  }
 } else {
-  'Install Python from python.org before continuing.'
+  'Install Python 3.14 before continuing.'
 }</code></pre>
-  <p>If you see a Python 3 version and a path outside <code>WindowsApps</code>, keep it and do not run another installer. Python 3.14 installed by Node's optional tools meets the course requirement.</p>
-  <p>If the block says to install Python, open the official <a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">Python releases for Windows</a>. Under the latest Python 3.14 release, choose <strong>Windows installer (64-bit)</strong>. On its first screen, select <strong>Add python.exe to PATH</strong>, then choose <strong>Install Now</strong>.</p></div>
+  <p>If you see Python 3.14 and an interpreter path, keep it and do not install a second copy. A path under <code>\WindowsApps\</code> can be legitimate when the current Python Install Manager owns the alias.</p>
+  <p>If the block says to install Python, check whether WinGet is available with <code>winget --version</code>. If it prints a version number, run this one command:</p>
+  <pre><code>winget install --exact --id Python.Python.3.14 --source winget --accept-package-agreements --accept-source-agreements</code></pre>
+  <p>If WinGet is unavailable or blocked, open the official <a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">Python releases for Windows</a>, download and open the current <strong>Python Install Manager — Installer (MSIX)</strong>, and select <strong>Install</strong>. Then run <code>py install 3.14</code> in PowerShell. If <code>py</code> is not immediately available, open a new PowerShell window and run that command there. The MSI package is for managed deployment; do not choose it unless your IT team directs you to.</p></div>
 </li>
 </ol></section>
 
@@ -329,11 +335,13 @@ python --version</code></pre>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-np-stub" data-check-id="np-stub" />
     <span class="check-num">18</span>
-    <span class="check-title">Make sure "python" is the real Python</span>
+    <span class="check-title">Make sure "python" launches a real interpreter</span>
   </label>
-  <div class="check-detail"><p>Windows ships a placeholder <code>python.exe</code> that opens the Microsoft Store instead of running Python. It hijacks the command and produces confusing failures rather than a clear message.</p>
-  <pre><code>(Get-Command python).Source</code></pre>
-  <p>You want a real install path — something under <code>...\Programs\Python\...</code>. If the path contains <code>\WindowsApps\</code>, or typing <code>python</code> opened the Store, switch the placeholder off: Settings → Apps → Advanced app settings → App execution aliases, then turn off the entries named <strong>python.exe</strong> and <strong>python3.exe</strong>. Reopen the terminal and check again.</p></div>
+  <div class="check-detail"><p>Check the interpreter itself rather than judging it only by the command path:</p>
+  <pre><code>python --version
+python -c "import sys; print(sys.executable)"</code></pre>
+  <p>The first command must print Python 3.14, and the second must print the path to an installed Python interpreter. A <code>Get-Command python</code> result under <code>\WindowsApps\</code> can now be legitimate when the Python Install Manager owns the alias; that path alone is no longer evidence of the old Store placeholder.</p>
+  <p>If <code>python</code> opens the Store or is not found, run <code>py --version</code>. If <code>py</code> works, open Settings → Apps → Advanced app settings → App execution aliases and make sure the aliases for <strong>Python (default)</strong> and <strong>Python install manager</strong> are enabled; toggle them off and back on to refresh them, then reopen PowerShell. If neither <code>python</code> nor <code>py</code> works, return to step 13.</p></div>
 </li>
 </ol></section>
 
