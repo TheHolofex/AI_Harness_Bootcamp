@@ -26,6 +26,7 @@ What it does not cover (needs Windows, funded keys, and a person):
 
 from __future__ import annotations
 
+import gzip
 import json
 import re
 import sys
@@ -129,6 +130,10 @@ def check_repo_paths(report: Report) -> None:
         "mission_flesh/tuesday/inbound/distros",
         "mission_flesh/tuesday/inbound/lookalike",
         "mission_flesh/tuesday/inbound/traffic",
+        "instruments/osint_desk/probe.mjs",
+        "instruments/osint_desk/specimen/server.mjs",
+        "instruments/osint_desk/starter/server.mjs",
+        "instruments/osint_desk/fixtures/ais_vessels_planted.json",
         "instruments/p3_evidence_surface/server.mjs",
         "instruments/p3_evidence_surface/smoke.mjs",
         "instruments/p8_hold_degrade",
@@ -300,6 +305,55 @@ def check_registry_install_route(report: Report) -> None:
         )
 
 
+def http_headers_text(
+    url: str, headers: dict, timeout: float = 25.0
+) -> Tuple[Optional[str], str]:
+    """Like http_text, but for services that require specific request headers."""
+    merged = {"User-Agent": UA}
+    merged.update(headers)
+    request = urllib.request.Request(url, headers=merged)
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            raw = response.read()
+            if response.headers.get("Content-Encoding") == "gzip":
+                raw = gzip.decompress(raw)
+            return raw.decode("utf-8", errors="replace"), f"HTTP {response.status}"
+    except urllib.error.HTTPError as error:
+        return None, f"HTTP {error.code}"
+    except Exception as error:  # noqa: BLE001 - report staff-facing network failures
+        return None, f"{type(error).__name__}: {error}"
+
+
+def check_osint_feeds(report: Report) -> None:
+    """The two public feeds the open source desk builds on.
+
+    Soft by design: these are third-party services, and an outage is news about
+    them rather than a broken repository.
+    """
+    body, detail = http_text(
+        "https://opensky-network.org/api/states/all"
+        "?lamin=51&lomin=-1&lamax=52&lomax=1"
+    )
+    report.add(
+        "osint.opensky_channel",
+        body is not None and '"states"' in body,
+        detail if body is None else f"anonymous access still returns state vectors ({detail})",
+        hard=False,
+    )
+
+    # Digitraffic requires gzip and asks callers to identify themselves.
+    body, detail = http_headers_text(
+        "https://meri.digitraffic.fi/api/ais/v1/vessels",
+        {"Accept": "application/json", "Accept-Encoding": "gzip", "Digitraffic-User": UA},
+    )
+    report.add(
+        "osint.digitraffic_channel",
+        body is not None and '"mmsi"' in body,
+        detail if body is None else f"keyless AIS metadata still served ({detail})",
+        hard=False,
+    )
+
+
 def check_p2_inbound_surface(report: Report) -> None:
     registry = REGISTRY.read_text(encoding="utf-8")
     hcp = HCP_PAGE.read_text(encoding="utf-8")
@@ -307,7 +361,7 @@ def check_p2_inbound_surface(report: Report) -> None:
     manifest = (P2_MATERIAL / "MANIFEST.md").read_text(encoding="utf-8")
     expected = {
         "registry briefing": 'code: "HCP"',
-        "registry route": 'codes: ["HCP", "P2", "MCP1", "MCP2", "P3"]',
+        "registry route": 'codes: ["HCP", "P2", "MCP1", "MCP2", "P3", "OSD"]',
         "registry title": 'title: "Inbound"',
         "registry storage": 'key: "ahb-checklist-p2-project-organizer"',
         "presentation URL": "Harness-Prompt-Folklore-Design-the-Control-Plane-Not-Just-the-Pro-74204eoe255uss1",
@@ -564,6 +618,7 @@ def main() -> int:
         check_goose_windows_guards(report)
         check_registry_install_route(report)
         check_p2_inbound_surface(report)
+        check_osint_feeds(report)
         check_p4_agent_loop_surface(report)
         check_node_lts_claim(report)
         check_opencode_npm_channel(report)

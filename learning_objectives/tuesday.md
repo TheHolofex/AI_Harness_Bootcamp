@@ -28,3 +28,18 @@
 | **5. Keep citations and sources intact across every agent.** | Preserving provenance | Monday's claim tracing | A subagent that summarises destroys the trail behind every claim it touched, and nothing downstream can rebuild it. The link from claim to source has to survive every hop, not only the last one. | You can walk any claim in the finished product back to the source that carried it, through however many agents touched it. Nothing in the chain says "the analysis found" where a citation belongs. You have stopped accepting a summary in place of a report. |
 
 > **After the afternoon:** You can tell when work needs more than one agent, direct how several answers become one, split the pieces so they do not collide, say what you are measuring and why, and keep every claim walkable to its source.
+
+---
+
+## Late afternoon — Your own MCP surface
+
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Judge a tool surface somebody else shipped you.** | Seeing what is loaded | The afternoon's bounded surface | You have used a surface built for you. This reads one built by a stranger, whose tool descriptions are instructions your model will follow. | You read the descriptions before you enable the server, not after something odd happens. You have refused one on the evidence. You no longer treat "it is on the registry" as a review. |
+| **2. Choose the primitive before writing the code.** | Building what earns its place | The morning's advice-versus-enforcement split | Tool, resource, or prompt decides who pulls the trigger, what gets approved, and what it costs in context every turn. Most people make everything a tool and pay for it forever. | You can say which of the three each capability is and why, before any of it exists. Read-only things a person would choose to attach have stopped turning into tools in your designs. |
+| **3. Write a contract a model can actually obey.** | Enforcement design | The morning's skill descriptions | A skill description decides whether your own component fires. A tool description decides whether a stranger's agent picks you, and picks you correctly. Same craft, and now the failure is somebody else's. | You have watched a model pick wrongly, changed one description, and watched the choice change. You write when-not-to-call into every tool without being asked. |
+| **4. Bound what you return, because you cannot take it back.** | Preserving provenance | The afternoon's evidence surface | Your result lands in a context you do not own. Size, opacity, and missing provenance are damage you do at a distance. | Your tools cap rows and bytes without being told to. Coded fields are decoded before they leave. Every answer carries when it was observed and who said so, and you notice when somebody else's server does not. |
+| **5. Serve material you cannot vouch for.** | Blocking only what should be blocked | The afternoon's source-authority rules | Live open sources are self-reported. Part of what you serve is written by whoever you are watching, and some of it is aimed at whoever reads it next. | Self-reported material leaves your surface labelled as self-reported. You do not pass a stranger's text on as your own voice. You have stopped assuming that data arriving through your code became yours. |
+
+> **After the late afternoon:** You can build the tool surface other people's agents connect to — choosing the primitive, writing contracts a model reliably obeys, bounding what you return, and labelling what you cannot vouch for — and hand it over so it works on a machine you have never seen.
+

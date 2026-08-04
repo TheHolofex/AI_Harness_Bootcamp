@@ -175,3 +175,84 @@ The package also declares the domain it was tuned for — which family of work t
 **Working when:** the package names every input the run needs — the declared domain among them — carries none of this question's answers, and someone reading its contents can say exactly what they would have to supply to ask a different question of the same shape. Running it against that different question is the proof, and it is not this afternoon's work — do not claim it as done.
 
 *Skill: portable packaging, carried from the morning*
+
+---
+
+## Late afternoon — The open source desk
+
+You have used a bounded surface somebody else built. Now build the one other people connect to. The material is live: two public feeds that answer whether they feel like it, in shapes nobody designed for you.
+
+**Material:** two free keyless public feeds — live aircraft state vectors and live vessel AIS — and one third-party server to inspect before you trust it.
+
+**Bounds:** two to five tools. One server. Local `stdio` only. Nothing that writes. No credential anywhere in the package. A surface that wants more than five tools has more than one job in it.
+
+### Stage 1 — Connect one you did not write
+
+Install a server somebody else wrote and read its tool descriptions before you enable it. A description is instructions the model will follow, shipped by a stranger.
+
+**You direct:** what you read before enabling, and what would make you refuse.
+
+**Working when:** you can say what each tool claims to do and what it would reach, and you have refused at least one thing on the evidence rather than on a feeling.
+
+*Skill: seeing what is loaded*
+
+### Stage 2 — Decide the primitive before you write code
+
+For each thing the desk needs: a tool the model calls, a resource the person attaches, or a prompt they invoke. Wrong primitive means wrong approval, wrong cost, wrong hands on the trigger.
+
+**You direct:** which of the three each capability is, written down before any code exists.
+
+**Working when:** anything read-only that a person would choose to attach is not a tool, and you can say why for each one.
+
+*Skill: building what earns its place*
+
+### Stage 3 — The smallest useful server
+
+Two to five tools over the live feeds. It runs and answers before any host knows it exists.
+
+**You direct:** which questions the surface answers, and which it refuses to.
+
+**Working when:** it answers through a client you drove yourself, before it is registered anywhere. A server debugged inside a host is two problems being solved as one.
+
+*Skill: building what earns its place*
+
+### Stage 4 — Write a description the model obeys
+
+The description is the contract. It says what the tool does, when to call it, when not to, and what comes back.
+
+**You direct:** the wording, and what you changed after watching a model choose wrongly.
+
+**Working when:** a model picks the right tool from your set without hedging, and picks nothing when the job is not yours. You changed a description and watched the choice change.
+
+*Skill: enforcement design*
+
+### Stage 5 — Make the result safe to receive
+
+What you return lands in somebody else's context and they cannot undo it. Bound it, decode it, and carry the provenance with it.
+
+**You direct:** the row and byte ceiling, which coded fields you decode, and what provenance travels with every answer.
+
+**Working when:** no single call can flood a context, an opaque code never leaves the server undecoded, and every answer says when it was observed and who reported it.
+
+*Skill: preserving provenance*
+
+### Stage 6 — Serve a source that is lying to you
+
+These feeds are self-reported. A vessel broadcasts its own name and destination; nothing checks it. Somewhere in what you serve is a field a stranger controls.
+
+**You direct:** what your server does with a field it cannot vouch for, and what it does with text that reads like an instruction.
+
+**Working when:** self-reported material leaves your server marked as self-reported, and a source whose text tries to instruct the reader does not get passed on as though it were your own words.
+
+*Skill: blocking only what should be blocked*
+
+### Stage 7 — Hand it over
+
+Somebody else connects to it from what you shipped, in one step, on a machine you have never seen.
+
+**You direct:** what belongs in the package and what the other person supplies.
+
+**Working when:** the config entry works unedited except for values they were told to supply, no path in it exists only on your machine, and no credential is in it anywhere.
+
+*Skill: portable packaging, carried from the morning*
+
