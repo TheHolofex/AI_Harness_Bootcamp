@@ -5,16 +5,86 @@
     "lede": "Use these field guides when a live problem calls for a deeper diagnostic, a worked case, or a reusable desk artifact. The block pages remain the canonical course path."
   },
   "modules": [
-    { "id": "prework", "code": "PW", "label": "Pre-work", "route": "prework", "order": 10, "canonicalPath": "site/prework.html" },
-    { "id": "p1", "code": "P1", "label": "P1 · Daily Status Brief", "route": "p1", "order": 20, "canonicalPath": "site/blocks/p1.html" },
-    { "id": "p2", "code": "P2", "label": "P2 · Inbound", "route": "p2", "order": 30, "canonicalPath": "site/blocks/p2.html" },
-    { "id": "p3", "code": "P3", "label": "P3 · The information need", "route": "p3", "order": 40, "canonicalPath": "site/blocks/p3.html" },
-    { "id": "p4", "code": "P4", "label": "P4 · Director’s operating harness", "route": "p4", "order": 50, "canonicalPath": "site/blocks/p4.html" },
-    { "id": "p5", "code": "P5", "label": "P5 · Poisoned corpus", "route": "p5", "order": 60, "canonicalPath": "site/blocks/p5.html" },
-    { "id": "p6", "code": "P6", "label": "P6 · Watch officer", "route": "p6", "order": 70, "canonicalPath": "site/blocks/p6.html" },
-    { "id": "p7", "code": "P7", "label": "P7 · Automation line", "route": "p7", "order": 80, "canonicalPath": "site/blocks/p7.html" },
-    { "id": "p8", "code": "P8", "label": "P8 · Operator-governed model", "route": "p8", "order": 90, "canonicalPath": "site/blocks/p8.html" },
-    { "id": "course-wide", "code": "PC", "label": "Course-wide", "route": "course-wide", "order": 100, "canonicalPath": "site/pulse.html" }
+    {
+      "id": "prework",
+      "code": "PW",
+      "label": "Pre-work",
+      "route": "prework",
+      "order": 10,
+      "canonicalPath": "site/prework.html"
+    },
+    {
+      "id": "p1",
+      "code": "P1",
+      "label": "P1 \u00b7 Daily Status Brief",
+      "route": "p1",
+      "order": 20,
+      "canonicalPath": "site/blocks/p1.html"
+    },
+    {
+      "id": "p2",
+      "code": "P2",
+      "label": "P2 \u00b7 Inbound",
+      "route": "p2",
+      "order": 30,
+      "canonicalPath": "site/blocks/p2.html"
+    },
+    {
+      "id": "p3",
+      "code": "P3",
+      "label": "P3 \u00b7 The information need",
+      "route": "p3",
+      "order": 40,
+      "canonicalPath": "site/blocks/p3.html"
+    },
+    {
+      "id": "p4",
+      "code": "P4",
+      "label": "P4 \u00b7 Director\u2019s operating harness",
+      "route": "p4",
+      "order": 50,
+      "canonicalPath": "site/blocks/p4.html"
+    },
+    {
+      "id": "p5",
+      "code": "P5",
+      "label": "P5 \u00b7 Poisoned corpus",
+      "route": "p5",
+      "order": 60,
+      "canonicalPath": "site/blocks/p5.html"
+    },
+    {
+      "id": "p6",
+      "code": "P6",
+      "label": "P6 \u00b7 Watch officer",
+      "route": "p6",
+      "order": 70,
+      "canonicalPath": "site/blocks/p6.html"
+    },
+    {
+      "id": "p7",
+      "code": "P7",
+      "label": "P7 \u00b7 Automation line",
+      "route": "p7",
+      "order": 80,
+      "canonicalPath": "site/blocks/p7.html"
+    },
+    {
+      "id": "p8",
+      "code": "P8",
+      "label": "P8 \u00b7 Operator-governed model",
+      "route": "p8",
+      "order": 90,
+      "canonicalPath": "site/blocks/p8.html"
+    },
+    {
+      "id": "course-wide",
+      "code": "PC",
+      "label": "Course-wide",
+      "route": "course-wide",
+      "order": 100,
+      "canonicalPath": "site/pulse.html"
+    }
   ],
   "resources": [
     {
@@ -26,11 +96,18 @@
       "wave": 1,
       "summary": "A layered diagnostic for separating shell, path, runtime, identity/access, local-policy, and tool failures.",
       "useWhen": "Use when an install or smoke test fails and the next move is unclear.",
-      "time": "10–15 min",
+      "time": "10\u201315 min",
       "artifact": "The first failed boundary, one targeted correction, and a rerun of the affected smoke check.",
-      "canonical": { "path": "site/checklists/prework-install.html", "fragment": "ahb-prework-install-r-notfound", "label": "Pre-work install recovery checks" },
+      "canonical": {
+        "path": "site/checklists/prework-install.html",
+        "fragment": "ahb-prework-install-r-notfound",
+        "label": "Pre-work install recovery checks"
+      },
       "figurePolicy": "normal",
-      "related": ["PW-4", "PC-1"]
+      "related": [
+        "PW-4",
+        "PC-1"
+      ]
     },
     {
       "id": "PW-4",
@@ -41,11 +118,18 @@
       "wave": 1,
       "summary": "A short check that separates durable workstation setup from temporary terminal, app, and output state.",
       "useWhen": "Use when setup worked only after terminal changes, app restarts, or instructor help.",
-      "time": "15–20 min plus restart",
+      "time": "15\u201320 min plus restart",
       "artifact": "Four freshly regenerated course smoke files after a safe restart.",
-      "canonical": { "path": "site/checklists/prework-install.html", "fragment": "ahb-prework-install-g-four", "label": "Course harness and tool verification" },
+      "canonical": {
+        "path": "site/checklists/prework-install.html",
+        "fragment": "ahb-prework-install-g-four",
+        "label": "Course harness and tool verification"
+      },
       "figurePolicy": "normal",
-      "related": ["PW-2", "P1-5"]
+      "related": [
+        "PW-2",
+        "P1-5"
+      ]
     },
     {
       "id": "P1-2",
@@ -56,11 +140,17 @@
       "wave": 1,
       "summary": "A practical test family for checking sensitivity, invariance, contradiction handling, and corruption response when no single oracle is enough.",
       "useWhen": "Use when a generative product sounds plausible but exact expected output cannot be prewritten.",
-      "time": "60–75 min",
+      "time": "60\u201375 min",
       "artifact": "A metamorphic test sheet with transformations, expected relations, and observed failures.",
-      "canonical": { "path": "site/blocks/p1.html", "fragment": "ideas", "label": "P1 · The Daily Status Brief" },
+      "canonical": {
+        "path": "site/blocks/p1.html",
+        "fragment": "ideas",
+        "label": "P1 \u00b7 The Daily Status Brief"
+      },
       "figurePolicy": "normal",
-      "related": ["P1-5", "P3-3"]
+      "related": [
+        "P1-5"
+      ]
     },
     {
       "id": "P1-5",
@@ -71,11 +161,19 @@
       "wave": 1,
       "summary": "A run-evidence pattern that binds inputs, configuration, identity, and outputs into a replayable record.",
       "useWhen": "Use when another operator must be able to reconstruct what produced a brief or verdict.",
-      "time": "45–60 min",
+      "time": "45\u201360 min",
       "artifact": "A run manifest and replay checklist for one evidence-bearing product.",
-      "canonical": { "path": "site/blocks/p1.html", "fragment": "depth", "label": "P1 · Going deeper" },
+      "canonical": {
+        "path": "site/blocks/p1.html",
+        "fragment": "depth",
+        "label": "P1 \u00b7 Going deeper"
+      },
       "figurePolicy": "normal",
-      "related": ["PW-4", "P1-2", "P3-1"]
+      "related": [
+        "PW-4",
+        "P1-2",
+        "P3-1"
+      ]
     },
     {
       "id": "P3-1",
@@ -86,26 +184,17 @@
       "wave": 1,
       "summary": "A common-mode risk map for shared prompts, context, tools, data, infrastructure, and model ancestry.",
       "useWhen": "Use before treating agreement between engines or reviewers as independent corroboration.",
-      "time": "45–60 min",
+      "time": "45\u201360 min",
       "artifact": "An independence ledger with shared-state risks and isolation moves.",
-      "canonical": { "path": "site/blocks/p3.html", "fragment": "ideas", "label": "P3 · The information need" },
+      "canonical": {
+        "path": "site/blocks/p3.html",
+        "fragment": "ideas",
+        "label": "P3 \u00b7 The information need"
+      },
       "figurePolicy": "normal",
-      "related": ["P1-5", "P3-3"]
-    },
-    {
-      "id": "P3-3",
-      "module": "p3",
-      "slug": "when-both-engines-agree",
-      "title": "When Both Engines Agree",
-      "status": "published",
-      "wave": 1,
-      "summary": "A risk-based audit for correlated error hidden behind fluent agreement.",
-      "useWhen": "Use when two outputs converge and the team is tempted to treat consensus as truth.",
-      "time": "45–60 min",
-      "artifact": "A silent-agreement audit with shared-cause hypotheses and decisive checks.",
-      "canonical": { "path": "site/blocks/p3.html", "fragment": "depth", "label": "P3 · Going deeper" },
-      "figurePolicy": "normal",
-      "related": ["P1-2", "P3-1"]
+      "related": [
+        "P1-5"
+      ]
     },
     {
       "id": "P4-1",
@@ -116,11 +205,19 @@
       "wave": 1,
       "summary": "A lineage exercise for detecting derivative evidence, circular sourcing, and false independence in linked knowledge.",
       "useWhen": "Use when many notes appear to support a claim but may all descend from one report.",
-      "time": "60–75 min",
+      "time": "60\u201375 min",
       "artifact": "A claim-lineage graph with source roots, transformations, and confidence corrections.",
-      "canonical": { "path": "site/blocks/p4.html", "fragment": "ideas", "label": "P4 · Director’s operating harness" },
+      "canonical": {
+        "path": "site/blocks/p4.html",
+        "fragment": "ideas",
+        "label": "P4 \u00b7 Director\u2019s operating harness"
+      },
       "figurePolicy": "normal",
-      "related": ["P3-1", "P4-5", "P5-3"]
+      "related": [
+        "P3-1",
+        "P4-5",
+        "P5-3"
+      ]
     },
     {
       "id": "P4-5",
@@ -131,11 +228,19 @@
       "wave": 1,
       "summary": "A practical method for representing unknown, disputed, withheld, stale, and not-yet-observed facts without filling gaps.",
       "useWhen": "Use when a knowledge system is rewarded for answering even though the evidence cannot support an answer.",
-      "time": "45–60 min",
+      "time": "45\u201360 min",
       "artifact": "A refusal and negative-knowledge schema tested against ambiguous questions.",
-      "canonical": { "path": "site/blocks/p4.html", "fragment": "depth", "label": "P4 · Going deeper" },
+      "canonical": {
+        "path": "site/blocks/p4.html",
+        "fragment": "depth",
+        "label": "P4 \u00b7 Going deeper"
+      },
       "figurePolicy": "normal",
-      "related": ["P4-1", "P5-3", "PC-1"]
+      "related": [
+        "P4-1",
+        "P5-3",
+        "PC-1"
+      ]
     },
     {
       "id": "P5-3",
@@ -146,11 +251,19 @@
       "wave": 1,
       "summary": "A containment method that combines manifests, canaries, diffs, effect checks, and clean reruns to bound what an untrusted input affected.",
       "useWhen": "Use when containment must be demonstrated from artifacts rather than asserted from instructions.",
-      "time": "60–75 min",
+      "time": "60\u201375 min",
       "artifact": "A containment proof packet with manifests, canaries, diffs, reruns, and residual uncertainty.",
-      "canonical": { "path": "site/blocks/p5.html", "fragment": "ideas", "label": "P5 · Poisoned corpus" },
+      "canonical": {
+        "path": "site/blocks/p5.html",
+        "fragment": "ideas",
+        "label": "P5 \u00b7 Poisoned corpus"
+      },
       "figurePolicy": "normal",
-      "related": ["P4-1", "P4-5", "P6-2"]
+      "related": [
+        "P4-1",
+        "P4-5",
+        "P6-2"
+      ]
     },
     {
       "id": "P6-2",
@@ -161,11 +274,19 @@
       "wave": 1,
       "summary": "A failure-mode analysis that turns severity, likelihood, detectability, ownership, evidence, and recovery into contract rows.",
       "useWhen": "Use before autonomous work runs unattended or when a risk list has no enforceable owners.",
-      "time": "60–75 min",
+      "time": "60\u201375 min",
       "artifact": "An FMEA-to-contract table with orphan risks exposed.",
-      "canonical": { "path": "site/blocks/p6.html", "fragment": "ideas", "label": "P6 · Watch officer" },
+      "canonical": {
+        "path": "site/blocks/p6.html",
+        "fragment": "ideas",
+        "label": "P6 \u00b7 Watch officer"
+      },
       "figurePolicy": "normal",
-      "related": ["P5-3", "P6-5", "P7-4"]
+      "related": [
+        "P5-3",
+        "P6-5",
+        "P7-4"
+      ]
     },
     {
       "id": "P6-5",
@@ -176,11 +297,19 @@
       "wave": 1,
       "summary": "A supervision field guide for mode confusion, stop reluctance, alarm fatigue, exception overload, and skill decay.",
       "useWhen": "Use when a technically bounded system still depends on a human noticing and acting at the right time.",
-      "time": "45–60 min",
+      "time": "45\u201360 min",
       "artifact": "A supervision risk map and intervention rehearsal.",
-      "canonical": { "path": "site/blocks/p6.html", "fragment": "depth", "label": "P6 · Going deeper" },
+      "canonical": {
+        "path": "site/blocks/p6.html",
+        "fragment": "depth",
+        "label": "P6 \u00b7 Going deeper"
+      },
       "figurePolicy": "normal",
-      "related": ["P6-2", "P7-4", "PC-1"]
+      "related": [
+        "P6-2",
+        "P7-4",
+        "PC-1"
+      ]
     },
     {
       "id": "P7-1",
@@ -191,11 +320,19 @@
       "wave": 1,
       "summary": "A workload-sorting method using variability, volume, reversibility, latency, risk, and the value of human judgment.",
       "useWhen": "Use before deciding whether work belongs in an agent loop, a gated pipeline, or human hands.",
-      "time": "45–60 min",
+      "time": "45\u201360 min",
       "artifact": "A scored workload portfolio with routing reasons and revisit triggers.",
-      "canonical": { "path": "site/blocks/p7.html", "fragment": "ideas", "label": "P7 · Automation line" },
+      "canonical": {
+        "path": "site/blocks/p7.html",
+        "fragment": "ideas",
+        "label": "P7 \u00b7 Automation line"
+      },
       "figurePolicy": "normal",
-      "related": ["P6-5", "P7-4", "P8-5"]
+      "related": [
+        "P6-5",
+        "P7-4",
+        "P8-5"
+      ]
     },
     {
       "id": "P7-4",
@@ -206,11 +343,19 @@
       "wave": 1,
       "summary": "A capacity and exception-economics method for arrivals, service rate, queue age, defaults, escalation, false holds, and misses.",
       "useWhen": "Use after a correctly placed human gate exists and its exception lane must carry real work without hiding delay or error.",
-      "time": "60–75 min",
+      "time": "60\u201375 min",
       "artifact": "A gate capacity model and exception packet specification.",
-      "canonical": { "path": "site/blocks/p7.html", "fragment": "depth", "label": "P7 · Going deeper" },
+      "canonical": {
+        "path": "site/blocks/p7.html",
+        "fragment": "depth",
+        "label": "P7 \u00b7 Going deeper"
+      },
       "figurePolicy": "normal",
-      "related": ["P6-2", "P6-5", "P7-1"]
+      "related": [
+        "P6-2",
+        "P6-5",
+        "P7-1"
+      ]
     },
     {
       "id": "P8-2",
@@ -221,11 +366,19 @@
       "wave": 1,
       "summary": "A trust-boundary map for credentials, transport, egress, logging, retention, provider access, and local control claims.",
       "useWhen": "Use before sensitive work is pointed at a new model endpoint or hosting arrangement.",
-      "time": "60–75 min",
+      "time": "60\u201375 min",
       "artifact": "An endpoint data-flow and trust-boundary record with unresolved questions made explicit.",
-      "canonical": { "path": "site/blocks/p8.html", "fragment": "ideas", "label": "P8 · Operator-governed model" },
+      "canonical": {
+        "path": "site/blocks/p8.html",
+        "fragment": "ideas",
+        "label": "P8 \u00b7 Operator-governed model"
+      },
       "figurePolicy": "normal",
-      "related": ["P5-3", "P8-5", "PC-1"]
+      "related": [
+        "P5-3",
+        "P8-5",
+        "PC-1"
+      ]
     },
     {
       "id": "P8-5",
@@ -236,26 +389,42 @@
       "wave": 1,
       "summary": "A portfolio method for routing work across endpoints by measured capability, risk, privacy, latency, cost, resilience, and acceptable degradation.",
       "useWhen": "Use when one endpoint cannot honestly be the best home for every workload.",
-      "time": "60–75 min",
+      "time": "60\u201375 min",
       "artifact": "A workload-to-endpoint routing matrix with hold-routing and bounded-degrade rules.",
-      "canonical": { "path": "site/blocks/p8.html", "fragment": "depth", "label": "P8 · Going deeper" },
+      "canonical": {
+        "path": "site/blocks/p8.html",
+        "fragment": "depth",
+        "label": "P8 \u00b7 Going deeper"
+      },
       "figurePolicy": "normal",
-      "related": ["P7-1", "P8-2"]
+      "related": [
+        "P7-1",
+        "P8-2"
+      ]
     },
     {
       "id": "PC-1",
       "module": "course-wide",
       "slug": "operators-pocket-card",
-      "title": "Operator’s Pocket Card",
+      "title": "Operator\u2019s Pocket Card",
       "status": "published",
       "wave": 1,
       "summary": "A one-page field reference for specifying, building, checking, releasing, and handing off serious AI-assisted work.",
       "useWhen": "Keep beside the keyboard during consequential AI-assisted work.",
       "time": "5 min",
       "artifact": "A printed one-page operator card.",
-      "canonical": { "path": "site/pulse.html", "fragment": "", "label": "Lesson reflection" },
+      "canonical": {
+        "path": "site/pulse.html",
+        "fragment": "",
+        "label": "Lesson reflection"
+      },
       "figurePolicy": "pocket-card",
-      "related": ["PW-2", "P4-5", "P6-5", "P8-2"]
+      "related": [
+        "PW-2",
+        "P4-5",
+        "P6-5",
+        "P8-2"
+      ]
     }
   ]
 }

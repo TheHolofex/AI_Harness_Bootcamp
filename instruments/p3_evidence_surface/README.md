@@ -60,8 +60,8 @@ because the export stops at the decision date; and that observed ferry
 throughput is 9.02 vehicles per hour. If a corpus edit moves any of those, the
 smoke test fails rather than the exercise quietly changing its answer.
 
-## Relationship to `p3_mcp_evidence`
+## History
 
-That package serves the retired five-file frozen-brief track and is untouched.
-This one replaces it when the P3 page is rewritten; until then both exist and
-both are tested.
+This replaces `p3_mcp_evidence`, which served the retired five-file frozen-brief
+track and returned whole files. That package is gone; this is the only evidence
+surface the course ships.

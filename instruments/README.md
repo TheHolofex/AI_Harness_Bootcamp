@@ -17,12 +17,13 @@ Pick at P3 start. **Do not switch before P8** — Friday runs the same D01–D05
 ```text
 instruments/
   endpoint_case_suite/ # D01–D05 course endpoint cases used by P8
-  p3_frozen_brief/   # Tue PM — dual-engine frozen demand
+  p3_evidence_surface/ # Tue PM — read-only query surface over the afternoon corpus
   p8_hold_degrade/   # Fri AM — paired Home/Open endpoint evidence
 ```
 
-The endpoint suite holds the frozen cases and operator-only grader. P3 holds its frozen
-brief, track corpora, and comparator. P8 holds the paired score sheet and raw-run layout. The P3 kits are retired with the twin-engine exercise; the live P3 runs on `p3_evidence_surface` over `mission_flesh/tuesday/need/corpus`.
+The endpoint suite holds the frozen cases and operator-only grader. P3 runs on
+`p3_evidence_surface`, a read-only query surface over `mission_flesh/tuesday/need/corpus`.
+P8 holds the paired score sheet and raw-run layout.
 The live website carries the student procedure.
 
 ## Continuity
@@ -38,7 +39,3 @@ P3 uses its own frozen corpus + brief (`F-` sources, brief `BRIEF-v1`) on the **
 - Issue the track choice at P3 open and retain it for P8.
 - Score sheets are student-owned; keys stay with staff unless pedagogy says otherwise.
 - MVP uses these kits; personal portable eval stays transfer-only (post-course).
-
-## P3 multi-agent stretch
-
-`p3_multi_agent/` — Many Minds read-only pack. See `mission_flesh/p3/MANY_MINDS.md`.

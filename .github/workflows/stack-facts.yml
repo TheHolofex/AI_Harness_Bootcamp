@@ -60,21 +60,12 @@ jobs:
         with:
           node-version: "22.22.0"
           cache: npm
-          cache-dependency-path: |
-            instruments/p3_mcp_evidence/package-lock.json
-            instruments/p3_evidence_surface/package-lock.json
+          cache-dependency-path: instruments/p3_evidence_surface/package-lock.json
 
       - name: Run rotting-facts harness
         # Local checks are hard gates. Network drift probes use the same public
         # Node, npm, and AAIF channels named by the canonical install page.
         run: python .github/scripts/verify-stack-facts.py
-
-      - name: Smoke-test the P3 MCP evidence boundary
-        working-directory: instruments/p3_mcp_evidence
-        run: |
-          npm ci --ignore-scripts --no-audit --no-fund
-          npm run smoke
-          npm audit --omit=dev
 
       - name: Smoke-test the NORTHWIND evidence surface
         working-directory: instruments/p3_evidence_surface
@@ -82,26 +73,3 @@ jobs:
           npm ci --ignore-scripts --no-audit --no-fund
           npm run smoke
           npm audit --omit=dev
-
-  verify-p3-mcp-windows:
-    name: verify-p3-mcp-windows
-    runs-on: windows-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22.22.0"
-          cache: npm
-          cache-dependency-path: instruments/p3_mcp_evidence/package-lock.json
-
-      - name: Install locked MCP dependencies
-        working-directory: instruments/p3_mcp_evidence
-        run: npm ci --ignore-scripts --no-audit --no-fund
-
-      - name: Smoke-test the PowerShell 5.1 project configuration
-        working-directory: instruments/p3_mcp_evidence
-        run: npm run configure-smoke
