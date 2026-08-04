@@ -54,7 +54,7 @@ When the live module page calls for a separate review, use this routing rule:
 | Block | Reviewer | Why it is free there |
 |---|---|---|
 | **P2** | **No separate attack pass** | The intake checks, the two hooks, and the narrowing run against lookalike material already attack the components from three directions; the reflection records their real findings instead of manufacturing another exercise |
-| **P3** | **No separate attack pass** | The comparator and source packet already put every consequential claim through a second engine and raw evidence; do not manufacture another review step |
+| **P3** | **No separate attack pass** | Two verifiers already exist to defeat every finding, and the provenance gate is run against three planted claims; do not manufacture another review step |
 | **P4** | **No separate attack pass** | The human raw-source audit, configured read-only evaluator, deterministic verifier, and real mid-run resume already test the outcome and trajectory; a generic attack would repeat the same boundary |
 | **P5** | **No separate attack pass** | The exposed run is confined to a disposable project; trusted external before/after manifest receipts, human target checks, and operator dispositions form the containment review boundary |
 | **P8** | **The re-pointed hosted open model**, second pass on the same pack | You wired that endpoint this morning and trusted it enough to run D01–D05 |
@@ -87,14 +87,14 @@ One block · one chat · then archive. Do not keep a single season-long adversar
 Minimum paste into the new chat:
 
 1. Block name + one-line mission outcome  
-2. Link/paths to key artifacts (brief path, outputs, comparator, vault notes, contract, etc.)  
+2. Link/paths to key artifacts (brief path, outputs, dispositions, vault notes, contract, etc.)  
 3. Your **provisional** Log verdict (`ACCEPT` / `REJECT` / `ACCEPT WITH FIXES`)  
 4. Your **draft** MVP self-check — which bars you marked met, **and how many**  
 5. Anything you already know is weak  
 
 Item 4 carries a number for a reason. The count of bars you marked met is the denominator of your overclaim, and it has to be fixed before the reviewer speaks. Write it down, paste it in, and do not revise it afterwards — a denominator chosen after the verdict is not a denominator.
 
-If the model cannot see files, paste the critical excerpts (comparator rows, test output, citation sample, stop proof). Thin excerpts produce a polite reviewer, and a polite reviewer is not a pass.
+If the model cannot see files, paste the critical excerpts (disposition rows, test output, citation sample, stop proof). Thin excerpts produce a polite reviewer, and a polite reviewer is not a pass.
 
 ---
 
@@ -113,7 +113,7 @@ I will paste: block, artifacts/paths/excerpts, provisional verdict, draft MVP ch
 Protocol — follow in order:
 1. Restate my claimed outcome and verdict in one cold sentence (no praise).
 2. Attack pass: give the strongest case that this is NOT YET mastery for this block.
-   - Demand missing evidence (paths, tests, trails opened, comparator kills, stop proof, etc.).
+   - Demand missing evidence (paths, tests, trails opened, defeated findings, stop proof, etc.).
    - Name completion theater if you see it.
    - If you cannot find a serious attack, say what you checked and what would still worry a skeptical peer.
 3. Evidence audit: for each MVP claim I marked met, mark:
@@ -167,7 +167,7 @@ The outer loop should not inherit unchallenged fantasy.
 |---|---|
 | **When directed by the module page** | Module-specific adversarial AI chat, new for that review (this file) |
 | **P2** | The refusal of the damaged file, the untraceable-line hook, and the run against lookalike material are the review; no separate attack pass |
-| **P3** | The twin-engine comparator, MCP source packet, and raw-file adjudication are the review; no separate attack pass |
+| **P3** | The refuting verifiers, the merge conflict rule, and the three planted claims against the provenance gate are the review; no separate attack pass |
 | **P4** | Human raw-source audit, configured read-only evaluator, deterministic verifier, and mid-run resume from durable state; no separate attack pass |
 | **P5** | Isolated exposed run, trusted external before/after manifest receipts, and human target checks are the review; no separate attack pass |
 | **P8** | A second engine on the same pack — required, not a stretch. See *Which engine reviews you* above |

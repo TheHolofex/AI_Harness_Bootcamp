@@ -63,9 +63,9 @@ Do not compute a median across a student's nine blocks and do not rank the cohor
 - Mean bars-met by block over the same range, read beside it
 - Share of rows carrying a named brief field
 - Which of the five brief fields the cohort names most often
-- P3 material-difference and source-disposition pattern; P4 evaluator/trusted-verifier/terminal pattern; P5 external manifest drift and scope-escape evidence; P8 two-reviewer disagreement rate
+- P3 finding-defeat and terminal-rule pattern; P4 evaluator/trusted-verifier/terminal pattern; P5 external manifest drift and scope-escape evidence; P8 two-reviewer disagreement rate
 
-**On disagreement.** P3 compares two frozen outputs, then resolves consequential claims against raw sources; read its comparator and disposition pattern. P8 sends the same review pack through two engines; read its reviewer-disagreement rate beside the underlying pack. Near-zero is a prompt to inspect, not evidence of either cleanliness or failure by itself. P4 uses a configured evaluator for a different job, and P5 uses deterministic integrity receipts rather than a second model.
+**On disagreement.** P3 has two verifiers whose only job is to defeat findings; read the dispositions and check that defeats cite a later authoritative source rather than a head count. P8 sends the same review pack through two engines; read its reviewer-disagreement rate beside the underlying pack. Near-zero is a prompt to inspect, not evidence of either cleanliness or failure by itself. P4 uses a configured evaluator for a different job, and P5 uses deterministic integrity receipts rather than a second model.
 
 ## Spot-checks worth the minutes
 
@@ -73,6 +73,6 @@ Do not compute a median across a student's nine blocks and do not rank the cohor
 - **P2 intake receipts and refusals.** Read three students&#x27; `normalized/intake_receipt.json`. Confirm the damaged partner file emitted no rows and that the check which caught it counts identifiers, not rows — a row count matches at eight and eight and proves nothing. Confirm both hooks appear trusted in `/hooks` and that each has refused something the student actually attempted. The common failure is a hook that has never fired, which looks identical to a hook that works.
 - **Adversarial paste packs.** A polite reviewer means the pack was thin or the build chat was reused. Fix the pack; never soften the prompt.
 - **Transfer seeds.** P1–P7 write dated seeds during their own module closeouts. Only P7 and P8 use the shared `P7–P8 — 30/60/90 Plan` chat, because both visits continue the same saved plan in the same role. At P7, count the seeds and read the dates. Seven seeds all dated the same afternoon is a Friday dump with extra steps.
-- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B1 and P5. P2 uses its intake refusals, its two hooks, and the run against lookalike material. P4 uses its human raw-source audit, configured read-only evaluator, deterministic verifier, and a real mid-run resume from saved state. Do not add a separate attack to either. At P1, P6, P7 and P8 the student ticks the floor before the attack. P3 checks outcomes as artifacts are produced, then uses its comparator, source packet, and raw-file adjudication as the review.
+- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B1 and P5. P2 uses its intake refusals, its two hooks, and the run against lookalike material. P4 uses its human raw-source audit, configured read-only evaluator, deterministic verifier, and a real mid-run resume from saved state. Do not add a separate attack to either. At P1, P6, P7 and P8 the student ticks the floor before the attack. P3 checks outcomes as artifacts are produced, then uses its refuting verifiers and the planted claims against its provenance gate as the review.
 
 If a cohort needs rescue, narrow the **scope of data**. Rescue is restoring the pulse and the evidence, not adding metrics.

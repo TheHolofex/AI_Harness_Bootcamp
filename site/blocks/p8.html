@@ -65,7 +65,7 @@
           </ul>
           <h3>Before you start</h3>
           <ul>
-            <li>The track recorded in your P3 comparator — <code>engineering</code> or <code>mission_ops</code>; P8 uses that same track for both endpoints</li>
+            <li>The domain your P3 package declares — <code>engineering</code> or <code>mission_ops</code>; P8 uses that same track for both endpoints</li>
             <li>Operator templates in your Codex app project: <code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code></li>
             <li><code>mission_flesh/p8/AUP_ENDPOINT_TEMPLATE.md</code> located and readable</li>
             <li>The endpoint pin — endpoint, model name, and key. The lead posts it at the start of the block, on the room screen or handed to you directly; it never ships in the pack, whose <code>mission_flesh/p8/</code> folder carries a placeholder endpoint only, so if you don't have it, ask. <code>mission_flesh/p8/REPOINT_RUNBOOK.md</code> lets you stage the whole re-point before the pin lands</li>
@@ -193,12 +193,12 @@ Preserve unrelated block sections. Show the exact P8 brief written.</code></pre>
           <img src="../assets/blocks/p8/p8-stage-policy.svg" alt="The AUP document — version, date, and six fields — signed off before the arrow to the re-point target fires" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
         <div class="do-step">
-          <p class="do-label">Confirm the track you chose in P3:</p>
+          <p class="do-label">Confirm the domain your P3 package declares:</p>
           <ul class="do-clicks">
             <li>Press <strong>Windows+E</strong> to open File Explorer</li>
-            <li>Click the address bar, enter <code>%USERPROFILE%\Documents\HarnessBootcamp\AI_Harness_Bootcamp\instruments\p3_frozen_brief\COMPARATOR.md</code>, and press <strong>Enter</strong></li>
+            <li>Click the address bar, enter <code>%USERPROFILE%\Documents\HarnessBootcamp\P3_Need\package\INPUTS.md</code>, and press <strong>Enter</strong></li>
             <li>Read the <strong>Track</strong> row and keep that exact value: <code>engineering</code> or <code>mission_ops</code></li>
-            <li>If the row is blank, recover the track from the P3 corpus and outputs you actually used. Do not choose a new track for P8</li>
+            <li>If it is not recorded, recover it from the P3 run you actually did. Do not choose a new track for P8</li>
           </ul>
         </div>
         <div class="do-step">
@@ -229,7 +229,7 @@ Work section by section: Allowed, Forbidden, Data that may not leave the laptop,
 Legitimate refuse examples needs at least two tasks I might genuinely want to run — one of them gets refused for real later, so no strawmen.
 
 Set Version to 1.0 and Effective to today's date. Leave the endpoint placeholder block untouched — it gets real values at re-point. Write each accepted line into the file as we go. Nothing goes to the new endpoint until this file is done.</code></pre>
-          <p>Replace <code>[P3 TRACK]</code> with the exact track recorded in the P3 comparator.</p>
+          <p>Replace <code>[P3 TRACK]</code> with the exact domain your P3 package declares.</p>
         </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>

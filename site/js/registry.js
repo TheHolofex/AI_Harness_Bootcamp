@@ -147,15 +147,14 @@
       contextLabel: "Tuesday PM · MCP presentation 2 of 2 · Before P3"
     },
     {
-      code: "P3", name: "Twin-engine intel desk", title: "The twin-engine intel desk", day: "Tuesday", slot: "PM",
+      code: "P3", name: "The information need", title: "The information need", day: "Tuesday", slot: "PM",
       key: "ahb-checklist-p3",
       ids: [
-        "p3-corpus", "p3-codex", "p3-claude", "mvp-briefv1",
-        "mvp-join", "mvp-comp", "mvp-3dis", "mvp-mcp", "mvp-kill",
-        "mvp-adj", "mvp-files", "p3-transfer"
+        "baseline-saved", "measures-in-run", "routes-divided", "search-terminated",
+        "findings-refuted", "merge-directed", "provenance-gate", "run-packaged"
       ],
-      stretchIds: ["stretch-many-baseline", "stretch-many-minds", "stretch-many-delta"],
-      url: "blocks/p3.html", meta: "Codex + OpenCode + bounded MCP"
+      stretchIds: [],
+      url: "blocks/p3.html", meta: "Codex · evidence surface + fan-out + refuting verifiers"
     },
     {
       code: "LOOPS", name: "Agent loops & agentic patterns", title: "Control Flow Is the Product", kind: "briefing",

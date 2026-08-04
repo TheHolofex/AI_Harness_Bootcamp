@@ -149,7 +149,7 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 | Block | Deep mark (one line) |
 |---|---|
 | **P2** | Inbound: sources normalized `n/4` · people normalized `n` · damaged file refused Y/N · capabilities asserted with a named record `n` · unresolved `n` · lists regenerated `n/5` · untraceable line refused Y/N · lookalike files fired on `n/4` · package local paths `n` · package secrets `n` |
-| **P3** | Comparator on `BRIEF-v1`: material differences `n` · dispositions `K/D/U` · release decision · packet source-checked/closed `Y/Y` |
+| **P3** | Information need: terminal SATURATED/BUDGET_EXHAUSTED · rounds `n/3` · findings kept `n/12` · defeated `n` · coverage `n/m` obligations · merges run `n/2` and the reason for the one shipped · gate failures caught `n/3` planted · baseline delta stated `Y/N` |
 | **P4** | Personal harness: terminal PASS/HOLD · human interventions `n` · first-pass evaluator HOLD `n/m` · trusted verifier PASS/HOLD · post-audit repairs `0/1` · mid-run resume PASS/HOLD · external manifest Y/N |
 | **P5** | Containment: 3/3 catches · absence-of-effect proof pointer |
 | **P6** | Contract: stop/restart · exception drill pass/fail |

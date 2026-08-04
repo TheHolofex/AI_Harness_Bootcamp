@@ -157,7 +157,7 @@ The damaged file produced rows; a capability appears with no record beside it; a
 
 ---
 
-## P3 — Twin-Engine Intel Desk
+## P3 — The Information Need
 
 > **After this project:** You can tell when work needs more than one agent, direct how several answers become one, split the pieces so they do not collide, say what you are measuring and why, and keep every claim walkable to its source.
 
@@ -173,28 +173,27 @@ The damaged file produced rows; a capability appears with no record beside it; a
 
 ### What the exercise requires
 
-1. The course frozen brief `BRIEF-v1` and the track corpus in `instruments/p3_frozen_brief` run unchanged on **Codex app** and on **OpenCode**.
-2. Run identity declared for both engines — model id, version, folder, and which instruction files, skills, plugins, hooks, custom agents, memories, and tool surfaces were live. Work in a clean folder, or write down the loaded context. An undeclared advantage invalidates the comparison.
-3. User-configured and external MCP state declared and cleared before the frozen runs. Unavoidable built-in surfaces are listed but not invoked. The course server is connected only after both raw outputs and the comparator exist.
-4. A deterministic join or watchlist path where one is required. The model does not decide the join key.
-5. A comparator artifact: a side-by-side table of fields and claims with one row per material difference. Zero differences is a valid result when the inspected fields are recorded.
-6. `MCP_EVIDENCE_PACKET.md` covering connection fit, course origin and commit, local implementation fingerprints, server instructions, root, and the two-tool contract. Every material row and every agreed claim driving release carries one or more E-IDs with source hash, returned excerpt, raw-context check, and any correction. Actual source basenames match the plan or name a real exception. Include the shared-dependency note, and disable the server after use.
-7. A source-backed **keep, discard, or unknown** disposition on every consequential claim. Zero discards is valid when the evidence supports every claim.
-8. An adjudication note a supervisor could read cold: what is operationally true for the watch.
-9. A log pointing at the brief id and its unmodified status, both raw outputs, the comparator, the MCP evidence packet, and the final watch product.
+1. A single-agent baseline is saved before anything else runs and left unread until the end, so the measures cannot be written to flatter the fan-out. At the end the delta is stated — including "one agent did nearly as well" where that is the honest result.
+2. Coverage and support are defined where the run applies them. Coverage counts the obligations the decision names, with an openly recorded gap counting as addressed. Support requires a named file and the quoted words. Recall is not claimed: no known relevant set exists for this corpus, and a measure that cannot be computed will be estimated.
+3. Three search agents on genuinely different routes, reaching the corpus only through the read-only evidence surface. Route difference is judged by files opened, entities chased and exclusions set — not by how little the returns overlap. What an agent may not reach is a property of its surface.
+4. The search ends on its own rule and names which fired: saturation, or the ceiling with the unresolved obligations listed. At least two rounds, at most three, at most twelve findings.
+5. Two verifiers split the findings and only refute. One current authoritative contradiction defeats a finding however many challenges it survived; repetition is not authority. Defeated findings are preserved with the source that killed them, and survivors are recorded as survived, never as proved.
+6. A merge rule — conflict, weight, confidence — written before the disagreements are seen. Confidence may rise only on genuinely independent corroboration, never on repetition. The merge runs on two models from different families, the second as a headless job read from its output, and the shipped choice carries a reason drawn from the two.
+7. A provenance gate that fails on a claim with no source and on an altered quote, keeps *cited* and *supported* in separate columns, and never prints a claim as verified. The superseded-source case passes it, and is understood as the gate's boundary rather than its defect.
+8. A package fixing the measures, routes, stopping rules, disposition rules, merge rule and provenance check; naming every fresh input including the domain it is tuned for; and carrying none of this question's findings or answers. Cold replay on a second question is the proof and is not claimed here.
 
 ### Stretch
 
-- A 90-second peer defense using only the comparator, without rebuilding the story.
-- **Many Minds:** `mission_flesh/p3/MANY_MINDS.md` with `instruments/p3_multi_agent/`. Produce the baseline `out/baseline_single.md` with no subagents *first*, then three parallel read-only lenses waiting for all, into `out/many_minds_synthesis.md` — a deduped merge with a corpus-backed disposition for every finding — then `out/many_minds_delta.md` with a defended verdict. Include the sentence *MCP server ≠ engine ≠ subagent ≠ human*. Zero discards is valid; a missing baseline means this one has not landed.
+- Run the same packaged method against a second question of the same shape and record what had to be supplied fresh. That is the cold-replay proof the afternoon deliberately does not claim.
+- Add a fourth route only after writing down what it would find that the three cannot, and drop it again if the ledgers show it was more of an existing route.
 
 ### Side-quest
 
-- A custom agent TOML for one recurring lens — security or tests — under `.codex/agents/`, spawned once.
+- Cut a surface for someone else's corpus — a folder you actually work from — and see how much of the route division survives the change of material.
 
 ### Signs it hasn't landed
 
-One engine only, "they basically agreed," a verdict without a comparator, MCP enabled during the frozen comparison, native file access quietly substituted for a failed MCP call, or an MCP result accepted without boundary and raw-source checks.
+The baseline was read before the measures were written; recall is claimed against a set nobody has; routes differ only in wording; the run reports saturation after one pass; a finding is kept because four documents repeat it and one later signed one contradicts it; the merge averages a disagreement instead of naming it; confidence rises because more agents said so; a claim is printed as verified when only its citation was checked; or the package carries this question's answers and is called reusable.
 
 ---
 
@@ -405,7 +404,7 @@ Happy path only, no human gate, or "automation is always better" with no discrim
 
 ### Side-quest
 
-- Re-run the P3 comparator with the open model as a third engine and update the adjudication rules.
+- Re-run the P3 merge on the open model as a third family and see whether the placement reason still holds.
 - Re-run the P6 watch recipe against the hosted open endpoint, if it allows tools, and add a third column to the local hold and degrade table.
 
 ### Signs it hasn't landed

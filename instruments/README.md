@@ -22,7 +22,7 @@ instruments/
 ```
 
 The endpoint suite holds the frozen cases and operator-only grader. P3 holds its frozen
-brief, track corpora, and comparator. P8 holds the paired score sheet and raw-run layout.
+brief, track corpora, and comparator. P8 holds the paired score sheet and raw-run layout. The P3 kits are retired with the twin-engine exercise; the live P3 runs on `p3_evidence_surface` over `mission_flesh/tuesday/need/corpus`.
 The live website carries the student procedure.
 
 ## Continuity
