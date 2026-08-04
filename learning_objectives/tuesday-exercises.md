@@ -86,23 +86,27 @@ A question that will be asked again. Answering it once is not the job; answering
 
 **Material:** one information need with a real decision behind it, and a corpus spread across several source types.
 
+**Bounds:** one baseline. Three search agents. At least two rounds and at most three. At most twelve findings carried into verification. Two verifiers, splitting those findings between them. One merge. One provenance check. One package. A run that wants more than this has not been divided properly.
+
 ### Stage 1 — One agent, saved
 
-Run the need through a single agent. Save the result untouched. Everything after this has to beat it.
+Run the need through a single agent. Save the result untouched and do not read it yet — you write the measures next, and knowing what this run missed will bend them toward flattering the fan-out.
 
-**You direct:** the brief that agent gets.
+**You direct:** the brief that agent gets, and the run identity saved beside it — engine, model, corpus, date.
 
-**Working when:** the result is saved before anything else runs, and you can still open it at the end of the afternoon.
+**Working when:** the result is saved before anything else runs, you can still open it at the end of the afternoon, and when you do you can name what the fanned-out run has that this one does not. If you cannot, the fan-out did not pay for itself and saying so is the correct result.
 
 *Skill: knowing when to fan out*
 
 ### Stage 2 — Put the measures into the run
 
-Recall and precision defined for this need, written where the run applies them rather than in a document. A finding either meets them or it does not.
+Coverage and support defined for this need, written where the run applies them rather than in a document. A finding either meets them or it does not.
 
-**You direct:** what counts as covered, and what counts as relevant enough to keep.
+Coverage is what the decision obliges an answer to settle — each obligation addressed or openly unaddressed. Support is whether a kept finding rests on a source that actually carries it. You are not measuring recall: recall needs a known set of everything relevant in the corpus, nobody has one, and a measure you cannot compute is a measure you will end up faking.
 
-**Working when:** the measures would read differently if the need were different, and the run can sort findings by them without a person.
+**You direct:** what the decision obliges an answer to settle, and what makes a finding worth keeping.
+
+**Working when:** the measures would read differently if the need were different, the run can sort findings by them without a person, and neither one needs a list of right answers that does not exist.
 
 *Skill: measuring the right thing*
 
@@ -110,58 +114,64 @@ Recall and precision defined for this need, written where the run applies them r
 
 Several agents, each searching a genuinely different way: by source type, by entity, by time window, by what someone arguing the opposite would have looked for. Same question, different routes in.
 
-**You direct:** what makes each route different, and what each agent is not allowed to look at.
+They reach the corpus through one read-only local server, not through the filesystem. What an agent may not look at is then a property of the surface it was handed, rather than a sentence in its instructions that it is free to ignore.
 
-**Working when:** the returns do not overlap heavily. Two agents bringing back the same set means the routes were not different.
+**You direct:** what makes each route different, what each agent's surface exposes and therefore what it cannot reach, and what each must record about its own search — files opened, queries run, findings, and the citation under each one.
+
+**Working when:** the routes differ in what they read, not in what they return. Two agents landing on the same important fact is corroboration, not waste. Compare the files opened, entities searched, windows covered and exclusions set; if those match, the routes were never different, whatever came back. An agent told to search outside its route should be unable to, not merely unwilling.
 
 *Skill: work division*
 
 ### Stage 4 — Let the run decide when it is done
 
-Rounds continue until one comes back with nothing new. The run applies the rule.
+Rounds continue until one comes back with nothing new, or until the ceiling stops them. The run applies both rules and says which one fired.
 
-**You direct:** what counts as new.
+**You direct:** what counts as new, the least number of rounds that must run before nothing-new can mean anything, and the ceiling.
 
-**Working when:** the search ends because a round found nothing, not because the clock ran out.
+**Working when:** the search ends on its own rule and names which. A run stopped by the ceiling finishes as work left unresolved, not as complete — and that is a legitimate way to finish. One empty round straight after the first pass is not saturation; it is a slow start.
 
 *Skills: knowing when to fan out, work division*
 
 ### Stage 5 — Verifiers that only refute
 
-For each finding, agents whose instruction is to knock it down against the sources. They add nothing. A finding survives the attempt or it does not.
+Findings are split across a fixed few agents whose instruction is to knock them down against the sources. They add nothing. A finding survives the attempt or it does not.
 
-**You direct:** what a verifier may use, and how many have to fail before a finding is dropped.
+**You direct:** what a verifier may use, how the findings are divided between them, and what defeats a finding.
 
-**Working when:** findings are dropped by the verifiers rather than by a person reading carefully, and you can see which ones died and why.
+**Working when:** findings are dropped by the verifiers rather than by a person reading carefully, and you can see which ones died and why. One current authoritative source that contradicts a finding kills it however many challenges it survived — this is not a vote. Surviving a challenge is not the same as being true, and nothing downstream may say it is.
 
 *Skill: measuring the right thing*
 
 ### Stage 6 — Merge under a stated rule
 
-One instruction to the orchestrator covering what happens to disagreement, what carries more weight, and how confidence moves through. Three workers saying "probably" cannot come out the other side as "certainly."
+One instruction to the orchestrator covering what happens to disagreement, what carries more weight, and how confidence moves through. Three workers saying "probably" cannot come out the other side as "certainly." Confidence may rise when two sources that do not depend on each other both carry the claim. It may never rise because more agents repeated it.
 
-**You direct:** the conflict rule, the weight rule, the confidence rule, and which model runs the merge — with the reason it is that one.
+Run that instruction twice: once on the model doing the rest of the work, and once on a model from a different family, called as a single headless job and read from its output rather than trusted to write anything of yours. Then pick the one you ship. Putting the more capable model where the judgment concentrates is the decision; running both is how you find out where that is.
 
-**Working when:** the merged answer reads as one decision rather than several reports side by side, and no claim leaves the merge more certain than it entered.
+**You direct:** the conflict rule, the weight rule, the confidence rule, and which merge you ship — with the reason it is that one, and not simply the model you use for everything.
+
+**Working when:** the merged answer reads as one decision rather than several reports side by side, no claim leaves the merge more certain than its evidence, and wherever confidence did rise you can name the independent source that raised it. The reason you give for the merge you shipped is something you saw in the two of them, not a preference you brought with you.
 
 *Skill: directing the merge*
 
 ### Stage 7 — A provenance check that fails loudly
 
-A step that walks every claim in the finished product back to a live source, and fails the run when one cannot be walked.
+A step that walks every claim in the finished product back to a source and fails the run when one cannot be walked. It runs against the same surface the search used, so a claim citing something that surface will not serve fails on that alone. It checks that the source exists, that it is the one cited, and that the quoted words are in it. It cannot check that the source means what the claim says. That judgment stays yours, and the run must never present the check as though it made it.
 
-**You direct:** what counts as a live source.
+**You direct:** what counts as a live source — one the surface will still serve today, not one that was there when the search ran — and which claims you read yourself.
 
-**Working when:** it fails on a claim you plant with no source behind it, and passes without a person checking anything by hand.
+**Working when:** it fails on a claim you plant with no source behind it, on one whose quote you alter, and on one citing a source that has since been superseded — and it passes without a person checking anything by hand, while the finished product still separates what the check proved from what you judged.
 
 *Skill: preserving provenance*
 
 ### Stage 8 — Save the run so it executes again
 
-The orchestration packaged alongside the morning's plugin work, so the next version of this question runs it rather than rebuilding it.
+The orchestration packaged alongside the morning's plugin work, so the next version of this question runs it rather than being rebuilt.
 
-**You direct:** what is fixed in the package and what is supplied fresh each time.
+The package also declares the domain it was tuned for — which family of work the next question will come from. A method that travels has to say what it was built against, or the person who reuses it on something else will not find out until the answer is already wrong.
 
-**Working when:** a new question of the same shape runs end to end without the run being reassembled.
+**You direct:** what is fixed in the package, what is supplied fresh each time, and the domain the package declares.
+
+**Working when:** the package names every input the run needs — the declared domain among them — carries none of this question's answers, and someone reading its contents can say exactly what they would have to supply to ask a different question of the same shape. Running it against that different question is the proof, and it is not this afternoon's work — do not claim it as done.
 
 *Skill: portable packaging, carried from the morning*
