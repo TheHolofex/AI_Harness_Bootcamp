@@ -49,5 +49,7 @@ accepting that some days in the window will be lost and asking how many.
 
 Moderate confidence in the shape and timing of the rise. Low confidence in the
 magnitude on any individual day. The series carries the day-by-day figures with
-the basis marked, and the basis matters: readings to the end of August are
-observed, everything after that is forecast.
+the basis marked, and the basis matters: rows up to the last observation carry
+`observed`, and everything the model has produced beyond it carries `forecast`.
+Where that boundary falls on the day you read the series is a property of the
+series and not of this outlook. Take it from the basis column.

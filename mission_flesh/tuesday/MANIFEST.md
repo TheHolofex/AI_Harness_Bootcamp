@@ -71,7 +71,7 @@ One question with a decision behind it, and the corpus the group holds on file.
 
 ### `need/corpus/` - 104 files across 12 source types
 
-About 82,000 words of prose and 39,000 rows of table. The seven machine-readable
+About 82,000 words of prose and 36,000 rows of table. The seven machine-readable
 exports hold most of the volume; the two series exports cover several stations and
 several sensors across several years, so a query has to say which one it means.
 `HYD-2026-001` and `MET-2026-002` describe the networks and state plainly that a
@@ -79,9 +79,9 @@ reading from one station or sensor does not transfer to another.
 
 | Export | Rows | Columns | Coverage |
 |---|---|---|---|
-| `met/ESTATE_SURFACE_SENSORS_2024-2026.csv` | 23,428 | `sensor_id, asset, date, hour_utc, surface_temp_c` | 8 sensors, three-hourly, 1 Jun to 30 Sep of 2024, 2025 and 2026 |
-| `hydrology/BASIN_GAUGE_SERIES_2022-2026.csv` | 9,134 | `station_id, station_name, date, gauge_m, basis, quality` | 5 stations, daily, 2022 to 2026; `basis` is observed to 31 Aug 2026 and forecast after |
-| `movement/CHECKPOINT2_RETURNS_2026.csv` | 5,836 | `date, hour_utc, northbound, southbound, barrier_state` | hourly, 1 Jan to 31 Aug 2026 |
+| `met/ESTATE_SURFACE_SENSORS_2024-2026.csv` | 20,932 | `sensor_id, asset, date, hour_utc, surface_temp_c` | 8 sensors, three-hourly, 1 Jun to 30 Sep of 2024 and 2025; the open 2026 season runs 1 Jun to 22 Aug |
+| `hydrology/BASIN_GAUGE_SERIES_2022-2026.csv` | 9,089 | `station_id, station_name, date, gauge_m, basis, quality` | 5 stations, daily, 2022 to 2026; `basis` is observed to 22 Aug 2026 and forecast from 1 Sep, with no rows for 23 to 31 Aug |
+| `movement/CHECKPOINT2_RETURNS_2026.csv` | 5,620 | `date, hour_utc, northbound, southbound, barrier_state` | hourly, 1 Jan to 22 Aug 2026 |
 | `maintenance/ESTATE_WORK_ORDERS_2025-2026.csv` | 403 | `wo_ref, raised, asset, description, contractor, status, closed` | one row per work order, 2025 to 2026 |
 | `movement/SERIAL_HISTORY_2025-2026.csv` | 102 | `serial, date, route, vehicles, departed_utc, closed_utc, heaviest_t, delay_min, remarks` | one row per serial run, both corridors |
 | `movement/MOV-2026-069_ferry_crossing_log.csv` | 9 | `date, first_lift_utc, last_lift_utc, vehicles_crossed, vessel, hours_worked, vehicles_per_hour` | one row per lift day |

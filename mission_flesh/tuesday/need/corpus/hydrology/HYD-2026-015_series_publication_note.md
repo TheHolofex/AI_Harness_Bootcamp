@@ -67,8 +67,15 @@ horizon and particularly where rainfall input is uncertain.
 
 Additional unscheduled runs are made when significant new rainfall input arrives
 between scheduled runs. These are flagged in the run metadata. Users should not
-assume that the forecast in front of them is the current one without checking the
-run stamp on the row.
+assume that the forecast in front of them is the current one.
+
+**The scheduled subscriber export does not carry the run stamp.** It is not one
+of the columns in the series file. A forecast row read out of that file cannot be
+dated from the row, and nothing in the file separates a row from the current run
+from one that is four runs old. Where the run matters, request the extract from
+the duty desk, which issues the run stamp with it, and record the two together.
+Where the run stamp cannot be obtained, the forecast is undated, and it should be
+quoted as undated by anyone who passes it on.
 
 The practical rule the Service asks users to adopt: **a forecast has a shelf
 life measured in hours.** A forecast figure quoted in a document written yesterday

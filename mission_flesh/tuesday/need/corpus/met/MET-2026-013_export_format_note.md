@@ -15,31 +15,38 @@
 The estate surface sensor export is the single authoritative product of the
 network described in MET-2026-002. It is a delimited text export produced from
 the estate collector store, one file per season per year, with one row per sensor
-per logging interval. Nothing the network measures exists anywhere else in an
+per reporting interval. Nothing the network measures exists anywhere else in an
 authoritative form; figures appearing in reports, signals, minutes and slides are
 copies, and copies age.
 
-The logging interval is ten minutes at all eight sensors. Rows are emitted for
-every interval whether or not a reading was obtained.
+The reporting interval in the export is three hours at all eight sensors: eight
+rows per sensor per day, at 0000, 0300, 0600, 0900, 1200, 1500, 1800 and 2100
+Zulu. The sensors log more often than that; the export is a reduction of the
+logged record and not the logged record itself. A row is present for every
+sensor at every interval of every day the export covers, and every row carries a
+value.
 
 ## 2. Columns
 
 | Column | Type | Content | Nulls |
 |---|---|---|---|
-| `timestamp` | ISO 8601, Zulu | Start of the logging interval. Always Zulu; the export carries no local time and applies no seasonal clock change | never |
 | `sensor_id` | text | Sensor identifier as in MET-2026-002, for example `SLW-DECK-02` | never |
-| `asset_ref` | text | Estate asset reference for the host asset, for example `W-41` | never |
-| `position` | text | Short position label, repeated from the siting record for convenience | never |
-| `surface_temperature` | decimal | The measured surface temperature, Celsius, to one decimal place | where quality is `missing` |
-| `quality` | enum | One of `good`, `estimated`, `suspect`, `missing`. See section 3 | never |
-| `source` | enum | `telemetered` where the value arrived over the link, `recovered` where it was read from the local logger on a site visit | where quality is `missing` |
-| `logger_id` | text | Identifier of the logger that produced the row; the three Selwyn Bridge sensors share one logger | never |
-| `cal_ref` | text | Reference of the calibration in force for that sensor at that timestamp, keyed to MET-2026-004 | never |
-| `export_run` | text | Identifier and time of the export run that produced the file | never |
+| `asset` | text | Short position label, host asset and position together, for example `Selwyn Bridge, mid-span north lane`. Repeated from the siting record for convenience | never |
+| `date` | ISO 8601 date | The day the interval falls in | never |
+| `hour_utc` | text | The interval, as a four-figure Zulu clock time. Always Zulu; the export carries no local time and applies no seasonal clock change | never |
+| `surface_temp_c` | decimal | The surface temperature, Celsius, to one decimal place | never |
 
-`position` is included as a convenience only. It is a copy of the siting record
-and the siting record governs. Where the two disagree, MET-2026-002 is correct
-and the discrepancy should be reported.
+`asset` is included as a convenience only. It is a copy of the siting record and
+the siting record governs. It carries no estate asset reference: to go from a
+sensor to the `W-` reference of the asset it sits on, use MET-2026-002. Where the
+label and the siting record disagree, MET-2026-002 is correct and the discrepancy
+should be reported.
+
+**Those five columns are the whole export.** In particular it carries no quality
+flag, no source flag, no logger identifier, no calibration reference and no
+export run identifier. The Cell holds all five against every interval and none of
+them is published in the file subscribers receive. What follows from that is the
+most important thing in this note.
 
 The export carries no aggregates: no daily maxima, no minima, no means, no
 rolling values. Anything of that kind in circulation was computed by whoever is
@@ -50,82 +57,104 @@ The export also carries no air temperature. It never has and it is not planned t
 The two quantities are not interchangeable and holding them in one table would
 invite exactly the substitution that MET-2026-006 exists to prevent.
 
-## 3. Quality values
+## 3. Every row looks the same, and they are not the same
 
-`good` - an instrument reading that passed the automatic range and rate checks and
-has not been superseded on review.
+The Cell classifies every interval it holds. Four classes are in use.
 
-`estimated` - a value produced by the Instrumentation Cell rather than measured,
-covering short interpolations across planned isolations and corrections applied
-after a calibration was found outside tolerance. Estimated values are the Cell's
-best figure for the interval; they are not measurements.
+**Measured** - an instrument reading that passed the automatic range and rate
+checks and has not been superseded on review. Most of the record.
 
-`suspect` - the instrument produced a value, the value is present in the row, and
-there is reason to doubt it. Typical causes are a sensing face known to be fouled,
-a mounting known to be disturbed, or a reading that failed a check but could not
-be confidently voided. A `suspect` row is the most dangerous row in the export,
-because it looks exactly like a `good` row to anyone who has dropped the quality
-column.
+**Estimated** - a value produced by the Instrumentation Cell rather than
+measured, covering short interpolations across planned isolations and corrections
+applied after a calibration was found outside tolerance. Estimated values are the
+Cell's best figure for the interval. They are not measurements.
 
-`missing` - no value. The row exists to make the gap visible. Users who filter out
-`missing` rows before analysis will silently convert a gap into continuity.
+**Suspect** - the instrument produced a value and there is reason to doubt it.
+Typical causes are a sensing face known to be fouled, a mounting known to be
+disturbed, or a reading that failed a check but could not be confidently voided.
+
+**Recovered** - a value read off the local logger on a site visit rather than
+received over the telemetry link. The value is a measurement; it simply reached
+the Cell by another route, and it was absent from the export until the visit.
+
+**None of those four classes appears in the export.** There is no quality column
+to carry them. A corrected value, a doubted value and a clean instrument reading
+are written to the same five columns in the same format to the same one decimal
+place, and nothing in the file separates them. A user who reads the export alone
+is reading every row as though it were a good measurement, because that is the
+only thing the file offers.
+
+There is likewise no `missing` class in the export. Where the network obtained
+nothing, the Cell does not publish an empty row: it publishes its best figure for
+the interval, and the export runs unbroken. **An unbroken series is not evidence
+that the instrument was working.** The periods where it was not are listed in
+section 5, and section 5 is the only place a subscriber can learn about them.
+
+Where the class of a particular value matters - and it matters most for the
+values a decision turns on - request the interval from the Instrumentation Cell
+and record the class with the figure.
 
 ## 4. Coverage
 
 **The export covers the summer season only.** For each year held, the file runs
-from 01 May to 30 September inclusive and no further. The network is not exported
+from 01 June to 30 September inclusive and no further. The network is not exported
 outside that window.
 
 Years held:
 
 | Season | Status | Note |
 |---|---|---|
-| 2022 | Closed | Partial network only; SLW-DECK-02 and SLW-DECK-03 not yet installed. Rows for those sensors do not exist for this season |
-| 2023 | Closed | Full network from 01 May |
-| 2024 | Closed | Full network |
+| 2024 | Closed | Full network, all eight sensors |
 | 2025 | Closed | Full network. Summarised qualitatively at MET-2026-010 |
 | 2026 | Open | Full network. File is populated to the most recent export run and grows as the season proceeds |
+
+Earlier seasons were held on the previous collector and are not carried in this
+export. Requests for them go to the Instrumentation Cell.
 
 Two consequences follow and both catch users out.
 
 First, **a query spanning a season boundary returns nothing for the interval
-between seasons.** There is no data for October through April in any year. This is
-a coverage decision, not a gap and not an outage, and the export contains no rows
-at all for those periods rather than rows flagged `missing`.
+between seasons.** There is no data for October through May in any year. This is
+a coverage decision and not an outage, and the export contains no rows at all for
+those periods.
 
-Second, **the open season file is incomplete by design.** Rows exist up to the last
-export run and not beyond. The absence of a row for a recent interval usually
-means the export has not caught up, not that the sensor failed. Check the
-`export_run` value on the last row present before concluding anything about
-instrument health.
+Second, **the open season file stops at the last export run.** Rows exist up to
+that run and not beyond. The absence of rows for a recent day means the export
+has not caught up, not that the sensors failed, and the last day present in the
+file is the extract date rather than the end of the season. The export does not
+carry the run identifier, so establish the extract date before treating the last
+row as the current state of anything.
 
-## 5. Known gaps
+## 5. Known losses
 
-The following periods within the exported seasons contain `missing` or
-`estimated` rows for the reasons given. This schedule is maintained alongside the
-export and is the reference for the gaps in it.
+The periods below are the ones in which the network did not deliver a measured
+reading and the Cell supplied or recovered the value instead. The export shows
+none of this: the rows for these periods are present, populated and
+indistinguishable from the rest of the file. This schedule is maintained
+alongside the export and is the only record a subscriber holds of which values
+were produced rather than measured.
 
-| Sensor | Season | Period | Cause | Quality applied |
+| Sensor | Season | Period | Cause | How the exported value was produced |
 |---|---|---|---|---|
-| SLW-DECK-02 | 2022 | Whole season | Not installed | rows absent |
-| SLW-DECK-03 | 2022 | Whole season | Not installed | rows absent |
-| MRW-ROAD-01 | 2023 | 08 to 15 Jul | Duct flooded, cable fault | missing |
-| FPT-SLIP-01 | 2023 | 21 Aug to 02 Sep | Unit failure, replacement awaited from store | missing |
-| CP2-PAD-01 | 2024 | 11 to 12 Jun | Logger battery replacement | estimated |
-| SLW-DECK-01 | 2024 | 03 to 09 Sep | Surfacing patch repair, sensor isolated | missing |
-| BRH-PAD-01 | 2024 | 26 Sep | Collector outage, single day, recovered on visit | good, source `recovered` |
-| NDD-PAD-01 | 2025 | 02 to 11 Jul | Logger fault, no local record for the period | missing |
-| BRH-PAD-01 | 2025 | 24 to 29 Aug | Duct flooding after heavy rain, cable gland ingress | missing |
-| SLW-DECK-03 | 2025 | 14 Sep | Collector outage, recovered on visit 17 Sep | good, source `recovered` |
-| MRW-ROAD-01 | 2026 | 19 to 21 May | Traffic control works at the narrows, sensor isolated | estimated |
-| FPT-SLIP-01 | 2026 | 07 Jun | Apron works, sensor isolated for part of the day | estimated |
-| SLW-DECK-01 | 2026 | 12 to 13 Jul | Logger communications fault, recovered on visit 16 Jul | good, source `recovered` |
-| CP2-PAD-01 | 2026 | 28 Jul | Collector outage | missing |
+| CP2-PAD-01 | 2024 | 11 to 12 Jun | Logger battery replacement | Cell estimate, interpolated across the period |
+| SLW-DECK-01 | 2024 | 03 to 09 Sep | Surfacing patch repair, sensor isolated | Cell estimate; no measurement exists for the period |
+| BRH-PAD-01 | 2024 | 26 Sep | Collector outage, single day | Measured; read off the local logger on the site visit |
+| NDD-PAD-01 | 2025 | 02 to 11 Jul | Logger fault, no local record for the period | Cell estimate; no measurement exists for the period |
+| BRH-PAD-01 | 2025 | 24 to 29 Aug | Duct flooding after heavy rain, cable gland ingress | Cell estimate; no measurement exists for the period |
+| SLW-DECK-03 | 2025 | 14 Sep | Collector outage, recovered on visit 17 Sep | Measured; read off the local logger |
+| FPT-SLIP-01 | 2026 | 07 Jun | Apron works, sensor isolated for part of the day | Cell estimate for the isolated intervals |
+| SLW-DECK-01 | 2026 | 12 to 13 Jul | Logger communications fault, recovered on visit 16 Jul | Measured; read off the local logger |
+| CP2-PAD-01 | 2026 | 28 Jul | Collector outage | Cell estimate, interpolated across the day |
 
-Note that a `recovered` source is not a gap in the data even though it was a gap
-in the export at the time. Anyone who took an extract during one of those windows
-holds a file with rows absent that are now present. The current export is correct
-and the older extract is not.
+A recovered value is a measurement and the Cell stands behind it. An estimate is
+not, however carefully it was produced, and four of the nine periods above cover
+a sensor for which no measurement of any kind exists. Read the sensor and the
+dates in this schedule against the sensor and the dates of any figure a decision
+is going to rest on.
+
+Anyone who took an extract during one of the recovery windows holds a file whose
+rows for that period have since been replaced. The current export is correct and
+the older extract is not.
 
 ## 6. Changes to published data
 
@@ -135,12 +164,16 @@ period following a calibration found outside tolerance. Each change is recorded 
 the export change log, which is issued with the export.
 
 The Instrumentation Cell does not maintain a list of who holds which extract and
-cannot notify individual holders that their copy has been superseded. Where a
-figure matters, re-extract it rather than reusing a saved one, and record the
-`export_run` value with any figure that is written into another document.
+cannot notify individual holders that their copy has been superseded. Nor does
+the export identify itself: the file carries no run identifier, so two extracts
+of the same period taken months apart are indistinguishable on inspection and the
+older one gives no sign of being stale. Where a figure matters, re-extract it
+rather than reusing a saved one, obtain the run identifier from the Cell, and
+record it with any figure that is written into another document.
 
 ## 7. Requests
 
-Extracts for a named sensor and period, the export change log, and the
-calibration certificates behind the `cal_ref` values: Instrumentation Cell, Estate
-Works Section, Station Halberd.
+Extracts for a named sensor and period, the classification of a named interval,
+the run identifier for an extract, the export change log, and the calibration
+certificates in force behind any period: Instrumentation Cell, Estate Works
+Section, Station Halberd.
