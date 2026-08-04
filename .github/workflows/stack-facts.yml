@@ -60,7 +60,9 @@ jobs:
         with:
           node-version: "22.22.0"
           cache: npm
-          cache-dependency-path: instruments/p3_mcp_evidence/package-lock.json
+          cache-dependency-path: |
+            instruments/p3_mcp_evidence/package-lock.json
+            instruments/p3_evidence_surface/package-lock.json
 
       - name: Run rotting-facts harness
         # Local checks are hard gates. Network drift probes use the same public
@@ -69,6 +71,13 @@ jobs:
 
       - name: Smoke-test the P3 MCP evidence boundary
         working-directory: instruments/p3_mcp_evidence
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run smoke
+          npm audit --omit=dev
+
+      - name: Smoke-test the NORTHWIND evidence surface
+        working-directory: instruments/p3_evidence_surface
         run: |
           npm ci --ignore-scripts --no-audit --no-fund
           npm run smoke
