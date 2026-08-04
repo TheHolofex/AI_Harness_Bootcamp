@@ -9,4 +9,4 @@
 | `out/` | Run evidence |
 | `local_endpoint_notes.md` | **Stretch:** Ollama/LM Studio endpoint flip (“The Endpoint Is a Wall”) |
 
-MVP lives in the recipe + contract + stop/restart. Local endpoint is stretch only — see PASS_BARS P6.
+The required work lives in the recipe, the contract, and stop/restart. The local endpoint is stretch only — see `operator/CAPABILITIES.md` P6.

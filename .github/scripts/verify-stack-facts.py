@@ -114,7 +114,7 @@ def check_repo_paths(report: Report) -> None:
         "site/blocks/p2.html",
         "site/js/registry.js",
         "operator/DIRECTION_BRIEF.md",
-        "operator/PASS_BARS.md",
+        "operator/CAPABILITIES.md",
         "instruments/endpoint_case_suite",
         "instruments/p2_control_plane/bootstrap.ps1",
         "instruments/p2_control_plane/starter/PROJECT_ORGANIZER_CONTRACT.md",

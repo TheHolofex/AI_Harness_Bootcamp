@@ -12,7 +12,7 @@ The live HTML module page owns the learner sequence, tells you which of these re
 |---|---|---|
 | `DIRECTION_BRIEF.md` | Before a mission whose module page calls for it | AI interviews + drafts; operator accepts → status **LIVE** |
 | `OPERATOR_LOG.md` | In the module closeout when the page calls for it | AI interviews + stress-tests evidence; operator assigns verdict |
-| `PASS_BARS.md` | When linked by the module page | MVP / stretch / side-quest self-check — Move 2 |
+| `CAPABILITIES.md` | When linked by the module page | What each project teaches and what the exercise requires — Move 2 |
 | `TRANSFER_30_60_90.md` | Dated P1–P7 seeds; shared plan work at P7 and P8 | Living transfer plan — outer circuit — Move 3 |
 | `TRANSFER_GATES.md` | Facilitator | When to seed/draft/seal |
 | `ADVERSARIAL_REVIEW.md` | When directed by the module page (new chat) | Frozen-prompt verdict/MVP attack — in-course peer |
@@ -57,7 +57,7 @@ The direction and closeout names may be the same when the live page deliberately
 - Teach the chat split when the first live module page invokes it. B1 keeps its one guided First Light chat.
 - When a module requires a direction/closeout chat, do not let the build chat silently replace it.
 - REJECT with evidence is success.
-- After log: self-check MVP against `PASS_BARS.md` with the AI (no inflation).
+- After log: read the requirements in `CAPABILITIES.md` against what you actually produced (no inflation).
 - P1–P7 module closeouts write their dated transfer seeds. P7 drafts and P8 finalizes the plan in `P7–P8 — 30/60/90 Plan`.
 - Measurement spine after every adversarial (Move 4).
 
@@ -71,7 +71,7 @@ The live module pages own the lesson sequence and current course facts. If Brief
 
 ## Chats
 
-1. Exact module direction and closeout names from the live page — brief · log · pass bars; they may be one reused role or two separate chats
+1. Exact module direction and closeout names from the live page — brief · log · capabilities; they may be one reused role or two separate chats
 2. `[MODULE] — Adversarial Review — [DATE]` — new when the module page directs a frozen-prompt verdict/MVP attack
 3. Measurement — `MEASUREMENT_SPINE.md` row after adversarial
 4. `P7–P8 — 30/60/90 Plan` — the only intentionally shared chat; P7 drafts and P8 continues it only when the planning role and model match

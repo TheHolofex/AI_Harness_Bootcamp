@@ -112,7 +112,7 @@ BLOCKED_PREFIXES = (
 )
 
 # Cohort password is shared with students — keep answer keys off HTTP.
-# operator/PASS_BARS.md is deliberately NOT here because it is a working
+# operator/CAPABILITIES.md is deliberately NOT here because it is a working
 # exercise file used throughout the course.
 #
 # The key files now live under staff/ and are reachable only with a staff

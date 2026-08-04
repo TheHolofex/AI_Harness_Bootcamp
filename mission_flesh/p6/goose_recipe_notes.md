@@ -23,8 +23,8 @@ column is those levers; the **procedure-enforced** column is what you still own
 when the tool cannot see the risk.
 
 This course uses the **CLI** by default. Desktop exists (recipe library,
-scheduler UI, MCP Apps) and is welcome if you already have it; nothing in the
-pass bar requires it.
+scheduler UI, MCP Apps) and is welcome if you already have it; nothing the
+exercise requires depends on it.
 
 ## Starter recipe in this folder
 

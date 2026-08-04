@@ -48,7 +48,7 @@ You may swap stories if a better live example fits the room. Keep the **capabili
 
 ## What this is not
 
-- Not a second mission block (no PASS_BARS for the talk).
+- Not a second mission block (the talk has no capability requirements).
 - Not vendor pitch time.
 - Not “how I use ChatGPT for email.”
 - Not optional for the lead — the room counts on the pattern Tue/Wed/Thu.

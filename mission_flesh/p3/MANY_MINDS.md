@@ -4,7 +4,7 @@
 **Time:** about 50–70 minutes for the full mastery path; do not skip the baseline
 **Home tool:** Codex app with `gpt-5.6-terra`<br>
 **Pack:** `instruments/p3_multi_agent/`  
-**Pass bar home:** `operator/PASS_BARS.md` · P3 Stretch  
+**Capability home:** `operator/CAPABILITIES.md` · P3 Stretch  
 
 This guide stands beside you at the keyboard. You already finished the twin-engine desk. Now you will build a source-backed review of a small service pack with **several specialist runs under one human commander**, then decide from the saved baseline and delta whether the added parallel spend improved the work.
 
@@ -297,9 +297,9 @@ MANY MINDS:
 
 > When a review has clean lenses, I baseline once, then spawn specialists and wait for all — I score the delta before I trust parallel, and I disposition every finding with corpus evidence.
 
-### Pass bar
+### What this has to show
 
-Mark P3 Stretch in `PASS_BARS.md` only if baseline + synthesis + delta survive a skeptical read. Missing baseline ⇒ not yet for the mastery stretch (product demo only).
+The P3 Stretch in `CAPABILITIES.md` asks for baseline, synthesis, and delta together, each surviving a skeptical read. Without the baseline you have a product demo, not the capability.
 
 ---
 

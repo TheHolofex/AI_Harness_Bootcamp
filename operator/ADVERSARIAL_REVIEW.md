@@ -21,9 +21,9 @@ This chat’s job is to try to take it away — with evidence rules, not vibes.
 1. Direction Brief     →  [MODULE] — Direction & Closeout, when the module page uses it
 2. Mission             →  build chat(s)
 3. Operator Log
-   + PASS_BARS draft   →  same module-specific closeout chat
+   + requirements read →  same module-specific closeout chat
 4. Adversarial review  →  NEW chat every time (below)   ← you are here
-5. Fix or stand firm   →  update Log / bars if the attack lands
+5. Fix or stand firm   →  update the Log if the attack lands
 6. Measurement spine   →  MEASUREMENT_SPINE.md row (three entries)
 7. Transfer            →  dated seed in each P1–P7 module closeout;
                            shared P7–P8 plan chat only at P7 and P8
@@ -185,7 +185,7 @@ A human challenger trains *institutional* honesty: someone whose good opinion co
 - A polite reviewer is the same signal one engine at a time: the student under-pasted or reused the build chat.
 - Time box the separate attack pass at **5–8 minutes** standard and **10–12** at P8, where the pack is reviewed twice. P2, P3, P4, and P5 carry their review time inside the product workflow.
 - Rescue: narrower artifact paste, not a softer prompt.
-- Never replace PASS_BARS with “the AI said it’s fine.” Bars still need evidence pointers.
+- Never replace the requirements in `CAPABILITIES.md` with “the AI said it’s fine.” They still need evidence pointers.
 
 ## Identity lock
 

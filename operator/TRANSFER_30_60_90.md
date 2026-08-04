@@ -400,7 +400,7 @@ Smallest revision to keep the outer circuit closed. I own accepts.
 | `[MODULE] — Direction & Closeout` or the exact closeout name on the module page | Module-scoped inner mission pulse; saved files carry its result forward |
 | `ADVERSARIAL_REVIEW.md` | Module-specific verdict attack in a **new** chat when the live page directs it |
 | `MEASUREMENT_SPINE.md` | Measurement row when the live page directs it |
-| `PASS_BARS.md` | Evidence that transfer claims are earned |
+| `CAPABILITIES.md` | The capabilities a transfer claim rests on |
 | P8 matrix + AUP | The method can move; this file says where it moves *to* |
 
 ## Identity lock
