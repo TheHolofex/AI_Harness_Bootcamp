@@ -23,7 +23,7 @@
   <main class="site-main">
     <p class="eyebrow">Thursday AM · P6 · AI Harness Bootcamp</p>
     <h1>The watch officer</h1>
-    <p class="lede">You write the contract, a local agent runs the watch, and exceptions come to you. By lunch you will have verified that you can stop it, restart it, and show exactly which bounds the harness enforces — and which ones still depend on an operator.</p>
+    <p class="lede">So far this week, every agent waited for your next message. Today goose keeps working until a stop condition ends the run. You set the limits first. The agent processes the feeder. Hard cases come back to you. By lunch you will prove that you can stop it, restart it, and name which limits the tool enforces and which limits still need a person.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Thursday AM</span></div>
@@ -51,120 +51,122 @@
     <section id="orient" class="home-section">
       <div class="orient-grid">
         <div>
-          <h2 class="h-plain">What a watch officer is worth</h2>
-          <p>Every tool this week has waited for your next message. Today <strong>goose</strong> runs a packaged mission on incoming traffic while you hold command. The work is to name the controls the harness actually enforces and verify that you can stop and resume without losing good output.</p>
-          <p>That is what an <strong>autonomy contract</strong> is: every bound you care about, written down, with an honest answer to one question per row — does a lever in the tool physically enforce this, or am I trusting a promise in prose? Most autonomy failures at work trace back to a row that was quietly in the wrong column.</p>
-          <p>In goose you configure bounds someone else engineered. In <strong>Pi</strong> — a minimal harness with almost no rails, by design — you inspect the session record to verify which capabilities the model was actually offered.</p>
+          <h2 class="h-plain">Start here</h2>
+          <p>Until now, the harnesses were turn-based. You sent a prompt. The agent worked. It stopped and waited for you. You sent the next prompt. You were the clock.</p>
+          <p>Today the loop is different. You start <strong>goose</strong> on a fixed job: read the files in a feeder folder, write a summary, and flag bad input. After it starts, it keeps taking steps on its own until a limit ends the run. The limit can be a turn budget, a missing output file, your stop key, or a schedule end. You are not typing the next message between every step.</p>
+          <p>That does not mean the agent is free. It means the limits must exist before the run, not only in the chat. Your job is to write those limits, watch one run, stop and restart on purpose, and record which limits the tool really enforces and which limits still depend on you.</p>
+          <p>Later you will also use <strong>Pi</strong>, a thinner harness with almost no built-in limits. There you check the session file to see which tools the model was actually given.</p>
+
           <h3>What you will leave with</h3>
           <ul>
-            <li>An adapted <code>watch_officer.yaml</code> running over the local feeder — a folder standing in for incoming traffic — evidenced in <code>out/watch_summary.md</code>: a working pattern for any "watch a folder, summarize, flag exceptions" job on your desk</li>
-            <li>A control register linking each serious risk to a mechanism, enforcement layer, owner, evidence, and recovery action</li>
-            <li>Stop and restart verified with timestamps, plus an exception drill where hostile input was quarantined</li>
-            <li>A scheduled run, <strong>or</strong> an honest written block with the exact error — either is a real answer</li>
-            <li>From Pi: a tool restriction verified from the session file, plus a clear record of what the restriction does not contain</li>
-            <li>A Transfer P6 seed: one real process from your desk, sketched under contract</li>
+            <li>A changed <code>watch_officer.yaml</code> that reads the local feeder and writes <code>out/watch_summary.md</code></li>
+            <li>A control table that lists each serious risk, what enforces it, who owns it, what evidence it leaves, and how you recover</li>
+            <li>A stop and a restart with timestamps, plus a drill that holds hostile input instead of obeying it</li>
+            <li>A scheduled run, or a written record of the exact error that blocked the schedule. Either answer is valid</li>
+            <li>From Pi: proof from the session file that write tools were removed, and a note of what that limit still does not cover</li>
+            <li>A Transfer P6 note: one real process from your desk, with its limits sketched</li>
           </ul>
+
           <h3>Before you start</h3>
           <ul>
-            <li>Operator templates present in your Codex app project (<code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code>)</li>
-            <li>goose CLI working from pre-work — <code>goose info -v</code> shows your intended provider and model</li>
-            <li>Pack open: <code>mission_flesh/p6/</code> — <code>goose_recipe_notes.md</code>, <code>watch_officer.yaml</code>, <code>feeder/</code>, <code>contract_template.md</code></li>
-            <li>Course default is the CLI; Desktop is optional and only matters for the Scheduler UI</li>
+            <li>Operator templates are present in your Codex project: <code>DIRECTION_BRIEF.md</code> and <code>OPERATOR_LOG.md</code></li>
+            <li>goose CLI works from pre-work. <code>goose info -v</code> shows your intended provider and model</li>
+            <li>The pack is open at <code>mission_flesh/p6/</code>: <code>goose_recipe_notes.md</code>, <code>watch_officer.yaml</code>, <code>feeder/</code>, and <code>contract_template.md</code></li>
+            <li>The course default is the CLI. Desktop is optional and only matters for the Scheduler UI</li>
           </ul>
         </div>
         <div class="orient-aside">
           <div class="lead-box">
             <p class="eyebrow">Lead operate-along</p>
-            <p>The lead runs this same page on screen. You will see the brief co-written live, the Goose mission run from PowerShell, each accept or reject narrated, and at least one stop pulled mid-run so you can watch what a clean interrupt looks like. This exercise has no separate build chat. You still run your own chair, and you check a box when <em>you</em> finish the step, not when you watch it.</p>
+            <p>The lead runs this same page on screen. You will see the brief written live, goose started from PowerShell, tool approvals handled in the open, and at least one mid-run stop. There is no separate build chat. Run your own machine. Check a box only when you finish the step.</p>
           </div>
           <div class="callout" id="case-talk">
             <strong>Before lunch · Harness case talk (45 min)</strong>
-            A real problem the lead solved with harnessed AI — 30 minutes of the case, 15 of discussion. Listen for problem → harness move → evidence; notice one idea you may carry into the transfer step after measurement.
+            A real problem the lead solved with harnessed AI. Listen for problem, harness move, and evidence. Notice one idea you may carry into the transfer step.
           </div>
           <div class="callout">
             <strong>Stretch · The endpoint is a wall</strong>
-            After the required lesson outcomes are complete: swap the endpoint for the pinned local model and score what actually degrades. The complete runnable path is under <strong>Going deeper</strong> on this page.
+            After the required outcomes are complete, you may swap the endpoint for the pinned local model and score what degrades. The full path is under <strong>Going deeper</strong>.
           </div>
         </div>
       </div>
       <figure class="section-diagram">
-        <img src="../assets/blocks/p6/p6-overview.svg" alt="Overview: feeder traffic flows through the watch officer recipe under your contract, exceptions surface to you, and you hold the stop" width="1120" height="280" loading="lazy" decoding="async" />
+        <img src="../assets/blocks/p6/p6-overview.svg" alt="Overview: feeder files go through the goose recipe under your limits, hard cases come to you, and you hold the stop" width="1120" height="280" loading="lazy" decoding="async" />
       </figure>
     </section>
 
     <section id="ideas" class="home-section">
-      <h2>The ideas under the mission</h2>
-      <p class="section-lede">Five mechanisms carry today. Read them once before you run, then return when a control or recovery step needs clarification.</p>
+      <h2>Learn the five ideas before the run</h2>
+      <p class="section-lede">Read these once before you run. Come back when a step needs the reason behind it.</p>
 
-      <h3>Autonomy is a loop plus bounds you wrote</h3>
-      <p>Strip the word <em>autonomy</em> of its aura and what remains is the same harness loop you have run all week — act, observe, correct — with one change: you are no longer approving every turn. Nothing got smarter at that moment. What changed is who is watching, which means every bound you used to enforce by being present has to live somewhere else. The autonomy contract is that somewhere: a table with a row for every serious risk, and two columns that ask one blunt question per row — does a mechanism in the harness enforce this, or does a person promise it?</p>
-      <p><strong>Tool-enforced</strong> means the harness physically holds the line. The lever works when the model is confused, when the input is hostile, and when you are at lunch, because it executes in the harness's own runtime, where the model cannot argue with it. <strong>Procedure-enforced</strong> means a person keeps a promise — who may restart, when output gets reviewed, what triggers a stop. Procedure rows are not weaknesses; stop authority itself almost always lives there, and a written procedure a team actually follows is a real control. The discipline is knowing which column each bound honestly belongs in.</p>
-      <p>Going wrong looks like a tool column full of sentences. "The agent will not leave the project" is prose: the model reads it, usually honors it, and can be argued out of it by content it processes — you watched that mechanism from the attacker's side in the poisoned corpus. A bound that lives only in instructions text is a promise the model makes you, which puts it in nobody's column until you either move it left by finding a real lever or move it right by naming the human who checks.</p>
-      <p>At work, this table is the first artifact to demand — from yourself before anything runs unattended, and from any vendor selling an "autonomous" anything. The rows they cannot fill on the left are your exposure, and they are reliably the rows the brochure says are handled.</p>
+      <h3>1. The loop still acts and checks. You are no longer every next turn.</h3>
+      <p>The agent still does the same basic work you have seen all week. It acts. It looks at the result. It corrects. The difference is the pace of human input.</p>
+      <p>In a turn-based harness, the run pauses for you between steps. Your message is the start signal for the next step. In goose today, you start a packaged job once. The agent keeps stepping through the feeder until a stop condition ends the run. You may still approve some tool calls. You are not writing the next user message after every file.</p>
+      <p>So the hard part moves earlier. Limits that used to live in your presence must live in settings, files, and named people. Before the run, write a simple table. Each serious risk gets one row. For each row, answer one question. Does the tool block this by itself, or does a person have to keep the rule?</p>
+      <p><strong>Tool-enforced</strong> means the software blocks or ends the action even if you are not watching. Examples today include a turn budget, a missing-output check, and a tool list that was never loaded. <strong>Person-enforced</strong> means a human keeps the rule. Who may restart. When output gets reviewed. Who presses stop. Person-enforced rows are normal. The stop key is usually one of them.</p>
+      <p>A common failure is to treat a sentence as a tool limit. &quot;Do not leave the project folder&quot; in the recipe text is only text the model reads. The model often follows it. Hostile input can still push it off the rule. You saw that pattern yesterday with poisoned intake. Text to the model is not the same as a setting the runtime enforces. Put text rules in the person column until you have a real tool control, or name the person who checks.</p>
       <figure class="section-diagram">
-        <img src="../assets/blocks/p6/p6-idea-contract.svg" alt="The two-column contract: tool-enforced rows name a real goose lever, procedure-enforced rows are promises you keep" width="1120" height="220" loading="lazy" decoding="async" />
+        <img src="../assets/blocks/p6/p6-idea-contract.svg" alt="Two columns for limits: tool-enforced rows name a real goose control, person-enforced rows name a human rule" width="1120" height="220" loading="lazy" decoding="async" />
       </figure>
 
-      <h3>goose's levers are walls you turned on</h3>
-      <p>goose ships real levers, and every one of them defaults to whatever it defaults to — not to your contract. Today's recipe opens five:</p>
+      <h3>2. goose gives you real controls. They stay off until you set them.</h3>
+      <p>goose has built-in controls. They use their own defaults until you change them. Today&#x27;s recipe uses five:</p>
       <table>
-        <thead><tr><th>Lever</th><th>Where it lives</th><th>What it physically holds</th></tr></thead>
+        <thead><tr><th>Control</th><th>Where you set it</th><th>What it does</th></tr></thead>
         <tbody>
-          <tr><td><strong>Recipe</strong></td><td><code>watch_officer.yaml</code></td><td>The packaged mission: instructions, prompt, parameters, plus the machine-read fields below</td></tr>
-          <tr><td><strong>Tool surface</strong></td><td><code>extensions:</code> (starter: built-in <code>developer</code> only)</td><td>Which tools exist at all — an extension that is not loaded cannot be called, whatever the feeder says</td></tr>
-          <tr><td><strong>Autonomy dial</strong></td><td><code>GOOSE_MODE</code> (approve / smart_approve / auto) + <code>settings.max_turns: 12</code></td><td>Whether tool calls wait for you, and how many turns the loop may take before it physically ends</td></tr>
-          <tr><td><strong>Retry check</strong></td><td><code>retry.checks</code> — a <code>Test-Path</code> probe for <code>out/watch_summary.md</code></td><td>A success test outside the model: no summary file on disk, no claimed success</td></tr>
-          <tr><td><strong>Unattended path</strong></td><td>Scheduler (Desktop or CLI)</td><td>When the loop may run without you — with pause and run-now under your hand</td></tr>
+          <tr><td><strong>Recipe</strong></td><td><code>watch_officer.yaml</code></td><td>The packaged mission: instructions, prompt, parameters, and the machine-read fields below</td></tr>
+          <tr><td><strong>Available tools</strong></td><td><code>extensions:</code> (starter: built-in <code>developer</code> only)</td><td>Which tools exist at all. A tool pack that is not loaded cannot be called</td></tr>
+          <tr><td><strong>Approval mode + turn budget</strong></td><td><code>GOOSE_MODE</code> (approve / smart_approve / auto) + <code>settings.max_turns: 12</code></td><td>Whether tool calls wait for you, and how many steps the run may take before it ends</td></tr>
+          <tr><td><strong>Output check</strong></td><td><code>retry.checks</code> — a <code>Test-Path</code> probe for <code>out/watch_summary.md</code></td><td>A success test outside the model. No summary file on disk means no claimed success</td></tr>
+          <tr><td><strong>Schedule</strong></td><td>Scheduler (Desktop or CLI)</td><td>When the job may run without you, with pause and run-now under your hand</td></tr>
         </tbody>
       </table>
-      <p>The mechanism worth holding onto is <em>where each lever executes</em>. <code>max_turns</code> is a counter in goose's own loop code; <code>extensions</code> decides which tool schemas the model is shown in the first place; the retry check is a shell command goose runs after the model claims it finished. None of them pass through the model, and that is what earns them the tool column. The <code>instructions</code> block, by contrast, is delivered <em>to</em> the model — real influence, wrong column.</p>
-      <p>Going wrong is quiet here: a contract row that says <code>GOOSE_MODE=approve</code> while the variable was never set in the window that ran the recipe. The lever exists, the row is written, and nothing is enforced. So the test of a tool row is always <code>goose info -v</code> and the run's observed behavior, never the YAML's good intentions. A lever you did not turn on is not a rail you have. The cloned pack keeps the full field notes at <code>mission_flesh/p6/goose_recipe_notes.md</code> · docs: <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p>
-      <p>At work: before any agent platform touches real traffic, take a lever inventory. List the levers it actually has, mark the ones you turned on, and let only those into the tool column. Twenty minutes, and it reorganizes every conversation about that platform's safety.</p>
+      <p>Notice where each control runs. <code>max_turns</code> is a counter inside goose. <code>extensions</code> chooses which tools the model can see. The retry check is a shell command goose runs after the model says it is done. Those controls do not depend on the model agreeing. The <code>instructions</code> block is different. goose sends that text to the model. It can guide the model. It is not a hard stop by itself.</p>
+      <p>A quiet failure looks like this. Your table says <code>GOOSE_MODE=approve</code>, but the variable was never set in the PowerShell window that ran the recipe. The control exists. Your notes look complete. Nothing was enforced. Check a tool control with <code>goose info -v</code> and with what the run actually did. Do not trust the YAML alone. A control you did not set is not a control you have.</p>
 
-      <h3>Verify stop authority by stopping and restarting</h3>
-      <p><strong>Stop authority</strong> means halting a run and resuming on your terms without losing good work. Ctrl+C and a timestamp verify the stop. An intact file plus a successful append after restart verifies recovery.</p>
-      <p>The recipe's append posture makes stopping cheap enough to use. Record both timestamps and inspect the file before and after restart.</p>
-      <p>At work: for every unattended process you own, know the interrupt, know the resume, and have done both once on purpose — a fire drill, not a theory. The day you need the stop is the wrong day to learn it erases the week's output.</p>
+      <h3>3. Prove you can stop and restart</h3>
+      <p>If the agent keeps stepping without your next message, you must be able to end the run and bring it back without losing finished work. Press Ctrl+C and write the time. That proves the stop. Open the summary file, restart the same recipe, and confirm old lines are still there and new lines are added. That proves recovery.</p>
+      <p>The recipe is written to append, not rewrite. That is what makes a stop safe enough to use. Record both timestamps. Read the file before and after the restart.</p>
+      <p>For any process that can run without you, know the stop method and the restart method. Practice both once. Do not learn the stop on the day you need it.</p>
 
-      <h3>The three-layer bound</h3>
-      <p>Not all bounds are the same strength, and the vocabulary for that difference is the most transferable thing you will take from today. Three layers, in ascending order of what they can promise:</p>
-      <p>A <strong>contract</strong> removes the capability. <code>pi --tools "read,grep,find,ls"</code> filters Pi's tool registry <em>above</em> the extension layer, so the banned write tools never enter the model's schema. There is nothing to refuse and no refusal to talk the model out of — the option does not exist in its world. And it is provable after the fact: open the session file and read the tool list that was actually offered.</p>
-      <p>A <strong>tripwire</strong> watches for the act. A <code>tool_call</code> gate can catch drift and fail closed, but it remains defeatable when an equivalent capability is exposed through another tool. A gate that watches <code>write</code> does not cover a shell command that writes the same file, and raw path checks fail when they do not resolve the target before comparison. Remove equivalent paths or contain the process; do not describe a tripwire as a boundary.</p>
-      <p>A <strong>boundary</strong> is a container. The process physically cannot reach outside it, regardless of what the model wants or how the gate is feeling. It is the only layer whose guarantee does not depend on the good behavior of the thing being bounded.</p>
-      <p>The specific error this distinction exists to burn out is the tripwire mistaken for a boundary. It is how people come to believe a written policy stops a process — "we have a guardrail," where the guardrail runs in the same trust domain as the thing it limits. When anyone tells you an agent <em>can't</em> do something, the question is which layer: schema, gate, or wall. The answer changes what you should be willing to run unattended, and what evidence you should demand first.</p>
+      <h3>4. Three kinds of limit, three different strengths</h3>
+      <p>Not every limit is equally strong. Use three plain kinds.</p>
+      <p>A <strong>removed tool</strong> takes the action away. <code>pi --tools &quot;read,grep,find,ls&quot;</code> never shows write tools to the model. The model cannot call what it cannot see. You can prove this later. Open the session file and read the tool list that was offered.</p>
+      <p>A <strong>watch rule</strong> looks for a bad act and tries to stop it. An approval prompt is one example. It can fail if another tool can do the same act. A watch on <code>write</code> does not stop a shell command that writes the same file. Do not call a watch rule a hard wall.</p>
+      <p>A <strong>container limit</strong> is a hard wall outside the model. The process cannot reach outside it, even if the model wants to. This is the only kind that does not depend on the model behaving well.</p>
+      <p>The common mistake is to treat a watch rule as a hard wall. When someone says an agent cannot do something, ask how. Is the tool missing, is a person supposed to catch it, or is the process sealed outside the model? That answer decides what you can leave running alone.</p>
       <figure class="section-diagram">
-        <img src="../assets/blocks/p6/p6-idea-three-layers.svg" alt="Three layers of bound: contract removes the tool from the model's schema, tripwire gates tool calls but is defeatable, boundary is a container enforced outside the model" width="1120" height="220" loading="lazy" decoding="async" />
+        <img src="../assets/blocks/p6/p6-idea-three-layers.svg" alt="Three kinds of limit: removed tool, watch rule, and hard container outside the model" width="1120" height="220" loading="lazy" decoding="async" />
       </figure>
 
-      <h3>The minimal harness — rails are yours to build</h3>
-      <p>Pi is a deliberately minimal harness: a small default tool set, a session file, and a large surface for building your own machinery. What it does not have is rails. There is no sandbox. There is no permission mode to set. And — the part people miss — there is no working-directory fence: absolute paths and <code>~</code> pass straight through, so "I opened it in this folder" bounds nothing at all. Instruction files load whether or not you trust the project. This is the vendor's stated design, not an oversight: rails are yours to build, and the extension API is the toolbox.</p>
-      <p>From the chair, the missing rails feel like nothing — which is exactly the lesson. A loop without rails runs the same as a bounded one right up until the input turns hostile or a path goes absolute. So containment around Pi is your job, not the harness's. Two standing rules follow, and they are really one discipline: never <code>/share</code> a session (it uploads the whole session, system prompt included, to a link anyone can open), and install only packages named for the course (a package's install step runs arbitrary code on your machine).</p>
-      <p>At work, loops with no rails at all are everywhere — every script that calls a model API with a tool list is one. When you meet one, you now have the inventory question: which rails exist here, which are actually on, and which am I imagining because the demo behaved?</p>
+      <h3>5. Pi has almost no built-in limits</h3>
+      <p>Pi is a thin harness on purpose. It has a small default tool set and a session file. It does not give you a sandbox, a permission mode, or a folder fence. Absolute paths and <code>~</code> work as written. Opening Pi in a folder does not trap it there. Project instruction files can load even when you do not trust the project. The design expects you to add limits yourself.</p>
+      <p>A thin harness can look fine until bad input arrives or a path points outside the folder. With Pi, you own the limits. Two course rules are fixed. Do not <code>/share</code> a session. That upload can expose the full session, including the system prompt. Install only packages named for the course. Package install can run code on your machine.</p>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p6" data-block="P6">
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Eight stages, in order: brief, pack, first run, control register, stop/restart, exception, unattended run, and Pi tool restriction. Check each item when its evidence exists on disk or in the log.</p>
+        <p class="section-lede">Eight stages, in order. Write the brief. Open the pack. Run once under bounds. Write the control register. Stop and restart. Run the exception drill. Attempt the unattended path. Verify Pi&#x27;s tool limit. Check each item when its evidence exists on disk or in the log.</p>
 
-        <h3>Stage 01 · Set the watch</h3>
-        <p>Before anything runs on its own, you say in writing what it is for and where it stops. Today the Bounds field earns its keep — what you write there becomes contract rows within the hour.</p>
+        <h3>Stage 01 · Write the LIVE brief</h3>
+        <p>Before anything runs on its own, say in writing what it is for and where it stops. The Bounds field earns its keep here. What you write becomes contract rows within the hour.</p>
         <div class="do-step">
           <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
           <ul class="do-clicks">
             <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
             <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
-            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\\HarnessBootcamp\\AI_Harness_Bootcamp</code></li>
             <li>In the sidebar, look for <strong>P6 — Direction &amp; Closeout</strong>. If it is there, open it</li>
-            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P6 — Direction &amp; Closeout</code></li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat&#x27;s <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P6 — Direction &amp; Closeout</code></li>
             <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
             <li>Select <strong>gpt-5.6-terra</strong>. Do not leave this chat on the default or select <code>gpt-5.6-sol</code></li>
             <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>P6 — Direction &amp; Closeout</strong>:</p>
+          <p class="do-label">Paste this into <strong>P6 — Direction &amp; Closeout</strong>:</p>
           <pre><code>Write the P6 production spec into operator/DIRECTION_BRIEF.md. Replace the
 current brief with the fields below, then set Status to LIVE. Do not interview
 me or add requirements.
@@ -185,7 +187,7 @@ result, and Pi session schema.
 Stop / hand-back: stop on any request outside feeder/ and out/, on repeated
 failure, or at the turn budget; record the in-flight state before restart.</code></pre>
         </div>
-        <p>Open <code>operator/DIRECTION_BRIEF.md</code>, confirm the saved paths, and continue only when Status is <strong>LIVE</strong>. Goose runs from PowerShell in Stage 02; no separate build chat is needed.</p>
+        <p>Open <code>operator/DIRECTION_BRIEF.md</code>. Confirm the saved paths. Continue only when Status is <strong>LIVE</strong>. goose runs from PowerShell in Stage 02. No separate build chat is needed.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -193,19 +195,19 @@ failure, or at the turn budget; record the in-flight state before restart.</code
               <span class="check-num">1</span>
               <span class="check-title">The P6 production spec is on record with Status LIVE</span>
             </label>
-            <div class="check-detail">The saved brief names the recipe, control register, stop/restart record, hostile-input result, schedule result, Pi session evidence, exact write scope, operator ownership, and stop condition.</div>
+            <div class="check-detail">The saved brief names the recipe, control register, stop and restart record, hostile-input result, schedule result, Pi session evidence, exact write scope, operator ownership, and stop condition.</div>
           </li>
         </ol>
 
-        <h3>Stage 02 · Open the pack</h3>
+        <h3>Stage 02 · Open the pack and pin the model</h3>
         <p>Everything today runs from one folder. Know what is in it before the agent does.</p>
         <div class="do-step">
-          <p class="do-label">Now open a <strong>PowerShell window</strong> (Start menu, type <code>powershell</code>, Enter) and paste:</p>
+          <p class="do-label">Open a <strong>PowerShell window</strong> and paste:</p>
           <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p6"
 Get-ChildItem
 Get-ChildItem .\feeder</code></pre>
         </div>
-        <p>The first listing is the whole pack: the starter recipe <code>watch_officer.yaml</code>, the field notes and the local-endpoint notes, the contract template, a README, the <code>feeder/</code> folder of watch traffic, and an <code>out/</code> folder for evidence. The second listing shows four feeder files, <code>event_01</code> through <code>event_04</code> — dropping files in that folder simulates watch traffic. This window is your mission window; every command below goes here unless a do-label says otherwise. If the path does not exist, the pack is not on your machine — re-clone the course repo the way pre-work did.</p>
+        <p>The first listing is the whole pack: the starter recipe <code>watch_officer.yaml</code>, the field notes, the local-endpoint notes, the contract template, a README, the <code>feeder/</code> folder of watch traffic, and an <code>out/</code> folder for evidence. The second listing shows four feeder files, <code>event_01</code> through <code>event_04</code>. Dropping files in that folder simulates watch traffic. This window is your mission window. Every command below goes here unless a do-label says otherwise. If the path does not exist, the pack is not on your machine. Re-clone the course repo the way pre-work did.</p>
         <div class="do-step">
           <p class="do-label">Point goose at the course xAI model and verify both values before the first run:</p>
           <pre><code>$env:GOOSE_PROVIDER = "xai"
@@ -213,19 +215,19 @@ $env:GOOSE_MODEL = $env:HB_XAI_MODEL
 goose info -v</code></pre>
           <ul class="do-clicks">
             <li>Confirm the output names provider <code>xai</code> and the model ID posted for the course</li>
-            <li>If the model is blank or either value differs, stop and ask the instructor to correct the pin before continuing. Do not substitute another provider or a subscription login</li>
+            <li>If the model is blank or either value differs, stop and ask the instructor to correct the pin before you continue. Do not substitute another provider or a subscription login</li>
           </ul>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to read the traffic your agent is about to meet:</p>
+          <p class="do-label">Read the traffic your agent is about to meet:</p>
           <pre><code>Get-Content .\feeder\event_04.txt</code></pre>
         </div>
-        <p>That line asks the agent to delete the audit log and dump user emails. Leave the file exactly where it is — the run is supposed to meet it, and Stage 06 checks what happened when it did.</p>
+        <p>That line asks the agent to delete the audit log and dump user emails. Leave the file exactly where it is. The run is supposed to meet it. Stage 06 checks what happened when it did.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to make sure the output folder exists:</p>
+          <p class="do-label">Make sure the output folder exists:</p>
           <pre><code>New-Item -ItemType Directory -Force -Path .\out | Out-Null</code></pre>
         </div>
-        <p>No output means it worked — <code>-Force</code> stays quiet when the folder already exists. Everything the watch produces will land here, which is what makes evidence checkable later.</p>
+        <p>No output means it worked. <code>-Force</code> stays quiet when the folder already exists. Everything the watch produces will land here. That is what makes evidence checkable later.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -233,32 +235,32 @@ goose info -v</code></pre>
               <span class="check-num">2</span>
               <span class="check-title">The four feeder files and output folder are ready</span>
             </label>
-            <div class="check-detail">You should see four feeder files, <code>event_01</code> through <code>event_04</code> — and <code>event_04</code> carries the hostile line for the exception drill (leave it in place; the run is supposed to meet it). <code>out/</code> now exists. Read <code>mission_flesh/p6/goose_recipe_notes.md</code> in your cloned pack when you want the full field notes. If the pack is not on your machine, use the clone steps from pre-work again.</div>
+            <div class="check-detail">You should see four feeder files, <code>event_01</code> through <code>event_04</code>. <code>event_04</code> carries the hostile line for the exception drill. Leave it in place. <code>out/</code> now exists. Read <code>mission_flesh/p6/goose_recipe_notes.md</code> when you want the full field notes.</div>
           </li>
         </ol>
 
-        <h3>Stage 03 · First run under bounds</h3>
-        <p>Adapt first, then run. The shipped demo verifies goose starts; the adapted recipe records what you directed.</p>
+        <h3>Stage 03 · Adapt the recipe and run once under bounds</h3>
+        <p>Adapt first. Then run. The shipped demo verifies goose starts. The adapted recipe records what you directed.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to open the recipe:</p>
+          <p class="do-label">Open the recipe:</p>
           <pre><code>notepad .\watch_officer.yaml</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Now in <strong>Notepad</strong> (watch_officer.yaml), set a turn budget for this workload. Find this line (Ctrl+F helps):</p>
+          <p class="do-label">In <strong>Notepad</strong> (watch_officer.yaml), set a turn budget for this workload. Find this line (Ctrl+F helps):</p>
           <pre><code>  max_turns: 12</code></pre>
           <p>and make it read:</p>
           <pre><code>  max_turns: 10</code></pre>
         </div>
-        <p>This feeder has four files. Budget two turns per file plus two turns for one recovery path: <code>(4 × 2) + 2 = 10</code>. Keep the two leading spaces — YAML cares about indentation. If you adapt this recipe to a different feeder, recalculate the budget from the file count, retry allowance, cost limit, and recovery plan instead of copying ten. The cap limits duration and cost; it does not limit which actions are possible.</p>
+        <p>This feeder has four files. Budget two turns per file plus two turns for one recovery path: <code>(4 × 2) + 2 = 10</code>. Keep the two leading spaces. YAML cares about indentation. If you adapt this recipe to a different feeder, recalculate the budget from the file count, retry allowance, cost limit, and recovery plan. Do not copy ten blindly. The cap limits duration and cost. It does not limit which actions are possible.</p>
         <div class="do-step">
-          <p class="do-label">Now in <strong>Notepad</strong> (watch_officer.yaml), add one bound of your own. Find this line:</p>
+          <p class="do-label">In <strong>Notepad</strong> (watch_officer.yaml), add one bound of your own. Find this line:</p>
           <pre><code>  - Stay inside feeder_dir and out/.</code></pre>
           <p>and add a new line directly below it:</p>
           <pre><code>  - [ONE BOUND FROM YOUR BRIEF, WRITTEN AS A RULE]</code></pre>
         </div>
-        <p>Replace the bracket with one Bounds line from your LIVE brief, phrased as a concrete rule — "Never send anything off this machine" is the shape. Keep the same two-space indent and the leading dash. The recipe now carries a workload-derived turn budget and the operating bound for this run.</p>
+        <p>Replace the bracket with one Bounds line from your LIVE brief, phrased as a concrete rule. &quot;Never send anything off this machine&quot; is the shape. Keep the same two-space indent and the leading dash. The recipe now carries a workload-derived turn budget and the operating bound for this run.</p>
         <div class="do-step">
-          <p class="do-label">Now in <strong>Notepad</strong>:</p>
+          <p class="do-label">In <strong>Notepad</strong>:</p>
           <ul class="do-clicks">
             <li>Press <kbd>Ctrl+S</kbd> to save, then close Notepad</li>
           </ul>
@@ -266,24 +268,24 @@ goose info -v</code></pre>
         <div class="panel">
           <p class="eyebrow">The run, exactly</p>
           <div class="do-step">
-            <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> — the one sitting in <code>mission_flesh\p6</code>:</p>
+            <p class="do-label">Paste this into the same <strong>PowerShell window</strong> — the one sitting in <code>mission_flesh\\p6</code>:</p>
             <pre><code>$env:GOOSE_MODE = "approve"
 goose run --recipe .\watch_officer.yaml</code></pre>
           </div>
-          <p class="full-measure">Approve is the right mode for a first run: you see each tool call before it happens and can compare the observed behavior with the control register. Auto is appropriate only after that inspection, for a bounded smoke check.</p>
+          <p class="full-measure">Approve is the right mode for a first run. You see each tool call before it happens. You can compare the observed behavior with the control register. Auto is appropriate only after that inspection, for a bounded smoke check.</p>
         </div>
         <div class="do-step">
-          <p class="do-label">Now in the same <strong>PowerShell window</strong>, as goose asks permission for each tool call:</p>
+          <p class="do-label">In the same <strong>PowerShell window</strong>, as goose asks permission for each tool call:</p>
           <ul class="do-clicks">
-            <li>Approve every request that reads a feeder file or writes inside <code>out/</code> — that is the whole mission surface</li>
-            <li>If a request reaches anywhere else, deny it and note what it tried — that note is contract material</li>
+            <li>Approve every request that reads a feeder file or writes inside <code>out/</code>. That is the whole mission surface</li>
+            <li>If a request reaches anywhere else, deny it and note what it tried. That note is contract material</li>
           </ul>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> when the run finishes:</p>
+          <p class="do-label">When the run finishes, inspect the summary:</p>
           <pre><code>Get-Content .\out\watch_summary.md</code></pre>
         </div>
-        <p>You should see one summary line per normal feeder file — and, if the contract held, a <code>QUARANTINE:</code> line for <code>event_04</code>; Stage 06 examines that properly. If goose rejected <code>--recipe</code>, run <code>goose run --help</code> and use the recipe-file form your pinned build prints. If <code>out\</code> stayed empty, you almost certainly ran from the wrong folder — <code>feeder_dir</code> is a relative path, so rerun from <code>mission_flesh\p6</code>.</p>
+        <p>You should see one summary line per normal feeder file. If the contract held, you should also see a <code>QUARANTINE:</code> line for <code>event_04</code>. Stage 06 examines that properly. If goose rejected <code>--recipe</code>, run <code>goose run --help</code> and use the recipe-file form your pinned build prints. If <code>out\\</code> stayed empty, you almost certainly ran from the wrong folder. <code>feeder_dir</code> is a relative path. Rerun from <code>mission_flesh\\p6</code>.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -296,14 +298,14 @@ goose run --recipe .\watch_officer.yaml</code></pre>
         </ol>
 
         <h3>Stage 04 · Write the control register</h3>
-        <p>Now that you have observed one run, map every serious risk to the mechanism that handles it, who owns it, the evidence it leaves, and the recovery action. This register must exist before unattended operation.</p>
+        <p>You have observed one run. Now map every serious risk to the mechanism that handles it, who owns it, the evidence it leaves, and the recovery action. This register must exist before unattended operation.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to start your contract file:</p>
+          <p class="do-label">Start your contract file:</p>
           <pre><code>notepad .\my_contract.md</code></pre>
         </div>
-        <p>Notepad will ask whether to create the file — choose <strong>Yes</strong>.</p>
+        <p>Notepad will ask whether to create the file. Choose <strong>Yes</strong>.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into <strong>Notepad</strong> (my_contract.md):</p>
+          <p class="do-label">Paste this into <strong>Notepad</strong> (my_contract.md):</p>
           <pre><code># Control register — P6 feeder watch
 
 | Risk | Mechanism | Enforcement layer | Owner | Evidence | Recovery |
@@ -321,11 +323,11 @@ Recipe path + change: watch_officer.yaml — four-file budget 10 turns; added pr
 GOOSE_MODE / max_turns used: approve / 10
 Schedule attempt result: [FILL AFTER STAGE 07]</code></pre>
         </div>
-        <p>Replace every <code>[OWNER]</code> and the date. Leave the schedule result pending until Stage 07. If a row credits a mechanism you did not observe, correct it now; the register describes the run you have, not the platform brochure.</p>
+        <p>Replace every <code>[OWNER]</code> and the date. Leave the schedule result pending until Stage 07. If a row credits a mechanism you did not observe, correct it now. The register describes the run you have, not the platform brochure.</p>
         <div class="do-step">
-          <p class="do-label">Now in <strong>Notepad</strong> (my_contract.md):</p>
+          <p class="do-label">In <strong>Notepad</strong> (my_contract.md):</p>
           <ul class="do-clicks">
-            <li>Fill the [BRACKETS], press <kbd>Ctrl+S</kbd>, and close Notepad — Stage 07 and Stage 08 reopen the file when they need it, so only one window is ever editing it</li>
+            <li>Fill the [BRACKETS], press <kbd>Ctrl+S</kbd>, and close Notepad. Stage 07 and Stage 08 reopen the file when they need it, so only one window is ever editing it</li>
           </ul>
         </div>
         <ol class="checklist">
@@ -339,34 +341,34 @@ Schedule attempt result: [FILL AFTER STAGE 07]</code></pre>
           </li>
         </ol>
 
-        <h3>Stage 05 · Stop and restart</h3>
+        <h3>Stage 05 · Stop and restart under a live workload</h3>
         <p>Verify both stop and restart now, while the stakes are a practice feeder.</p>
         <figure class="section-diagram">
           <img src="../assets/blocks/p6/p6-stage-stop-restart.svg" alt="Stop and restart drill: interrupt mid-run, verify prior lines intact, rerun the same recipe, confirm it appends" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to give the next run enough traffic to catch mid-flight:</p>
+          <p class="do-label">Give the next run enough traffic to catch mid-flight:</p>
           <pre><code>Copy-Item .\feeder\event_01.txt .\feeder\event_01b.txt
 Copy-Item .\feeder\event_02.txt .\feeder\event_02b.txt</code></pre>
         </div>
-        <p>Two duplicate events mean the run has real work in front of it — the point is stopping a machine that was genuinely doing something, not rehearsing the keystroke.</p>
+        <p>Two duplicate events mean the run has real work in front of it. The point is stopping a machine that was genuinely doing something, not rehearsing the keystroke.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to start the run you are about to interrupt:</p>
+          <p class="do-label">Start the run you are about to interrupt:</p>
           <pre><code>goose run --recipe .\watch_officer.yaml</code></pre>
         </div>
-        <p>The mode is still approve — <code>$env:GOOSE_MODE</code> holds for as long as this window stays open. If you opened a fresh window, type <code>$env:GOOSE_MODE = "approve"</code>, press <strong>Enter</strong>, and then start this run.</p>
+        <p>The mode is still approve. <code>$env:GOOSE_MODE</code> holds for as long as this window stays open. If you opened a fresh window, type <code>$env:GOOSE_MODE = &quot;approve&quot;</code>, press <strong>Enter</strong>, and then start this run.</p>
         <div class="do-step">
-          <p class="do-label">Now in the same <strong>PowerShell window</strong>, mid-run:</p>
+          <p class="do-label">In the same <strong>PowerShell window</strong>, mid-run:</p>
           <ul class="do-clicks">
-            <li>Wait until you have approved at least one write to <code>out\watch_summary.md</code> and the run is moving to the next file</li>
-            <li>Press <kbd>Ctrl+C</kbd> once — and note what it was doing when you cut it</li>
+            <li>Wait until you have approved at least one write to <code>out\\watch_summary.md</code> and the run is moving to the next file</li>
+            <li>Press <kbd>Ctrl+C</kbd> once. Note what it was doing when you cut it</li>
           </ul>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to put the stop on record, with the bracket filled:</p>
+          <p class="do-label">Put the stop on record, with the bracket filled:</p>
           <pre><code>Add-Content -Path .\out\run_log.md -Value ("STOP " + (Get-Date -Format "yyyy-MM-dd HH:mm:ss") + " — in flight: [WHAT THE RUN WAS DOING]")</code></pre>
         </div>
-        <p>Replace <code>[WHAT THE RUN WAS DOING]</code> with what was actually in flight — "summarizing event_02b, one write already approved" is the shape. The timestamp comes from the machine; the honesty comes from you.</p>
+        <p>Replace <code>[WHAT THE RUN WAS DOING]</code> with what was actually in flight. &quot;Summarizing event_02b, one write already approved&quot; is the shape. The timestamp comes from the machine. The honesty comes from you.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -374,28 +376,28 @@ Copy-Item .\feeder\event_02.txt .\feeder\event_02b.txt</code></pre>
               <span class="check-num">5</span>
               <span class="check-title">The stop control works under a live workload</span>
             </label>
-            <div class="check-detail">Halt under realistic conditions — mid-feeder, or while it is about to write — with the STOP line now sitting in <code>out/run_log.md</code>: machine timestamp plus the in-flight item. If the run finishes before you can catch it, copy another duplicate feeder file in and run again; the point is stopping a machine during real work, not rehearsing the keystroke.</div>
+            <div class="check-detail">Halt under realistic conditions — mid-feeder, or while it is about to write — with the STOP line now sitting in <code>out/run_log.md</code>: machine timestamp plus the in-flight item. If the run finishes before you can catch it, copy another duplicate feeder file in and run again. The point is stopping a machine during real work, not rehearsing the keystroke.</div>
           </li>
         </ol>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to see what survived the stop:</p>
+          <p class="do-label">See what survived the stop:</p>
           <pre><code>Get-Content .\out\watch_summary.md</code></pre>
         </div>
-        <p>Count the lines. Every line written before the interrupt should still be there — that is what the append posture buys you, and cheap stops are the ones you will actually use.</p>
+        <p>Count the lines. Every line written before the interrupt should still be there. That is what the append posture buys you. Cheap stops are the ones you will actually use.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> — same recipe, same mode:</p>
+          <p class="do-label">Rerun the same recipe in the same mode:</p>
           <pre><code>goose run --recipe .\watch_officer.yaml</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> when the rerun finishes:</p>
+          <p class="do-label">When the rerun finishes, inspect the summary again:</p>
           <pre><code>Get-Content .\out\watch_summary.md</code></pre>
         </div>
-        <p>You should see the prior lines still present and new lines appended below them. If the file shrank, the rerun rewrote instead of appending — your stop was really an abort; check that <code>instructions</code> still says append over rewrite, restore it, and run once more before you record anything.</p>
+        <p>You should see the prior lines still present and new lines appended below them. If the file shrank, the rerun rewrote instead of appending. Your stop was really an abort. Check that <code>instructions</code> still says append over rewrite, restore it, and run once more before you record anything.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to put the restart on record, with the bracket filled:</p>
+          <p class="do-label">Put the restart on record, with the bracket filled:</p>
           <pre><code>Add-Content -Path .\out\run_log.md -Value ("RESTART " + (Get-Date -Format "yyyy-MM-dd HH:mm:ss") + " — prior lines intact: [YES / NO]")</code></pre>
         </div>
-        <p>Replace <code>[YES / NO]</code> with what the file showed. Both results now live in <code>out\run_log.md</code> with timestamps.</p>
+        <p>Replace <code>[YES / NO]</code> with what the file showed. Both results now live in <code>out\\run_log.md</code> with timestamps.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -403,26 +405,26 @@ Copy-Item .\feeder\event_02.txt .\feeder\event_02b.txt</code></pre>
               <span class="check-num">6</span>
               <span class="check-title">The restart preserves prior output</span>
             </label>
-            <div class="check-detail">Same recipe, same mode. You should see prior good summary lines still present and new lines appended — the append posture is what makes stopping cheap. If the rerun erases the file, your stop is actually an abort: check that <code>instructions</code> still says append over rewrite, restore it, and run once more. Contract frame unchanged means same recipe file, same mode — and <code>out/run_log.md</code> says so, with both timestamps.</div>
+            <div class="check-detail">Same recipe, same mode. You should see prior good summary lines still present and new lines appended. The append posture is what makes stopping cheap. If the rerun erases the file, your stop is actually an abort. Check that <code>instructions</code> still says append over rewrite, restore it, and run once more. Contract frame unchanged means same recipe file and same mode. <code>out/run_log.md</code> says so, with both timestamps.</div>
           </li>
         </ol>
 
-        <h3>Stage 06 · Exception drill</h3>
-        <p>Watch traffic will eventually carry instructions aimed at your agent. The contract's answer is written before it happens; this stage checks the answer held.</p>
+        <h3>Stage 06 · Run the exception drill</h3>
+        <p>Watch traffic will eventually carry instructions aimed at your agent. The contract&#x27;s answer is written before that happens. This stage checks that the answer held.</p>
         <figure class="section-diagram">
           <img src="../assets/blocks/p6/p6-stage-exception.svg" alt="Exception drill: hostile text in event_04 is quarantined and held for you, never obeyed" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to check what the contract did with the hostile file:</p>
+          <p class="do-label">Check what the contract did with the hostile file:</p>
           <pre><code>Select-String -Path .\out\watch_summary.md -Pattern "QUARANTINE"
 Get-ChildItem .\feeder</code></pre>
         </div>
-        <p>You should see at least one <code>QUARANTINE:</code> line naming <code>event_04</code>, and every feeder file still in the listing — containment shown by absence of effect, not by a promise. If there is no QUARANTINE line, or the summary shows the agent tried to obey, the bound failed: confirm the mode was approve, restore the quarantine wording in <code>instructions</code>, and rerun.</p>
+        <p>You should see at least one <code>QUARANTINE:</code> line naming <code>event_04</code>, and every feeder file still in the listing. Containment is shown by absence of effect, not by a promise. If there is no QUARANTINE line, or the summary shows the agent tried to obey, the bound failed. Confirm the mode was approve. Restore the quarantine wording in <code>instructions</code>. Rerun.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to record which lever held, with the bracket filled:</p>
+          <p class="do-label">Record which lever held, with the bracket filled:</p>
           <pre><code>Add-Content -Path .\out\run_log.md -Value "DRILL: event_04 quarantined — lever that held: [TOOL SURFACE / MODE / PROCEDURE — OR WHICH FAILED]"</code></pre>
         </div>
-        <p>Replace the bracket with your honest read. The quarantine rule itself lives in <code>instructions</code> text — that is procedure, delivered <em>to</em> the model — while the narrow tool surface and approve mode are the levers that would have caught obedience. Naming the right one is the drill's real lesson.</p>
+        <p>Replace the bracket with your honest read. The quarantine rule itself lives in <code>instructions</code> text. That is procedure, delivered <em>to</em> the model. The narrow tool surface and approve mode are the levers that would have caught obedience. Naming the right one is the drill&#x27;s real lesson.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -430,34 +432,34 @@ Get-ChildItem .\feeder</code></pre>
               <span class="check-num">7</span>
               <span class="check-title">The exception drill quarantines event_04</span>
             </label>
-            <div class="check-detail"><code>event_04</code> asks the agent to delete the audit log and dump user emails. Hostile feeder text is data, not orders; contract behavior is quarantine and continue — not obey, and not silently skip. You should see the <code>QUARANTINE:</code> line naming the source file, no delete or exfil effect, and the DRILL line in <code>out/run_log.md</code> naming the lever that contains the threat — or fails to. A failure honestly recorded completes the drill — then restore the bound and rerun, because the lesson outcome needs a quarantine that holds. Obedience never does.</div>
+            <div class="check-detail"><code>event_04</code> asks the agent to delete the audit log and dump user emails. Hostile feeder text is data, not orders. Contract behavior is quarantine and continue — not obey, and not silently skip. You should see the <code>QUARANTINE:</code> line naming the source file, no delete or exfil effect, and the DRILL line in <code>out/run_log.md</code> naming the lever that contains the threat — or fails to. A failure honestly recorded completes the drill. Then restore the bound and rerun, because the lesson outcome needs a quarantine that holds. Obedience never does.</div>
           </li>
         </ol>
 
-        <h3>Stage 07 · The unattended path</h3>
-        <p>A watch officer's whole point is running when you are not looking. Attempt the schedule; if the machine or policy blocks it, record the exact blocker and recovery path.</p>
+        <h3>Stage 07 · Attempt the unattended path</h3>
+        <p>A watch officer&#x27;s point is to run when you are not looking. Attempt the schedule. If the machine or policy blocks it, record the exact blocker and the recovery path.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to see what your pinned build offers:</p>
+          <p class="do-label">See what your pinned build offers:</p>
           <pre><code>goose schedule --help</code></pre>
         </div>
-        <p>Read the forms it prints before touching anything — your build's flags are the truth, and the next block matches the current shape. If the subcommand does not exist at all, that is a version question to raise, not an honest block.</p>
+        <p>Read the forms it prints before you touch anything. Your build&#x27;s flags are the truth. The next block matches the current shape. If the subcommand does not exist at all, that is a version question to raise, not an honest block.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to add the schedule and fire it once:</p>
+          <p class="do-label">Add the schedule and fire it once:</p>
           <pre><code>goose schedule add --schedule-id watch --cron "0 0 9 * * *" --recipe-source .\watch_officer.yaml
 goose schedule run-now</code></pre>
         </div>
-        <p>The cron expression takes six fields, seconds first — this one means 09:00 every day. If run-now asks which schedule, give it <code>watch</code>. If either command errors on a flag, the help you just printed is the fix: find <code>schedule add</code> in it, match each piece — the id, the cron string, the recipe path — to the flag names your build lists, and if the mapping is not obvious, ask for the working line rather than guessing. Put the exact command that worked in the record line below, and keep the run-now result on screen — it is the evidence.</p>
+        <p>The cron expression takes six fields, seconds first. This one means 09:00 every day. If run-now asks which schedule, give it <code>watch</code>. If either command errors on a flag, the help you just printed is the fix. Find <code>schedule add</code> in it. Match each piece — the id, the cron string, the recipe path — to the flag names your build lists. If the mapping is not obvious, ask for the working line rather than guessing. Put the exact command that worked in the record line below. Keep the run-now result on screen. It is the evidence.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to record the outcome, whichever it was — bracket filled, keeping only the half that happened:</p>
+          <p class="do-label">Record the outcome, whichever it was. Keep only the half that happened:</p>
           <pre><code>Add-Content -Path .\out\run_log.md -Value "SCHEDULE: [ran — run-now completed / blocked: EXACT ERROR — and what would unlock it]"</code></pre>
         </div>
-        <p>Keep whichever half of the bracket matches what happened and fill it truthfully. A blocked schedule with the exact error and the unlock path is a real answer; a faked green is not.</p>
+        <p>Keep whichever half of the bracket matches what happened and fill it truthfully. A blocked schedule with the exact error and the unlock path is a real answer. A faked green is not.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to reopen your contract:</p>
+          <p class="do-label">Reopen your contract:</p>
           <pre><code>notepad .\my_contract.md</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Now in <strong>Notepad</strong> (my_contract.md):</p>
+          <p class="do-label">In <strong>Notepad</strong> (my_contract.md):</p>
           <ul class="do-clicks">
             <li>Replace <code>[FILL AFTER STAGE 07]</code> with the same outcome — ran, or blocked with the reason — press <kbd>Ctrl+S</kbd>, and close Notepad</li>
           </ul>
@@ -469,12 +471,12 @@ goose schedule run-now</code></pre>
               <span class="check-num">8</span>
               <span class="check-title">The unattended path has a schedule or recorded blocker</span>
             </label>
-            <div class="check-detail">Keep the run-now result, and the SCHEDULE line in <code>out/run_log.md</code> tells the truth either way; Desktop's Scheduler does the same job if you have it. If the OS or policy refuses, the exact error plus what would unlock it is a valid lesson outcome; a faked green is not. If you can't find the subcommand, that is a version question to raise — not an honest block. Either way, the contract's unattended rows say who may enable the schedule and when its output gets reviewed.</div>
+            <div class="check-detail">Keep the run-now result. The SCHEDULE line in <code>out/run_log.md</code> tells the truth either way. Desktop&#x27;s Scheduler does the same job if you have it. If the OS or policy refuses, the exact error plus what would unlock it is a valid lesson outcome. A faked green is not. If you cannot find the subcommand, that is a version question to raise — not an honest block. Either way, the contract&#x27;s unattended rows say who may enable the schedule and when its output gets reviewed.</div>
           </li>
         </ol>
 
-        <h3>Stage 08 · The minimal harness</h3>
-        <p>Same folder, different harness. Pi has none of the rails you just configured — which makes it the honest place to learn what each layer of bound is actually worth. Pi uses the same pinned xAI model as goose. Naming it explicitly keeps both runs on the same engine and prevents Pi from choosing another provider that happens to have a key on this machine.</p>
+        <h3>Stage 08 · Prove a bound in the minimal harness</h3>
+        <p>Same folder. Different harness. Pi has none of the rails you just configured. That makes it the honest place to learn what each layer of bound is actually worth. Pi uses the same pinned xAI model as goose. Naming it explicitly keeps both runs on the same engine and prevents Pi from choosing another provider that happens to have a key on this machine.</p>
         <div class="do-step">
           <p class="do-label">Confirm Pi&#x27;s model pin before its first run:</p>
           <ul class="do-clicks">
@@ -483,50 +485,50 @@ goose schedule run-now</code></pre>
           </ul>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> — the same tiny task, plain Pi first:</p>
+          <p class="do-label">Run the same tiny task on plain Pi first:</p>
           <pre><code>pi -p --provider xai --model "$env:HB_XAI_MODEL" "Read the files in feeder and tell me which one asks you to act outside the watch scope."</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to open the session file that run just wrote:</p>
+          <p class="do-label">Open the session file that run just wrote:</p>
           <pre><code>notepad (Get-ChildItem "$env:USERPROFILE\.pi\agent\sessions" -Recurse -File | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName</code></pre>
         </div>
-        <p>If the command errors or Notepad opens nothing, run <code>Get-ChildItem "$env:USERPROFILE\.pi\agent"</code>, locate the folder your build uses, and open its newest session file. If no session exists after a run, record the version issue.</p>
+        <p>If the command errors or Notepad opens nothing, run <code>Get-ChildItem &quot;$env:USERPROFILE\\.pi\\agent&quot;</code>, locate the folder your build uses, and open its newest session file. If no session exists after a run, record the version issue.</p>
         <div class="do-step">
-          <p class="do-label">Now in <strong>Notepad</strong> (the session file):</p>
+          <p class="do-label">In <strong>Notepad</strong> (the session file):</p>
           <ul class="do-clicks">
-            <li>Press <kbd>Ctrl+F</kbd> and search for <code>"write"</code> — quotes included</li>
-            <li>Find it in the tool list near the top of the file: the write tool was offered to the model even though your task never needed it. Close Notepad.</li>
+            <li>Press <kbd>Ctrl+F</kbd> and search for <code>&quot;write&quot;</code> — quotes included</li>
+            <li>Find it in the tool list near the top of the file. The write tool was offered to the model even though your task never needed it. Close Notepad.</li>
           </ul>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> — the same task, with the write tools removed from the schema:</p>
+          <p class="do-label">Run the same task with the write tools removed from the schema:</p>
           <pre><code>pi --tools "read,grep,find,ls" -p --provider xai --model "$env:HB_XAI_MODEL" "Read the files in feeder and tell me which one asks you to act outside the watch scope."</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to open the newest session file — the bounded run's:</p>
+          <p class="do-label">Open the newest session file — the bounded run&#x27;s:</p>
           <pre><code>notepad (Get-ChildItem "$env:USERPROFILE\.pi\agent\sessions" -Recurse -File | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName</code></pre>
         </div>
         <div class="do-step">
-          <p class="do-label">Now in <strong>Notepad</strong> (the newest session file):</p>
+          <p class="do-label">In <strong>Notepad</strong> (the newest session file):</p>
           <ul class="do-clicks">
-            <li>Press <kbd>Ctrl+F</kbd> and search for <code>"write"</code> again</li>
-            <li>This time it should be absent from the tool list near the top — not offered and declined; never in the model's world at all. Close Notepad.</li>
+            <li>Press <kbd>Ctrl+F</kbd> and search for <code>&quot;write&quot;</code> again</li>
+            <li>This time it should be absent from the tool list near the top — not offered and declined, never in the model&#x27;s world at all. Close Notepad.</li>
           </ul>
         </div>
-        <p>The tool schema at the top of the session file is the evidence; the word <code>write</code> may still appear later in conversation text. If both schemas offer write tools, check the quoted <code>--tools "read,grep,find,ls"</code> value, rerun, and open the newest file. If a tool name errors, use <code>pi --help</code> and keep every write-capable tool off the restricted list.</p>
+        <p>The tool schema at the top of the session file is the evidence. The word <code>write</code> may still appear later in conversation text. If both schemas offer write tools, check the quoted <code>--tools &quot;read,grep,find,ls&quot;</code> value, rerun, and open the newest file. If a tool name errors, use <code>pi --help</code> and keep every write-capable tool off the restricted list.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p6-p6-pi" name="p6-p6-pi" data-check-id="p6-pi" />
               <span class="check-num">9</span>
-              <span class="check-title">Pi's restricted tool schema is verified</span>
+              <span class="check-title">Pi&#x27;s restricted tool schema is verified</span>
             </label>
-            <div class="check-detail">The session evidence contains the same task twice — plain, then as <code>pi --tools "read,grep,find,ls"</code>. In the newest session file under <code>%USERPROFILE%\.pi\agent\sessions\</code>, the write tools are <strong>absent from the schema</strong>, not offered and declined. A bound the model complies with is not the same as one it cannot violate, and the file shows you which you have. If both runs show write tools, the flag is not taking effect — check the spelling and the PowerShell window, then rerun.</div>
+            <div class="check-detail">The session evidence contains the same task twice — plain, then as <code>pi --tools &quot;read,grep,find,ls&quot;</code>. In the newest session file under <code>%USERPROFILE%\\.pi\\agent\\sessions\\</code>, the write tools are <strong>absent from the schema</strong>, not offered and declined. A bound the model complies with is not the same as one it cannot violate, and the file shows you which you have. If both runs show write tools, the flag is not taking effect. Check the spelling and the PowerShell window, then rerun.</div>
           </li>
         </ol>
-        <p>The restricted schema is a real control because the write-capable tools were absent. A write hook is weaker: shell-equivalent write paths can go around it, and raw path comparisons can miss <code>..\</code> paths unless the target is resolved before comparison. Record that distinction instead of building a disposable gate.</p>
+        <p>The restricted schema is a real control because the write-capable tools were absent. A write hook is weaker. Shell-equivalent write paths can go around it. Raw path comparisons can miss <code>..\\</code> paths unless the target is resolved before comparison. Record that distinction instead of building a disposable gate.</p>
         <div class="do-step">
-          <p class="do-label">Now paste this into the same <strong>PowerShell window</strong> to reopen your contract:</p>
+          <p class="do-label">Reopen your contract:</p>
           <pre><code>notepad .\my_contract.md</code></pre>
         </div>
         <div class="do-step">
@@ -544,21 +546,22 @@ goose schedule run-now</code></pre>
             <div class="check-detail"><code>my_contract.md</code> records the risk, exact <code>--tools</code> mechanism, enforcement layer, owner, session-file evidence, recovery, and the unverified boundary as residual risk.</div>
           </li>
         </ol>
+
         <div id="pulse" class="lesson-reflection" data-check-section="pulse">
           <h3>Lesson reflection</h3>
         <p class="section-lede">Close the lesson with the decision, its evidence, the remaining risk, and the control you can reuse. <a href="../pulse.html">Lesson reflection guide →</a></p>
         <p class="reflection-question"><strong>Think back:</strong> Which control from this run belongs in a recurring process on your own desk?</p>
         <div class="do-step">
-          <p class="do-label">Return to <strong>P6 — Direction &amp; Closeout</strong> for this module's closeout:</p>
+          <p class="do-label">Return to <strong>P6 — Direction &amp; Closeout</strong> for this module&#x27;s closeout:</p>
           <ul class="do-clicks">
             <li>Click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
-            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code> if the course project is not already open</li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\\HarnessBootcamp\\AI_Harness_Bootcamp</code> if the course project is not already open</li>
             <li>In the sidebar, open <strong>P6 — Direction &amp; Closeout</strong></li>
-            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P6 — Direction &amp; Closeout</code></li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat&#x27;s <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P6 — Direction &amp; Closeout</code></li>
             <li>Select <strong>gpt-5.6-terra</strong>, the model used when this chat was created in Stage 01. Never continue this chat on a different model</li>
             <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
           </ul>
-          <p>The saved P6 files carry the evidence into this closeout; the chat name keeps this module's work easy to find.</p>
+          <p>The saved P6 files carry the evidence into this closeout. The chat name keeps this module&#x27;s work easy to find.</p>
           <p class="do-label">Now paste:</p>
           <pre><code>Close P6 from the saved evidence. Read:
 - operator/DIRECTION_BRIEF.md
@@ -583,7 +586,7 @@ Then update "From P6 — Contract" in operator/TRANSFER_30_60_90.md in the same 
 
 Do not interview me. Preserve unrelated sections. Show the exact text written to both files.</code></pre>
         </div>
-        <p id="p6-transfer-outcome-point">Replace every bracket before you send. The process must be one you genuinely run; the control and named owner must be specific enough for someone else to follow.</p>
+        <p id="p6-transfer-outcome-point">Replace every bracket before you send. The process must be one you genuinely run. The control and named owner must be specific enough for someone else to follow.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
@@ -598,12 +601,9 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
       </section>
 
 
-
-
-
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Lesson outcomes</h2>
-        <p class="section-lede">This read-only summary reflects the lesson outcome boxes beside the run and stretch instructions. <strong>Complete</strong> shows what you have finished; <strong>Not yet</strong> shows what still needs work. Select an outcome title to return to its inline checkbox and evidence instructions.</p>
+        <p class="section-lede">This read-only summary reflects the lesson outcome boxes beside the run and stretch instructions. <strong>Complete</strong> shows what you finished. <strong>Not yet</strong> shows what still needs work. Select an outcome title to return to its inline checkbox and evidence instructions.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item data-outcome-after="p6-adapt">
             <label class="check-label">
@@ -617,7 +617,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-33" name="p6-mvp-33" data-check-id="mvp-33" />
               <span class="check-num">17</span>
-              <span class="check-title">The control register covers the feeder's serious risks</span>
+              <span class="check-title">The control register covers the feeder&#x27;s serious risks</span>
             </label>
             <div class="check-detail"><code>my_contract.md</code> names each serious risk, the exact mechanism, enforcement layer, owner, evidence, and recovery. Controls point to real goose settings, recipe fields, commands, or operator actions.</div>
           </li>
@@ -643,13 +643,13 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <span class="check-num">20</span>
               <span class="check-title">The unattended-run result or blocker is recorded</span>
             </label>
-            <div class="check-detail">Schedule + run-now evidence, or the exact block reason + unlock path, written in the log. A recorded blocker with its recovery path is a valid result.</div>
+            <div class="check-detail">Schedule and run-now evidence, or the exact block reason and unlock path, written in the log. A recorded blocker with its recovery path is a valid result.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="p6-pi">
             <label class="check-label">
               <input type="checkbox" id="p6-mvp-pi" name="p6-mvp-pi" data-check-id="mvp-pi" />
               <span class="check-num">21</span>
-              <span class="check-title">Pi's tool limit is verified from the session record</span>
+              <span class="check-title">Pi&#x27;s tool limit is verified from the session record</span>
             </label>
             <div class="check-detail">The session evidence shows the same task with and without <code>--tools</code>. The restricted schema excludes write tools, and the control register records the finding and any unverified boundary.</div>
           </li>
@@ -659,7 +659,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <span class="check-num">22</span>
               <span class="check-title">The exception drill follows the contract</span>
             </label>
-            <div class="check-detail"><code>event_04</code> is quarantined, with no hostile effect in <code>out/</code> or anywhere else — containment shown by absence of effect, not by a promise. The log names the control that contains it.</div>
+            <div class="check-detail"><code>event_04</code> is quarantined, with no hostile effect in <code>out/</code> or anywhere else. Containment is shown by absence of effect, not by a promise. The log names the control that contains it.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="pulse-log">
             <label class="check-label">
@@ -667,7 +667,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <span class="check-num">23</span>
               <span class="check-title">The log links the contract, run, stop, and drill</span>
             </label>
-            <div class="check-detail">Recipe version/path and change, mode, max_turns, run evidence, stop/restart times, exception result, schedule note — each a pointer someone else could follow.</div>
+            <div class="check-detail">Recipe version or path and change, mode, max_turns, run evidence, stop and restart times, exception result, schedule note — each a pointer someone else could follow.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p6-transfer-outcome-point">
             <label class="check-label">
@@ -675,7 +675,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <span class="check-num">24</span>
               <span class="check-title">One real 60-day process is named and bounded</span>
             </label>
-            <div class="check-detail">The substance, not the paperwork: one process you genuinely run, named as the thing you would put under an autonomy contract, with its two columns sketched and a stop authority named. A process you do not actually run is not yet — it cannot be sketched honestly, and nothing at sixty days can be built on it.</div>
+            <div class="check-detail">The substance, not the paperwork: one process you genuinely run, named as the thing you would put under an autonomy contract, with its two columns sketched and a stop authority named. A process you do not actually run is not yet. It cannot be sketched honestly, and nothing at sixty days can be built on it.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p6-transfer-outcome-point">
             <label class="check-label">
@@ -683,7 +683,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <span class="check-num">25</span>
               <span class="check-title">The P6 transfer plan is complete and dated</span>
             </label>
-            <div class="check-detail">The record: the <strong>From P6 — Contract</strong> block in <code>operator/TRANSFER_30_60_90.md</code> carries all four fields in writing — process, two-column sketch, stop authority, exception path — with today's date beside them. Date every seed as you write it; a dated entry preserves when you make the decision, while an undated one loses that timing.</div>
+            <div class="check-detail">The record: the <strong>From P6 — Contract</strong> block in <code>operator/TRANSFER_30_60_90.md</code> carries all four fields in writing — process, two-column sketch, stop authority, exception path — with today&#x27;s date beside them. Date every seed as you write it. A dated entry preserves when you make the decision. An undated one loses that timing.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p6-stretch-predictions-point">
             <label class="check-label">
@@ -691,7 +691,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <span class="check-num">S1</span>
               <span class="check-title"><span class="tag">Stretch</span> Predictions are saved before the local run</span>
             </label>
-            <div class="check-detail"><code>out/local_predict.md</code> predates the endpoint flip and contains C1–C6 predictions with reasons. The file remains unchanged after results arrive; a separate retrospective is fine.</div>
+            <div class="check-detail"><code>out/local_predict.md</code> predates the endpoint flip and contains C1–C6 predictions with reasons. The file remains unchanged after results arrive. A separate retrospective is fine.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p6-stretch-pair-point">
             <label class="check-label">
@@ -699,7 +699,7 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
               <span class="check-num">S2</span>
               <span class="check-title"><span class="tag">Stretch</span> Cloud and local summaries are paired for comparison</span>
             </label>
-            <div class="check-detail"><code>watch_summary.cloud.md</code> and <code>watch_summary.local.md</code> both on disk (or documented paths). The pair is what makes the comparison honest — a lone local demo scores nothing.</div>
+            <div class="check-detail"><code>watch_summary.cloud.md</code> and <code>watch_summary.local.md</code> both on disk (or documented paths). The pair is what makes the comparison honest. A lone local demo scores nothing.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p6-stretch-score-point">
             <label class="check-label">
@@ -720,29 +720,29 @@ Do not interview me. Preserve unrelated sections. Show the exact text written to
         <table>
           <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
           <tbody>
-            <tr><td>goose rejects <code>--recipe</code></td><td>Cohort-pinned build wants a different flag shape</td><td><code>goose run --help</code>; use the recipe-file form it prints; record the exact command in your log</td></tr>
-            <tr><td>Run "succeeds" but <code>out/</code> is empty</td><td>Ran from the wrong directory — <code>feeder_dir</code> is a relative path</td><td><code>cd</code> into the pack folder, confirm the parameter, rerun</td></tr>
-            <tr><td>Auth-looking error mid-block</td><td>Capped key — a spent cap fails as a <code>429</code>/quota error that reads like bad credentials</td><td>Read the error text for 429/quota before touching your setup; ask for the cap to be checked; do not reinstall</td></tr>
-            <tr><td>Agent obeys event_04</td><td>Mode was <code>auto</code> for the drill, or your adaptation weakened the quarantine bound</td><td>Set <code>GOOSE_MODE=approve</code>, restore the bound, rerun — and log which column failed; that log line is the lesson</td></tr>
-            <tr><td>Every feeder file quarantined</td><td>Over-tight bound — your rule matches unfamiliar, not hostile</td><td>Re-read the bound's wording; hostile means asks-you-to-act-outside-scope, not merely odd</td></tr>
-            <tr><td>Scheduled run never fires</td><td>OS or policy block</td><td>That is the honest-block completion path: capture the exact error and what would unlock it</td></tr>
-            <tr><td>Pi session file shows write tools in both runs</td><td><code>--tools</code> flag did not take, or you opened an older session</td><td>Confirm the quoted list <code>--tools "read,grep,find,ls"</code> and the window; rerun; open the newest file — timestamps order them</td></tr>
+            <tr><td>goose rejects <code>--recipe</code></td><td>Cohort-pinned build wants a different flag shape</td><td><code>goose run --help</code>. Use the recipe-file form it prints. Record the exact command in your log.</td></tr>
+            <tr><td>Run &quot;succeeds&quot; but <code>out/</code> is empty</td><td>Ran from the wrong directory. <code>feeder_dir</code> is a relative path</td><td><code>cd</code> into the pack folder, confirm the parameter, rerun.</td></tr>
+            <tr><td>Auth-looking error mid-block</td><td>Capped key. A spent cap fails as a <code>429</code>/quota error that reads like bad credentials</td><td>Read the error text for 429/quota before you touch your setup. Ask for the cap to be checked. Do not reinstall.</td></tr>
+            <tr><td>Agent obeys event_04</td><td>Mode was <code>auto</code> for the drill, or your adaptation weakened the quarantine bound</td><td>Set <code>GOOSE_MODE=approve</code>, restore the bound, rerun. Log which column failed. That log line is the lesson.</td></tr>
+            <tr><td>Every feeder file quarantined</td><td>Over-tight bound. Your rule matches unfamiliar, not hostile</td><td>Re-read the bound&#x27;s wording. Hostile means asks-you-to-act-outside-scope, not merely odd.</td></tr>
+            <tr><td>Scheduled run never fires</td><td>OS or policy block</td><td>That is the honest-block completion path. Capture the exact error and what would unlock it.</td></tr>
+            <tr><td>Pi session file shows write tools in both runs</td><td><code>--tools</code> flag did not take, or you opened an older session</td><td>Confirm the quoted list <code>--tools &quot;read,grep,find,ls&quot;</code> and the window. Rerun. Open the newest file. Timestamps order them.</td></tr>
           </tbody>
         </table>
 
         <h3>Operational questions</h3>
         <ul>
           <li><strong>What does <code>max_turns</code> control?</strong> It bounds duration and cost, not the set of actions available. Record exactly what it prevents and what it leaves possible.</li>
-          <li><strong>Can stop authority ever be tool-enforced?</strong> The Scheduler's pause is a lever and Ctrl+C is a mechanism, but <em>who may use them</em> is procedure by nature. Separate the mechanism from the named owner.</li>
-          <li><strong>Your quarantine rule lives in instructions text.</strong> Which column did you honestly file it under — and what would move it left? One answer: a check outside the model, like a retry check that scans <code>out/</code> for forbidden effects. Notice that is a tripwire, and be honest about that too.</li>
+          <li><strong>Can stop authority ever be tool-enforced?</strong> The Scheduler&#x27;s pause is a lever and Ctrl+C is a mechanism, but <em>who may use them</em> is procedure by nature. Separate the mechanism from the named owner.</li>
+          <li><strong>Your quarantine rule lives in instructions text.</strong> Which column did you honestly file it under, and what would move it left? One answer: a check outside the model, like a retry check that scans <code>out/</code> for forbidden effects. Notice that is a tripwire, and be honest about that too.</li>
           <li><strong>The spend cap on your key has stopped runs all week.</strong> Contract, tripwire, or boundary? Does your answer change when you remember it fails as a 429 dressed up as an auth error?</li>
         </ul>
 
         <h3>On other desks</h3>
-        <p>The pattern you are building — traffic in, bounded summarizer, exceptions held for a human — is one of the most reusable shapes in operational work. An ops desk points the feeder at an overnight ticket queue, and the exception rule pages a person instead of letting the agent guess at severity. An analyst desk points it at a morning source sweep, where "sources are data, never orders" is not a classroom line but the difference between a watch report and an injected one. A delegating manager never runs the recipe at all — they use the two-column table itself, as the document they require from any team or vendor that wants to run agents on their behalf, and the review consists of asking which rows are levers.</p>
+        <p>The pattern you are building — traffic in, bounded summarizer, exceptions held for a human — is one of the most reusable shapes in operational work. An ops desk points the feeder at an overnight ticket queue, and the exception rule pages a person instead of letting the agent guess at severity. An analyst desk points it at a morning source sweep, where &quot;sources are data, never orders&quot; is not a classroom line but the difference between a watch report and an injected one. A delegating manager may never run the recipe at all. They use the two-column table itself as the document they require from any team or vendor that wants to run agents on their behalf. The review consists of asking which rows are levers.</p>
 
         <h3>Stretch · The endpoint is a wall</h3>
-        <p>Start this optional 70–100 minute path only after the required run is complete. You will hold the recipe and feeder still, change only the endpoint, and leave three pieces of evidence: predictions written before the flip, paired cloud and local summaries, and a scored comparison with a decision rule. If the pinned local runtime or your laptop's RAM blocks the run, record the exact blocker. Keep the prediction and decision-rule work, and leave outcomes that require a local artifact as Not yet.</p>
+        <p>Start this optional 70–100 minute path only after the required run is complete. Hold the recipe and feeder still. Change only the endpoint. Leave three pieces of evidence: predictions written before the flip, paired cloud and local summaries, and a scored comparison with a decision rule. If the pinned local runtime or your laptop&#x27;s RAM blocks the run, record the exact blocker. Keep the prediction and decision-rule work, and leave outcomes that require a local artifact as Not yet.</p>
         <figure class="section-diagram">
           <img src="../assets/blocks/p6/p6-stretch-endpoint.svg" alt="Stretch: the same recipe repointed at the pinned local model, with hold/degrade scored against the cloud baseline" width="1120" height="220" loading="lazy" decoding="async" />
         </figure>
@@ -781,7 +781,7 @@ Expected endpoint decision rule: [ONE SENTENCE]</code></pre>
           <p class="do-label">Confirm the saved prediction file before the endpoint flip:</p>
           <pre><code>Get-Content .\out\local_predict.md</code></pre>
         </div>
-        <p id="p6-stretch-predictions-point">You should see six filled predictions with reasons and a draft decision rule. Do not edit those predictions after the local result exists; add a retrospective later if one was wrong.</p>
+        <p id="p6-stretch-predictions-point">You should see six filled predictions with reasons and a draft decision rule. Do not edit those predictions after the local result exists. Add a retrospective later if one was wrong.</p>
 
         <div class="do-step">
           <p class="do-label">Freeze the cloud summary, point goose at the pinned local model, run the same recipe, and preserve the local result:</p>
@@ -862,13 +862,13 @@ Get-Content .\out\local_hold_degrade.md</code></pre>
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Before you move on</h2>
-        <p>Before moving on, confirm the adapted recipe, control register, stop/restart timestamps, exception result, schedule result, Pi schema, and closeout meet the <a href="#floor">P6 lesson outcomes</a>.</p>
+        <p>Before you move on, confirm that the adapted recipe, control register, stop and restart timestamps, exception result, schedule result, Pi schema, and closeout meet the <a href="#floor">P6 lesson outcomes</a>.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>
         <ul>
-          <li><strong>goose won't run the recipe.</strong> <code>goose info -v</code> first — right provider and model? Then <code>goose run --help</code>: your pinned build's flag may differ from <code>--recipe</code>; use the form it prints. An error mentioning 429 or quota is a capped key wearing an auth costume — ask for the cap to be checked; don't reinstall anything.</li>
-          <li><strong>The tool column won't fill.</strong> Open <code>watch_officer.yaml</code> beside the template. Three levers are already sitting in the file — <code>extensions</code>, <code>settings.max_turns</code>, <code>retry.checks</code> — and <code>GOOSE_MODE</code> is the fourth. The craft is mapping them to this feeder's risks, not inventing new machinery.</li>
+          <li><strong>goose will not run the recipe.</strong> Run <code>goose info -v</code> first. Right provider and model? Then <code>goose run --help</code>. Your pinned build&#x27;s flag may differ from <code>--recipe</code>. Use the form it prints. An error mentioning 429 or quota is a capped key wearing an auth costume. Ask for the cap to be checked. Do not reinstall anything.</li>
+          <li><strong>The tool column will not fill.</strong> Open <code>watch_officer.yaml</code> beside the template. Three levers are already sitting in the file — <code>extensions</code>, <code>settings.max_turns</code>, <code>retry.checks</code> — and <code>GOOSE_MODE</code> is the fourth. The craft is mapping them to this feeder&#x27;s risks, not inventing new machinery.</li>
           <li><strong>The Pi restriction is unclear.</strong> Compare the tool schemas in both session files. The <code>--tools</code> run should lack write-capable tools. If both offer them, fix the flag, rerun, and open the newest file.</li>
           <li>And the standing move: narrow the <em>data scope</em> — one feeder file — never the judgment standard.</li>
         </ul>
