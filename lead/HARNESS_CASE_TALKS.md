@@ -25,7 +25,7 @@ Students have spent the morning *inside* a capability (craft, knowledge, autonom
 
 | Morning | Block just run | Case-talk theme (pick a real story that fits) |
 |---|---|---|
-| **Tuesday** | P2 Project Organizer | One real project made legible from messy source files: source-linked SQLite state, useful read-only MCP questions, distinct worker and reviewer jobs, a visual board, and a release receipt. Show which project decisions the system clarifies and which judgment still belongs to the operator. |
+| **Tuesday** | P2 Inbound | One recurring intake made to run itself: several arriving formats normalized at the door, a capability map that names the record behind every assertion, distribution lists generated rather than edited, and two rules moved from advice into hooks. Show which judgments the components carry and which ones still belong to the operator. |
 | **Wednesday** | P4 personal operating harness | One real goal carried by a bounded loop: why the control pattern fit, where durable state mattered, which human gate earned its interruption, what evidence ended the run, and which tempting component was left out or removed. |
 | **Thursday** | P6 watch officer | Autonomy under contract: tool vs procedure bounds, stop authority, unattended path honesty. *Optional:* air-gap / local endpoint story (endpoint is a wall) |
 

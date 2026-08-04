@@ -115,7 +115,7 @@ A paste job, citations unchecked, no delta, or silent failure on broken sources.
 
 ---
 
-## P2 — Project Organizer
+## P2 — Inbound
 
 > **After this project:** You can tell which part of a working method belongs in advice, which belongs in code that always runs, and which belongs in a package someone else installs — and build each one so it still works on their machine.
 
@@ -132,27 +132,28 @@ A paste job, citations unchecked, no delta, or silent failure on broken sources.
 
 ### What the exercise requires
 
-1. The SQLite ledger builds deterministically from the six supplied files only. It passes exact schema and full source-row parity checks, preserves stable IDs and source hashes, and keeps an explicit value such as the literal `Not assigned in source`.
-2. The local MCP server exposes only snapshot, ready work, dependency path, and decision queue. Every request runs the bundled data-only verifier, every result shares one source fingerprint, and ready work carries dependency and predecessor evidence.
-3. One focused skill and one reviewed plugin package the organizer workflow, MCP source, bundled verifier, renderer, and Stop hook. Project config holds the only MCP registration, and the installed hook command is inspected and trusted before it runs.
-4. Two read-only Terra workers save the exact contracted JSON reports and split the four MCP calls between them without the parent repeating any. The sequential Terra reviewer binds the exact candidate state and board hashes after rendering.
-5. `PROJECT_BOARD.html` opens locally as a CANDIDATE with a generated-at time, source IDs, **Ready now**, the longest declared launch path, blockers, decisions, unknowns, **Scope and sequence findings**, and **Source coverage**.
-6. The inspected `RUN_RECEIPT.json` shows status PASS, gate PASS, board RELEASE, three bound agent reports, four MCP tools whose basis is `validated worker reports`, explicit usage visibility, and measured elapsed time and repairs. The log and transfer seed point at that evidence.
+1. Every arriving format converts to one shape before anything downstream reads a field. A field a source does not carry is written as an explicit unknown and never inferred from another field. Each row points back at the exact line or record it came from.
+2. The structurally damaged partner file produces no rows at all, and the run names the checks it failed. Catching an exception is not one of those checks — that file parses without raising. Neither is counting rows, which matches at eight against eight and catches nothing; the check that holds counts identifiers reaching the identifier column against identifiers present in the raw bytes. A per-source receipt records handler, records read, records emitted, identifiers in bytes, identifiers placed, and refusal reason on every run.
+3. A capability is asserted only from a billet present in the catalog or a qualification whose status is `current`, and every assertion carries the record that granted it. Gaining desk, free-text trade, and expired or pending qualifications assert nothing. A person the records cannot place stays in the output as unresolved with a stated reason.
+4. The capability join and the five distribution lists are produced by deterministic scripts rather than edited or recomputed in prose, with the skills deciding when they run and on what. Changing one qualification status and rerunning moves one list and leaves the other four byte-identical; rerunning with no change moves nothing. The comparison against the hand-maintained lists accounts for every difference by naming the record that decides it.
+5. Two rules run as hooks rather than as instructions: nothing reads a raw arrivals file unconverted, and no list line is written that cannot name the record behind it. Both are inspected in `/hooks` and trusted against their exact contents before they run.
+6. Both survive the material they were not built for — a course attendance sheet, a contact list, an equipment log, and a chat transcript — while the arriving files and the five lists still work. The narrowing turns on what the material is, not on a list of filenames.
+7. A silent zero is diagnosed before anything is changed: loaded, ran, or never reached is named from a field in the intake receipt rather than inferred. One package carries both hooks, both skills, and the scripts, with no path that exists only on the author's machine and no credential inside it.
 
-P2 checks the product inside the build — read-only workers, a sequential reviewer, and a deterministic release hook. Its live page does not add a separate adversarial chat.
+P2 attacks the product inside the build — the intake checks, the two hooks, and the run against lookalike material. Its live page does not add a separate adversarial chat.
 
 ### Stretch
 
-- Run the same organizer on a second real project packet and record which source or schema assumptions had to change.
-- Add one new read-only MCP question, only because a real project decision needs it. Define the answer contract and smoke test before adding the tool.
+- Run the same set against a fifth arriving format nobody wrote it for, and record whether it normalized, refused, or half-converted.
+- Add a sixth list keyed on something other than capability — the badging direction covers every arrival regardless of trade — and decide what it does with the people the map could not place.
 
 ### Side-quest
 
-- Adapt the visual board for a real team handoff while keeping the same source-linked ledger and release checks.
+- Point the whole set at a real recurring intake from your own desk and record which of the four source shapes had no equivalent.
 
 ### Signs it hasn't landed
 
-The board is hand-written rather than deterministically rendered; records lose source identity; MCP can write or answer without full parity; the parent repeats worker calls; reports are summarized instead of saved exactly; the reviewer is stale or followed by a rerender; the installed hook executes learner Python; or the receipt does not bind all three reports.
+The damaged file produced rows; a capability appears with no record beside it; a gaining desk or a free-text trade counted as evidence; a list is edited rather than regenerated; one changed record moves every list; a hook is disabled because it fired too widely; a zero-record run is explained rather than diagnosed; or the package carries an absolute path or a key.
 
 ---
 

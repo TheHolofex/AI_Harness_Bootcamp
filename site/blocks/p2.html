@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Build the Project Organizer · AI Harness Bootcamp · Starzl</title>
+  <title>Inbound · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="../css/course.css" />
   <link rel="stylesheet" href="../css/checklist.css" />
 </head>
@@ -22,25 +22,25 @@
 
   <main class="site-main">
     <p class="eyebrow">Tuesday AM · P2 · AI Harness Bootcamp</p>
-    <h1>Build the Project Organizer</h1>
-    <p class="lede">Direct Codex to turn scattered project files into a local visual board backed by SQLite, four read-only MCP tools, a focused skill, bounded subagents, and a deterministic release check.</p>
+    <h1>Inbound</h1>
+    <p class="lede">People arrive at a unit. Somebody works out who they are, what they can do, and what has to reach them. Right now that lives in one person's head and leaves when they do. The work below turns it into components that rebuild the lists from the records every time.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Tuesday morning</span></div>
       <div><span class="k">Block</span><span class="v">P2</span></div>
-      <div><span class="k">Time</span><span class="v">~2.5 hr + 45-min case talk</span></div>
-      <div><span class="k">Tools</span><span class="v">Codex app + CLI · <code>gpt-5.6-terra</code> · Python/SQLite · local MCP</span></div>
+      <div><span class="k">Time</span><span class="v">~3 hr</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex app + CLI · <code>gpt-5.6-terra</code> · Python</span></div>
       <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p2-project-organizer">0 / 7 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
 
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
-      <a href="#orient">The result</a>
-      <a href="#ideas">System map</a>
+      <a href="#orient">The situation</a>
+      <a href="#ideas">The ideas</a>
       <a href="#mission">Run of exercise</a>
       <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/7</span></a>
-      <a href="#depth">Operating notes</a>
+      <a href="#depth">Questions worth arguing about</a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
         <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p2-project-organizer"></span></div>
@@ -51,579 +51,581 @@
     <section id="orient" class="home-section">
       <div class="orient-grid">
         <div>
-          <h2 class="h-plain">Build one useful local system</h2>
-          <p>The supplied packet looks like real project work: a charter, a deliverable list, dependency notes, decisions, status updates, and a source register. The facts are spread across formats. By the end of P2, one local board shows what is ready, what is blocked, what decision is needed, and which source supports each item.</p>
-          <p>You direct the build with six complete prompts. Codex writes and tests the SQLite, MCP, skill, agent, plugin, renderer, and hook code. You inspect the evidence and make the release decision; you do not hand-author Python, TOML, JSON, or SQL.</p>
+          <h2 class="h-plain">What this is worth at work</h2>
+          <p>Task Group MERIDIAN runs six desks out of Station Halberd. A tranche of people is arriving between 14 and 22 August. Once they land there are 52 people on station and 33 of them are new. Somebody has to say, for each one, what they can actually do — and then make sure the right messages reach them.</p>
+          <p>The material for that job is already on the desk, and it is a mess. Four files claim to be the arriving roster. No two of them agree on column names, field order, or how a date is written. One is a spreadsheet with two title lines above the header. One is a chat paste with no columns at all. One is a system export whose keys changed in an upgrade. One is a partner sheet that did not survive being exported, and it is the dangerous one: it reads clean and quietly loses a person.</p>
+          <p>What people can do is written down in exactly two records — a billet catalog and a qualification register. It is not written down in the desk they report to, or in what somebody said on the phone. Five distribution lists carry the traffic, all kept by hand, and they have drifted: two names on them belong to nobody, one belongs to a person who left on 6 August, and several people who earned a place are not on any list.</p>
+          <p>You build the machinery that takes this apart and puts it back together on demand: one shape at the door, one capability map with its evidence attached, five lists generated from that map, and two rules that run whether anybody remembers them or not.</p>
 
-          <h3>The three files you release</h3>
+          <h3>What you leave with</h3>
           <ul>
-            <li><code>PROJECT_BOARD.html</code> — the visual board a lead can use at a glance</li>
-            <li><code>PROJECT_STATE.json</code> — the board's structured, source-linked state</li>
-            <li><code>RUN_RECEIPT.json</code> — the release check, hashes, labeled measured/reported run facts, and PASS or HOLD result</li>
+            <li>A normalizer behind a hook, so no arriving file reaches the model in its original shape and a damaged file is refused rather than half-read</li>
+            <li>A skill that maps people to capabilities and says <em>unknown</em> where the records do not say</li>
+            <li>A skill that generates all five distribution lists, so updating them stops being an editing job</li>
+            <li>A hook that blocks any line in a list that cannot name the record that put it there</li>
+            <li>Both narrowed until they leave unrelated material alone</li>
+            <li>One package carrying the lot, checked for paths and secrets that would not travel</li>
           </ul>
 
           <h3>Before you start</h3>
           <ul>
-            <li>Complete the <a href="hcp.html"><strong>Harness Control Plane</strong></a> presentation immediately before this module</li>
-            <li>Use <strong>GPT-5.6 Terra</strong> for the main chat and all three custom agents</li>
-            <li>Keep <strong>Ask for approval</strong> selected. Approve only project-local build and test commands named in the prompt</li>
-            <li>No external account or cloud document is required. The database, MCP server, plugin, and board stay on this computer</li>
+            <li>The course repository on disk at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>A working Python launcher — <code>py -3 --version</code> answers in PowerShell</li>
+            <li><strong>GPT-5.6 Terra</strong> selected, and permissions on <strong>Ask for approval</strong></li>
           </ul>
         </div>
         <div class="orient-aside">
           <div class="lead-box">
-            <p class="eyebrow">The system you are building</p>
-            <p><strong>Messy project files</strong> → SQLite ledger → four read-only MCP tools → skill + two workers → visual board → sequential review → deterministic release hook.</p>
+            <p class="eyebrow">The shape of the thing</p>
+            <p><strong>Four arriving formats</strong> → normalize at the door → capability map with evidence → five generated lists → source gate → one installable package.</p>
           </div>
           <div class="callout">
-            <strong>One writer</strong>
-            Two workers inspect separate parts of the project in parallel. The main thread alone invokes the deterministic renderer. The reviewer runs after the board exists and never edits it.
+            <strong>Nothing gets invented</strong>
+            Where a record does not say, the output says it does not know. A filled column that nobody can trace is worse than an empty one, because it stops anybody looking.
           </div>
           <div class="callout">
-            <strong>No invented project state</strong>
-            Missing or conflicting information stays visible as unknown or needs-decision. A polished guess is a database error with better typography.
+            <strong>A parse that does not crash is not a parse that worked</strong>
+            One of the four files raises no error and still loses a person. Any check that waits for an exception will pass it and report success.
           </div>
-          <div class="callout" id="case-talk">
-            <strong>Before lunch · Harness case talk (45 min)</strong>
-            The lead shows a real personalized harness in use: the job, component choices, evidence, operating cost, and decisions that remain human.
+          <div class="callout">
+            <strong>Everything here is invented</strong>
+            Exercise NORTHWIND SHELF, Task Group MERIDIAN, Station Halberd, and every name, unit, place and event in the material. Every file carries a synthetic marker.
           </div>
         </div>
       </div>
 
-      <div class="skill-grid" aria-label="P2 project-organizer route">
-        <div class="skill-cell"><span class="k">1 · Normalize</span><span class="n">SQLite ledger</span><p>Stable records, relationships, source identity, explicit unknowns, and a deterministic rebuild.</p></div>
-        <div class="skill-cell"><span class="k">2 · Expose</span><span class="n">Local MCP</span><p>Four decision-sized, read-only questions instead of broad database access.</p></div>
-        <div class="skill-cell"><span class="k">3 · Orchestrate</span><span class="n">Skill + agents</span><p>Two parallel inspections, one write-capable main thread, and one sequential reviewer.</p></div>
-        <div class="skill-cell"><span class="k">4 · Release</span><span class="n">Board + receipt</span><p>A visual operating picture and a deterministic check of the saved artifacts.</p></div>
+      <div class="skill-grid" aria-label="P2 component route">
+        <div class="skill-cell"><span class="k">1 · At the door</span><span class="n">Normalize, or refuse</span><p>One shape for every arriving format, produced before anything downstream reads a field. Missing stays missing.</p></div>
+        <div class="skill-cell"><span class="k">2 · Judgment</span><span class="n">Capability with evidence</span><p>Each capability names the record that grants it. No record, no capability — and the person is still listed as unresolved.</p></div>
+        <div class="skill-cell"><span class="k">3 · Output</span><span class="n">Lists that regenerate</span><p>Five lists rebuilt from the map every run, so a change to one person's record changes exactly the lists it should.</p></div>
+        <div class="skill-cell"><span class="k">4 · Enforcement</span><span class="n">Two rules that always run</span><p>Raw files do not reach the model unconverted. Untraceable lines do not reach a list.</p></div>
       </div>
     </section>
 
     <section id="ideas" class="home-section">
-      <h2>Each layer removes a real bottleneck</h2>
-      <p class="section-lede">The organizer is useful because the layers work as one line. None of them is present merely to demonstrate a feature.</p>
+      <h2>The ideas doing the work</h2>
+      <p class="section-lede">Five ideas carry this work. Read them once now, and come back when a result surprises you — the reason will be one of these.</p>
 
-      <table>
-        <thead><tr><th>Layer</th><th>Job in this system</th><th>Important boundary</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Source packet</strong></td><td>Holds the facts as received, including gaps and conflicts</td><td>Never rewrite a source to make the board cleaner</td></tr>
-          <tr><td><strong>SQLite ledger</strong></td><td>Normalizes projects, deliverables, dependencies, decisions, updates, and sources once</td><td>Every material record keeps its source identity; unknown stays unknown</td></tr>
-          <tr><td><strong>Local MCP</strong></td><td>Answers four recurring project questions through a small read-only tool surface</td><td>No arbitrary SQL, writes, network listener, or silent fallback to model memory</td></tr>
-          <tr><td><strong>Skill</strong></td><td>Carries the repeatable organizer workflow and stop conditions</td><td>One focused workflow, not another always-on policy manual</td></tr>
-          <tr><td><strong>Subagents</strong></td><td>Inspect scope/state and dependency/ready-work in parallel; review after assembly</td><td>Read-only roles on Terra; the main thread alone invokes the renderer</td></tr>
-          <tr><td><strong>Plugin</strong></td><td>Packages the stable skill, renderer, and one release hook</td><td>Inspect before installing; trust the exact hook separately</td></tr>
-          <tr><td><strong>Release hook</strong></td><td>Checks the real saved board, state, ledger, and contract when the renderer creates the release set</td><td>It proves checks ran; it does not choose priorities or approve a decision</td></tr>
-        </tbody>
-      </table>
+      <h3>Convert once, at the door</h3>
+      <p>You have four sources for one fact set. If you leave them in their own shapes, every step downstream has to know about all four: the date parser has to handle <code>14 AUG 26</code> and <code>the 18th</code> and an ISO-8601 timestamp; the name reader has to know that one file splits last and first while another writes <code>Ashworth, D.</code> in running text. That knowledge spreads, and it rots at different rates in different places.</p>
+      <p>Converting at the door means one component knows about the four shapes and everything after it knows about one. When a fifth format turns up — and it will — you change one component. The cost of that choice is that the shape has to be honest: it needs a slot for every fact any source carries, and it must be able to say <em>this source did not carry that</em>. A normalizer that fills a blank column to keep its output tidy has moved the mess downstream and hidden it on the way.</p>
 
-      <div class="skill-grid">
-        <div class="skill-cell"><span class="k">Data design</span><span class="n">Compile facts before asking for judgment</span><p>The model should not reread six files and reconstruct relationships differently on every question. Build the ledger once, verify it, then query it.</p></div>
-        <div class="skill-cell"><span class="k">Tool design</span><span class="n">Expose questions, not machinery</span><p><code>get_ready_work</code> is a useful contract. An unrestricted “run SQL” tool widens risk and pushes schema trivia into every turn.</p></div>
-        <div class="skill-cell"><span class="k">Agent design</span><span class="n">Parallelize independent reads</span><p>Scope and dependencies can be inspected together. Review must wait for the candidate because reviewing a board that does not exist saves no time.</p></div>
-        <div class="skill-cell"><span class="k">Release design</span><span class="n">Separate correctness from judgment</span><p>The gate can verify structure, provenance, consistency, and hashes. A person still owns priority, escalation, and the decision to act.</p></div>
-      </div>
+      <h3>A parse that does not crash is not a parse that worked</h3>
+      <p>The partner roster is a spreadsheet that broke during export. It does not raise an error. Python's CSV reader takes it, returns eight rows for the eight people it names, and reports nothing wrong. The damage only shows when you count identifiers instead of rows. One cell on the first data row opens a quote and never closes it, so the reader carries that cell straight across the line break and the whole of the next person's record lands as extra fields tacked onto the first row — their name buried in a remarks column, their identifier <code>P-4902</code> in a column that has no name. A later row has its fields in a different order, so a billet code lands in the identifier column and <code>P-4904</code> never reaches it at all — and because the header names two columns the same thing, a reader that keys on names writes that identifier into a name field and then overwrites it. Eight rows, eight people, and only six of the eight identifiers anywhere in the column that is supposed to hold them. Nobody is told.</p>
+      <p>This is why "did it throw?" is a weak check. A check that only catches exceptions will pass this file, and the run will report success on a roster that is missing two people. The checks that catch it are ones that assert something about the shape you expected: the header has a duplicate column name, and duplicate names cannot key a record; the file holds an odd number of quote characters, so one of them is unclosed; several rows carry a different number of fields than the header declares; the date column holds <code>#REF!</code> in two rows and bare numbers like <code>45892</code> in two others; the file ends mid-value with no closing newline; and the identifiers that reach the identifier column do not account for the identifiers sitting in the raw bytes. Any one of those is enough to refuse the file. You do not need to know which one broke it to know it is broken.</p>
+      <p>Notice which check does <em>not</em> work: counting rows. Eight rows come back for eight people, so a row count matches and tells you nothing. The count has to be of identifiers, in the column meant to carry them. A check that compares two numbers which both come out of the same broken parse is not a check.</p>
+      <p>Refusing is the correct outcome here. The alternative — take the eight rows and carry on — puts two people on no list at all and produces no signal that it happened.</p>
+
+      <h3>Capability is written down in two places, and a desk is not one of them</h3>
+      <p>The group recognises six capabilities: <code>SIGNALS</code>, <code>MOVEMENT</code>, <code>MEDICAL</code>, <code>SUPPLY</code>, <code>IMAGERY</code>, <code>LIAISON</code>. A person holds one of them by <strong>billet</strong> — the post they fill, listed in the billet catalog with its capability — or by <strong>qualification</strong> — a certificate in the register, granted by a desk, with a status of <code>current</code>, <code>expired</code> or <code>pending</code>. That is the whole list of things that count as evidence.</p>
+      <p>Three things look like evidence and are not. A <strong>gaining desk</strong> is an address, not a trade: the desk directory says so outright, and the catalog proves it — one billet sits on the Movement desk and carries <code>IMAGERY</code>, another sits on the Signals desk and carries <code>SUPPLY</code>. <strong>Free text</strong> in the chat paste is hearsay, and the person who typed it says so in the file: <em>treat the trades as hearsay until somebody checks the register</em>. An <strong>expired or pending</strong> qualification is a record of something that is not currently true.</p>
+      <p>Two billet codes in the arriving manifest are not in the catalog at all. The catalog is revised quarterly, so a post stood up since the last revision has no entry yet. That is a real unknown with a known cause, and the right output is to say so — not to guess from the code's prefix.</p>
+
+      <h3>Generated, not edited</h3>
+      <p>The five lists on the desk today are hand-maintained, and you can read their history in their contents. Somebody was asked to add a name and did, without a record behind it. Somebody left and nobody took them off. Somebody who sits at the Signals desk got added to the Signals recall list even though what they actually do is run the stores. Each of those was one small reasonable act, and together they produced lists that nobody can now defend.</p>
+      <p>Generating the lists from the map every time changes what maintenance means. You no longer edit a list; you correct a record, and rerun. The property that makes this worth the trouble is that a change is <em>bounded</em>: change one person's qualification status, rerun, and only the lists that should move do. If a small change moves everything, the generator is reading something it should not.</p>
+      <p>The cost is real and worth stating. A generated list cannot be quickly patched at the desk, and the first time somebody genuinely needs a name on a list before the record catches up, they will feel that. The answer is to fix the record, not to reopen the file — but it is a slower answer, and that is the trade you are making.</p>
+
+      <h3>Advice, and code that runs anyway</h3>
+      <p>A skill is a procedure the model loads when the work matches its description. It is good at judgment that changes with the case: which record grants this capability, what to do with a person the records cannot place. It is advice, and advice can be skipped — by a model that did not load it, by a person in a hurry, by a run that took a different route.</p>
+      <p>A hook is a command that runs at a fixed point in the run whether anybody wanted it to or not. It is good at one thing: a rule that must hold every time and can be decided by looking at the material. "Nothing reads a raw arrivals file" is that kind of rule. "Work out whether this person's qualification counts" is not — there is no fixed answer to check against.</p>
+      <p>The test for which one you are building: ask what happens if nothing reads your instruction. If the answer is "then the rule does not hold," it is not a rule yet, and it belongs in a hook.</p>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p2-project-organizer" data-block="P2">
 
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Paste one substantial direction per stage. Let Codex create and test the implementation; your job is to inspect the named result and keep the project facts honest.</p>
+        <p class="section-lede">You direct the build and inspect the result; Codex writes the Python, the hook configuration, and the package files. Each step uses what the one before it produced.</p>
 
-        <h3>Stage 01 · Open the project and read the source contract</h3>
-        <p>The bootstrap creates a separate learner project and refuses to overwrite an earlier run. Start there so plugin, agent, and MCP configuration do not leak into the course repository.</p>
+        <h3>Stage 01 · Normalize on the way in</h3>
+        <p>Four arriving formats become one. The converter is a script, and a hook is what makes running it non-optional — because a rule that depends on everyone remembering it is not a rule.</p>
 
         <div class="do-step">
-          <p class="do-label">Create the learner project from the beginning:</p>
-          <ol class="do-clicks">
-            <li>Press the <strong>Windows</strong> key, type <strong>PowerShell</strong>, and open <strong>Windows PowerShell</strong></li>
-            <li>Paste the two lines below</li>
-            <li>Keep this PowerShell window open. The final message must name <code>Documents\HarnessBootcamp\P2_Project_Organizer</code></li>
-          </ol>
-          <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
-powershell -NoProfile -ExecutionPolicy Bypass -File ".\instruments\p2_control_plane\bootstrap.ps1"</code></pre>
-          <p>If the destination already exists, the script stops instead of replacing it. Open that project to continue, or move the old folder to a dated archive and run the bootstrap again.</p>
+          <p class="do-label">Open <strong>PowerShell</strong> and make the working folder:</p>
+          <pre><code>New-Item -ItemType Directory -Path "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Inbound" -Force
+Copy-Item -LiteralPath "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\tuesday\inbound" -Destination "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Inbound\inbound" -Recurse -Force
+Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Inbound\inbound"</code></pre>
+          <p>The listing must show five folders: <code>arrivals</code>, <code>distros</code>, <code>lookalike</code>, <code>records</code>, <code>traffic</code>. There are 35 files under them. Keep this PowerShell window open — you use it in every stage.</p>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Open the new project and create the build chat:</p>
+          <p class="do-label">One of the arriving files is held back. Move it now:</p>
+          <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Inbound"
+New-Item -ItemType Directory -Path "held" -Force
+Move-Item -LiteralPath "inbound\arrivals\arrivals_c_persys_export_v2.json" -Destination "held\arrivals_c_persys_export_v2.json" -Force
+Get-ChildItem "inbound\arrivals"</code></pre>
+          <p><code>arrivals_c_persys_export_v2.json</code> is the same personnel system after an upgrade, and it names most of the same people. Both copies in the same folder would double them. Four files remain in <code>inbound\arrivals</code>. You bring the held file back in Stage 06.</p>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Open the folder as a project and create the build chat:</p>
           <ol class="do-clicks">
-            <li>Open <strong>ChatGPT</strong> from the Start menu and select <strong>Codex</strong></li>
-            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\P2_Project_Organizer</code></li>
-            <li>If Codex asks for trust, verify that exact path and choose <strong>Trust</strong></li>
-            <li>Click <strong>New chat</strong>, open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P2 — Project Organizer Build</code></li>
+            <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\P2_Inbound</code></li>
+            <li>If Codex asks for trust, check that exact path and choose <strong>Trust</strong></li>
+            <li>Click <strong>New chat</strong>, open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P2 — Inbound Build</code></li>
             <li>Select <strong>GPT-5.6 Terra</strong> and confirm <strong>Ask for approval</strong></li>
           </ol>
         </div>
 
-        <div class="do-step" id="p2-project-open-proof">
-          <p class="do-label">Paste this into <strong>P2 — Project Organizer Build</strong>:</p>
-          <pre><code>We are building the local P2 Project Organizer. Do not implement it yet.
-
-Read AGENTS.md, PROJECT_ORGANIZER_CONTRACT.md, .codex/config.toml, and every
-file under source_packet/. Treat the packet as the complete source boundary.
-
-Return one compact build brief with:
-1. the project, deliverables, dependencies, decisions, updates, and sources
-   actually present;
-2. conflicts, missing values, and phrases that must remain unknown;
-3. the three release files and what each one must prove;
-4. the six build stages, the exact files each stage creates, and the command
-   that will verify that stage;
-5. a clear statement that no source file will be rewritten and no project fact
-   will be invented.
-
-Check the plan against PROJECT_ORGANIZER_CONTRACT.md. Stop after the brief so I
-can inspect the source interpretation before code is created.</code></pre>
-          <p>Compare the returned inventory with the six files in <code>source_packet</code>. Resolve a real mismatch now. Do not fill a missing owner, date, status, or decision with a plausible guess.</p>
-        </div>
-
-        <h3>Stage 02 · Build and verify the SQLite ledger</h3>
-        <p>The ledger turns mixed files into stable, queryable records. Python already includes <code>sqlite3</code>; this stage needs no database server, account, or additional package.</p>
-
-        <div class="do-step" id="p2-sqlite-proof">
-          <p class="do-label">In <strong>P2 — Project Organizer Build</strong>, paste:</p>
-          <pre><code>Build the verified SQLite layer for the P2 Project Organizer from the approved
-source interpretation. You own all SQL and Python implementation; do not ask me
-to hand-edit code.
-
-Create at the project root:
-- schema.sql
-- build_project_ledger.py
-- verify_project_ledger.py
-- project_ledger.sqlite3
-
-Requirements:
-- Use Python's standard-library sqlite3 only for the database layer.
-- Create exactly these domain tables: projects, deliverables, dependencies,
-  decisions, updates, and sources. Use stable ids, declared foreign keys, useful
-  indexes, and source identity on every material record.
-- Use parameterized SQL for values, enable foreign-key checks, use transactions,
-  and preserve UTF-8 text. Preserve an explicit source value such as
-  "Not assigned in source" literally; it is an honest unknown, not SQL NULL or a
-  placeholder. Never infer an owner, date, dependency, status, or decision.
-- Make rebuild deterministic. Build a temporary database, verify it, then replace
-  the target atomically. Refuse to overwrite an existing ledger unless --rebuild
-  is explicit.
-- Make errors name the source file and record. Fail on orphan relationships,
-  duplicate ids, invalid enumerated values, missing provenance, or a source count
-  that disagrees with the packet.
-
-Run these commands yourself from the project root:
-  py -3 build_project_ledger.py --rebuild
-  py -3 verify_project_ledger.py
-
-Then run a focused smoke test that opens the database read-only and reports table
-counts, foreign-key status, ready deliverables, blocked deliverables, and unresolved
-decisions. Repair real implementation defects and rerun until it passes. Do not
-alter the source packet to make a test pass. Return the final PASS evidence and
-the ledger counts; do not start the MCP server yet.</code></pre>
-          <p>Open the verification output in the chat. It should name all six tables, report intact foreign keys and provenance, and preserve unresolved information rather than smoothing it away.</p>
-        </div>
-
-        <h3>Stage 03 · Build the four-tool local MCP server</h3>
-        <p>MCP gives the harness a narrow, reusable way to ask the ledger for decision-ready evidence. The server is local and read-only. It does not expose arbitrary SQL or accept writes.</p>
-
         <div class="do-step">
-          <p class="do-label">In <strong>P2 — Project Organizer Build</strong>, paste:</p>
-          <pre><code>Build and register the local read-only MCP server for this verified ledger. Lock
-the tested runtime exactly in package.json and package-lock.json:
-- engines.node: ">=22.22 <25";
-- dependencies: @modelcontextprotocol/server 2.0.0 and zod 4.4.3;
-- devDependencies: @modelcontextprotocol/client 2.0.0.
-Use exact versions with no caret, tilde, tag, or other range. Let the SDK
-negotiate the protocol with Codex. Do not hand-roll JSON-RPC framing, pin a
-remembered protocol version, open a network listener, or add a cloud service.
+          <p class="do-label">Paste this into <strong>P2 — Inbound Build</strong>:</p>
+          <pre><code>Read every file under inbound/arrivals/ and inbound/records/. Do not write any
+code yet.
 
-Expose exactly four tools:
-- get_project_snapshot: project identity, delivery state, source coverage, and
-  explicit unknowns—do not duplicate the path, blocked-work array, or decision
-  queue owned by the other tools;
-- get_ready_work: deliverables whose declared dependencies are satisfied, with
-  readiness_evidence that names the dependency, predecessor and its status, and
-  both source IDs;
-- get_dependency_path: the longest declared launch path for a named deliverable;
-  the packet has no durations, so describe only its declared relationship sequence;
-- get_decision_queue: open decisions, options/status if supplied, owner if
-  supplied, and affected work.
+Return one short report:
+1. For each of the four files in inbound/arrivals/, the shape it is in, the
+   fields it carries, how it writes a date, and how many people it names.
+2. The union of fields across all four sources, and for each field, which
+   sources actually carry it.
+3. Every way inbound/arrivals/arrivals_d_partner_roster.csv disagrees with its
+   own header row. Read it as bytes and as CSV and compare. I want the ways it
+   is wrong that a CSV reader does not report as an error.
 
-Every tool must open project_ledger.sqlite3 in read-only mode, use parameterized
-queries, return stable ids and source ids, distinguish empty results from errors,
-include the same current source_fingerprint, and fail visibly if the ledger is
-missing or invalid. Declare read-only and non-destructive tool hints, but do not
-treat hints as a security boundary.
-
-Create the locked SDK package and server at:
-- plugins/project-organizer/package.json and its lockfile;
-- plugins/project-organizer/mcp/server.mjs;
-- plugins/project-organizer/mcp/query_ledger.py, the bounded read-only SQLite
-  adapter;
-- plugins/project-organizer/lib/ledger_verifier.py, the shared data-only verifier;
-- plugins/project-organizer/tests/smoke.mjs.
-
-Make every MCP request use the bundled verifier before it returns data. It must
-check the exact schema, all six current source hashes, and full source-row-to-ledger
-value parity. Design this verifier for reuse by the trusted hook. The hook must
-never import or run project-root verify_project_ledger.py; learner Python, schema,
-sources, SQLite, evidence reports, and release files stay untrusted data.
-
-Define no install-time lifecycle scripts such as preinstall, install,
-postinstall, or prepare. Keep package scripts limited to the explicit start and
-test commands; dependency installation must never execute package scripts.
-
-Create an idempotent configure_project_organizer.ps1 that writes this project's
-absolute server, project-root, and Python paths into .codex/config.toml, places
-the interpreter in PROJECT_ORGANIZER_PYTHON, allows only the four tools, and
-preserves unrelated configuration.
-
-Run the installation, configuration, and tests yourself, including:
-  npm ci --prefix plugins/project-organizer --ignore-scripts --no-audit --no-fund
-  powershell -NoProfile -ExecutionPolicy Bypass -File .\configure_project_organizer.ps1
-  npm test --prefix plugins/project-organizer
-
-Test a real SDK initialize/negotiation followed by tools/list and tools/call for
-all four tools. Confirm that no tool can mutate the ledger and no response loses
-source identity. Repair implementation defects and rerun until every check passes.
-Return the exact PASS summary, registration name, four tool names, and restart
-step. The smoke summary must say "PASS project-organizer MCP: 4 read-only tools,
-bounded SQLite queries, no write surface". Do not build the board yet.</code></pre>
-        </div>
-
-        <div class="do-step" id="p2-mcp-proof">
-          <p class="do-label">Load and inspect the project-scoped MCP registration:</p>
-          <ol class="do-clicks">
-            <li>Completely quit and reopen the ChatGPT desktop app, choose <strong>Codex</strong>, and reopen <code>P2_Project_Organizer</code></li>
-            <li>Open the integrated terminal, run <code>codex</code>, then type <code>/mcp</code></li>
-            <li>Confirm one local <code>project_organizer</code> server exposes exactly the four expected tools, then type <code>/exit</code></li>
-            <li>Return to <strong>P2 — Project Organizer Build</strong></li>
-          </ol>
-        </div>
-
-        <h3>Stage 04 · Create the organizer skill and bounded agent team</h3>
-        <p>The two workers have genuinely separate jobs: one reconciles scope, status, decisions, and source coverage; the other resolves ready work and dependency paths. They can run together. The reviewer cannot run until the board exists.</p>
-
-        <div class="do-step" id="p2-team-proof">
-          <p class="do-label">After the restart, paste this into <strong>P2 — Project Organizer Build</strong>:</p>
-          <pre><code>Read the exact "Agent evidence contract" and release lifecycle in
-PROJECT_ORGANIZER_CONTRACT.md. Use $skill-creator to create one focused
-project-organizer skill at
-plugins/project-organizer/skills/project-organizer/SKILL.md. Then create exactly:
-  .codex/agents/scope_mapper.toml
-  .codex/agents/dependency_planner.toml
-  .codex/agents/board_reviewer.toml
-
-Pin all three agents to gpt-5.6-terra and a read-only filesystem. Copy the exact
-JSON report schemas, fixed field names, tool arrays, verdicts, checked_sections,
-finding rules, and HOLD behavior from the contract into their return contracts.
-
-Keep the work disjoint:
-- scope_mapper alone calls get_project_snapshot and get_decision_queue, then its
-  exact JSON-only return is saved without rewriting at
-  .project-organizer/evidence/scope_mapper.json;
-- dependency_planner alone calls get_ready_work and get_dependency_path for
-  DLV-004, uses launch_path_ids for the longest declared launch path, then its
-  exact JSON-only return is saved without rewriting at
-  .project-organizer/evidence/dependency_planner.json;
-- the parent does not repeat any of those four MCP calls. It waits for both
-  workers and invokes the deterministic renderer;
-- board_reviewer runs only after the candidate state and board exist. It checks
-  the exact contract sections, including launch_path and worker_reconciliation,
-  binds the candidate state and board hashes, and saves its exact JSON-only return
-  at .project-organizer/evidence/board_reviewer.json. It never edits or runs the
-  release gate.
-
-The skill owns that full procedure: verify the ledger; confirm one four-tool MCP
-server; run the two workers concurrently; preserve their reports; render the
-CANDIDATE board and PENDING receipt; run the reviewer sequentially; never rerender
-after review; stop normally so the trusted hook can act; and return only the
-candidate, reviewer result, and artifact paths. It must preserve an explicit
-"Not assigned in source" value and HOLD on a stale fingerprint, malformed report,
-overlapping tool ownership, worker HOLD, or reviewer HOLD.
-
-Validate the skill and agent files using current Codex rules. Run a focused
-routing/report-schema test and repair implementation defects until it passes.
-Return the final routing table, the three save paths, and PASS evidence. Do not
-run the production organizer in this stage.</code></pre>
-          <p>Inspect the returned routing table. There should be two concurrent read jobs, one later review job, and one writer. If two roles can change the same artifact, the boundary is not finished.</p>
-        </div>
-
-        <h3>Stage 05 · Package, inspect, and trust the plugin</h3>
-        <p>The plugin makes the working pieces installable as one unit. Installation is not trust: you inspect the package, install it, then separately trust the exact hook definition.</p>
-
-        <div class="do-step">
-          <p class="do-label">In <strong>P2 — Project Organizer Build</strong>, paste:</p>
-          <pre><code>Read PROJECT_ORGANIZER_CONTRACT.md again. Use $plugin-creator to finish one
-installable plugin at plugins/project-organizer and one local marketplace entry.
-Keep one skill, the existing MCP source, the bundled data-only verifier, one
-deterministic renderer, exactly one Stop hook, and their tests. Keep the only MCP
-runtime registration in this project's .codex/config.toml; add no second server.
-
-Implement the exact contract, with these trust boundaries:
-- plugins/project-organizer/lib/ledger_verifier.py is the shared verifier for
-  every MCP request and the hook. The installed hook may execute only reviewed
-  code bundled in the installed plugin. It must never import or run project-root
-  verify_project_ledger.py; project Python, schema, sources, SQLite, reports, and
-  release files are data.
-- The renderer requires the two exact PASS worker reports at their fixed paths.
-  It rejects stale fingerprints, malformed JSON, overlapping tool ownership, or
-  anything other than the full four-tool partition. It binds both report hashes,
-  puts their useful source-cited findings on the board, and writes state and board
-  as CANDIDATE followed by a PENDING receipt. Each destination uses its own
-  temporary-file replacement; do not claim the trio is one atomic transaction.
-- The board visibly answers the contract's eight practical questions, including
-  Ready now, the longest declared launch path, decision ownership, Source
-  coverage, explicit unknowns, and a visible Scope and sequence findings section.
-  Keep it offline and
-  script-free. Preserve "Not assigned in source" literally.
-- The Stop hook stays inert until the trio exists. It verifies exact schema and
-  full source-row parity with the bundled verifier, current worker reports, exact
-  deterministic state-to-board bytes, the offline boundary, and a current
-  board_reviewer report whose source fingerprint and candidate hashes match. It
-  requires REVIEW: PASS before it writes status PASS, gate_status PASS, and
-  board_status RELEASE.
-- The final receipt binds all three report hashes. Its evidence object carries
-  agent_reports_bound, mcp_tools_reported, mcp_tools_basis set to
-  "validated worker reports", and usage_visibility. Only elapsed_seconds and
-  release-gate repairs are measured. Do not claim the gate independently watched
-  agent runs or tool calls.
-- Allow one focused repair request. Never issue a second block, even if a later
-  event resets stop_hook_active. REVIEW: HOLD or any remaining failure leaves a
-  visible HOLD receipt.
-
-Run the package, skill, MCP, renderer, verifier, hook, and full release tests in a
-temporary project. Use the real packet and repair only real implementation
-defects. Leave the learner project's release files absent.
-
-Review the finished package as untrusted. Return the exact Stop command; installed
-code executed; project data read and written; network and credential access;
-inert behavior; one-repair boundary; marketplace root; disable/uninstall paths;
-and this conditional recovery rule: a source-data or generated-artifact repair
-does not reinstall the plugin, but a plugin-code repair requires validation,
-remove/add or uninstall/install, app restart, /hooks inspection, and new trust.
-Do not register the marketplace, install the plugin, or trust the hook for me.</code></pre>
-        </div>
-
-        <div class="do-step" id="p2-plugin-proof">
-          <p class="do-label">Register the marketplace, then install and trust only what you reviewed:</p>
-          <ol class="do-clicks">
-            <li>In the ChatGPT desktop app, choose <strong>Codex</strong>, open <code>Documents\HarnessBootcamp\P2_Project_Organizer</code>, and return to <strong>P2 — Project Organizer Build</strong></li>
-            <li>Open the integrated terminal with the terminal icon or <strong>Ctrl+`</strong>. At its PowerShell prompt, paste <code>codex plugin marketplace add "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Project_Organizer"</code></li>
-            <li>Run <code>codex plugin marketplace list</code>. Confirm it lists <code>ai-harness-bootcamp</code> at that exact project root; an <code>already added</code> result is fine only when the root matches</li>
-            <li>Completely quit and restart the ChatGPT desktop app. Choose <strong>Codex</strong> and reopen <code>Documents\HarnessBootcamp\P2_Project_Organizer</code></li>
-            <li>Open <strong>Plugins</strong>, choose <strong>AI Harness Bootcamp</strong>, open <strong>Project Organizer</strong>, and select <strong>Install plugin</strong></li>
-            <li>Return to the project, open the integrated terminal, run <code>codex</code>, and verify the project path if the CLI asks for trust</li>
-            <li>Type <code>/hooks</code>. Open the <strong>Stop</strong> handler and compare the command, files, and inert-before-output behavior with the review returned above</li>
-            <li>Trust that exact hook definition, then type <code>/exit</code></li>
-          </ol>
-          <p>Bundled hooks do not become trusted merely because a plugin is installed. If the command differs from the reviewed command, stop and inspect the change. To pause the plugin later, open it under <strong>Plugins</strong> and turn it off. To remove it, choose <strong>Uninstall plugin</strong>. Those actions are separate from removing the marketplace source with <code>codex plugin marketplace remove ai-harness-bootcamp</code>.</p>
-          <p><strong>If a later repair changes plugin code:</strong> validate the package again, uninstall and reinstall it in <strong>Plugins</strong>—or run <code>codex plugin remove project-organizer@ai-harness-bootcamp</code> followed by <code>codex plugin add project-organizer@ai-harness-bootcamp</code>—then restart the app, inspect <code>/hooks</code>, and trust the reviewed definition again. Rerun the workers, renderer, and reviewer afterward. A source-data or generated-artifact repair does not use this reinstall branch.</p>
-        </div>
-
-        <h3>Stage 06 · Run the organizer and release the visual board</h3>
-        <p>This is the integrated production run. The two workers read in parallel, the main thread invokes the renderer, the reviewer checks its output afterward, and the deterministic hook records the release result.</p>
-
-        <div class="do-step">
-          <p class="do-label">Create the production chat from the beginning:</p>
-          <ol class="do-clicks">
-            <li>In <code>P2_Project_Organizer</code>, click <strong>New chat</strong></li>
-            <li>Rename it <code>P2 — Project Organizer Run</code></li>
-            <li>Select <strong>GPT-5.6 Terra</strong> and <strong>Ask for approval</strong></li>
-            <li>Confirm the <strong>Project Organizer</strong> plugin is enabled</li>
-          </ol>
+Do not propose a schema that fills a field a source does not carry. Stop after
+the report.</code></pre>
+          <p>Read the third answer closely. It should name at least three independent problems with the partner file, and one of them should be that the number of records a CSV reader returns does not match the number of people the file names. If the report says the file parses cleanly, say so and ask again — that answer is wrong, and knowing why is the point of the next step.</p>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Paste this into <strong>P2 — Project Organizer Run</strong>:</p>
-          <pre><code>Use $project-organizer.
+          <p class="do-label">Then paste this:</p>
+          <pre><code>Build the intake normalizer at scripts/normalize_arrivals.py.
 
-Goal: build the local HarborLight Project Organizer so the board makes the
-outcome, now, next, Ready now, longest declared launch path, blocked work,
-decision queue, next commitment, Source coverage, worker findings, and explicit
-unknowns useful at a glance.
+Interface, exactly:
+  py -3 scripts\normalize_arrivals.py --source inbound\arrivals --out normalized\arrivals.csv
+  py -3 scripts\normalize_arrivals.py --file &lt;one file&gt; --out &lt;one file&gt;
+Standard library only.
 
-Source boundary: rebuild only from source_packet and the verified SQLite ledger.
-Preserve every source ID and the literal "Not assigned in source" value. The two
-workers own the four MCP calls; the parent must not repeat them or replace their
-saved JSON reports with a summary.
+One output shape, one row per person, with these columns and no others:
+person_id, last_name, first_name, billet_code, report_date, losing_element,
+gaining_desk, source_file, source_row.
 
-Release boundary: follow the skill's worker → candidate render → sequential
-reviewer procedure exactly. Do not rerender after the reviewer binds the candidate
-hashes. Do not hand-edit generated artifacts or source evidence. Finish the turn
-normally so the installed, trusted Stop hook can validate the saved candidate.
+Rules:
+- report_date is always YYYY-MM-DD. Convert "14 AUG 26", "18 Aug", "in on the
+  18th", and ISO-8601 with a Z. Where a source gives a day without a month or
+  year, take them from that file's own header and say in the run output which
+  file you did that for.
+- A field a source does not carry is written as the literal value UNKNOWN. Never
+  infer one from another field. A gaining desk is not a billet code.
+- source_file and source_row point at the exact line or record the row came from.
+- Every file gets integrity checks before any row is emitted. At minimum: the
+  header has no duplicate column name; the file holds an even number of quote
+  characters; every row has the field count the header declares; every date
+  value converts; and every person identifier present in the raw bytes also
+  reaches the identifier column of a parsed record. Count identifiers, not rows
+  - a row count can match while records are missing.
+- A file that fails any check produces no rows at all. Print each failed check
+  with the file name, the line number, and the value that failed, then exit
+  non-zero. Do not emit a partial conversion, and do not repair the file.
+- Catching an exception is not one of the checks. Assume the damaged file parses
+  without raising.
+- Write normalized/intake_receipt.json with one entry per source file: handler
+  (which reader claimed it), records_read, records_emitted, identifiers_in_bytes,
+  identifiers_placed, and refusal_reason, which is null when the file passed.
+  Write the receipt on every run, whether the run passed or refused. This is the
+  record I read when a source goes quiet, so it must distinguish "no handler
+  took it" from "a handler read nothing" from "a handler read records and
+  emitted none".
 
-In the production response, return only:
-- CANDIDATE: the candidate board path;
-- REVIEW: PASS or HOLD and the board_reviewer report path;
-- ARTIFACTS: absolute paths to PROJECT_STATE.json, PROJECT_BOARD.html, and
-  RUN_RECEIPT.json;
-- STOP: "The trusted Stop hook updates RUN_RECEIPT.json after this response."
-
-Do not claim a final receipt, gate, or release result in this response.</code></pre>
-          <p>The model can report the candidate and reviewer result. After that response, the trusted Stop hook records the deterministic gate and final receipt result. You inspect that saved result in the next step; priorities, escalation, and every open decision remain yours.</p>
+Run it yourself over inbound\arrivals and show me the full output, including
+the receipt and every refusal reason. Repair real defects in the
+script and rerun until the counts are stable. Do not edit any file under
+inbound\.</code></pre>
         </div>
 
-        <div class="do-step" id="p2-board-proof">
-          <p class="do-label">Open the work product and make the release decision:</p>
+        <p>Run it yourself in PowerShell as well, so you have seen the output rather than a report of it:</p>
+        <div class="do-step">
+          <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Inbound"
+py -3 scripts\normalize_arrivals.py --source inbound\arrivals --out normalized\arrivals.csv</code></pre>
+          <p><strong>What you should see.</strong> 13 people from <code>arrivals_a_station_manifest.csv</code>, 9 from <code>arrivals_b_desk_paste.txt</code>, 11 from <code>arrivals_c_persys_export.json</code> — 33 in the output file. <code>arrivals_d_partner_roster.csv</code> refused, with its failed checks named. Open <code>normalized\intake_receipt.json</code> and read the four entries; the partner entry should show 8 identifiers in the bytes against 6 placed.</p>
+          <p><strong>When it does not.</strong> If the partner file produced rows, the checks are too weak — and the likeliest reason is a check that compares row count against identifier count, which matches at 8 and 8 and catches nothing. If a source came up short, look at <code>source_row</code> on the last row it did produce and read the raw line after it. If <code>billet_code</code> is populated for the chat paste or the system export, the normalizer is inferring; neither source carries one.</p>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Now make it non-optional. Paste this:</p>
+          <pre><code>Put the normalizer behind a hook so nothing reads a raw arrivals file directly.
+
+Create hooks/block_raw_arrivals.py and register it in .codex/hooks.json as a
+PreToolUse hook with the matcher "Bash".
+
+The hook script reads the hook payload as JSON on stdin. Use the tool_input
+field to see the command about to run. Deny the command when it would read,
+copy, or open any file under inbound/arrivals/, unless the command is
+scripts\normalize_arrivals.py itself. Deny by exiting 2 and writing the reason
+to stderr; the reason must name the file and give the exact normalizer command
+to run instead. Exit 0 for everything else.
+
+The hook decides from the command text only. It does not read the arrivals
+files, call a model, or write anything.
+
+Show me .codex/hooks.json and the script before you save them.</code></pre>
+        </div>
+
+        <div class="do-step" id="p2-intake-proof">
+          <p class="do-label">Read the hook, then trust it:</p>
           <ol class="do-clicks">
-            <li>Press <strong>Windows+E</strong> and enter <code>%USERPROFILE%\Documents\HarnessBootcamp\P2_Project_Organizer</code> in the address bar</li>
-            <li>Double-click <code>PROJECT_BOARD.html</code></li>
-            <li>Read <strong>Ready now</strong>, <strong>Longest declared launch path</strong>, <strong>Blocked work</strong>, <strong>Decision queue</strong>, <strong>Unknowns</strong>, <strong>Scope and sequence findings</strong>, and <strong>Source coverage</strong>. Follow at least one material claim to its source ID</li>
-            <li>Open <code>RUN_RECEIPT.json</code>. Release requires <code>status: PASS</code>, <code>gate_status: PASS</code>, and <code>board_status: RELEASE</code></li>
-            <li>In <code>evidence</code>, confirm <code>agent_reports_bound</code> is <code>3</code>, <code>mcp_tools_reported</code> lists four tools, <code>mcp_tools_basis</code> says <code>validated worker reports</code>, and <code>usage_visibility</code> is explicit. These are bound report facts, not claims that the gate watched the calls happen</li>
+            <li>Open the integrated terminal in Codex with the terminal icon or <strong>Ctrl+`</strong></li>
+            <li>Run <code>codex</code></li>
+            <li>Type <code>/hooks</code> and open the <strong>PreToolUse</strong> entry</li>
+            <li>Compare the command it shows against the script you just read. Trust it only if they match</li>
+            <li>Type <code>/exit</code></li>
           </ol>
-          <p>If the receipt says HOLD, use its named failed check to direct the smallest correction in <strong>P2 — Project Organizer Run</strong>. Rerun the full workers → renderer → reviewer line when evidence changes. Do not edit the database, reports, board, or receipt by hand, and do not change the source packet to silence a real gap. If the repair changes plugin code, use the reinstall and retrust branch from Stage 05 before relying on Stop again.</p>
+          <p>Codex records trust against the hook's current contents, so any later change to that script comes back for review and is skipped until you trust it again. That matters in Stage 06 — a hook you edited and did not re-trust looks exactly like a hook that never fired.</p>
+          <p><strong>Test it.</strong> Ask the build chat to show you the first ten lines of <code>inbound\arrivals\arrivals_a_station_manifest.csv</code>. The hook should stop it, and the reason should tell you to run the normalizer. Then ask for the first ten lines of <code>normalized\arrivals.csv</code> — that must go through untouched. A hook that blocks both is too wide, and you narrow it in Stage 05.</p>
         </div>
 
-        <div class="lesson-reflection">
-          <h3>Lesson reflection</h3>
-          <p class="reflection-question"><strong>Closeout question:</strong> Which recurring project-organizing job should this system take over, and which project decision must remain yours?</p>
+        <h3>Stage 02 · Map people to capabilities</h3>
+        <p>This is judgment that changes with the case, so it is a skill rather than a hook: there is no single fixed answer a command could check. But the join itself — this billet grants that capability — is mechanical, and a mechanical step run by a model gives you a slightly different answer every time. Split it. The script does the join and gives the same output for the same input; the skill decides when the job has arrived, refuses input it should not touch, and reports what came back.</p>
 
-          <div class="do-step">
-            <p class="do-label">Create the separate reflection chat from the beginning:</p>
-            <ol class="do-clicks">
-              <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong></li>
-              <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-              <li>Click <strong>New chat</strong>, open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P2 — Project Organizer Reflection</code></li>
-              <li>Select <strong>GPT-5.6 Terra</strong> and keep <strong>Ask for approval</strong> selected</li>
-            </ol>
-          </div>
+        <div class="do-step">
+          <p class="do-label">Paste this into <strong>P2 — Inbound Build</strong>:</p>
+          <pre><code>Read inbound/records/desk_directory.md, inbound/records/billet_catalog.csv, and
+inbound/records/qualification_register.csv.
 
-          <div class="do-step" id="p2-reflection-proof">
-            <p class="do-label">Fill the two brackets, then paste this into <strong>P2 — Project Organizer Reflection</strong>:</p>
-            <pre><code>Read operator/OPERATOR_LOG.md, operator/MEASUREMENT_SPINE.md, and
-operator/TRANSFER_30_60_90.md. Inspect the completed P2 project at
-%USERPROFILE%\Documents\HarnessBootcamp\P2_Project_Organizer, including
-PROJECT_BOARD.html, PROJECT_STATE.json, RUN_RECEIPT.json, and the plugin/config.
+Build two things.
 
-Update only the P2 Project Organizer entry in OPERATOR_LOG.md. Fill all six rows:
-1. Directed — the local organizer and its source boundary;
-2. Mid-run — the SQLite, MCP, skill, two-worker report paths, sequential reviewer
-   report, installed plugin, and trusted hook line;
-3. Verdict — the reviewer result plus receipt status, gate_status, and board_status;
-4. Evidence — the three release files, the three report hashes bound by the
-   receipt, and the most useful source-cited worker finding;
-5. I still own — [THE PROJECT DECISION THAT MUST REMAIN MINE], plus my lesson
-   reflection that this system should take over [THE RECURRING ORGANIZING JOB];
-6. Release check — status, gate_status, board_status, ledger_status,
-   schema_status, and any named HOLD or residual risk from RUN_RECEIPT.json.
+First, scripts/map_capabilities.py. Interface, exactly:
+  py -3 scripts\map_capabilities.py --roster normalized\arrivals.csv --records inbound\records --out capability_map.csv
+Standard library only. It carries the whole evidence rule:
+- Read normalized/arrivals.csv. Refuse anything that is not in the normalizer's
+  output shape rather than trying to cope with it.
+- A capability may be asserted from two sources only: a billet_code present in
+  billet_catalog.csv, or a qualification in qualification_register.csv whose
+  status is current. Map a qualification to a capability through its awarding
+  authority and the desk directory.
+- A gaining desk is never evidence. Free text describing a trade is never
+  evidence. A qualification whose status is expired or pending is never evidence.
+- Every asserted capability carries the record that granted it: the file, the
+  identifier, and for a qualification its status.
+- A person the records cannot place gets capability UNRESOLVED and a reason in
+  plain words - no matching billet code in the catalog, qualification expired,
+  qualification pending, or no record found. They stay in the output.
+- Write capability_map.csv with one row per person per capability, plus the
+  evidence columns, and one row per unresolved person.
+- Same input, same bytes. Sort deterministically. Do not write a run timestamp
+  into the output; a file that changes on every run cannot be compared against
+  its last version.
 
-Update the single P2 row and deep mark in MEASUREMENT_SPINE.md from the exact
-receipt fields. Record board_status, ledger_status, schema_status, and gate_status.
-From evidence, record agent_reports_bound as n/3, mcp_tools_reported as n/4,
-mcp_tools_basis exactly as "validated worker reports", and usage_visibility.
-From measured_observations, record elapsed_seconds and repairs. Convert elapsed
-seconds to minutes by dividing by 60 and rounding up; keep 0 seconds as 0 minutes.
-Do not describe bound reports as independently observed runs or calls, and do not
-create a separate measurement or reflection file.
+Second, a skill at .agents/skills/capability-map/SKILL.md. Frontmatter is name
+and description only. Write the description so it fires on a normalized arrivals
+roster and stays quiet on a course attendance sheet, a contact list, an
+equipment log, or a chat transcript — name the things it is not for, not just
+the things it is. The skill does not redo the join in prose. It checks the
+roster is in the normalizer's shape, runs the script, and reports.
 
-Update only "From P2 — Project Organizer" in TRANSFER_30_60_90.md. Use today's
-date, the local project demonstrated here, the project facts and source boundary,
-the four read-only MCP questions, the two-worker plus sequential-review split,
-the three saved report paths, the board and receipt inspected, and one concrete
-30-day reuse rule with its first proof. Preserve every other module section and
-report the exact rows changed.</code></pre>
-          </div>
+Then run it over normalized/arrivals.csv and report: the count per capability,
+the count unresolved with the reason for each, and any billet code in the roster
+that the catalog does not contain.</code></pre>
+        </div>
+
+        <div class="do-step" id="p2-capability-proof">
+          <p class="do-label">Check the result against the records yourself:</p>
+          <ol class="do-clicks">
+            <li>Open <code>capability_map.csv</code> and pick any three rows. Open the record each one names and confirm it says what the row claims</li>
+            <li>Find <code>P-4655</code>. The billet catalog gives <code>MV-7</code> the capability <code>IMAGERY</code>, not <code>MOVEMENT</code>, even though the post sits on the Movement desk</li>
+            <li>Find <code>P-4519</code> and <code>P-4718</code>. Both hold a qualification. Both should be unresolved, because both qualifications are expired</li>
+            <li>Find <code>P-4817</code>. The qualification is <code>pending</code> — an application, not a grant</li>
+          </ol>
+          <p><strong>What you should see.</strong> 33 people in, 25 placed and 8 unresolved. Two billet codes in the manifest — <code>SG-7</code> and <code>TR-4</code> — are not in the catalog at all, because it is revised quarterly and those posts came later.</p>
+          <p><strong>When it does not.</strong> More than 25 placed usually means the gaining desk leaked in as evidence, or an expired qualification counted. Fewer usually means the qualification-to-capability route through the awarding desk is missing, so only billets counted. If a capability appears with no evidence column filled, stop — that is the failure this stage exists to prevent, and it will be invisible by Stage 03.</p>
+        </div>
+
+        <h3>Stage 03 · Generate the distros</h3>
+        <p>The five lists stop being documents you edit and become output you rerun. The rule for who lands on which list is yours to set; what matters is that it is written once, in the generator, rather than remembered five times.</p>
+
+        <div class="do-step">
+          <p class="do-label">Paste this into <strong>P2 — Inbound Build</strong>:</p>
+          <pre><code>Read all five files in inbound/distros/ and inbound/records/current_roster.csv
+and inbound/records/rotation_out.csv.
+
+Build two things again, the same way round.
+
+First, scripts/build_distros.py. Interface, exactly:
+  py -3 scripts\build_distros.py --map capability_map.csv --records inbound\records --out distros
+Standard library only, and deterministic: same input, same bytes, sorted
+consistently, with no run timestamp written into any output file.
+
+Second, a skill at .agents/skills/distro-build/SKILL.md that knows when the
+lists need rebuilding and runs the script. Frontmatter is name and description
+only.
+
+Keep the header block and the Pers ID | Name | Desk table of the existing files
+so a desk can read the new one without being retrained, and add one column: the
+record that put each person on the list. The existing header carries a
+last-touched date; replace it with the revision dates of the records the lists
+were built from, so the header says something that is true rather than something
+that changes every run.
+
+The rules I am setting:
+- Signals outage recall is everyone holding SIGNALS. Movement serial nominations
+  is everyone holding MOVEMENT. Aid station recall is everyone holding MEDICAL.
+  Imagery tasking is everyone holding IMAGERY. All hands is everyone on station.
+- On station means a current roster status of assigned or rotating out, plus
+  every arrival in the normalized roster. A departed status is off.
+- A person whose capability is UNRESOLVED goes on the all hands list and on no
+  capability list, and is named in an unresolved block at the foot of the all
+  hands list with the reason.
+- Write the five files to distros/ in the project root. Never write to
+  inbound/distros/ — those are the lists as they stand and they are evidence.
+
+Generate them, then produce a comparison against the five hand-maintained files:
+for each list, who is on the old one and not the new one, who is on the new one
+and not the old one, and the record that decides each difference.</code></pre>
+        </div>
+
+        <div class="do-step" id="p2-distro-proof">
+          <p class="do-label">Read the comparison. Each difference has a cause you can name:</p>
+          <ol class="do-clicks">
+            <li><code>P-2210</code> Feldman is on the imagery list and in no record anywhere. The Imagery desk says he went back to another task group in June and has been receiving traffic ever since</li>
+            <li><code>P-9911</code> Kasprzak is on the aid station list because somebody asked for it in a message and said themselves they had no billet, no qualification number, and no roster entry</li>
+            <li><code>P-4102</code> Okonkwo is on two lists and left on 6 August</li>
+            <li><code>P-3388</code> Brandt is on the signals recall list. The billet is <code>SG-9</code>, Signals Desk Clerk, and the catalog gives it <code>SUPPLY</code></li>
+            <li><code>P-4655</code> Delacroix is on the movement list and holds <code>IMAGERY</code></li>
+          </ol>
+          <p><strong>Then test that a change is bounded.</strong> Open <code>inbound\records\qualification_register.csv</code>, find a person whose only capability comes from a qualification, and change that row's <code>status</code> from <code>current</code> to <code>expired</code>. Rerun both scripts. Exactly one list should lose them, they should appear in the unresolved block, and the other four lists should be byte-for-byte what they were. Put the file back afterwards.</p>
+          <p><strong>When it does not.</strong> If every list moved, either the generator is rebuilding membership from something wider than the map — often the roster's desk column — or something in the output changes on every run regardless of input, which a timestamp in a header will do. Check the second before the first: rerun twice with no change at all and compare. If nothing moved, the map did not rerun; check whether <code>capability_map.csv</code> actually changed before blaming the generator.</p>
+        </div>
+
+        <h3>Stage 04 · Refuse a change that cannot name its source</h3>
+        <p>Now the lists are generated, the way they go wrong is different: somebody adds a line by hand. It is always reasonable at the time — the message asking for it is polite and the reason is good. The hook makes the cost of that visible at the moment it happens rather than three months later when nobody remembers who Kasprzak was.</p>
+
+        <div class="do-step">
+          <p class="do-label">Read <code>inbound\traffic\msg_10_distro_add_request.md</code> first — it is the change this hook is for. Then paste:</p>
+          <pre><code>Create hooks/require_source.py and register it in .codex/hooks.json as a second
+PreToolUse hook with the matcher "Edit|Write|apply_patch".
+
+It reads the hook payload as JSON on stdin and looks at tool_input. It only
+concerns itself with writes to files under distros/. For those, it checks every
+person row in the incoming content and denies the write when a row's source
+column is empty, or names a file that does not exist under inbound/records/, or
+names an identifier that is not in that file.
+
+Deny by exiting 2 with the offending row and the reason on stderr. Exit 0 for
+every write outside distros/, and for a generated file whose rows all trace.
+
+If the generator writes through Edit or Write rather than through the shell,
+this hook checks its output too. That is correct - every generated row traces -
+but show me that it passes rather than assuming it.
+
+Show me the script and the updated .codex/hooks.json before saving.</code></pre>
+        </div>
+
+        <div class="do-step" id="p2-gate-proof">
+          <p class="do-label">Trust it, then try to get a bad line past it:</p>
+          <ol class="do-clicks">
+            <li>In the integrated terminal run <code>codex</code>, type <code>/hooks</code>, read the new entry, trust it, then <code>/exit</code></li>
+            <li>Ask the build chat: <code>Add a row to distros\distro_medical_recall.md for Kasprzak, L., P-9911, Aid Station. Message msg_10 asks for it.</code></li>
+            <li>The write must be refused, and the reason must say the identifier is in no record under <code>inbound\records\</code></li>
+            <li>Rerun the generator. The write must go through</li>
+          </ol>
+          <p><strong>What counts as a source is your call, and it has teeth.</strong> If you accept "a desk head asked for it" as a source, this hook stops catching the case it was built for. If you accept only the two capability records, you have to decide what happens the day somebody genuinely needs to be reachable before their paperwork lands — an answer exists, but it is a record, not an edit.</p>
+          <p><strong>When it does not fire.</strong> If nothing was refused, check three things in order: does <code>/hooks</code> show the hook as trusted, does the matcher include the tool that actually wrote the file, and did the chat write through the shell instead. All three look identical from the outside — a list with a bad line in it.</p>
+          <p><strong>Know where the rule stops.</strong> A hook sees tool calls. Open one of these lists in Notepad, type a row, and save it, and no hook anywhere will see that — it was never a tool call. This is not a gap to plug with a second hook: what actually protects you is that the list is generated, so an edit made outside the harness survives only until the next rerun and can never reach a record. Enforcement always has an edge. Being able to say where yours is worth more than believing it does not have one, because the rule you think covers everything is the one nobody checks.</p>
+        </div>
+
+        <h3>Stage 05 · Narrow it until it would survive</h3>
+        <p>A component that fires on things it should not gets switched off, and then you have nothing. Everything you have built so far has only been shown material it was designed for. Now show it the rest.</p>
+
+        <div class="do-step">
+          <p class="do-label">Paste this into <strong>P2 — Inbound Build</strong>:</p>
+          <pre><code>Run the whole set against material it must leave alone, and record what happened
+for each item.
+
+Must not fire, and must not be treated as a roster:
+- inbound/lookalike/course_roster_relay_refresher.csv
+- inbound/lookalike/partner_contact_list.csv
+- inbound/lookalike/equipment_signout_log.csv
+- inbound/lookalike/thread_shift_handover.md
+
+Must still work exactly as before:
+- inbound/arrivals/arrivals_a_station_manifest.csv
+- inbound/arrivals/arrivals_b_desk_paste.txt
+- inbound/arrivals/arrivals_c_persys_export.json
+- inbound/arrivals/arrivals_d_partner_roster.csv, still refused with the same
+  checks named
+- the five generated lists in distros/
+
+For each of the four lookalike files report: did the capability-map skill load,
+did the normalizer hook block a read of it, and did either hook deny anything.
+Report what happened, not what should have happened.
+
+Then narrow whatever over-fired, one component at a time, and rerun the whole
+set after each change. Report each change as a before and after.</code></pre>
+        </div>
+
+        <div class="do-step" id="p2-scope-proof">
+          <p class="do-label">Read the four lookalike files yourself before you accept the report:</p>
+          <ol class="do-clicks">
+            <li><code>course_roster_relay_refresher.csv</code> carries <code>Last Name</code>, <code>First Name</code> and <code>Pers ID</code> columns and two title lines above the header — the same surface as the arriving manifest. It is a course attendance sheet with results</li>
+            <li><code>equipment_signout_log.csv</code> carries the same three identity columns again, against items and serial numbers</li>
+            <li><code>partner_contact_list.csv</code> says in its own second line that it is not a personnel record and not to route from it</li>
+            <li><code>thread_shift_handover.md</code> names a dozen people in running prose, which is exactly what the chat paste does</li>
+          </ol>
+          <p>Then check the traffic the same way. <code>msg_05_fwd_refresher_thread.md</code> quotes <code>msg_03</code> inside it; anything counting standing directives must not count that twice. <code>msg_16_weather_note_resent.md</code> is <code>msg_02</code> sent again. <code>msg_08_fuel_standdown.md</code> creates a SUPPLY requirement and <code>msg_13_fuel_standdown_cancelled.md</code> cancels it, so a run that reads only the first produces a list nobody should be on.</p>
+          <p><strong>What you should see.</strong> Nothing fires on the four lookalike files, the three usable arriving files still normalize, and the partner roster is still refused. Narrowing that reaches that state by making the skill description mention specific filenames has not narrowed anything — it has moved the problem to the next file with a new name. Narrow on what the material <em>is</em>: the columns the normalizer's output shape requires, and the fact that a course result column and an item serial column are not in it.</p>
+        </div>
+
+        <h3>Stage 06 · Find out why something did not fire</h3>
+        <p>Something is about to stop working, and it will not tell you. Nothing happening looks the same whether a component never loaded, ran and found nothing, or was never reached at all. Before you change a line, find out which of the three it was.</p>
+
+        <div class="do-step">
+          <p class="do-label">Run this in PowerShell:</p>
+          <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Inbound"
+Move-Item -LiteralPath "inbound\arrivals\arrivals_c_persys_export.json" -Destination "held\arrivals_c_persys_export_v1.json" -Force
+Copy-Item -LiteralPath "held\arrivals_c_persys_export_v2.json" -Destination "inbound\arrivals\arrivals_c_persys_export.json" -Force
+py -3 scripts\normalize_arrivals.py --source inbound\arrivals --out normalized\arrivals.csv</code></pre>
+          <p>The system that produced that export was upgraded, and this is what it sends now. The same eleven people plus one more, from the same system, arriving in the same place, under the same name. The run does not fail. There is no error and no warning.</p>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Work out which of the three it was before you touch anything:</p>
+          <ol class="do-clicks">
+            <li><strong>Did it load?</strong> In the integrated terminal, run <code>codex</code> and use <code>/skills</code> and <code>/hooks</code>. A skill that is not listed never loaded. A hook shown as untrusted was skipped, and a hook you edited since Stage 04 will be sitting there waiting for review</li>
+            <li><strong>Did it run?</strong> Open <code>normalized\intake_receipt.json</code> and find the entry for the export. No entry at all means nothing claimed the file. An entry names the handler that did</li>
+            <li><strong>Was it reached?</strong> Read <code>records_read</code> and <code>records_emitted</code> on that entry, against <code>identifiers_in_bytes</code>. Read 0 and emitted 0 means the handler ran and found nothing to read. Read some and emitted none means it read records and dropped them. Those are different faults and the receipt is what separates them</li>
+          </ol>
+          <p>Write down which of the three it was, and the field in the receipt you decided it on, before you look at the file.</p>
+        </div>
+
+        <div class="do-step" id="p2-diagnosis-proof">
+          <p class="do-label">Now open the file and confirm it:</p>
+          <ol class="do-clicks">
+            <li>Open <code>inbound\arrivals\arrivals_c_persys_export.json</code> and <code>held\arrivals_c_persys_export_v1.json</code> side by side</li>
+            <li>The records are no longer under <code>personnel</code>. Every field key changed as well. The date is no longer an ISO-8601 string</li>
+            <li>A reader that asks for <code>personnel</code> and gets nothing returns an empty list. That is not an error to Python and it was not an error to your normalizer. The receipt is where it shows: a handler claimed the file, read 0 records, emitted 0 — with 12 identifiers sitting in the bytes</li>
+          </ol>
+          <p><strong>The fix is one line of judgment, not a rewrite.</strong> Either the reader accepts both shapes, or it refuses a JSON export whose top-level record collection it does not recognise. Both are defensible; silently returning zero rows is not. Whichever you choose, make the check that already exists apply here: the normalizer requires every identifier in the raw bytes to reach a parsed record for CSV — hold JSON to the same rule, and 0 placed against 12 in the bytes becomes a refusal instead of a shrug.</p>
+          <p><strong>What you should see afterwards.</strong> 12 people from the upgraded export, 34 in the output file, and a refusal if you point it at a JSON file whose shape it does not know. Then put the original back:</p>
+          <pre><code>Move-Item -LiteralPath "held\arrivals_c_persys_export_v1.json" -Destination "inbound\arrivals\arrivals_c_persys_export.json" -Force</code></pre>
+        </div>
+
+        <h3>Stage 07 · Package it</h3>
+        <p>Everything so far works because of where it is sitting. A package is the claim that it will still work somewhere else. The check is not whether it installs — it is whether the contents account for the whole working set, whether anything inside points at a path only you have, and whether anything inside should never have left your machine.</p>
+
+        <div class="do-step">
+          <p class="do-label">Paste this into <strong>P2 — Inbound Build</strong>:</p>
+          <pre><code>Package the working set as one Codex plugin.
+
+Create plugins/inbound/.codex-plugin/plugin.json with name, version and
+description at minimum, and declare the bundled parts:
+  "skills": "./skills/"
+  "hooks": "./hooks/"
+
+Move into the package:
+- both skills, under plugins/inbound/skills/
+- both hook scripts, under plugins/inbound/hooks/
+- plugins/inbound/hooks/hooks.json carrying the two PreToolUse registrations,
+  with commands that resolve through the PLUGIN_ROOT variable rather than any
+  absolute path, and a commandWindows entry alongside each command
+- the normalizer and the generator, under plugins/inbound/scripts/
+
+Register a local marketplace at .agents/plugins/marketplace.json with name,
+interface.displayName, and one plugins entry naming this package with a local
+source path.
+
+Then tell me, as a list I can check:
+1. Every file in the package, and for each one, which stage it came from.
+2. Everything in the working set that is NOT in the package, and why it is
+   outside it. The material under inbound/ and everything under normalized/ and
+   distros/ is data this package operates on, not part of it - say so explicitly
+   rather than leaving it unlisted.
+3. Every path in the package that is absolute, names a drive letter, names a
+   user profile, or assumes the project sits at one location.
+
+Do not install it.</code></pre>
+        </div>
+
+        <div class="do-step" id="p2-package-proof">
+          <p class="do-label">Check the three claims yourself in PowerShell. Do not take the list on trust:</p>
+          <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Inbound"
+Get-ChildItem -Path "plugins\inbound" -Recurse -File | Select-Object -ExpandProperty FullName
+Get-ChildItem -Path "plugins\inbound" -Recurse -File | Select-String -Pattern 'C:\\Users\\','USERPROFILE','HarnessBootcamp','[A-Za-z]:\\'
+Get-ChildItem -Path "plugins\inbound" -Recurse -File | Select-String -Pattern 'sk-','xai-','API_KEY','SECRET','TOKEN','PASSWORD'</code></pre>
+          <p><strong>What you should see.</strong> The first command lists the package contents; check that against your own account of the working set, and that every stage from 01 to 06 is represented. The second and third commands should return nothing at all. Anything they do return is a thing that will not travel, or a thing that should not.</p>
+          <p><strong>When they return something.</strong> A drive letter or a user profile inside a hook command means the hook works only on your machine — replace it with <code>PLUGIN_ROOT</code>. A hit in the third command is more serious: whatever it found, treat it as exposed and rotate it, then take it out of the package. A key that has been written into a file that was going to be handed to somebody is not made safe by deleting the line.</p>
+          <p>Then register the marketplace so the package is discoverable from a folder rather than from your chat history:</p>
+          <pre><code>codex plugin marketplace add "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Inbound"
+codex plugin marketplace list</code></pre>
+          <p>The listing must show your marketplace at that exact path. An <code>already added</code> result is fine as long as the path matches.</p>
         </div>
       </section>
 
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Lesson outcomes</h2>
-        <p class="section-lede">This display follows the confirmation beside each build result. Use it to see what is complete and what still needs evidence.</p>
+        <p class="section-lede">This display follows the confirmation beside each result above. Use it to see what is complete and what still needs evidence.</p>
         <ol class="checklist">
-          <li class="check-item" data-check-item data-outcome-after="#p2-project-open-proof">
-            <label class="check-label"><input type="checkbox" id="p2-project-open" name="p2-project-open" data-check-id="project-open" /><span class="check-num">1</span><span class="check-title">The project boundary and source interpretation are clear</span></label>
-            <div class="check-detail">The build chat names the six source files, preserves conflicts and unknowns, and maps every planned layer to a release need before code begins.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-intake-proof">
+            <label class="check-label"><input type="checkbox" id="p2-intake-normalizer" name="p2-intake-normalizer" data-check-id="intake-normalizer" /><span class="check-num">1</span><span class="check-title">Every arriving format becomes one shape, and the damaged file is refused</span></label>
+            <div class="check-detail">33 people from three sources in <code>normalized/arrivals.csv</code> with <code>UNKNOWN</code> where a source carries nothing. The partner roster produces no rows and names its failed checks, caught by an identifier count rather than a row count. <code>normalized/intake_receipt.json</code> records handler, records read, records emitted, identifiers in bytes, identifiers placed, and refusal reason for every source. The hook denies a direct read of a raw arrivals file and is trusted in <code>/hooks</code>.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-sqlite-proof">
-            <label class="check-label"><input type="checkbox" id="p2-sqlite-ledger" name="p2-sqlite-ledger" data-check-id="sqlite-ledger" /><span class="check-num">2</span><span class="check-title">The SQLite ledger is deterministic, relational, and source-linked</span></label>
-            <div class="check-detail">All six domain tables verify with foreign keys, stable IDs, full source-row parity, provenance, a safe rebuild, and literal preservation of explicit unknowns such as <code>Not assigned in source</code>.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-capability-proof">
+            <label class="check-label"><input type="checkbox" id="p2-capability-map" name="p2-capability-map" data-check-id="capability-map" /><span class="check-num">2</span><span class="check-title">Each capability names the record that grants it, and unknown stays unknown</span></label>
+            <div class="check-detail">Every asserted capability cites a billet in the catalog or a <code>current</code> qualification. Gaining desk, free-text trade, and expired or pending qualifications assert nothing. Unplaced people stay in the output with a stated reason. The join runs as a script that gives the same bytes for the same input; the skill decides when it runs and refuses input outside the normalizer's shape.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-mcp-proof">
-            <label class="check-label"><input type="checkbox" id="p2-local-mcp" name="p2-local-mcp" data-check-id="local-mcp" /><span class="check-num">3</span><span class="check-title">The local MCP server answers four bounded read-only questions</span></label>
-            <div class="check-detail">Every request runs the bundled data-only verifier, all four results share one source fingerprint, readiness keeps dependency evidence, and the server exposes no arbitrary SQL or write surface.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-distro-proof">
+            <label class="check-label"><input type="checkbox" id="p2-distro-generator" name="p2-distro-generator" data-check-id="distro-generator" /><span class="check-num">3</span><span class="check-title">All five lists regenerate, and one changed record moves only what it should</span></label>
+            <div class="check-detail">The five lists are produced from the map by a deterministic script with no run timestamp in the output, each line carrying its source record, and the comparison against the hand-maintained files accounts for every difference. Changing one qualification status and rerunning moves one list and leaves the rest byte-identical; rerunning with no change at all moves nothing.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-team-proof">
-            <label class="check-label"><input type="checkbox" id="p2-bounded-team" name="p2-bounded-team" data-check-id="bounded-team" /><span class="check-num">4</span><span class="check-title">The organizer skill routes two bounded workers and one sequential reviewer</span></label>
-            <div class="check-detail">The two worker reports preserve the exact JSON schemas and disjoint four-tool ownership; the parent does not repeat their calls, and the later reviewer binds the candidate hashes with the exact checked sections.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-gate-proof">
+            <label class="check-label"><input type="checkbox" id="p2-source-gate" name="p2-source-gate" data-check-id="source-gate" /><span class="check-num">4</span><span class="check-title">A list line that cannot name its record is refused</span></label>
+            <div class="check-detail">A hand-added row with no supporting record is denied with the row and the reason on stderr, while a regenerated list writes through untouched. What counts as a source is written down and defensible.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-plugin-proof">
-            <label class="check-label"><input type="checkbox" id="p2-organizer-plugin" name="p2-organizer-plugin" data-check-id="organizer-plugin" /><span class="check-num">5</span><span class="check-title">The Project Organizer plugin is tested, inspected, installed, and trusted</span></label>
-            <div class="check-detail">One plugin packages the skill, MCP source, bundled verifier, renderer, and one inert-before-output Stop hook; project config holds the only MCP registration, and the installed hook definition is reviewed and trusted separately.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-scope-proof">
+            <label class="check-label"><input type="checkbox" id="p2-scope-narrowed" name="p2-scope-narrowed" data-check-id="scope-narrowed" /><span class="check-num">5</span><span class="check-title">Nothing fires on the material it was not built for</span></label>
+            <div class="check-detail">The course sheet, contact list, equipment log, and chat transcript are left alone; the three arriving files and the five lists still work. The narrowing turns on what the material is, not on a list of filenames.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-board-proof">
-            <label class="check-label"><input type="checkbox" id="p2-released-board" name="p2-released-board" data-check-id="released-board" /><span class="check-num">6</span><span class="check-title">The visual project board is released from verified local evidence</span></label>
-            <div class="check-detail">The operator opens the board and receipt; release shows <code>status: PASS</code>, <code>gate_status: PASS</code>, <code>board_status: RELEASE</code>, three bound reports, four tools derived from validated worker reports, and source IDs beside material findings.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-diagnosis-proof">
+            <label class="check-label"><input type="checkbox" id="p2-silent-failure" name="p2-silent-failure" data-check-id="silent-failure" /><span class="check-num">6</span><span class="check-title">A silent zero is diagnosed before anything is changed</span></label>
+            <div class="check-detail">Loaded, ran, or never reached is named from a named field in <code>intake_receipt.json</code> — not guessed — and the fix is one decision about an unrecognised shape rather than a rewrite. Zero identifiers placed against twelve in the bytes now refuses instead of passing.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="#p2-reflection-proof">
-            <label class="check-label"><input type="checkbox" id="p2-pulse-log" name="p2-pulse-log" data-check-id="pulse-log" /><span class="check-num">7</span><span class="check-title">The P2 closeout records the system, evidence, measurement, and human boundary</span></label>
-            <div class="check-detail">The Operator Log, measurement spine, and 30-day transfer seed point to the real artifacts and distinguish organizing work the system can carry from decisions the person still owns.</div>
+          <li class="check-item" data-check-item data-outcome-after="#p2-package-proof">
+            <label class="check-label"><input type="checkbox" id="p2-inbound-package" name="p2-inbound-package" data-check-id="inbound-package" /><span class="check-num">7</span><span class="check-title">The package accounts for the working set and carries nothing local or secret</span></label>
+            <div class="check-detail">The contents cover every stage, what sits outside the package is named and justified, hook commands resolve through <code>PLUGIN_ROOT</code>, and the searches for absolute paths and for credentials both return nothing.</div>
           </li>
         </ol>
       </section>
 
       <section id="depth" class="home-section">
-        <h2>Operating notes for a real local utility</h2>
-        <p class="section-lede">These are the design choices worth carrying into your own project organizer, tracker, intake queue, or operating dashboard.</p>
+        <h2>Questions worth arguing about</h2>
+        <p class="section-lede">None of these has one right answer. Each one changes what you build, so it is worth having the argument before somebody has to live with your choice.</p>
 
-        <h3>Keep the ledger trustworthy</h3>
-        <table>
-          <thead><tr><th>Practice</th><th>Why it matters</th><th>Release evidence</th></tr></thead>
-          <tbody>
-            <tr><td>Stable ids and declared foreign keys</td><td>Relationships survive file order, display changes, and repeated builds</td><td>Foreign-key verification and orphan count</td></tr>
-            <tr><td>Source identity on material records</td><td>A lead can trace the board instead of trusting generated phrasing</td><td>Source ids in MCP results, state, and board</td></tr>
-            <tr><td>Explicit unknowns</td><td>The system does not turn missing ownership, dates, or decisions into invented facts</td><td>The board preserves source language such as <code>Not assigned in source</code></td></tr>
-            <tr><td>Temporary build plus atomic replacement</td><td>A failed rebuild cannot leave a half-written live database</td><td>Verifier passes before the target is replaced</td></tr>
-            <tr><td>Parameterized queries</td><td>Data values stay data, and inputs cannot reshape the query</td><td>Tests exercise real and empty inputs</td></tr>
-          </tbody>
-        </table>
+        <ul>
+          <li><strong>The partner file names eight people and yields seven records. Refusing loses all eight. Is that right?</strong> The case for refusing: seven silently is worse than none loudly, because seven produces no signal and somebody has to notice the gap on their own. The case against: a person who is genuinely arriving is now on no list at all, and "we refused the file" is a poor answer at the gate. Both positions accept the same thing — the file has to be re-cut. They differ on who carries the risk in the meantime.</li>
+          <li><strong>Somebody is covering nights for the aid station and is on no record. What reaches them?</strong> If your source rule is strict they get nothing, and a real person doing real work stops getting recalled. If you loosen it, the ghost on the imagery list comes back. The interesting answer is neither: it is that the fix is a record, and the question is how fast you can get one made.</li>
+          <li><strong>A gaining desk is not a trade — but should the lists be built on capability or on desk?</strong> Capability is what the directives ask for, and it is what the records support. Desk is what people actually check, and it is how the room is laid out. Building on capability means a person at the Signals desk does not get the Signals recall, and somebody will find that surprising every single time.</li>
+          <li><strong>The badging direction covers every arrival regardless of trade. Which list is that?</strong> It is not a capability list, so it does not fit the five. Do you add a sixth list keyed on report date, or is a message with no list behind it a different kind of thing? Whichever you choose, notice that the answer decides what happens to the eight people your map could not place.</li>
+          <li><strong>Should the source gate block, or mark and continue?</strong> Blocking is honest and it stops the drift, and it is also the thing people disable at 5pm on a Friday. Marking preserves the record of what was untraceable and lets the list go out. A gate that has been switched off enforces nothing, so the question is really: which version survives contact with a bad week?</li>
+          <li><strong>What is a good enough reason to skip the normalizer?</strong> If there is one, the hook should encode it. If there is not, say so plainly — because the exception people actually use is the one nobody wrote down.</li>
+        </ul>
 
-        <h3>Keep MCP smaller than the database</h3>
-        <table>
-          <thead><tr><th>Boundary</th><th>Working rule</th></tr></thead>
-          <tbody>
-            <tr><td>Tool surface</td><td>Expose the four questions the organizer needs, not arbitrary SQL or table dumps</td></tr>
-            <tr><td>Permissions</td><td>Open the database read-only and omit mutation tools; annotations help the client but do not replace enforcement</td></tr>
-            <tr><td>Provenance</td><td>Return stable record and source IDs plus the same source fingerprint from every tool so later layers cannot join different source states</td></tr>
-            <tr><td>Freshness</td><td>Run the bundled data-only verifier on every request; exact schema, source hashes, and source-row parity must pass before a tool answers</td></tr>
-            <tr><td>Errors</td><td>Distinguish no matching work from a missing, stale, or invalid ledger; never answer from memory when the tool fails</td></tr>
-            <tr><td>Protocol</td><td>Use the current SDK's negotiation and schemas; do not hard-code a protocol snapshot into lesson logic</td></tr>
-            <tr><td>State</td><td>Treat tool calls as stateless; derive every answer from the current verified ledger rather than server-process memory</td></tr>
-            <tr><td>Shutdown</td><td>Keep the local server bound to stdio, with no listener or background service to remember after class</td></tr>
-          </tbody>
-        </table>
-
-        <h3>Keep orchestration proportional to the work</h3>
-        <table>
-          <thead><tr><th>Need</th><th>Right control</th><th>Common mistake</th></tr></thead>
-          <tbody>
-            <tr><td>A repeatable organizer run</td><td>One focused skill with source, tool, output, and HOLD rules</td><td>Loading the entire method into every project turn</td></tr>
-            <tr><td>Two independent inspections</td><td>Two read-only workers partition four calls and save exact JSON reports</td><td>The parent repeats calls or rewrites their evidence as a summary</td></tr>
-            <tr><td>A candidate check</td><td>One read-only reviewer binds the candidate state and board hashes</td><td>Rerendering after review and silently invalidating those hashes</td></tr>
-            <tr><td>A must-run release check</td><td>The installed hook runs reviewed bundled code and treats learner files as data</td><td>Importing a project-root verifier into the trusted path</td></tr>
-            <tr><td>Reuse and installation</td><td>Reinstall and retrust only after a plugin-code change</td><td>Assuming an edited source package changed the installed hook copy</td></tr>
-          </tbody>
-        </table>
+        <h3>The same shape on other desks</h3>
+        <ul>
+          <li><strong>Anyone running an on-call rota:</strong> the roster arrives from HR in one shape, the escalation tool holds another, and the paging list is maintained by hand. The person who left three months ago is still in it.</li>
+          <li><strong>Access and permissions:</strong> group membership generated from role records rather than edited, with every membership naming the record that granted it, is the same machine with different nouns.</li>
+          <li><strong>Any recurring intake:</strong> vendors, tickets, applications, referrals. Several formats, one internal shape, and a refusal that is loud enough to notice.</li>
+        </ul>
 
         <h3>Current primary references</h3>
-        <p class="full-measure">Use current primary documentation when adapting this build: <a href="https://docs.python.org/3/library/sqlite3.html" target="_blank" rel="noopener">Python <code>sqlite3</code></a>, <a href="https://learn.chatgpt.com/docs/build-skills" target="_blank" rel="noopener">Codex skills</a>, <a href="https://learn.chatgpt.com/docs/plugins" target="_blank" rel="noopener">plugins</a>, <a href="https://learn.chatgpt.com/docs/hooks" target="_blank" rel="noopener">hooks</a>, <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents" target="_blank" rel="noopener">subagents</a>, and <a href="https://learn.chatgpt.com/docs/extend/mcp" target="_blank" rel="noopener">Codex MCP</a>. The project uses SDK negotiation so a dated protocol number is not copied into the workflow.</p>
+        <p class="full-measure">Use current primary documentation when adapting this build: <a href="https://learn.chatgpt.com/docs/hooks" target="_blank" rel="noopener">Codex hooks</a> for the event names, the <code>hooks.json</code> schema, matcher behaviour, and the exit codes that block; <a href="https://learn.chatgpt.com/docs/build-skills" target="_blank" rel="noopener">Codex skills</a> for where a project skill lives and how its description decides when it loads; <a href="https://developers.openai.com/plugins/build/plugins" target="_blank" rel="noopener">building plugins</a> for the manifest keys and the local marketplace file; and <a href="https://docs.python.org/3/library/csv.html" target="_blank" rel="noopener">Python <code>csv</code></a> for what its reader does and does not treat as an error.</p>
       </section>
 
       <section id="stuck" class="split-2 home-section">
         <div>
           <h2>Before you move on</h2>
-          <p>The local board opens cleanly; the receipt says PASS / PASS / RELEASE; its evidence binds three reports and derives four MCP tools from validated worker reports; source IDs are visible; and the Operator Log records what the system carries versus what you still decide.</p>
+          <p>The normalizer refuses the damaged file and nothing reads a raw arrival directly; every capability names its record; the five lists regenerate and a single record change moves only its own list; an untraceable line is refused; nothing fires on the lookalike material; and the package contains the working set with no local paths and no secrets. Full list: <a href="#floor">these P2 lesson outcomes</a>.</p>
         </div>
         <div>
           <h2>If you get stuck</h2>
           <ul>
-            <li><strong>The P2 folder already exists.</strong> Open it and continue, or move it to a dated archive. The bootstrap will not overwrite it.</li>
-            <li><strong><code>py -3</code> is not recognized.</strong> Return to the Pre-work install clinic and repair the Python launcher before changing any script.</li>
-            <li><strong>The ledger verifier fails.</strong> Give Codex the exact error and named source record. Repair the parser, schema, or relationship; do not edit the database or source packet by hand.</li>
-            <li><strong>The MCP server is missing.</strong> Rerun the idempotent configuration script, restart Codex, and inspect <code>/mcp</code>. Confirm one local server and the four allowed tools.</li>
-            <li><strong>An MCP call returns no provenance.</strong> Stop the run and repair the tool contract. Do not let the next layer reconstruct source identity.</li>
-            <li><strong>The plugin does not appear.</strong> Confirm <code>.agents\plugins\marketplace.json</code> and <code>plugins\project-organizer</code> exist. Run <code>codex plugin marketplace list</code>; if the P2 project root is absent, add it with <code>codex plugin marketplace add "$env:USERPROFILE\Documents\HarnessBootcamp\P2_Project_Organizer"</code>. Then completely restart the app and reopen the project.</li>
-            <li><strong>The Stop hook is skipped.</strong> Open the CLI in this project, use <code>/hooks</code>, inspect the installed command, and trust that exact definition. Then finish a normal organizer turn. The Stop event—not a manual command—is the release path.</li>
-            <li><strong>You need source-package diagnosis.</strong> Only for instructor testing or hook recovery, ask Codex to run <code>py -3 plugins\project-organizer\hooks\release_gate.py --check</code>. The command does not write the receipt, release files, evidence, or repair count. A PASS checks the learner source package; it does not prove the installed hook copy is current or that Stop released the board.</li>
-            <li><strong>The receipt says HOLD.</strong> Read the named failed check and direct one source-backed repair. Never lower the check or manufacture a project fact. If plugin code changes, validate it, remove/add the plugin, restart, review and trust <code>/hooks</code>, then run the normal Stop path. An older installed renderer can still HOLD even when the edited source-package check passes.</li>
+            <li><strong><code>py -3</code> is not recognized.</strong> Return to the install clinic and repair the Python launcher. Do not work around it by changing a script.</li>
+            <li><strong>Codex cannot see <code>inbound</code>.</strong> The app works from the folder the project is opened at. Check that it is <code>P2_Inbound</code> and not the course repository or your Documents folder.</li>
+            <li><strong>The partner file produced rows.</strong> The integrity checks are too weak. The check that catches it compares how many records the reader returned against how many person identifiers are in the raw bytes. Add that one first.</li>
+            <li><strong>A hook does not fire.</strong> Check in this order: <code>/hooks</code> shows it and shows it trusted; the matcher names the tool that actually did the work; the event is the one that happens at that moment. A hook you edited is untrusted again until you re-trust it, and an untrusted hook is skipped in silence.</li>
+            <li><strong>A hook fires on everything.</strong> Do not remove it — narrow it. Widen the condition it lets through, one clause at a time, and rerun the whole set after each change so you can see what the clause cost.</li>
+            <li><strong>The capability skill does not load.</strong> The description is what decides. Put the trigger material in it — a normalized arrivals roster, capability, billet, qualification — and name what it is not for. A description that reads like a title never fires.</li>
+            <li><strong>A count is wrong and you cannot see why.</strong> Take one person and walk it: the raw line, the normalized row, the map row, the list. The step where the person stops being right is the step to fix. Reading the whole output again will not tell you.</li>
+            <li><strong>You edited a file under <code>inbound\</code> and want it back.</strong> Recopy that one file from the course repository with <code>Copy-Item</code>. Do not repair the material to make a check pass.</li>
           </ul>
         </div>
       </section>

@@ -50,7 +50,7 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 | 5. I still own | |
 | 6. Adversarial | |
 
-### P2 — Project Organizer
+### P2 — Inbound
 
 | Field | Note |
 |---|---|
@@ -59,7 +59,7 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 | 3. Verdict | |
 | 4. Evidence | |
 | 5. I still own | |
-| 6. Release check | |
+| 6. Enforcement check | |
 
 ### P3 — Twin-engine + MCP evidence
 

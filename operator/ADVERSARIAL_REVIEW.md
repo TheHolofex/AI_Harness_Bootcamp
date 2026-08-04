@@ -53,7 +53,7 @@ When the live module page calls for a separate review, use this routing rule:
 
 | Block | Reviewer | Why it is free there |
 |---|---|---|
-| **P2** | **No separate attack pass** | Two read-only workers, a later read-only reviewer, and the deterministic release hook already inspect the source-backed Project Organizer; the reflection records their real findings instead of manufacturing another exercise |
+| **P2** | **No separate attack pass** | The intake checks, the two hooks, and the narrowing run against lookalike material already attack the components from three directions; the reflection records their real findings instead of manufacturing another exercise |
 | **P3** | **No separate attack pass** | The comparator and source packet already put every consequential claim through a second engine and raw evidence; do not manufacture another review step |
 | **P4** | **No separate attack pass** | The human raw-source audit, configured read-only evaluator, deterministic verifier, and real mid-run resume already test the outcome and trajectory; a generic attack would repeat the same boundary |
 | **P5** | **No separate attack pass** | The exposed run is confined to a disposable project; trusted external before/after manifest receipts, human target checks, and operator dispositions form the containment review boundary |
@@ -166,7 +166,7 @@ The outer loop should not inherit unchallenged fantasy.
 | Setting | Challenger |
 |---|---|
 | **When directed by the module page** | Module-specific adversarial AI chat, new for that review (this file) |
-| **P2** | The Project Organizer reviewer and deterministic release receipt are the review; no separate attack pass |
+| **P2** | The refusal of the damaged file, the untraceable-line hook, and the run against lookalike material are the review; no separate attack pass |
 | **P3** | The twin-engine comparator, MCP source packet, and raw-file adjudication are the review; no separate attack pass |
 | **P4** | Human raw-source audit, configured read-only evaluator, deterministic verifier, and mid-run resume from durable state; no separate attack pass |
 | **P5** | Isolated exposed run, trusted external before/after manifest receipts, and human target checks are the review; no separate attack pass |
@@ -181,7 +181,7 @@ A human challenger trains *institutional* honesty: someone whose good opinion co
 
 ## Facilitator notes
 
-- **At P2, inspect the Project Organizer review and release receipt. At P3, inspect the material differences between the two frozen outputs and the source dispositions. At P4, inspect the trail audit, evaluator, trusted verifier, trace, and terminal reason. At P5, inspect the isolated exposed run, external before/after manifest receipts, and human target checks. At P8, watch the two-reviewer disagreement rate.** Near-zero disagreement can be legitimate; check the saved tables and evidence before drawing a cohort conclusion.
+- **At P2, inspect the refusal reasons for the damaged file and what the components did against the lookalike material. At P3, inspect the material differences between the two frozen outputs and the source dispositions. At P4, inspect the trail audit, evaluator, trusted verifier, trace, and terminal reason. At P5, inspect the isolated exposed run, external before/after manifest receipts, and human target checks. At P8, watch the two-reviewer disagreement rate.** Near-zero disagreement can be legitimate; check the saved tables and evidence before drawing a cohort conclusion.
 - A polite reviewer is the same signal one engine at a time: the student under-pasted or reused the build chat.
 - Time box the separate attack pass at **5–8 minutes** standard and **10–12** at P8, where the pack is reviewed twice. P2, P3, P4, and P5 carry their review time inside the product workflow.
 - Rescue: narrower artifact paste, not a softer prompt.

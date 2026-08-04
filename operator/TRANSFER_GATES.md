@@ -35,7 +35,7 @@ Follow the live module page
 |---|---|
 | B1 | None; complete the guided First Light dashboard flow |
 | P1 | Judgment-product machine seed in the P1 closeout |
-| P2 | Project Organizer/30-day reuse seed in the P2 reflection |
+| P2 | Inbound/30-day reuse seed in the P2 reflection |
 | P3 | Comparator/disposition/MCP-boundary seed in the P3 closeout |
 | P4 | Personal-harness goal, boundary, owner, pattern, acceptance/stop rule, and first trial in the P4 handoff |
 | P5 | Intake/trusted-picture seed in the P5 closeout |

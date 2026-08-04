@@ -26,7 +26,7 @@
 | Context loaded (Codex app) | `AGENTS.md` ☐ · skills ☐ · plugins/hooks ☐ · custom agents ☐ · memories ☐ — list which: ________ | — |
 | MCP surface during frozen run | no user-configured/external server active confirmed with `/mcp verbose` ☐ · unavoidable built-ins listed but not invoked ☐ · or list every exception below | — |
 
-The Codex app can load `AGENTS.md`, skills, plugins and hooks, custom agents, memories, and MCP surfaces. Run P3 inside your P2 Project Organizer folder and Engine A is carrying that project harness while Engine B runs bare — that is one engine plus your setup, not two engines. Declare it or run clean.
+The Codex app can load `AGENTS.md`, skills, plugins and hooks, custom agents, memories, and MCP surfaces. Run P3 inside your P2 Inbound folder and Engine A is carrying that project harness while Engine B runs bare — that is one engine plus your setup, not two engines. Declare it or run clean.
 
 ## Side-by-side (add rows as needed)
 

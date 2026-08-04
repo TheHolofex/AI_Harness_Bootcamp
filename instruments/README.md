@@ -1,7 +1,7 @@
 # Course instruments — shared, finishable kits
 
-In-class starter and verification gear for **P2**, **P3**, and **P8**.
-P2 builds the local Project Organizer from a shared project packet. P3 and P8 use the same track-specific evidence cases.
+In-class starter and verification gear for **P3** and **P8**, which use the same track-specific evidence cases.
+P2 works directly from the Tuesday morning corpus in `mission_flesh/tuesday/inbound/` and needs no kit here.
 
 ## Choose a track in P3 and keep it through P8
 
@@ -16,13 +16,12 @@ Pick at P3 start. **Do not switch before P8** — Friday runs the same D01–D05
 
 ```text
 instruments/
-  p2_control_plane/   # Tue AM — Project Organizer starter + checked reference
   endpoint_case_suite/ # D01–D05 course endpoint cases used by P8
   p3_frozen_brief/   # Tue PM — dual-engine frozen demand
   p8_hold_degrade/   # Fri AM — paired Home/Open endpoint evidence
 ```
 
-The P2 kit holds the project source packet, isolated bootstrap, and maintainer-tested reference implementation. The endpoint suite holds the frozen cases and operator-only grader. P3 holds its frozen
+The endpoint suite holds the frozen cases and operator-only grader. P3 holds its frozen
 brief, track corpora, and comparator. P8 holds the paired score sheet and raw-run layout.
 The live website carries the student procedure.
 

@@ -60,23 +60,12 @@ jobs:
         with:
           node-version: "22.22.0"
           cache: npm
-          cache-dependency-path: |
-            instruments/p2_control_plane/reference/plugins/project-organizer/package-lock.json
-            instruments/p3_mcp_evidence/package-lock.json
+          cache-dependency-path: instruments/p3_mcp_evidence/package-lock.json
 
       - name: Run rotting-facts harness
         # Local checks are hard gates. Network drift probes use the same public
         # Node, npm, and AAIF channels named by the canonical install page.
         run: python .github/scripts/verify-stack-facts.py
-
-      - name: Verify the P2 Project Organizer reference
-        run: python instruments/p2_control_plane/reference/tests/verify_reference.py
-
-      - name: Install the locked P2 plugin dependencies
-        run: npm ci --prefix instruments/p2_control_plane/reference/plugins/project-organizer --ignore-scripts --no-audit --no-fund
-
-      - name: Smoke-test the P2 Project Organizer plugin
-        run: npm test --prefix instruments/p2_control_plane/reference/plugins/project-organizer
 
       - name: Smoke-test the P3 MCP evidence boundary
         working-directory: instruments/p3_mcp_evidence
@@ -107,79 +96,3 @@ jobs:
       - name: Smoke-test the PowerShell 5.1 project configuration
         working-directory: instruments/p3_mcp_evidence
         run: npm run configure-smoke
-
-  verify-p2-project-organizer-windows:
-    name: verify-p2-project-organizer-windows
-    runs-on: windows-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22.22.0"
-          cache: npm
-          cache-dependency-path: instruments/p2_control_plane/reference/plugins/project-organizer/package-lock.json
-
-      - name: Smoke-test the isolated P2 bootstrap
-        shell: powershell
-        run: |
-          $target = Join-Path $env:RUNNER_TEMP "P2 Project Organizer with spaces"
-          .\instruments\p2_control_plane\bootstrap.ps1 -Destination $target
-          $required = @(
-            "AGENTS.md",
-            "PROJECT_ORGANIZER_CONTRACT.md",
-            ".agents\plugins\marketplace.json",
-            ".codex\config.toml",
-            "source_packet\01_project_charter.md",
-            "source_packet\02_deliverables.csv",
-            "source_packet\03_dependency_notes.md",
-            "source_packet\04_decision_log.md",
-            "source_packet\05_status_updates.md",
-            "source_packet\06_source_register.csv"
-          )
-          foreach ($relative in $required) {
-            if (-not (Test-Path -LiteralPath (Join-Path $target $relative))) {
-              throw "P2 bootstrap missing $relative"
-            }
-          }
-          if (Test-Path -LiteralPath (Join-Path $target "reference")) {
-            throw "P2 bootstrap copied the maintainer reference into the learner project"
-          }
-          foreach ($generated in @("project_ledger.sqlite3", "PROJECT_BOARD.html", "PROJECT_STATE.json", "RUN_RECEIPT.json", "plugins")) {
-            if (Test-Path -LiteralPath (Join-Path $target $generated)) {
-              throw "P2 bootstrap included generated work: $generated"
-            }
-          }
-
-          $sentinel = Join-Path $target "STUDENT_WORK.txt"
-          Set-Content -LiteralPath $sentinel -Encoding UTF8 -Value "preserve me"
-          $refused = $false
-          try {
-            .\instruments\p2_control_plane\bootstrap.ps1 -Destination $target
-          } catch {
-            $refused = $true
-          }
-          if (-not $refused -or -not (Test-Path -LiteralPath $sentinel)) {
-            throw "P2 bootstrap did not preserve an existing project"
-          }
-
-      - name: Verify the P2 Project Organizer reference
-        run: python instruments/p2_control_plane/reference/tests/verify_reference.py
-
-      - name: Install the locked P2 Project Organizer plugin dependencies
-        run: npm ci --prefix instruments/p2_control_plane/reference/plugins/project-organizer --ignore-scripts --no-audit --no-fund
-
-      - name: Smoke-test the P2 Windows project configuration
-        shell: powershell
-        run: .\instruments\p2_control_plane\reference\tests\configure_smoke.ps1
-
-      - name: Smoke-test the P2 Project Organizer plugin
-        run: npm test --prefix instruments/p2_control_plane/reference/plugins/project-organizer

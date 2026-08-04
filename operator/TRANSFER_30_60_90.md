@@ -67,7 +67,7 @@ During the artifact-backed closeout on each live module page, write **one entry 
 | Block | Seed section to fill |
 |---|---|
 | **P1** | From P1 — Machine candidate |
-| **P2** | From P2 — Project Organizer |
+| **P2** | From P2 — Inbound |
 | **P3** | From P3 — Verdict ownership |
 | **P4** | From P4 — Personal operating harness |
 | **P5** | From P5 — Operating picture |
@@ -128,16 +128,16 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | Recurring judgment product on my desk that should become a machine | |
 | What has to be true for it to regenerate rather than be rewritten | |
 
-### From P2 — Project Organizer (feeds **30 days**)
+### From P2 — Inbound (feeds **30 days**)
 
 | Field | Entry |
 |---|---|
 | Date | |
-| Real project whose status is spread across files or people | |
-| Project facts the SQLite ledger must keep, with their source files | |
-| Four read-only MCP questions that help me decide what moves next | |
-| Disjoint worker split, exact saved report paths, and hash-bound review I keep before release | |
-| Candidate board and PASS/HOLD release receipt I inspect | |
+| Recurring intake on my desk that arrives in more than one shape | |
+| The one shape it should become, and what a missing field is written as | |
+| The records that are allowed to assert a fact, and the ones that only look like they can | |
+| The list or output that should be generated rather than edited | |
+| The rule I am moving from advice into a hook, and what it refuses | |
 | 30-day reuse rule and its first proof | |
 
 ### From P3 — Verdict ownership (feeds **30–60**)

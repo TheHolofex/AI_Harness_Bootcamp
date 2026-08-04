@@ -14,7 +14,7 @@ What it covers:
   - The current Node LTS remains inside the range taught for n8n
   - The npm OpenCode package and AAIF goose installer remain available
   - Goose's Windows runtime, model, and native-exit guards remain present
-  - The P2 Project Organizer surface and reference package remain wired
+  - The P2 Inbound surface and its morning corpus remain wired
   - The Agent Loops briefing and P4 personal harness remain wired in sequence
   - The repository still contains load-bearing exercise and facilitator paths
 
@@ -45,8 +45,7 @@ P2_PAGE = REPO_ROOT / "site" / "blocks" / "p2.html"
 LOOPS_PAGE = REPO_ROOT / "site" / "blocks" / "loops.html"
 P4_PAGE = REPO_ROOT / "site" / "blocks" / "p4.html"
 P5_PAGE = REPO_ROOT / "site" / "blocks" / "p5.html"
-P2_STARTER = REPO_ROOT / "instruments" / "p2_control_plane" / "starter"
-P2_REFERENCE = REPO_ROOT / "instruments" / "p2_control_plane" / "reference"
+P2_MATERIAL = REPO_ROOT / "mission_flesh" / "tuesday"
 P4_SEED = REPO_ROOT / "mission_flesh" / "p4" / "vault_seed"
 WINDOWS_SMOKE = REPO_ROOT / ".github" / "scripts" / "prework-verify.ps1"
 WINDOWS_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "prework-smoke.yml"
@@ -116,31 +115,20 @@ def check_repo_paths(report: Report) -> None:
         "operator/DIRECTION_BRIEF.md",
         "operator/CAPABILITIES.md",
         "instruments/endpoint_case_suite",
-        "instruments/p2_control_plane/bootstrap.ps1",
-        "instruments/p2_control_plane/starter/PROJECT_ORGANIZER_CONTRACT.md",
-        "instruments/p2_control_plane/starter/source_packet/01_project_charter.md",
-        "instruments/p2_control_plane/starter/source_packet/06_source_register.csv",
-        "instruments/p2_control_plane/reference/schema.sql",
-        "instruments/p2_control_plane/reference/build_project_ledger.py",
-        "instruments/p2_control_plane/reference/verify_project_ledger.py",
-        "instruments/p2_control_plane/reference/configure_project_organizer.ps1",
-        "instruments/p2_control_plane/reference/.codex/agents/scope_mapper.toml",
-        "instruments/p2_control_plane/reference/.codex/agents/dependency_planner.toml",
-        "instruments/p2_control_plane/reference/.codex/agents/board_reviewer.toml",
-        "instruments/p2_control_plane/reference/.agents/plugins/marketplace.json",
-        "instruments/p2_control_plane/reference/tests/verify_reference.py",
-        "instruments/p2_control_plane/reference/tests/configure_smoke.ps1",
-        "instruments/p2_control_plane/reference/plugins/project-organizer/package.json",
-        "instruments/p2_control_plane/reference/plugins/project-organizer/package-lock.json",
-        "instruments/p2_control_plane/reference/plugins/project-organizer/.codex-plugin/plugin.json",
-        "instruments/p2_control_plane/reference/plugins/project-organizer/skills/project-organizer/SKILL.md",
-        "instruments/p2_control_plane/reference/plugins/project-organizer/mcp/server.mjs",
-        "instruments/p2_control_plane/reference/plugins/project-organizer/mcp/query_ledger.py",
-        "instruments/p2_control_plane/reference/plugins/project-organizer/lib/ledger_verifier.py",
-        "instruments/p2_control_plane/reference/plugins/project-organizer/scripts/render_project_board.py",
-        "instruments/p2_control_plane/reference/plugins/project-organizer/hooks/hooks.json",
-        "instruments/p2_control_plane/reference/plugins/project-organizer/hooks/release_gate.py",
-        "instruments/p2_control_plane/reference/plugins/project-organizer/tests/smoke.mjs",
+        "mission_flesh/tuesday/MANIFEST.md",
+        "mission_flesh/tuesday/inbound/arrivals/arrivals_a_station_manifest.csv",
+        "mission_flesh/tuesday/inbound/arrivals/arrivals_b_desk_paste.txt",
+        "mission_flesh/tuesday/inbound/arrivals/arrivals_c_persys_export.json",
+        "mission_flesh/tuesday/inbound/arrivals/arrivals_c_persys_export_v2.json",
+        "mission_flesh/tuesday/inbound/arrivals/arrivals_d_partner_roster.csv",
+        "mission_flesh/tuesday/inbound/records/billet_catalog.csv",
+        "mission_flesh/tuesday/inbound/records/qualification_register.csv",
+        "mission_flesh/tuesday/inbound/records/current_roster.csv",
+        "mission_flesh/tuesday/inbound/records/rotation_out.csv",
+        "mission_flesh/tuesday/inbound/records/desk_directory.md",
+        "mission_flesh/tuesday/inbound/distros",
+        "mission_flesh/tuesday/inbound/lookalike",
+        "mission_flesh/tuesday/inbound/traffic",
         "instruments/p3_frozen_brief",
         "instruments/p3_multi_agent",
         "instruments/p8_hold_degrade",
@@ -313,40 +301,31 @@ def check_registry_install_route(report: Report) -> None:
         )
 
 
-def check_p2_project_organizer_surface(report: Report) -> None:
+def check_p2_inbound_surface(report: Report) -> None:
     registry = REGISTRY.read_text(encoding="utf-8")
     hcp = HCP_PAGE.read_text(encoding="utf-8")
     p2 = P2_PAGE.read_text(encoding="utf-8")
-    contract = (P2_STARTER / "PROJECT_ORGANIZER_CONTRACT.md").read_text(
-        encoding="utf-8"
-    )
-    schema = (P2_REFERENCE / "schema.sql").read_text(encoding="utf-8")
+    manifest = (P2_MATERIAL / "MANIFEST.md").read_text(encoding="utf-8")
     expected = {
         "registry briefing": 'code: "HCP"',
         "registry route": 'codes: ["HCP", "P2", "MCP1", "MCP2", "P3"]',
-        "registry title": 'title: "Build the Project Organizer"',
+        "registry title": 'title: "Inbound"',
         "registry storage": 'key: "ahb-checklist-p2-project-organizer"',
         "presentation URL": "Harness-Prompt-Folklore-Design-the-Control-Plane-Not-Just-the-Pro-74204eoe255uss1",
-        "P2 bootstrap": "instruments\\p2_control_plane\\bootstrap.ps1",
-        "P2 skill creation": "$skill-creator",
-        "P2 plugin creation": "$plugin-creator",
-        "P2 plugin": "project-organizer",
-        "P2 read-only MCP": "get_project_snapshot",
-        "P2 trusted verifier": "plugins/project-organizer/lib/ledger_verifier.py",
-        "P2 two workers": "scope_mapper",
-        "P2 sequential reviewer": "board_reviewer",
-        "P2 scope report": ".project-organizer/evidence/scope_mapper.json",
-        "P2 dependency report": ".project-organizer/evidence/dependency_planner.json",
-        "P2 reviewer report": ".project-organizer/evidence/board_reviewer.json",
-        "P2 launch path": "longest declared launch path",
-        "P2 report basis": "validated worker reports",
+        "P2 material root": "mission_flesh\\tuesday\\inbound",
+        "P2 damaged source": "arrivals_d_partner_roster.csv",
+        "P2 upgraded export": "arrivals_c_persys_export_v2.json",
+        "P2 normalizer": "scripts\\normalize_arrivals.py",
+        "P2 hook event": "PreToolUse",
+        "P2 hook registration": ".codex/hooks.json",
+        "P2 hook trust": "/hooks",
+        "P2 skill location": ".agents/skills/",
+        "P2 plugin manifest": "plugins/inbound/.codex-plugin/plugin.json",
+        "P2 marketplace file": ".agents/plugins/marketplace.json",
         "P2 marketplace registration": "codex plugin marketplace add",
-        "P2 board": "PROJECT_BOARD.html",
-        "P2 state": "PROJECT_STATE.json",
-        "P2 receipt": "RUN_RECEIPT.json",
+        "P2 plugin root variable": "PLUGIN_ROOT",
         "P2 model": "gpt-5.6-terra",
-        "P2 contract source boundary": "source_packet",
-        "P2 schema sources": "CREATE TABLE sources",
+        "P2 manifest morning corpus": "inbound/arrivals/",
     }
     surfaces = {
         "registry briefing": registry,
@@ -354,40 +333,34 @@ def check_p2_project_organizer_surface(report: Report) -> None:
         "registry title": registry,
         "registry storage": registry,
         "presentation URL": hcp,
-        "P2 bootstrap": p2,
-        "P2 skill creation": p2,
-        "P2 plugin creation": p2,
-        "P2 plugin": p2,
-        "P2 read-only MCP": p2,
-        "P2 trusted verifier": p2,
-        "P2 two workers": p2,
-        "P2 sequential reviewer": p2,
-        "P2 scope report": p2,
-        "P2 dependency report": p2,
-        "P2 reviewer report": p2,
-        "P2 launch path": p2.lower(),
-        "P2 report basis": p2,
+        "P2 material root": p2,
+        "P2 damaged source": p2,
+        "P2 upgraded export": p2,
+        "P2 normalizer": p2,
+        "P2 hook event": p2,
+        "P2 hook registration": p2,
+        "P2 hook trust": p2,
+        "P2 skill location": p2,
+        "P2 plugin manifest": p2,
+        "P2 marketplace file": p2,
         "P2 marketplace registration": p2,
-        "P2 board": p2,
-        "P2 state": p2,
-        "P2 receipt": p2,
+        "P2 plugin root variable": p2,
         "P2 model": p2,
-        "P2 contract source boundary": contract,
-        "P2 schema sources": schema,
+        "P2 manifest morning corpus": manifest,
     }
     missing = [label for label, token in expected.items() if token not in surfaces[label]]
     if missing:
         report.add(
-            "site.p2_project_organizer",
+            "site.p2_inbound",
             False,
             "missing: " + ", ".join(missing),
             hard=True,
         )
     else:
         report.add(
-            "site.p2_project_organizer",
+            "site.p2_inbound",
             True,
-            "presentation, route, starter, SQLite, local MCP, skill, plugin, agents, outputs, and Terra pin present",
+            "presentation, route, morning corpus, normalizer, both hooks, both skills, package, marketplace, and Terra pin present",
             hard=True,
         )
 
@@ -591,7 +564,7 @@ def main() -> int:
         check_canonical_install_surface(report)
         check_goose_windows_guards(report)
         check_registry_install_route(report)
-        check_p2_project_organizer_surface(report)
+        check_p2_inbound_surface(report)
         check_p4_agent_loop_surface(report)
         check_node_lts_claim(report)
         check_opencode_npm_channel(report)
