@@ -40,7 +40,7 @@
       ids: [
         "cx-install", "cx-signin", "cx-lock", "cx-project", "cx-sandbox", "cx-write",
         "oc-install", "oc-verify", "oc-models", "oc-write",
-        "pi-install", "pi-verify", "pi-write", "pi-bash",
+        "pi-install", "pi-verify", "pi-write",
         "gs-runtime", "gs-keyring", "gs-provider", "gs-install", "gs-path", "gs-verify", "gs-write",
         "ob-install", "ob-vault", "n8n-install", "n8n-start", "n8n-owner", "n8n-stop",
         "g-four"

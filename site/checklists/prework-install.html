@@ -35,7 +35,7 @@
 <nav class="checklist-phase-map" aria-label="Pre-work phases">
   <a href="#phase-basics"><span class="phase-number">1</span><strong>Machine</strong><span data-phase-stat="basics">0 / 17</span></a>
   <a href="#phase-keys"><span class="phase-number">2</span><strong>Keys</strong><span data-phase-stat="keys">0 / 5</span></a>
-  <a href="#phase-tools"><span class="phase-number">3</span><strong>Harnesses + tools</strong><span data-phase-stat="tools">0 / 28</span></a>
+  <a href="#phase-tools"><span class="phase-number">3</span><strong>Harnesses + tools</strong><span data-phase-stat="tools">0 / 27</span></a>
   <a href="#phase-files"><span class="phase-number">4</span><strong>Course files</strong><span data-phase-stat="files">0 / 1</span></a>
 </nav>
 
@@ -489,11 +489,11 @@ Set-Content -Path $cfg -Value (@('forced_login_method = "api"', 'model = "gpt-5.
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-cx-project" data-check-id="cx-project" />
     <span class="check-num">28</span>
-    <span class="check-title">Open your smoke folder and create the B0 smoke chat</span>
+    <span class="check-title">Open your smoke folder and prepare the B0 smoke chat</span>
   </label>
   <div class="check-detail"><p>After the restart, open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong> from the top-left switcher if needed.</p>
   <p>Choose <strong>Open project</strong> and pick the smoke folder you made in section 6: <code>Documents\HarnessBootcamp\prework-smoke</code>.</p>
-  <p>Click <strong>New chat</strong>. In the sidebar, open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>B0 — Codex Smoke Test</code>.</p>
+  <p>Click <strong>New chat</strong>. A blank chat does not appear in the sidebar until you send its first prompt, so you will rename it after the proof request in step 30.</p>
   <p>Confirm the model picker says <strong>gpt-5.6-terra</strong>. If it says Sol or another default, select Terra before you send the smoke-test prompt.</p>
   <p>The folder you open is the boundary. Codex reads and writes inside it and has to ask before reaching anywhere else on your machine.</p>
   <p>That's worth pausing on, because it's the shape of everything you'll do this week: you decide what the machine can see before you give it work, not after.</p></div>
@@ -521,9 +521,9 @@ sandbox = "unelevated"</code></pre>
     <span class="check-num">30</span>
     <span class="check-title">Write proof: from-codex.txt</span>
   </label>
-  <div class="check-detail"><p>In <strong>B0 — Codex Smoke Test</strong>, ask for the file in plain language:</p>
+  <div class="check-detail"><p>In the new smoke chat, ask for the file in plain language:</p>
   <pre><code>Create a file named from-codex.txt in this folder containing exactly the text: codex works</code></pre>
-  <p>Approve the write when it asks — that prompt is the sandbox doing its job. Then open the folder in Explorer and look.</p>
+  <p>Send the prompt. Once the chat appears in the sidebar, open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>B0 — Codex Smoke Test</code>. Then approve the write when it asks — that prompt is the sandbox doing its job. Open the folder in Explorer and look.</p>
   <p>You want the file on disk, containing <code>codex works</code>. A confident <em>"I've created that for you"</em> with nothing in the folder is a fail, and noticing the difference is the first operator habit this course builds.</p>
   <p>If it can't authenticate, the key is the problem rather than the sandbox — return to <strong>Sign in with your API key</strong>.</p></div>
 </li>
@@ -658,19 +658,6 @@ Get-Content .\from-pi.txt</code></pre>
   <p>There's no <code>-m</code> shorthand despite what several guides claim — it has to be <code>--model</code>.</p></div>
 </li>
 
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-pi-bash" data-check-id="pi-bash" />
-    <span class="check-num">41</span>
-    <span class="check-title">Verify that Pi can reach a shell</span>
-  </label>
-  <div class="check-detail"><p>Pi needs Git Bash to run shell commands, and it only looks for it at the moment it first needs one. A missing shell therefore fails <em>mid-exercise</em> rather than at setup, so force the problem out now:</p>
-  <pre><code>pi -p --provider xai --model "$env:HB_XAI_MODEL" "Run the shell command 'echo bash-ok > bash-check.txt' and tell me the result"
-Get-Content .\bash-check.txt</code></pre>
-  <p>If it reports no bash shell found, point Pi at the Git Bash path that returned <code>True</code> in step 15 by creating <code>%USERPROFILE%\.pi\agent\settings.json</code> containing:</p>
-  <pre><code>{ "shellPath": "C:\\Program Files\\Git\\bin\\bash.exe" }</code></pre>
-  <p>The doubled backslashes are required — that file format treats a single backslash as an escape character.</p></div>
-</li>
 </ol></section>
 
 <section class="checklist-section"><h3>10 · goose — recipe, tools, mode, schedule</h3>
@@ -682,7 +669,7 @@ Get-Content .\bash-check.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-gs-what" data-check-id="gs-what" />
-    <span class="check-num">42</span>
+    <span class="check-num">41</span>
     <span class="check-title">Know what goose is for</span>
   </label>
   <div class="check-detail"><p><a href="https://goose-docs.ai" target="_blank" rel="noopener"><strong>goose</strong></a> is a local-first agent platform (CLI required here; Desktop optional). It is more than a one-shot chat: you package a <strong>recipe</strong> (mission + parameters), choose a <strong>tool surface</strong> (extensions / MCP tools), set an <strong>autonomy dial</strong> (<code>GOOSE_MODE</code>, max turns), and optionally an <strong>unattended path</strong> (scheduler + retry).</p>
@@ -693,7 +680,7 @@ Get-Content .\bash-check.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-runtime" data-check-id="gs-runtime" />
-    <span class="check-num">43</span>
+    <span class="check-num">42</span>
     <span class="check-title">Install and verify the Windows runtime Goose needs</span>
   </label>
   <div class="check-detail"><p>Do this before configuring or installing Goose. The Windows package contains <code>goose.exe</code>, but it relies on Microsoft C++ runtime files supplied by Windows. Without them, Goose can appear installed and then quit with <code>0xC0000135</code>.</p>
@@ -716,7 +703,7 @@ if (-not $vcRuntime) {
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-keyring" data-check-id="gs-keyring" />
-    <span class="check-num">44</span>
+    <span class="check-num">43</span>
     <span class="check-title">Turn off the Windows keyring first</span>
   </label>
   <div class="check-detail"><p>Do this <strong>before</strong> installing. By default goose stores secrets in Windows Credential Manager, which fails often enough on managed laptops that its own documentation tells you to decline it. Setting this first means the installer never tries.</p>
@@ -728,7 +715,7 @@ $env:GOOSE_DISABLE_KEYRING = '1'</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-provider" data-check-id="gs-provider" />
-    <span class="check-num">45</span>
+    <span class="check-num">44</span>
     <span class="check-title">Tell goose which provider and model to use</span>
   </label>
   <div class="check-detail"><p>goose reads <code>XAI_API_KEY</code> from the environment, but it still needs an explicit provider and model. Reuse the xAI model id from phase 2:</p>
@@ -745,7 +732,7 @@ $env:GOOSE_MODEL = $env:HB_XAI_MODEL</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-install" data-check-id="gs-install" />
-    <span class="check-num">46</span>
+    <span class="check-num">45</span>
     <span class="check-title">Install the goose command-line tool</span>
   </label>
   <div class="check-detail"><p>The course uses Goose from the Agentic AI Foundation (<code>aaif-goose</code>). Use only this official AAIF installer; older instructions that point to <code>block/goose</code> are stale.</p>
@@ -765,7 +752,7 @@ curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-path" data-check-id="gs-path" />
-    <span class="check-num">47</span>
+    <span class="check-num">46</span>
     <span class="check-title">Add goose to your PATH</span>
   </label>
   <div class="check-detail"><p>The installer drops goose into <code>%USERPROFILE%\.local\bin</code> but doesn't add that folder to PATH — it only prints a warning that's easy to scroll past.</p>
@@ -781,7 +768,7 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-verify" data-check-id="gs-verify" />
-    <span class="check-num">48</span>
+    <span class="check-num">47</span>
     <span class="check-title">Verify goose and check what it sees</span>
   </label>
   <div class="check-detail"><pre><code>$gooseCommand = Get-Command goose -CommandType Application -ErrorAction Stop
@@ -806,7 +793,7 @@ $gooseInfo</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-write" data-check-id="gs-write" />
-    <span class="check-num">49</span>
+    <span class="check-num">48</span>
     <span class="check-title">Write proof: from-goose.txt</span>
   </label>
   <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
@@ -827,7 +814,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ob-install" data-check-id="ob-install" />
-    <span class="check-num">50</span>
+    <span class="check-num">49</span>
     <span class="check-title">Install Obsidian</span>
   </label>
   <div class="check-detail"><p>Obsidian reads and writes ordinary Markdown files in a folder. On Wednesday you'll point an agent at that folder and build a knowledge system with citations you can walk.</p>
@@ -838,7 +825,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ob-vault" data-check-id="ob-vault" />
-    <span class="check-num">51</span>
+    <span class="check-num">50</span>
     <span class="check-title">Create a vault and confirm it opens</span>
   </label>
   <div class="check-detail"><p>A <strong>vault</strong> is just a folder Obsidian has adopted. Make one first:</p>
@@ -859,7 +846,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-install" data-check-id="n8n-install" />
-    <span class="check-num">52</span>
+    <span class="check-num">51</span>
     <span class="check-title">Install n8n</span>
   </label>
   <div class="check-detail"><pre><code>npm install n8n -g</code></pre>
@@ -871,7 +858,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-start" data-check-id="n8n-start" />
-    <span class="check-num">53</span>
+    <span class="check-num">52</span>
     <span class="check-title">Start n8n once and open the editor</span>
   </label>
   <div class="check-detail"><pre><code>n8n start</code></pre>
@@ -882,7 +869,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-owner" data-check-id="n8n-owner" />
-    <span class="check-num">54</span>
+    <span class="check-num">53</span>
     <span class="check-title">Create the local owner account, and skip the licence offer</span>
   </label>
   <div class="check-detail"><p>n8n shows what looks like a signup screen asking for an email and password. <strong>It is not a subscription and not a login to anything.</strong> It creates a record in a database file on your own laptop, nothing is transmitted, and no verification email is sent. It also can't be skipped.</p>
@@ -893,7 +880,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-stop" data-check-id="n8n-stop" />
-    <span class="check-num">55</span>
+    <span class="check-num">54</span>
     <span class="check-title">Learn how to stop it</span>
   </label>
   <div class="check-detail"><p>Press <kbd>Ctrl</kbd>+<kbd>C</kbd> in the window running n8n. The page at localhost:5678 stops answering, and your work stays saved on disk for next time.</p>
@@ -903,7 +890,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-g-four" data-check-id="g-four" />
-    <span class="check-num">56</span>
+    <span class="check-num">55</span>
     <span class="check-title">Verify all four harness proof files together</span>
   </label>
   <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"</code></pre>
@@ -921,7 +908,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-operator" data-check-id="rp-operator" />
-    <span class="check-num">57</span>
+    <span class="check-num">56</span>
     <span class="check-title">Find the module exercise files and transfer plan</span>
   </label>
   <div class="check-detail"><p>Create a separate read-only task for the course map:</p>
@@ -929,11 +916,11 @@ Get-Content .\from-goose.txt</code></pre>
     <li>Open <strong>ChatGPT</strong> from the Windows Start menu and select <strong>Codex</strong> from the top-left switcher if needed</li>
     <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>, the course repository you cloned earlier</li>
     <li>Click <strong>New chat</strong></li>
-    <li>In the sidebar, open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>B0 — Course File Map</code></li>
     <li>Confirm the model picker says <strong>gpt-5.6-terra</strong>; do not use Sol or the visible default</li>
+    <li>If a <strong>Local / Worktree</strong> control appears under the message box, choose <strong>Local</strong></li>
     <li>Confirm the permission control under the message box says <strong>Ask for approval</strong></li>
   </ul>
-  <p>Paste this into <strong>B0 — Course File Map</strong>:</p>
+  <p>Paste this into the new chat:</p>
   <pre><code>Use Git to inspect this course repository.
 Do not change any files.
 
@@ -944,6 +931,7 @@ Find and report:
 
 Show the read-only Git command you used.
 Tell me where B1 and each P1–P8 exercise starts.</code></pre>
+  <p>Send the prompt. Once the chat appears in the sidebar, open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>B0 — Course File Map</code>.</p>
   <p>You should get a short map of the exercise folders for the week and the one planning file used near the end. The P2 Project Organizer starts with <code>instruments/p2_control_plane/bootstrap.ps1</code>; the Friday endpoint cases live in <code>instruments/endpoint_case_suite</code>. You have just used AI to inspect a Git repository without editing it.</p></div>
 </li>
 
@@ -1120,7 +1108,7 @@ if (Test-Path -LiteralPath $vaultSettings) {
   $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
   Move-Item -LiteralPath $vaultSettings -Destination "$vaultSettings-prework-backup-$stamp"
 }</code></pre>
-<p>Return to step 50 to reinstall the app, then reopen the existing vault in step 51. Delete a vault only when you intend to delete its notes.</p>
+<p>Return to step 49 to reinstall the app, then reopen the existing vault in step 50. Delete a vault only when you intend to delete its notes.</p>
 
 <h3>n8n</h3>
 <p>Stop the running server with <kbd>Ctrl</kbd>+<kbd>C</kbd>, then remove the global package:</p>
@@ -1131,7 +1119,7 @@ if (Test-Path -LiteralPath $n8nState) {
   $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
   Move-Item -LiteralPath $n8nState -Destination "$n8nState-prework-backup-$stamp"
 }</code></pre>
-<p>Return to step 52. Moving <code>.n8n</code> forces a new owner-account setup and makes the old encrypted credentials unavailable until you restore the entire backup.</p>
+<p>Return to step 51. Moving <code>.n8n</code> forces a new owner-account setup and makes the old encrypted credentials unavailable until you restore the entire backup.</p>
 
 <h3>Optional local-model tools</h3>
 <p>For Ollama, remove the course model before uninstalling only if you want its disk space back:</p>
