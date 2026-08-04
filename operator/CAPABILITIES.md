@@ -14,8 +14,8 @@ Each project below states what you can do at the end of it, what you learn to do
 |---|---|---|
 | 1 | Direct a machine from operational mess to a working instrument | B1 |
 | 2 | Own a machine that rebuilds a judgment product when the world changes | P1 |
-| 3 | Build a local decision system whose state, tools, review, and release hold together | P2 |
-| 4 | Judge between competing model and evidence paths and own the verdict | P3 |
+| 3 | Tell what belongs in advice, what belongs in code that always runs, and what belongs in a package | P2 |
+| 4 | Tell when work needs more than one agent, and direct how several answers become one | P3 |
 | 5 | Encode your own working method and prove the product without the builder's word | P4 |
 | 6 | Take in untrusted material and show hostile content changed nothing | P5 |
 | 7 | Let work run without you, under limits that are actually enforced | P6 |
@@ -42,13 +42,13 @@ This holds everywhere in the course. When something below asks you to show a res
 
 ### What you learn to do
 
-| Objective | New capability | How you know it landed |
-|---|---|---|
-| **1. Say what "done" looks like before the machine starts.** | You ask for an outcome instead of an output, and name what must not happen alongside what must. | The brief names an instrument as the outcome, not "explore the data," and includes a "must not" you checked. |
-| **2. Put a machine to work on real mess.** | You decide what a machine may assume when names are inconsistent, fields are missing, and junk files are mixed in. | The instrument runs on the actual messy folder rather than a cleaned copy, and its assumptions are written down. |
-| **3. Check a result against reality instead of against how convincing it reads.** | You judge output by what it should have done on a known case, not by whether it sounds right. | A negative check where you predicted the correct behavior and confirmed it. |
-| **4. Correct a run while it is happening.** | You watch work in progress, name the specific drift, and redirect without starting over. | A run you interrupted and redirected, where the redirect changed the result. |
-| **5. Keep the instrument true when the inputs move.** | You treat output as something that has to survive change, not a one-time artifact. | A file added or removed and the instrument reflects it — or the break is documented with the redirect that fixed it. |
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Say what "done" looks like before the machine starts.** | Outcome definition | Entry point | You ask for an outcome instead of an output, and name what must not happen alongside what must. | You write the brief slower than feels comfortable and start the run sooner than everyone else. What you asked for is specific enough that a wrong result is obvious the moment it appears, rather than something you have to reason your way toward. |
+| **2. Put a machine to work on real mess.** | Input scoping | Objective 1's stated outcome | You decide what the machine may assume when names are inconsistent, fields are missing, and junk files sit alongside real ones. | The mess does not rattle you. You settle early what the machine may assume about names, gaps, and stray files, and you say it out loud rather than discovering it three failures later. You have stopped tidying the folder to make the job easier. |
+| **3. Check a result against reality, not against how convincing it reads.** | Reality checking | Objective 1's "must not" | You judge output by what it should have done on a case you already know, not by whether it sounds right. | A polished answer gets the same scrutiny from you as a rough one. You already know the right answer for a case or two before you look, so a confident wrong result has nowhere to hide. |
+| **4. Correct a run while it is happening.** | Live correction | Objective 3's reading of the result | You watch work in progress, name the exact drift, and redirect without starting over. | You interrupt early, while the run is still cheap to turn. Your redirect names one thing rather than restating the whole goal. Runs that go the distance do so because you steered them, not because you got lucky. |
+| **5. Keep the instrument true when the inputs move.** | Update testing | Objective 2's stated assumptions | Output is something that has to survive change, not a one-time artifact. | You assume the inputs will move, and it shows in what you built. When something breaks after a change you can say what broke without opening everything, because you knew where it was fragile before it failed. |
 
 ### What the exercise requires
 
@@ -82,13 +82,13 @@ Success only in a demo, a thin brief, no negative check, or a loop explanation m
 
 ### What you learn to do
 
-| Objective | Builds on | New capability | How you know it landed |
-|---|---|---|---|
-| **1. Turn a one-time result into something you can run again.** | B1's directed run | The process becomes the deliverable instead of the output. You stop rebuilding the request from memory. | The whole thing reruns from a saved path — script, skill, saved brief and command — and you can show the path. |
-| **2. Make every claim traceable back to a source.** | B1's check against reality | Checking moves from the whole output down to the individual claim, and the source has to be opened. | Five or more claims checked against the corpus with pass or fail recorded, and a correction the check forced. |
-| **3. Tell real change from noise when you rerun.** | B1's update proof | You read a regenerated product for both what moved and what correctly stayed put. | Source material changed, the product regenerated, and you can point at the changes and at what should not have moved. |
-| **4. Make failure show up instead of disappearing.** | B1's negative check | You design so a broken or missing source is visible in the result rather than quietly dropped. | A source removed or broken, and the rerun shows the gap — no invented citation, no silent omission. |
-| **5. Separate the machine's draft from your own judgment.** | B1's stated criteria | You name which parts of a finished product you own and cannot delegate. | You state what is machine draft and what is your call, and the release decision is recorded as yours. |
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Turn a one-time result into something you can run again.** | Rerun design | B1's directed run | The process becomes the deliverable. You stop rebuilding the request from memory each time. | Running it again is boring. One action, no remembering. You have stopped keeping the important part of the method in your head, and it shows when someone asks for it a second time and nothing about the request feels heavy. |
+| **2. Make every claim traceable back to a source.** | Claim tracing | B1's reality checking | Checking moves from the whole output down to the single claim, and the source has to be opened. | You open sources rather than recognising them. Reading your own product, you slow down at the claims that carry weight and move past the ones that do not. Your attention goes where being wrong would matter. |
+| **3. Tell real change from noise when you rerun.** | Change reading | Objective 1's rerun | You read a rebuilt product for both what moved and what correctly stayed put. | A difference between runs does not alarm you, and sameness does not reassure you. You notice the thing that stayed put when it should have moved, which is the harder half. |
+| **4. Make failure show up instead of disappearing.** | Failure surfacing | B1's update testing | A broken or missing source has to be visible in the result rather than quietly dropped. | Your output looks worse when the inputs are bad, and you prefer it that way. A gap reads as a gap. You have stopped being pleased by a clean result you cannot account for. |
+| **5. Separate the machine's draft from your own judgment.** | Judgment ownership | B1's stated criteria | You name which parts of a finished product you own and cannot hand over. | You talk about your own product in two voices without being asked — this part the machine assembled, this part is my call. The line does not move depending on how well the product was received. |
 
 ### What the exercise requires
 
@@ -117,17 +117,18 @@ A paste job, citations unchecked, no delta, or silent failure on broken sources.
 
 ## P2 — Project Organizer
 
-> **After this project:** You can turn scattered operational sources into a local decision system whose state, tools, delegated work, review, and release controls remain traceable and separately accountable.
+> **After this project:** You can tell which part of a working method belongs in advice, which belongs in code that always runs, and which belongs in a package someone else installs — and build each one so it still works on their machine.
 
 ### What you learn to do
 
-| Objective | Builds on | New capability | How you know it landed |
-|---|---|---|---|
-| **1. Build a trustworthy state layer from messy operational sources.** | P1's source manifest, provenance, and repeatable regeneration | You move from generating a document to maintaining a relational system of record — modelling relationships, preserving uncertainty, enforcing stable identity, and rebuilding without corrupting live state. | The ledger passes schema, relationship, source-parity, provenance, and repeat-build checks. Unknowns remain unknown. |
-| **2. Turn recurring decisions into a least-privilege tool interface.** | P1's saved run path and the Harness Control Plane's MCP concepts | You decide what questions the system should answer and expose only those questions — not the database itself — designing contracts, permissions, provenance, freshness checks, and failure behavior. | The MCP surface answers a small set of decision-relevant questions, exposes no arbitrary query or write capability, and fails visibly when its evidence is invalid. |
-| **3. Divide work across agents without losing evidence or accountability.** | B1's single-agent loop and P1's operator-owned release decision | You introduce parallel workers only where work can be separated, then use a later reviewer for a different job, designing non-overlapping roles, structured handoffs, sequencing, and evidence preservation. | Workers have disjoint scopes and save contracted reports. The reviewer inspects the assembled candidate afterward and binds its review to the candidate's identity. |
-| **4. Convert acceptance criteria into an enforceable release chain.** | P1's manually inspected release contract | You distinguish a requested check from a check that must run, binding sources, structured state, worker reports, review, rendered product, and release receipt into one verifiable chain. | A deterministic gate produces RELEASE or HOLD from the saved artifacts. You can state what the gate proves and which priority and release judgments still belong to you. |
-| **5. Integrate and package a reusable harness without obscuring its trust boundaries.** | The Harness Control Plane's distinction among instructions, skills, hooks, plugins, subagents, and MCP | You make the components operate as one system while preserving their different jobs, loading conditions, enforcement strength, and trust requirements. | The workflow, server, renderer, verifier, and hook are placed correctly; installed code is inspected and explicitly trusted; the system can be disabled or changed without hidden behavior. |
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Design a skill or hook that earns its place.** | Building what earns its place | P1's stated criteria | You work out with the model what is actually needed before building anything, rather than building the thing you already know how to build. Most first components solve a problem nobody had and fire on nothing. | What you built gets used, by you, in ordinary work, days later. You can say what would be worse without it. It fires when the work needs it, and you never had to remember to call it. |
+| **2. Move a rule from advice to something that always runs.** | Enforcement design | P1's accept checks | A skill is advice the model can ignore. A hook is code that runs anyway. | Your rules fall into two piles without effort: the ones that hold and the ones that only ask. You have stopped writing "always" and "never" into instructions, because you now ask what happens if nothing reads them. |
+| **3. Know what your setup is actually running.** | Seeing what is loaded | Objective 1's build | At any moment a run has instructions, skills, tools, and settings live inside it, and most people cannot say which. Without that, every judgment about what happened is a guess. | You can say what is live in a run before you look at what it did. When something behaves oddly, your first thought is what was loaded rather than what the model is like. You have stopped explaining behaviour by the model's personality. |
+| **4. Find out that something did not fire, work out why, and fix it.** | Failure diagnosis | Objective 3's view of what is loaded | Nothing happening looks the same whether a skill never loaded, a hook never triggered, or the case never came up. You tell those apart, find which it was, and change the one thing that decides it. | You notice it did not fire before anyone points it out. You go to the record rather than the editor, and the change you make afterward is small and aimed — a line of the description, one trigger condition — because you found the cause instead of guessing at it. It fires the next time. |
+| **5. Make enforcement narrow enough that people keep it.** | Blocking only what should be blocked | Objective 2's enforcement | A rule that blocks too much gets switched off, and then the rule is gone. Enforcement only counts while it is still turned on weeks later. | Your hook fires on the thing it was written for and stays out of the way otherwise. You have stopped widening a rule to be safe, because you have seen what a noisy one costs. Nobody around you has quietly disabled it to get work done. |
+| **6. Package it so it works on someone else's machine.** | Portable packaging | P1's rerunnable artifact | What moves to another machine and what silently does not: fixed paths, local settings, secrets. | What you hand over works on the other machine, and when it does not you know within a minute which assumption travelled badly. You have stopped being surprised that your own setup was doing invisible work. |
 
 ### What the exercise requires
 
@@ -157,29 +158,30 @@ The board is hand-written rather than deterministically rendered; records lose s
 
 ## P3 — Twin-Engine Intel Desk
 
-> **After this project:** You can compare model-and-harness paths without confusing agreement with truth, retrieve evidence through a bounded route, and make a decision that remains traceable to sources rather than model confidence.
+> **After this project:** You can tell when work needs more than one agent, direct how several answers become one, split the pieces so they do not collide, say what you are measuring and why, and keep every claim walkable to its source.
 
 ### What you learn to do
 
-| Objective | Builds on | New capability | How you know it landed |
-|---|---|---|---|
-| **1. Design a valid comparison between model-and-harness paths.** | P1's saved run controls and P2's awareness of loaded harness components | You treat each engine as part of a larger run path — holding the job constant, inventorying hidden context, declaring competing explanations, and refusing to credit the model for what the harness did. | Both engines receive the same frozen job. Their model, product, version, instructions, plugins, skills, memories, and tool surfaces are recorded or cleared. |
-| **2. Use disagreement as an attention signal — not a vote.** | P1's risk-based citation audit | You compare outputs by operational consequence, spotting material differences, recognizing suspicious agreement, and steering checking effort toward what controls the decision. | The comparator covers every material difference, accepts a defensible zero, omits cosmetic variation, and names consequential agreements that still need checking. |
-| **3. Separate model diversity from evidence access and human judgment.** | P2's MCP server and bounded agent team | You distinguish what a second engine, an MCP server, a subagent, and a human reviewer each contribute, identify shared dependencies, and stop claiming independence from head count. | You can trace each contribution and state why two engines using one evidence server are not independently corroborating the underlying evidence. |
-| **4. Establish a bounded, auditable evidence route.** | P2's least-privilege MCP tool design | You decide whether MCP earns its operating cost, inspect the full contract, plan retrieval, preserve provenance, handle failures without widening scope, and close the connection afterward. | The evidence packet records connection rationale, implementation identity, tool contracts, planned and actual sources, hashes, exceptions, approvals, raw-context checks, shared dependencies, and disabled state. |
-| **5. Adjudicate competing claims under uncertainty and own the decision.** | P1's operator-owned release decision and source audit | You move from checking one machine draft to ruling among conflicting machine outputs — keeping, discarding, qualifying, or leaving claims unknown without averaging models or forcing closure. | Every consequential claim has a source-backed disposition or a named evidence gap. The final note stands alone and gives a usable decision, its limits, residual risk, and the next action. |
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Decide whether the work needs more than one agent at all.** | Knowing when to fan out | P2's building what earns its place | More agents cost coordination, context, and waiting before they return anything. You weigh whether this job pays for that, against what one agent would have produced. | You run one agent for most things and are not embarrassed by it. When you do fan out you can say what the single-agent version would have missed. Fanning out is a decision you defend on this job, not a habit carried from the last one. |
+| **2. Say how the answers become one answer, and which model does the merging.** | Directing the merge | Objective 1's decision to fan out | Deciding to fan out is only half of it. Left unsaid, a merge either staples the returns together or splits the difference between them, and both throw away the reason you fanned out. You set what happens to disagreement, what carries more weight, and what shape the merged answer takes — then put the more capable model wherever the judgment is concentrated, which is usually the merge and sometimes the work. | The merged answer reads as one thing someone decided, not five things stapled together. Disagreement between workers survives into it as a named conflict rather than vanishing into a middle position. You can say why the model doing the merging is the one you picked, and it is not simply the one you use for everything. |
+| **3. Split work so agents do not collide.** | Work division | B1's single directed run | Running agents at once only helps when the work truly comes apart. You give each one its own piece instead of running the same job twice. | The pieces come apart cleanly, and where they do not you notice before running anything. You have stopped splitting work that does not want to be split just because more agents were available. |
+| **4. Set measures that match the effect you want.** | Measuring the right thing | B1's outcome definition | What you ask to be measured is what comes back. B1 named the outcome for one run; here it has to become measures several agents can each work toward and you can judge the whole against. A measure that drifts from the decision it was meant to serve produces work that scores well and changes nothing. | Your measures would look different if the goal were different, which is not true of most people's. You can say what decision each one serves, and you drop the ones that serve none. When work scores well and you are still unsatisfied, you change the measure rather than explaining away the result. |
+| **5. Keep citations and sources intact across every agent.** | Preserving provenance | P1's claim tracing | A subagent that summarises destroys the trail behind every claim it touched, and nothing downstream can rebuild it. The link from claim to source has to survive every hop, not only the last one. | You can walk any claim in the finished product back to the source that carried it, through however many agents touched it. Nothing in the chain says "the analysis found" where a citation belongs. You have stopped accepting a summary in place of a report. |
 
 ### What the exercise requires
 
 1. The course frozen brief `BRIEF-v1` and the track corpus in `instruments/p3_frozen_brief` run unchanged on **Codex app** and on **OpenCode**.
-2. Run identity declared for both engines — model id, version, folder, and which instruction files, skills, plugins, hooks, custom agents, memories, and tool surfaces were live. Work in a clean folder, or write down the loaded context. An undeclared advantage invalidates the comparison.
-3. User-configured and external MCP state declared and cleared before the frozen runs. Unavoidable built-in surfaces are listed but not invoked. The course server is connected only after both raw outputs and the comparator exist.
-4. A deterministic join or watchlist path where one is required. The model does not decide the join key.
-5. A comparator artifact: a side-by-side table of fields and claims with one row per material difference. Zero differences is a valid result when the inspected fields are recorded.
-6. `MCP_EVIDENCE_PACKET.md` covering connection fit, course origin and commit, local implementation fingerprints, server instructions, root, and the two-tool contract. Every material row and every agreed claim driving release carries one or more E-IDs with source hash, returned excerpt, raw-context check, and any correction. Actual source basenames match the plan or name a real exception. Include the shared-dependency note, and disable the server after use.
-7. A source-backed **keep, discard, or unknown** disposition on every consequential claim. Zero discards is valid when the evidence supports every claim.
-8. An adjudication note a supervisor could read cold: what is operationally true for the watch.
-9. A log pointing at the brief id and its unmodified status, both raw outputs, the comparator, the MCP evidence packet, and the final watch product.
+2. A written call, made **before the second engine runs**, on what the first engine alone leaves you short of and what result would have made the second run unnecessary. Check it against what actually came back. "The second run was not needed" is a valid finding when the comparator supports it.
+3. Run identity declared for both engines — model id, version, folder, and which instruction files, skills, plugins, hooks, custom agents, memories, and tool surfaces were live. Work in a clean folder, or write down the loaded context. An undeclared advantage invalidates the comparison.
+4. User-configured and external MCP state declared and cleared before the frozen runs. Unavoidable built-in surfaces are listed but not invoked. The course server is connected only after both raw outputs and the comparator exist.
+5. A deterministic join or watchlist path where one is required. The model does not decide the join key.
+6. A comparator artifact: a side-by-side table of fields and claims with one row per material difference. Zero differences is a valid result when the inspected fields are recorded.
+7. `MCP_EVIDENCE_PACKET.md` covering connection fit, course origin and commit, local implementation fingerprints, server instructions, root, and the two-tool contract. Every material row and every agreed claim driving release carries one or more E-IDs with source hash, returned excerpt, raw-context check, and any correction. Actual source basenames match the plan or name a real exception. Include the shared-dependency note, and disable the server after use.
+8. A source-backed **keep, discard, or unknown** disposition on every consequential claim. Zero discards is valid when the evidence supports every claim.
+9. An adjudication note a supervisor could read cold: what is operationally true for the watch.
+10. A log pointing at the brief id and its unmodified status, both raw outputs, the comparator, the MCP evidence packet, and the final watch product.
 
 ### Stretch
 
@@ -202,13 +204,13 @@ One engine only, "they basically agreed," a verdict without a comparator, MCP en
 
 ### What you learn to do
 
-| Objective | Builds on | New capability | How you know it landed |
-|---|---|---|---|
-| **1. Write down how your work gets done so a machine can follow it.** | P1's saved brief and P2's project configuration | Your own standards — who reads it, what matters most, when to escalate, where the boundary sits — become settings that change the work rather than its tone. | The harness files name the reader, decision priority, output shape, escalation rule, folder boundary, authority, budgets, and stop reasons before execution. At least two settings change what the work produces. |
-| **2. Choose the simplest loop that can finish the job.** | P2's multi-component system | This reverses P2. There you earned the parts; here you have to leave parts out and say why, for this workload rather than in general. | Three or more components rejected with reasons specific to the workload, and the split between the fixed outer path and the adaptive inner work stated in advance. |
-| **3. Spend effort on evidence only where something earned it.** | P3's planned retrieval | A budget on how much the machine may open, with every open traceable to something it actually saw. | Every packet opened traces to an observed reference, and the stated open budget holds through the run. |
-| **4. Keep work resumable after it stops.** | New ground — nothing earlier covers it | You design state that outlives the conversation, so a fresh start can verify what is already done and carry on instead of redoing it. | Run state and trace preserve completed and open work, interventions, remaining budget, terminal reason, and the next permitted action. A fresh session resumes with no duplicate writes. |
-| **5. Prove the product without asking the thing that built it.** | P1's citation audit and P3's adjudication | You keep the maker and the checker apart, so nothing certifies its own output. | An untouched verifier passes before the evaluator runs, generated summaries never certify themselves, and you open raw citations and record supported, partly supported, or not supported. |
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Write down how your work gets done so a machine can follow it.** | Setting standards | P1's rerun design | P1 saved the steps. This saves what good looks like to you — who reads it, what matters most, when to come back and ask, where to stop — so the settings change the work itself, not just how it sounds. | The work comes back shaped the way you would have shaped it, and you did not have to say so this time. Your standards live in the setup rather than in the corrections you issue afterward. |
+| **2. Choose the simplest loop that can finish the job.** | Building less | P2's building what earns its place | P2 worked out whether one component was needed. This asks how little the whole job needs, and makes you take parts out and say why. | The build is smaller than what you know how to make. You talk about the parts that are not there without getting defensive. What came out came out because the job did not need it, not because the clock ran out. |
+| **3. Spend effort on evidence only where something earned it.** | Limiting the search | P3's knowing when to fan out | P3 weighed the cost before spending it. This holds a ceiling during the run, and every file the machine opens has to be earned by something it already found. | The machine stops digging because the limit says so, not because you stepped in. The trail that led it to each file is visible and short, because nothing was opened on a hunch. |
+| **4. Keep work going after it stops.** | Picking work back up | P3's preserving provenance | P3 kept the trail intact between agents inside one run. This keeps it across the end of the conversation, so a session that starts knowing nothing can see what exists and carry on. | Coming back to it is uneventful. Nothing important lived in the conversation you closed, and starting fresh costs you the time it takes to read one file rather than the time it takes to remember. |
+| **5. Prove the product without asking the thing that built it.** | Separating the checker | P3's measuring the right thing | P3 set the measures. This keeps the thing being measured from doing the measuring, so whatever made the work cannot be what signs it off. | You do not treat a thing's own account of itself as evidence of anything, and this has stopped feeling like extra work. Where the check comes from is settled before the work starts, not negotiated once the result is in. |
 
 ### What the exercise requires
 
@@ -244,13 +246,13 @@ The procedure still depends on copied chat history; personalization changes only
 
 ### What you learn to do
 
-| Objective | Builds on | New capability | How you know it landed |
-|---|---|---|---|
-| **1. Decide what "trusted" means before anything arrives.** | P4's folder boundary and authority rules | An intake rule set in advance, instead of a judgment made item by item under pressure. | The brief defines the intake boundary and the trust test before any poisoned material is introduced. |
-| **2. Catch a false citation with a check rather than a hunch.** | P1's citation audit | The audit turns from catching honest error to catching deliberate deception, which is built to survive a casual read. | The false citation is caught by a flag, a failed check, or a quarantine path — not by "I noticed it." |
-| **3. Catch material that contradicts what you already hold.** | P3's comparison of competing claims | The system reads incoming material against the existing picture instead of on its own terms. | The contradiction is caught mechanically, and the conflicting records are named. |
-| **4. Prove that a hostile instruction had no effect.** | P4's separation of maker and checker | Showing absence rather than presence. Proving nothing happened is not the same as not noticing anything, and this is the hardest thing in the course. | You point at where the instruction would have landed and show that the trusted vault, notes, and outputs are unchanged. |
-| **5. Tell what a permission can enforce from what only judgment can decide.** | P2's least-privilege design | Access control decides what can be reached. It never decides whether a claim is true. | The control map lists project scope, approval gate, content checks, external manifests, and residual risk separately, and no permission is credited with judging truth. |
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Decide what "trusted" means before anything arrives.** | Deciding what to trust | B1's reality checking | B1 checked one result after it came back. This sets a standing rule for what is allowed in at all, written before anything hostile exists to test it. | You wrote the rule when nothing was at stake and it still reads sensibly now that something is. You are not making the call item by item under pressure, and it shows in how little the pressure changes you. |
+| **2. Catch a false citation with a check rather than a hunch.** | Catching a faked source | P1's claim tracing | P1's audit caught honest mistakes. This one faces a source made up on purpose to survive that audit. | A citation that looks right gets opened anyway. You have stopped treating plausibility as a reason to skip the check, so what catches the fake is a step you always run rather than a suspicion you happened to have. |
+| **3. Catch material that contradicts what you already hold.** | Spotting contradictions | P1's change reading | P1 read what moved between two runs of your own work. This reads new material against what you already hold, and catches what cannot both be true. | New material meets what you already hold instead of being read on its own. The clash surfaces because the system compares, not because you remembered the earlier record at the right moment. |
+| **4. Prove that a hostile instruction had no effect.** | Proving nothing happened | P1's failure surfacing | P1 made a failure show up. This shows an event did not happen, which is harder — having nothing to point at looks the same as never having looked. | You go looking in the places the instruction could have reached before knowing whether anything is there. A clean result does not satisfy you until you have checked the places that would have looked clean either way. Certainty arrives more slowly than you expect it to. |
+| **5. Tell what a permission can enforce from what only judgment can decide.** | Limits of permission | P2's seeing what is loaded | P2 told you what a setup could reach. This draws the harder line: what a permission can stop, and what it can never settle. | You are precise about what a permission bought you and unbothered that it bought so little. Nobody hears you say the material is sound because the access was narrow. |
 
 ### What the exercise requires
 
@@ -286,13 +288,13 @@ goose is the vehicle: a local agent platform, CLI by default with Desktop option
 
 ### What you learn to do
 
-| Objective | Builds on | New capability | How you know it landed |
-|---|---|---|---|
-| **1. Hand off running work under limits you wrote.** | P4's authority, budgets, and stop reasons | Work proceeds without you watching each step, under terms set before it started. | A recipe adapted to the local feeder — not the shipped demo — runs and leaves its evidence on disk. |
-| **2. Tell a limit the tool enforces from a limit that is only a promise.** | P2's enforceable release chain | The sharpest idea in the project: "be careful" and "the capability is gone" look identical in a document and behave nothing alike. | Both contract columns filled, three rows each, with at least three tool rows naming real levers. Prose alone is not a tool row. |
-| **3. Prove a capability was absent, not merely declined.** | P5's absence of effect | Showing a tool never appeared in the machine's options, rather than that it chose not to reach for one. | The same task run with and without the restriction, pointing at the session record where the write tools are missing from the schema. |
-| **4. Name what each control actually guarantees.** | P5's control map | Sorting controls into ones that remove a capability, ones that only catch drift, and ones that contain. A tripwire can be beaten by the thing it watches. | Every contract row labeled contract, tripwire, or boundary — including any row you first called tool-enforced and then corrected. |
-| **5. Stop running work and start it again without losing the terms.** | P4's resumable state | Stop authority used under real conditions, then a restart that keeps the contract intact rather than quietly loosening it. | Stop proof and restart proof under the same recipe and mode, and an out-of-bounds event routed to quarantine with no hostile effect. |
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Hand off running work under limits you wrote.** | Running it without watching | P4's picking work back up | P4's work could be picked up after it stopped. This runs while nobody is watching any part of it. | You walk away, and the walking away is not brave. What comes back is legible without you having watched it happen, because you set it up knowing you would not be there. |
+| **2. Tell a limit the tool enforces from a limit that is only a promise.** | Checking which limits are real | P2's enforcement design | P2 built one rule that runs whether the model plays along or not. This reads a whole contract of claimed limits and sorts the real ones from the written ones. | Reading a contract, you sort it quickly and are unimpressed by the strongly worded rows. For each limit you can say what would have to be true for it to fail, and few survive that. |
+| **3. Prove a capability was absent, not just declined.** | Proving a tool was missing | P5's proving nothing happened | P5 showed an effect did not happen. This shows a tool was never offered — missing from the list, not present and passed over. | "It did not do that" does not satisfy you. You want the list the machine was working from, and you are slower to claim a capability is gone than the people around you. |
+| **4. Name what each control actually guarantees.** | Spotting a beatable limit | P5's limits of permission | P5 learned what a permission cannot settle. This sorts every limit by what it really gives you, and finds the ones a determined process can walk around. | You are the one who points out that a control catches the thing rather than preventing it. That does not make you throw it away — you keep it, and you say what it is for. |
+| **5. Stop running work and start it again without losing the terms.** | Stopping and restarting | B1's live correction | B1 redirected a run happening in front of you. This stops one you were not watching, and starts it again without the terms quietly loosening. | Stopping is unremarkable to you. You do it without treating it as a failure of the setup, and the work comes back under the same terms, because you never loosened anything to get it running again. |
 
 ### What the exercise requires
 
@@ -333,13 +335,13 @@ The shipped recipe unchanged, a one-column "be safe" contract, a tool column wit
 
 ### What you learn to do
 
-| Objective | Builds on | New capability | How you know it landed |
-|---|---|---|---|
-| **1. Build a fixed path that handles volume.** | P6's single running agent | Many items moving through one shape, instead of one job attended at a time. | A production-shaped flow: batch in, classify or extract, validate, land in a sink. |
-| **2. Put a person where being wrong would cost something.** | P4's escalation rule and P2's release gate | The gate sits on the commit itself, so uncertain rows cannot land quietly while the run reports success. | Three or more held items adjudicated with reasons — commit, fix, or reject — and no path by which a bad row lands silently. |
-| **3. Choose between an adaptive loop and a fixed path on stated criteria.** | P6's agent under contract | The core of the project. You pick the machine shape deliberately instead of using whichever one you built last. | A short written comparison naming the criteria, applied to your own work rather than to automation in general. |
-| **4. Re-sort work you already built.** | P1 and P3 output | Looking back at finished work and deciding it belongs in a different machine than the one it was built in. | One earlier slice classified as stay agentic, move to pipeline, or hybrid, with the reasoning recorded. |
-| **5. Name the judgment you will not hand over.** | P1's operator-owned decision | Drawing the line by what it costs to be wrong, not by what is hard to automate. | A confidently wrong row caught by the gate, and a list of judgments you will not automate, each tied to a real risk. |
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Build a fixed path that handles volume.** | Handling many at once | P3's work division | P3 split one job across several agents. This pushes many items through one fixed shape, where a single bad row repeats hundreds of times. | You think in rows rather than in runs. A mistake that would be an annoyance once you treat seriously, because you are picturing it happening four hundred times. |
+| **2. Put a person where being wrong would cost something.** | Putting a person in the way | P1's judgment ownership | P1 named which decisions were yours. This puts that ownership at one point in a running system, where an uncertain row cannot get past. | The gate sits where being wrong is expensive, not where it was convenient to put one. Uncertain work stops there and waits, and nobody has to remember to check. |
+| **3. Choose between an adaptive loop and a fixed path.** | Picking the right machine | P3's knowing when to fan out | P3 decided whether a job needed more than one agent. This decides whether it belongs in something that adapts at all, or on a line that never makes it up as it goes. | You say why this work is not agent work, or not pipeline work, in terms of the work rather than in terms of what you enjoy building. Your answer comes out different for two jobs you describe on the same day. |
+| **4. Re-sort work you already built.** | Moving work you already built | P4's building less | P4 decided how much to build before building it. This looks at finished work and concludes it was put in the wrong machine. | You will say that something you built earlier in the week is in the wrong place. Having been right the first time is not what you are protecting. |
+| **5. Name the judgment you will not hand over.** | Saying what stays human | Objective 2's gate | A gate holds one decision for a person this time. This names the decisions that will never be handed over, drawn by what being wrong costs rather than by what is hard to automate. | Your list is short, specific, and expensive-sounding. It is not a list of things that are hard to automate — some of them would be easy to automate tomorrow, and you still will not do it. |
 
 ### What the exercise requires
 
@@ -373,13 +375,13 @@ Happy path only, no human gate, or "automation is always better" with no discrim
 
 ### What you learn to do
 
-| Objective | Builds on | New capability | How you know it landed |
-|---|---|---|---|
-| **1. Write the policy before you have a reason to bend it.** | P6's contract and P5's intake rule | A policy set down before the endpoint exists to be judged, so the rule is not shaped by the result it will have to allow. | Policy written and accepted before any re-point, with one legitimate task refused under it and a comparable task that still runs. |
-| **2. Move the method, not just the prompt.** | P3's frozen comparison | Carrying a whole way of working to a different engine, rather than comparing two engines on one job. | The pack and frozen suite re-pointed to a hosted open model, with the configuration difference retained. |
-| **3. Say in numbers what got worse.** | P3's comparator | A structured read across a fixed suite, replacing the single side-by-side and the impression that follows it. | The hold and degrade matrix across the course IDs, commercial and home against open, in numbers. |
-| **4. Tell which layer failed.** | P4's separation of maker and checker | The most portable diagnostic in the course: a bad result is rarely the model alone. | Each failure labeled as model, instructions, tests, environment, or operator brief. |
-| **5. Hand the verdict to someone who was not there.** | P3's standalone adjudication note | The conclusion has to survive leaving your head and reach a person with none of the context. | A listener who was not in the build restates, unprompted, which work this endpoint is fit for and which it is not. |
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Write the policy before you have a reason to bend it.** | Writing rules that cost you | P5's deciding what to trust | P5's rule governed what could come in. This governs what you will refuse to do, is written before the endpoint exists to be judged, and costs you a real task once. | The policy has already cost you something real, and you did not amend it afterward. You describe the task you refused without resentment. |
+| **2. Move the method, not just the prompt.** | Moving how you work | P2's portable packaging | P2 made one package work on a colleague's machine. This moves a whole way of working onto an engine that shares none of your assumptions. | The move is unglamorous and mostly works. What breaks, breaks where you expected, and you can tell the difference between the method failing to travel and the engine simply being weaker. |
+| **3. Say in numbers what got worse.** | Measuring what got worse | P1's change reading | P1 told real change from noise across two runs of your own work. This measures a fixed set of cases across two endpoints and reports the loss in numbers. | You state the drop plainly, without apology and without relish. You are neither defending the open endpoint nor enjoying its failure, and the numbers read the same either way. |
+| **4. Tell which layer failed.** | Finding what really failed | P2's failure diagnosis | P2 found why one part did not fire, from a short list of causes. This works out whether the model, the instructions, the tests, the setup, or your own brief caused a bad result, and nothing narrows the list for you. | The model is the last thing you blame rather than the first. You can point at the layer, and often it is the brief you wrote yourself, which you say without flinching. |
+| **5. Hand the verdict to someone who was not there.** | Handing over the answer | P1's judgment ownership | P1 named which parts of a product were your call. This hands that call to a person who was not there, once, on a clock, and it works only if they say it back. | The listener walks away able to act on it. Your conclusion survived without you in the room. |
 
 ### What the exercise requires
 
