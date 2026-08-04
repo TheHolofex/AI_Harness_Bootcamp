@@ -25,7 +25,7 @@
     <h1>The information need</h1>
     <p class="lede">A question that will be asked again. Answering it once is not the job. Answering it well enough to defend, and again next month without rebuilding it, is — and that takes a run you direct rather than a chat you steer.</p>
 
-    <div class="meta-grid">
+    <div class="meta-grid meta-grid-block">
       <div><span class="k">Day</span><span class="v">Tuesday PM</span></div>
       <div><span class="k">Block</span><span class="v">P3</span></div>
       <div><span class="k">Time</span><span class="v">~4 hr</span></div>
@@ -54,14 +54,14 @@
           <h2 class="h-plain">What this is worth at work</h2>
           <p>Task Group MERIDIAN issues its September movement order on 22 August. The order names one primary route for the rotation lift and one contingency. Two corridors exist: <strong>AMBER</strong> runs north over the Selwyn Bridge; <strong>CINDER</strong> runs south-west and crosses the river by vehicle ferry.</p>
           <p>Name a route that cannot carry the lift and the rotation strands at a crossing. Move to the other one without cause and the group buys a longer corridor, a charter it does not need, and a staging fee. Somebody has to answer, on the 22nd, with what is on file.</p>
-          <p>What is on file is 104 documents across twelve source types — around 82,000 words and 36,000 rows of table. Nobody reads that. Inside it are four current products quoting a figure that a later signed document withdrew, a standing restriction that was rescinded in June and is still being quoted, two enormous exports where slicing the wrong row reverses the conclusion, and open-source material of a quality you would not put your name to.</p>
+          <p>What is on file is 104 documents across twelve source types — around 82,000 words and 36,000 table records. Nobody reads that. Inside it are four current products quoting a figure that a later signed document withdrew, a standing restriction that was rescinded in June and is still being quoted, two enormous exports where slicing the wrong record reverses the conclusion, and open-source material of a quality you would not put your name to.</p>
           <p>You will build a run that answers this question, defends every claim in it against a source, and can be handed to somebody else next month to ask the next version of the same question.</p>
 
           <h3>What you leave with</h3>
           <ul>
             <li>A single-agent baseline, saved before anything else runs, and a clear answer at the end to whether the rest of the afternoon beat it</li>
             <li>Coverage and support measures the run applies itself, rather than a rubric in a document</li>
-            <li>Three search agents on genuinely different routes, each bounded by the surface it was given rather than by instructions it could ignore</li>
+            <li>Four search agents on genuinely different routes, each bounded by the surface it was given rather than by instructions it could ignore</li>
             <li>A search that stops on its own rule and says which rule fired</li>
             <li>Verifiers that only knock findings down, and a rule where one authoritative contradiction beats any number of failed challenges</li>
             <li>A merge you directed, run on two models, where confidence can only rise on independent evidence</li>
@@ -80,11 +80,11 @@
         <div class="orient-aside">
           <div class="lead-box">
             <p class="eyebrow">The bounds</p>
-            <p>One baseline. Three search agents. Two rounds minimum, three maximum. Twelve findings into verification at most. Two verifiers. One merge. One provenance check. One package. <strong>A run that wants more than this has not been divided properly.</strong></p>
+            <p>One baseline. Four search agents. Two rounds minimum, three maximum. Fourteen findings into verification at most. Two verifiers. One merge. One provenance check. One package. <strong>A run that wants more than this has not been divided properly.</strong></p>
           </div>
           <div class="callout">
             <strong>The corpus is too large to read</strong>
-            You will not open it. Agents reach it through one read-only server that lists, searches, reads bounded spans and slices tables. Nothing returns a whole file.
+            You will not open it. Agents reach it through one read-only server implementation, launched as four restricted route surfaces plus one unrestricted parent surface for verification and provenance. Nothing returns a whole file.
           </div>
           <div class="callout">
             <strong>September cannot be observed in August</strong>
@@ -99,7 +99,7 @@
 
       <div class="skill-grid" aria-label="P3 run shape">
         <div class="skill-cell"><span class="k">1 · Control</span><span class="n">Baseline, then measures</span><p>One agent's answer saved unread, so the measures you write next cannot be bent to flatter what came after.</p></div>
-        <div class="skill-cell"><span class="k">2 · Division</span><span class="n">Routes with real edges</span><p>Three agents whose boundaries are properties of the surface each was handed, not requests in a prompt.</p></div>
+        <div class="skill-cell"><span class="k">2 · Division</span><span class="n">Routes with real edges</span><p>Four agents whose boundaries are properties of the surface each was handed, not requests in a prompt.</p></div>
         <div class="skill-cell"><span class="k">3 · Attack</span><span class="n">Refute, then merge</span><p>Findings survive challenge or die. What survives gets merged under a rule you wrote before you saw the disagreements.</p></div>
         <div class="skill-cell"><span class="k">4 · Defence</span><span class="n">Gate, then package</span><p>Every claim walks back to a source that still serves it, and the whole method is handed on with its inputs named.</p></div>
       </div>
@@ -140,6 +140,10 @@
         <p class="section-lede">You direct the run and inspect what comes back. The bounds are fixed — stay inside them, and where a step tempts you to add another agent, that is the step doing its job.</p>
 
         <h3>Stage 01 · One agent, saved</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Knowing when to fan out</strong>
+          You decide the brief that agent gets, and the run identity saved beside it: engine, model, corpus, date.
+        </div>
         <p>Everything after this has to beat one agent doing the same job. Save its answer, and do not read it — you write the measures next.</p>
 
         <div class="do-step">
@@ -184,6 +188,10 @@ Do not summarise your answer in the chat.</code></pre>
         </div>
 
         <h3>Stage 02 · Put the measures into the run</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Measuring the right thing</strong>
+          You decide what the decision obliges an answer to settle, and what makes a finding worth keeping.
+        </div>
         <p>Measures belong where the run applies them, not in a document you consult afterwards. A finding either meets them or it does not, and the run should be able to sort by them without you.</p>
 
         <div class="do-step">
@@ -224,7 +232,11 @@ end, as counts I can check, with no adjectives.</code></pre>
         </div>
 
         <h3>Stage 03 · Fan out on different search paths</h3>
-        <p>Three agents, three genuinely different ways in. What each may not reach is set by the surface it is given, not by asking it nicely.</p>
+        <div class="stage-skill">
+          <strong>Skill &middot; Work division</strong>
+          You decide what makes each route different, what each agent&rsquo;s surface exposes and therefore what it cannot reach, and what each one records about its own search.
+        </div>
+        <p>Four agents, four genuinely different ways in. Each custom agent receives one restricted server instance, so what it may not reach is set by its tool surface rather than by a request in its prompt.</p>
 
         <div class="do-step">
           <p class="do-label">Install and inspect the evidence surface:</p>
@@ -241,39 +253,74 @@ node server.mjs --root "..\need\corpus" --describe</code></pre>
         </div>
 
         <div class="do-step">
-          <p class="do-label">Register it with Codex. Open <code>.codex\config.toml</code> in the project and add:</p>
+          <p class="do-label">Register the unrestricted parent surface. Open <code>.codex\config.toml</code> in the project and add:</p>
           <pre><code>[mcp_servers.northwind_evidence]
 command = "node"
 args = ["C:/Users/YOU/Documents/HarnessBootcamp/P3_Need/evidence_surface/server.mjs", "--root", "C:/Users/YOU/Documents/HarnessBootcamp/P3_Need/need/corpus"]</code></pre>
-          <p>Replace <code>YOU</code> with your Windows username. Forward slashes, both paths absolute. Then quit and reopen the ChatGPT desktop app, reopen the project, open the integrated terminal, run <code>codex</code>, type <code>/mcp</code>, and confirm one <code>northwind_evidence</code> server exposing five tools. Type <code>/exit</code>.</p>
+          <p>Replace <code>YOU</code> with your Windows username. Forward slashes, both paths absolute. This unrestricted instance stays with the parent run for verification and provenance later; it is not the surface handed to a route agent.</p>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Create four custom-agent surfaces. Paste this into <strong>P3 — Run</strong>:</p>
+          <pre><code>Create these four project custom agents under .codex\agents:
+
+  nw_time_window.toml   hydrology,met
+  nw_entity_trail.toml  contracts,correspondence,minutes
+  nw_records.toml       engineering,finance,movement
+  nw_contrarian.toml    directives,maintenance,open_source,safety
+
+Each file must set name, description, model = "gpt-5.6-terra",
+sandbox_mode = "read-only", and developer_instructions that forbid direct
+filesystem access to need\corpus.
+
+Each file must also define exactly one northwind MCP server, with a distinct
+name, using the same absolute server and corpus paths as northwind_evidence.
+Add "--source-types" and that agent's comma-separated list to args. A custom
+agent's mcp_servers table overrides the inherited table, so do not repeat the
+unrestricted northwind_evidence server in any custom-agent file.
+
+Show me all four TOML files and check that the twelve source types appear
+exactly once across them before saving.</code></pre>
+          <p>Quit and reopen the ChatGPT desktop app after the files are saved. The parent should still show <code>northwind_evidence</code>; each named route agent should receive only its restricted northwind server. These four disjoint cuts cover all twelve source types, and the time-window route now has the hydrology and weather series that decide whether the September movement window is supportable.</p>
         </div>
 
         <div class="do-step" id="p3-routes-proof">
           <p class="do-label">Paste this into <strong>P3 — Run</strong>:</p>
-          <pre><code>Read measures\measures.md. Use the northwind_evidence tools for all corpus
-access - do not read corpus files directly.
+          <pre><code>Read measures\measures.md. Spawn exactly these four custom agents:
 
-Spawn exactly three search agents, each on a different route in:
+  R1 nw_time_window  - precedent and forecast for the September window
+  R2 nw_entity_trail - operators, authorities, assets and correspondence
+  R3 nw_records      - signed technical records, movement logs and costs
+  R4 nw_contrarian   - directives, maintenance, safety and weak public claims
 
-  R1 BY SOURCE TYPE. Structural, survey and engineering reporting. What the
-     crossings are rated to carry, and who said so.
-  R2 BY ENTITY. Follow organisations and assets - the ferry operator, the
-     structural contractor, the named crossings - wherever they appear.
-  R3 CONTRARIAN. Search for what someone arguing the opposite would look for.
-     Assume the obvious answer is wrong and try to establish that.
+Each agent must use only its own northwind tools for corpus access. Before
+searching, it calls list_sources and records the exposed and withheld source
+types. It then proves the edge by attempting this out-of-route read:
 
-Each agent records, in ledger\R&lt;n&gt;.md: every tool call it made with its
-arguments, every file it opened, and every finding with the file and the
-quoted words that carry it. Findings that fail the support test in
-measures.md do not go in the ledger.
+  R1 engineering/ENG-2026-003_selwyn_bridge_rerating.md
+  R2 hydrology/HYD-2026-001_gauging_network_description.md
+  R3 open_source/OS-02_basin_bulletin_undated.md
+  R4 contracts/CON-2026-002_sfs_ferry_charter.md
 
-Report per agent: files opened, tool calls, findings kept, and findings
-dropped for lack of support. Do not merge anything yet.</code></pre>
-          <p><strong>What you should see.</strong> Three ledgers whose <em>inputs</em> differ — different files opened, different entities chased. Overlap in what they found is fine and often good: two routes reaching the same fact independently is corroboration, and you will want it in Stage 06.</p>
-          <p><strong>When it does not.</strong> If the three ledgers list near-identical file sets, the routes were never different — the usual cause is all three starting from the same broad search. Re-cut them by what each is allowed to open, not by rewording the instructions.</p>
+The attempt must return not_on_surface. If it succeeds, stop the fan-out and
+report a configuration failure; do not treat a prompt-level refusal as proof.
+
+Each agent records in ledger\R&lt;n&gt;.md: the surface check, every tool call and
+its arguments, every file opened, and each supported finding with the file
+and quoted words that carry it. Findings that fail measures.md do not enter
+the ledger.
+
+Report per agent: exposed source types, boundary result, files opened, tool
+calls, findings kept, and findings dropped. Do not merge anything yet.</code></pre>
+          <p><strong>What you should see.</strong> Four ledgers with disjoint exposed source types and four <code>not_on_surface</code> results. Their inputs differ by construction. Overlap in what they find is fine and often good: two routes reaching the same fact independently is corroboration, and you will want it in Stage 06.</p>
+          <p><strong>When it does not.</strong> If an out-of-route read succeeds, inspect that custom agent's TOML. It has inherited or repeated the unrestricted parent server, omitted <code>--source-types</code>, or was not spawned by its custom-agent name. Fix the surface and rerun the boundary check before searching.</p>
         </div>
 
         <h3>Stage 04 · Let the run decide when it is done</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Knowing when to fan out, then work division</strong>
+          You decide what counts as new, the fewest rounds that must run before nothing-new can mean anything, and the ceiling.
+        </div>
         <p>Two ways to finish: nothing new came back, or the ceiling stopped you. Both are legitimate. What is not legitimate is a run that cannot say which happened.</p>
 
         <div class="do-step" id="p3-terminal-proof">
@@ -281,24 +328,30 @@ dropped for lack of support. Do not merge anything yet.</code></pre>
           <pre><code>Run further search rounds under these rules, written to ledger\stopping.md
 before the next round starts:
 
+- Continue with the same four named custom agents on the same restricted
+  surfaces. Do not widen a route or substitute a generic agent.
 - A finding is NEW if no kept finding already cites the same file for the same
   obligation. Restating a kept finding in different words is not new.
 - Minimum two rounds. One empty round straight after the first pass is a slow
   start, not saturation.
-- Maximum three rounds, and at most twelve kept findings in total.
+- Maximum three rounds, and at most fourteen kept findings in total.
 - Stop when a round returns nothing new, or when the ceiling is reached.
 
 At the end write ledger\terminal.md naming which rule fired: SATURATED, or
 BUDGET_EXHAUSTED with the obligations still unresolved listed by number.
 
 BUDGET_EXHAUSTED is a real ending and I would rather have it than a run that
-pretends the ceiling was saturation. Do not pad findings to reach twelve, and
+pretends the ceiling was saturation. Do not pad findings to reach fourteen, and
 do not drop good ones to stay under it.</code></pre>
-          <p><strong>What you should see.</strong> A terminal record naming one rule, and at most twelve findings. If it stopped on the ceiling, the unresolved obligations are listed — that list is part of the answer, not a defect in it.</p>
+          <p><strong>What you should see.</strong> A terminal record naming one rule, and at most fourteen findings. If it stopped on the ceiling, the unresolved obligations are listed — that list is part of the answer, not a defect in it.</p>
           <p><strong>When it does not.</strong> A run reporting SATURATED after two rounds with obligations still untouched has defined "new" too loosely. Tighten it to file-plus-obligation and rerun the last round.</p>
         </div>
 
         <h3>Stage 05 · Verifiers that only refute</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Measuring the right thing</strong>
+          You decide what a verifier may use, how the findings are split between them, and what defeats a finding.
+        </div>
         <p>Two agents, each taking half the findings, each trying to knock them down. They add nothing. This is where a corpus that rewards counting sources will punish you.</p>
 
         <div class="do-step" id="p3-refute-proof">
@@ -327,6 +380,10 @@ Preserve defeated findings in the file - I want to see what died and why.</code>
         </div>
 
         <h3>Stage 06 · Merge under a stated rule</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Directing the merge</strong>
+          You decide the conflict rule, the weight rule, the confidence rule, and which of the two merges you ship.
+        </div>
         <p>You write the rule before you see the disagreements. Then you run the merge twice — on two models from different families — and pick the one you ship, for a reason you can point at.</p>
 
         <div class="do-step">
@@ -368,6 +425,10 @@ a general preference about models.</code></pre>
         </div>
 
         <h3>Stage 07 · A provenance check that fails loudly</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Preserving provenance</strong>
+          You decide what counts as a live source, and which claims you read yourself.
+        </div>
         <p>Every claim walks back to a source that still serves it, or the run fails. The gate proves the citation is sound. It does not prove the source agrees with you, and the output has to keep those apart.</p>
 
         <div class="do-step">
@@ -405,13 +466,17 @@ it would have to check to catch it.</code></pre>
         </div>
 
         <h3>Stage 08 · Save the run so it executes again</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Portable packaging</strong>
+          You decide what is fixed in the package, what is supplied fresh each time, and the domain the package declares.
+        </div>
         <p>The method is the product. Package it so the next version of this question runs it rather than rebuilding it — and be honest about what that proves and what it does not.</p>
 
         <div class="do-step">
           <p class="do-label">Paste this into <strong>P3 — Run</strong>:</p>
           <pre><code>Package this run alongside the morning's plugin work.
 
-Fixed in the package: measures\measures.md and score.md, the three route
+Fixed in the package: measures\measures.md and score.md, the four route
 definitions, the stopping rules, the verifier disposition rules,
 merge\rule.md, and provenance\check.md.
 
@@ -455,12 +520,12 @@ must supply to ask a different question of the same shape.</code></pre>
             <div class="check-detail">Every obligation traces to the need, support is a mechanical test, the run can sort findings without a person, and neither measure needs a list of right answers nobody has.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p3-routes-proof">
-            <label class="check-label"><input type="checkbox" id="p3-routes-divided" name="p3-routes-divided" data-check-id="routes-divided" /><span class="check-num">3</span><span class="check-title">Three routes differ in what they read, and their edges are enforced</span></label>
-            <div class="check-detail">All corpus access goes through the evidence surface; the three ledgers record tool calls, files opened and quoted support; the routes differ by input rather than by how little their returns overlap.</div>
+            <label class="check-label"><input type="checkbox" id="p3-routes-divided" name="p3-routes-divided" data-check-id="routes-divided" /><span class="check-num">3</span><span class="check-title">Four routes differ in what they read, and their edges are enforced</span></label>
+            <div class="check-detail">Each named custom agent has one restricted evidence surface; the four ledgers record exposed source types, a denied out-of-route read, tool calls, files opened and quoted support; the routes differ by input rather than by how little their returns overlap.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p3-terminal-proof">
             <label class="check-label"><input type="checkbox" id="p3-search-terminated" name="p3-search-terminated" data-check-id="search-terminated" /><span class="check-num">4</span><span class="check-title">The search ends on its own rule and names which one fired</span></label>
-            <div class="check-detail"><code>ledger/terminal.md</code> reads SATURATED or BUDGET_EXHAUSTED with the unresolved obligations listed. Two rounds minimum, three maximum, twelve findings maximum, and no padding to reach the ceiling.</div>
+            <div class="check-detail"><code>ledger/terminal.md</code> reads SATURATED or BUDGET_EXHAUSTED with the unresolved obligations listed. Two rounds minimum, three maximum, fourteen findings maximum, and no padding to reach the ceiling.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p3-refute-proof">
             <label class="check-label"><input type="checkbox" id="p3-findings-refuted" name="p3-findings-refuted" data-check-id="findings-refuted" /><span class="check-num">5</span><span class="check-title">Findings die to authority, not to a head count</span></label>
@@ -512,7 +577,7 @@ must supply to ask a different question of the same shape.</code></pre>
       <section id="stuck" class="split-2 home-section">
         <div>
           <h2>Before you move on</h2>
-          <p>The baseline is saved and settled, the measures are computable, three routes differ by what they read, the search named its own terminal rule, findings died to authority rather than head count, the merge ran twice under a rule written first, the gate failed on planted claims, and the package names its inputs without carrying this question's answers. Full list: <a href="#floor">these P3 lesson outcomes</a>.</p>
+          <p>The baseline is saved and settled, the measures are computable, four routes differ by what they read, the search named its own terminal rule, findings died to authority rather than head count, the merge ran twice under a rule written first, the gate failed on planted claims, and the package names its inputs without carrying this question's answers. Full list: <a href="#floor">these P3 lesson outcomes</a>.</p>
         </div>
         <div>
           <h2>If you get stuck</h2>
@@ -524,7 +589,7 @@ must supply to ask a different question of the same shape.</code></pre>
             <li><strong>The verifiers defeated nothing.</strong> Check they used the tools. A verifier that rereads a finding and agrees has not attacked it; give it the sources and the instruction to defeat, not to review.</li>
             <li><strong>The merge reads like two reports stapled together.</strong> The conflict rule is missing or too vague. Name what happens to disagreement before merging again, and require conflicts to appear as conflicts.</li>
             <li><strong>OpenCode returns nothing.</strong> Capture its output rather than asking it to write files. Confirm <code>$env:HB_XAI_MODEL</code> is set, and run <code>opencode models xai --refresh</code> to check the key is reaching it.</li>
-            <li><strong>You want a fourth agent.</strong> Write down what it would do that the three cannot, then check whether that is a route or just more of one. Usually it is the second.</li>
+            <li><strong>You want a fifth agent.</strong> Write down what it would do that the four cannot, then check whether that is a route or just more of one. Usually it is the second.</li>
           </ul>
         </div>
       </section>

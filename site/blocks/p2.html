@@ -25,7 +25,7 @@
     <h1>Inbound</h1>
     <p class="lede">People arrive at a unit. Somebody works out who they are, what they can do, and what has to reach them. Right now that lives in one person's head and leaves when they do. The work below turns it into components that rebuild the lists from the records every time.</p>
 
-    <div class="meta-grid">
+    <div class="meta-grid meta-grid-block">
       <div><span class="k">Day</span><span class="v">Tuesday morning</span></div>
       <div><span class="k">Block</span><span class="v">P2</span></div>
       <div><span class="k">Time</span><span class="v">~3 hr</span></div>
@@ -62,7 +62,7 @@
             <li>A normalizer behind a hook, so no arriving file reaches the model in its original shape and a damaged file is refused rather than half-read</li>
             <li>A skill that maps people to capabilities and says <em>unknown</em> where the records do not say</li>
             <li>A skill that generates all five distribution lists, so updating them stops being an editing job</li>
-            <li>A hook that blocks any line in a list that cannot name the record that put it there</li>
+            <li>A source gate that catches unsupported list rows whether a tool edits the file directly or a shell command tries to bypass the generator</li>
             <li>Both narrowed until they leave unrelated material alone</li>
             <li>One package carrying the lot, checked for paths and secrets that would not travel</li>
           </ul>
@@ -139,6 +139,10 @@
         <p class="section-lede">You direct the build and inspect the result; Codex writes the Python, the hook configuration, and the package files. Each step uses what the one before it produced.</p>
 
         <h3>Stage 01 · Normalize on the way in</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Enforcement design</strong>
+          You decide what the one shape is, and what the hook does with a file it cannot parse.
+        </div>
         <p>Four arriving formats become one. The converter is a script, and a hook is what makes running it non-optional — because a rule that depends on everyone remembering it is not a rule.</p>
 
         <div class="do-step">
@@ -185,7 +189,7 @@ Return one short report:
 
 Do not propose a schema that fills a field a source does not carry. Stop after
 the report.</code></pre>
-          <p>Read the third answer closely. It should name at least three independent problems with the partner file, and one of them should be that the number of records a CSV reader returns does not match the number of people the file names. If the report says the file parses cleanly, say so and ask again — that answer is wrong, and knowing why is the point of the next step.</p>
+          <p>Read the third answer closely. It should name at least three independent problems with the partner file, and one of them should be that only six of the eight identifiers in the raw bytes land in the parsed identifier column even though the CSV reader returns eight rows. If the report says the file parses cleanly, say so and ask again — that answer is wrong, and knowing why is the point of the next step.</p>
         </div>
 
         <div class="do-step">
@@ -276,6 +280,10 @@ Show me .codex/hooks.json and the script before you save them.</code></pre>
         </div>
 
         <h3>Stage 02 · Map people to capabilities</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Building what earns its place</strong>
+          You decide the description that makes the skill load on its own, and what counts as enough evidence to assert a capability rather than infer one.
+        </div>
         <p>This is judgment that changes with the case, so it is a skill rather than a hook: there is no single fixed answer a command could check. But the join itself — this billet grants that capability — is mechanical, and a mechanical step run by a model gives you a slightly different answer every time. Split it. The script does the join and gives the same output for the same input; the skill decides when the job has arrived, refuses input it should not touch, and reports what came back.</p>
 
         <div class="do-step">
@@ -332,6 +340,10 @@ that the catalog does not contain.</code></pre>
         </div>
 
         <h3>Stage 03 · Generate the distros</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Building what earns its place</strong>
+          You decide the rule for who lands on which list, and what happens to a person the map could not place.
+        </div>
         <p>The five lists stop being documents you edit and become output you rerun. The rule for who lands on which list is yours to set; what matters is that it is written once, in the generator, rather than remembered five times.</p>
 
         <div class="do-step">
@@ -345,6 +357,12 @@ First, scripts/build_distros.py. Interface, exactly:
   py -3 scripts\build_distros.py --map capability_map.csv --records inbound\records --out distros
 Standard library only, and deterministic: same input, same bytes, sorted
 consistently, with no run timestamp written into any output file.
+
+Before replacing any list, validate every generated person row. Its source file
+must exist under inbound/records/ and the named person identifier must appear in
+that record. Build and validate all five files in a temporary directory first.
+If any row fails, exit non-zero, name the row and reason, and leave all five
+current output files unchanged. Only a fully validated set replaces distros/.
 
 Second, a skill at .agents/skills/distro-build/SKILL.md that knows when the
 lists need rebuilding and runs the script. Frontmatter is name and description
@@ -388,12 +406,22 @@ and not the old one, and the record that decides each difference.</code></pre>
         </div>
 
         <h3>Stage 04 · Refuse a change that cannot name its source</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Enforcement design</strong>
+          You decide what counts as a source, and whether the hook blocks outright or marks the line and lets the work continue.
+        </div>
         <p>Now the lists are generated, the way they go wrong is different: somebody adds a line by hand. It is always reasonable at the time — the message asking for it is polite and the reason is good. The hook makes the cost of that visible at the moment it happens rather than three months later when nobody remembers who Kasprzak was.</p>
 
         <div class="do-step">
           <p class="do-label">Read <code>inbound\traffic\msg_10_distro_add_request.md</code> first — it is the change this hook is for. Then paste:</p>
-          <pre><code>Create hooks/require_source.py and register it in .codex/hooks.json as a second
-PreToolUse hook with the matcher "Edit|Write|apply_patch".
+          <pre><code>Create hooks/require_source.py and register the same command in .codex/hooks.json
+under two PreToolUse matcher groups:
+
+- "Edit|Write|apply_patch" checks the incoming file content before a tool edit.
+- "Bash" denies a command that writes, appends, copies, moves or redirects into
+  distros/, unless the command is the exact scripts\build_distros.py interface
+  from Stage 03 with --out distros. The generator is the allowed write path
+  because it validates every source before it replaces any list.
 
 It reads the hook payload as JSON on stdin and looks at tool_input. It only
 concerns itself with writes to files under distros/. For those, it checks every
@@ -401,12 +429,11 @@ person row in the incoming content and denies the write when a row's source
 column is empty, or names a file that does not exist under inbound/records/, or
 names an identifier that is not in that file.
 
-Deny by exiting 2 with the offending row and the reason on stderr. Exit 0 for
-every write outside distros/, and for a generated file whose rows all trace.
-
-If the generator writes through Edit or Write rather than through the shell,
-this hook checks its output too. That is correct - every generated row traces -
-but show me that it passes rather than assuming it.
+Deny by exiting 2 with the offending row or command and the reason on stderr.
+Exit 0 for every write outside distros/. For an Edit, Write or apply_patch call,
+exit 0 only when every incoming person row traces. For Bash, exit 0 only for the
+one generator command above; do not try to predict generated content from the
+shell command, because Stage 03 made validation part of the generator itself.
 
 Show me the script and the updated .codex/hooks.json before saving.</code></pre>
         </div>
@@ -417,14 +444,20 @@ Show me the script and the updated .codex/hooks.json before saving.</code></pre>
             <li>In the integrated terminal run <code>codex</code>, type <code>/hooks</code>, read the new entry, trust it, then <code>/exit</code></li>
             <li>Ask the build chat: <code>Add a row to distros\distro_medical_recall.md for Kasprzak, L., P-9911, Aid Station. Message msg_10 asks for it.</code></li>
             <li>The write must be refused, and the reason must say the identifier is in no record under <code>inbound\records\</code></li>
-            <li>Rerun the generator. The write must go through</li>
+            <li>In PowerShell, try the same addition with <code>Add-Content</code>. The Bash matcher must refuse that path too</li>
+            <li>Rerun the generator. The Bash matcher allows that exact command, and the generator validates all five files before replacing them</li>
           </ol>
+          <p><strong>Prove the allowed path still enforces the rule.</strong> Save a copy of <code>capability_map.csv</code>, add one temporary person row whose source identifier does not exist in the named record, and rerun the generator. It must exit non-zero, name that row, and leave all five existing list files byte-for-byte unchanged. Restore the map afterwards. This separates “the hook allowed the generator” from “the generator accepted bad output.”</p>
           <p><strong>What counts as a source is your call, and it has teeth.</strong> If you accept "a desk head asked for it" as a source, this hook stops catching the case it was built for. If you accept only the two capability records, you have to decide what happens the day somebody genuinely needs to be reachable before their paperwork lands — an answer exists, but it is a record, not an edit.</p>
-          <p><strong>When it does not fire.</strong> If nothing was refused, check three things in order: does <code>/hooks</code> show the hook as trusted, does the matcher include the tool that actually wrote the file, and did the chat write through the shell instead. All three look identical from the outside — a list with a bad line in it.</p>
+          <p><strong>When it does not fire.</strong> If nothing was refused, check three things in order: does <code>/hooks</code> show it as trusted, does the event match the tool that actually wrote the file, and does the Bash rule recognise the command as a write into <code>distros/</code>. All three look identical from the outside — a list with a bad line in it.</p>
           <p><strong>Know where the rule stops.</strong> A hook sees tool calls. Open one of these lists in Notepad, type a row, and save it, and no hook anywhere will see that — it was never a tool call. This is not a gap to plug with a second hook: what actually protects you is that the list is generated, so an edit made outside the harness survives only until the next rerun and can never reach a record. Enforcement always has an edge. Being able to say where yours is worth more than believing it does not have one, because the rule you think covers everything is the one nobody checks.</p>
         </div>
 
         <h3>Stage 05 · Narrow it until it would survive</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Blocking only what should be blocked</strong>
+          You decide the line between what a component acts on and what it leaves alone.
+        </div>
         <p>A component that fires on things it should not gets switched off, and then you have nothing. Everything you have built so far has only been shown material it was designed for. Now show it the rest.</p>
 
         <div class="do-step">
@@ -467,6 +500,10 @@ set after each change. Report each change as a before and after.</code></pre>
         </div>
 
         <h3>Stage 06 · Find out why something did not fire</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Seeing what is loaded, then failure diagnosis</strong>
+          You decide nothing yet. Read the record first and name whether it loaded, ran, or was never reached.
+        </div>
         <p>Something is about to stop working, and it will not tell you. Nothing happening looks the same whether a component never loaded, ran and found nothing, or was never reached at all. Before you change a line, find out which of the three it was.</p>
 
         <div class="do-step">
@@ -501,6 +538,10 @@ py -3 scripts\normalize_arrivals.py --source inbound\arrivals --out normalized\a
         </div>
 
         <h3>Stage 07 · Package it</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Portable packaging</strong>
+          You decide what belongs inside the package and what is genuinely outside it.
+        </div>
         <p>Everything so far works because of where it is sitting. A package is the claim that it will still work somewhere else. The check is not whether it installs — it is whether the contents account for the whole working set, whether anything inside points at a path only you have, and whether anything inside should never have left your machine.</p>
 
         <div class="do-step">
@@ -510,7 +551,7 @@ py -3 scripts\normalize_arrivals.py --source inbound\arrivals --out normalized\a
 Create plugins/inbound/.codex-plugin/plugin.json with name, version and
 description at minimum, and declare the bundled parts:
   "skills": "./skills/"
-  "hooks": "./hooks/"
+  "hooks": "./hooks/hooks.json"
 
 Move into the package:
 - both skills, under plugins/inbound/skills/
@@ -569,7 +610,7 @@ codex plugin marketplace list</code></pre>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p2-gate-proof">
             <label class="check-label"><input type="checkbox" id="p2-source-gate" name="p2-source-gate" data-check-id="source-gate" /><span class="check-num">4</span><span class="check-title">A list line that cannot name its record is refused</span></label>
-            <div class="check-detail">A hand-added row with no supporting record is denied with the row and the reason on stderr, while a regenerated list writes through untouched. What counts as a source is written down and defensible.</div>
+            <div class="check-detail">Direct edits and shell writes without a source are denied, while the one allowed generator accepts only a complete, validated replacement set. What counts as a source is written down and defensible.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p2-scope-proof">
             <label class="check-label"><input type="checkbox" id="p2-scope-narrowed" name="p2-scope-narrowed" data-check-id="scope-narrowed" /><span class="check-num">5</span><span class="check-title">Nothing fires on the material it was not built for</span></label>
@@ -591,7 +632,7 @@ codex plugin marketplace list</code></pre>
         <p class="section-lede">None of these has one right answer. Each one changes what you build, so it is worth having the argument before somebody has to live with your choice.</p>
 
         <ul>
-          <li><strong>The partner file names eight people and yields seven records. Refusing loses all eight. Is that right?</strong> The case for refusing: seven silently is worse than none loudly, because seven produces no signal and somebody has to notice the gap on their own. The case against: a person who is genuinely arriving is now on no list at all, and "we refused the file" is a poor answer at the gate. Both positions accept the same thing — the file has to be re-cut. They differ on who carries the risk in the meantime.</li>
+          <li><strong>The partner file names eight people and yields eight parsed rows, but only six identifiers land in the identifier column. Refusing loses all eight. Is that right?</strong> The case for refusing: six silently is worse than none loudly, because six produces no signal and somebody has to notice the gap on their own. The case against: a person who is genuinely arriving is now on no list at all, and "we refused the file" is a poor answer at the gate. Both positions accept the same thing — the file has to be re-cut. They differ on who carries the risk in the meantime.</li>
           <li><strong>Somebody is covering nights for the aid station and is on no record. What reaches them?</strong> If your source rule is strict they get nothing, and a real person doing real work stops getting recalled. If you loosen it, the ghost on the imagery list comes back. The interesting answer is neither: it is that the fix is a record, and the question is how fast you can get one made.</li>
           <li><strong>A gaining desk is not a trade — but should the lists be built on capability or on desk?</strong> Capability is what the directives ask for, and it is what the records support. Desk is what people actually check, and it is how the room is laid out. Building on capability means a person at the Signals desk does not get the Signals recall, and somebody will find that surprising every single time.</li>
           <li><strong>The badging direction covers every arrival regardless of trade. Which list is that?</strong> It is not a capability list, so it does not fit the five. Do you add a sixth list keyed on report date, or is a message with no list behind it a different kind of thing? Whichever you choose, notice that the answer decides what happens to the eight people your map could not place.</li>

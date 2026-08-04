@@ -150,7 +150,7 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 | Block | Deep mark (one line) |
 |---|---|
 | **P2** | Inbound: sources normalized `n/4` · people normalized `n` · damaged file refused Y/N · capabilities asserted with a named record `n` · unresolved `n` · lists regenerated `n/5` · untraceable line refused Y/N · lookalike files fired on `n/4` · package local paths `n` · package secrets `n` |
-| **P3** | Information need: terminal SATURATED/BUDGET_EXHAUSTED · rounds `n/3` · findings kept `n/12` · defeated `n` · coverage `n/m` obligations · merges run `n/2` and the reason for the one shipped · gate failures caught `n/3` planted · baseline delta stated `Y/N` |
+| **P3** | Information need: terminal SATURATED/BUDGET_EXHAUSTED · rounds `n/3` · findings kept `n/14` · defeated `n` · coverage `n/m` obligations · merges run `n/2` and the reason for the one shipped · gate failures caught `n/3` planted · baseline delta stated `Y/N` |
 | **OSD** | Open source desk: specimen findings reached unaided `n/4` · primitives written before code Y/N · tools `n` of 2-5 · description change that moved a model's choice Y/N · widest result before and after the cap · coded fields decoded `n/n` · planted records labelled `3/3` · handover local paths `0` and credentials `0` |
 | **P4** | Personal harness: terminal PASS/HOLD · human interventions `n` · first-pass evaluator HOLD `n/m` · trusted verifier PASS/HOLD · post-audit repairs `0/1` · mid-run resume PASS/HOLD · external manifest Y/N |
 | **P5** | Containment: 3/3 catches · absence-of-effect proof pointer |

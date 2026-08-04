@@ -40,11 +40,11 @@ A skill that produces the distribution lists from the mapping. Generated every t
 
 ### Stage 4 — Refuse a change that cannot name its source
 
-A hook that blocks any distro output containing a line that cannot be traced back to the record that put it there.
+A source gate with two parts: the hook blocks direct tool edits and shell writes into `distros/`, while the one allowed generator validates every row before atomically replacing the five outputs.
 
 **You direct:** what counts as a source, and whether the hook blocks or marks and continues.
 
-**Working when:** you hand-edit one line into a list and try to ship it, and it gets stopped.
+**Working when:** direct tool edits and shell writes are stopped, the valid generator path still runs, and a deliberately unsupported generated row makes the generator fail without changing any existing list.
 
 *Skill: enforcement design*
 
@@ -86,7 +86,7 @@ A question that will be asked again. Answering it once is not the job; answering
 
 **Material:** one information need with a real decision behind it, and a corpus spread across several source types.
 
-**Bounds:** one baseline. Three search agents. At least two rounds and at most three. At most twelve findings carried into verification. Two verifiers, splitting those findings between them. One merge. One provenance check. One package. A run that wants more than this has not been divided properly.
+**Bounds:** one baseline. Four search agents. At least two rounds and at most three. At most fourteen findings carried into verification. Two verifiers, splitting those findings between them. One merge. One provenance check. One package. A run that wants more than this has not been divided properly.
 
 ### Stage 1 — One agent, saved
 
@@ -112,9 +112,9 @@ Coverage is what the decision obliges an answer to settle — each obligation ad
 
 ### Stage 3 — Fan out on different search paths
 
-Several agents, each searching a genuinely different way: by source type, by entity, by time window, by what someone arguing the opposite would have looked for. Same question, different routes in.
+Four agents, each searching a genuinely different way: by time window, by entity trail, through formal records and tables, and by what someone arguing the opposite would have looked for. Same question, different routes in.
 
-They reach the corpus through one read-only local server, not through the filesystem. What an agent may not look at is then a property of the surface it was handed, rather than a sentence in its instructions that it is free to ignore.
+They reach the corpus through four restricted instances of one read-only local server implementation, not through the filesystem. Each custom agent is configured with exactly one instance and a disjoint subset of the twelve source types. What an agent may not look at is then a property of the surface it was handed, rather than a sentence in its instructions that it is free to ignore.
 
 **You direct:** what makes each route different, what each agent's surface exposes and therefore what it cannot reach, and what each must record about its own search — files opened, queries run, findings, and the citation under each one.
 
@@ -160,7 +160,7 @@ A step that walks every claim in the finished product back to a source and fails
 
 **You direct:** what counts as a live source — one the surface will still serve today, not one that was there when the search ran — and which claims you read yourself.
 
-**Working when:** it fails on a claim you plant with no source behind it, on one whose quote you alter, and on one citing a source that has since been superseded — and it passes without a person checking anything by hand, while the finished product still separates what the check proved from what you judged.
+**Working when:** it fails on a claim you plant with no source behind it and on one whose quote you alter. A real quotation from a superseded source still passes the structural gate, and the finished product identifies that as the boundary between what the check proved and what a person must judge.
 
 *Skill: preserving provenance*
 
@@ -255,4 +255,3 @@ Somebody else connects to it from what you shipped, in one step, on a machine yo
 **Working when:** the config entry works unedited except for values they were told to supply, no path in it exists only on your machine, and no credential is in it anywhere.
 
 *Skill: portable packaging, carried from the morning*
-

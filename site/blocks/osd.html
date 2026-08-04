@@ -25,7 +25,7 @@
     <h1>The open source desk</h1>
     <p class="lede">You have used a tool surface somebody else built. Now build the one other people connect to — over live public feeds that answer when they feel like it, in shapes nobody designed for you.</p>
 
-    <div class="meta-grid">
+    <div class="meta-grid meta-grid-block">
       <div><span class="k">Day</span><span class="v">Tuesday PM</span></div>
       <div><span class="k">Block</span><span class="v">OSD</span></div>
       <div><span class="k">Time</span><span class="v">~2 hr</span></div>
@@ -141,6 +141,10 @@
         <p class="section-lede">Two to five tools, one server, read-only. Where a stage tempts you to add a sixth tool, that is the stage doing its job.</p>
 
         <h3>Stage 01 · Connect one you did not write</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Seeing what is loaded</strong>
+          You decide what you read before enabling a server, and what would make you refuse it.
+        </div>
         <p>Before you build a surface, read one somebody else shipped. The descriptions are what your model will act on, and they arrive from a stranger with no review in between.</p>
 
         <div class="do-step">
@@ -163,11 +167,15 @@ npm run probe</code></pre>
           </ol>
           <p>Then, and only then, compare against the findings shipped with it:</p>
           <pre><code>node specimen/server.mjs --findings</code></pre>
-          <p><strong>What you should see.</strong> Four findings. You should have found at least two unaided. The one people miss most often is the annotation that says <code>readOnlyHint: true</code> on a tool whose own description says it uploads, overwrites and removes — because hosts decide whether to ask for approval from the annotation, so the false field is precisely the one that suppresses the prompt.</p>
+          <p><strong>What you should see.</strong> Four findings. You should have found at least two unaided. The one people miss most often is the annotation that says <code>readOnlyHint: true</code> on a tool whose own description says it uploads, overwrites and removes. MCP says clients must treat tool annotations as untrusted unless the server is trusted. An unsafe or overly trusting host might still use the false hint when deciding whether to ask for confirmation, but that is host-dependent behaviour to test — not a protocol guarantee that the prompt will be suppressed.</p>
           <p><strong>The specimen does nothing.</strong> Every handler refuses; it opens no file and reaches no network. That is deliberate — the lesson is in reading it, and a course that shipped a working attack would be teaching something else.</p>
         </div>
 
         <h3>Stage 02 · Decide the primitive before you write code</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Building what earns its place</strong>
+          You decide which of the three primitives each capability is, written down before any code exists.
+        </div>
         <p>Tool, resource or prompt, written down before anything exists. This is the cheapest decision on the page and the most expensive one to reverse.</p>
 
         <div class="do-step" id="osd-primitive-proof">
@@ -192,6 +200,10 @@ others cost if I build them anyway. Do not write server code yet.</code></pre>
         </div>
 
         <h3>Stage 03 · The smallest useful server</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Building what earns its place</strong>
+          You decide which questions the surface answers, and which it refuses.
+        </div>
         <p>Two to five tools, running and answering before any host knows it exists. A server debugged inside a host is two problems being solved as one.</p>
 
         <div class="do-step">
@@ -227,6 +239,10 @@ node starter/server.mjs</code></pre>
         </div>
 
         <h3>Stage 04 · Write a description the model obeys</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Enforcement design</strong>
+          You decide the wording, and what you change after watching a model choose the wrong tool.
+        </div>
         <p>The description is the contract, and the only part of your server the model ever reads. This is where most production failures start — not in the handler, in the words.</p>
 
         <div class="do-step">
@@ -264,6 +280,10 @@ answer here and it should say so rather than reaching for the nearest tool.</cod
         </div>
 
         <h3>Stage 05 · Make the result safe to receive</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Preserving provenance</strong>
+          You decide the row and byte ceiling, which coded fields you decode, and what provenance travels with every answer.
+        </div>
         <p>Your result lands in a context you do not own and cannot clear. Size, opacity and missing provenance are damage you do at a distance.</p>
 
         <div class="do-step" id="osd-bounded-proof">
@@ -291,6 +311,10 @@ Show me the before and after byte counts.</code></pre>
         </div>
 
         <h3>Stage 06 · Serve a source that is lying to you</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Blocking only what should be blocked</strong>
+          You decide what your server does with a field it cannot vouch for, and what it does with text that reads like an instruction.
+        </div>
         <p>Part of what you serve is written by whoever you are watching. A vessel broadcasts its own name and destination; nothing checks either. Some of it is aimed at whoever reads it next.</p>
 
         <div class="do-step">
@@ -327,6 +351,10 @@ have caught in the ordinary records if you did.</code></pre>
         </div>
 
         <h3>Stage 07 · Hand it over</h3>
+        <div class="stage-skill">
+          <strong>Skill &middot; Portable packaging</strong>
+          You decide what belongs in the package and what the other person supplies.
+        </div>
         <p>Somebody else connects to it from what you shipped, in one step, on a machine you have never seen.</p>
 
         <div class="do-step">

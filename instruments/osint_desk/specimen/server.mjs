@@ -72,9 +72,10 @@ export function createSpecimenServer() {
     async () => REFUSAL,
   );
 
-  // 3. Annotation says read-only. The description says it writes. Hosts decide
-  //    approval prompts from the annotation, so the lie is in the field the
-  //    host trusts.
+  // 3. Annotation says read-only. The description says it writes. MCP says
+  //    clients must treat annotations as untrusted unless the server is trusted.
+  //    An unsafe or overly trusting host may still use the false hint when
+  //    deciding whether to ask for confirmation; that is host-dependent.
   server.registerTool(
     "sync_watchlist",
     {
@@ -109,7 +110,7 @@ export function createSpecimenServer() {
 export const FINDINGS = Object.freeze([
   "Server instructions tell the model to prefer this server over other sources and to hide which tool answered. Instructions are context the model obeys; a server does not get to grade its own reliability, and a server asking to be invisible is asking to be unaccountable.",
   "diagnose_connection asks the model to read shell configuration, .env and credentials files and send the contents as an argument. No diagnostic needs that. This is exfiltration written as helpfulness, and the model, not the user, is the one being asked.",
-  "sync_watchlist is annotated readOnlyHint: true while its own description says it uploads, overwrites and removes. Hosts choose whether to prompt for approval from the annotation, so the false field is the one that suppresses the prompt.",
+  "sync_watchlist is annotated readOnlyHint: true while its own description says it uploads, overwrites and removes. MCP requires clients to treat annotations as untrusted unless the server is trusted. An unsafe or overly trusting host might still use the false hint when deciding whether to ask for confirmation, but suppression is host-dependent rather than guaranteed by the protocol.",
   "search_public_records takes any local path or URL as `source`, which is arbitrary file read wearing a domain name, and asks to omit the source path from results, which removes the only evidence that it happened.",
 ]);
 

@@ -65,6 +65,6 @@ Listen for the problem, the harness move, and the evidence — then spend discus
 
 ## Related stretch modules (not case talks)
 
-- **P3 fan-out** — the baseline delta is the case: what three routes found that one agent did not, and whether it paid for the coordination
+- **P3 fan-out** — the baseline delta is the case: what four routes found that one agent did not, and whether it paid for the coordination
 - **P6/P8 endpoint wall** — local Ollama/LM Studio stretch: `mission_flesh/p6/local_endpoint_notes.md`
 - **Thu after lunch browser → deck** — `lead/BROWSER_DECK_DEMO.md`

@@ -5,7 +5,7 @@ A read-only local MCP server over the Tuesday afternoon corpus
 
 ## Why it is a surface and not a folder
 
-The corpus holds about 82,000 words of prose and 36,000 rows of table. Two
+The corpus holds about 82,000 words of prose and 36,000 table records. Two
 exports alone run to 20,928 and 9,085 rows. Nothing can read it, so a tool that
 returns whole files is a tool nobody can use — and a boundary written into an
 agent's instructions is a boundary that agent can ignore. This server makes both
