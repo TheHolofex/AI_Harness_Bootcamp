@@ -5,6 +5,12 @@ MVP is not “it ran.” MVP is **the least you can do and still claim the capab
 
 Clearable the same day with serious work. Not clearable by watching a demo, accepting vibe, or collecting green checkmarks.
 
+## Course progression rule
+
+Each project assumes mastery of the capabilities required by every earlier project. Its mastery claim must answer: **What can the learner now do that they could not do before this project?**
+
+An earlier skill may remain in the MVP as a prerequisite or evidence standard, but repeating it does not earn the new capability. A file, installation, log entry, reflection, or completed procedure is evidence only when it demonstrates the project's capability delta. If a bar could be moved unchanged to an earlier project, it is not a new learning objective; relabel it as prerequisite evidence or rewrite it around the new capability.
+
 | Lane | Meaning |
 |---|---|
 | **MVP** | Mastery floor for the capability. Required. Evidence must survive a skeptical peer. |
