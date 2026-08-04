@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 280" role="img" aria-labelledby="title-osd-overview">
+  <title id="title-osd-overview">OSD whole-block overview: three public feeds enter a server that joins on MMSI, caps the row count, decodes coded fields, and splits its result into observed facts and self-reported ones</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 8 4 0 8Z" fill="#0A0A0A"/>
+    </marker>
+    <marker id="arrow-gold" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 8 4 0 8Z" fill="#A58650"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, "Inter", "Helvetica Neue", Arial, sans-serif; fill: #0A0A0A; }
+      .micro { font-size: 8px; font-weight: 650; letter-spacing: 1.65px; }
+      .railtext { font-size: 7.1px; font-weight: 650; }
+      .caption { font-size: 8.5px; font-weight: 650; letter-spacing: 1.15px; }
+      .body { font-size: 9.5px; font-weight: 520; }
+      .muted { fill: #6B6B6B; }
+      .gold { fill: #A58650; }
+      .line { fill: none; stroke: #0A0A0A; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+      .hair { fill: none; stroke: #D0D0D0; stroke-width: 1; vector-effect: non-scaling-stroke; }
+      .goldline { fill: none; stroke: #A58650; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+    </style>
+  </defs>
+
+  <rect width="1120" height="280" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1120" height="56" fill="#FAFAF8"/>
+  <text x="24" y="13" class="micro muted">OSD · THE OPEN SOURCE DESK</text>
+  <text x="1096" y="13" class="micro muted" text-anchor="end">WHOLE BLOCK</text>
+  <path d="M97.5 37H1015.5" class="hair"/>
+  <rect x="24" y="25" width="147" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="97.5" y="40" class="railtext muted" text-anchor="middle">1 Read one</text>
+  <rect x="177" y="25" width="147" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="250.5" y="40" class="railtext muted" text-anchor="middle">2 Primitive</text>
+  <rect x="330" y="25" width="147" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="403.5" y="40" class="railtext muted" text-anchor="middle">3 Build</text>
+  <rect x="483" y="25" width="147" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="556.5" y="40" class="railtext muted" text-anchor="middle">4 Describe</text>
+  <rect x="636" y="25" width="147" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="709.5" y="40" class="railtext muted" text-anchor="middle">5 Bound</text>
+  <rect x="789" y="25" width="147" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="862.5" y="40" class="railtext muted" text-anchor="middle">6 Label</text>
+  <rect x="942" y="25" width="147" height="24" rx="2" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="1015.5" y="40" class="railtext muted" text-anchor="middle">7 Hand over</text>
+
+  <text x="24" y="74" class="caption muted">PUBLIC FEEDS</text>
+  <rect x="24" y="84" width="250" height="44" rx="2" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="1.35"/>
+  <text x="40" y="103" class="body">Vessel positions</text>
+  <text x="40" y="117" class="body muted">1,110 live · carries only an MMSI</text>
+  <rect x="24" y="138" width="250" height="44" rx="2" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="1.35"/>
+  <text x="40" y="157" class="body">Vessel details</text>
+  <text x="40" y="171" class="body muted">1,005 records · no position</text>
+  <rect x="24" y="192" width="250" height="44" rx="2" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="1.35"/>
+  <text x="40" y="211" class="body">Aircraft states</text>
+  <text x="40" y="225" class="body muted">keyless · publishes its rate budget</text>
+
+  <path d="M282 160H310" class="line" marker-end="url(#arrow)"/>
+
+  <text x="320" y="74" class="caption muted">YOUR SERVER</text>
+  <rect x="320" y="84" width="290" height="34" rx="2" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="1.35"/>
+  <text x="336" y="105" class="body">Join on MMSI — the feed will not do it</text>
+  <rect x="320" y="126" width="290" height="34" rx="2" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="1.35"/>
+  <text x="336" y="147" class="body">Cap at 20 rows — you cannot take it back</text>
+  <rect x="320" y="168" width="290" height="34" rx="2" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="1.35"/>
+  <text x="336" y="189" class="body">Decode codes — navStat 5 means moored</text>
+  <rect x="320" y="210" width="290" height="34" rx="2" fill="#FAFAF8" stroke="#0A0A0A" stroke-width="1.35"/>
+  <text x="336" y="231" class="body">Split by origin — the whole point</text>
+
+  <path d="M618 160H636V116H660" class="line" marker-end="url(#arrow)"/>
+  <path d="M618 160H636V202H660" class="goldline" marker-end="url(#arrow-gold)"/>
+
+  <text x="670" y="74" class="caption muted">WHAT THE CALLER RECEIVES</text>
+  <rect x="670" y="84" width="426" height="64" rx="2" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="1.35"/>
+  <text x="686" y="105" class="body">Observed</text>
+  <text x="686" y="121" class="body muted">position · speed · course · navigational status</text>
+  <text x="686" y="137" class="body muted">received from the vessel's transponder</text>
+
+  <rect x="670" y="170" width="426" height="64" rx="2" fill="#FFFFFF" stroke="#A58650" stroke-width="1.35"/>
+  <text x="686" y="191" class="body gold">Self-reported</text>
+  <text x="686" y="207" class="body muted">name · destination · call sign · ship type · draught</text>
+  <text x="686" y="223" class="body gold">typed by whoever is aboard · verified by nobody</text>
+
+  <path d="M24 252H1096" class="hair"/>
+  <text x="24" y="268" class="body muted">Return both in the same shape and you have made them equally credible.</text>
+</svg>
