@@ -137,14 +137,14 @@
       day: "Tuesday", slot: "PM", key: "ahb-briefing-mcp-protocols",
       ids: ["mcp1-complete"], stretchIds: [],
       url: "blocks/mcp1.html", meta: "30 min · instructor-led presentation",
-      contextLabel: "Tuesday PM · MCP presentation 1 of 2 · Before P3"
+      contextLabel: "Tuesday PM · MCP presentation 1 of 2 · Before P3 and OSD"
     },
     {
       code: "MCP2", name: "From connection to production", title: "How to Use MCP in 2026", kind: "briefing",
       day: "Tuesday", slot: "PM", key: "ahb-briefing-mcp-practice",
       ids: ["mcp2-complete"], stretchIds: [],
       url: "blocks/mcp2.html", meta: "30 min · instructor-led presentation",
-      contextLabel: "Tuesday PM · MCP presentation 2 of 2 · Before P3"
+      contextLabel: "Tuesday PM · MCP presentation 2 of 2 · Before P3 and OSD"
     },
     {
       code: "P3", name: "The information need", title: "The information need", day: "Tuesday", slot: "PM",

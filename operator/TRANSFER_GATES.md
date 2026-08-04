@@ -37,6 +37,7 @@ Follow the live module page
 | P1 | Judgment-product machine seed in the P1 closeout |
 | P2 | Inbound/30-day reuse seed in the P2 reflection |
 | P3 | Comparator/disposition/MCP-boundary seed in the P3 closeout |
+| OSD | Surface/primitive/labelling seed in the OSD closeout |
 | P4 | Personal-harness goal, boundary, owner, pattern, acceptance/stop rule, and first trial in the P4 handoff |
 | P5 | Intake/trusted-picture seed in the P5 closeout |
 | P6 | Contract/stop seed in the P6 closeout |

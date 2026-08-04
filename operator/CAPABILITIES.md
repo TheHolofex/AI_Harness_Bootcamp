@@ -1,6 +1,6 @@
-# Course capabilities — B1 through P8
+# Course capabilities — B1 through P8, with OSD
 
-What this course gives you: nine capabilities, built in order, each one resting on the ones before it. Every project takes for granted that you can already do the earlier work. Nothing is retaught.
+What this course gives you: ten capabilities, built in order, each one resting on the ones before it. Every project takes for granted that you can already do the earlier work. Nothing is retaught.
 
 Each project below states what you can do at the end of it, what you learn to do along the way, and what the exercise involves.
 
@@ -16,11 +16,12 @@ Each project below states what you can do at the end of it, what you learn to do
 | 2 | Own a machine that rebuilds a judgment product when the world changes | P1 |
 | 3 | Tell what belongs in advice, what belongs in code that always runs, and what belongs in a package | P2 |
 | 4 | Tell when work needs more than one agent, and direct how several answers become one | P3 |
-| 5 | Encode your own working method and prove the product without the builder's word | P4 |
-| 6 | Take in untrusted material and show hostile content changed nothing | P5 |
-| 7 | Let work run without you, under limits that are actually enforced | P6 |
-| 8 | Choose between an adaptive loop and a fixed line, and keep judgment on exceptions | P7 |
-| 9 | Carry the method to a different engine under a policy you wrote first | P8 |
+| 5 | Build the surface other people's agents connect to, and label what you cannot vouch for | OSD |
+| 6 | Encode your own working method and prove the product without the builder's word | P4 |
+| 7 | Take in untrusted material and show hostile content changed nothing | P5 |
+| 8 | Let work run without you, under limits that are actually enforced | P6 |
+| 9 | Choose between an adaptive loop and a fixed line, and keep judgment on exceptions | P7 |
+| 10 | Carry the method to a different engine under a policy you wrote first | P8 |
 
 Pick one instrument track — `engineering` or `mission_ops` — at P3 and keep it through P8. Shared kits live in `instruments/`. These are course instruments, not personal portable evals.
 
@@ -194,6 +195,47 @@ The damaged file produced rows; a capability appears with no record beside it; a
 ### Signs it hasn't landed
 
 The baseline was read before the measures were written; recall is claimed against a set nobody has; routes differ only in wording; the run reports saturation after one pass; a finding is kept because four documents repeat it and one later signed one contradicts it; the merge averages a disagreement instead of naming it; confidence rises because more agents said so; a claim is printed as verified when only its citation was checked; or the package carries this question's answers and is called reusable.
+
+---
+
+## OSD — The Open Source Desk
+
+> **After this project:** You can build the tool surface other people's agents connect to — choosing the primitive, writing contracts a model reliably obeys, bounding what you return, and labelling what you cannot vouch for — and hand it over so it works on a machine you have never seen.
+
+### What you learn to do
+
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Judge a tool surface somebody else shipped you.** | Seeing what is loaded | P3's bounded surface | You have used a surface built for you. This reads one built by a stranger, whose tool descriptions are instructions your model will follow. | You read the descriptions before you enable the server, not after something odd happens. You have refused one on the evidence. You no longer treat "it is on the registry" as a review. |
+| **2. Choose the primitive before writing the code.** | Building what earns its place | P2's advice-versus-enforcement split | Tool, resource, or prompt decides who pulls the trigger, what gets approved, and what it costs in context every turn. Most people make everything a tool and pay for it forever. | You can say which of the three each capability is and why, before any of it exists. Read-only things a person would choose to attach have stopped turning into tools in your designs. |
+| **3. Write a contract a model can actually obey.** | Enforcement design | P2's skill descriptions | A skill description decides whether your own component fires. A tool description decides whether a stranger's agent picks you, and picks you correctly. Same craft, and now the failure is somebody else's. | You have watched a model pick wrongly, changed one description, and watched the choice change. You write when-not-to-call into every tool without being asked. |
+| **4. Bound what you return, because you cannot take it back.** | Preserving provenance | P3's evidence surface | Your result lands in a context you do not own. Size, opacity, and missing provenance are damage you do at a distance. | Your tools cap rows and bytes without being told to. Coded fields are decoded before they leave. Every answer carries when it was observed and who said so, and you notice when somebody else's server does not. |
+| **5. Serve material you cannot vouch for.** | Blocking only what should be blocked | P3's source-authority rules | Live open sources are self-reported. Part of what you serve is written by whoever you are watching, and some of it is aimed at whoever reads it next. | Self-reported material leaves your surface labelled as self-reported. You do not pass a stranger's text on as your own voice. You have stopped assuming that data arriving through your code became yours. |
+
+### What the exercise requires
+
+1. A third-party server is read before it is enabled, and at least one thing in it is refused on the evidence of its own descriptions. The annotation that claims read-only on a tool whose description admits to writing is found, because that is the field hosts use to decide whether to ask.
+2. Every capability is written down as tool, resource or prompt before any code exists, with the two rejected options named. At least one read-only capability is argued out of being a tool.
+3. Between two and five tools, read-only, over live public feeds, driven through a client before any host is configured. The join the feeds do not perform happens inside the server. At least one tool respects a published rate budget rather than discovering the limit by hitting it.
+4. Every description answers what it does, when to call it, when not to, and what it returns. One description is changed and a model's choice observably moves. A question none of the tools fits produces a refusal rather than the nearest tool.
+5. No call can flood a caller's context: the ceiling is in the input schema and the result says when it was applied. No coded field leaves undecoded, and an unmapped code is named as unmapped rather than guessed. Every result carries its source and when it was queried.
+6. Observed facts and self-reported ones leave in separate blocks. Planted records survive with their values intact and their origin unmistakable, including the ordinary one, and no detector is added that would fire on ordinary material.
+7. A handover somebody else could complete: the config block, what to change, how to check it worked, no path that is true only on the author's machine, and no credential anywhere in the package.
+
+OSD attacks the product inside the build — the specimen is read before it is trusted, the descriptions are tested against a model that can pick wrongly, and the surface is run against material written to be read by whoever comes next. Its live page does not add a separate adversarial chat.
+
+### Stretch
+
+- Promote the server from `stdio` to a local HTTP transport and find out which of your assumptions were about the transport rather than about the work.
+- Hand the package to somebody who was not in the room and watch them connect from the README alone. Anything you have to say out loud is a defect in the handover.
+
+### Side-quest
+
+- Build the same shape over a feed from your own desk, and record which of the five objectives got harder when the data was one you already had opinions about.
+
+### Signs it hasn't landed
+
+The specimen was run before it was read; everything became a tool; the server was debugged inside a host; a description says what a tool does but never when not to call it; results are uncapped or return codes rather than meanings; observed and self-reported arrive in the same shape; a detector was added that fires on ordinary vessels; or the handover needs a conversation to work.
 
 ---
 

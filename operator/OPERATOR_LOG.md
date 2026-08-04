@@ -20,7 +20,7 @@ Five fields. Target: under five minutes of dialogue. Append one entry per block;
 | **5. I still own** | Judgment, next action, or risk the machine must not carry alone. |
 | **6. Adversarial** | Paste final line: `ADVERSARIAL: stood / wounded / failed — …` (from review chat). |
 
-P2 uses **6. Enforcement check** instead: name each rule that runs as a hook rather than as advice, the event it fires on, and whether it is trusted; then record what it refused and what it let through. Its evidence line points at `normalized/intake_receipt.json` — handler, records read, records emitted, identifiers in bytes, identifiers placed, refusal reason per source — and at the comparison between the generated lists and the hand-maintained ones. P3 uses **6. Decision review**: record the finding whose defeat most changed the answer, the source that defeated it, and which terminal rule ended the search. P4 uses **6. Integrated evaluation**: point to the human raw-source audit, configured read-only evaluator receipt, deterministic verifier, resume receipt, terminal reason, intervention and repair counts, and residual risk. None of those live pages adds a separate attack chat.
+P2 uses **6. Enforcement check** instead: name each rule that runs as a hook rather than as advice, the event it fires on, and whether it is trusted; then record what it refused and what it let through. Its evidence line points at `normalized/intake_receipt.json` — handler, records read, records emitted, identifiers in bytes, identifiers placed, refusal reason per source — and at the comparison between the generated lists and the hand-maintained ones. P3 uses **6. Decision review**: record the finding whose defeat most changed the answer, the source that defeated it, and which terminal rule ended the search. OSD uses **6. Surface review**: name what you refused in the specimen and the words that decided it, the description you changed and what the change moved, and the fields your server labels as self-reported. P4 uses **6. Integrated evaluation**: point to the human raw-source audit, configured read-only evaluator receipt, deterministic verifier, resume receipt, terminal reason, intervention and repair counts, and residual risk. None of those live pages adds a separate attack chat.
 
 ---
 
@@ -71,6 +71,17 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 | 4. Evidence | |
 | 5. I still own | |
 | 6. Decision review | |
+
+### OSD — The open source desk
+
+| Field | Note |
+|---|---|
+| 1. Directed | |
+| 2. Mid-run | |
+| 3. Verdict | |
+| 4. Evidence | |
+| 5. I still own | |
+| 6. Surface review | |
 
 ### P4 — Personal operating harness
 

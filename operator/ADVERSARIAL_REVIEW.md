@@ -55,6 +55,7 @@ When the live module page calls for a separate review, use this routing rule:
 |---|---|---|
 | **P2** | **No separate attack pass** | The intake checks, the two hooks, and the narrowing run against lookalike material already attack the components from three directions; the reflection records their real findings instead of manufacturing another exercise |
 | **P3** | **No separate attack pass** | Two verifiers already exist to defeat every finding, and the provenance gate is run against three planted claims; do not manufacture another review step |
+| **OSD** | **No separate attack pass** | The specimen is read adversarially before it is trusted, the descriptions are tested against a model that can pick wrongly, and the surface is run against material written to be read by whoever comes next |
 | **P4** | **No separate attack pass** | The human raw-source audit, configured read-only evaluator, deterministic verifier, and real mid-run resume already test the outcome and trajectory; a generic attack would repeat the same boundary |
 | **P5** | **No separate attack pass** | The exposed run is confined to a disposable project; trusted external before/after manifest receipts, human target checks, and operator dispositions form the containment review boundary |
 | **P8** | **The re-pointed hosted open model**, second pass on the same pack | You wired that endpoint this morning and trusted it enough to run D01–D05 |
@@ -168,6 +169,7 @@ The outer loop should not inherit unchallenged fantasy.
 | **When directed by the module page** | Module-specific adversarial AI chat, new for that review (this file) |
 | **P2** | The refusal of the damaged file, the untraceable-line hook, and the run against lookalike material are the review; no separate attack pass |
 | **P3** | The refuting verifiers, the merge conflict rule, and the three planted claims against the provenance gate are the review; no separate attack pass |
+| **OSD** | The specimen read, the description tested against a model, and the planted records served, are the review; no separate attack pass |
 | **P4** | Human raw-source audit, configured read-only evaluator, deterministic verifier, and mid-run resume from durable state; no separate attack pass |
 | **P5** | Isolated exposed run, trusted external before/after manifest receipts, and human target checks are the review; no separate attack pass |
 | **P8** | A second engine on the same pack — required, not a stretch. See *Which engine reviews you* above |

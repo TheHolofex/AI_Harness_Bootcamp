@@ -69,6 +69,7 @@ During the artifact-backed closeout on each live module page, write **one entry 
 | **P1** | From P1 — Machine candidate |
 | **P2** | From P2 — Inbound |
 | **P3** | From P3 — Verdict ownership |
+| **OSD** | From OSD — Surface I would build |
 | **P4** | From P4 — Personal operating harness |
 | **P5** | From P5 — Operating picture |
 | **P6** | From P6 — Contract |
@@ -150,6 +151,18 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | Disposition rule (when I keep, qualify, discard, or mark a claim unknown) | |
 | MCP connect / do-not-connect rule (goal; owner + provenance; data + egress; tools + approval; error-stop; disable/revoke) | |
 | First real decision | |
+
+### From OSD — Surface I would build (feeds **30–60**)
+
+| Field | Entry |
+|---|---|
+| Date | |
+| Capability more than one thing of mine needs, so it earns a surface rather than a function | |
+| Tool, resource or prompt — and why it is not the other two | |
+| The when-not-to-call clause I would put in its description | |
+| Row and byte ceiling, and the coded fields I would decode before they leave | |
+| What I would serve that I cannot vouch for, and how it leaves labelled | |
+| Who connects to it first, and by when | |
 
 ### From P4 — Personal operating harness (feeds **30–60**)
 
