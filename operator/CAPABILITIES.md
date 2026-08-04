@@ -173,15 +173,14 @@ The board is hand-written rather than deterministically rendered; records lose s
 ### What the exercise requires
 
 1. The course frozen brief `BRIEF-v1` and the track corpus in `instruments/p3_frozen_brief` run unchanged on **Codex app** and on **OpenCode**.
-2. A written call, made **before the second engine runs**, on what the first engine alone leaves you short of and what result would have made the second run unnecessary. Check it against what actually came back. "The second run was not needed" is a valid finding when the comparator supports it.
-3. Run identity declared for both engines — model id, version, folder, and which instruction files, skills, plugins, hooks, custom agents, memories, and tool surfaces were live. Work in a clean folder, or write down the loaded context. An undeclared advantage invalidates the comparison.
-4. User-configured and external MCP state declared and cleared before the frozen runs. Unavoidable built-in surfaces are listed but not invoked. The course server is connected only after both raw outputs and the comparator exist.
-5. A deterministic join or watchlist path where one is required. The model does not decide the join key.
-6. A comparator artifact: a side-by-side table of fields and claims with one row per material difference. Zero differences is a valid result when the inspected fields are recorded.
-7. `MCP_EVIDENCE_PACKET.md` covering connection fit, course origin and commit, local implementation fingerprints, server instructions, root, and the two-tool contract. Every material row and every agreed claim driving release carries one or more E-IDs with source hash, returned excerpt, raw-context check, and any correction. Actual source basenames match the plan or name a real exception. Include the shared-dependency note, and disable the server after use.
-8. A source-backed **keep, discard, or unknown** disposition on every consequential claim. Zero discards is valid when the evidence supports every claim.
-9. An adjudication note a supervisor could read cold: what is operationally true for the watch.
-10. A log pointing at the brief id and its unmodified status, both raw outputs, the comparator, the MCP evidence packet, and the final watch product.
+2. Run identity declared for both engines — model id, version, folder, and which instruction files, skills, plugins, hooks, custom agents, memories, and tool surfaces were live. Work in a clean folder, or write down the loaded context. An undeclared advantage invalidates the comparison.
+3. User-configured and external MCP state declared and cleared before the frozen runs. Unavoidable built-in surfaces are listed but not invoked. The course server is connected only after both raw outputs and the comparator exist.
+4. A deterministic join or watchlist path where one is required. The model does not decide the join key.
+5. A comparator artifact: a side-by-side table of fields and claims with one row per material difference. Zero differences is a valid result when the inspected fields are recorded.
+6. `MCP_EVIDENCE_PACKET.md` covering connection fit, course origin and commit, local implementation fingerprints, server instructions, root, and the two-tool contract. Every material row and every agreed claim driving release carries one or more E-IDs with source hash, returned excerpt, raw-context check, and any correction. Actual source basenames match the plan or name a real exception. Include the shared-dependency note, and disable the server after use.
+7. A source-backed **keep, discard, or unknown** disposition on every consequential claim. Zero discards is valid when the evidence supports every claim.
+8. An adjudication note a supervisor could read cold: what is operationally true for the watch.
+9. A log pointing at the brief id and its unmodified status, both raw outputs, the comparator, the MCP evidence packet, and the final watch product.
 
 ### Stretch
 
