@@ -23,13 +23,13 @@
   <main class="site-main">
     <p class="eyebrow">Tuesday PM · P3 · AI Harness Bootcamp</p>
     <h1>The information need</h1>
-    <p class="lede">A question that will be asked again. Answering it once is not the job. Answering it well enough to defend, and again next month without rebuilding it, is — and that takes a run you direct rather than a chat you steer.</p>
+    <p class="lede">This afternoon you answer a question that will come back. Answering it once is not enough. You need an answer you can defend, and a way to answer again next month without starting from zero. That means a run you control, not a chat you steer by hand.</p>
 
     <div class="meta-grid meta-grid-block">
       <div><span class="k">Day</span><span class="v">Tuesday PM</span></div>
       <div><span class="k">Block</span><span class="v">P3</span></div>
       <div><span class="k">Time</span><span class="v">~4 hr</span></div>
-      <div><span class="k">Tools</span><span class="v">Codex (<code>gpt-5.6-terra</code>) · local evidence surface · OpenCode headless</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex (<code>gpt-5.6-terra</code>) · local evidence tools · OpenCode headless</span></div>
       <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p3">0 / 8 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
@@ -51,27 +51,27 @@
     <section id="orient" class="home-section">
       <div class="orient-grid">
         <div>
-          <h2 class="h-plain">What this is worth at work</h2>
-          <p>Task Group MERIDIAN issues its September movement order on 22 August. The order names one primary route for the rotation lift and one contingency. Two corridors exist: <strong>AMBER</strong> runs north over the Selwyn Bridge; <strong>CINDER</strong> runs south-west and crosses the river by vehicle ferry.</p>
-          <p>Name a route that cannot carry the lift and the rotation strands at a crossing. Move to the other one without cause and the group buys a longer corridor, a charter it does not need, and a staging fee. Somebody has to answer, on the 22nd, with what is on file.</p>
-          <p>What is on file is 104 documents across twelve source types — around 82,000 words and 36,000 table records. Nobody reads that. Inside it are four current products quoting a figure that a later signed document withdrew, a standing restriction that was rescinded in June and is still being quoted, two enormous exports where slicing the wrong record reverses the conclusion, and open-source material of a quality you would not put your name to.</p>
-          <p>You will build a run that answers this question, defends every claim in it against a source, and can be handed to somebody else next month to ask the next version of the same question.</p>
+          <h2 class="h-plain">Start here</h2>
+          <p>Task Group MERIDIAN must issue its September movement order on 22 August. The order needs one main route for the rotation lift and one backup. Two corridors exist. <strong>AMBER</strong> runs north over the Selwyn Bridge. <strong>CINDER</strong> runs south-west and crosses the river by vehicle ferry.</p>
+          <p>If you pick a route that cannot carry the lift, the rotation stops at a crossing. If you switch without cause, the group pays for a longer corridor, a charter it does not need, and a staging fee. Somebody has to answer on the 22nd from what is already on file.</p>
+          <p>What is on file is large: 104 documents across twelve source types, about 82,000 words and 36,000 table records. Nobody reads all of it by hand. Inside the pile are traps. Four current products still quote a figure that a later signed document withdrew. A standing restriction was cancelled in June and is still being quoted. Two large exports reverse their conclusion if you slice the wrong record. Some open-source material is too weak to put your name on.</p>
+          <p>Your job is to build a run that answers the question, ties every claim to a source, and can be handed to somebody else next month for the next version of the same question.</p>
 
           <h3>What you leave with</h3>
           <ul>
-            <li>A single-agent baseline, saved before anything else runs, and a clear answer at the end to whether the rest of the afternoon beat it</li>
-            <li>Coverage and support measures the run applies itself, rather than a rubric in a document</li>
-            <li>Four search agents on genuinely different routes, each bounded by the surface it was given rather than by instructions it could ignore</li>
+            <li>One agent&#x27;s answer saved first, before the multi-agent work begins, so you can compare at the end</li>
+            <li>Two scores the run applies itself: did we settle each required point, and does each kept finding rest on a real quote</li>
+            <li>Four search agents on different paths, each limited by the files it can reach</li>
             <li>A search that stops on its own rule and says which rule fired</li>
-            <li>Verifiers that only knock findings down, and a rule where one authoritative contradiction beats any number of failed challenges</li>
-            <li>A merge you directed, run on two models, where confidence can only rise on independent evidence</li>
-            <li>A provenance gate that fails on a planted claim and an altered quote — and admits what it cannot catch</li>
-            <li>A package that names every input the run needs and carries none of this question's answers</li>
+            <li>Checkers that only try to break findings, with authority beating a head count</li>
+            <li>One combined answer, run on two models, with a reason for the model you ship</li>
+            <li>A source check that fails on planted bad claims and admits what it cannot catch</li>
+            <li>A package that names every input the run needs and carries none of this question&#x27;s answers</li>
           </ul>
 
           <h3>Before you start</h3>
           <ul>
-            <li>The course repository on disk at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>The course repository on disk at <code>Documents\\HarnessBootcamp\\AI_Harness_Bootcamp</code></li>
             <li>Node and npm working — <code>node --version</code> answers in PowerShell</li>
             <li>OpenCode installed and reaching your xAI key, from the install clinic</li>
             <li><strong>GPT-5.6 Terra</strong> selected, and permissions on <strong>Ask for approval</strong></li>
@@ -79,74 +79,78 @@
         </div>
         <div class="orient-aside">
           <div class="lead-box">
-            <p class="eyebrow">The bounds</p>
-            <p>One baseline. Four search agents. Two rounds minimum, three maximum. Fourteen findings into verification at most. Two verifiers. One merge. One provenance check. One package. <strong>A run that wants more than this has not been divided properly.</strong></p>
+            <p class="eyebrow">The shape of the afternoon</p>
+            <p>Save one agent&#x27;s answer. Write scores. Split the search four ways. Stop on a rule. Try to break findings. Combine under a written rule. Check that quotes are real. Package the method. Then open the first answer and settle whether the multi-agent work was worth it.</p>
           </div>
           <div class="callout">
-            <strong>The corpus is too large to read</strong>
-            You will not open it. Agents reach it through one read-only server implementation, launched as four restricted route surfaces plus one unrestricted parent surface for verification and provenance. Nothing returns a whole file.
+            <strong>The limits</strong>
+            One first answer alone. Four search agents. Two rounds minimum, three maximum. Fourteen findings into checking at most. Two checkers. One combine step. One source check. One package. A run that wants more than this has not been divided properly.
+          </div>
+          <div class="callout">
+            <strong>The document set is too large to read</strong>
+            You will not open it by hand. Agents reach it through one read-only server: four limited path views, plus one full parent view for checking and source review. Nothing returns a whole file.
           </div>
           <div class="callout">
             <strong>September cannot be observed in August</strong>
-            The exports stop at the decision date. Everything about the rotation window is precedent or forecast. An answer that claims to have read September readings has read nothing.
+            The exports stop at the decision date. Everything about the rotation window is past pattern or forecast. An answer that claims to have read September readings has read nothing.
           </div>
           <div class="callout">
             <strong>Everything here is invented</strong>
-            Exercise NORTHWIND SHELF, Task Group MERIDIAN, and every organisation, person, place and event in the corpus. Every file carries a synthetic marker.
+            Exercise NORTHWIND SHELF, Task Group MERIDIAN, and every organisation, person, place and event in the documents. Every file carries a synthetic marker.
           </div>
         </div>
       </div>
 
       <div class="skill-grid" aria-label="P3 run shape">
-        <div class="skill-cell"><span class="k">1 · Control</span><span class="n">Baseline, then measures</span><p>One agent's answer saved unread, so the measures you write next cannot be bent to flatter what came after.</p></div>
-        <div class="skill-cell"><span class="k">2 · Division</span><span class="n">Routes with real edges</span><p>Four agents whose boundaries are properties of the surface each was handed, not requests in a prompt.</p></div>
-        <div class="skill-cell"><span class="k">3 · Attack</span><span class="n">Refute, then merge</span><p>Findings survive challenge or die. What survives gets merged under a rule you wrote before you saw the disagreements.</p></div>
-        <div class="skill-cell"><span class="k">4 · Defence</span><span class="n">Gate, then package</span><p>Every claim walks back to a source that still serves it, and the whole method is handed on with its inputs named.</p></div>
+        <div class="skill-cell"><span class="k">1 · Start honest</span><span class="n">One agent first</span><p>Save one agent&#x27;s answer unread. Then write scores. That order keeps the scores from flattering the multi-agent work.</p></div>
+        <div class="skill-cell"><span class="k">2 · Split the work</span><span class="n">Four real paths</span><p>Each path gets different files to read. The limit is in the tools, not in a prompt the agent can ignore.</p></div>
+        <div class="skill-cell"><span class="k">3 · Attack and combine</span><span class="n">Break, then decide</span><p>Checkers only try to break findings. What survives is combined under a rule you wrote before you saw the fights.</p></div>
+        <div class="skill-cell"><span class="k">4 · Defend and hand on</span><span class="n">Check sources, package</span><p>Every claim walks back to a live quote. The method is packaged with its inputs named and this question&#x27;s answers left out.</p></div>
       </div>
     </section>
 
     <section id="ideas" class="home-section">
-      <h2>The ideas doing the work</h2>
-      <p class="section-lede">Five ideas carry this work. Read them once now, and come back when a result surprises you — the reason will be one of these.</p>
+      <h2>Learn the ideas before you build</h2>
+      <p class="section-lede">Five ideas carry the afternoon. Read them once. Come back when a step needs the reason.</p>
 
-      <h3>More agents is a cost before it is a benefit</h3>
-      <p>Every agent you add buys coordination, context and waiting before it returns anything. So the honest way to find out whether fanning out was worth it is to have something to compare against, and the only useful comparison is one agent doing the same job. That is what the baseline is for.</p>
-      <p>It has to be saved before you write the measures, and left unread until the end. Read it first and you will know what the single agent missed, and the measures you write next will quietly be the ones that reward finding exactly that. The point of measuring is to be told something you did not already decide.</p>
-      <p>The result that ends this honestly is: <em>here is what the fan-out found that one agent did not</em>. If the answer is "nothing much," that is a finding about this job, not a failure of yours — and it is worth more than a run that was merely busy.</p>
+      <h3>1. Several agents cost you before they help you</h3>
+      <p>Every agent you add costs coordination, context, and waiting before it returns anything. So before you spend that cost, save what one agent can do alone on the same job. That first answer is your comparison. Without it, a busy multi-agent run can look successful even when it found nothing new.</p>
+      <p>Save the first answer before you write the scores, and leave it unread until the end. If you read it first, you will know what it missed. Then you will write scores that reward finding exactly that. The point of scoring is to learn something you did not already decide.</p>
+      <p>At the end, the honest question is simple: what did several agents find that one agent did not? If the answer is &quot;nothing much,&quot; that is a finding about this job. It is not a failure. It is worth more than a run that was only busy.</p>
 
-      <h3>You cannot measure recall here, so do not pretend to</h3>
-      <p>Recall is the share of the relevant material you found. Computing it needs a known set of everything relevant in the corpus. Nobody has one — building it would mean reading all 104 files, which is the work you are trying to avoid. A measure you cannot compute is a measure you will end up estimating, and an estimated measure tells you what you already believed.</p>
-      <p>What you can compute is <strong>coverage</strong> — the decision names things an answer has to settle, and each is either addressed or openly left open — and <strong>support</strong>, which is whether a finding you kept rests on a source that actually carries it. Both are countable without knowing the right answer in advance. Both would read differently if the decision were different, which is the test of whether a measure is doing any work.</p>
+      <h3>2. Count what you can count. Do not fake the rest.</h3>
+      <p>People often want &quot;recall&quot;: the share of all relevant material found. That needs a known list of everything relevant in the documents. Nobody has one. Building it would mean reading all 104 files. A score you cannot compute becomes a guess, and a guess tells you what you already believed.</p>
+      <p>You can count two other things. <strong>Coverage:</strong> the decision names points an answer must settle, and each is either addressed or openly left open. <strong>Source backing:</strong> each kept finding names a file and quotes the words that carry the claim. Both are countable without knowing the right answer in advance. Both would change if the decision changed. That is how you know the scores are doing real work.</p>
 
-      <h3>Different routes means different reading, not different answers</h3>
-      <p>The obvious test of whether your agents searched differently is whether they came back with different things. It is the wrong test. Two agents landing on the same important fact by different paths is corroboration — one of the more valuable things a fan-out produces — and treating it as waste teaches you to prize novelty over truth.</p>
-      <p>Judge the routes by what went in: which files each opened, which entities each chased, which time windows each covered, what each was forbidden. If those are the same, the routes were never different, however different the returns look.</p>
-      <p>And a boundary written into an agent's instructions is a boundary it may ignore. A boundary built into the surface it was handed is one it cannot. That is the same distinction you drew this morning between advice and code that runs anyway, arriving on a different surface.</p>
+      <h3>3. Different paths means different reading, not different answers</h3>
+      <p>The obvious test of whether agents searched differently is whether they came back with different things. That test is wrong. Two agents that reach the same important fact by different reading give you independent agreement. That is valuable. Treating it as waste teaches you to prize novelty over truth.</p>
+      <p>Judge the paths by what went in. Which files did each open? Which people or assets did each chase? Which time windows did each cover? What was each forbidden to read? If those inputs are the same, the paths were never different, no matter how different the answers look.</p>
+      <p>A limit written only in an agent&#x27;s instructions is a limit it may ignore. A limit built into the tools it was handed is a limit it cannot ignore. That is the same lesson as this morning: advice is not the same as code that runs anyway.</p>
 
-      <h3>Refuting is not voting</h3>
-      <p>A verifier's job is to knock a finding down against the sources. It adds nothing. Findings survive the attempt or they do not — and the arithmetic is not democratic. One current, authoritative source that contradicts a finding kills it, however many challenges the finding survived. Ten agents failing to refute something is ten agents failing, not evidence.</p>
-      <p>This corpus punishes the opposite instinct hard. Four current planning products quote one figure for the bridge; one later signed document from the issuing authority withdraws it and gives another. Count the sources and you get the wrong answer confidently. The later, signed, authoritative one governs, and being outnumbered four to one is not an argument.</p>
-      <p>The other half of that discipline: surviving a challenge is not being true. It means nobody managed to knock it down with what they had. Anything downstream that upgrades "survived" into "proved" has laundered the finding, and the merge is where that usually happens.</p>
+      <h3>4. Trying to break a finding is not a vote</h3>
+      <p>After search, you do not ask checkers to improve findings. You ask them to knock findings down against the sources. They add nothing. Findings survive or they die.</p>
+      <p>The math is not democratic. One current, authoritative source that contradicts a finding kills it, even if four other files still repeat the old figure. This document set is built to punish counting. Four current planning products quote one bridge figure. One later signed document from the issuing authority withdraws it and gives another. Count the sources and you get the wrong answer with confidence. The later signed document governs.</p>
+      <p>Surviving a challenge also does not mean proved. It means nobody broke the finding with what they had. When a later step upgrades &quot;survived&quot; into &quot;proved,&quot; the finding has been cleaned up. That usually happens when answers are combined.</p>
 
-      <h3>A gate can prove a quote exists; it cannot prove it supports you</h3>
-      <p>A provenance check walks every claim back to a source and fails the run when one cannot be walked. What it can establish is mechanical and worth having: that the file exists and is still served, that it is the one cited, and that the quoted words are in it.</p>
-      <p>What it cannot establish is whether the source means what your claim says it means. That is judgment, it stays with you, and the danger is not that the gate fails to do it — it is that a green gate reads as though it did. A run reporting "provenance PASS" beside a claim its source does not actually support has told you something true in a way that misleads. Keep the two apart in the output, and say which is which.</p>
+      <h3>5. A source check can prove a quote exists. It cannot prove the source backs you.</h3>
+      <p>At the end, every claim must walk back to a file that still serves it, or the run fails. The check can prove three mechanical facts: the file exists, it is the one cited, and the quoted words are in it.</p>
+      <p>The check cannot prove the source means what your claim says. That is your judgment. The danger is not that the check fails to do that work. The danger is that a green check looks like it already did. Keep the two results apart in the output: quote found, and source backs the claim. A green report beside a claim the source does not back is true and misleading at the same time.</p>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p3" data-block="P3">
 
       <section id="mission" class="home-section" data-check-section="mission">
+
         <h2>Run of exercise</h2>
-        <p class="section-lede">You direct the run and inspect what comes back. The bounds are fixed — stay inside them, and where a step tempts you to add another agent, that is the step doing its job.</p>
-
-        <h3>Stage 01 · One agent, saved</h3>
+        <p class="section-lede">Work in order. First save what one agent can do alone. Then write scores. Then split the search. Then stop on a rule. Then try to break findings. Then combine. Then check sources. Then package the method and open the first answer.</p>
+        <h3>Stage 01 · Save one agent's answer first</h3>
         <div class="stage-skill">
-          <strong>Skill &middot; Knowing when to fan out</strong>
-          You decide the brief that agent gets, and the run identity saved beside it: engine, model, corpus, date.
+          <strong>Skill &middot; Knowing when several agents help</strong>
+          You choose the brief and the run record saved with it: engine, model, document set, and date.
         </div>
-        <p>Everything after this has to beat one agent doing the same job. Save its answer, and do not read it — you write the measures next.</p>
+        <p>Before you spend the afternoon on several agents, you need a fair comparison. Give one agent the same job. Save its answer. Do not read it yet. Next you will write the scores. If you read the answer first, you will write scores that reward finding exactly what it missed.</p>
 
-        <div class="do-step">
+<div class="do-step">
           <p class="do-label">Open <strong>PowerShell</strong> and build the working folder:</p>
           <pre><code>New-Item -ItemType Directory -Path "$env:USERPROFILE\Documents\HarnessBootcamp\P3_Need" -Force
 Copy-Item -LiteralPath "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\tuesday\need" -Destination "$env:USERPROFILE\Documents\HarnessBootcamp\P3_Need\need" -Recurse -Force
@@ -158,7 +162,7 @@ Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\P3_Need"</code></pre>
         <div class="do-step">
           <p class="do-label">Read the need yourself — one page, and the only thing here you should read in full:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\P3_Need\need\INFORMATION_NEED.md"</code></pre>
-          <p>Note the five things an answer has to settle. They become your coverage measure in Stage 02, so read them as a checklist rather than as background.</p>
+          <p>Note the five things an answer has to settle. They become your coverage score in Stage 02. Read them as a checklist, not as background.</p>
         </div>
 
         <div class="do-step">
@@ -182,19 +186,19 @@ recording: the model, the date, the corpus root, how many files you opened,
 which ones, and how long you spent. Report only that both files are written.
 
 Do not summarise your answer in the chat.</code></pre>
-          <p><strong>What you should see.</strong> Two files, and a chat that has told you almost nothing. That is deliberate.</p>
-          <p><strong>Do not open <code>baseline\answer.md</code>.</strong> You come back to it in Stage 08. Knowing now what one agent missed will bend the measures you are about to write toward rewarding exactly that, and then the comparison at the end proves nothing.</p>
-          <p><strong>When it does not.</strong> If it summarised in the chat anyway, look away and carry on. If it opened three files and declared victory, note the count in the run identity — that number is part of what you compare against at the end.</p>
+          <p><strong>What you should see.</strong> Two files, and a chat that has told you almost nothing. That is on purpose.</p>
+          <p><strong>Do not open <code>baseline\answer.md</code>.</strong> You come back to it in Stage 08. If you know now what one agent missed, you will write scores that reward finding exactly that. Then the end comparison proves nothing.</p>
+          <p><strong>When it does not.</strong> If it summarised in the chat anyway, look away and carry on. If it opened three files and declared victory, note the count in the run record. That number is part of what you compare at the end.</p>
         </div>
 
-        <h3>Stage 02 · Put the measures into the run</h3>
+                <h3>Stage 02 · Write the scores the run will use</h3>
         <div class="stage-skill">
           <strong>Skill &middot; Measuring the right thing</strong>
-          You decide what the decision obliges an answer to settle, and what makes a finding worth keeping.
+          You decide which points the decision must settle, and what makes a finding worth keeping.
         </div>
-        <p>Measures belong where the run applies them, not in a document you consult afterwards. A finding either meets them or it does not, and the run should be able to sort by them without you.</p>
+        <p>Scores belong inside the run, not in a note you read later. A finding either meets them or it does not. The run should be able to sort by them without you. You can count two things here: whether each required point is settled or openly left open, and whether each kept finding rests on a real quote from a real file. You cannot count full recall of everything relevant in 104 files. Do not claim that you can.</p>
 
-        <div class="do-step">
+<div class="do-step">
           <p class="do-label">Start a new chat named <code>P3 — Run</code>, same project and model, then paste:</p>
           <pre><code>Read need\INFORMATION_NEED.md. Do not read need\corpus yet and do not open
 anything under baseline\.
@@ -223,22 +227,22 @@ end, as counts I can check, with no adjectives.</code></pre>
         <div class="do-step" id="p3-measures-proof">
           <p class="do-label">Read what came back before you go on:</p>
           <ol class="do-clicks">
-            <li>Every obligation traces to a line in <code>INFORMATION_NEED.md</code> — no invented ones</li>
+            <li>Every required point traces to a line in <code>INFORMATION_NEED.md</code> — no invented ones</li>
             <li>Each is worded so two people would agree whether a finding addresses it</li>
-            <li>Support is a mechanical test, not a judgement about quality</li>
-            <li>Neither measure needs a list of right answers</li>
+            <li>Source backing is a mechanical test, not a judgment about quality</li>
+            <li>Neither score needs a list of right answers</li>
           </ol>
-          <p><strong>The test that matters:</strong> would these measures read differently if the decision were about something else? If they would work unchanged for any research question, they are not measuring this one.</p>
+          <p><strong>The test that matters:</strong> would these scores read differently if the decision were about something else? If they would work unchanged for any research question, they are not measuring this one.</p>
         </div>
 
-        <h3>Stage 03 · Fan out on different search paths</h3>
+                <h3>Stage 03 · Split the search across four paths</h3>
         <div class="stage-skill">
           <strong>Skill &middot; Work division</strong>
-          You decide what makes each route different, what each agent&rsquo;s surface exposes and therefore what it cannot reach, and what each one records about its own search.
+          You decide what makes each path different, which files each agent can reach, and what each one records.
         </div>
-        <p>Four agents, four genuinely different ways in. Each custom agent receives one restricted server instance, so what it may not reach is set by its tool surface rather than by a request in its prompt.</p>
+        <p>Now you use several agents. Four paths, four different ways into the documents. Each agent gets a limited tool set. What it cannot reach is set by that tool set, not by a prompt it can ignore. Judge the paths by what they read, not by whether their answers look different. Two paths that reach the same fact by different reading is good. That is independent agreement.</p>
 
-        <div class="do-step">
+<div class="do-step">
           <p class="do-label">Install and inspect the evidence surface:</p>
           <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\P3_Need\evidence_surface"
 npm ci --ignore-scripts --no-audit --no-fund
@@ -249,7 +253,7 @@ node server.mjs --root "..\need\corpus" --describe</code></pre>
         <div class="do-step">
           <p class="do-label">Confirm a restricted surface really withholds:</p>
           <pre><code>node server.mjs --root "..\need\corpus" --source-types hydrology,met --describe</code></pre>
-          <p>Fourteen files, and <code>withheld_source_types</code> lists the other ten. That flag is how a route gets an edge that holds.</p>
+          <p>Fourteen files, and <code>withheld_source_types</code> lists the other ten. That flag is how a path gets a real limit that holds.</p>
         </div>
 
         <div class="do-step">
@@ -257,7 +261,7 @@ node server.mjs --root "..\need\corpus" --describe</code></pre>
           <pre><code>[mcp_servers.northwind_evidence]
 command = "node"
 args = ["C:/Users/YOU/Documents/HarnessBootcamp/P3_Need/evidence_surface/server.mjs", "--root", "C:/Users/YOU/Documents/HarnessBootcamp/P3_Need/need/corpus"]</code></pre>
-          <p>Replace <code>YOU</code> with your Windows username. Forward slashes, both paths absolute. This unrestricted instance stays with the parent run for verification and provenance later; it is not the surface handed to a route agent.</p>
+          <p>Replace <code>YOU</code> with your Windows username. Forward slashes, both paths absolute. This full instance stays with the parent run for later checking and source review. It is not the tool set handed to a path agent.</p>
         </div>
 
         <div class="do-step">
@@ -312,18 +316,18 @@ the ledger.
 
 Report per agent: exposed source types, boundary result, files opened, tool
 calls, findings kept, and findings dropped. Do not merge anything yet.</code></pre>
-          <p><strong>What you should see.</strong> Four ledgers with disjoint exposed source types and four <code>not_on_surface</code> results. Their inputs differ by construction. Overlap in what they find is fine and often good: two routes reaching the same fact independently is corroboration, and you will want it in Stage 06.</p>
-          <p><strong>When it does not.</strong> If an out-of-route read succeeds, inspect that custom agent's TOML. It has inherited or repeated the unrestricted parent server, omitted <code>--source-types</code>, or was not spawned by its custom-agent name. Fix the surface and rerun the boundary check before searching.</p>
+          <p><strong>What you should see.</strong> Four search logs with different allowed file types and four <code>not_on_surface</code> results. Their inputs differ by design. Overlap in what they find is fine and often good: two paths that reach the same fact independently is agreement you can use in Stage 06.</p>
+          <p><strong>When it does not.</strong> If an out-of-path read succeeds, inspect that named agent's TOML. It has inherited or repeated the full parent server, omitted <code>--source-types</code>, or was not started under its named-agent name. Fix the tool set and rerun the limit check before searching.</p>
         </div>
 
-        <h3>Stage 04 · Let the run decide when it is done</h3>
+                <h3>Stage 04 · Stop the search on a written rule</h3>
         <div class="stage-skill">
-          <strong>Skill &middot; Knowing when to fan out, then work division</strong>
-          You decide what counts as new, the fewest rounds that must run before nothing-new can mean anything, and the ceiling.
+          <strong>Skill &middot; Knowing when several agents help, then work division</strong>
+          You decide what counts as new, how many rounds must run before "nothing new" means anything, and the hard limit.
         </div>
-        <p>Two ways to finish: nothing new came back, or the ceiling stopped you. Both are legitimate. What is not legitimate is a run that cannot say which happened.</p>
+        <p>Search has to end. Two honest endings exist: nothing new came back, or you hit the hard limit. Both are fine. A run that cannot say which one happened is not fine. Write the stop rule before the next round starts.</p>
 
-        <div class="do-step" id="p3-terminal-proof">
+<div class="do-step" id="p3-terminal-proof">
           <p class="do-label">Paste this into <strong>P3 — Run</strong>:</p>
           <pre><code>Run further search rounds under these rules, written to ledger\stopping.md
 before the next round starts:
@@ -343,18 +347,18 @@ BUDGET_EXHAUSTED with the obligations still unresolved listed by number.
 BUDGET_EXHAUSTED is a real ending and I would rather have it than a run that
 pretends the ceiling was saturation. Do not pad findings to reach fourteen, and
 do not drop good ones to stay under it.</code></pre>
-          <p><strong>What you should see.</strong> A terminal record naming one rule, and at most fourteen findings. If it stopped on the ceiling, the unresolved obligations are listed — that list is part of the answer, not a defect in it.</p>
-          <p><strong>When it does not.</strong> A run reporting SATURATED after two rounds with obligations still untouched has defined "new" too loosely. Tighten it to file-plus-obligation and rerun the last round.</p>
+          <p><strong>What you should see.</strong> A stop record naming one rule, and at most fourteen findings. If it stopped on the hard limit, the unresolved required points are listed. That list is part of the answer, not a defect in it.</p>
+          <p><strong>When it does not.</strong> A run that reports "no new findings" after two rounds while required points are still untouched has defined "new" too loosely. Tighten it to file-plus-required-point and rerun the last round.</p>
         </div>
 
-        <h3>Stage 05 · Verifiers that only refute</h3>
+                <h3>Stage 05 · Checkers that only try to break findings</h3>
         <div class="stage-skill">
           <strong>Skill &middot; Measuring the right thing</strong>
-          You decide what a verifier may use, how the findings are split between them, and what defeats a finding.
+          You decide what a checker may use, how findings are split, and what defeats a finding.
         </div>
-        <p>Two agents, each taking half the findings, each trying to knock them down. They add nothing. This is where a corpus that rewards counting sources will punish you.</p>
+        <p>Two agents each take half the findings. Their only job is to knock findings down against the sources. They add nothing. One current, authoritative source that contradicts a finding kills it, even if four other files still repeat the old figure. Surviving a challenge means nobody broke it with what they had. It does not mean proved.</p>
 
-        <div class="do-step" id="p3-refute-proof">
+<div class="do-step" id="p3-refute-proof">
           <p class="do-label">Paste this into <strong>P3 — Run</strong>:</p>
           <pre><code>Split the kept findings between exactly two verifier agents. Each gets half
 and never sees the other half.
@@ -375,18 +379,18 @@ Disposition rules, and they are not a vote:
 Write verify\dispositions.md: every finding, its verifier, SURVIVED or
 DEFEATED, and for each defeat the source that did it and the quoted words.
 Preserve defeated findings in the file - I want to see what died and why.</code></pre>
-          <p><strong>What you should see.</strong> Some findings defeated, with the source named. If nothing died, the verifiers were being polite — check whether they used the tools at all, or simply reread the findings and agreed with them.</p>
-          <p><strong>Watch for the trap.</strong> Somewhere in this corpus a figure appears in several current documents and is withdrawn by one later signed one. If your dispositions kept the popular figure, the rule was applied by counting rather than by authority, and that single error changes the answer.</p>
+          <p><strong>What you should see.</strong> Some findings defeated, with the source named. If nothing died, the checkers were being polite. Check whether they used the tools at all, or simply reread the findings and agreed with them.</p>
+          <p><strong>Watch for the trap.</strong> Somewhere in these documents a figure appears in several current files and is withdrawn by one later signed file. If your checker results kept the popular figure, the rule was applied by counting rather than by authority. That single error changes the answer.</p>
         </div>
 
-        <h3>Stage 06 · Merge under a stated rule</h3>
+                <h3>Stage 06 · Combine findings under a written rule</h3>
         <div class="stage-skill">
-          <strong>Skill &middot; Directing the merge</strong>
-          You decide the conflict rule, the weight rule, the confidence rule, and which of the two merges you ship.
+          <strong>Skill &middot; Directing the combine step</strong>
+          You decide the conflict rule, the weight rule, the confidence rule, and which of the two combined answers you ship.
         </div>
-        <p>You write the rule before you see the disagreements. Then you run the merge twice — on two models from different families — and pick the one you ship, for a reason you can point at.</p>
+        <p>Write the combine rule before you look at the disagreements. Then run the combine step twice, on two models from different families. Pick the answer you ship for a reason you can point to in the two outputs. Confidence may rise only when independent sources carry the same claim. It may not rise because more agents said it.</p>
 
-        <div class="do-step">
+<div class="do-step">
           <p class="do-label">Paste this into <strong>P3 — Run</strong>:</p>
           <pre><code>Write merge\rule.md before merging anything. It states:
 - CONFLICT: what happens when surviving findings disagree. Name the conflict
@@ -419,19 +423,19 @@ Capture its output, as above. Do not ask OpenCode to write a file itself.
 Then write merge\placement.md: where the two merges differ, which one I ship,
 and the reason - which must be something you observed in the two of them, not
 a general preference about models.</code></pre>
-          <p><strong>Why two.</strong> Deciding to fan out is half the job; where you put the stronger model is the other half, and the merge is usually where the judgment concentrates. Running it twice is how you find out whether that holds here rather than assuming it.</p>
-          <p><strong>What you should see.</strong> Two merged answers, a stated difference between them, and a choice with a reason attached. A <code>placement.md</code> that says "Terra is better" with no observation behind it is the failure this step is built to catch.</p>
+          <p><strong>Why two.</strong> Deciding to use several agents is half the job. Where you put the stronger model is the other half, and the combine step is usually where judgment concentrates. Running it twice is how you find out whether that holds here, rather than assuming it.</p>
+          <p><strong>What you should see.</strong> Two combined answers, a stated difference between them, and a choice with a reason attached. A <code>placement.md</code> that says "Terra is better" with no observation behind it is the failure this step is built to catch.</p>
           <p><strong>When it does not.</strong> If OpenCode reports success but the file is empty, it was asked to write rather than to answer — the <code>Out-File</code> pipe is what keeps the writing on this side. Check <code>$env:HB_XAI_MODEL</code> is set from the install clinic, and run <code>opencode models xai --refresh</code> if the key may not be reaching it.</p>
         </div>
 
-        <h3>Stage 07 · A provenance check that fails loudly</h3>
+                <h3>Stage 07 · Check that every quote is real</h3>
         <div class="stage-skill">
-          <strong>Skill &middot; Preserving provenance</strong>
+          <strong>Skill &middot; Keeping source links honest</strong>
           You decide what counts as a live source, and which claims you read yourself.
         </div>
-        <p>Every claim walks back to a source that still serves it, or the run fails. The gate proves the citation is sound. It does not prove the source agrees with you, and the output has to keep those apart.</p>
+        <p>Every claim must walk back to a file that still serves it, or the run fails. This check can prove the file exists and the quoted words are in it. It cannot prove the source means what your claim says. Keep those two results apart. A green check beside a claim the source does not actually back is true and misleading at the same time.</p>
 
-        <div class="do-step">
+<div class="do-step">
           <p class="do-label">Paste this into <strong>P3 — Run</strong>:</p>
           <pre><code>Build provenance\check.md as a step that walks every claim in the shipped
 merge back through resolve_citation on the northwind_evidence server.
@@ -461,18 +465,18 @@ after each:
 
 Report which the gate caught, which it did not, and for any it missed, what
 it would have to check to catch it.</code></pre>
-          <p><strong>What you should see.</strong> The first two fail hard — <code>resolve_citation</code> reports the path is not served, or that the words do not appear. The third is the interesting one: a superseded source still exists and still contains the words, so a structural gate passes it. That is not a defect in the gate; it is the boundary of what a gate can do, and the reason that failure has to be caught by the weight rule in Stage 06 and by you.</p>
-          <p><strong>The thing to take away.</strong> A green provenance report beside a claim its source does not support is true and misleading at once. Keep <em>cited</em> and <em>supported</em> in different columns for the rest of your career.</p>
+          <p><strong>What you should see.</strong> The first two fail hard. <code>resolve_citation</code> reports the path is not served, or that the words do not appear. The third is the interesting one: an outdated source still exists and still contains the words, so a quote-only check passes it. That is not a defect in the check. It is the limit of what a quote check can do. The weight rule in Stage 06 and you have to catch that failure.</p>
+          <p><strong>The thing to take away.</strong> A green source-check report beside a claim its source does not back is true and misleading at once. Keep <em>quote found</em> and <em>source backs the claim</em> in different columns for the rest of your career.</p>
         </div>
 
-        <h3>Stage 08 · Save the run so it executes again</h3>
+                <h3>Stage 08 · Package the method and open the first answer</h3>
         <div class="stage-skill">
           <strong>Skill &middot; Portable packaging</strong>
-          You decide what is fixed in the package, what is supplied fresh each time, and the domain the package declares.
+          You decide what is fixed in the package, what is supplied fresh each time, and the domain the package is built for.
         </div>
-        <p>The method is the product. Package it so the next version of this question runs it rather than rebuilding it — and be honest about what that proves and what it does not.</p>
+        <p>The method is the product. Package the rules so the next version of this question can run them instead of rebuilding them. Carry none of this question's answers in the package. Then open the first saved answer and settle, in plain words, whether the multi-agent afternoon found anything one agent did not. "One agent did nearly as well" is a valid result if it is true.</p>
 
-        <div class="do-step">
+<div class="do-step">
           <p class="do-label">Paste this into <strong>P3 — Run</strong>:</p>
           <pre><code>Package this run alongside the morning's plugin work.
 
@@ -498,98 +502,101 @@ must supply to ask a different question of the same shape.</code></pre>
           <p class="do-label">Now open the baseline for the first time, and settle whether any of this paid for itself:</p>
           <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\P3_Need\baseline\answer.md"</code></pre>
           <ol class="do-clicks">
-            <li>Read it against the shipped merge. What does the fan-out have that one agent did not?</li>
-            <li>Check the obligations: how many did each settle, and did the baseline leave any silently unaddressed rather than openly open?</li>
-            <li>Compare the run identity's file count against the ledgers — did more reading produce more settled obligations, or just more reading?</li>
+            <li>Read it against the shipped combined answer. What does the multi-agent run have that one agent did not?</li>
+            <li>Check the required points: how many did each settle, and did the one-agent answer leave any silently unaddressed rather than openly open?</li>
+            <li>Compare the run record's file count against the search logs. Did more reading produce more settled required points, or just more reading?</li>
             <li>Write the answer down. <strong>"The single agent did nearly as well" is a legitimate result, and worth more than a busy run.</strong> Say it if it is true</li>
           </ol>
-          <p><strong>What the package proves, and what it does not.</strong> It proves the method is complete and its inputs are named — somebody can read it and say what they would supply. It does <em>not</em> prove the run works cold on a new question. That takes a second question, and running it is the proof. Do not record it as done.</p>
+          <p><strong>What the package proves, and what it does not.</strong> It proves the method is complete and its inputs are named. Somebody can read it and say what they would supply. It does <em>not</em> prove the run works cold on a new question. That takes a second question, and running it is the proof. Do not record it as done.</p>
         </div>
+      
       </section>
 
       <section id="floor" class="home-section" data-check-section="floor">
+
         <h2>Lesson outcomes</h2>
-        <p class="section-lede">This display follows the confirmation beside each result above. Use it to see what is complete and what still needs evidence.</p>
+        <p class="section-lede">This summary follows the confirmation beside each result above. Use it to see what is complete and what still needs evidence.</p>
         <ol class="checklist">
           <li class="check-item" data-check-item data-outcome-after="#p3-baseline-proof">
-            <label class="check-label"><input type="checkbox" id="p3-baseline-saved" name="p3-baseline-saved" data-check-id="baseline-saved" /><span class="check-num">1</span><span class="check-title">One agent's answer is saved, unread, with its run identity</span></label>
-            <div class="check-detail"><code>baseline/answer.md</code> and <code>baseline/run_identity.md</code> exist before anything else runs, and the answer stays closed until Stage 08 so the measures cannot be bent to flatter the fan-out.</div>
+            <label class="check-label"><input type="checkbox" id="p3-baseline-saved" name="p3-baseline-saved" data-check-id="baseline-saved" /><span class="check-num">1</span><span class="check-title">One agent's answer is saved unread, with its run record</span></label>
+            <div class="check-detail"><code>baseline/answer.md</code> and <code>baseline/run_identity.md</code> exist before anything else runs. The answer stays closed until Stage 08 so the scores cannot be bent to flatter the multi-agent work.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p3-measures-proof">
-            <label class="check-label"><input type="checkbox" id="p3-measures-in-run" name="p3-measures-in-run" data-check-id="measures-in-run" /><span class="check-num">2</span><span class="check-title">Coverage and support are computable, and recall is not claimed</span></label>
-            <div class="check-detail">Every obligation traces to the need, support is a mechanical test, the run can sort findings without a person, and neither measure needs a list of right answers nobody has.</div>
+            <label class="check-label"><input type="checkbox" id="p3-measures-in-run" name="p3-measures-in-run" data-check-id="measures-in-run" /><span class="check-num">2</span><span class="check-title">Required points and source backing are countable, and full recall is not claimed</span></label>
+            <div class="check-detail">Every required point traces to the need. Source backing is a mechanical test. The run can sort findings without a person. Neither score needs a list of right answers nobody has.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p3-routes-proof">
-            <label class="check-label"><input type="checkbox" id="p3-routes-divided" name="p3-routes-divided" data-check-id="routes-divided" /><span class="check-num">3</span><span class="check-title">Four routes differ in what they read, and their edges are enforced</span></label>
-            <div class="check-detail">Each named custom agent has one restricted evidence surface; the four ledgers record exposed source types, a denied out-of-route read, tool calls, files opened and quoted support; the routes differ by input rather than by how little their returns overlap.</div>
+            <label class="check-label"><input type="checkbox" id="p3-routes-divided" name="p3-routes-divided" data-check-id="routes-divided" /><span class="check-num">3</span><span class="check-title">Four search paths differ in what they read, and their limits are enforced</span></label>
+            <div class="check-detail">Each named agent has one limited tool set. The four search logs record allowed file types, a denied out-of-path read, tool calls, files opened, and quoted backing. The paths differ by input, not by how little their answers overlap.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p3-terminal-proof">
-            <label class="check-label"><input type="checkbox" id="p3-search-terminated" name="p3-search-terminated" data-check-id="search-terminated" /><span class="check-num">4</span><span class="check-title">The search ends on its own rule and names which one fired</span></label>
-            <div class="check-detail"><code>ledger/terminal.md</code> reads SATURATED or BUDGET_EXHAUSTED with the unresolved obligations listed. Two rounds minimum, three maximum, fourteen findings maximum, and no padding to reach the ceiling.</div>
+            <label class="check-label"><input type="checkbox" id="p3-search-terminated" name="p3-search-terminated" data-check-id="search-terminated" /><span class="check-num">4</span><span class="check-title">The search ends on its own rule and names which rule fired</span></label>
+            <div class="check-detail"><code>ledger/terminal.md</code> reads SATURATED (no new findings) or BUDGET_EXHAUSTED (hit the limit), with unresolved required points listed. Two rounds minimum, three maximum, fourteen findings maximum, and no padding to reach the limit.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p3-refute-proof">
             <label class="check-label"><input type="checkbox" id="p3-findings-refuted" name="p3-findings-refuted" data-check-id="findings-refuted" /><span class="check-num">5</span><span class="check-title">Findings die to authority, not to a head count</span></label>
-            <div class="check-detail">Two verifiers split the findings and only refute. One authoritative contradiction defeats a finding however many challenges it survived; defeated findings are preserved with the source that killed them; survivors are recorded as survived, never as proved.</div>
+            <div class="check-detail">Two checkers split the findings and only try to break them. One authoritative contradiction defeats a finding no matter how many challenges it survived. Defeated findings are kept with the source that killed them. Survivors are recorded as survived, never as proved.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p3-merge-proof">
-            <label class="check-label"><input type="checkbox" id="p3-merge-directed" name="p3-merge-directed" data-check-id="merge-directed" /><span class="check-num">6</span><span class="check-title">The merge follows a rule written first, and the model choice has a reason</span></label>
-            <div class="check-detail">Conflict, weight and confidence rules are saved before merging; the merged answer reads as one decision with conflicts named rather than averaged; two models ran it and <code>merge/placement.md</code> gives a reason drawn from the two outputs.</div>
+            <label class="check-label"><input type="checkbox" id="p3-merge-directed" name="p3-merge-directed" data-check-id="merge-directed" /><span class="check-num">6</span><span class="check-title">The combine step follows a rule written first, and the model choice has a reason</span></label>
+            <div class="check-detail">Conflict, weight, and confidence rules are saved before combining. The combined answer reads as one decision with conflicts named rather than averaged. Two models ran it, and <code>merge/placement.md</code> gives a reason drawn from the two outputs.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p3-provenance-proof">
-            <label class="check-label"><input type="checkbox" id="p3-provenance-gate" name="p3-provenance-gate" data-check-id="provenance-gate" /><span class="check-num">7</span><span class="check-title">The gate fails on planted claims and admits what it cannot check</span></label>
-            <div class="check-detail">A missing source and an altered quote both fail. The superseded source passes and is understood as the gate's boundary, not its bug. The report keeps <em>cited</em> and <em>supported</em> apart and never prints a claim as verified.</div>
+            <label class="check-label"><input type="checkbox" id="p3-provenance-gate" name="p3-provenance-gate" data-check-id="provenance-gate" /><span class="check-num">7</span><span class="check-title">The source check fails on planted claims and admits what it cannot check</span></label>
+            <div class="check-detail">A missing source and an altered quote both fail. An outdated source may still pass, and that is the check's limit, not its bug. The report keeps <em>quote found</em> and <em>source backs the claim</em> apart and never prints a claim as verified.</div>
           </li>
           <li class="check-item" data-check-item data-outcome-after="#p3-package-proof">
-            <label class="check-label"><input type="checkbox" id="p3-run-packaged" name="p3-run-packaged" data-check-id="run-packaged" /><span class="check-num">8</span><span class="check-title">The method is packaged with its inputs named, and the baseline is settled</span></label>
-            <div class="check-detail">The package fixes the rules, names every fresh input including the domain it is tuned for, and carries none of this question's answers. The baseline is opened and the delta stated — including "one agent did nearly as well" where that is the honest result. Cold replay on a new question is named as the proof and not claimed.</div>
+            <label class="check-label"><input type="checkbox" id="p3-run-packaged" name="p3-run-packaged" data-check-id="run-packaged" /><span class="check-num">8</span><span class="check-title">The method is packaged with its inputs named, and the one-agent answer is settled</span></label>
+            <div class="check-detail">The package fixes the rules, names every fresh input including the domain it is tuned for, and carries none of this question's answers. The one-agent answer is opened and the difference is stated — including "one agent did nearly as well" where that is the honest result. A cold rerun on a new question is named as the real proof and is not claimed yet.</div>
           </li>
         </ol>
+
       </section>
 
       <section id="depth" class="home-section">
         <h2>Questions worth arguing about</h2>
-        <p class="section-lede">None of these has one right answer. Each changes what you build, so have the argument before somebody has to live with your choice.</p>
+        <p class="section-lede">None of these has one right answer. Each changes what you build. Have the argument before somebody has to live with your choice.</p>
 
         <ul>
-          <li><strong>The fan-out found little the single agent missed. Was the afternoon wasted?</strong> No — you now know something about this job you could only learn by measuring it, and next time you can spend one agent instead of six. The waste would be running the fan-out for a year without ever checking. The uncomfortable version: how many of your current multi-agent habits have never been compared against one agent doing the same work?</li>
-          <li><strong>A finding survives two verifiers. How much is that worth?</strong> Less than it feels. It means nobody defeated it with the sources they reached, which is a statement about the verifiers as much as about the finding. The honest phrasing is the one Stage 05 forces: survived, not proved. Watch how strongly you want to upgrade it anyway.</li>
-          <li><strong>Repetition really is evidence sometimes. When?</strong> When the repetitions are independent — different people observing separately and agreeing. It is worth nothing when they are copies, and in a document corpus most repetition is copying. The test is not how many say it but how many found out separately, and that is usually harder to establish than the claim itself.</li>
-          <li><strong>The gate passes a claim built on a superseded source. Who is supposed to catch that?</strong> The weight rule, if you wrote it well, and you if you did not. It is the clearest example of a check working exactly as designed while the run is still wrong — and of why a green light is not the same as a right answer.</li>
-          <li><strong>Should the package carry a default answer for the obligations it usually settles the same way?</strong> Tempting, and it turns a method into a template that confirms itself. The line is between fixing how the question is asked and fixing what comes back. Fix the first, never the second.</li>
-          <li><strong>The ceiling stopped the search with obligations unresolved. Do you ship?</strong> You ship the answer with the gaps named — that is what the decision-maker needs on the 22nd. Shipping a complete-looking answer with quietly unaddressed obligations is the only genuinely wrong move here.</li>
+          <li><strong>The multi-agent run found little the single agent missed. Was the afternoon wasted?</strong> No. You now know something about this job that you could only learn by measuring it. Next time you can spend one agent instead of six. The waste would be running several agents for a year without ever checking. The hard version: how many of your current multi-agent habits have never been compared against one agent doing the same work?</li>
+          <li><strong>A finding survives two checkers. How much is that worth?</strong> Less than it feels. It means nobody defeated it with the sources they reached. That is a statement about the checkers as much as about the finding. The honest word is survived, not proved. Watch how strongly you want to upgrade it anyway.</li>
+          <li><strong>Repetition really is evidence sometimes. When?</strong> When the repetitions are independent — different people observing separately and agreeing. It is worth nothing when they are copies. In a document set, most repetition is copying. The test is not how many say it. The test is how many found out separately.</li>
+          <li><strong>The source check passes a claim built on an outdated source. Who is supposed to catch that?</strong> The weight rule, if you wrote it well, and you if you did not. This is the clearest case of a check working exactly as designed while the run is still wrong. A green light is not the same as a right answer.</li>
+          <li><strong>Should the package carry a default answer for points it usually settles the same way?</strong> Tempting. It also turns a method into a template that confirms itself. Fix how the question is asked. Do not fix what comes back.</li>
+          <li><strong>The hard limit stopped the search with required points still open. Do you ship?</strong> Ship the answer with the gaps named. That is what the decision-maker needs on the 22nd. Shipping a complete-looking answer with quietly unaddressed points is the only genuinely wrong move here.</li>
         </ul>
 
         <h3>The same run on other desks</h3>
         <ul>
           <li><strong>Any recurring due-diligence question:</strong> a vendor, a site, a supplier. Several source types, conflicting ages of document, and a decision with a date on it.</li>
-          <li><strong>Incident review:</strong> the same shape with logs, tickets and chat as the corpus — and the same trap, where the loudest repeated account outranks the one authoritative record.</li>
+          <li><strong>Incident review:</strong> the same shape with logs, tickets, and chat as the documents — and the same trap, where the loudest repeated account outranks the one authoritative record.</li>
           <li><strong>Any question you are asked quarterly:</strong> the second time you answer it from scratch is the signal that the method should have been the deliverable.</li>
         </ul>
 
         <p class="eyebrow">Optional field guide · 45–60 min</p>
-        <h3>Before agreement becomes corroboration</h3>
-        <p><a href="../resources/p3/independence-spectrum.html"><strong>Independence Is a Spectrum</strong></a> gives you a ledger for working out whether two sources that agree were ever exposed to different evidence. Use it when the merge is about to raise confidence on the strength of two findings that may share one origin.</p>
+        <h3>Before agreement becomes independent agreement</h3>
+        <p><a href="../resources/p3/independence-spectrum.html"><strong>Independence Is a Spectrum</strong></a> gives you a way to work out whether two sources that agree were ever exposed to different evidence. Use it when the combine step is about to raise confidence on two findings that may share one origin.</p>
 
         <h3>Current primary references</h3>
-        <p class="full-measure">Use current primary documentation when adapting this run: <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents" target="_blank" rel="noopener">Codex subagents</a> for how work is delegated and what a custom agent file carries; <a href="https://learn.chatgpt.com/docs/extend/mcp" target="_blank" rel="noopener">Codex MCP</a> for registering a local server and inspecting its surface; <a href="https://modelcontextprotocol.io/specification/2026-07-28" target="_blank" rel="noopener">the MCP specification</a> for what a tool surface can and cannot promise; and <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Anthropic on building effective agents</a> for when fanning out earns its coordination cost.</p>
+        <p class="full-measure">Use current primary documentation when adapting this run: <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents" target="_blank" rel="noopener">Codex subagents</a> for how work is delegated and what a named agent file carries; <a href="https://learn.chatgpt.com/docs/extend/mcp" target="_blank" rel="noopener">Codex MCP</a> for registering a local server and inspecting its tools; <a href="https://modelcontextprotocol.io/specification/2026-07-28" target="_blank" rel="noopener">the MCP specification</a> for what a tool set can and cannot promise; and <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Anthropic on building effective agents</a> for when several agents earn their coordination cost.</p>
       </section>
 
       <section id="stuck" class="split-2 home-section">
         <div>
           <h2>Before you move on</h2>
-          <p>The baseline is saved and settled, the measures are computable, four routes differ by what they read, the search named its own terminal rule, findings died to authority rather than head count, the merge ran twice under a rule written first, the gate failed on planted claims, and the package names its inputs without carrying this question's answers. Full list: <a href="#floor">these P3 lesson outcomes</a>.</p>
+          <p>The one-agent answer is saved and settled. The scores are countable. Four paths differ by what they read. The search named its own stop rule. Findings died to authority rather than head count. The combine step ran twice under a rule written first. The source check failed on planted claims. The package names its inputs without carrying this question&#x27;s answers. Full list: <a href="#floor">these P3 lesson outcomes</a>.</p>
         </div>
         <div>
           <h2>If you get stuck</h2>
           <ul>
-            <li><strong><code>/mcp</code> shows no server.</strong> Check <code>.codex\config.toml</code> uses forward slashes and absolute paths, that <code>npm ci</code> completed in <code>evidence_surface</code>, and that you fully quit and reopened the app. Run <code>node server.mjs --root "..\need\corpus" --validate-only</code> first — if that fails, the config is not the problem.</li>
-            <li><strong>An agent says a file is not on this surface.</strong> That is the boundary working. Either the route was not meant to reach it, or the surface was cut too narrow — decide which before widening anything.</li>
-            <li><strong>A table query returns nothing.</strong> Check the identifier column first. A reading from one station or sensor does not transfer to another, and the wrong slice returns an empty set or, worse, a plausible one.</li>
-            <li><strong>Everything about September comes back empty.</strong> It should. The exports stop at the decision date. Evidence about the window is precedent and forecast, and an agent insisting on September readings is asking for something nobody could have on the 22nd.</li>
-            <li><strong>The verifiers defeated nothing.</strong> Check they used the tools. A verifier that rereads a finding and agrees has not attacked it; give it the sources and the instruction to defeat, not to review.</li>
-            <li><strong>The merge reads like two reports stapled together.</strong> The conflict rule is missing or too vague. Name what happens to disagreement before merging again, and require conflicts to appear as conflicts.</li>
+            <li><strong><code>/mcp</code> shows no server.</strong> Check <code>.codex\config.toml</code> uses forward slashes and absolute paths, that <code>npm ci</code> completed in <code>evidence_surface</code>, and that you fully quit and reopened the app. Run <code>node server.mjs --root &quot;..\need\corpus&quot; --validate-only</code> first. If that fails, the config is not the problem.</li>
+            <li><strong>An agent says a file is not on this tool set.</strong> That is the limit working. Either the path was not meant to reach it, or the tool set was cut too narrow. Decide which before you widen anything.</li>
+            <li><strong>A table query returns nothing.</strong> Check the identifier column first. A reading from one station or sensor does not transfer to another. The wrong slice returns an empty set or, worse, a plausible one.</li>
+            <li><strong>Everything about September comes back empty.</strong> It should. The exports stop at the decision date. Evidence about the window is past pattern and forecast. An agent that insists on September readings is asking for something nobody could have on the 22nd.</li>
+            <li><strong>The checkers defeated nothing.</strong> Check they used the tools. A checker that rereads a finding and agrees has not attacked it. Give it the sources and the instruction to defeat, not to review.</li>
+            <li><strong>The combine step reads like two reports stapled together.</strong> The conflict rule is missing or too vague. Name what happens to disagreement before combining again. Require conflicts to appear as conflicts.</li>
             <li><strong>OpenCode returns nothing.</strong> Capture its output rather than asking it to write files. Confirm <code>$env:HB_XAI_MODEL</code> is set, and run <code>opencode models xai --refresh</code> to check the key is reaching it.</li>
-            <li><strong>You want a fifth agent.</strong> Write down what it would do that the four cannot, then check whether that is a route or just more of one. Usually it is the second.</li>
+            <li><strong>You want a fifth agent.</strong> Write down what it would do that the four cannot. Then check whether that is a new path or just more of one. Usually it is the second.</li>
           </ul>
         </div>
       </section>
