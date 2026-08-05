@@ -70,7 +70,7 @@ During the artifact-backed closeout on each live module page, write **one entry 
 | **P2** | From P2 — Inbound |
 | **P3** | From P3 — Verdict ownership |
 | **OSD** | From OSD — Surface I would build |
-| **P4** | From P4 — Personal operating harness |
+| **P4** | From P4 — Second brain |
 | **P5** | From P5 — Operating picture |
 | **P6** | From P6 — Contract |
 
@@ -164,7 +164,7 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | What I would serve that I cannot vouch for, and how it leaves labelled | |
 | Who connects to it first, and by when | |
 
-### From P4 — Personal operating harness (feeds **30–60**)
+### From P4 — Second brain (feeds **30–60**)
 
 | Field | Entry |
 |---|---|

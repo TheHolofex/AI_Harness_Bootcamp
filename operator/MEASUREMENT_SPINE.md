@@ -1,7 +1,7 @@
 # Measurement spine — Move 4
 
-**Ultra-light week scoreboard.** Living Markdown in the Codex app project.  
-Updated **once per block, after that block&#x27;s review boundary**. P2 uses its built-in `REVIEW:` line and receipt. P4 uses its human raw-source audit, configured read-only evaluator receipt, deterministic verifier, resume receipt, and terminal state. Neither adds a separate adversarial chat.
+**Ultra-light week scoreboard.** Living Markdown in the course operator folder.
+Updated **once per block, after that block&#x27;s review boundary**. P2 uses its built-in `REVIEW:` line and receipt. P4 uses its human audit, MCP receipts, brain verifier, and external baseline freeze. Neither adds a separate adversarial chat.
 
 The live HTML module page is authoritative for whether this row is part of the learner flow and which exact module-specific closeout chat to use.
 
@@ -137,7 +137,7 @@ Answer the question printed in the **Lesson reflection** panel on the current le
 
 For P2, read the row from `normalized/intake_receipt.json` and the generated lists. Put sources normalized as `n/4` and people normalized in the first cell, with the damaged file's refusal `Y/N`. In the second, record capabilities asserted with a named record, unresolved count, and lists regenerated as `n/5`. Count a hook as enforcing only when it is trusted in `/hooks` and has actually refused something you tried; a hook that has never refused anything is untested, not narrow. Record the lookalike files fired on as `n/4` — the target is zero — and the package's local-path and credential counts, both of which should be zero. Do not add an overclaim exercise.
 
-For P4, read the first-pass and final criterion tables from `Harness/EVAL.md` and the run facts from `Harness/RUN_TRACE.md`. In the overclaim cell, put `n/m`, where `m` is the number of criteria the generator presented as ready on first pass and `n` is the number the fresh evaluator returned HOLD. Preserve that first-pass result even when the one permitted repair clears it. Time ends at the explicit PASS/HOLD terminal record, not at the later transfer edit.
+For P4, read brain verify and baseline receipts plus `Audit.md` dispositions. In the overclaim cell, put `n/m`, where `m` is content notes or retrieval answers presented as ready before audit and `n` is how many audit rejected or forced into repair. Time ends at trusted verifier PASS and external baseline freeze, not at the later transfer edit.
 
 Nine rows is the whole scoreboard. Do not average them and do not add a totals line: a median across nine unlike missions has no referent, because the missions are not repeats of one another. The reading that carries a decision is the **shape of the overclaim column down the page**, and you get that by looking at it.
 
@@ -152,7 +152,7 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 | **P2** | Inbound: sources normalized `n/4` · people normalized `n` · damaged file refused Y/N · capabilities asserted with a named record `n` · unresolved `n` · lists regenerated `n/5` · untraceable line refused Y/N · lookalike files fired on `n/4` · package local paths `n` · package secrets `n` |
 | **P3** | Information need: terminal SATURATED/BUDGET_EXHAUSTED · rounds `n/3` · findings kept `n/14` · defeated `n` · coverage `n/m` obligations · merges run `n/2` and the reason for the one shipped · gate failures caught `n/3` planted · baseline delta stated `Y/N` |
 | **OSD** | Open source desk: specimen findings reached unaided `n/4` · primitives written before code Y/N · tools `n` of 2-5 · description change that moved a model's choice Y/N · widest result before and after the cap · coded fields decoded `n/n` · planted records labelled `3/3` · handover local paths `0` and credentials `0` |
-| **P4** | Personal harness: terminal PASS/HOLD · human interventions `n` · first-pass evaluator HOLD `n/m` · trusted verifier PASS/HOLD · post-audit repairs `0/1` · mid-run resume PASS/HOLD · external manifest Y/N |
+| **P4** | Second brain: brain verifier PASS/HOLD · MCP write receipts `n` · audit rejects `n` · cold answers `4` · post-audit repairs `0/1` · external baseline Y/N |
 | **P5** | Containment: 3/3 catches · absence-of-effect proof pointer |
 | **P6** | Contract: stop/restart · exception drill pass/fail |
 | **P8** | Hold-degrade: open `n/5` vs home `n/5`; refuse: Y/N; transfer SEALED: Y/N |

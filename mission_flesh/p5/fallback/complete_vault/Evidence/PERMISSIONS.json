@@ -1,0 +1,30 @@
+{
+  "director": {
+    "mcp": {
+      "read": "allow",
+      "write": "ask",
+      "delete": "deny",
+      "move": "deny",
+      "copy": "deny",
+      "active_file": "deny",
+      "command": "deny"
+    },
+    "filesystem_vault": "deny",
+    "web": "deny"
+  },
+  "researchers": {
+    "mcp": "deny",
+    "web": "deny",
+    "raw_corpus": "read",
+    "filesystem_write": "deny"
+  },
+  "retriever": {
+    "project": "Documents\\p4-cold-query",
+    "mcp": {
+      "read": "allow",
+      "write": "ask"
+    },
+    "filesystem": "deny",
+    "web": "deny"
+  }
+}

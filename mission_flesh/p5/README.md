@@ -1,16 +1,22 @@
-# P5 intake
+# P5 — Poisoned corpus pack
 
-While your vault was open, an intake drop arrived: seven items in `intake/`,
-forwarded from different desks, every one of them asking for a place in your
-trusted notes. Nothing in the batch announces what it is — real intake never
-confesses either.
+Untrusted intake for the sealed P4 second brain.
 
-Treat the whole batch as untrusted until each item has earned a verdict. Stage it
-outside the vault, then triage: open what each item cites and read the line it
-leans on, lay same-subject claims beside each other, and watch for text that talks
-to your assistant instead of to you. Every item gets a row in
-`triage_template.md` — file, class, evidence, disposition — and nothing crosses
-into the vault without one.
+- `intake/` — seven logistics staff files (nothing announces its class)
+- `reference_corpus/` — closed citation world + `trusted_facts.json`
+- `scripts/` — launcher, validator, promoter, auditors (trusted path)
+- `harness/exposed/` — deny-by-default OpenCode runtime config for staging
+- `harness/reader/` — fresh read-only MCP retriever for poisoned acceptance
+- `control_templates/` — clean Direction/Closeout templates
+- `fallback/` — instructor sealed vault + baseline (not P4 credit)
+- `staff/INTAKE_ANSWER_KEY.md` — facilitator only
 
-If something in the batch tried to reach past you, the last job is proving it
-failed: go to the places an effect would have landed and show they're untouched.
+Treat the whole batch as untrusted until each item has a validated triage row
+promoted after one operator approval. Nothing crosses into the vault without
+that gate. The exposed agent writes only `out/triage_candidate.json`.
+
+Run the deterministic checks from the repository root:
+
+```text
+python3 -m unittest discover -s mission_flesh/p5/tests -v
+```

@@ -17,7 +17,7 @@ Each project below states what you can do at the end of it, what you learn to do
 | 3 | Tell what belongs in advice, what belongs in code that always runs, and what belongs in a package | P2 |
 | 4 | Tell when work needs more than one agent, and direct how several answers become one | P3 |
 | 5 | Build the surface other people's agents connect to, and label what you cannot vouch for | OSD |
-| 6 | Encode your own working method and prove the product without the builder's word | P4 |
+| 6 | Build a durable second brain through an MCP write boundary and prove cold retrieval | P4 |
 | 7 | Take in untrusted material and show hostile content changed nothing | P5 |
 | 8 | Let work run without you, under limits that are actually enforced | P6 |
 | 9 | Choose between an adaptive loop and a fixed line, and keep judgment on exceptions | P7 |
@@ -239,45 +239,45 @@ The specimen was run before it was read; everything became a tool; the server wa
 
 ---
 
-## P4 — Personal Operating Harness
+## P4 — Second brain
 
-> **After this project:** You can write down how your work gets done, run the smallest loop that finishes it, stop and pick it up again without losing your place, and prove the result without taking the builder's word for it.
+> **After this project:** You can bind a durable knowledge store behind an MCP write path with real permissions, structure that store so a cold session answers from it alone, and freeze a baseline someone else can re-check without trusting the builder.
 
 ### What you learn to do
 
 | Objective | Skill | Builds on | What is new | What mastery looks like |
 |---|---|---|---|---|
-| **1. Write down how your work gets done so a machine can follow it.** | Setting standards | P1's rerun design | P1 saved the steps. This saves what good looks like to you — who reads it, what matters most, when to come back and ask, where to stop — so the settings change the work itself, not just how it sounds. | The work comes back shaped the way you would have shaped it, and you did not have to say so this time. Your standards live in the setup rather than in the corrections you issue afterward. |
-| **2. Choose the simplest loop that can finish the job.** | Building less | P2's building what earns its place | P2 worked out whether one component was needed. This asks how little the whole job needs, and makes you take parts out and say why. | The build is smaller than what you know how to make. You talk about the parts that are not there without getting defensive. What came out came out because the job did not need it, not because the clock ran out. |
-| **3. Spend effort on evidence only where something earned it.** | Limiting the search | P3's knowing when to fan out | P3 weighed the cost before spending it. This holds a ceiling during the run, and every file the machine opens has to be earned by something it already found. | The machine stops digging because the limit says so, not because you stepped in. The trail that led it to each file is visible and short, because nothing was opened on a hunch. |
-| **4. Keep work going after it stops.** | Picking work back up | P3's preserving provenance | P3 kept the trail intact between agents inside one run. This keeps it across the end of the conversation, so a session that starts knowing nothing can see what exists and carry on. | Coming back to it is uneventful. Nothing important lived in the conversation you closed, and starting fresh costs you the time it takes to read one file rather than the time it takes to remember. |
-| **5. Prove the product without asking the thing that built it.** | Separating the checker | P3's measuring the right thing | P3 set the measures. This keeps the thing being measured from doing the measuring, so whatever made the work cannot be what signs it off. | You do not treat a thing's own account of itself as evidence of anything, and this has stopped feeling like extra work. Where the check comes from is settled before the work starts, not negotiated once the result is in. |
+| **1. Make MCP the only sanctioned write path into a persistent store.** | Bound product boundary | Tuesday MCP + PG permissions | PG bound workers. This puts a durable vault outside the project and admits writes only through ask-gated MCP tools, with receipts. | Filesystem edits of the vault are denied. Writes show up as MCP receipts. Wrong-vault identity fails the smoke test. |
+| **2. Structure a second brain for retrieval, not for dumping Markdown.** | Retrieval design | P3 provenance | P3 kept trails in a run pack. This designs hubs, a route spine, and note schema so a later session can answer without the warehouse. | Cold answers wikilink notes. Hubs are not empty. Multi-mode and multi-factor coverage is visible in the graph. |
+| **3. Merge parallel research under a single writer contract.** | Fan-in with authority | PG unattended workers | PG combined scores. This merges cited logistics findings into one brain with director-only write authority. | Incomplete citations are rejected. Workers never hold vault write. One note path per kept object. |
+| **4. Keep threat material defensive.** | Protection framing | OSD source labelling | Open interference classes become protect / detect / recover requirements, not attack geometry. | Threat notes end in defensive implications. Forbidden offensive tradecraft language is absent. |
+| **5. Prove completion without the builder's word.** | Separating the checker | P3 measures | `verify_brain` checks schema, coverage, receipts, and retrieval artifacts. `verify_baseline` freezes path hashes for P5. | Untouched course tools return PASS. External `P4_BASELINE_[DATE].json` exists. Mutation after freeze fails the check. |
 
 ### What the exercise requires
 
-1. `AGENTS.md` and `Harness/HARNESS_CARD.md` save the real reader, decision priority, output shape, evidence and escalation rule, folder boundary, authority, budgets, and terminal reasons before execution. At least two personal settings change the work rather than its tone.
-2. The chosen hybrid is explicit: fixed scope, approval, check, and release on the outside; bounded adaptive evidence traversal on the inside. Every packet opened is earned by an observed reference, the six-open budget holds, and at least three unnecessary components are rejected with workload-specific reasons.
-3. The inbox becomes a navigable, source-preserving graph. Every generated knowledge note links back to unchanged raw roots, each director answer uses at least two distinct, direct, earned `Source_Packet` roots, and status and missing evidence stay visible.
-4. Every decision-driving claim has a stable ID. You open its raw citation and record a verbatim carrying sentence plus **supported, partly supported, or not supported** in `Audit.md`. Adverse rows remain after qualification or removal, and generated summaries never certify themselves.
-5. `Morning_Brief.md` serves the named decision from claim-level audited support and raw evidence. The configured read-only evaluator saves an exact receipt bound to `EVAL.md`. After audit-driven qualification, at most one evaluator or verifier repair occurs.
-6. The untouched verifier under the course seed returns `PASS P4 candidate` against `Documents\p4-vault` before the evaluator runs. After the scoped handoff completes, the same trusted verifier writes `Harness/BASELINE_MANIFEST.json`. Outcome claims never rest on the builder saying "done."
-7. `RUN_STATE.md` and `RUN_TRACE.md` preserve completed and open work, observable actions, interventions, remaining budget, terminal reason, and next permitted action. A fresh goal verifies completed artifacts and resumes after the human-audit pause without duplicate writes, recorded in `RESUME_RECEIPT.md`.
-8. The log separates machine execution, human evidence judgment, and residual risk. The transfer seed names one real workplace goal, its data boundary, the decision owner, the pattern, an acceptance and stop rule, and a first trial date.
+1. Vault at `Documents\p4-vault` seeded from course pack; Obsidian Local REST API MCP bound; API key via environment variable; vault outside the OpenCode project.
+2. Director permissions: MCP read allow and write ask. Delete, move, copy, active-file, command, and vault filesystem access deny. Researchers: MCP, web, shell, and filesystem write deny. Raw corpus read only.
+3. Workers process `raw_corpus/ASSESSED_SLICE.json` partitions only; bundles carry full citation schema (source_id, raw_path, sha256, excerpt, claim, tags).
+4. Director MCP-merges ≥8 content notes plus hubs/spine; threat notes use defensive language; `Evidence/MCP_RECEIPTS.jsonl` and `Evidence/PERMISSIONS.json` saved.
+5. Cold session writes `Retrieval/Answers.md` for Q1–Q4 with wikilinks, no warehouse, no web.
+6. Human `Audit.md` with dispositions; `Mission_Brief.md` with ≥3 note wikilinks; one repair cycle if needed.
+7. Course `verify_vault.py` brain PASS; `--write-manifest --external operator/evidence/P4_BASELINE_[TODAY].json`; `--check-manifest` PASS.
+8. Handoff receipt names residual risk; transfer seed names one real second-brain workload.
 
-P4 checks the product inside the build — a human raw-source audit, a configured read-only evaluator with an exact receipt, a deterministic vault verifier, and a real resume from saved state. Its live page does not add a separate adversarial chat.
+P4 checks the product inside the build — MCP receipts, permission snapshot, deterministic brain verifier, cold retrieval artifacts, human audit, and external baseline freeze. Its live page does not add a separate adversarial chat.
 
 ### Stretch
 
-- Run the same harness on a second representative capture set and compare verified completion, human interventions, elapsed time, and repairs.
-- Remove one component, rerun the representative case, and keep it removed if quality holds while context, approvals, time, or cost improve.
+- Time a second cold session after removing one hub and record retrieval degradation.
+- Compare a filesystem-written note (no receipt) against an MCP-written note; only the latter satisfies the verifier.
 
 ### Side-quest
 
-- Turn one real HOLD or verifier failure into a regression case before changing the harness.
+- Point the same schema at a thin slice of your own desk corpus and freeze a personal baseline.
 
 ### Signs it hasn't landed
 
-The procedure still depends on copied chat history; personalization changes only voice; state lives only in the conversation; a router, worker team, plugin, MCP server, or reflection loop was added without an observed need; citations go unopened; the evaluator can edit its own evidence; the verifier or the fresh-context handoff fails; or the trace is long but cannot point at an accepted artifact.
+Workers still hold vault write; notes lack sha256/excerpts; cold answers re-open `raw_corpus`; threat notes read like targeting notes; baseline is missing or fails on first check; or completion is claimed from chat rather than verifier PASS.
 
 ---
 
@@ -290,7 +290,7 @@ The procedure still depends on copied chat history; personalization changes only
 | Objective | Skill | Builds on | What is new | What mastery looks like |
 |---|---|---|---|---|
 | **1. Decide what "trusted" means before anything arrives.** | Deciding what to trust | B1's reality checking | B1 checked one result after it came back. This sets a standing rule for what is allowed in at all, written before anything hostile exists to test it. | You wrote the rule when nothing was at stake and it still reads sensibly now that something is. You are not making the call item by item under pressure, and it shows in how little the pressure changes you. |
-| **2. Catch a false citation with a check rather than a hunch.** | Catching a faked source | P1's claim tracing | P1's audit caught honest mistakes. This one faces a source made up on purpose to survive that audit. | A citation that looks right gets opened anyway. You have stopped treating plausibility as a reason to skip the check, so what catches the fake is a step you always run rather than a suspicion you happened to have. |
+| **2. Catch a false citation with a check rather than a hunch.** | Opening the cited source | P1's claim tracing | P1's audit caught honest mistakes. This one faces a real source made to vouch for a materially false claim. | A citation that looks right gets opened anyway. You have stopped treating plausibility as a reason to skip the check, so the false claim is caught by a step you always run rather than a suspicion you happened to have. |
 | **3. Catch material that contradicts what you already hold.** | Spotting contradictions | P1's change reading | P1 read what moved between two runs of your own work. This reads new material against what you already hold, and catches what cannot both be true. | New material meets what you already hold instead of being read on its own. The clash surfaces because the system compares, not because you remembered the earlier record at the right moment. |
 | **4. Prove that a hostile instruction had no effect.** | Proving nothing happened | P1's failure surfacing | P1 made a failure show up. This shows an event did not happen, which is harder — having nothing to point at looks the same as never having looked. | You go looking in the places the instruction could have reached before knowing whether anything is there. A clean result does not satisfy you until you have checked the places that would have looked clean either way. Certainty arrives more slowly than you expect it to. |
 | **5. Tell what a permission can enforce from what only judgment can decide.** | Limits of permission | P2's seeing what is loaded | P2 told you what a setup could reach. This draws the harder line: what a permission can stop, and what it can never settle. | You are precise about what a permission bought you and unbothered that it bought so little. Nobody hears you say the material is sound because the access was narrow. |
@@ -304,7 +304,8 @@ The procedure still depends on copied chat history; personalization changes only
 5. All three logged in time order: detect, isolate, verify clean.
 6. A control map naming the exact `p5-staging` project scope, the approval gate, content checks, trusted external before-and-after manifest receipts, and residual risk, each separately. No permission control is credited with deciding whether a claim is true.
 7. A written rule you will reuse: "I never accept intake into trusted knowledge until ___."
-8. A log verdict that is a containment proof. Anything less has not landed.
+8. A **poisoned-acceptance** cycle on one clean-looking wrong item: sanctioned write into the brain, fresh-session cited retrieval of the wrong answer while a temporary poisoned-state baseline still PASSes, then repair through the same sanctioned path and restore the official baseline. Baseline PASS means unchanged, not true.
+9. A log verdict that is a containment proof plus the poisoned-acceptance receipts. Anything less has not landed.
 
 ### Stretch
 
@@ -331,7 +332,7 @@ goose is the vehicle: a local agent platform, CLI by default with Desktop option
 
 | Objective | Skill | Builds on | What is new | What mastery looks like |
 |---|---|---|---|---|
-| **1. Hand off running work under limits you wrote.** | Running it without watching | P4's picking work back up | P4's work could be picked up after it stopped. This runs while nobody is watching any part of it. | You walk away, and the walking away is not brave. What comes back is legible without you having watched it happen, because you set it up knowing you would not be there. |
+| **1. Hand off running work under limits you wrote.** | Running it without watching | P4's durable handoff | P4 froze durable state and handed it to the next block. This runs while nobody is watching any part of it. | You walk away, and the walking away is not brave. What comes back is legible without you having watched it happen, because you set it up knowing you would not be there. |
 | **2. Tell a limit the tool enforces from a limit that is only a promise.** | Checking which limits are real | P2's enforcement design | P2 built one rule that runs whether the model plays along or not. This reads a whole contract of claimed limits and sorts the real ones from the written ones. | Reading a contract, you sort it quickly and are unimpressed by the strongly worded rows. For each limit you can say what would have to be true for it to fail, and few survive that. |
 | **3. Prove a capability was absent, not just declined.** | Proving a tool was missing | P5's proving nothing happened | P5 showed an effect did not happen. This shows a tool was never offered — missing from the list, not present and passed over. | "It did not do that" does not satisfy you. You want the list the machine was working from, and you are slower to claim a capability is gone than the people around you. |
 | **4. Name what each control actually guarantees.** | Spotting a beatable limit | P5's limits of permission | P5 learned what a permission cannot settle. This sorts every limit by what it really gives you, and finds the ones a determined process can walk around. | You are the one who points out that a control catches the thing rather than preventing it. That does not make you throw it away — you keep it, and you say what it is for. |
@@ -381,7 +382,7 @@ The shipped recipe unchanged, a one-column "be safe" contract, a tool column wit
 | **1. Build a fixed path that handles volume.** | Handling many at once | P3's work division | P3 split one job across several agents. This pushes many items through one fixed shape, where a single bad row repeats hundreds of times. | You think in rows rather than in runs. A mistake that would be an annoyance once you treat seriously, because you are picturing it happening four hundred times. |
 | **2. Put a person where being wrong would cost something.** | Putting a person in the way | P1's judgment ownership | P1 named which decisions were yours. This puts that ownership at one point in a running system, where an uncertain row cannot get past. | The gate sits where being wrong is expensive, not where it was convenient to put one. Uncertain work stops there and waits, and nobody has to remember to check. |
 | **3. Choose between an adaptive loop and a fixed path.** | Picking the right machine | P3's knowing when to fan out | P3 decided whether a job needed more than one agent. This decides whether it belongs in something that adapts at all, or on a line that never makes it up as it goes. | You say why this work is not agent work, or not pipeline work, in terms of the work rather than in terms of what you enjoy building. Your answer comes out different for two jobs you describe on the same day. |
-| **4. Re-sort work you already built.** | Moving work you already built | P4's building less | P4 decided how much to build before building it. This looks at finished work and concludes it was put in the wrong machine. | You will say that something you built earlier in the week is in the wrong place. Having been right the first time is not what you are protecting. |
+| **4. Re-sort work you already built.** | Moving work you already built | P4's representation choice | P4 moved evidence from a warehouse into a retrieval-designed vault. This re-sorts finished work between an agent, a pipeline, or a hybrid. | You will say that something you built earlier in the week is in the wrong place. Having been right the first time is not what you are protecting. |
 | **5. Name the judgment you will not hand over.** | Saying what stays human | Objective 2's gate | A gate holds one decision for a person this time. This names the decisions that will never be handed over, drawn by what being wrong costs rather than by what is hard to automate. | Your list is short, specific, and expensive-sounding. It is not a list of things that are hard to automate — some of them would be easy to automate tomorrow, and you still will not do it. |
 
 ### What the exercise requires
