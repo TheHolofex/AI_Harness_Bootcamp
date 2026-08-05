@@ -185,15 +185,15 @@
       contextLabel: "Wednesday AM · 30-minute presentation · Immediately before P4"
     },
     {
-      code: "P4", name: "Director’s operating harness", title: "The director’s operating harness", day: "Wednesday", slot: "AM",
+      code: "P4", name: "Second brain", title: "Second brain", day: "Wednesday", slot: "AM",
       key: "ahb-checklist-p4",
       ids: [
-        "p4-vault", "mvp-scope", "mvp-pattern", "mvp-graph",
-        "mvp-2q", "mvp-trail", "mvp-revise", "mvp-morning",
-        "mvp-verified", "mvp-handoff", "mvp-own4", "p4-transfer"
+        "p4-vault", "p4-mcp", "p4-schema", "p4-workers",
+        "p4-merge", "p4-retrieve", "p4-audit", "p4-verify",
+        "p4-handoff", "mvp-boundary", "mvp-retrieve", "p4-transfer"
       ],
       stretchIds: [],
-      url: "blocks/p4.html", meta: "Codex + Obsidian + deterministic verifier"
+      url: "blocks/p4.html", meta: "OpenCode + Obsidian MCP + second brain"
     },
     {
       code: "P5", name: "The poisoned corpus", title: "The poisoned corpus", day: "Wednesday", slot: "PM",
@@ -204,7 +204,7 @@
         "mvp-modes", "mvp-rule", "mvp-contain", "p5-transfer"
       ],
       stretchIds: [],
-      url: "blocks/p5.html", meta: "Poison pack"
+      url: "blocks/p5.html", meta: "OpenCode · quarantine · baseline · poisoned acceptance"
     },
     {
       code: "P6", name: "The watch officer", title: "The watch officer", day: "Thursday", slot: "AM",
@@ -264,7 +264,7 @@
     { phase: "Monday AM", title: "Install Clinic → First Light", codes: ["B0", "B1"] },
     { phase: "Monday PM", title: "Model economics → Daily Status Brief", codes: ["ME", "P1"] },
     { phase: "Tuesday", title: "Harness → Inbound → MCP → verdict → your own surface → running it without you", codes: ["HCP", "P2", "MCP1", "MCP2", "P3", "OSD", "PG"] },
-    { phase: "Wednesday", title: "Control flow → personal harness → trusted knowledge", codes: ["LOOPS", "P4", "P5"] },
+    { phase: "Wednesday", title: "Control flow → second brain → trusted knowledge", codes: ["LOOPS", "P4", "P5"] },
     { phase: "Thursday", title: "Autonomy", codes: ["P6", "P7"] },
     { phase: "Friday", title: "Transfer", codes: ["P8"] }
   ];
