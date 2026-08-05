@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Daily Status Brief · AI Harness Bootcamp · Starzl</title>
+  <link rel="stylesheet" href="../css/course.css" />
+  <link rel="stylesheet" href="../css/checklist.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
+    </div>
+  </header>
+
+  <div data-context-for="P1"></div>
+
+  <main class="site-main">
+    <p class="eyebrow">Monday PM · P1 · AI Harness Bootcamp</p>
+    <h1>The Daily Status Brief</h1>
+    <p class="lede">You build a machine that regenerates a cited daily brief when the world changes — not a one-shot chat answer. Own that move and every recurring status product on your desk becomes an instrument you rerun and can defend, instead of an essay you rewrite from memory.</p>
+
+    <div class="meta-grid">
+      <div><span class="k">Day</span><span class="v">Monday PM</span></div>
+      <div><span class="k">Block</span><span class="v">P1</span></div>
+      <div><span class="k">Time</span><span class="v">~3–3.5 hr</span></div>
+      <div><span class="k">Tools</span><span class="v">Codex app (<code>gpt-5.6-terra</code>)</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p1">0 / 19 · 0%</span></div>
+    </div>
+    <hr class="rule-accent" />
+
+    <nav class="page-nav" aria-label="On this page">
+      <span class="page-nav-label">On this page</span>
+      <a href="#orient">Orientation</a>
+      <a href="#ideas">The ideas</a>
+      <a href="#mission">Run of exercise</a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/7</span></a>
+      <a href="#depth">Going deeper</a>
+      <a href="#stuck">If you get stuck</a>
+      <div class="page-nav-progress">
+        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p1"></span></div>
+        <span class="page-nav-pct" data-progress-for="ahb-checklist-p1" data-progress-format="pct">0%</span>
+      </div>
+    </nav>
+
+    <section id="orient" class="home-section">
+      <div class="orient-grid">
+        <div>
+          <h2 class="h-plain">What this is worth at work</h2>
+          <p>By Friday of a normal week, Monday's status document is wrong. Numbers moved, one blocker cleared, a new one landed — and somewhere a page still says otherwise. Most people handle that by asking a chat model to "summarize the latest" and getting a fresh essay every time: different structure, different emphasis, no way to tell what actually changed, no way to tell whether any of it is true.</p>
+          <p>This afternoon you build the other thing: a thinking machine that does the heavy lifting in knowledge work under your direction. One folder of source reports, one fixed format, a citation on every claim, and a saved path that regenerates the whole brief on command. When the world changes, you rerun it — and you can show why you trust the new brief, because you built the checks that catch it lying.</p>
+          <p>You will use two P1 chats. <strong>P1 — Direction &amp; Closeout</strong> saves the release contract and final artifact-backed closeout. <strong>P1 — Daily Brief Build</strong> creates, refreshes, and repairs the brief. The saved source manifest, audit, and release record carry the work between chats and keep the decision readable a month from now.</p>
+          <h3>What you will leave with</h3>
+          <ul>
+            <li>A Direction Brief marked LIVE that pins audience, format, citation rule, accept checks, and stop conditions</li>
+            <li>A brief you can regenerate on command: script, skill (a packaged procedure the app can invoke on matching tasks), or saved one-command flow you can show, not a paste job</li>
+            <li>A risk-based citation audit you ran with your own eyes — five claims, pass/fail recorded, real findings repaired</li>
+            <li>An intact-corpus manifest check and a current-source refresh that changed only supported lines</li>
+            <li>A release record that separates generated content from the decisions you own</li>
+            <li>The move itself: you can take any recurring status product on your desk and turn it into a machine you own</li>
+          </ul>
+          <h3>Before you start</h3>
+          <ul>
+            <li>B1 complete enough that you can open the Codex app and select the course project</li>
+            <li>The <a href="me.html">30-minute Model Economics discussion</a> is complete, with one model-selection rule ready to carry into this build</li>
+            <li>Operator templates present in the project: <code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code></li>
+            <li>The course repo inside the project Codex has open — open the repo folder as your project, or copy <code>mission_flesh/p1/</code> into it, so <code>mission_flesh/p1/corpus/</code> resolves from where the machine works</li>
+          </ul>
+        </div>
+        <div class="orient-aside">
+          <div class="lead-box">
+            <p class="eyebrow">Lead operate-along</p>
+            <p>The lead runs this same page on screen — contract saved, manifest checked, brief regenerated, citations audited, and release decision narrated. Check a box when your own artifact or observed result exists.</p>
+          </div>
+          <div class="callout">
+            <strong>The closeout follows the artifacts</strong>
+            Contract → source manifest → brief → audit → release record → one log and transfer update. The outcome summary below shows what is complete and what remains.
+          </div>
+          <div class="callout">
+            <strong>Course model</strong>
+            P1 uses the OpenAI API key stored in Codex sign-in. Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) for every P1 chat; do not leave the chat on Default or Sol.
+          </div>
+        </div>
+      </div>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p1/p1-overview.svg" alt="The whole block at a glance: a source manifest and corpus feed a regenerable cited brief, followed by a human citation audit, current-source refresh, and release decision" width="1120" height="280" loading="lazy" decoding="async" />
+      </figure>
+    </section>
+
+    <section id="ideas" class="home-section">
+      <h2>The ideas doing the work</h2>
+      <p class="section-lede">Five ideas carry this afternoon. Read them once now, and come back when a step surprises you — the reason will be one of these.</p>
+
+      <h3>A thinking machine that does the heavy lifting</h3>
+      <p>A <strong>judgment product</strong> is any recurring output someone acts on: a status brief, a risk rollup, a watch report, the Monday email your boss forwards upward. Ask a chat model for one and you get a draft — often a good draft. But the process that produced it is trapped inside one conversation. Tomorrow, when the facts move, you re-ask and re-explain, then receive a different essay whose changes you cannot account for.</p>
+      <p>A machine is the same product with its structure put where you control it: inputs pinned to a folder, format fixed in advance, a citation rule stated as law, and the run path written down — a script, a skill, or one saved command. The output structure stays fixed while evidence changes. That's what <strong>regenerable</strong> means.</p>
+      <p>The test is blunt: could you regenerate tomorrow's brief without re-explaining the mission from memory? Could a colleague, from what's on disk? If the answer is no, you don't own a machine — you own a transcript. That's also what going wrong looks like here: "regenerating" by re-prompting from memory, so each day's brief is a fork of the truth, and format drift that makes Tuesday's brief impossible to diff against Monday's.</p>
+
+      <h3>Citation as a checkable circuit</h3>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p1/p1-idea-citation-circuit.svg" alt="Concept: a claim in the brief carries a C-number tag wiring it to a source file you read yourself, ending in a recorded pass, fail, or corrected verdict" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+      <p>Every factual claim in your brief carries a tag like <code>[C3]</code> that maps to a source file. Be precise about what the tag does: it does not make the claim true. Models write fluent claims whether or not the source holds them up. What the tag does is make the claim <em>checkable</em> — a wire you can follow from the sentence to the file, with your own eyes on both ends.</p>
+      <p>The eyes matter more than the wire. Ask the model "are your citations correct?" and it will grade its own work, usually generously — that's <strong>self-assessment</strong>, and it is worth nothing as evidence. Independent evidence means the reading happens outside the machine that wrote the claim: you open <code>C3_qa_signoff.md</code> and see whether it really says the EU export failed.</p>
+      <p>You can't walk every wire every day, so you sample by risk. Include the highest-consequence claims, qualified sources, and claims that merge evidence. A clean sample is a legitimate result; a failed row becomes a specific repair. Decorative citations, dropped qualifiers, and nonexistent source ids are the failures this audit is designed to catch.</p>
+
+      <h3>Two source controls</h3>
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p1/p1-idea-two-probes.svg" alt="Concept: an intact source-manifest check runs before drafting, then a current-source refresh updates the affected brief lines while unrelated sections remain stable" width="1120" height="220" loading="lazy" decoding="async" />
+      </figure>
+      <p>The <strong>source-manifest preflight</strong> compares the intact input folder with the declared source set before any drafting begins. Missing, unexpected, or duplicate ids stop the run before a fluent brief can hide the mismatch.</p>
+      <p>The <strong>current-source refresh</strong> adds newly current material and reruns the same method. A healthy machine changes exactly where the evidence changed and holds unrelated sections steady. Together, these controls show what the run read and how the output responded without damaging the source set for a classroom test.</p>
+
+      <h3>Acceptance criteria are the contract</h3>
+      <p>Before the build, save five concrete fields: <strong>Outcome</strong>, <strong>Done looks like</strong>, <strong>Bounds</strong>, <strong>Evidence standard</strong>, and <strong>Stop / hand-back</strong>. P1 supplies the structure; you supply the real audience.</p>
+      <p>Specificity makes release possible. A daily brief for a named reader, with four fixed sections, stable citations, a manifest check, and one regenerate command can be checked line by line. “Keep me posted on status” cannot.</p>
+
+      <h3>Draft versus judgment</h3>
+      <p>The machine drafts; you judge. However good the draft, some calls in a status brief are yours and cannot be delegated: what gets printed as fact versus flagged as unverified, what "Blocked" actually means for this audience, what got left out, whether the thing goes out at all. The log line that separates the two — <em>this is machine draft, this is my judgment</em> — is how responsibility stays where it belongs.</p>
+      <p>The mechanism working against you here is comfort. The draft arrives fluent and complete — it reads like a finished thing, and editing a finished thing feels like damaging it. Fluency also masquerades as verification: a sentence that sounds checked raises none of the alarm a rough note would. So shipping the machine's framing whole is the path of least resistance, and every good draft that goes out untouched makes the next untouched one easier.</p>
+      <p>Here's the shape of a call that's yours. A source reports an outage it couldn't reproduce, and says so. Three moves exist: print it as established fact, print it with its status attached, or leave it out for this audience. The first launders a rumor — the caveat was the point. The choice between the other two depends on who's reading, and either way somebody decides. A model will pick one fluently; only you can own the pick, because when it's challenged, "that's what the AI said" is a defense that doesn't exist. The brief carries your name; the machine is an instrument you operate, and instruments don't sign things.</p>
+    </section>
+
+    <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p1" data-block="P1">
+
+      <section id="mission" class="home-section" data-check-section="mission">
+        <h2>Run of exercise</h2>
+        <p class="section-lede">Build a regenerable daily brief, verify its source set before drafting, audit its claims, refresh it with current information, and make a documented release decision.</p>
+
+        <h3>Stage 01 · Save the release contract</h3>
+        <p>The contract fixes the audience, output, sources, and release checks before the first draft. P1 uses a filled specification rather than another interview.</p>
+
+        <div class="do-step">
+          <p class="do-label">Open or create <strong>P1 — Direction &amp; Closeout</strong> in the <strong>ChatGPT desktop app</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open <strong>ChatGPT</strong> and select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Look for <strong>P1 — Direction &amp; Closeout</strong> in the sidebar and open it if it already exists</li>
+            <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P1 — Direction &amp; Closeout</code></li>
+            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>)</li>
+            <li>Confirm permissions say <strong>Ask for approval</strong></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Replace <code>[YOUR AUDIENCE]</code>, then paste this into <strong>P1 — Direction &amp; Closeout</strong>:</p>
+          <pre><code>Read operator/DIRECTION_BRIEF.md and replace its active brief with this P1 contract.
+
+Outcome: a daily status brief for [YOUR AUDIENCE], built only from the current
+sources in mission_flesh/p1/corpus/.
+Done looks like: fixed sections Shipped / Broken / Blocked / Asks; every factual
+claim carries a stable [C#] citation mapped to a filename; one saved regenerate
+command produces the same structure.
+Bounds: current C1-C6 sources only for the first release; DELTA_patch.md is held
+for the later refresh; no outside facts.
+Evidence standard: the intact source-manifest preflight passes; I audit at least
+five risk-selected claims against their files; the current-source refresh changes
+only supported lines.
+Stop / hand-back: stop before drafting if the manifest and folder differ, a
+citation cannot resolve, or a claim lacks source support.
+
+Write these five fields into the file, set Status to LIVE, and report the exact
+section changed. Do not start the mission in this chat.</code></pre>
+        </div>
+
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-pulse-brief" name="p1-pulse-brief" data-check-id="pulse-brief" />
+              <span class="check-num">1</span>
+              <span class="check-title">The P1 release contract is complete before drafting begins</span>
+            </label>
+            <div class="check-detail"><code>operator/DIRECTION_BRIEF.md</code> names the audience, fixed format, source boundary, preflight, citation audit, refresh check, and stop conditions with Status <strong>LIVE</strong>.</div>
+          </li>
+        </ol>
+
+        <h3>Stage 02 · Build the source manifest and run preflight</h3>
+        <p>The source manifest is the brief's input contract. It lets the regenerate path stop before drafting when the folder no longer matches the expected source set.</p>
+
+        <div class="do-step">
+          <p class="do-label">Inspect the source folder in <strong>File Explorer</strong>:</p>
+          <ul class="do-clicks">
+            <li>Press <strong>Windows+E</strong></li>
+            <li>Enter <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p1\corpus</code> in the address bar</li>
+            <li>Confirm <code>C1_release_notes.md</code> through <code>C6_billing_api.md</code> and <code>DELTA_patch.md</code> are present</li>
+            <li>Read <code>C5_sso_rumor.md</code> and <code>DELTA_patch.md</code>. Note the status words and which information belongs only to the later refresh</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Create <strong>P1 — Daily Brief Build</strong> in <strong>Codex</strong>:</p>
+          <ul class="do-clicks">
+            <li>In <strong>ChatGPT</strong>, select <strong>Codex</strong> from the top-left switcher if needed</li>
+            <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+            <li>Click <strong>New chat</strong></li>
+            <li>Open the new chat's <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P1 — Daily Brief Build</code></li>
+            <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>) and confirm permissions say <strong>Ask for approval</strong></li>
+            <li>Keep this chat open through the release record</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Paste this into <strong>P1 — Daily Brief Build</strong>:</p>
+          <pre><code>Before drafting, inspect mission_flesh/p1/corpus/.
+
+Create mission_flesh/p1/SOURCE_MANIFEST.md. List C1-C6 as the required current
+source set, with source id, exact filename, one-line purpose, and any qualifier
+the source itself carries. List DELTA_patch.md separately as held-back refresh
+material.
+
+Create a preflight step for the regenerate path that compares the intact corpus
+to this manifest before drafting. It must report missing, unexpected, or duplicate
+current-source ids and stop before drafting on a mismatch. Do not rename, remove,
+or alter any source for this check.
+
+Run the preflight now on the intact corpus. Report the exact command and result.
+Do not draft the brief yet.</code></pre>
+        </div>
+
+        <p>The preflight should pass with six current sources and one held-back refresh file. If the set differs, resolve the folder or manifest error before continuing.</p>
+
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-corpus" name="p1-p1-corpus" data-check-id="p1-corpus" />
+              <span class="check-num">2</span>
+              <span class="check-title">The source manifest records the current and held-back inputs</span>
+            </label>
+            <div class="check-detail"><code>mission_flesh/p1/SOURCE_MANIFEST.md</code> maps C1-C6 to exact files and qualifiers, with <code>DELTA_patch.md</code> clearly separated from the first release.</div>
+          </li>
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-stale" name="p1-p1-stale" data-check-id="p1-stale" />
+              <span class="check-num">3</span>
+              <span class="check-title">The intact-corpus preflight passes before drafting</span>
+            </label>
+            <div class="check-detail">The saved preflight reports six valid current sources, no missing or duplicate ids, and stops before drafting on any future mismatch.</div>
+          </li>
+        </ol>
+
+        <h3>Stage 03 · Build and regenerate the brief</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p1/p1-stage-03-machine.svg" alt="Stage 3, inside the machine: an input rule reading the corpus with DELTA held back, fixed sections, a citation rule that fails loudly on unresolved tags, and outputs of the brief plus a saved run command" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+
+        <div class="do-step">
+          <p class="do-label">Return to <strong>P1 — Daily Brief Build</strong>. Replace <code>[YOUR AUDIENCE]</code>, then paste:</p>
+          <pre><code>Using the current sources in mission_flesh/p1/SOURCE_MANIFEST.md, build a
+regenerable daily status brief.
+Audience: [YOUR AUDIENCE]. Fixed sections: Shipped / Broken / Blocked / Asks.
+Every factual claim carries a stable [C#] citation mapped to the manifest filename.
+Do not invent sources. Distinguish verified facts from unverified reports.
+Run the intact-corpus preflight before every draft and stop before drafting if
+the manifest does not match.
+Output: the brief in markdown plus a script or one documented regenerate command.</code></pre>
+        </div>
+
+        <p>The result should include the fixed sections, a stable source tag on every factual claim, and one saved run path. Do not repair missing tags by hand; correct the generation path.</p>
+
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-machine" name="p1-p1-machine" data-check-id="p1-machine" />
+              <span class="check-num">4</span>
+              <span class="check-title">The cited brief is regenerable from a saved path</span>
+            </label>
+            <div class="check-detail">The brief uses the fixed sections, maps every factual claim to a manifest source, preserves source qualifiers, and has a saved regenerate path.</div>
+          </li>
+        </ol>
+
+        <div class="do-step">
+          <p class="do-label">Ask <strong>P1 — Daily Brief Build</strong> for the run command:</p>
+          <pre><code>Show me the exact regenerate command and the folder to run it from - one
+command, nothing else. Then stop. I will run it myself.</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Open <strong>PowerShell</strong> and run the returned command:</p>
+          <pre><code>cd $env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp
+[YOUR REGENERATE COMMAND]</code></pre>
+        </div>
+
+        <p>The cold run should pass preflight and reproduce the same sections and source mapping without another mission prompt.</p>
+
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-regen" name="p1-p1-regen" data-check-id="p1-regen" />
+              <span class="check-num">5</span>
+              <span class="check-title">The saved regenerate path rebuilds the brief successfully</span>
+            </label>
+            <div class="check-detail">One command passes preflight and rebuilds the brief with the same structure and citation mapping.</div>
+          </li>
+        </ol>
+
+        <h3>Stage 04 · Run a risk-based citation audit</h3>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p1/p1-stage-04-audit.svg" alt="Stage 4: five cited claims sampled from the brief and checked against their files by the operator" width="1120" height="220" loading="lazy" decoding="async" />
+        </figure>
+
+        <div class="do-step">
+          <p class="do-label">Return to <strong>P1 — Daily Brief Build</strong> and ask for the audit map:</p>
+          <pre><code>List every citation in the current brief as a table: the tag, the exact
+sentence carrying it, and the source filename it maps to. Do not judge whether
+the citations are correct - I will read the files myself.</code></pre>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Open <strong>Notepad</strong> and save this as <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p1\AUDIT.md</code>:</p>
+          <pre><code># P1 citation audit - my eyes, not the model's
+
+| Tag | Claim (short) | File | PASS/FAIL | Why |
+|-----|---------------|------|-----------|-----|
+|     |               |      |           |     |
+|     |               |      |           |     |
+|     |               |      |           |     |
+|     |               |      |           |     |
+|     |               |      |           |     |
+
+Finding and action: [NO CHANGE REQUIRED / CLAIM BEFORE -> CLAIM AFTER]</code></pre>
+          <p>Choose <strong>File → Save As</strong>, enter the full path, select <strong>All files</strong>, and save.</p>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Walk five high-risk citations yourself:</p>
+          <ul class="do-clicks">
+            <li>Include any claim based on <code>C5_sso_rumor.md</code></li>
+            <li>Include any sentence that merges two sources and the highest-consequence claim for your audience</li>
+            <li>For each claim, open the cited file, read the supporting text, and record PASS or FAIL with a reason in <code>AUDIT.md</code></li>
+          </ul>
+        </div>
+
+        <p>If a row fails, return to <strong>P1 — Daily Brief Build</strong>, send the exact claim, filename, and source text, and direct the smallest correction. If all five pass, record <code>NO CHANGE REQUIRED</code>; a sound audit does not need to manufacture a defect.</p>
+
+        <div class="do-step">
+          <p class="do-label">In <strong>P1 — Daily Brief Build</strong>, use this only for a failed row after filling its brackets:</p>
+          <pre><code>Audit result: the claim "[PASTE THE CLAIM]" cites [FILENAME], but the file
+actually says: [WHAT THE FILE SAYS]. Correct the brief. Keep the format and
+every other claim unchanged, and show me the corrected line.</code></pre>
+        </div>
+
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-audit" name="p1-p1-audit" data-check-id="p1-audit" />
+              <span class="check-num">6</span>
+              <span class="check-title">Five risk-selected citations are checked and every finding is resolved</span>
+            </label>
+            <div class="check-detail"><code>mission_flesh/p1/AUDIT.md</code> records five source checks and either the resulting correction or <code>NO CHANGE REQUIRED</code>.</div>
+          </li>
+        </ol>
+
+        <h3>Stage 05 · Refresh from a current source</h3>
+        <p>The held-back patch now becomes a current source. This is a normal refresh: the brief should change where the new evidence applies and remain stable elsewhere.</p>
+
+        <div class="do-step">
+          <p class="do-label">Run this in the same <strong>PowerShell</strong> window:</p>
+          <pre><code>cd $env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp
+Copy-Item mission_flesh\p1\corpus\DELTA_patch.md mission_flesh\p1\corpus\C7_patch.md
+[YOUR REGENERATE COMMAND]</code></pre>
+        </div>
+
+        <p>The manifest or regenerate path should recognize <code>C7_patch.md</code> as the promoted refresh source. Confirm the EU-export line updates, <code>PLAT-901</code> appears, and the billing section stays unchanged. If the manifest requires an explicit update, add C7 with its source id and rerun.</p>
+
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-delta" name="p1-p1-delta" data-check-id="p1-delta" />
+              <span class="check-num">7</span>
+              <span class="check-title">The current-source refresh changes only supported lines</span>
+            </label>
+            <div class="check-detail">The EU-export status and <code>PLAT-901</code> update while unrelated billing content remains stable, with C7 recorded in the manifest if required.</div>
+          </li>
+        </ol>
+
+        <h3>Stage 06 · Make the release decision</h3>
+        <p>The release record separates generated content from the decisions you own: which claims are safe to publish, what <em>Blocked</em> means for this audience, what stays out, and whether the brief ships.</p>
+
+        <div class="do-step">
+          <p class="do-label">Return to <strong>P1 — Daily Brief Build</strong>, fill the brackets, then paste:</p>
+          <pre><code>Create mission_flesh/p1/RELEASE_RECORD.md using only the results I supply.
+
+Audience: [AUDIENCE]
+Final brief path: [PATH]
+Regenerate command: [COMMAND]
+Source-manifest preflight: [PASS / HOLD, WITH RESULT]
+Citation audit: [N PASS, N FAIL, AND ANY CORRECTION]
+Current-source refresh: [WHAT CHANGED AND WHAT STAYED STABLE]
+Operator decisions:
+- Claims published as fact: [RULE OR EXAMPLE]
+- Claims kept qualified or excluded: [RULE OR EXAMPLE]
+- "Blocked" means: [AUDIENCE-SPECIFIC DEFINITION]
+- Material omission: [ONE ITEM OR "none"]
+Release status: [READY / READY WITH FIXES / HOLD]
+Residual risk or next action: [ONE LINE]
+
+Save the file. Do not change the brief.</code></pre>
+        </div>
+
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-judgment" name="p1-p1-judgment" data-check-id="p1-judgment" />
+              <span class="check-num">8</span>
+              <span class="check-title">The release record documents the operator-owned decisions</span>
+            </label>
+            <div class="check-detail"><code>mission_flesh/p1/RELEASE_RECORD.md</code> records the preflight, audit, refresh, publish/qualify/exclude calls, release status, and residual risk.</div>
+          </li>
+        </ol>
+
+        <div id="pulse" class="lesson-reflection" data-check-section="pulse">
+          <h3>Lesson reflection</h3>
+          <p class="reflection-question"><strong>Closeout question:</strong> Which source check will you require before releasing a generated brief at work?</p>
+
+          <div class="do-step">
+            <p class="do-label">Return to <strong>P1 — Direction &amp; Closeout</strong>:</p>
+            <ul class="do-clicks">
+              <li>In <strong>ChatGPT</strong>, select <strong>Codex</strong> from the top-left switcher if needed</li>
+              <li>Choose <strong>Open project</strong> and select <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
+              <li>Look for <strong>P1 — Direction &amp; Closeout</strong> in the sidebar and open it if it exists</li>
+              <li>If it is missing, click <strong>New chat</strong>. Open the new chat's <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P1 — Direction &amp; Closeout</code></li>
+              <li>Select <strong>GPT-5.6 Terra</strong> (<code>gpt-5.6-terra</code>)</li>
+              <li>Confirm permissions say <strong>Ask for approval</strong></li>
+            </ul>
+            <p>The saved P1 files carry the evidence, so this closeout still works if the earlier chat had to be recreated.</p>
+          </div>
+
+          <div class="do-step">
+            <p class="do-label">Fill the brackets, then paste this once into <strong>P1 — Direction &amp; Closeout</strong>:</p>
+            <pre><code>Read mission_flesh/p1/RELEASE_RECORD.md, mission_flesh/p1/AUDIT.md,
+operator/OPERATOR_LOG.md, and operator/TRANSFER_30_60_90.md.
+
+Update the P1 entry in OPERATOR_LOG.md with:
+- final artifact and path
+- release status from RELEASE_RECORD.md
+- the most consequential audit or refresh finding and the fix, or the residual risk
+- evidence pointers to SOURCE_MANIFEST.md, AUDIT.md, and RELEASE_RECORD.md
+- lesson reflection: [THE SOURCE CHECK I WILL REQUIRE BEFORE RELEASE]
+- reusable workplace rule: [ONE PLAIN RULE]
+
+Update only "From P1 — Machine candidate" in TRANSFER_30_60_90.md:
+Dated: [TODAY'S DATE]
+Machine candidate: [ONE RECURRING PRODUCT I ACTUALLY PRODUCE] — rebuild it from
+a source manifest, fixed sections, citations, one regenerate command, and a
+documented release decision.
+
+Use my filled values. Preserve the rest of both files and report the exact
+sections changed.</code></pre>
+          </div>
+
+          <ol class="checklist">
+            <li class="check-item" data-check-item>
+              <label class="check-label">
+                <input type="checkbox" id="p1-pulse-log" name="p1-pulse-log" data-check-id="pulse-log" />
+                <span class="check-num">9</span>
+                <span class="check-title">The P1 closeout points to its saved evidence</span>
+              </label>
+              <div class="check-detail">The P1 log points to the manifest, audit, and release record; it names a release status, finding or residual risk, and one reusable rule.</div>
+            </li>
+          </ol>
+
+          <p id="p1-transfer-complete">Open <code>operator/TRANSFER_30_60_90.md</code> and confirm the P1 row contains the dated name of one real recurring product. A job category is not a product.</p>
+        </div>
+      </section>
+
+
+
+
+
+      <section id="floor" class="home-section" data-check-section="floor">
+        <h2>Lesson outcomes</h2>
+        <p class="section-lede">This is a read-only summary of the Lesson outcome checkboxes beside the relevant instructions above. <strong>Complete</strong> means you checked the outcome where its evidence was produced; <strong>Not yet</strong> means it remains open. Select an outcome title to return to its inline checkbox.</p>
+        <ol class="checklist">
+
+          <li class="check-item" data-check-item data-outcome-after="pulse-brief">
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-live" name="p1-mvp-live" data-check-id="mvp-live" />
+              <span class="check-num">13</span>
+              <span class="check-title">The P1 release contract is complete before the build begins</span>
+            </label>
+            <div class="check-detail">Audience, format, source boundary, manifest check, citation audit, refresh check, and stop conditions are recorded in the LIVE brief.</div>
+          </li>
+
+          <li class="check-item" data-check-item data-outcome-after="p1-regen">
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-rerun" name="p1-mvp-rerun" data-check-id="mvp-rerun" />
+              <span class="check-num">14</span>
+              <span class="check-title">The brief can be rebuilt from a saved path</span>
+            </label>
+            <div class="check-detail">Script, skill, or saved brief-plus-command — not a one-shot paste. Evidence looks like: you rerunning it in front of someone without re-prompting the mission from memory.</div>
+          </li>
+
+          <li class="check-item" data-check-item data-outcome-after="p1-audit">
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-5cite" name="p1-mvp-5cite" data-check-id="mvp-5cite" />
+              <span class="check-num">15</span>
+              <span class="check-title">Five risk-selected citations are checked and every finding is resolved</span>
+            </label>
+            <div class="check-detail"><code>mission_flesh/p1/AUDIT.md</code> records five checks selected by consequence and evidence risk, plus any resulting correction or <code>NO CHANGE REQUIRED</code>.</div>
+          </li>
+
+          <li class="check-item" data-check-item data-outcome-after="p1-delta">
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-delta" name="p1-mvp-delta" data-check-id="mvp-delta" />
+              <span class="check-num">16</span>
+              <span class="check-title">New source material changes only the right parts</span>
+            </label>
+            <div class="check-detail">Evidence looks like: the two briefs sit side by side, with the lines that change and the lines that remain stable both identified.</div>
+          </li>
+
+          <li class="check-item" data-check-item data-outcome-after="p1-stale">
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-stale" name="p1-mvp-stale" data-check-id="mvp-stale" />
+              <span class="check-num">17</span>
+              <span class="check-title">The intact source set passes a saved manifest preflight</span>
+            </label>
+            <div class="check-detail"><code>SOURCE_MANIFEST.md</code> defines the current inputs, and the saved preflight reports six valid sources with no missing, unexpected, or duplicate ids before drafting.</div>
+          </li>
+
+          <li class="check-item" data-check-item data-outcome-after="p1-judgment">
+            <label class="check-label">
+              <input type="checkbox" id="p1-mvp-own" name="p1-mvp-own" data-check-id="mvp-own" />
+              <span class="check-num">18</span>
+              <span class="check-title">The release record separates generated content from operator decisions</span>
+            </label>
+            <div class="check-detail"><code>RELEASE_RECORD.md</code> names the publish, qualify, exclude, Blocked-definition, release-status, and residual-risk decisions.</div>
+          </li>
+
+          <li class="check-item" data-check-item data-outcome-after="#p1-transfer-complete">
+            <label class="check-label">
+              <input type="checkbox" id="p1-p1-transfer" name="p1-p1-transfer" data-check-id="p1-transfer" />
+              <span class="check-num">19</span>
+              <span class="check-title">One recurring work product is named and dated for transfer</span>
+            </label>
+            <div class="check-detail">The <strong>From P1 — Machine candidate</strong> block in <code>operator/TRANSFER_30_60_90.md</code> contains one recurring product from your real desk and today's date. A role or category is not a product: "reporting" does not count; "the Thursday ops rollup" does.</div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="depth" class="home-section">
+        <h2>Going deeper while it runs</h2>
+        <p class="section-lede">Builds have wait time. Spend it here — and when a result smells wrong, this catalog is where you look first.</p>
+
+        <h3>Failure catalog</h3>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
+            <tbody>
+              <tr><td>Every regeneration reads different</td><td>Format lives in the model's mood, not the machine</td><td>Fix the section list in the machine's own instruction; reject drafts that drift</td></tr>
+              <tr><td>"I checked my citations — all good"</td><td>Self-assessment offered as evidence</td><td>Ignore it. Open the files yourself; only your read counts</td></tr>
+              <tr><td>Delta rerun changes nothing</td><td>The patch never entered the input set — or the ignore rule still excludes it</td><td>Confirm where the machine reads from; rename the patch (<code>C7_patch.md</code>) or lift the ignore rule, rerun</td></tr>
+              <tr><td>Current-source refresh changes everything</td><td>No stable output structure</td><td>Pin sections and the citation rule so only supported evidence changes</td></tr>
+              <tr><td>Preflight reports a source-set mismatch</td><td>The folder and manifest no longer describe the same inputs</td><td>Resolve the missing, unexpected, or duplicate id before drafting; do not let generation hide it</td></tr>
+              <tr><td>The rumor prints as fact</td><td>The source's own caveat got dropped in summary</td><td>Make the citation rule carry claim status — verified vs unverified — not just a file id</td></tr>
+              <tr><td>Works today, gone tomorrow</td><td>The mission lives in chat history, not on disk</td><td>Have the machine write its own run instruction; test it from a cold start</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Release questions worth deciding</h3>
+        <ul>
+          <li><strong>The model audited its own citations and reported all clear. What do you now know?</strong> Only that the instrument approves of itself. The audit exists because the reading has to come from outside the machine that wrote the claims.</li>
+          <li><strong>How many claims do you audit before trusting the rest?</strong> Five is a starting point, not a law. The honest answer scales with the cost of a wrong claim reaching your audience — a brief that routes money or people earns a bigger sample.</li>
+          <li><strong>Is printing "unverified: SSO outage reported, could not reproduce" better than omitting the rumor entirely?</strong> It depends on who's reading — an on-call engineer wants the rumor with its status attached; an exec summary may not. Either way somebody decides, and it's you.</li>
+          <li><strong>The delta rerun changed a line you didn't expect. Bug or catch?</strong> Walk the wire before ruling. Sometimes the machine has surfaced a real implication you missed — and that's the machine earning its keep, not a defect.</li>
+        </ul>
+
+        <h3>The same machine on other desks</h3>
+        <ul>
+          <li><strong>Ops / SRE:</strong> a nightly incident rollup regenerated from tickets and on-call notes. The manifest preflight catches the day an intake feed silently dies.</li>
+          <li><strong>Program / PM desk:</strong> weekly status from a folder of team reports. The delta test is the late report that lands Friday at 4 p.m.</li>
+          <li><strong>Intel / research:</strong> a watch brief over a source folder. The citation circuit is the difference between reporting and laundering rumor into fact.</li>
+          <li><strong>Any desk with a boss:</strong> the Monday status email is already a judgment product. Audience, format, and citation rule are the same contract at smaller scale.</li>
+        </ul>
+
+        <h3>Stretch, after the required outcomes are complete</h3>
+        <p>Two stretch lanes and a side-quest, straight from the lesson-outcome file: collapse the regenerate path to a single operator action end-to-end; produce a second consumer format — exec versus desk — from the same machine without forking truth; or run a different judgment product, a risk rollup or watch list, over the same corpus with the same regenerate-audit-delta discipline. Log stretch work like everything else: evidence, not enthusiasm.</p>
+
+        <p class="eyebrow">Optional field guide · 60–75 min</p>
+        <h3>Test the machine when no gold paragraph exists</h3>
+        <p><a href="../resources/p1/metamorphic-tests.html"><strong>Metamorphic Tests for Generative Judgment Products</strong></a> gives you a relation-based test sheet for changes that should hold, move, stay out, or force a stop. Use it after the rerunnable machine exists.</p>
+
+        <p class="eyebrow">Optional field guide · 45–60 min</p>
+        <h3>Bind one run to reconstructable evidence</h3>
+        <p><a href="../resources/p1/reproducible-runs.html"><strong>Reproducible Runs: Stable IDs, Manifests, and Hashes</strong></a> gives each execution an immutable identity and a replayable bundle of exact inputs, procedure, configuration, output, checks, and residual unknowns.</p>
+      </section>
+    </form>
+
+    <section id="stuck" class="split-2 home-section">
+      <div>
+        <h2>Before you move on</h2>
+        <p>Move on when the regenerate path, source manifest, citation audit, current-source refresh, and release record agree on what is ready and what remains. Full outcome list: <a href="#floor">these P1 lesson outcomes</a>.</p>
+      </div>
+      <div>
+        <h2>If you get stuck</h2>
+        <ul>
+          <li><strong>Codex can't find <code>mission_flesh</code>.</strong> The folder exists on disk, but the app works from the project folder that's open — a path outside it won't resolve, and depending on your permission mode it may not be readable at all. Check which folder your project is opened at; open the course repo as the project, or copy <code>mission_flesh/p1/</code> into it. Re-cloning fixes a different problem.</li>
+          <li><strong>The build keeps sprawling.</strong> Re-read the LIVE contract, then narrow the <em>data scope</em> — fewer sections or files — while keeping the manifest, citations, audit, and release checks.</li>
+          <li><strong>Citations won't stick.</strong> The model tags loosely or invents. Don't fix tags by hand — that converts machine error into your error. Reject the draft and restate the rule as an accept check: unresolvable tags fail the run.</li>
+          <li><strong>The preflight does not match the intact folder.</strong> Compare <code>SOURCE_MANIFEST.md</code> with C1–C6 and the held-back patch. Resolve the mismatch before drafting; record HOLD if time runs out.</li>
+        </ul>
+        <p>Still blocked on a concept? Ask the lead to diagram the one idea in your way, then continue on your own chair.</p>
+      </div>
+    </section>
+
+    <div data-plate-for="P1"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+
+  <script src="../js/registry.js"></script>
+  <script src="../js/shell.js"></script>
+</body>
+</html>
