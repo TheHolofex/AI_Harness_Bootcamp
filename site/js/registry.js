@@ -167,7 +167,7 @@
       url: "blocks/osd.html", meta: "Node · live public feeds + your own MCP server"
     },
     {
-      code: "PG", name: "The proving ground", title: "The proving ground", day: "Tuesday", slot: "PM",
+      code: "PG", name: "Unattended workers", title: "Unattended workers", day: "Tuesday", slot: "PM",
       key: "ahb-checklist-pg",
       ids: [
         "ground-known", "brief-single", "workers-dispatched", "boundary-read",
@@ -175,7 +175,7 @@
         "run-terminated"
       ],
       stretchIds: [],
-      url: "blocks/pg.html", meta: "Codex orchestrator · two OpenCode workers + a pinned gate"
+      url: "blocks/pg.html", meta: "Codex orchestrator · two OpenCode workers + pinned scoring files"
     },
     {
       code: "LOOPS", name: "Agent loops & agentic patterns", title: "Control Flow Is the Product", kind: "briefing",
