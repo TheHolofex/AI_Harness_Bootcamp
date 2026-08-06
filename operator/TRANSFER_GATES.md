@@ -38,7 +38,7 @@ Follow the live module page
 | P2 | Inbound/30-day reuse seed in the P2 reflection |
 | P3 | Comparator/disposition/MCP-boundary seed in the P3 closeout |
 | OSD | Surface/primitive/labelling seed in the OSD closeout |
-| P4 | Second-brain schema, MCP write boundary, cold-query habit, target corpus, and first transfer trial in the P4 handoff |
+| P4 | Second-brain schema, MCP write boundary, cold-query and repair habit, target corpus, and first transfer trial in the P4 closeout |
 | P5 | Intake/trusted-picture seed in the P5 closeout |
 | P6 | Contract/stop seed in the P6 closeout |
 | P7 | Machine-choice seed, then draft 30/60/90 horizons in the shared plan chat |

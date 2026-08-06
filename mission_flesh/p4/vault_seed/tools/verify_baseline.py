@@ -12,6 +12,7 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
 SCHEMA_VERSION = 1
 SKIPPED_DIRS = {".obsidian", "__pycache__", ".git"}
+INTERNAL_MANIFEST = "Harness/BASELINE_MANIFEST.json"
 SHA256_RE = __import__("re").compile(r"^[0-9a-f]{64}$")
 
 
@@ -44,12 +45,16 @@ def iter_files(root: Path) -> Iterable[Path]:
         yield path
 
 
-def manifest_files(root: Path) -> List[Dict[str, Any]]:
+def manifest_files(
+    root: Path, *, exclude_internal_manifest: bool = False
+) -> List[Dict[str, Any]]:
     files: List[Dict[str, Any]] = []
     for path in iter_files(root):
         rel = path.relative_to(root).as_posix()
-        # Exclude the freeze artifact itself so write-then-check is stable.
-        if rel in {"Harness/BASELINE_MANIFEST.json"}:
+        # Only the legacy internal mode excludes its own output. External P4
+        # snapshots cover every in-scope vault file, including a stale copy of
+        # the old internal manifest.
+        if exclude_internal_manifest and rel == INTERNAL_MANIFEST:
             continue
         data = path.read_bytes()
         files.append(
@@ -68,13 +73,14 @@ def manifest_fingerprint(files: Sequence[Mapping[str, Any]]) -> str:
     return hashlib.sha256("\n".join(lines).encode("utf-8")).hexdigest()
 
 
-def build_payload(root: Path, terminal_reason: str = "SUCCESS") -> Dict[str, Any]:
-    files = manifest_files(root)
+def build_payload(
+    root: Path, *, exclude_internal_manifest: bool = False
+) -> Dict[str, Any]:
+    files = manifest_files(root, exclude_internal_manifest=exclude_internal_manifest)
     return {
         "schema_version": SCHEMA_VERSION,
         "vault_root": ".",
         "root_fingerprint": manifest_fingerprint(files),
-        "terminal_reason": terminal_reason,
         "verification": {
             "tool": "verify_baseline",
             "file_count": len(files),
@@ -85,13 +91,25 @@ def build_payload(root: Path, terminal_reason: str = "SUCCESS") -> Dict[str, Any
 
 def write_manifest(root: Path, destination: Optional[Path] = None) -> Dict[str, Any]:
     resolved = requested_root(root)
-    payload = build_payload(resolved)
     target = destination if destination is not None else resolved / "Harness" / "BASELINE_MANIFEST.json"
     target = target.expanduser()
     if not target.is_absolute():
-        target = (Path.cwd() / target).resolve()
-    else:
-        target = target.resolve()
+        target = Path.cwd() / target
+    target_was_symlink = target.is_symlink()
+    target = target.resolve()
+    if destination is not None:
+        try:
+            target.relative_to(resolved)
+        except ValueError:
+            pass
+        else:
+            raise BaselineError("External integrity path must be outside the vault")
+        if target_was_symlink or target.exists():
+            raise BaselineError(f"External integrity path already exists: {target}")
+    payload = build_payload(
+        resolved,
+        exclude_internal_manifest=destination is None,
+    )
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     return payload
@@ -132,10 +150,20 @@ def load_manifest(path: Path) -> Dict[str, Any]:
 def check_manifest(root: Path, manifest_path: Path) -> Dict[str, Any]:
     resolved = requested_root(root)
     manifest_file = manifest_path.expanduser()
+    if not manifest_file.is_absolute():
+        manifest_file = Path.cwd() / manifest_file
     if not manifest_file.is_file() or manifest_file.is_symlink():
         raise BaselineError(f"Baseline manifest missing: {manifest_file}")
+    manifest_file = manifest_file.resolve()
     expected = load_manifest(manifest_file)
-    actual_files = {item["path"]: item for item in manifest_files(resolved)}
+    internal_target = (resolved / INTERNAL_MANIFEST).resolve()
+    actual_files = {
+        item["path"]: item
+        for item in manifest_files(
+            resolved,
+            exclude_internal_manifest=manifest_file == internal_target,
+        )
+    }
     expected_files = {item["path"]: item for item in expected["files"]}
 
     missing = sorted(set(expected_files) - set(actual_files))
@@ -176,7 +204,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     modes.add_argument(
         "--write-manifest",
         action="store_true",
-        help="write Harness/BASELINE_MANIFEST.json (and optional external path via --external)",
+        help="write an integrity manifest; --external keeps the write outside the vault",
     )
     modes.add_argument(
         "--check-manifest",
@@ -186,7 +214,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument(
         "--external",
         metavar="PATH",
-        help="with --write-manifest, also write this external baseline path",
+        help="with --write-manifest, write only this external path",
     )
     args = parser.parse_args(argv)
     root = Path(args.vault_root)
@@ -199,11 +227,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             )
             return 0
         if args.write_manifest:
-            payload = write_manifest(root)
-            if args.external:
-                external = Path(args.external).expanduser()
-                external.parent.mkdir(parents=True, exist_ok=True)
-                external.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+            destination = Path(args.external) if args.external else None
+            payload = write_manifest(root, destination)
             print(
                 "PASS baseline freeze: "
                 f"{payload['verification']['file_count']} files; "

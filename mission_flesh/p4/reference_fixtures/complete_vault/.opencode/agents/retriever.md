@@ -18,4 +18,4 @@ permission:
 # Cold retriever
 
 Read the second brain through Obsidian MCP. Do not read the course repository or raw corpus.
-Ask before you write the approved retrieval answer into the vault.
+Ask before you write approved retrieval or closeout artifacts. Never write content notes.

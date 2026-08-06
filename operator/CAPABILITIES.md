@@ -241,7 +241,7 @@ The specimen was run before it was read; everything became a tool; the server wa
 
 ## P4 — Second brain
 
-> **After this project:** You can bind a durable knowledge store behind an MCP write path with real permissions, structure that store so a cold session answers from it alone, and freeze a baseline someone else can re-check without trusting the builder.
+> **After this project:** You can bind a durable knowledge store behind an MCP write path with real permissions, structure it so a cold session answers from it alone, apply one controlled repair, and prove the sealed state detects later change.
 
 ### What you learn to do
 
@@ -251,33 +251,33 @@ The specimen was run before it was read; everything became a tool; the server wa
 | **2. Structure a second brain for retrieval, not for dumping Markdown.** | Retrieval design | P3 provenance | P3 kept trails in a run pack. This designs hubs, a route spine, and note schema so a later session can answer without the warehouse. | Cold answers wikilink notes. Hubs are not empty. Multi-mode and multi-factor coverage is visible in the graph. |
 | **3. Merge parallel research under a single writer contract.** | Fan-in with authority | PG unattended workers | PG combined scores. This merges cited logistics findings into one brain with director-only write authority. | Incomplete citations are rejected. Workers never hold vault write. One note path per kept object. |
 | **4. Keep threat material defensive.** | Protection framing | OSD source labelling | Open interference classes become protect / detect / recover requirements, not attack geometry. | Threat notes end in defensive implications. Forbidden offensive tradecraft language is absent. |
-| **5. Prove completion without the builder's word.** | Separating the checker | P3 measures | `verify_brain` checks schema, coverage, receipts, and retrieval artifacts. `verify_baseline` freezes path hashes for an independent re-check. | Untouched course tools return PASS. External `P4_BASELINE_[DATE].json` exists. Mutation after freeze fails the check. |
+| **5. Prove completion without the builder's word.** | Separating the checker | P3 measures | `verify_brain` checks schema, coverage, receipts, and fresh-session repair artifacts. `verify_baseline` seals path hashes outside the vault. | Untouched course tools return PASS. External `P4_INTEGRITY_[TIMESTAMP].json` exists. A disposable mutation returns HOLD, then the untouched live vault returns PASS. |
 
 ### What the exercise requires
 
 1. Vault at `%USERPROFILE%\Vaults\p4-vault` created by the P4 setup launcher; only vault content is seeded. Obsidian Local REST API MCP is bound, the API key comes from an environment variable, and the vault stays outside the OpenCode project and managed Documents folder.
-2. Director permissions: MCP read allow and write ask. Delete, move, copy, active-file, command, and vault filesystem access deny. Researchers: MCP, web, shell, and filesystem write deny. Raw corpus read only.
+2. Director permissions: MCP read allow and write ask. Delete, move, copy, active-file, command, and vault filesystem access deny. Researchers: MCP, web, shell, and filesystem write deny. The cold retriever has MCP read plus ask-gated writes for approved retrieval and closeout artifacts, with filesystem and web denied.
 3. Workers process `raw_corpus/ASSESSED_SLICE.json` partitions only; bundles carry full citation schema (source_id, raw_path, sha256, excerpt, claim, tags).
 4. Director MCP-merges ≥8 content notes plus hubs/spine; threat notes use defensive language; `Evidence/MCP_RECEIPTS.jsonl` and `Evidence/PERMISSIONS.json` saved.
 5. Cold session writes `Retrieval/Answers.md` for Q1–Q4 with wikilinks, no warehouse, no web.
-6. Human `Audit.md` with dispositions; `Mission_Brief.md` with ≥3 note wikilinks; one repair cycle if needed.
-7. Course `verify_vault.py` brain PASS; `--write-manifest --external operator/evidence/P4_BASELINE_[TODAY].json`; `--check-manifest` PASS.
-8. Handoff receipt names residual risk; transfer seed names one real second-brain workload.
+6. Human `Audit.md` with one supported finding and one applied repair.
+7. Fresh retriever writes `Retrieval/Repair_Check.md` and a vault-only `Mission_Brief.md`; course `verify_vault.py` returns brain PASS.
+8. External `operator/evidence/P4_INTEGRITY_[TIMESTAMP].json` detects a disposable mutation; the untouched live vault still returns PASS. The dated transfer seed names one real second-brain workload.
 
-P4 checks the product inside the build — MCP receipts, permission snapshot, deterministic brain verifier, cold retrieval artifacts, human audit, and external baseline freeze. Its live page does not add a separate adversarial chat.
+P4 checks the product inside the build — MCP receipts, permission snapshot, deterministic brain verifier, cold retrieval artifacts, human repair, fresh repair check, and external integrity proof. Its live page does not add a separate adversarial chat.
 
 ### Stretch
 
-- Time a second cold session after removing one hub and record retrieval degradation.
+- On a disposable copy, remove one hub and record retrieval degradation without altering the live vault.
 - Compare a filesystem-written note (no receipt) against an MCP-written note; only the latter satisfies the verifier.
 
 ### Side-quest
 
-- Point the same schema at a thin slice of your own desk corpus and freeze a personal baseline.
+- Point the same schema at a thin slice of your own desk corpus and seal a personal integrity snapshot.
 
 ### Signs it hasn't landed
 
-Workers still hold vault write; notes lack sha256/excerpts; cold answers re-open `raw_corpus`; threat notes read like targeting notes; baseline is missing or fails on first check; or completion is claimed from chat rather than verifier PASS.
+Workers still hold vault write; notes lack sha256/excerpts; cold answers re-open `raw_corpus`; no applied repair is proven from a fresh session; threat notes read like targeting notes; the integrity snapshot is missing or fails its live check; or completion is claimed from chat rather than verifier PASS.
 
 ---
 

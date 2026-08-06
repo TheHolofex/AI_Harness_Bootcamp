@@ -15,7 +15,7 @@ What it covers:
   - The npm OpenCode package and AAIF goose installer remain available
   - Goose's Windows runtime, model, and native-exit guards remain present
   - The P2 Inbound surface and its morning corpus remain wired
-  - The Agent Loops briefing and P4 personal harness remain wired in sequence
+  - The Agent Loops briefing and P4 second-brain exercise remain wired in sequence
   - The repository still contains load-bearing exercise and facilitator paths
 
 What it does not cover (needs Windows, funded keys, and a person):
@@ -418,7 +418,7 @@ def check_p2_inbound_surface(report: Report) -> None:
         )
 
 
-def check_p4_agent_loop_surface(report: Report) -> None:
+def check_p4_second_brain_surface(report: Report) -> None:
     registry = REGISTRY.read_text(encoding="utf-8")
     loops = LOOPS_PAGE.read_text(encoding="utf-8")
     p4 = P4_PAGE.read_text(encoding="utf-8")
@@ -428,21 +428,18 @@ def check_p4_agent_loop_surface(report: Report) -> None:
         "Wednesday route": (registry, 'codes: ["LOOPS", "P4", "P5"]'),
         "Gamma deck": (loops, "Control-Flow-Is-the-Product-nnbb430p72cg1wa"),
         "briefing completion": (loops, 'data-check-id="loops-complete"'),
-        "P4 goal": (p4, "/goal"),
-        "P4 skill": (p4, "$director-loop"),
-        "P4 verifier": (p4, "tools\\verify_vault.py"),
-        "P4 raw-source manifest": (p4, "SOURCE_MANIFEST.json"),
-        "P4 configured evaluator": (p4, "director_evaluator"),
-        "P4 real resume": (p4, "P4 — Resume"),
-        "P4 resume receipt": (p4, "RESUME_RECEIPT.md"),
-        "P4 external candidate check": (p4, "mission_flesh\\p4\\vault_seed\\tools\\verify_vault.py"),
-        "P4 preserved first candidate receipt": (p4, "CANDIDATE_CHECK_FIRST.txt"),
-        "P4 stable-content release binding": (p4, "stable-content fingerprint"),
-        "P4 immutable evaluated trace": (p4, "evaluator-bound trace prefix"),
-        "P4 non-performative control repair": (p4, "CONTROL_ONLY"),
-        "P4 scoped handoff": (p4, "HANDOFF_RECEIPT.md"),
-        "P4 manifest": (p4, "--write-manifest"),
-        "P4 trust-anchor overwrite guard": (p4, "never overwrite a trust anchor"),
+        "P4 Windows launcher": (p4, "Start-P4.ps1"),
+        "P4 writable vault root": (p4, "%USERPROFILE%\\Vaults\\p4-vault"),
+        "P4 Obsidian MCP plugin": (p4, "Local REST API with MCP"),
+        "P4 MCP endpoint": (p4, "http://127.0.0.1:27123/mcp/"),
+        "P4 API-key boundary": (p4, "OBSIDIAN_REST_API_KEY"),
+        "P4 cold retriever": (p4, "Cold retrieval only"),
+        "P4 applied repair": (p4, "one applied repair"),
+        "P4 fresh repair proof": (p4, "Retrieval/Repair_Check.md"),
+        "P4 external integrity snapshot": (p4, "P4_INTEGRITY_"),
+        "P4 mutation detection": (p4, "PASS disposable mutation detected"),
+        "P4 verifier": (p4, "mission_flesh\\p4\\vault_seed\\tools\\verify_vault.py"),
+        "P4 external manifest": (p4, "--write-manifest --external"),
         "P5 frozen before inventory": (p5, "STAGING_INV_BEFORE_[TODAY].json"),
         "P5 exact candidate output": (p5, "out\\triage_candidate.json"),
         "P5 isolated project": (p5, "Documents\\p5-staging"),
@@ -451,20 +448,19 @@ def check_p4_agent_loop_surface(report: Report) -> None:
     }
     required_files = [
         P4_SEED / "AGENTS.md",
-        P4_SEED / ".agents" / "skills" / "director-loop" / "SKILL.md",
-        P4_SEED / ".codex" / "agents" / "director_evaluator.toml",
+        P4_SEED / ".opencode" / "agents" / "director.md",
+        P4_SEED / ".opencode" / "agents" / "retriever.md",
         P4_SEED / "Harness" / "HARNESS_CARD.md",
         P4_SEED / "Harness" / "RUN_STATE.md",
-        P4_SEED / "Harness" / "RUN_TRACE.md",
-        P4_SEED / "Harness" / "EVAL.md",
-        P4_SEED / "Harness" / "HANDOFF_RECEIPT.md",
-        P4_SEED / "Harness" / "SOURCE_MANIFEST.json",
+        P4_SEED / "Retrieval" / "Repair_Check.md",
         P4_SEED / "tools" / "verify_vault.py",
     ]
     missing = [label for label, (surface, token) in expected.items() if token not in surface]
     forbidden = {
         "P4 obsolete cold-start demo": (p4, "P4 — Cold Start"),
         "P4-to-P5 artifact dependency": (p4.lower(), "p5"),
+        "P4 stale handoff receipt": (p4, "HANDOFF_RECEIPT.md"),
+        "P4 stale downstream baseline name": (p4, "P4_BASELINE_"),
         "P5 obsolete model diff baseline": (p5, "p4-vault_baseline"),
         "P5 broad exposed project": (p5, "choose your <code>Documents</code> folder"),
         "P5 P4 dependency": (p5.lower(), "p4-vault"),
@@ -478,16 +474,16 @@ def check_p4_agent_loop_surface(report: Report) -> None:
     missing.extend(str(path.relative_to(REPO_ROOT)) for path in required_files if not path.is_file())
     if missing:
         report.add(
-            "site.p4_personal_harness",
+            "site.p4_second_brain",
             False,
             "missing: " + ", ".join(missing),
             hard=True,
         )
     else:
         report.add(
-            "site.p4_personal_harness",
+            "site.p4_second_brain",
             True,
-            "P4 harness controls and standalone P5 quarantine, validation, inventory, session-audit, and handoff surfaces present",
+            "P4 MCP brain, cold repair, external integrity, and standalone P5 quarantine surfaces present",
             hard=True,
         )
 
@@ -624,7 +620,7 @@ def main() -> int:
         check_registry_install_route(report)
         check_p2_inbound_surface(report)
         check_osint_feeds(report)
-        check_p4_agent_loop_surface(report)
+        check_p4_second_brain_surface(report)
         check_node_lts_claim(report)
         check_opencode_npm_channel(report)
         check_goose_installer_channel(report)

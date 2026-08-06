@@ -1,5 +1,5 @@
 # Run state
 
-- Phase: COMPLETE
-- Status: SUCCESS
-- Next permitted action: freeze baseline for independent integrity checks
+- Phase: READY_FOR_VERIFY
+- Status: READY
+- Next permitted action: exit OpenCode and run the course verifier

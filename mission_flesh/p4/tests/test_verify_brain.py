@@ -145,6 +145,51 @@ sources: []
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("missing keys", result.stderr)
 
+    def test_missing_retriever_closeout_receipt_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            receipts = root / "Evidence" / "MCP_RECEIPTS.jsonl"
+            rows = [
+                row
+                for row in receipts.read_text(encoding="utf-8").splitlines()
+                if "Retrieval/Repair_Check.md" not in row
+            ]
+            receipts.write_text("\n".join(rows) + "\n", encoding="utf-8")
+            result = run_py(VERIFY_BRAIN, str(root))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("missing retriever MCP write receipts", result.stderr)
+            self.assertIn("Retrieval/Repair_Check.md", result.stderr)
+
+    def test_applied_repair_requires_director_receipt(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            receipts = root / "Evidence" / "MCP_RECEIPTS.jsonl"
+            rows = [
+                row
+                for row in receipts.read_text(encoding="utf-8").splitlines()
+                if "Notes/Content/Protection_LOC.md" not in row
+            ]
+            receipts.write_text("\n".join(rows) + "\n", encoding="utf-8")
+            result = run_py(VERIFY_BRAIN, str(root))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("applied repair needs a director MCP write receipt", result.stderr)
+
+    def test_windows_absolute_receipt_path_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            receipts = root / "Evidence" / "MCP_RECEIPTS.jsonl"
+            rows = receipts.read_text(encoding="utf-8").splitlines()
+            event = json.loads(rows[0])
+            event["path"] = "C:\\Users\\student\\outside.md"
+            rows[0] = json.dumps(event)
+            receipts.write_text("\n".join(rows) + "\n", encoding="utf-8")
+            result = run_py(VERIFY_BRAIN, str(root))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("path must stay inside the vault", result.stderr)
+
     def test_broken_retrieval_link_fails(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / "vault"
@@ -165,11 +210,79 @@ sources: []
             root = Path(tmp) / "vault"
             shutil.copytree(REF, root)
             state = root / "Harness" / "RUN_STATE.md"
-            text = state.read_text(encoding="utf-8").replace("Status: SUCCESS", "Status: HOLD")
+            text = state.read_text(encoding="utf-8").replace("Status: READY", "Status: HOLD")
             state.write_text(text, encoding="utf-8")
             result = run_py(VERIFY_BRAIN, str(root))
             self.assertNotEqual(result.returncode, 0)
-            self.assertIn("RUN_STATE.md must record Status SUCCESS", result.stderr)
+            self.assertIn("RUN_STATE.md must record Status READY", result.stderr)
+
+    def test_incomplete_repair_check_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            repair = root / "Retrieval" / "Repair_Check.md"
+            text = repair.read_text(encoding="utf-8").replace("Verdict: PASS", "Verdict: HOLD")
+            repair.write_text(text, encoding="utf-8")
+            result = run_py(VERIFY_BRAIN, str(root))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("Retrieval/Repair_Check.md missing Verdict: PASS", result.stderr)
+
+    def test_empty_repair_path_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            repair = root / "Retrieval" / "Repair_Check.md"
+            text = repair.read_text(encoding="utf-8").replace(
+                "- Repaired path: `Notes/Content/Protection_LOC.md`",
+                "- Repaired path:",
+            )
+            repair.write_text(text, encoding="utf-8")
+            result = run_py(VERIFY_BRAIN, str(root))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("Repaired path must be non-empty", result.stderr)
+
+    def test_repair_path_must_match_audit(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            repair = root / "Retrieval" / "Repair_Check.md"
+            text = repair.read_text(encoding="utf-8").replace(
+                "Notes/Content/Protection_LOC.md",
+                "Notes/Content/Rail_Clearance.md",
+                1,
+            )
+            repair.write_text(text, encoding="utf-8")
+            result = run_py(VERIFY_BRAIN, str(root))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("repaired path must match Audit.md", result.stderr)
+
+    def test_repair_check_must_link_repaired_path(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            repair = root / "Retrieval" / "Repair_Check.md"
+            text = repair.read_text(encoding="utf-8").replace(
+                "[[Notes/Content/Protection_LOC]]",
+                "[[Notes/Content/Rail_Clearance]]",
+            )
+            repair.write_text(text, encoding="utf-8")
+            result = run_py(VERIFY_BRAIN, str(root))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("must wikilink the repaired path", result.stderr)
+
+    def test_audit_requires_expected_retrieval_effect(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            audit = root / "Audit.md"
+            text = audit.read_text(encoding="utf-8").replace(
+                "Expected retrieval effect:",
+                "Retrieval note:",
+            )
+            audit.write_text(text, encoding="utf-8")
+            result = run_py(VERIFY_BRAIN, str(root))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("Audit.md missing Expected retrieval effect", result.stderr)
 
     def test_baseline_detects_mutation(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -193,6 +306,159 @@ sources: []
             check2 = run_py(VERIFY_VAULT, str(root), "--check-manifest", str(external))
             self.assertNotEqual(check2.returncode, 0)
             self.assertIn("HOLD baseline", check2.stderr)
+
+    def test_external_snapshot_does_not_write_inside_vault(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            internal = root / "Harness" / "BASELINE_MANIFEST.json"
+            if internal.exists():
+                internal.unlink()
+            external = Path(tmp) / "integrity.json"
+            freeze = run_py(
+                VERIFY_BASE,
+                str(root),
+                "--write-manifest",
+                "--external",
+                str(external),
+            )
+            self.assertEqual(freeze.returncode, 0, freeze.stderr)
+            self.assertTrue(external.is_file())
+            self.assertFalse(
+                internal.exists(),
+                "external snapshot must not write an unreceipted file into the live vault",
+            )
+
+    def test_external_snapshot_tracks_stale_internal_manifest(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            internal = root / "Harness" / "BASELINE_MANIFEST.json"
+            internal.write_text('{"legacy": true}\n', encoding="utf-8")
+            external = Path(tmp) / "integrity.json"
+            freeze = run_py(
+                VERIFY_BASE,
+                str(root),
+                "--write-manifest",
+                "--external",
+                str(external),
+            )
+            self.assertEqual(freeze.returncode, 0, freeze.stderr)
+            payload = json.loads(external.read_text(encoding="utf-8"))
+            paths = {item["path"] for item in payload["files"]}
+            self.assertIn("Harness/BASELINE_MANIFEST.json", paths)
+            internal.write_text('{"legacy": false}\n', encoding="utf-8")
+            check = run_py(VERIFY_BASE, str(root), "--check-manifest", str(external))
+            self.assertNotEqual(check.returncode, 0)
+            self.assertIn("changed=Harness/BASELINE_MANIFEST.json", check.stderr)
+
+    def test_external_snapshot_does_not_claim_semantic_success(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            external = Path(tmp) / "integrity.json"
+            freeze = run_py(
+                VERIFY_BASE,
+                str(root),
+                "--write-manifest",
+                "--external",
+                str(external),
+            )
+            self.assertEqual(freeze.returncode, 0, freeze.stderr)
+            payload = json.loads(external.read_text(encoding="utf-8"))
+            self.assertNotIn("terminal_reason", payload)
+
+    def test_external_snapshot_refuses_to_overwrite_evidence(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            external = Path(tmp) / "integrity.json"
+            external.write_text("existing evidence\n", encoding="utf-8")
+            freeze = run_py(
+                VERIFY_BASE,
+                str(root),
+                "--write-manifest",
+                "--external",
+                str(external),
+            )
+            self.assertNotEqual(freeze.returncode, 0)
+            self.assertIn("already exists", freeze.stderr)
+            self.assertEqual(external.read_text(encoding="utf-8"), "existing evidence\n")
+
+    def test_course_entrypoint_semantically_gates_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            state = root / "Harness" / "RUN_STATE.md"
+            state.write_text(
+                state.read_text(encoding="utf-8").replace("Status: READY", "Status: HOLD"),
+                encoding="utf-8",
+            )
+            external = Path(tmp) / "integrity.json"
+            freeze = run_py(
+                VERIFY_VAULT,
+                str(root),
+                "--write-manifest",
+                "--external",
+                str(external),
+            )
+            self.assertNotEqual(freeze.returncode, 0)
+            self.assertIn("HOLD brain", freeze.stderr)
+            self.assertFalse(external.exists())
+
+    def test_course_entrypoint_snapshot_reports_brain_and_integrity_pass(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            external = Path(tmp) / "integrity.json"
+            freeze = run_py(
+                VERIFY_VAULT,
+                str(root),
+                "--write-manifest",
+                "--external",
+                str(external),
+            )
+            self.assertEqual(freeze.returncode, 0, freeze.stderr + freeze.stdout)
+            self.assertIn("PASS brain", freeze.stdout)
+            self.assertIn("PASS baseline freeze", freeze.stdout)
+            self.assertTrue(external.is_file())
+
+    def test_course_entrypoint_requires_external_snapshot_path(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            internal = root / "Harness" / "BASELINE_MANIFEST.json"
+            freeze = run_py(VERIFY_VAULT, str(root), "--write-manifest")
+            self.assertNotEqual(freeze.returncode, 0)
+            self.assertIn("requires --external", freeze.stderr)
+            self.assertFalse(internal.exists())
+
+    def test_external_snapshot_rejects_destination_inside_vault(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            destination = root / "Evidence" / "integrity.json"
+            freeze = run_py(
+                VERIFY_BASE,
+                str(root),
+                "--write-manifest",
+                "--external",
+                str(destination),
+            )
+            self.assertNotEqual(freeze.returncode, 0)
+            self.assertIn("External integrity path must be outside the vault", freeze.stderr)
+            self.assertFalse(destination.exists())
+
+    def test_explicit_internal_fixture_manifest_self_checks(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "vault"
+            shutil.copytree(REF, root)
+            internal = root / "Harness" / "BASELINE_MANIFEST.json"
+            freeze = run_py(VERIFY_BASE, str(root), "--write-manifest")
+            self.assertEqual(freeze.returncode, 0, freeze.stderr + freeze.stdout)
+            self.assertTrue(internal.is_file())
+            check = run_py(VERIFY_BASE, str(root), "--check-manifest", str(internal))
+            self.assertEqual(check.returncode, 0, check.stderr + check.stdout)
 
     def test_corpus_manifest_size(self) -> None:
         manifest_path = P4_ROOT / "raw_corpus" / "MANIFEST.json"

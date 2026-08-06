@@ -2,7 +2,7 @@
 
 1. **Root brief name:** `Mission_Brief.md` (not `Morning_Brief.md`) keeps a human-facing P4 brief artifact.
 2. **Verifier split:** `verify_brain.py` checks semantics, `verify_baseline.py` checks path/hash state, and `verify_vault.py` remains the P4 entrypoint.
-3. **Baseline excludes `Harness/BASELINE_MANIFEST.json`** from the hashed file set so write-then-check is stable.
+3. **P4 integrity is external:** the course `--write-manifest --external` path first runs semantic verification, then writes only `operator/evidence/P4_INTEGRITY_[TIMESTAMP].json`; it does not bypass MCP by writing inside the live vault or overwrite earlier evidence. The internal `Harness/BASELINE_MANIFEST.json` mode remains for explicit fixtures and local tool tests.
 4. **Corpus scale:** 464 documents (420 synthesized + 44 fetched binaries/text). Assessed slice fixed at 96 with four worker partitions. Prefer real fetches first; synthesized docs carry canonical gradeable facts.
 5. **Canonical facts locked** in `raw_corpus/CANONICAL_FACTS.json` (73.6 st, 40 mph rail, Kaohsiung preferred, etc.). Planted contradiction: thin notices claim 45 mph.
 6. **Threat framing:** protection / detect / recover only; verifier rejects offensive tradecraft phrases and requires defensive language on threat notes.
@@ -15,6 +15,6 @@
 13. **OpenCode P4 config:** ship the V1 project config at `mission_flesh/p4/controller/opencode.p4.json`. It uses the Local REST API loopback HTTP endpoint `http://127.0.0.1:27123/mcp/` and reads the bearer key from `OBSIDIAN_REST_API_KEY`.
 14. **Cold retrieval isolation:** run the cold query from an empty `Documents\p4-cold-query` project with the `retriever` agent. The course repo and raw corpus are not inside that project.
 15. **Assessed-slice ownership:** every assessed source ID belongs to exactly one worker partition. The four partition counts are 32, 28, 22, and 14.
-16. **Verifier lineage:** `verify_brain.py` checks note enums, exact permission fields, structured Obsidian receipts, and source ID/path/hash/metadata against the course corpus manifest and file bytes. It also resolves retrieval links and checks closeout state.
+16. **Verifier lineage:** `verify_brain.py` checks note enums, exact permission fields, structured Obsidian receipts, source ID/path/hash/metadata, the applied repair, and the fresh-session repair check. It also resolves retrieval links and requires `RUN_STATE` to stop at `READY_FOR_VERIFY`; the verifier makes the final PASS decision.
 17. **P4 agent loading:** set `OPENCODE_CONFIG_DIR` to the shipped `vault_seed/.opencode` directory. Do not copy P4 agent files into the shared course project.
 18. **Corpus snapshot date:** the pre-built warehouse keeps the fixed retrieval date `2026-08-04`. A later rebuild must not change every source hash because the wall-clock date changed.

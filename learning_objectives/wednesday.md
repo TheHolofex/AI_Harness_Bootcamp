@@ -10,9 +10,9 @@
 | **2. Structure the vault for retrieval.** | Designing durable knowledge | P3 local corpus citations | P3 produced cited answers from local evidence. This turns cited claims into linked notes, hubs, and a route spine that another session can navigate. | Modes, nodes, constraints, threats, sources, and route links lead a cold reader to the supporting notes. |
 | **3. Keep one writer during parallel consolidation.** | Controlling fan-in | PG parallel workers | PG dispatch is reused as a prerequisite. The new control is a single MCP writer that rejects incomplete bundles before durable merge. | Researchers return cited bundles without MCP. The director admits complete items through approved MCP writes only. |
 | **4. Answer from the brain in a cold session.** | Testing retrieval independence | P3 citation quality | A new session starts without the raw warehouse. It must answer four mission questions from the vault alone. | The cold project contains no corpus. Its answers link supporting vault notes and preserve uncertainty. |
-| **5. Audit, repair, and freeze the durable state.** | Sealing trusted knowledge | Earlier verifier and handoff work | Human review catches a contradiction, repairs through MCP, and freezes a path/hash baseline that another operator can re-check. | Audit and mission brief pass the semantic verifier. The external baseline passes an immediate check and detects later mutation. |
+| **5. Audit, repair, and prove the durable state.** | Sealing trusted knowledge | Earlier verifier and closeout work | Human review applies one repair through MCP. A fresh cold session proves the repair before an external path/hash snapshot seals the result. | The repair check and mission brief pass the semantic verifier. A disposable mutation returns HOLD while the untouched live vault still returns PASS. |
 
-> **After the morning:** You can bind a durable vault behind an MCP write boundary, structure it for cold retrieval, audit it, and freeze its state for another run.
+> **After the morning:** You can bind a durable vault behind an MCP write boundary, structure it for cold retrieval, repair it, and prove its sealed state detects later change.
 
 ---
 

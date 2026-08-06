@@ -5,12 +5,12 @@
 - Course seed: `mission_flesh/p4/vault_seed/`
 - Raw warehouse: `mission_flesh/p4/raw_corpus/`
 - Assessed slice list: `mission_flesh/p4/raw_corpus/ASSESSED_SLICE.json`
-- External baseline: `operator/evidence/P4_BASELINE_[YYYY-MM-DD].json`
+- External integrity snapshot: `operator/evidence/P4_INTEGRITY_[YYYY-MM-DD_HHMMSSFFF].json`
 
 ## Tools
 - `tools/verify_brain.py` — semantic completion of the second brain and source lineage against `raw_corpus/MANIFEST.json`
-- `tools/verify_baseline.py` — path/hash freeze and independent integrity check
-- `tools/verify_vault.py` — thin shim: default = brain verify; `--check-manifest` / `--write-manifest` = baseline
+- `tools/verify_baseline.py` — path/hash snapshot and independent change check
+- `tools/verify_vault.py` — course entrypoint: default = brain verify; external write = brain verify then snapshot; check = integrity comparison
 
 ## Required root artifacts (complete vault)
 - `AGENTS.md`
@@ -18,11 +18,11 @@
 - `Mission_Brief.md` — operator-facing brief drawn from the brain
 - `Audit.md` — human audit sample with at least one disposition
 - `Retrieval/Answers.md` — cold-session answers with wikilinks into notes
+- `Retrieval/Repair_Check.md` — fresh-session before/after proof for one applied repair
 - `Evidence/PERMISSIONS.json` — director, worker, and retriever permission snapshot
 - `Evidence/MCP_RECEIPTS.jsonl` — one JSON object per substantive MCP mutation. Do not log the receipt-log append itself.
 - `Harness/HARNESS_CARD.md`
 - `Harness/RUN_STATE.md`
-- `Harness/HANDOFF_RECEIPT.md`
 - `Notes/Modes.md`, `Notes/Nodes.md`, `Notes/Constraints.md`, `Notes/Threats.md`, `Notes/Sources.md`
 - `Notes/Route/Spine.md`
 - `tools/verify_brain.py`, `tools/verify_baseline.py`, `tools/verify_vault.py`
@@ -53,14 +53,15 @@ Body must include at least one `[[wikilink]]` to a hub, spine, or another note.
 - At least one note with `threat_class` other than `none`, body ending in defensive implications (protect / detect / recover language)
 - `Mission_Brief.md` cites at least three vault notes via wikilinks
 - `Retrieval/Answers.md` contains answers for Q1–Q4 with wikilinks
-- Every wikilink in `Mission_Brief.md` and `Retrieval/Answers.md` resolves to a vault file.
+- `Retrieval/Repair_Check.md` names the repaired path, before and after results, verdict `PASS`, and at least two supporting wikilinks, including the repaired note.
+- Every wikilink in `Mission_Brief.md`, `Retrieval/Answers.md`, and `Retrieval/Repair_Check.md` resolves to a vault file.
+- `Audit.md` records at least one supported finding plus non-empty `Repaired path`, `Before`, `After`, and `Expected retrieval effect` fields. Its repaired path resolves to the same vault note as `Retrieval/Repair_Check.md`.
 - `MOC.md` links the five hubs and `Notes/Route/Spine.md`. Those links must resolve.
-- `Evidence/MCP_RECEIPTS.jsonl` has at least one successful director `write`, `append`, or `patch` event from an Obsidian tool. Each line has `ts`, `agent`, `tool`, `action`, `path`, and Boolean `ok` fields.
+- `Evidence/MCP_RECEIPTS.jsonl` has successful Obsidian mutations for the director's repaired note, `MOC.md`, and `Audit.md`, plus the retriever's `Retrieval/Answers.md`, `Retrieval/Repair_Check.md`, `Mission_Brief.md`, and `Harness/RUN_STATE.md`. Each line has `ts`, `agent`, `tool`, `action`, vault-relative `path`, and Boolean `ok` fields.
 - `Evidence/PERMISSIONS.json` records director MCP read=allow and write=ask. It records delete, move, copy, active-file, command, web, and vault filesystem access as deny.
 - `Evidence/PERMISSIONS.json` records researcher MCP, web, and filesystem write as deny.
 - `Evidence/PERMISSIONS.json` records the cold retriever project as `Documents\p4-cold-query`. It records MCP read=allow and write=ask. It records filesystem and web as deny.
-- `Harness/RUN_STATE.md` records Phase `COMPLETE` and Status `SUCCESS`.
-- `Harness/HANDOFF_RECEIPT.md` records terminal reason `SUCCESS`, accepted artifacts, and residual risk.
+- `Harness/RUN_STATE.md` records Phase `READY_FOR_VERIFY`, Status `READY`, and sends the next action to the course verifier. The verifier—not an agent—makes the final PASS decision.
 
 The receipt check validates the recorded event structure. The Windows spike must still confirm that exported OpenCode events use these fields and tool names.
 
@@ -70,17 +71,18 @@ The receipt check validates the recorded event structure. The Windows spike must
 - The union of the four partitions equals `source_ids` in `ASSESSED_SLICE.json`.
 - The corpus retrieval date is the fixed course snapshot date. Rebuilding the warehouse must not use the current date.
 
-## Baseline manifest schema (v1)
+## External integrity snapshot schema (v1)
 ```json
 {
   "schema_version": 1,
   "vault_root": ".",
   "root_fingerprint": "<sha256 over sorted path:sha256 lines>",
-  "terminal_reason": "SUCCESS",
   "verification": { "tool": "verify_baseline", "file_count": 0 },
   "files": [ { "path": "MOC.md", "bytes": 0, "sha256": "..." } ]
 }
 ```
+
+The snapshot records path and hash state only. It makes no semantic success claim; the course entrypoint runs `verify_brain.py` before it creates an external snapshot.
 
 ## Safety
 Threat notes: protection requirements only. No target ranking, access methods, stepwise sabotage, or attack optimization.

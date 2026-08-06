@@ -8,7 +8,7 @@ import hashlib
 import json
 import re
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Set, Tuple
 
 REQUIRED_ROOT = (
@@ -17,11 +17,11 @@ REQUIRED_ROOT = (
     "Mission_Brief.md",
     "Audit.md",
     "Retrieval/Answers.md",
+    "Retrieval/Repair_Check.md",
     "Evidence/PERMISSIONS.json",
     "Evidence/MCP_RECEIPTS.jsonl",
     "Harness/HARNESS_CARD.md",
     "Harness/RUN_STATE.md",
-    "Harness/HANDOFF_RECEIPT.md",
     "Notes/Modes.md",
     "Notes/Nodes.md",
     "Notes/Constraints.md",
@@ -439,12 +439,14 @@ def validate_permissions(root: Path) -> None:
         raise BrainError("retriever web policy must be deny")
 
 
-def validate_mcp_receipts(root: Path) -> int:
+def validate_mcp_receipts(root: Path) -> Dict[str, Any]:
     path = require_file(root, "Evidence/MCP_RECEIPTS.jsonl")
     lines = [line for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
     if not lines:
         raise BrainError("MCP_RECEIPTS.jsonl is empty")
     writes = 0
+    director_paths: Set[str] = set()
+    retriever_paths: Set[str] = set()
     for idx, line in enumerate(lines, start=1):
         try:
             event = json.loads(line)
@@ -463,25 +465,58 @@ def validate_mcp_receipts(root: Path) -> int:
                 )
         if not isinstance(event.get("ok"), bool):
             raise BrainError(f"MCP_RECEIPTS.jsonl line {idx}: ok must be true or false")
-        receipt_path = str(event["path"]).replace("\\", "/")
-        if receipt_path.startswith("/") or ".." in Path(receipt_path).parts:
+        raw_receipt_path = str(event["path"])
+        posix_path = PurePosixPath(raw_receipt_path.replace("\\", "/"))
+        windows_path = PureWindowsPath(raw_receipt_path)
+        if (
+            posix_path.is_absolute()
+            or windows_path.is_absolute()
+            or bool(windows_path.drive)
+            or bool(windows_path.root)
+            or ".." in posix_path.parts
+            or ".." in windows_path.parts
+        ):
             raise BrainError(f"MCP_RECEIPTS.jsonl line {idx}: path must stay inside the vault")
+        receipt_path = posix_path.as_posix()
         tool = str(event.get("tool") or event.get("name") or event.get("method") or "").lower()
         action = str(event.get("action") or event.get("op") or "").lower()
         is_write = action in {"write", "append", "patch", "create", "put"}
         is_obsidian_tool = "obsidian" in tool and any(
             token in tool for token in ("write", "append", "patch")
         )
-        if (
-            event.get("ok") is True
-            and str(event.get("agent", "")).lower() == "director"
-            and is_write
-            and is_obsidian_tool
-        ):
+        agent = str(event.get("agent", "")).lower()
+        if event.get("ok") is True and is_write and is_obsidian_tool:
             writes += 1
-    if writes < 1:
+            if agent == "director":
+                director_paths.add(receipt_path)
+            elif agent == "retriever":
+                retriever_paths.add(receipt_path)
+    if not director_paths:
         raise BrainError("MCP_RECEIPTS.jsonl needs at least one write/append/patch event")
-    return writes
+    required_director = {"Audit.md", "MOC.md"}
+    missing_director = sorted(required_director - director_paths)
+    if missing_director:
+        raise BrainError(
+            "MCP_RECEIPTS.jsonl missing director MCP write receipts: "
+            + ", ".join(missing_director)
+        )
+    required_retriever = {
+        "Harness/RUN_STATE.md",
+        "Mission_Brief.md",
+        "Retrieval/Answers.md",
+        "Retrieval/Repair_Check.md",
+    }
+    missing_retriever = sorted(required_retriever - retriever_paths)
+    if missing_retriever:
+        raise BrainError(
+            "MCP_RECEIPTS.jsonl missing retriever MCP write receipts: "
+            + ", ".join(missing_retriever)
+        )
+    return {
+        "write_count": writes,
+        "director_paths": director_paths,
+        "retriever_paths": retriever_paths,
+    }
 
 
 def resolve_wikilink(root: Path, target: str) -> Optional[Path]:
@@ -519,6 +554,38 @@ def validate_wikilinks(root: Path, relative: str, minimum: int = 1) -> List[str]
     return links
 
 
+def required_labeled_field(text: str, artifact: str, label: str) -> str:
+    pattern = re.compile(
+        rf"^[ \t]*(?:[-*+][ \t]+)?{re.escape(label)}[ \t]*:[ \t]*(.*?)[ \t]*$",
+        re.I | re.M,
+    )
+    matches = pattern.findall(text)
+    if not matches:
+        raise BrainError(f"{artifact} missing {label}:")
+    if len(matches) != 1:
+        raise BrainError(f"{artifact} must contain exactly one {label}: field")
+    value = matches[0].strip()
+    if not value:
+        raise BrainError(f"{artifact} field {label} must be non-empty")
+    return value
+
+
+def resolve_repaired_path(root: Path, artifact: str, value: str) -> Path:
+    candidate = value.strip()
+    inline_code = re.fullmatch(r"`([^`]+)`", candidate)
+    wikilink = re.fullmatch(r"\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]", candidate)
+    if inline_code:
+        candidate = inline_code.group(1).strip()
+    elif wikilink:
+        candidate = wikilink.group(1).strip()
+    resolved = resolve_wikilink(root, candidate)
+    if resolved is None or resolved.suffix.lower() != ".md":
+        raise BrainError(
+            f"{artifact} Repaired path does not resolve to a vault note: {value!r}"
+        )
+    return resolved.resolve()
+
+
 def validate_retrieval(root: Path) -> None:
     text = read_text(root, "Retrieval/Answers.md")
     for label in ("Q1", "Q2", "Q3", "Q4"):
@@ -527,11 +594,64 @@ def validate_retrieval(root: Path) -> None:
     validate_wikilinks(root, "Retrieval/Answers.md", 4)
 
 
+def validate_repair_proof(root: Path, director_receipt_paths: Set[str]) -> None:
+    audit_artifact = "Audit.md"
+    audit = read_text(root, audit_artifact)
+    if not re.search(r"\b(support|accept)\b", audit, re.I):
+        raise BrainError("Audit.md must record at least one supported finding")
+    audit_path = resolve_repaired_path(
+        root,
+        audit_artifact,
+        required_labeled_field(audit, audit_artifact, "Repaired path"),
+    )
+    audit_before = required_labeled_field(audit, audit_artifact, "Before")
+    audit_after = required_labeled_field(audit, audit_artifact, "After")
+    required_labeled_field(audit, audit_artifact, "Expected retrieval effect")
+    if audit_before == audit_after:
+        raise BrainError("Audit.md Before and After must describe different states")
+
+    repair_artifact = "Retrieval/Repair_Check.md"
+    repair = read_text(root, "Retrieval/Repair_Check.md")
+    repair_path = resolve_repaired_path(
+        root,
+        repair_artifact,
+        required_labeled_field(repair, repair_artifact, "Repaired path"),
+    )
+    repair_before = required_labeled_field(repair, repair_artifact, "Before")
+    repair_after = required_labeled_field(repair, repair_artifact, "After")
+    verdict = required_labeled_field(repair, repair_artifact, "Verdict")
+    if verdict.upper() != "PASS":
+        raise BrainError("Retrieval/Repair_Check.md missing Verdict: PASS")
+    if repair_before == repair_after:
+        raise BrainError(
+            "Retrieval/Repair_Check.md Before and After must describe different states"
+        )
+    if audit_path != repair_path:
+        raise BrainError(
+            "Retrieval/Repair_Check.md repaired path must match Audit.md"
+        )
+    repaired_relative = repair_path.relative_to(root).as_posix()
+    if repaired_relative not in director_receipt_paths:
+        raise BrainError(
+            "Audit.md applied repair needs a director MCP write receipt: "
+            + repaired_relative
+        )
+
+    links = validate_wikilinks(root, repair_artifact, 2)
+    linked_paths = {
+        linked.resolve()
+        for target in links
+        if (linked := resolve_wikilink(root, target)) is not None
+    }
+    if repair_path not in linked_paths:
+        relative = repair_path.relative_to(root).as_posix()
+        raise BrainError(
+            f"Retrieval/Repair_Check.md must wikilink the repaired path: {relative}"
+        )
+
+
 def validate_brief_and_audit(root: Path) -> None:
     validate_wikilinks(root, "Mission_Brief.md", 3)
-    audit = read_text(root, "Audit.md")
-    if not re.search(r"\b(support|partial|not supported|reject|accept|repair)\b", audit, re.I):
-        raise BrainError("Audit.md must record at least one disposition")
 
 
 def validate_navigation(root: Path) -> None:
@@ -560,22 +680,17 @@ def validate_navigation(root: Path) -> None:
         validate_wikilinks(root, relative)
 
 
-def validate_harness_closeout(root: Path) -> None:
+def validate_harness_ready(root: Path) -> None:
     card = read_text(root, "Harness/HARNESS_CARD.md")
     if not re.search(r"\bMCP\b", card) or not re.search(r"\bdirector\b", card, re.I):
         raise BrainError("HARNESS_CARD.md must record the director MCP write boundary")
     state = read_text(root, "Harness/RUN_STATE.md")
-    if not re.search(r"^\s*-?\s*Phase:\s*COMPLETE\s*$", state, re.I | re.M):
-        raise BrainError("RUN_STATE.md must record Phase COMPLETE")
-    if not re.search(r"^\s*-?\s*Status:\s*SUCCESS\s*$", state, re.I | re.M):
-        raise BrainError("RUN_STATE.md must record Status SUCCESS")
-    handoff = read_text(root, "Harness/HANDOFF_RECEIPT.md")
-    if not re.search(r"Terminal reason:\s*SUCCESS", handoff, re.I):
-        raise BrainError("HANDOFF_RECEIPT.md must record terminal reason SUCCESS")
-    if not re.search(r"Accepted(?: artifacts)?:", handoff, re.I):
-        raise BrainError("HANDOFF_RECEIPT.md must list accepted artifacts")
-    if not re.search(r"Residual risk:", handoff, re.I):
-        raise BrainError("HANDOFF_RECEIPT.md must record residual risk")
+    if not re.search(r"^\s*-?\s*Phase:\s*READY_FOR_VERIFY\s*$", state, re.I | re.M):
+        raise BrainError("RUN_STATE.md must record Phase READY_FOR_VERIFY")
+    if not re.search(r"^\s*-?\s*Status:\s*READY\s*$", state, re.I | re.M):
+        raise BrainError("RUN_STATE.md must record Status READY")
+    if not re.search(r"Next permitted action:.*course verifier", state, re.I):
+        raise BrainError("RUN_STATE.md must send the next action to the course verifier")
 
 
 def verify_brain(root: Path, corpus_root: Optional[Path] = None) -> Dict[str, Any]:
@@ -628,11 +743,12 @@ def verify_brain(root: Path, corpus_root: Optional[Path] = None) -> Dict[str, An
         raise BrainError("Need at least one defensive threat/protection note")
 
     validate_permissions(resolved)
-    write_events = validate_mcp_receipts(resolved)
+    receipt_summary = validate_mcp_receipts(resolved)
     validate_retrieval(resolved)
+    validate_repair_proof(resolved, receipt_summary["director_paths"])
     validate_brief_and_audit(resolved)
     validate_navigation(resolved)
-    validate_harness_closeout(resolved)
+    validate_harness_ready(resolved)
 
     # Hubs should not be empty stubs
     for hub in (
@@ -654,7 +770,7 @@ def verify_brain(root: Path, corpus_root: Optional[Path] = None) -> Dict[str, An
         "factors": sorted(factors),
         "route_legs": sorted(legs),
         "threat_notes": threat_notes,
-        "mcp_write_events": write_events,
+        "mcp_write_events": receipt_summary["write_count"],
     }
 
 

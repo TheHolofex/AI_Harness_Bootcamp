@@ -103,11 +103,11 @@ def write_seed() -> None:
 
 - Audience: logistics planner building a cited LA→Taiwan heavy-armor movement brain
 - Evidence rule: every decision-driving claim cites a raw_corpus source with excerpt and sha256
-- Write path: director writes vault notes only through Obsidian MCP (ask-gated). Never edit the vault as ordinary files from OpenCode.
+- Write path: the director consolidates content notes through ask-gated Obsidian MCP. The retriever may write only approved retrieval and closeout artifacts. Never edit the vault as ordinary files from OpenCode.
 - Workers: read assigned assessed-slice paths only; no web; no MCP; no vault writes
 - Threat notes end in protect / detect / recover implications. No targeting studies.
 - Never invent license case IDs, coordinates for attack, or stepwise sabotage instructions
-- Stop when coverage quotas are met, cold retrieval answers exist, and human audit is recorded
+- Stop when coverage quotas are met, one repair is applied, and a fresh cold repair check passes
 """,
     )
 
@@ -122,8 +122,9 @@ Hub index for the LA→Taiwan heavy-armor second brain.
 - [[Notes/Threats]]
 - [[Notes/Sources]]
 - [[Notes/Route/Spine]]
-- [[Mission_Brief]] (filled at closeout)
+- [[Mission_Brief]] (filled after the cold repair check)
 - [[Retrieval/Answers]] (cold session)
+- [[Retrieval/Repair_Check]] (fresh-session repair proof)
 """,
         "Notes/Modes.md": """# Modes
 
@@ -197,11 +198,11 @@ Body with [[wikilinks]] to hubs.
 Build a cited Obsidian second brain for moving a main battle tank from the Los Angeles area to Taiwan, then answer graded queries from the brain only.
 
 ## Control flow
-MCP smoke → assessed-slice worker dispatch → director MCP merge → structure → cold retrieval → human audit → baseline freeze.
+MCP smoke → assessed-slice worker dispatch → director MCP merge → cold retrieval → human repair → cold repair check → external integrity snapshot.
 
 ## Budgets
 - Four workers on four assessed-slice partitions
-- Director-only MCP writes (ask)
+- Director consolidates notes; retriever writes only approved retrieval and closeout artifacts (ask)
 - No live web on the graded path
 
 ## Terminal reasons
@@ -213,10 +214,14 @@ SUCCESS · NEEDS_EVIDENCE · BUDGET_STOP · HUMAN_HAND_BACK
 - Status: READY
 - Next permitted action: vault identity smoke + OpenCode MCP registration
 """,
-        "Harness/HANDOFF_RECEIPT.md": """# Handoff receipt
+        "Retrieval/Repair_Check.md": """# Cold repair check
 
-- Status: SEED (not a completed run)
-- Replace this file at closeout with accepted artifacts and residual risk.
+- Repaired path:
+- Before:
+- After:
+- Verdict: PENDING
+
+Supporting notes:
 """,
         "Evidence/PERMISSIONS.example.json": json.dumps(
             {
@@ -311,7 +316,7 @@ permission:
 # Cold retriever
 
 Read the second brain through Obsidian MCP. Do not read the course repository or raw corpus.
-Ask before you write the approved retrieval answer into the vault.
+Ask before you write approved retrieval or closeout artifacts. Never write content notes.
 """,
         "README.md": """# P4 vault seed (thin)
 
@@ -643,7 +648,7 @@ End each route assessment with actions to **protect**, **detect**, and **recover
 - [[Notes/Modes]] · [[Notes/Nodes]] · [[Notes/Constraints]] · [[Notes/Threats]] · [[Notes/Sources]]
 - [[Notes/Route/Spine]]
 - Content: [[Notes/Content/MBT_Envelope]] · [[Notes/Content/Rail_Clearance]] · [[Notes/Content/Road_OSOW]] · [[Notes/Content/Export_Port]] · [[Notes/Content/Sealift_Options]] · [[Notes/Content/Taiwan_Arrival]] · [[Notes/Content/Export_Controls]] · [[Notes/Content/Protection_LOC]] · [[Notes/Content/Air_Contrast]]
-- [[Mission_Brief]] · [[Retrieval/Answers]] · [[Audit]]
+- [[Mission_Brief]] · [[Retrieval/Answers]] · [[Retrieval/Repair_Check]] · [[Audit]]
 """,
     )
     w(
@@ -743,6 +748,19 @@ Lost export berth idles rail staging; lost sealift window strands OSOW road perm
     )
 
     w(
+        REF / "Retrieval/Repair_Check.md",
+        """# Cold repair check
+
+- Repaired path: `Notes/Content/Protection_LOC.md`
+- Before: The note described the protection problem but did not close with an explicit recovery action.
+- After: The repaired note ends with protect, detect, and recover actions for the affected nodes.
+- Verdict: PASS
+
+Supporting notes: [[Notes/Content/Protection_LOC]] · [[Notes/Threats]]
+""",
+    )
+
+    w(
         REF / "Audit.md",
         f"""# Human audit sample
 
@@ -752,7 +770,12 @@ Lost export berth idles rail staging; lost sealift window strands OSOW road perm
 | Thin corpus notices claiming 45 mph | reject | Contradicts canonical speed; do not promote into spine |
 | Notes/Content/Protection_LOC.md | support | Ends in protect/detect/recover language |
 
-One repair cycle: removed any implied targeting language from threat notes before freeze.
+## Applied repair
+
+- Repaired path: `Notes/Content/Protection_LOC.md`
+- Before: The note described the protection problem but did not close with an explicit recovery action.
+- After: The repaired note ends with protect, detect, and recover actions for the affected nodes.
+- Expected retrieval effect: A fresh chokepoint-protection query returns all three actions and cites the repaired note.
 """,
     )
 
@@ -790,7 +813,7 @@ One repair cycle: removed any implied targeting language from threat notes befor
             "agent": "director",
             "tool": "obsidian_vault_write",
             "action": "write",
-            "path": "Notes/Content/MBT_Envelope.md",
+            "path": "Notes/Content/Protection_LOC.md",
             "ok": True,
         },
         {
@@ -799,6 +822,46 @@ One repair cycle: removed any implied targeting language from threat notes befor
             "tool": "obsidian_vault_append",
             "action": "append",
             "path": "MOC.md",
+            "ok": True,
+        },
+        {
+            "ts": "2026-08-05T12:10:00Z",
+            "agent": "director",
+            "tool": "obsidian_vault_write",
+            "action": "write",
+            "path": "Audit.md",
+            "ok": True,
+        },
+        {
+            "ts": "2026-08-05T12:15:00Z",
+            "agent": "retriever",
+            "tool": "obsidian_vault_write",
+            "action": "write",
+            "path": "Retrieval/Answers.md",
+            "ok": True,
+        },
+        {
+            "ts": "2026-08-05T12:20:00Z",
+            "agent": "retriever",
+            "tool": "obsidian_vault_write",
+            "action": "write",
+            "path": "Retrieval/Repair_Check.md",
+            "ok": True,
+        },
+        {
+            "ts": "2026-08-05T12:21:00Z",
+            "agent": "retriever",
+            "tool": "obsidian_vault_write",
+            "action": "write",
+            "path": "Mission_Brief.md",
+            "ok": True,
+        },
+        {
+            "ts": "2026-08-05T12:22:00Z",
+            "agent": "retriever",
+            "tool": "obsidian_vault_write",
+            "action": "write",
+            "path": "Harness/RUN_STATE.md",
             "ok": True,
         },
     ]
@@ -810,19 +873,9 @@ One repair cycle: removed any implied targeting language from threat notes befor
         REF / "Harness/RUN_STATE.md",
         """# Run state
 
-- Phase: COMPLETE
-- Status: SUCCESS
-- Next permitted action: freeze baseline for independent integrity checks
-""",
-    )
-    w(
-        REF / "Harness/HANDOFF_RECEIPT.md",
-        """# Handoff receipt
-
-- Terminal reason: SUCCESS
-- Accepted: Mission_Brief.md, Retrieval/Answers.md, Audit.md, Notes/Content/*, Evidence/*
-- Residual risk: commercial Ro/Ro market tightness; thin rail-speed notices rejected in audit
-- Baseline: run tools/verify_baseline.py --write-manifest and copy external P4_BASELINE_DATE.json
+- Phase: READY_FOR_VERIFY
+- Status: READY
+- Next permitted action: exit OpenCode and run the course verifier
 """,
     )
 

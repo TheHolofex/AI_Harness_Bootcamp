@@ -24,7 +24,7 @@ Items that need hardware or live apps not available in this authoring environmen
    - Export one OpenCode session. Confirm the real tool-event names and fields match `Evidence/MCP_RECEIPTS.jsonl`.
 
 3. **Student-facing PowerShell blocks in `site/blocks/p4.html`**
-   - Run Stage 01 seed copy, Stage 02 config and MCP smoke, Stage 06 cold project, and Stage 08 baseline freeze on a clean Windows profile.
+   - Run Stage 01 seed copy, Stage 02 config and MCP smoke, both cold-retriever sessions, and the Stage 08 external integrity and disposable-mutation checks on a clean Windows profile.
    - Flag any path or `py -3` launcher differences for the image.
 
 4. **Timed pilot (~165 min)**

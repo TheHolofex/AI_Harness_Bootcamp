@@ -16,6 +16,8 @@ Run `scripts/Start-P4.ps1 Setup` to copy vault content without `.opencode` or `.
 
 The vault remains a normal writable Windows folder. OpenCode permissions are application controls; do not apply NTFS ACLs, read-only attributes, or ownership changes to the vault.
 
+P4 closes with one applied repair, a fresh-session `Retrieval/Repair_Check.md`, semantic verification, and an external `P4_INTEGRITY_[TIMESTAMP].json`. External snapshot mode reads the vault but does not write an unreceipted manifest into it or overwrite earlier evidence.
+
 Run the verifier from the course seed. The course-seed path lets `verify_brain.py` check each cited source against `raw_corpus/MANIFEST.json` and the source bytes.
 
 ## Verify
