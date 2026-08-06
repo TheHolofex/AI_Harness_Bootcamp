@@ -1,7 +1,7 @@
 # Measurement spine — Move 4
 
 **Ultra-light week scoreboard.** Living Markdown in the course operator folder.
-Updated **once per block, after that block&#x27;s review boundary**. P2 uses its built-in `REVIEW:` line and receipt. P4 uses its human audit, MCP receipts, fresh repair check, brain verifier, and external integrity snapshot. Neither adds a separate adversarial chat.
+Updated **once per block, after that block&#x27;s review boundary**. P2 uses its built-in `REVIEW:` line and receipt. P4 uses its human audit, MCP receipts, fresh repair check, brain verifier, and external integrity snapshot. P7 uses its recorded Wave 1 verifier PASS, final Wave 2 receipt and verifier PASS, and branch-rule before/after comparison. None adds a separate adversarial chat.
 
 The live HTML module page is authoritative for whether this row is part of the learner flow and which exact module-specific closeout chat to use.
 
@@ -30,15 +30,15 @@ Brief accuracy · Overclaim · Time to result · Lesson reflection
 |---|---|
 | **Where** | `operator/MEASUREMENT_SPINE.md` in the Codex app project |
 | **Chat** | Use the exact closeout chat named on the module page. The generic direction-chat pattern is `[MODULE] — Direction & Closeout`; replace `[MODULE]` with the current module code. The saved file, not chat history, carries the row forward |
-| **When** | **End of every block only**, after the `ADVERSARIAL:` line exists |
-| **How** | Interactive with AI: you paste the facts, the AI counts overclaim from the rulings and refuses “the brief was fine” |
+| **When** | **End of every block only**, after the review-boundary evidence named by the live page exists |
+| **How** | Interactive with AI: you paste the independent rulings or integrated receipts, and the AI counts overclaim from them and refuses “the brief was fine” |
 | **Weight** | Four short entries and a deep mark on the lessons that carry one. More than two or three minutes means you are over-measuring |
 
 ### Position in the lesson
 
 ```text
 Brief → Lesson work → Log + lesson-outcome check
-  → Independent review (new chat)
+  → Required review boundary (independent or integrated, as the live page directs)
   → Measurement spine row (this file)
   → Dated transfer seed in the module closeout for P1–P7
   → Shared P7–P8 plan chat only when the P7 or P8 page directs it
@@ -139,6 +139,8 @@ For P2, read the row from `normalized/intake_receipt.json` and the generated lis
 
 For P4, read the brain verifier, integrity check, `Retrieval/Repair_Check.md`, and `Audit.md`. In the overclaim cell, put `n/m`, where `m` is content notes or retrieval answers presented as ready before audit and `n` is how many the audit rejected or forced into repair. Time ends at the final live-vault PASS, not at the later transfer edit.
 
+For P7, read the recorded Wave 1 verifier PASS, the saved final Wave 2 receipt and verifier PASS, and the two-workbook branch-rule comparison. In the overclaim cell, `m` is the lesson outcomes marked complete before those checks and `n` is how many the verifier evidence, receipt, workbook, or comparison reject. Time ends when the 20-row second wave leaves an 80-row `AI Workboard`. Do not add a separate attack chat.
+
 Nine rows is the whole scoreboard. Do not average them and do not add a totals line: a median across nine unlike missions has no referent, because the missions are not repeats of one another. The reading that carries a decision is the **shape of the overclaim column down the page**, and you get that by looking at it.
 
 ---
@@ -154,16 +156,17 @@ Ultra-light continuity for the big instruments. Fill **only when that block runs
 | **OSD** | Open source desk: specimen findings reached unaided `n/4` · primitives written before code Y/N · tools `n` of 2-5 · description change that moved a model's choice Y/N · widest result before and after the cap · coded fields decoded `n/n` · planted records labelled `3/3` · handover local paths `0` and credentials `0` |
 | **P4** | Second brain: brain verifier PASS/HOLD · MCP write receipts `n` · supported audit findings `n` · applied repairs `1` · cold answers `4` · fresh repair check PASS/HOLD · external integrity snapshot Y/N · disposable mutation HOLD Y/N · final live PASS Y/N |
 | **P5** | Containment: 3/3 catches · absence-of-effect proof pointer |
-| **P6** | Contract: stop/restart · exception drill pass/fail |
+| **P6** | Agentic watch: Wave 1 PASS Y/N · Wave 2 PASS Y/N · evidence accounted `n/n` · command center/state agree Y/N · intent exact Y/N · `NEW/CHANGED/CANCELLED/UNCHANGED` visible `n/4` |
+| **P7** | Spreadsheet control: Wave 1 verifier PASS Y/N · source rows `n/60` · AI columns populated `n/8` · visible branches `n/4` · workbook rows written `n/60` · one branch-rule edit Y/N · rows changed `n` · row-by-row edits `0` · Wave 2 verifier PASS Y/N · new rows `n/20` · final workboard `n/80` |
 | **P8** | Hold-degrade: open `n/5` vs home `n/5`; refuse: Y/N; transfer SEALED: Y/N |
 
-B1, P1 and P7 carry no deep mark — for those blocks the four entries are the whole row.
+B1 and P1 carry no deep mark — for those blocks the four entries are the whole row.
 
 ---
 
-## End-of-block prompt (paste after a separate adversarial review)
+## End-of-block prompt (paste after the required review boundary)
 
-P2 and P4 do not use this prompt; their live pages write the row from integrated receipts.
+P2, P4, and P7 do not use this prompt; their live pages write the row from integrated receipts.
 
 ```text
 Measurement spine update. Read operator/MEASUREMENT_SPINE.md.

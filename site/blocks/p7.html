@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The workflow · AI Harness Bootcamp · Starzl</title>
+  <title>AI Controls the Workboard · AI Harness Bootcamp · Starzl</title>
   <link rel="stylesheet" href="../css/course.css" />
   <link rel="stylesheet" href="../css/checklist.css" />
 </head>
@@ -22,25 +22,25 @@
 
   <main class="site-main">
     <p class="eyebrow">Thursday PM · P7 · AI Harness Bootcamp</p>
-    <h1>The workflow</h1>
-    <p class="lede">This morning, goose kept working until a stop rule ended the run. This afternoon you build a different kind of system. You set the steps once. Every row takes the same path. One AI step reads the text. Simple checks test the answer. Doubtful rows stop for you. Only clear rows land on the master sheet.</p>
+    <h1>AI Controls the Workboard</h1>
+    <p class="lede">A familiar spreadsheet starts with 60 work requests and eight blank red columns. Close Excel, run one saved n8n graph, and reopen the same workbook: AI has structured every request, routed it to one workstream, and applied the matching policy. Change one policy once, compare two workbook copies, add twenty records, and run the same graph again.</p>
 
     <div class="meta-grid">
       <div><span class="k">Day</span><span class="v">Thursday PM</span></div>
       <div><span class="k">Block</span><span class="v">P7</span></div>
-      <div><span class="k">Time</span><span class="v">~3–3.5 hr after the 30 min lead demo</span></div>
-      <div><span class="k">Tools</span><span class="v">Codex (<code>gpt-5.6-terra</code>) support · n8n + xAI step</span></div>
-      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p7">0 / 18 · 0%</span></div>
+      <div><span class="k">Time</span><span class="v">~90–120 min</span></div>
+      <div><span class="k">Tools</span><span class="v">Excel · n8n + funded xAI model · P7 helpers · Codex closeout</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p7">0 / 11 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
 
     <nav class="page-nav" aria-label="On this page">
       <span class="page-nav-label">On this page</span>
       <a href="#orient">Orientation</a>
-      <a href="#ideas">The ideas</a>
+      <a href="#ideas">How the workboard moves</a>
       <a href="#mission">Run of exercise</a>
-      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/8</span></a>
-      <a href="#depth">Going deeper</a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/11</span></a>
+      <a href="#depth">Patterns on other desks</a>
       <a href="#stuck">If you get stuck</a>
       <div class="page-nav-progress">
         <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p7"></span></div>
@@ -49,710 +49,802 @@
     </nav>
 
     <section id="orient" class="home-section">
-      <h2 class="h-plain">Start here</h2>
-      <p>All week, the agents could change the next step while they ran. That helps when you do not know the path yet. A lot of desk work is not like that. The same kind of decision repeats, in the same shape, many times: code invoices, route tickets, fold field notes into one sheet.</p>
-      <p>For that work, a free agent is the wrong tool. You get many different paths. You cannot check them easily. Small drift is hard to see. A better tool is a <strong>workflow</strong>. You design the steps once. Every row takes the same stations. An AI step fills one station. Simple checks test its output. A <strong>hold for you</strong> stops doubtful rows. Only clear rows reach the master sheet.</p>
-      <p>Today you build that workflow in n8n. Then you sort real work from your desk into three bins: free agent, workflow with a hold, or keep it human.</p>
       <div class="orient-grid">
         <div>
-          <h3>What you will leave with</h3>
+          <h2 class="h-plain">Start here</h2>
+          <p>This run puts one spreadsheet under visible AI control. Plan for the first filled workboard in about twenty minutes. You will see the unfinished work in Excel, read the n8n graph that completes it, and return to Excel to inspect the result.</p>
+          <p>The active file is <code>mission_flesh\p7\workboard.xlsx</code>. Its sheet is <strong>AI Workboard</strong>. Columns A–F carry the source request. Columns G–N are the AI and policy area. They begin blank and red so the unfinished work is visible.</p>
+
+          <h3>What changes after the run</h3>
           <ul>
-            <li>A working n8n flow: batch in → AI reads and labels → checks → held file and master file</li>
-            <li>At least three held rows with your written decisions, including one row that looked sure but was wrong</li>
-            <li>A written sort of your real workloads: free agent, workflow with a hold, or keep it human — with reasons a reader can check</li>
-            <li>Draft 30/60/90 plan lines in your Transfer file, based on this week</li>
+            <li><code>workstream</code> routes each request to Operations, Finance, People, or Technology.</li>
+            <li><code>priority</code>, <code>summary</code>, and <code>next_action</code> turn the request into usable work.</li>
+            <li><code>branch_policy</code> and <code>policy_value</code> show the rule applied by that workstream.</li>
+            <li><code>sla_hours</code> and <code>target_by</code> are filled for Operations records; the other workstreams leave those two cells blank.</li>
           </ul>
+
           <h3>Before you start</h3>
           <ul>
-            <li>n8n starts and lets you in. Run <code>n8n start</code> in PowerShell, open <code>localhost:5678</code>, and sign in with the owner account from pre-work. If you forgot the password, use the command-line reset. Do not reinstall. If n8n exits with a version message, it wants Node 22.22 up to the current LTS line.</li>
-            <li>Sample rows on disk: <code>mission_flesh/p7/rows.csv</code>, with <code>discrimination_template.md</code> beside it</li>
-            <li>Operator templates present in your Codex project: <code>DIRECTION_BRIEF.md</code>, <code>OPERATOR_LOG.md</code></li>
-            <li>Your xAI key (<code>xai-…</code>) and the model ID from <code>$env:HB_XAI_MODEL</code> ready. Stage 03 stores the key in n8n and pins that model</li>
+            <li>The course repository is at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code>.</li>
+            <li>Excel and n8n are installed from pre-work.</li>
+            <li>Your funded xAI key and the model name in <code>$env:HB_XAI_MODEL</code> are available.</li>
+            <li>Keep one PowerShell window open for n8n and a second one for the P7 helpers.</li>
           </ul>
         </div>
         <div class="orient-aside">
           <div class="lead-box">
-            <p class="eyebrow">Lead operate-along</p>
-            <p>The lead runs this same page on screen. You will see the brief written live and the flow built node by node. Run your own machine. Check a box only when you finish the step.</p>
+            <p class="eyebrow">First useful result · about 20 min</p>
+            <p>Open the blank workboard, close Excel, connect the prepared graph, run it, and reopen the same file with the red AI area populated.</p>
           </div>
-          <div class="callout" id="lead-demo">
-            <strong>Right after lunch · watch-only demo (30 min)</strong>
-            First you watch a short demo. The Codex built-in browser pulls a few public facts and builds a short slideshow. Then one claim is checked, and a runaway expand is stopped. You install nothing. Keep the lesson: a deck a model put together is a list of claims until someone checks a claim. A deck is not proof.
+          <div class="callout">
+            <strong>Excel must be closed during a run</strong>
+            Windows locks an open workbook. Close every Excel window that has <code>workboard.xlsx</code> open before n8n writes it or a helper replaces it.
           </div>
         </div>
       </div>
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p7/p7-overview.svg" alt="The workflow at a glance: rows in, AI step, checks, hold for a person, master sheet — held rows hold at the hold" width="1120" height="280" loading="lazy" decoding="async" />
-      </figure>
+
+      <div class="grid-2">
+        <figure class="section-diagram settings-screenshot">
+          <a href="../assets/blocks/p7/p7-workboard-60-blank.png" aria-label="Open the blank 60-row AI Workboard image full size">
+            <img src="../assets/blocks/p7/p7-workboard-60-blank.png" alt="Excel AI Workboard with 60 source rows in columns A through F and eight blank red AI and policy columns G through N" loading="lazy" decoding="async" />
+          </a>
+          <figcaption>Wave 1 before n8n · select the image to open it full size</figcaption>
+        </figure>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Area</th><th>Columns</th><th>State before the run</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Source</strong></td><td><code>id</code>, <code>received_at</code>, <code>requester</code>, <code>channel</code>, <code>text</code>, <code>wave</code></td><td>60 rows filled</td></tr>
+              <tr><td><strong>AI</strong></td><td><code>workstream</code>, <code>priority</code>, <code>summary</code>, <code>next_action</code></td><td>Blank red cells</td></tr>
+              <tr><td><strong>Policy</strong></td><td><code>branch_policy</code>, <code>policy_value</code>, <code>sla_hours</code>, <code>target_by</code></td><td>Blank red cells</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card-grid" aria-label="Production line milestones">
+        <div class="card">
+          <p class="eyebrow">Wave 1</p>
+          <h3>60 rows completed</h3>
+          <p>The same workbook returns with structured work and branch policy beside every source request.</p>
+        </div>
+        <div class="card">
+          <p class="eyebrow">One policy change</p>
+          <h3>24 h → 8 h</h3>
+          <p>One line in the Operations branch changes every matching workbook row.</p>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Wave 2</p>
+          <h3>80 rows completed</h3>
+          <p>Twenty new source rows enter the same workbook and the same saved graph.</p>
+        </div>
+      </div>
     </section>
 
     <section id="ideas" class="home-section">
-      <h2>Learn the ideas before you build</h2>
-      <p class="section-lede">Five ideas carry the afternoon. Read them once. Come back when a step needs the reason.</p>
+      <h2>Follow the spreadsheet through the graph</h2>
+      <p>The workbook is both the intake and the product. n8n reads the six source columns, gives the text to one AI structure station, joins the answer back to the original row by <code>id</code>, applies a workstream rule, and writes all fourteen columns back to <code>workboard.xlsx</code>.</p>
+      <p>The graph also writes a CSV mirror and a run receipt for the <strong>verifier</strong>, the local PowerShell helper that checks exact row counts and policy values. Those two files are backstage evidence. The workbook stays the product you inspect.</p>
 
-      <h3>1. Two tools, one choice</h3>
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p7/p7-two-machines.svg" alt="Free agent changing steps mid-run beside a workflow that repeats one designed path through a hold to a sheet" width="1120" height="220" loading="lazy" decoding="async" />
-      </figure>
-      <p>A <strong>free agent</strong> picks its next move while it runs. The model reads what just happened and chooses the next step inside your limits. A <strong>workflow</strong> uses a path you designed once. The path does not change from row to row. That is the whole difference.</p>
-      <p>With a free agent, the model owns the path and you own the limits. With a workflow, you own the path and the model fills one station you built for it.</p>
-      <p>This morning asked how to bound an agent that keeps working on its own. This afternoon asks a higher question. Should this work use a free agent at all, or will a workflow with one AI station finish it more reliably?</p>
-      <p>The wrong choice costs you either way. A free agent on five hundred near-identical rows gives you five hundred different paths. Slow. Costly. Hard to check. A workflow on true judgment work forces odd cases through a shape that does not fit. The person who reviews then becomes a rubber stamp.</p>
-      <p>Ask two questions of any workload. What changes from item to item? What does a wrong answer cost? High volume with the same shape points at a workflow. High change from item to item points at a free agent. High cost of error points at a hold for you, or at keeping the work human.</p>
+      <div class="grid-2">
+        <figure class="section-diagram settings-screenshot">
+          <a href="../assets/blocks/p7/p7-n8n-overview.jpg" aria-label="Open the P7 n8n workflow overview full size">
+            <img src="../assets/blocks/p7/p7-n8n-overview.jpg" alt="n8n canvas for P7 AI Controls the Workboard, from workbook read through AI structure, four policy branches, fan-in, and workbook write" loading="lazy" decoding="async" />
+          </a>
+          <figcaption>P7 — AI Controls the Workboard · select the image to open it full size</figcaption>
+        </figure>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Exact canvas nodes</th><th>Job</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Execute Spreadsheet Control Line</strong></td><td>Start one full workbook run.</td></tr>
+              <tr><td><strong>Read workboard.xlsx</strong> → <strong>Extract AI Workboard sheet</strong></td><td>Open the local workbook and extract its named sheet, including blank AI cells.</td></tr>
+              <tr><td><strong>Map Spreadsheet Rows</strong> → <strong>Group into 5-Record Model Calls</strong></td><td>Keep the six source fields and group five rows into each model call.</td></tr>
+              <tr><td><strong>AI Structure Station</strong> + <strong>xAI Model — attach credential here</strong> + <strong>Structured Output Contract</strong></td><td>Return five named AI fields per source record.</td></tr>
+              <tr><td><strong>Split Structured Batches</strong> → <strong>Merge Source + AI by ID</strong> → <strong>Assemble Structured Record</strong></td><td>Split each model batch and join every answer to its source row by <code>id</code>.</td></tr>
+              <tr><td><strong>Route by Workstream</strong> → four <strong>POLICY</strong> branches</td><td>Send each row to one workstream and add that branch's policy fields.</td></tr>
+              <tr><td><strong>Fan In — AI Workboard</strong> → <strong>Build AI Workboard rows</strong> → <strong>Convert rows to workboard.xlsx</strong> → <strong>Write workboard.xlsx — close Excel first</strong></td><td>Recombine the branches and overwrite the same sheet with fourteen ordered columns.</td></tr>
+              <tr><td><strong>Convert verifier mirror to CSV</strong> → <strong>Write AI_workboard.csv</strong>; <strong>Build Run Receipt</strong> → <strong>Convert Run Receipt to JSON</strong> → <strong>Write run_receipt.json</strong></td><td>Write the two deterministic evidence files used by the verifier.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-      <h3>2. One pass. No mid-run fix.</h3>
-      <p>Nothing in the workflow you build re-reads its own output and revises. Each node runs once per item and hands the result forward. There is no &quot;look again and fix it&quot; step inside the workflow. That is why the workflow is cheap, fast, and easy to predict.</p>
-      <p>So judgment must go in early. You put it in the path design and in where the hold sits. The AI step will not push back the way a chat agent does. Give it bad input and it processes bad input with confidence. The flow moves on. There is no next message. Safety must be built in.</p>
-      <p>For any automation idea at work, ask: where does this path correct itself? If the answer is nowhere, the path design and the hold carry all the judgment. Give those two things most of the review time.</p>
+      <h3>Structured output is the handoff</h3>
+      <p>The model returns <code>id</code>, <code>workstream</code>, <code>priority</code>, <code>summary</code>, and <code>next_action</code> for every source row. Those named fields let the graph route and apply policy without a person translating prose into spreadsheet cells.</p>
 
-      <h3>3. The hold for you is a design choice</h3>
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p7/p7-gate-placement.svg" alt="Two lanes: hold before the write catches the bad row; hold after the write approves a row that already landed" width="1120" height="220" loading="lazy" decoding="async" />
-      </figure>
-      <p>A hold is a point where the flow stops and a person decides. Two things make a hold real.</p>
-      <p>First, place. A hold <em>before</em> the master sheet means bad rows never land. A hold <em>after</em> the write means the error is already the record when you see it.</p>
-      <p>Second, evidence. The hold must arrive with the row, the AI output, and the reason it held. A bare yes/no prompt trains you to click yes. The hold rate matters too. If everything holds, people stop reading. If nothing holds, you only have a drawing of a hold. Aim for holds that deserve attention.</p>
-      <p>When someone asks you to &quot;review&quot; automated output, ask where the review sits relative to the write. Before the write, you are a quality check. After the write, you are a stamp with a login.</p>
-
-      <h3>4. Do not trust the AI step. Check it.</h3>
-      <p>Checks are simple tests the flow runs on the AI output before anything lands. Required fields present. Values from an allowed set. Numbers in range. Output in the shape you asked for. The model returns text. The flow turns text into fields. Later nodes trust those fields. That handoff is where workflows break. Put the checks there. If a check fails, hold the row. Never send a failed row to the sheet.</p>
-      <p>&quot;Looks reasonable&quot; is not a rule. &quot;Region is one of EU, US, GLOBAL&quot; is a rule.</p>
-      <p>One concrete move today: <code>rows.csv</code> has an <code>expected_gate</code> column. That is your answer key. Drop that column before the AI step sees a row. Never let the system under test see its own answer key.</p>
-
-      <h3>5. The sort you keep</h3>
-      <figure class="section-diagram">
-        <img src="../assets/blocks/p7/p7-sorting.svg" alt="A workload fanned into three bins: free agent, workflow with a hold, keep it human" width="1120" height="220" loading="lazy" decoding="async" />
-      </figure>
-      <p>The lasting skill is not wiring n8n nodes. It is the sort. Take any workload from your desk and place it in one of three bins: <strong>free agent</strong>, <strong>workflow with a hold</strong>, or <strong>keep it human</strong>.</p>
-      <p>Use the same two questions: what changes from item to item, and what a wrong answer costs. Volume decides whether a workflow is worth building. The keep-it-human bin has its own test. When the verdict <em>is</em> the work product — a hiring call, a trust call, an accept or reject people trust because a person made it — automating it removes the thing that made it valuable.</p>
-      <p>Write the sort down, per workload, with reasons. n8n will change. The model will change. The sorted list and the two questions transfer.</p>
-
-      <p class="eyebrow">Optional field guide · 45–60 min</p>
-      <h3>Choose from the workload evidence</h3>
-      <p><a href="../resources/p7/tool-choice-field-manual.html"><strong>The Machine-Choice Field Manual</strong></a> extends the three-bin sort into a scored method, with hard stops, routing limits, counterexamples, and revisit triggers for work near an edge.</p>
+      <h3>Choose the machine from the work</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Machine</th><th>Use it when</th><th>Typical shape</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Fixed</strong></td><td>The stations and branch rules are known before the run; volume is the leverage.</td><td>Read → structure → route → policy → write</td></tr>
+            <tr><td><strong>Adaptive</strong></td><td>The next useful action depends on changing state, findings, or the previous action.</td><td>Goal → inspect → choose → act → check → revise</td></tr>
+            <tr><td><strong>Hybrid</strong></td><td>A designed outer line can send a nonstandard case into a bounded adaptive subflow, then take the result back.</td><td>Fixed intake and closeout around an adaptive middle</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p7" data-block="P7">
-
       <section id="mission" class="home-section" data-check-section="mission">
         <h2>Run of exercise</h2>
-        <p class="section-lede">Six stages, in order. Write the plan. Read the rows. Build the workflow. Place the hold. Drill the bad cases. Sort your real work. Check each item when its evidence exists.</p>
 
-        <h3>Stage 01 · Write the workflow plan</h3>
-        <p>Before a single node exists, write the target, hold rules, evidence, and stop condition into the live brief.</p>
+        <h3>Stage 01 · Open the unfinished workboard</h3>
+        <p>This step puts the 60-row blank template at the active path and shows you the work n8n is about to complete. Plan for five minutes.</p>
+
         <div class="do-step">
-          <p class="do-label">Start here in the <strong>ChatGPT desktop app</strong>:</p>
+          <p class="do-label">Open the first <strong>PowerShell</strong> window and prepare Wave 1:</p>
+          <pre><code>Set-Location "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7"
+.\scripts\Prepare-P7.ps1</code></pre>
+        </div>
+
+        <p><strong>What you should see.</strong> The helper prints <code>P7 WAVE 1 READY: 60 records</code>, then names the generated workflow, <code>workboard.xlsx</code>, the course model, and the verifier evidence directory.</p>
+
+        <div class="do-step">
+          <p class="do-label">Open the active workbook:</p>
+          <pre><code>Invoke-Item .\workboard.xlsx</code></pre>
           <ul class="do-clicks">
-            <li>Open <strong>ChatGPT</strong> from the Windows Start menu</li>
-            <li>If the app opens to Chat or Work, use the top-left switcher to select <strong>Codex</strong></li>
-            <li>Click <strong>Open project</strong> and choose <code>Documents\\HarnessBootcamp\\AI_Harness_Bootcamp</code></li>
-            <li>In the sidebar, look for <strong>P7 — Direction &amp; Closeout</strong>. If it is there, open it</li>
-            <li>If it is missing, click <strong>New chat</strong>. Open the new chat&#x27;s <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P7 — Direction &amp; Closeout</code></li>
-            <li>Use that same menu to choose <strong>Pin</strong> if the option appears. If it does not, the exact name will still let you find the chat under Recents</li>
-            <li>Select <strong>gpt-5.6-terra</strong>. Do not leave this chat on the default or select <code>gpt-5.6-sol</code></li>
-            <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
+            <li>Open the <strong>AI Workboard</strong> sheet.</li>
+            <li>Confirm the table runs from column A through column N and contains 60 source rows.</li>
+            <li>Read two or three requests in columns A–F.</li>
+            <li>Confirm columns G–N have red headers and blank cells.</li>
+            <li><strong>Close Excel completely.</strong> Do not leave the workbook open behind another window.</li>
           </ul>
         </div>
+
         <div class="do-step">
-          <p class="do-label">Paste this into <strong>P7 — Direction &amp; Closeout</strong>:</p>
-          <pre><code>Write the P7 production spec into operator/DIRECTION_BRIEF.md and set Status to LIVE.
-
-Outcome: build one n8n line from mission_flesh/p7/rows.csv through AI classification,
-machine checks, a held branch, and a cleared branch. Save held rows with reasons to
-mission_flesh/p7/out/held.csv, cleared rows to mission_flesh/p7/out/master.csv, and
-complete mission_flesh/p7/discrimination_template.md for real work on my desk.
-
-Done looks like:
-- the false branch is built before the true branch and before the first writable run;
-- rows 4, 5, and 7 are held with written reasons and absent from master.csv;
-- row 2 reaches master.csv;
-- at least three held rows, including row 4, carry my adjudication and reason;
-- the discrimination table uses frequency, variation, cost of error, and retained
-  human judgment to sort real workloads.
-
-Bounds: remove expected_gate before the AI step; never expose the answer key; no row
-reaches master.csv except through the cleared branch or my manual promotion.
-Evidence: the saved n8n workflow and execution, out/held.csv, out/master.csv, and the
-filled discrimination_template.md.
-Stop / hand-back: stop before any write if the held branch is missing, expected_gate
-appears in AI input, or the file paths point outside mission_flesh/p7/out.
-
-Preserve unrelated block sections. Show the exact P7 brief written.</code></pre>
+          <p class="do-label">Back in the same <strong>PowerShell</strong> window, start n8n:</p>
+          <pre><code>n8n start</code></pre>
+          <p>Leave this server window running. Open a second PowerShell window, return to the P7 directory, and use that second window for later helpers and verification.</p>
         </div>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p7-pulse-brief" name="p7-pulse-brief" data-check-id="pulse-brief" />
-              <span class="check-num">1</span>
-              <span class="check-title">The P7 production spec is on record with Status LIVE</span>
-            </label>
-            <div class="check-detail"><code>operator/DIRECTION_BRIEF.md</code> names both output paths, the held-before-cleared build order, poisoned-row rules, answer-key bound, evidence, and stop condition. Status reads <strong>LIVE</strong>.</div>
-          </li>
-        </ol>
 
-        <h3>Stage 02 · Read the rows yourself</h3>
-        <p>You cannot judge what the hold catches if you never saw the rows raw. Two minutes with the file now buy the whole bad-case drill later.</p>
+        <p id="p7-prepared-point">Wave 1 is prepared when <code>workboard.xlsx</code> has 60 source rows, its eight red AI/policy columns are blank, Excel is closed, and n8n is running from the prepared PowerShell window.</p>
+
+        <h3>Stage 02 · Import and read the control graph</h3>
+        <p>The prepared graph contains the whole spreadsheet-to-spreadsheet path. Import it, attach the funded model once, and inspect the settings that make each handoff work. Plan for fifteen minutes.</p>
+
         <div class="do-step">
-          <p class="do-label">Open the <strong>P7 PowerShell window</strong>:</p>
+          <p class="do-label">Open <strong>n8n</strong> at <code>http://localhost:5678</code>:</p>
           <ul class="do-clicks">
-            <li>Press the <strong>Windows</strong> key, type <code>PowerShell</code>, and open <strong>Windows PowerShell</strong></li>
-            <li>Keep this window open. It becomes the n8n server window in Stage 03</li>
+            <li>Sign in with the local owner account from pre-work.</li>
+            <li>Open the workflow menu and choose <strong>Import from File</strong>.</li>
+            <li>Select <code>workflow\P7-production-line.json</code>, the generated file printed by <code>Prepare-P7.ps1</code>.</li>
+            <li>Confirm the canvas is named <strong>P7 — AI Controls the Workboard</strong>.</li>
+            <li>Save the imported workflow.</li>
           </ul>
-          <pre><code>Get-Content "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\rows.csv"</code></pre>
         </div>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p7-p7-rows" name="p7-p7-rows" data-check-id="p7-rows" />
-              <span class="check-num">2</span>
-              <span class="check-title">The rows.csv input is open and its shape is confirmed</span>
-            </label>
-            <div class="check-detail">Eight rows print under the header <code>id,text,region,expected_gate</code> — a mix of clean rows, review-worthy ones, and three that must never land: a false all-clear (row 4), a payment request (row 5), and a false attack report (row 7). Read all eight yourself. The <code>expected_gate</code> column is your grading key, not the machine&#x27;s input. The workflow drops it before the AI step ever runs. If PowerShell says the path does not exist, pull the course repo again.</div>
-          </li>
-        </ol>
 
-<h3>Stage 03 · Build the workflow</h3>
-        <figure class="section-diagram">
-          <img src="../assets/blocks/p7/p7-stage-build.svg" alt="Node chain preview through read rows, AI step, and checks; no writable nodes yet" width="1120" height="220" loading="lazy" decoding="async" />
-        </figure>
-        <p>Build the steps from left to right. Start the run. Read the rows. Drop the answer column. Run the AI step. Run the checks. Write the files last. Follow the steps below in n8n. Open a troubleshooting chat only when one node, one input shape, one expression, or one error stops you.</p>
-        <details>
-          <summary>If a node turns red or an expression fails</summary>
-          <div class="do-step">
-            <p class="do-label">Create <strong>P7 — Automation Troubleshooting</strong> in the <strong>Codex app</strong>:</p>
-            <ul class="do-clicks">
-              <li>Click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
-              <li>Click <strong>Open project</strong> and choose <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
-              <li>Click <strong>New chat</strong>. Open its <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P7 — Automation Troubleshooting</code></li>
-              <li>Select <strong>gpt-5.6-terra</strong>, the model used for the Direction Brief, and confirm <strong>Ask for approval</strong></li>
-            </ul>
+        <h4>Read the workbook</h4>
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-read-workbook.jpg" aria-label="Open the n8n Read workboard settings image full size">
+              <img src="../assets/blocks/p7/p7-n8n-read-workbook.jpg" alt="n8n parameters for the Read workboard.xlsx node" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Read workboard.xlsx · select the image to open it full size</figcaption>
+          </figure>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Parameter</th><th>Exact value</th></tr></thead>
+              <tbody>
+                <tr><td>Node</td><td><strong>Read workboard.xlsx</strong></td></tr>
+                <tr><td>Operation</td><td>Read File(s) From Disk</td></tr>
+                <tr><td>File selector</td><td>The generated absolute path ending in <code>mission_flesh/p7/workboard.xlsx</code></td></tr>
+                <tr><td>Output binary field</td><td><code>data</code></td></tr>
+                <tr><td>File type</td><td><code>workboard.xlsx</code> · XLSX MIME type</td></tr>
+              </tbody>
+            </table>
           </div>
-          <div class="do-step">
-            <p class="do-label">Fill the facts from the failed node, then paste:</p>
-            <pre><code>Help me repair one n8n failure without redesigning the workflow.
-Node: [EXACT NODE NAME]
-Expected output: [EXPECTED SHAPE]
-Observed input/output: [PASTE THE RELEVANT FIELDS]
-Exact error: [PASTE THE ERROR]
+        </div>
 
-Give the smallest change that fixes this node while preserving the named nodes,
-checks, held-before-cleared order, and output paths. Explain what shape mismatch
-or expression error caused the failure. Then stop so I can make and test the change.</code></pre>
+        <p class="small-note"><strong>What the screenshot shows.</strong> The portable template uses <code>__P7_WORKBOARD__</code>. <code>Prepare-P7.ps1</code> replaces it with the generated absolute path shown in the table before you import the workflow.</p>
+
+        <h4>Extract the AI Workboard sheet</h4>
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-extract-xlsx.jpg" aria-label="Open the n8n Extract AI Workboard settings image full size">
+              <img src="../assets/blocks/p7/p7-n8n-extract-xlsx.jpg" alt="n8n parameters for extracting the AI Workboard sheet from the XLSX file" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Extract AI Workboard sheet · select the image to open it full size</figcaption>
+          </figure>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Parameter</th><th>Exact value</th></tr></thead>
+              <tbody>
+                <tr><td>Node</td><td><strong>Extract AI Workboard sheet</strong></td></tr>
+                <tr><td>Operation</td><td>Extract From XLSX</td></tr>
+                <tr><td>Input binary field</td><td><code>data</code></td></tr>
+                <tr><td>Sheet name</td><td><code>AI Workboard</code></td></tr>
+                <tr><td>Header row</td><td>On</td></tr>
+                <tr><td>Include empty cells</td><td>On — the blank red columns must survive extraction</td></tr>
+              </tbody>
+            </table>
           </div>
-        </details>
-        <p>First, set the file limits. n8n can read and write disk files only inside a folder you name. The start command below creates the workflow's out folder and limits file access to the course pack at the same time.</p>
-        <div class="do-step">
-          <p class="do-label">Return to the <strong>P7 PowerShell window</strong> from Stage 02 and paste all three lines together:</p>
-          <pre><code>New-Item -ItemType Directory -Force "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out" | Out-Null
-$env:HB_XAI_MODEL
-$env:N8N_RESTRICT_FILE_ACCESS_TO = "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
-n8n start</code></pre>
         </div>
-        <p>The xAI model ID prints first; keep it visible because you will select that exact model in the AI node. Then the window fills with startup lines and ends by naming the editor address — leave it running; closing it stops n8n. If the model line is blank, stop and restore the course pin before building. If n8n exits immediately with a version message, that is the Node range talking, not a broken install — n8n wants Node 22.22 up to the current LTS line.</p>
-        <div class="do-step">
-          <p class="do-label">Now in your <strong>browser</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open Microsoft Edge or Google Chrome from the Windows Start menu</li>
-            <li>Click the address bar, enter <code>http://localhost:5678</code>, and press <strong>Enter</strong></li>
-            <li>Sign in with the owner account you recorded during the install clinic. If n8n shows its first-run owner setup instead, create the local owner account now and record the sign-in details where your instructor directs</li>
-            <li>Click <strong>Create Workflow</strong></li>
-            <li>Click the workflow name at the top and rename it to <code>P7 workflow</code></li>
-          </ul>
-        </div>
-        <p>Forgot the owner password? Flag it. n8n has a command-line reset. Do not reinstall. From here every station goes in the same way: the first node from the empty canvas, each later one from the + on the previous node's right edge, so the wire draws itself.</p>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click the <strong>+</strong> on the empty canvas (or press <strong>Tab</strong>), type <code>manual</code>, and pick <strong>Trigger manually</strong></li>
-          </ul>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click the <strong>+</strong> on the trigger node's right edge, type <code>files</code>, and pick <strong>Read/Write Files from Disk</strong></li>
-            <li>Set <strong>Operation</strong> to <strong>Read File(s) From Disk</strong></li>
-            <li>Set <strong>File(s) Selector</strong> to <code>C:\Users\[YOUR USERNAME]\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\rows.csv</code></li>
-            <li>Click <strong>Back to canvas</strong> (top left of the node panel)</li>
-          </ul>
-        </div>
-        <p>Replace <code>[YOUR USERNAME]</code> with your Windows username — the folder you see under <code>C:\Users</code>. The same substitution applies everywhere that bracket appears today.</p>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click the <strong>+</strong> on <em>Read/Write Files from Disk</em>, type <code>extract</code>, and pick <strong>Extract from File</strong></li>
-            <li>Leave <strong>Operation</strong> on <strong>Extract From CSV</strong></li>
-          </ul>
-        </div>
-        <p>Next, the move the whole test rests on: drop the answer column before any later step can see it. Never let the system under test see its own answer key.</p>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click the <strong>+</strong> on <em>Extract from File</em>, type <code>edit fields</code>, and pick <strong>Edit Fields (Set)</strong></li>
-            <li>Double-click the node's title and rename it to <code>Drop answer column</code> — later expressions call it by exactly this name</li>
-            <li>Leave <strong>Fields to Set</strong> empty</li>
-            <li>Turn on <strong>Include Other Input Fields</strong>, set <strong>Input Fields to Include</strong> to <strong>All Except</strong>, and enter <code>expected_gate</code> in the exclude box</li>
-          </ul>
-        </div>
-        <p>If your n8n version words those toggles differently, the requirement is unchanged: one node whose output carries every column except <code>expected_gate</code> — you will verify that on the first run. Now add the AI station, attach its xAI model, and store the xAI key locally in n8n.</p>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click the <strong>+</strong> on <em>Drop answer column</em>, type <code>basic llm chain</code>, and pick <strong>Basic LLM Chain</strong></li>
-            <li>Rename the chain to <code>AI step</code> and set <strong>Prompt</strong> to <strong>Define below</strong></li>
-            <li>Click the <strong>+</strong> on the <em>AI step</em> node's <strong>Model</strong> connector — an older build may call it <strong>Chat Model</strong> — type <code>xai</code>, and pick <strong>xAI Grok Chat Model</strong></li>
-            <li>In the xAI model node, open <strong>Credential to connect with</strong> and click <strong>Create new credential</strong></li>
-            <li>Paste your xAI key (<code>xai-…</code>) into the <strong>API Key</strong> field, click <strong>Save</strong>, and close the credential window</li>
-            <li>Set <strong>Model</strong> to the exact ID printed by <code>$env:HB_XAI_MODEL</code>. Do not choose a different model from the list</li>
-            <li>Under <strong>Options</strong>, add <strong>Response Format</strong> and set it to <strong>JSON</strong></li>
-          </ul>
-        </div>
-        <p>The xAI key lands in n8n's local database on your laptop and nowhere else. If a call later fails with 429 or quota wording, that is a capped key reading like an auth failure — flag it rather than re-pasting the key. The chain sends each row through the attached xAI model, and the JSON response setting turns the reply into fields the next node can inspect.</p>
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>AI step</strong> node's <strong>Prompt (User Message)</strong> field, with the field switched from <strong>Fixed</strong> to <strong>Expression</strong>:</p>
-          <pre><code>You are one station in a fixed pipeline. Read the single field report below
-and return JSON only - no prose, no markdown fences, no extra fields:
 
-{"category": "STATUS | INCIDENT | REQUEST",
- "region": "EU | US | GLOBAL",
- "summary": "one plain sentence in your own words"}
+        <h4>Structure five rows per model call</h4>
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-ai-structure.jpg" aria-label="Open the n8n AI Structure Station settings image full size">
+              <img src="../assets/blocks/p7/p7-n8n-ai-structure.jpg" alt="n8n AI Structure Station prompt and batching settings" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>AI Structure Station · select the image to open it full size</figcaption>
+          </figure>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Parameter</th><th>Exact value</th></tr></thead>
+              <tbody>
+                <tr><td>Upstream group node</td><td><strong>Group into 5-Record Model Calls</strong></td></tr>
+                <tr><td>Group constant</td><td><code>RECORDS_PER_MODEL_CALL = 5</code></td></tr>
+                <tr><td>AI node</td><td><strong>AI Structure Station</strong></td></tr>
+                <tr><td>Prompt</td><td>Define below · expression sends the current five-record batch</td></tr>
+                <tr><td>Specific output format</td><td>Required</td></tr>
+                <tr><td>Batch size</td><td><code>3</code> model calls at a time</td></tr>
+                <tr><td>Delay between batches</td><td><code>400</code> ms</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-category and region must be exactly one of the listed values. If the text
-does not support a value, use "UNKNOWN" - never guess.
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-ai-batching.jpg" aria-label="Open the n8n AI Structure Station batching settings image full size">
+              <img src="../assets/blocks/p7/p7-n8n-ai-batching.jpg" alt="n8n AI Structure Station batching options showing batch size 3 and delay 400 milliseconds" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>AI Structure Station · batching settings at the bottom of the node</figcaption>
+          </figure>
+          <div class="callout">
+            <strong>Two different batch controls</strong>
+            <code>RECORDS_PER_MODEL_CALL = 5</code> puts five spreadsheet rows into one prompt. Batch size <code>3</code> allows three of those model calls before the <code>400</code> ms pause. Keep both controls visible when you diagnose rate limits.
+          </div>
+        </div>
 
-Report: {{ $json.text }}</code></pre>
+        <h4>Attach the funded xAI model once</h4>
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-model.jpg" aria-label="Open the n8n xAI model settings image full size">
+              <img src="../assets/blocks/p7/p7-n8n-model.jpg" alt="n8n xAI Model node with credential, model, temperature, token, timeout, and retry settings" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>xAI Model — attach credential here · select the image to open it full size</figcaption>
+          </figure>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Parameter</th><th>Exact value</th></tr></thead>
+              <tbody>
+                <tr><td>Node</td><td><strong>xAI Model — attach credential here</strong></td></tr>
+                <tr><td>Credential</td><td>Select the funded course xAI credential; create it locally if it is missing</td></tr>
+                <tr><td>Model</td><td>The exact model printed by <code>Prepare-P7.ps1</code> and <code>$env:HB_XAI_MODEL</code></td></tr>
+                <tr><td>Temperature</td><td><code>0</code></td></tr>
+                <tr><td>Maximum tokens</td><td><code>1200</code></td></tr>
+                <tr><td>Timeout</td><td><code>360000</code> ms</td></tr>
+                <tr><td>Maximum retries</td><td><code>2</code></td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <p>The <code>{{ $json.text }}</code> at the end is why the field must be in Expression mode — it pulls each row's report text into the message. Run what exists so far, so every later node has real data to configure against.</p>
+
         <div class="do-step">
-          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
+          <p class="do-label">In <strong>xAI Model — attach credential here</strong>:</p>
           <ul class="do-clicks">
-            <li>Click <strong>Execute workflow</strong> at the bottom of the canvas</li>
-          </ul>
-        </div>
-        <p>Every node so far turns green. Open <em>AI step</em> and look at its OUTPUT panel: each item carries <code>category</code>, <code>region</code>, and <code>summary</code> as separate fields. If you see one prose or <code>text</code> field instead, reopen <em>xAI Grok Chat Model</em> and set <strong>Response Format</strong> to <strong>JSON</strong>, then rerun. Open <em>Drop answer column</em> too and confirm <code>expected_gate</code> is gone from its output. A red node is shape, not intelligence — open it and read what it actually received. Next, flatten the reply and the original row into one clean record, so the checks and the written files see plain columns.</p>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click the <strong>+</strong> on <em>AI step</em>, type <code>edit fields</code>, pick <strong>Edit Fields (Set)</strong>, and rename it <code>Flatten the reply</code></li>
-            <li>Add three fields named <code>category</code>, <code>region</code>, <code>summary</code>; fill each value by dragging the matching reply field out of the INPUT panel on the left — the drag writes the exact path, so you never guess where the reply lives</li>
-            <li>Add three more fields with each value box switched to <strong>Expression</strong>: <code>id</code> = <code>{{ $('Drop answer column').item.json.id }}</code> · <code>text</code> = <code>{{ $('Drop answer column').item.json.text }}</code> · <code>region_reported</code> = <code>{{ $('Drop answer column').item.json.region }}</code></li>
-            <li>Leave <strong>Include Other Input Fields</strong> off</li>
-          </ul>
-        </div>
-        <p>Those three expressions reach back past the AI step to the original row. n8n finds the node by the exact name you gave it. Now the checks: three written rules the flow can test, joined by AND. Anything that passes all three is cleared. Everything else goes to the hold.</p>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click the <strong>+</strong> on <em>Flatten the reply</em>, type <code>if</code>, pick <strong>If</strong>, and rename it <code>Checks</code></li>
-            <li>Condition 1 — left value switched to <strong>Expression</strong>: <code>{{ $json.category }}</code> · operation <strong>is equal to</strong> · right value <code>STATUS</code></li>
-            <li>Click <strong>Add condition</strong> twice and keep the combinator on <strong>AND</strong></li>
-            <li>Condition 2 — set its type to <strong>Boolean</strong>; left value Expression <code>{{ ["EU","US","GLOBAL"].includes($json.region) }}</code> · operation <strong>is true</strong></li>
-            <li>Condition 3 — type <strong>String</strong>; left value Expression <code>{{ $json.text.toLowerCase() }}</code> · operation <strong>does not contain</strong> · right value <code>all systems</code></li>
-          </ul>
-        </div>
-        <p>Read the three rules as policy. Only STATUS auto-clears. Region membership is checked by the flow. A single report cannot clear every system, so an all-systems claim holds. Stop here: neither output has a write node yet.</p>
-        <div class="do-step">
-          <p class="do-label">Run this non-writing preview in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click <strong>Execute workflow</strong></li>
-            <li>Open <em>Checks</em> and confirm both true and false outputs contain rows</li>
-            <li>Confirm no <em>Write File to Disk</em> node exists anywhere on the canvas</li>
+            <li>Under <strong>Credential to connect with</strong>, select the funded course credential.</li>
+            <li>If it is missing, create one, paste the <code>xai-…</code> key, and save it.</li>
+            <li>Confirm the model matches the name printed by <code>Prepare-P7.ps1</code>.</li>
+            <li>Return to the canvas and save. This is the only credential attachment in the graph.</li>
           </ul>
         </div>
 
-        <h3>Stage 04 · Hold bad rows before any good write</h3>
-        <p>Build the held path first. Bad rows need a safe file before you add the clear path or write anything that looks finished.</p>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click the <strong>+</strong> on the <strong>false</strong> output of <em>Checks</em>, type <code>edit fields</code>, pick <strong>Edit Fields (Set)</strong>, and rename it <code>Attach reason</code></li>
-            <li>Add one field named <code>reason</code>, type <strong>String</strong></li>
-            <li>Turn on <strong>Include Other Input Fields</strong> and set <strong>Input Fields to Include</strong> to <strong>All</strong></li>
-          </ul>
+        <h4>Pin the five output fields</h4>
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-output-contract.jpg" aria-label="Open the n8n Structured Output Contract settings image full size">
+              <img src="../assets/blocks/p7/p7-n8n-output-contract.jpg" alt="n8n Structured Output Contract with a manual JSON Schema for record fields and enums" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Structured Output Contract · select the image to open it full size</figcaption>
+          </figure>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Parameter</th><th>Exact value</th></tr></thead>
+              <tbody>
+                <tr><td>Node</td><td><strong>Structured Output Contract</strong></td></tr>
+                <tr><td>Schema type</td><td>Manual JSON Schema</td></tr>
+                <tr><td>Required result per record</td><td><code>id</code>, <code>workstream</code>, <code>priority</code>, <code>summary</code>, <code>next_action</code></td></tr>
+                <tr><td>Allowed workstreams</td><td><code>OPERATIONS</code>, <code>FINANCE</code>, <code>PEOPLE</code>, <code>TECHNOLOGY</code></td></tr>
+                <tr><td>Allowed priorities</td><td><code>P1</code>, <code>P2</code>, <code>P3</code></td></tr>
+                <tr><td>Auto-fix</td><td>Off</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="do-step">
-          <p class="do-label">Now paste this into the <strong>reason</strong> field's value box in the <strong>Attach reason</strong> node, switched to <strong>Expression</strong>:</p>
-          <pre><code>{{ $json.category !== "STATUS" ? "category " + $json.category + " - only STATUS auto-clears" : !["EU","US","GLOBAL"].includes($json.region) ? "region " + $json.region + " outside EU / US / GLOBAL" : "single report claims all systems clear" }}</code></pre>
-        </div>
-        <p>That one expression names the first rule each row failed, in the order the checks run. So every hold arrives with the row, the AI output, and the reason. A hold that shows only "approve? yes/no" with nothing attached trains you to click yes.</p>
-        <div class="do-step">
-          <p class="do-label">Now in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click the <strong>+</strong> on <em>Attach reason</em>, type <code>convert</code>, pick <strong>Convert to File</strong>, set <strong>Operation</strong> to <strong>Convert to CSV</strong>, and rename it <code>To CSV - held</code></li>
-            <li>Click the <strong>+</strong> on its right edge, type <code>files</code>, pick <strong>Read/Write Files from Disk</strong>, set <strong>Operation</strong> to <strong>Write File to Disk</strong>, set <strong>File Path and Name</strong> to <code>C:\Users\[YOUR USERNAME]\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out\held.csv</code>, and rename it <code>Write held</code></li>
-          </ul>
-        </div>
-        <p>Inspect the false path from <em>Checks</em> through <em>Write held</em>. Confirm the final path is exactly <code>mission_flesh\p7\out\held.csv</code>. Do not execute yet.</p>
-        <div class="do-step">
-          <p class="do-label">Now build the clear path in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click the <strong>+</strong> on the <strong>true</strong> output of <em>Checks</em>, type <code>convert</code>, pick <strong>Convert to File</strong>, set <strong>Operation</strong> to <strong>Convert to CSV</strong>, and rename it <code>To CSV - cleared</code></li>
-            <li>Click the <strong>+</strong> on its right edge, type <code>files</code>, pick <strong>Read/Write Files from Disk</strong>, set <strong>Operation</strong> to <strong>Write File to Disk</strong>, set <strong>File Path and Name</strong> to <code>C:\Users\[YOUR USERNAME]\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out\master.csv</code>, and rename it <code>Write master</code></li>
-            <li>Confirm the false path ends at <em>Write held</em> and the true path ends at <em>Write master</em></li>
-          </ul>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Run the first writable execution in the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Click <strong>Execute workflow</strong></li>
-            <li>Open the execution and confirm both branches completed</li>
-          </ul>
-        </div>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p7-p7-flow" name="p7-p7-flow" data-check-id="p7-flow" />
-              <span class="check-num">3</span>
-              <span class="check-title">The full n8n path runs on the real batch</span>
-            </label>
-            <div class="check-detail">The same saved execution runs from <code>rows.csv</code> through both branches. <code>out\master.csv</code> and <code>out\held.csv</code> exist, and the n8n execution shows which rows follow each path.</div>
-          </li>
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p7-p7-gate" name="p7-p7-gate" data-check-id="p7-gate" />
-              <span class="check-num">4</span>
-              <span class="check-title">The hold for a person blocks commits until review</span>
-            </label>
-            <div class="check-detail">The saved workflow places the false path before the true path and before any writable path. <code>out\held.csv</code> contains each held row and its <code>reason</code>; those rows are absent from <code>out\master.csv</code> unless you later promote them by hand.</div>
-          </li>
-        </ol>
 
-        
-        
-        <h3>Stage 05 · Drill the bad cases</h3>
-        <figure class="section-diagram">
-          <img src="../assets/blocks/p7/p7-stage-exceptions.svg" alt="Three bad rows — false all-clear, wire request, false attack — held at the hold with reasons while the master sheet stays untouched" width="1120" height="220" loading="lazy" decoding="async" />
-        </figure>
-        <p>Now check the workflow against the rows it was built for. First confirm the answer key stayed outside the machine. A run that fed the system its own answer key graded nothing.</p>
-        <div class="do-step">
-          <p class="do-label">In the <strong>n8n editor</strong>:</p>
-          <ul class="do-clicks">
-            <li>Open the <strong>Executions</strong> tab and click the most recent run</li>
-            <li>Click the <em>AI step</em> node and read its INPUT panel: <code>id</code>, <code>text</code>, and <code>region</code> only. <code>expected_gate</code> must not appear</li>
-            <li>Return to the <strong>Editor</strong> tab</li>
-            <li>Confirm the workflow shows <strong>Saved</strong>. If a <strong>Save</strong> button appears, click it before you leave the editor</li>
-          </ul>
+        <h4>Join each AI result to its source row</h4>
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-merge-by-id.jpg" aria-label="Open the n8n Merge Source and AI settings image full size">
+              <img src="../assets/blocks/p7/p7-n8n-merge-by-id.jpg" alt="n8n Merge Source and AI by ID parameters showing Combine, Matching Fields, id, and Enrich Input 1" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Merge Source + AI by ID · the source row remains the spine</figcaption>
+          </figure>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Parameter</th><th>Exact value</th></tr></thead>
+              <tbody>
+                <tr><td>Node</td><td><strong>Merge Source + AI by ID</strong></td></tr>
+                <tr><td>Mode</td><td>Combine</td></tr>
+                <tr><td>Combine by</td><td>Matching Fields</td></tr>
+                <tr><td>Field to match</td><td><code>id</code> on both inputs</td></tr>
+                <tr><td>Output type</td><td>Enrich Input 1</td></tr>
+                <tr><td>Field clash</td><td>Prefer Input 1 · first match only</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <p>If <code>expected_gate</code> shows up, the exclude box in <em>Drop answer column</em> is misspelled. Fix it and click <strong>Execute workflow</strong> again. Then open both output files. Rows 4, 5, and 7 must be among the held rows. Row 2 belongs in the master. Review-worthy rows (1, 3, 6, 8) will usually hold too. That is what review means. If one of those four cleared, the checks read it as routine. That is not a broken hold by itself. The required holds are rows 4, 5, and 7.</p>
-        <div class="do-step">
-          <p class="do-label">Open a second <strong>PowerShell window</strong>. The P7 server window must stay busy running n8n:</p>
-          <ul class="do-clicks">
-            <li>Press the <strong>Windows</strong> key, type <code>PowerShell</code>, and open another <strong>Windows PowerShell</strong> window</li>
-            <li>Leave the P7 server window running in the background</li>
-          </ul>
-          <pre><code>notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out\held.csv"
-notepad "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7\out\master.csv"</code></pre>
-        </div>
-        <p>Two Notepad windows open. Every re-run overwrites both files, so decide on the final run.</p>
-        <div class="do-step">
-          <p class="do-label">In <strong>Notepad — held.csv</strong>:</p>
-          <ul class="do-clicks">
-            <li>Pick at least three held rows, including row 4, and append a verdict to the end of each line: <code>,commit - [YOUR REASON]</code> or <code>,fix - [WHAT YOU CORRECTED]</code> or <code>,reject - [YOUR REASON]</code></li>
-            <li>For row 4, name the check that fired — normally <code>single report claims all systems clear</code>. If the category rule fired first, record that instead</li>
-            <li>For each commit — and each fixed row — copy that row&#x27;s line into <strong>master.csv</strong> yourself. The hand-move is the approval</li>
-            <li>Save both files with <strong>Ctrl+S</strong></li>
-          </ul>
-        </div>
-        <p>Replace the brackets with your actual reasoning, one line each. &quot;reject - payment requests never auto-commit&quot; is the shape.</p>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p7-p7-ex3" name="p7-p7-ex3" data-check-id="p7-ex3" />
-              <span class="check-num">5</span>
-              <span class="check-title">At least three held rows have written decisions</span>
-            </label>
-            <div class="check-detail">Three verdicts, including row 4, exist in <code>out\\held.csv</code> with reasons: <strong>commit</strong>, <strong>fix</strong>, or <strong>reject</strong>. <code>out\\master.csv</code> contains only rows you promote by hand.</div>
-          </li>
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p7-p7-wrong" name="p7-p7-wrong" data-check-id="p7-wrong" />
-              <span class="check-num">6</span>
-              <span class="check-title">The hold catches the wrong-but-confident path</span>
-            </label>
-            <div class="check-detail">The same decided <code>out\\held.csv</code> contains row 4 and names the written rule that catches it. If row 4 appears in the master, repair the check and rerun before completing either outcome.</div>
-          </li>
-        </ol>
 
-        <h3>Stage 06 · Sort your real work and close</h3>
-        <p>The workflow runs. Now take your actual desk — not the classroom rows — and sort it. Use a separate chat so the classroom build and your real workloads do not share context.</p>
+        <h4>Route and apply workstream policy</h4>
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-route-policy.jpg" aria-label="Open the n8n route and policy settings image full size">
+              <img src="../assets/blocks/p7/p7-n8n-route-policy.jpg" alt="n8n Route by Workstream node and four named policy branches" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Route by Workstream + four policy branches · select the image to open it full size</figcaption>
+          </figure>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Parameter</th><th>Exact value</th></tr></thead>
+              <tbody>
+                <tr><td>Route node</td><td><strong>Route by Workstream</strong></td></tr>
+                <tr><td>Mode</td><td>Expression · four outputs</td></tr>
+                <tr><td>Output mapping</td><td><code>OPERATIONS: 0</code> · <code>FINANCE: 1</code> · <code>PEOPLE: 2</code> · <code>TECHNOLOGY: 3</code></td></tr>
+                <tr><td>Operations</td><td><strong>POLICY — Operations SLA 24h</strong></td></tr>
+                <tr><td>Finance</td><td><strong>POLICY — Finance owner + evidence</strong></td></tr>
+                <tr><td>People</td><td><strong>POLICY — People owner + private channel</strong></td></tr>
+                <tr><td>Technology</td><td><strong>POLICY — Technology triage + incident link</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-operations-policy.jpg" aria-label="Open the n8n Operations policy code image full size">
+              <img src="../assets/blocks/p7/p7-n8n-operations-policy.jpg" alt="n8n Operations policy code with the 24-hour SLA constant and calculated target time" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>POLICY — Operations SLA 24h · this is the one rule you will change</figcaption>
+          </figure>
+          <div class="callout">
+            <strong>One visible control point</strong>
+            The first executable line is <code>const OPERATIONS_SLA_HOURS = 24;</code>. Stage 04 changes only <code>24</code> to <code>8</code>; the branch then recalculates every matching row.
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-fan-in.jpg" aria-label="Open the n8n Fan In settings image full size">
+              <img src="../assets/blocks/p7/p7-n8n-fan-in.jpg" alt="n8n Fan In AI Workboard parameters showing Append mode with four inputs" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Fan In — AI Workboard · append the four policy branches</figcaption>
+          </figure>
+          <div class="callout">
+            <strong>Recombine without a fifth rule</strong>
+            Set <strong>Mode</strong> to <strong>Append</strong> and <strong>Number of Inputs</strong> to <code>4</code>. This node does not classify or change rows; it puts the four completed branches back into one stream for workbook writeback.
+          </div>
+        </div>
+
+        <h4>Fan in and write the same workbook</h4>
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-write-workbook.jpg" aria-label="Open the n8n workbook write settings image full size">
+              <img src="../assets/blocks/p7/p7-n8n-write-workbook.jpg" alt="n8n nodes that build fourteen AI Workboard columns, convert them to XLSX, and write workboard.xlsx" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Fan In — AI Workboard through Write workboard.xlsx · select the image to open it full size</figcaption>
+          </figure>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Node or parameter</th><th>Exact value</th></tr></thead>
+              <tbody>
+                <tr><td>Fan-in</td><td><strong>Fan In — AI Workboard</strong> · append four inputs</td></tr>
+                <tr><td>Build rows</td><td><strong>Build AI Workboard rows</strong> · fourteen columns ordered A–N</td></tr>
+                <tr><td>Convert operation</td><td><strong>Convert rows to workboard.xlsx</strong> · XLSX · header row on</td></tr>
+                <tr><td>Sheet name</td><td><code>AI Workboard</code></td></tr>
+                <tr><td>Binary field</td><td><code>data</code></td></tr>
+                <tr><td>Write node</td><td><strong>Write workboard.xlsx — close Excel first</strong></td></tr>
+                <tr><td>Write path</td><td>The generated absolute path ending in <code>mission_flesh/p7/workboard.xlsx</code></td></tr>
+                <tr><td>Verifier evidence</td><td><code>out/AI_workboard.csv</code> and <code>out/run_receipt.json</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-n8n-convert-xlsx.jpg" aria-label="Open the n8n Convert rows to workbook settings image full size">
+              <img src="../assets/blocks/p7/p7-n8n-convert-xlsx.jpg" alt="n8n Convert rows to workboard.xlsx parameters with XLSX operation, AI Workboard sheet, data binary field, and header row enabled" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Convert rows to workboard.xlsx · XLSX settings before the file write</figcaption>
+          </figure>
+          <div class="callout">
+            <strong>The workbook is rebuilt from the row data</strong>
+            The converter creates one <em>AI Workboard</em> sheet with the fourteen ordered fields and a header row. The downstream file node writes that binary workbook to the same active path.
+          </div>
+        </div>
+
+        <p id="p7-canvas-point">The line is ready when the xAI credential and course model are attached once, the canvas is saved, and you can point from <strong>Read workboard.xlsx</strong> through <strong>Write workboard.xlsx — close Excel first</strong> without losing the <code>id</code> that joins AI output to source rows.</p>
+
+        <h3>Stage 03 · Fill the 60-row workboard</h3>
+        <p>This run turns the blank red area into an operating spreadsheet. Plan for ten to twenty minutes, depending on model response time.</p>
+
         <div class="do-step">
-          <p class="do-label">Create the <strong>P7 — Workload Sort</strong> chat:</p>
+          <p class="do-label">Confirm Excel is closed, then run the saved graph in <strong>n8n</strong>:</p>
           <ul class="do-clicks">
-            <li>Save both CSV files in Notepad, then click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
-            <li>Click <strong>Open project</strong> and choose <code>Documents\\HarnessBootcamp\\AI_Harness_Bootcamp</code> if the course project is not already open</li>
-            <li>Click <strong>New chat</strong>. Open the new chat&#x27;s <strong>…</strong> menu in the sidebar, choose <strong>Rename</strong>, and enter <code>P7 — Workload Sort</code></li>
-            <li>Select <strong>gpt-5.6-terra</strong></li>
-            <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
+            <li>Click <strong>Execute workflow</strong>.</li>
+            <li>Let every branch and the workbook write finish.</li>
+            <li>Open the completed execution and confirm <strong>Write workboard.xlsx — close Excel first</strong>, <strong>Write AI_workboard.csv</strong>, and <strong>Write run_receipt.json</strong> completed.</li>
           </ul>
         </div>
+
         <div class="do-step">
-          <p class="do-label">Paste this into <strong>P7 — Workload Sort</strong>:</p>
-          <pre><code>Open mission_flesh/p7/discrimination_template.md. We are filling it for my real
-desk, not the classroom rows. Interview me one workload at a time:
-
-1. Ask what the workload is and roughly how often it recurs.
-2. Ask the two questions: what varies per item, and what a wrong answer costs.
-3. From my answers, place it - agent loop, pipeline + human gate, or stays
-   human - and write the why as criteria, not vibes.
-4. Ask which high-consequence judgment inside it I will not automate, and record it.
-
-If a reason says "this feels like AI work," replace it with an operational criterion.
-Write each finished row into the table in the file. Three workloads with sharp
-reasons beat ten sorted by instinct.</code></pre>
+          <p class="do-label">After the run finishes, reopen the workbook from the second <strong>PowerShell</strong> window:</p>
+          <pre><code>Set-Location "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p7"
+Invoke-Item .\workboard.xlsx</code></pre>
+          <ul class="do-clicks">
+            <li>Open <strong>AI Workboard</strong> and confirm all 60 source rows remain.</li>
+            <li>Read across one row from <code>id</code> through <code>target_by</code>.</li>
+            <li>Open the filter on <code>workstream</code> and select <strong>OPERATIONS</strong> only.</li>
+            <li>Confirm Operations rows show <code>Operations SLA 24h</code>, <code>sla_hours</code> <code>24</code>, and a <code>target_by</code> value.</li>
+            <li>Clear the filter. Confirm other workstreams have their own policy text and blank SLA cells.</li>
+            <li><strong>Close Excel completely.</strong></li>
+          </ul>
         </div>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p7-p7-disc" name="p7-p7-disc" data-check-id="p7-disc" />
-              <span class="check-num">7</span>
-              <span class="check-title">The sort rule is written for real workloads</span>
-            </label>
-            <div class="check-detail"><code>mission_flesh/p7/discrimination_template.md</code> is filled for your own desk: per workload, free agent, workflow with a hold, or keep it human; the reasons a reader can check; and the high-cost judgment you will not automate. &quot;Same shape two hundred times a week, wrong costs a refund&quot; is a reason.</div>
-          </li>
-        </ol>
-        <div id="pulse" class="lesson-reflection" data-check-section="pulse">
-          <h3>Lesson reflection</h3>
-          <p class="section-lede">Close the lesson from the saved workflow and files, then bank the tool-choice note. <a href="../pulse.html">Lesson reflection guide →</a></p>
-          <p class="reflection-question"><strong>Think back:</strong> What did the hold for bad rows change about which work belongs in a workflow versus a free agent?</p>
-          <div class="do-step">
-            <p class="do-label">Return to <strong>P7 — Direction &amp; Closeout</strong> for this module&#x27;s closeout:</p>
-            <ul class="do-clicks">
-              <li>Click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
-              <li>Click <strong>Open project</strong> and choose <code>Documents\\HarnessBootcamp\\AI_Harness_Bootcamp</code> if the course project is not already open</li>
-              <li>In the sidebar, open <strong>P7 — Direction &amp; Closeout</strong></li>
-              <li>If it is missing, click <strong>New chat</strong>. Open the new chat&#x27;s <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P7 — Direction &amp; Closeout</code></li>
-              <li>Select <strong>gpt-5.6-terra</strong>, the model used when this chat was created in Stage 01. Never continue this chat on a different model</li>
-              <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
-            </ul>
-            <p>The saved workflow and files carry the evidence into this closeout. No troubleshooting-chat context is required.</p>
-            <p class="do-label">Now paste:</p>
-            <pre><code>Close P7 from the saved evidence. Read:
-- operator/DIRECTION_BRIEF.md
-- mission_flesh/p7/out/held.csv
-- mission_flesh/p7/out/master.csv
-- mission_flesh/p7/discrimination_template.md
+
+        <div class="do-step">
+          <p class="do-label">Verify the spreadsheet and save the 24-hour comparison copy:</p>
+          <pre><code>.\scripts\Verify-P7.ps1
+Copy-Item .\workboard.xlsx .\out\workboard_24h.xlsx -Force</code></pre>
+        </div>
+
+        <p><strong>What you should see.</strong> The verifier ends with <code>P7 SPREADSHEET CONTROL VERIFIED: 60 rows, workboard.xlsx + verifier evidence, Operations SLA 24h</code>. Copy that line for closeout. <code>out\workboard_24h.xlsx</code> now preserves the first filled workbook before you change the rule.</p>
+        <p id="p7-wave-one-point">Wave 1 is complete when <code>workboard.xlsx</code> contains 60 source rows, its AI/policy area is populated according to workstream, the verifier reports 60 rows at the 24-hour Operations SLA, and the closed baseline copy exists.</p>
+
+        <h3>Stage 04 · Change one rule and compare two workbooks</h3>
+        <p>One line in the Operations branch will move every Operations target. You will compare the preserved 24-hour workbook with the new 8-hour workbook in Excel. Plan for fifteen minutes.</p>
+
+        <div class="do-step">
+          <p class="do-label">With Excel closed, edit the Operations policy in <strong>n8n</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open <strong>POLICY — Operations SLA 24h</strong>.</li>
+            <li>Change the first executable line from <code>const OPERATIONS_SLA_HOURS = 24;</code> to <code>const OPERATIONS_SLA_HOURS = 8;</code>.</li>
+            <li>Change no other line or node.</li>
+            <li>Save the workflow and click <strong>Execute workflow</strong>.</li>
+            <li>Wait for the workbook write to finish.</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Verify the 8-hour run, then open both workbook copies:</p>
+          <pre><code>.\scripts\Verify-P7.ps1
+Invoke-Item .\out\workboard_24h.xlsx
+Invoke-Item .\workboard.xlsx</code></pre>
+        </div>
+
+        <p><strong>What you should see.</strong> The verifier ends with <code>P7 SPREADSHEET CONTROL VERIFIED: 60 rows, workboard.xlsx + verifier evidence, Operations SLA 8h</code>.</p>
+
+        <div class="do-step">
+          <p class="do-label">In <strong>Excel</strong>, compare the two <strong>AI Workboard</strong> sheets:</p>
+          <ul class="do-clicks">
+            <li>Use <strong>View → View Side by Side</strong>. If Excel asks which file to compare, choose <code>workboard_24h.xlsx</code> and <code>workboard.xlsx</code>.</li>
+            <li>Filter <code>workstream</code> to <strong>OPERATIONS</strong> in both workbooks.</li>
+            <li>Compare <code>branch_policy</code>, <code>policy_value</code>, <code>sla_hours</code>, and <code>target_by</code>.</li>
+            <li>Confirm the same Operations <code>id</code> values appear in both copies. The current workbook says 8 hours and moves each <code>target_by</code> value 16 hours earlier.</li>
+            <li>Confirm Finance, People, and Technology still carry their own policies.</li>
+            <li><strong>Close both workbooks completely.</strong></li>
+          </ul>
+        </div>
+
+        <p id="p7-policy-point">The rule change is complete when the workbook comparison names the affected Operations rows and four changed policy fields, while the source rows and other workstream policies remain in place. You changed one graph line and edited zero spreadsheet rows.</p>
+
+        <h3>Stage 05 · Add twenty rows to the same workboard</h3>
+        <p>Wave 2 replaces the active workbook with an 80-row blank template. You will inspect the new rows, close Excel, and send all 80 through the same saved graph. Plan for fifteen to twenty minutes.</p>
+
+        <div class="do-step">
+          <p class="do-label">Confirm Excel is closed, then add Wave 2 in the second <strong>PowerShell</strong> window:</p>
+          <pre><code>.\scripts\Add-P7Wave2.ps1
+Invoke-Item .\workboard.xlsx</code></pre>
+        </div>
+
+        <p><strong>What you should see.</strong> The helper prints <code>P7 WAVE 2 READY: 80 records</code>. The workbook now contains rows <code>INT-001</code> through <code>INT-080</code>. The eight red AI/policy columns are blank again.</p>
+
+        <div class="grid-2">
+          <figure class="section-diagram settings-screenshot">
+            <a href="../assets/blocks/p7/p7-workboard-80-blank.png" aria-label="Open the blank 80-row AI Workboard image full size">
+              <img src="../assets/blocks/p7/p7-workboard-80-blank.png" alt="Bottom of the Excel AI Workboard showing Wave 2 rows INT-074 through INT-080 and eight blank red AI and policy columns" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Wave 2 before the rerun · final rows INT-074 through INT-080</figcaption>
+          </figure>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Check in Excel</th><th>Expected value</th></tr></thead>
+              <tbody>
+                <tr><td>Sheet</td><td><code>AI Workboard</code></td></tr>
+                <tr><td>Columns</td><td>14 · A through N</td></tr>
+                <tr><td>Source rows</td><td>80 · <code>INT-001</code> through <code>INT-080</code></td></tr>
+                <tr><td>Wave 2 rows</td><td>20 · <code>wave</code> = <code>2</code></td></tr>
+                <tr><td>AI/policy area</td><td>Blank red cells before the rerun</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label"><strong>Close Excel completely</strong>, then rerun <strong>P7 — AI Controls the Workboard</strong>:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>Execute workflow</strong> in the same saved graph.</li>
+            <li>Do not import a second workflow or change the model, prompt, schema, route, or policy.</li>
+            <li>Wait for the workbook write to finish.</li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Reopen and inspect the completed 80-row workbook:</p>
+          <pre><code>Invoke-Item .\workboard.xlsx</code></pre>
+          <ul class="do-clicks">
+            <li>Filter <code>wave</code> to <code>2</code> and confirm twenty new rows.</li>
+            <li>Read across two Wave 2 rows and confirm the AI/policy area is populated.</li>
+            <li>Filter <code>workstream</code> to <strong>OPERATIONS</strong> and confirm the 8-hour rule still applies.</li>
+            <li><strong>Close Excel completely.</strong></li>
+          </ul>
+        </div>
+
+        <div class="do-step">
+          <p class="do-label">Verify the completed spreadsheet:</p>
+          <pre><code>.\scripts\Verify-P7.ps1</code></pre>
+        </div>
+
+        <p><strong>What you should see.</strong> The verifier ends with <code>P7 SPREADSHEET CONTROL VERIFIED: 80 rows, workboard.xlsx + verifier evidence, Operations SLA 8h</code>.</p>
+        <p id="p7-wave-two-point">Wave 2 is complete when the same <code>workboard.xlsx</code> contains 80 rows, all twenty Wave 2 rows have AI/policy values, Operations still uses 8 hours, and the same saved graph reaches verifier PASS without a row edit.</p>
+
+        <h3>Stage 06 · Classify work as fixed, adaptive, or hybrid</h3>
+        <p>Use path variability to choose the machine. A stable high-volume path is fixed. Changing state that decides the next action is adaptive. A stable outer process with a bounded adaptive middle is hybrid. Plan for ten minutes.</p>
+
+        <div class="do-step">
+          <p class="do-label">Open <strong>ChatGPT</strong>, select <strong>Codex</strong>, and open the course project. Open <strong>P7 — Direction &amp; Closeout</strong>. If it does not exist, create a new task and rename it exactly. Replace the two desk examples, then paste:</p>
+          <pre><code>Read:
+- mission_flesh/p6/MISSION.md
+- mission_flesh/p7/out/AI_workboard.csv
+- mission_flesh/p7/out/run_receipt.json
+
+Do not write a file yet. Build one concise machine-choice table with three candidates:
+1. one earlier course workload;
+2. [ONE RECURRING WORKLOAD FROM MY DESK];
+3. [A SECOND WORKLOAD, OR A DISTINCT NONSTANDARD PART OF THE FIRST].
+
+Classify the candidates as FIXED, ADAPTIVE, or HYBRID. Across the three rows,
+use all three classifications. For each row, state:
+- the useful product;
+- whether the path is known before the run;
+- what changing state, if any, chooses the next action;
+- where a fixed outer path or adaptive subflow begins and ends;
+- the evidence that would show useful leverage.
+
+Use the P7 spreadsheet run as evidence for the fixed pattern and P6 only as
+evidence for the adaptive pattern. Do not invent facts about my two desk
+examples. Return the table in this task so I can inspect it before closeout.</code></pre>
+        </div>
+
+        <p id="p7-classification-point">The classification is usable when it names one fixed candidate, one adaptive candidate, and one hybrid candidate; each choice follows from the work's path and state, not from a preference for a tool.</p>
+
+        <h3>Stage 07 · Close P7 and draft the 30/60/90 horizons</h3>
+        <p>The closeout records what changed in the spreadsheet: 60 blank rows became structured work, one Operations rule moved every matching row, and the same workbook grew to 80 completed rows. Plan for fifteen minutes.</p>
+
+        <div class="do-step">
+          <p class="do-label">In <strong>P7 — Direction &amp; Closeout</strong>, replace the Wave 1 bracket and paste:</p>
+          <pre><code>Wave 1 verifier PASS observed before the policy and Wave 2 reruns:
+[PASTE THE 60-ROW VERIFIER LINE]
+
+Close P7 from the spreadsheet evidence. Read:
+- mission_flesh/p7/workboard.xlsx
+- mission_flesh/p7/out/workboard_24h.xlsx
+- mission_flesh/p7/out/AI_workboard.csv
+- mission_flesh/p7/out/run_receipt.json
 - operator/OPERATOR_LOG.md
 - operator/TRANSFER_30_60_90.md
 
-Update the P7 section of operator/OPERATOR_LOG.md with:
-- the workflow and exact artifact paths;
-- SHIP or HOLD, using these criteria: expected_gate is absent from AI input; both
-  branches completed; rows 4, 5, and 7 are held with reasons and absent from
-  master.csv; at least three held rows including row 4 have an operator verdict;
-  and the discrimination table uses real workloads and explicit criteria;
-- the most important finding and fix, or the residual risk;
-- one reusable rule for deciding pipeline, agent loop, or stays human.
+Use the fixed, adaptive, and hybrid table immediately above for the three
+machine-choice candidates.
 
-Then update "From P7 — Machine choice" in operator/TRANSFER_30_60_90.md in the same write:
-- Date: [TODAY'S DATE]
-- Pipeline + human gate: [REAL WORKLOAD] — [WHY]
-- Must stay an agent loop: [REAL WORKLOAD] — [WHY]
-- Judgment I will not automate: [HIGH-CONSEQUENCE JUDGMENT]
-- Discrimination rule: [ONE CHECKABLE SENTENCE]
+Update only the P7 table in operator/OPERATOR_LOG.md:
+1. Line — read the AI Workboard sheet, map and group rows, structure with AI,
+   merge by id, route, apply four policies, fan in, and write the same workbook.
+2. First wave — the observed 60-row verifier PASS and eight AI/policy columns
+   populated in workboard.xlsx.
+3. Rule leverage — one Operations branch edit from 24 hours to 8 hours; the
+   affected spreadsheet rows and branch_policy, policy_value, sla_hours, and
+   target_by fields; row-by-row edits = 0.
+4. Second wave — 20 new source rows through the same graph and workbook, with
+   80 completed rows in the final CSV mirror and receipt.
+5. Verdict — SHIP only if the final workboard, AI_workboard.csv, run receipt,
+   and verifier result agree at 80 rows and the Operations SLA is 8 hours.
+6. Transfer — the fixed, adaptive, and hybrid candidates plus the leverage
+   evidence required before deployment.
 
-Do not interview me. Preserve unrelated sections. Show the exact text written to both files.</code></pre>
-          </div>
-          <p>Replace every bracket before you send. Use the n8n run and saved files for the decision. Use real work from your sort table for the transfer note.</p>
-          <ol class="checklist">
-            <li class="check-item" data-check-item>
-              <label class="check-label">
-                <input type="checkbox" id="p7-pulse-log" name="p7-pulse-log" data-check-id="pulse-log" />
-                <span class="check-num">8</span>
-                <span class="check-title">The P7 closeout points to its saved evidence</span>
-              </label>
-              <div class="check-detail"><code>operator/OPERATOR_LOG.md</code> names the workflow and file paths, SHIP/HOLD decision with reasons, finding and fix or leftover risk, and one reusable rule for tool choice.</div>
-            </li>
-            <li class="check-item" data-check-item>
-              <label class="check-label">
-                <input type="checkbox" id="p7-p7-transfer" name="p7-p7-transfer" data-check-id="p7-transfer" />
-                <span class="check-num">9</span>
-                <span class="check-title">The P7 tool-choice entry is saved and dated</span>
-              </label>
-              <div class="check-detail">The <em>From P7 — Tool choice</em> section of <code>operator/TRANSFER_30_60_90.md</code> names a real workflow candidate, a real workload that must stay a free agent, a high-cost human judgment, and one checkable rule.</div>
-            </li>
-          </ol>
+Then update "From P7 — Machine choice" in operator/TRANSFER_30_60_90.md:
+- Date: today's date in YYYY-MM-DD
+- Workload → fixed spreadsheet control line (why): the fixed candidate and reason
+- Workload → adaptive agent loop (why): the adaptive candidate and reason
+- Workload → hybrid machine (why): the hybrid candidate and reason
+- Leverage evidence I will require: batch, workbook, propagation, and edit evidence
+- Machine-choice rule (one sentence): one checkable rule from the table
+
+Use saved files for the final counts, row IDs, and active policy. Treat the
+pasted Wave 1 line as observed operator evidence. Preserve unrelated sections.
+Do not interview me. Show the exact text written to both files.</code></pre>
         </div>
 
-        <h3>Finish Stage 06 · Draft the 30/60/90 plan</h3>
-        <p>Turn the week&#x27;s dated notes into three checkable time boxes. Missing or thin notes stay visible as gaps. Do not invent support for them.</p>
+        <p>Open both files after Codex finishes. Confirm the P7 entry centers <code>workboard.xlsx</code>, uses the CSV mirror and receipt only as verifier evidence, and matches the machine-choice table you inspected.</p>
+
         <div class="do-step">
-          <p class="do-label">Open the shared <strong>P7–P8 — 30/60/90 Plan</strong> chat:</p>
-          <ul class="do-clicks">
-            <li>Click the ChatGPT app on the taskbar and select <strong>Codex</strong> if needed</li>
-            <li>Click <strong>Open project</strong> and choose <code>Documents\\HarnessBootcamp\\AI_Harness_Bootcamp</code> if the course project is not already open</li>
-            <li>In the sidebar, look for <strong>P7–P8 — 30/60/90 Plan</strong>. If it is there, open it</li>
-            <li>If it is missing, click <strong>New chat</strong>. Open the new chat&#x27;s <strong>…</strong> menu, choose <strong>Rename</strong>, and enter <code>P7–P8 — 30/60/90 Plan</code></li>
-            <li>Select <strong>gpt-5.6-terra</strong>. Do not leave this chat on the default or select <code>gpt-5.6-sol</code></li>
-            <li>Confirm the permissions control beneath the composer says <strong>Ask for approval</strong></li>
-          </ul>
-          <p>This is the one chat shared with P8 on purpose, because both modules continue the same saved plan. The saved plan carries the continuity. The chat history is not required.</p>
-          <p class="do-label">Now paste:</p>
+          <p class="do-label">Open <strong>P7–P8 — 30/60/90 Plan</strong>. If it does not exist, create a new task in the same course project and rename it exactly. Paste:</p>
           <pre><code>Read operator/TRANSFER_30_60_90.md and update its 30/60/90 horizons directly
 from every dated section under "Circuit seeds":
 
 - From P1 — Machine candidate (30 days)
 - From P2 — Inbound (30 days)
 - From P3 — Verdict ownership (30–60 days)
-- From P4 — Personal operating harness (30–60 days)
+- From P4 — Second brain (30–60 days)
 - From P5 — Operating picture (30–60 days)
-- From P6 — Contract (60 days)
+- From P6 — Agentic mission (60 days)
 - From P7 — Machine choice (90 days)
 
 Write:
 - 30 days: at most three checkable outcomes grounded in the 30-day seeds;
 - 60 days: checkable operating controls grounded in the 60-day seeds;
-- 90 days: a deployed machine choice, retained human judgment, owner, and evidence;
+- 90 days: one fixed, adaptive, or hybrid deployment with an owner and evidence;
 - one concrete backslide risk if I do nothing.
 
 For each line, name the source seed and the evidence that will show completion.
-If a seed is missing or thin, name the gap in the horizon it feeds. Do not read the
-seeds back to me, interview me, or invent content. Preserve the circuit seeds.
-Set Status to "Draft horizons complete" and show the exact sections written.</code></pre>
+If a seed is missing or thin, name the gap in the horizon it feeds. Preserve the
+circuit seeds. Do not interview me or invent content. Set Status to
+"Draft horizons complete" and show the exact sections written.</code></pre>
         </div>
-        <ol class="checklist">
-          <li class="check-item" data-check-item>
-            <label class="check-label">
-              <input type="checkbox" id="p7-pulse-transfer" name="p7-pulse-transfer" data-check-id="pulse-transfer" />
-              <span class="check-num">10</span>
-              <span class="check-title">Each 30/60/90 time box traces to dated evidence from the week</span>
-            </label>
-            <div class="check-detail">All three time boxes in <code>operator/TRANSFER_30_60_90.md</code> tie each checkable outcome to a dated note and completion evidence. Missing support is named as a gap, and status reads <em>Draft time boxes complete</em>.</div>
-          </li>
-        </ol>
+
+        <p id="p7-closeout-point">P7 is closed when the Operator Log points to the spreadsheet comparison and final verifier evidence, the Machine-choice seed contains all three candidates, and each 30/60/90 line traces to a dated source seed.</p>
       </section>
 
       <section id="floor" class="home-section" data-check-section="floor">
         <h2>Lesson outcomes</h2>
-        <p class="section-lede">This summary reflects the outcome boxes beside the run. <strong>Complete</strong> shows what you finished. <strong>Not yet</strong> shows what still needs work. Select an outcome title to return to its checkbox and evidence.</p>
+        <p class="section-lede">Each outcome sits beside the evidence that proves it. Complete means the named workbook state, graph setting, verifier result, or closeout entry exists.</p>
         <ol class="checklist">
-          <li class="check-item" data-check-item data-outcome-after="p7-flow">
+          <li class="check-item" data-check-item data-outcome-after="#p7-prepared-point">
             <label class="check-label">
-              <input type="checkbox" id="p7-mvp-e2e" name="p7-mvp-e2e" data-check-id="mvp-e2e" />
-              <span class="check-num">14</span>
-              <span class="check-title">The full n8n path runs on the real batch</span>
+              <input type="checkbox" id="p7-prepared" name="p7-prepared" data-check-id="p7-prepared" />
+              <span class="check-num">1</span>
+              <span class="check-title">The 60-row blank workboard is prepared and Excel is closed</span>
             </label>
-            <div class="check-detail">Batch in → AI → checks → output files. The last stop is the master sheet. Evidence looks like one run view showing the whole path on the real rows — not a single hand-fed row.</div>
+            <div class="check-detail"><code>workboard.xlsx</code> has 60 source rows on <em>AI Workboard</em>, columns G–N are blank and red, Excel is closed, and n8n started from the prepared PowerShell window.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="p7-gate">
+          <li class="check-item" data-check-item data-outcome-after="#p7-canvas-point">
             <label class="check-label">
-              <input type="checkbox" id="p7-mvp-gate" name="p7-mvp-gate" data-check-id="mvp-gate" />
-              <span class="check-num">15</span>
-              <span class="check-title">Bad rows stay on hold for a person until decided</span>
+              <input type="checkbox" id="p7-model" name="p7-model" data-check-id="p7-model" />
+              <span class="check-num">2</span>
+              <span class="check-title">The funded xAI credential and course model are attached once</span>
             </label>
-            <div class="check-detail">No silent bad write. Evidence looks like the hold stopping a bad row with its reason attached, and that row absent from the master.</div>
+            <div class="check-detail"><em>xAI Model — attach credential here</em> uses the funded credential and the exact model from <code>$env:HB_XAI_MODEL</code>. No second model attachment was added.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="p7-ex3">
+          <li class="check-item" data-check-item data-outcome-after="#p7-wave-one-point">
             <label class="check-label">
-              <input type="checkbox" id="p7-mvp-3ex" name="p7-mvp-3ex" data-check-id="mvp-3ex" />
-              <span class="check-num">16</span>
-              <span class="check-title">At least three held rows have written decisions and reasons</span>
+              <input type="checkbox" id="p7-wave1-count" name="p7-wave1-count" data-check-id="p7-wave1-count" />
+              <span class="check-num">3</span>
+              <span class="check-title">Wave 1 completes 60 of 60 spreadsheet rows</span>
             </label>
-            <div class="check-detail">Evidence looks like three recorded decisions — commit / fix / reject — each with a written reason, not three clicks.</div>
+            <div class="check-detail"><code>workboard.xlsx</code> retains all 60 source rows and populates the AI/policy area according to workstream. The verifier reports 60 rows and Operations SLA 24h.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="p7-disc">
+          <li class="check-item" data-check-item data-outcome-after="#p7-wave-one-point">
             <label class="check-label">
-              <input type="checkbox" id="p7-mvp-disc" name="p7-mvp-disc" data-check-id="mvp-disc" />
-              <span class="check-num">17</span>
-              <span class="check-title">A written rule separates free-agent work from workflow work</span>
+              <input type="checkbox" id="p7-wave1-bundle" name="p7-wave1-bundle" data-check-id="p7-wave1-bundle" />
+              <span class="check-num">4</span>
+              <span class="check-title">The filled workbook and verifier evidence agree</span>
             </label>
-            <div class="check-detail">Free agent vs workflow on your real work. Evidence looks like the template filled with reasons (what changes, what wrong costs) — sharp enough that a reader could apply your rule to a workload you did not list.</div>
+            <div class="check-detail">The visible <em>AI Workboard</em>, <code>out\AI_workboard.csv</code>, and <code>out\run_receipt.json</code> describe the same 60-row run. <code>out\workboard_24h.xlsx</code> preserves the baseline.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="p7-disc">
+          <li class="check-item" data-check-item data-outcome-after="#p7-canvas-point">
             <label class="check-label">
-              <input type="checkbox" id="p7-mvp-slice" name="p7-mvp-slice" data-check-id="mvp-slice" />
-              <span class="check-num">18</span>
-              <span class="check-title">A high-cost judgment remains human</span>
+              <input type="checkbox" id="p7-trace" name="p7-trace" data-check-id="p7-trace" />
+              <span class="check-num">5</span>
+              <span class="check-title">The workbook path is traced from read through write</span>
             </label>
-            <div class="check-detail">The sort table names at least one real judgment whose cost or ownership makes automation a bad fit, with the reason written so another person can apply it.</div>
+            <div class="check-detail">You can point to the XLSX read and extract settings, five-row AI batches, structured contract, merge by <code>id</code>, four-way route, policy branches, fan-in, fourteen-column builder, and workbook write.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="p7-wrong">
+          <li class="check-item" data-check-item data-outcome-after="#p7-policy-point">
             <label class="check-label">
-              <input type="checkbox" id="p7-mvp-conf" name="p7-mvp-conf" data-check-id="mvp-conf" />
-              <span class="check-num">19</span>
-              <span class="check-title">The hold catches a wrong-but-confident result</span>
+              <input type="checkbox" id="p7-rule-change" name="p7-rule-change" data-check-id="p7-rule-change" />
+              <span class="check-num">6</span>
+              <span class="check-title">The Operations SLA changes once from 24 hours to 8 hours</span>
             </label>
-            <div class="check-detail">Evidence looks like the false all-clear row (row 4) held, and you can name the written check that catches it.</div>
+            <div class="check-detail">The saved workflow changes only <code>OPERATIONS_SLA_HOURS</code>. The current workbook and receipt record the 8-hour rule after the rerun.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="pulse-log">
+          <li class="check-item" data-check-item data-outcome-after="#p7-policy-point">
             <label class="check-label">
-              <input type="checkbox" id="p7-mvp-log7" name="p7-mvp-log7" data-check-id="mvp-log7" />
-              <span class="check-num">20</span>
-              <span class="check-title">The log links the sort and hold decisions</span>
+              <input type="checkbox" id="p7-rule-diff" name="p7-rule-diff" data-check-id="p7-rule-diff" />
+              <span class="check-num">7</span>
+              <span class="check-title">Two workbook copies show every affected row and zero row edits</span>
             </label>
-            <div class="check-detail">Evidence looks like the log pointing at the sort write-up and the hold decisions. A reader could find both without asking you.</div>
+            <div class="check-detail">Side-by-side <em>AI Workboard</em> filters keep the Operations <code>id</code> values visible while <code>branch_policy</code>, <code>policy_value</code>, <code>sla_hours</code>, and <code>target_by</code> change. No spreadsheet row was edited by hand.</div>
           </li>
-          <li class="check-item" data-check-item data-outcome-after="pulse-transfer">
+          <li class="check-item" data-check-item data-outcome-after="#p7-wave-two-point">
             <label class="check-label">
-              <input type="checkbox" id="p7-mvp-90" name="p7-mvp-90" data-check-id="mvp-90" />
-              <span class="check-num">21</span>
-              <span class="check-title">The 90-day tool choice has an owner and evidence</span>
+              <input type="checkbox" id="p7-wave2" name="p7-wave2" data-check-id="p7-wave2" />
+              <span class="check-num">8</span>
+              <span class="check-title">Wave 2 completes 80 rows through the same workbook and graph</span>
             </label>
-            <div class="check-detail">The 90-day box names the tool choice you will put in place, the human judgment you keep, the owner, the source note, and the evidence that will show completion.</div>
+            <div class="check-detail"><code>workboard.xlsx</code> has 80 rows, including twenty Wave 2 rows with AI/policy values. Operations still uses 8 hours, and the verifier reports 80 rows.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#p7-classification-point">
+            <label class="check-label">
+              <input type="checkbox" id="p7-machine-choice" name="p7-machine-choice" data-check-id="p7-machine-choice" />
+              <span class="check-num">9</span>
+              <span class="check-title">Earlier and real work are classified as fixed, adaptive, or hybrid</span>
+            </label>
+            <div class="check-detail">The P7 closeout task contains one fixed, one adaptive, and one hybrid classification, with path, changing state, useful product, and leverage evidence for each candidate.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#p7-closeout-point">
+            <label class="check-label">
+              <input type="checkbox" id="p7-closeout" name="p7-closeout" data-check-id="p7-closeout" />
+              <span class="check-num">10</span>
+              <span class="check-title">The P7 closeout and Machine-choice seed use the spreadsheet evidence</span>
+            </label>
+            <div class="check-detail">The six-field P7 Operator Log table centers <code>workboard.xlsx</code>, the 24h-to-8h workbook comparison, the final CSV mirror and receipt, 80 completed rows, zero row edits, and all three machine candidates.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#p7-closeout-point">
+            <label class="check-label">
+              <input type="checkbox" id="p7-horizons" name="p7-horizons" data-check-id="p7-horizons" />
+              <span class="check-num">11</span>
+              <span class="check-title">The 30/60/90 horizons trace to dated evidence</span>
+            </label>
+            <div class="check-detail">Each horizon names its source seed and completion evidence. The 90-day line chooses a fixed, adaptive, or hybrid deployment with an owner. Status reads <em>Draft horizons complete</em>.</div>
           </li>
         </ol>
       </section>
 
       <section id="depth" class="home-section">
-        <h2>Going deeper while the workflow runs</h2>
-        <p class="section-lede">The flow spends real minutes running. Spend them here.</p>
-
-        <h3>Failure catalog</h3>
-        <div class="table-scroll">
-          <table>
-            <thead><tr><th>Symptom</th><th>Likely cause</th><th>Move</th></tr></thead>
-            <tbody>
-              <tr><td>AI step returns prose, not your format</td><td>The step prompt never pinned the output shape</td><td>State exact fields, format, and allowed values in the step prompt. Send anything that will not parse to the hold instead of fixing it by hand every time.</td></tr>
-              <tr><td>Every row holds</td><td>Parsing fails on all rows, so every check fails</td><td>Open one run and read the AI raw output. Fix the parse first. Thresholds come after.</td></tr>
-              <tr><td>No row holds — including the poisoned ones</td><td>Checks test presence, not sense, or the hold sits after the write</td><td>Move the hold before the sheet. Add allowed-value and contradiction checks. Re-run row 4.</td></tr>
-              <tr><td>n8n exits the moment you start it</td><td>Node outside the supported range. n8n wants Node 22.22 up to the current LTS line</td><td>Run <code>node -v</code>. Reinstall the LTS package if needed. Open a fresh terminal before retrying.</td></tr>
-              <tr><td>AI step fails with what reads like a bad key</td><td>A capped key returns a 429 quota error that looks like an auth failure</td><td>Read the error body. 429 or quota wording means the cap, not the credential. Ask for the cap to be checked rather than re-pasting keys.</td></tr>
-              <tr><td>Run looks green but the master is empty</td><td>The clear path never fires, or the write path is wrong</td><td>Follow one clean row through the run view node by node and find where it leaves the path.</td></tr>
-            </tbody>
-          </table>
+        <h2>Patterns on other desks</h2>
+        <div class="card-grid">
+          <div class="card">
+            <p class="eyebrow">Finance</p>
+            <h3>Invoice workboard</h3>
+            <p>Start with familiar invoice rows, add structured coding and ownership columns, and apply one policy by cost center.</p>
+          </div>
+          <div class="card">
+            <p class="eyebrow">People</p>
+            <h3>Onboarding workboard</h3>
+            <p>Keep the source request visible while AI adds worker type, priority, next action, owner policy, and due fields.</p>
+          </div>
+          <div class="card">
+            <p class="eyebrow">Operations</p>
+            <h3>Service workboard</h3>
+            <p>Route recurring requests into fixed branches and change one service target for every matching row.</p>
+          </div>
+          <div class="card">
+            <p class="eyebrow">Hybrid</p>
+            <h3>Nonstandard rows</h3>
+            <p>Keep workbook intake, routing, and writeback fixed while a bounded adaptive subflow handles the cases that need changing actions.</p>
+          </div>
         </div>
-
-        <h3>Work questions</h3>
-        <ul>
-          <li><strong>If the hold stops 40% of rows, is the AI step earning its place?</strong> At what hold rate would a keyword rule do the same job for free, and what evidence would settle it?</li>
-          <li><strong>When does review become a rubber stamp?</strong> Check hold place, hold rate, and whether rejected rows change anything upstream.</li>
-          <li><strong>When volume grows ten times, what breaks first — the checks, the hold, or you?</strong> The honest answer usually reshapes where the hold should sit.</li>
-          <li><strong>Should a free agent be allowed to build the workflow that replaces it?</strong> You directed an adaptive agent all week. Today you hard-coded one path. Who should write the checks that limit the AI step, and why not the model itself?</li>
-        </ul>
-
-        <h3>The same workflow on other desks</h3>
-        <ul>
-          <li><strong>Finance operations:</strong> invoices in, AI extracts vendor, amount, and cost code. Checks enforce vendor allow-list and amount ranges. The hold stops out-of-policy items with the extracted fields attached.</li>
-          <li><strong>Support lead:</strong> tickets in, AI routes by product and severity. Checks catch legal-threat and security keywords no matter what the model decided. The hold always stops those for a person.</li>
-          <li><strong>Watch desk:</strong> field reports sorted into a master picture. A confident false all-clear is exactly why the hold exists.</li>
-          <li><strong>Field operations:</strong> daily site reports folded into a rollup. The hold stops anything that claims completion of work another report contradicts.</li>
-        </ul>
-
-        <h3>Stretch lanes</h3>
-        <p>Three lanes, in rising order of ambition. None are required lesson outcomes.</p>
-        <ul>
-          <li><strong>Measure the workflow:</strong> speed and hold rate on the sample set — rows per minute, holds per run, and how each check contributes.</li>
-          <li><strong>The refusal list:</strong> write the &quot;judgment I will not automate&quot; list — at least three items, each tied to a real risk on your desk.</li>
-          <li><strong>Rebuild a slice:</strong> take a thin slice of the P1 brief machine or the P3 intel desk and rebuild it as a workflow. Then name what quality you traded away and why the trade is acceptable — or is not.</li>
-        </ul>
-
-        <p class="eyebrow">Optional field guide · 60–75 min</p>
-        <h3>Engineer the hold lane</h3>
-        <p><a href="../resources/p7/human-gate-engineering.html"><strong>Hold Capacity and Bad-Case Economics</strong></a> turns arrival patterns, review capacity, failure demand, decision packets, aging defaults, and false-hold versus miss costs into a hold model that can handle real volume.</p>
       </section>
     </form>
 
     <section id="stuck" class="split-2 home-section">
       <div>
         <h2>Before you move on</h2>
-        <p>Before you move on, confirm that the saved run, both CSV files, your written decisions, and the sort table meet the <a href="#floor">P7 lesson outcomes</a>.</p>
+        <p>Confirm that <code>workboard.xlsx</code> has 80 completed rows, the current Operations policy is 8 hours, the side-by-side workbooks show the propagated change, and the closeout points to the spreadsheet plus its verifier evidence.</p>
       </div>
       <div>
         <h2>If you get stuck</h2>
         <ul>
-          <li><strong>The AI step will not behave.</strong> Test it alone on one row and read its raw output before you touch the rest of the workflow. Prose instead of your format means the prompt never pinned the shape. An auth-looking failure with 429 or quota in it means a capped key. Flag it rather than reinstalling.</li>
-          <li><strong>The hold stops everything, or nothing.</strong> Read one run end to end. Fix parsing before thresholds. Confirm the hold sits before the write. Both failure modes usually live in those two places.</li>
-          <li><strong>The write-up feels like vibes.</strong> Let the two questions do the forcing — what changes from item to item, and what a wrong answer costs — then write the answers into the template why columns. If you cannot name either for a workload, that workload stays human. That is itself a finding.</li>
-          <li>Narrow the data scope, never the judgment standard. Three rows through a workflow with a hold beat eight through a workflow with none.</li>
-          <li>Ask the lead to diagram the one concept blocking you, then continue on your own chair.</li>
+          <li><strong>The workbook write says the file is busy, locked, or in use.</strong> Close every Excel window that has either workboard open, then execute the same n8n workflow again.</li>
+          <li><strong>The generated workflow is missing.</strong> Run <code>Prepare-P7.ps1</code> again in the PowerShell window that will start n8n. Import the exact JSON path it prints.</li>
+          <li><strong>The extract node returns no rows.</strong> Confirm the sheet name is exactly <code>AI Workboard</code>, the input binary field is <code>data</code>, Header Row is on, and Include Empty Cells is on.</li>
+          <li><strong>The xAI node returns 429 or quota wording.</strong> In <em>Group into 5-Record Model Calls</em>, change <code>RECORDS_PER_MODEL_CALL = 5</code> to <code>10</code>. In <em>AI Structure Station</em>, use batch size <code>2</code> and delay <code>1200</code> ms. Run the full workbook again.</li>
+          <li><strong>The reopened workbook still has blank AI columns.</strong> Confirm the n8n write node finished, close the stale Excel window, and reopen <code>mission_flesh\p7\workboard.xlsx</code>.</li>
+          <li><strong>Wave 2 still shows 60 rows.</strong> Close Excel, run <code>Add-P7Wave2.ps1</code>, inspect the 80-row blank workbook, close Excel again, and execute the same saved graph.</li>
+          <li><strong>The verifier fails after a green n8n run.</strong> Read the first failed count or field. Compare it with the visible workbook before changing any node.</li>
         </ul>
       </div>
     </section>

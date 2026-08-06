@@ -1,0 +1,715 @@
+{
+  "name": "P7 — AI Controls the Workboard",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        300
+      ],
+      "id": "70000000-0000-4000-8000-000000000001",
+      "name": "Execute Spreadsheet Control Line"
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "fileSelector": "__P7_WORKBOARD__",
+        "options": {
+          "dataPropertyName": "data",
+          "fileName": "workboard.xlsx",
+          "fileExtension": "xlsx",
+          "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        }
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        300
+      ],
+      "id": "70000000-0000-4000-8000-000000000002",
+      "name": "Read workboard.xlsx"
+    },
+    {
+      "parameters": {
+        "operation": "xlsx",
+        "binaryPropertyName": "data",
+        "options": {
+          "sheetName": "AI Workboard",
+          "includeEmptyCells": true,
+          "headerRow": true
+        }
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        300
+      ],
+      "id": "70000000-0000-4000-8000-000000000003",
+      "name": "Extract AI Workboard sheet"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const required = ['id', 'received_at', 'requester', 'channel', 'text', 'wave'];\nconst toIso = (value, id) => {\n  if (typeof value === 'number' && Number.isFinite(value)) {\n    return new Date(Math.round((value - 25569) * 86400000)).toISOString();\n  }\n  const text = String(value ?? '').trim();\n  if (/^\\d+(\\.\\d+)?$/.test(text) && Number(text) > 20000) {\n    return new Date(Math.round((Number(text) - 25569) * 86400000)).toISOString();\n  }\n  const parsed = new Date(text);\n  if (Number.isNaN(parsed.getTime())) throw new Error(`Input ${id} has invalid received_at`);\n  return parsed.toISOString();\n};\nreturn $input.all().map((item, index) => {\n  for (const field of required) {\n    if (item.json[field] === undefined || String(item.json[field]).trim() === '') {\n      throw new Error(`Spreadsheet row ${index + 2} is missing ${field}`);\n    }\n  }\n  const wave = Number(item.json.wave);\n  if (wave !== 1 && wave !== 2) throw new Error(`Input ${item.json.id} has invalid wave`);\n  return { json: {\n    id: String(item.json.id).trim(),\n    received_at: toIso(item.json.received_at, item.json.id),\n    requester: String(item.json.requester).trim(),\n    channel: String(item.json.channel).trim(),\n    text: String(item.json.text).trim(),\n    wave\n  }};\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        300
+      ],
+      "id": "70000000-0000-4000-8000-000000000004",
+      "name": "Map Spreadsheet Rows"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const RECORDS_PER_MODEL_CALL = 5; // RATE-LIMIT FALLBACK: change 5 to 10.\nconst rows = $input.all().map((item) => item.json);\nconst batches = [];\nfor (let index = 0; index < rows.length; index += RECORDS_PER_MODEL_CALL) {\n  batches.push({ json: { records: rows.slice(index, index + RECORDS_PER_MODEL_CALL) } });\n}\nreturn batches;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        920,
+        180
+      ],
+      "id": "70000000-0000-4000-8000-000000000005",
+      "name": "Group into 5-Record Model Calls"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ 'You are the AI structure station in a high-volume work-intake line. For every record in this batch, preserve its id exactly and return one structured result. Use exactly one workstream: OPERATIONS for facilities, logistics, scheduling, supplies, or physical delivery; FINANCE for invoices, budgets, payments, expenses, accounting, or financial controls; PEOPLE for hiring, onboarding, leave, benefits, performance, employee relations, or learning; TECHNOLOGY for software, hardware, identity, networks, data, integrations, or cybersecurity. Use P1 for an active outage, safety or security exposure, immediate deadline, or work blocking many people; P2 for material work that should move soon; P3 for routine work. Write a factual summary of at most 14 words and one concrete next action. Return one result for every input and no extra results.\\n\\nBatch:\\n' + JSON.stringify($json.records) }}",
+        "hasOutputParser": true,
+        "needsFallback": false,
+        "batching": {
+          "batchSize": 3,
+          "delayBetweenBatches": 400
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        1160,
+        180
+      ],
+      "id": "70000000-0000-4000-8000-000000000006",
+      "name": "AI Structure Station"
+    },
+    {
+      "parameters": {
+        "model": "__P7_MODEL__",
+        "options": {
+          "temperature": 0,
+          "maxTokens": 1200,
+          "timeout": 360000,
+          "maxRetries": 2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatXAiGrok",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        520
+      ],
+      "id": "70000000-0000-4000-8000-000000000007",
+      "name": "xAI Model — attach credential here"
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"additionalProperties\": false,\n  \"required\": [\n    \"records\"\n  ],\n  \"properties\": {\n    \"records\": {\n      \"type\": \"array\",\n      \"minItems\": 1,\n      \"maxItems\": 20,\n      \"items\": {\n        \"type\": \"object\",\n        \"additionalProperties\": false,\n        \"required\": [\n          \"id\",\n          \"workstream\",\n          \"priority\",\n          \"summary\",\n          \"next_action\"\n        ],\n        \"properties\": {\n          \"id\": {\n            \"type\": \"string\",\n            \"minLength\": 1\n          },\n          \"workstream\": {\n            \"type\": \"string\",\n            \"enum\": [\n              \"OPERATIONS\",\n              \"FINANCE\",\n              \"PEOPLE\",\n              \"TECHNOLOGY\"\n            ]\n          },\n          \"priority\": {\n            \"type\": \"string\",\n            \"enum\": [\n              \"P1\",\n              \"P2\",\n              \"P3\"\n            ]\n          },\n          \"summary\": {\n            \"type\": \"string\",\n            \"minLength\": 1,\n            \"maxLength\": 140\n          },\n          \"next_action\": {\n            \"type\": \"string\",\n            \"minLength\": 1,\n            \"maxLength\": 280\n          }\n        }\n      }\n    }\n  }\n}",
+        "autoFix": false
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1340,
+        520
+      ],
+      "id": "70000000-0000-4000-8000-000000000008",
+      "name": "Structured Output Contract"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const output = [];\nfor (const item of $input.all()) {\n  const records = item.json.output && item.json.output.records;\n  if (!Array.isArray(records) || records.length === 0) {\n    throw new Error('AI batch returned no structured records');\n  }\n  for (const record of records) output.push({ json: record });\n}\nconst ids = output.map((item) => String(item.json.id || ''));\nif (ids.some((value) => !value) || new Set(ids).size !== ids.length) {\n  throw new Error('AI batch output contains a blank or duplicate ID');\n}\nreturn output;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        180
+      ],
+      "id": "70000000-0000-4000-8000-000000000009",
+      "name": "Split Structured Batches"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByFields",
+        "numberInputs": 2,
+        "advanced": false,
+        "fieldsToMatchString": "id",
+        "joinMode": "enrichInput1",
+        "options": {
+          "clashHandling": {
+            "values": {
+              "resolveClash": "preferInput1",
+              "mergeMode": "deepMerge",
+              "overrideEmpty": false
+            }
+          },
+          "multipleMatches": "first"
+        }
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1640,
+        300
+      ],
+      "id": "70000000-0000-4000-8000-000000000010",
+      "name": "Merge Source + AI by ID"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const workstreams = new Set(['OPERATIONS', 'FINANCE', 'PEOPLE', 'TECHNOLOGY']);\nconst priorities = new Set(['P1', 'P2', 'P3']);\nreturn $input.all().map((item) => {\n  const row = item.json;\n  const workstream = String(row.workstream || '').trim().toUpperCase();\n  const priority = String(row.priority || '').trim().toUpperCase();\n  const summary = String(row.summary || '').trim();\n  const nextAction = String(row.next_action || '').trim();\n  if (!workstreams.has(workstream)) throw new Error(`Missing or invalid AI workstream for ${row.id}`);\n  if (!priorities.has(priority)) throw new Error(`Missing or invalid AI priority for ${row.id}`);\n  if (!summary || !nextAction) throw new Error(`Incomplete AI structure for ${row.id}`);\n  return { json: {\n    id: row.id, received_at: row.received_at, requester: row.requester,\n    channel: row.channel, text: row.text, wave: row.wave,\n    workstream, priority, summary, next_action: nextAction\n  }};\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1880,
+        300
+      ],
+      "id": "70000000-0000-4000-8000-000000000011",
+      "name": "Assemble Structured Record"
+    },
+    {
+      "parameters": {
+        "mode": "expression",
+        "numberOutputs": 4,
+        "output": "={{ ({ OPERATIONS: 0, FINANCE: 1, PEOPLE: 2, TECHNOLOGY: 3 })[$json.workstream] }}"
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        2120,
+        300
+      ],
+      "id": "70000000-0000-4000-8000-000000000012",
+      "name": "Route by Workstream"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const OPERATIONS_SLA_HOURS = 24; // LEARNER EDIT: change 24 to 8, then rerun.\nreturn $input.all().map((item) => {\n  const received = new Date(item.json.received_at);\n  if (Number.isNaN(received.getTime())) throw new Error(`Invalid received_at for ${item.json.id}`);\n  const target = new Date(received.getTime() + OPERATIONS_SLA_HOURS * 60 * 60 * 1000);\n  return { json: {\n    ...item.json,\n    branch_policy: `Operations SLA ${OPERATIONS_SLA_HOURS}h`,\n    policy_value: `Respond within ${OPERATIONS_SLA_HOURS} hours`,\n    sla_hours: OPERATIONS_SLA_HOURS,\n    target_by: target.toISOString()\n  }};\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2380,
+        -20
+      ],
+      "id": "70000000-0000-4000-8000-000000000013",
+      "name": "POLICY — Operations SLA 24h"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "return $input.all().map((item) => ({ json: {\n  ...item.json,\n  branch_policy: \"Finance owner + evidence\",\n  policy_value: \"Assign an owner and attach the supporting financial evidence\",\n  sla_hours: '',\n  target_by: ''\n}}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2380,
+        190
+      ],
+      "id": "70000000-0000-4000-8000-000000000014",
+      "name": "POLICY — Finance owner + evidence"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "return $input.all().map((item) => ({ json: {\n  ...item.json,\n  branch_policy: \"People owner + private channel\",\n  policy_value: \"Assign a People owner and continue in the private case channel\",\n  sla_hours: '',\n  target_by: ''\n}}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2380,
+        410
+      ],
+      "id": "70000000-0000-4000-8000-000000000015",
+      "name": "POLICY — People owner + private channel"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "return $input.all().map((item) => ({ json: {\n  ...item.json,\n  branch_policy: \"Technology triage + incident link\",\n  policy_value: \"Assign technical triage and link the service or incident record\",\n  sla_hours: '',\n  target_by: ''\n}}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2380,
+        630
+      ],
+      "id": "70000000-0000-4000-8000-000000000016",
+      "name": "POLICY — Technology triage + incident link"
+    },
+    {
+      "parameters": {
+        "mode": "append",
+        "numberInputs": 4
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2660,
+        300
+      ],
+      "id": "70000000-0000-4000-8000-000000000017",
+      "name": "Fan In — AI Workboard"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const columns = [\"id\",\"received_at\",\"requester\",\"channel\",\"text\",\"wave\",\"workstream\",\"priority\",\"summary\",\"next_action\",\"branch_policy\",\"policy_value\",\"sla_hours\",\"target_by\"];\nconst rows = $input.all().map((item) => item.json).sort((a, b) => String(a.id).localeCompare(String(b.id)));\nreturn rows.map((row) => ({ json: Object.fromEntries(columns.map((column) => [column, row[column] ?? ''])) }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2920,
+        100
+      ],
+      "id": "70000000-0000-4000-8000-000000000018",
+      "name": "Build AI Workboard rows"
+    },
+    {
+      "parameters": {
+        "operation": "xlsx",
+        "binaryPropertyName": "data",
+        "options": {
+          "compression": true,
+          "fileName": "workboard.xlsx",
+          "headerRow": true,
+          "sheetName": "AI Workboard"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        3180,
+        40
+      ],
+      "id": "70000000-0000-4000-8000-000000000019",
+      "name": "Convert rows to workboard.xlsx"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "__P7_WORKBOARD__",
+        "dataPropertyName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        3440,
+        40
+      ],
+      "id": "70000000-0000-4000-8000-000000000020",
+      "name": "Write workboard.xlsx — close Excel first"
+    },
+    {
+      "parameters": {
+        "operation": "csv",
+        "binaryPropertyName": "data",
+        "options": {
+          "fileName": "AI_workboard.csv",
+          "headerRow": true,
+          "delimiter": ","
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        3180,
+        260
+      ],
+      "id": "70000000-0000-4000-8000-000000000021",
+      "name": "Convert verifier mirror to CSV"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "__P7_OUTPUT_DIR__/AI_workboard.csv",
+        "dataPropertyName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        3440,
+        260
+      ],
+      "id": "70000000-0000-4000-8000-000000000022",
+      "name": "Write AI_workboard.csv"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const rows = $input.all().map((item) => item.json);\nconst count = (field, value) => rows.filter((row) => String(row[field]) === String(value)).length;\nconst operations = rows.filter((row) => row.workstream === 'OPERATIONS');\nreturn [{ json: {\n  workflow: 'P7 Spreadsheet Control Line',\n  generated_at: new Date().toISOString(),\n  sheet_name: 'AI Workboard',\n  record_count: rows.length,\n  workstream_counts: {\n    OPERATIONS: count('workstream', 'OPERATIONS'),\n    FINANCE: count('workstream', 'FINANCE'),\n    PEOPLE: count('workstream', 'PEOPLE'),\n    TECHNOLOGY: count('workstream', 'TECHNOLOGY')\n  },\n  priority_counts: { P1: count('priority', 'P1'), P2: count('priority', 'P2'), P3: count('priority', 'P3') },\n  wave_counts: { '1': count('wave', 1), '2': count('wave', 2) },\n  operations_sla_hours: operations.length ? Number(operations[0].sla_hours) : 0,\n  products: ['workboard.xlsx', 'AI_workboard.csv', 'run_receipt.json']\n}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2920,
+        560
+      ],
+      "id": "70000000-0000-4000-8000-000000000023",
+      "name": "Build Run Receipt"
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "mode": "each",
+        "binaryPropertyName": "data",
+        "options": {
+          "fileName": "run_receipt.json",
+          "format": true,
+          "encoding": "utf8",
+          "addBOM": false
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        3180,
+        560
+      ],
+      "id": "70000000-0000-4000-8000-000000000024",
+      "name": "Convert Run Receipt to JSON"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "__P7_OUTPUT_DIR__/run_receipt.json",
+        "dataPropertyName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        3440,
+        560
+      ],
+      "id": "70000000-0000-4000-8000-000000000025",
+      "name": "Write run_receipt.json"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Execute Spreadsheet Control Line": {
+      "main": [
+        [
+          {
+            "node": "Read workboard.xlsx",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read workboard.xlsx": {
+      "main": [
+        [
+          {
+            "node": "Extract AI Workboard sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract AI Workboard sheet": {
+      "main": [
+        [
+          {
+            "node": "Map Spreadsheet Rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Spreadsheet Rows": {
+      "main": [
+        [
+          {
+            "node": "Group into 5-Record Model Calls",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge Source + AI by ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Group into 5-Record Model Calls": {
+      "main": [
+        [
+          {
+            "node": "AI Structure Station",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Structure Station": {
+      "main": [
+        [
+          {
+            "node": "Split Structured Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "xAI Model — attach credential here": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Structure Station",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Contract": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Structure Station",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Structured Batches": {
+      "main": [
+        [
+          {
+            "node": "Merge Source + AI by ID",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Source + AI by ID": {
+      "main": [
+        [
+          {
+            "node": "Assemble Structured Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Assemble Structured Record": {
+      "main": [
+        [
+          {
+            "node": "Route by Workstream",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Workstream": {
+      "main": [
+        [
+          {
+            "node": "POLICY — Operations SLA 24h",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "POLICY — Finance owner + evidence",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "POLICY — People owner + private channel",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "POLICY — Technology triage + incident link",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "POLICY — Operations SLA 24h": {
+      "main": [
+        [
+          {
+            "node": "Fan In — AI Workboard",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "POLICY — Finance owner + evidence": {
+      "main": [
+        [
+          {
+            "node": "Fan In — AI Workboard",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "POLICY — People owner + private channel": {
+      "main": [
+        [
+          {
+            "node": "Fan In — AI Workboard",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "POLICY — Technology triage + incident link": {
+      "main": [
+        [
+          {
+            "node": "Fan In — AI Workboard",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Fan In — AI Workboard": {
+      "main": [
+        [
+          {
+            "node": "Build AI Workboard rows",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Build Run Receipt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build AI Workboard rows": {
+      "main": [
+        [
+          {
+            "node": "Convert rows to workboard.xlsx",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Convert verifier mirror to CSV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert rows to workboard.xlsx": {
+      "main": [
+        [
+          {
+            "node": "Write workboard.xlsx — close Excel first",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert verifier mirror to CSV": {
+      "main": [
+        [
+          {
+            "node": "Write AI_workboard.csv",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Run Receipt": {
+      "main": [
+        [
+          {
+            "node": "Convert Run Receipt to JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert Run Receipt to JSON": {
+      "main": [
+        [
+          {
+            "node": "Write run_receipt.json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "70000000-0000-4000-8000-000000000001",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "id": "P7SpreadsheetControl01",
+  "tags": []
+}
