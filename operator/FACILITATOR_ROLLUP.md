@@ -63,7 +63,7 @@ Do not compute a median across a student's nine blocks and do not rank the cohor
 - Mean bars-met by block over the same range, read beside it
 - Share of rows carrying a named brief field
 - Which of the five brief fields the cohort names most often
-- P3 finding-defeat and terminal-rule pattern; P4 audit/cold-retrieval/verifier pattern; P5 external manifest drift and scope-escape evidence; P8 two-reviewer disagreement rate
+- P3 finding-defeat and terminal-rule pattern; P4 audit/cold-retrieval/verifier pattern; P5 staging-inventory drift, runtime-hash, and scope-escape evidence; P8 two-reviewer disagreement rate
 
 **On disagreement.** P3 has two verifiers whose only job is to defeat findings; read the dispositions and check that defeats cite a later authoritative source rather than a head count. P8 sends the same review pack through two engines; read its reviewer-disagreement rate beside the underlying pack. Near-zero is a prompt to inspect, not evidence of either cleanliness or failure by itself. P4 uses a cold retriever and a deterministic brain verifier for different jobs. P5 uses deterministic integrity receipts rather than a second model.
 

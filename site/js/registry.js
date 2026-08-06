@@ -204,7 +204,7 @@
         "mvp-modes", "mvp-rule", "mvp-contain", "p5-transfer"
       ],
       stretchIds: [],
-      url: "blocks/p5.html", meta: "OpenCode · quarantine · baseline · poisoned acceptance"
+      url: "blocks/p5.html", meta: "OpenCode · staged intake · triage gate · absence proof"
     },
     {
       code: "P6", name: "The watch officer", title: "The watch officer", day: "Thursday", slot: "AM",
@@ -264,7 +264,7 @@
     { phase: "Monday AM", title: "Install Clinic → First Light", codes: ["B0", "B1"] },
     { phase: "Monday PM", title: "Model economics → Daily Status Brief", codes: ["ME", "P1"] },
     { phase: "Tuesday", title: "Harness → Inbound → MCP → verdict → your own surface → running it without you", codes: ["HCP", "P2", "MCP1", "MCP2", "P3", "OSD", "PG"] },
-    { phase: "Wednesday", title: "Control flow → second brain → trusted knowledge", codes: ["LOOPS", "P4", "P5"] },
+    { phase: "Wednesday", title: "Control flow and second brain · standalone intake defense", codes: ["LOOPS", "P4", "P5"] },
     { phase: "Thursday", title: "Autonomy", codes: ["P6", "P7"] },
     { phase: "Friday", title: "Transfer", codes: ["P8"] }
   ];

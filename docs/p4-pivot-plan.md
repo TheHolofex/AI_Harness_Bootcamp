@@ -2,6 +2,8 @@
 ## Status
 **Conditional go.** Educational pivot approved. Integration design revised before build. Do not curate the large corpus until the Windows MCP/permissions spike and a 12-document vertical slice pass.
 
+> **P5 note (2026-08-05):** P5 is now a standalone exercise. Statements below that make P5 consume a P4 vault or baseline are preserved as design history, not current requirements.
+
 > **Current P4 setup:** The live vault is `%USERPROFILE%\Vaults\p4-vault`. The setup launcher copies vault content but excludes `.opencode` and `.obsidian`; it does not change Windows ACLs or folder attributes. Older `Documents\p4-vault` references below are design history.
 ## Problem
 P4 currently treats Obsidian as a **human viewer** on a folder Codex edits as normal files. The approved pivot is different: Obsidian is the **AI second brain**, the agent reaches it through **Obsidian Local REST API’s built-in MCP**, and the **only agent harness for P4 is OpenCode** — no Codex in this module.

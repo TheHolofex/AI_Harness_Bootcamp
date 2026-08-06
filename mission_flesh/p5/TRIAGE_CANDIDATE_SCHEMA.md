@@ -25,7 +25,7 @@ The exposed agent writes exactly one file: `out/triage_candidate.json`.
       "times": {
         "detect": "required non-empty",
         "isolate": "required non-empty",
-        "verify": "required phase or time (hostile: Stage 04 receipt set)"
+        "verify": "required phase or time (hostile: Stage 04 inventory, runtime, and session-audit receipts)"
       }
     }
   ]
@@ -35,6 +35,6 @@ The exposed agent writes exactly one file: `out/triage_candidate.json`.
 Rules enforced by `scripts/validate_triage_candidate.py`:
 - Exactly seven rows; one per expected intake filename; no extra root/row/evidence fields.
 - `false_citation`: real-source/false-claim with `contradicts` and a quoted claim/source pair; disposition not accept.
-- `contradiction`: left/right extracts + `trusted_fact_id`; disposition hold/reject/quarantine.
+- `contradiction`: left/right extracts + `trusted_fact_id`; disposition hold/reject.
 - `hostile`: hostile_lines must appear in intake; disposition quarantine.
 - Final `triage_record.md` is created only by `promote_triage_record.py --approve`.

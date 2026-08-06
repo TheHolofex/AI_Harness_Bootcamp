@@ -93,20 +93,20 @@ def render_md(data: dict) -> str:
         "",
         "| Control | What it controls | Evidence from this run | Residual risk |",
         "|---|---|---|---|",
-        "| Exact p5-staging project + launcher | reachable paths and tools | runtime config hash + resolved MCP list | operator could still run tools outside the launcher |",
+        "| Exact p5-staging project + launcher | reachable paths and tools | runtime config hash + resolved connector list | operator could still run tools outside the launcher |",
         "| Granular edit allowlist | agent write surface | only out/triage_candidate.json allowed | misconfigured OpenCode merge could widen writes |",
         "| Citation + contradiction checks | content quality | structured evidence blocks above | operator still owns each disposition |",
-        "| Deterministic baseline check | trusted-vault integrity | manifest before/after PASS | only paths in the P4 baseline are covered |",
+        "| Full-tree staging inventory | staged-input and reference-pack integrity | before/after inventory PASS | unchanged bytes do not establish truthful content |",
         "",
         "## Reusable intake rule",
         "",
         "I never accept intake into trusted knowledge until it has a validated triage row "
         "promoted after my single approval gate.",
         "",
-        "## After sanctioned writes",
+        "## After promotion",
         "",
-        "A separate retrieval check is required after any approved write into the brain. "
-        "Baseline PASS means unchanged, not true.",
+        "A separate content check is required after any approved promotion from candidate to review record. "
+        "Inventory PASS means unchanged, not true.",
         "",
     ]
     return "\n".join(lines) + "\n"

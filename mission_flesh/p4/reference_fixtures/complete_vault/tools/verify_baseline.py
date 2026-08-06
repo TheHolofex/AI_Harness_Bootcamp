@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Freeze or check a vault tree by path, size, and sha256 (P5 integrity)."""
+"""Freeze or check a P4 vault tree by path, size, and sha256."""
 
 from __future__ import annotations
 

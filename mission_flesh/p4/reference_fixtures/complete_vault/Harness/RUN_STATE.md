@@ -2,4 +2,4 @@
 
 - Phase: COMPLETE
 - Status: SUCCESS
-- Next permitted action: freeze baseline for P5
+- Next permitted action: freeze baseline for independent integrity checks

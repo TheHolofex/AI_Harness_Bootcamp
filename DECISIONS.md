@@ -1,7 +1,7 @@
 # DECISIONS — P4 Second brain pivot
 
-1. **Root brief name for P5:** `Mission_Brief.md` (not `Morning_Brief.md`). Keeps a human-facing brief artifact; retargeted P5 Stage 01 and hostile intake accordingly.
-2. **Verifier split:** `verify_brain.py` (semantic) + `verify_baseline.py` (path/hash) + `verify_vault.py` shim preserving P5’s `py -3 verify_vault.py $vault --check-manifest …` invocation.
+1. **Root brief name:** `Mission_Brief.md` (not `Morning_Brief.md`) keeps a human-facing P4 brief artifact.
+2. **Verifier split:** `verify_brain.py` checks semantics, `verify_baseline.py` checks path/hash state, and `verify_vault.py` remains the P4 entrypoint.
 3. **Baseline excludes `Harness/BASELINE_MANIFEST.json`** from the hashed file set so write-then-check is stable.
 4. **Corpus scale:** 464 documents (420 synthesized + 44 fetched binaries/text). Assessed slice fixed at 96 with four worker partitions. Prefer real fetches first; synthesized docs carry canonical gradeable facts.
 5. **Canonical facts locked** in `raw_corpus/CANONICAL_FACTS.json` (73.6 st, 40 mph rail, Kaohsiung preferred, etc.). Planted contradiction: thin notices claim 45 mph.

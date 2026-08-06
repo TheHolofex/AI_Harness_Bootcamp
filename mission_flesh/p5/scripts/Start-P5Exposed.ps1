@@ -3,7 +3,7 @@
   Prepare or launch the deny-by-default P5 exposed OpenCode project.
 .DESCRIPTION
   Resolves the pinned OpenCode config, force-disables every inherited MCP
-  server, proves the exact edit allowlist, strips Obsidian credentials, and
+  server, proves the exact edit allowlist, clears inherited inline config, and
   writes a sanitized boundary inventory. Any inconclusive check stops launch.
 #>
 param(
@@ -50,17 +50,9 @@ if (-not (Test-Path -LiteralPath $builder -PathType Leaf)) {
   throw "Runtime config builder missing: $builder"
 }
 
-# The child inherits this cleaned environment. Remove inline config supplied by
-# the parent; a verified inline config is installed after MCP discovery.
-foreach ($key in @(
-  "OBSIDIAN_API_KEY",
-  "OBSIDIAN_REST_API_KEY",
-  "LOCAL_REST_API_KEY",
-  "OBSIDIAN_API_KEY_PATH",
-  "OPENCODE_CONFIG_CONTENT"
-)) {
-  Remove-Item "Env:$key" -ErrorAction SilentlyContinue
-}
+# Remove inline config supplied by the parent. A verified inline config is
+# installed after MCP discovery.
+Remove-Item "Env:OPENCODE_CONFIG_CONTENT" -ErrorAction SilentlyContinue
 
 function Invoke-PinnedOpenCode {
   param([string[]]$OpenCodeArgs)
@@ -134,7 +126,7 @@ if (@(Compare-Object $expectedReadAllows $actualReadAllows).Count -gt 0) {
   throw "Resolved read allowlist contains a missing or unexpected path."
 }
 foreach ($denyName in @(
-  "bash", "task", "skill", "webfetch", "websearch",
+  "glob", "grep", "list", "bash", "task", "skill", "webfetch", "websearch",
   "external_directory", "doom_loop"
 )) {
   if ($resolved.permission.PSObject.Properties[$denyName].Value -ne "deny") {
@@ -142,7 +134,7 @@ foreach ($denyName in @(
   }
 }
 foreach ($property in $resolved.permission.PSObject.Properties) {
-  if ($property.Value -eq "allow" -and $property.Name -notin @("glob", "grep", "list")) {
+  if ($property.Value -eq "allow") {
     throw "Resolved config contains unexpected top-level allow: $($property.Name)"
   }
 }
@@ -171,7 +163,7 @@ $callableTools = @(
     ForEach-Object { $_.Name } |
     Sort-Object -Unique
 )
-$allowedCallable = @("read", "glob", "grep", "list", "edit", "write")
+$allowedCallable = @("read", "edit", "write")
 $unexpectedCallable = @($callableTools | Where-Object { $_ -notin $allowedCallable })
 if ($unexpectedCallable.Count -gt 0) {
   throw "Resolved agent has a callable tool outside the allowlist: $($unexpectedCallable -join ', ')"
@@ -192,15 +184,14 @@ $inventory = [ordered]@{
     "EXPECTED_INTAKE_FILES.json", "TRIAGE_CANDIDATE_SCHEMA.md"
   )
   write_allowlist = @($CandidatePath)
-  permitted_builtin_permissions = @("read", "glob", "grep", "list", "edit")
+  permitted_builtin_permissions = @("read", "edit")
   callable_builtin_tools = @($callableTools)
   denied_permissions = @(
-    "*", "bash", "task", "skill", "webfetch", "websearch",
+    "*", "glob", "grep", "list", "bash", "task", "skill", "webfetch", "websearch",
     "external_directory", "doom_loop"
   )
   mcp_servers = @($resolvedMcp)
   all_mcp_disabled = $true
-  obsidian_key_present = $false
   auto_approval = $false
 }
 $inventoryPath = Join-Path $runtimeDir "tool_inventory.json"
@@ -211,7 +202,6 @@ Write-Host "PASS project root: $StagingRoot"
 Write-Host "PASS edit allowlist: $CandidatePath only"
 Write-Host "PASS callable built-ins: $($callableTools -join ', ')"
 Write-Host "PASS MCP: $($resolvedMcp.Count) inherited server(s), all disabled"
-Write-Host "PASS Obsidian API key variables stripped"
 Write-Host "Runtime config SHA256: $hash"
 
 if ($PrepareOnly) {

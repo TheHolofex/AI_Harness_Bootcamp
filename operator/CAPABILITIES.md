@@ -18,7 +18,7 @@ Each project below states what you can do at the end of it, what you learn to do
 | 4 | Tell when work needs more than one agent, and direct how several answers become one | P3 |
 | 5 | Build the surface other people's agents connect to, and label what you cannot vouch for | OSD |
 | 6 | Build a durable second brain through an MCP write boundary and prove cold retrieval | P4 |
-| 7 | Take in untrusted material and show hostile content changed nothing | P5 |
+| 7 | Triage untrusted material and prove hostile content caused no forbidden effect | P5 |
 | 8 | Let work run without you, under limits that are actually enforced | P6 |
 | 9 | Choose between an adaptive loop and a fixed line, and keep judgment on exceptions | P7 |
 | 10 | Carry the method to a different engine under a policy you wrote first | P8 |
@@ -251,7 +251,7 @@ The specimen was run before it was read; everything became a tool; the server wa
 | **2. Structure a second brain for retrieval, not for dumping Markdown.** | Retrieval design | P3 provenance | P3 kept trails in a run pack. This designs hubs, a route spine, and note schema so a later session can answer without the warehouse. | Cold answers wikilink notes. Hubs are not empty. Multi-mode and multi-factor coverage is visible in the graph. |
 | **3. Merge parallel research under a single writer contract.** | Fan-in with authority | PG unattended workers | PG combined scores. This merges cited logistics findings into one brain with director-only write authority. | Incomplete citations are rejected. Workers never hold vault write. One note path per kept object. |
 | **4. Keep threat material defensive.** | Protection framing | OSD source labelling | Open interference classes become protect / detect / recover requirements, not attack geometry. | Threat notes end in defensive implications. Forbidden offensive tradecraft language is absent. |
-| **5. Prove completion without the builder's word.** | Separating the checker | P3 measures | `verify_brain` checks schema, coverage, receipts, and retrieval artifacts. `verify_baseline` freezes path hashes for P5. | Untouched course tools return PASS. External `P4_BASELINE_[DATE].json` exists. Mutation after freeze fails the check. |
+| **5. Prove completion without the builder's word.** | Separating the checker | P3 measures | `verify_brain` checks schema, coverage, receipts, and retrieval artifacts. `verify_baseline` freezes path hashes for an independent re-check. | Untouched course tools return PASS. External `P4_BASELINE_[DATE].json` exists. Mutation after freeze fails the check. |
 
 ### What the exercise requires
 
@@ -283,7 +283,9 @@ Workers still hold vault write; notes lack sha256/excerpts; cold answers re-open
 
 ## P5 — Poisoned Corpus
 
-> **After this project:** You can take in material from sources you do not control, catch what is wrong with it by a check rather than a feeling, and show that hostile content changed nothing you rely on.
+> **After this project:** You can take in material from sources you do not control, catch what is wrong with it by a check rather than a feeling, and prove that a hostile instruction caused no forbidden effect on the checked P5 files, outputs, tools, or paths.
+
+P5 is self-contained: its course pack supplies the trusted reference pack, staged intake, and local workspace.
 
 ### What you learn to do
 
@@ -291,8 +293,8 @@ Workers still hold vault write; notes lack sha256/excerpts; cold answers re-open
 |---|---|---|---|---|
 | **1. Decide what "trusted" means before anything arrives.** | Deciding what to trust | B1's reality checking | B1 checked one result after it came back. This sets a standing rule for what is allowed in at all, written before anything hostile exists to test it. | You wrote the rule when nothing was at stake and it still reads sensibly now that something is. You are not making the call item by item under pressure, and it shows in how little the pressure changes you. |
 | **2. Catch a false citation with a check rather than a hunch.** | Opening the cited source | P1's claim tracing | P1's audit caught honest mistakes. This one faces a real source made to vouch for a materially false claim. | A citation that looks right gets opened anyway. You have stopped treating plausibility as a reason to skip the check, so the false claim is caught by a step you always run rather than a suspicion you happened to have. |
-| **3. Catch material that contradicts what you already hold.** | Spotting contradictions | P1's change reading | P1 read what moved between two runs of your own work. This reads new material against what you already hold, and catches what cannot both be true. | New material meets what you already hold instead of being read on its own. The clash surfaces because the system compares, not because you remembered the earlier record at the right moment. |
-| **4. Prove that a hostile instruction had no effect.** | Proving nothing happened | P1's failure surfacing | P1 made a failure show up. This shows an event did not happen, which is harder — having nothing to point at looks the same as never having looked. | You go looking in the places the instruction could have reached before knowing whether anything is there. A clean result does not satisfy you until you have checked the places that would have looked clean either way. Certainty arrives more slowly than you expect it to. |
+| **3. Catch material that contradicts what you already hold.** | Spotting contradictions | P1's change reading | P1 read what moved between two runs of your own work. This compares each staged item with a supplied trusted reference record and catches fields that cannot both be true. | New material meets the trusted reference pack instead of being read on its own. The clash surfaces because the system compares, not because you remembered the earlier record at the right moment. |
+| **4. Prove that the named hostile effects are absent.** | Proving nothing happened | P1's failure surfacing | P1 made a failure show up. This shows an event did not happen, which is harder — having nothing to point at looks the same as never having looked. | You compare the before/after inventory for the reference pack and staged inputs, confirm the runtime-config hash, then inspect the exported session for forbidden output, tool use, or path use. |
 | **5. Tell what a permission can enforce from what only judgment can decide.** | Limits of permission | P2's seeing what is loaded | P2 told you what a setup could reach. This draws the harder line: what a permission can stop, and what it can never settle. | You are precise about what a permission bought you and unbothered that it bought so little. Nobody hears you say the material is sound because the access was narrow. |
 
 ### What the exercise requires
@@ -300,12 +302,11 @@ Workers still hold vault write; notes lack sha256/excerpts; cold answers re-open
 1. A LIVE brief defining the intake boundary and what "trusted" means, written before the poison arrives.
 2. A **false citation** caught with mechanical or procedural evidence — a flag, a failed check, or a quarantine path.
 3. A **field contradiction** caught the same way, not by noticing.
-4. A **hostile instruction** caught, with **absence of effect** proven in the trusted vault, notes, and outputs. Show where it would have landed and that it did not.
+4. A **hostile instruction** caught, with **absence of effect** proven against the P5 trusted reference pack, staged inputs, and generated outputs. Show where each forbidden effect would have appeared and that it did not.
 5. All three logged in time order: detect, isolate, verify clean.
-6. A control map naming the exact `p5-staging` project scope, the approval gate, content checks, trusted external before-and-after manifest receipts, and residual risk, each separately. No permission control is credited with deciding whether a claim is true.
+6. A control map naming the exact `p5-staging` project scope, the approval gate from triage candidate to promoted triage record, content checks, before/after staging inventory, runtime-config hash, exported-session audit, and residual risk, each separately. No permission control is credited with deciding whether a claim is true.
 7. A written rule you will reuse: "I never accept intake into trusted knowledge until ___."
-8. A **poisoned-acceptance** cycle on one clean-looking wrong item: sanctioned write into the brain, fresh-session cited retrieval of the wrong answer while a temporary poisoned-state baseline still PASSes, then repair through the same sanctioned path and restore the official baseline. Baseline PASS means unchanged, not true.
-9. A log verdict that is a containment proof plus the poisoned-acceptance receipts. Anything less has not landed.
+8. A log verdict that ties each containment claim to the before/after staging inventory, runtime-config hash, or exported-session audit. Anything less has not landed.
 
 ### Stretch
 

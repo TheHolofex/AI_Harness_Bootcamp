@@ -43,4 +43,4 @@ Items that need hardware or live apps not available in this authoring environmen
 - `verify_baseline` / `verify_vault --check-manifest` PASS then HOLD after mutation
 - `python3 -m unittest mission_flesh.p4.tests.test_verify_brain`
 - Registry check IDs match `p4.html`
-- P5 points at `Mission_Brief.md` and still calls `verify_vault.py --check-manifest`
+- P5 is standalone: its active page and pack consume no P4 artifact or service, and its standalone contract test passes

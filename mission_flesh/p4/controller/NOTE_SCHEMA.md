@@ -9,13 +9,13 @@
 
 ## Tools
 - `tools/verify_brain.py` — semantic completion of the second brain and source lineage against `raw_corpus/MANIFEST.json`
-- `tools/verify_baseline.py` — path/hash freeze and check (P5 integrity)
-- `tools/verify_vault.py` — thin shim: default = brain verify; `--check-manifest` / `--write-manifest` = baseline (P5-compatible)
+- `tools/verify_baseline.py` — path/hash freeze and independent integrity check
+- `tools/verify_vault.py` — thin shim: default = brain verify; `--check-manifest` / `--write-manifest` = baseline
 
 ## Required root artifacts (complete vault)
 - `AGENTS.md`
 - `MOC.md`
-- `Mission_Brief.md` — operator-facing brief drawn from the brain (P5 names this file)
+- `Mission_Brief.md` — operator-facing brief drawn from the brain
 - `Audit.md` — human audit sample with at least one disposition
 - `Retrieval/Answers.md` — cold-session answers with wikilinks into notes
 - `Evidence/PERMISSIONS.json` — director, worker, and retriever permission snapshot
@@ -70,7 +70,7 @@ The receipt check validates the recorded event structure. The Windows spike must
 - The union of the four partitions equals `source_ids` in `ASSESSED_SLICE.json`.
 - The corpus retrieval date is the fixed course snapshot date. Rebuilding the warehouse must not use the current date.
 
-## Baseline manifest schema (v1, P5-compatible)
+## Baseline manifest schema (v1)
 ```json
 {
   "schema_version": 1,

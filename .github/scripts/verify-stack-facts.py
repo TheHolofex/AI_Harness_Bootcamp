@@ -443,10 +443,10 @@ def check_p4_agent_loop_surface(report: Report) -> None:
         "P4 scoped handoff": (p4, "HANDOFF_RECEIPT.md"),
         "P4 manifest": (p4, "--write-manifest"),
         "P4 trust-anchor overwrite guard": (p4, "never overwrite a trust anchor"),
-        "P5 pre/post manifest check": (p5, "--check-manifest"),
-        "P5 external manifest anchor": (p5, "operator\\evidence\\P4_BASELINE_[TODAY].json"),
-        "P5 isolated project": (p5, "choose exactly <code>Documents\\p5-staging</code>"),
-        "P5 recovery verified before replacement": (p5, "Recovery copy failed the trusted baseline"),
+        "P5 frozen before inventory": (p5, "STAGING_INV_BEFORE_[TODAY].json"),
+        "P5 exact candidate output": (p5, "out\\triage_candidate.json"),
+        "P5 isolated project": (p5, "Documents\\p5-staging"),
+        "P5 role-aware session audit": (p5, "SESSION_AUDIT_[TODAY].json"),
         "P5 payload-free handoff": (p5, "P5_HANDOFF_[TODAY].md"),
     }
     required_files = [
@@ -464,8 +464,13 @@ def check_p4_agent_loop_surface(report: Report) -> None:
     missing = [label for label, (surface, token) in expected.items() if token not in surface]
     forbidden = {
         "P4 obsolete cold-start demo": (p4, "P4 — Cold Start"),
+        "P4-to-P5 artifact dependency": (p4.lower(), "p5"),
         "P5 obsolete model diff baseline": (p5, "p4-vault_baseline"),
         "P5 broad exposed project": (p5, "choose your <code>Documents</code> folder"),
+        "P5 P4 dependency": (p5.lower(), "p4-vault"),
+        "P5 Obsidian dependency": (p5.lower(), "obsidian"),
+        "P5 second-brain dependency": (p5.lower(), "second brain"),
+        "P5 poisoned-acceptance dependency": (p5.lower(), "poisoned acceptance"),
     }
     missing.extend(
         f"forbidden: {label}" for label, (surface, token) in forbidden.items() if token in surface
@@ -482,7 +487,7 @@ def check_p4_agent_loop_surface(report: Report) -> None:
         report.add(
             "site.p4_personal_harness",
             True,
-            "deck, route, goal, skill, raw-source controls, bound evaluation, real resume, verifier, guarded manifest, recovery, and scoped handoff present",
+            "P4 harness controls and standalone P5 quarantine, validation, inventory, session-audit, and handoff surfaces present",
             hard=True,
         )
 

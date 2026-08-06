@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""P4 vault entrypoint: brain verify by default; baseline freeze/check for P5."""
+"""P4 vault entrypoint: brain verify by default; optional baseline freeze/check."""
 
 from __future__ import annotations
 

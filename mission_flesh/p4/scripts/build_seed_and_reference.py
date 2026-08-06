@@ -812,7 +812,7 @@ One repair cycle: removed any implied targeting language from threat notes befor
 
 - Phase: COMPLETE
 - Status: SUCCESS
-- Next permitted action: freeze baseline for P5
+- Next permitted action: freeze baseline for independent integrity checks
 """,
     )
     w(

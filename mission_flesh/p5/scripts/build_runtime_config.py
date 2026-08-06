@@ -30,9 +30,9 @@ def build_config(disabled_mcp: list[str]) -> dict[str, Any]:
         "permission": {
             "*": "deny",
             "read": read,
-            "glob": "allow",
-            "grep": "allow",
-            "list": "allow",
+            "glob": "deny",
+            "grep": "deny",
+            "list": "deny",
             "edit": edit,
             "bash": "deny",
             "task": "deny",
