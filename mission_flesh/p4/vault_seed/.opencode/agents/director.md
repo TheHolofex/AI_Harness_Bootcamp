@@ -7,7 +7,9 @@ permission:
   read: allow
   glob: allow
   grep: allow
-  edit: allow
+  edit:
+    "*": deny
+    "operator/evidence/**": allow
   task:
     "*": deny
     "worker_*": allow

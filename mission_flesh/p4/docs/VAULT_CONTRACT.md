@@ -1,7 +1,7 @@
 # P4 Second Brain — vault contract
 
 ## Paths
-- Trusted vault (student): `%USERPROFILE%\Documents\p4-vault`
+- Trusted vault (student): `%USERPROFILE%\Vaults\p4-vault`
 - Course seed: `mission_flesh/p4/vault_seed/`
 - Raw warehouse: `mission_flesh/p4/raw_corpus/`
 - Assessed slice list: `mission_flesh/p4/raw_corpus/ASSESSED_SLICE.json`

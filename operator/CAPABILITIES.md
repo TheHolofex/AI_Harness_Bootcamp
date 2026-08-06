@@ -255,7 +255,7 @@ The specimen was run before it was read; everything became a tool; the server wa
 
 ### What the exercise requires
 
-1. Vault at `Documents\p4-vault` seeded from course pack; Obsidian Local REST API MCP bound; API key via environment variable; vault outside the OpenCode project.
+1. Vault at `%USERPROFILE%\Vaults\p4-vault` created by the P4 setup launcher; only vault content is seeded. Obsidian Local REST API MCP is bound, the API key comes from an environment variable, and the vault stays outside the OpenCode project and managed Documents folder.
 2. Director permissions: MCP read allow and write ask. Delete, move, copy, active-file, command, and vault filesystem access deny. Researchers: MCP, web, shell, and filesystem write deny. Raw corpus read only.
 3. Workers process `raw_corpus/ASSESSED_SLICE.json` partitions only; bundles carry full citation schema (source_id, raw_path, sha256, excerpt, claim, tags).
 4. Director MCP-merges ≥8 content notes plus hubs/spine; threat notes use defensive language; `Evidence/MCP_RECEIPTS.jsonl` and `Evidence/PERMISSIONS.json` saved.

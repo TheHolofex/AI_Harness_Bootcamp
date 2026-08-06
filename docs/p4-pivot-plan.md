@@ -1,6 +1,8 @@
 # P4 pivot: Second brain via Obsidian MCP (OpenCode only)
 ## Status
 **Conditional go.** Educational pivot approved. Integration design revised before build. Do not curate the large corpus until the Windows MCP/permissions spike and a 12-document vertical slice pass.
+
+> **Current P4 setup:** The live vault is `%USERPROFILE%\Vaults\p4-vault`. The setup launcher copies vault content but excludes `.opencode` and `.obsidian`; it does not change Windows ACLs or folder attributes. Older `Documents\p4-vault` references below are design history.
 ## Problem
 P4 currently treats Obsidian as a **human viewer** on a folder Codex edits as normal files. The approved pivot is different: Obsidian is the **AI second brain**, the agent reaches it through **Obsidian Local REST API’s built-in MCP**, and the **only agent harness for P4 is OpenCode** — no Codex in this module.
 Title **Second brain** is accurate. New capability is **not** “parallel OpenCode on a big local corpus” (P3 + PG already teach that). New capability is: **MCP as the only sanctioned write path into a persistent store**, plus **structuring that store so a cold session answers from it**.

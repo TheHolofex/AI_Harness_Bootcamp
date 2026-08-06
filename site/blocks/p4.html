@@ -29,7 +29,7 @@
       <div><span class="k">Day</span><span class="v">Wednesday AM</span></div>
       <div><span class="k">Block</span><span class="v">P4</span></div>
       <div><span class="k">Time</span><span class="v">~2 hr 45 min</span></div>
-      <div><span class="k">Tools</span><span class="v">OpenCode (xAI) · Obsidian + Local REST API MCP · PowerShell · Python verifier</span></div>
+      <div><span class="k">Tools</span><span class="v">OpenCode (xAI) · Obsidian + Local REST API with MCP · PowerShell · Python verifier</span></div>
       <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p4">0 / 12 · 0%</span></div>
     </div>
     <hr class="rule-accent" />
@@ -59,7 +59,7 @@
 
           <h3>What you leave with</h3>
           <ul>
-            <li>An Obsidian vault at <code>Documents\p4-vault</code> with hubs, a route spine, and cited content notes</li>
+            <li>An Obsidian vault at <code>%USERPROFILE%\Vaults\p4-vault</code> with hubs, a route spine, and cited content notes</li>
             <li>Recorded evidence of director MCP writes, including receipts and a permission snapshot</li>
             <li>Cold-session answers to four fixed queries with wikilinks into the vault</li>
             <li>A human audit sample and one repair cycle</li>
@@ -71,7 +71,7 @@
             <li>PG is complete. Parallel OpenCode workers and per-agent permissions are assumed</li>
             <li>P3 is complete. Cited work on a large local corpus is assumed</li>
             <li>OpenCode reaches your xAI key. <code>$env:HB_XAI_MODEL</code> is set</li>
-            <li>Obsidian is installed. The Local REST API plugin is available</li>
+            <li>Obsidian is installed. Stage 01 installs and enables <strong>Local REST API with MCP</strong> in the <code>p4-vault</code> settings</li>
             <li>The course repo is at <code>Documents\HarnessBootcamp\AI_Harness_Bootcamp</code></li>
             <li>The raw corpus is under <code>mission_flesh\p4\raw_corpus\</code> with <code>MANIFEST.json</code> and <code>ASSESSED_SLICE.json</code></li>
           </ul>
@@ -86,8 +86,12 @@
             <code>raw_corpus</code> is the warehouse. The Obsidian vault is the brain. This run turns the assessed slice into the brain through MCP.
           </div>
           <div class="callout">
-            <strong>Vault outside the project</strong>
-            OpenCode opens the course repo. The vault lives at <code>Documents\p4-vault</code>. That split is one boundary layer.
+            <strong>Two roots, two owners</strong>
+            OpenCode opens the course repo. Obsidian opens <code>%USERPROFILE%\Vaults\p4-vault</code>. Never open the vault as an OpenCode project.
+          </div>
+          <div class="callout">
+            <strong>Do not lock the Windows folder</strong>
+            OpenCode permissions control agent tools. They do not change Windows permissions. Do not use <code>icacls</code>, <code>attrib</code>, administrator PowerShell, ownership changes, or a read-only folder.
           </div>
           <div class="callout">
             <strong>No Codex in this block</strong>
@@ -133,69 +137,116 @@
         <h2>Run of exercise</h2>
         <p class="section-lede">Work the stages in order. Dated names use today as <code>YYYY-MM-DD</code>.</p>
 
-        <h3>Stage 01 · Open the vault outside the project</h3>
-        <p>Create the durable brain folder. Open it in Obsidian. Keep it outside the OpenCode project root.</p>
-        <div class="do-step">
-          <p class="do-label">In <strong>PowerShell</strong>, seed the vault from the course pack:</p>
-<pre><code>$courseRepo = "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
-$vault = "$env:USERPROFILE\Documents\p4-vault"
-if (Test-Path $vault) { throw "p4-vault already exists. Rename or remove it before seeding." }
-Copy-Item -Recurse "$courseRepo\mission_flesh\p4\vault_seed" $vault
-# Drop example-only evidence stubs. You will write real evidence later.
-Remove-Item "$vault\Evidence\*.example.json","$vault\Evidence\*.example.jsonl" -ErrorAction SilentlyContinue
-Get-ChildItem $vault | Select-Object Name
-</code></pre>
-          <p><strong>What you should see.</strong> The list includes <code>AGENTS.md</code>, <code>MOC.md</code>, <code>Notes</code>, <code>Evidence</code>, <code>Harness</code>, and <code>tools</code>.</p>
+        <h3>Stage 01 · Create one writable vault and turn on its MCP server</h3>
+        <p>This stage takes about 10 minutes. The setup command creates a local vault at <code>%USERPROFILE%\Vaults\p4-vault</code>, outside the course repo and outside the commonly synced Documents folder. It copies vault content only, leaves out OpenCode policy and old Obsidian settings, and checks that your normal Windows account can write there.</p>
+        <div class="callout">
+          <strong>Before you set up</strong>
+          Close any earlier P4 OpenCode session. Close other Obsidian vault windows that run Local REST API with MCP; two vaults can compete for the same local port. If an old <code>p4-vault</code> exists, close both apps and archive that folder before you continue. Do not copy over it.
         </div>
         <div class="do-step">
-          <p class="do-label">Open Obsidian on <code>Documents\p4-vault</code>. Enable <strong>Local REST API</strong> and its HTTP server. Keep this PowerShell window open:</p>
-<pre><code>$env:OBSIDIAN_REST_API_KEY = "{{OBSIDIAN_REST_API_KEY}}"  # paste your key
-if ([string]::IsNullOrWhiteSpace($env:OBSIDIAN_REST_API_KEY) -or $env:OBSIDIAN_REST_API_KEY -eq "{{OBSIDIAN_REST_API_KEY}}") { throw "Paste the Obsidian API key before you continue." }
+          <p class="do-label">In normal, non-administrator <strong>PowerShell</strong>, run the one-time setup:</p>
+<pre><code>&amp; "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p4\scripts\Start-P4.ps1" Setup
+</code></pre>
+          <p><strong>What you should see.</strong> <code>PASS P4 setup</code>, followed by the Obsidian vault and OpenCode project paths. The final line tells you to open the existing folder as a vault. Setup stops instead of merging when <code>p4-vault</code> already exists.</p>
+        </div>
+        <div class="do-step">
+          <p class="do-label">Open the exact existing folder in <strong>Obsidian</strong>, then install and enable <strong>Local REST API with MCP</strong>:</p>
+          <ul class="do-clicks">
+            <li>Open <strong>Manage vaults</strong>, then choose <strong>Open folder as vault</strong></li>
+            <li>Select <code>C:\Users\&lt;your-name&gt;\Vaults\p4-vault</code> itself. Do not select its <code>Vaults</code> parent and do not choose <strong>Create new vault</strong></li>
+            <li>Confirm <code>MOC.md</code> appears directly at the vault root. There must not be a nested <code>p4-vault</code> or <code>vault_seed</code> folder</li>
+            <li>Click the <strong>Settings</strong> gear in the lower-left corner, then select <strong>Community plugins</strong></li>
+            <li>Confirm <strong>Restricted mode</strong> is off. In the final state, the button says <strong>Turn on and reload</strong>; that button would turn Restricted mode back on</li>
+            <li>If the plugin is not already installed, click <strong>Browse</strong>, search for <code>Local REST API with MCP</code>, and select the plugin by <strong>Adam Coddington</strong></li>
+            <li>Click <strong>Install</strong>, then <strong>Enable</strong></li>
+            <li>Under <strong>Installed plugins</strong>, confirm the switch beside <strong>Local REST API with MCP</strong> is on</li>
+          </ul>
+          <p>The plugin is enabled per vault. Seeing it in another vault does not enable it for <code>p4-vault</code>. The setup command does not copy <code>.obsidian</code>, so this vault gets fresh settings and a fresh key.</p>
+          <p>These captures use Obsidian 1.13.4 and Local REST API with MCP 5.1.0. Windows uses the same settings labels; its theme and spacing may differ.</p>
+        </div>
+        <figure class="section-diagram settings-screenshot">
+          <a href="../assets/blocks/p4/obsidian-plugin-enabled.png" target="_blank" rel="noopener"><img src="../assets/blocks/p4/obsidian-plugin-enabled.png" alt="Obsidian Community plugins settings with Restricted mode off and Local REST API with MCP version 5.1.0 installed and enabled; the plugin toggle is on." width="1800" height="1340" loading="lazy" decoding="async" /></a>
+          <figcaption>Required end state: Restricted mode is off and Local REST API with MCP is enabled for p4-vault. <a href="../assets/blocks/p4/obsidian-plugin-enabled.png" target="_blank" rel="noopener">Open full-size screenshot</a>.</figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Still in <strong>Obsidian Settings</strong>, turn on the HTTP server:</p>
+          <ul class="do-clicks">
+            <li>Select <strong>Local REST API with MCP</strong> under <strong>Community plugins</strong> in the left sidebar</li>
+            <li>Under <strong>Settings</strong>, turn on <strong>Enable non-encrypted (HTTP) server</strong></li>
+            <li>Leave the ports at their defaults. Do not change <strong>Advanced settings</strong></li>
+            <li>At the top of the page, confirm a green check appears beside <strong>Non-encrypted (HTTP) server</strong> and the URL is exactly <code>http://127.0.0.1:27123/</code></li>
+          </ul>
+          <p>This unencrypted endpoint is acceptable only because it is bound to this computer&#x27;s loopback address. Do not change the binding host or expose port <code>27123</code> to a network.</p>
+        </div>
+        <figure class="section-diagram settings-screenshot">
+          <a href="../assets/blocks/p4/obsidian-http-server-enabled.png" target="_blank" rel="noopener"><img src="../assets/blocks/p4/obsidian-http-server-enabled.png" alt="Local REST API with MCP settings showing a green check for the HTTP server at http://127.0.0.1:27123 and the Enable non-encrypted HTTP server toggle switched on." width="1800" height="1340" loading="lazy" decoding="async" /></a>
+          <figcaption>Required HTTP setting: the toggle is on and the 127.0.0.1:27123 status row has a green check. <a href="../assets/blocks/p4/obsidian-http-server-enabled.png" target="_blank" rel="noopener">Open full-size screenshot</a>.</figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Open the plugin&#x27;s <strong>How to access via MCP</strong> page and copy the key:</p>
+          <ul class="do-clicks">
+            <li>Click <strong>How to access via MCP</strong></li>
+            <li>Confirm a green check appears beside <strong>Non-encrypted (HTTP) MCP endpoint</strong> and the URL is exactly <code>http://127.0.0.1:27123/mcp/</code></li>
+            <li>Under <strong>Some tools ask for the API key on its own instead</strong>, click the copy icon beside the key</li>
+            <li>Do not copy the value that begins with <code>Bearer</code>. The course config adds that prefix for you</li>
+          </ul>
+          <p>The screenshot uses a fake key. Keep your real key out of course files, screenshots, chat, and Git.</p>
+        </div>
+        <figure class="section-diagram settings-screenshot">
+          <a href="../assets/blocks/p4/obsidian-mcp-endpoint.png" target="_blank" rel="noopener"><img src="../assets/blocks/p4/obsidian-mcp-endpoint.png" alt="Local REST API with MCP access page showing a green check for the HTTP MCP endpoint at http://127.0.0.1:27123/mcp/ and a fake standalone API key with a copy button." width="1800" height="1340" loading="lazy" decoding="async" /></a>
+          <figcaption>Copy the standalone API key, not the Bearer value. The key shown here is fake. <a href="../assets/blocks/p4/obsidian-mcp-endpoint.png" target="_blank" rel="noopener">Open full-size screenshot</a>.</figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Return to the same <strong>PowerShell</strong> window. Personalize and run this one command first:</p>
+          <div class="callout">
+            <strong>Replace this value before you run the command</strong>
+            Replace <code>PASTE_YOUR_STANDALONE_OBSIDIAN_API_KEY_HERE</code> with the standalone key you copied from Obsidian. Keep the quotation marks. Do not add <code>Bearer</code>.
+          </div>
+<pre><code>$env:OBSIDIAN_REST_API_KEY = "PASTE_YOUR_STANDALONE_OBSIDIAN_API_KEY_HERE"
+</code></pre>
+          <p>This is the only PowerShell block in Stage 01 that you edit. Do not continue while the placeholder text is still present.</p>
+        </div>
+        <div class="do-step">
+          <p class="do-label">After you set the key, copy and paste this verification block <strong>without changing it</strong>:</p>
+<pre><code>if ([string]::IsNullOrWhiteSpace($env:OBSIDIAN_REST_API_KEY)) { throw "The Obsidian API key is empty." }
+if ($env:OBSIDIAN_REST_API_KEY -eq "PASTE_YOUR_STANDALONE_OBSIDIAN_API_KEY_HERE") { throw "Replace the API-key placeholder before you continue." }
+if ($env:OBSIDIAN_REST_API_KEY -match '^Bearer\s') { throw "Use the standalone API key without the Bearer prefix." }
 $mcpUrl = "http://127.0.0.1:27123/mcp/"
 Invoke-RestMethod -Uri "http://127.0.0.1:27123/" | Format-List
+$headers = @{ Authorization = "Bearer $env:OBSIDIAN_REST_API_KEY" }
+$moc = [string](Invoke-RestMethod -Method Get -Uri "http://127.0.0.1:27123/vault/MOC.md" -Headers $headers)
+if (-not $moc.Contains("# Map of contents") -or -not $moc.Contains("[[Notes/Modes]]") -or -not $moc.Contains("[[Notes/Route/Spine]]")) { throw "Port 27123 is serving the wrong Obsidian vault." }
+Write-Host "PASS active vault: $env:USERPROFILE\Vaults\p4-vault"
+Write-Host "OpenCode MCP endpoint: $mcpUrl"
 </code></pre>
-          <p><strong>What you should see.</strong> The server status returns without an error. Obsidian shows <code>p4-vault</code> as the open vault. Keep the API key in this PowerShell process only.</p>
+          <p><strong>What you should see.</strong> The server status returns without a red error, then PowerShell prints <code>PASS active vault</code> and the MCP endpoint. The authenticated <code>MOC.md</code> read proves that port <code>27123</code> belongs to this P4 vault, not another open Obsidian vault.</p>
         </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
             <label class="check-label">
               <input type="checkbox" id="p4-p4-vault" name="p4-p4-vault" data-check-id="p4-vault" />
               <span class="check-num">1</span>
-              <span class="check-title">The p4-vault seed is open in Obsidian outside the OpenCode project</span>
+              <span class="check-title">The p4-vault seed is open and its local MCP endpoint is enabled</span>
             </label>
-            <div class="check-detail">The folder exists at <code>Documents\p4-vault</code> with <code>MOC.md</code>, hub notes, and tools. Obsidian shows that vault. The API key is in an environment variable.</div>
+            <div class="check-detail">Obsidian shows <code>%USERPROFILE%\Vaults\p4-vault</code>. <code>MOC.md</code> and <code>.obsidian</code> sit directly at the root; <code>.opencode</code> does not. The folder is writable by your normal account, and the authenticated <code>MOC.md</code> check passes.</div>
           </li>
         </ol>
 
-        <h3>Stage 02 · Bind OpenCode to MCP with tight permissions</h3>
-        <p>Use the course P4 config for the local MCP endpoint. The director may read and may ask to write. The director cannot use dangerous Obsidian tools. Researchers get no MCP or write tools.</p>
+        <h3>Stage 02 · Launch the verified director boundary</h3>
+        <p>The launcher now owns setup for every P4 OpenCode session. It clears permission overrides left by earlier exercises, uses the pinned course version, checks the active vault, inspects the resolved director and worker policies, and opens the course repo as the project. It never opens the vault as an OpenCode project.</p>
         <div class="do-step">
-          <p class="do-label">In the same <strong>PowerShell</strong> window, load the P4 agent directory and inspect the MCP binding:</p>
-<pre><code>$courseRepo = "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
-$env:OPENCODE_CONFIG = "$courseRepo\mission_flesh\p4\controller\opencode.p4.json"
-$env:OPENCODE_CONFIG_DIR = "$courseRepo\mission_flesh\p4\vault_seed\.opencode"
-if ([string]::IsNullOrWhiteSpace($env:HB_XAI_MODEL)) { throw "HB_XAI_MODEL is empty." }
-Set-Location $courseRepo
-opencode --version
-opencode mcp list
-opencode agent list
-Get-Content "$env:OPENCODE_CONFIG_DIR\agents\director.md"
-Get-Content "$env:OPENCODE_CONFIG_DIR\agents\worker_conus_rail_road.md"
+          <p class="do-label">In the same <strong>PowerShell</strong> window, start the director with one command:</p>
+<pre><code>&amp; "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p4\scripts\Start-P4.ps1" Director
 </code></pre>
-          <p><strong>What you should see.</strong> MCP server <code>obsidian</code> is connected. The agent list includes <code>director</code>, <code>retriever</code>, and four <code>worker_*</code> agents. The director shows ask-gated Obsidian writes. The worker can read its run contract and assigned corpus files. It has no MCP or write tools.</p>
-        </div>
-        <div class="do-step">
-          <p class="do-label">Start the director from the same <strong>PowerShell</strong> window:</p>
-<pre><code>opencode $courseRepo --agent director -m "xai/$env:HB_XAI_MODEL"
-</code></pre>
+          <p><strong>What you should see.</strong> Before OpenCode opens, PowerShell prints <code>PASS P4 launch boundary</code>, agent <code>director</code>, the course repo as the OpenCode project, and <code>%USERPROFILE%\Vaults\p4-vault</code> as the MCP-only vault. The resolved policy permits project edits only under <code>operator/evidence</code>. Vault writes remain ask-gated MCP calls. Workers have no MCP, shell, web, or write access.</p>
         </div>
         <div class="do-step">
           <p class="do-label">Paste this into the <strong>director</strong> session:</p>
-<pre><code>Smoke test the Obsidian MCP binding for Documents\p4-vault.
+<pre><code>Smoke test the Obsidian MCP binding for %USERPROFILE%\Vaults\p4-vault.
 1) Read MOC.md through MCP. Print its heading and its six hub links.
 2) Propose a vault_write of Evidence/_smoke.md with one line "mcp smoke ok".
    Wait for my approval before any write tool runs.
-3) Do not use filesystem edit tools on Documents\p4-vault.
+3) Do not use filesystem edit tools on %USERPROFILE%\Vaults\p4-vault.
 4) After I approve, write the file via MCP only.
 5) Append one JSON line to Evidence/MCP_RECEIPTS.jsonl through MCP.
    Use keys ts, agent, tool, action, path, and ok.
@@ -231,8 +282,9 @@ Stop if MOC.md does not have the expected second-brain hubs.
 }
 
 Also confirm that Evidence/MCP_RECEIPTS.jsonl contains the successful smoke write event.
-Do not use ordinary filesystem edit tools on Documents\p4-vault.
+Do not use ordinary filesystem edit tools on %USERPROFILE%\Vaults\p4-vault.
 </code></pre>
+          <p><code>Evidence/PERMISSIONS.json</code> records the application policy for the audit. It is not a Windows ACL. Do not make the vault read-only or change its ownership.</p>
         </div>
         <ol class="checklist">
           <li class="check-item" data-check-item>
@@ -342,7 +394,7 @@ Hard rules:
 - threat notes must end in protect/detect/recover language
 - after each approved content or hub mutation, append one JSON line to Evidence/MCP_RECEIPTS.jsonl
 - do not record the receipt-log append as another receipt
-- never use ordinary filesystem edit/bash tools against Documents\p4-vault
+- never use ordinary filesystem edit/bash tools against %USERPROFILE%\Vaults\p4-vault
 
 Work in small batches. Stop and wait for my approval before each write batch.
 When done, report note paths created and any candidates you rejected (with reason).
@@ -361,22 +413,17 @@ When done, report note paths created and any candidates you rejected (with reaso
         </ol>
 
         <h3>Stage 06 · Cold retrieval from the brain only</h3>
-        <p>Open an empty project for the cold session. The project has no raw corpus. The retriever can reach the vault only through MCP.</p>
+        <p>The launcher creates an empty cold project and verifies that the retriever has no filesystem tools. The retriever reaches the vault only through MCP.</p>
         <div class="do-step">
-          <p class="do-label">Exit the director session. In the same <strong>PowerShell</strong> window, start the cold retriever:</p>
-<pre><code>$cold = "$env:USERPROFILE\Documents\p4-cold-query"
-if (Test-Path $cold) { throw "p4-cold-query already exists. Archive it before this test." }
-New-Item -ItemType Directory -Path $cold -Force | Out-Null
-Set-Location $cold
-Get-ChildItem -Force
-opencode $cold --agent retriever -m "xai/$env:HB_XAI_MODEL"
+          <p class="do-label">Exit the director session. In the same <strong>PowerShell</strong> window, start the cold retriever with one command:</p>
+<pre><code>&amp; "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p4\scripts\Start-P4.ps1" Retriever
 </code></pre>
-          <p><strong>What you should see.</strong> The file listing is empty. OpenCode shows the <code>retriever</code> agent from the custom config directory. The raw warehouse is not in this project.</p>
+          <p><strong>What you should see.</strong> PowerShell prints <code>PASS P4 launch boundary</code>, agent <code>retriever</code>, and the empty <code>p4-cold-query</code> project. The launcher stops if that project already contains files.</p>
         </div>
         <div class="do-step">
           <p class="do-label">Paste this into the <strong>retriever</strong> session:</p>
 <pre><code>Cold retrieval only.
-You may use Obsidian MCP read/search against Documents\p4-vault.
+You may use Obsidian MCP read/search against %USERPROFILE%\Vaults\p4-vault.
 Do not use the web or ordinary filesystem tools.
 
 First list the note titles you can see from MOC.md and Notes/ hubs.
@@ -407,9 +454,8 @@ Retrieval/Answers.md through MCP write only and append a receipt line.
         <h3>Stage 07 · Human audit and one repair</h3>
         <p>Open a sample in Obsidian yourself. Catch the planted rail-speed contradiction if a note promoted 45 mph over the canonical 40 mph.</p>
         <div class="do-step">
-          <p class="do-label">Exit the retriever. Restart the <strong>director</strong> from the same PowerShell window:</p>
-<pre><code>Set-Location $courseRepo
-opencode $courseRepo --agent director -m "xai/$env:HB_XAI_MODEL"
+          <p class="do-label">Exit the retriever. Restart the <strong>director</strong> through the same launcher:</p>
+<pre><code>&amp; "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\p4\scripts\Start-P4.ps1" Director
 </code></pre>
         </div>
         <div class="do-step">
@@ -455,7 +501,7 @@ Do not run the Python verifier yourself. Stop when those files are written.
         <div class="do-step">
           <p class="do-label">In <strong>PowerShell</strong>, run the course verifier and freeze the external baseline:</p>
 <pre><code>$courseRepo = "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp"
-$vault = "$env:USERPROFILE\Documents\p4-vault"
+$vault = "$env:USERPROFILE\Vaults\p4-vault"
 $today = Get-Date -Format "yyyy-MM-dd"
 $verifier = "$courseRepo\mission_flesh\p4\vault_seed\tools\verify_vault.py"
 $evidence = "$courseRepo\operator\evidence"
@@ -535,7 +581,9 @@ Get-Item "$evidence\P4_BASELINE_$today.json"
       <section id="stuck" class="home-section">
         <h2>If you get stuck</h2>
         <ul>
-          <li><strong>MCP will not connect.</strong> Confirm Obsidian is open on p4-vault. Confirm the plugin is enabled. Confirm the key is in the env var. Confirm TLS and port match the OpenCode config.</li>
+          <li><strong>MCP will not connect.</strong> Return to the three Stage 01 screenshots. Confirm Obsidian is open on <code>%USERPROFILE%\Vaults\p4-vault</code>, the plugin switch is on, <strong>Enable non-encrypted (HTTP) server</strong> is on, and the HTTP MCP row has a green check. Close other Obsidian vault windows. Then rerun the unchanged verification block; its authenticated <code>MOC.md</code> check identifies a wrong vault before OpenCode starts.</li>
+          <li><strong>The vault looks locked or read-only.</strong> Stop every P4 OpenCode session and close Obsidian before you archive or reseed. Do not run PowerShell as administrator and do not use <code>icacls</code>, <code>attrib</code>, ownership changes, or a symlink. Run <code>Start-P4.ps1 Setup</code> again only after the old folder has been renamed; setup creates a normal writable folder and tests it.</li>
+          <li><strong>The launcher reports an inherited-policy mismatch.</strong> Leave the vault unchanged. The launcher has stopped because another OpenCode setting would alter the course boundary. Close that PowerShell window, open a new one, set the two course API variables again, and rerun the launcher.</li>
           <li><strong>Brain verify HOLD on sources.</strong> Open the named note. Fill every source field. Make the excerpt long enough to identify the line.</li>
           <li><strong>Baseline check fails immediately after freeze.</strong> You edited a file after freeze. Run <code>--write-manifest --external</code> again.</li>
           <li><strong>Workers invent facts.</strong> Revoke web. Point them only at ASSESSED_SLICE ids. Reject bundles that miss sha256.</li>

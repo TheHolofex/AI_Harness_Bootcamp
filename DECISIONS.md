@@ -7,7 +7,7 @@
 5. **Canonical facts locked** in `raw_corpus/CANONICAL_FACTS.json` (73.6 st, 40 mph rail, Kaohsiung preferred, etc.). Planted contradiction: thin notices claim 45 mph.
 6. **Threat framing:** protection / detect / recover only; verifier rejects offensive tradecraft phrases and requires defensive language on threat notes.
 7. **P4 schedule role:** attended consolidation after PG (Tuesday PM), not OpenCode intro. Page and capabilities state parallel dispatch as assumed.
-8. **MCP path:** Obsidian Local REST API built-in MCP; API key via env var; vault at `Documents\p4-vault` outside OpenCode project.
+8. **MCP path:** Obsidian Local REST API built-in MCP; API key via env var; vault at `%USERPROFILE%\Vaults\p4-vault`, outside the OpenCode project and commonly managed Documents folder.
 9. **Old MERIDIAN seed** archived under `mission_flesh/p4/archive_meridian_seed/` (including old `verify_vault.py` and tests).
 10. **Registry check IDs** fully replaced to match new page (12 ids); journey Wednesday blurb → “second brain”.
 11. **Operator docs** (CAPABILITIES, MEASUREMENT_SPINE, OPERATOR_LOG, TRANSFER) retargeted to second-brain outcomes.
