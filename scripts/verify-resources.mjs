@@ -335,6 +335,7 @@ function validateLinks() {
     }
   }
   for (const resource of CATALOG.resources.filter((item) => item.status === "published")) {
+    if (resource.requiredInModule === false) continue;
     const module = CATALOG.modules.find((item) => item.id === resource.module);
     const owner = path.join(ROOT, module?.canonicalPath || resource.canonical.path);
     const expected = `resources/${resource.module}/${resource.slug}.html`;
