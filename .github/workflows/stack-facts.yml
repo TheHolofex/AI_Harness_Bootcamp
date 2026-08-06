@@ -12,9 +12,12 @@ on:
       - "site/blocks/p3.html"
       - "site/blocks/hcp.html"
       - "site/blocks/p2.html"
+      - "site/blocks/pi.html"
       - "site/blocks/p8.html"
+      - "site/assets/blocks/pi/**"
       - "site/assets/blocks/p3/**"
       - "site/js/registry.js"
+      - "site/js/shell.js"
       - "instruments/**"
       - "mission_flesh/**"
       - "lead/**"
@@ -29,9 +32,12 @@ on:
       - "site/blocks/p3.html"
       - "site/blocks/hcp.html"
       - "site/blocks/p2.html"
+      - "site/blocks/pi.html"
       - "site/blocks/p8.html"
+      - "site/assets/blocks/pi/**"
       - "site/assets/blocks/p3/**"
       - "site/js/registry.js"
+      - "site/js/shell.js"
       - "instruments/**"
       - "mission_flesh/**"
       - "lead/**"
@@ -63,6 +69,14 @@ jobs:
           cache-dependency-path: |
             instruments/p3_evidence_surface/package-lock.json
             instruments/osint_desk/package-lock.json
+            mission_flesh/pi/package-lock.json
+
+      - name: Test the Pi agentic-pattern implementations
+        working-directory: mission_flesh/pi
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run check
+          npm test
 
       - name: Run rotting-facts harness
         # Local checks are hard gates. Network drift probes use the same public

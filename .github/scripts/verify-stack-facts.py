@@ -16,6 +16,7 @@ What it covers:
   - Goose's Windows runtime, model, and native-exit guards remain present
   - The P2 Inbound surface and its morning corpus remain wired
   - The Agent Loops briefing and P4 second-brain exercise remain wired in sequence
+  - The Thursday Pi lab contains ten runnable patterns and ten matching diagrams
   - The repository still contains load-bearing exercise and facilitator paths
 
 What it does not cover (needs Windows, funded keys, and a person):
@@ -46,6 +47,13 @@ P2_PAGE = REPO_ROOT / "site" / "blocks" / "p2.html"
 LOOPS_PAGE = REPO_ROOT / "site" / "blocks" / "loops.html"
 P4_PAGE = REPO_ROOT / "site" / "blocks" / "p4.html"
 P5_PAGE = REPO_ROOT / "site" / "blocks" / "p5.html"
+PI_PAGE = REPO_ROOT / "site" / "blocks" / "pi.html"
+PI_FIGURE_ROOT = REPO_ROOT / "site" / "assets" / "blocks" / "pi"
+PI_ROOT = REPO_ROOT / "mission_flesh" / "pi"
+PI_PACKAGE = PI_ROOT / "package.json"
+PI_RUNTIME = PI_ROOT / "src" / "pi-runtime.ts"
+PI_TEST = PI_ROOT / "tests" / "patterns.test.ts"
+STACK_FACTS_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "stack-facts.yml"
 P2_MATERIAL = REPO_ROOT / "mission_flesh" / "tuesday"
 P4_SEED = REPO_ROOT / "mission_flesh" / "p4" / "vault_seed"
 P6_ROOT = REPO_ROOT / "mission_flesh" / "p6"
@@ -116,6 +124,7 @@ def check_repo_paths(report: Report) -> None:
         "site/checklists/prework-install.html",
         "site/blocks/hcp.html",
         "site/blocks/p2.html",
+        "site/blocks/pi.html",
         "site/js/registry.js",
         "operator/DIRECTION_BRIEF.md",
         "operator/CAPABILITIES.md",
@@ -154,6 +163,14 @@ def check_repo_paths(report: Report) -> None:
         "mission_flesh/p6/scripts/update.mjs",
         "mission_flesh/p6/scripts/verify.mjs",
         "mission_flesh/p6/tests/p6.test.mjs",
+        "mission_flesh/pi/package.json",
+        "mission_flesh/pi/package-lock.json",
+        "mission_flesh/pi/src/pi-runtime.ts",
+        "mission_flesh/pi/src/run.ts",
+        "mission_flesh/pi/tests/patterns.test.ts",
+        "mission_flesh/pi/scripts/Setup-PiLab.ps1",
+        "mission_flesh/pi/scripts/Run-Pattern.ps1",
+        "mission_flesh/pi/scripts/Verify-PiLab.ps1",
         "mission_flesh/p7",
         "mission_flesh/p8",
         "lead/BROWSER_DECK_DEMO.md",
@@ -440,6 +457,163 @@ def check_registry_install_route(report: Report) -> None:
             "site.b0_route",
             True,
             "B0 routes to the install page and requires the Goose runtime step",
+            hard=True,
+        )
+
+
+def check_pi_pattern_lab(report: Report) -> None:
+    page = PI_PAGE.read_text(encoding="utf-8")
+    registry = REGISTRY.read_text(encoding="utf-8")
+    package = json.loads(PI_PACKAGE.read_text(encoding="utf-8"))
+    runtime = PI_RUNTIME.read_text(encoding="utf-8")
+    test_source = PI_TEST.read_text(encoding="utf-8")
+    workflow = STACK_FACTS_WORKFLOW.read_text(encoding="utf-8")
+
+    expected_sources = [
+        "01-prompt-chain.ts",
+        "02-routing.ts",
+        "03-parallel.ts",
+        "04-orchestrator-workers.ts",
+        "05-handoff.ts",
+        "06-evaluator-optimizer.ts",
+        "07-tool-loop.ts",
+        "08-planner-executor.ts",
+        "09-reflection.ts",
+        "10-supervisor-tools.ts",
+    ]
+    expected_figures = [
+        "pi-pattern-01-prompt-chain.webp",
+        "pi-pattern-02-routing.webp",
+        "pi-pattern-03-parallel.webp",
+        "pi-pattern-04-orchestrator-workers.webp",
+        "pi-pattern-05-handoff.webp",
+        "pi-pattern-06-evaluator-optimizer.webp",
+        "pi-pattern-07-tool-loop.webp",
+        "pi-pattern-08-planner-executor.webp",
+        "pi-pattern-09-reflection.webp",
+        "pi-pattern-10-supervisor-tools.webp",
+    ]
+    missing_sources = [
+        name for name in expected_sources
+        if not (PI_ROOT / "src" / "patterns" / name).is_file()
+    ]
+    missing_figures = [
+        name for name in expected_figures
+        if not (PI_FIGURE_ROOT / name).is_file()
+    ]
+
+    dependencies = package.get("dependencies", {})
+    expected_dependencies = {
+        "@earendil-works/pi-agent-core": "0.83.0",
+        "@earendil-works/pi-ai": "0.83.0",
+    }
+    wrong_dependencies = [
+        f"{name}@{dependencies.get(name)!r}"
+        for name, version in expected_dependencies.items()
+        if dependencies.get(name) != version
+    ]
+
+    page_markers = [
+        'data-context-for="PI"',
+        'data-storage-key="ahb-checklist-pi"',
+        "Setup-PiLab.ps1",
+        "Verify-PiLab.ps1",
+        "PI LAB VERIFY PASS patterns=10",
+    ]
+    for number, (source, figure) in enumerate(
+        zip(expected_sources, expected_figures), start=1
+    ):
+        page_markers.extend(
+            [
+                f"Pattern {number:02d}",
+                source,
+                figure,
+                f'data-check-id="pi-pattern-{number:02d}"',
+                f"PI PATTERN {number:02d} PASS",
+            ]
+        )
+    missing_page = [marker for marker in page_markers if marker not in page]
+
+    runtime_markers = [
+        "new Agent({",
+        "createModels()",
+        "xaiProvider()",
+        'this.models.getModel("xai", modelId)',
+        'runtime.models.checkAuth("xai")',
+        "this.models.streamSimple.bind(this.models)",
+    ]
+    missing_runtime = [marker for marker in runtime_markers if marker not in runtime]
+
+    registry_markers = [
+        'code: "PI"',
+        'kind: "exercise"',
+        'url: "blocks/pi.html"',
+        'codes: ["PI", "P6", "P7"]',
+        'item.kind === "exercise"',
+    ]
+    missing_registry = [marker for marker in registry_markers if marker not in registry]
+    sequence_ok = registry.find('code: "PI"') < registry.find('code: "P6"')
+
+    forbidden = [
+        marker for marker in (
+            "@mariozechner/pi-",
+            'id="ideas"',
+            "YOUR ONE-SENTENCE",
+            "tripwire",
+            "kill switch",
+        )
+        if marker.lower() in page.lower() or marker in runtime
+    ]
+    test_markers = [
+        'assert.deepEqual(ids, ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"])',
+        "result.trace.length >= 2",
+        "routing rejects output outside its two declared routes",
+        "evaluator PASS still reaches the optimizer",
+        "supervisor cannot satisfy both delegations by repeating one tool",
+    ]
+    missing_tests = [marker for marker in test_markers if marker not in test_source]
+    workflow_markers = [
+        '"site/blocks/pi.html"',
+        '"site/assets/blocks/pi/**"',
+        '"site/js/shell.js"',
+        "mission_flesh/pi/package-lock.json",
+        "Test the Pi agentic-pattern implementations",
+        "working-directory: mission_flesh/pi",
+        "npm run check",
+        "npm test",
+    ]
+    missing_workflow = [marker for marker in workflow_markers if marker not in workflow]
+
+    problems = []
+    if missing_sources:
+        problems.append("missing sources: " + ", ".join(missing_sources))
+    if missing_figures:
+        problems.append("missing figures: " + ", ".join(missing_figures))
+    if wrong_dependencies:
+        problems.append("wrong dependencies: " + ", ".join(wrong_dependencies))
+    if missing_page:
+        problems.append("page missing: " + ", ".join(missing_page))
+    if missing_runtime:
+        problems.append("runtime missing: " + ", ".join(missing_runtime))
+    if missing_registry or not sequence_ok:
+        problems.append(
+            "registry missing/order: "
+            + ", ".join(missing_registry + ([] if sequence_ok else ["PI before P6"]))
+        )
+    if forbidden:
+        problems.append("forbidden/stale: " + ", ".join(forbidden))
+    if missing_tests:
+        problems.append("tests missing: " + ", ".join(missing_tests))
+    if missing_workflow:
+        problems.append("workflow missing: " + ", ".join(missing_workflow))
+
+    if problems:
+        report.add("site.pi_pattern_lab", False, "; ".join(problems), hard=True)
+    else:
+        report.add(
+            "site.pi_pattern_lab",
+            True,
+            "ten pinned Pi implementations, colocated diagrams, copy-paste runs, and CI-backed offline tests present",
             hard=True,
         )
 
@@ -749,6 +923,7 @@ def main() -> int:
         check_goose_windows_guards(report)
         check_p6_prepare_surface(report)
         check_registry_install_route(report)
+        check_pi_pattern_lab(report)
         check_p2_inbound_surface(report)
         check_osint_feeds(report)
         check_p4_second_brain_surface(report)

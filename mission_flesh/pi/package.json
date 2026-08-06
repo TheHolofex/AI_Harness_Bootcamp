@@ -1,0 +1,24 @@
+{
+  "name": "ahb-pi-pattern-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "node --import tsx --test tests/patterns.test.ts",
+    "pattern": "tsx src/run.ts",
+    "verify": "node scripts/verify.mjs"
+  },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "0.83.0",
+    "@earendil-works/pi-ai": "0.83.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.12.4",
+    "tsx": "4.23.9",
+    "typescript": "6.0.3"
+  }
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ten Agentic Patterns in Pi · AI Harness Bootcamp · Starzl</title>
+  <link rel="stylesheet" href="../css/course.css" />
+  <link rel="stylesheet" href="../css/checklist.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
+    </div>
+  </header>
+
+  <div data-context-for="PI"></div>
+
+  <main class="site-main">
+    <p class="eyebrow">Thursday AM · PI · AI Harness Bootcamp</p>
+    <h1>Ten Agentic Patterns in Pi</h1>
+    <p class="lede">Run ten executable control flows with Pi Agent Core. Every implementation is supplied. Copy each PowerShell block, watch the trace, and move to the next pattern—no code or prompts to write.</p>
+
+    <div class="meta-grid">
+      <div><span class="k">Day</span><span class="v">Thursday AM</span></div>
+      <div><span class="k">Block</span><span class="v">PI</span></div>
+      <div><span class="k">Time</span><span class="v">~60–90 min</span></div>
+      <div><span class="k">Tools</span><span class="v">Pi Agent Core · xAI · PowerShell</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-pi">0 / 10 · 0%</span></div>
+    </div>
+    <hr class="rule-accent" />
+
+    <nav class="page-nav" aria-label="On this page">
+      <span class="page-nav-label">On this page</span>
+      <a href="#orient">Orientation</a>
+      <a href="#mission">Run ten patterns</a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/10</span></a>
+      <a href="#stuck">If you get stuck</a>
+      <div class="page-nav-progress">
+        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-pi"></span></div>
+        <span class="page-nav-pct" data-progress-for="ahb-checklist-pi" data-progress-format="pct">0%</span>
+      </div>
+    </nav>
+
+    <section id="orient" class="orient-grid">
+      <div>
+        <h2 class="h-plain">Ten implementations, one run-through</h2>
+        <p>The lab files already contain each pattern in TypeScript. One setup block installs the pinned Pi packages and runs the offline checks. Each numbered block then prints its implementation, runs it against xAI, saves a JSON trace in <code>runs</code>, and ends with a named PASS line.</p>
+        <p>Keep one PowerShell window open and run the blocks in order. Do not edit the files between patterns.</p>
+      </div>
+      <div class="orient-aside">
+        <div class="lead-box">
+          <p class="eyebrow">What you will run</p>
+          <p>Prompt chain · routing · parallel fan-out/fan-in · orchestrator-workers · handoff · evaluator-optimizer · tool loop · planner-executor · reflection · supervisor with subagents as tools</p>
+        </div>
+        <div class="callout">
+          <strong>Ready means</strong>
+          The final console line says <code>PI LAB VERIFY PASS patterns=10</code> and <code>runs</code> contains one result for every numbered pattern.
+        </div>
+      </div>
+    </section>
+
+    <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-pi" data-block="PI">
+      <section id="mission" class="home-section" data-check-section="mission">
+        <h2>Run ten patterns</h2>
+        <p class="section-lede">Copy each complete block into the same PowerShell window. Read the source that prints first, then follow the control-flow trace and result.</p>
+
+        <h3>Setup · Prepare the Pi lab</h3>
+        <div class="do-step">
+          <p class="do-label">Copy this block into <strong>PowerShell</strong>:</p>
+          <pre><code>Set-Location "$env:USERPROFILE\Documents\HarnessBootcamp\AI_Harness_Bootcamp\mission_flesh\pi"
+powershell -ExecutionPolicy Bypass -File .\scripts\Setup-PiLab.ps1</code></pre>
+        </div>
+        <p><strong>What you should see.</strong> The offline tests pass and the final line begins <code>PI LAB READY patterns=10</code>.</p>
+
+        <h3>Pattern 01 · Prompt chain</h3>
+        <p>Three agents pass one result forward: facts → decision → brief.</p>
+        <figure class="section-diagram p6-agentic-diagram pi-pattern-diagram">
+          <a href="../assets/blocks/pi/pi-pattern-01-prompt-chain.webp" target="_blank" rel="noopener" aria-label="Open the Pattern 01 prompt-chain diagram full size">
+            <img src="../assets/blocks/pi/pi-pattern-01-prompt-chain.webp" alt="A source passes through a fact extractor, decision agent, and brief writer in one fixed left-to-right chain." width="1672" height="941" loading="lazy" decoding="async" />
+          </a>
+          <figcaption><strong>Read the flow:</strong> the extractor turns the source into facts; those facts feed the decision agent, whose result feeds the brief writer. <span class="p6-figure-open"><a href="../assets/blocks/pi/pi-pattern-01-prompt-chain.webp" target="_blank" rel="noopener">Open full size</a>.</span></figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Copy and run:</p>
+          <pre><code>Get-Content .\src\patterns\01-prompt-chain.ts
+powershell -ExecutionPolicy Bypass -File .\scripts\Run-Pattern.ps1 -Pattern 01</code></pre>
+        </div>
+        <p><strong>What you should see.</strong> A three-step trace, a compact brief, and <code>PI PATTERN 01 PASS</code>.</p>
+        <p id="pi-pattern-01-point">Pattern 01 is complete when the result reaches the brief writer through both earlier outputs.</p>
+
+        <h3>Pattern 02 · Routing</h3>
+        <p>A router classifies one request and sends it to one specialist.</p>
+        <figure class="section-diagram p6-agentic-diagram pi-pattern-diagram">
+          <a href="../assets/blocks/pi/pi-pattern-02-routing.webp" target="_blank" rel="noopener" aria-label="Open the Pattern 02 routing diagram full size">
+            <img src="../assets/blocks/pi/pi-pattern-02-routing.webp" alt="A request enters a router; the active gold branch reaches the billing specialist while the technical specialist remains unselected." width="1672" height="941" loading="lazy" decoding="async" />
+          </a>
+          <figcaption><strong>Read the flow:</strong> the router selects billing for this request, and the technical path does not run. <span class="p6-figure-open"><a href="../assets/blocks/pi/pi-pattern-02-routing.webp" target="_blank" rel="noopener">Open full size</a>.</span></figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Copy and run:</p>
+          <pre><code>Get-Content .\src\patterns\02-routing.ts
+powershell -ExecutionPolicy Bypass -File .\scripts\Run-Pattern.ps1 -Pattern 02</code></pre>
+        </div>
+        <p><strong>What you should see.</strong> The trace names the selected route and ends with <code>PI PATTERN 02 PASS</code>.</p>
+        <p id="pi-pattern-02-point">Pattern 02 is complete when the billing request reaches only the billing specialist.</p>
+
+        <h3>Pattern 03 · Parallel fan-out and fan-in</h3>
+        <p>Three analysts run together before one synthesizer merges their returns.</p>
+        <figure class="section-diagram p6-agentic-diagram pi-pattern-diagram">
+          <a href="../assets/blocks/pi/pi-pattern-03-parallel.webp" target="_blank" rel="noopener" aria-label="Open the Pattern 03 parallel fan-out and fan-in diagram full size">
+            <img src="../assets/blocks/pi/pi-pattern-03-parallel.webp" alt="One incident fans out to operations, customer, and release analysts in parallel, then all three findings converge at a synthesizer." width="1672" height="941" loading="lazy" decoding="async" />
+          </a>
+          <figcaption><strong>Read the flow:</strong> all three analysts receive the incident together; the synthesizer runs after every return arrives. <span class="p6-figure-open"><a href="../assets/blocks/pi/pi-pattern-03-parallel.webp" target="_blank" rel="noopener">Open full size</a>.</span></figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Copy and run:</p>
+          <pre><code>Get-Content .\src\patterns\03-parallel.ts
+powershell -ExecutionPolicy Bypass -File .\scripts\Run-Pattern.ps1 -Pattern 03</code></pre>
+        </div>
+        <p><strong>What you should see.</strong> One fan-out, one fan-in, and <code>PI PATTERN 03 PASS</code>.</p>
+        <p id="pi-pattern-03-point">Pattern 03 is complete when operations, customer, and release findings converge in one direction.</p>
+
+        <h3>Pattern 04 · Orchestrator and workers</h3>
+        <p>An orchestrator assigns three slices, then reconciles the worker returns.</p>
+        <figure class="section-diagram p6-agentic-diagram pi-pattern-diagram">
+          <a href="../assets/blocks/pi/pi-pattern-04-orchestrator-workers.webp" target="_blank" rel="noopener" aria-label="Open the Pattern 04 orchestrator-and-workers diagram full size">
+            <img src="../assets/blocks/pi/pi-pattern-04-orchestrator-workers.webp" alt="A goal enters an orchestrator, fans out to product, support, and infrastructure workers, and returns to orchestrator synthesis." width="1672" height="941" loading="lazy" decoding="async" />
+          </a>
+          <figcaption><strong>Read the flow:</strong> the orchestrator defines the slices; scoped workers return findings; the orchestrator owns the final decision. <span class="p6-figure-open"><a href="../assets/blocks/pi/pi-pattern-04-orchestrator-workers.webp" target="_blank" rel="noopener">Open full size</a>.</span></figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Copy and run:</p>
+          <pre><code>Get-Content .\src\patterns\04-orchestrator-workers.ts
+powershell -ExecutionPolicy Bypass -File .\scripts\Run-Pattern.ps1 -Pattern 04</code></pre>
+        </div>
+        <p><strong>What you should see.</strong> Plan → scoped workers → synthesis, followed by <code>PI PATTERN 04 PASS</code>.</p>
+        <p id="pi-pattern-04-point">Pattern 04 is complete when the orchestrator turns distinct worker returns into one launch decision.</p>
+
+        <h3>Pattern 05 · Handoff</h3>
+        <p>One agent produces a bounded transfer artifact; a second agent takes ownership from it.</p>
+        <figure class="section-diagram p6-agentic-diagram pi-pattern-diagram">
+          <a href="../assets/blocks/pi/pi-pattern-05-handoff.webp" target="_blank" rel="noopener" aria-label="Open the Pattern 05 handoff diagram full size">
+            <img src="../assets/blocks/pi/pi-pattern-05-handoff.webp" alt="A request reaches an intake owner, becomes a bounded handoff artifact, and crosses to a commercial owner." width="1672" height="941" loading="lazy" decoding="async" />
+          </a>
+          <figcaption><strong>Read the flow:</strong> ownership crosses at the handoff artifact; the receiving agent acts from that bounded transfer. <span class="p6-figure-open"><a href="../assets/blocks/pi/pi-pattern-05-handoff.webp" target="_blank" rel="noopener">Open full size</a>.</span></figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Copy and run:</p>
+          <pre><code>Get-Content .\src\patterns\05-handoff.ts
+powershell -ExecutionPolicy Bypass -File .\scripts\Run-Pattern.ps1 -Pattern 05</code></pre>
+        </div>
+        <p><strong>What you should see.</strong> Intake → handoff artifact → commercial owner, then <code>PI PATTERN 05 PASS</code>.</p>
+        <p id="pi-pattern-05-point">Pattern 05 is complete when the receiving agent acts from the transfer instead of the original request.</p>
+
+        <h3>Pattern 06 · Evaluator and optimizer</h3>
+        <p>An evaluator tests a draft; an optimizer uses that verdict to return the final version.</p>
+        <figure class="section-diagram p6-agentic-diagram pi-pattern-diagram">
+          <a href="../assets/blocks/pi/pi-pattern-06-evaluator-optimizer.webp" target="_blank" rel="noopener" aria-label="Open the Pattern 06 evaluator-and-optimizer diagram full size">
+            <img src="../assets/blocks/pi/pi-pattern-06-evaluator-optimizer.webp" alt="A task moves through generator, draft, evaluator, optimizer, and final note in one quality-control pass." width="1672" height="941" loading="lazy" decoding="async" />
+          </a>
+          <figcaption><strong>Read the flow:</strong> the evaluator checks one draft, then the optimizer applies that verdict in one pass. <span class="p6-figure-open"><a href="../assets/blocks/pi/pi-pattern-06-evaluator-optimizer.webp" target="_blank" rel="noopener">Open full size</a>.</span></figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Copy and run:</p>
+          <pre><code>Get-Content .\src\patterns\06-evaluator-optimizer.ts
+powershell -ExecutionPolicy Bypass -File .\scripts\Run-Pattern.ps1 -Pattern 06</code></pre>
+        </div>
+        <p><strong>What you should see.</strong> Draft → evaluation → optimizer → final result, followed by <code>PI PATTERN 06 PASS</code>.</p>
+        <p id="pi-pattern-06-point">Pattern 06 is complete when the returned note satisfies the evaluator's named fields.</p>
+
+        <h3>Pattern 07 · Tool-using agent loop</h3>
+        <p>A Pi agent calls a typed ticket tool, observes the result, and answers from that observation.</p>
+        <figure class="section-diagram p6-agentic-diagram pi-pattern-diagram">
+          <a href="../assets/blocks/pi/pi-pattern-07-tool-loop.webp" target="_blank" rel="noopener" aria-label="Open the Pattern 07 tool-using agent-loop diagram full size">
+            <img src="../assets/blocks/pi/pi-pattern-07-tool-loop.webp" alt="A request reaches one Pi agent, which calls lookup_ticket, receives the tool observation back into the same agent, and then answers." width="1672" height="941" loading="lazy" decoding="async" />
+          </a>
+          <figcaption><strong>Read the flow:</strong> the same agent calls the tool, receives its observation, and answers inside one run. <span class="p6-figure-open"><a href="../assets/blocks/pi/pi-pattern-07-tool-loop.webp" target="_blank" rel="noopener">Open full size</a>.</span></figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Copy and run:</p>
+          <pre><code>Get-Content .\src\patterns\07-tool-loop.ts
+powershell -ExecutionPolicy Bypass -File .\scripts\Run-Pattern.ps1 -Pattern 07</code></pre>
+        </div>
+        <p><strong>What you should see.</strong> The trace counts at least one <code>lookup_ticket</code> call and ends with <code>PI PATTERN 07 PASS</code>.</p>
+        <p id="pi-pattern-07-point">Pattern 07 is complete when the final answer follows a real Pi tool call and observation.</p>
+
+        <h3>Pattern 08 · Planner and executor</h3>
+        <p>A planner writes three ordered steps; an executor advances shared state through each one.</p>
+        <figure class="section-diagram p6-agentic-diagram pi-pattern-diagram">
+          <a href="../assets/blocks/pi/pi-pattern-08-planner-executor.webp" target="_blank" rel="noopener" aria-label="Open the Pattern 08 planner-and-executor diagram full size">
+            <img src="../assets/blocks/pi/pi-pattern-08-planner-executor.webp" alt="A goal becomes a three-step plan, then shared state advances through three ordered executor passes to the final state." width="1672" height="941" loading="lazy" decoding="async" />
+          </a>
+          <figcaption><strong>Read the flow:</strong> the planner fixes the order first; the executor advances the same state through three passes. <span class="p6-figure-open"><a href="../assets/blocks/pi/pi-pattern-08-planner-executor.webp" target="_blank" rel="noopener">Open full size</a>.</span></figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Copy and run:</p>
+          <pre><code>Get-Content .\src\patterns\08-planner-executor.ts
+powershell -ExecutionPolicy Bypass -File .\scripts\Run-Pattern.ps1 -Pattern 08</code></pre>
+        </div>
+        <p><strong>What you should see.</strong> One plan and three executor passes, followed by <code>PI PATTERN 08 PASS</code>.</p>
+        <p id="pi-pattern-08-point">Pattern 08 is complete when the third execution step returns the final shared state.</p>
+
+        <h3>Pattern 09 · Reflection</h3>
+        <p>One stateful Pi agent drafts, reads its own transcript, and replaces the draft with a revision.</p>
+        <figure class="section-diagram p6-agentic-diagram pi-pattern-diagram">
+          <a href="../assets/blocks/pi/pi-pattern-09-reflection.webp" target="_blank" rel="noopener" aria-label="Open the Pattern 09 reflection diagram full size">
+            <img src="../assets/blocks/pi/pi-pattern-09-reflection.webp" alt="One stateful Pi agent writes a draft, keeps it in the same transcript, reflects and revises, then emits a revised note." width="1672" height="941" loading="lazy" decoding="async" />
+          </a>
+          <figcaption><strong>Read the flow:</strong> one transcript holds both turns, so the same agent can inspect its prior answer and return a revised one. <span class="p6-figure-open"><a href="../assets/blocks/pi/pi-pattern-09-reflection.webp" target="_blank" rel="noopener">Open full size</a>.</span></figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Copy and run:</p>
+          <pre><code>Get-Content .\src\patterns\09-reflection.ts
+powershell -ExecutionPolicy Bypass -File .\scripts\Run-Pattern.ps1 -Pattern 09</code></pre>
+        </div>
+        <p><strong>What you should see.</strong> Draft → same-transcript revision, followed by <code>PI PATTERN 09 PASS</code>.</p>
+        <p id="pi-pattern-09-point">Pattern 09 is complete when the second turn strengthens the first answer inside one conversation.</p>
+
+        <h3>Pattern 10 · Supervisor with subagents as tools</h3>
+        <p>A supervisor calls two child-agent tools and combines their independent returns.</p>
+        <figure class="section-diagram p6-agentic-diagram pi-pattern-diagram">
+          <a href="../assets/blocks/pi/pi-pattern-10-supervisor-tools.webp" target="_blank" rel="noopener" aria-label="Open the Pattern 10 supervisor-with-subagent-tools diagram full size">
+            <img src="../assets/blocks/pi/pi-pattern-10-supervisor-tools.webp" alt="A supervisor calls operations and customer subagents through two separate tools, then combines both returns into one supervisor decision." width="1672" height="941" loading="lazy" decoding="async" />
+          </a>
+          <figcaption><strong>Read the flow:</strong> the supervisor invokes two subagents as tools, then issues one decision after both return. <span class="p6-figure-open"><a href="../assets/blocks/pi/pi-pattern-10-supervisor-tools.webp" target="_blank" rel="noopener">Open full size</a>.</span></figcaption>
+        </figure>
+        <div class="do-step">
+          <p class="do-label">Copy and run the final block:</p>
+          <pre><code>Get-Content .\src\patterns\10-supervisor-tools.ts
+powershell -ExecutionPolicy Bypass -File .\scripts\Run-Pattern.ps1 -Pattern 10
+powershell -ExecutionPolicy Bypass -File .\scripts\Verify-PiLab.ps1</code></pre>
+        </div>
+        <p><strong>What you should see.</strong> Both subagent tools return to the supervisor, then the console ends with <code>PI PATTERN 10 PASS</code> and <code>PI LAB VERIFY PASS patterns=10</code>.</p>
+        <p id="pi-pattern-10-point">Pattern 10 is complete when one supervisor decision follows both child-agent calls and all ten result files verify.</p>
+      </section>
+
+      <section id="floor" class="home-section" data-check-section="floor">
+        <h2>Lesson outcomes</h2>
+        <p class="section-lede">Check each result after its named PASS line appears.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item data-outcome-after="#pi-pattern-01-point">
+            <label class="check-label"><input type="checkbox" id="pi-pattern-01" name="pi-pattern-01" data-check-id="pi-pattern-01" /><span class="check-num">1</span><span class="check-title">Prompt chain passes work through three agents</span></label>
+            <div class="check-detail"><code>PI PATTERN 01 PASS</code> follows extractor, decision, and brief-writer steps.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#pi-pattern-02-point">
+            <label class="check-label"><input type="checkbox" id="pi-pattern-02" name="pi-pattern-02" data-check-id="pi-pattern-02" /><span class="check-num">2</span><span class="check-title">Routing selects one specialist</span></label>
+            <div class="check-detail"><code>PI PATTERN 02 PASS</code> follows a visible billing route.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#pi-pattern-03-point">
+            <label class="check-label"><input type="checkbox" id="pi-pattern-03" name="pi-pattern-03" data-check-id="pi-pattern-03" /><span class="check-num">3</span><span class="check-title">Parallel findings converge</span></label>
+            <div class="check-detail"><code>PI PATTERN 03 PASS</code> follows three parallel analysts and one synthesis.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#pi-pattern-04-point">
+            <label class="check-label"><input type="checkbox" id="pi-pattern-04" name="pi-pattern-04" data-check-id="pi-pattern-04" /><span class="check-num">4</span><span class="check-title">An orchestrator scopes and reconciles workers</span></label>
+            <div class="check-detail"><code>PI PATTERN 04 PASS</code> follows a plan, three worker returns, and one decision.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#pi-pattern-05-point">
+            <label class="check-label"><input type="checkbox" id="pi-pattern-05" name="pi-pattern-05" data-check-id="pi-pattern-05" /><span class="check-num">5</span><span class="check-title">A handoff transfers ownership</span></label>
+            <div class="check-detail"><code>PI PATTERN 05 PASS</code> follows a bounded artifact from intake to commercial resolution.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#pi-pattern-06-point">
+            <label class="check-label"><input type="checkbox" id="pi-pattern-06" name="pi-pattern-06" data-check-id="pi-pattern-06" /><span class="check-num">6</span><span class="check-title">Evaluation drives one optimization pass</span></label>
+            <div class="check-detail"><code>PI PATTERN 06 PASS</code> follows draft, evaluation, and final note.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#pi-pattern-07-point">
+            <label class="check-label"><input type="checkbox" id="pi-pattern-07" name="pi-pattern-07" data-check-id="pi-pattern-07" /><span class="check-num">7</span><span class="check-title">A Pi agent completes a tool loop</span></label>
+            <div class="check-detail"><code>PI PATTERN 07 PASS</code> follows a typed tool call and observation.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#pi-pattern-08-point">
+            <label class="check-label"><input type="checkbox" id="pi-pattern-08" name="pi-pattern-08" data-check-id="pi-pattern-08" /><span class="check-num">8</span><span class="check-title">A plan advances through shared execution state</span></label>
+            <div class="check-detail"><code>PI PATTERN 08 PASS</code> follows one plan and three execution steps.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#pi-pattern-09-point">
+            <label class="check-label"><input type="checkbox" id="pi-pattern-09" name="pi-pattern-09" data-check-id="pi-pattern-09" /><span class="check-num">9</span><span class="check-title">One stateful agent reflects and revises</span></label>
+            <div class="check-detail"><code>PI PATTERN 09 PASS</code> follows two turns in one Pi conversation.</div>
+          </li>
+          <li class="check-item" data-check-item data-outcome-after="#pi-pattern-10-point">
+            <label class="check-label"><input type="checkbox" id="pi-pattern-10" name="pi-pattern-10" data-check-id="pi-pattern-10" /><span class="check-num">10</span><span class="check-title">A supervisor uses subagents as tools</span></label>
+            <div class="check-detail"><code>PI LAB VERIFY PASS patterns=10</code> confirms the supervisor result and the complete run set.</div>
+          </li>
+        </ol>
+      </section>
+    </form>
+
+    <section id="stuck" class="split-2 home-section">
+      <div>
+        <h2>Before you move on</h2>
+        <p>Confirm the console ends with <code>PI LAB VERIFY PASS patterns=10</code>. The next block, P6, puts adaptive control flow inside one changing operational mission.</p>
+      </div>
+      <div>
+        <h2>If you get stuck</h2>
+        <ul>
+          <li><strong>Setup stops.</strong> Keep the exact message, correct the named Node or environment-variable problem, and rerun <code>Setup-PiLab.ps1</code>.</li>
+          <li><strong>A pattern stops.</strong> Rerun that same numbered block. Its result file is replaced, not duplicated.</li>
+          <li><strong>The verifier reports a missing pattern.</strong> Run the named number, then rerun <code>Verify-PiLab.ps1</code>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div data-plate-for="PI"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+
+  <script src="../js/registry.js"></script>
+  <script src="../js/shell.js"></script>
+</body>
+</html>

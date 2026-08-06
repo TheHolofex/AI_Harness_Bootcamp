@@ -20,7 +20,7 @@
     <p class="eyebrow">Reference · keep this open during install</p>
     <h1>Your two API keys</h1>
 
-    <p class="lede">Two keys run the required course setup. OpenAI is only for Codex. xAI runs every other cloud harness. This page shows where each key goes, how to check the setup, and what to do if one leaks. Plan for about ten minutes.</p>
+    <p class="lede">Two keys run the required course setup. OpenAI is only for Codex. xAI runs the other cloud tools, including Thursday's Pi lab. This page shows where each key goes, how to check the setup, and what to do if one leaks. Plan for about ten minutes.</p>
     <figure class="section-diagram">
       <img src="./assets/prework/install-05-keys.svg" alt="Diagram: OpenAI connects only to Codex while xAI connects to every other cloud harness" width="1120" height="220" loading="lazy" decoding="async" />
     </figure>
@@ -38,7 +38,7 @@
 
     <p>This is a different door from a consumer subscription. A key talks directly to a provider's metered platform. During setup, use the API-key path and do not sign into ChatGPT, SuperGrok, or another monthly plan.</p>
 
-    <p>The provider split matters just as much as the sign-in method. Keep the OpenAI key inside Codex. Use the xAI key for OpenCode, Pi, goose, and the AI step in n8n. That keeps the expensive OpenAI lane narrow and makes the source of each charge easy to identify.</p>
+    <p>The provider split matters just as much as the sign-in method. Keep the OpenAI key inside Codex. Use the xAI key for OpenCode, goose, the Pi lab, and the AI step in n8n. That keeps the expensive OpenAI lane narrow and makes the source of each charge easy to identify.</p>
 
     <div class="callout"><strong>A key is a credential, not a setting</strong>
     Anyone holding your key can spend against it. Treat it the way you would treat a password: never paste one into a chat window, a shared document, a screenshot, a support ticket, or a project file. If a key does end up somewhere it shouldn't, revoking it takes about thirty seconds — the steps are at the bottom of this page, and using them is routine rather than embarrassing.</div>
@@ -50,12 +50,12 @@
       <thead><tr><th>Key</th><th>Starts with</th><th>Where it goes</th><th>Drives</th></tr></thead>
       <tbody>
         <tr><td>OpenAI</td><td><code>sk-proj-</code></td><td>Codex API-key sign-in</td><td>Codex only, using <code>gpt-5.6-terra</code></td></tr>
-        <tr><td>xAI</td><td><code>xai-</code></td><td><code>XAI_API_KEY</code></td><td>OpenCode, Pi, goose, and the xAI Grok node in n8n</td></tr>
+        <tr><td>xAI</td><td><code>xai-</code></td><td><code>XAI_API_KEY</code></td><td>OpenCode, goose, Pi Agent Core, and the xAI Grok node in n8n</td></tr>
       </tbody>
     </table>
 </div>
 
-    <p>Pi and goose can talk to several providers, but the course commands name xAI explicitly. OpenCode also runs on xAI. Codex is the one OpenAI lane, and its course model is <code>gpt-5.6-terra</code>—not Sol and not whichever model happens to be the visible default.</p>
+    <p>goose can talk to several providers, but the course commands name xAI explicitly. OpenCode and the Pi lab also run on xAI. Codex is the one OpenAI lane, and its course model is <code>gpt-5.6-terra</code>—not Sol and not whichever model happens to be the visible default.</p>
 
     <div class="callout"><strong>Anthropic is not part of setup</strong>
     You will not receive an Anthropic key during the install clinic. Claude access may be introduced near the end of the bootcamp as an optional exercise. The timing and instructions are still to be determined.</div>
@@ -104,8 +104,8 @@ $key = $null</code></pre>
       <tbody>
         <tr><td><strong>Codex app</strong></td><td>Stores the OpenAI key from its API-key sign-in screen and runs <code>gpt-5.6-terra</code>.</td></tr>
         <tr><td><strong>OpenCode</strong></td><td>Reads <code>XAI_API_KEY</code>; course commands select <code>xai/$env:HB_XAI_MODEL</code>.</td></tr>
-        <tr><td><strong>Pi</strong></td><td>Reads <code>XAI_API_KEY</code>; course commands use <code>--provider xai --model "$env:HB_XAI_MODEL"</code>.</td></tr>
         <tr><td><strong>goose</strong></td><td>Reads <code>XAI_API_KEY</code> with <code>GOOSE_PROVIDER=xai</code> and <code>GOOSE_MODEL=$env:HB_XAI_MODEL</code>.</td></tr>
+        <tr><td><strong>Pi Agent Core</strong></td><td>Reads <code>XAI_API_KEY</code> and <code>HB_XAI_MODEL</code> when Thursday's supplied setup and pattern scripts run.</td></tr>
         <tr><td><strong>n8n</strong></td><td>Uses an xAI credential and its native xAI Grok Chat Model node during Thursday's exercise.</td></tr>
       </tbody>
     </table>

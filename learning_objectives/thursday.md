@@ -2,6 +2,17 @@
 
 ---
 
+## Opening lab — Ten Agentic Patterns in Pi
+
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Turn named patterns into executable control flow.** | Pattern implementation | Wednesday's control-flow presentation | Ten supplied Pi programs make the control structure visible in code and in the runtime trace: prompt chain, routing, parallel fan-out/fan-in, orchestrator-workers, handoff, evaluator-optimizer, tool loop, planner-executor, reflection, and supervisor with subagents as tools. | All ten implementations end in their named PASS lines, and the final verifier reports `PI LAB VERIFY PASS patterns=10`. |
+| **2. Distinguish patterns by the path work takes.** | Trace reading | Tuesday's work division and Wednesday's durable state | The same Pi runtime is held constant while delegation, state, tools, evaluation, and synthesis change from file to file. | You can identify the pattern from its printed trace and point to the source file that implements that flow. |
+
+> **After the lab:** You have run ten common agentic patterns as working Pi programs and can recognize each one by its implementation and trace.
+
+---
+
 ## Morning — The watch officer
 
 | Objective | Skill | Builds on | What is new | What mastery looks like |

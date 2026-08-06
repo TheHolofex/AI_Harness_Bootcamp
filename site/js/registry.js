@@ -1,7 +1,7 @@
 /**
  * AHB course registry — the single source of truth for B0, B1, the scheduled
  * Model Economics, Harness Control Plane, MCP, and Agent Loops briefings,
- * and P1–P8 plus PG.
+ * the Pi implementation lab, and P1–P8 plus PG.
  *
  * Every reader of progress (home dashboard, nav dots, block pages, the
  * pre-work hub) counts against the id lists declared here — never against
@@ -62,7 +62,7 @@
   // Storage order is retained for compatibility. The visible path is
   // B0 install clinic → B1 First Light → Model Economics → P1 →
   // Harness Control Plane → P2 → two MCP briefings → P3 → OSD → PG →
-  // Agent Loops → P4 → … → P8.
+  // Agent Loops → P4 → P5 → Pi patterns → P6 → P7 → P8.
   // `ids` contains the controls learners can actually see and complete. When an
   // inline lesson outcome replaces a procedural receipt, only the outcome id is
   // required; the duplicate procedural id is retained in the HTML solely so old
@@ -207,6 +207,17 @@
       url: "blocks/p5.html", meta: "OpenCode · staged intake · triage gate · absence proof"
     },
     {
+      code: "PI", name: "Ten agentic patterns in Pi", title: "Ten Agentic Patterns in Pi", kind: "exercise",
+      day: "Thursday", slot: "AM", key: "ahb-checklist-pi",
+      ids: [
+        "pi-pattern-01", "pi-pattern-02", "pi-pattern-03", "pi-pattern-04", "pi-pattern-05",
+        "pi-pattern-06", "pi-pattern-07", "pi-pattern-08", "pi-pattern-09", "pi-pattern-10"
+      ],
+      stretchIds: [],
+      url: "blocks/pi.html", meta: "Pi Agent Core + xAI · ten executable patterns",
+      contextLabel: "Thursday AM · Pi implementation lab · Before P6"
+    },
+    {
       code: "P6", name: "Clear the overnight watch", title: "The Watch Officer — Clear the Overnight Watch", day: "Thursday", slot: "AM",
       key: "ahb-checklist-p6",
       ids: ["p6-handoff", "p6-wave-one", "p6-decision", "p6-wave-two", "p6-closeout"],
@@ -237,7 +248,8 @@
     }
   ];
 
-  // Ten instructional modules. B0 is the required install-clinic stop before them.
+  // Numbered project modules. B0 is the required install-clinic stop before them;
+  // PI is a separate implementation exercise on the visible course path.
   var COURSE_CODES = ["B1", "P1", "P2", "P3", "OSD", "PG", "P4", "P5", "P6", "P7", "P8"];
   var INSTALL = REGISTRY[1];
   var PREWORK_STOP = {
@@ -250,7 +262,8 @@
     return COURSE_CODES.indexOf(item.code) !== -1;
   });
   var NAV_STOPS = REGISTRY.filter(function (item) {
-    return COURSE_CODES.indexOf(item.code) !== -1 || item.kind === "discussion" || item.kind === "briefing";
+    return COURSE_CODES.indexOf(item.code) !== -1 || item.kind === "discussion" ||
+      item.kind === "briefing" || item.kind === "exercise";
   });
   var CORE_PATH = [PREWORK_STOP].concat(NAV_STOPS);
 
@@ -260,7 +273,7 @@
     { phase: "Monday PM", title: "Model economics → Daily Status Brief", codes: ["ME", "P1"] },
     { phase: "Tuesday", title: "Harness → Inbound → MCP → verdict → your own surface → running it without you", codes: ["HCP", "P2", "MCP1", "MCP2", "P3", "OSD", "PG"] },
     { phase: "Wednesday", title: "Control flow and second brain · standalone intake defense", codes: ["LOOPS", "P4", "P5"] },
-    { phase: "Thursday", title: "Autonomy", codes: ["P6", "P7"] },
+    { phase: "Thursday", title: "Patterns → autonomy → automation", codes: ["PI", "P6", "P7"] },
     { phase: "Friday", title: "Transfer", codes: ["P8"] }
   ];
 
@@ -268,7 +281,7 @@
     { label: "Monday", codes: ["B0", "B1", "ME", "P1"] },
     { label: "Tuesday", codes: ["HCP", "P2", "MCP1", "MCP2", "P3", "OSD", "PG"] },
     { label: "Wednesday", codes: ["LOOPS", "P4", "P5"] },
-    { label: "Thursday", codes: ["P6", "P7"] },
+    { label: "Thursday", codes: ["PI", "P6", "P7"] },
     { label: "Friday", codes: ["P8"] }
   ];
 
@@ -346,8 +359,8 @@
     };
   }
 
-  // The current course stop follows the visible path, including briefings,
-  // while the numbered module count remains B1 plus P1–P8.
+  // The current course stop follows the visible path, including briefings and
+  // the Pi exercise, while the numbered module count remains unchanged.
   function currentBlock() {
     for (var i = 0; i < CORE_PATH.length; i++) {
       if (!isComplete(CORE_PATH[i])) return CORE_PATH[i];

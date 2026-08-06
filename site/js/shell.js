@@ -562,7 +562,7 @@
   }
 
   function isStagedExercise(b) {
-    return !!(b && /^(?:B1|P[1-8])$/.test(b.code));
+    return !!(b && /^(?:B1|PI|P[1-8])$/.test(b.code));
   }
 
   function setExerciseStage(stage, open) {
