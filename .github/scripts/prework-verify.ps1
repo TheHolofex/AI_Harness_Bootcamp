@@ -65,7 +65,17 @@ function Test-CommandVersion {
     }
     try {
         $out = & $Exe @VersionArgs 2>&1 | Out-String
+        $commandExit = $LASTEXITCODE
         $out = $out.Trim()
+        $snippet = if ($out.Length -gt 120) { $out.Substring(0, 120) + "..." } else { $out }
+        if ($commandExit -ne 0) {
+            Write-Result -Name "bin.$Name" -Ok $false -Detail "exited $commandExit - $snippet" -Hard $Hard
+            return $out
+        }
+        if ([string]::IsNullOrWhiteSpace($out)) {
+            Write-Result -Name "bin.$Name" -Ok $false -Detail "returned no version text" -Hard $Hard
+            return $out
+        }
         if ($Validator) {
             $ok = & $Validator $out
             if (-not $ok) {
@@ -73,7 +83,6 @@ function Test-CommandVersion {
                 return $out
             }
         }
-        $snippet = if ($out.Length -gt 120) { $out.Substring(0, 120) + "..." } else { $out }
         Write-Result -Name "bin.$Name" -Ok $true -Detail "$($cmd.Source) - $snippet" -Hard $Hard
         return $out
     } catch {
@@ -107,7 +116,7 @@ if ($bash) {
 } else {
     $alt = Get-Command "bash.exe" -ErrorAction SilentlyContinue
     if ($alt) {
-        Write-Result -Name "git.bash_path" -Ok $true -Detail "nonstandard path: $($alt.Source) - use this path if Pi needs shellPath" -Hard $true
+        Write-Result -Name "git.bash_path" -Ok $true -Detail "nonstandard path: $($alt.Source) - use this path for the Goose installer fallback" -Hard $true
     } else {
         Write-Result -Name "git.bash_path" -Ok $false -Detail "Git Bash not at either guide path and bash.exe not on PATH" -Hard $true
     }
@@ -115,20 +124,12 @@ if ($bash) {
 
 Test-CommandVersion -Name "git" -Exe "git" -VersionArgs @("--version") -Hard $true | Out-Null
 
-# --- Node LTS band ---
-$nodeOut = Test-CommandVersion -Name "node" -Exe "node" -VersionArgs @("-v") -Hard $true
-if ($nodeOut) {
-    if ($nodeOut -match "v?(\d+)\.(\d+)") {
-        $maj = [int]$Matches[1]
-        $min = [int]$Matches[2]
-        $inBand = ($maj -eq 22 -and $min -ge 22) -or ($maj -ge 23 -and $maj -le 24) -or ($maj -eq 24)
-        # Course band: 22.22-24.x inclusive majors 22 (patch>=22) through 24
-        $inBand = ($maj -eq 22 -and $min -ge 22) -or ($maj -eq 23) -or ($maj -eq 24)
-        Write-Result -Name "node.lts_band" -Ok $inBand -Detail "parsed $nodeOut (want 22.22-24.x)" -Hard $true
-    } else {
-        Write-Result -Name "node.lts_band" -Ok $false -Detail "could not parse node -v: $nodeOut" -Hard $true
-    }
-}
+# --- Node and npm command surface ---
+# Learners install the current Node LTS. The course commands below are the
+# compatibility proof, so this diagnostic records the observed versions without
+# freezing an otherwise working LTS release to a numeric range.
+Test-CommandVersion -Name "node" -Exe "node" -VersionArgs @("-v") -Hard $true | Out-Null
+Test-CommandVersion -Name "npm" -Exe "npm" -VersionArgs @("--version") -Hard $true | Out-Null
 
 # --- Python not WindowsApps stub ---
 $py = Get-Command python -ErrorAction SilentlyContinue
@@ -178,8 +179,7 @@ $oc = Test-CommandVersion -Name "opencode" -Exe "opencode" -VersionArgs @("--ver
     $output.Trim() -eq $script:OpenCodePin
 }
 
-# --- Pi (optional here) / goose (required for a complete setup) ---
-Test-CommandVersion -Name "pi" -Exe "pi" -VersionArgs @("--version") -Hard $false | Out-Null
+# --- Goose (required for a complete setup) ---
 $gooseOk = $false
 foreach ($g in @("goose", "goose.exe")) {
     $c = Get-Command $g -CommandType Application -ErrorAction SilentlyContinue
@@ -212,6 +212,40 @@ foreach ($g in @("goose", "goose.exe")) {
 }
 if (-not $gooseOk -and -not ($script:Lines | Where-Object { $_ -match "bin\.goose" })) {
     Write-Result -Name "bin.goose" -Ok $false -Detail "goose not on PATH (use the AAIF installer in the website checklist)" -Hard $true
+}
+
+# The supported P6 prepare path validates the source recipe and confirms that
+# Goose exposes the native Developer capability. It never calls a model. Use a
+# disposable run root so this diagnostic leaves the course fixture unchanged.
+$repoRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot "..\.."))
+$p6Root = Join-Path $repoRoot "mission_flesh\p6"
+$p6Start = Join-Path $p6Root "scripts\Start-P6.ps1"
+$p6TempRun = Join-Path ([IO.Path]::GetTempPath()) ("ahb-p6-prework-" + [Guid]::NewGuid().ToString("N"))
+try {
+    if (-not (Test-Path -LiteralPath $p6Start)) {
+        Write-Result -Name "p6.prepare_only" -Ok $false -Detail "missing $p6Start" -Hard $true
+    } else {
+        $prepareOutput = & powershell -NoProfile -ExecutionPolicy Bypass -File $p6Start -PrepareOnly -RunRoot $p6TempRun 2>&1 | Out-String
+        $prepareExit = $LASTEXITCODE
+        $prepareOk = (
+            $prepareExit -eq 0 -and
+            $prepareOutput -match "P6 PREP PASS wave=1 evidence=14 run=" -and
+            $prepareOutput -match "P6 PREPARE-ONLY PASS run=.* no model call started"
+        )
+        $prepareDetail = if ($prepareOk) {
+            ($prepareOutput.Trim() -split '\r?\n' | Select-Object -Last 1)
+        } else {
+            "exit=$prepareExit output=$($prepareOutput.Trim())"
+        }
+        Write-Result -Name "p6.prepare_only" -Ok $prepareOk -Detail $prepareDetail -Hard $true
+    }
+
+} catch {
+    Write-Result -Name "p6.prepare_exception" -Ok $false -Detail $_.Exception.Message -Hard $true
+} finally {
+    if (Test-Path -LiteralPath $p6TempRun) {
+        Remove-Item -LiteralPath $p6TempRun -Recurse -Force -ErrorAction SilentlyContinue
+    }
 }
 
 # --- OPENCODE_DISABLE_CLAUDE_CODE round-trip ---
@@ -290,7 +324,8 @@ if ($script:SoftFails.Count -gt 0) {
 }
 $md += "## Not covered (still need a person + keys)"
 $md += "- Codex GUI sign-in and from-codex.txt write proof"
-$md += "- Funded key write proofs (OpenCode/Pi/goose)"
+$md += "- Funded key write proofs (OpenCode/goose)"
+$md += "- Funded P6 mission run (the no-key prepare and capability probes are covered)"
 $md += "- xAI ACL end-to-end"
 $md += "- Browser -> deck cold-smoke (lead/BROWSER_DECK_DEMO.md)"
 $md += "- LOCAL PIN Ollama quality"

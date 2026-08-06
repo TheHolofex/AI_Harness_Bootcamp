@@ -72,7 +72,7 @@ During the artifact-backed closeout on each live module page, write **one entry 
 | **OSD** | From OSD — Surface I would build |
 | **P4** | From P4 — Second brain |
 | **P5** | From P5 — Operating picture |
-| **P6** | From P6 — Contract |
+| **P6** | From P6 — Agentic mission |
 
 P7 fills its own seed in its module closeout, then opens `P7–P8 — 30/60/90 Plan` for the horizons.
 
@@ -184,15 +184,17 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | Intake rule (“never accept into trusted until ___”) | |
 | First corpus or inbox this applies to | |
 
-### From P6 — Contract (feeds **60 days**)
+### From P6 — Agentic mission (feeds **60 days**)
 
 | Field | Entry |
 |---|---|
 | Date | |
-| Real process to put under autonomy contract | |
-| Tool-enforced vs procedure-enforced (sketch) | |
-| Who holds stop authority | |
-| Exception path (who is woken) | |
+| Changing queue from my desk | |
+| Living command product I want maintained | |
+| Work the agent can coordinate without step-by-step prompts | |
+| Operator intent I will keep human | |
+| Why this path must adapt instead of follow a fixed line | |
+| Evidence I will inspect before acting | |
 
 ### From P7 — Machine choice (feeds **90 days**)
 

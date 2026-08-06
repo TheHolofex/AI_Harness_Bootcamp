@@ -5,7 +5,7 @@
 **Who runs it:** lead only, on the **staff Windows machine** on the projector.  
 **Who installs it:** **nobody in the room.** Students watch. No Chrome extension. No student homework.
 
-This is not a harness case talk and not a second mission. It is a **live multi-surface demo** that extends Thursday morning’s autonomy language (P6): the agent leaves the project fence, gathers from the open web, and collates a deliverable — still under your stop authority and app/site approvals.
+This is not a harness case talk and not a second mission. It is a **live multi-surface demo** that extends Thursday morning's agent-loop language (P6): one goal still drives a sequence of work, and the browser adds open-web research to the agent's available surfaces. Browser permissions and the interrupt belong to this demo.
 
 **Demo shape (what the room sees):**
 
@@ -53,7 +53,7 @@ Optional upgrade if PowerPoint is installed and Computer Use is green: research 
 
 | Min | Beat | Clock feel |
 |---|---|---|
-| 0:00–3:00 | Frame from P6 | Agent with hands *and* a browser |
+| 0:00–3:00 | Extend the P6 loop | Agent with hands *and* a browser |
 | 3:00–6:00 | Vocabulary + Windows truth | Three surfaces; foreground; untrusted pages |
 | 6:00–9:00 | Preflight on screen | Project, Browser plugin, sources list |
 | 9:00–22:00 | **Main case — research → deck** | Approvals, browse, collate, open slides |
@@ -188,12 +188,12 @@ If Path B flakes, **stay on Path A for the live room** — HTML is the reliable 
 
 ## Live script
 
-### 0:00–3:00 — Frame (from P6, not from marketing)
+### 0:00–3:00 — Extend the P6 loop
 
 Say roughly:
 
-> This morning you wrote an autonomy contract: tool-enforced vs procedure-enforced, stop authority, tripwire vs boundary.  
-> Now the agent gets a **browser** and a **deliverable**. It will pull a few facts from the open web and collate a short slideshow.  
+> This morning, full Goose turned four mixed inputs into a checked command center, made a provisional judgment, and revised the same product after operator intent arrived.
+> Now the agent gets a **browser** and a **deliverable**. It will pull a few facts from the open web and collate a short slideshow. This demo adds visible site permissions and an interrupt.
 > That looks like magic. It is also how bad facts become a polished brief. You will watch approvals, then **verify**, then we stop a run on purpose.
 
 Board one line:
@@ -328,7 +328,7 @@ Add images if you can. Do not stop until all 12 exist.
 
 When it begins navigating or writing again, **stop the task** from the Codex UI. Say:
 
-> Stop authority is not a slogan from this morning. Unbounded “make the deck nicer” is how scope and spend die.  
+> A checked finish does not require you to accept a larger goal. Unbounded “make the deck nicer” is how scope and spend die.
 > You interrupt, you own whether anything else is saved.
 
 Optional: show Settings → Browser allow list and remove a host.
@@ -346,12 +346,12 @@ Optional: show Settings → Browser allow list and remove a host.
 **Room prompt (pick one):**
 
 1. Write one Transfer seed: *“I let an agent browse only when sources are ___ ; I accept a deck only when ___.”*  
-2. Name one work artifact that should stay **pipeline + human gate** (P7) even if browser+deck works.  
+2. Name one work artifact that should move through a **visible fixed path** (P7) even if browser+deck works.
 3. What is more dangerous: a wrong text file, or wrong slide 2 in a leadership brief? Why?
 
 **Close line:**
 
-> P7 is the other machine: fixed path, human gate on exceptions. What you just saw is still an **agent** — browser, hands, and a pretty export. Do not confuse “it made slides” with “the line is true.”
+> P7 is the other machine: one visible workboard moving through a fixed path. What you just saw is still an **agent** — browser, hands, and a pretty export. Next, you will watch AI structure and route spreadsheet rows through a graph you can inspect.
 
 Then open P7.
 
@@ -445,9 +445,9 @@ PowerPoint path remains staff-optional only.
 
 ## Why this sits after lunch (geometry)
 
-- **Morning P6** built contract language and stop authority.  
-- **Case talk before lunch** was a lived autonomy story.  
-- **After lunch** shows a seductive multi-step agent: **web → polished deck** — then P7 teaches the other machine (pipeline + gate).  
+- **Morning P6** gave full Goose four mixed inputs and followed one command center through a provisional judgment, operator intent, and checked revision.
+- **Case talk before lunch** was a lived agentic-work story.
+- **After lunch** shows a seductive multi-step agent: **web → polished deck** — then P7 teaches the other machine by letting AI control a spreadsheet through one visible n8n graph.
 - Lead-only protects clinic/GREEN from Windows plugin flake and from twenty Chrome profiles with real SSO.
 
 ---

@@ -109,12 +109,12 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 
 | Field | Note |
 |---|---|
-| 1. Directed | |
-| 2. Mid-run | |
-| 3. Verdict | |
-| 4. Evidence | |
-| 5. I still own | |
-| 6. Adversarial | |
+| 1. Mission | Four mixed inputs → checked 06:30 command center and machine state |
+| 2. Agentic work | Full Goose planned, correlated, built, checked, and revised without step-by-step prompts |
+| 3. Verdict | SHIP only when Wave 1 and Wave 2 both finish with `P6 VERIFY PASS` |
+| 4. Evidence | Wave 1 PASS; final `command_center.html`; final `mission_state.json`; Wave 2 PASS |
+| 5. I still own | The selected Wave 2 intent and whether to act on the revised command center |
+| 6. Transfer | Changing queue, living product, operator intent, and why the path must adapt rather than run as P7's fixed line |
 
 ### P7 — Automation line
 

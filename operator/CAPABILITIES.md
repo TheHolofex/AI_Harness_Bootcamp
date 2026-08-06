@@ -19,7 +19,7 @@ Each project below states what you can do at the end of it, what you learn to do
 | 5 | Build the surface other people's agents connect to, and label what you cannot vouch for | OSD |
 | 6 | Build a durable second brain through an MCP write boundary and prove cold retrieval | P4 |
 | 7 | Triage untrusted material and prove hostile content caused no forbidden effect | P5 |
-| 8 | Let work run without you, under limits that are actually enforced | P6 |
+| 8 | Give an agent a changing objective and let it work to a checked finish | P6 |
 | 9 | Choose between an adaptive loop and a fixed line, and keep judgment on exceptions | P7 |
 | 10 | Carry the method to a different engine under a policy you wrote first | P8 |
 
@@ -325,50 +325,44 @@ A missed class without containment, or "we told the model to be careful."
 
 ## P6 — Watch Officer
 
-> **After this project:** You can let work run without you, under limits that are actually enforced rather than merely requested, and you can stop it and start it again without losing the terms it runs under.
+> **After this project:** You can give an agent a changing operational objective, let it choose and revise the work needed to reach a checked finish, and steer the result with one decision instead of directing every step.
 
-goose is the vehicle: a local agent platform, CLI by default with Desktop optional, whose tool-enforced column is made of real levers — recipe, extensions and tool surface, `GOOSE_MODE`, `max_turns`, retry checks, schedule. Not brochure safety. The pack is `mission_flesh/p6/` (`watch_officer.yaml`, `goose_recipe_notes.md`, `feeder/`). Docs: <https://goose-docs.ai>
+Goose is the runtime, with its full native capabilities available. The learner launches one prepared mission against four mixed overnight inputs. The agent chooses how to inspect them, makes a provisional operating judgment, builds one browser-ready command center and its machine state, runs the checker, and revises the same product when a late update and selected operator intent arrive.
 
 ### What you learn to do
 
 | Objective | Skill | Builds on | What is new | What mastery looks like |
 |---|---|---|---|---|
-| **1. Hand off running work under limits you wrote.** | Running it without watching | P4's durable handoff | P4 froze durable state and handed it to the next block. This runs while nobody is watching any part of it. | You walk away, and the walking away is not brave. What comes back is legible without you having watched it happen, because you set it up knowing you would not be there. |
-| **2. Tell a limit the tool enforces from a limit that is only a promise.** | Checking which limits are real | P2's enforcement design | P2 built one rule that runs whether the model plays along or not. This reads a whole contract of claimed limits and sorts the real ones from the written ones. | Reading a contract, you sort it quickly and are unimpressed by the strongly worded rows. For each limit you can say what would have to be true for it to fail, and few survive that. |
-| **3. Prove a capability was absent, not just declined.** | Proving a tool was missing | P5's proving nothing happened | P5 showed an effect did not happen. This shows a tool was never offered — missing from the list, not present and passed over. | "It did not do that" does not satisfy you. You want the list the machine was working from, and you are slower to claim a capability is gone than the people around you. |
-| **4. Name what each control actually guarantees.** | Spotting a beatable limit | P5's limits of permission | P5 learned what a permission cannot settle. This sorts every limit by what it really gives you, and finds the ones a determined process can walk around. | You are the one who points out that a control catches the thing rather than preventing it. That does not make you throw it away — you keep it, and you say what it is for. |
-| **5. Stop running work and start it again without losing the terms.** | Stopping and restarting | B1's live correction | B1 redirected a run happening in front of you. This stops one you were not watching, and starts it again without the terms quietly loosening. | Stopping is unremarkable to you. You do it without treating it as a failure of the setup, and the work comes back under the same terms, because you never loosened anything to get it running again. |
+| **1. Hand over an outcome, not a list of steps.** | Mission shaping | P1's reusable judgment product | P1 made a product rerunnable. This gives an agent the finish state and lets it decide how to get there. | Your mission is short because the desired state is precise. You are not feeding the agent its next action one message at a time. |
+| **2. Let feedback choose the next action.** | Closed-loop delegation | PG's unattended workers | PG dispatched a bounded batch. Full Goose can inspect, build, run the checker, and use its findings while the mission is still underway. | You can point to checker feedback that changed the work, and the agent stops only at `P6 VERIFY PASS`. |
+| **3. Revise one living product as the world changes.** | Stateful revision | P1's delta test and P4's durable state | Earlier work rebuilt or retrieved a product. This revises the same `command_center.html` and `mission_state.json` when late evidence arrives. | Current facts stay coherent, sound work remains, and the page visibly separates `NEW`, `CHANGED`, `CANCELLED`, and `UNCHANGED`. |
+| **4. Intervene once where judgment is worth more than supervision.** | Consequential steering | B1's live correction and P1's judgment ownership | Goose makes a defensible provisional judgment in Wave 1. The learner selects one complete operator intent in Wave 2, and the agent replans around it. | The exact intent appears in the state and command center. The learner steers the outcome without becoming the agent's project manager. |
+| **5. Read the work compressed by the mission.** | Recognizing agentic leverage | P3's work division | P3 divided a question among workers. This identifies the planning, correlation, checking, and revision that two autonomous launches coordinated through one persisted mission state. | You can name the hours and handoffs the mission compressed, the part that still needed you, and one real workload where that trade would be useful. |
 
 ### What the exercise requires
 
-1. A goose recipe **adapted** from `watch_officer.yaml` to the local feeder, not the shipped demo alone, with a successful run evidenced as `out/watch_summary.md` on disk.
-2. An autonomy contract with **both columns populated** — tool-enforced and procedure-enforced — with three or more rows each.
-3. **Three or more tool-enforced rows naming real goose levers**: an extensions allowlist, `GOOSE_MODE`, `settings.max_turns`, a retry success check, the scheduler. "Be safe" prose alone is not a tool row.
-4. A mapping in which each serious risk on this feeder appears in one column. No orphan risks.
-5. **Stop proof** under realistic conditions, and **restart proof** without losing the contract frame — same recipe and mode, prior good lines retained.
-6. An unattended or scheduled attempt, or an honest blocked-with-reason plus what would be required to enable it.
-7. **The Pi bound proved from evidence:** the same task run with and without `pi --tools …`, pointing at the session file showing the write tools were **absent from the model's schema** — not offered and declined.
-8. **Every contract row labeled** *contract* (capability removed), *tripwire* (catches drift, defeatable by what it polices), or *boundary* (container). Any row you first called tool-enforced that is really a tripwire is named as such in the log.
-9. An exception drill on `feeder/event_04` (OUT_OF_BOUNDS) ending in quarantine with no hostile effect, matching the contract.
-10. A log pointing at the recipe path and version, mode, max turns, run evidence, stop and restart, the exception drill, and the schedule note.
-11. A **60-day seed**: one real work process you would put under contract.
+1. A fresh P6 run containing four mixed inputs: a handoff, telemetry, dispatch data, and a message dump.
+2. A full Goose run that chooses its own work path and makes a defensible provisional MPU-1 assignment in Wave 1.
+3. Exactly two mission outputs: a polished, standalone `command_center.html` and its machine-checkable `mission_state.json`.
+4. A Wave 1 `P6 VERIFY PASS` after every evidence item is accounted for and the command center matches the state.
+5. One complete selected operator intent, followed by the supported Wave 2 update to the same persisted mission.
+6. The same two outputs revised in place, with `NEW`, `CHANGED`, `CANCELLED`, and `UNCHANGED` visible and the operator intent preserved verbatim.
+7. A final `P6 VERIFY PASS` plus a short closeout naming the planning, correlation, checking, and revision Goose coordinated; the judgment the learner still owned; and why this changing path differs from P7's fixed line.
+8. A dated **60-day seed**: one changing queue from the learner's desk, its desired living product, and the operator intent that should remain human.
 
 ### Stretch
 
-- The contract reviewed aloud with a peer acting as supervisor, who finds a hole you then fix.
-- A dual-bound demo: tighten one tool-enforced limit — mode, max turns, or an extension cut — and show the refusal.
-- **A tripwire written and defeated:** your own `tool_call` gate in Pi blocking writes outside the mission folder, then beaten with a `../` path, then fixed by resolving against `ctx.cwd`. State where you put the gate and why that location changes what it guarantees.
-- One deeper goose control — Adversary Mode, an extra allowlisted tool, or a structured `response` schema — and what it changes on the feeder.
-- **Endpoint as a wall, local:** `mission_flesh/p6/local_endpoint_notes.md` with the staff pin; `out/local_predict.md` written **before** the local watch run; paired `out/watch_summary.cloud.md` and `out/watch_summary.local.md` or documented paths; a **numeric** `out/local_hold_degrade.md` with C1–C7 scores, prediction match rate, and the event_04 pair; the non-exfil checklist filled honestly; an endpoint decision rule; and the flip back verified with `goose info -v`. A YELLOW result still requires the prediction and the decision rule. A fake air gap does not count.
+- Release a third wave that changes two threads at once, then explain how Goose chose what to revise.
+- Give two fresh runs different supported intents and compare the resulting command centers.
+- Replace the synthetic inputs with a thin slice of one real changing queue while keeping the two-output contract and checker shape.
 
 ### Side-quest
 
-- The same feeder under two contracts, loose and strict, measuring what each allows and refuses on one scenario pack.
-- A local model as a third cell on a small hold and degrade table, ahead of P8's full matrix.
+- Pair with another learner, exchange operator intents, and compare how Goose revises the same overnight picture.
 
 ### Signs it hasn't landed
 
-The shipped recipe unchanged, a one-column "be safe" contract, a tool column with no real goose settings, or a stop never demonstrated.
+A polished page whose state is wrong, a second wave appended without revising current facts, an operator intent that disappears, or a learner who directs Goose step by step.
 
 ---
 
@@ -444,12 +438,12 @@ Happy path only, no human gate, or "automation is always better" with no discrim
 
 - A manager-ready one-pager: problem, method, bounds, first 30 days, risks.
 - A partial re-point strategy: what stays commercial and why, on cost, risk, and quality.
-- **An endpoint portfolio:** a written map of API home, local, and hosted open, each cell citing a score or an artifact path. Local cites `local_hold_degrade.md` totals; cloud and open cite the P8 matrix or the P6 cloud path. "If attempted" without a YELLOW decision rule does not count.
+- **An endpoint portfolio:** a written map of API home, local, and hosted open, each cell citing a score or an artifact path from the P8 suite. "If attempted" without a YELLOW decision rule does not count.
 
 ### Side-quest
 
 - Re-run the P3 merge on the open model as a third family and see whether the placement reason still holds.
-- Re-run the P6 watch recipe against the hosted open endpoint, if it allows tools, and add a third column to the local hold and degrade table.
+- Add a second hosted-open endpoint to the frozen P8 suite and explain whether the placement verdict changes.
 
 ### Signs it hasn't landed
 

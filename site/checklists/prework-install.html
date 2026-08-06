@@ -94,7 +94,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
   </label>
   <div class="check-detail"><p>Foundations first: a terminal, the official installers for Git, Node, and Python, and a local copy of the course repository. You will clone the course as soon as Git works. After that you will connect your two keys and verify the course harnesses and tools.</p>
   <p>All of it is driven from one window — a PowerShell terminal. You'll open it in step 8 and stay there for the rest of this guide.</p>
-<p><strong>The Codex app</strong> is your home for the week. <strong>OpenCode</strong> is the second harness you'll run the same brief through on Tuesday. <strong>Pi</strong> is a minimal, extensible coding harness — small defaults, then skills, packages, and tree-shaped sessions when you need more. <strong>goose</strong> is a local agent platform: packaged recipes, a tool surface (extensions), an autonomy dial (mode and max turns), and an unattended path (schedule) — Thursday’s autonomy-contract vehicle. <strong>Obsidian</strong> holds a knowledge base and <strong>n8n</strong> builds a fixed pipeline.</p></div>
+<p><strong>The Codex app</strong> is your home for the week. <strong>OpenCode</strong> is the second harness you'll run the same brief through on Tuesday. <strong>Pi</strong> is a minimal, extensible coding harness — small defaults, then skills, packages, and tree-shaped sessions when you need more. <strong>goose</strong> then runs Thursday's prepared mission: it inspects a changing local watch, updates the working product, checks its own result, and revises until the mission is ready for you. <strong>Obsidian</strong> holds a knowledge base and <strong>n8n</strong> builds a fixed pipeline.</p></div>
 </li>
 </ol></section>
 
@@ -327,7 +327,7 @@ cd AI_Harness_Bootcamp</code></pre>
   <div class="check-detail"><pre><code>node -v
 npm -v
 python --version</code></pre>
-  <p>All three should answer with version numbers. Node must read <strong>22.22 or higher, and below 25</strong>. If it's outside that range, open Settings → Apps → Installed apps, uninstall Node.js, and run the LTS installer from section 2 again.</p>
+  <p>All three should answer with version numbers. Node should be the current <strong>LTS</strong> release from step 12. The course checks the commands it needs instead of accepting or rejecting one Node version number. If <code>node</code> or <code>npm</code> does not answer, open Settings → Apps → Installed apps, uninstall Node.js, and run the LTS installer from section 2 again.</p>
   <p>If Python is missing, return to step 13. If <code>npm</code> fails with <em>"npm.ps1 cannot be loaded because running scripts is disabled"</em>, go back to step 10. That error is the execution policy, not a broken Node install.</p></div>
 </li>
 
@@ -660,7 +660,7 @@ Get-Content .\from-pi.txt</code></pre>
 
 </ol></section>
 
-<section class="checklist-section"><h3>10 · goose — recipe, tools, mode, schedule</h3>
+<section class="checklist-section"><h3>10 · goose — the prepared checked mission</h3>
 <figure class="section-diagram">
   <img src="../assets/prework/install-10-goose.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
@@ -672,9 +672,9 @@ Get-Content .\from-pi.txt</code></pre>
     <span class="check-num">41</span>
     <span class="check-title">Know what goose is for</span>
   </label>
-  <div class="check-detail"><p><a href="https://goose-docs.ai" target="_blank" rel="noopener"><strong>goose</strong></a> is a local-first agent platform (CLI required here; Desktop optional). It is more than a one-shot chat: you package a <strong>recipe</strong> (mission + parameters), choose a <strong>tool surface</strong> (extensions / MCP tools), set an <strong>autonomy dial</strong> (<code>GOOSE_MODE</code>, max turns), and optionally an <strong>unattended path</strong> (scheduler + retry).</p>
-  <p>Thursday’s block uses those four levers as the <em>tool-enforced</em> half of an autonomy contract. The install clinic only proves install and one write — you are not learning the whole product now.</p>
-  <p>Course default is the <strong>CLI</strong>. Desktop adds a recipe library and Scheduler UI; the course verification does not require it.</p></div>
+  <div class="check-detail"><p><a href="https://goose-docs.ai" target="_blank" rel="noopener"><strong>goose</strong></a> is the agent runtime behind Thursday's prepared watch mission. You give it one operational objective. It reads the local evidence, decides what work comes next, updates the watch products, runs the mission checker, and revises when the checker finds unfinished work.</p>
+  <p>The install clinic proves the current stable command-line runtime can start and complete one write. In P6, a supported PowerShell launcher prepares the checked mission for you; your work begins with reading and launching that mission, not configuring it.</p>
+  <p>The course requires the <strong>CLI</strong>. Goose Desktop remains optional.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -740,11 +740,13 @@ $env:GOOSE_MODEL = $env:HB_XAI_MODEL</code></pre>
 $env:CONFIGURE = "false"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/aaif-goose/goose/main/download_cli.ps1" -OutFile "download_cli.ps1"
 .\download_cli.ps1</code></pre>
+  <p>This intentionally follows Goose's current stable release. The clinic records the version that installed, while the P6 launcher confirms that Goose and the prepared mission are ready before it starts any model work.</p>
   <p>The <code>cd</code> matters only because the installer downloads into whatever folder you are standing in, and the last section left you in the smoke folder. Keep that one for evidence files.</p>
   <p>If PowerShell refuses to run the script, use this form instead:</p>
   <pre><code>powershell -ExecutionPolicy ByPass -File ".\download_cli.ps1"</code></pre>
   <p>And if execution policy is locked by your IT department so neither form works, Goose publishes a Git Bash path — you verified Git Bash in step 15. Open <strong>Git Bash</strong> from the Start menu and run:</p>
-  <pre><code>export CONFIGURE=false
+  <pre><code>export GOOSE_BIN_DIR="$HOME/.local/bin"
+export CONFIGURE=false
 curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | bash</code></pre>
   <p>Note the GitHub address in all three installer commands. The project moved to <code>aaif-goose</code>, and older instructions pointing at <code>block/goose</code> will either fail or fetch a stale build. Current documentation lives at <a href="https://goose-docs.ai" target="_blank" rel="noopener">goose-docs.ai</a>.</p></div>
 </li>
@@ -787,7 +789,7 @@ if ($gooseInfoExit -ne 0) {
   throw ('goose info failed with exit code {0}: {1}' -f $gooseInfoExit, ($gooseInfo -join ' '))
 }
 $gooseInfo</code></pre>
-  <p>You should see a Goose version, then provider <code>xai</code> and model <code>grok-4.5</code>. If the block stops, keep the exact error: it now separates a missing Windows runtime from a provider or model problem.</p></div>
+  <p>You should see the installed Goose version, then provider <code>xai</code> and model <code>grok-4.5</code>. Keep the version with your clinic notes so staff know which stable build you tested. If the block stops, keep the exact error: it separates a broken install or missing Windows runtime from a provider or model problem.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -800,8 +802,8 @@ $gooseInfo</code></pre>
 $env:GOOSE_MODE = "auto"
 goose run --no-session -t "Create a file named from-goose.txt in the current directory containing exactly the line: goose works"
 Get-Content .\from-goose.txt</code></pre>
-  <p><code>GOOSE_MODE</code> is the autonomy dial. <code>auto</code> skips per-action approval so this smoke test can finish; on Thursday you will often set <code>approve</code> (or smart-approve) so the tool itself enforces a human gate — that is a real contract row, not just advice. <code>--no-session</code> keeps this proof from leaving a session file behind.</p>
-  <p>Once the course repo is cloned, Thursday’s starter pack is <code>mission_flesh/p6/</code> (<code>watch_officer.yaml</code> + <code>goose_recipe_notes.md</code>). You do not need to run that recipe during the install clinic.</p></div>
+  <p><code>auto</code> lets this one-file proof finish without pausing for each action. <code>--no-session</code> keeps the install check from leaving a practice session behind.</p>
+  <p>Once the course repo is cloned, Thursday's prepared, machine-checked mission lives under <code>mission_flesh/p6/</code>. You do not need to run it during the install clinic.</p></div>
 </li>
 </ol></section>
 

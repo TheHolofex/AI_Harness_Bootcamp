@@ -29,7 +29,7 @@ The number that matters is the **slope of `n` down the week** while `m` holds or
 
 | Code | Meaning |
 |---|---|
-| `A` | No required review-boundary evidence: `ADVERSARIAL:`, integrated reviewer receipt, or P4 audit/MCP/verifier set |
+| `A` | No required review-boundary evidence: `ADVERSARIAL:`, integrated reviewer receipt, P4 audit/MCP/verifier set, or P6 two-wave PASS plus revised command center/state |
 | `B` | Brief accuracy entered with no named field — “the brief was fine” in longer words |
 | `M` | Brief accuracy MISS |
 | `O` | Overclaim near zero while bars-met falls — claiming less to protect the ratio |
@@ -70,9 +70,10 @@ Do not compute a median across a student's nine blocks and do not rank the cohor
 ## Spot-checks worth the minutes
 
 - **P4 completion evidence.** Read three students&#x27; <code>RUN_STATE.md</code>, <code>Audit.md</code>, <code>Retrieval/Answers.md</code>, <code>Retrieval/Repair_Check.md</code>, MCP receipts, brain-verifier output, and external integrity snapshot. Confirm the cold answers resolve to vault notes, the fresh check names the applied repair, the disposable mutation returns HOLD, and the untouched live vault returns PASS.
+- **P6 changed-world evidence.** Read three students&#x27; recorded Wave 1 PASS, final <code>command_center.html</code>, final <code>mission_state.json</code>, and Wave 2 PASS. Confirm all 18 evidence items are accounted for, superseded and duplicate items do not drive current work, the chosen intent is preserved, and the page visibly distinguishes <code>NEW</code>, <code>CHANGED</code>, <code>CANCELLED</code>, and <code>UNCHANGED</code>.
 - **P2 intake receipts and refusals.** Read three students&#x27; `normalized/intake_receipt.json`. Confirm the damaged partner file emitted no rows and that the check which caught it counts identifiers, not rows — a row count matches at eight and eight and proves nothing. Confirm both hooks appear trusted in `/hooks` and that each has refused something the student actually attempted. The common failure is a hook that has never fired, which looks identical to a hook that works.
 - **Adversarial paste packs.** A polite reviewer means the pack was thin or the build chat was reused. Fix the pack; never soften the prompt.
 - **Transfer seeds.** P1–P7 write dated seeds during their own module closeouts. Only P7 and P8 use the shared `P7–P8 — 30/60/90 Plan` chat, because both visits continue the same saved plan in the same role. At P7, count the seeds and read the dates. Seven seeds all dated the same afternoon is a Friday dump with extra steps.
-- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B1 and P5. P2 uses its intake refusals, its two hooks, and the run against lookalike material. P4 uses its human audit, MCP receipts, cold retrieval, fresh repair check, brain verifier, and external integrity proof. P6 uses its initial RED receipt, two checker-driven passes, and changed-world delta. Do not add a separate attack to those blocks. At P1, P7 and P8 the student ticks the floor before the attack. P3 checks outcomes as artifacts are produced, then uses its refuting verifiers and the planted claims against its provenance gate as the review.
+- **Pass-bar dialogue.** The walk-the-list-with-the-AI beat runs at B1 and P5. P2 uses its intake refusals, its two hooks, and the run against lookalike material. P4 uses its human audit, MCP receipts, cold retrieval, fresh repair check, brain verifier, and external integrity proof. P6 uses its Wave 1 PASS, the revised command center/state, and the final Wave 2 PASS. Do not add a separate attack to those blocks. At P1, P7 and P8 the student ticks the floor before the attack. P3 checks outcomes as artifacts are produced, then uses its refuting verifiers and the planted claims against its provenance gate as the review.
 
 If a cohort needs rescue, narrow the **scope of data**. Rescue is restoring the pulse and the evidence, not adding metrics.

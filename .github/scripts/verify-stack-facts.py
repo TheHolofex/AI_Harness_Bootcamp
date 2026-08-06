@@ -11,7 +11,7 @@ Exit 2 = the harness itself could not run.
 What it covers:
   - The live install-clinic HTML still names the intended install channels
   - The course registry still routes B0 to that canonical page
-  - The current Node LTS remains inside the range taught for n8n
+  - The official Node channel still publishes a current LTS release
   - The npm OpenCode package and AAIF goose installer remain available
   - Goose's Windows runtime, model, and native-exit guards remain present
   - The P2 Inbound surface and its morning corpus remain wired
@@ -48,6 +48,10 @@ P4_PAGE = REPO_ROOT / "site" / "blocks" / "p4.html"
 P5_PAGE = REPO_ROOT / "site" / "blocks" / "p5.html"
 P2_MATERIAL = REPO_ROOT / "mission_flesh" / "tuesday"
 P4_SEED = REPO_ROOT / "mission_flesh" / "p4" / "vault_seed"
+P6_ROOT = REPO_ROOT / "mission_flesh" / "p6"
+P6_START = P6_ROOT / "scripts" / "Start-P6.ps1"
+P6_WAVE2 = P6_ROOT / "scripts" / "Update-P6.ps1"
+P6_TEST = P6_ROOT / "tests" / "p6.test.mjs"
 WINDOWS_SMOKE = REPO_ROOT / ".github" / "scripts" / "prework-verify.ps1"
 WINDOWS_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "prework-smoke.yml"
 
@@ -141,8 +145,15 @@ def check_repo_paths(report: Report) -> None:
         "mission_flesh/p1",
         "mission_flesh/p4",
         "mission_flesh/p5",
-        "mission_flesh/p6/local_endpoint_notes.md",
-        "mission_flesh/p6/watch_officer.yaml",
+        "mission_flesh/p6/MISSION.md",
+        "mission_flesh/p6/clear_overnight_watch.yaml",
+        "mission_flesh/p6/scripts/Start-P6.ps1",
+        "mission_flesh/p6/scripts/Update-P6.ps1",
+        "mission_flesh/p6/scripts/p6-lib.mjs",
+        "mission_flesh/p6/scripts/prepare.mjs",
+        "mission_flesh/p6/scripts/update.mjs",
+        "mission_flesh/p6/scripts/verify.mjs",
+        "mission_flesh/p6/tests/p6.test.mjs",
         "mission_flesh/p7",
         "mission_flesh/p8",
         "lead/BROWSER_DECK_DEMO.md",
@@ -255,6 +266,10 @@ def check_goose_windows_guards(report: Report) -> None:
             smoke,
             'Write-Result -Name "bin.goose" -Ok $false -Detail "goose not on PATH (use the AAIF installer in the website checklist)" -Hard $true',
         ),
+        "Windows smoke runs the supported P6 prepare-only path": (
+            smoke,
+            'Write-Result -Name "p6.prepare_only"',
+        ),
         "Windows workflow installs the x64 runtime": (
             workflow,
             VC_REDIST_X64_URL,
@@ -263,8 +278,30 @@ def check_goose_windows_guards(report: Report) -> None:
             workflow,
             GOOSE_INSTALLER_URL,
         ),
+        "Windows workflow runs P6 prepare-only": (
+            workflow,
+            ".\\scripts\\Start-P6.ps1",
+        ),
+        "Windows workflow runs P6 Node gates": (
+            workflow,
+            "node --test .\\tests\\p6.test.mjs",
+        ),
     }
     missing = [label for label, (surface, token) in expected.items() if token not in surface]
+    forbidden = {
+        "HTML exact Goose version pin": (html, "GOOSE_VERSION"),
+        "Windows smoke exact Goose version pin": (smoke, "GOOSE_VERSION"),
+        "Windows workflow exact Goose version pin": (workflow, "GOOSE_VERSION"),
+        "Windows smoke duplicates the P6 Goose flag list": (
+            smoke,
+            "goose.p6_run_surface",
+        ),
+    }
+    missing.extend(
+        f"forbidden: {label}"
+        for label, (surface, token) in forbidden.items()
+        if token in surface
+    )
     if missing:
         report.add(
             "setup.goose_windows_guards",
@@ -277,6 +314,108 @@ def check_goose_windows_guards(report: Report) -> None:
             "setup.goose_windows_guards",
             True,
             f"{len(expected)} model, runtime, and native-exit guards present",
+            hard=True,
+        )
+
+
+def check_p6_prepare_surface(report: Report) -> None:
+    smoke = WINDOWS_SMOKE.read_text(encoding="utf-8-sig")
+    workflow = WINDOWS_WORKFLOW.read_text(encoding="utf-8")
+    required_files = [
+        P6_START,
+        P6_WAVE2,
+        P6_ROOT / "MISSION.md",
+        P6_ROOT / "clear_overnight_watch.yaml",
+        P6_ROOT / "scripts" / "p6-lib.mjs",
+        P6_ROOT / "scripts" / "prepare.mjs",
+        P6_ROOT / "scripts" / "update.mjs",
+        P6_ROOT / "scripts" / "verify.mjs",
+        P6_TEST,
+    ]
+    missing = [
+        str(path.relative_to(REPO_ROOT))
+        for path in required_files
+        if not path.is_file()
+    ]
+    if missing:
+        report.add(
+            "site.p6_prepare_surface",
+            False,
+            "missing: " + ", ".join(missing),
+            hard=True,
+        )
+        return
+
+    start = P6_START.read_text(encoding="utf-8-sig")
+    wave2 = P6_WAVE2.read_text(encoding="utf-8-sig")
+    recipe = (P6_ROOT / "clear_overnight_watch.yaml").read_text(encoding="utf-8")
+    expected = {
+        "P6 prepare-only switch": (start, "[switch]$PrepareOnly"),
+        "P6 fixed current run default": (start, 'Join-Path $P6Root "runs\\current"'),
+        "P6 reads Goose run help": (start, '@("run", "--help")'),
+        "P6 checks native Developer capability": (start, '$helpText.Contains("--with-builtin")'),
+        "P6 recipe validation": (start, '@("recipe", "validate", $SourceRecipe)'),
+        "P6 live run adds Developer": (start, "--with-builtin developer"),
+        "P6 two-output dashboard contract": (recipe, "Write exactly two mission outputs"),
+        "P6 dashboard output": (recipe, "command_center.html"),
+        "P6 mission state output": (recipe, "mission_state.json"),
+        "P6 browser handoff": (start, 'Open-CommandCenter -Path (Join-Path $RunRoot "command_center.html")'),
+        "P6 no-inference receipt": (start, "P6 PREPARE-ONLY PASS run=$RunRoot no model call started"),
+        "P6 Wave 2 prepare-only switch": (wave2, "[switch]$PrepareOnly"),
+        "P6 Wave 2 explicit run root": (wave2, "[string]$RunRoot"),
+        "P6 Wave 2 selected intent": (wave2, "[string]$Intent"),
+        "P6 Wave 2 live run adds Developer": (wave2, "--with-builtin developer"),
+        "P6 Wave 2 passes intent": (wave2, "--intent $Intent"),
+        "P6 Wave 2 browser handoff": (wave2, 'Open-CommandCenter -Path (Join-Path $RunRoot "command_center.html")'),
+        "P6 Wave 2 no-inference receipt": (wave2, "P6 UPDATE PREPARE-ONLY PASS run=$RunRoot no model call started"),
+        "pre-work authoritative P6 prepare result": (smoke, '"p6.prepare_only"'),
+        "CI P6 current Node LTS lane": (workflow, 'node-version: "lts/*"'),
+        "CI P6 checks the latest LTS": (workflow, "check-latest: true"),
+        "CI P6 custom run root": (workflow, "-PrepareOnly -RunRoot $runRoot"),
+        "CI P6 Node verifier tests": (workflow, "node --test .\\tests\\p6.test.mjs"),
+    }
+    absent = [
+        label
+        for label, (surface, token) in expected.items()
+        if token not in surface
+    ]
+    forbidden = {
+        "duplicated pre-work Goose flag probe": (smoke, "goose.p6_run_surface"),
+        "P6 --no-profile": (start, "--no-profile"),
+        "P6 --render-recipe probe": (start, "--render-recipe"),
+        "P6 --no-session override": (start, "--no-session"),
+        "P6 --params override": (start, "--params"),
+        "P6 --max-turns override": (start, "--max-turns"),
+        "P6 Wave 2 --no-profile": (wave2, "--no-profile"),
+        "P6 Wave 2 --render-recipe probe": (wave2, "--render-recipe"),
+        "P6 Wave 2 --no-session override": (wave2, "--no-session"),
+        "P6 Wave 2 --params override": (wave2, "--params"),
+        "P6 Wave 2 --max-turns override": (wave2, "--max-turns"),
+        "P6 recipe extension allowlist": (recipe, "extensions:"),
+        "P6 recipe settings restriction": (recipe, "settings:"),
+    }
+    violations = [
+        label
+        for label, (surface, token) in forbidden.items()
+        if token in surface
+    ]
+    if absent or violations:
+        detail = []
+        if absent:
+            detail.append("missing: " + ", ".join(absent))
+        if violations:
+            detail.append("forbidden: " + ", ".join(violations))
+        report.add(
+            "site.p6_prepare_surface",
+            False,
+            "; ".join(detail),
+            hard=True,
+        )
+    else:
+        report.add(
+            "site.p6_prepare_surface",
+            True,
+            "native Developer launch, two-output mission, no-key prepare paths, and Node verifier gates present",
             hard=True,
         )
 
@@ -489,53 +628,42 @@ def check_p4_second_brain_surface(report: Report) -> None:
 
 
 def check_node_lts_claim(report: Report) -> None:
-    """Verify the newest Node LTS fits the 22.22-or-newer, below-25 clinic range."""
+    """Verify the official Node channel still publishes a parseable current LTS."""
     data, status = http_json(NODE_INDEX_URL)
     if data is None:
         report.add(
-            "node.lts_range",
+            "node.lts_channel",
             False,
             f"could not fetch Node release index ({status})",
             hard=False,
         )
         return
     if not isinstance(data, list):
-        report.add("node.lts_range", False, "unexpected Node index payload", hard=True)
+        report.add("node.lts_channel", False, "unexpected Node index payload", hard=True)
         return
 
     lts_rows = [row for row in data if isinstance(row, dict) and row.get("lts")]
     if not lts_rows:
-        report.add("node.lts_range", False, "Node index contains no LTS release", hard=True)
+        report.add("node.lts_channel", False, "Node index contains no LTS release", hard=True)
         return
 
     latest_lts = lts_rows[0]
     version = str(latest_lts.get("version", ""))
-    match = re.fullmatch(r"v?(\d+)\.(\d+)\.(\d+)(?:[-+].*)?", version)
-    if not match:
+    if not re.fullmatch(r"v?\d+\.\d+\.\d+(?:[-+].*)?", version):
         report.add(
-            "node.lts_range",
+            "node.lts_channel",
             False,
             f"could not parse latest LTS version {version!r}",
             hard=True,
         )
         return
 
-    major, minor, _patch = (int(part) for part in match.groups())
-    supported = (major > 22 or (major == 22 and minor >= 22)) and major < 25
-    if supported:
-        report.add(
-            "node.lts_range",
-            True,
-            f"latest Node LTS is {version} ({latest_lts.get('lts')})",
-            hard=True,
-        )
-    else:
-        report.add(
-            "node.lts_range",
-            False,
-            f"latest Node LTS is {version}; canonical clinic requires >=22.22 and <25",
-            hard=True,
-        )
+    report.add(
+        "node.lts_channel",
+        True,
+        f"latest Node LTS is {version} ({latest_lts.get('lts')})",
+        hard=True,
+    )
 
 
 def check_opencode_npm_channel(report: Report) -> None:
@@ -592,6 +720,8 @@ def check_goose_installer_channel(report: Report) -> None:
         "aaif-goose/goose",
         "releases/download",
         'Join-Path $env:USERPROFILE ".local\\bin"',
+        '$RELEASE_TAG = if ($RELEASE -eq "true") { "canary" } else { "stable" }',
+        '"goose-$ARCH-pc-windows-msvc.zip"',
     ]
     missing = [marker for marker in markers if marker not in script]
     if missing:
@@ -617,6 +747,7 @@ def main() -> int:
         check_repo_paths(report)
         check_canonical_install_surface(report)
         check_goose_windows_guards(report)
+        check_p6_prepare_surface(report)
         check_registry_install_route(report)
         check_p2_inbound_surface(report)
         check_osint_feeds(report)

@@ -1,0 +1,79 @@
+version: "1.0.0"
+title: "P6 Clear the Overnight Watch"
+description: >
+  Turn mixed overnight evidence into a polished 06:30 command center, then
+  revise it when the situation and operator intent change.
+
+instructions: |
+  You are the watch lead for P6 Clear the Overnight Watch. Work in the current
+  working directory.
+
+  Complete the full loop without asking the learner for help:
+  inspect -> reason -> decide -> build -> verify -> revise -> finish.
+
+  Read START_HERE.md and every file under incoming/. If operator_intent.txt
+  exists, treat its complete text as the learner's intent. Inspect the current
+  command_center.html and mission_state.json before a Wave 2 revision.
+
+  Write exactly two mission outputs in the current directory:
+
+  1. command_center.html
+     Build one polished, self-contained, responsive 06:30 morning command
+     center that opens directly in a browser. Use no external assets. Make the
+     operating picture immediately legible: current readiness, top actions,
+     the next 90 minutes, the one-mobile-power-unit decision and rationale,
+     incidents, an evidence ledger, and explicit assumptions. In Wave 2,
+     add a visible "What Changed" section with NEW, CHANGED, CANCELLED, and
+     UNCHANGED items plus a concise before/after view.
+
+  2. mission_state.json
+     Record the machine-checkable truth behind the page. Include wave, as_of,
+     readiness, resource_decision, situations, actions, evidence, assumptions,
+     changes, and operator_intent.
+     Account for every EV-### item exactly once. Each evidence record needs id,
+     disposition (ACTIVE, DUPLICATE, or SUPERSEDED), canonical_id, and used_in.
+     Readiness needs status, summary, and source_ids. Each situation needs id,
+     status, summary, and source_ids. Each action needs action_id, priority,
+     owner, due, status, action, target_id, resource_ids, and source_ids. Use
+     HH:MMZ for every action due time. Each Wave 2 change record needs
+     classification, summary, and source_ids. The resource decision needs
+     resource_id, assignment, provisional, rationale, and source_ids. Keep
+     operator_intent empty in Wave 1 and preserve the complete intent there in
+     Wave 2.
+
+  Deliver finished operating products, not templates. Derive every owner and
+  due time from the evidence. Never leave bracketed fields, blank values, or
+  template markers such as OWNER, DATE, DUE, REPLACE, INSERT, PASTE, TODO, TBD,
+  TBC, UNKNOWN, or UNASSIGNED. Never ask the learner to edit either mission
+  output. When evidence is uncertain, state the assumption explicitly and
+  still make the most defensible operating choice.
+
+  In Wave 1, make a defensible provisional assignment for MPU-1 yourself. There
+  is no single prescribed choice when the evidence supports more than one.
+  Never double-book the one mobile power unit. Duplicates and superseded items
+  belong in the evidence ledger but cannot drive current situations or actions.
+
+  In Wave 2, apply operator_intent.txt verbatim, reconcile the late update,
+  revise the same two files, and explain what is new, changed, cancelled, and
+  unchanged. Preserve sound work that remains true. Cold Store 7 no longer
+  needs mobile power, but Relay Kestrel and Bridge Foxtrot now compete for the
+  same MPU-1. Use the learner's intent to make that tradeoff and make the
+  consequence of the choice visible.
+
+  Embed the complete mission_state.json object between an opening
+  <script id="mission-state" type="application/json"> tag and its closing
+  </script> tag. The embedded JSON must parse and be exactly equal to
+  mission_state.json.
+
+  Run `node tools/verify.mjs --run-root .`. Repair every HOLD finding and rerun
+  it until it prints P6 VERIFY PASS. Then give a compact handoff naming the
+  wave, top actions, MPU-1 assignment, and PASS.
+
+prompt: |
+  Clear the overnight watch now. Build the 06:30 command center, verify it,
+  repair every finding, and finish with the verified handoff.
+
+activities:
+  - "Inspect the mixed overnight evidence"
+  - "Build the 06:30 command center"
+  - "Verify and revise until PASS"

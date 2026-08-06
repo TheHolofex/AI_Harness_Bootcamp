@@ -62,7 +62,7 @@ function idsIn(value) {
 }
 
 function validatePortfolioContracts() {
-  const expected = ["PW-2", "PW-4", "P1-2", "P1-5", "P3-1", "P4-1", "P4-5", "P5-3", "P6-2", "P6-5", "P7-1", "P7-4", "P8-2", "P8-5", "PC-1"];
+  const expected = ["PW-2", "PW-4", "P1-2", "P1-5", "P3-1", "P4-1", "P4-5", "P5-3", "P7-1", "P7-4", "P8-2", "P8-5", "PC-1"];
   const actual = CATALOG.resources.map((item) => item.id);
   if (JSON.stringify(actual) !== JSON.stringify(expected)) fail("catalog Wave 1 IDs/order do not match the approved slate");
   for (const resource of CATALOG.resources) {

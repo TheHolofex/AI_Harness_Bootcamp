@@ -207,16 +207,11 @@
       url: "blocks/p5.html", meta: "OpenCode · staged intake · triage gate · absence proof"
     },
     {
-      code: "P6", name: "The watch officer", title: "The watch officer", day: "Thursday", slot: "AM",
+      code: "P6", name: "Clear the overnight watch", title: "The Watch Officer — Clear the Overnight Watch", day: "Thursday", slot: "AM",
       key: "ahb-checklist-p6",
-      ids: [
-        "pulse-brief", "p6-feeder", "p6-stop", "p6-layers",
-        "mvp-run", "mvp-33", "mvp-map", "mvp-stop",
-        "mvp-unatt", "mvp-pi", "mvp-ex", "mvp-log6",
-        "mvp-60", "p6-transfer"
-      ],
-      stretchIds: ["stretch-local-predict", "stretch-local-pair", "stretch-local-endpoint"],
-      url: "blocks/p6.html", meta: "goose + Pi"
+      ids: ["p6-handoff", "p6-wave-one", "p6-decision", "p6-wave-two", "p6-closeout"],
+      stretchIds: [],
+      url: "blocks/p6.html", meta: "Goose + xAI · adaptive two-wave watch · live command center"
     },
     {
       code: "P7", name: "The automation line", title: "The automation line", day: "Thursday", slot: "PM",

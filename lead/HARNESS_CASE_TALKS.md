@@ -27,13 +27,13 @@ Students have spent the morning *inside* a capability (craft, knowledge, autonom
 |---|---|---|
 | **Tuesday** | P2 Inbound | One recurring intake made to run itself: several arriving formats normalized at the door, a capability map that names the record behind every assertion, distribution lists generated rather than edited, and two rules moved from advice into hooks. Show which judgments the components carry and which ones still belong to the operator. |
 | **Wednesday** | P4 personal operating harness | One real goal carried by a bounded loop: why the control pattern fit, where durable state mattered, which human gate earned its interruption, what evidence ended the run, and which tempting component was left out or removed. |
-| **Thursday** | P6 watch officer | Autonomy under contract: tool vs procedure bounds, stop authority, unattended path honesty. *Optional:* air-gap / local endpoint story (endpoint is a wall) |
+| **Thursday** | P6 watch officer | One changing objective carried by full Goose: how it turned four mixed inputs into a checked command center, made a provisional judgment, and then revised the same product around one operator intent when the world changed. |
 
 You may swap stories if a better live example fits the room. Keep the **capability** of that morning’s block audible in the story.
 
 ## Discussion prompts (use 2–3, not all)
 
-- What part of that story was **tool-enforced** vs **procedure-enforced**?
+- Where did the agent choose its next action from the state it found?
 - Where would this have failed on *your* desk without a harness?
 - What evidence would your supervisor accept — and what would they reject as vibe?
 - What would you **not** automate next time, and why?
@@ -66,5 +66,5 @@ Listen for the problem, the harness move, and the evidence — then spend discus
 ## Related stretch modules (not case talks)
 
 - **P3 fan-out** — the baseline delta is the case: what four routes found that one agent did not, and whether it paid for the coordination
-- **P6/P8 endpoint wall** — local Ollama/LM Studio stretch: `mission_flesh/p6/local_endpoint_notes.md`
+- **P8 endpoint wall** — hosted-open and local hold/degrade work: `instruments/p8_hold_degrade/`
 - **Thu after lunch browser → deck** — `lead/BROWSER_DECK_DEMO.md`

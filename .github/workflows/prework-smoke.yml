@@ -2,10 +2,11 @@ name: prework-smoke
 
 # Manual only. Windows runners bill at 2x, so this never fires on push.
 #
-# A CI runner is NOT a student laptop: Git, Node and Python arrive preinstalled,
-# there is no GUI, and no API keys are present. This run installs the pinned
-# OpenCode build plus Goose and its Windows runtime, then catches loader failures;
-# it does not replace row B1 of lead/COHORT_PIN.md, the candidate cohort build.
+# A CI runner is NOT a student laptop: Git and Python arrive preinstalled,
+# there is no GUI, and no API keys are present. This run selects the current Node
+# LTS, installs the pinned OpenCode build plus the current stable Goose CLI
+# and its Windows runtime, then catches loader failures. It does not replace a
+# candidate cohort build on real clinic hardware.
 
 on:
   workflow_dispatch:
@@ -21,12 +22,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Select the current Node LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          check-latest: true
+
       - name: Runner facts
         shell: pwsh
         run: |
           "OS       : $([System.Environment]::OSVersion.VersionString)"
           "Arch     : $env:PROCESSOR_ARCHITECTURE"
           "PS       : $($PSVersionTable.PSVersion)"
+          "Node     : $(node --version)"
           "Image    : $env:ImageVersion"
 
       - name: Install the course-pinned OpenCode build
@@ -59,10 +67,11 @@ jobs:
           $gooseBin = Join-Path $env:USERPROFILE '.local\bin'
           $env:PATH = "$gooseBin;$env:PATH"
           $gooseBin | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          & (Join-Path $gooseBin 'goose.exe') --version
+          $gooseVersion = (& (Join-Path $gooseBin 'goose.exe') --version 2>&1 | Out-String).Trim()
           if ($LASTEXITCODE -ne 0) {
             throw "Goose could not start after installation (exit code $LASTEXITCODE)."
           }
+          "Goose $gooseVersion"
 
       - name: Run prework smoke
         shell: pwsh
@@ -70,6 +79,23 @@ jobs:
           powershell -ExecutionPolicy Bypass -File .github\scripts\prework-verify.ps1 `
             -ResultsPath "$env:GITHUB_WORKSPACE\prework-verify-results.md"
           exit $LASTEXITCODE
+
+      - name: Run P6 no-key prepare and offline verifier gates
+        shell: powershell
+        run: |
+          Set-Location "$env:GITHUB_WORKSPACE\mission_flesh\p6"
+          $runRoot = Join-Path $env:RUNNER_TEMP 'p6-ci-run'
+
+          powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\Start-P6.ps1 `
+            -PrepareOnly -RunRoot $runRoot
+          if ($LASTEXITCODE -ne 0) {
+            throw "P6 prepare-only failed with exit code $LASTEXITCODE."
+          }
+
+          node --test .\tests\p6.test.mjs
+          if ($LASTEXITCODE -ne 0) {
+            throw "P6 Node tests failed with exit code $LASTEXITCODE."
+          }
 
       - name: Publish results to the run summary
         if: always()
