@@ -35,15 +35,14 @@
       ids: ["k-openai", "k-xai", "k-models", "k-verify", "sf-make"]
     },
     {
-      id: "tools", title: "Install and verify the course harnesses and tools", time: "75–120 min", anchor: "phase-tools",
-      summary: "Install Codex, OpenCode, Pi, goose, Obsidian, and n8n, then verify them with observable work.",
+      id: "tools", title: "Install and verify the course harnesses and tools", time: "60–105 min", anchor: "phase-tools",
+      summary: "Install Codex, OpenCode, goose, Obsidian, and n8n, then verify them with observable work.",
       ids: [
         "cx-install", "cx-signin", "cx-lock", "cx-project", "cx-sandbox", "cx-write",
         "oc-install", "oc-verify", "oc-models", "oc-write",
-        "pi-install", "pi-verify", "pi-write",
         "gs-runtime", "gs-keyring", "gs-provider", "gs-install", "gs-path", "gs-verify", "gs-write",
         "ob-install", "ob-vault", "n8n-install", "n8n-start", "n8n-owner", "n8n-stop",
-        "g-four"
+        "g-three"
       ]
     },
     {
@@ -79,7 +78,7 @@
       ids: preworkRequiredIds(),
       conditionalIds: [
         "i-shape", "k-read", "cx-limits",
-        "oc-why", "pi-why", "gs-what",
+        "oc-why", "gs-what",
         "r-notfound", "r-window", "r-scripts", "r-auth", "r-store", "r-noclaim", "r-stuck"
       ],
       // The local model is optional — skipping it never blocks the pre-work gate.
@@ -225,15 +224,15 @@
       url: "blocks/p6.html", meta: "Goose + xAI · adaptive two-wave watch · live command center"
     },
     {
-      code: "P7", name: "The automation line", title: "The automation line", day: "Thursday", slot: "PM",
+      code: "P7", name: "AI Controls the Workboard", title: "AI Controls the Workboard", day: "Thursday", slot: "PM",
       key: "ahb-checklist-p7",
       ids: [
-        "pulse-brief", "p7-rows", "p7-transfer", "mvp-e2e",
-        "mvp-gate", "mvp-3ex", "mvp-disc", "mvp-slice",
-        "mvp-conf", "mvp-log7", "mvp-90"
+        "p7-prepared", "p7-model", "p7-wave1-count", "p7-wave1-bundle",
+        "p7-trace", "p7-rule-change", "p7-rule-diff", "p7-wave2",
+        "p7-machine-choice", "p7-closeout", "p7-horizons"
       ],
       stretchIds: [],
-      url: "blocks/p7.html", meta: "n8n + AI step"
+      url: "blocks/p7.html", meta: "n8n + xAI · local XLSX · 60-row wave · visual writeback"
     },
     {
       code: "P8", name: "Open model · sealed", title: "Operator-governed open model", day: "Friday", slot: "AM",

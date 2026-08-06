@@ -15,6 +15,7 @@ on:
       - "site/blocks/pi.html"
       - "site/blocks/p8.html"
       - "site/assets/blocks/pi/**"
+      - "site/assets/course/course-progression.svg"
       - "site/assets/blocks/p3/**"
       - "site/js/registry.js"
       - "site/js/shell.js"
@@ -35,6 +36,7 @@ on:
       - "site/blocks/pi.html"
       - "site/blocks/p8.html"
       - "site/assets/blocks/pi/**"
+      - "site/assets/course/course-progression.svg"
       - "site/assets/blocks/p3/**"
       - "site/js/registry.js"
       - "site/js/shell.js"
@@ -64,7 +66,8 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: "22.22.0"
+          node-version: "lts/*"
+          check-latest: true
           cache: npm
           cache-dependency-path: |
             instruments/p3_evidence_surface/package-lock.json

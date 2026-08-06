@@ -88,7 +88,7 @@ You are specifying how **direction + cothinking + evidence + bounds** will run o
 1. What judgment products become machines  
 2. Which instructions, skills, hooks, agents, and tool connections you will keep
 3. What you will never accept without evidence  
-4. What runs under contract vs pipeline  
+4. What belongs in a fixed production line, an adaptive agent loop, or a hybrid machine
 5. What policy you carry when the model changes  
 
 ---
@@ -201,10 +201,11 @@ Each seed = **claim + first proof + the date you wrote it**. Empty at seal = out
 | Field | Entry |
 |---|---|
 | Date | |
-| Workload → **agent loop** (why) | |
-| Workload → **pipeline + human gate** (why) | |
-| Judgment I will not automate | |
-| Discrimination rule (one sentence) | |
+| Workload → **fixed production line** (why) | |
+| Workload → **adaptive agent loop** (why) | |
+| Workload → **hybrid machine** (why) | |
+| Leverage evidence I will require | Batch size, outputs updated, rule changes propagated, and row-by-row edits avoided |
+| Machine-choice rule (one sentence) | |
 
 ### Operator self-calibration (meta-loop — revisit at P7)
 
@@ -292,7 +293,7 @@ What I review every two weeks:
 | Transfer | Detail |
 |---|---|
 | Portable eval / frozen suite for my domain | |
-| Pipeline vs agent map for desk/team | |
+| Fixed vs adaptive vs hybrid machine map for desk/team | |
 | Policy/AUP stub I can defend | |
 | Who else can run brief→log→verdict | |
 | Model/vendor change drill | |
@@ -372,9 +373,11 @@ name any that are empty or undated and make me fix those before we draft.
 Then, from the seeds only:
 1. Draft 30 / 60 / 90 outcomes — at most three per horizon, each observable in
    that horizon by someone who is not me.
-2. Fill the 30-day rhythm, organizer and harness, bounds, and not-yet risks.
-3. Attack every line that could survive without me doing anything differently.
-4. Set Status to Draft horizons complete.
+2. Make the 90-day machine choice explicit: fixed, adaptive, or hybrid, with the
+   leverage evidence that would justify deployment.
+3. Fill the 30-day rhythm, organizer and harness, bounds, and not-yet risks.
+4. Attack every line that could survive without me doing anything differently.
+5. Set Status to Draft horizons complete.
 
 Do not seal. Do not invent a seed I did not write.
 ```

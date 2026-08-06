@@ -1,4 +1,4 @@
-# The watch officer · The automation line
+# The watch officer · AI controls the workboard
 
 ---
 
@@ -27,14 +27,14 @@
 
 ---
 
-## Afternoon — The automation line
+## Afternoon — AI controls the workboard
 
 | Objective | Skill | Builds on | What is new | What mastery looks like |
 |---|---|---|---|---|
-| **1. Build a fixed path that handles volume.** | Handling many at once | Tuesday's work division | Tuesday split one job across several agents. This pushes many items through one fixed shape, where a single bad row repeats hundreds of times. | You think in rows rather than in runs. A mistake that would be an annoyance once you treat seriously, because you are picturing it happening four hundred times. |
-| **2. Put a person where being wrong would cost something.** | Putting a person in the way | Monday's judgment ownership | Monday named which decisions were yours. This puts that ownership at one point in a running system, where an uncertain row cannot get past. | The gate sits where being wrong is expensive, not where it was convenient to put one. Uncertain work stops there and waits, and nobody has to remember to check. |
-| **3. Choose between an adaptive loop and a fixed path.** | Picking the right machine | Tuesday's knowing when to fan out | Tuesday decided whether a job needed more than one agent. This decides whether it belongs in something that adapts at all, or on a line that never makes it up as it goes. | You say why this work is not agent work, or not pipeline work, in terms of the work rather than in terms of what you enjoy building. Your answer comes out different for two jobs you describe on the same day. |
-| **4. Re-sort work you already built.** | Moving work you already built | Wednesday's building less | Wednesday decided how much to build before building it. This looks at finished work and concludes it was put in the wrong machine. | You will say that something you built earlier in the week is in the wrong place. Having been right the first time is not what you are protecting. |
-| **5. Name the judgment you will not hand over.** | Saying what stays human | Objective 2's gate | A gate holds one decision for a person this time. This names the decisions that will never be handed over, drawn by what being wrong costs rather than by what is hard to automate. | Your list is short, specific, and expensive-sounding. It is not a list of things that are hard to automate — some of them would be easy to automate tomorrow, and you still will not do it. |
+| **1. Turn spreadsheet rows into structured production work.** | Designing an AI spreadsheet station | Monday's repeatable judgment product | Monday made one judgment product rerunnable. This lets n8n read each workbook row and gives AI eight named columns to fill so later nodes can use the result without reading prose. | All 60 first-wave rows return to `workboard.xlsx` with workstream, priority, summary, next action, and policy fields populated. |
+| **2. Route rows through visible branches and write them back.** | Visual fan-out, fan-in, and XLSX writeback | Tuesday's work division | Tuesday split one question across several agents. This uses one spreadsheet field to send rows to specialist branches, apply policy, recombine them, and overwrite the workbook. | The n8n canvas visibly carries the rows through four branches and back into one 60-row `AI Workboard` sheet. You can trace one identifier from its source row to the written result. |
+| **3. Change one rule once and watch the spreadsheet move.** | Rule leverage | Monday's delta reading | Monday showed what changed between reruns. This changes policy at one branch and measures the effect in the workbook without repairing records one at a time. | Side-by-side workbook copies name the Operations rows and four columns that changed. The row-by-row edit count is zero. |
+| **4. Put new rows through the same saved machine.** | Second-wave operation | Monday's rerunnable product and the morning's changed-world run | Earlier work reran a product or let an agent revise its plan. This adds 20 source rows to the workboard and uses the same visual graph, prompt, schema, routes, and writeback. | Rows 61–80 begin with blank AI columns and return populated. The final workbook and receipt account for 80 total rows. |
+| **5. Choose a fixed, adaptive, or hybrid machine for real work.** | Machine choice | The morning's adaptive loop | The morning showed work whose next step changes with feedback. This separates that work from repeatable production and from systems that place adaptive work inside a designed outer line. | You classify one earlier course workload plus two desk workloads—or two distinct parts of one desk workload—as fixed, adaptive, and hybrid, then defend each choice with path variability and evidence of leverage. |
 
-> **After the afternoon:** You can tell which work belongs in a loop that adapts and which belongs on a fixed line, build the fixed one, and keep a person at the point where being wrong would cost something.
+> **After the afternoon:** You can make n8n read a spreadsheet, use AI to structure every row, route the rows through visible policy branches, and write the result back; then change one rule once, run a second wave through the same graph, and choose fixed, adaptive, or hybrid for real work.

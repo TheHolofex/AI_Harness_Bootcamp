@@ -32,11 +32,10 @@ const installStages = [
   "6 Smoke",
   "7 Codex",
   "8 OpenCode",
-  "9 Pi",
-  "10 goose",
-  "11 Obsidian",
-  "12 n8n",
-  "13 Files",
+  "9 goose",
+  "10 Obsidian",
+  "11 n8n",
+  "12 Files",
 ];
 
 function esc(value) {
@@ -299,21 +298,18 @@ const metaphors = {
     <text x="818" y="158" class="tiny red" text-anchor="middle">ONE PROVIDER PER LANE · VERIFY FRESH</text>
   </g>
 `,
-  smoke: `  <g aria-label="Shared smoke folder with four proof-file slots">
+  smoke: `  <g aria-label="Shared smoke folder with three proof-file slots">
     <path d="M564 90H715L733 105H1059V149H564Z" fill="${C.warm}" stroke="${C.strong}"/>
     <text x="595" y="115" class="micro muted">PREWORK-SMOKE</text>
-    <rect x="742" y="111" width="68" height="26" fill="${C.paper}" stroke="${C.rule}"/>
-    <rect x="823" y="111" width="68" height="26" fill="${C.paper}" stroke="${C.rule}"/>
-    <rect x="904" y="111" width="68" height="26" fill="${C.paper}" stroke="${C.rule}"/>
-    <rect x="985" y="111" width="61" height="26" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="776" y="127" class="tiny muted" text-anchor="middle">CODEX</text>
-    <text x="857" y="127" class="tiny muted" text-anchor="middle">OPEN</text>
-    <text x="938" y="127" class="tiny muted" text-anchor="middle">PI</text>
-    <text x="1015.5" y="127" class="tiny muted" text-anchor="middle">GOOSE</text>
-    <circle cx="776" cy="145" r="3" fill="${C.mark}"/>
-    <circle cx="857" cy="145" r="3" fill="${C.mark}"/>
-    <circle cx="938" cy="145" r="3" fill="${C.mark}"/>
-    <circle cx="1015.5" cy="145" r="3" fill="${C.mark}"/>
+    <rect x="742" y="111" width="92" height="26" fill="${C.paper}" stroke="${C.rule}"/>
+    <rect x="848" y="111" width="92" height="26" fill="${C.paper}" stroke="${C.rule}"/>
+    <rect x="954" y="111" width="92" height="26" fill="${C.paper}" stroke="${C.rule}"/>
+    <text x="788" y="127" class="tiny muted" text-anchor="middle">CODEX</text>
+    <text x="894" y="127" class="tiny muted" text-anchor="middle">OPEN</text>
+    <text x="1000" y="127" class="tiny muted" text-anchor="middle">GOOSE</text>
+    <circle cx="788" cy="145" r="3" fill="${C.mark}"/>
+    <circle cx="894" cy="145" r="3" fill="${C.mark}"/>
+    <circle cx="1000" cy="145" r="3" fill="${C.mark}"/>
     <text x="679" y="137" class="caption" text-anchor="middle">ONE BAY</text>
   </g>
 `,
@@ -348,34 +344,19 @@ const metaphors = {
     <text x="1060" y="71" class="tiny red" text-anchor="end">COHORT PIN</text>
   </g>
 `,
-  pi: `  <g aria-label="Minimal agent loop">
-    <circle cx="805" cy="116" r="52" fill="${C.warm}" stroke="${C.rule}"/>
-    <path d="M805 72A44 44 0 1 1 767 94" class="redline" marker-end="url(#arrow-red)"/>
-    <circle cx="805" cy="116" r="23" fill="${C.paper}" stroke="${C.strong}"/>
-    <text x="805" y="121" class="title" text-anchor="middle">π</text>
-    <rect x="548" y="92" width="116" height="46" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="606" y="111" class="micro muted" text-anchor="middle">PROMPT</text>
-    <text x="606" y="126" class="caption" text-anchor="middle">INPUT</text>
-    <rect x="946" y="92" width="116" height="46" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
-    <text x="1004" y="111" class="micro muted" text-anchor="middle">SHELL</text>
-    <text x="1004" y="126" class="caption" text-anchor="middle">REACH</text>
-    <path d="M664 115H738M872 115H946" class="line"/>
-    <text x="805" y="158" class="tiny red" text-anchor="middle">PROMPT → TOOL → OUTPUT → LOOP</text>
-  </g>
-`,
-  goose: `  <g aria-label="Bounded work recipe and completion stamp">
+  goose: `  <g aria-label="Agentic mission and checked completion stamp">
     <rect x="555" y="76" width="303" height="78" rx="2" fill="${C.paper}" stroke="${C.strong}"/>
     <rect x="555" y="76" width="303" height="19" fill="${C.panel}" stroke="${C.strong}"/>
-    <text x="706.5" y="89" class="micro muted" text-anchor="middle">BOUNDED RECIPE</text>
+    <text x="706.5" y="89" class="micro muted" text-anchor="middle">AGENTIC MISSION</text>
     <path d="M575 108h8v8h-8zM575 126h8v8h-8z" fill="${C.paper}" stroke="${C.strong}"/>
     <path d="M576 111l3 3 7-8M576 129l3 3 7-8" class="redline"/>
-    <text x="598" y="115" class="body">PROVIDER + MODEL</text>
-    <text x="598" y="133" class="body">PATH + KEYRING</text>
+    <text x="598" y="115" class="body">INSPECT + CHOOSE</text>
+    <text x="598" y="133" class="body">CHECK + REVISE</text>
     <path d="M858 115H900" class="redline" marker-end="url(#arrow-red)"/>
     <circle cx="974" cy="115" r="48" fill="${C.warm}" stroke="${C.gold}" stroke-width="1.5"/>
     <circle cx="974" cy="115" r="37" fill="${C.paper}" stroke="${C.rule}"/>
     <path d="M953 115l13 13 28-32" fill="none" stroke="${C.mark}" stroke-width="2.2"/>
-    <text x="974" y="150" class="tiny gold" text-anchor="middle">REPEATABLE</text>
+    <text x="974" y="150" class="tiny gold" text-anchor="middle">CHECKED</text>
   </g>
 `,
   obsidian: `  <g aria-label="Obsidian vault diamond and note graph">
@@ -481,22 +462,19 @@ const metaphors = {
     <text x="1019.5" y="153" class="tiny gold" text-anchor="middle">HEADROOM</text>
   </g>
 `,
-  agents: `  <g aria-label="Folder containing regenerated proof files from four agents">
+  agents: `  <g aria-label="Folder containing regenerated proof files from three agents">
     <path d="M535 84H660L676 99H1068V151H535Z" fill="${C.warm}" stroke="${C.strong}"/>
     <text x="562" y="111" class="micro muted">REGENERATE</text>
     <text x="562" y="129" class="caption">ONE FOLDER</text>
-    <rect x="690" y="109" width="80" height="27" fill="${C.paper}" stroke="${C.rule}"/>
-    <rect x="782" y="109" width="80" height="27" fill="${C.paper}" stroke="${C.rule}"/>
-    <rect x="874" y="109" width="80" height="27" fill="${C.paper}" stroke="${C.rule}"/>
-    <rect x="966" y="109" width="80" height="27" fill="${C.paper}" stroke="${C.rule}"/>
+    <rect x="690" y="109" width="104" height="27" fill="${C.paper}" stroke="${C.rule}"/>
+    <rect x="816" y="109" width="104" height="27" fill="${C.paper}" stroke="${C.rule}"/>
+    <rect x="942" y="109" width="104" height="27" fill="${C.paper}" stroke="${C.rule}"/>
     <circle cx="704" cy="122.5" r="4" fill="${C.mark}"/>
-    <circle cx="796" cy="122.5" r="4" fill="${C.mark}"/>
-    <circle cx="888" cy="122.5" r="4" fill="${C.mark}"/>
-    <circle cx="980" cy="122.5" r="4" fill="${C.mark}"/>
-    <text x="739" y="126" class="tiny muted" text-anchor="middle">CODEX</text>
-    <text x="831" y="126" class="tiny muted" text-anchor="middle">OPEN</text>
-    <text x="923" y="126" class="tiny muted" text-anchor="middle">PI</text>
-    <text x="1015" y="126" class="tiny muted" text-anchor="middle">GOOSE</text>
+    <circle cx="830" cy="122.5" r="4" fill="${C.mark}"/>
+    <circle cx="956" cy="122.5" r="4" fill="${C.mark}"/>
+    <text x="748" y="126" class="tiny muted" text-anchor="middle">CODEX</text>
+    <text x="874" y="126" class="tiny muted" text-anchor="middle">OPEN</text>
+    <text x="1000" y="126" class="tiny muted" text-anchor="middle">GOOSE</text>
   </g>
 `,
   support: `  <g aria-label="Supporting tool chain of Obsidian n8n and course site">
@@ -643,49 +621,40 @@ const installSections = [
     svgTitle: "8 · OpenCode — your second engine",
   },
   {
-    file: "install-09-pi.svg",
+file: "install-09-goose.svg",
     current: 10,
-    stage: "Set up Pi",
-    purpose: "Minimal harness: pin a model, prove it reaches a shell, write from-pi.txt.",
-    steps: ["INSTALL PI", "PIN MODEL", "SHELL REACH", "WRITE PROOF"],
-    metaphor: metaphors.pi,
-    svgTitle: "9 · Pi — the bare loop",
-  },
-  {
-file: "install-10-goose.svg",
-    current: 11,
     stage: "Set up goose",
-    purpose: "Install the Windows runtime and official AAIF CLI, then verify goose can start and work.",
-    steps: ["RUNTIME", "KEYRING + MODEL", "OFFICIAL CLI + PATH", "VERIFY + PROOF"],
+    purpose: "Install the current stable AAIF CLI, then verify goose can start agentic work.",
+    steps: ["RUNTIME", "PROVIDER + MODEL", "OFFICIAL CLI + PATH", "VERIFY + PROOF"],
     metaphor: metaphors.goose,
-    svgTitle: "10 · goose — recipe, tools, mode, schedule",
+    svgTitle: "9 · goose — prepared agentic mission",
   },
   {
-    file: "install-11-obsidian.svg",
-    current: 12,
+    file: "install-10-obsidian.svg",
+    current: 11,
     stage: "Open Obsidian",
     purpose: "Install Obsidian and open the local vault you will use in class.",
     steps: ["INSTALL", "OPEN VAULT"],
     metaphor: metaphors.obsidian,
-    svgTitle: "11 · Obsidian",
+    svgTitle: "10 · Obsidian",
   },
   {
-    file: "install-12-n8n.svg",
-    current: 13,
+    file: "install-11-n8n.svg",
+    current: 12,
     stage: "Start n8n once",
     purpose: "Install a compatible n8n, start it locally, open the page, then stop it cleanly.",
     steps: ["INSTALL", "START", "OPEN PAGE", "STOP"],
     metaphor: metaphors.n8n,
-    svgTitle: "12 · n8n",
+    svgTitle: "11 · n8n",
   },
   {
-    file: "install-13-repo.svg",
-    current: 14,
+    file: "install-12-repo.svg",
+    current: 13,
     stage: "Find the module files",
     purpose: "Ask Codex to use Git to locate the operator and exercise files.",
     steps: ["OPEN REPO", "ASK CODEX + GIT", "CHECK THE PATHS"],
     metaphor: metaphors.repo,
-    svgTitle: "13 · Find the operator and module exercise files",
+    svgTitle: "12 · Find the operator and module exercise files",
   },
   {
     file: "install-when-something-breaks.svg",
@@ -722,7 +691,7 @@ function installOverview() {
     <path d="M522 186H540" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="550" y="166" width="260" height="40" rx="2" fill="${C.paper}" stroke="${C.rule}"/>
     <text x="568" y="182" class="micro muted">03 · HARNESSES + TOOLS</text>
-    <text x="568" y="197" class="tiny muted">CODEX · OPENCODE · PI · GOOSE</text>
+    <text x="568" y="197" class="tiny muted">CODEX · OPENCODE · GOOSE</text>
     <path d="M810 186H828" class="redline" marker-end="url(#arrow-red)"/>
     <rect x="838" y="166" width="258" height="40" rx="2" fill="${C.ink}"/>
     <text x="856" y="182" class="micro white">04 · FIND THE FILES</text>
@@ -736,8 +705,8 @@ function installOverview() {
   <rect x="557" y="232" width="539" height="36" rx="2" fill="${C.paper}" stroke="${C.mark}" stroke-width="1.5"/>
   <circle cx="581" cy="250" r="7" fill="${C.mark}"/>
   <path d="M577 250l3 3 6-7" fill="none" stroke="${C.paper}" stroke-width="1.4"/>
-  <text x="603" y="247" class="micro red">VERIFIED = FOUR FILES + OPERATOR + EXERCISES FOUND</text>
-  <text x="603" y="260" class="caption">CODEX · OPENCODE · PI · GOOSE</text>
+  <text x="603" y="247" class="micro red">VERIFIED = THREE FILES + OPERATOR + EXERCISES FOUND</text>
+  <text x="603" y="260" class="caption">CODEX · OPENCODE · GOOSE</text>
 </svg>
 `;
 }

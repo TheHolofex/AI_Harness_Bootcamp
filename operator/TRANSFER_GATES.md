@@ -41,7 +41,7 @@ Follow the live module page
 | P4 | Second-brain schema, MCP write boundary, cold-query and repair habit, target corpus, and first transfer trial in the P4 closeout |
 | P5 | Intake/trusted-picture seed in the P5 closeout |
 | P6 | Agentic-mission seed: changing queue, living product, provisional agent judgment, chosen operator intent, and why the path must adapt |
-| P7 | Machine-choice seed, then draft 30/60/90 horizons in the shared plan chat |
+| P7 | Fixed/adaptive/hybrid machine-choice seed with leverage evidence, then draft 30/60/90 horizons in the shared plan chat |
 | P8 | Finalize evidence, run the seal criteria, and seal or block |
 
 An empty major seed on P2/P3/P4/P5/P6/P7 day remains **not yet** until the module closeout names the missing value or its unblock.

@@ -20,7 +20,7 @@ Five fields. Target: under five minutes of dialogue. Append one entry per block;
 | **5. I still own** | Judgment, next action, or risk the machine must not carry alone. |
 | **6. Adversarial** | Paste final line: `ADVERSARIAL: stood / wounded / failed — …` (from review chat). |
 
-P2 uses **6. Enforcement check** instead: name each rule that runs as a hook rather than as advice, the event it fires on, and whether it is trusted; then record what it refused and what it let through. Its evidence line points at `normalized/intake_receipt.json` — handler, records read, records emitted, identifiers in bytes, identifiers placed, refusal reason per source — and at the comparison between the generated lists and the hand-maintained ones. P3 uses **6. Decision review**: record the finding whose defeat most changed the answer, the source that defeated it, and which terminal rule ended the search. OSD uses **6. Surface review**: name what you refused in the specimen and the words that decided it, the description you changed and what the change moved, and the fields your server labels as self-reported. P4 uses **6. Integrated evaluation**: point to the human audit, MCP receipts, cold retrieval answers, fresh repair check, brain verifier, external integrity snapshot, final live-vault PASS, and residual risk. None of those live pages adds a separate attack chat.
+P2 uses **6. Enforcement check** instead: name each rule that runs as a hook rather than as advice, the event it fires on, and whether it is trusted; then record what it refused and what it let through. Its evidence line points at `normalized/intake_receipt.json` — handler, records read, records emitted, identifiers in bytes, identifiers placed, refusal reason per source — and at the comparison between the generated lists and the hand-maintained ones. P3 uses **6. Decision review**: record the finding whose defeat most changed the answer, the source that defeated it, and which terminal rule ended the search. OSD uses **6. Surface review**: name what you refused in the specimen and the words that decided it, the description you changed and what the change moved, and the fields your server labels as self-reported. P4 uses **6. Integrated evaluation**: point to the human audit, MCP receipts, cold retrieval answers, fresh repair check, brain verifier, external integrity snapshot, final live-vault PASS, and residual risk. P7 uses **6. Transfer**: name fixed, adaptive, and hybrid candidates plus the leverage evidence required before deployment. Its recorded Wave 1 verifier PASS, saved final Wave 2 receipt/PASS, and branch-rule comparison are the review boundary. None of those live pages adds a separate attack chat.
 
 ---
 
@@ -116,16 +116,16 @@ Reserved template section. The current B1 page stays in `B1 — First Light Dash
 | 5. I still own | The selected Wave 2 intent and whether to act on the revised command center |
 | 6. Transfer | Changing queue, living product, operator intent, and why the path must adapt rather than run as P7's fixed line |
 
-### P7 — Automation line
+### P7 — AI controls the workboard
 
 | Field | Note |
 |---|---|
-| 1. Directed | |
-| 2. Mid-run | |
-| 3. Verdict | |
-| 4. Evidence | |
-| 5. I still own | |
-| 6. Adversarial | |
+| 1. Line | `workboard.xlsx` → XLSX extraction → structured AI station → four visible policy branches → fan-in → XLSX writeback |
+| 2. First wave | Wave 1 verifier PASS observed with 60/60 rows and eight populated AI/policy columns in `AI Workboard` |
+| 3. Rule leverage | Operations rule changed once; affected row IDs and `branch_policy`, `policy_value`, `sla_hours`, and `target_by` compared in two workbooks; row-by-row edits = 0 |
+| 4. Second wave | 20/20 new rows through the same saved graph; final `workboard.xlsx` = 80/80 rows |
+| 5. Verdict | SHIP only when Wave 1 PASS was observed, the final Wave 2 receipt and verifier PASS are saved, and the 80-row workbook required no manual row repair |
+| 6. Transfer | Fixed, adaptive, and hybrid candidates plus the leverage evidence required before deployment |
 
 ### P8 — Operator-governed open model
 

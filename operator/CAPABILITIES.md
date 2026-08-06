@@ -20,7 +20,7 @@ Each project below states what you can do at the end of it, what you learn to do
 | 6 | Build a durable second brain through an MCP write boundary and prove cold retrieval | P4 |
 | 7 | Triage untrusted material and prove hostile content caused no forbidden effect | P5 |
 | 8 | Give an agent a changing objective and let it work to a checked finish | P6 |
-| 9 | Choose between an adaptive loop and a fixed line, and keep judgment on exceptions | P7 |
+| 9 | Use a visible AI workflow to read, route, and write a spreadsheet at batch scale | P7 |
 | 10 | Carry the method to a different engine under a policy you wrote first | P8 |
 
 Pick one instrument track — `engineering` or `mission_ops` — at P3 and keep it through P8. Shared kits live in `instruments/`. These are course instruments, not personal portable evals.
@@ -366,43 +366,43 @@ A polished page whose state is wrong, a second wave appended without revising cu
 
 ---
 
-## P7 — Automation Line
+## P7 — AI Controls the Workboard
 
-> **After this project:** You can tell which work belongs in a loop that adapts and which belongs on a fixed line, build the fixed one, and keep a person at the point where being wrong would cost something.
+> **After this project:** You can use one visible n8n graph to read a spreadsheet, structure every row with AI, route rows through policy branches, and write the workbook back; change one rule once; run a second wave through the same graph; and choose fixed, adaptive, or hybrid for real work.
 
 ### What you learn to do
 
 | Objective | Skill | Builds on | What is new | What mastery looks like |
 |---|---|---|---|---|
-| **1. Build a fixed path that handles volume.** | Handling many at once | P3's work division | P3 split one job across several agents. This pushes many items through one fixed shape, where a single bad row repeats hundreds of times. | You think in rows rather than in runs. A mistake that would be an annoyance once you treat seriously, because you are picturing it happening four hundred times. |
-| **2. Put a person where being wrong would cost something.** | Putting a person in the way | P1's judgment ownership | P1 named which decisions were yours. This puts that ownership at one point in a running system, where an uncertain row cannot get past. | The gate sits where being wrong is expensive, not where it was convenient to put one. Uncertain work stops there and waits, and nobody has to remember to check. |
-| **3. Choose between an adaptive loop and a fixed path.** | Picking the right machine | P3's knowing when to fan out | P3 decided whether a job needed more than one agent. This decides whether it belongs in something that adapts at all, or on a line that never makes it up as it goes. | You say why this work is not agent work, or not pipeline work, in terms of the work rather than in terms of what you enjoy building. Your answer comes out different for two jobs you describe on the same day. |
-| **4. Re-sort work you already built.** | Moving work you already built | P4's representation choice | P4 moved evidence from a warehouse into a retrieval-designed vault. This re-sorts finished work between an agent, a pipeline, or a hybrid. | You will say that something you built earlier in the week is in the wrong place. Having been right the first time is not what you are protecting. |
-| **5. Name the judgment you will not hand over.** | Saying what stays human | Objective 2's gate | A gate holds one decision for a person this time. This names the decisions that will never be handed over, drawn by what being wrong costs rather than by what is hard to automate. | Your list is short, specific, and expensive-sounding. It is not a list of things that are hard to automate — some of them would be easy to automate tomorrow, and you still will not do it. |
+| **1. Turn spreadsheet rows into structured production work.** | Designing an AI spreadsheet station | P1's repeatable judgment product | P1 made one judgment product rerunnable. This lets n8n read each workbook row and gives AI eight named columns to fill so the rest of the graph can use the result. | All 60 first-wave rows return to `workboard.xlsx` with workstream, priority, summary, next action, and policy fields populated. |
+| **2. Route rows through visible branches and write them back.** | Visual fan-out, fan-in, and XLSX writeback | P3's work division | P3 split one question across several agents. This uses one spreadsheet field to send rows to specialist branches, apply policy, recombine them, and overwrite the workbook. | The canvas visibly carries rows through four branches and back into one 60-row `AI Workboard` sheet. You can trace one identifier from source to written result. |
+| **3. Change one rule once and watch the spreadsheet move.** | Rule leverage | P1's delta reading | P1 showed what changed between reruns. This changes policy at one branch and measures the effect in the workbook without repairing rows one at a time. | Side-by-side workbook copies name the Operations rows and four columns that changed. The row-by-row edit count is zero. |
+| **4. Put new rows through the same saved graph.** | Second-wave operation | P1's rerunnable product and P6's changed-world run | Earlier work reran a product or let an agent revise its plan. This adds 20 source rows and reuses the visual graph, prompt, schema, routes, and writeback. | Rows 61–80 begin with blank AI columns and return populated. The final workbook and receipt account for 80 total rows. |
+| **5. Choose a fixed, adaptive, or hybrid machine for real work.** | Machine choice | P6's adaptive loop | P6 showed work whose next step changes with feedback. This separates that work from repeatable production and from systems that place adaptive work inside a designed outer line. | You classify one earlier course workload plus two desk workloads—or two distinct parts of one desk workload—as fixed, adaptive, and hybrid, then defend each choice with path variability and evidence of leverage. |
 
 ### What the exercise requires
 
-1. An n8n flow in production shape: batch in, AI classify or extract, validate, sink.
-2. A human approval step, or the equivalent, that **gates the commit**. Bad or uncertain rows cannot land silently.
-3. An exception pack with three or more held items exercised, each adjudicated — commit, fix, or reject — with a reason.
-4. A short, sharp **discrimination write-up**: what belongs in a P6-style agent loop and what belongs in this pipeline, on *your* work. Criteria, not vibes.
-5. One slice of earlier work — P1 or P3 class — classified as stay agentic, move to pipeline, or hybrid, with the rationale.
-6. A failure mode where the AI is wrong but confident on one row, showing the gate catches it.
-7. A log including the discrimination write-up pointer and the exception decisions.
-8. A **90-day seed**: one workload to pipeline and one that must stay agentic.
+1. A prepared n8n graph that reads local `workboard.xlsx`, extracts sheet `AI Workboard`, maps rows, gets structured AI output, routes four parallel policy branches, fans them in, and writes XLSX back to the same path.
+2. An observed Wave 1 verifier PASS accounting for **60/60 rows** and eight populated AI/policy columns in the workbook.
+3. A trace of one identifier from its spreadsheet source row through AI, merge, route, policy, fan-in, and workbook writeback.
+4. One branch rule changed in one place, followed by a rerun of the same 60 rows and a side-by-side workbook comparison naming the rows and four downstream columns affected.
+5. **Zero row-by-row edits** during the rule-change run. The changed branch policy, not manual repair, produces the new workbook.
+6. A 20-row second wave processed by the same saved graph, leaving the final Wave 2 receipt and verifier PASS for **20/20 new rows** and `workboard.xlsx` accounting for **80/80 total**.
+7. A closeout naming the hours and handoffs compressed by the line, plus three candidates spanning **fixed**, **adaptive**, and **hybrid**: one earlier course workload and two desk workloads, or two distinct parts of one desk workload, each with checkable reasons.
+8. A dated **90-day machine-choice seed** naming fixed, adaptive, and hybrid candidates and the leverage evidence that would justify each choice; then a draft of the 30/60/90 horizons from all seven dated seeds.
 
 ### Stretch
 
-- Throughput and exception rate measured on the sample set.
-- An explicit "judgment I will not automate" list, three or more items, each tied to a real risk.
+- Group records into smaller model-call batches and compare elapsed time and output consistency with the ungrouped run.
+- Route one genuinely nonstandard branch to an adaptive subflow, then show where the fixed outer graph resumes control.
 
 ### Side-quest
 
-- Rebuild a thin slice of P1 or P3 as a pipeline and show what quality you traded and why that trade is acceptable.
+- Rebuild a thin slice of P1 or P3 as a hybrid and show which part gains from adaptation and which part gains from a fixed outer line.
 
 ### Signs it hasn't landed
 
-Happy path only, no human gate, or "automation is always better" with no discrimination.
+Only labels come back; the learner edits records after the rule change; the second wave needs a new graph or prompt; or fixed, adaptive, and hybrid are treated as tool preferences instead of properties of the work.
 
 ---
 

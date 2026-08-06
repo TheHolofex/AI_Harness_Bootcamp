@@ -16,7 +16,7 @@ What it covers:
   - Goose's Windows runtime, model, and native-exit guards remain present
   - The P2 Inbound surface and its morning corpus remain wired
   - The Agent Loops briefing and P4 second-brain exercise remain wired in sequence
-  - The Thursday Pi lab contains ten runnable patterns and ten matching diagrams
+  - The Thursday Pi lab still contains ten runnable patterns and precedes P6
   - The repository still contains load-bearing exercise and facilitator paths
 
 What it does not cover (needs Windows, funded keys, and a person):
@@ -206,7 +206,6 @@ def check_canonical_install_surface(report: Report) -> None:
             "https://get.microsoft.com/installer/download/9PLM9XGG6VKS"
         ),
         "OpenCode pinned npm channel": f"npm install -g opencode-ai@{OPENCODE_PIN}",
-        "Pi PowerShell installer": "https://pi.dev/install.ps1",
         "Microsoft Visual C++ x64 runtime": VC_REDIST_X64_URL,
         "AAIF goose PowerShell installer": GOOSE_INSTALLER_URL,
         "Obsidian official download": "https://obsidian.md/download",
@@ -225,6 +224,32 @@ def check_canonical_install_surface(report: Report) -> None:
             "setup.install_channels",
             True,
             f"{len(expected)} current channel facts present in canonical HTML",
+            hard=True,
+        )
+
+    stale_pi = [
+        marker
+        for marker in (
+            "https://pi.dev/install.ps1",
+            'data-check-id="pi-install"',
+            'data-check-id="pi-verify"',
+            'data-check-id="pi-write"',
+            "from-pi.txt",
+        )
+        if marker in html
+    ]
+    if stale_pi:
+        report.add(
+            "setup.no_unused_pi",
+            False,
+            "unused Pi pre-work remains: " + ", ".join(stale_pi),
+            hard=True,
+        )
+    else:
+        report.add(
+            "setup.no_unused_pi",
+            True,
+            "Pi install and proof path removed from required pre-work",
             hard=True,
         )
 
@@ -439,12 +464,20 @@ def check_p6_prepare_surface(report: Report) -> None:
 
 def check_registry_install_route(report: Report) -> None:
     registry = REGISTRY.read_text(encoding="utf-8")
+    prework_registry = registry.split("var REGISTRY", 1)[0]
     expected = [
         'code: "B0"',
         'url: "checklists/prework-install.html"',
         '"gs-runtime"',
+        '"g-three"',
     ]
     missing = [needle for needle in expected if needle not in registry]
+    stale_prework = [
+        marker
+        for marker in ('"pi-install"', '"pi-verify"', '"pi-write"', '"pi-why"', '"g-four"')
+        if marker in prework_registry
+    ]
+    missing.extend(f"stale pre-work id {marker}" for marker in stale_prework)
     if missing:
         report.add(
             "site.b0_route",
@@ -456,7 +489,7 @@ def check_registry_install_route(report: Report) -> None:
         report.add(
             "site.b0_route",
             True,
-            "B0 routes to the install page and requires the Goose runtime step",
+            "B0 routes to the install page, requires Goose, and contains no unused Pi proof ids",
             hard=True,
         )
 
@@ -574,7 +607,6 @@ def check_pi_pattern_lab(report: Report) -> None:
     missing_tests = [marker for marker in test_markers if marker not in test_source]
     workflow_markers = [
         '"site/blocks/pi.html"',
-        '"site/assets/blocks/pi/**"',
         '"site/js/shell.js"',
         "mission_flesh/pi/package-lock.json",
         "Test the Pi agentic-pattern implementations",
@@ -613,7 +645,7 @@ def check_pi_pattern_lab(report: Report) -> None:
         report.add(
             "site.pi_pattern_lab",
             True,
-            "ten pinned Pi implementations, colocated diagrams, copy-paste runs, and CI-backed offline tests present",
+            "ten pinned Pi Agent Core implementations, colocated pattern diagrams, copy-paste runs, CI-backed offline tests, and Thursday-before-P6 route present",
             hard=True,
         )
 

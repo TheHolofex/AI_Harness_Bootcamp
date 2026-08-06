@@ -40,7 +40,7 @@
 </nav>
 
 <div class="callout"><strong>Everything runs on API keys</strong>
-You'll receive two keys. OpenAI is only for Codex, which runs <code>gpt-5.6-terra</code>. xAI runs OpenCode, Pi, goose, and the AI step in n8n. Do not sign into a consumer subscription. Anthropic is not part of setup; Claude access may be offered near the end as an optional exercise, with details still to be determined. Keep <a href="../keys.html">Your API keys</a> open in another tab while you work.</div>
+You'll receive two keys. OpenAI is only for Codex, which runs <code>gpt-5.6-terra</code>. xAI runs OpenCode, goose, Thursday's supplied Pi lab, and the AI step in n8n. Do not sign into a consumer subscription. Anthropic is not part of setup; Claude access may be offered near the end as an optional exercise, with details still to be determined. Keep <a href="../keys.html">Your API keys</a> open in another tab while you work.</div>
 
 <div class="callout"><strong>You only need one shell: PowerShell</strong>
 Every command in this guide is typed into PowerShell. You will also install Git Bash, which is a different kind of terminal — but that is a dependency other tools reach for on their own, not a second thing for you to learn. Step 8 shows how to tell at a glance which window you are looking at, because pasting a command into the wrong one produces errors that never say so.</div>
@@ -94,7 +94,7 @@ Every command in this guide is typed into PowerShell. You will also install Git 
   </label>
   <div class="check-detail"><p>Foundations first: a terminal, the official installers for Git, Node, and Python, and a local copy of the course repository. You will clone the course as soon as Git works. After that you will connect your two keys and verify the course harnesses and tools.</p>
   <p>All of it is driven from one window — a PowerShell terminal. You'll open it in step 8 and stay there for the rest of this guide.</p>
-<p><strong>The Codex app</strong> is your home for the week. <strong>OpenCode</strong> is the second harness you'll run the same brief through on Tuesday. <strong>Pi</strong> is a minimal, extensible coding harness — small defaults, then skills, packages, and tree-shaped sessions when you need more. <strong>goose</strong> then runs Thursday's prepared mission: it inspects a changing local watch, updates the working product, checks its own result, and revises until the mission is ready for you. <strong>Obsidian</strong> holds a knowledge base and <strong>n8n</strong> builds a fixed pipeline.</p></div>
+  <p><strong>The Codex app</strong> is your home for the week. <strong>OpenCode</strong> is the second harness you'll run the same brief through on Tuesday. <strong>Pi Agent Core</strong> runs ten supplied control-flow implementations on Thursday. <strong>goose</strong> then runs Thursday's prepared mission: it inspects a changing local watch, updates the working product, checks its own result, and revises until the mission is ready for you. <strong>Obsidian</strong> holds a knowledge base and <strong>n8n</strong> builds a fixed pipeline.</p></div>
 </li>
 </ol></section>
 
@@ -221,7 +221,7 @@ if ($freeGB -lt 25) { Write-Warning 'Free at least 25 GB before continuing.' }</
     <span class="check-num">11</span>
     <span class="check-title">Download and install Git for Windows</span>
   </label>
-  <div class="check-detail"><p>Git tracks changes to files and fetches the course repository. It also installs <strong>Git Bash</strong>, which Pi reaches for when it needs a shell.</p>
+  <div class="check-detail"><p>Git tracks changes to files and fetches the course repository. It also installs <strong>Git Bash</strong>, which provides the fallback Goose installer path used later in this clinic.</p>
   <p>Open the official <a href="https://git-scm.com/install/windows" target="_blank" rel="noopener">Git for Windows download page</a> and download the current <strong>x64 Setup</strong> installer. Open it, approve the elevation prompt, and accept the defaults. If it asks whether to install for your account or everyone on the machine, choose everyone so the other tools can find Git at its standard path.</p>
   <p>You will still type the course commands in PowerShell. Git Bash is a dependency; you only open it yourself if the Goose installer needs its fallback path.</p></div>
 </li>
@@ -290,7 +290,7 @@ if ($python) {
   </label>
   <div class="check-detail"><pre><code>git --version
 Test-Path "C:\Program Files\Git\bin\bash.exe"</code></pre>
-  <p>You want a version number and <code>True</code>. Pi normally finds this path itself; if it does not, you can rerun this check.</p>
+  <p>You want a version number and <code>True</code>. Keep this path for the Goose installer fallback later in the clinic.</p>
   <p>If <code>Test-Path</code> returns <code>False</code>, Git installed for your user only rather than machine-wide. Check the other location; whichever returns <code>True</code> is the real path:</p>
   <pre><code>Test-Path "$env:LOCALAPPDATA\Programs\Git\bin\bash.exe"</code></pre></div>
 </li>
@@ -381,7 +381,7 @@ python -c "import sys; print(sys.executable)"</code></pre>
 [Environment]::SetEnvironmentVariable('XAI_API_KEY', $key, 'User')
 $env:XAI_API_KEY = $key
 $key = $null</code></pre>
-  <p>This key drives OpenCode, Pi, goose, and the AI step in n8n. Check it starts with <code>xai-</code> before you paste — mixing up the two keys produces an authentication error that rarely names the real problem.</p></div>
+  <p>This key drives OpenCode, Pi Agent Core, goose, and the AI step in n8n. Check it starts with <code>xai-</code> before you paste — mixing up the two keys produces an authentication error that rarely names the real problem.</p></div>
 </li>
 
 <li class="check-item" data-check-item>
@@ -390,7 +390,7 @@ $key = $null</code></pre>
     <span class="check-num">22</span>
     <span class="check-title">Set the shared xAI model id</span>
   </label>
-  <div class="check-detail"><p>The course uses xAI's <code>grok-4.5</code>. OpenCode, Pi, and Goose all reuse this model id, so save it once instead of editing three later commands.</p>
+  <div class="check-detail"><p>The course uses xAI's <code>grok-4.5</code>. OpenCode, Pi Agent Core, and Goose reuse this model id, so save it once instead of editing later commands.</p>
   <p>Codex does not use this variable. Its model is fixed separately to <code>gpt-5.6-terra</code>.</p>
   <pre><code>$env:HB_XAI_MODEL = 'grok-4.5'
 [Environment]::SetEnvironmentVariable('HB_XAI_MODEL', $env:HB_XAI_MODEL, 'User')</code></pre>
@@ -415,7 +415,7 @@ $key = $null</code></pre>
   <pre><code>'HB_XAI_MODEL' | ForEach-Object {
   '{0} = {1}' -f $_, [Environment]::GetEnvironmentVariable($_,'User')
 }</code></pre>
-  <p>It should read <code>grok-4.5</code>. If it does not, go back one step — OpenCode, Pi, and Goose depend on this value.</p></div>
+  <p>It should read <code>grok-4.5</code>. If it does not, go back one step — OpenCode, Pi Agent Core, and Goose depend on this value.</p></div>
 </li>
 </ol></section>
 
@@ -604,72 +604,16 @@ Get-Content .\from-opencode.txt</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h3>9 · Pi — the minimal harness</h3>
+<section class="checklist-section"><h3>9 · goose — the prepared checked mission</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-09-pi.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
-</figure>
-<ol class="checklist">
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-pi-why" data-check-id="pi-why" />
-    <span class="check-num">37</span>
-    <span class="check-title">Know what Pi is for</span>
-  </label>
-  <div class="check-detail"><p><a href="https://pi.dev" target="_blank" rel="noopener">Pi</a> is a <strong>minimal coding-agent harness</strong> you reshape to your workflow — not a sealed product with one opinion about how agents should work. Out of the box it is small on purpose: read, write, edit, and bash, plus a clean terminal UI. That is why this course starts you here — you can <em>see</em> the loop.</p>
-  <p>What the marketing line “bare” often misses: Pi is built to <strong>grow</strong>. You can load <strong>skills</strong> on demand, install <strong>packages</strong> from npm or git, write <strong>TypeScript extensions</strong> (tools, commands, UI, lifecycle hooks), keep <strong>tree-shaped sessions</strong> you can branch with <code>/tree</code>, share runs with <code>/export</code> or <code>/share</code>, and run it four ways — interactive TUI, one-shot print/JSON, RPC, or embed via SDK. Fifteen-plus providers, model switch mid-session, prompt templates, compaction you can customize. If a feature is missing (plan mode, sub-agents, MCP, permission popups), the Pi answer is usually “build it or install a package,” not “wait for the vendor.”</p>
-  <p><strong>Out of the box it has no guardrails, and the detail people get wrong is worth reading twice.</strong> Pi runs with exactly your own permissions — no sandbox, no approval prompt, and <strong>no working-directory fence</strong>. Being "in" your smoke folder is a convention you are keeping, not a boundary Pi enforces: an absolute path or a <code>~</code> reaches anything your Windows account can reach, including your SSH keys and saved credentials. Shell commands also have no default timeout.</p>
-  <p>Pi's own documentation says so plainly, and explains why: a partial in-process sandbox <em>"would be easy to misunderstand as a security boundary while still depending on the host shell, filesystem, package managers, credentials, and extension code."</em> Real isolation has to come from the operating system or a container. That is a sharper lesson about security theatre than most security training, and you will build on it during the week.</p>
-  <p>During the install clinic you only need install, one proof file, and shell reach. Give it small, specific tasks inside the smoke folder, read what it proposes, and don't leave it running unattended.</p>
-  <p>Two more things to know now: <code>/share</code> uploads your whole session — including the system prompt and every tool result — to a public-by-URL gist, so don't use it on work material. And installing third-party Pi packages runs their code with full access to your machine, so don't install any this week that haven't been named for the course.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-pi-install" data-check-id="pi-install" />
-    <span class="check-num">38</span>
-    <span class="check-title">Install Pi</span>
-  </label>
-  <div class="check-detail"><pre><code>powershell -c "irm https://pi.dev/install.ps1 | iex"</code></pre>
-  <p>This installer asks questions, so run it in a normal terminal window and stay with it. If it offers to install its own copy of Node, answer <strong>Y</strong> — that's it making sure it has a new enough version, and it won't disturb the Node you already installed.</p>
-  <p>Wait for <code>Pi was installed successfully</code>.</p></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-pi-verify" data-check-id="pi-verify" />
-    <span class="check-num">39</span>
-    <span class="check-title">New terminal, then verify Pi</span>
-  </label>
-  <div class="check-detail"><pre><code>pi --version</code></pre></div>
-</li>
-
-<li class="check-item" data-check-item>
-  <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-pi-write" data-check-id="pi-write" />
-    <span class="check-num">40</span>
-    <span class="check-title">Write proof: from-pi.txt</span>
-  </label>
-  <div class="check-detail"><p>Keep Pi on the shared xAI lane by naming both the provider and model:</p>
-  <pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
-pi -p --provider xai --model "$env:HB_XAI_MODEL" "Create a file named from-pi.txt in the current directory containing exactly: pi works"
-Get-Content .\from-pi.txt</code></pre>
-  <p><code>--provider xai</code> makes the billing lane explicit. <code>--model</code> uses the xAI pin from phase 2. The <code>-p</code> flag runs one instruction and exits instead of opening the interactive screen.</p>
-  <p>There's no <code>-m</code> shorthand despite what several guides claim — it has to be <code>--model</code>.</p></div>
-</li>
-
-</ol></section>
-
-<section class="checklist-section"><h3>10 · goose — the prepared checked mission</h3>
-<figure class="section-diagram">
-  <img src="../assets/prework/install-10-goose.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-09-goose.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-gs-what" data-check-id="gs-what" />
-    <span class="check-num">41</span>
+    <span class="check-num">37</span>
     <span class="check-title">Know what goose is for</span>
   </label>
   <div class="check-detail"><p><a href="https://goose-docs.ai" target="_blank" rel="noopener"><strong>goose</strong></a> is the agent runtime behind Thursday's prepared watch mission. You give it one operational objective. It reads the local evidence, decides what work comes next, updates the watch products, runs the mission checker, and revises when the checker finds unfinished work.</p>
@@ -680,7 +624,7 @@ Get-Content .\from-pi.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-runtime" data-check-id="gs-runtime" />
-    <span class="check-num">42</span>
+    <span class="check-num">38</span>
     <span class="check-title">Install and verify the Windows runtime Goose needs</span>
   </label>
   <div class="check-detail"><p>Do this before configuring or installing Goose. The Windows package contains <code>goose.exe</code>, but it relies on Microsoft C++ runtime files supplied by Windows. Without them, Goose can appear installed and then quit with <code>0xC0000135</code>.</p>
@@ -703,7 +647,7 @@ if (-not $vcRuntime) {
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-keyring" data-check-id="gs-keyring" />
-    <span class="check-num">43</span>
+    <span class="check-num">39</span>
     <span class="check-title">Turn off the Windows keyring first</span>
   </label>
   <div class="check-detail"><p>Do this <strong>before</strong> installing. By default goose stores secrets in Windows Credential Manager, which fails often enough on managed laptops that its own documentation tells you to decline it. Setting this first means the installer never tries.</p>
@@ -715,7 +659,7 @@ $env:GOOSE_DISABLE_KEYRING = '1'</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-provider" data-check-id="gs-provider" />
-    <span class="check-num">44</span>
+    <span class="check-num">40</span>
     <span class="check-title">Tell goose which provider and model to use</span>
   </label>
   <div class="check-detail"><p>goose reads <code>XAI_API_KEY</code> from the environment, but it still needs an explicit provider and model. Reuse the xAI model id from phase 2:</p>
@@ -732,7 +676,7 @@ $env:GOOSE_MODEL = $env:HB_XAI_MODEL</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-install" data-check-id="gs-install" />
-    <span class="check-num">45</span>
+    <span class="check-num">41</span>
     <span class="check-title">Install the goose command-line tool</span>
   </label>
   <div class="check-detail"><p>The course uses Goose from the Agentic AI Foundation (<code>aaif-goose</code>). Use only this official AAIF installer; older instructions that point to <code>block/goose</code> are stale.</p>
@@ -754,7 +698,7 @@ curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-path" data-check-id="gs-path" />
-    <span class="check-num">46</span>
+    <span class="check-num">42</span>
     <span class="check-title">Add goose to your PATH</span>
   </label>
   <div class="check-detail"><p>The installer drops goose into <code>%USERPROFILE%\.local\bin</code> but doesn't add that folder to PATH — it only prints a warning that's easy to scroll past.</p>
@@ -770,7 +714,7 @@ if (($userPath -split ';') -notcontains $bin) {
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-verify" data-check-id="gs-verify" />
-    <span class="check-num">47</span>
+    <span class="check-num">43</span>
     <span class="check-title">Verify goose and check what it sees</span>
   </label>
   <div class="check-detail"><pre><code>$gooseCommand = Get-Command goose -CommandType Application -ErrorAction Stop
@@ -795,7 +739,7 @@ $gooseInfo</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
 <input type="checkbox" id="ahb-prework-install-gs-write" data-check-id="gs-write" />
-    <span class="check-num">48</span>
+    <span class="check-num">44</span>
     <span class="check-title">Write proof: from-goose.txt</span>
   </label>
   <div class="check-detail"><pre><code>cd "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke"
@@ -807,16 +751,16 @@ Get-Content .\from-goose.txt</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h3>11 · Obsidian</h3>
+<section class="checklist-section"><h3>10 · Obsidian</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-11-obsidian.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-10-obsidian.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ob-install" data-check-id="ob-install" />
-    <span class="check-num">49</span>
+    <span class="check-num">45</span>
     <span class="check-title">Install Obsidian</span>
   </label>
   <div class="check-detail"><p>Obsidian reads and writes ordinary Markdown files in a folder. On Wednesday you'll point an agent at that folder and build a knowledge system with citations you can walk.</p>
@@ -827,7 +771,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-ob-vault" data-check-id="ob-vault" />
-    <span class="check-num">50</span>
+    <span class="check-num">46</span>
     <span class="check-title">Create a vault and confirm it opens</span>
   </label>
   <div class="check-detail"><p>A <strong>vault</strong> is just a folder Obsidian has adopted. Make one first:</p>
@@ -839,20 +783,20 @@ Get-Content .\from-goose.txt</code></pre>
 </li>
 </ol></section>
 
-<section class="checklist-section"><h3>12 · n8n</h3>
+<section class="checklist-section"><h3>11 · n8n</h3>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-12-n8n.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-11-n8n.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-install" data-check-id="n8n-install" />
-    <span class="check-num">51</span>
+    <span class="check-num">47</span>
     <span class="check-title">Install n8n</span>
   </label>
   <div class="check-detail"><pre><code>npm install n8n -g</code></pre>
-  <p>This uses the Node version you already verified in step 17. n8n needs Node 22.22 or newer on the supported LTS line; if the installer reports a Node-version problem, repair Node from step 12 instead of reinstalling n8n repeatedly.</p>
+  <p>This uses the current Node LTS you verified in step 17. The install and the first start are the compatibility check. If either reports a Node-version problem, reinstall the current LTS from step 12 instead of reinstalling n8n repeatedly.</p>
   <p>This one is slow — often several minutes, with long silent stretches while antivirus scans each extracted file. That's normal. Let it finish rather than killing it, because a half-written global install is genuinely annoying to clean up.</p>
   <p>There's no n8n desktop app any more; running it from the command line is the current path.</p></div>
 </li>
@@ -860,7 +804,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-start" data-check-id="n8n-start" />
-    <span class="check-num">52</span>
+    <span class="check-num">48</span>
     <span class="check-title">Start n8n once and open the editor</span>
   </label>
   <div class="check-detail"><pre><code>n8n start</code></pre>
@@ -871,7 +815,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-owner" data-check-id="n8n-owner" />
-    <span class="check-num">53</span>
+    <span class="check-num">49</span>
     <span class="check-title">Create the local owner account, and skip the licence offer</span>
   </label>
   <div class="check-detail"><p>n8n shows what looks like a signup screen asking for an email and password. <strong>It is not a subscription and not a login to anything.</strong> It creates a record in a database file on your own laptop, nothing is transmitted, and no verification email is sent. It also can't be skipped.</p>
@@ -882,7 +826,7 @@ Get-Content .\from-goose.txt</code></pre>
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-n8n-stop" data-check-id="n8n-stop" />
-    <span class="check-num">54</span>
+    <span class="check-num">50</span>
     <span class="check-title">Learn how to stop it</span>
   </label>
   <div class="check-detail"><p>Press <kbd>Ctrl</kbd>+<kbd>C</kbd> in the window running n8n. The page at localhost:5678 stops answering, and your work stays saved on disk for next time.</p>
@@ -891,26 +835,26 @@ Get-Content .\from-goose.txt</code></pre>
 
 <li class="check-item" data-check-item>
   <label class="check-label">
-    <input type="checkbox" id="ahb-prework-install-g-four" data-check-id="g-four" />
-    <span class="check-num">55</span>
-    <span class="check-title">Verify all four harness proof files together</span>
+    <input type="checkbox" id="ahb-prework-install-g-three" data-check-id="g-three" />
+    <span class="check-num">51</span>
+    <span class="check-title">Verify all three harness proof files together</span>
   </label>
   <div class="check-detail"><pre><code>Get-ChildItem "$env:USERPROFILE\Documents\HarnessBootcamp\prework-smoke\from-*.txt"</code></pre>
-  <p>You want <code>from-codex.txt</code>, <code>from-opencode.txt</code>, <code>from-pi.txt</code>, and <code>from-goose.txt</code> in one listing. Open the folder in Explorer and look at it too. Each file proves that its harness authenticated, reached a model, and wrote to disk.</p></div>
+  <p>You want <code>from-codex.txt</code>, <code>from-opencode.txt</code>, and <code>from-goose.txt</code> in one listing. Open the folder in Explorer and look at it too. Each file proves that its harness authenticated, reached a model, and wrote to disk.</p></div>
 </li>
 </ol></section>
 
 <section class="checklist-section" id="phase-files"><h2>Phase 4 · Find the module exercise files</h2>
 <figure class="section-diagram">
-  <img src="../assets/prework/install-13-repo.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
+  <img src="../assets/prework/install-12-repo.svg" alt="" width="1120" height="220" loading="lazy" decoding="async" />
 </figure>
-<h3>13 · Find the files you will use in class</h3>
+<h3>12 · Find the files you will use in class</h3>
 <ol class="checklist">
 
 <li class="check-item" data-check-item>
   <label class="check-label">
     <input type="checkbox" id="ahb-prework-install-rp-operator" data-check-id="rp-operator" />
-    <span class="check-num">56</span>
+    <span class="check-num">52</span>
     <span class="check-title">Find the module exercise files and transfer plan</span>
   </label>
   <div class="check-detail"><p>Create a separate read-only task for the course map:</p>
@@ -941,7 +885,7 @@ Tell me where B1 and each P1–P8 exercise starts.</code></pre>
 
 <p class="btn-row"><a class="btn" href="../blocks/b1.html">Continue to B1 · First Light</a> <a class="btn btn-secondary" href="../keys.html">Keys reference</a> <a class="btn btn-secondary" href="../prework.html">Pre-work hub</a></p>
 <div class="callout"><strong>What you actually built</strong>
-Not a tidy install — a course setup you can rebuild. You know where each tool keeps its credentials, what its boundaries are, and how it fails. The finish line is observable: the required tools work, the four proof files exist, and you can find the module exercise files and transfer plan.</div>
+Not a tidy install — a course setup you can rebuild. You know where each tool keeps its credentials, what its boundaries are, and how it fails. The finish line is observable: the required tools work, the three proof files exist, and you can find the module exercise files and transfer plan.</div>
 
 <div class="plate">
   <a class="plate-cell" href="../index.html">
@@ -1041,7 +985,7 @@ if (Test-Path -LiteralPath $course) {
 
 <h3>Node.js, Python, and npm-installed tools</h3>
 <p>Before uninstalling Node, remove the course tools that npm placed inside it:</p>
-<pre><code>npm uninstall -g opencode-ai n8n @earendil-works/pi-coding-agent</code></pre>
+<pre><code>npm uninstall -g opencode-ai n8n</code></pre>
 <p>Then open Settings → Apps → Installed apps. Uninstall <strong>Node.js</strong> and reinstall it from step 12. Uninstall Python only when <code>python --version</code> or its path is still wrong after the alias check; reinstall it from step 13.</p>
 <p>If Node's optional native-tools box installed Python 3.14 and that Python passes steps 17–18, keep it. Do not remove Microsoft Visual Studio Build Tools, Chocolatey, Python environments, or unrelated npm packages unless you know another project does not use them.</p>
 
@@ -1072,17 +1016,6 @@ opencode uninstall</code></pre>
 <pre><code>npm uninstall -g opencode-ai</code></pre>
 <p>Open a new terminal, confirm <code>Get-Command opencode -ErrorAction SilentlyContinue</code> returns nothing, then return to step 33. The reinstall command contains the course pin.</p>
 
-<h3>Pi</h3>
-<p>Remove the program with the same package manager used by Pi's installer:</p>
-<pre><code>npm uninstall -g @earendil-works/pi-coding-agent</code></pre>
-<p>That leaves settings, credentials, packages, and sessions under <code>%USERPROFILE%\.pi\agent</code>. For a completely fresh Pi, move that folder aside:</p>
-<pre><code>$piState = "$env:USERPROFILE\.pi\agent"
-if (Test-Path -LiteralPath $piState) {
-  $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
-  Move-Item -LiteralPath $piState -Destination "$piState-prework-backup-$stamp"
-}</code></pre>
-<p>Return to step 38 to install Pi, then repeat both proof checks. The backup contains session and authentication data; keep it private.</p>
-
 <h3>Goose</h3>
 <p>This is the full Goose reset. It keeps the shared xAI key, the shared model pin, and the Microsoft C++ runtime. It removes only Goose's executable, data, and Goose-specific environment settings:</p>
 <pre><code>Get-Process -Name goose -ErrorAction SilentlyContinue | Stop-Process
@@ -1110,7 +1043,7 @@ if (Test-Path -LiteralPath $vaultSettings) {
   $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
   Move-Item -LiteralPath $vaultSettings -Destination "$vaultSettings-prework-backup-$stamp"
 }</code></pre>
-<p>Return to step 49 to reinstall the app, then reopen the existing vault in step 50. Delete a vault only when you intend to delete its notes.</p>
+<p>Return to step 45 to reinstall the app, then reopen the existing vault in step 46. Delete a vault only when you intend to delete its notes.</p>
 
 <h3>n8n</h3>
 <p>Stop the running server with <kbd>Ctrl</kbd>+<kbd>C</kbd>, then remove the global package:</p>
@@ -1121,7 +1054,7 @@ if (Test-Path -LiteralPath $n8nState) {
   $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
   Move-Item -LiteralPath $n8nState -Destination "$n8nState-prework-backup-$stamp"
 }</code></pre>
-<p>Return to step 51. Moving <code>.n8n</code> forces a new owner-account setup and makes the old encrypted credentials unavailable until you restore the entire backup.</p>
+<p>Return to step 47. Moving <code>.n8n</code> forces a new owner-account setup and makes the old encrypted credentials unavailable until you restore the entire backup.</p>
 
 <h3>Optional local-model tools</h3>
 <p>For Ollama, remove the course model before uninstalling only if you want its disk space back:</p>
@@ -1189,7 +1122,7 @@ if (($userPath -split ';') -notcontains $bin) {
     <span class="check-num">T4</span>
     <span class="check-title">A tool won't authenticate</span>
   </label>
-  <div class="check-detail"><p>For OpenCode, Pi, or Goose, first check that <code>XAI_API_KEY</code> is set in <em>this</em> window (step 23), starts with <code>xai-</code>, and that the command names the xAI provider. n8n uses the same xAI key through its own credential screen.</p>
+  <div class="check-detail"><p>For OpenCode or Goose, first check that <code>XAI_API_KEY</code> is set in <em>this</em> window (step 23), starts with <code>xai-</code>, and that the command names the xAI provider. n8n uses the same xAI key through its own credential screen.</p>
   <p>Codex uses the OpenAI key you pasted into <em>Sign in another way</em>, not an environment variable. Check the profile menu — it should say API key, not an account. If it's wrong, log out there and redo step 26.</p>
   <p>If Codex keeps pushing you toward a ChatGPT login or opens on the wrong model, confirm <code>forced_login_method = "api"</code> and <code>model = "gpt-5.6-terra"</code> sit in <code>%USERPROFILE%\.codex\config.toml</code> <strong>above</strong> any <code>[table]</code> header. Re-running step 27's four-line command puts both there safely; restart the app afterwards.</p>
   <p>If a tool worked earlier and now fails with a <strong>429</strong> or a quota message, the key has hit its spending cap. That's not something a reinstall fixes — tell the instructor which key and command produced the error.</p></div>
@@ -1232,7 +1165,7 @@ if (($userPath -split ';') -notcontains $bin) {
   </main>
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <div>AI Harness Bootcamp · Pre-work · Codex app + OpenCode + Pi + goose</div>
+      <div>AI Harness Bootcamp · Pre-work · Codex app + OpenCode + goose</div>
       <div>inquiries@starzl.com · starzl.com</div>
     </div>
   </footer>
