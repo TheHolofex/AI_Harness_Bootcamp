@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" role="img" aria-labelledby="title-p9-learning-update desc-p9-learning-update">
+  <title id="title-p9-learning-update">How a LoRA adapter learns from supervised examples</title>
+  <desc id="desc-p9-learning-update">A large explanatory diagram follows one supervised example. The correct chat template turns a user request and desired assistant answer into tokens. The frozen base model and trainable LoRA adapter produce token probabilities. Loss compares the expected assistant token to the probabilities. Backpropagation changes only the adapter matrices. A separate held-out example checks whether the learned pattern transfers without being memorized.</desc>
+  <defs>
+    <marker id="p9lu-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#0A0A0A"/></marker>
+    <marker id="p9lu-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#A58650"/></marker>
+    <marker id="p9lu-arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#E31C23"/></marker>
+    <style>
+      text{font-family:system-ui,"Inter","Helvetica Neue",Arial,sans-serif;fill:#0A0A0A}.micro{font-size:9px;font-weight:650;letter-spacing:1.7px}.tiny{font-size:8px;font-weight:650;letter-spacing:.85px}.title{font-size:25px;font-weight:680;letter-spacing:-.35px}.purpose{font-size:12px;font-weight:430;fill:#4A4A4A}.body{font-size:11px;font-weight:520}.body2{font-size:10px;font-weight:520}.caption{font-size:9px;font-weight:650;letter-spacing:1px}.muted{fill:#6B6B6B}.white{fill:#FFF}.red{fill:#E31C23}.gold{fill:#A58650}.hair{fill:none;stroke:#D0D0D0;stroke-width:1}.line{fill:none;stroke:#0A0A0A;stroke-width:1.65;vector-effect:non-scaling-stroke}.goldline{fill:none;stroke:#A58650;stroke-width:1.8;vector-effect:non-scaling-stroke}.redline{fill:none;stroke:#E31C23;stroke-width:1.8;vector-effect:non-scaling-stroke}.dash{stroke-dasharray:6 5}
+    </style>
+  </defs>
+  <rect width="1120" height="560" fill="#FFF"/>
+  <rect width="1120" height="62" fill="#FAFAF8"/>
+  <text x="24" y="16" class="micro muted">P9 · FINE-TUNED, MEASURED</text><text x="1096" y="16" class="micro muted" text-anchor="end">LEARNING MECHANISM · SUPERVISED FINE-TUNING</text>
+  <path d="M88 42H1026" class="hair"/>
+  <rect x="24" y="29" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="110" y="44" class="tiny muted" text-anchor="middle">1 DEFINE BEHAVIOR</text>
+  <rect x="204" y="29" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="290" y="44" class="tiny muted" text-anchor="middle">2 ADMIT DATA</text>
+  <rect x="384" y="29" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="470" y="44" class="tiny muted" text-anchor="middle">3 BASELINE</text>
+  <rect x="564" y="29" width="172" height="24" rx="2" fill="#0A0A0A"/><text x="650" y="44" class="tiny white" text-anchor="middle">4 TRAIN</text>
+  <rect x="744" y="29" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="830" y="44" class="tiny muted" text-anchor="middle">5 EVALUATE</text>
+  <rect x="924" y="29" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="1010" y="44" class="tiny muted" text-anchor="middle">6 DECIDE</text>
+  <path d="M0 62H1120" class="hair"/>
+
+  <text x="24" y="89" class="micro gold">HOW THE UPDATE HAPPENS</text>
+  <text x="24" y="120" class="title">Fine-tuning raises the chance of desired behavior in a particular context.</text>
+  <text x="24" y="143" class="purpose">It does not insert a document into the model. It repeatedly adjusts a small set of adapter values so that the desired answer tokens become more likely after inputs like the training examples.</text>
+
+  <g aria-label="Main training path">
+    <rect x="24" y="172" width="218" height="184" rx="2" fill="#FFF" stroke="#1A1A1A"/>
+    <rect x="24" y="172" width="7" height="184" fill="#A58650"/>
+    <text x="46" y="194" class="micro gold">01 · ONE CLEAN EXAMPLE</text>
+    <rect x="46" y="210" width="174" height="47" rx="2" fill="#FAFAF8" stroke="#D0D0D0"/>
+    <text x="58" y="226" class="tiny muted">USER</text><text x="58" y="243" class="body2">“Extract part number.”</text>
+    <rect x="46" y="268" width="174" height="65" rx="2" fill="#FFF" stroke="#A58650"/>
+    <text x="58" y="284" class="tiny gold">EXPECTED ASSISTANT</text><text x="58" y="301" class="body2">{“part_number”: “PN-17”}</text><text x="58" y="319" class="tiny muted">RIGHTS · FORMAT · TARGET CHECKED</text>
+    <path d="M242 264H272" class="line" marker-end="url(#p9lu-arrow)"/>
+
+    <rect x="282" y="172" width="218" height="184" rx="2" fill="#FFF" stroke="#1A1A1A"/>
+    <text x="304" y="194" class="micro muted">02 · FORMAT THE EXAMPLE</text>
+    <text x="304" y="216" class="body">The chat template adds the role</text><text x="304" y="230" class="body">markers and special tokens that</text><text x="304" y="244" class="body">this model expects.</text>
+    <rect x="304" y="264" width="174" height="50" rx="2" fill="#FAFAF8" stroke="#D0D0D0"/>
+    <text x="316" y="281" class="tiny muted">TOKEN SEQUENCE</text><text x="316" y="300" class="body2">SYSTEM · USER · ASSISTANT</text>
+    <text x="304" y="336" class="tiny red">WRONG TEMPLATE = WRONG LEARNING SIGNAL</text>
+    <path d="M500 264H530" class="line" marker-end="url(#p9lu-arrow)"/>
+
+    <rect x="540" y="172" width="270" height="184" rx="2" fill="#17110C" stroke="#0A0A0A"/>
+    <text x="562" y="194" class="micro white">03 · FORWARD PASS</text>
+    <text x="562" y="216" class="body white">Frozen base model + trainable</text><text x="562" y="230" class="body white">adapter assign probabilities to</text><text x="562" y="244" class="body white">the next assistant token.</text>
+    <rect x="562" y="264" width="106" height="47" rx="2" fill="#FFF" stroke="#D0D0D0"/>
+    <text x="615" y="282" class="tiny muted" text-anchor="middle">BASE WEIGHTS</text><text x="615" y="301" class="caption muted" text-anchor="middle">FROZEN</text>
+    <rect x="680" y="264" width="108" height="47" rx="2" fill="#A58650"/>
+    <text x="734" y="282" class="tiny white" text-anchor="middle">LORA MATRICES</text><text x="734" y="301" class="caption white" text-anchor="middle">TRAINABLE</text>
+    <text x="562" y="336" class="tiny white">BASE MODEL PROVIDES GENERAL CAPABILITY</text>
+    <path d="M810 264H840" class="line" marker-end="url(#p9lu-arrow)"/>
+
+    <rect x="850" y="172" width="246" height="184" rx="2" fill="#FFF" stroke="#A58650" stroke-width="1.5"/>
+    <text x="872" y="194" class="micro gold">04 · LOSS + GRADIENT</text>
+    <text x="872" y="216" class="body">Compare the expected answer</text><text x="872" y="230" class="body">tokens with the probabilities</text><text x="872" y="244" class="body">the model assigned.</text>
+    <rect x="872" y="264" width="202" height="47" rx="2" fill="#FAFAF8" stroke="#D0D0D0"/>
+    <text x="884" y="282" class="tiny muted">LOSS</text><text x="884" y="301" class="body2">How far was the prediction from target?</text>
+    <text x="872" y="336" class="tiny gold">GRADIENT: CHANGE THE ADAPTER, NOT THE BASE</text>
+  </g>
+
+  <g aria-label="Update and generalization path">
+    <path d="M973 356V385H674V356" class="goldline" marker-end="url(#p9lu-arrow-gold)"/>
+    <text x="824" y="378" class="caption gold" text-anchor="middle">BACKPROPAGATION UPDATES ONLY THE LORA MATRICES</text>
+    <rect x="24" y="396" width="318" height="112" rx="2" fill="#FFF" stroke="#A58650" stroke-width="1.5"/>
+    <text x="46" y="418" class="micro gold">AFTER MANY CLEAN EXAMPLES</text>
+    <text x="46" y="442" class="body">The adapter becomes a small task-specific</text><text x="46" y="457" class="body">change. It should make the desired format</text><text x="46" y="472" class="body">or decision more likely on related new inputs.</text>
+    <text x="46" y="494" class="tiny muted">THE ADAPTER DOES NOT REPLACE THE BASE MODEL</text>
+    <path d="M342 452H382" class="goldline" marker-end="url(#p9lu-arrow-gold)"/>
+    <rect x="392" y="396" width="318" height="112" rx="2" fill="#FFF" stroke="#1A1A1A"/>
+    <text x="414" y="418" class="micro muted">HELD-OUT CASE</text>
+    <text x="414" y="442" class="body">New input, same behavior contract.</text><text x="414" y="457" class="body">It never entered the training set or</text><text x="414" y="472" class="body">a decision about settings or data.</text>
+    <text x="414" y="494" class="tiny red">IF USED FOR TUNING, REPLACE IT</text>
+    <path d="M710 452H750" class="line" marker-end="url(#p9lu-arrow)"/>
+    <rect x="760" y="396" width="336" height="112" rx="2" fill="#FAFAF8" stroke="#1A1A1A"/>
+    <text x="782" y="418" class="micro muted">THE QUESTION THAT MATTERS</text>
+    <text x="782" y="442" class="body">Does the adapter improve the held-out score</text><text x="782" y="457" class="body">without creating a regression elsewhere?</text>
+    <text x="782" y="482" class="caption gold">YES → NARROW FIT CLAIM</text><text x="782" y="496" class="caption muted">NO → INSPECT DATA, TASK, OR METHOD</text>
+  </g>
+  <text x="24" y="538" class="tiny muted">WHY DATA QUALITY MATTERS: BAD LABELS, DUPLICATES, AND A WRONG CHAT TEMPLATE ALL PUSH THE ADAPTER IN THE WRONG DIRECTION.</text>
+</svg>

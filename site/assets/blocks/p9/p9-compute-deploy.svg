@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 280" role="img" aria-labelledby="title-p9-compute-deploy desc-p9-compute-deploy">
+  <title id="title-p9-compute-deploy">Choose compute and deployment separately from the fine-tuning method</title>
+  <desc id="desc-p9-compute-deploy">A three-lane diagram shows local Linux or macOS for preparation and proof runs, Hugging Face Jobs for a private bounded managed run, and RunPod for a persistent interactive GPU workspace. All lanes lead to a private adapter, same-condition evaluation, and a separate release decision. The graphic emphasizes that training completion is not deployment approval.</desc>
+  <defs>
+    <marker id="p9cd-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#0A0A0A"/></marker>
+    <marker id="p9cd-arrow-red" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#E31C23"/></marker>
+    <style>
+      text{font-family:system-ui,"Inter","Helvetica Neue",Arial,sans-serif;fill:#0A0A0A}.micro{font-size:8px;font-weight:650;letter-spacing:1.55px}.tiny{font-size:7.5px;font-weight:650;letter-spacing:.7px}.title{font-size:21px;font-weight:680;letter-spacing:-.25px}.purpose{font-size:11px;font-weight:430;fill:#4A4A4A}.body{font-size:9px;font-weight:520}.caption{font-size:8px;font-weight:650;letter-spacing:1px}.muted{fill:#6B6B6B}.white{fill:#FFF}.red{fill:#E31C23}.gold{fill:#A58650}.hair{fill:none;stroke:#D0D0D0;stroke-width:1}.line{fill:none;stroke:#0A0A0A;stroke-width:1.35;vector-effect:non-scaling-stroke}.redline{fill:none;stroke:#E31C23;stroke-width:1.4;vector-effect:non-scaling-stroke}.dash{stroke-dasharray:5 4}
+    </style>
+  </defs>
+  <rect width="1120" height="280" fill="#FFF"/>
+  <rect width="1120" height="56" fill="#FAFAF8"/>
+  <text x="24" y="13" class="micro muted">P9 · FINE-TUNED, MEASURED</text>
+  <text x="1096" y="13" class="micro muted" text-anchor="end">COMPUTE + RELEASE</text>
+  <path d="M88 37H1026" class="hair"/>
+  <rect x="24" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="110" y="40" class="tiny muted" text-anchor="middle">1 DEFINE BEHAVIOR</text>
+  <rect x="204" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="290" y="40" class="tiny muted" text-anchor="middle">2 ADMIT DATA</text>
+  <rect x="384" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="470" y="40" class="tiny muted" text-anchor="middle">3 BASELINE</text>
+  <rect x="564" y="25" width="172" height="24" rx="2" fill="#0A0A0A"/><text x="650" y="40" class="tiny white" text-anchor="middle">4 TRAIN</text>
+  <rect x="744" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="830" y="40" class="tiny muted" text-anchor="middle">5 EVALUATE</text>
+  <rect x="924" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="1010" y="40" class="tiny muted" text-anchor="middle">6 DECIDE</text>
+  <path d="M0 56H1120" class="hair"/>
+
+  <text x="24" y="78" class="micro gold">COMPUTE AND RELEASE ARE DIFFERENT DECISIONS</text>
+  <text x="24" y="105" class="title">Choose the machine for the run. Choose release only after evaluation.</text>
+  <text x="24" y="125" class="purpose">Every path needs versioned inputs, private secrets, persistent artifacts, a budget or time bound, and an explicit stop action.</text>
+
+  <g aria-label="Compute lanes">
+    <rect x="24" y="148" width="322" height="76" rx="2" fill="#FFF" stroke="#1A1A1A"/>
+    <rect x="24" y="148" width="7" height="76" fill="#A58650"/>
+    <text x="44" y="166" class="micro gold">LOCAL · LINUX OR MACOS</text>
+    <text x="44" y="184" class="body">Prepare and inspect data. Use a smoke run</text><text x="44" y="196" class="body">to learn the real memory limit. Linux CUDA is</text><text x="44" y="208" class="body">the direct path. Apple Silicon is a separate path.</text>
+    <path d="M346 186H382" class="line" marker-end="url(#p9cd-arrow)"/>
+    <rect x="392" y="148" width="322" height="76" rx="2" fill="#FFF" stroke="#A58650" stroke-width="1.5"/>
+    <rect x="392" y="148" width="7" height="76" fill="#A58650"/>
+    <text x="412" y="166" class="micro gold">HUGGING FACE JOBS</text>
+    <text x="412" y="184" class="body">Use a private, bounded managed run when</text><text x="412" y="196" class="body">you want selected hardware, logs, and a clear</text><text x="412" y="208" class="body">Job identity. Set timeout, budget, and secrets.</text>
+    <path d="M714 186H750" class="line" marker-end="url(#p9cd-arrow)"/>
+    <rect x="760" y="148" width="336" height="76" rx="2" fill="#FFF" stroke="#1A1A1A"/>
+    <rect x="760" y="148" width="7" height="76" fill="#4F5634"/>
+    <text x="780" y="166" class="micro muted">RUNPOD PODS</text>
+    <text x="780" y="184" class="body">Use an interactive Linux GPU or persistent</text><text x="780" y="196" class="body">workspace. Attach storage before the run,</text><text x="780" y="208" class="body">verify artifacts, then stop or terminate the Pod.</text>
+  </g>
+  <path d="M185 224V242H551" class="line" marker-end="url(#p9cd-arrow)"/>
+  <path d="M553 224V242" class="line" marker-end="url(#p9cd-arrow)"/>
+  <path d="M928 224V242H570" class="line" marker-end="url(#p9cd-arrow)"/>
+  <rect x="420" y="238" width="264" height="28" rx="2" fill="#0A0A0A"/>
+  <text x="552" y="256" class="micro white" text-anchor="middle">PRIVATE ADAPTER + RUN RECORD</text>
+  <path d="M684 252H738" class="line" marker-end="url(#p9cd-arrow)"/>
+  <rect x="748" y="238" width="348" height="28" rx="2" fill="#FFF" stroke="#E31C23" stroke-width="1.4"/>
+  <text x="762" y="250" class="tiny red">EVALUATE FIRST</text><text x="762" y="261" class="body">Release review decides private, limited use, or no release.</text>
+  <text x="24" y="270" class="tiny muted">TRAINING COMPLETE ≠ DEPLOYMENT APPROVED · KEEP THE BASE MODEL AS THE ROLLBACK PATH</text>
+</svg>

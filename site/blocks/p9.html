@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fine-tuned, measured · AI Harness Bootcamp · Starzl</title>
+  <link rel="stylesheet" href="../css/course.css" />
+  <link rel="stylesheet" href="../css/checklist.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
+    </div>
+  </header>
+
+  <div data-context-for="P9"></div>
+
+  <main class="site-main">
+    <p class="eyebrow">Friday PM · P9 · AI Harness Bootcamp</p>
+    <h1>Fine-tuned, measured</h1>
+    <p class="lede">Follow a private adapter-training run from public data to held-out evaluation. The important question is not whether the job finishes, but whether the adapter improves one defined behavior on work it never saw during training.</p>
+
+    <div class="meta-grid">
+      <div><span class="k">Day</span><span class="v">Friday PM</span></div>
+      <div><span class="k">Block</span><span class="v">P9</span></div>
+      <div><span class="k">Mode</span><span class="v">Instructor demonstration · operator review</span></div>
+      <div><span class="k">Tools</span><span class="v">Hugging Face Jobs · TRL · PEFT · Linux/macOS paths · RunPod Pods</span></div>
+      <div><span class="k">Your progress</span><span class="v v-mono" data-progress-for="ahb-checklist-p9">0 / 8 · 0%</span></div>
+    </div>
+    <hr class="rule-accent" />
+
+    <nav class="page-nav" aria-label="On this page">
+      <span class="page-nav-label">On this page</span>
+      <a href="#orient">Orientation</a>
+      <a href="#ideas">The ideas</a>
+      <a href="#demo">Read the demonstration</a>
+      <a href="#paths">Execution paths</a>
+      <a href="#floor">Lesson outcomes · <span data-count-for="floor">0/8</span></a>
+      <a href="#stuck">If you get stuck</a>
+      <div class="page-nav-progress">
+        <div class="page-nav-bar" aria-hidden="true"><span data-progress-bar-for="ahb-checklist-p9"></span></div>
+        <span class="page-nav-pct" data-progress-for="ahb-checklist-p9" data-progress-format="pct">0%</span>
+      </div>
+    </nav>
+
+    <section id="orient" class="home-section">
+      <div class="orient-grid">
+        <div>
+          <h2 class="h-plain">Change one behavior, then measure the change</h2>
+          <p>Fine-tuning changes a model’s parameters with examples. It can make one stable behavior more reliable, such as a house output format, a classification boundary, or an extraction schema. It is a useful option when the work repeats, the desired result is clear, and you can check the result on new examples.</p>
+          <p>It is not a way to keep facts current, repair an unclear task, or make private data safe by putting it into a model. Those are different problems, and they need different controls.</p>
+          <p>Today, the instructor runs one small private adapter job with public Hugging Face data. Your work is to follow the chain of evidence: the data that entered the run, the base-model baseline, the configuration, and the held-out results that support or limit the final decision.</p>
+          <h3>What you will leave with</h3>
+          <ul>
+            <li>A rule to choose prompting, retrieval, tools, validation, or fine-tuning.</li>
+            <li>A data review list for a training dataset.</li>
+            <li>A hardware map for local preparation, small adapter tests, and cloud training.</li>
+            <li>A run record that identifies data, model, adapter, compute, evaluation, and decision.</li>
+            <li>A path for Linux, macOS, Hugging Face Jobs, and RunPod.</li>
+          </ul>
+          <h3>Before the demonstration</h3>
+          <ul>
+            <li>Carry forward P8’s standard: a model change is an evidence exercise, not a preference.</li>
+            <li>The instructor’s Job, adapter, logs, repository, and tokens stay private.</li>
+            <li>Use only public data or data you have written permission to use.</li>
+            <li>Do not upload personal, organizational, regulated, secret, or unlicensed data to a training service.</li>
+            <li>Bring one candidate behavior from your work, with its input, expected output, and acceptance check.</li>
+          </ul>
+        </div>
+        <div class="orient-aside">
+          <div class="lead-box">
+            <p class="eyebrow">Lead demonstration</p>
+            <p>The instructor prepares the public dataset and held-out suite before the run begins. On screen, they show the base-model results, start a bounded private Hugging Face Job, inspect its logs and checkpoints, then score the adapter on the same held-out cases. The score table—not the loss chart—supports the final claim.</p>
+          </div>
+        </div>
+      </div>
+      <div class="skill-grid" aria-label="P9 fine-tuning route">
+        <div class="skill-cell"><span class="k">1 · Define</span><span class="n">Name one behavior</span><p>State the input, output, and acceptance check.</p></div>
+        <div class="skill-cell"><span class="k">2 · Review data</span><span class="n">Inspect before use</span><p>Check rights, source, content, risk, and split.</p></div>
+        <div class="skill-cell"><span class="k">3 · Baseline</span><span class="n">Keep the control</span><p>Save base-model results before training.</p></div>
+        <div class="skill-cell"><span class="k">4 · Train</span><span class="n">Make an adapter</span><p>Run a bounded LoRA or QLoRA job.</p></div>
+        <div class="skill-cell"><span class="k">5 · Decide</span><span class="n">Score unseen work</span><p>Keep, revise, or stop from held-out evidence.</p></div>
+      </div>
+    </section>
+
+    <section id="ideas" class="home-section">
+      <h2>The ideas</h2>
+      <p class="section-lede">Fine-tuning is one way to change a system. Start with the smallest control that can plausibly solve the problem, then test whether it did.</p>
+
+      <h3>Choose a control method</h3>
+      <table>
+        <thead><tr><th>Problem</th><th>Start with</th><th>Why not fine-tuning first?</th></tr></thead>
+        <tbody>
+          <tr><td>Facts change in source documents.</td><td>Use retrieval with source links and freshness rules.</td><td>Model weights do not show the current supporting source.</td></tr>
+          <tr><td>The task needs a calculation, query, action, or fixed transformation.</td><td>Use a tool and validate its input and output.</td><td>The task needs execution or a rule.</td></tr>
+          <tr><td>A prompt does not clearly state an output schema.</td><td>Improve the instruction and validate the schema.</td><td>Training can hide an instruction error.</td></tr>
+          <tr><td>One repeated behavior has good examples and a clear check.</td><td>Run a small LoRA or QLoRA test.</td><td>This is a useful tuning case.</td></tr>
+          <tr><td>You cannot describe or score the behavior.</td><td>Define the task and evaluation first.</td><td>A completed run does not prove an improvement.</td></tr>
+        </tbody>
+      </table>
+
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p9/p9-method-choice.svg" alt="Decision flow for method selection: use supervised fine-tuning with LoRA or QLoRA when good target answers define a stable behavior; use DPO only with credible chosen and rejected response pairs; use GRPO only with an executable or human-reviewed reward; otherwise choose retrieval, tools, or better instructions instead." width="1120" height="280" loading="lazy" decoding="async" />
+        <figcaption>Choose the training method from the evidence you have, not from the name of the method. The small instructor demonstration uses supervised fine-tuning with a LoRA or QLoRA adapter.</figcaption>
+      </figure>
+
+      <h3>Use an adapter</h3>
+      <p>The base model is the original model and its original parameters. Full fine-tuning changes many or all of those parameters, which increases the memory, storage, and recovery work. That is rarely the first practical move for a narrow operational behavior.</p>
+      <p>A LoRA adapter adds small trainable matrices to selected model layers while the base weights stay fixed. QLoRA keeps the base model in a low-bit form during adapter training, which can reduce memory use further. In both cases, the output is an adapter that belongs with a specific base model and configuration.</p>
+      <p>That separation is useful because it leaves the base model intact. You can attach the adapter only where it passed, compare it directly with the base model, and remove it when the evidence no longer supports its use. An adapter is a controlled change, not a new general-purpose model.</p>
+
+      <h3>How fine-tuning improves a specific behavior</h3>
+      <p>Fine-tuning does not add a database of facts to a model. It changes the model’s tendency to produce one sequence of tokens rather than another when it sees a particular kind of input. A good training example says, in effect, “when the context looks like this, this answer pattern is the one we want.”</p>
+      <p>During supervised fine-tuning, the model reads a formatted example and assigns probabilities to the next answer tokens. The training loss measures the gap between those probabilities and the expected assistant answer. Backpropagation then adjusts trainable values in the adapter so that the desired tokens become more likely in similar contexts. Repeating this across varied, correct examples can make the behavior more reliable.</p>
+      <p>The base model still supplies the broad language and reasoning capability. The adapter supplies a small, task-specific shift. That is why a narrow, clean dataset can help with a stable format or repeated decision pattern, while a noisy dataset, wrong chat template, or inconsistent labels can make the model less reliable in exactly the same way.</p>
+      <figure class="section-diagram section-diagram-large">
+        <img src="../assets/blocks/p9/p9-learning-update.svg" alt="Large process diagram of a LoRA supervised-fine-tuning update. A clean user and expected assistant example is formatted with a chat template, sent through frozen base weights and trainable LoRA matrices, compared with the expected answer to calculate loss, and used to update only the adapter. A separate held-out case tests whether the change transfers." width="1120" height="560" loading="lazy" decoding="async" />
+        <figcaption>One example produces a very small update. The useful effect comes from many correct, varied examples that point in the same direction. The held-out case is where you find out whether the learned pattern transfers beyond those examples.</figcaption>
+      </figure>
+
+      <h3>What each method optimizes</h3>
+      <table>
+        <thead><tr><th>Method</th><th>Signal it uses</th><th>What the update tries to make more likely</th><th>Main risk</th></tr></thead>
+        <tbody>
+          <tr><td>Supervised fine-tuning</td><td>A target answer or response form.</td><td>The target tokens after a matching input.</td><td>Copying a narrow pattern without transferring it to new cases.</td></tr>
+          <tr><td>DPO</td><td>A chosen and rejected answer for the same prompt.</td><td>The chosen answer relative to the rejected answer.</td><td>Preference labels that encode a reviewer’s shortcut, bias, or formatting preference instead of the real goal.</td></tr>
+          <tr><td>GRPO</td><td>A reward from a verifier or disciplined review process.</td><td>Outputs that score well under the reward.</td><td>Reward hacking: the model finds a way to raise the score without doing the intended work.</td></tr>
+          <tr><td>LoRA or QLoRA</td><td>The signal from one of the methods above.</td><td>The same task behavior, through a small adapter rather than a full weight update.</td><td>Assuming a memory-saving method changes the quality of the learning signal.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Match the method to the learning signal</h3>
+      <p><strong><a href="https://huggingface.co/docs/trl/en/sft_trainer">Supervised fine-tuning, or SFT</a>, is the default.</strong> Use it when you have good examples of the exact answer or response form you want. The instructor demonstration belongs here. For prompt/completion data, train the completion rather than the prompt. For conversational data, apply the model’s correct chat template and, where the template supports it, calculate loss on assistant messages rather than on the user or system text.</p>
+      <p><strong><a href="https://huggingface.co/docs/trl/en/dpo_trainer">DPO</a> is a preference method.</strong> It needs a credible pair for each prompt: a chosen response and a rejected response. It is useful when the difference between acceptable and preferred behavior is what you need to teach. A pile of ordinary answers is not a DPO dataset.</p>
+      <p><strong><a href="https://huggingface.co/docs/trl/en/grpo_trainer">GRPO</a> is a reward-driven method.</strong> It needs a reward you can execute or review with discipline, such as a verifier for a structured result. It introduces more moving parts than this demonstration needs. Do not use it because it is newer; use it only when the reward really measures the result you care about.</p>
+      <p><strong>LoRA is the default adapter method for each of these paths.</strong> Use <a href="https://huggingface.co/docs/peft/en/developer_guides/quantization">QLoRA</a> when quantizing the base model makes the run fit the available memory. More advanced choices, such as LoftQ initialization, DoRA, or activated LoRA for specialized adapter serving, belong after a baseline adapter and a valid evaluation set exist. They are not substitutes for better data or a clearer task.</p>
+      <table>
+        <thead><tr><th>Method</th><th>Learning signal</th><th>Use it when</th><th>P9 position</th></tr></thead>
+        <tbody>
+          <tr><td>SFT + LoRA/QLoRA</td><td>Good target answer or response form.</td><td>You can show the behavior you want and score it on new work.</td><td><strong>Default.</strong> Use this for the instructor demonstration.</td></tr>
+          <tr><td>DPO + LoRA</td><td>Credible chosen and rejected response pair.</td><td>Preference, not merely correctness, is the behavior you need to improve.</td><td>Advanced follow-on after you can evaluate SFT.</td></tr>
+          <tr><td>GRPO + adapter</td><td>Executable or human-reviewed reward.</td><td>A reward can judge the actual result with enough discipline to trust it.</td><td>Explain only. It is not the small public-data demonstration.</td></tr>
+          <tr><td>Full fine-tuning</td><td>Task-specific evidence plus a reason adapters are insufficient.</td><td>You have a concrete operational need and the compute, storage, and recovery plan.</td><td>Not a P9 default. Start with an adapter and prove its limits first.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Do not use training loss as the result</h3>
+      <p>Training loss tells you how closely the run fits its training examples. It cannot tell you whether the adapter helps on new work, whether the data leaked answers into the test, or whether the adapter damaged a nearby behavior.</p>
+      <p>Build a held-out suite before training and keep those cases outside the training input. Then run the base model and adapter on the same cases, under the same prompt, decoding settings, and score rule. This gives the comparison a control instead of a story. If you use a held-out case to pick settings or edit the dataset, retire it from the final suite and replace it with a new unseen case.</p>
+
+      <figure class="section-diagram">
+        <img src="../assets/blocks/p9/p9-evidence-loop.svg" alt="Controlled adapter evaluation loop: admit data, freeze a held-out suite, save a base-model baseline, run bounded adapter training, and compare both model states on the same conditions. A red barrier prevents held-out cases from entering training." width="1120" height="280" loading="lazy" decoding="async" />
+        <figcaption>The held-out suite is the boundary that protects the decision. Once you use a held-out case to choose data or settings, it has become a development case and needs replacement.</figcaption>
+      </figure>
+
+      <figure class="section-diagram section-diagram-large">
+        <img src="../assets/blocks/p9/p9-generalization-map.svg" alt="Large evaluation map showing separate training, development, and held-out data. Base model and base plus adapter are evaluated under the same inference contract. Red dashed paths show that duplicate leakage, tuning on held-out cases, or changing the template after evaluation invalidate or require repeating the performance claim." width="1120" height="560" loading="lazy" decoding="async" />
+        <figcaption>Fine-tuning improves performance only when the change survives this separation of data and conditions. A good-looking answer from a training example is evidence that the optimizer worked, not evidence that the adapter generalizes.</figcaption>
+      </figure>
+
+      <h3>How to read published performance comparisons</h3>
+      <p>Published studies can show what a fine-tuning method achieved under a stated setup. They cannot predict your result. A reported score depends on the model, training data, data volume, prompt format, optimization choices, metric, and evaluation suite. Read the task and metric before you read the number.</p>
+      <table>
+        <thead><tr><th>Study and setup</th><th>Baseline</th><th>Fine-tuned result</th><th>Metric and evaluation condition</th><th>What it does—and does not—show</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://arxiv.org/abs/2106.09685">Hu et al., LoRA</a><br />GPT-3 175B on WikiSQL.</td><td>Full fine-tuning: <strong>73.8</strong>.</td><td>LoRA: <strong>74.0</strong> with 37.7M trainable parameters.</td><td>Logical-form validation accuracy, percent.</td><td>In this study, LoRA matched or slightly exceeded full fine-tuning on this task. It does not show that LoRA will beat full fine-tuning on every task.</td></tr>
+          <tr><td><a href="https://arxiv.org/abs/2106.09685">Hu et al., LoRA</a><br />GPT-3 175B on MNLI-matched.</td><td>Few-shot GPT-3: <strong>40.6</strong> validation accuracy.</td><td>Fine-tuned GPT-3: <strong>89.5</strong> validation accuracy.</td><td>MNLI-matched validation accuracy, percent.</td><td>A task-specific supervised run can greatly improve a base or few-shot result when the task and labels are well defined. It is not a general capability score.</td></tr>
+          <tr><td><a href="https://arxiv.org/abs/2305.14314">Dettmers et al., QLoRA</a><br />LLaMA 7B with FLAN v2.</td><td>LLaMA 7B, no tuning: <strong>35.1</strong>.</td><td>QLoRA instruction tuning: <strong>44.5</strong>.</td><td>Mean 5-shot MMLU test accuracy, percent.</td><td>Shows an instruction-tuning result for this model and data. It also shows why the training dataset can matter more than a method name.</td></tr>
+          <tr><td><a href="https://arxiv.org/abs/2305.14314">Dettmers et al., QLoRA</a><br />LLaMA models, Alpaca/FLAN v2.</td><td>BF16 adapter tuning mean: <strong>53.0</strong>.</td><td>NF4 + double-quantized QLoRA mean: <strong>53.1</strong>.</td><td>Mean 5-shot MMLU accuracy across 7B, 13B, 33B, and 65B conditions.</td><td>In this experiment, the 4-bit NF4 configuration preserved the reported mean quality of BF16 adapter tuning. It does not guarantee equal quality for another model or quantization path.</td></tr>
+          <tr><td><a href="https://arxiv.org/abs/2402.09353">Liu et al., DoRA</a><br />LLaMA 7B on eight commonsense tasks.</td><td>LoRA average accuracy: <strong>74.7</strong>.</td><td>DoRA average accuracy: <strong>78.4</strong>.</td><td>Average accuracy across BoolQ, PIQA, SIQA, HellaSwag, WinoGrande, ARC-e, ARC-c, and OBQA.</td><td>Shows a controlled method comparison under the paper’s settings. DoRA may be worth an advanced comparison only after a LoRA baseline and evaluation suite exist.</td></tr>
+          <tr><td><a href="https://arxiv.org/abs/2305.18290">Rafailov et al., DPO</a><br />GPT-J SFT model on Reddit TL;DR.</td><td>Best reported PPO win rate: <strong>57%</strong>.</td><td>DPO win rate: <strong>about 61%</strong>.</td><td>Average win rate against reference completions on the TL;DR test split, at the study’s selected sampling temperatures.</td><td>Shows a preference-optimization comparison, not a general SFT result. The evaluation depends on the preference setup and the study’s judging protocol.</td></tr>
+        </tbody>
+      </table>
+      <p class="full-measure"><strong>Use the table as a reading exercise, not a planning spreadsheet.</strong> The right P9 question is: “What does my base model do on my held-out cases, under my exact inference contract?” Your own baseline-versus-adapter table is the only performance evidence that supports a decision for your workload.</p>
+
+      <h3>Use this sequence</h3>
+      <ol>
+        <li>Write a behavior contract that names the input, output, acceptance check, non-goal, and owner.</li>
+        <li>Build the held-out suite before training. Keep close duplicates, near-duplicates, and template variants in the same split.</li>
+        <li>Capture base-model results, including raw output, settings, scores, and failure types.</li>
+        <li>Start with a small model, narrow dataset, short run, and one adapter configuration. Use a fixed seed and record it.</li>
+        <li>Read the failures before changing settings. Check data fit, format, instructions, tool need, evaluator, model limit, truncation, and role order.</li>
+        <li>Change one relevant variable at a time, and version the data and configuration for every run. Do not tune on the held-out suite.</li>
+        <li>Test the intended serving path before release. The chat template, tokenizer, generation defaults, quantization, and adapter-loading path can all change behavior.</li>
+      </ol>
+
+      <h3>Review training data before use</h3>
+      <p>Every training example makes a claim about the behavior you want. Before you admit a dataset, read its card and real rows. Check the license, source, intended use, fields, splits, and revision rather than relying on the dataset name alone.</p>
+      <p>Look for duplicate prompts, boilerplate answers, wrong languages, personal data, hidden instructions, biased labels, and content that does not belong in the task. A public download is not automatically permitted, safe, or useful for your purpose.</p>
+      <p><strong>Hugging Face Datasets</strong> is the main discovery route because a repository can include a dataset card, revision history, files, and discussion with the data. Use the dataset viewer for a first look, then read the repository material and pin the revision you actually use.</p>
+      <p><strong>Kaggle</strong> is a second useful discovery route. Read the description, license, publisher, update history, files, and discussion before you use a dataset. Neither service gives you ownership or permission for your intended use.</p>
+      <div class="panel">
+        <p class="eyebrow">Dataset admission record</p>
+        <p>Complete this record before a dataset enters a training run. A blank answer is a reason to pause and investigate, not a field to skip.</p>
+        <table>
+          <thead><tr><th>Field</th><th>Record</th></tr></thead>
+          <tbody>
+            <tr><td>Purpose</td><td>The target behavior and its non-goals.</td></tr>
+            <tr><td>Source identity</td><td>Dataset URL, owner, revision, and access date.</td></tr>
+            <tr><td>Rights and policy</td><td>License, required attribution, terms, and intended-use permission.</td></tr>
+            <tr><td>Contents</td><td>Fields, languages, size, sample rows, and needed conversion.</td></tr>
+            <tr><td>Format review</td><td>Rendered chat template, role order, empty targets, truncation rate, and special-token handling.</td></tr>
+            <tr><td>Safety review</td><td>Personal data, confidential data, harmful content, hidden instructions, bias, and removal decision.</td></tr>
+            <tr><td>Split rule</td><td>Training, validation, held-out split, and duplicate-control method.</td></tr>
+            <tr><td>Decision</td><td>Admit, admit with limits, or reject. Name an owner and reason.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <form class="checklist-form" data-checklist data-storage-key="ahb-checklist-p9" data-block="P9">
+      <section id="demo" class="home-section" data-check-section="demo">
+        <h2>Read the demonstration as an operator</h2>
+        <p class="section-lede">The instructor runs the job while you follow the evidence in order. Each stage proves one part of the final decision. If a link in that chain is missing, the claim has to become narrower.</p>
+
+        <h3>Stage 01 · State the behavior claim</h3>
+        <p>The demonstration tests one behavior from a small public dataset. Before any training starts, the instructor states the task, response form, acceptance check, and non-goal. The purpose is to test a narrow behavior, not to claim that the model has generally improved.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label"><input type="checkbox" id="p9-frame" name="p9-frame" data-check-id="p9-frame" /><span class="check-num">1</span><span class="check-title">The behavior claim states an input, output, check, and non-goal</span></label>
+            <div class="check-detail">Write this statement: “Given [input], the adapter returns [output]. It passes when [check]. It is not evaluated for [non-goal].” If you cannot complete it, the behavior is not ready for training.</div>
+          </li>
+        </ol>
+
+        <h3>Stage 02 · Admit public data</h3>
+        <p>The instructor takes a small seeded sample from public <a href="https://huggingface.co/datasets/HuggingFaceH4/ultrachat_200k">HuggingFaceH4/ultrachat_200k</a> and keeps a separately sampled held-out set outside the training input. The split happens before fitting, so the evaluation cases cannot quietly become examples for the adapter to memorize.</p>
+        <p>The dataset card declares an MIT license and provides conversational <code>messages</code> records. That does not remove the review step. The instructor pins the revision, reads the card and sample rows, and records the split rule in the private dataset admission record.</p>
+        <p>This is a method demonstration, not a claim that the resulting adapter is safe or useful for general chat.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label"><input type="checkbox" id="p9-data" name="p9-data" data-check-id="p9-data" /><span class="check-num">2</span><span class="check-title">The dataset record identifies source, rights, content, risk, and split</span></label>
+            <div class="check-detail">Keep the dataset URL and revision, license or terms, sample rows, behavior, data boundary, and held-out split. The held-out split stays outside training.</div>
+          </li>
+        </ol>
+
+        <h3>Stage 03 · Save the base-model control</h3>
+        <p>Before training, the instructor runs the base model on the held-out suite and saves its raw outputs. The base model and adapter will use the same cases, prompt wrapper, generation settings, and evaluator. This baseline is the control that lets you tell a real improvement from a good-looking result.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label"><input type="checkbox" id="p9-baseline" name="p9-baseline" data-check-id="p9-baseline" /><span class="check-num">3</span><span class="check-title">The base-model baseline is saved before adapter training</span></label>
+            <div class="check-detail">Record the base model and revision, prompt or chat template, decoding settings, time, held-out cases, raw outputs, scores, and the failure type for each miss.</div>
+          </li>
+        </ol>
+
+        <h3>Stage 04 · Start a bounded private Job</h3>
+        <p>The instructor uses a private Hugging Face account with paid GPU compute. A Hugging Face Job runs a command on selected remote hardware and exposes status and logs, which makes it a useful unit for a bounded training run.</p>
+        <p>Before launch, the instructor selects the current GPU flavor and an explicit timeout, then confirms that the output repository is private. Tokens live in platform-managed secrets, never in code, notebook cells, run records, or shell history.</p>
+        <p>The training script uses supervised fine-tuning tooling and PEFT. Conversational data must use the expected messages or prompt/completion form so that the trainer can apply the model’s chat template. Render a few examples before the run: check the role order, assistant targets, special tokens, and truncation. A successful training job can still teach the wrong token sequence.</p>
+        <p>The run record carries the details someone else needs to understand the result: model and dataset revisions, chat template, adapter setup, sequence limit, batch plan, learning rate, step or epoch limit, seed, environment, Job ID, hardware, timing, and stop condition.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label"><input type="checkbox" id="p9-run" name="p9-run" data-check-id="p9-run" /><span class="check-num">4</span><span class="check-title">The adapter run is bounded, private, repeatable, and credential-safe</span></label>
+            <div class="check-detail">A Job log is not enough. Keep a run record with the data and model revisions, configuration, environment, compute, timing, private output, and stop condition. No secret belongs in that record.</div>
+          </li>
+        </ol>
+
+        <h3>Stage 05 · Read the run data</h3>
+        <p>Loss and throughput can help you spot an interruption, memory limit, or implausible configuration. They do not settle the question the lesson asks. A low loss can coexist with leakage, memorization, poor task fit, or damage to related behavior.</p>
+        <p>Use memory-saving features to make a valid run smaller, not to hide a weak experiment. QLoRA can reduce base-model memory pressure. <a href="https://huggingface.co/docs/trl/en/sft_trainer">SFTTrainer</a> can pack short examples into the same training sequence when the format and masking rules make that appropriate. For conversational data, verify that only the intended assistant text contributes to loss. These are efficiency controls, not quality controls.</p>
+        <p>Save a checkpoint when it gives you a real recovery point. Then move to the held-out suite, where the adapter has to perform on work it did not train on.</p>
+        <div class="panel">
+          <p class="eyebrow">Private run record</p>
+          <pre><code># Adapter run — [date/time]
+Behavior claim: [input → output; acceptance check; non-goal]
+Base model: [repository + immutable revision]
+Adapter: [LoRA or QLoRA; target modules; rank; alpha; dropout]
+Data: [public dataset repository + immutable revision]
+Split: [training / validation / held-out rule]
+Format: [text, prompt/completion, or messages; chat template]
+Configuration: [sequence length; batch strategy; learning rate; steps/epochs; seed]
+Environment: [tool and package versions; container/image identity]
+Compute: [platform; hardware; storage; Job/Pod URL or ID]
+Bounds: [timeout; budget ceiling; checkpoint interval; stop condition]
+Outputs: [private adapter/checkpoint path; log path]
+Observed run issue: [none or exact symptom]
+</code></pre>
+        </div>
+
+        <h3>Stage 06 · Score unseen cases and decide</h3>
+        <p>The instructor loads the adapter with the base model and reruns the held-out suite. The evaluator uses the original check, and the raw output is kept for both model states. Now the base model and adapter can be compared without coaching either one.</p>
+        <p>Use more than one kind of case. Keep realistic in-domain cases, edge cases, format-following cases, and examples the base model already handles well. When a human can judge the output, review the comparison without showing which answer came from the base model or adapter first.</p>
+        <p>Read every change in the table. An improvement may be useful, and a hold may be expected. A degradation needs a cause before the adapter moves into other work.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label"><input type="checkbox" id="p9-eval" name="p9-eval" data-check-id="p9-eval" /><span class="check-num">5</span><span class="check-title">The base model and adapter use the same held-out cases</span></label>
+            <div class="check-detail">Use one row for each case, with the base score, adapter score, raw-output paths, failure type, and totals. Keep the model revision, chat template, prompt wrapper, decoding settings, and scorer fixed. A lower loss does not meet this check.</div>
+          </li>
+          <li class="check-item" data-check-item>
+            <label class="check-label"><input type="checkbox" id="p9-decision" name="p9-decision" data-check-id="p9-decision" /><span class="check-num">6</span><span class="check-title">The decision states fit, limits, owner, and rollback</span></label>
+            <div class="check-detail">State the supported use, out-of-scope work, evidence count, owner, next review, and return path to the base model. The adapter stays private unless release review approves a different state.</div>
+          </li>
+        </ol>
+
+        <table>
+          <thead><tr><th>Case</th><th>Base model</th><th>Adapter</th><th>Change</th><th>Decision</th></tr></thead>
+          <tbody>
+            <tr><td>[held-out ID]</td><td>PASS / FAIL + raw path</td><td>PASS / FAIL + raw path</td><td>Hold / improve / degrade with evidence</td><td>Keep / investigate / hold</td></tr>
+            <tr><td>[held-out ID]</td><td>PASS / FAIL + raw path</td><td>PASS / FAIL + raw path</td><td>Hold / improve / degrade with evidence</td><td>Keep / investigate / hold</td></tr>
+            <tr><td><strong>Totals</strong></td><td><strong>[n/N]</strong></td><td><strong>[n/N]</strong></td><td><strong>Counts by result</strong></td><td><strong>Fit / not fit for this behavior</strong></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="paths" class="home-section" data-check-section="paths">
+        <h2>Execution paths for a later run</h2>
+        <p class="section-lede">The evidence method stays the same across machines: versioned data, a base-model baseline, a reversible adapter, held-out evaluation, and a stop condition. The setup and practical limits change with the hardware.</p>
+
+        <h3>Match local hardware to the work</h3>
+        <table>
+          <thead><tr><th>Machine</th><th>Useful work</th><th>Adapter scope</th><th>Limit</th></tr></thead>
+          <tbody>
+            <tr><td>CPU-only Linux or Mac</td><td>Prepare data, check splits, make evaluation cases, and run small-model inference.</td><td>Do not plan local LLM fine-tuning.</td><td>Use cloud GPU compute for training.</td></tr>
+            <tr><td>Apple Silicon Mac with 16–32 GB unified memory</td><td>Prepare data, inspect models, run inference, and test compatible models.</td><td>Run short LoRA tests on small models after a smoke run.</td><td>Unified memory is not NVIDIA VRAM.</td></tr>
+            <tr><td>NVIDIA Linux GPU with 8 GB VRAM</td><td>Prepare data and run proof tests.</td><td>Use constrained QLoRA on about 1B–3B models.</td><td>Use short context and a low batch size.</td></tr>
+            <tr><td>NVIDIA Linux GPU with 12–16 GB VRAM</td><td>Run local adapter tests.</td><td>Use conservative QLoRA on some 7B/8B models.</td><td>Run a smoke job before a full run.</td></tr>
+            <tr><td>NVIDIA Linux GPU with 24 GB VRAM</td><td>Use a strong local development loop.</td><td>Run 7B/8B QLoRA and repeated small tests.</td><td>This remains adapter-training work.</td></tr>
+            <tr><td>NVIDIA Linux GPU with 48 GB or more, or multiple GPUs</td><td>Run advanced local tests and longer contexts.</td><td>Run larger QLoRA tests or distributed work.</td><td>Multi-GPU work adds setup and recovery risks.</td></tr>
+          </tbody>
+        </table>
+        <figure class="section-diagram">
+          <img src="../assets/blocks/p9/p9-compute-deploy.svg" alt="Three compute paths lead to the same private adapter and run record: local Linux or macOS for preparation and proof runs, Hugging Face Jobs for private bounded managed compute, and RunPod Pods for persistent interactive GPU work. Evaluation and release review follow training on every path." width="1120" height="280" loading="lazy" decoding="async" />
+          <figcaption>Compute selection answers where the run happens. It does not decide whether the adapter may be released. Evaluation and release review remain separate gates.</figcaption>
+        </figure>
+
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label"><input type="checkbox" id="p9-local" name="p9-local" data-check-id="p9-local" /><span class="check-num">7</span><span class="check-title">The local hardware choice matches the work scope</span></label>
+            <div class="check-detail">Name the operating system, accelerator, usable memory, model class, maximum sequence length, and work type. Say whether the machine is for preparation, a proof run, or repeated training.</div>
+          </li>
+        </ol>
+
+        <h3>Linux: local CUDA path</h3>
+        <p>Linux with a supported NVIDIA GPU is the most direct local path. Before training, confirm the driver, GPU visibility, free VRAM, disk space for models and checkpoints, and an isolated Python environment. Those checks tell you whether the machine can run the job you are about to ask of it.</p>
+        <ol>
+          <li>Create separate <code>data/</code>, <code>eval/</code>, <code>configs/</code>, <code>runs/</code>, and <code>artifacts/</code> directories.</li>
+          <li>Keep tokens outside the project, and do not commit outputs without a reviewed policy.</li>
+          <li>Convert the admitted data to the trainer input format, then keep the source and conversion record.</li>
+          <li>Run a small smoke job and record memory use, throughput, checkpoints, and any exact error.</li>
+          <li>Run the bounded LoRA or QLoRA configuration, then save the adapter and configuration apart from the base model.</li>
+          <li>Score the base model and adapter on the held-out suite before you make a use claim.</li>
+        </ol>
+        <p><strong>Tools to assess:</strong> <a href="https://docs.unsloth.ai/get-started/fine-tuning-llms-guide">Unsloth</a> provides a current local training path. <a href="https://docs.axolotl.ai/docs/installation.html">Axolotl</a> is useful when you need a versioned YAML configuration or expect later multi-GPU work. Their support and install paths change, so check the current documentation before you set up either tool.</p>
+
+        <h3>macOS: Apple Silicon path</h3>
+        <p>An Apple Silicon Mac is useful for data work, inspection, inference, and small compatible tuning tests. Check unified-memory pressure and free disk space before you load a model. Unified memory is not interchangeable with NVIDIA VRAM, so use a short smoke run to learn what your specific Mac can sustain.</p>
+        <ol>
+          <li>Carry over the behavior contract, data record, split files, baseline suite, and run record.</li>
+          <li>Select an MLX-compatible base model and read the current MLX LM LoRA guidance.</li>
+          <li>Run a short smoke job, then record memory pressure, throughput, output location, and conversion steps.</li>
+          <li>Score the adapter on the same held-out suite you used for the base model.</li>
+          <li>Move the unchanged project to cloud GPU compute if the Mac swaps heavily or cannot meet the required scope.</li>
+        </ol>
+        <p><strong>Current reference:</strong> <a href="https://github.com/ml-explore/mlx-lm">MLX LM</a> supports low-rank fine-tuning on Apple Silicon for compatible models. Its model formats and commands change over time, so use the current LoRA guide when you run.</p>
+
+        <h3>Hugging Face: private instructor Job</h3>
+        <p>Use Hugging Face when you want managed GPU compute, Hub-native data, logs, and private artifacts in one place. The instructor demonstration is the reference path. Learners inspect the evidence from that run, so they do not need paid access to participate.</p>
+        <p>At inference time, keep the adapter separate from the base model until you have a measured reason to merge it. A separate adapter is easier to version, compare, roll back, and scope to one workload. If a later serving stack requires a merged model, retain the original adapter, exact base-model revision, merge procedure, and post-merge evaluation results.</p>
+        <p>Write the inference contract beside the adapter: the tokenizer and chat template, system prompt, generation defaults, stop conditions, structured-output checks, and safety behavior. A tuned adapter can look broken when the serving path uses a different template or decoding setup from the one used in evaluation.</p>
+        <table>
+          <thead><tr><th>Delivery shape</th><th>Use it when</th><th>Keep with the artifact</th><th>Before approval</th></tr></thead>
+          <tbody>
+            <tr><td>Base model + separate adapter</td><td>You are still comparing variants, adapting again, or need a clear rollback path.</td><td>Base-model revision, adapter, tokenizer, chat template, and generation settings.</td><td>Run the held-out suite through the exact loading path.</td></tr>
+            <tr><td>Merged model</td><td>The target runtime needs one model artifact or you have a measured compatibility reason.</td><td>Original adapter, exact base revision, merge procedure, and merged model identity.</td><td>Repeat evaluation after the merge. A merge creates a new deployment artifact.</td></tr>
+            <tr><td>Quantized serving artifact</td><td>The target device needs a smaller model or a supported local runtime format.</td><td>Quantization method, target runtime, source artifact, and generation settings.</td><td>Check quality and task behavior after conversion, not only memory use.</td></tr>
+          </tbody>
+        </table>
+        <ol>
+          <li>Create a private destination for the adapter, logs, and model card, then confirm its visibility before the first output is written.</li>
+          <li>Pin the dataset revision and base-model revision, and keep the held-out cases outside the training input.</li>
+          <li>Prepare a script that states its dependencies, configuration, output path, and evaluator.</li>
+          <li>Use <a href="https://huggingface.co/docs/trl/en/sft_trainer">SFTTrainer</a> for supported supervised formats and <a href="https://huggingface.co/docs/peft/en/quicktour">PEFT</a> for the LoRA adapter configuration.</li>
+          <li>Start a private <a href="https://huggingface.co/docs/huggingface_hub/en/guides/jobs">Hugging Face Job</a> with a current GPU flavor, timeout, budget limit, and platform-managed secret.</li>
+          <li>Save the Job link or ID, log, configuration, adapter identity, and evaluation evidence in the run record.</li>
+          <li>Write a private model card that states the base model, data, behavior, limits, evaluation, and use restrictions.</li>
+        </ol>
+
+        <h3>RunPod: persistent Pod</h3>
+        <p>Use RunPod when you need an interactive remote Linux GPU, a specific accelerator, or a persistent workspace. A Pod gives you a terminal, but that alone does not make the work repeatable. Keep the project, image, data revision, configuration, and artifact locations explicit from the start.</p>
+        <ol>
+          <li>Use the current <a href="https://docs.runpod.io/pods/choose-a-pod">Pod selection guidance</a> to choose VRAM, disk, region, policy fit, and run length. Do not choose only by hourly price.</li>
+          <li>Attach persistent storage before you download a model or start a run, then keep data, configuration, checkpoints, logs, and adapters in known persistent locations.</li>
+          <li>Record the image or template and the storage location that the run uses. A Pod-specific volume can persist through a stop but can be removed when the Pod is terminated; copy required artifacts to durable storage before termination.</li>
+          <li>Use current <a href="https://docs.runpod.io/pods/templates/environment-variables">RunPod secret guidance</a> for tokens. A token does not belong in a notebook, command history, dataset, configuration, or committed file.</li>
+          <li>Run the same smoke job and bounded configuration that you would use locally, then monitor disk, GPU memory, logs, checkpoints, and spend.</li>
+          <li>Verify the adapter, run record, configuration, evaluation report, and model card in persistent storage before you stop compute.</li>
+          <li>Use current <a href="https://docs.runpod.io/pods/manage-pods">Pod management guidance</a> to stop or terminate the Pod. A completed training command does not stop billing by itself.</li>
+        </ol>
+        <p>Before any serving step, run the adapter through the same task-specific evaluation and a small operational smoke set. Verify the chat template, prompt wrapper, structured-output checks, long-context behavior where it matters, refusal behavior, and rollback behavior in the serving path. A successful notebook inference does not prove that a deployed endpoint has the same behavior.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item>
+            <label class="check-label"><input type="checkbox" id="p9-cloud" name="p9-cloud" data-check-id="p9-cloud" /><span class="check-num">8</span><span class="check-title">The cloud plan includes storage, secrets, evidence, cost, and shutdown</span></label>
+            <div class="check-detail">Name the compute choice, private artifact storage, secret method, budget and time limit, checkpoint location, evaluation location, and stop or termination action.</div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="floor" class="home-section" data-check-section="floor">
+        <h2>Lesson outcomes</h2>
+        <p class="section-lede">Check an outcome only when you can point to its evidence. Watching a GPU run is useful context, but it does not establish the result.</p>
+        <ol class="checklist">
+          <li class="check-item" data-check-item data-outcome-after="p9-frame"><label class="check-label"><input type="checkbox" id="p9-outcome-frame" name="p9-outcome-frame" data-check-id="p9-outcome-frame" /><span class="check-num">1</span><span class="check-title">A behavior is defined before a training method is selected</span></label><div class="check-detail">The record names the input, output, acceptance check, and non-goal. It explains why fine-tuning is the next test instead of retrieval, a tool, prompting, or validation.</div></li>
+          <li class="check-item" data-check-item data-outcome-after="p9-data"><label class="check-label"><input type="checkbox" id="p9-outcome-data" name="p9-outcome-data" data-check-id="p9-outcome-data" /><span class="check-num">2</span><span class="check-title">Public training data has an admission record</span></label><div class="check-detail">The record identifies the source and revision, rights, sample contents, risks, conversion, rendered template, and rules for the training, validation, and held-out splits.</div></li>
+          <li class="check-item" data-check-item data-outcome-after="p9-baseline"><label class="check-label"><input type="checkbox" id="p9-outcome-baseline" name="p9-outcome-baseline" data-check-id="p9-outcome-baseline" /><span class="check-num">3</span><span class="check-title">The base-model baseline comes before adapter training</span></label><div class="check-detail">The record includes base raw outputs and scores for held-out cases, as well as the model, prompt or template, and decoding conditions.</div></li>
+          <li class="check-item" data-check-item data-outcome-after="p9-run"><label class="check-label"><input type="checkbox" id="p9-outcome-run" name="p9-outcome-run" data-check-id="p9-outcome-run" /><span class="check-num">4</span><span class="check-title">The run is bounded, reversible, and credential-safe</span></label><div class="check-detail">The run record identifies the model, data revision, adapter configuration, environment, compute, time and budget limits, output, checkpoint, stop condition, and secret method.</div></li>
+          <li class="check-item" data-check-item data-outcome-after="p9-eval"><label class="check-label"><input type="checkbox" id="p9-outcome-eval" name="p9-outcome-eval" data-check-id="p9-outcome-eval" /><span class="check-num">5</span><span class="check-title">The adapter is evaluated on held-out work</span></label><div class="check-detail">The comparison uses the same held-out suite and score rule for the base model and adapter. Training loss alone does not meet this outcome.</div></li>
+          <li class="check-item" data-check-item data-outcome-after="p9-decision"><label class="check-label"><input type="checkbox" id="p9-outcome-decision" name="p9-outcome-decision" data-check-id="p9-outcome-decision" /><span class="check-num">6</span><span class="check-title">The adapter decision is narrow enough to use</span></label><div class="check-detail">The decision states fit, not-fit, limits, evidence, owner, review date, visibility, inference contract, and the return path to the base model.</div></li>
+          <li class="check-item" data-check-item data-outcome-after="p9-local"><label class="check-label"><input type="checkbox" id="p9-outcome-local" name="p9-outcome-local" data-check-id="p9-outcome-local" /><span class="check-num">7</span><span class="check-title">The local path respects Linux and macOS limits</span></label><div class="check-detail">The scope matches the operating system, accelerator, usable memory, model class, context, and work type.</div></li>
+          <li class="check-item" data-check-item data-outcome-after="p9-cloud"><label class="check-label"><input type="checkbox" id="p9-outcome-cloud" name="p9-outcome-cloud" data-check-id="p9-outcome-cloud" /><span class="check-num">8</span><span class="check-title">The cloud plan preserves evidence and stops spend</span></label><div class="check-detail">The plan identifies private artifacts, secrets, storage, compute, budget and time limit, evaluation, recovery, and shutdown.</div></li>
+        </ol>
+      </section>
+    </form>
+
+    <section id="stuck" class="split-2 home-section">
+      <div>
+        <h2>Before you move on</h2>
+        <p>Keep one behavior contract and one dataset admission record from this session. When you run an adapter later, begin only after the base-model baseline, data boundary, held-out cases, and rollback path are ready.</p>
+      </div>
+      <div>
+        <h2>If you get stuck</h2>
+        <ul>
+          <li><strong>The task changes often.</strong> Fine-tuning will preserve yesterday’s behavior while the target keeps moving. Stabilize the task, instructions, or retrieval path first.</li>
+          <li><strong>The dataset card does not establish permission or provenance.</strong> Reject the dataset or find a source that does. Missing evidence is a stop condition, not a gap to explain away.</li>
+          <li><strong>The run uses too much memory.</strong> Save the exact error and configuration. Then reduce model size, sequence length, or batch plan; use QLoRA where supported; or move the unchanged project to cloud GPU compute.</li>
+          <li><strong>Loss decreases but held-out scores do not improve.</strong> Keep the base model, then inspect data quality, split leakage, task fit, evaluator quality, template mismatch, and whether fine-tuning was the right control method.</li>
+          <li><strong>The adapter passes in a notebook but fails when served.</strong> Compare the tokenizer, chat template, system prompt, generation defaults, quantization, and adapter-loading path. Treat the serving path as a separate evaluation target.</li>
+          <li><strong>The cloud run ends but artifacts are missing.</strong> Do not stop compute until the checkpoint, adapter, configuration, logs, and evaluation evidence are verified in persistent private storage.</li>
+          <li><strong>You want to publish the adapter.</strong> Stop for release review. Confirm the base-model license, data rights, policy approval, model card, evaluation limits, and removal path first.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <h2>Source shelf</h2>
+      <ul>
+        <li><a href="https://arxiv.org/abs/2106.09685">LoRA: Low-Rank Adaptation of Large Language Models</a>, <a href="https://arxiv.org/abs/2305.14314">QLoRA: Efficient Finetuning of Quantized LLMs</a>, <a href="https://arxiv.org/abs/2402.09353">DoRA: Weight-Decomposed Low-Rank Adaptation</a>, and <a href="https://arxiv.org/abs/2305.18290">Direct Preference Optimization</a>: primary studies behind the source-qualified performance comparisons above.</li>
+        <li><a href="https://huggingface.co/docs/trl/en/sft_trainer">Hugging Face TRL — SFTTrainer</a>: supervised fine-tuning formats, loss masking, packing, and trainer guidance.</li>
+        <li><a href="https://huggingface.co/docs/trl/en/dpo_trainer">Hugging Face TRL — DPOTrainer</a> and <a href="https://huggingface.co/docs/trl/en/grpo_trainer">GRPOTrainer</a>: preference and reward-driven methods that need different evidence from SFT.</li>
+        <li><a href="https://huggingface.co/docs/peft/en/quicktour">Hugging Face PEFT — Quicktour</a> and <a href="https://huggingface.co/docs/peft/en/developer_guides/quantization">PEFT quantization</a>: LoRA, QLoRA, and current adapter guidance.</li>
+        <li><a href="https://huggingface.co/docs/transformers/en/chat_templating">Hugging Face Transformers — Chat templates</a>: role formatting and generation-template controls.</li>
+        <li><a href="https://huggingface.co/docs/huggingface_hub/en/guides/jobs">Hugging Face Hub — Run and manage Jobs</a>: managed compute, hardware, logs, secrets, and timeouts.</li>
+        <li><a href="https://huggingface.co/docs/datasets/en/loading">Hugging Face Datasets — Load</a> and <a href="https://huggingface.co/docs/hub/en/datasets-cards">Dataset Cards</a>: data loading, revisions, splits, and documentation.</li>
+        <li><a href="https://huggingface.co/docs/evaluate/en/index">Hugging Face Evaluate</a>, <a href="https://huggingface.co/docs/lighteval/en/index">Lighteval</a>, and <a href="https://huggingface.co/docs/hub/en/model-cards">Model Cards</a>: evaluation infrastructure, reproducible tasks, and model documentation.</li>
+        <li><a href="https://www.kaggle.com/datasets">Kaggle Datasets</a>: a second data source. Check the publisher, license, files, update history, and discussion.</li>
+        <li><a href="https://docs.unsloth.ai/get-started/fine-tuning-llms-guide">Unsloth — Fine-tuning LLMs guide</a>, <a href="https://docs.axolotl.ai/docs/installation.html">Axolotl — Installation</a>, and <a href="https://github.com/ml-explore/mlx-lm">MLX LM</a>: Linux and macOS training paths.</li>
+        <li><a href="https://docs.runpod.io/pods/overview">RunPod Pods</a>, <a href="https://docs.runpod.io/pods/storage/types">storage</a>, and <a href="https://docs.runpod.io/pods/pricing">pricing</a>: Pod, storage, and spend-control guidance.</li>
+      </ul>
+    </section>
+
+    <div data-plate-for="P9"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+
+  <script src="../js/registry.js"></script>
+  <script src="../js/shell.js"></script>
+</body>
+</html>

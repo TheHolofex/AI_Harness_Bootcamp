@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" role="img" aria-labelledby="title-p9-generalization-map desc-p9-generalization-map">
+  <title id="title-p9-generalization-map">From training examples to a valid fine-tuning performance claim</title>
+  <desc id="desc-p9-generalization-map">A large map separates training examples, development examples, and held-out evaluation examples. It shows the base model and adapter being compared under the same inference contract. It marks valid evidence for a narrow performance claim and common invalid paths: duplicate leakage, selecting settings on the held-out suite, and changing the serving template after evaluation.</desc>
+  <defs>
+    <marker id="p9gm-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#0A0A0A"/></marker>
+    <marker id="p9gm-arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#E31C23"/></marker>
+    <style>
+      text{font-family:system-ui,"Inter","Helvetica Neue",Arial,sans-serif;fill:#0A0A0A}.micro{font-size:9px;font-weight:650;letter-spacing:1.7px}.tiny{font-size:8px;font-weight:650;letter-spacing:.85px}.title{font-size:25px;font-weight:680;letter-spacing:-.35px}.purpose{font-size:12px;font-weight:430;fill:#4A4A4A}.body{font-size:11px;font-weight:520}.body2{font-size:10px;font-weight:520}.caption{font-size:9px;font-weight:650;letter-spacing:1px}.muted{fill:#6B6B6B}.white{fill:#FFF}.red{fill:#E31C23}.gold{fill:#A58650}.hair{fill:none;stroke:#D0D0D0;stroke-width:1}.line{fill:none;stroke:#0A0A0A;stroke-width:1.65;vector-effect:non-scaling-stroke}.redline{fill:none;stroke:#E31C23;stroke-width:1.8;vector-effect:non-scaling-stroke}.dash{stroke-dasharray:6 5}
+    </style>
+  </defs>
+  <rect width="1120" height="560" fill="#FFF"/>
+  <rect width="1120" height="62" fill="#FAFAF8"/>
+  <text x="24" y="16" class="micro muted">P9 · FINE-TUNED, MEASURED</text><text x="1096" y="16" class="micro muted" text-anchor="end">GENERALIZATION + PERFORMANCE CLAIM</text>
+  <path d="M88 42H1026" class="hair"/>
+  <rect x="24" y="29" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="110" y="44" class="tiny muted" text-anchor="middle">1 DEFINE BEHAVIOR</text>
+  <rect x="204" y="29" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="290" y="44" class="tiny muted" text-anchor="middle">2 ADMIT DATA</text>
+  <rect x="384" y="29" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="470" y="44" class="tiny muted" text-anchor="middle">3 BASELINE</text>
+  <rect x="564" y="29" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="650" y="44" class="tiny muted" text-anchor="middle">4 TRAIN</text>
+  <rect x="744" y="29" width="172" height="24" rx="2" fill="#0A0A0A"/><text x="830" y="44" class="tiny white" text-anchor="middle">5 EVALUATE</text>
+  <rect x="924" y="29" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="1010" y="44" class="tiny muted" text-anchor="middle">6 DECIDE</text>
+  <path d="M0 62H1120" class="hair"/>
+
+  <text x="24" y="89" class="micro gold">GENERALIZATION IS THE CLAIM</text>
+  <text x="24" y="120" class="title">Training fit becomes useful only when it transfers to untouched cases.</text>
+  <text x="24" y="143" class="purpose">A valid comparison holds the inference contract steady: model revision, tokenizer, chat template, prompt wrapper, generation settings, scorer, and cases.</text>
+
+  <g aria-label="Data separation">
+    <rect x="24" y="172" width="302" height="162" rx="2" fill="#FFF" stroke="#A58650" stroke-width="1.5"/>
+    <rect x="24" y="172" width="7" height="162" fill="#A58650"/>
+    <text x="46" y="195" class="micro gold">TRAINING SET</text>
+    <text x="46" y="219" class="body">Examples the adapter learns from.</text><text x="46" y="234" class="body">Use them to fit the behavior.</text>
+    <rect x="46" y="252" width="120" height="52" rx="2" fill="#FAFAF8" stroke="#D0D0D0"/><text x="58" y="271" class="tiny muted">GOOD SIGNAL</text><text x="58" y="289" class="body2">Correct targets</text>
+    <rect x="178" y="252" width="126" height="52" rx="2" fill="#FAFAF8" stroke="#D0D0D0"/><text x="190" y="271" class="tiny muted">VARIATION</text><text x="190" y="289" class="body2">Real task range</text>
+    <text x="46" y="323" class="tiny gold">SPLIT BY DOCUMENT, USER, CONVERSATION, OR ENTITY WHEN NEEDED</text>
+    <path d="M326 253H360" class="line" marker-end="url(#p9gm-arrow)"/>
+
+    <rect x="370" y="172" width="302" height="162" rx="2" fill="#FFF" stroke="#1A1A1A"/>
+    <text x="392" y="195" class="micro muted">DEVELOPMENT SET</text>
+    <text x="392" y="219" class="body">Cases used to inspect a failure,</text><text x="392" y="234" class="body">choose one setting, or compare runs.</text>
+    <rect x="392" y="252" width="258" height="52" rx="2" fill="#FAFAF8" stroke="#D0D0D0"/><text x="405" y="271" class="tiny muted">USE WITH DISCIPLINE</text><text x="405" y="289" class="body2">A case used to tune is no longer final evaluation.</text>
+    <text x="392" y="323" class="tiny muted">VERSION THE DATA + CONFIGURATION FOR EACH RUN</text>
+    <path d="M672 253H706" class="line" marker-end="url(#p9gm-arrow)"/>
+
+    <rect x="716" y="172" width="380" height="162" rx="2" fill="#FFF" stroke="#E31C23" stroke-width="1.6"/>
+    <rect x="716" y="172" width="7" height="162" fill="#E31C23"/>
+    <text x="738" y="195" class="micro red">HELD-OUT EVALUATION SET</text>
+    <text x="738" y="219" class="body">Unseen cases used only for the final</text><text x="738" y="234" class="body">base-versus-adapter performance claim.</text>
+    <rect x="738" y="252" width="336" height="52" rx="2" fill="#FAFAF8" stroke="#E31C23"/><text x="751" y="271" class="tiny red">DO NOT USE TO PICK DATA OR SETTINGS</text><text x="751" y="289" class="body2">If you do, move it to development and replace it.</text>
+    <text x="738" y="323" class="tiny red">CHECK DUPLICATES, NEAR-DUPLICATES, AND TEMPLATE VARIANTS</text>
+  </g>
+
+  <g aria-label="Comparison controls">
+    <path d="M175 334V365H430" class="line" marker-end="url(#p9gm-arrow)"/>
+    <path d="M521 334V365" class="line" marker-end="url(#p9gm-arrow)"/>
+    <path d="M905 334V365H690" class="line" marker-end="url(#p9gm-arrow)"/>
+    <rect x="314" y="366" width="492" height="88" rx="2" fill="#17110C" stroke="#0A0A0A"/>
+    <text x="338" y="390" class="micro white">SAME INFERENCE CONTRACT</text>
+    <text x="338" y="414" class="body white">Base-model revision · tokenizer · chat template · system prompt · decoding settings · scorer</text>
+    <rect x="338" y="426" width="202" height="18" rx="2" fill="#FFF"/><text x="439" y="439" class="tiny muted" text-anchor="middle">BASE MODEL OUTPUT + SCORE</text>
+    <rect x="556" y="426" width="226" height="18" rx="2" fill="#A58650"/><text x="669" y="439" class="tiny white" text-anchor="middle">BASE + ADAPTER OUTPUT + SCORE</text>
+  </g>
+
+  <g aria-label="Decision and invalid paths">
+    <path d="M560 454V476" class="line" marker-end="url(#p9gm-arrow)"/>
+    <rect x="314" y="484" width="492" height="48" rx="2" fill="#FFF" stroke="#A58650" stroke-width="1.5"/>
+    <text x="338" y="505" class="micro gold">VALID PERFORMANCE CLAIM</text><text x="338" y="522" class="body">“On this held-out suite, under these conditions, the adapter improved this defined behavior from [baseline] to [adapter].”</text>
+    <path d="M176 334V478H278" class="redline dash" marker-end="url(#p9gm-arrow-red)"/>
+    <text x="34" y="476" class="tiny red">DUPLICATE LEAKAGE</text><text x="34" y="489" class="tiny red">INVALIDATES THE CLAIM</text>
+    <path d="M905 334V478H842" class="redline dash" marker-end="url(#p9gm-arrow-red)"/>
+    <text x="835" y="476" class="tiny red">CHANGED TEMPLATE</text><text x="835" y="489" class="tiny red">REQUIRES RE-EVALUATION</text>
+  </g>
+  <text x="24" y="550" class="tiny muted">A TRAINING LOSS CURVE CAN HELP DIAGNOSE A RUN. ONLY A CONTROLLED HELD-OUT COMPARISON SUPPORTS A PERFORMANCE CLAIM.</text>
+</svg>

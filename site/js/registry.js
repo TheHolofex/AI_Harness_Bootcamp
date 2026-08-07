@@ -1,7 +1,7 @@
 /**
  * AHB course registry — the single source of truth for B0, B1, the scheduled
  * Model Economics, Harness Control Plane, MCP, and Agent Loops briefings,
- * the Pi implementation lab, and P1–P8 plus PG.
+ * the Pi implementation lab, and P1–P9 plus PG.
  *
  * Every reader of progress (home dashboard, nav dots, block pages, the
  * pre-work hub) counts against the id lists declared here — never against
@@ -61,7 +61,7 @@
   // Storage order is retained for compatibility. The visible path is
   // B0 install clinic → B1 First Light → Model Economics → P1 →
   // Harness Control Plane → P2 → two MCP briefings → P3 → OSD → PG →
-  // Agent Loops → P4 → P5 → Pi patterns → P6 → P7 → P8.
+  // Agent Loops → P4 → P5 → Pi patterns → P6 → P7 → P8 → P9.
   // `ids` contains the controls learners can actually see and complete. When an
   // inline lesson outcome replaces a procedural receipt, only the outcome id is
   // required; the duplicate procedural id is retained in the HTML solely so old
@@ -244,12 +244,22 @@
       ],
       stretchIds: ["stretch-endpoint-portfolio"],
       url: "blocks/p8.html", meta: "hold/degrade"
+    },
+    {
+      code: "P9", name: "Fine-tuned · measured", title: "Fine-tuned, measured", day: "Friday", slot: "PM",
+      key: "ahb-checklist-p9",
+      ids: [
+        "p9-frame", "p9-data", "p9-baseline", "p9-run",
+        "p9-eval", "p9-decision", "p9-local", "p9-cloud"
+      ],
+      stretchIds: [],
+      url: "blocks/p9.html", meta: "LoRA/QLoRA · public data · private adapter"
     }
   ];
 
   // Numbered project modules. B0 is the required install-clinic stop before them;
   // PI is a separate implementation exercise on the visible course path.
-  var COURSE_CODES = ["B1", "P1", "P2", "P3", "OSD", "PG", "P4", "P5", "P6", "P7", "P8"];
+  var COURSE_CODES = ["B1", "P1", "P2", "P3", "OSD", "PG", "P4", "P5", "P6", "P7", "P8", "P9"];
   var INSTALL = REGISTRY[1];
   var PREWORK_STOP = {
     code: "B0", name: "Install clinic", title: "Pre-work Install Clinic", kind: "install",
@@ -273,7 +283,7 @@
     { phase: "Tuesday", title: "Harness → Inbound → MCP → verdict → your own surface → running it without you", codes: ["HCP", "P2", "MCP1", "MCP2", "P3", "OSD", "PG"] },
     { phase: "Wednesday", title: "Control flow and second brain · standalone intake defense", codes: ["LOOPS", "P4", "P5"] },
     { phase: "Thursday", title: "Patterns → autonomy → automation", codes: ["PI", "P6", "P7"] },
-    { phase: "Friday", title: "Transfer", codes: ["P8"] }
+    { phase: "Friday", title: "Transfer → tune", codes: ["P8", "P9"] }
   ];
 
   var DAY_NAV = [
@@ -281,7 +291,7 @@
     { label: "Tuesday", codes: ["HCP", "P2", "MCP1", "MCP2", "P3", "OSD", "PG"] },
     { label: "Wednesday", codes: ["LOOPS", "P4", "P5"] },
     { label: "Thursday", codes: ["PI", "P6", "P7"] },
-    { label: "Friday", codes: ["P8"] }
+    { label: "Friday", codes: ["P8", "P9"] }
   ];
 
   function block(code) {

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 280" role="img" aria-labelledby="title-p9-method-choice desc-p9-method-choice">
+  <title id="title-p9-method-choice">Choose a fine-tuning method from the evidence signal</title>
+  <desc id="desc-p9-method-choice">A decision flow first separates problems that do not need fine-tuning from stable behaviors that do. Stable behaviors use supervised fine-tuning when good target answers exist, DPO when paired preference answers exist, and GRPO only when an executable or human-reviewed reward can judge the result.</desc>
+  <defs>
+    <marker id="p9mc-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#0A0A0A"/></marker>
+    <marker id="p9mc-arrow-red" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#E31C23"/></marker>
+    <style>
+      text{font-family:system-ui,"Inter","Helvetica Neue",Arial,sans-serif;fill:#0A0A0A}.micro{font-size:8px;font-weight:650;letter-spacing:1.55px}.tiny{font-size:7.5px;font-weight:650;letter-spacing:.7px}.title{font-size:21px;font-weight:680;letter-spacing:-.25px}.purpose{font-size:11px;font-weight:430;fill:#4A4A4A}.body{font-size:9px;font-weight:520}.caption{font-size:8px;font-weight:650;letter-spacing:1px}.muted{fill:#6B6B6B}.white{fill:#FFF}.red{fill:#E31C23}.gold{fill:#A58650}.hair{fill:none;stroke:#D0D0D0;stroke-width:1}.line{fill:none;stroke:#0A0A0A;stroke-width:1.35;vector-effect:non-scaling-stroke}.redline{fill:none;stroke:#E31C23;stroke-width:1.4;vector-effect:non-scaling-stroke}.dash{stroke-dasharray:5 4}
+    </style>
+  </defs>
+  <rect width="1120" height="280" fill="#FFF"/>
+  <rect width="1120" height="56" fill="#FAFAF8"/>
+  <text x="24" y="13" class="micro muted">P9 · FINE-TUNED, MEASURED</text>
+  <text x="1096" y="13" class="micro muted" text-anchor="end">METHOD SELECTION</text>
+  <path d="M88 37H1026" class="hair"/>
+  <rect x="24" y="25" width="172" height="24" rx="2" fill="#0A0A0A"/><text x="110" y="40" class="tiny white" text-anchor="middle">1 DEFINE BEHAVIOR</text>
+  <rect x="204" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="290" y="40" class="tiny muted" text-anchor="middle">2 ADMIT DATA</text>
+  <rect x="384" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="470" y="40" class="tiny muted" text-anchor="middle">3 BASELINE</text>
+  <rect x="564" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="650" y="40" class="tiny muted" text-anchor="middle">4 TRAIN</text>
+  <rect x="744" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="830" y="40" class="tiny muted" text-anchor="middle">5 EVALUATE</text>
+  <rect x="924" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="1010" y="40" class="tiny muted" text-anchor="middle">6 DECIDE</text>
+  <path d="M0 56H1120" class="hair"/>
+
+  <text x="24" y="78" class="micro gold">METHOD LADDER</text>
+  <text x="24" y="105" class="title">Choose the learning signal before you choose the trainer.</text>
+  <text x="24" y="125" class="purpose">The default is supervised fine-tuning when you have good target answers. Do not add preference or reward training without its required evidence.</text>
+
+  <g aria-label="Decision flow">
+    <rect x="24" y="148" width="176" height="48" rx="2" fill="#FFF" stroke="#1A1A1A"/>
+    <text x="38" y="166" class="micro muted">START HERE</text><text x="38" y="184" class="body">Stable behavior and</text><text x="38" y="194" class="body">a check on new work?</text>
+    <path d="M200 172H226" class="line" marker-end="url(#p9mc-arrow)"/>
+    <text x="211" y="162" class="tiny muted" text-anchor="middle">YES</text>
+    <path d="M112 196V218H225" class="redline" marker-end="url(#p9mc-arrow-red)"/>
+    <text x="122" y="212" class="tiny red">NO</text>
+    <rect x="236" y="148" width="176" height="48" rx="2" fill="#FFF" stroke="#A58650" stroke-width="1.5"/>
+    <rect x="236" y="148" width="7" height="48" fill="#A58650"/>
+    <text x="254" y="166" class="micro gold">TARGET ANSWERS</text><text x="254" y="184" class="body">Good examples of the</text><text x="254" y="194" class="body">answer you want?</text>
+    <path d="M412 172H438" class="line" marker-end="url(#p9mc-arrow)"/>
+    <text x="423" y="162" class="tiny muted" text-anchor="middle">YES</text>
+    <rect x="448" y="148" width="184" height="48" rx="2" fill="#0A0A0A"/>
+    <text x="462" y="166" class="micro white">DEFAULT · SFT + LORA</text><text x="462" y="184" class="body white">Target answers teach</text><text x="462" y="194" class="body white">the bounded behavior.</text>
+    <path d="M412 188V218H647" class="line" marker-end="url(#p9mc-arrow)"/>
+    <text x="423" y="210" class="tiny muted">NO</text>
+    <rect x="657" y="148" width="184" height="48" rx="2" fill="#FFF" stroke="#D0D0D0"/>
+    <text x="671" y="166" class="micro muted">PREFERENCE PAIRS</text><text x="671" y="184" class="body">Chosen and rejected</text><text x="671" y="194" class="body">answers for each prompt?</text>
+    <path d="M841 172H867" class="line" marker-end="url(#p9mc-arrow)"/>
+    <text x="852" y="162" class="tiny muted" text-anchor="middle">YES</text>
+    <rect x="877" y="148" width="219" height="48" rx="2" fill="#FFF" stroke="#A58650" stroke-width="1.5"/>
+    <text x="891" y="166" class="micro gold">ADVANCED · DPO</text><text x="891" y="184" class="body">Use only when preference</text><text x="891" y="194" class="body">labels are credible.</text>
+    <path d="M749 196V218H867" class="line" marker-end="url(#p9mc-arrow)"/>
+    <text x="760" y="210" class="tiny muted">NO</text>
+    <rect x="877" y="210" width="219" height="42" rx="2" fill="#FFF" stroke="#E31C23" stroke-width="1.4"/>
+    <text x="891" y="226" class="micro red">REWARD SIGNAL?</text><text x="891" y="241" class="body">GRPO needs an executable or</text><text x="891" y="250" class="body">human-reviewed reward. Otherwise, stop.</text>
+    <rect x="236" y="210" width="396" height="42" rx="2" fill="#FAFAF8" stroke="#D0D0D0"/>
+    <text x="252" y="226" class="micro muted">NOT A TUNING CASE</text><text x="252" y="242" class="body">Use retrieval for changing facts, a tool for execution, or better instructions and validation for a format problem.</text>
+  </g>
+  <text x="24" y="270" class="tiny muted">DEFAULT DEMO: SMALL PUBLIC DATASET · SUPERVISED FINE-TUNING · LORA OR QLORA · HELD-OUT EVALUATION</text>
+</svg>

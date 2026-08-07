@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 280" role="img" aria-labelledby="title-p9-evidence-loop desc-p9-evidence-loop">
+  <title id="title-p9-evidence-loop">The adapter evidence loop from data admission through held-out decision</title>
+  <desc id="desc-p9-evidence-loop">A five-step loop shows public data admission, frozen held-out evaluation, base-model baseline, bounded adapter training, and same-condition comparison. A red barrier prevents held-out cases from entering the training set. The loop ends with a narrow fit, revise, or stop decision.</desc>
+  <defs>
+    <marker id="p9el-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#0A0A0A"/></marker>
+    <marker id="p9el-arrow-red" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#E31C23"/></marker>
+    <style>
+      text{font-family:system-ui,"Inter","Helvetica Neue",Arial,sans-serif;fill:#0A0A0A}.micro{font-size:8px;font-weight:650;letter-spacing:1.55px}.tiny{font-size:7.5px;font-weight:650;letter-spacing:.7px}.title{font-size:21px;font-weight:680;letter-spacing:-.25px}.purpose{font-size:11px;font-weight:430;fill:#4A4A4A}.body{font-size:9px;font-weight:520}.caption{font-size:8px;font-weight:650;letter-spacing:1px}.muted{fill:#6B6B6B}.white{fill:#FFF}.red{fill:#E31C23}.gold{fill:#A58650}.hair{fill:none;stroke:#D0D0D0;stroke-width:1}.line{fill:none;stroke:#0A0A0A;stroke-width:1.35;vector-effect:non-scaling-stroke}.redline{fill:none;stroke:#E31C23;stroke-width:1.4;vector-effect:non-scaling-stroke}.dash{stroke-dasharray:5 4}
+    </style>
+  </defs>
+  <rect width="1120" height="280" fill="#FFF"/>
+  <rect width="1120" height="56" fill="#FAFAF8"/>
+  <text x="24" y="13" class="micro muted">P9 · FINE-TUNED, MEASURED</text>
+  <text x="1096" y="13" class="micro muted" text-anchor="end">EVALUATION CONTROL</text>
+  <path d="M88 37H1026" class="hair"/>
+  <rect x="24" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="110" y="40" class="tiny muted" text-anchor="middle">1 DEFINE BEHAVIOR</text>
+  <rect x="204" y="25" width="172" height="24" rx="2" fill="#0A0A0A"/><text x="290" y="40" class="tiny white" text-anchor="middle">2 ADMIT DATA</text>
+  <rect x="384" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="470" y="40" class="tiny muted" text-anchor="middle">3 BASELINE</text>
+  <rect x="564" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="650" y="40" class="tiny muted" text-anchor="middle">4 TRAIN</text>
+  <rect x="744" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="830" y="40" class="tiny muted" text-anchor="middle">5 EVALUATE</text>
+  <rect x="924" y="25" width="172" height="24" rx="2" fill="#FFF" stroke="#D0D0D0"/><text x="1010" y="40" class="tiny muted" text-anchor="middle">6 DECIDE</text>
+  <path d="M0 56H1120" class="hair"/>
+
+  <text x="24" y="78" class="micro red">EVIDENCE LOOP</text>
+  <text x="24" y="105" class="title">Keep the test out of the lesson the adapter receives.</text>
+  <text x="24" y="125" class="purpose">The same held-out cases, prompt template, generation settings, and scorer must govern both the base model and the adapter.</text>
+
+  <g aria-label="Five-step controlled evaluation loop">
+    <rect x="24" y="150" width="184" height="68" rx="2" fill="#FFF" stroke="#1A1A1A"/>
+    <text x="38" y="167" class="micro muted">01 · ADMIT DATA</text><text x="38" y="184" class="body">Source, license, revision,</text><text x="38" y="196" class="body">content review, split rule.</text><text x="38" y="209" class="tiny gold">PUBLIC DATA IS NOT AUTO-APPROVED</text>
+    <path d="M208 184H232" class="line" marker-end="url(#p9el-arrow)"/>
+    <rect x="242" y="150" width="184" height="68" rx="2" fill="#FFF" stroke="#E31C23" stroke-width="1.5"/>
+    <rect x="242" y="150" width="7" height="68" fill="#E31C23"/>
+    <text x="260" y="167" class="micro red">02 · FREEZE SUITE</text><text x="260" y="184" class="body">Keep unseen cases outside</text><text x="260" y="196" class="body">training and tuning choices.</text><text x="260" y="209" class="tiny red">NO LEAKAGE · NO RETRIES</text>
+    <path d="M426 184H450" class="line" marker-end="url(#p9el-arrow)"/>
+    <rect x="460" y="150" width="184" height="68" rx="2" fill="#FFF" stroke="#A58650" stroke-width="1.5"/>
+    <text x="474" y="167" class="micro gold">03 · BASELINE</text><text x="474" y="184" class="body">Run the base model first.</text><text x="474" y="196" class="body">Save raw output and score.</text><text x="474" y="209" class="tiny gold">CONTROL BEFORE CHANGE</text>
+    <path d="M644 184H668" class="line" marker-end="url(#p9el-arrow)"/>
+    <rect x="678" y="150" width="184" height="68" rx="2" fill="#0A0A0A"/>
+    <text x="692" y="167" class="micro white">04 · BOUNDED TRAIN</text><text x="692" y="184" class="body white">Versioned data, LoRA or</text><text x="692" y="196" class="body white">QLoRA, checkpoints, limit.</text><text x="692" y="209" class="tiny white">PRIVATE ARTIFACTS + SECRETS</text>
+    <path d="M862 184H886" class="line" marker-end="url(#p9el-arrow)"/>
+    <rect x="896" y="150" width="200" height="68" rx="2" fill="#FFF" stroke="#1A1A1A"/>
+    <text x="910" y="167" class="micro muted">05 · COMPARE</text><text x="910" y="184" class="body">Same suite, same conditions,</text><text x="910" y="196" class="body">per-case base vs adapter score.</text><text x="910" y="209" class="tiny muted">RAW OUTPUTS STAY AVAILABLE</text>
+  </g>
+  <path d="M334 218V245H728V218" class="redline dash" marker-end="url(#p9el-arrow-red)"/>
+  <text x="531" y="239" class="caption red" text-anchor="middle">RED BARRIER: HELD-OUT CASES DO NOT ENTER TRAINING</text>
+  <rect x="24" y="252" width="1072" height="18" rx="2" fill="#FAFAF8" stroke="#D0D0D0"/>
+  <text x="40" y="264" class="tiny muted">DECISION: FIT FOR THIS BEHAVIOR · REVISE ONE VARIABLE · OR STOP AND KEEP THE BASE MODEL</text>
+</svg>

@@ -1,6 +1,6 @@
-# Course capabilities — B1 through P8, with OSD
+# Course capabilities — B1 through P9, with OSD
 
-What this course gives you: ten capabilities, built in order, each one resting on the ones before it. Every project takes for granted that you can already do the earlier work. Nothing is retaught.
+What this course gives you: eleven capabilities, built in order, each one resting on the ones before it. Every project takes for granted that you can already do the earlier work. Nothing is retaught.
 
 Each project below states what you can do at the end of it, what you learn to do along the way, and what the exercise involves.
 
@@ -22,8 +22,9 @@ Each project below states what you can do at the end of it, what you learn to do
 | 8 | Give an agent a changing objective and let it work to a checked finish | P6 |
 | 9 | Use a visible AI workflow to read, route, and write a spreadsheet at batch scale | P7 |
 | 10 | Carry the method to a different engine under a policy you wrote first | P8 |
+| 11 | Decide from held-out evidence whether a narrow adapter earned use | P9 |
 
-Pick one instrument track — `engineering` or `mission_ops` — at P3 and keep it through P8. Shared kits live in `instruments/`. These are course instruments, not personal portable evals.
+Pick one instrument track — `engineering` or `mission_ops` — at P3 and keep it through P8. P9 uses a separate public-data demonstration and does not reuse either track's course cases. Shared kits live in `instruments/`. These are course instruments, not personal portable evals.
 
 ---
 
@@ -448,6 +449,34 @@ Only labels come back; the learner edits records after the rule change; the seco
 ### Signs it hasn't landed
 
 Policy written after the fact, a vibe degrade ("it's fine"), an empty 30-60-90, no refusal under policy, or a defense that only ever ran against a model.
+
+---
+
+## P9 — Fine-Tuned, Measured
+
+> **After this project:** You can decide from versioned public data and held-out evidence whether a narrow LoRA or QLoRA adapter earned use for a defined behavior.
+
+### What you learn to do
+
+| Objective | Skill | Builds on | What is new | What mastery looks like |
+|---|---|---|---|---|
+| **1. Decide whether behavior belongs in weights at all.** | Selecting a control surface | P8's endpoint evidence | You distinguish a stable, measurable behavior from changing knowledge, a missing tool, or an unclear instruction. | You can name why tuning is the next test—or why it is not—and what smaller intervention comes first. |
+| **2. Admit data before it changes a model.** | Data provenance and split design | P5's trusted-input discipline | You inspect public data, rights, content, risks, and held-out boundaries before a training run starts. | Your admission record names the source revision and data limits, and the evaluation examples did not enter training. |
+| **3. Treat the adapter as a claim with evidence.** | Bounded post-training evaluation | P1's change reading and P8's paired comparison | You compare a base model and a reversible LoRA/QLoRA adapter on frozen unseen work. | You can say in numbers what changed, where it did not transfer, who owns the adapter, and how to return to the base model. |
+
+### What the exercise requires
+
+1. A stated behavior contract: input, expected output, acceptance check, non-goal, and a reason fine-tuning is the right next test.
+2. A public-data admission record naming source/revision, rights, sampled contents, risks, transformation, and training/validation/held-out split rule.
+3. A frozen base-model baseline on the held-out suite before adapter fitting.
+4. A bounded private LoRA or QLoRA run record: base model, dataset revision, adapter configuration, environment, compute, time/budget bound, checkpoint/output location, and secret handling.
+5. A per-case base-versus-adapter score table for unseen work, with raw outputs and an evidence-linked decision.
+6. A narrow fit/not-fit statement, limits, owner, next review, private/public disposition, and rollback to the base model.
+7. A stated Linux, macOS, Hugging Face, or RunPod path whose hardware, storage, secrets, and shutdown plan match the scope.
+
+### Signs it hasn't landed
+
+Training loss treated as proof, a public dataset accepted without a rights or provenance read, held-out examples entering the training set, a model-size claim larger than the hardware can support, a secret left in a notebook, an adapter called generally better, or a cloud run left billing after its artifacts disappear.
 
 ---
 
