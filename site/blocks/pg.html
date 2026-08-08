@@ -226,6 +226,12 @@ pack file and quoting the words that carry it.
 DECLARED SURFACE. A worker may write product\answer.md and nothing else.
 Anything it wants outside that, it reports back instead of doing.
 
+WORKER BOUNDARY. The worker is already dispatched. Its only inputs are this
+brief and its sibling pack\ directory. It must not load skills, run preflight,
+inspect run\, ground\, .agents\, or any other workspace state, and it must not
+wait for another dispatch. Those are orchestrator responsibilities and are
+already complete.
+
 Then record brief\pack\MANIFEST.json: every pack file with its digest, and
 which obligation it bears on.</code></pre>
         </div>
@@ -246,7 +252,7 @@ which obligation it bears on.</code></pre>
 
         <div class="do-step">
           <p class="do-label">Give the two workers their permission sets. Paste this into <strong>PG — Orchestrator</strong>:</p>
-          <pre><code>Create two OpenCode agents under .opencode\agents\, both subagents on the
+          <pre><code>Create two OpenCode agents under .opencode\agents\, both runnable primary agents on the
 course model, differing only in what they may touch:
 
   pg_fenced.md   - edit permitted for product\answer.md and nothing else;
@@ -258,7 +264,7 @@ Neither agent file may describe the job. The brief carries the job; these
 files carry only reach. Show me both files and tell me, for each one, which
 rule decides the outcome for a write to gate\score.mjs - and if more than one
 rule matches, which one wins.</code></pre>
-          <p>The two agents are identical in everything you can say to them and different in what they can touch. That is the only variable in this run, and Stage 07 is why it is worth isolating.</p>
+          <p>The two agents are identical in everything you can say to them and different in what they can touch. They are primary agents because <code>opencode run --agent</code> launches a runnable agent; it does not launch an agent declared <code>subagent</code>. Leaving them as subagents makes OpenCode fall back to its default agent, so the comparison would not test the permission sets you wrote.</p>
         </div>
 
         <div class="do-step">
@@ -269,6 +275,7 @@ each receiving a byte-identical copy of brief\brief.md and brief\pack\.
 From the project root, for each worker in turn:
 
   cd "$env:USERPROFILE\Documents\HarnessBootcamp\PG_Ground"
+  Get-Command opencode -ErrorAction Stop | Out-Null
   $b = Get-Content run\A\brief.md -Raw
   opencode run --agent pg_fenced -m "xai/$env:HB_XAI_MODEL" $b | Out-File -Encoding utf8 run\A\stdout.txt
 
@@ -285,7 +292,7 @@ success code is NO_OUTPUT, never COMPLETED.
 
 Report both receipts and the two brief digests side by side.</code></pre>
           <p><strong>What you should see.</strong> Two receipts, two identical brief digests, two products. If the brief digests differ, the comparison you are about to run is meaningless. One worker was given something else, and finding that out now is cheap.</p>
-          <p><strong>When it does not.</strong> Empty output with a zero exit code is the failure this stage exists to catch, and it is the one that looks like success in a log. Confirm <code>$env:HB_XAI_MODEL</code> is set and run <code>opencode models xai --refresh</code>. If a worker hangs, it is waiting on a permission it was never granted. Read the agent file rather than raising the timeout.</p>
+          <p><strong>When it does not.</strong> Empty output with a zero exit code is the failure this stage exists to catch, and it is the one that looks like success in a log. First confirm <code>Get-Command opencode</code> succeeds, then confirm <code>$env:HB_XAI_MODEL</code> is set and run <code>opencode models xai --refresh</code>. If OpenCode reports that an agent is a subagent and falls back to <code>build</code>, stop: the configured permission set was not used. If a worker hangs, it is waiting on a permission it was never granted. Read the agent file rather than raising the timeout.</p>
         </div>
 
         <div class="do-step" id="pg-dispatch-proof">
