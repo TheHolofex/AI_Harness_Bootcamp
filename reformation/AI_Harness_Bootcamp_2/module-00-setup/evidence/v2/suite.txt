@@ -2,7 +2,7 @@
 1. The module against the oracle
 ==============================================================================
   [PASS] A1: 205 fences; every executed path resolves
-  [FAIL] A2: tracked=0 on_disk=80; module is not published
+  [PASS] A2: 80 files tracked, matching 80 on disk
   [PASS] A3: no fence can exit the learner's shell
   [PASS] A4: every relative-path fence sets its own directory
   [PASS] A5: .obsidian/ is ignored, so opening the vault cannot dirty the clone
@@ -39,7 +39,7 @@
   [PASS] F-VOICE: the declarative-antithesis figure appears in 0 learner file(s)
   [PASS] F4: every stop condition names an observable state
 
-  36 PASS / 1 FAIL
+  37 PASS / 0 FAIL
 
 ==============================================================================
 2. The oracle against a broken module (each mutation must be caught)
@@ -87,4 +87,4 @@
 ==============================================================================
 C6 PASS — all 39 mutations caught; every criterion is proven to fail
 
-MODULE HOLD — 1 criteria failing: ['A2']
+MODULE PASS — every criterion passes, and every criterion is proven able to fail
