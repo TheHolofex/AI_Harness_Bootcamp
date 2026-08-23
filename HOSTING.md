@@ -22,6 +22,9 @@ The learner navigation stays inside `site/`. Raw exercise files under `operator/
 | `SITE_SECRET` | Optional | Cookie HMAC secret; defaults to a key derived from `SITE_PASSWORD` |
 | `COOKIE_MAX_AGE` | Optional | Session length in seconds (default 14 days) |
 | `ALLOW_OPEN` | Local only | `1` allows start with empty `SITE_PASSWORD` — **never** on Railway |
+| `HF_TOKEN` | Optional | Hugging Face token for Friday open chat (`/site/friday-chat.html`). Server-side only |
+| `HF_CHAT_MODEL` | Optional | Default open chat model id for `/__api/chat` |
+| `HF_CHAT_BASE_URL` | Optional | OpenAI-compatible base URL (default `https://router.huggingface.co/v1`) |
 
 ## Local
 
@@ -104,6 +107,9 @@ Change `SITE_PASSWORD` in Railway and redeploy (or restart). Existing cookies st
 | `/__logout` | Cookie clear | End session |
 | `/` | Yes | Redirect → `/site/` |
 | `/site/…` | Yes | Canonical course website |
+| `/site/friday-chat.html` | Yes | Browser chat UI for the open endpoint |
+| `/__api/chat/config` | Yes | Chat proxy readiness + default model |
+| `/__api/chat` | Yes | Streaming chat proxy to Hugging Face (uses `HF_TOKEN`) |
 | Unlinked repo files | Yes, unless blocked | Local exercise inputs; not course navigation |
 
 ## Smoke test

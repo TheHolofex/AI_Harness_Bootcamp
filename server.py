@@ -23,6 +23,11 @@ STAFF_COOKIE_NAME  Default ahb_staff_auth
 COOKIE_MAX_AGE  Seconds. Default 1209600 (14 days).
 ALLOW_OPEN      If "1" and SITE_PASSWORD is empty, serve without a gate
                 (local only). Never set this on Railway.
+HF_TOKEN        Optional. Hugging Face token for the Friday open-endpoint
+                chat proxy at /__api/chat. Kept server-side only.
+HF_CHAT_MODEL   Optional. Default open chat model id for the proxy.
+HF_CHAT_BASE_URL Optional. OpenAI-compatible base URL
+                (default https://router.huggingface.co/v1).
 
 Two audiences, two credentials
 ------------------------------
@@ -48,10 +53,13 @@ from __future__ import annotations
 import hashlib
 import hmac
 import http.cookies
+import json
 import mimetypes
 import os
 import sys
+import urllib.error
 import urllib.parse
+import urllib.request
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -92,6 +100,15 @@ COOKIE_NAME = os.environ.get("COOKIE_NAME", "ahb_site_auth")
 STAFF_COOKIE_NAME = os.environ.get("STAFF_COOKIE_NAME", "ahb_staff_auth")
 COOKIE_MAX_AGE = int(os.environ.get("COOKIE_MAX_AGE", str(14 * 24 * 3600)))
 BIND_HOST = os.environ.get("BIND_HOST", "0.0.0.0")
+
+DEFAULT_HF_CHAT_MODEL = (
+    "DavidAU/gemma-4-31B-it-The-DECKARD-HERETIC-UNCENSORED-Thinking:featherless-ai"
+)
+DEFAULT_HF_CHAT_BASE_URL = "https://router.huggingface.co/v1"
+HF_CHAT_MAX_BODY = 256 * 1024
+HF_CHAT_MAX_MESSAGES = 40
+HF_CHAT_MAX_CONTENT_CHARS = 12_000
+HF_CHAT_TIMEOUT_SEC = 120
 
 # The one directory a staff login opens. Not in the git tree at all — staff
 # receive it out of band and drop it at the repo root (see staff/README.md).
@@ -156,6 +173,23 @@ def env_staff_password() -> str:
 
 def allow_open() -> bool:
     return os.environ.get("ALLOW_OPEN", "").strip().lower() in {"1", "true", "yes"}
+
+
+def env_hf_token() -> str:
+    return os.environ.get("HF_TOKEN", "").strip()
+
+
+def env_hf_chat_model() -> str:
+    return os.environ.get("HF_CHAT_MODEL", DEFAULT_HF_CHAT_MODEL).strip() or DEFAULT_HF_CHAT_MODEL
+
+
+def env_hf_chat_base_url() -> str:
+    raw = os.environ.get("HF_CHAT_BASE_URL", DEFAULT_HF_CHAT_BASE_URL).strip()
+    return (raw or DEFAULT_HF_CHAT_BASE_URL).rstrip("/")
+
+
+def hf_chat_configured() -> bool:
+    return bool(env_hf_token())
 
 
 def signing_key(password: str) -> bytes:
@@ -474,7 +508,13 @@ class BootcampHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self) -> None:  # noqa: N802
         parsed = urllib.parse.urlparse(self.path)
-        if parsed.path.rstrip("/") != "/__login":
+        path = parsed.path.rstrip("/") or "/"
+
+        if path == "/__api/chat":
+            self._handle_chat_api()
+            return
+
+        if path != "/__login":
             self._send(404, b"Not found\n", "text/plain; charset=utf-8")
             return
         try:
@@ -512,6 +552,187 @@ class BootcampHandler(SimpleHTTPRequestHandler):
             return
         self._send(401, self._login_html(next_path, bad=True), "text/html; charset=utf-8")
 
+    def _require_site_auth_for_api(self) -> bool:
+        if self._authorized():
+            return True
+        self._send(401, b'{"error":"Unauthorized"}\n', "application/json; charset=utf-8")
+        return False
+
+    def _json_error(self, code: int, message: str) -> None:
+        body = json.dumps({"error": message}, ensure_ascii=False).encode("utf-8") + b"\n"
+        self._send(code, body, "application/json; charset=utf-8", [("Cache-Control", "no-store")])
+
+    def _handle_chat_config(self) -> None:
+        if not self._require_site_auth_for_api():
+            return
+        payload = {
+            "configured": hf_chat_configured(),
+            "model": env_hf_chat_model(),
+            "base_url": env_hf_chat_base_url(),
+            "stream": True,
+            "max_messages": HF_CHAT_MAX_MESSAGES,
+            "max_content_chars": HF_CHAT_MAX_CONTENT_CHARS,
+        }
+        body = json.dumps(payload, ensure_ascii=False).encode("utf-8") + b"\n"
+        self._send(200, body, "application/json; charset=utf-8", [("Cache-Control", "no-store")])
+
+    def _normalize_chat_messages(self, raw_messages: object) -> list[dict[str, str]] | None:
+        if not isinstance(raw_messages, list) or not raw_messages:
+            self._json_error(400, "messages must be a non-empty array")
+            return None
+        if len(raw_messages) > HF_CHAT_MAX_MESSAGES:
+            self._json_error(400, f"at most {HF_CHAT_MAX_MESSAGES} messages allowed")
+            return None
+
+        cleaned: list[dict[str, str]] = []
+        for item in raw_messages:
+            if not isinstance(item, dict):
+                self._json_error(400, "each message must be an object")
+                return None
+            role = item.get("role")
+            content = item.get("content")
+            if role not in {"system", "user", "assistant"}:
+                self._json_error(400, "message role must be system, user, or assistant")
+                return None
+            if not isinstance(content, str):
+                self._json_error(400, "message content must be a string")
+                return None
+            text = content.strip()
+            if not text:
+                self._json_error(400, "message content must be non-empty")
+                return None
+            if len(text) > HF_CHAT_MAX_CONTENT_CHARS:
+                self._json_error(
+                    400,
+                    f"message content exceeds {HF_CHAT_MAX_CONTENT_CHARS} characters",
+                )
+                return None
+            cleaned.append({"role": role, "content": text})
+        return cleaned
+
+    def _handle_chat_api(self) -> None:
+        if not self._require_site_auth_for_api():
+            return
+
+        token = env_hf_token()
+        if not token:
+            self._json_error(
+                503,
+                "HF_TOKEN is not configured on the host. Add it to .env or the process environment.",
+            )
+            return
+
+        try:
+            length = int(self.headers.get("Content-Length", "0") or "0")
+        except ValueError:
+            self._json_error(400, "invalid Content-Length")
+            return
+        if length <= 0 or length > HF_CHAT_MAX_BODY:
+            self._json_error(400, f"request body must be 1..{HF_CHAT_MAX_BODY} bytes")
+            return
+
+        raw = self.rfile.read(length)
+        try:
+            payload = json.loads(raw.decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            self._json_error(400, "body must be valid JSON")
+            return
+        if not isinstance(payload, dict):
+            self._json_error(400, "body must be a JSON object")
+            return
+
+        messages = self._normalize_chat_messages(payload.get("messages"))
+        if messages is None:
+            return
+
+        model = payload.get("model")
+        if model is None or model == "":
+            model = env_hf_chat_model()
+        if not isinstance(model, str) or not model.strip():
+            self._json_error(400, "model must be a non-empty string")
+            return
+        model = model.strip()
+        if len(model) > 300:
+            self._json_error(400, "model id is too long")
+            return
+
+        stream = payload.get("stream", True)
+        if not isinstance(stream, bool):
+            self._json_error(400, "stream must be a boolean")
+            return
+
+        upstream_body = json.dumps(
+            {
+                "model": model,
+                "messages": messages,
+                "stream": stream,
+            },
+            ensure_ascii=False,
+        ).encode("utf-8")
+
+        url = f"{env_hf_chat_base_url()}/chat/completions"
+        req = urllib.request.Request(
+            url,
+            data=upstream_body,
+            method="POST",
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/json",
+                "Accept": "text/event-stream" if stream else "application/json",
+                "User-Agent": "ahb-friday-chat/1.0",
+            },
+        )
+
+        try:
+            upstream = urllib.request.urlopen(req, timeout=HF_CHAT_TIMEOUT_SEC)
+        except urllib.error.HTTPError as exc:
+            err_body = exc.read() if hasattr(exc, "read") else b""
+            detail = err_body.decode("utf-8", errors="replace").strip()
+            if len(detail) > 800:
+                detail = detail[:800] + "…"
+            message = f"upstream HTTP {exc.code}"
+            if detail:
+                message = f"{message}: {detail}"
+            self._json_error(502, message)
+            return
+        except urllib.error.URLError as exc:
+            self._json_error(502, f"upstream unreachable: {exc.reason}")
+            return
+        except TimeoutError:
+            self._json_error(504, "upstream timed out")
+            return
+
+        try:
+            if stream:
+                self.send_response(200)
+                self.send_header("Content-Type", "text/event-stream; charset=utf-8")
+                self.send_header("Cache-Control", "no-store")
+                self.send_header("X-Content-Type-Options", "nosniff")
+                self.send_header("Referrer-Policy", "no-referrer")
+                self.send_header("X-Accel-Buffering", "no")
+                self.end_headers()
+                while True:
+                    chunk = upstream.read(1024)
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    self.wfile.flush()
+            else:
+                body = upstream.read()
+                ctype = upstream.headers.get_content_type() or "application/json"
+                if "json" not in ctype:
+                    ctype = "application/json; charset=utf-8"
+                elif "charset" not in ctype:
+                    ctype = f"{ctype}; charset=utf-8"
+                self._send(200, body, ctype, [("Cache-Control", "no-store")])
+        except BrokenPipeError:
+            return
+        finally:
+            try:
+                upstream.close()
+            except Exception:
+                pass
+
     def do_GET(self) -> None:  # noqa: N802
         self._handle_read()
 
@@ -529,6 +750,10 @@ class BootcampHandler(SimpleHTTPRequestHandler):
                 "text/plain; charset=utf-8",
                 [("Cache-Control", "no-store")],
             )
+            return
+
+        if path.rstrip("/") == "/__api/chat/config":
+            self._handle_chat_config()
             return
 
         if path.rstrip("/") == "/__login":
