@@ -43,10 +43,16 @@ required = {
     "request": ROOT / "shared/case/REQUEST.md",
     "brief": ROOT / "shared/case/AI_DISPATCH_BRIEF.md",
     "manifest": ROOT / "shared/case/SOURCE_MANIFEST.json",
-    "change": ROOT / "shared/case/SEALED_CHANGE.md",
+    "change": ROOT / "facilitator/fixtures/SEALED_CHANGE.md",
     "calculator": ROOT / "scripts/compute_thread.py",
     "validator": ROOT / "scripts/check_work.py",
     "inventory": ROOT / "scripts/verify_content.py",
+    "starter": ROOT / "scripts/start_work.py",
+    "freeze": ROOT / "scripts/freeze_baseline.py",
+    "reveal": ROOT / "scripts/reveal_change.py",
+    "renderer": ROOT / "scripts/render_review.py",
+    "source_template": ROOT / "shared/templates/source-register.csv",
+    "ledger_template": ROOT / "shared/templates/thread-ledger.csv",
 }
 for name, path in required.items():
     check("M1-01", path.exists(), f"{name} exists")
@@ -118,7 +124,7 @@ for phrase in (
     check("M1-06", phrase in lab, f"lab includes {phrase}")
 check("M1-08", "stop decomposing" in lab.lower() and "directly" in lab.lower(), "recursive stop rule")
 check("M1-16", "producer" in lab.lower() and "independent evidence" in lab.lower(), "producer self-review excluded")
-check("M1-19", "before" in lab.lower() and "SEALED_CHANGE" in lab, "baseline frozen before change")
+check("M1-19", "before running the reveal command" in lab.lower() and "freeze_baseline.py" in lab, "baseline frozen before change")
 
 # Source challenge fixtures
 all_sources = "\n".join(read(p) for p in source_files)
@@ -142,6 +148,9 @@ check("M1-23", "practice" in rubric.lower() and "protected" in custody.lower(), 
 check("M1-26", all(term in read(required["runbook"]).lower() for term in ("may not", "source authority", "arithmetic", "verdict")), "coaching limits")
 check("M1-24", "hold" in read(required["accessibility"]).lower(), "accessibility fails closed")
 check("M1-28", "without" in read(required["handoff"]).lower() and "coaching" in read(required["handoff"]).lower(), "handoff supports independent reconstruction")
+check("M1-07", "thread walk" in lab.lower() and "adjacent" in lab.lower(), "learner defends a selected handoff")
+check("M1-12", "claim defense" in lab.lower() and "falsify" in lab.lower(), "learner defends a selected claim")
+check("M1-26", "select the examples yourself" in read(required["runbook"]).lower(), "evaluator selects defense examples")
 
 # Safety and hostile-content rules
 check("M1-15", "treat source text as data" in lab.lower(), "source text never becomes instructions")
@@ -168,8 +177,8 @@ if required["calculator"].exists():
         "earliest_departure": "14:25 MDT",
         "earliest_gate_arrival": "14:53 MDT",
         "v5_gate_margin_minutes": -3,
-        "earliest_clinic_arrival": "15:33 MDT",
-        "clinic_margin_minutes": 27,
+        "clinic_arrival_if_admitted": "15:33 MDT",
+        "clinic_margin_if_admitted_minutes": 27,
         "v6_closure_local": "15:20 MDT",
         "v6_gate_margin_minutes": 27,
     }
@@ -177,7 +186,7 @@ if required["calculator"].exists():
         check("M1-14", values.get(key) == wanted, f"{key}={wanted!r}")
 
 # Implementation scripts compile
-for path in (required["calculator"], required["validator"], required["inventory"]):
+for path in (required["calculator"], required["validator"], required["inventory"], required["starter"], required["freeze"], required["reveal"], required["renderer"]):
     if path.exists():
         result = subprocess.run([sys.executable, "-m", "py_compile", str(path)], capture_output=True, text=True)
         check("M1-CODE", result.returncode == 0, f"{path.name} compiles")

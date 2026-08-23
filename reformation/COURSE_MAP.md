@@ -40,6 +40,8 @@ Nine sessions of three facilitated hours, including two hours of practice each.
 
 Sessions run in this order, and **no module's gate depends on another module's evidence**. Every module receives its own supplied case and its own supplied machinery, verified at entry. A learner who misses or holds one session can still perform the next. A held outcome blocks final qualification, never participation.
 
+Adapters share [CASE_FAMILY.md](CASE_FAMILY.md); every module still receives its own supplied case and its gate does not consume another module’s product.
+
 ## Performance progression
 
 | Stage | Meaning | Sessions |

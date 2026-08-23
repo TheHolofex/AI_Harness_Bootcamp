@@ -14,6 +14,8 @@
 **Failure / HOLD:** Stop for a disputed oracle, failed restore verification, unknown external effect, exhausted three-attempt ceiling, failed revert, missing authority, or fatigue signal. Localization-only records `HOLD`, not recovery completion.  
 **Scope boundary:** Proves one bounded diagnosis-and-recovery performance on the supplied fault; it does not establish mastery across fault classes, and repair outside learner authority is not required.  
 **Handoff:** Give the next owner the sealed first divergence, the probe that discriminated it, the change made and its reversal path, and the clean-condition result.
+**Case family:** [CASE_FAMILY.md](../../CASE_FAMILY.md). The adapter supplies a self-contained case in that family. This module’s gate does not consume another module’s product.
+
 
 ## Why
 
@@ -28,3 +30,7 @@ Random editing destroys attribution. A reliable operator preserves the evidence,
 ## Gate
 
 Localization earns bounded evidence on its own. PO-04 passes only when protected grading confirms the named first divergence, the probe materially discriminated, one-change and revert discipline held, and the original condition passes focused, end-to-end, and clean reruns after verified restore. Correct localization with repair belonging to another owner is credited as localization and held for recovery.
+
+## Supplied-case domain (adapter)
+
+Hidden fault drops one thread-step field (permit status or gate time) from a rendered review surface. Fault lives in a new adapter harness, not Module 01 scripts.

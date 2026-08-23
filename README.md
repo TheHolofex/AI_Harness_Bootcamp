@@ -9,6 +9,7 @@ Markdown in this repository is not a second reading path. It remains only where 
 | `operator/` | Direction briefs, logs, capabilities, adversarial review, measurement, and transfer files |
 | `mission_flesh/` | Module corpora, starter files, and exercise inputs |
 | `instruments/` | Exercise kits, test suites, comparison packs, graders, and score sheets |
+| `reformation/` | Successor course: nine-module core plus runnable adapters in `AI_Harness_Bootcamp_2/` |
 
 The optional handouts under `site/resources/` are linked directly from the module that owns them. They add depth but do not form a separate course path.
 
@@ -21,6 +22,7 @@ The optional handouts under `site/resources/` are linked directly from the modul
 | `scripts/` | Resource build and verification tools |
 | `lead/` | Internal facilitator runbooks; not learner navigation |
 | `server.py` | Password-gated host; see [`HOSTING.md`](HOSTING.md) |
+| `reformation/` | Core specs, case family, and adapter modules 00–01; not the hosted `site/` path |
 
 Do not add learner-facing Markdown pages. Put core instruction in the owning pre-work or module HTML page. Put optional depth in the resource build system. Add a raw file only when working with that file is part of the exercise.
 

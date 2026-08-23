@@ -14,6 +14,8 @@
 **Failure / HOLD:** Hold for rule changes made after results, a single unqualified stochastic sample, incomparable authority or opportunity, an opened case reused as confirmation, missing raw evidence, or unproved rollback.  
 **Scope boundary:** Supports a decision only for the named behavior, cases, repetition rule, environment, and served configuration; it does not establish general model superiority or authorize implementation.  
 **Handoff:** Give the next owner the frozen criteria, the paired evidence, the decision and its exact boundary, the rollback trigger, and the restored home state.
+**Case family:** [CASE_FAMILY.md](../../CASE_FAMILY.md). The adapter supplies a self-contained case in that family. This module’s gate does not consume another module’s product.
+
 
 ## Why
 
@@ -28,3 +30,7 @@ A new model or method cannot be separated from ordinary run-to-run variation by 
 ## Gate
 
 Pass PO-07 when the variation rule predates results, repeated controls or deterministic evidence support the claim, hard-gate violations are not averaged away, raw pairs and receipts remain available, CHANGE_DECISION is no broader than its evidence, and RESTORED_BASELINE passes a control case with candidate influence removed. An opened case that informed a repair becomes diagnostic and cannot serve as confirmation.
+
+## Supplied-case domain (adapter)
+
+Baseline vs candidate on paired Cold Lantern-family briefs. Hard gates: no invented payload; no UTC/local collapse. Restore baseline.

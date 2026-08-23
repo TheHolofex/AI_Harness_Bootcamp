@@ -5,6 +5,7 @@ This directory holds the runnable course material built from the Reformation cor
 ## Available now
 
 - [Module 0 · Setup and direct bounded work](module-00-setup/README.md)
+- [Module 1 · Verify sources and outputs](module-01-mission-thread/README.md)
 
 ## Build rule
 

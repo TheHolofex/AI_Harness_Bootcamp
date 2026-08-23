@@ -14,6 +14,8 @@
 **Failure / HOLD:** Hold for unclear rights, unacceptable affected-person effect, missing recourse or disclosure, broad or omitted authority, unknown action or egress, unreviewable approval, unauthorized action, authority expansion, hidden side effect, or failed revocation.  
 **Scope boundary:** Proves one contextual decision and one supplied capability boundary; it does not certify legal compliance, eliminate bias or leakage, or authorize capability construction.  
 **Handoff:** Give the next owner the release decision and its reasoning, the authority boundary in force, the containment result, the revocation proof, and the residual-risk owner.
+**Case family:** [CASE_FAMILY.md](../../CASE_FAMILY.md). The adapter supplies a self-contained case in that family. This module’s gate does not consume another module’s product.
+
 
 ## Why
 
@@ -28,3 +30,7 @@ Responsibility is a release behavior, and isolated context and permission tests 
 ## Gate
 
 Every learner completes both claims. The **decision branch** passes when contextual evidence supports its disposition; a supported `no-use`, `no-release`, or `no-tool` position is recorded and examined for its reasoning as study, and does not satisfy or replace operation. The **connection branch** passes when raw authority is inspected, the bounded action succeeds, the composed negative produces no unauthorized action or authority expansion, approval shows the raw action, and disconnect and revocation are proved. A generic checklist or ethics statement fails.
+
+## Supplied-case domain (adapter)
+
+Release decision: may this internal Cold Lantern-family brief leave the class. Connection branch: supplied safe tool at least authority (e.g. hash a local source file). Not real dispatch.

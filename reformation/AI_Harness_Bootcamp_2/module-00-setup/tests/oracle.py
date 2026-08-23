@@ -222,26 +222,48 @@ def class_a(r: Recorder, root: Path) -> None:
             "the guides open the clone as an Obsidian vault but .obsidian/ is not ignored")
 
     # A6 — every fence parses in the shell it declares
-    bad = []
+    # Reference section 4.4: a check that cannot run reports FAIL with the reason.
+    # Silently skipping the PowerShell half hid 48 of 205 fences behind a green PASS.
+    bad, skipped, parsed = [], [], 0
     for f in fs:
         if f.lang in SHELL_LANGS:
             sh = shutil.which("zsh") if f.lang == "zsh" else shutil.which("bash")
             if not sh:
+                skipped.append(f.lang)
                 continue
             p = subprocess.run([sh, "-n"], input=f.body, capture_output=True, text=True)
+            parsed += 1
             if p.returncode != 0:
                 bad.append(f"{f.path.name}:{f.line} {p.stderr.strip()[:70]}")
-        elif f.lang in PS_LANGS and shutil.which("pwsh"):
+        elif f.lang in PS_LANGS:
+            if not shutil.which("pwsh"):
+                skipped.append("powershell")
+                continue
             script = (
                 "$e=$null;[void][System.Management.Automation.Language.Parser]::ParseInput("
                 "[Console]::In.ReadToEnd(),[ref]$null,[ref]$e);if($e.Count){$e[0].Message;exit 1}"
             )
             p = subprocess.run(["pwsh", "-NoProfile", "-Command", script],
                                input=f.body, capture_output=True, text=True)
+            parsed += 1
             if p.returncode != 0:
                 bad.append(f"{f.path.name}:{f.line} {p.stdout.strip()[:70]}")
-    r.check("A6", not bad, "every shell fence parses in its declared shell",
-            f"parse failures: {bad[:5]}")
+    for p_ in learner_scripts(root):
+        if p_.suffix == ".py":
+            c = subprocess.run([sys.executable, "-m", "py_compile", str(p_)], capture_output=True, text=True)
+            parsed += 1
+            if c.returncode != 0:
+                bad.append(f"{p_.name}: {c.stderr.strip()[-70:]}")
+    if bad:
+        r.record("A6", False, f"parse failures: {bad[:5]}")
+    elif skipped:
+        counts = {k: skipped.count(k) for k in sorted(set(skipped))}
+        r.record("A6", False,
+                 f"{parsed} units parsed, but {len(skipped)} could not be checked here "
+                 f"({counts}); install the missing parser and re-run — a check that cannot "
+                 f"run is not a check that passed")
+    else:
+        r.record("A6", True, f"all {parsed} fences and scripts parse in their declared language")
 
     # A7 — no block can persist an empty PATH element
     empties = []
@@ -285,7 +307,11 @@ def class_a(r: Recorder, root: Path) -> None:
         raw = re.sub(r"^\$\{?\w+\}?/", "", raw)          # "$tmp/x.sh" -> "x.sh"
         return raw.rsplit("/", 1)[-1].rsplit("\\", 1)[-1]
 
-    DOWNLOAD = re.compile(r"(?:curl|wget)\s[^\n]*?-o\s+(\S+)|Invoke-WebRequest\s[^\n]*?-OutFile\s+(\S+)")
+    DOWNLOAD = re.compile(
+        r"(?:curl|wget)\s[^\n]*?(?:-o|--output)\s+(\S+)"          # curl -o FILE
+        r"|Invoke-WebRequest\s[^\n]*?-OutFile\s+(\S+)"             # PowerShell
+        r"|(?:curl|wget)\s[^\n]*?(?:-O|--remote-name)\b[^\n]*?(\S+/([\w.-]+\.(?:sh|ps1)))"  # -O keeps the remote name
+    )
     EXEC = re.compile(r"(?:^|\|\s*|;\s*|&&\s*|\b[A-Z_]+=\S+\s+)(?:bash|sh|zsh|&)\s+(\S+)", re.M)
     # The pager's target may be a variable ($installer) rather than a filename, so match
     # any token on the line rather than requiring a .sh/.ps1 suffix.
@@ -294,8 +320,8 @@ def class_a(r: Recorder, root: Path) -> None:
     late = []
     for p in plats:
         text = p.read_text(encoding="utf-8")
-        downloaded = {token(a or b): m.start()
-                      for m in DOWNLOAD.finditer(text) for a, b in [m.groups()]}
+        downloaded = {token(next(g for g in m.groups() if g)): m.start()
+                      for m in DOWNLOAD.finditer(text)}
         for m in EXEC.finditer(text):
             name = token(m.group(1))
             # Only files this guide downloaded need inspecting. A script the learner got

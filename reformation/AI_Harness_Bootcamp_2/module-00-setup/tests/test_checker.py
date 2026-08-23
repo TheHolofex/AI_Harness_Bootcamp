@@ -14,7 +14,7 @@ from pathlib import Path
 
 MODULE = Path(__file__).resolve().parents[1]
 CASE = MODULE / "shared/case"
-FIX = CASE / "fixtures"
+FIX = MODULE / "tests/fixtures"
 sys.path.insert(0, str(CASE))
 import check_artifact  # noqa: E402
 
@@ -52,7 +52,7 @@ def main() -> int:
         else:
             exercised |= {r for r in rejected if target.lower() in r.lower()}
 
-    unexercised = sorted(all_checks - exercised - {"word count 130-190"})
+    unexercised = sorted(all_checks - exercised)
     if unexercised:
         failures.append(f"B6: checks with no killing fixture: {unexercised}")
 

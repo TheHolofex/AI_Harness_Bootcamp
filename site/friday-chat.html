@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Friday open chat · AI Harness Bootcamp · Starzl</title>
+  <link rel="stylesheet" href="css/course.css" />
+  <link rel="stylesheet" href="css/friday-chat.css" />
+</head>
+<body class="friday-chat-page">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="index.html">
+        <span class="mark-disc" aria-hidden="true"></span>
+        <span class="brand-text"><strong>STARZL</strong><span>ENTERPRISES</span></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary"></nav>
+    </div>
+  </header>
+
+  <main class="site-main friday-chat-main">
+    <p class="eyebrow">Friday · Open endpoint · Browser chat</p>
+    <h1>Friday open chat</h1>
+    <p class="lede">Talk to the hosted open model through the course host. The Hugging Face token stays on the server; this page only sends your messages.</p>
+
+    <div class="meta-grid friday-chat-meta">
+      <div>
+        <span class="k">Proxy</span>
+        <span class="v v-mono" id="chat-status">Checking…</span>
+      </div>
+      <div>
+        <span class="k">Model</span>
+        <span class="v v-mono" id="chat-model">—</span>
+      </div>
+      <div>
+        <span class="k">Route</span>
+        <span class="v v-mono" id="chat-base">—</span>
+      </div>
+    </div>
+
+    <div class="friday-chat-shell" aria-label="Open model chat">
+      <div class="friday-chat-toolbar">
+        <p class="friday-chat-hint" id="chat-hint">Messages stream from <code>/__api/chat</code>.</p>
+        <button type="button" class="btn btn-secondary friday-chat-clear" id="chat-clear" disabled>Clear chat</button>
+      </div>
+
+      <div class="friday-chat-log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+      <form class="friday-chat-composer" id="chat-form">
+        <label class="visually-hidden" for="chat-input">Message</label>
+        <textarea
+          id="chat-input"
+          name="message"
+          rows="3"
+          placeholder="Message the open endpoint…"
+          maxlength="12000"
+          required
+          disabled
+        ></textarea>
+        <div class="friday-chat-actions">
+          <p class="friday-chat-error" id="chat-error" hidden></p>
+          <button type="submit" class="btn" id="chat-send" disabled>Send</button>
+        </div>
+      </form>
+    </div>
+
+    <p class="friday-chat-foot">
+      Pair this with <a href="blocks/p8.html">P8 · Operator-governed open model</a>.
+      Set <code>HF_TOKEN</code> in the host environment (see <code>.env.example</code>).
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div>AI Harness Bootcamp · Operator school · Starzl Enterprises</div>
+      <div>inquiries@starzl.com · starzl.com</div>
+    </div>
+  </footer>
+
+  <script src="js/registry.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/friday-chat.js"></script>
+</body>
+</html>

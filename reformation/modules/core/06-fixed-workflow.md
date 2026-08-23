@@ -14,6 +14,8 @@
 **Failure / HOLD:** Stop for a missing supplied workload or workflow controls, invalid contract, gate tampering, unexpected deterministic route/status/field change, material stochastic output with no rule declared before the run, manual record patch, incomplete terminal state, or failed restore.  
 **Scope boundary:** The exact delta covers deterministic outer state, not unqualified generated wording. Persistent state, adaptive flow, multi-agent work, and deployment remain advanced.  
 **Handoff:** Give the next owner the saved path and its configuration identity, the rule that changed and its proven blast radius, the exception routes, and the restore action.
+**Case family:** [CASE_FAMILY.md](../../CASE_FAMILY.md). The adapter supplies a self-contained case in that family. This module’s gate does not consume another module’s product.
+
 
 ## Why
 
@@ -28,3 +30,7 @@ A fixed path makes repeated work inspectable, and it is the last rung most profe
 ## Gate
 
 Pass PO-06 when baseline and second wave use the same saved path, every item reaches a terminal receipt, protected checks remain unaltered, DETERMINISTIC_DELTA matches the route, status, and field predictions, unaffected records are unchanged, probabilistic outputs follow the disposition rule declared before the run, and the manual repair count is zero. Where generated content itself must carry a change claim, the run needs a repetition, aggregation, or exclusion rule declared before results — one sample cannot establish it.
+
+## Supplied-case domain (adapter)
+
+Batch of fictional lot / permit / gate-window rows. One saved workflow. One-rule change: `PENDING` is not authorized. Prove exact deterministic delta.

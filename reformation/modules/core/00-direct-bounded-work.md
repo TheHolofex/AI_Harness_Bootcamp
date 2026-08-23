@@ -14,6 +14,8 @@
 **Failure / HOLD:** Hold when preflight, the supplied case, permission, source, decision owner, affected audience, or the protected acceptance control is missing; when constraints conflict; when the producer can alter the check; or when correction changes the accepted mission.  
 **Scope boundary:** Proves first-use judgment and independent direction for bounded internal use; it does not authorize consequential release.  
 **Handoff:** Give the next owner the artifact, its direction and source boundary, the screen result, the observed limitation, and the decision made.
+**Case family:** [CASE_FAMILY.md](../../CASE_FAMILY.md). The adapter supplies a self-contained case in that family. This module’s gate does not consume another module’s product.
+
 
 ## Why
 
@@ -28,3 +30,7 @@ Useful work should come before architecture depth, but responsibility cannot wai
 ## Gate
 
 Pass PO-00 when the first artifact serves its named internal task within 60 minutes, the checked claim matches its source, use/human/refuse choices are defensible, MIN_SCREEN supports bounded internal acceptance, frozen DIRECTION predates the run, the falsifier fails visibly, the producer cannot edit or bypass acceptance, and the controlled change produces the predicted delta. Any unresolved screen item is `HOLD`; polished output cannot override it.
+
+## Supplied-case domain (adapter)
+
+Internal 130–190-word email about the Red Mesa Depot **coordination room** (depot-node hours, entrance, capacity, what is not promised). Not the GO brief.

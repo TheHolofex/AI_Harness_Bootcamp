@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Practice check for the Northstar cooling-rooms email.
+"""Practice check for the Red Mesa Depot coordination-room email.
 
 You are meant to read this file. It is not hidden from you, and editing it changes
 nothing that decides your result -- the control that decides acceptance is held by
@@ -13,6 +13,14 @@ confirm fails. A number is only accepted when it is attached to the thing it cou
 What it cannot do: decide whether the writing is clear, whether the tone suits the
 reader, whether the email answers the request, or whether anyone should send it.
 Those are yours.
+
+One limit worth knowing before you rely on it. This finds a fact that was CONTRADICTED
+using wording it recognises, and a specific that was INVENTED. It can still miss a
+contradiction phrased in wording it does not recognise, sitting beside the correct
+sentence rather than replacing it — because a draft can assert two incompatible things
+at once and neither one looks wrong on its own. That is the gap step 8 exists to close:
+you open the source and compare it to the draft yourself. No check that runs on your
+machine can do that part for you.
 
 Usage:  python3 check_artifact.py artifact.md
 """
@@ -32,7 +40,7 @@ ABBREVIATIONS = {"p.m.": "p<DOT>m<DOT>", "a.m.": "a<DOT>m<DOT>"}
 def sentences(text: str) -> list[str]:
     """Split into clauses without breaking on '12:00 p.m.'.
 
-    Semicolons split too. "Use the east entrance; the Harbor Street doors stay locked"
+    Semicolons split too. "Use the east entrance; the Yard Street doors stay locked"
     is two claims, and reading it as one would let the second clause look like a denial
     of the first.
     """
@@ -100,25 +108,55 @@ def counted(text: str, subject: str) -> set[int]:
 # --------------------------------------------------------------------------------------
 # The facts this case confirms, and the services it does not
 
+DOC = (r"(?:identification|\bID\b|photo id|utility bill|lease|proof of address|"
+       r"driver'?s licen[cs]e|passport|paperwork|documents?)")
+
 CONFIRMED = [
     ("subject line", r"(?im)^\s*subject\s*:", None, None),
     ("both days", r"tuesday", r"tuesday", r"tuesday[^.]*(?:cancell?ed|closed|not open)"),
     ("both days", r"wednesday", r"wednesday", r"wednesday[^.]*(?:cancell?ed|closed|not open)"),
     ("public hours", r"hours|open|close", r"12:00\s*p\.?m\.?.*8:00\s*p\.?m\.?",
      r"\b(?:9:00|10:00|11:00|5:00|6:00|7:00|24 hours|around the clock)\b"),
-    ("address", r"harbor street|address|located", r"480\s+Harbor\s+Street",
-     r"(?<!480 )\bHarbor Street\b[^.]*\b(?:no|not)\b"),
+    ("address", r"mesa yard|address|located", r"12\s+Mesa\s+Yard",
+     r"(?<!12 )\bMesa Yard\b[^.]*\b(?:no|not)\b"),
     ("entrance", r"entrance|entry|door", r"east entrance",
-     r"(?:use|enter (?:by|through)|open)[^.]*harbor street door|east entrance[^.]*\b(?:locked|closed|not)\b"),
+     r"(?:use|enter (?:by|through)|open)[^.]*yard street door|east entrance[^.]*\b(?:locked|closed|not)\b"),
     ("cost", r"free|charge|cost|fee|price|pay",
      r"\b(?:is|are|remains?|stays?)?\s*free\b|no charge|no cost|no fee|without charge|at no cost",
      r"not free|small charge|a charge|a fee|fee applies|charge applies|costs? \$|admission is \$"),
-    ("identification", r"identification|\bID\b|photo id",
-     r"(?:identification|\bID\b)[^.]*\b(?:not required|not needed|is not)\b|"
-     r"\bno (?:identification|ID)\b|do(?:es)? not (?:need|require)[^.]*(?:identification|\bID\b)",
-     r"(?:identification|\bID\b)[^.]*\b(?:is required|are required|must|will need|bring)\b|"
-     r"\brequire[sd]?\b[^.]*(?:identification|\bID\b)"),
+    # One vocabulary for all three patterns. When the topic list is wider than the deny
+    # list, a sentence gets examined and then cannot be judged -- which is how "you must
+    # show a utility bill" sat beside "identification is not required" and passed.
+    ("identification", DOC,
+     rf"{DOC}[^.]*\b(?:not required|not needed|is not|are not)\b|\bno {DOC}\b|"
+     rf"do(?:es)? not (?:need|require|ask for)[^.]*{DOC}",
+     rf"{DOC}[^.]*\b(?:is required|are required|must|will need|need to (?:bring|show)|bring|show)\b|"
+     rf"\b(?:require[sd]?|must (?:show|bring|present)|need)\b[^.]*{DOC}|"
+     rf"\b(?:bring|show|present)\b[^.]*{DOC}"),
     ("contact line", r"call|contact|phone|reach", r"555-0148", None),
+    ("pets", r"pet|service animal|dog|animal",
+     r"service animals? (?:are )?(?:welcome|allowed|permitted)",
+     r"(?:leave|no) service animals?|service animals? (?:are )?not|pets? (?:are )?welcome inside"),
+    ("step-free entry", r"ramp|powered door|wheelchair|step|accessible",
+     r"ramp|powered door", r"\bno ramp\b|not accessible|steps? only|no lift|no elevator"),
+    ("quiet room floor", r"quiet room",
+     r"quiet\s+room[^.]*first floor|first floor[^.]*quiet", r"second|third|fourth|upstairs|no elevator"),
+    ("transport", r"route 6|bus|transit|shuttle",
+     r"route 6", r"no bus|bus service[^.]*(?:not|no)\b|no transit|no public transport"),
+]
+
+# The source packet is a closed set of facts. Any specific of a KIND the source uses, whose
+# VALUE the source does not contain, was invented -- which a vocabulary-based negation check
+# cannot see, because inventing a fact requires no negation at all.
+UNSUPPORTED_SPECIFICS = [
+    ("a cost", r"\$\s?\d+(?:\.\d{2})?|\b\d+\s*dollars\b", lambda v: True),
+    ("a clock time", r"\b(\d{1,2}:\d{2})\s*(?:a\.?m\.?|p\.?m\.?)",
+     lambda v: v not in {"12:00", "8:00"}),
+    ("a floor", r"(?i)\b(first|second|third|fourth|fifth|ground|top)\s+floor\b",
+     lambda v: v.lower() != "first"),
+    ("a bus route", r"(?i)\broute\s+(\w+)\b", lambda v: v != "6"),
+    ("a street", r"\b([A-Z][a-z]+)\s+(?:Street|Avenue|Road|Boulevard)\b",
+     lambda v: v not in {"Mesa", "Depot", "Third", "Yard"}),
 ]
 
 # The source packet names these as NOT confirmed. Promising one invents a service.
@@ -141,8 +179,10 @@ UNCONFIRMED_SERVICES = [
 
 # The draft is for named course participants only.
 PROHIBITED_DISTRIBUTION = (
-    r"\bforward this\b|\bpost (?:it|this)\b|radio station|press release|"
-    r"public bulletin|share (?:it|this) (?:widely|publicly)|social media|neighborhood list"
+    r"\bforward (?:this|it)\b|\bpost (?:it|this)\b|\bpass (?:this|it) (?:along|on)\b|"
+    r"\bshare (?:this|it)\b|\bsend (?:this|it) to (?:every|all|your)\b|\btell everyone\b|"
+    r"radio station|press release|public bulletin|social media|neighborhood list|"
+    r"every household|door to door|noticeboard|notice board"
 )
 
 
@@ -177,6 +217,13 @@ def run(text: str) -> list[tuple[str, bool, str]]:
         checks.append((f"no unconfirmed services: {name}", verdict != AFFIRMED,
                        "not promised" if verdict != AFFIRMED
                        else f"the source does not confirm {name}, but the draft does: {sentence[:80]}"))
+
+    for label, pattern, invented in UNSUPPORTED_SPECIFICS:
+        found = [m.group(1) if m.groups() else m.group(0)
+                 for m in re.finditer(pattern, text) if invented(m.group(1) if m.groups() else m.group(0))]
+        checks.append((f"no invented specifics: {label}", not found,
+                       "none" if not found
+                       else f"the source packet does not contain {label} of {sorted(set(found))}"))
 
     m = re.search(PROHIBITED_DISTRIBUTION, text, re.I)
     checks.append(("no prohibited distribution", m is None,

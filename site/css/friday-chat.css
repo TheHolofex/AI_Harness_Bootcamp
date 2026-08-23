@@ -1,0 +1,217 @@
+/* Friday open-endpoint chat */
+
+.friday-chat-page .friday-chat-main {
+  max-width: 48rem;
+}
+
+.friday-chat-meta {
+  margin-top: 0.25rem;
+}
+
+.friday-chat-meta .v-mono {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.friday-chat-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.25rem 0 1.5rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.friday-chat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-warm);
+}
+
+.friday-chat-hint {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  max-width: none;
+}
+
+.friday-chat-clear {
+  flex: 0 0 auto;
+}
+
+.friday-chat-log {
+  min-height: 22rem;
+  max-height: min(58vh, 34rem);
+  overflow-y: auto;
+  padding: 1rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--paper);
+}
+
+.friday-chat-empty {
+  margin: auto 0;
+  color: var(--ink-faint);
+  font-size: 0.95rem;
+  text-align: center;
+  max-width: none;
+}
+
+.friday-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-width: min(100%, 40rem);
+}
+
+.friday-msg-user {
+  align-self: flex-end;
+}
+
+.friday-msg-assistant,
+.friday-msg-system {
+  align-self: flex-start;
+}
+
+.friday-msg-role {
+  font-size: 0.68rem;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+.friday-msg-user .friday-msg-role {
+  text-align: right;
+}
+
+.friday-msg-body {
+  margin: 0;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+  font-size: 0.98rem;
+  max-width: none;
+}
+
+.friday-msg-user .friday-msg-body {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.friday-msg-assistant .friday-msg-body {
+  background: var(--paper-panel);
+}
+
+.friday-msg-system .friday-msg-body {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #7f1d1d;
+}
+
+.friday-msg-body.is-streaming::after {
+  content: "▍
+  display: inline-block;
+  width: 0.45em;
+  margin-left: 0.1em;
+  background: currentColor;
+  animation: friday-caret 1s steps(1) infinite;
+  vertical-align: baseline;
+  height: 1em;
+}
+
+@keyframes friday-caret {
+  50% { opacity: 0; }
+}
+
+.friday-chat-composer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.85rem 0.9rem 0.95rem;
+  border-top: 1px solid var(--rule);
+  background: var(--paper-warm);
+}
+
+.friday-chat-composer textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 4.5rem;
+  max-height: 12rem;
+  padding: 0.7rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  line-height: 1.45;
+}
+
+.friday-chat-composer textarea:focus {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.friday-chat-composer textarea:disabled {
+  background: var(--paper-panel);
+  color: var(--ink-faint);
+}
+
+.friday-chat-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.friday-chat-error {
+  margin: 0;
+  color: #991b1b;
+  font-size: 0.9rem;
+  max-width: none;
+  flex: 1 1 auto;
+}
+
+.friday-chat-foot {
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  max-width: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  .friday-chat-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .friday-chat-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .friday-chat-actions .btn {
+    width: 100%;
+  }
+}

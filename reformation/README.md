@@ -10,7 +10,7 @@ A harness is the environment around a model: direction, context, sources, tools,
 
 The core is designed for a **nondeveloper** who can use workplace files and applications and inspect plain-language configuration. A preflighted accessible environment supplies the mechanics.
 
-> **Build status — 2026-08-10:** the Standard core skeleton and outcomes are specified as nine independent modules. Detailed lessons, adapters, supplied cases, protected fixtures, judges, and instructor custody are separate implementation work. The skeleton is not a runnable class and its delivery budgets are not pilot evidence.
+> **Build status — 2026-08-23:** the Standard core skeleton is specified as nine independent modules. Runnable adapters exist for Module 00 and Module 01 in [`AI_Harness_Bootcamp_2/`](AI_Harness_Bootcamp_2/). Modules 02–08 have case-family slots only. Delivery budgets are not pilot evidence.
 
 ## Core promise
 

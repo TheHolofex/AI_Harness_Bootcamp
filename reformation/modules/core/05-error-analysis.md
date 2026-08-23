@@ -14,6 +14,8 @@
 **Failure / HOLD:** Hold when fewer than eight interpretable runs exist, the supplied control is missing, acceptance cannot be applied, the sample was chosen by outcome, the selected failure is an arbitrary semantic condition outside supplied controls, or validation fails.  
 **Scope boundary:** Describes the sampled workload only; it does not estimate universal failure rates. The learner specifies and configures; the adapter implements any new checker and owns its protected custody.  
 **Handoff:** Give the next owner the sample rule and its limits, the predicate and its input contract, the validated control, and the improvement decision.
+**Case family:** [CASE_FAMILY.md](../../CASE_FAMILY.md). The adapter supplies a self-contained case in that family. This module’s gate does not consume another module’s product.
+
 
 ## Why
 
@@ -28,3 +30,7 @@ Memorable failures are a poor automation agenda. Reading actual runs, with first
 ## Gate
 
 Pass PO-05 when the sample rule predates outcome inspection, notes predate categories, original and revised labels stay visible, counts reconcile to the sample, PREDICATE_SPEC names exact behavior, and the supplied protected control independently fails known bad, passes known good, and fails visibly on missing input. If new implementation is needed, record the adapter dependency and `HOLD`; learner implementation credit is not awarded.
+
+## Supplied-case domain (adapter)
+
+Synthetic corpus of thread-verification runs. First failures include UTC-as-local and receipt-as-release. One mechanically decidable predicate (example: changed ledger still contains `20:50Z`).

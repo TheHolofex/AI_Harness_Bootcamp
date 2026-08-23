@@ -14,6 +14,8 @@
 **Failure / HOLD:** Hold when the supplied source fixtures are missing, a material claim lacks admissible support, citation and interpretation diverge, source identity is unstable, a minimum-screen item is unresolved, or the intended surface cannot be inspected.  
 **Scope boundary:** Proves discernment on the named sources and bounded internal use; it does not authorize consequential release or establish reliability outside the tested cases.  
 **Handoff:** Give the next owner the source boundary, the traced claim, the checks that decided it, the standing rule, and the verdict.
+**Case family:** [CASE_FAMILY.md](../../CASE_FAMILY.md). The adapter supplies a self-contained case in that family. This module’s gate does not consume another module’s product.
+
 
 ## Why
 
@@ -28,3 +30,7 @@ Fluent output can conceal an unsupported claim, an irrelevant source, or a chang
 ## Gate
 
 Pass PO-01 when the known answer matches, the traced source exists and supports the interpretation, misleading material is rejected rather than merely noticed, the changed source produces the frozen delta, and an independent verdict supports internal accept, revise, reject, or hold. Any material miss blocks acceptance even when aggregate quality looks high.
+
+## Supplied-case domain (adapter)
+
+Already built: Cold Lantern source-verification thread in `AI_Harness_Bootcamp_2/module-01-mission-thread/`. Do not redesign.

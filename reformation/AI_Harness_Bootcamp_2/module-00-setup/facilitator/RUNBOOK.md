@@ -6,7 +6,7 @@ Each learner can give AI a clear, limited job, check a material claim at the sou
 
 Setup is an entry condition, not the lesson, and it is not part of the PO-00 result. A learner whose machine is not ready records `HOLD` on setup and moves to a loaner machine or a paired observation path. Observation keeps the learner in the room but does not pass the operating task.
 
-The module is scored on the supplied Northstar case. There is no second case. The learner has the case, the request, the changed input, and the practice checker in full; what they do not have is the protected acceptance control, which lives off their machine and is run by the evaluator.
+The module is scored on the supplied Red Mesa Depot coordination-room case. There is no second case. The learner has the case, the request, the changed input, and the practice checker in full; what they do not have is the protected acceptance control, which lives off their machine and is run by the evaluator.
 
 ## Before learners arrive
 

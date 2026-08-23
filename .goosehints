@@ -1,0 +1,42 @@
+# Context-window safety (high priority)
+
+Prevent `context_length_exceeded` instead of waiting for it to occur.
+
+1. At the start of every task, immediately update the TODO with all explicit and implicit requirements. Keep it as the compact source of truth for requirements, decisions, paths changed, remaining work, and verification status.
+2. Explore narrowly. Start with a shallow tree or code index, then use targeted searches and line ranges. Do not read an entire repository, large directory, generated file, lockfile, log, or test report into context.
+3. Bound tool output before running a command. Prefer summaries, counts, filtered matches, and small chunks (normally no more than about 200 lines). Redirect potentially large output to a temporary file, then inspect only relevant excerpts. Do not repeat tool output already captured.
+4. Delegate broad, independent research or codebase exploration when possible. Ask delegates for concise findings, decisions, risks, and file/line references—not raw file contents or long transcripts. Load only the summaries needed for the next action.
+5. Work in phases: inspect, decide, edit, verify. At each phase boundary, update the TODO and retain only a concise working summary. Before a context-heavy next phase, or as soon as context usage warns that the limit is approaching, use/request compaction rather than continuing to accumulate history.
+6. Avoid unnecessary context growth: do not restate the full request, paste unchanged files, narrate routine actions, or include verbose intermediate reasoning. Read large documentation only on demand and only in relevant sections. Keep user updates and final answers proportional to the task.
+7. Reserve enough context for editing, test failures, and the final verification. If the remaining context appears insufficient, stop exploration, preserve state in the TODO, compact, and then continue from that state.
+
+# Output-token safety (high priority)
+
+Prevent responses from reaching the model's output-token limit before they return usable content.
+
+1. Before each response, choose the smallest complete output that advances or finishes the task. Answer the requested result first; omit optional background, repeated context, and routine narration.
+2. Budget output across tool-call arguments, intermediate updates, generated content, and the final response. Keep enough capacity for a concise completion or checkpoint message.
+3. Never emit a large repository listing, full log, unchanged file, exhaustive search result, or long diff when a filtered excerpt or summary will work. Save large artifacts to files and report their paths instead of reproducing them in chat.
+4. Split inherently large generation or edits into bounded, independently verifiable batches. Do not put a huge file, report, or multi-file patch into one response or one tool-call payload when it can be safely written in sections.
+5. Give delegates explicit length limits and request synthesized findings rather than transcripts. Load only the portion needed for the current decision.
+6. Keep progress updates and the final answer concise: outcome, files changed, verification, and unresolved issues only. Do not replay the implementation, tool output, or full TODO in the final response.
+7. If available output budget becomes tight, stop adding detail. Finish the current atomic action, update the TODO with a compact checkpoint, and return a short usable status rather than beginning content that may be truncated.
+
+## Output-limit recovery
+
+If a response reaches the output-token limit, assume its text may be incomplete and its tool side effects may still have occurred.
+
+- Inspect the TODO, working tree, and relevant files before retrying; do not blindly repeat edits or regenerate the entire response.
+- Preserve completed work, reduce the next response to one immediate bounded action, and continue from the last verified checkpoint.
+- Split the remaining work into smaller batches and summarize each batch.
+- If only the final response was lost, return a concise completion summary instead of rerunning the task.
+
+## Context-limit recovery
+
+A `context_length_exceeded` error is usually deterministic, not a transient transport failure. Do not resend the same oversized request unchanged.
+
+- First preserve a concise checkpoint in the TODO if possible: objective, constraints, completed changes, key findings, files, failures, and next action.
+- Reduce the active input by compacting/summarizing history and removing raw tool output or duplicated material. If that is unavailable, continue in a fresh session from the checkpoint.
+- Retry once with the smallest prompt and context needed for the immediate next action.
+- If the reduced retry still fails, stop and ask the user to compact or begin a fresh session; provide a short handoff summary rather than repeatedly retrying.
+- Retry unchanged only when the failure is genuinely transient (for example, a temporary network or service error), not when the API explicitly reports that the input exceeds the model context window.

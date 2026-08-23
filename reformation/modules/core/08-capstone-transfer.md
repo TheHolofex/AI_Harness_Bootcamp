@@ -14,6 +14,8 @@
 **Failure / HOLD:** Hold for a missing outcome, missing evidence, unclear rights, authority expansion, failed recurrence, failed rollback, inaccessible required state, an unavailable independent recipient, or a task that turns out to require persistent state, adaptive flow, or multiple workers — recorded as a supported escalation naming the owner. `HOLD` permits continued participation only; final qualification remains held.  
 **Scope boundary:** Proves the named task, package, environment, clean session, recipient attempt, and closed outcomes; it does not prove universal workplace transfer or advanced-agent competence.  
 **Handoff:** Give the next owner purpose, bounds, the responsibility decision, run/check/stop/restore actions, the strongest evidence, residual risks, the current qualification result, and the trigger for the next bounded use.
+**Case family:** [CASE_FAMILY.md](../../CASE_FAMILY.md). The adapter supplies a self-contained case in that family. This module’s gate does not consume another module’s product.
+
 
 ## Why
 
@@ -28,3 +30,7 @@ Saved artifacts are the claim. A method is finished only when it works on materi
 ## Gate
 
 A clean session receives only the RUNNABLE_PACKAGE, ordinary operating access, and the named task, and must operate one safe case from it. An independent person who has not completed this core receives the same and completes an evaluator-selected task; the evaluator selects the task and the recipient applies the protected first-attempt rubric covering purpose/bounds, operation, evidence interpretation, responsibility/limits, stop/restore, and next-owner handoff. All six pass with no author coaching, and a held first attempt may be retried only with a new recipient and a new task, both attempts preserved. Clean-session restartability and independent-person transfer cannot substitute for each other. Any missing outcome is reassessed against its original gate on an unseen protected case, scheduled outside the facilitated hours; otherwise QUALIFICATION_RESULT is `HOLD`.
+
+## Supplied-case domain (adapter)
+
+A **new** node in the same world (not the Module 01 packet, not Module 01 answers). Evaluator-selected. Persistent-state / multi-agent triggers remain escalation, not the core case.

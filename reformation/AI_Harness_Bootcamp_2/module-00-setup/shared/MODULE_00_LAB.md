@@ -2,7 +2,7 @@
 
 One AI command-line tool drafts a short email from a supplied set of facts. You check the draft against the source yourself, prove your own check is capable of failing, change one supplied fact and rerun, then decide whether anyone may read the result.
 
-The case is fictional. Your draft stays with named course participants. Do not publish it, send it to a real association, or present it as an emergency notice.
+The case is fictional. Your draft stays with named course participants. Do not publish it, send it to a real operations list, or present it as a public movement order.
 
 `HOLD` is a result you are allowed to record. It means you stopped and wrote down why, instead of producing something you cannot stand behind. If a tool or a file you need is missing, write `HOLD`, save the exact error text, and ask for help. Do not spend your working time rebuilding your machine.
 
@@ -183,7 +183,7 @@ Why this split fits the case:
 
 A sound split lets AI draft and reorganize the supplied facts. You still decide what the source means, whether the email meets the request, and whether anyone may use it. If you choose a different split, name who makes each of those three decisions.
 
-**Write `HOLD` if:** the task would require the model to invent missing services, decide real public safety policy, or contact real residents.
+**Write `HOLD` if:** the task would require the model to invent missing services, decide real dispatch policy, or contact real depot personnel.
 
 ## 5. Complete the minimum responsibility screen
 
@@ -241,7 +241,7 @@ Make each of these testable by someone who was not there:
 - no public or consequential use is allowed;
 - the work stops if a material fact cannot be traced, or if a correction would change the mission.
 
-For **Plausible falsifier**, do not write "the email is wrong." Write the specific observation that would show a named claim in your draft is wrong — for example, "a coordinator reading this email sends residents to a locked door." You will run it in step 9, so write one you can actually carry out.
+For **Plausible falsifier**, do not write "the email is wrong." Write the specific observation that would show a named claim in your draft is wrong — for example, "a coordinator reading this email sends staff to a locked door." You will run it in step 9, so write one you can actually carry out.
 
 For **Correction limit**, write two correction attempts, then `HOLD`.
 
@@ -376,7 +376,7 @@ Then read every sentence of the draft for services the source does not confirm: 
 
 Make the mistake on purpose and watch your check catch it. Until you have seen it fail once, you cannot tell whether it passed your draft because the draft is right or because it never looks at that claim.
 
-Copy your draft, then edit the copy so that the one claim you checked in step 8 is stated wrongly — send readers to the Harbor Street doors, or move the hours, or require identification, or change the capacity.
+Copy your draft, then edit the copy so that the one claim you checked in step 8 is stated wrongly — send readers to the Yard Street doors, or move the hours, or require identification, or change the capacity.
 
 **Windows PowerShell — normal user.**
 
@@ -420,7 +420,7 @@ python3 check_artifact.py falsifier-probe.md
 You should see one requirement fail and name the sentence or number it found. If you inverted the entrance, the line reads like this, with your own sentence at the end:
 
 ```text
-FAIL: entrance — the draft denies it: Please use the Harbor Street doors.
+FAIL: entrance — the draft denies it: Please use the Yard Street doors.
 ```
 
 and the run ends:
@@ -484,7 +484,7 @@ Decision: PASS FOR CLASS REVIEW / HOLD
 Reason:
 ```
 
-`PASS FOR CLASS REVIEW` means only named course participants may read the draft. It cannot be published or used to direct real residents.
+`PASS FOR CLASS REVIEW` means only named course participants may read the draft. It cannot be published or used to direct real depot operations.
 
 Choose `HOLD` if a claim that affects the reader has no source, a responsibility question is still open, two corrections have failed, a file is missing, or a real official would have to approve the result.
 
