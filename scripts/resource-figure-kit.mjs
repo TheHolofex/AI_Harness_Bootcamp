@@ -2,6 +2,7 @@ import path from "node:path";
 
 const WIDTH = 1120;
 const HEIGHT = 280;
+const ALLOWED_HEIGHTS = new Set([280, 420, 560]);
 
 const PALETTE = {
   paper: "#FFFFFF",
@@ -78,13 +79,30 @@ function panel(x, y, width, height, accent = false) {
   return `<rect x="${x}" y="${y}" width="${width}" height="${height}" rx="2" fill="${accent ? PALETTE.warm : PALETTE.paper}" stroke="${accent ? PALETTE.gold : PALETTE.rule}" />`;
 }
 
+function figureHeight(figure) {
+  const height = Number(figure.height) || HEIGHT;
+  if (!ALLOWED_HEIGHTS.has(height)) {
+    throw new Error(`unsupported figure height ${figure.height}`);
+  }
+  return height;
+}
+
+function takeItems(figure, cap, compactCap = 5) {
+  const items = figure.items || [];
+  if (items.length > compactCap && figureHeight(figure) === 280) {
+    throw new Error("height 420 or 560 required for more than 5 items");
+  }
+  return items.slice(0, cap);
+}
+
 function renderFlow(figure, id) {
-  const items = (figure.items || []).slice(0, 5);
+  const height = figureHeight(figure);
+  const items = takeItems(figure, 8);
   const count = Math.max(items.length, 1);
   const gap = 34;
   const x0 = 36;
   const y = 102;
-  const h = 132;
+  const h = height === 280 ? 132 : height - y - 32;
   const w = (WIDTH - 72 - gap * (count - 1)) / count;
   const body = [];
   body.push(arrowDefs(id));
@@ -102,7 +120,7 @@ function renderFlow(figure, id) {
 }
 
 function renderComparison(figure) {
-  const items = (figure.items || []).slice(0, 4);
+  const items = takeItems(figure, 5);
   const count = Math.max(items.length, 2);
   const gap = 18;
   const x0 = 36;
@@ -121,12 +139,14 @@ function renderComparison(figure) {
 }
 
 function renderStack(figure) {
-  const items = (figure.items || []).slice(0, 5);
+  const height = figureHeight(figure);
+  const items = takeItems(figure, 9);
   const x = 205;
   const w = 880;
   const y0 = 94;
   const gap = 8;
-  const h = Math.min(42, (154 - gap * Math.max(items.length - 1, 0)) / Math.max(items.length, 1));
+  const area = height === 280 ? 154 : height - y0 - 32;
+  const h = Math.min(42, (area - gap * Math.max(items.length - 1, 0)) / Math.max(items.length, 1));
   const body = [];
   items.forEach((item, index) => {
     const y = y0 + index * (h + gap);
@@ -139,16 +159,18 @@ function renderStack(figure) {
 }
 
 function renderFork(figure, id) {
-  const items = (figure.items || []).slice(0, 6);
+  const height = figureHeight(figure);
+  const items = takeItems(figure, 8, 6);
   const source = figure.source || figure.root || { label: figure.question || "OBSERVED SIGNAL", detail: figure.prompt || "Choose the next discriminating branch" };
   const body = [arrowDefs(id)];
-  const sx = 36, sy = 119, sw = 250, sh = 104;
+  const sx = 36, sy = height === 280 ? 119 : 110, sw = 250, sh = height === 280 ? 104 : Math.min(140, height - 160);
   body.push(panel(sx, sy, sw, sh, true));
   body.push(textLines({ x: sx + 18, y: sy + 38, value: itemLabel(source), cls: "label", limit: 24, maxLines: 2 }));
   body.push(textLines({ x: sx + 18, y: sy + 79, value: itemDetail(source), cls: "body", limit: 28, maxLines: 2 }));
   const tx = 410, tw = 674;
   const gap = 9;
-  const th = (144 - gap * Math.max(items.length - 1, 0)) / Math.max(items.length, 1);
+  const area = height === 280 ? 144 : height - 96 - 32;
+  const th = (area - gap * Math.max(items.length - 1, 0)) / Math.max(items.length, 1);
   items.forEach((item, index) => {
     const ty = 96 + index * (th + gap);
     const targetY = ty + th / 2;
@@ -161,17 +183,18 @@ function renderFork(figure, id) {
 }
 
 function renderTimeline(figure, id) {
-  const items = (figure.items || []).slice(0, 6);
+  const height = figureHeight(figure);
+  const items = takeItems(figure, 8, 6);
   const count = Math.max(items.length, 1);
-  const left = 58, right = 1062, y = 155;
+  const left = 58, right = 1062, y = height === 280 ? 155 : 94 + Math.round((height - 110) / 2);
   const step = count === 1 ? 0 : (right - left) / (count - 1);
   const body = [arrowDefs(id), `<path d="M ${left} ${y} H ${right}" stroke="${PALETTE.rule}" stroke-width="3" marker-end="url(#${id}-arrow)" />`];
   items.forEach((item, index) => {
     const x = left + index * step;
     const above = index % 2 === 0;
     body.push(`<circle cx="${x}" cy="${y}" r="8" fill="${index === items.length - 1 ? PALETTE.mark : PALETTE.gold}" stroke="${PALETTE.paper}" stroke-width="3" />`);
-    body.push(textLines({ x, y: above ? 119 : 192, value: itemLabel(item), cls: "label", anchor: "middle", limit: 18, maxLines: 2, lineHeight: 17 }));
-    body.push(textLines({ x, y: above ? 82 : 230, value: itemDetail(item), cls: "body", anchor: "middle", limit: 21, maxLines: 2, lineHeight: 17 }));
+    body.push(textLines({ x, y: above ? y - 36 : y + 37, value: itemLabel(item), cls: "label", anchor: "middle", limit: 18, maxLines: 2, lineHeight: 17 }));
+    body.push(textLines({ x, y: above ? y - 73 : y + 75, value: itemDetail(item), cls: "body", anchor: "middle", limit: 21, maxLines: 2, lineHeight: 17 }));
   });
   return body.join("\n  ");
 }
@@ -198,13 +221,90 @@ function renderMatrix(figure) {
   return body.join("\n  ");
 }
 
+function renderThread(figure, id) {
+  const height = figureHeight(figure);
+  const items = figure.items || [];
+  if (items.length < 2 || items.length > 8) {
+    throw new Error("thread requires 2–8 items");
+  }
+  if (items.length > 5 && height === 280) {
+    throw new Error("height 420 or 560 required for more than 5 items");
+  }
+  const n = items.length;
+  const y0 = 94;
+  const rowH = (height - 110) / n;
+  const gap = 8;
+  const panelH = rowH - gap;
+  const body = [arrowDefs(id)];
+  items.forEach((item, index) => {
+    const y = y0 + index * rowH;
+    const midY = y + panelH / 2 + 5;
+    body.push(`<text class="step" x="36" y="${midY}">${String(index + 1).padStart(2, "0")}</text>`);
+    body.push(panel(88, y, 996, panelH, index === n - 1));
+    body.push(`<text class="label" x="108" y="${midY}">${xml(itemLabel(item))}</text>`);
+    body.push(`<text class="body" x="1064" y="${midY}" text-anchor="end">${xml(itemDetail(item))}</text>`);
+    if (index < n - 1) {
+      body.push(`<path d="M 52 ${y + panelH} V ${y + rowH}" fill="none" stroke="${PALETTE.mark}" stroke-width="2" marker-end="url(#${id}-arrow)" />`);
+    }
+  });
+  return body.join("\n  ");
+}
+
+function renderCycle(figure, id) {
+  const height = figureHeight(figure);
+  if (height !== 420 && height !== 560) {
+    throw new Error("cycle requires height 420 or 560");
+  }
+  const items = figure.items || [];
+  if (items.length !== 4 && items.length !== 5) {
+    throw new Error("cycle requires 4 or 5 items");
+  }
+  const n = items.length;
+  const bw = 236;
+  const bh = 78;
+  const cx = WIDTH / 2;
+  const cy = 94 + (height - 110) / 2;
+  const rx = 360;
+  const ry = height === 420 ? 118 : 176;
+  const body = [arrowDefs(id)];
+  const boxes = items.map((item, index) => {
+    const angle = -Math.PI / 2 + (index * 2 * Math.PI / n);
+    return {
+      item,
+      index,
+      angle,
+      x: Math.round(cx + rx * Math.cos(angle) - bw / 2),
+      y: Math.round(cy + ry * Math.sin(angle) - bh / 2)
+    };
+  });
+  boxes.forEach((box, index) => {
+    const next = boxes[(index + 1) % n];
+    const midAngle = box.angle + Math.PI / n;
+    const qx = Math.round(cx + (rx + 48) * Math.cos(midAngle));
+    const qy = Math.round(cy + (ry + 36) * Math.sin(midAngle));
+    const startAngle = box.angle + 0.42;
+    const endAngle = next.angle - 0.42;
+    const sx = Math.round(cx + rx * Math.cos(startAngle));
+    const sy = Math.round(cy + ry * Math.sin(startAngle));
+    const ex = Math.round(cx + rx * Math.cos(endAngle));
+    const ey = Math.round(cy + ry * Math.sin(endAngle));
+    body.push(`<path d="M ${sx} ${sy} Q ${qx} ${qy} ${ex} ${ey}" fill="none" stroke="${PALETTE.mark}" stroke-width="2" marker-end="url(#${id}-arrow)" />`);
+    body.push(panel(box.x, box.y, bw, bh, index === n - 1));
+    body.push(textLines({ x: box.x + 16, y: box.y + 28, value: itemLabel(box.item), cls: "label", limit: 22, maxLines: 2 }));
+    body.push(textLines({ x: box.x + 16, y: box.y + 56, value: itemDetail(box.item), cls: "body", limit: 26, maxLines: 1 }));
+  });
+  return body.join("\n  ");
+}
+
 const RENDERERS = {
   flow: renderFlow,
   comparison: renderComparison,
   stack: renderStack,
   fork: renderFork,
   timeline: renderTimeline,
-  matrix: renderMatrix
+  matrix: renderMatrix,
+  thread: renderThread,
+  cycle: renderCycle
 };
 
 export const FIGURE_TEMPLATES = Object.freeze(Object.keys(RENDERERS));
@@ -213,9 +313,10 @@ export function renderResourceFigure(figure, resourceId) {
   const id = slug(figure.id || `${resourceId}-${figure.role}`);
   const renderer = RENDERERS[figure.template];
   if (!renderer) throw new Error(`${resourceId}: unsupported figure template ${figure.template}`);
+  const height = figureHeight(figure);
   const body = renderer(figure, id);
   return `<!-- GENERATED from resources/figures; edit the JSON spec, not this plate. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${WIDTH} ${HEIGHT}" width="${WIDTH}" height="${HEIGHT}" role="img" aria-labelledby="${id}-title ${id}-desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${WIDTH} ${height}" width="${WIDTH}" height="${height}" role="img" aria-labelledby="${id}-title ${id}-desc">
   <title id="${id}-title">${xml(figure.title)}</title>
   <desc id="${id}-desc">${xml(figure.desc)}</desc>
   <style>
@@ -227,7 +328,7 @@ export function renderResourceFigure(figure, resourceId) {
     .label { font-size: 15px; font-weight: 650; }
     .body { font-size: 14px; font-weight: 430; fill: ${PALETTE.muted}; }
   </style>
-  <rect width="${WIDTH}" height="${HEIGHT}" fill="${PALETTE.paper}" />
+  <rect width="${WIDTH}" height="${height}" fill="${PALETTE.paper}" />
   <path d="M 0 0 H ${WIDTH}" stroke="${PALETTE.ink}" stroke-width="4" />
   ${header(figure)}
   ${body}

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "M06",
+  "figures": [
+    {
+      "id": "m06-saved-path",
+      "role": "orientation",
+      "template": "flow",
+      "height": 420,
+      "title": "The saved path does not change between waves",
+      "desc": "Structured input, saved steps, validation, routing, receipt, and terminal state stay the same path on both waves. Only the rule file may change later.",
+      "caption": "Run the same saved path on both waves.",
+      "transcript": "Structured input, saved steps, validation, routing, receipt, and terminal state stay the same path on both waves. Only the rule file may change later.",
+      "eyebrow": "PATH",
+      "items": [
+        { "label": "Structured input", "detail": "the lot rows" },
+        { "label": "Saved steps", "detail": "the fixed sequence" },
+        { "label": "Validation", "detail": "required fields present" },
+        { "label": "Routing", "detail": "the rule as written" },
+        { "label": "Receipt", "detail": "one line per lot" },
+        { "label": "Terminal state", "detail": "READY, OPEN, or NOT_AUTHORIZED" }
+      ]
+    },
+    {
+      "id": "m06-exception",
+      "role": "diagnostic",
+      "template": "fork",
+      "title": "Invalid items stop in the open",
+      "desc": "An invalid item does not get a silent default. It stops in the open as OPEN or HOLD, visible on the receipt.",
+      "caption": "An invalid item stops in the open. It does not get a silent default.",
+      "transcript": "An invalid item does not get a silent default. It stops in the open as OPEN or HOLD, visible on the receipt.",
+      "eyebrow": "EXCEPTION",
+      "source": { "label": "Invalid item", "detail": "missing field or unknown status" },
+      "items": [
+        { "label": "Stop in the open", "detail": "OPEN or HOLD on the receipt" },
+        { "label": "No silent default", "detail": "do not invent AUTHORIZED" }
+      ]
+    },
+    {
+      "id": "m06-one-rule",
+      "role": "method",
+      "template": "comparison",
+      "title": "Only RULE.md changes",
+      "desc": "The one-rule change overwrites RULE.md only. The path, the lots, and the receipts script stay put.",
+      "caption": "Copy the one-rule change onto RULE.md only.",
+      "transcript": "The one-rule change overwrites RULE.md only. The path, the lots, and the receipts script stay put.",
+      "eyebrow": "RULE",
+      "items": [
+        { "label": "RULE.md", "detail": "the only file that changes" },
+        { "label": "Path and lots", "detail": "stay the saved files" }
+      ]
+    },
+    {
+      "id": "m06-baseline-map",
+      "role": "mechanism",
+      "template": "comparison",
+      "title": "AUTHORIZED is READY; everything else is OPEN",
+      "desc": "Under the baseline rule, AUTHORIZED maps to READY. Every other status maps to OPEN.",
+      "caption": "Under the baseline, AUTHORIZED is READY. Everything else is OPEN.",
+      "transcript": "Under the baseline rule, AUTHORIZED maps to READY. Every other status maps to OPEN.",
+      "eyebrow": "BASELINE",
+      "items": [
+        { "label": "AUTHORIZED", "detail": "READY" },
+        { "label": "Everything else", "detail": "OPEN" }
+      ]
+    },
+    {
+      "id": "m06-changed-map",
+      "role": "mechanism",
+      "template": "comparison",
+      "title": "PENDING becomes NOT_AUTHORIZED",
+      "desc": "After the rule change, PENDING maps to NOT_AUTHORIZED. AUTHORIZED still maps to READY.",
+      "caption": "After the rule change, PENDING is NOT_AUTHORIZED.",
+      "transcript": "After the rule change, PENDING maps to NOT_AUTHORIZED. AUTHORIZED still maps to READY.",
+      "eyebrow": "CHANGED",
+      "items": [
+        { "label": "PENDING", "detail": "NOT_AUTHORIZED" },
+        { "label": "AUTHORIZED", "detail": "still READY" }
+      ]
+    },
+    {
+      "id": "m06-delta",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Only L-12 moves",
+      "desc": "L-11 is unchanged, then byte-identical. L-12 moves from OPEN to NOT_AUTHORIZED. L-13 is unchanged, then byte-identical.",
+      "caption": "Only L-12 moves. L-11 and L-13 stay byte-identical.",
+      "transcript": "L-11 is unchanged, then byte-identical. L-12 moves from OPEN to NOT_AUTHORIZED. L-13 is unchanged, then byte-identical.",
+      "eyebrow": "DELTA",
+      "columns": ["L-11", "L-12", "L-13"],
+      "rows": [
+        ["BASELINE", "unchanged", "OPEN", "unchanged"],
+        ["AFTER RULE", "byte-identical", "NOT_AUTHORIZED", "byte-identical"]
+      ]
+    },
+    {
+      "id": "m06-receipts",
+      "role": "method",
+      "template": "stack",
+      "title": "Every lot ends with a visible disposition",
+      "desc": "Every lot ends with a visible disposition on the receipt. A missing terminal state is HOLD, not an implied pass.",
+      "caption": "Every lot must show a terminal disposition on the receipt.",
+      "transcript": "Every lot ends with a visible disposition on the receipt. A missing terminal state is HOLD, not an implied pass.",
+      "eyebrow": "RECEIPTS",
+      "items": [
+        { "label": "L-11", "detail": "terminal disposition visible" },
+        { "label": "L-12", "detail": "terminal disposition visible" },
+        { "label": "L-13", "detail": "terminal disposition visible" },
+        { "label": "Missing terminal state", "detail": "HOLD" }
+      ]
+    },
+    {
+      "id": "m06-restore",
+      "role": "method",
+      "template": "timeline",
+      "title": "Restore the baseline rule and prove it",
+      "desc": "Put the baseline RULE.md back. Rerun the saved path. The receipts match the baseline expected file.",
+      "caption": "Restore the baseline rule and prove the receipts match.",
+      "transcript": "Put the baseline RULE.md back. Rerun the saved path. The receipts match the baseline expected file.",
+      "eyebrow": "RESTORE",
+      "items": [
+        { "label": "Restore RULE.md", "detail": "baseline words" },
+        { "label": "Rerun the saved path", "detail": "same command" },
+        { "label": "Match baseline receipts", "detail": "expected file" }
+      ]
+    }
+  ]
+}

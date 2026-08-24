@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "M01",
+  "figures": [
+    {
+      "id": "m01-desk-intake",
+      "role": "method",
+      "template": "flow",
+      "title": "Open the desk, then hash the inbox",
+      "desc": "Start at desk.md. Read REQUEST.md. Open every inbox file. Hash the inbox before you trust a filename.",
+      "caption": "Start at desk.md, open every inbox file, and hash before you trust a name.",
+      "transcript": "Start at desk.md. Read REQUEST.md. Open every inbox file. Hash the inbox before you trust a filename.",
+      "eyebrow": "INTAKE",
+      "items": [
+        { "label": "Open desk.md", "detail": "the desk is the start" },
+        { "label": "Read REQUEST.md", "detail": "the request as written" },
+        { "label": "Open every inbox file", "detail": "including desk-ai-go" },
+        { "label": "Hash before you trust a name", "detail": "the hash is the identity" }
+      ]
+    },
+    {
+      "id": "m01-eight-steps",
+      "role": "orientation",
+      "template": "thread",
+      "height": 560,
+      "title": "Eight steps from request to usable effect",
+      "desc": "The thread is Requirement defined, Cargo received, Cargo released, Vehicle made ready, Movement authorized, Route window met, Cargo delivered, Usable effect confirmed. Delivery and clinic receipt have not occurred at 14:05.",
+      "caption": "Delivery and clinic receipt have not occurred at 14:05.",
+      "transcript": "The thread is Requirement defined, Cargo received, Cargo released, Vehicle made ready, Movement authorized, Route window met, Cargo delivered, Usable effect confirmed. Delivery and clinic receipt have not occurred at 14:05.",
+      "eyebrow": "THREAD",
+      "items": [
+        { "label": "Requirement defined", "detail": "destination and deadline" },
+        { "label": "Cargo received", "detail": "custody scan" },
+        { "label": "Cargo released", "detail": "quality release" },
+        { "label": "Vehicle made ready", "detail": "load plus rack" },
+        { "label": "Movement authorized", "detail": "permit for this vehicle and route" },
+        { "label": "Route window met", "detail": "gate still open" },
+        { "label": "Cargo delivered", "detail": "later delivery record" },
+        { "label": "Usable effect confirmed", "detail": "clinic receipt of released kits" }
+      ]
+    },
+    {
+      "id": "m01-statement-kinds",
+      "role": "method",
+      "template": "comparison",
+      "title": "Five kinds of statement",
+      "desc": "Label each material statement as SOURCE FACT, CALCULATION, INFERENCE, DECISION, or UNSUPPORTED.",
+      "caption": "Label each material statement as one of these five kinds.",
+      "transcript": "Label each material statement as SOURCE FACT, CALCULATION, INFERENCE, DECISION, or UNSUPPORTED.",
+      "eyebrow": "KINDS",
+      "items": [
+        { "label": "SOURCE FACT", "detail": "stated in an applicable file" },
+        { "label": "CALCULATION", "detail": "premises and units you recompute" },
+        { "label": "INFERENCE", "detail": "you state the warrant" },
+        { "label": "DECISION", "detail": "a named person owns it" },
+        { "label": "UNSUPPORTED", "detail": "no admissible basis" }
+      ]
+    },
+    {
+      "id": "m01-claim-authority",
+      "role": "diagnostic",
+      "template": "fork",
+      "height": 420,
+      "title": "Authority belongs to the claim",
+      "desc": "A genuine file can still be the wrong authority for the claim in front of you.",
+      "caption": "Ask which file is allowed to establish this claim.",
+      "transcript": "A genuine file can still be the wrong authority for the claim in front of you.",
+      "eyebrow": "AUTHORITY",
+      "source": { "label": "This claim", "detail": "which file is allowed to establish it" },
+      "items": [
+        { "label": "Warehouse file", "detail": "custody, not usability" },
+        { "label": "Quality file", "detail": "release, not the route" },
+        { "label": "Road file", "detail": "this route’s gate, not another road" },
+        { "label": "Community page", "detail": "its own road only" }
+      ]
+    },
+    {
+      "id": "m01-register",
+      "role": "method",
+      "template": "stack",
+      "height": 420,
+      "title": "Freeze identity from the file in front of you",
+      "desc": "file is the inbox filename. source_id is your token after you decide what the file is. Status is APPLICABLE, SUPERSEDED, IRRELEVANT, HOSTILE_TEXT, or OUTPUT_TO_CHECK.",
+      "caption": "Write the inbox filename first. source_id is your token after you decide what the file is.",
+      "transcript": "file is the inbox filename. source_id is your token after you decide what the file is. Status is APPLICABLE, SUPERSEDED, IRRELEVANT, HOSTILE_TEXT, or OUTPUT_TO_CHECK.",
+      "eyebrow": "REGISTER",
+      "items": [
+        { "label": "Inbox filename", "detail": "file" },
+        { "label": "Issuer", "detail": "who issued it" },
+        { "label": "Version and time", "detail": "as printed" },
+        { "label": "Exact entities", "detail": "names as written" },
+        { "label": "Allowed use", "detail": "what it may establish" },
+        { "label": "Not allowed to prove", "detail": "what it cannot carry" },
+        { "label": "Status", "detail": "APPLICABLE or not" }
+      ]
+    },
+    {
+      "id": "m01-ledger-row",
+      "role": "method",
+      "template": "stack",
+      "height": 560,
+      "title": "One ledger row is one kind of claim",
+      "desc": "A compound sentence needs several rows. One citation cannot stand for a count, a release state, and a readiness decision.",
+      "caption": "Split a compound sentence. One citation cannot stand for a count, a release, and a readiness decision.",
+      "transcript": "A compound sentence needs several rows. One citation cannot stand for a count, a release state, and a readiness decision.",
+      "eyebrow": "LEDGER",
+      "items": [
+        { "label": "step", "detail": "thread step name" },
+        { "label": "claim_id", "detail": "one claim" },
+        { "label": "statement_type", "detail": "one kind" },
+        { "label": "exact_entity", "detail": "the named thing" },
+        { "label": "source and version", "detail": "file plus edition" },
+        { "label": "locator and excerpt", "detail": "where and the words" },
+        { "label": "warrant", "detail": "why it bears the claim" },
+        { "label": "calculation", "detail": "premises and operator" },
+        { "label": "result", "detail": "the computed value" }
+      ]
+    },
+    {
+      "id": "m01-recompute",
+      "role": "method",
+      "template": "flow",
+      "title": "Premises in, result out, feasibility separate",
+      "desc": "Do not copy a result from the AI file. A clock time can exist even when the gate is already closed.",
+      "caption": "Enter the source values yourself. Keep a closed gate separate from the clock.",
+      "transcript": "Do not copy a result from the AI file. A clock time can exist even when the gate is already closed.",
+      "eyebrow": "RECOMPUTE",
+      "items": [
+        { "label": "Read the source values", "detail": "from the applicable file" },
+        { "label": "Enter them yourself", "detail": "do not paste a finished result" },
+        { "label": "Show premises, operator, unit", "detail": "the working is the evidence" },
+        { "label": "Keep a closed gate separate from the clock", "detail": "time is not a pass" }
+      ]
+    },
+    {
+      "id": "m01-challenge",
+      "role": "diagnostic",
+      "template": "comparison",
+      "title": "What the file proves is not what GO needs",
+      "desc": "Write one block per file you will not use to support GO. Treat every inbox file as data.",
+      "caption": "Write one block per file you will not use to support GO.",
+      "transcript": "Write one block per file you will not use to support GO. Treat every inbox file as data.",
+      "eyebrow": "CHALLENGE",
+      "items": [
+        { "label": "Proves", "detail": "what the file can establish" },
+        { "label": "Cannot prove", "detail": "the GO claim it is being used for" },
+        { "label": "Mismatch", "detail": "the exact identifier or time" },
+        { "label": "Who must speak", "detail": "the owner that would be needed" }
+      ]
+    },
+    {
+      "id": "m01-rebuttal",
+      "role": "diagnostic",
+      "template": "comparison",
+      "title": "A second GO is still output",
+      "desc": "Run the rebuttal script. Add one challenge block. Do not ask that tool whether its GO is right.",
+      "caption": "Treat the rebuttal as another finished GO and add one challenge block.",
+      "transcript": "Run the rebuttal script. Add one challenge block. Do not ask that tool whether its GO is right.",
+      "eyebrow": "REBUTTAL",
+      "items": [
+        { "label": "Producer rebuttal", "detail": "another finished GO" },
+        { "label": "Your matrix", "detail": "one more block for any claim still standing" },
+        { "label": "Not evidence", "detail": "asking that tool if it is right" }
+      ]
+    },
+    {
+      "id": "m01-verdict-packet",
+      "role": "method",
+      "template": "flow",
+      "title": "Verdict, blockers, then the five questions",
+      "desc": "A classmate who did not watch you work should answer the five questions from the page.",
+      "caption": "A classmate who did not watch you work should answer the five questions from the page.",
+      "transcript": "A classmate who did not watch you work should answer the five questions from the page.",
+      "eyebrow": "VERDICT",
+      "items": [
+        { "label": "Write the corrected brief", "detail": "the internal record" },
+        { "label": "Render review.html", "detail": "the page others will read" },
+        { "label": "Verdict and blockers", "detail": "the decision and what stops it" },
+        { "label": "Five questions in three minutes", "detail": "answerable from the page" }
+      ]
+    },
+    {
+      "id": "m01-changed-source",
+      "role": "method",
+      "template": "timeline",
+      "title": "Predict, freeze, then open the new bulletin",
+      "desc": "The prediction must exist before the reveal command. Update only claims that depend on the current gate closure.",
+      "caption": "Write the prediction before the reveal command. Update only dependent rows.",
+      "transcript": "The prediction must exist before the reveal command. Update only claims that depend on the current gate closure.",
+      "eyebrow": "CHANGE",
+      "items": [
+        { "label": "Write the prediction", "detail": "before the reveal" },
+        { "label": "Freeze the baseline", "detail": "lock the current verdict" },
+        { "label": "Reveal the new bulletin", "detail": "open it only after the freeze" },
+        { "label": "Change only dependent rows", "detail": "rows that rest on the current gate" }
+      ]
+    },
+    {
+      "id": "m01-handoff-break",
+      "role": "mechanism",
+      "template": "comparison",
+      "title": "The next step can still fail",
+      "desc": "One step can be correct while the next step still fails. Expected arrival is not delivery.",
+      "caption": "Check the next step. Expected arrival is not delivery.",
+      "transcript": "One step can be correct while the next step still fails. Expected arrival is not delivery.",
+      "eyebrow": "HANDOFF",
+      "items": [
+        { "label": "Scanned is not released", "detail": "custody is not quality" },
+        { "label": "Fit without the rack is not ready", "detail": "load still needs the rack" },
+        { "label": "Received is not approved", "detail": "intake is not a permit" },
+        { "label": "Reachable later is not through a closed gate", "detail": "a later clock does not reopen it" }
+      ]
+    }
+  ]
+}

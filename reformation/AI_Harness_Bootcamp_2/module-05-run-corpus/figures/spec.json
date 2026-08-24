@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "M05",
+  "figures": [
+    {
+      "id": "m05-sample-first",
+      "role": "method",
+      "template": "timeline",
+      "title": "Freeze the sample rule before any outcome line",
+      "desc": "Write the sample rule first. Do not open an outcome line until that rule is on disk.",
+      "caption": "Write the sample rule before you open any outcome line.",
+      "transcript": "Write the sample rule first. Do not open an outcome line until that rule is on disk.",
+      "eyebrow": "SAMPLE",
+      "items": [
+        { "label": "Write the sample rule", "detail": "who is eligible" },
+        { "label": "Save it on disk", "detail": "sample-rule.md" },
+        { "label": "Then open outcome lines", "detail": "not before" }
+      ]
+    },
+    {
+      "id": "m05-population",
+      "role": "orientation",
+      "template": "comparison",
+      "title": "Passes, failures, retries, dependents stay visible",
+      "desc": "Passes, failures, retries, and dependents stay in the eligible set. Hiding a row to make a tally close is a miss.",
+      "caption": "Keep passes, failures, retries, and dependents visible in the eligible set.",
+      "transcript": "Passes, failures, retries, and dependents stay in the eligible set. Hiding a row to make a tally close is a miss.",
+      "eyebrow": "POPULATION",
+      "items": [
+        { "label": "Passes", "detail": "keep them in the set" },
+        { "label": "Failures", "detail": "keep them in the set" },
+        { "label": "Retries", "detail": "keep them in the set" },
+        { "label": "Dependents", "detail": "keep them in the set" }
+      ]
+    },
+    {
+      "id": "m05-first-failure",
+      "role": "method",
+      "template": "flow",
+      "title": "One earliest failure per run",
+      "desc": "Open each run file. Write one earliest failure note. Do not tally until every run has that note.",
+      "caption": "Write one earliest failure note per run before any tally.",
+      "transcript": "Open each run file. Write one earliest failure note. Do not tally until every run has that note.",
+      "eyebrow": "FIRST",
+      "items": [
+        { "label": "Open the run file", "detail": "one file at a time" },
+        { "label": "Find the earliest failure", "detail": "the first one in that run" },
+        { "label": "Write the note", "detail": "before any category" },
+        { "label": "Leave the note visible", "detail": "do not replace it with a tally" }
+      ]
+    },
+    {
+      "id": "m05-then-categories",
+      "role": "method",
+      "template": "flow",
+      "title": "Notes exist before tallies",
+      "desc": "The first-failure notes exist. Then tally categories. If the counts do not add up, record HOLD.",
+      "caption": "Tally categories only after the first-failure notes exist.",
+      "transcript": "The first-failure notes exist. Then tally categories. If the counts do not add up, record HOLD.",
+      "eyebrow": "TALLY",
+      "items": [
+        { "label": "Notes on disk", "detail": "one per run" },
+        { "label": "Then write counts", "detail": "pass, fail, and named categories" },
+        { "label": "Check the total", "detail": "must be the eligible set" },
+        { "label": "HOLD if they do not close", "detail": "do not force a match" }
+      ]
+    },
+    {
+      "id": "m05-label-history",
+      "role": "method",
+      "template": "comparison",
+      "title": "Keep the original label next to the revision",
+      "desc": "If you revise a category, keep the original label visible next to the revision. The history is part of the record.",
+      "caption": "Keep the original label visible next to any revision.",
+      "transcript": "If you revise a category, keep the original label visible next to the revision. The history is part of the record.",
+      "eyebrow": "HISTORY",
+      "items": [
+        { "label": "Original label", "detail": "the first name you wrote" },
+        { "label": "Revision", "detail": "the later name, beside it" }
+      ]
+    },
+    {
+      "id": "m05-reconcile",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "Counts close to the eligible set",
+      "desc": "PASS must sum. FAIL must sum. CATEGORY TOTAL must equal the eligible set. If a cell cannot close, record HOLD.",
+      "caption": "PASS and FAIL must each sum. CATEGORY TOTAL must equal the eligible set.",
+      "transcript": "PASS must sum. FAIL must sum. CATEGORY TOTAL must equal the eligible set. If a cell cannot close, record HOLD.",
+      "eyebrow": "RECONCILE",
+      "columns": ["PASS", "FAIL", "CATEGORY TOTAL"],
+      "rows": [
+        ["ELIGIBLE RUNS", "must sum", "must sum", "must equal eligible"]
+      ]
+    },
+    {
+      "id": "m05-semantic-vs-mechanical",
+      "role": "mechanism",
+      "template": "comparison",
+      "title": "Only a decidable defect becomes a predicate",
+      "desc": "A semantic judgment stays a note. Only a decidable defect becomes a predicate. 20:50Z present or absent is decidable.",
+      "caption": "Promote only a decidable defect to a predicate.",
+      "transcript": "A semantic judgment stays a note. Only a decidable defect becomes a predicate. 20:50Z present or absent is decidable.",
+      "eyebrow": "PREDICATE",
+      "items": [
+        { "label": "Semantic note", "detail": "stays a written judgment" },
+        { "label": "Decidable defect", "detail": "20:50Z present or absent" }
+      ]
+    },
+    {
+      "id": "m05-predicate",
+      "role": "method",
+      "template": "stack",
+      "title": "Input, pass, fail, missing",
+      "desc": "Exact input is one run file. Pass when the token is absent. Fail when 20:50Z is present. Missing path prints HOLD: missing input.",
+      "caption": "Confirm input, pass, fail, and missing before you run the control.",
+      "transcript": "Exact input is one run file. Pass when the token is absent. Fail when 20:50Z is present. Missing path prints HOLD: missing input.",
+      "eyebrow": "SPEC",
+      "items": [
+        { "label": "Exact input", "detail": "one run file" },
+        { "label": "Pass when the token is absent", "detail": "20:50Z not in the file" },
+        { "label": "Fail when 20:50Z is present", "detail": "the token is enough" },
+        { "label": "Missing path prints HOLD: missing input", "detail": "no file, no guess" }
+      ]
+    },
+    {
+      "id": "m05-three-case",
+      "role": "method",
+      "template": "comparison",
+      "title": "Known bad fails, known good passes, missing HOLDs",
+      "desc": "The known-bad file fails. The known-good file passes. A missing path prints HOLD. Those three outcomes are the control.",
+      "caption": "Run known bad, known good, and missing. Read fail, pass, and HOLD.",
+      "transcript": "The known-bad file fails. The known-good file passes. A missing path prints HOLD. Those three outcomes are the control.",
+      "eyebrow": "CASES",
+      "items": [
+        { "label": "Known bad", "detail": "fails" },
+        { "label": "Known good", "detail": "passes" },
+        { "label": "Missing", "detail": "prints HOLD" }
+      ]
+    }
+  ]
+}

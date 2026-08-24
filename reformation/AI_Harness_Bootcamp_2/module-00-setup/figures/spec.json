@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "M00",
+  "figures": [
+    {
+      "id": "m00-setup-chain",
+      "role": "orientation",
+      "template": "flow",
+      "title": "Setup is finished only after a new terminal proves it",
+      "desc": "Install the tools. Authenticate. Open a new terminal. Read each proof file from disk. A tool saying done is not the same as a file on disk.",
+      "caption": "Read each proof file from a terminal you opened after the last install.",
+      "transcript": "Install the tools. Authenticate. Open a new terminal. Read each proof file from disk. A tool saying done is not the same as a file on disk.",
+      "eyebrow": "SETUP",
+      "items": [
+        { "label": "Install", "detail": "Put the tools on the machine" },
+        { "label": "Authenticate", "detail": "Sign in where the path requires it" },
+        { "label": "Restart the terminal", "detail": "Open a new window after the last install" },
+        { "label": "Read the proof file back", "detail": "Open the file on disk yourself" }
+      ]
+    },
+    {
+      "id": "m00-four-layers",
+      "role": "diagnostic",
+      "template": "stack",
+      "title": "Four layers that can fail separately",
+      "desc": "Model output, the product surface, harness controls, and the human decision fail in different ways. Separate them before you decide what to fix.",
+      "caption": "Separate model output, product surface, harness controls, and the human decision before you name the fault.",
+      "transcript": "Model output, the product surface, harness controls, and the human decision fail in different ways. Separate them before you decide what to fix.",
+      "eyebrow": "LAYERS",
+      "items": [
+        { "label": "Model output", "detail": "can be fluent and wrong" },
+        { "label": "Product surface", "detail": "shows a result you must still read" },
+        { "label": "Harness controls", "detail": "checks and saved rules" },
+        { "label": "Human decision", "detail": "accepts, holds, or refuses" }
+      ]
+    },
+    {
+      "id": "m00-delegation",
+      "role": "method",
+      "template": "comparison",
+      "title": "What AI may do, what you keep, what you refuse",
+      "desc": "AI may draft from the supplied files. You keep acceptance, disclosure, and the stop. Refuse a consequential send and any invented fact.",
+      "caption": "Name what AI may draft, what you keep, and what you refuse.",
+      "transcript": "AI may draft from the supplied files. You keep acceptance, disclosure, and the stop. Refuse a consequential send and any invented fact.",
+      "eyebrow": "DELEGATION",
+      "items": [
+        { "label": "AI may", "detail": "draft from the supplied files" },
+        { "label": "You keep", "detail": "acceptance, disclosure, and stop" },
+        { "label": "Refuse", "detail": "consequential send or invented facts" }
+      ]
+    },
+    {
+      "id": "m00-minimum-screen",
+      "role": "method",
+      "template": "fork",
+      "height": 420,
+      "title": "Two answers can stop the work",
+      "desc": "Answer source authority, sensitive data, audience, disclosure, consequential authority, and owner before you generate. Two of those answers can stop the work.",
+      "caption": "Answer source, data, audience, disclosure, authority, and owner before you generate.",
+      "transcript": "Answer source authority, sensitive data, audience, disclosure, consequential authority, and owner before you generate. Two of those answers can stop the work.",
+      "eyebrow": "SCREEN",
+      "source": { "label": "Screen these six", "detail": "source, data, audience, disclosure, authority, owner" },
+      "items": [
+        { "label": "GO", "detail": "every answer is in bounds" },
+        { "label": "HOLD", "detail": "source, data, or authority is unresolved" }
+      ]
+    },
+    {
+      "id": "m00-direction-contract",
+      "role": "method",
+      "template": "stack",
+      "height": 420,
+      "title": "Freeze the request before you run anything",
+      "desc": "Outcome, audience, constraints, acceptance, prohibited result, stop condition, and owner exist in the brief before any run.",
+      "caption": "Write outcome, audience, constraints, acceptance, prohibited result, stop condition, and owner before any run.",
+      "transcript": "Outcome, audience, constraints, acceptance, prohibited result, stop condition, and owner exist in the brief before any run.",
+      "eyebrow": "DIRECTION",
+      "items": [
+        { "label": "Outcome", "detail": "Outcome" },
+        { "label": "Audience", "detail": "Audience" },
+        { "label": "Constraints", "detail": "Constraints" },
+        { "label": "Acceptance", "detail": "Acceptance" },
+        { "label": "Prohibited result", "detail": "Prohibited result" },
+        { "label": "Stop condition", "detail": "Stop condition" },
+        { "label": "Owner", "detail": "Owner" }
+      ]
+    },
+    {
+      "id": "m00-independent-accept",
+      "role": "mechanism",
+      "template": "comparison",
+      "title": "The producer cannot grade its own work",
+      "desc": "The system that wrote the draft cannot edit or bypass the check that accepts it.",
+      "caption": "Run the protected check yourself and read the result.",
+      "transcript": "The system that wrote the draft cannot edit or bypass the check that accepts it.",
+      "eyebrow": "ACCEPTANCE",
+      "items": [
+        { "label": "Producer output", "detail": "not evidence that it is correct" },
+        { "label": "Protected check", "detail": "you run it and read it" }
+      ]
+    },
+    {
+      "id": "m00-claim-to-source",
+      "role": "method",
+      "template": "flow",
+      "title": "Open the source yourself",
+      "desc": "Choose the claim that would change what a reader does. Open the source. Quote the text. Do not ask the producing model whether it is supported.",
+      "caption": "Open the source and quote the supporting text yourself.",
+      "transcript": "Choose the claim that would change what a reader does. Open the source. Quote the text. Do not ask the producing model whether it is supported.",
+      "eyebrow": "SOURCE",
+      "items": [
+        { "label": "Pick the material claim", "detail": "the one that would change a reader’s next move" },
+        { "label": "Open the supplied source", "detail": "the file in front of you" },
+        { "label": "Quote the supporting text", "detail": "copy the words that bear the claim" },
+        { "label": "Record match or miss", "detail": "write what the source does or does not say" }
+      ]
+    },
+    {
+      "id": "m00-falsifier",
+      "role": "method",
+      "template": "cycle",
+      "height": 420,
+      "title": "Watch the check fail on purpose",
+      "desc": "Make the mistake on purpose. The check must fail on the probe before you trust a pass on the draft.",
+      "caption": "The check is trusted only after you have seen it fail.",
+      "transcript": "Make the mistake on purpose. The check must fail on the probe before you trust a pass on the draft.",
+      "eyebrow": "FALSIFIER",
+      "items": [
+        { "label": "Write a known-bad probe", "detail": "plant the mistake" },
+        { "label": "Run your check", "detail": "the same check you will trust" },
+        { "label": "See FAIL", "detail": "the probe must not pass" },
+        { "label": "Restore the real draft", "detail": "put the actual work back" }
+      ]
+    },
+    {
+      "id": "m00-changed-input",
+      "role": "method",
+      "template": "timeline",
+      "title": "Predict, then change one fact",
+      "desc": "Write the prediction first. Change one supplied fact. Only the field you named may move.",
+      "caption": "Write the prediction first. Only the field you named may move.",
+      "transcript": "Write the prediction first. Change one supplied fact. Only the field you named may move.",
+      "eyebrow": "CHANGE",
+      "items": [
+        { "label": "Freeze a prediction", "detail": "name the field that should move" },
+        { "label": "Open the changed fact", "detail": "one supplied fact only" },
+        { "label": "Rerun the same check", "detail": "no new method" },
+        { "label": "Only the predicted field moves", "detail": "everything else holds" }
+      ]
+    },
+    {
+      "id": "m00-recovery",
+      "role": "orientation",
+      "template": "cycle",
+      "height": 420,
+      "title": "Save the first error, change one thing, rerun",
+      "desc": "Save the first error message. Change one thing. Run the same check again.",
+      "caption": "Save the first error, change one thing, and rerun the same check.",
+      "transcript": "Save the first error message. Change one thing. Run the same check again.",
+      "eyebrow": "RECOVERY",
+      "items": [
+        { "label": "Save the first error", "detail": "keep the original message" },
+        { "label": "Change one thing", "detail": "one change only" },
+        { "label": "Rerun the same check", "detail": "the check that failed" },
+        { "label": "Record PASS, WARN, FAIL, or HOLD", "detail": "write the new state" }
+      ]
+    }
+  ]
+}

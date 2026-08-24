@@ -4,7 +4,7 @@ Plan for 1–3 hours of machine setup. Setup is finished only after you reopen t
 
 ## Start here
 
-Choose one command-line path and stay in it:
+Choose one command-line path and stay in it. A shell is the text window that runs the commands you paste.
 
 | Your machine | Use this guide |
 |---|---|
@@ -18,10 +18,10 @@ If you are unsure which Windows path to use, choose WSL when your organization p
 
 ## What you will install
 
-- Git and the course repository
+- Git and a copy of this course (a repository: a folder Git can version).
 - Node.js 24 LTS and npm
 - Python 3.12 or newer
-- Codex CLI
+- Codex command-line tool (CLI)
 - OpenCode 1.18.17
 - goose CLI from the Agentic AI Foundation
 - n8n 2.34.5
@@ -44,16 +44,38 @@ The AI CLIs make short provider-billed proof calls. Before you enter any credent
 
 Save the first error message before you change anything, then work from [When setup stops](shared/TROUBLESHOOTING.md). Change one thing, and run the check that failed again.
 
+![Save the first error, change one thing, rerun](shared/figures/m00-recovery.svg)
+
+*Save the first error, change one thing, and rerun the same check.*
+
+<details>
+<summary>Figure text</summary>
+
+Save the first error message. Change one thing. Run the same check again.
+
+</details>
+
 ## Ready means observable
 
 Setup is finished when a terminal you opened after the last install shows these values:
 
-- `origin` reporting `https://github.com/TheHolofex/AI_Harness_Bootcamp.git`, `git rev-parse HEAD` reporting a 40-character revision, and `git status --short` printing nothing at all;
-- `node --version` printing a version that starts with `v24.`, and Python reporting 3.12 or higher (`python3 --version` on every path except PowerShell-only, which uses `python --version`);
+![Setup is finished only after a new terminal proves it](shared/figures/m00-setup-chain.svg)
+
+*Read each proof file from a terminal you opened after the last install.*
+
+<details>
+<summary>Figure text</summary>
+
+Install the tools. Authenticate. Open a new terminal. Read each proof file from disk. A tool saying done is not the same as a file on disk.
+
+</details>
+
+- `origin` reporting `https://github.com/TheHolofex/AI_Harness_Bootcamp.git`, `git rev-parse HEAD` reporting a 40-character id (the setup check prints the first 12), and `git status --short` printing nothing at all;
+- `node --version` printing a version that starts with `v24.`, and Python reporting 3.12 or higher (macOS uses `python3.12 --version`; Ubuntu, Arch, and WSL use `python3 --version`; PowerShell-only uses `python --version`);
 - `opencode --version` and `n8n --version` printing the pinned versions listed above;
-- the Codex and goose version strings, each shown next to the absolute path the command resolved to;
+- the Codex and goose version strings, and the absolute path each command resolved to, as printed by the setup check;
 - `codex login status` finishing without an error, with no account detail copied anywhere;
-- the word `SET` from the key check in that same terminal — macOS prints it as `XAI_API_KEY=SET` with a character count — and the key value itself printed nowhere;
+- the word `SET` from the key check in that same terminal — macOS prints it as `XAI_API_KEY=SET` — and the key value itself printed nowhere;
 - three proof files read back from disk, each one written by the tool that claimed to write it;
 - `PASS: n8n answered its health check at http://127.0.0.1:5678`;
 - the course files listed in Obsidian's file pane, and `git status --short` still printing nothing after you close it;

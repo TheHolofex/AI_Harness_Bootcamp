@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "M04",
+  "figures": [
+    {
+      "id": "m04-boundaries",
+      "role": "orientation",
+      "template": "flow",
+      "title": "Name input, output, proof, and falsifier",
+      "desc": "Name the input, the output, the proof you will keep, and the falsifier that would show a miss. Those four bounds stay fixed while you diagnose.",
+      "caption": "Name input, output, proof, and falsifier before you chase a miss.",
+      "transcript": "Name the input, the output, the proof you will keep, and the falsifier that would show a miss. Those four bounds stay fixed while you diagnose.",
+      "eyebrow": "BOUNDS",
+      "items": [
+        { "label": "Input", "detail": "the thread card" },
+        { "label": "Output", "detail": "the rendered fields" },
+        { "label": "Proof", "detail": "the command you will keep" },
+        { "label": "Falsifier", "detail": "the miss that must show" }
+      ]
+    },
+    {
+      "id": "m04-restore-first",
+      "role": "method",
+      "template": "timeline",
+      "title": "Restore is proved before any swap",
+      "desc": "Restore copies the clean renderer onto the work copy and prints RESTORE OK when the two files match. Prove that before any swap.",
+      "caption": "Prove RESTORE OK before any work-copy swap.",
+      "transcript": "Restore copies the clean renderer onto the work copy and prints RESTORE OK when the two files match. Prove that before any swap.",
+      "eyebrow": "RESTORE",
+      "items": [
+        { "label": "Run restore", "detail": "clean onto work copy" },
+        { "label": "Read RESTORE OK", "detail": "the two files match" },
+        { "label": "Only then accept a swap", "detail": "the work copy can move" }
+      ]
+    },
+    {
+      "id": "m04-first-miss",
+      "role": "method",
+      "template": "fork",
+      "title": "Seal the earliest missing field",
+      "desc": "The first missing field is permit_status or gate_time_mdt. Seal it before any replace. Do not hunt later fields first.",
+      "caption": "Seal the earliest missing field before any replace.",
+      "transcript": "The first missing field is permit_status or gate_time_mdt. Seal it before any replace. Do not hunt later fields first.",
+      "eyebrow": "MISS",
+      "source": { "label": "First missing field", "detail": "permit_status or gate_time_mdt" },
+      "items": [
+        { "label": "Seal it", "detail": "before any replace" },
+        { "label": "Do not hunt later fields first", "detail": "the earliest miss is the record" }
+      ]
+    },
+    {
+      "id": "m04-probe",
+      "role": "mechanism",
+      "template": "comparison",
+      "title": "A probe must be able to go two ways",
+      "desc": "A probe that can only pass cannot show a miss. A probe that can fail on the known gap and pass on the clean render is usable.",
+      "caption": "The probe must be able to fail on the miss and pass on the clean render.",
+      "transcript": "A probe that can only pass cannot show a miss. A probe that can fail on the known gap and pass on the clean render is usable.",
+      "eyebrow": "PROBE",
+      "items": [
+        { "label": "One-way probe", "detail": "can only pass" },
+        { "label": "Two-way probe", "detail": "fails on the miss, passes on clean" }
+      ]
+    },
+    {
+      "id": "m04-preserve",
+      "role": "method",
+      "template": "stack",
+      "title": "Seal expected, observed, command, first miss",
+      "desc": "Seal the expected field, the observed output, the command you ran, and the first miss. Those four notes survive the replace.",
+      "caption": "Seal expected, observed, command, and first miss before you replace.",
+      "transcript": "Seal the expected field, the observed output, the command you ran, and the first miss. Those four notes survive the replace.",
+      "eyebrow": "PRESERVE",
+      "items": [
+        { "label": "Expected", "detail": "the field that should be present" },
+        { "label": "Observed", "detail": "what the render printed" },
+        { "label": "Command", "detail": "the exact invocation" },
+        { "label": "First miss", "detail": "the earliest missing field" }
+      ]
+    },
+    {
+      "id": "m04-no-hand-patch",
+      "role": "method",
+      "template": "comparison",
+      "title": "Replace the owner, do not patch the field",
+      "desc": "A hand edit hides the owner. Restore from clean is the authorized replace.",
+      "caption": "Replace the work-copy renderer from clean. Do not patch the dropped field.",
+      "transcript": "A hand edit hides the owner. Restore from clean is the authorized replace.",
+      "eyebrow": "REPLACE",
+      "items": [
+        { "label": "Hand edit", "detail": "hides the owner" },
+        { "label": "Restore from clean", "detail": "authorized replace" }
+      ]
+    },
+    {
+      "id": "m04-three-reruns",
+      "role": "method",
+      "template": "stack",
+      "title": "Focused, end-to-end, clean",
+      "desc": "Rerun focused on the work copy, end-to-end from the repository clean script, and on the clean condition. Both fields are present in each run.",
+      "caption": "Rerun focused, end-to-end, and clean. Both fields are present in each run.",
+      "transcript": "Rerun focused on the work copy, end-to-end from the repository clean script, and on the clean condition. Both fields are present in each run.",
+      "eyebrow": "RERUN",
+      "items": [
+        { "label": "Focused", "detail": "work copy has both fields" },
+        { "label": "End-to-end", "detail": "repository clean script has both" },
+        { "label": "Clean", "detail": "clean condition still has both" }
+      ]
+    }
+  ]
+}

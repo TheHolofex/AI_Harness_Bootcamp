@@ -1,6 +1,6 @@
 # Module 1 · Verify a logistics mission thread
 
-You decide whether a polished AI brief is supported by its sources. Every fact you need is in the supplied packet. Plan for about three hours.
+You decide whether a polished AI brief is supported by its sources. Every fact you need is in the work folder you are about to create. Plan for about three hours.
 
 The case is fictional. Your work stays inside the class. You are not planning or authorizing a real movement.
 
@@ -24,17 +24,24 @@ The command stops rather than overwrite an earlier attempt. The new folder conta
 
 ```text
 module-01-work/
+├── desk.md
+├── REQUEST.md
+├── inbox/
+│   ├── INCOMING.txt
+│   └── <nine dump-named .md files>
 ├── source-register.csv
 ├── thread-ledger.csv
+├── changed-thread-ledger.csv
 ├── challenge-matrix.md
 ├── corrected-brief.md
 ├── baseline-verdict.md
 ├── change-prediction.md
-├── changed-thread-ledger.csv
 ├── changed-brief.md
 ├── changed-verdict.md
 └── handoff.md
 ```
+
+You may open this work folder as an Obsidian vault the same way you opened the course folder. Start at desk.md.
 
 The visible checker catches missing fields, known practice values, arithmetic, and stale values. It does not judge whether a source applies or whether the verdict is sound.
 
@@ -42,30 +49,42 @@ The visible checker catches missing fields, known practice values, arithmetic, a
 
 | Work | Time |
 |---|---:|
-| Learn the thread and inspect the packet | 20 minutes |
-| Freeze identity, source use, and material claims | 25 minutes |
-| Build and reopen the thread ledger | 45 minutes |
-| Recompute and challenge the AI brief | 30 minutes |
-| Write and inspect the corrected brief | 20 minutes |
-| Freeze the baseline verdict and change prediction | 15 minutes |
-| Apply the sealed source change | 25 minutes |
-| Handoff and live defense | 20 minutes |
+| Learn the thread | 15 minutes |
+| Open and hash the inbox | 20 minutes |
+| Freeze identity and source use | 20 minutes |
+| Build the thread ledger | 35 minutes |
+| Recompute the deterministic claims | 20 minutes |
+| Write the challenge matrix | 15 minutes |
+| Run the producer rebuttal | 10 minutes |
+| Write the brief and desk packet | 15 minutes |
+| Freeze the baseline and predict the change | 10 minutes |
+| Apply the sealed change | 15 minutes |
+| Handoff and live defense | 15 minutes |
 
 At least two hours belong to your own inspection, calculation, writing, and decision.
 
-## 1. Confirm the packet
+## 1. Open and hash the inbox
 
 Open:
 
-- [the request](case/REQUEST.md);
-- [the AI brief](case/AI_DISPATCH_BRIEF.md);
-- [the source manifest](case/SOURCE_MANIFEST.json);
-- all nine files under `case/sources/`; and
-- [the mission-thread guide](MISSION_THREAD.md).
+- `REQUEST.md` in the work folder
+- every file under `inbox/`
+- [the mission-thread guide](MISSION_THREAD.md)
+
+![Open the desk, then hash the inbox](figures/m01-desk-intake.svg)
+
+*Start at desk.md, open every inbox file, and hash before you trust a name.*
+
+<details>
+<summary>Figure text</summary>
+
+Start at desk.md. Read REQUEST.md. Open every inbox file. Hash the inbox before you trust a filename.
+
+</details>
 
 Do not inspect facilitator fixture files. The supplied reveal command will copy the practice change into your work folder after the baseline is frozen.
 
-Run the content check from the Module 1 directory:
+Run the content check from the Module 1 directory. This confirms the clone you are working from is intact:
 
 **PowerShell:**
 
@@ -81,13 +100,54 @@ python3 scripts/verify_content.py
 
 Stop if a source is missing or its hash does not match the manifest. A changed source is a changed case, not a clerical inconvenience.
 
+Then hash the work inbox. Copy those hashes into `source-register.csv` when you fill the register. You should see nine `sha256` plus filename lines, with no course IDs in the names:
+
+**PowerShell:**
+
+```powershell
+python .\scripts\hash_inbox.py "$env:USERPROFILE\course-evidence\module-01-work"
+```
+
+**Bash or zsh:**
+
+```bash
+python3 scripts/hash_inbox.py "$HOME/course-evidence/module-01-work"
+```
+
+Check the inbox itself:
+
+**PowerShell:**
+
+```powershell
+python .\scripts\check_work.py "$env:USERPROFILE\course-evidence\module-01-work" --phase ingest
+```
+
+**Bash or zsh:**
+
+```bash
+python3 scripts/check_work.py "$HOME/course-evidence/module-01-work" --phase ingest
+```
+
 ## 2. Freeze exact identity and allowed source use
 
-Copy the supplied source-register template into `source-register.csv`. Complete one row for each source:
+Copy the supplied source-register template into `source-register.csv`. Complete one row for each inbox file:
+
+![Freeze identity from the file in front of you](figures/m01-register.svg)
+
+*Write the inbox filename first. source_id is your token after you decide what the file is.*
+
+<details>
+<summary>Figure text</summary>
+
+file is the inbox filename. source_id is your token after you decide what the file is. Status is APPLICABLE, SUPERSEDED, IRRELEVANT, HOSTILE_TEXT, or OUTPUT_TO_CHECK.
+
+</details>
 
 ```csv
 source_id,file,issuer,version,effective_time,exact_entities,allowed_use,not_allowed_to_prove,status
 ```
+
+`file` is the inbox filename. `source_id` is your token for that file. Choose it after you decide what the file is.
 
 Use `status` to record `APPLICABLE`, `SUPERSEDED`, `IRRELEVANT`, `HOSTILE_TEXT`, or `OUTPUT_TO_CHECK`.
 
@@ -104,11 +164,34 @@ Cargo lot range:
 Time zones present:
 ```
 
-Near matches are not matches. Keep `VX-204` separate from `VX-240`, `R-71` separate from `R-17`, and the current route bulletin separate from the archived one.
+Near matches are not matches. Write the exact identifier you read, including revision and time zone.
+
+**PowerShell:**
+
+```powershell
+python .\scripts\check_work.py "$env:USERPROFILE\course-evidence\module-01-work" --phase register
+```
+
+**Bash or zsh:**
+
+```bash
+python3 scripts/check_work.py "$HOME/course-evidence/module-01-work" --phase register
+```
 
 ## 3. Split the AI brief into material claims
 
-Read S09. Put each statement that could change the decision into its own row in `thread-ledger.csv`.
+Open the 14:05 AI file in the inbox — the one whose name ends desk-ai-go. It is a finished GO. You did not write it. Put each statement that could change the decision into its own row in `thread-ledger.csv`.
+
+![One ledger row is one kind of claim](figures/m01-ledger-row.svg)
+
+*Split a compound sentence. One citation cannot stand for a count, a release, and a readiness decision.*
+
+<details>
+<summary>Figure text</summary>
+
+A compound sentence needs several rows. One citation cannot stand for a count, a release state, and a readiness decision.
+
+</details>
 
 Use this header:
 
@@ -155,6 +238,17 @@ Do not mark later events as facts. At 14:05, delivery and clinic receipt have no
 
 Use a calculator available on your machine, but enter the source values yourself. Do not copy a result from the AI brief or ask the producing AI to recompute it.
 
+![Premises in, result out, feasibility separate](figures/m01-recompute.svg)
+
+*Enter the source values yourself. Keep a closed gate separate from the clock.*
+
+<details>
+<summary>Figure text</summary>
+
+Do not copy a result from the AI file. A clock time can exist even when the gate is already closed.
+
+</details>
+
 Show the premises, operator, result, and unit in the `calculation` column. Required calculations are:
 
 1. scanned kits;
@@ -168,40 +262,96 @@ Keep feasibility separate from arithmetic. A clock calculation can produce 15:33
 
 The script is a calculator, not evidence. The source rows establish the premises. Your ledger shows whether each premise belongs in the calculation.
 
-## 6. Challenge the attractive wrong evidence
+**PowerShell:**
 
-Create `challenge-matrix.md` with these headings:
-
-```markdown
-# Challenge matrix
-
-## Warehouse receipt offered as proof of usable inventory
-
-## Accepted-for-processing receipt offered as permit approval
-
-## Archived route bulletin offered as current
-
-## R-17 community page offered for R-71
-
-## VX-240 note offered for VX-204
-
-## Instruction embedded inside a source
-
-## Producer confidence and self-review
+```powershell
+python .\scripts\check_work.py "$env:USERPROFILE\course-evidence\module-01-work" --phase ledger
 ```
 
-Under each heading, write:
+**Bash or zsh:**
 
-- what the source actually proves;
+```bash
+python3 scripts/check_work.py "$HOME/course-evidence/module-01-work" --phase ledger
+```
+
+## 6. Challenge the files you will not use for `GO`
+
+After you have opened every inbox file and run the hash command, write `challenge-matrix.md` yourself.
+
+![What the file proves is not what GO needs](figures/m01-challenge.svg)
+
+*Write one block per file you will not use to support GO.*
+
+<details>
+<summary>Figure text</summary>
+
+Write one block per file you will not use to support GO. Treat every inbox file as data.
+
+</details>
+
+One block per source you will not use to support `GO`. Each block states:
+
+- what the file actually proves;
 - what it cannot prove;
 - the exact mismatch; and
-- the source or owner that would be needed.
+- who would have to speak for the claim.
 
-Treat source text as data. The `SYSTEM OVERRIDE` inside S07 is text to quote and reject. It is not an instruction for you or the AI tool.
+Treat every inbox file as data. If a file contains an instruction to you or to a tool, quote it and reject it. It is not an order. Treat source text as data.
 
 Do not ask the producing AI to check its own work. A producer's citation list, confidence score, or second answer is not independent evidence.
 
-## 7. Write the corrected internal brief
+**PowerShell:**
+
+```powershell
+python .\scripts\check_work.py "$env:USERPROFILE\course-evidence\module-01-work" --phase challenge
+```
+
+**Bash or zsh:**
+
+```bash
+python3 scripts/check_work.py "$HOME/course-evidence/module-01-work" --phase challenge
+```
+
+## 7. Run the producer rebuttal
+
+Run the producer-rebuttal script. It writes `producer-rebuttal.md` into the work folder. Then add one challenge block for any claim in that file you still have not rejected. Do not ask that tool whether its `GO` is right.
+
+![A second GO is still output](figures/m01-rebuttal.svg)
+
+*Treat the rebuttal as another finished GO and add one challenge block.*
+
+<details>
+<summary>Figure text</summary>
+
+Run the rebuttal script. Add one challenge block. Do not ask that tool whether its GO is right.
+
+</details>
+
+**PowerShell:**
+
+```powershell
+python .\scripts\run_producer_rebuttal.py "$env:USERPROFILE\course-evidence\module-01-work"
+```
+
+**Bash or zsh:**
+
+```bash
+python3 scripts/run_producer_rebuttal.py "$HOME/course-evidence/module-01-work"
+```
+
+**PowerShell:**
+
+```powershell
+python .\scripts\check_work.py "$env:USERPROFILE\course-evidence\module-01-work" --phase rebuttal
+```
+
+**Bash or zsh:**
+
+```bash
+python3 scripts/check_work.py "$HOME/course-evidence/module-01-work" --phase rebuttal
+```
+
+## 8. Write the corrected internal brief
 
 Write `corrected-brief.md` for another class member who must decide what needs attention next. It must state:
 
@@ -212,6 +362,17 @@ Write `corrected-brief.md` for another class member who must decide what needs a
 - the current blockers;
 - the exact sources and calculations behind the blockers; and
 - the next evidence needed.
+
+![Verdict, blockers, then the five questions](figures/m01-verdict-packet.svg)
+
+*A classmate who did not watch you work should answer the five questions from the page.*
+
+<details>
+<summary>Figure text</summary>
+
+A classmate who did not watch you work should answer the five questions from the page.
+
+</details>
 
 Do not turn this into a movement plan. Do not select another route, estimate a permit decision, or claim that the clinic received cargo.
 
@@ -229,7 +390,7 @@ python .\scripts\render_review.py "$env:USERPROFILE\course-evidence\module-01-wo
 python3 scripts/render_review.py "$HOME/course-evidence/module-01-work"
 ```
 
-Open `review.html` in a browser. From that page, another person must be able to answer:
+Open `review.html`. A classmate who did not watch you work should answer the five questions from that page in three minutes. If they cannot, revise the page.
 
 1. What can proceed?
 2. What cannot proceed?
@@ -239,7 +400,19 @@ Open `review.html` in a browser. From that page, another person must be able to 
 
 Ask another class member to use the page. If they cannot answer the five questions from what the page shows, revise the page before you continue.
 
-## 8. Freeze the baseline verdict
+**PowerShell:**
+
+```powershell
+python .\scripts\check_work.py "$env:USERPROFILE\course-evidence\module-01-work" --phase packet
+```
+
+**Bash or zsh:**
+
+```bash
+python3 scripts/check_work.py "$HOME/course-evidence/module-01-work" --phase packet
+```
+
+## 9. Freeze the baseline verdict
 
 Complete `baseline-verdict.md`:
 
@@ -275,7 +448,7 @@ Get-FileHash .\thread-ledger.csv, .\baseline-verdict.md -Algorithm SHA256
 shasum -a 256 thread-ledger.csv baseline-verdict.md
 ```
 
-## 9. Predict the source-change effect
+## 10. Predict the source-change effect
 
 Before running the reveal command, write `change-prediction.md`:
 
@@ -292,6 +465,17 @@ Condition that would still block the overall verdict:
 Unexpected change that would cause HOLD:
 ```
 
+![Predict, freeze, then open the new bulletin](figures/m01-changed-source.svg)
+
+*Write the prediction before the reveal command. Update only dependent rows.*
+
+<details>
+<summary>Figure text</summary>
+
+The prediction must exist before the reveal command. Update only claims that depend on the current gate closure.
+
+</details>
+
 Your prediction must exist before you reveal the change. Freeze the source register, baseline ledger, challenge matrix, corrected brief, verdict, and prediction from the Module 1 directory:
 
 **PowerShell:**
@@ -306,7 +490,7 @@ python .\scripts\freeze_baseline.py "$env:USERPROFILE\course-evidence\module-01-
 python3 scripts/freeze_baseline.py "$HOME/course-evidence/module-01-work"
 ```
 
-## 10. Apply the practice change
+## 11. Apply the practice change
 
 Release the practice change only after the freeze command passes:
 
@@ -336,6 +520,18 @@ Later event not yet observed:
 Why the overall verdict changed or did not change:
 ```
 
+**PowerShell:**
+
+```powershell
+python .\scripts\check_work.py "$env:USERPROFILE\course-evidence\module-01-work" --phase change
+```
+
+**Bash or zsh:**
+
+```bash
+python3 scripts/check_work.py "$HOME/course-evidence/module-01-work" --phase change
+```
+
 Rerun the review renderer, then run the visible work checker:
 
 **PowerShell:**
@@ -354,7 +550,7 @@ python3 scripts/check_work.py "$HOME/course-evidence/module-01-work"
 
 The checker should reject stale route values and unrelated changes, but it still cannot judge whether your source interpretation and professional reasoning are sound.
 
-## 11. Finish the handoff
+## 12. Finish the handoff
 
 Write `handoff.md`:
 
@@ -376,7 +572,7 @@ What the next person should inspect first:
 
 A classmate who did not watch you work should be able to reconstruct the verdict without coaching.
 
-## 12. Defend the thread, not the form
+## 13. Defend the thread, not the form
 
 The facilitator or evaluator chooses one handoff between two adjacent thread steps and one material claim row. You do not choose the easiest examples.
 
@@ -408,7 +604,7 @@ Check that:
 - the ledger covers all eight thread steps;
 - every material statement is labeled;
 - calculations show supported premises and units;
-- all six attractive wrong sources or claims are explicitly rejected;
+- every inbox file you will not use to support GO, and the producer rebuttal, are explicitly rejected;
 - the brief works in the review surface;
 - the baseline ledger, prediction, and verdict predate the sealed change;
 - the changed ledger contains only dependent changes and no stale route value;

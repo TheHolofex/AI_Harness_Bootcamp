@@ -6,6 +6,17 @@ Plan for 15 minutes. This page gives you the only logistics model you need for t
 
 A **mission thread** is the ordered path from a request to a result. It shows what must happen, in what order, and what each step must hand to the next.
 
+![Eight steps from request to usable effect](figures/m01-eight-steps.svg)
+
+*Delivery and clinic receipt have not occurred at 14:05.*
+
+<details>
+<summary>Figure text</summary>
+
+The thread is Requirement defined, Cargo received, Cargo released, Vehicle made ready, Movement authorized, Route window met, Cargo delivered, Usable effect confirmed. Delivery and clinic receipt have not occurred at 14:05.
+
+</details>
+
 Cold Lantern uses eight steps:
 
 1. **Requirement defined** — the destination, usable quantity, route, and deadline are clear.
@@ -56,6 +67,17 @@ Do not keep splitting a claim forever. **Stop decomposing** when you reach one o
 
 Use one label for every material statement in the AI brief:
 
+![Five kinds of statement](figures/m01-statement-kinds.svg)
+
+*Label each material statement as one of these five kinds.*
+
+<details>
+<summary>Figure text</summary>
+
+Label each material statement as SOURCE FACT, CALCULATION, INFERENCE, DECISION, or UNSUPPORTED.
+
+</details>
+
 - `SOURCE FACT` — an applicable source directly states it.
 - `CALCULATION` — supported numbers and units produce it.
 - `INFERENCE` — you interpret facts and state why that reading follows.
@@ -68,6 +90,17 @@ A sentence can contain more than one kind. Split it until each row has one kind.
 
 A source is not trustworthy for everything.
 
+![Authority belongs to the claim](figures/m01-claim-authority.svg)
+
+*Ask which file is allowed to establish this claim.*
+
+<details>
+<summary>Figure text</summary>
+
+A genuine file can still be the wrong authority for the claim in front of you.
+
+</details>
+
 - The warehouse records what it scanned.
 - The quality office decides which lots are released.
 - Fleet Engineering defines vehicle payload and required equipment.
@@ -79,6 +112,17 @@ A genuine warehouse receipt can be the wrong source for usability. A current com
 ## The handoff rule
 
 One step can be correct while the overall conclusion is still wrong, because the next step may require something that the first one did not establish.
+
+![The next step can still fail](figures/m01-handoff-break.svg)
+
+*Check the next step. Expected arrival is not delivery.*
+
+<details>
+<summary>Figure text</summary>
+
+One step can be correct while the next step still fails. Expected arrival is not delivery.
+
+</details>
 
 - Twelve totes can be scanned while only ten are released.
 - Released cargo can fit while the required rack pushes another load over capacity.

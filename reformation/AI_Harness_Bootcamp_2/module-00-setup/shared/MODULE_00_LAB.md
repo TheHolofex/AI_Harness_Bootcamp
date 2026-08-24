@@ -109,6 +109,17 @@ module-00-work/
 
 Find out what will judge your work before you produce any of it. Otherwise you are writing toward a standard you have only guessed at.
 
+![The producer cannot grade its own work](figures/m00-independent-accept.svg)
+
+*Run the protected check yourself and read the result.*
+
+<details>
+<summary>Figure text</summary>
+
+The system that wrote the draft cannot edit or bypass the check that accepts it.
+
+</details>
+
 The checker you just copied is the practice check. You are meant to read it. Print its opening lines.
 
 **Windows PowerShell — normal user.**
@@ -169,6 +180,17 @@ Now fill in the last line of `acceptance-control.md` with two of those qualities
 
 Start `direction-brief.md` with this section:
 
+![What AI may do, what you keep, what you refuse](figures/m00-delegation.svg)
+
+*Name what AI may draft, what you keep, and what you refuse.*
+
+<details>
+<summary>Figure text</summary>
+
+AI may draft from the supplied files. You keep acceptance, disclosure, and the stop. Refuse a consequential send and any invented fact.
+
+</details>
+
 ```markdown
 ## Delegation decision
 
@@ -189,6 +211,17 @@ A sound split lets AI draft and reorganize the supplied facts. You still decide 
 
 Answer these questions before you generate anything, because two of them can end the work. Write `minimum-screen.md`:
 
+![Two answers can stop the work](figures/m00-minimum-screen.svg)
+
+*Answer source, data, audience, disclosure, authority, and owner before you generate.*
+
+<details>
+<summary>Figure text</summary>
+
+Answer source authority, sensitive data, audience, disclosure, consequential authority, and owner before you generate. Two of those answers can stop the work.
+
+</details>
+
 ```markdown
 # Minimum responsibility screen
 
@@ -202,13 +235,22 @@ Unresolved item:
 Decision: PROCEED TO CLASS DRAFT / HOLD
 ```
 
-For this case, use only the supplied source packet. The draft stays with named course participants, contains no personal data, and is never published. You make the final decision.
-
 If any line is unresolved, write `HOLD`. Do not draft until you know the source may be used and who makes the final decision.
 
 ## 6. Freeze the direction brief
 
 Pin down every part of the request that the model could otherwise satisfy in several incompatible ways. Complete the rest of `direction-brief.md` and save it before you run anything:
+
+![Freeze the request before you run anything](figures/m00-direction-contract.svg)
+
+*Write outcome, audience, constraints, acceptance, prohibited result, stop condition, and owner before any run.*
+
+<details>
+<summary>Figure text</summary>
+
+Outcome, audience, constraints, acceptance, prohibited result, stop condition, and owner exist in the brief before any run.
+
+</details>
 
 ```markdown
 # Direction brief
@@ -358,6 +400,17 @@ If instead the last line begins `HOLD:`, save the whole output before you touch 
 
 Choose the claim most likely to change what a reader does: hours, entrance, eligibility, or capacity. Open the source packet and compare it yourself. Do not ask the model that produced the claim whether the claim is supported.
 
+![Open the source yourself](figures/m00-claim-to-source.svg)
+
+*Open the source and quote the supporting text yourself.*
+
+<details>
+<summary>Figure text</summary>
+
+Choose the claim that would change what a reader does. Open the source. Quote the text. Do not ask the producing model whether it is supported.
+
+</details>
+
 Write `source-check.md`:
 
 ```markdown
@@ -375,6 +428,17 @@ Then read every sentence of the draft for services the source does not confirm: 
 ## 9. Run your falsifier
 
 Make the mistake on purpose and watch your check catch it. Until you have seen it fail once, you cannot tell whether it passed your draft because the draft is right or because it never looks at that claim.
+
+![Watch the check fail on purpose](figures/m00-falsifier.svg)
+
+*The check is trusted only after you have seen it fail.*
+
+<details>
+<summary>Figure text</summary>
+
+Make the mistake on purpose. The check must fail on the probe before you trust a pass on the draft.
+
+</details>
 
 Copy your draft, then edit the copy so that the one claim you checked in step 8 is stated wrongly — send readers to the Yard Street doors, or move the hours, or require identification, or change the capacity.
 
@@ -450,13 +514,24 @@ Keep `falsifier-probe.md`. Do not use it as your draft, and do not let any later
 
 Four different things acted in the run you just did, and they fail in different ways. Separating them is how you know what to fix when something goes wrong, and what you can rely on next time.
 
+![Four layers that can fail separately](figures/m00-four-layers.svg)
+
+*Separate model output, product surface, harness controls, and the human decision before you name the fault.*
+
+<details>
+<summary>Figure text</summary>
+
+Model output, the product surface, harness controls, and the human decision fail in different ways. Separate them before you decide what to fix.
+
+</details>
+
 Write `capability-limit.md` from what you saw in your own run — not from what you have read about these tools:
 
 ```markdown
 # Capability and limit
 
 What the model output produced:
-What the product around it did (the command-line tool, its sandbox, its file writing):
+What the product around it did (the command-line tool, its sandbox — the limits the tool was given — which folders it may write, which network it may use — its file writing):
 What the harness controlled (the direction brief, the checks, the work folder):
 What stayed a human decision:
 
@@ -492,6 +567,17 @@ Choose `HOLD` if a claim that affects the reader has no source, a responsibility
 
 Open `CHANGED_INPUT.md` now. Before you run anything, write `changed-input-prediction.md`:
 
+![Predict, then change one fact](figures/m00-changed-input.svg)
+
+*Write the prediction first. Only the field you named may move.*
+
+<details>
+<summary>Figure text</summary>
+
+Write the prediction first. Change one supplied fact. Only the field you named may move.
+
+</details>
+
 ```markdown
 # Changed-input prediction
 
@@ -500,8 +586,6 @@ Material statements that must not change:
 Checks to rerun:
 Unexpected change that would cause HOLD:
 ```
-
-The capacity changes from 60 to 45. Days, hours, address, entrance, eligibility, services, and the contact line do not change.
 
 Ask the AI tool to write `artifact-changed.md` from the original draft and the changed input. Name the new file in the instruction so it cannot overwrite `artifact.md`.
 

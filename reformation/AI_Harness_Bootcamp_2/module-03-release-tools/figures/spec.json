@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "M03",
+  "figures": [
+    {
+      "id": "m03-two-branches",
+      "role": "orientation",
+      "template": "comparison",
+      "title": "Decision and connection are both required",
+      "desc": "The decision branch records whether the note may be published or dispatched. The connection branch inspects, runs, and revokes the hash tool. Both branches are required.",
+      "caption": "Record the release decision and complete the tool branch.",
+      "transcript": "The decision branch records whether the note may be published or dispatched. The connection branch inspects, runs, and revokes the hash tool. Both branches are required.",
+      "eyebrow": "BRANCHES",
+      "items": [
+        { "label": "Decision", "detail": "publish, send, or no-release" },
+        { "label": "Connection", "detail": "inspect, hash, stop, revoke" }
+      ]
+    },
+    {
+      "id": "m03-six-concerns",
+      "role": "method",
+      "template": "stack",
+      "height": 420,
+      "title": "Six concerns, one disposition",
+      "desc": "Privacy and security, intellectual property, fairness, disclosure, affected person and recourse, and accountability each get evidence. One disposition closes the set.",
+      "caption": "Write evidence under all six concerns, then record one disposition.",
+      "transcript": "Privacy and security, intellectual property, fairness, disclosure, affected person and recourse, and accountability each get evidence. One disposition closes the set.",
+      "eyebrow": "CONCERNS",
+      "items": [
+        { "label": "Privacy and security", "detail": "who can see it" },
+        { "label": "Intellectual property", "detail": "who owns the words" },
+        { "label": "Fairness", "detail": "who is left out" },
+        { "label": "Disclosure", "detail": "what must be said" },
+        { "label": "Affected person and recourse", "detail": "who can object" },
+        { "label": "Accountability", "detail": "who owns the decision" }
+      ]
+    },
+    {
+      "id": "m03-no-release",
+      "role": "mechanism",
+      "template": "fork",
+      "title": "Class-only means no-release",
+      "desc": "The sharing limit is class-only and no outside owner exists. Record no-release. Still hash: the tool branch is not optional.",
+      "caption": "Record no-release, then still hash the supplied note.",
+      "transcript": "The sharing limit is class-only and no outside owner exists. Record no-release. Still hash: the tool branch is not optional.",
+      "eyebrow": "RELEASE",
+      "source": { "label": "Sharing limit", "detail": "class-only, no outside owner" },
+      "items": [
+        { "label": "no-release", "detail": "do not publish or dispatch" },
+        { "label": "Still hash", "detail": "the tool branch is not optional" }
+      ]
+    },
+    {
+      "id": "m03-raw-authority",
+      "role": "diagnostic",
+      "template": "matrix",
+      "title": "What hash_source.py can actually do",
+      "desc": "hash_source.py can read one local file. It writes nothing, uses no network, and executes a hash only. Do not invent extra capabilities for the hash tool.",
+      "caption": "Read the script. One local file, no write, no network, hash only.",
+      "transcript": "hash_source.py can read one local file. It writes nothing, uses no network, and executes a hash only. Do not invent extra capabilities for the hash tool.",
+      "eyebrow": "AUTHORITY",
+      "columns": ["READ", "WRITE", "NETWORK", "EXECUTE"],
+      "rows": [
+        ["hash_source.py", "one local file", "none", "none", "hash only"]
+      ]
+    },
+    {
+      "id": "m03-least-power",
+      "role": "method",
+      "template": "flow",
+      "title": "Read one file, write nothing",
+      "desc": "Point the tool at the supplied note. It reads that one file and writes nothing. A refused path prints HOLD and exits 1.",
+      "caption": "Hash the supplied note. A refused path prints HOLD and exits 1.",
+      "transcript": "Point the tool at the supplied note. It reads that one file and writes nothing. A refused path prints HOLD and exits 1.",
+      "eyebrow": "HASH",
+      "items": [
+        { "label": "Point at the supplied note", "detail": "one allowed path" },
+        { "label": "Read that file", "detail": "no second path" },
+        { "label": "Write nothing", "detail": "stdout only" },
+        { "label": "Refuse any other path", "detail": "HOLD, exit 1" }
+      ]
+    },
+    {
+      "id": "m03-approval-edge",
+      "role": "mechanism",
+      "template": "timeline",
+      "title": "Approval is the moment authority is used",
+      "desc": "The hash command is the moment the tool’s authority is used. Record the command you ran and the line it printed.",
+      "caption": "Record the command you ran. That is the moment authority is used.",
+      "transcript": "The hash command is the moment the tool’s authority is used. Record the command you ran and the line it printed.",
+      "eyebrow": "APPROVAL",
+      "items": [
+        { "label": "Inspect the script", "detail": "before any run" },
+        { "label": "Run the allowed path", "detail": "the supplied note" },
+        { "label": "Record the printed line", "detail": "sha256 plus the filename" },
+        { "label": "Prove the refuse path", "detail": "HOLD: path not allowed" }
+      ]
+    },
+    {
+      "id": "m03-composed-negative",
+      "role": "diagnostic",
+      "template": "comparison",
+      "title": "Override text plus the tool still cannot expand",
+      "desc": "The override block names the tool and tells it to expand. The tool still only hashes one file inside shared/case. No second file appears.",
+      "caption": "Run only the supplied tool. Confirm it still only hashes one allowed file.",
+      "transcript": "The override block names the tool and tells it to expand. The tool still only hashes one file inside shared/case. No second file appears.",
+      "eyebrow": "COMPOSED",
+      "items": [
+        { "label": "Override text", "detail": "data, not a new grant" },
+        { "label": "The same tool", "detail": "still one local file, write nothing" }
+      ]
+    },
+    {
+      "id": "m03-revoke",
+      "role": "method",
+      "template": "cycle",
+      "height": 420,
+      "title": "Connect, act, stop, revoke, prove",
+      "desc": "Connect the tool, act once, stop using it, revoke the right, and prove the next run is refused or the file is gone.",
+      "caption": "Stop, revoke, and prove the next run is refused.",
+      "transcript": "Connect the tool, act once, stop using it, revoke the right, and prove the next run is refused or the file is gone.",
+      "eyebrow": "REVOKE",
+      "items": [
+        { "label": "Connect", "detail": "the supplied script" },
+        { "label": "Act", "detail": "one allowed hash" },
+        { "label": "Stop", "detail": "write the last command" },
+        { "label": "Revoke", "detail": "remove the right" },
+        { "label": "Prove", "detail": "the next run is refused" }
+      ]
+    }
+  ]
+}

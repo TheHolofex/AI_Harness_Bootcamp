@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "M07",
+  "figures": [
+    {
+      "id": "m07-pre-result",
+      "role": "method",
+      "template": "stack",
+      "height": 420,
+      "title": "Freeze the policy before any candidate",
+      "desc": "The policy is frozen first: hard gate, any single violation. Candidates stay closed until that policy is on disk.",
+      "caption": "Confirm hard gate, any single violation, before you open a candidate.",
+      "transcript": "The policy is frozen first: hard gate, any single violation. Candidates stay closed until that policy is on disk.",
+      "eyebrow": "POLICY",
+      "items": [
+        { "label": "Open the policy file", "detail": "PRE_RESULT_POLICY.md" },
+        { "label": "Hard gate", "detail": "named before results" },
+        { "label": "Any single violation", "detail": "one miss defeats" },
+        { "label": "Then open candidates", "detail": "not before" }
+      ]
+    },
+    {
+      "id": "m07-variation",
+      "role": "orientation",
+      "template": "comparison",
+      "title": "Four kinds of evidence, not a blend",
+      "desc": "Deterministic case, repeated aggregated runs, hard gate, and a stochastic claim stay separate. A stochastic claim is excluded from adoption.",
+      "caption": "Keep deterministic, repeated, hard-gate, and stochastic evidence in separate columns.",
+      "transcript": "Deterministic case, repeated aggregated runs, hard gate, and a stochastic claim stay separate. A stochastic claim is excluded from adoption.",
+      "eyebrow": "VARIATION",
+      "items": [
+        { "label": "Deterministic case", "detail": "the same input, the same result" },
+        { "label": "Repeated aggregated runs", "detail": "counted, not averaged into a gate" },
+        { "label": "Hard gate", "detail": "any single violation" },
+        { "label": "Stochastic claim excluded", "detail": "not an adoption basis" }
+      ]
+    },
+    {
+      "id": "m07-paired",
+      "role": "method",
+      "template": "flow",
+      "title": "Each candidate sits next to its baseline",
+      "desc": "Confirm both baselines pass. Then place each candidate next to its own baseline. Do not mix pairs.",
+      "caption": "Sit each candidate next to its own baseline.",
+      "transcript": "Confirm both baselines pass. Then place each candidate next to its own baseline. Do not mix pairs.",
+      "eyebrow": "PAIRED",
+      "items": [
+        { "label": "Confirm baselines", "detail": "both pass" },
+        { "label": "Open candidate A", "detail": "beside its baseline" },
+        { "label": "Open candidate B", "detail": "beside its baseline" },
+        { "label": "Do not mix pairs", "detail": "one pair at a time" }
+      ]
+    },
+    {
+      "id": "m07-any-single",
+      "role": "mechanism",
+      "template": "fork",
+      "title": "One hard-gate miss defeats the candidate",
+      "desc": "A hard gate is any single violation. Defeat: do not average. Continue only if every gate holds.",
+      "caption": "One hard-gate miss defeats the candidate. Do not average.",
+      "transcript": "A hard gate is any single violation. Defeat: do not average. Continue only if every gate holds.",
+      "eyebrow": "GATE",
+      "source": { "label": "Hard gate", "detail": "any single violation" },
+      "items": [
+        { "label": "Defeat", "detail": "do not average" },
+        { "label": "Continue", "detail": "only if every gate holds" }
+      ]
+    },
+    {
+      "id": "m07-invented",
+      "role": "diagnostic",
+      "template": "comparison",
+      "title": "Invented payload cannot be adopted",
+      "desc": "An invented payload is a hard-gate miss. The candidate cannot be adopted. The baseline without that payload still stands.",
+      "caption": "An invented payload is a hard-gate miss. Do not adopt that candidate.",
+      "transcript": "An invented payload is a hard-gate miss. The candidate cannot be adopted. The baseline without that payload still stands.",
+      "eyebrow": "INVENTED",
+      "items": [
+        { "label": "Invented payload", "detail": "hard-gate miss" },
+        { "label": "Baseline without it", "detail": "still the standing text" }
+      ]
+    },
+    {
+      "id": "m07-timezone",
+      "role": "diagnostic",
+      "template": "comparison",
+      "title": "20:50Z is not 14:50 without both zones",
+      "desc": "Collapse is 20:50Z printed as 14:50. Allowed is both UTC and MDT written. One zone alone is a miss.",
+      "caption": "Both UTC and MDT must be written. 20:50Z printed as 14:50 is a miss.",
+      "transcript": "Collapse is 20:50Z printed as 14:50. Allowed is both UTC and MDT written. One zone alone is a miss.",
+      "eyebrow": "TIMEZONE",
+      "items": [
+        { "label": "Collapse", "detail": "20:50Z printed as 14:50" },
+        { "label": "Allowed", "detail": "both UTC and MDT are written" }
+      ]
+    },
+    {
+      "id": "m07-bounded",
+      "role": "method",
+      "template": "stack",
+      "title": "The adoption claim cannot exceed the cases",
+      "desc": "The adoption claim names only the cases you ran. It does not extend to unseen pairs or to a quality average.",
+      "caption": "Bound the adoption claim to the cases you actually ran.",
+      "transcript": "The adoption claim names only the cases you ran. It does not extend to unseen pairs or to a quality average.",
+      "eyebrow": "BOUNDED",
+      "items": [
+        { "label": "Cases run", "detail": "the pairs on disk" },
+        { "label": "Gates that fired", "detail": "named, not averaged" },
+        { "label": "No unseen pair", "detail": "not in the claim" },
+        { "label": "No quality average", "detail": "not an adoption basis" }
+      ]
+    },
+    {
+      "id": "m07-diag-vs-confirm",
+      "role": "diagnostic",
+      "template": "comparison",
+      "title": "A repair case cannot confirm the repair",
+      "desc": "A case used to find the defect cannot confirm that the defect is gone. Confirmation needs a case that was not used to diagnose.",
+      "caption": "Do not use the repair case as the confirmation case.",
+      "transcript": "A case used to find the defect cannot confirm that the defect is gone. Confirmation needs a case that was not used to diagnose.",
+      "eyebrow": "CONFIRM",
+      "items": [
+        { "label": "Repair case", "detail": "found the defect" },
+        { "label": "Confirmation case", "detail": "a case not used to diagnose" }
+      ]
+    },
+    {
+      "id": "m07-restore",
+      "role": "method",
+      "template": "timeline",
+      "title": "Remove the candidate and pass baseline again",
+      "desc": "Remove the candidate from the work copy. Restore the baseline. The baseline must pass again.",
+      "caption": "Remove the candidate and pass the baseline again.",
+      "transcript": "Remove the candidate from the work copy. Restore the baseline. The baseline must pass again.",
+      "eyebrow": "RESTORE",
+      "items": [
+        { "label": "Remove the candidate", "detail": "work copies only" },
+        { "label": "Restore baseline files", "detail": "the supplied restore" },
+        { "label": "Pass baseline again", "detail": "same gates, exit 0" }
+      ]
+    }
+  ]
+}
