@@ -1,4 +1,4 @@
-# S08 · North Pass community update
+# Pine County community update
 
 **Publisher:** Pine County Community Desk  
 **Updated:** 2026-10-06 14:00 MDT  

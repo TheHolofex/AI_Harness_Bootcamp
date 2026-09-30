@@ -36,11 +36,3 @@ The AI system's confidence, citation list, and self-review do not count as indep
 
 All names, routes, documents, quantities, and organizations are fictional course fixtures. Do not use this packet to plan, authorize, dispatch, or describe a real movement. A module result permits only class review.
 
-## Staff material
-
-Learners may read the public rubric. Graded cases and decisive checks remain outside the student repository.
-
-- [Facilitator runbook](facilitator/RUNBOOK.md)
-- [Protected-case custody contract](assessment/CUSTODY_CONTRACT.md)
-- [Frozen Reference](reference/REFERENCE.md)
-- [Gauntlet prompt](reference/GAUNTLET_PROMPT.md)

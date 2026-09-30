@@ -4,7 +4,7 @@
 
 ## Scope and responsibility
 
-This guide governs only the stable core skeleton. Product instructions, scenarios, commands, forms, fixtures, answers, and instructor procedures belong in adapters.
+This guide governs the Reformation core and its runnable modules. Core files own the capability progression. Module sources own scenarios, commands, forms, practice data, and facilitator procedures. The published HTML is the learner surface.
 
 The learner specifies task-specific behavior, configures bounded values in supplied controls, tests, interprets, and decides. The **adapter implements** executable mechanics, dynamic checks, protected custody, equivalent accessible views, and evidence export, and supplies every module's case. A builder owns general-purpose code, API/MCP, retrieval pipelines, agent runtimes, and deployment.
 
@@ -29,14 +29,16 @@ Every module declares once:
 - `Scope boundary`
 - `Handoff`
 
-Modules are independent. Every entry in `Consumes` is supplied from outside the module and carries one of two prefixes:
+Modules have independent supplied cases, not independent learning objectives. Each module assumes earlier capabilities and extends at least one of them. Every entry in `Consumes` is supplied from outside the module and carries one of two prefixes:
 
-- `VERIFY:` — the **learner** confirms it before the performance attempt. The check appears in that module's `Practical work` and its `Failure / HOLD` line. `VERIFY:PREFLIGHT` and `VERIFY:CASE` are the two universal session-entry preconditions: every module consumes them, and they are confirmed once at the start of the session rather than restated as module work.
-- `CUSTODY:` — the **evaluator or adapter** confirms it, and the learner must not inspect it. Hidden faults, protected case banks, and recipient independence are custody items; a learner-facing check on one of these leaks the fixture.
+- `VERIFY:` — the learner confirms the supplied input or operating boundary before the attempt. `VERIFY:PREFLIGHT` and `VERIFY:CASE` are universal entry conditions.
+- `CUSTODY:` — an evaluator controls a genuinely private graded selection or verifies recipient independence. A checked-in fault helper, practice case, answer specimen, or public rubric is inspectable and cannot establish secret custody.
 
 No module consumes another module's product. Every token in `Produces` is named in that module's `Performance evidence` or `Gate`; the module's own claim-result token is established by its `Gate`. A mention in `Handoff` alone does not establish that a product exists.
 
 A module has one primary outcome and at most three numbered enabling objectives. It leaves one evidence bundle and one claim result: `PASS` or `HOLD`. File presence cannot establish performance.
+
+For each mastery claim, complete “Before this project, the learner could ___. After this project, the learner can ___.” A new file, scenario, tool installation, repetition count, or evidence log is not a new capability. Repeated skills are prerequisites or quality bars. Recover a missing prerequisite explicitly without relabeling it as the current objective.
 
 ## Single ownership
 
@@ -50,7 +52,8 @@ A module has one primary outcome and at most three numbered enabling objectives.
 | Observed-run analysis and predicate specification | 05 |
 | Fixed workflow and deterministic outer-state change | 06 |
 | Variation-aware candidate comparison and rollback | 07 |
-| Restartability, person transfer, qualification closure | 08 |
+| Live-agent allow-list, write jail, planted-instruction refuse | 08 |
+| Restartability, person transfer, qualification closure | 09 |
 
 ## Responsibility before release
 
@@ -71,11 +74,13 @@ Every bundle contains:
 - scope boundary; and
 - handoff.
 
-The producer cannot edit, bypass, or select away its decisive check. A source of evidence is **independent or protected** only when custody sits outside the producer, the producer cannot enumerate or select the cases it will face, and the producer can neither author nor amend the result. Simulation, replay, discussion, narrated answers, and producer self-assessment cannot satisfy executed operation.
+Independent evidence checks the producer’s claim against a separately inspectable source, deterministic rule, or observed state. Protected assessment additionally requires custody outside the producer: the producer cannot edit, bypass, or select away the decisive check, graded selection, or result. Public practice files are inspectable. A model’s authorship, a hash, or an agent role-play does not certify a person’s qualification. Authored fictional corpora and paired outputs are labeled practice data, not live OpenRouter receipts.
+
+An executed tool claim requires the actual assistant call, execution result, guard decision, and disk effect. A refusal sentence is not a tool denial. Distinguish `DENIED_BY_GUARD`, `DENIED_BY_RUNTIME`, `NOT_ATTEMPTED`, and `VIOLATION`. Missing or incomplete receipts hold the affected claim. The OMP extension limits the tools exposed to the model; it is not an operating-system sandbox or a defense against malicious local processes.
 
 ## Nondeveloper and dynamic-check boundary
 
-The learner can specify a mechanically decidable predicate and configure it in a **supplied protected control**. The adapter implements any new checker and owns its protected identity. If the observed failure is an arbitrary semantic condition that cannot be represented in supplied controls, record the predicate, implementation dependency, owner, and `HOLD`; do not award implementation credit.
+The learner can specify a mechanically decidable predicate and configure it in a **supplied deterministic control**. The adapter implements any new checker and owns its identity. If the observed failure is an arbitrary semantic condition that cannot be represented in supplied controls, record the predicate, implementation dependency, owner, and `HOLD`; do not award implementation credit.
 
 The fixed workflow is the highest common-core machinery. Persistent state, adaptive flow, multi-agent operation, custom RAG, API/MCP construction, runtime development, and deployment are advanced. A learner who meets a trigger for one of them records the trigger, the simpler alternative, the added risk, and the escalation owner.
 
@@ -83,7 +88,7 @@ The fixed workflow is the highest common-core machinery. Persistent state, adapt
 
 Exact blast-radius claims apply to deterministic outer state: input identity, route, status, field presence, policy version, receipts, and controlled deterministic fields. When probabilistic content materially affects acceptance, the run applies the pre-result variation rule below or routes the item to `HOLD`; one generated sample cannot establish exactness.
 
-An output is **material** when a criterion named in the module's gate depends on its content. The classification is declared before the run and graded with the protected control; the producer does not reclassify after seeing output.
+An output is **material** when a criterion named in the module's gate depends on its content. The classification is declared before the run and graded with the supplied control; the producer does not reclassify after seeing output.
 
 Candidate evaluation declares before results one of:
 
@@ -94,7 +99,7 @@ Candidate evaluation declares before results one of:
 
 ## Qualification and transfer
 
-`HOLD` may permit continued participation when safety allows; because modules are independent, a held outcome never blocks a later session. Final qualification requires every PO passed. An outcome is reassessed only against its original gate, on an unseen protected case, scheduled outside the facilitated hours, with both attempts preserved.
+`HOLD` may permit continued participation when safety allows; because modules are independent, a held outcome never blocks a later session. Final qualification requires every PO passed. An outcome is reassessed only against its original gate, on an unseen case held by an evaluator when available, scheduled outside the facilitated hours, with both attempts preserved.
 
 Clean-session and independent-person transfer are separate. The evaluator selects the task and holds the rubric; the recipient has not completed this core and did not observe the build. The recipient's preserved first attempt is scored without author coaching.
 
@@ -106,13 +111,17 @@ Learner-facing material carries no product token, prefix token, or `PO` identifi
 
 ## Recorded decisions
 
-### Markdown now, HTML at delivery
+### Maintainer sources and HTML publication
 
-`CLAUDE.md` states: "The website is the course. Do not add learner-facing Markdown pages." That rule is anchored to Course 1's site and its path map. Reformation has no site yet, and Module 0's platform guides fall inside the rule's own carve-out — the learner works in a terminal on files in the clone, so handling the file is part of the exercise.
+Maintain existing instructional Markdown in its owning module and publish it through `scripts/build_course.py`. Do not add a second learner Markdown navigation path. Only files that learners operate on are raw downloads. `course.json` owns the public allowlist; staff references, historical evidence, graded selections, and answer keys stay outside `site/`.
 
-Decision: Reformation modules are authored in Markdown now and published to HTML at delivery. Modules 01–08 follow this rather than re-deciding it one module at a time.
+Preserve command fence languages, terminal and privilege labels, separate expected output, stop conditions, link destinations, figure descriptions, and text alternatives. Run structural checks against the published HTML. Every procedure gives the purpose, exact action, expected observation, stop condition, and recovery. Use ordinary complete sentences and define each new term at first use. Remove making-of rationale, internal curriculum tokens, section narration, and answer-leading commentary.
 
-The port is owed work, not a free conversion. Fenced command blocks, terminal and privilege labels, expected-output blocks, stop conditions, and per-fence language tags all carry meaning that the checks read; the HTML must preserve every one of them, and the checks must be re-pointed at the published pages rather than left reading the Markdown they no longer govern. Budget the port as its own task with its own verification pass.
+Use `shared/prepare_work.py` for Modules 02–09, Module 01’s starter for its fixed source boundary, and Module 00’s four-file case copy. Work and evidence stay outside the checkout. Refuse existing destinations and retain failed attempts. Only the documented restore operation may replace an authorized work-copy control.
+
+Use the pinned shared OMP launcher rather than direct vendor logins or alternate harness branches. Require Git, Python 3.12+, Oh My Pi 18.3.5, a browser, and a text editor. The exact model is `openrouter/anthropic/claude-sonnet-4.6`; the only participant credential is `OPENROUTER_API_KEY`. Node is a maintainer-only figure prerequisite. Keep hashing, arithmetic, predicates, routing, and comparisons deterministic.
+
+Record observed exercise outcomes separately from editorial review. Keep live-provider, native-platform, accessibility, peer-review, and human-qualification lanes explicit. The 15-minute/eight-term orientation, 120-minute unaided-work limit, and first-result timing remain design targets until measured with people.
 
 ### `PASS` and `HOLD` are ordinary English, and they stay
 

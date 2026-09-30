@@ -51,8 +51,18 @@ v1's shared environment rules (§4, now §3 invariants 1–8), its absolute-fail
 
 ## Re-freezing
 
-`REFERENCE.sha256` is recomputed on every amendment. Any edit to `REFERENCE.md` requires recomputing it, or `tests/test_module_00.py` fails at `M0-REF` by design.
+`REFERENCE.sha256` records the SHA-256 of the amended `REFERENCE.md`, followed by `reference/REFERENCE.md`. Change the digest only for an explicit contract amendment; retain the reason and behavioral evidence here. Historical v1/v2 findings above remain historical.
 
-```bash
-shasum -a 256 reference/REFERENCE.md | awk '{print $1"  reference/REFERENCE.md"}' > reference/REFERENCE.sha256
-```
+## v3 amendment — one harness, one provider, honest evidence
+
+| # | Previous requirement or defect | Current contract and reason |
+|---|---|---|
+| 22 | Multiple participant agent/tool chains, unaudited proof files, mixed provider pins and clean-tree gating | Git/Python/OMP 18.3.5 plus OpenRouter only; exact `openrouter/anthropic/claude-sonnet-4.6`; verified-first official binary; three-argument token-and-receipt proof. Preserve unrelated checkout changes and use external work. |
+| 23 | Protected-control claims described a public practice checker as inaccessible; technical or agent results could be read as qualification | Public practice is inspectable. Qualification requires actual independent evaluator custody and original evidence; otherwise HOLD. No fabricated control, human result, or hidden second case. |
+| 24 | Old timeboxes and perfect review scores implied measured performance | Session allocations and the 60-minute first-result goal are design targets. Keep platform, live, accessibility, peer and human outcomes separate; no unobserved pass. |
+| 25 | Frozen reference still contained retired services, multi-agent setup checks, source-wording gates and thin-case examples after the setup cutover | Replace active §§3–8 with the implemented single-runtime and North Shelf contract; retain the research survey and historical evidence. Preserve all supplied case facts and the count-only changed input. |
+| 26 | The public checker rejected “No vehicle is assigned,” “No permit is approved” and “No receipt is confirmed” by matching a shorter positive substring | An affirmative span shields only the nested substring; a separate contradictory occurrence still wins. Actual before/after counterexamples are retained in the staff QA record; nine polarity boundaries are permanent regression coverage. |
+| 27 | macOS's reopened-terminal block repaired PATH while claiming persistent availability | Persist the non-secret user-bin setting idempotently in the selected login profile, then verify in a new shell without a PATH repair. The isolated cold-shell before-run selected the other installation and failed the intended-path check. |
+| 28 | OMP `--no-rules` did not stop ancestor context discovery outside the isolated runtime cwd | Place cwd beneath isolated HOME. The real pinned-OMP before/after smoke observed the external synthetic context marker before the fix and its absence after it, with zero provider requests. |
+
+The digest is re-frozen for this explicit v3 replacement, not to hide a failed gate. Per-run evidence and unresolved external dependencies are recorded in `reformation/evidence/exercise-runs.json`.

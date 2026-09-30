@@ -37,6 +37,20 @@ def main() -> int:
         if bad:
             failures.append(f"pass/{path.name} should clear every check, but failed: {bad}")
 
+    for name, negative, positive in (
+        ("no vehicle", "No vehicle is assigned", "a vehicle is assigned"),
+        ("no permit", "No permit is approved", "the permit is approved"),
+        ("no receipt", "No receipt is confirmed", "the receipt is confirmed"),
+    ):
+        for text, expected_pass in (
+            (negative + ".", True),
+            (negative + ", but " + positive + ".", False),
+            (negative + ". However, " + positive + ".", False),
+        ):
+            actual = next(ok for label, ok, _ in check_artifact.run(text) if label == name)
+            if actual != expected_pass:
+                failures.append(f"{name}: incorrect polarity for {text!r}")
+
     want = expected()
     for path in sorted((FIX / "fail").glob("*.md")):
         checks = check_artifact.run(path.read_text(encoding="utf-8"))
@@ -64,6 +78,7 @@ def main() -> int:
     print(f"PASS: {len(list((FIX / 'pass').glob('*.md')))} faithful drafts clear every check")
     print(f"PASS: {len(want)} corrupted drafts are each rejected on the named check")
     print(f"PASS: all {len(all_checks)} checks have at least one killing fixture")
+    print("PASS: nine negative-fact and contradictory-assertion boundaries")
     print("\nCHECKER ADEQUACY PASS")
     return 0
 

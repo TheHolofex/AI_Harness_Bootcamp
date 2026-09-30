@@ -1,4 +1,4 @@
-# S05 · Route R-71 North Gate bulletins
+# Route R-71 bulletin set
 
 **Issuer:** North Basin Road Authority  
 **Authority:** R-71 North Gate access windows

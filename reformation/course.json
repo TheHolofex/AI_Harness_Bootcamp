@@ -1,0 +1,297 @@
+{
+  "schema_version": 1,
+  "course_id": "AI_Harness_Bootcamp_2",
+  "source_root": "AI_Harness_Bootcamp_2",
+  "site_dir": "site",
+  "index": {
+    "source": "README.md",
+    "dest": "index.html"
+  },
+  "modules": [
+    {
+      "id": "00",
+      "directory": "module-00-setup",
+      "title": "Module 0 · Set up the harness and direct bounded work",
+      "pages": [
+        {"source": "README.md", "dest": "README.html"},
+        {"source": "shared/MODULE_00_LAB.md", "dest": "shared/MODULE_00_LAB.html"},
+        {"source": "shared/ACCESSIBILITY.md", "dest": "shared/ACCESSIBILITY.html"},
+        {"source": "assessment/PUBLIC_RUBRIC.md", "dest": "assessment/PUBLIC_RUBRIC.html"},
+        {"source": "platforms/arch-linux.md", "dest": "platforms/arch-linux.html"},
+        {"source": "platforms/macos.md", "dest": "platforms/macos.html"},
+        {"source": "platforms/ubuntu.md", "dest": "platforms/ubuntu.html"},
+        {"source": "platforms/windows-powershell.md", "dest": "platforms/windows-powershell.html"},
+        {"source": "platforms/windows-wsl.md", "dest": "platforms/windows-wsl.html"},
+        {"source": "shared/CREDENTIALS.md", "dest": "shared/CREDENTIALS.html"},
+        {"source": "shared/TROUBLESHOOTING.md", "dest": "shared/TROUBLESHOOTING.html"},
+        {"source": "shared/VERSIONS.md", "dest": "shared/VERSIONS.html"},
+        {"source": "shared/SOURCES.md", "dest": "shared/SOURCES.html"}
+      ],
+      "figures": [
+        {"source": "shared/figures/m00-changed-input.svg", "dest": "shared/figures/m00-changed-input.svg"},
+        {"source": "shared/figures/m00-claim-to-source.svg", "dest": "shared/figures/m00-claim-to-source.svg"},
+        {"source": "shared/figures/m00-delegation.svg", "dest": "shared/figures/m00-delegation.svg"},
+        {"source": "shared/figures/m00-direction-contract.svg", "dest": "shared/figures/m00-direction-contract.svg"},
+        {"source": "shared/figures/m00-falsifier.svg", "dest": "shared/figures/m00-falsifier.svg"},
+        {"source": "shared/figures/m00-four-layers.svg", "dest": "shared/figures/m00-four-layers.svg"},
+        {"source": "shared/figures/m00-independent-accept.svg", "dest": "shared/figures/m00-independent-accept.svg"},
+        {"source": "shared/figures/m00-minimum-screen.svg", "dest": "shared/figures/m00-minimum-screen.svg"},
+        {"source": "shared/figures/m00-recovery.svg", "dest": "shared/figures/m00-recovery.svg"},
+        {"source": "shared/figures/m00-setup-chain.svg", "dest": "shared/figures/m00-setup-chain.svg"}
+      ],
+      "scripts": [
+        {"source": "scripts/verify-setup.sh", "dest": "scripts/verify-setup.sh"},
+        {"source": "scripts/verify-setup.ps1", "dest": "scripts/verify-setup.ps1"}
+      ],
+      "download_dirs": ["shared/case"],
+      "tests": ["tests/test_module_00.py", "tests/test_checker.py"]
+    },
+    {
+      "id": "01",
+      "directory": "module-01-mission-thread",
+      "title": "Module 1 · Verify sources and outputs",
+      "pages": [
+        {"source": "README.md", "dest": "README.html"},
+        {"source": "shared/MODULE_01_LAB.md", "dest": "shared/MODULE_01_LAB.html"},
+        {"source": "shared/ACCESSIBILITY.md", "dest": "shared/ACCESSIBILITY.html"},
+        {"source": "assessment/PUBLIC_RUBRIC.md", "dest": "assessment/PUBLIC_RUBRIC.html"},
+        {"source": "shared/MISSION_THREAD.md", "dest": "shared/MISSION_THREAD.html"},
+        {"source": "shared/WHEN_EVIDENCE_BREAKS.md", "dest": "shared/WHEN_EVIDENCE_BREAKS.html"}
+      ],
+      "figures": [
+        {"source": "shared/figures/m01-challenge.svg", "dest": "shared/figures/m01-challenge.svg"},
+        {"source": "shared/figures/m01-changed-source.svg", "dest": "shared/figures/m01-changed-source.svg"},
+        {"source": "shared/figures/m01-claim-authority.svg", "dest": "shared/figures/m01-claim-authority.svg"},
+        {"source": "shared/figures/m01-desk-intake.svg", "dest": "shared/figures/m01-desk-intake.svg"},
+        {"source": "shared/figures/m01-eight-steps.svg", "dest": "shared/figures/m01-eight-steps.svg"},
+        {"source": "shared/figures/m01-handoff-break.svg", "dest": "shared/figures/m01-handoff-break.svg"},
+        {"source": "shared/figures/m01-ledger-row.svg", "dest": "shared/figures/m01-ledger-row.svg"},
+        {"source": "shared/figures/m01-rebuttal.svg", "dest": "shared/figures/m01-rebuttal.svg"},
+        {"source": "shared/figures/m01-recompute.svg", "dest": "shared/figures/m01-recompute.svg"},
+        {"source": "shared/figures/m01-register.svg", "dest": "shared/figures/m01-register.svg"},
+        {"source": "shared/figures/m01-statement-kinds.svg", "dest": "shared/figures/m01-statement-kinds.svg"},
+        {"source": "shared/figures/m01-verdict-packet.svg", "dest": "shared/figures/m01-verdict-packet.svg"}
+      ],
+      "scripts": [
+        {"source": "scripts/start_work.py", "dest": "scripts/start_work.py"},
+        {"source": "scripts/hash_inbox.py", "dest": "scripts/hash_inbox.py"},
+        {"source": "scripts/check_work.py", "dest": "scripts/check_work.py"},
+        {"source": "scripts/verify_content.py", "dest": "scripts/verify_content.py"},
+        {"source": "scripts/compute_thread.py", "dest": "scripts/compute_thread.py"},
+        {"source": "scripts/run_producer_rebuttal.py", "dest": "scripts/run_producer_rebuttal.py"},
+        {"source": "scripts/render_review.py", "dest": "scripts/render_review.py"},
+        {"source": "scripts/freeze_baseline.py", "dest": "scripts/freeze_baseline.py"},
+        {"source": "scripts/reveal_change.py", "dest": "scripts/reveal_change.py"}
+      ],
+      "download_dirs": ["shared/case", "shared/templates"],
+      "tests": ["tests/test_module_01.py", "tests/test_workflow.py", "tests/test_adequacy.py"]
+    },
+    {
+      "id": "02",
+      "directory": "module-02-context-desk",
+      "title": "Module 2 · Control context and reusable instructions",
+      "pages": [
+        {"source": "README.md", "dest": "README.html"},
+        {"source": "shared/MODULE_02_LAB.md", "dest": "shared/MODULE_02_LAB.html"},
+        {"source": "shared/ACCESSIBILITY.md", "dest": "shared/ACCESSIBILITY.html"},
+        {"source": "assessment/PUBLIC_RUBRIC.md", "dest": "assessment/PUBLIC_RUBRIC.html"}
+      ],
+      "figures": [
+        {"source": "shared/figures/m02-control-ladder.svg", "dest": "shared/figures/m02-control-ladder.svg"},
+        {"source": "shared/figures/m02-failure-kinds.svg", "dest": "shared/figures/m02-failure-kinds.svg"},
+        {"source": "shared/figures/m02-guard-pair.svg", "dest": "shared/figures/m02-guard-pair.svg"},
+        {"source": "shared/figures/m02-predict-then-run.svg", "dest": "shared/figures/m02-predict-then-run.svg"},
+        {"source": "shared/figures/m02-reload.svg", "dest": "shared/figures/m02-reload.svg"},
+        {"source": "shared/figures/m02-residual.svg", "dest": "shared/figures/m02-residual.svg"},
+        {"source": "shared/figures/m02-resolved-state.svg", "dest": "shared/figures/m02-resolved-state.svg"},
+        {"source": "shared/figures/m02-source-as-data.svg", "dest": "shared/figures/m02-source-as-data.svg"}
+      ],
+      "scripts": [],
+      "download_dirs": ["shared/case", "shared/controls"],
+      "tests": ["tests/test_module_02.py", "tests/test_adequacy.py"]
+    },
+    {
+      "id": "03",
+      "directory": "module-03-release-tools",
+      "title": "Module 3 · Decide responsible release and operate bounded tools",
+      "pages": [
+        {"source": "README.md", "dest": "README.html"},
+        {"source": "shared/MODULE_03_LAB.md", "dest": "shared/MODULE_03_LAB.html"},
+        {"source": "shared/ACCESSIBILITY.md", "dest": "shared/ACCESSIBILITY.html"},
+        {"source": "assessment/PUBLIC_RUBRIC.md", "dest": "assessment/PUBLIC_RUBRIC.html"}
+      ],
+      "figures": [
+        {"source": "shared/figures/m03-approval-edge.svg", "dest": "shared/figures/m03-approval-edge.svg"},
+        {"source": "shared/figures/m03-composed-negative.svg", "dest": "shared/figures/m03-composed-negative.svg"},
+        {"source": "shared/figures/m03-least-power.svg", "dest": "shared/figures/m03-least-power.svg"},
+        {"source": "shared/figures/m03-no-release.svg", "dest": "shared/figures/m03-no-release.svg"},
+        {"source": "shared/figures/m03-raw-authority.svg", "dest": "shared/figures/m03-raw-authority.svg"},
+        {"source": "shared/figures/m03-revoke.svg", "dest": "shared/figures/m03-revoke.svg"},
+        {"source": "shared/figures/m03-six-concerns.svg", "dest": "shared/figures/m03-six-concerns.svg"},
+        {"source": "shared/figures/m03-two-branches.svg", "dest": "shared/figures/m03-two-branches.svg"}
+      ],
+      "scripts": [],
+      "download_dirs": ["shared/case", "shared/tools"],
+      "tests": ["tests/test_module_03.py", "tests/test_adequacy.py"]
+    },
+    {
+      "id": "04",
+      "directory": "module-04-diagnose-review",
+      "title": "Module 4 · Diagnose and recover",
+      "pages": [
+        {"source": "README.md", "dest": "README.html"},
+        {"source": "shared/MODULE_04_LAB.md", "dest": "shared/MODULE_04_LAB.html"},
+        {"source": "shared/ACCESSIBILITY.md", "dest": "shared/ACCESSIBILITY.html"},
+        {"source": "assessment/PUBLIC_RUBRIC.md", "dest": "assessment/PUBLIC_RUBRIC.html"}
+      ],
+      "figures": [
+        {"source": "shared/figures/m04-boundaries.svg", "dest": "shared/figures/m04-boundaries.svg"},
+        {"source": "shared/figures/m04-first-miss.svg", "dest": "shared/figures/m04-first-miss.svg"},
+        {"source": "shared/figures/m04-no-hand-patch.svg", "dest": "shared/figures/m04-no-hand-patch.svg"},
+        {"source": "shared/figures/m04-preserve.svg", "dest": "shared/figures/m04-preserve.svg"},
+        {"source": "shared/figures/m04-probe.svg", "dest": "shared/figures/m04-probe.svg"},
+        {"source": "shared/figures/m04-restore-first.svg", "dest": "shared/figures/m04-restore-first.svg"},
+        {"source": "shared/figures/m04-three-reruns.svg", "dest": "shared/figures/m04-three-reruns.svg"}
+      ],
+      "scripts": [
+        {"source": "scripts/render_review.py", "dest": "scripts/render_review.py"},
+        {"source": "scripts/restore.py", "dest": "scripts/restore.py"},
+        {"source": "scripts/place_practice_fault.py", "dest": "scripts/place_practice_fault.py"},
+        {"source": "scripts/probe_fields.py", "dest": "scripts/probe_fields.py"}
+      ],
+      "download_dirs": ["shared/case"],
+      "tests": ["tests/test_module_04.py", "tests/test_adequacy.py"]
+    },
+    {
+      "id": "05",
+      "directory": "module-05-run-corpus",
+      "title": "Module 5 · Improve from observed failures",
+      "pages": [
+        {"source": "README.md", "dest": "README.html"},
+        {"source": "shared/MODULE_05_LAB.md", "dest": "shared/MODULE_05_LAB.html"},
+        {"source": "shared/ACCESSIBILITY.md", "dest": "shared/ACCESSIBILITY.html"},
+        {"source": "assessment/PUBLIC_RUBRIC.md", "dest": "assessment/PUBLIC_RUBRIC.html"}
+      ],
+      "figures": [
+        {"source": "shared/figures/m05-first-failure.svg", "dest": "shared/figures/m05-first-failure.svg"},
+        {"source": "shared/figures/m05-label-history.svg", "dest": "shared/figures/m05-label-history.svg"},
+        {"source": "shared/figures/m05-population.svg", "dest": "shared/figures/m05-population.svg"},
+        {"source": "shared/figures/m05-predicate.svg", "dest": "shared/figures/m05-predicate.svg"},
+        {"source": "shared/figures/m05-reconcile.svg", "dest": "shared/figures/m05-reconcile.svg"},
+        {"source": "shared/figures/m05-sample-first.svg", "dest": "shared/figures/m05-sample-first.svg"},
+        {"source": "shared/figures/m05-semantic-vs-mechanical.svg", "dest": "shared/figures/m05-semantic-vs-mechanical.svg"},
+        {"source": "shared/figures/m05-then-categories.svg", "dest": "shared/figures/m05-then-categories.svg"},
+        {"source": "shared/figures/m05-three-case.svg", "dest": "shared/figures/m05-three-case.svg"}
+      ],
+      "scripts": [],
+      "download_dirs": ["shared/controls", "shared/corpus", "shared/checks"],
+      "tests": ["tests/test_module_05.py", "tests/test_adequacy.py"]
+    },
+    {
+      "id": "06",
+      "directory": "module-06-batch-workflow",
+      "title": "Module 6 · Operate a fixed workflow through change",
+      "pages": [
+        {"source": "README.md", "dest": "README.html"},
+        {"source": "shared/MODULE_06_LAB.md", "dest": "shared/MODULE_06_LAB.html"},
+        {"source": "shared/ACCESSIBILITY.md", "dest": "shared/ACCESSIBILITY.html"},
+        {"source": "assessment/PUBLIC_RUBRIC.md", "dest": "assessment/PUBLIC_RUBRIC.html"}
+      ],
+      "figures": [
+        {"source": "shared/figures/m06-baseline-map.svg", "dest": "shared/figures/m06-baseline-map.svg"},
+        {"source": "shared/figures/m06-changed-map.svg", "dest": "shared/figures/m06-changed-map.svg"},
+        {"source": "shared/figures/m06-delta.svg", "dest": "shared/figures/m06-delta.svg"},
+        {"source": "shared/figures/m06-exception.svg", "dest": "shared/figures/m06-exception.svg"},
+        {"source": "shared/figures/m06-one-rule.svg", "dest": "shared/figures/m06-one-rule.svg"},
+        {"source": "shared/figures/m06-receipts.svg", "dest": "shared/figures/m06-receipts.svg"},
+        {"source": "shared/figures/m06-restore.svg", "dest": "shared/figures/m06-restore.svg"},
+        {"source": "shared/figures/m06-saved-path.svg", "dest": "shared/figures/m06-saved-path.svg"}
+      ],
+      "scripts": [
+        {"source": "scripts/restore_rule.py", "dest": "scripts/restore_rule.py"}
+      ],
+      "download_dirs": ["shared/batch", "shared/workflow", "shared/baseline"],
+      "tests": ["tests/test_module_06.py", "tests/test_adequacy.py"]
+    },
+    {
+      "id": "07",
+      "directory": "module-07-change-eval",
+      "title": "Module 7 · Evaluate a change with variation controls",
+      "pages": [
+        {"source": "README.md", "dest": "README.html"},
+        {"source": "shared/MODULE_07_LAB.md", "dest": "shared/MODULE_07_LAB.html"},
+        {"source": "shared/ACCESSIBILITY.md", "dest": "shared/ACCESSIBILITY.html"},
+        {"source": "assessment/PUBLIC_RUBRIC.md", "dest": "assessment/PUBLIC_RUBRIC.html"}
+      ],
+      "figures": [
+        {"source": "shared/figures/m07-any-single.svg", "dest": "shared/figures/m07-any-single.svg"},
+        {"source": "shared/figures/m07-bounded.svg", "dest": "shared/figures/m07-bounded.svg"},
+        {"source": "shared/figures/m07-diag-vs-confirm.svg", "dest": "shared/figures/m07-diag-vs-confirm.svg"},
+        {"source": "shared/figures/m07-invented.svg", "dest": "shared/figures/m07-invented.svg"},
+        {"source": "shared/figures/m07-paired.svg", "dest": "shared/figures/m07-paired.svg"},
+        {"source": "shared/figures/m07-pre-result.svg", "dest": "shared/figures/m07-pre-result.svg"},
+        {"source": "shared/figures/m07-restore.svg", "dest": "shared/figures/m07-restore.svg"},
+        {"source": "shared/figures/m07-timezone.svg", "dest": "shared/figures/m07-timezone.svg"},
+        {"source": "shared/figures/m07-variation.svg", "dest": "shared/figures/m07-variation.svg"}
+      ],
+      "scripts": [
+        {"source": "scripts/restore_baseline.py", "dest": "scripts/restore_baseline.py"},
+        {"source": "scripts/evaluate_pairs.py", "dest": "scripts/evaluate_pairs.py"},
+        {"source": "scripts/stretch_runner.py", "dest": "scripts/stretch_runner.py"}
+      ],
+      "download_dirs": ["shared/cases", "shared/controls", "shared/baseline"],
+      "tests": ["tests/test_module_07.py", "tests/test_adequacy.py"]
+    },
+    {
+      "id": "08",
+      "directory": "module-08-agent-safeguards",
+      "title": "Module 8 · Constrain agent behavior",
+      "pages": [
+        {"source": "README.md", "dest": "README.html"},
+        {"source": "shared/MODULE_08_LAB.md", "dest": "shared/MODULE_08_LAB.html"},
+        {"source": "shared/ACCESSIBILITY.md", "dest": "shared/ACCESSIBILITY.html"},
+        {"source": "assessment/PUBLIC_RUBRIC.md", "dest": "assessment/PUBLIC_RUBRIC.html"}
+      ],
+      "figures": [],
+      "scripts": [],
+      "download_dirs": ["shared/case", "shared/controls"],
+      "tests": ["tests/test_module_08.py"],
+      "verifier_download": "shared/case/verify_safeguards.py"
+    },
+    {
+      "id": "09",
+      "directory": "module-09-capstone",
+      "title": "Module 9 · Transfer and close qualification",
+      "pages": [
+        {"source": "README.md", "dest": "README.html"},
+        {"source": "shared/MODULE_09_LAB.md", "dest": "shared/MODULE_09_LAB.html"},
+        {"source": "shared/ACCESSIBILITY.md", "dest": "shared/ACCESSIBILITY.html"},
+        {"source": "assessment/PUBLIC_RUBRIC.md", "dest": "assessment/PUBLIC_RUBRIC.html"}
+      ],
+      "figures": [
+        {"source": "shared/figures/m09-adverse.svg", "dest": "shared/figures/m09-adverse.svg"},
+        {"source": "shared/figures/m09-clean-session.svg", "dest": "shared/figures/m09-clean-session.svg"},
+        {"source": "shared/figures/m09-closure.svg", "dest": "shared/figures/m09-closure.svg"},
+        {"source": "shared/figures/m09-earned.svg", "dest": "shared/figures/m09-earned.svg"},
+        {"source": "shared/figures/m09-escalate.svg", "dest": "shared/figures/m09-escalate.svg"},
+        {"source": "shared/figures/m09-independent.svg", "dest": "shared/figures/m09-independent.svg"},
+        {"source": "shared/figures/m09-package.svg", "dest": "shared/figures/m09-package.svg"},
+        {"source": "shared/figures/m09-restart-vs-transfer.svg", "dest": "shared/figures/m09-restart-vs-transfer.svg"},
+        {"source": "shared/figures/m09-six-dimensions.svg", "dest": "shared/figures/m09-six-dimensions.svg"},
+        {"source": "shared/figures/m09-unfamiliar.svg", "dest": "shared/figures/m09-unfamiliar.svg"}
+      ],
+      "scripts": [
+        {"source": "scripts/check_package.py", "dest": "scripts/check_package.py"},
+        {"source": "scripts/run_close.py", "dest": "scripts/run_close.py"}
+      ],
+      "download_dirs": ["shared/case", "shared/controls", "shared/baseline"],
+      "raw_downloads": ["shared/PACKAGE.md"],
+      "tests": ["tests/test_module_09.py", "tests/test_adequacy.py"]
+    }
+  ],
+  "shared_downloads": [
+    {"source": "shared/prepare_work.py", "dest": "shared/prepare_work.py"},
+    {"source": "shared/run_omp.py", "dest": "shared/run_omp.py"},
+    {"source": "shared/course_guard.mjs", "dest": "shared/course_guard.mjs"}
+  ]
+}

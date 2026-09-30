@@ -1,38 +1,26 @@
-# Course setup pins
+# Required tool identities
 
-Checked: 2026-08-12 · nvm installer tag recorded here on 2026-08-14
+Use the exact OMP release and provider/model pair below. A newer executable or a similarly named model is not an automatic substitute.
 
-These are course compatibility pins, not a promise that the newest release is always better.
+| Component | Required value | Check |
+|---|---|---|
+| Oh My Pi | 18.3.5 | The verified executable reports `omp/18.3.5`. |
+| Provider/model | `openrouter/anthropic/claude-sonnet-4.6` | The launcher and actual run receipts agree on OpenRouter and Sonnet 4.6. |
+| Credential | `OPENROUTER_API_KEY` | A presence-only check reports `SET` in the process that launches OMP. |
+| Python | 3.12 or newer | Resolve its absolute executable path and inspect its version. |
+| Git | A supported release for your operating system | Git runs and the intended checkout is readable. |
+| Browser and text editor | An accessible combination you can operate | You can read instructions, edit plain-text work files, and inspect actual outputs. |
 
-| Component | Course value | Why |
-|---|---:|---|
-| Node.js | 24.x | Satisfies the repository's strictest declared engine, `>=22.22 <25`, and n8n's current requirement. No path pins an exact patch release: each platform installs Node 24 with its own package manager, and the setup check reads the running major version and the absolute path it resolved to. |
-| Python | 3.12+ | Matches the deployed repository runtime floor and current course scripts |
-| OpenCode | 1.18.17 | Current npm stable checked on 2026-08-12; all paths install the same build |
-| n8n | 2.34.5 | Current npm stable checked on 2026-08-12; requires Node `>=22.22` |
-| nvm | 0.40.6 | The Ubuntu and WSL paths download `install.sh` from the `v0.40.6` tag, so both learners read and run the same installer text. A moving tag would change the script between the reading step and the running step. |
-| Codex CLI | Current official stable | Vendor standalone installer or `@openai/codex`; installed version is recorded |
-| goose CLI | `stable` release channel | Official AAIF installer; installed version is recorded because `stable` moves |
-| Git | Current supported package-manager release | Functional clone/revision checks decide readiness |
-| Obsidian | Current official stable | GUI install is platform-specific; the observed file list in the vault decides readiness |
+Download the OMP binary and `SHA256SUMS.txt` from the [same v18.3.5 release](https://github.com/can1357/oh-my-pi/releases/tag/v18.3.5). Select the asset for the operating system in which it will run:
 
-## Source checks
+| Runtime | ARM64 asset | x86-64 asset |
+|---|---|---|
+| macOS | `omp-darwin-arm64` | `omp-darwin-x64` |
+| Linux, including Ubuntu in WSL | `omp-linux-arm64` | `omp-linux-x64` |
+| Native Windows | `omp-windows-arm64.exe` | `omp-windows-x64.exe` |
 
-```text
-npm view opencode-ai version
-npm view n8n version engines
-npm view @openai/codex version engines
-git ls-remote --tags https://github.com/nvm-sh/nvm v0.40.6
-```
+Verify the selected file's checksum before installation or first execution. The Unix user destination is `~/.local/bin/omp`; native Windows uses `%LOCALAPPDATA%\omp\omp.exe`. Preserve a different existing installation rather than overwrite it silently.
 
-The strict repository engine declarations are in:
+The launcher isolates runtime configuration, exposes only declared course tools, and disables automatic retries, model fallback, cache warming, unrelated extensions, skills, and persistent sessions. Use that launcher for exercises rather than a personal OMP profile. A setup check alone does not prove these controls acted during a model turn; inspect the run's receipts.
 
-- `instruments/osint_desk/package.json`
-- `instruments/p3_evidence_surface/package.json`
-- `mission_flesh/pi/package.json`
-
-## Update rule
-
-Every version literal that any platform path hard-codes appears in the table above. A guide that names a version this file does not carry is drift, whether or not it installs.
-
-Change a pin only when all five platform paths can install it and the shared verifier still passes. Record the date, source, old value, new value, and compatibility evidence. Never let one platform drift silently.
+No other model-provider key, vendor login, agent CLI, note-taking application, or workflow service is required. If the pinned release or model is unavailable, retain the failure and hold that lane. Do not choose an unreviewed substitute to obtain a passing label.

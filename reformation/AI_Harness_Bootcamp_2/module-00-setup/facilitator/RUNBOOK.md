@@ -6,38 +6,38 @@ Each learner can give AI a clear, limited job, check a material claim at the sou
 
 Setup is an entry condition, not the lesson, and it is not part of the PO-00 result. A learner whose machine is not ready records `HOLD` on setup and moves to a loaner machine or a paired observation path. Observation keeps the learner in the room but does not pass the operating task.
 
-The module is scored on the supplied Red Mesa Depot coordination-room case. There is no second case. The learner has the case, the request, the changed input, and the practice checker in full; what they do not have is the protected acceptance control, which lives off their machine and is run by the evaluator.
+The supplied Harbor Depot desk note to Field Clinic S-3 is public practice. Its checker is inspectable. A formal result requires an actual independent evaluator and independently held deciding evidence/control under the custody contract; if those are absent, qualification remains HOLD. Do not invent a second case or describe a public file as secret.
 
 ## Before learners arrive
 
 1. Run the relevant setup path on the actual classroom images.
 2. Record each platform, architecture, installed versions, and date.
-3. Confirm the course repository is clean and reachable.
-4. Confirm the cohort's Codex authentication method, xAI model, and spending limit.
-5. Rotate all setup proof folders and prior learner work.
-6. Confirm the protected acceptance control is reachable from evaluator infrastructure and from nowhere a learner can reach.
-7. Run one passing and at least three failing specimens through the protected control.
-8. Confirm an accessible same-state path for every control a learner must operate.
+3. Confirm the intended repository is reachable and its frozen inputs are intact. Preserve unrelated local changes; do not reset or clean it.
+4. Confirm OMP 18.3.5, the exact `openrouter/anthropic/claude-sonnet-4.6` selector, a participant-supplied process-local `OPENROUTER_API_KEY`, and the provider-side US$40 ceiling. There is no direct-provider login, model fallback, or automatic paid retry.
+5. Choose fresh setup proof/work directories and preserve every prior attempt.
+6. For a graded result, identify the real evaluator, custody location, control/version and original outcome record. If missing, mark qualification HOLD and continue only reachable practice.
+7. Exercise genuine deciding controls on passing and failing specimens before any scored use; never substitute a public practice pass or agent role-play.
+8. Confirm an accessible same-state path for every control a learner must operate. Record unverified assistive-technology operation explicitly.
 9. Prepare a support owner for managed-machine and account problems.
-10. Put a visible clock where learners can see the 60-minute first-draft limit.
+10. Put a visible clock where learners can observe the 60-minute first-result design target. Record actual timing and assistance; this target has not been validated with learners.
 
 ## Session shape
 
-The session runs 180 minutes: 120 minutes of learner working time and 60 minutes you lead. The learner's timebox covers only the 120.
+Plan 180 minutes: 120 minutes of learner working time and 60 minutes you lead. These are allocations, not measured learner completion times. Preserve a HOLD rather than rushing a blocked action into a claimed pass.
 
 ### Facilitator-led segments
 
 | Segment | Clock | What you do |
 |---|---|---|
-| Opening | 0:00–0:20 | Take the setup state for each learner and route anyone blocked. Name the case and the sharing limit. State plainly that a protected acceptance control decides the result, that it is not on their machine, that the practice checker is theirs to read, and that editing the practice checker moves nothing. Start the visible clock. |
-| Checkpoint | 1:15–1:35 | Take the first-draft state from each learner. Confirm each direction brief and screen file was saved before the run. Anyone past two failed corrections is `HOLD` — record it and move them on rather than letting them rebuild. Do not read anyone's draft aloud. |
-| Close | 2:40–3:00 | Collect the work folders. Confirm the original draft and the first failed output survive. Hand the folders to the evaluator; the protected control runs off these machines. Name what is unresolved for each `HOLD`. |
+| Opening | 0:00–0:20 | Record setup state and route blocked learners. Name the fictional case and sharing limit. Distinguish the inspectable practice checker from any actually available independent assessment. Start the visible clock. |
+| Checkpoint | 1:15–1:35 | Record first-draft state and actual elapsed time. Confirm direction and responsibility records preceded the run. Preserve failures and stop after the stated correction limit; do not read drafts aloud. |
+| Close | 2:40–3:00 | Preserve original drafts, source/control identities and first failures. Hand over to the actual evaluator when available; otherwise retain qualification HOLD. Name unresolved dependencies. |
 
 ### Learner working time
 
 | Clock | Learner work | Evidence you should see |
 |---|---|---|
-| 0:20–0:30 | Work folder created; acceptance control confirmed and recorded | `acceptance-control.md` naming where the deciding control runs |
+| 0:20–0:30 | Work folder created; practice/qualification status recorded | `acceptance-control.md` distinguishes public checking from actual independent custody or its absence |
 | 0:30–0:40 | Case and practice checker read | The learner can name two things the checker cannot judge |
 | 0:40–0:50 | Delegation decision and responsibility screen | Both files saved, both before any AI run |
 | 0:50–1:00 | Direction brief frozen | Acceptance, falsifier, stop condition, and correction limit are all written |
@@ -65,7 +65,7 @@ You may not:
 - fill in the responsibility screen;
 - rewrite the direction brief;
 - identify the material source line;
-- describe how the protected acceptance control decides;
+- disclose any genuinely protected deciding control;
 - tell the learner which statements the changed input should move;
 - tell the learner what to break in the falsifier probe;
 - accept a narrated action in place of an operation.
@@ -78,9 +78,9 @@ If coaching crosses one of those lines, mark that part of the attempt as guided 
 |---|---|
 | Command missing in every new terminal | Return to the PATH step; do not reinstall all tools |
 | Key missing in a new terminal | Expected; repeat hidden entry |
-| Repository dirty before learner work | Inspect and reset with the owner; never delete blindly |
-| Provider unavailable | Use the approved same-capability substitute and record it, or `HOLD` |
-| Obsidian or n8n unavailable | Record the setup `HOLD`; it does not hold the module result, and a browser screenshot is not an equivalent operation |
+| Repository dirty before learner work | Inspect and preserve it; frozen-input integrity matters, not a clean working tree |
+| Provider or participant key unavailable | Preserve the blocked live lane; no provider/model substitute or invented artifact |
+| Platform or assistive-technology operation unavailable | Record exactly what was not exercised; parsing or another OS is not native proof |
 | Managed policy | Capture the exact message and route it to the IT owner |
 | Learner exceeds two draft corrections | Preserve the attempts and record the practice result as `HOLD` |
 

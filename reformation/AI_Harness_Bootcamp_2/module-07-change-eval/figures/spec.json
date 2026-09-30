@@ -13,7 +13,7 @@
       "transcript": "The policy is frozen first: hard gate, any single violation. Candidates stay closed until that policy is on disk.",
       "eyebrow": "POLICY",
       "items": [
-        { "label": "Open the policy file", "detail": "PRE_RESULT_POLICY.md" },
+        { "label": "Open the policy file", "detail": "policy.json" },
         { "label": "Hard gate", "detail": "named before results" },
         { "label": "Any single violation", "detail": "one miss defeats" },
         { "label": "Then open candidates", "detail": "not before" }
@@ -84,14 +84,14 @@
       "id": "m07-timezone",
       "role": "diagnostic",
       "template": "comparison",
-      "title": "20:50Z is not 14:50 without both zones",
-      "desc": "Collapse is 20:50Z printed as 14:50. Allowed is both UTC and MDT written. One zone alone is a miss.",
-      "caption": "Both UTC and MDT must be written. 20:50Z printed as 14:50 is a miss.",
-      "transcript": "Collapse is 20:50Z printed as 14:50. Allowed is both UTC and MDT written. One zone alone is a miss.",
+      "title": "A bare clock token is not a labeled gate time",
+      "desc": "Collapse is 19:05 printed without UTC or MDT. Allowed is both 19:05 UTC and 13:05 MDT written with the authoritative locator.",
+      "caption": "Both UTC and MDT labels must be written with the gate locator. A bare clock token is a miss.",
+      "transcript": "Collapse is 19:05 printed without UTC or MDT. Allowed is both 19:05 UTC and 13:05 MDT written with the authoritative locator.",
       "eyebrow": "TIMEZONE",
       "items": [
-        { "label": "Collapse", "detail": "20:50Z printed as 14:50" },
-        { "label": "Allowed", "detail": "both UTC and MDT are written" }
+        { "label": "Collapse", "detail": "19:05 printed without zone" },
+        { "label": "Allowed", "detail": "both UTC and MDT with locator" }
       ]
     },
     {

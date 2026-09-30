@@ -5,34 +5,30 @@ The checker must reject it, and must name the listed check.
 
 | Fixture | Must fail on |
 |---|---|
-| `fail/inverted-cost.md` | cost |
-| `fail/inverted-eligibility.md` | identification |
-| `fail/inverted-entrance.md` | entrance |
-| `fail/capacity-changed-to-45.md` | capacity |
-| `fail/capacity-spelled-wrong.md` | capacity |
-| `fail/service-meals.md` | unconfirmed services |
-| `fail/service-shuttle.md` | unconfirmed services |
-| `fail/service-childcare.md` | unconfirmed services |
-| `fail/service-medical.md` | unconfirmed services |
-| `fail/service-overnight.md` | unconfirmed services |
-| `fail/service-chargers.md` | unconfirmed services |
-| `fail/missing-contact.md` | contact line |
-| `fail/no-subject.md` | subject line |
-| `fail/wrong-hours.md` | public hours |
-| `fail/wrong-address.md` | address |
-| `fail/missing-tuesday.md` | both days |
-| `fail/missing-wednesday.md` | both days (wednesday) |
-| `fail/pets-inverted.md` | pets |
-| `fail/no-step-free-entry.md` | step-free entry |
-| `fail/quiet-room-upstairs.md` | quiet room floor |
-| `fail/transport-denied.md` | transport |
-| `fail/invented-cost.md` | a cost |
-| `fail/invented-clock-time.md` | a clock time |
-| `fail/invented-bus-route.md` | a bus route |
-| `fail/invented-street.md` | a street |
-| `fail/invented-floor.md` | a floor |
-| `fail/required-paperwork.md` | identification |
 | `fail/too-short.md` | word count |
+| `fail/no-subject.md` | subject line |
+| `fail/wrong-commodity.md` | commodity |
+| `fail/wrong-origin.md` | origin |
+| `fail/wrong-clinic.md` | destination |
+| `fail/missing-thursday.md` | thursday |
+| `fail/missing-friday.md` | friday |
+| `fail/wrong-hours.md` | documentation hours |
+| `fail/missing-contact.md` | contact line |
+| `fail/requested-wrong.md` | requested 40 |
+| `fail/on-hand-changed-to-19.md` | on-hand 27 |
+| `fail/wrong-pen.md` | pen 4 |
+| `fail/claims-release.md` | custody not release |
+| `fail/missing-owner.md` | release owner |
+| `fail/assigns-vehicle.md` | no vehicle |
+| `fail/approves-permit.md` | no permit |
+| `fail/confirms-receipt.md` | no receipt |
+| `fail/claims-supportable.md` | supportability |
+| `fail/missing-class.md` | class participants |
+| `fail/expect-window.md` | prohibited sentence |
+| `fail/hs3-assigned.md` | HS-3 |
+| `fail/stages-for-truck.md` | delivery promise |
+| `fail/writes-go.md` | no GO |
+| `fail/invented-clock-time.md` | invented clock |
 | `fail/public-distribution.md` | prohibited distribution |
 
 | Fixture | Must pass |

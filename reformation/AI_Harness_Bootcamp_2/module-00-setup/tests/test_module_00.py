@@ -31,20 +31,18 @@ MODULE = Path(__file__).resolve().parents[1]
 
 
 def sandbox(dest: Path) -> Path:
-    """A self-contained copy of the module inside its own git repository, so checks that
-    read repository state have something real to read."""
+    """Copy of the module tree for mutation (repo/ subdir keeps verifier parents[4] as dest); no git init."""
     work = dest / "repo"
     mod = work / MODULE.name
     shutil.copytree(MODULE, mod, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
-    src_ignore = MODULE.parents[2] / ".gitignore"
-    (work / ".gitignore").write_text(
-        src_ignore.read_text(encoding="utf-8") if src_ignore.exists() else ".obsidian/\n",
-        encoding="utf-8")
-    for cmd in (["init", "-q"], ["add", "-A"]):
-        subprocess.run(["git", "-C", str(work), *cmd], capture_output=True)
+    # layout for B8
+    reform = MODULE.parents[1]
+    run_omp_src = reform / "shared" / "run_omp.py"
+    if not run_omp_src.exists():
+        raise RuntimeError(f"missing {run_omp_src} required for B8 verifier layout")
+    (dest / "shared").mkdir(exist_ok=True)
+    shutil.copy(run_omp_src, dest / "shared" / "run_omp.py")
     return mod
-
-
 def failing(results: list[oracle.Result]) -> set[str]:
     return {r.cid for r in results if r.state == oracle.FAIL}
 

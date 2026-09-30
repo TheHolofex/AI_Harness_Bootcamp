@@ -1,0 +1,1 @@
+Read the sources.json and form.md files in the current directory. Fill the three-row table exactly using only the authoritative source records from sources.json. Write the completed title and table to brief.md. Do not add any other text, explanations, or rows. Use the exact values and locators from the sources.

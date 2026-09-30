@@ -9,8 +9,8 @@
 **Practice time:** 2 hours  
 **Performance stage:** Independent  
 **Work surface:** Tool-assisted professional artifact  
-**Practical work:** Apply the full contextual release gate to the supplied case and record the decision branch; then, on the supplied safe capability, inspect raw authority, connect the least-powerful option, combine untrusted content with that authority, prove a useful bounded action, and disconnect and revoke.  
-**Performance evidence:** Independent RELEASE_DECISION with per-concern contextual evidence, raw reach and tool authority inventory, AUTHORITY_BOUNDARY, protected COMPOSED_NEGATIVE result, approval showing the raw action, useful bounded action, REVOCATION_RESULT, and named residual-risk owner.  
+**Practical work:** Apply the full contextual release gate to the supplied 40-file packet and record the decision branch with citations; then, on the supplied safe capability, inspect raw authority, connect the least-powerful option, combine untrusted content with that authority, prove a useful bounded action, and disconnect and revoke.  
+**Performance evidence:** Independent RELEASE_DECISION with per-concern contextual evidence and combined effect, raw reach and tool authority inventory, AUTHORITY_BOUNDARY, protected COMPOSED_NEGATIVE result, approval showing the raw action, useful bounded action, REVOCATION_RESULT, and named residual-risk owner.  
 **Failure / HOLD:** Hold for unclear rights, unacceptable affected-person effect, missing recourse or disclosure, broad or omitted authority, unknown action or egress, unreviewable approval, unauthorized action, authority expansion, hidden side effect, or failed revocation.  
 **Scope boundary:** Proves one contextual decision and one supplied capability boundary; it does not certify legal compliance, eliminate bias or leakage, or authorize capability construction.  
 **Handoff:** Give the next owner the release decision and its reasoning, the authority boundary in force, the containment result, the revocation proof, and the residual-risk owner.
@@ -33,4 +33,4 @@ Every learner completes both claims. The **decision branch** passes when context
 
 ## Supplied-case domain (adapter)
 
-Release decision: may this internal Cold Lantern-family brief leave the class. Connection branch: supplied safe tool at least authority (e.g. hash a local source file). Not real dispatch.
+Release decision: may this internal packet leave the class. Connection branch: supplied safe tool at least authority (hash a local source file under the case root). Not real dispatch. The packet is NB-NOTE-17 for Kiln Hold (Mill Depot to Clinic B-2 on vehicle MH-6). Learners cite from the 40 REL files; the adapter does not prefill the disposition.

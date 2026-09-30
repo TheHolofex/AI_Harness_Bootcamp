@@ -1,435 +1,613 @@
-# Windows · PowerShell only
+# Windows PowerShell setup
 
-This path keeps the whole command-line course in native Windows PowerShell. Reserve 90–150 minutes on an unmanaged Windows 11 x64 laptop. A managed laptop can take longer because an administrator or IT owner may have to approve software.
+This path installs the course tools on native Windows and proves one bounded write from Oh My Pi. Plan for 60 to 120 minutes. Open **Windows PowerShell** on the Windows computer, from the Start menu. PowerShell on macOS or Linux is not this path, and an elevated Administrator window is not required after Windows itself is already installed.
 
-Use this path only if you intend to stay in PowerShell for the course. If you want Linux command-line behavior on Windows, use [Windows with WSL](windows-wsl.md) instead.
+You need Git, Python 3.12 or newer, a browser, an ordinary text editor, and Oh My Pi 18.3.5. The only provider key is `OPENROUTER_API_KEY`. The course launcher selects `openrouter/anthropic/claude-sonnet-4.6`. You do not install Node, npm, n8n, Obsidian, or another agent for this path.
 
-## 1. Before you change the machine
+A checksum is a fingerprint of a file. You compare the fingerprint of the downloaded program with the fingerprint published beside it, and you do that before the program is allowed to run. PATH is the list of folders Windows searches when you type a command name.
 
-Check the PowerShell version, operating system, architecture, administrator access, disk, network, and restart window before installing anything.
+The work falls into five parts: install Git and Python, install the verified Oh My Pi binary, put the course checkout in your home folder, enter the key only into this process, and then run the proof and the prerequisite report.
 
-Every command in this path runs on Windows PowerShell 5.1 — the version that ships with Windows 11 and opens when you choose **Windows PowerShell** from Start — and on PowerShell 7.x if you have installed it. Nothing here needs a newer version than 5.1.
+If a company policy denies an installer, stop and save the message. Do not open an Administrator window to get around that denial. When a step stops, start from the first failed check in [When setup stops](../shared/TROUBLESHOOTING.md).
 
-**Terminal: Windows PowerShell · normal user.**
+## Check the disk and the processor
+
+You need enough free space for Git, Python, and the course checkout, and you need the Windows binary that matches the processor. The processor code comes from Windows itself: 12 means ARM64 and 9 means x64. The process you happen to be running can report a different architecture, so this check does not use that process value.
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-$PSVersionTable.PSVersion
-Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber, OsArchitecture
-Get-PSDrive -Name C | Select-Object Used, Free
+$driveName = ([IO.Path]::GetPathRoot($HOME).TrimEnd('\'))[0]
+$freeGb = (Get-PSDrive -Name $driveName).Free / 1GB
+Write-Output ("free GB: " + [math]::Round($freeGb, 1))
+$archCode = (Get-CimInstance -ClassName Win32_Processor | Select-Object -First 1).Architecture
+if ($archCode -eq 12) {
+  $asset = 'omp-windows-arm64.exe'
+} elseif ($archCode -eq 9) {
+  $asset = 'omp-windows-x64.exe'
+} else {
+  throw 'STOP: this processor does not have a published course binary.'
+}
+Write-Output $asset
+```
+
+**Expected:** free space of at least 15 GB, then either `omp-windows-arm64.exe` or `omp-windows-x64.exe`.
+
+**Stop:** free space is under 15 GB, the processor query fails, or the script stops because no published binary matches.
+
+**Recovery:** free space on the Windows drive and run the block again. If the processor still does not match, save the code it printed and use the support packet. Do not download the other architecture and hope it runs.
+
+The architecture numbers are documented with [Win32_Processor](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-processor).
+
+## Install Git and Python for your user
+
+Git copies the course repository. Python 3.12 or newer runs the course helpers. Both installs stay in your user account when the package manager allows that.
+
+**Terminal: Windows PowerShell, ordinary user.**
+
+```powershell
 winget --version
+winget install --exact --id Git.Git --source winget --scope user --accept-package-agreements --accept-source-agreements
+winget install --exact --id Python.Python.3.12 --source winget --scope user --accept-package-agreements --accept-source-agreements
 ```
 
-**You should see:** in the first line's `Major` and `Minor` columns, either `5` and `1`, or a `Major` of `7` or higher with any `Minor`. Both run every command in this path, so continue with whichever one you have and do not install a newer PowerShell to satisfy this guide. `WindowsProductName` begins `Windows 11` and `OsArchitecture` reads `64-bit`. `Free` on the C drive is a byte count of at least `15000000000`, which is 15 GB. WinGet prints a version such as `v1.9.25200`. The official goose PowerShell installer currently supports Windows x86_64, not Windows ARM64.
+**Expected:** `winget` prints a version, and both install commands finish without an access-denied or policy message. The installers can take several minutes and may ask you to approve an official installer prompt.
 
-**Stop here if:** `Major` is below `5`, or `Major` is `5` and `Minor` is below `1`, or the architecture is ARM64, free space is below 15 GB, WinGet is blocked, or you cannot approve software required by your organization. Use the [support packet](../shared/TROUBLESHOOTING.md) rather than changing security policy. On Windows ARM64, stop this path. Use the WSL guide only if its Linux tools support your ARM64 machine; otherwise use a supported x64 laptop.
+**Stop:** `winget` is not recognized, either install reports that a policy blocked it, or an approval prompt is denied.
 
-Source: [Microsoft WinGet](https://learn.microsoft.com/en-us/windows/package-manager/winget/) and the official [goose Windows installer](https://raw.githubusercontent.com/aaif-goose/goose/main/download_cli.ps1).
+**Recovery:** if `winget` is simply not recognized, and the message does not say that installs are blocked, install current-user Git from [Git for Windows](https://git-scm.com/downloads/win) and current-user Python 3.12 or newer from [Python for Windows](https://docs.python.org/3/using/windows.html). On the Python installer, choose the current-user option and turn on **Add python.exe to PATH**. If a policy message blocks the install, stop. Do not switch to an Administrator window to bypass it. [WinGet](https://learn.microsoft.com/en-us/windows/package-manager/winget/) is the package command used above.
 
-## 2. Open the right terminal
+Close this PowerShell window after the installers finish. The next window has to read the saved PATH.
 
-Open **Windows PowerShell** from Start. Do not use Command Prompt, Git Bash, or a WSL tab for this path.
+## Resolve the real Python 3.12 executable
 
-**Terminal: Windows PowerShell · normal user.**
+The later helpers must run on one absolute Python program, not on a Store stub that only opens a shop page. This new window also shows whether the installer PATH survived outside the window that ran the install.
 
-```powershell
-$Host.Name
-$env:OS
-```
-
-**You should see:** `ConsoleHost` on the first line and `Windows_NT` on the second.
-
-**Stop here if:** `$env:OS` is empty or the prompt is inside Ubuntu/WSL. Close it and open Windows PowerShell.
-
-## 3. Install the base tools
-
-WinGet installs the maintained Windows packages. Run each command separately so the first failure stays visible.
-
-**Terminal: Windows PowerShell · normal user. Approve elevation only when Windows asks.**
-
-Expect this to take 10 to 40 minutes on a normal connection. Each command prints a progress bar, then a short success line, and Windows may ask you to approve an installer. A minute of no visible change during a download is normal.
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-winget install --exact --id Git.Git --source winget --accept-package-agreements --accept-source-agreements
-winget install --exact --id OpenJS.NodeJS.LTS --source winget --accept-package-agreements --accept-source-agreements
-winget install --exact --id Python.Python.3.12 --source winget --accept-package-agreements --accept-source-agreements
-winget install --exact --id Microsoft.VCRedist.2015+.x64 --source winget --accept-package-agreements --accept-source-agreements
-winget install --exact --id Obsidian.Obsidian --source winget --accept-package-agreements --accept-source-agreements
-```
-
-Close PowerShell and open a new PowerShell window before checking versions.
-
-**Terminal: Windows PowerShell · normal user · new window.**
-
-```powershell
-git --version
-node --version
-npm --version
-python --version
-(Get-Command git,node,npm,python).Source
-```
-
-**You should see:** `git version 2.` followed by more digits, a Node version beginning `v24.`, an npm version number, `Python 3.12` or higher, and then four paths that each end in `.exe`.
-
-Windows ships a placeholder named `python.exe` that opens the Microsoft Store instead of running Python. It sits in a folder called `WindowsApps` and is zero bytes long, so the path and the size tell you which one you have.
-
-```powershell
-$python = Get-Command python -CommandType Application -ErrorAction SilentlyContinue
-$python.Source
-if ($python) { (Get-Item -LiteralPath $python.Source).Length } else { 'python is not on PATH' }
-```
-
-**You should see:** a path like `C:\Users\you\AppData\Local\Programs\Python\Python312\python.exe` and a size of at least 90000 bytes.
-
-**Stop here if:** the path contains `\WindowsApps\` or the size is `0`. That is the Store placeholder, not Python. Open **Settings › Apps › Advanced app settings › App execution aliases**, switch off the entries named `python.exe` and `python3.exe`, close PowerShell, open a new window, and run the check again.
-
-**Stop here if:** Node is not 24.x, Python is below 3.12, a command is missing, or npm reports that scripts are disabled. If only npm reports that scripts are disabled, run `Get-ExecutionPolicy -List`. If `MachinePolicy` or `UserPolicy` has a value, the setting is controlled by IT. Stop and send them the output. Do not weaken it. If both are undefined and your organization permits it, use `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`; record the old value first and restore it after the course if it was course-only.
-
-## 4. Put user tools on PATH
-
-PATH is the list of folders Windows searches, in order, when you type a command name. The AI CLIs belong in folders your user owns, so their location stays on your PATH without an administrator install.
-
-**Terminal: Windows PowerShell · normal user.**
-
-```powershell
-$npmPrefix = Join-Path $env:USERPROFILE '.npm-global'
-New-Item -ItemType Directory -Force -Path $npmPrefix | Out-Null
-npm config set prefix $npmPrefix
-
-$userBin = Join-Path $env:USERPROFILE '.local\bin'
-New-Item -ItemType Directory -Force -Path $userBin | Out-Null
-
-$currentUserPath = [Environment]::GetEnvironmentVariable('Path','User')
-$needed = @($npmPrefix, $userBin)
-$parts = @($currentUserPath -split ';' | Where-Object { $_ })
-foreach ($item in $needed) {
-  if ($parts -notcontains $item) { $parts += $item }
+$PY = $null
+$launcher = Get-Command py -ErrorAction SilentlyContinue
+if ($launcher -and $launcher.Source -notlike '*\WindowsApps\*') {
+  $PY = (& $launcher.Source -3.12 -c 'import sys; print(sys.executable)').Trim()
 }
-[Environment]::SetEnvironmentVariable('Path', ($parts -join ';'), 'User')
-$env:Path = (($needed + @($env:Path -split ';')) | Select-Object -Unique) -join ';'
-```
-
-**You should see:** no output at all from this block. Read the two settings back.
-
-```powershell
-npm config get prefix
-Test-Path $userBin
-```
-
-**You should see:** `C:\Users\you\.npm-global`, with your own account name in place of `you`, then `True`.
-
-**Stop here if:** npm reports a system directory or the user PATH cannot be changed because of policy. Capture the policy error. Do not switch to an elevated global npm install.
-
-## 5. Clone and inspect the course
-
-A clone is a local working copy with the repository's history. This step refuses to overwrite an existing folder.
-
-**Terminal: Windows PowerShell · normal user.**
-
-```powershell
-$courseHome = Join-Path $env:USERPROFILE 'course'
-$repo = Join-Path $courseHome 'AI_Harness_Bootcamp'
-New-Item -ItemType Directory -Force -Path $courseHome | Out-Null
-if (Test-Path -LiteralPath $repo) {
-  throw "The destination already exists: $repo. Inspect it before renaming or reusing it."
+if (-not $PY) {
+  foreach ($name in @('python', 'python3')) {
+    $cmd = Get-Command $name -ErrorAction SilentlyContinue
+    if ($cmd -and $cmd.Source -notlike '*\WindowsApps\*') {
+      $PY = $cmd.Source
+      break
+    }
+  }
 }
-git clone https://github.com/TheHolofex/AI_Harness_Bootcamp.git $repo
-Set-Location $repo
-git remote get-url origin
-git rev-parse --short=12 HEAD
-git status --short
+if (-not $PY) { throw 'STOP: Python 3.12 or newer was not found outside the Store alias.' }
+$item = Get-Item -LiteralPath $PY -Force
+if ($item.Attributes -band [IO.FileAttributes]::ReparsePoint) {
+  $PY = $item.Target
+  if ($PY -is [array]) { $PY = $PY[0] }
+  $item = Get-Item -LiteralPath $PY -Force
+}
+if ($item.Attributes -band [IO.FileAttributes]::ReparsePoint) {
+  throw 'STOP: Python still resolves through a link. It was not accepted.'
+}
+if ($PY -like '*\WindowsApps\*') { throw 'STOP: Python points at the Store alias.' }
+& $PY -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'
+if ($LASTEXITCODE -ne 0) { throw 'STOP: that Python is older than 3.12.' }
+Write-Output $PY
+& $PY --version
 ```
 
-**You should see:** the `TheHolofex/AI_Harness_Bootcamp` remote, a 12-character revision, and no output from `git status --short` on a clean clone.
+**Expected:** one absolute path to `python.exe`, then a version line beginning `Python 3.12` or newer. The path does not contain `WindowsApps`.
 
-**Stop here if:** the destination exists, the remote differs, the clone is incomplete, or status already shows changes. Do not delete an existing directory to make the command work.
+**Stop:** no usable Python is found, the path is a Store alias or a link that cannot be resolved, or the version is older than 3.12.
 
-## 6. Install the course applications
+**Recovery:** install Python 3.12 for the current user, turn off the `python.exe` and `python3.exe` app execution aliases under Settings, Apps, Advanced app settings, App execution aliases, then close PowerShell and run this block in a new window. Do not point `$PY` at a copy you typed by hand. The alias setting is described in [Python for Windows](https://docs.python.org/3/using/windows.html).
 
-Install the exact OpenCode and n8n versions written below. A pinned version is what makes the result reproducible: the same command installs the same build tomorrow, and on the next machine. Codex and goose come from their official stable installers, which always serve the current release, so the report records whichever versions you receive.
+Keep this window open. `$PY` exists only in this process.
 
-**Terminal: Windows PowerShell · normal user.**
+## Download Oh My Pi and verify it before it can run
 
-Expect this to take 5 to 20 minutes on a normal connection. npm prints a long stream of download lines and then a summary of the packages it added. Silence for a minute at a time is normal.
+You download the selected binary and `SHA256SUMS.txt` from the pinned release into a new folder that belongs only to this attempt. The published file lists a lowercase SHA-256 fingerprint, two spaces, then the exact filename. Nothing is copied into place, and nothing is executed, unless that exact line matches the file you downloaded.
+
+The release page is [Oh My Pi v18.3.5](https://github.com/can1357/oh-my-pi/releases/tag/v18.3.5). `Get-FileHash` is the Windows command that computes the fingerprint: [Get-FileHash](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash).
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-npm install --global @openai/codex
-npm install --global opencode-ai@1.18.17
-npm install --global n8n@2.34.5
+$ErrorActionPreference = 'Stop'
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+if (-not $env:LOCALAPPDATA) { throw 'STOP: LOCALAPPDATA is not set.' }
+$archCode = (Get-CimInstance -ClassName Win32_Processor | Select-Object -First 1).Architecture
+if ($archCode -eq 12) {
+  $asset = 'omp-windows-arm64.exe'
+} elseif ($archCode -eq 9) {
+  $asset = 'omp-windows-x64.exe'
+} else {
+  throw 'STOP: this processor does not have a published course binary.'
+}
+$downloadParent = Join-Path $env:LOCALAPPDATA 'omp-downloads'
+if (Test-Path -LiteralPath $downloadParent) {
+  $parentItem = Get-Item -LiteralPath $downloadParent -Force
+  if ($parentItem.Attributes -band [IO.FileAttributes]::ReparsePoint) {
+    throw 'STOP: the download parent is a link. Nothing was downloaded.'
+  }
+} else {
+  New-Item -ItemType Directory -Path $downloadParent | Out-Null
+}
+$download = Join-Path $downloadParent ([guid]::NewGuid().ToString('n'))
+New-Item -ItemType Directory -Path $download | Out-Null
+$base = 'https://github.com/can1357/oh-my-pi/releases/download/v18.3.5'
+$sumsPath = Join-Path $download 'SHA256SUMS.txt'
+$binaryPath = Join-Path $download $asset
+Invoke-WebRequest -Uri ($base + '/SHA256SUMS.txt') -OutFile $sumsPath -UseBasicParsing
+Invoke-WebRequest -Uri ($base + '/' + $asset) -OutFile $binaryPath -UseBasicParsing
+if (-not (Test-Path -LiteralPath $sumsPath) -or -not (Test-Path -LiteralPath $binaryPath)) {
+  throw 'STOP: a download is missing. Nothing was installed.'
+}
+$matches = @(Get-Content -LiteralPath $sumsPath | Where-Object {
+  $pair = $_ -split '  ', 2
+  $pair.Length -eq 2 -and $pair[1].Trim() -eq $asset
+})
+if ($matches.Count -ne 1) { throw 'STOP: the checksum file has no single exact line for the selected file. Nothing was installed.' }
+$expected = (($matches[0] -split '  ', 2)[0]).Trim().ToLowerInvariant()
+if ($expected -notmatch '^[0-9a-f]{64}$') { throw 'STOP: the checksum line is not a SHA-256 value. Nothing was installed.' }
+$actual = (Get-FileHash -LiteralPath $binaryPath -Algorithm SHA256).Hash.ToLowerInvariant()
+if ($actual -ne $expected) { throw 'STOP: checksum failed. Nothing was installed.' }
+$destDir = Join-Path $env:LOCALAPPDATA 'omp'
+$dest = Join-Path $destDir 'omp.exe'
+foreach ($probe in @($destDir, $dest)) {
+  if (Test-Path -LiteralPath $probe) {
+    $probeItem = Get-Item -LiteralPath $probe -Force
+    if ($probeItem.Attributes -band [IO.FileAttributes]::ReparsePoint) {
+      throw 'STOP: the destination is a symlink or junction. It was not replaced.'
+    }
+  }
+}
+if (Test-Path -LiteralPath $dest) {
+  $destItem = Get-Item -LiteralPath $dest -Force
+  if ($destItem.PSIsContainer) { throw 'STOP: the destination is a folder. It was not replaced.' }
+  $existing = (Get-FileHash -LiteralPath $dest -Algorithm SHA256).Hash.ToLowerInvariant()
+  if ($existing -ne $actual) { throw 'STOP: a different file is already at the destination. It was not replaced.' }
+} else {
+  if (-not (Test-Path -LiteralPath $destDir)) {
+    New-Item -ItemType Directory -Path $destDir | Out-Null
+  }
+  Copy-Item -LiteralPath $binaryPath -Destination $dest
+}
+Write-Output $download
+Write-Output $dest
+& $dest --version
 ```
 
-**You should see:** three summary lines of the form `added 214 packages in 31s`, one per install, and no line beginning `npm error`.
+**Expected:** the download folder path, the destination path ending in `\omp\omp.exe` under your local app data, and a version line `omp/18.3.5`. That version command is the first time the program runs, and it runs only after the fingerprint matched.
 
-goose is installed by a PowerShell script published by its maintainers. PowerShell refuses to run any script file until your account's execution policy allows it, so check that setting first.
+**Stop:** the script stops on a failed download, a missing or extra checksum line, a fingerprint mismatch, a symlink or junction, or a different file already at the destination. The destination is left untouched in those cases.
+
+**Recovery:** leave the download folder in place and run the block again only after you have read the stop line. A second run uses a new download folder. Do not copy the binary into place yourself, and do not delete a different existing `omp.exe`. If Windows itself blocks the verified file from starting, save that message and stop. Do not turn off a security control to force it.
+
+## Save the program folder on your user PATH
+
+The launcher finds `omp` by name. This step records the destination folder in your user PATH so a later window can find the same binary. It does not store the API key.
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-Get-ExecutionPolicy -List
+$ompDir = Join-Path $env:LOCALAPPDATA 'omp'
+$dest = Join-Path $ompDir 'omp.exe'
+if (-not (Test-Path -LiteralPath $dest)) { throw 'STOP: the verified binary is not at the destination.' }
+$current = [Environment]::GetEnvironmentVariable('Path', 'User')
+$kept = @()
+if ($current) {
+  $kept = @($current -split ';' | Where-Object { $_ -and ($_.TrimEnd('\') -ine $ompDir.TrimEnd('\')) })
+}
+$updated = (@($ompDir) + $kept) -join ';'
+[Environment]::SetEnvironmentVariable('Path', $updated, 'User')
+$env:Path = $ompDir + ';' + $env:Path
+$found = (Get-Command omp -ErrorAction SilentlyContinue).Source
+Write-Output $found
 ```
 
-**You should see:** `Undefined` on the `MachinePolicy` and `UserPolicy` rows. On Windows PowerShell 5.1, `LocalMachine` usually reads `Restricted`. While `Restricted` is in force, PowerShell refuses to run any `.ps1` file, so the goose installer will not start.
+**Expected:** the printed path is the same `\omp\omp.exe` path under local app data.
 
-**Stop here if:** `MachinePolicy` or `UserPolicy` shows anything other than `Undefined`. Your organization sets that value and you cannot change it from here. Send IT the output of `Get-ExecutionPolicy -List` and stop. Do not weaken a machine-wide setting.
+**Stop:** the command is not found, or the found path is a different file.
 
-If both are `Undefined` and your organization permits it, allow scripts for your own account only. The first line prints the value you are replacing, so write it down before you continue.
+**Recovery:** run the download block again only if the destination file is missing. If a different `omp` is found, do not overwrite it. Save the printed path and stop. PATH changes are documented in [about_Environment_Variables](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables).
+
+## Use the course checkout, or clone it once
+
+The course lives at `$HOME\AI_Harness_Bootcamp`. An existing checkout of the course origin is used as it is. A different folder at that path is left alone.
+
+Git can rewrite line endings while it copies text files. A line ending is the hidden character at the end of a line. Later checks compare exact bytes, so a rewritten ending makes a frozen control look changed even when the words are the same. The copy command below turns that rewrite off for this one command. It does not save a Git setting, and it does not reset, clean, pull, or renormalize a folder that is already there. The published course also marks these text files to keep their published line endings on a later fresh copy.
+
+After the copy is found or made, this step reads three frozen controls: the Module 1 source manifest, the Module 7 policy file, and the Module 9 restore control. A carriage return in any of them means this copy was already rewritten. That result is a hold. Leave the folder untouched and get an intact fresh copy. This step does not give permission to repair the existing files.
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-Get-ExecutionPolicy -Scope CurrentUser
-Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-Get-ExecutionPolicy -Scope CurrentUser
+$R = Join-Path $HOME 'AI_Harness_Bootcamp'
+$origin = 'https://github.com/TheHolofex/AI_Harness_Bootcamp.git'
+$usingExisting = $false
+if (Test-Path -LiteralPath $R) {
+  if (-not (Test-Path -LiteralPath (Join-Path $R '.git'))) {
+    throw 'STOP: the home folder already has AI_Harness_Bootcamp, and it is not a Git checkout. It was not replaced.'
+  }
+  $remote = (& git -C $R remote get-url origin 2>$null)
+  if ($LASTEXITCODE -ne 0 -or $remote.Trim() -ne $origin) {
+    throw 'STOP: that checkout has a different origin. It was not replaced, reset, pulled, or cleaned.'
+  }
+  $usingExisting = $true
+} else {
+  & git -c core.autocrlf=false clone $origin $R
+  if ($LASTEXITCODE -ne 0) { throw 'STOP: clone failed. No partial folder was cleaned up by this step.' }
+}
+$M = Join-Path $R 'reformation\AI_Harness_Bootcamp_2\module-00-setup'
+$lab = Join-Path $M 'shared\MODULE_00_LAB.md'
+if (-not (Test-Path -LiteralPath $lab)) {
+  throw 'STOP: this checkout does not contain the Module 0 lab. It was not reset, pulled, or cleaned.'
+}
+$frozen = @(
+  'reformation\AI_Harness_Bootcamp_2\module-01-mission-thread\shared\case\SOURCE_MANIFEST.json',
+  'reformation\AI_Harness_Bootcamp_2\module-07-change-eval\shared\controls\policy.json',
+  'reformation\AI_Harness_Bootcamp_2\module-09-capstone\shared\baseline\run.json'
+)
+foreach ($rel in $frozen) {
+  $path = Join-Path $R $rel
+  if (-not (Test-Path -LiteralPath $path)) {
+    throw 'STOP: a frozen control is missing. The checkout was not reset, pulled, or cleaned.'
+  }
+  $item = Get-Item -LiteralPath $path -Force
+  if ($item.PSIsContainer -or ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)) {
+    throw 'STOP: a frozen control is a folder or a link. It was not followed or changed.'
+  }
+  $bytes = [IO.File]::ReadAllBytes($path)
+  if ([Array]::IndexOf($bytes, [byte]13) -ge 0) {
+    throw 'HOLD: a frozen control has rewritten line endings. The checkout was not reset, cleaned, pulled, or renormalized.'
+  }
+}
+if ($usingExisting) {
+  Write-Output 'Using the existing course checkout.'
+} else {
+  Write-Output 'Cloned the course checkout.'
+}
+Write-Output 'Line endings unchanged.'
+Write-Output $R
+Write-Output $M
 ```
 
-**You should see:** the old value first — usually `Undefined` — then a confirmation question, which you answer `Y`, then `RemoteSigned`.
+**Expected:** either `Using the existing course checkout.` or `Cloned the course checkout.`, then `Line endings unchanged.`, then the absolute course path and the Module 0 path.
 
-Now download the installer into a folder of its own, with a name nobody can predict, so nothing else can swap the file between the download and the run.
+**Stop:** the folder exists but is not the course origin, Git cannot read the origin, the clone fails, the lab file is missing, a frozen control is missing or is a folder or link, or a frozen control contains a rewritten line ending. The hold line is `HOLD: a frozen control has rewritten line endings. The checkout was not reset, cleaned, pulled, or renormalized.`
+
+**Recovery:** leave the existing folder in place. If it is the wrong project, choose a different computer folder only with the person who supports your machine; do not delete, reset, pull, or clean this one. If the hold names rewritten line endings, do not edit those files and do not renormalize them. Ask the person who supports your machine before moving the folder aside. After `$HOME\AI_Harness_Bootcamp` is no longer occupied, run this block again so the new copy is intact. If a copy you just made still prints that hold, stop and save the message. If the clone failed before creating the folder, run the block again. If a partial folder was created and it is not a valid course checkout, stop and save the Git message. The one-command setting is documented in [git](https://git-scm.com/docs/git). The line-ending setting it overrides is [core.autocrlf](https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreautocrlf). The clone URL is the course repository documented in [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+
+`$R` and `$M` belong to this window. You will set them again in the window that runs the proof.
+
+## Enter the key without showing it
+
+The next command does nothing except wait for the key. Type the key at that hidden prompt and press Enter. Do not paste the key into the command, a file, a profile, or a chat. The rules for where a key must not go are in [Connect the course account without leaking a key](../shared/CREDENTIALS.md).
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-$stage = Join-Path $env:TEMP ("goose-{0}" -f [Guid]::NewGuid().ToString("N"))
-New-Item -ItemType Directory -Path $stage | Out-Null
-$installer = Join-Path $stage 'download_cli.ps1'
-Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/aaif-goose/goose/main/download_cli.ps1' -OutFile $installer
-$installer
+$secret = Read-Host -Prompt 'OpenRouter API key' -AsSecureString
 ```
 
-**You should see:** the full path of the downloaded file, inside a `goose-` folder under your temp directory.
+**Expected:** the prompt returns, and the key does not appear as readable text. Windows PowerShell may show asterisks. That is still hidden input.
 
-Confirm the script names the `aaif-goose/goose` repository, that it downloads a Windows build, and that the architecture it selects is `x86_64`. Read it in the pager below: press the space bar for the next page, and press `Q` to leave the pager and return to the prompt.
+**Stop:** the key appears in readable text, or you pasted it into the command line instead of the prompt.
+
+**Recovery:** if the key was displayed or pasted into a command, revoke it with the provider, use the replacement, and run only this command again. Do not continue with a key that has been displayed.
+
+## Load the key into this process only
+
+This second command turns the hidden value into a process environment variable, clears the temporary copy, and prints only `SET` or `MISSING`. A SecureString is the hidden value from the previous command. The conversion uses a temporary BSTR, which is an unmanaged string, and then zeroes that memory. The key is not written to a file, a profile, or the saved user environment.
+
+The conversion and zeroing methods are [SecureStringToBSTR](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.marshal.securestringtobstr) and [ZeroFreeBSTR](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.marshal.zerofreebstr).
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-Get-Content -LiteralPath $installer | Out-Host -Paging
+$bstr = [IntPtr]::Zero
+$plain = $null
+try {
+  if ($null -eq $secret) { throw 'STOP: run the hidden read in this window first.' }
+  $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret)
+  $plain = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr)
+  if ([string]::IsNullOrWhiteSpace($plain)) {
+    Write-Output 'MISSING'
+  } else {
+    $env:OPENROUTER_API_KEY = $plain
+    Write-Output 'SET'
+  }
+} finally {
+  if ($bstr -ne [IntPtr]::Zero) {
+    [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
+  }
+  $plain = $null
+  if ($null -ne $secret) { $secret.Dispose() }
+  $secret = $null
+}
 ```
 
-**You should see:** a PowerShell script whose download URL points at `github.com/aaif-goose/goose` and which names `windows` and `x86_64`.
+**Expected:** `SET`.
 
-**Stop here if:** the script names a different repository, a different architecture, or a download host you do not recognize. Delete the staging folder and use the [support packet](../shared/TROUBLESHOOTING.md).
+**Stop:** `MISSING`, an error before either word, or any output that contains the key.
 
-Expect this to take 1 to 5 minutes. The installer prints a download line, then the path it installed goose to.
+**Recovery:** run the hidden-read command again in this same window, then run this command again. Do not check the key by printing the environment. Do not save it with `SetEnvironmentVariable`.
+
+## Open an independent window and read the difference
+
+A window you open from the Start menu is a new process. It does not inherit the previous window's environment, so the key you loaded only into that process should be absent here. A child process is different: typing `powershell` inside the window that has the key can inherit the variable. `SET` in that child does not prove the key was written to a profile or a file. `SET` by itself is never proof of a saved leak. `MISSING` in an independently opened window is the check that this new process did not receive a saved key.
+
+Close the previous window's work only after you have seen `SET` there. Then open Windows PowerShell from the Start menu. Do not type `powershell` in the old window. This window also does not have `$PY`, `$R`, or `$M`. Resolve Python again in this window before the proof, and let the proof block set `$R` and `$M` again.
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-$env:CONFIGURE = 'false'
-& $installer
-Remove-Item -LiteralPath $stage -Recurse -Force
+$dest = Join-Path $env:LOCALAPPDATA 'omp\omp.exe'
+$found = (Get-Command omp -ErrorAction SilentlyContinue).Source
+Write-Output $found
+& $dest --version
+if ([string]::IsNullOrWhiteSpace($env:OPENROUTER_API_KEY)) { Write-Output 'MISSING' } else { Write-Output 'SET' }
 ```
 
-**You should see:** a final line from the installer naming the file it wrote, ending `\.local\bin\goose.exe`.
+**Expected:** the found path is the verified `\omp\omp.exe`, the version line is `omp/18.3.5`, and the last line is `MISSING`.
+
+**Stop:** the command is missing, the path differs, the version differs, or an independently opened window prints `SET` before you type a key.
+
+**Recovery:** if the program path or version is wrong, return to the install step and do not overwrite a different file. If this independent window prints `SET`, run the next check before you enter a key. Do not print the variable.
+
+## Check for a saved key without displaying it
+
+Run this only when the independent window printed `SET` before you typed a key. It looks for the variable name in the saved environment and in PowerShell profiles, and it does not print a value or a matching line.
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-codex --version
-opencode --version
-goose --version
-n8n --version
+foreach ($scope in @('User', 'Machine')) {
+  $saved = [Environment]::GetEnvironmentVariable('OPENROUTER_API_KEY', $scope)
+  if (-not [string]::IsNullOrEmpty($saved)) {
+    $saved = $null
+    throw ('STOP: a saved ' + $scope + ' environment entry exists. The value was not printed.')
+  }
+}
+$profiles = @(
+  $PROFILE.CurrentUserCurrentHost,
+  $PROFILE.CurrentUserAllHosts,
+  $PROFILE.AllUsersCurrentHost,
+  $PROFILE.AllUsersAllHosts
+)
+foreach ($path in $profiles) {
+  if ($path -and (Test-Path -LiteralPath $path)) {
+    if (Select-String -LiteralPath $path -Pattern 'OPENROUTER_API_KEY' -SimpleMatch -Quiet) {
+      throw 'STOP: a PowerShell profile names the key variable. The line was not printed.'
+    }
+  }
+}
+Write-Output 'No saved environment entry or profile reference was found.'
 ```
 
-**You should see:** four version strings; OpenCode `1.18.17`; n8n `2.34.5`.
+**Expected:** if you reached this command because the new window printed `SET`, the script stops with a saved-entry or profile message. If you ran it after a correct `MISSING`, the line is `No saved environment entry or profile reference was found.`
 
-Open Obsidian from Start. Choose **Open folder as vault**, then select the course folder only for this setup check. You can close it after the vault opens.
+**Stop:** a saved entry or a profile reference exists. Also stop if the independent window printed `SET` but this check finds nothing: something else is supplying the variable, and you still must not print it.
 
-**You should see:** `AI_Harness_Bootcamp` at the top of Obsidian's file pane, with `README.md` listed under it.
+**Recovery:** revoke the key at the provider. If the stop line names the User scope, remove that saved name with the next command, then open a new window from the Start menu and confirm `MISSING` before you enter the replacement. If the stop line names Machine scope or a profile, do not delete the profile blindly and do not change machine settings. Remove the assignment in an editor without copying the value, or ask the person who supports the computer. Then confirm a new Start-menu window prints `MISSING`.
 
-**Stop here if:** the goose installer reports ARM64, a missing DLL, or a different repository; a pinned version differs; Obsidian cannot open the folder; or any command resolves to an unexpected application. If goose exits with `0xC0000135`, repair the Microsoft Visual C++ runtime before changing goose.
-
-Sources: [Codex CLI](https://developers.openai.com/codex/cli), [OpenCode installation](https://opencode.ai/docs/), [goose](https://github.com/aaif-goose/goose), [n8n npm requirements](https://docs.n8n.io/llms-full.txt), and [Obsidian](https://obsidian.md/download).
-
-## 7. Connect the course accounts
-
-Read [Connect the course accounts](../shared/CREDENTIALS.md) before entering a credential.
-
-**Terminal: Windows PowerShell · normal user.**
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-codex login
-codex login status
+[Environment]::SetEnvironmentVariable('OPENROUTER_API_KEY', $null, 'User')
+Write-Output 'User environment name cleared. The value was not printed.'
 ```
 
-**You should see:** a line from `codex login status` naming how you are signed in, such as `Logged in using ChatGPT`. Read that method and compare it with the one your cohort approved.
+**Expected:** the cleared line, and no key text.
 
-Copy and run the next line on its own, with nothing after it in the same paste. PowerShell hands whatever follows a prompt straight into that prompt, so a second pasted line would be stored as your key.
+**Stop:** you did not first see a stop line that named the User scope, or the key appears in the output.
+
+**Recovery:** run this only after the check names the User scope. For a Machine scope or profile finding, use the recovery in the previous step instead of this command.
+
+## Enter the key again in the proof window
+
+The proof has to run in the independent window, because that is the window whose PATH came from the saved user setting. The key does not come along. Repeat the hidden read, then the separate conversion. Do not skip the read and paste the key into the conversion command.
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-$secure = Read-Host 'Paste the cohort XAI_API_KEY' -AsSecureString
+$secret = Read-Host -Prompt 'OpenRouter API key' -AsSecureString
 ```
 
-**You should see:** the prompt text, and no characters as you paste the key.
+**Expected:** the prompt returns, and the key is not readable on screen.
+
+**Stop:** the key is visible as readable text.
+
+**Recovery:** revoke a displayed key, then run this read again.
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-$ptr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
-try { $env:XAI_API_KEY = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($ptr) }
-finally { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ptr) }
-Remove-Variable secure
-$env:GOOSE_PROVIDER = 'xai'
-$env:GOOSE_MODEL = 'grok-4.5'
-if ([string]::IsNullOrWhiteSpace($env:XAI_API_KEY)) { 'MISSING' } else { 'SET' }
+$bstr = [IntPtr]::Zero
+$plain = $null
+try {
+  if ($null -eq $secret) { throw 'STOP: run the hidden read in this window first.' }
+  $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret)
+  $plain = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr)
+  if ([string]::IsNullOrWhiteSpace($plain)) {
+    Write-Output 'MISSING'
+  } else {
+    $env:OPENROUTER_API_KEY = $plain
+    Write-Output 'SET'
+  }
+} finally {
+  if ($bstr -ne [IntPtr]::Zero) {
+    [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
+  }
+  $plain = $null
+  if ($null -ne $secret) { $secret.Dispose() }
+  $secret = $null
+}
 ```
 
-**You should see:** `SET`. The key itself must not appear.
+**Expected:** `SET`.
 
-**Stop here if:** you are uncertain which account or model the cohort approved, login status shows the wrong method, or the key appeared in output or history. Revoke an exposed key before continuing.
+**Stop:** `MISSING`, or any output that contains the key.
 
-## 8. Prove the setup
+**Recovery:** run the hidden read and this conversion again in this window. Do not continue to the proof on `MISSING`.
 
-Check the local tools before making any request that may cost money. The report is saved outside the repository, and the repository must still be unchanged.
+## Create a fresh proof folder and token
 
-**Terminal: Windows PowerShell · normal user · repository root.**
+The proof folder is outside the course checkout. You are preparing one fresh attempt so the model can read a token and write only `from-omp.txt`. The token is created by Python's secrets module and stored outside the proof folder, then copied in, so the model has to read it. The evidence folder is only a path at this point. You do not create it. You also do not create `from-omp.txt`.
 
-The check is a PowerShell script file, so your account's execution policy has to allow scripts. The first line prints the policy actually in force; the second shows where it comes from.
+Run the Python resolve block in this window before this block. `$PY` from an earlier window is not here. This block sets `$R` and `$M` again. Stay in this window through the checker and the report, because a new Start-menu window does not keep `$PY`, `$R`, `$M`, `$attempt`, or the key.
 
-```powershell
-Get-ExecutionPolicy
-Get-ExecutionPolicy -List
-```
+Windows PowerShell removes quotation marks that sit inside a short `-c` program before Python sees them. The programs below are sent on standard input, which is the text a program reads when you pipe into it, and each file path is a separate argument. The quotation marks therefore stay in the program. Those programs write UTF-8 text and do not print the token. This block also stops if a frozen control was rewritten, and it does not repair that copy. The quoting rules are in [about_Quoting_Rules](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_quoting_rules?view=powershell-5.1). `$OutputEncoding` is the encoding PowerShell uses when it sends that text, described in [about_Preference_Variables](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-5.1).
 
-**You should see:** `RemoteSigned` on the first line, and `Undefined` for both `MachinePolicy` and `UserPolicy`.
-
-**Stop here if:** the first line reads `Restricted`, or `MachinePolicy` or `UserPolicy` shows any value other than `Undefined`. A value on either of those two rows belongs to IT: send them the output of `Get-ExecutionPolicy -List` and stop, rather than weakening a machine-wide setting. If both are `Undefined` and the first line still reads `Restricted`, and your organization permits it, run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` and record the old value so you can restore it after the course.
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-Set-Location "$env:USERPROFILE\course\AI_Harness_Bootcamp"
-$M0 = "reformation/AI_Harness_Bootcamp_2/module-00-setup"
-& "$M0/scripts/verify-setup.ps1" -Root $PWD
-```
-
-**You should see:** `SETUP CHECK PASS` and a report under `%USERPROFILE%\course-evidence\module-00`.
-
-**Stop here if:** the report ends with `SETUP CHECK HOLD`. Save its first failed check and use the [troubleshooting guide](../shared/TROUBLESHOOTING.md).
-
-## 9. Repeat the proof in a fresh shell
-
-Close every PowerShell and AI tool window, then open a new PowerShell window. Everything below runs in that one window.
-
-**Terminal: Windows PowerShell · normal user · new window.**
-
-```powershell
-codex --version
-opencode --version
-goose --version
-n8n --version
-if ([string]::IsNullOrWhiteSpace($env:XAI_API_KEY)) { 'MISSING — expected in a fresh shell' } else { 'SET — investigate persistence' }
-```
-
-**You should see:** four version strings and `MISSING — expected in a fresh shell`. The key is entered per session on purpose.
-
-Copy and run the next line on its own, with nothing after it in the same paste.
-
-```powershell
-$secure = Read-Host 'Paste the cohort XAI_API_KEY' -AsSecureString
-```
-
-**You should see:** the prompt text, and no characters as you paste the key.
-
-```powershell
-$ptr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
-try { $env:XAI_API_KEY = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($ptr) }
-finally { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ptr) }
-Remove-Variable secure
-$env:GOOSE_PROVIDER = 'xai'
-$env:GOOSE_MODEL = 'grok-4.5'
-if ([string]::IsNullOrWhiteSpace($env:XAI_API_KEY)) { 'MISSING' } else { 'SET' }
-```
-
-**You should see:** `SET`.
-
-```powershell
-Set-Location "$env:USERPROFILE\course\AI_Harness_Bootcamp"
-$M0 = "reformation/AI_Harness_Bootcamp_2/module-00-setup"
-$run = Join-Path $env:USERPROFILE ("course-evidence\module-00\run-{0}" -f [Guid]::NewGuid().ToString("N"))
-$proof = Join-Path $run 'proof'
+if (-not $PY) { throw 'STOP: resolve Python again in this window before the proof.' }
+$R = Join-Path $HOME 'AI_Harness_Bootcamp'
+$M = Join-Path $R 'reformation\AI_Harness_Bootcamp_2\module-00-setup'
+$frozen = @(
+  'reformation\AI_Harness_Bootcamp_2\module-01-mission-thread\shared\case\SOURCE_MANIFEST.json',
+  'reformation\AI_Harness_Bootcamp_2\module-07-change-eval\shared\controls\policy.json',
+  'reformation\AI_Harness_Bootcamp_2\module-09-capstone\shared\baseline\run.json'
+)
+foreach ($rel in $frozen) {
+  $path = Join-Path $R $rel
+  if (-not (Test-Path -LiteralPath $path)) {
+    throw 'STOP: a frozen control is missing. Nothing was created for this proof.'
+  }
+  $item = Get-Item -LiteralPath $path -Force
+  if ($item.PSIsContainer -or ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)) {
+    throw 'STOP: a frozen control is a folder or a link. It was not followed or changed.'
+  }
+  $bytes = [IO.File]::ReadAllBytes($path)
+  if ([Array]::IndexOf($bytes, [byte]13) -ge 0) {
+    throw 'HOLD: a frozen control has rewritten line endings. Nothing was created, and the checkout was not changed.'
+  }
+}
+$runId = [guid]::NewGuid().ToString('n')
+$run = Join-Path (Join-Path $HOME 'course-evidence\reformation-qa') $runId
+$attempt = Join-Path $run 'module-00'
+$proof = Join-Path $attempt 'proof'
+$tokenFile = Join-Path $attempt 'run-token.txt'
+$evidence = Join-Path $attempt ('evidence-' + [guid]::NewGuid().ToString('n'))
+if ((Test-Path -LiteralPath $proof) -or (Test-Path -LiteralPath $tokenFile) -or (Test-Path -LiteralPath $evidence)) {
+  throw 'STOP: an attempt path already exists. Nothing was overwritten.'
+}
 New-Item -ItemType Directory -Path $proof | Out-Null
-Set-Content -LiteralPath (Join-Path $env:USERPROFILE 'course-evidence\module-00\latest-run.txt') -Value $run
-& "$M0/scripts/verify-setup.ps1" -Root $PWD -ResultsPath (Join-Path $run 'setup-report.txt')
+$savedOutputEncoding = $OutputEncoding
+$OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+try {
+@'
+import pathlib, secrets, sys
+pathlib.Path(sys.argv[1]).write_text(secrets.token_hex(16) + "\n", encoding="utf-8")
+'@ | & $PY - $tokenFile
+if ($LASTEXITCODE -ne 0) { throw 'STOP: the token file was not written.' }
+Copy-Item -LiteralPath $tokenFile -Destination (Join-Path $proof 'run-token.txt')
+$promptFile = Join-Path $proof 'prompt.txt'
+@'
+import pathlib, sys
+pathlib.Path(sys.argv[1]).write_text("Use only the course_read and course_write tools. Do not use any other tool.\nUse course_read to read the file run-token.txt in your work directory. The token is the exact text of that file, with surrounding space removed.\nUse course_write to write only the file from-omp.txt. The entire file must be the two words omp works, then one space, then that exact token. Do not write any other file.\n", encoding="utf-8")
+'@ | & $PY - $promptFile
+if ($LASTEXITCODE -ne 0) { throw 'STOP: the prompt file was not written.' }
+} finally {
+  $OutputEncoding = $savedOutputEncoding
+}
+Write-Output $proof
+Write-Output $tokenFile
+Write-Output $evidence
+Write-Output ('evidence exists now: ' + (Test-Path -LiteralPath $evidence))
 ```
 
-**You should see:** `SETUP CHECK PASS` in this new window, and the path of the report it wrote.
+**Expected:** three absolute paths, then `evidence exists now: False`. The token value is not printed.
 
-Each of the three AI tools is now asked to write one file. The command below first makes a short random token and saves it, then puts that token in each request. A proof file counts only if it carries this run's token and was written after the token existed — which shows the file appeared during this run, not that a model rather than a person wrote it.
+**Stop:** Python is missing, a frozen control is missing or rewritten, a path already exists, a file cannot be written, or the evidence line is `True`. The line-ending hold is `HOLD: a frozen control has rewritten line endings. Nothing was created, and the checkout was not changed.`
 
-Expect this to take 1 to 5 minutes. Each tool prints its own progress and may pause for a while with no output while it works.
+**Recovery:** if the stop says to resolve Python, run that block in this window and then run this block again. If the hold names rewritten line endings, return to the checkout step. Do not edit the course files. Leave any partial attempt in place and run this block again only after the checkout hold is cleared, so the new attempt has new paths. Do not delete the course checkout, and do not create the evidence folder or `from-omp.txt` by hand.
+
+## Ask for the one permitted write
+
+The launcher runs the pinned Oh My Pi binary with permission to write only `from-omp.txt`. It reads the key from this process. If the key is missing, it stops before it creates the evidence folder. If the live attempt fails, it keeps the evidence it created. Do not run the launcher a second time against a proof folder that already contains `from-omp.txt`.
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-Set-Location "$env:USERPROFILE\course\AI_Harness_Bootcamp"
-$run = Get-Content -LiteralPath (Join-Path $env:USERPROFILE 'course-evidence\module-00\latest-run.txt')
-$proof = Join-Path $run 'proof'
-$token = python -c "import secrets; print(secrets.token_hex(4))"
-Set-Content -LiteralPath (Join-Path $run 'run-token.txt') -Value $token
-$token
-Set-Location $proof
-codex exec --sandbox workspace-write --skip-git-repo-check "Create a file named from-codex.txt whose only line is: codex works $token"
-opencode run -m "xai/grok-4.5" "Create a file named from-opencode.txt in the current directory whose only line is: opencode works $token"
-goose run --no-session --provider xai --model grok-4.5 -t "Create a file named from-goose.txt in the current directory whose only line is: goose works $token"
+$launcher = Join-Path $R 'reformation\shared\run_omp.py'
+if (Test-Path -LiteralPath $evidence) { throw 'STOP: the evidence path already exists. Choose a new attempt.' }
+if (Test-Path -LiteralPath (Join-Path $proof 'from-omp.txt')) { throw 'STOP: the proof folder already has a write. Keep it and start a new attempt.' }
+& $PY $launcher --workdir $proof --prompt $promptFile --evidence $evidence --allow-write 'from-omp.txt'
+Write-Output ('launcher exit ' + $LASTEXITCODE)
+Write-Output ('evidence exists after launch: ' + (Test-Path -LiteralPath $evidence))
 ```
 
-**You should see:** eight characters of the run token, for example `9f3c1ab2`, then each tool reporting that it created its file.
+**Expected:** the launcher finishes, the exit line is `launcher exit 0`, and the evidence folder now exists. The launcher may also print a status line of its own. That line is not the tool proof.
+
+**Stop:** exit 2, especially with a missing-key hold, means a prerequisite failed. The evidence folder should still be absent, and you must not invent the proof file. Exit 1 means the live attempt failed. Exit 0 with no evidence folder is also a stop.
+
+**Recovery:** on exit 2 with no evidence folder, enter the key again in this window and start again at the fresh-proof step so the new attempt has new paths. On exit 1, or if `from-omp.txt` already exists, keep both folders and start again at the fresh-proof step. Do not retry into the same proof folder, and do not write `from-omp.txt` yourself.
+
+## Check the write against the token and the receipt
+
+The checker takes the proof folder, the token file outside that folder, and the evidence folder. It passes only when `from-omp.txt` contains the words `omp works`, one space, and this run's token, and a `course_write` receipt matches the file on disk.
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-Set-Location "$env:USERPROFILE\course\AI_Harness_Bootcamp"
-$M0 = "reformation/AI_Harness_Bootcamp_2/module-00-setup"
-$run = Get-Content -LiteralPath (Join-Path $env:USERPROFILE 'course-evidence\module-00\latest-run.txt')
-python "$M0/shared/case/verify_tool_proof.py" (Join-Path $run 'proof') (Join-Path $run 'run-token.txt') | Tee-Object -FilePath (Join-Path $run 'tool-proof.txt')
+$checker = Join-Path $M 'shared\case\verify_tool_proof.py'
+& $PY $checker $proof $tokenFile $evidence
+Write-Output ('checker exit ' + $LASTEXITCODE)
 ```
 
-**You should see:** one `PASS:` line for each of the three files, then `TOOL PROOF PASS`.
+**Expected:** the checker's last result line is `TOOL PROOF PASS`, and the exit line is `checker exit 0`.
 
-Start n8n in a second PowerShell window with `n8n start` and leave it running there. Back in this window:
+**Stop:** the last result line is `TOOL PROOF HOLD`, the checker exits nonzero, or the proof file is missing. A file you create by hand is not a pass.
+
+**Recovery:** keep this attempt. Return to the fresh-proof step and use new folders. Do not edit `from-omp.txt` to make the words match.
+
+## Record prerequisites, not the live turn
+
+This report checks that Git, Python, Oh My Pi, the checkout, and the key are present in this process. A passing report does not prove the live write. A dirty checkout is not a reason to reset, pull, or clean. The tool proof you already ran is the live-write check. Stay in the proof window for this report. `$R`, `$M`, and `$attempt` are already set there, and a new Start-menu window does not have them or the key.
+
+Windows PowerShell may refuse a `.ps1` file until the current user allows local scripts. A managed policy is left unchanged. Execution policies are described in [about_Execution_Policies](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies).
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-Set-Location "$env:USERPROFILE\course\AI_Harness_Bootcamp"
-$M0 = "reformation/AI_Harness_Bootcamp_2/module-00-setup"
-$run = Get-Content -LiteralPath (Join-Path $env:USERPROFILE 'course-evidence\module-00\latest-run.txt')
-python "$M0/shared/case/verify_n8n.py" (Join-Path $run 'n8n.pass')
+Get-ExecutionPolicy -List | Format-Table -AutoSize | Out-String | Write-Output
+$machinePolicy = (Get-ExecutionPolicy -Scope MachinePolicy)
+$userPolicy = (Get-ExecutionPolicy -Scope UserPolicy)
+if ($machinePolicy -ne 'Undefined' -or $userPolicy -ne 'Undefined') {
+  throw 'STOP: a managed execution policy is in effect. It was not changed.'
+}
+$currentPolicy = Get-ExecutionPolicy -Scope CurrentUser
+Write-Output ('CurrentUser before: ' + $currentPolicy)
+if ($currentPolicy -eq 'Restricted' -or $currentPolicy -eq 'Undefined' -or $currentPolicy -eq 'AllSigned') {
+  Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
+}
+Write-Output ('CurrentUser after: ' + (Get-ExecutionPolicy -Scope CurrentUser))
 ```
 
-**You should see:** `PASS: n8n answered its health check at http://127.0.0.1:5678`.
+**Expected:** the policy list, then a CurrentUser value of `RemoteSigned`, `Unrestricted`, or `Bypass` on the after line. This command does not change Machine or User policy.
 
-Open Obsidian and choose **Open folder as vault**, then select `%USERPROFILE%\course\AI_Harness_Bootcamp`. Opening a folder as a vault makes Obsidian write a `.obsidian` folder inside it. Obsidian shows the number of files it indexed in the status bar at the bottom of the window; read that number and keep it in front of you.
+**Stop:** MachinePolicy or UserPolicy is anything other than `Undefined`, or CurrentUser remains `Restricted` after the command.
+
+**Recovery:** if a managed policy is set, send the list to the person who supports the computer and stop. Do not set `Bypass`, and do not change LocalMachine. If CurrentUser is still `Restricted` and no managed policy is set, run this block again in this window.
+
+**Terminal: Windows PowerShell, ordinary user.**
 
 ```powershell
-Set-Location "$env:USERPROFILE\course\AI_Harness_Bootcamp"
-$run = Get-Content -LiteralPath (Join-Path $env:USERPROFILE 'course-evidence\module-00\latest-run.txt')
-$marker = Join-Path $PWD '.obsidian'
-if (-not (Test-Path -LiteralPath $marker)) { throw "Obsidian has not opened $PWD as a vault: there is no .obsidian folder here." }
-$tracked = (git ls-files | Measure-Object).Count
-$count = Read-Host 'File count from the Obsidian status bar'
-if ($count -notmatch '^\d+$') { throw "Type digits only. PowerShell received: $count" }
-if ([int]$count -lt [int]($tracked * 0.6) -or [int]$count -gt [int]($tracked * 1.4)) { throw "Obsidian reported $count files and Git tracks $tracked in this folder. Check which folder Obsidian opened." }
-Set-Content -LiteralPath (Join-Path $run 'obsidian-observed.txt') -Value "vault=$((Get-Item -LiteralPath $PWD).Name)\.obsidian files=$count tracked=$tracked"
-Get-Content -LiteralPath (Join-Path $run 'obsidian-observed.txt')
+$report = Join-Path $attempt 'setup-report.txt'
+if (Test-Path -LiteralPath $report) { throw 'STOP: the report path already exists. It was not overwritten.' }
+& (Join-Path $M 'scripts\verify-setup.ps1') -Root $R -ResultsPath $report
+Write-Output ('report exit ' + $LASTEXITCODE)
+Write-Output $report
 ```
 
-**You should see:** one line reading `vault=AI_Harness_Bootcamp\.obsidian files=` and the number you read from Obsidian, then `tracked=` and the number of files Git tracks in the clone. The two counts land close together; Obsidian does not index the hidden `.git` folder. The `.obsidian` folder proves Obsidian opened this clone, while the file count is a number you typed, so it proves only that what Obsidian displayed falls in the range this clone can produce.
+**Expected:** a report file path, and a last report line that begins `SETUP CHECK PASS` or `SETUP CHECK HOLD`. The report does not contain the key.
 
-Stop n8n in the second window with **Ctrl+C**.
+**Stop:** the script is blocked by execution policy, the report path already exists, or the report contains the key. A hold in this report is a prerequisite hold. It is not repaired by editing the proof file, and a pass in this report does not replace `TOOL PROOF PASS`.
 
-**You should see:** in that second window, n8n stops printing and the PowerShell prompt returns, ending in `>`.
+**Recovery:** fix the first failed prerequisite named in the report, then run this report command again only after choosing a new report path if the old file exists. Do not reset, pull, or clean the checkout because the report mentions local changes. Continue to the lab only after the tool proof printed `TOOL PROOF PASS`.
 
-**Stop here if:** only the old window found a command, the fresh shell already contained the key, a proof file is wrong, the Obsidian block reported no `.obsidian` folder or refused the count you typed, or repository facts changed.
-
-## 10. Save the setup record
-
-Append the recorded results to the newest report outside Git.
-
-**Terminal: Windows PowerShell · normal user.**
-
-```powershell
-Set-Location "$env:USERPROFILE\course\AI_Harness_Bootcamp"
-$run = Get-Content -LiteralPath (Join-Path $env:USERPROFILE 'course-evidence\module-00\latest-run.txt') -ErrorAction Stop
-$proofText = Get-Content -LiteralPath (Join-Path $run 'tool-proof.txt') -Raw -ErrorAction SilentlyContinue
-$proofVerdict = @($proofText -split "\r?\n" | Where-Object { $_ -match 'TOOL PROOF' })[0]
-if ($proofVerdict -ne 'TOOL PROOF PASS') { throw "The AI file-writing proof did not pass in $run" }
-$n8n = Get-Content -LiteralPath (Join-Path $run 'n8n.pass') -ErrorAction SilentlyContinue
-if ($n8n -ne 'PASS') { throw "The n8n health check did not pass in $run" }
-$obsidian = ([string](Get-Content -LiteralPath (Join-Path $run 'obsidian-observed.txt') -Raw -ErrorAction SilentlyContinue)).Trim()
-if ($obsidian -notmatch 'vault=AI_Harness_Bootcamp\\\.obsidian' -or $obsidian -notmatch 'files=\d+ tracked=\d+') { throw "No recorded Obsidian vault folder and file count in $run" }
-$report = Get-Item -LiteralPath (Join-Path $run 'setup-report.txt')
-@"
-Setup path: Windows PowerShell only
-Architecture: $env:PROCESSOR_ARCHITECTURE
-New-terminal file-writing checks: $proofVerdict
-Obsidian observed: $obsidian
-n8n health check at 127.0.0.1:5678: $n8n
-Target-platform execution: learner-run on this machine
-"@ | Add-Content -LiteralPath $report.FullName
-Get-Content -LiteralPath $report.FullName -Tail 7
-```
-
-**You should see:** the six lines you just appended, with no key, account identifier, or personal folder path among them.
-
-**Stop here if:** the report includes a key, account identifier, internal host, or raw environment listing. Remove the exposed record and rotate a leaked key.
-
-Setup is complete. Continue to the [shared Module 0 lab](../shared/MODULE_00_LAB.md).
+The next work is the [Module 0 lab](../shared/MODULE_00_LAB.md). The pins are in [Course setup pins](../shared/VERSIONS.md), and the cited install pages are collected in [Primary setup sources](../shared/SOURCES.md). If you are working in Ubuntu on WSL instead of native Windows, use [Windows WSL 2 with Ubuntu setup](windows-wsl.md) from the start rather than mixing the two paths.

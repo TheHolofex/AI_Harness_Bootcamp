@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-BUILDER = REPO_ROOT / "scripts" / "build-module-figures.mjs"
+BUILDER = REPO_ROOT / "reformation" / "scripts" / "render_figures.mjs"
 
 
 def test_module_figures_check() -> None:

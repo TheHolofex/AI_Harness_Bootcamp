@@ -1,4 +1,4 @@
-# S04 · Fleet mission card VX-204, revision 7
+# Fleet card VX-204 revision 7
 
 **Issuer:** North Basin Fleet Engineering  
 **Effective:** 2026-10-01 00:00 MDT  

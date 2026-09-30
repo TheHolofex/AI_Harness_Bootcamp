@@ -1,4 +1,4 @@
-# S09 · AI dispatch draft under review
+# AI dispatch draft
 
 **Generated:** 2026-10-06 14:05 MDT  
 **Source authority:** none; this is output to verify

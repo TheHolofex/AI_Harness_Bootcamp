@@ -1,18 +1,9 @@
-Subject: Coordination room open Tuesday and Wednesday at Red Mesa Depot
+Subject: Desk note — water-treatment kits at Harbor Depot are not released to Field Clinic S-3
 
-The Red Mesa Depot coordination room will open during the Cold Lantern documentation window
-on Tuesday and Wednesday. Public hours are 12:00 p.m. to 8:00 p.m. on both days.
+The count at Harbor Depot is 27 water-treatment kits on hand in pen 4. The kits were counted and staged. Counted and staged is custody, not a release. The North Shelf request asks for 40 water-treatment kits for Field Clinic S-3. The two figures are not the same number. This note does not close the difference.
 
-The depot is at 12 Mesa Yard. Please use the east entrance on Depot Road. The
-Yard Street doors stay locked during the window.
+Paperwork questions use the documentation window on Thursday and Friday, 9:00 a.m. to 5:00 p.m. That window is for paperwork questions only. It is not a pickup appointment, a dispatch, or a delivery promise.
 
-There is no charge, and the room is open to any named course coordinator. No ID is needed. The room holds sixty people at one time.
+This note releases no lot, assigns no vehicle, approves no permit, and confirms no receipt. Whether the movement is supportable is unknown. Ivo Marsh at the Harbor Depot release desk owns any release. The Field Clinic S-3 supply clerk does not. Do not schedule kit use from this note. Do not tell patients that treatment water is coming.
 
-Inside there is seating, drinking water, restrooms, power outlets, and a small quiet
-room on the first floor. The east entrance has a ramp and a powered door, and the
-quiet room is on the first floor.
-
-Service animals are welcome. Other pets are not allowed inside. Route 6 stops at Depot
-Road and Third Street. The depot does not operate a shuttle.
-
-Questions? Reach the depot on 555-0148 during public hours.
+This note is for named class participants only. Call 555-0194 during the documentation window with a paperwork question.

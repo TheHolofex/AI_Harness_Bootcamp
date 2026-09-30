@@ -18,7 +18,6 @@ required = [
     ROOT / "shared/MISSION_THREAD.md",
     ROOT / "shared/ACCESSIBILITY.md",
     ROOT / "shared/WHEN_EVIDENCE_BREAKS.md",
-    ROOT / "shared/NEXT_MODULE.md",
     ROOT / "facilitator/RUNBOOK.md",
     ROOT / "assessment/PUBLIC_RUBRIC.md",
     ROOT / "assessment/CUSTODY_CONTRACT.md",
@@ -33,6 +32,9 @@ required = [
     ROOT / "scripts/render_review.py",
     ROOT / "scripts/compute_thread.py",
     ROOT / "scripts/check_work.py",
+    ROOT / "scripts/hash_inbox.py",
+    ROOT / "scripts/run_producer_rebuttal.py",
+    CASE / "INBOX_MAP.json",
     MANIFEST,
 ]
 

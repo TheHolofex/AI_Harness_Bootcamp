@@ -1,53 +1,40 @@
-# Module 0 protected-acceptance custody contract
+# Module 0 independent-assessment custody contract
 
-This file defines what the course implementation must protect. It contains no case, expected answer, or checker logic.
+The supplied Harbor Depot case, request, changed input, public rubric and practice checker are inspectable. Their facts are not secret. This contract does not assert that an independent evaluator or protected deciding control has been supplied.
 
-Module 0 is scored on the supplied case. Integrity does not come from the learner not knowing the case — the case, the request, the changed input, and the practice checker are all published to the learner in full. It comes from the deciding control living somewhere the learner and the learner's AI tools cannot reach, and being run by someone other than the producer.
+A formal result requires an actual evaluator, deciding evidence/control held outside learner/model reach, and the original outcome record. Without them, qualification remains HOLD. Reachable technical practice may continue. Do not invent a second case or call a public checker protected because its file is outside the model's work root.
 
 ## Roles
 
-- **Control custodian:** holds the protected acceptance control, its expected material facts, and its version history outside the student repository and off every learner-reachable system.
-- **Evaluator:** starts the attempt, receives the learner's work, runs the protected acceptance control on evaluator-held infrastructure, and scores the public rubric.
-- **Facilitator:** teaches and supports practice. The facilitator does not run the protected control and does not describe its logic.
-- **Learner:** receives the supplied case, the request, the changed input, the practice checker in full, an allowed workspace, the public rubric, and the time limit.
+- **Custodian:** holds any genuine deciding control, its version history and the original outcome record outside the public repository and learner/model work. Records who can access it.
+- **Evaluator:** observes or receives the original attempt, applies the fixed public rubric and actual deciding control, and records assistance and result.
+- **Facilitator:** supports practice and records interventions without supplying the learner's decisions.
+- **Learner:** works on the supplied public case, keeps original files and failures, and receives the whole public rubric and practice checker.
 
-One person may hold more than one staff role only when the access log and the release control for the protected acceptance control remain intact.
+A person may hold more than one staff role only when access, independence and original-record custody remain explicit. A model or another agent playing an evaluator is not a human evaluator.
 
-## Required controls
+## Before a scored attempt
 
-1. The protected acceptance control is never committed to the student repository, embedded in a client-delivered application, or copied onto a learner machine.
-2. The producing AI cannot list, read, edit, or invoke the control that will judge its output.
-3. The learner sees the whole public rubric and the whole practice checker. The protected control's logic and its expected material facts stay off-machine.
-4. Every scored result is produced by an evaluator run of the protected control. A learner-reported result is evidence of practice, never a score.
-5. Each version of the protected control has a unique ID, version, release date, owner, and retirement status.
-6. If the protected control's logic is disclosed in class or in support, it is revised and re-versioned before any further result is scored against it.
-7. Raw learner output and the protected control's result are preserved before any coaching or correction.
-8. A control update creates a new version. Prior scores retain the prior control ID.
-9. Staff run one passing and at least three failing specimens through the protected control before release.
-10. Reassessment reruns the same supplied case through the protected control. Both results are preserved, each with its control ID.
-11. At 200 learners the control stays off-machine and evaluator-run. Scale does not justify shipping it to learners or delegating the run to them.
+1. Identify the actual custodian, evaluator, control/version, allowed work boundary and original-record location. Verify the access boundary rather than relying on a label.
+2. Keep genuinely private deciding controls and results out of the public repository and every learner/model-reachable workspace. Public case facts remain public.
+3. Exercise the actual control on a faithful specimen and meaningful failures. Do not equate a nonzero crash with a correct rejection.
+4. Freeze the rubric and control before inspecting the learner's result. State the time target and permitted assistance; do not present unmeasured timing as a validated human threshold.
+5. Preserve raw output and the first result before coaching. A learner-reported checker pass is practice evidence, not an independent score.
+6. If custody is absent or compromised, retain HOLD. An updated control gets a new identity; earlier results keep their original version and evidence.
 
-## Evidence record
+## Original record
 
 ```text
 Learner pseudonymous ID:
-Supplied case ID and version:
+Supplied case ID/version:
 Rubric version:
-Start and end timestamps:
-First checked result: location and timestamp
-Practice-check result reported by the learner (evidence, not a score):
-Protected control ID and result:
-Evaluator:
-Coaching before completion: none / describe
-Final result: PASS / HOLD
+Start/end timestamps and actual assistance:
+First checked artifact and original failure locations:
+Public practice result:
+Actual deciding control/version and custody location, or missing prerequisite:
+Actual evaluator and observed operation, or not measured:
+Original outcome record location:
+Final qualification state: PASS / HOLD
 ```
 
-## Prohibited shortcuts
-
-- placing the protected control, or anything it can be reconstructed from, on a learner machine;
-- a model-generated self-score used as the grade;
-- reusing the practice checker as the deciding control;
-- accepting a screenshot in place of the underlying file;
-- replacing independent operation with facilitator narration;
-- changing the rubric after reading the learner's result;
-- deleting failed first attempts.
+Do not accept a model self-score, simulated human, screenshot instead of the underlying artifact, narrated action instead of operation, post-result rubric change, erased failure, or public checker presented as hidden. Keep local raw receipts outside the checkout and redact personal paths in committed staff summaries. Never collect API keys or environment dumps.

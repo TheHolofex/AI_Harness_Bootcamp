@@ -82,15 +82,15 @@
       "id": "m06-delta",
       "role": "diagnostic",
       "template": "matrix",
-      "title": "Only L-12 moves",
-      "desc": "L-11 is unchanged, then byte-identical. L-12 moves from OPEN to NOT_AUTHORIZED. L-13 is unchanged, then byte-identical.",
-      "caption": "Only L-12 moves. L-11 and L-13 stay byte-identical.",
-      "transcript": "L-11 is unchanged, then byte-identical. L-12 moves from OPEN to NOT_AUTHORIZED. L-13 is unchanged, then byte-identical.",
+      "title": "Only the PENDING lots move",
+      "desc": "AUTHORIZED and other lots are unchanged then byte-identical. PENDING lots move from OPEN to NOT_AUTHORIZED under the rule. RACK_CONFLICT lots stay RESOURCE_CONFLICT.",
+      "caption": "Only the PENDING lots move. AUTHORIZED and RACK lots stay byte-identical.",
+      "transcript": "AUTHORIZED and other lots are unchanged then byte-identical. PENDING lots move from OPEN to NOT_AUTHORIZED under the rule. RACK_CONFLICT lots stay RESOURCE_CONFLICT.",
       "eyebrow": "DELTA",
-      "columns": ["L-11", "L-12", "L-13"],
+      "columns": ["LW-01 (auth)", "LW-12 (pending)", "LW-19 (rack)"],
       "rows": [
         ["BASELINE", "unchanged", "OPEN", "unchanged"],
-        ["AFTER RULE", "byte-identical", "NOT_AUTHORIZED", "byte-identical"]
+        ["AFTER RULE", "byte-identical", "NOT_AUTHORIZED", "RESOURCE_CONFLICT"]
       ]
     },
     {
@@ -103,9 +103,9 @@
       "transcript": "Every lot ends with a visible disposition on the receipt. A missing terminal state is HOLD, not an implied pass.",
       "eyebrow": "RECEIPTS",
       "items": [
-        { "label": "L-11", "detail": "terminal disposition visible" },
-        { "label": "L-12", "detail": "terminal disposition visible" },
-        { "label": "L-13", "detail": "terminal disposition visible" },
+        { "label": "LW-01 (auth)", "detail": "terminal disposition visible" },
+        { "label": "LW-12 (pending)", "detail": "terminal disposition visible" },
+        { "label": "LW-19 (rack)", "detail": "terminal disposition visible" },
         { "label": "Missing terminal state", "detail": "HOLD" }
       ]
     },

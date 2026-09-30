@@ -1,4 +1,4 @@
-# S03 · Quality release QA-661
+# Quality release QA-661
 
 **Issuer:** North Basin Quality Office  
 **Effective:** 2026-10-06 13:48 MDT  

@@ -1,20 +1,9 @@
-Subject: Coordination room open Tuesday and Wednesday at Red Mesa Depot
+Subject: Water-treatment kits at Harbor Depot are not released to Field Clinic S-3
 
-The Red Mesa Depot coordination room will open during the Cold Lantern documentation window
-on Tuesday and Wednesday. Public hours are 12:00 p.m. to 8:00 p.m. on both days.
+Harbor Depot holds 27 water-treatment kits on hand in pen 4. Those kits are counted and staged. Counted and staged is custody, not a release. The North Shelf request asks for 40 water-treatment kits for Field Clinic S-3. Those two counts are not the same. This note does not fill the gap.
 
-The depot is at 12 Mesa Yard. Please use the east entrance on Depot Road. The
-Yard Street doors stay locked during the window.
+The documentation window is Thursday and Friday, 9:00 a.m. to 5:00 p.m. That window is for paperwork questions only. It is not a pickup appointment, a dispatch, or a delivery promise.
 
-Entry is free and open to any named course coordinator. Identification is not required. Capacity is
-60 people at one time.
+This note releases no lot, assigns no vehicle, approves no permit, and confirms no receipt. Whether the movement is supportable is unknown. Ivo Marsh at the Harbor Depot release desk owns any release. The Field Clinic S-3 supply clerk does not. Do not schedule kit use from this note. Do not tell patients that treatment water is coming.
 
-Inside there is seating, drinking water, restrooms, power outlets, and a small quiet
-room on the first floor. The east entrance has a ramp and a powered door, and the
-quiet room is on the first floor.
-
-Service animals are welcome. Other pets are not allowed inside. Route 6 stops at Depot
-Road and Third Street. The depot does not operate a shuttle.
-
-Call the depot during public hours if you have a question about this,
-and a member of the team will help you with whatever you need to know today.
+This note is for named class participants only. Call the desk during the documentation window with a paperwork question.

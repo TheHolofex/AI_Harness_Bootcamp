@@ -1,4 +1,4 @@
-# S07 · Vendor packing note for VX-240
+# Alpine Bodyworks note
 
 **Issuer:** Alpine Bodyworks  
 **Document date:** 2026-09-12  

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Practice check for the Red Mesa Depot coordination-room email.
+"""Practice check for the Harbor Depot desk note to Field Clinic S-3.
 
-You are meant to read this file. It is not hidden from you, and editing it changes
-nothing that decides your result -- the control that decides acceptance is held by
-your evaluator and is not on this machine.
+This is public, inspectable practice software. Its result is a mechanical check,
+not independent evidence of source interpretation, safe use, or human qualification.
+Any separate assessment needs an actual evaluator and independently held evidence.
 
 What it does: for each fact the source packet confirms, it finds the sentences that
 talk about that fact and decides whether the draft AFFIRMS it, DENIES it, or is
-SILENT. Denying a confirmed fact fails. Promising a service the source does not
+SILENT. Denying a confirmed fact fails. Promising a movement the source does not
 confirm fails. A number is only accepted when it is attached to the thing it counts.
 
 What it cannot do: decide whether the writing is clear, whether the tone suits the
@@ -18,9 +18,8 @@ One limit worth knowing before you rely on it. This finds a fact that was CONTRA
 using wording it recognises, and a specific that was INVENTED. It can still miss a
 contradiction phrased in wording it does not recognise, sitting beside the correct
 sentence rather than replacing it — because a draft can assert two incompatible things
-at once and neither one looks wrong on its own. That is the gap step 8 exists to close:
-you open the source and compare it to the draft yourself. No check that runs on your
-machine can do that part for you.
+at once and neither one looks wrong on its own. Independently compare the source and
+the draft yourself; a mechanical pass does not settle that judgment.
 
 Usage:  python3 check_artifact.py artifact.md
 """
@@ -38,11 +37,9 @@ ABBREVIATIONS = {"p.m.": "p<DOT>m<DOT>", "a.m.": "a<DOT>m<DOT>"}
 
 
 def sentences(text: str) -> list[str]:
-    """Split into clauses without breaking on '12:00 p.m.'.
+    """Split into clauses without breaking on '9:00 a.m.'.
 
-    Semicolons split too. "Use the east entrance; the Yard Street doors stay locked"
-    is two claims, and reading it as one would let the second clause look like a denial
-    of the first.
+    Semicolons split too. Two claims in one line are two claims.
     """
     for real, safe in ABBREVIATIONS.items():
         text = text.replace(real, safe)
@@ -73,124 +70,102 @@ def stance(text: str, topic: str, affirm: str, deny: str) -> tuple[str, str]:
     for sentence in sentences(text):
         if not re.search(topic, sentence, re.I):
             continue
-        if re.search(deny, sentence, re.I):
+        affirmations = list(re.finditer(affirm, sentence, re.I))
+        # "vehicle is assigned" inside "no vehicle is assigned" is not a
+        # separate assertion. A contradictory occurrence elsewhere still wins.
+        if deny and any(
+            not any(a.start() <= d.start() and d.end() <= a.end() for a in affirmations)
+            for d in re.finditer(deny, sentence, re.I)
+        ):
             return DENIED, sentence
-        if re.search(affirm, sentence, re.I):
+        if affirmations:
             affirming = affirming or sentence
     return (AFFIRMED, affirming) if affirming else (SILENT, "")
 
 
-SPELLED = {
-    "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50, "sixty": 60,
-    "seventy": 70, "eighty": 80, "ninety": 90, "one hundred": 100,
-    "forty-five": 45, "forty five": 45, "sixty-five": 65, "thirty-five": 35,
-}
+def attached(text: str, subject: str, patterns: tuple[str, ...]) -> set[int]:
+    """Numbers in sentences about `subject` that match a count pattern.
 
-
-def counted(text: str, subject: str) -> set[int]:
-    """Every number the draft attaches to `subject`. Numbers that are not attached to
-    it -- a phone number, a bus route, a former figure quoted in passing -- are
-    ignored, and a former figure that IS attached is not ignored."""
+    A phone number, a pen number, and a clock are not kit counts unless a pattern
+    says they are.
+    """
     found: set[int] = set()
-    spelled = "|".join(sorted(SPELLED, key=len, reverse=True))
-    number = rf"(?:\d{{1,4}}|{spelled})"
     for sentence in sentences(text):
         if not re.search(subject, sentence, re.I):
             continue
-        for pattern in (rf"({number})\s*(?:people|persons|residents)\b",
-                        rf"(?:{subject})\D{{0,25}}?({number})\b"):
-            for m in re.finditer(pattern, sentence, re.I):
-                token = m.group(1).lower()
-                found.add(int(token) if token.isdigit() else SPELLED[token])
+        for pattern in patterns:
+            for match in re.finditer(pattern, sentence, re.I):
+                found.add(int(match.group(1)))
     return found
 
 
 # --------------------------------------------------------------------------------------
-# The facts this case confirms, and the services it does not
+# The facts this case confirms, and the promises it rejects
 
-DOC = (r"(?:identification|\bID\b|photo id|utility bill|lease|proof of address|"
-       r"driver'?s licen[cs]e|passport|paperwork|documents?)")
+# A helpful draft smooths the documentation window into this sentence. The source
+# does not say it. Presence fails, including inside a longer paragraph.
+PROHIBITED_SENTENCE = (
+    "you can expect the kits during the thursday and friday documentation window."
+)
 
 CONFIRMED = [
     ("subject line", r"(?im)^\s*subject\s*:", None, None),
-    ("both days", r"tuesday", r"tuesday", r"tuesday[^.]*(?:cancell?ed|closed|not open)"),
-    ("both days", r"wednesday", r"wednesday", r"wednesday[^.]*(?:cancell?ed|closed|not open)"),
-    ("public hours", r"hours|open|close", r"12:00\s*p\.?m\.?.*8:00\s*p\.?m\.?",
-     r"\b(?:9:00|10:00|11:00|5:00|6:00|7:00|24 hours|around the clock)\b"),
-    ("address", r"mesa yard|address|located", r"12\s+Mesa\s+Yard",
-     r"(?<!12 )\bMesa Yard\b[^.]*\b(?:no|not)\b"),
-    ("entrance", r"entrance|entry|door", r"east entrance",
-     r"(?:use|enter (?:by|through)|open)[^.]*yard street door|east entrance[^.]*\b(?:locked|closed|not)\b"),
-    ("cost", r"free|charge|cost|fee|price|pay",
-     r"\b(?:is|are|remains?|stays?)?\s*free\b|no charge|no cost|no fee|without charge|at no cost",
-     r"not free|small charge|a charge|a fee|fee applies|charge applies|costs? \$|admission is \$"),
-    # One vocabulary for all three patterns. When the topic list is wider than the deny
-    # list, a sentence gets examined and then cannot be judged -- which is how "you must
-    # show a utility bill" sat beside "identification is not required" and passed.
-    ("identification", DOC,
-     rf"{DOC}[^.]*\b(?:not required|not needed|is not|are not)\b|\bno {DOC}\b|"
-     rf"do(?:es)? not (?:need|require|ask for)[^.]*{DOC}",
-     rf"{DOC}[^.]*\b(?:is required|are required|must|will need|need to (?:bring|show)|bring|show)\b|"
-     rf"\b(?:require[sd]?|must (?:show|bring|present)|need)\b[^.]*{DOC}|"
-     rf"\b(?:bring|show|present)\b[^.]*{DOC}"),
-    ("contact line", r"call|contact|phone|reach", r"555-0148", None),
-    ("pets", r"pet|service animal|dog|animal",
-     r"service animals? (?:are )?(?:welcome|allowed|permitted)",
-     r"(?:leave|no) service animals?|service animals? (?:are )?not|pets? (?:are )?welcome inside"),
-    ("step-free entry", r"ramp|powered door|wheelchair|step|accessible",
-     r"ramp|powered door", r"\bno ramp\b|not accessible|steps? only|no lift|no elevator"),
-    ("quiet room floor", r"quiet room",
-     r"quiet\s+room[^.]*first floor|first floor[^.]*quiet", r"second|third|fourth|upstairs|no elevator"),
-    ("transport", r"route 6|bus|transit|shuttle",
-     r"route 6", r"no bus|bus service[^.]*(?:not|no)\b|no transit|no public transport"),
+    ("commodity", r"water-treatment kits", r"water-treatment kits", None),
+    ("origin", r"harbor depot", r"harbor depot", None),
+    ("destination", r"field clinic s-3", r"field clinic s-3", None),
+    ("thursday", r"thursday", r"thursday", r"thursday[^.]*(?:cancell?ed|closed|not open)"),
+    ("friday", r"friday", r"friday", r"friday[^.]*(?:cancell?ed|closed|not open)"),
+    ("documentation hours", r"9:00\s*a\.?m\.?|5:00\s*p\.?m\.?|documentation window",
+     r"9:00\s*a\.?m\.?[\s\S]{0,40}5:00\s*p\.?m\.?",
+     r"\b(?:8:00|10:00|11:00|12:00|1:00|2:00|3:00|4:00|6:00|7:00)\s*[ap]\.?m\.?"),
+    ("contact line", r"call|contact|phone|reach|555-0194", r"555-0194", None),
+    ("pen 4", r"pen\s*4", r"pen\s*4", r"pen\s*(?!4\b)\d+"),
+    ("custody not release", r"release|custody|staged|counted",
+     r"not a release|releases no lot|not released",
+     r"is a release|are released|has been released|counts as a release"),
+    ("release owner", r"ivo marsh", r"ivo marsh", None),
+    ("no vehicle", r"vehicle",
+     r"assigns no vehicle|no vehicle is assigned",
+     r"vehicle is assigned|a vehicle is assigned|assigns vehicle"),
+    ("no permit", r"permit",
+     r"approves no permit|no permit is approved",
+     r"permit is approved|approves the permit"),
+    ("no receipt", r"receipt",
+     r"confirms no receipt|no receipt is confirmed",
+     r"receipt is confirmed|confirms the receipt"),
+    ("supportability unknown", r"supportable",
+     r"unknown",
+     r"is confirmed|can go|is supportable and ready"),
+    ("class participants", r"class participants", r"class participants", None),
 ]
 
-# The source packet is a closed set of facts. Any specific of a KIND the source uses, whose
-# VALUE the source does not contain, was invented -- which a vocabulary-based negation check
-# cannot see, because inventing a fact requires no negation at all.
-UNSUPPORTED_SPECIFICS = [
-    ("a cost", r"\$\s?\d+(?:\.\d{2})?|\b\d+\s*dollars\b", lambda v: True),
-    ("a clock time", r"\b(\d{1,2}:\d{2})\s*(?:a\.?m\.?|p\.?m\.?)",
-     lambda v: v not in {"12:00", "8:00"}),
-    ("a floor", r"(?i)\b(first|second|third|fourth|fifth|ground|top)\s+floor\b",
-     lambda v: v.lower() != "first"),
-    ("a bus route", r"(?i)\broute\s+(\w+)\b", lambda v: v != "6"),
-    ("a street", r"\b([A-Z][a-z]+)\s+(?:Street|Avenue|Road|Boulevard)\b",
-     lambda v: v not in {"Mesa", "Depot", "Third", "Yard"}),
-]
+# Clock times the source does not contain. 9:00 a.m. and 5:00 p.m. are the window.
+UNSUPPORTED_CLOCKS = re.compile(r"\b(\d{1,2}:\d{2})\s*(?:a\.?m\.?|p\.?m\.?)", re.I)
+ALLOWED_CLOCKS = {"9:00", "5:00"}
 
-# The source packet names these as NOT confirmed. Promising one invents a service.
-UNCONFIRMED_SERVICES = [
-    ("meals", r"\bmeals?\b|hot food|food is (?:available|served)|dinner|lunch is",
-     r"\b(?:serving|serve|offer(?:ing|s)?|provide[sd]?|providing|available|there (?:is|are)|with)\b",
-     r"\bno\b|\bnot\b|does not|cannot|unable"),
-    ("medical care", r"medical|nurse|doctor|paramedic|first aid",
-     r"\b(?:staff|on site|on-site|available|provide[sd]?|offering)\b", r"\bno\b|\bnot\b|does not"),
-    ("overnight shelter", r"overnight|sleep|beds?\b|stay the night",
-     r"\b(?:available|open|provide[sd]?|offer(?:ed|s)?|with)\b", r"\bno\b|\bnot\b|does not|closes"),
-    ("device chargers", r"charger|charging",
-     r"\b(?:available|provide[sd]?|offer(?:ed|s)?|there (?:is|are)|with)\b", r"\bno\b|\bnot\b|does not"),
-    ("childcare", r"childcare|child care|supervised children|babysitting",
-     r"\b(?:available|provide[sd]?|offer(?:ed|s)?|supervised|with)\b", r"\bno\b|\bnot\b|does not"),
-    ("a shuttle", r"shuttle|van service|ride service",
-     r"\b(?:runs?|running|available|provide[sd]?|offer(?:ed|s)?|free|every)\b",
-     r"does not|\bno\b|\bnot\b|cannot"),
-]
+# Promises a clerk would act on. A denial in the same sentence outranks the promise.
+DELIVERY_PROMISE = (
+    r"expect|pickup|deliver|ship|coming|stage",
+    r"expect the kits|expect receipt|will deliver|will ship|ready for pickup|"
+    r"stage the kits|treatment water is coming|pickup appointment|delivery promise",
+    r"not a pickup|not a delivery|not a dispatch|do not tell|do not stage|"
+    r"do not schedule|must not",
+)
 
-# The draft is for named course participants only.
 PROHIBITED_DISTRIBUTION = (
     r"\bforward (?:this|it)\b|\bpost (?:it|this)\b|\bpass (?:this|it) (?:along|on)\b|"
     r"\bshare (?:this|it)\b|\bsend (?:this|it) to (?:every|all|your)\b|\btell everyone\b|"
     r"radio station|press release|public bulletin|social media|neighborhood list|"
-    r"every household|door to door|noticeboard|notice board"
+    r"every household|door to door|noticeboard|notice board|operations list"
 )
 
 
-# --------------------------------------------------------------------------------------
+def _normalized(text: str) -> str:
+    return re.sub(r"\s+", " ", text).strip().lower()
+
 
 def run(text: str) -> list[tuple[str, bool, str]]:
     checks: list[tuple[str, bool, str]] = []
-    seen: set[str] = set()
 
     n = len(words(text))
     checks.append(("word count 130-190", 130 <= n <= 190, f"the draft has {n} words"))
@@ -201,34 +176,70 @@ def run(text: str) -> list[tuple[str, bool, str]]:
             checks.append((name, ok, "present" if ok else "not found in the draft"))
             continue
         verdict, sentence = stance(text, topic, affirm, deny or r"(?!x)x")
-        label = name if name not in seen else f"{name} ({topic[:12]})"
-        seen.add(name)
-        checks.append((label, verdict == AFFIRMED,
+        checks.append((name, verdict == AFFIRMED,
                        "stated" if verdict == AFFIRMED
                        else f"the draft {verdict} it: {sentence[:90] or '(no sentence mentions it)'}"))
 
-    capacity = counted(text, r"capacity|hold|holds|accommodate|room for|limit")
-    checks.append(("capacity 60", capacity == {60},
-                   "60 people at one time" if capacity == {60}
-                   else f"the draft attaches {sorted(capacity) or 'no number'} to capacity, not 60"))
+    requested = attached(text, r"request", (r"asks for (\d+)", r"requested(?: quantity)?[: ]+(\d+)"))
+    checks.append(("requested 40", requested == {40},
+                   "40 kits requested" if requested == {40}
+                   else f"the draft attaches {sorted(requested) or 'no number'} to the request, not 40"))
 
-    for name, topic, affirm, deny in UNCONFIRMED_SERVICES:
-        verdict, sentence = stance(text, topic, affirm, deny)
-        checks.append((f"no unconfirmed services: {name}", verdict != AFFIRMED,
-                       "not promised" if verdict != AFFIRMED
-                       else f"the source does not confirm {name}, but the draft does: {sentence[:80]}"))
+    on_hand = attached(
+        text,
+        r"on hand|on-hand",
+        (r"(\d+)\s+water-treatment kits on hand", r"on hand(?: count)?(?: is| of|:)?\s*(\d+)"),
+    )
+    checks.append(("on-hand 27", on_hand == {27},
+                   "27 kits on hand" if on_hand == {27}
+                   else f"the draft attaches {sorted(on_hand) or 'no number'} to on-hand, not 27"))
 
-    for label, pattern, invented in UNSUPPORTED_SPECIFICS:
-        found = [m.group(1) if m.groups() else m.group(0)
-                 for m in re.finditer(pattern, text) if invented(m.group(1) if m.groups() else m.group(0))]
-        checks.append((f"no invented specifics: {label}", not found,
-                       "none" if not found
-                       else f"the source packet does not contain {label} of {sorted(set(found))}"))
+    prohibited = PROHIBITED_SENTENCE in _normalized(text)
+    checks.append(("prohibited sentence", not prohibited,
+                   "absent" if not prohibited
+                   else "the draft contains the sentence that turns the window into a promise"))
 
-    m = re.search(PROHIBITED_DISTRIBUTION, text, re.I)
-    checks.append(("no prohibited distribution", m is None,
-                   "stays inside the class" if m is None
-                   else f"the draft directs public distribution: {m.group(0)!r}"))
+    hs3_assigned = False
+    hs3_sentence = ""
+    for sentence in sentences(text):
+        if not re.search(r"HS-3", sentence):
+            continue
+        if re.search(r"not assigned|no vehicle|does not assign|assigns no", sentence, re.I):
+            continue
+        if re.search(r"assign", sentence, re.I):
+            hs3_assigned = True
+            hs3_sentence = sentence
+            break
+    checks.append(("HS-3", not hs3_assigned,
+                   "not assigned" if not hs3_assigned
+                   else f"the draft assigns HS-3: {hs3_sentence[:80]}"))
+
+    topic, affirm, deny = DELIVERY_PROMISE
+    promised = ""
+    for sentence in sentences(text):
+        if not re.search(topic, sentence, re.I):
+            continue
+        if re.search(affirm, sentence, re.I) and not re.search(deny, sentence, re.I):
+            promised = sentence
+            break
+    checks.append(("no delivery promise", not promised,
+                   "not promised" if not promised
+                   else f"the draft promises movement: {promised[:80]}"))
+
+    go = re.search(r"\bGO\b", text)
+    checks.append(("no GO", go is None,
+                   "absent" if go is None else "the draft calls the movement a GO"))
+
+    invented = [m.group(1) for m in UNSUPPORTED_CLOCKS.finditer(text)
+                if m.group(1) not in ALLOWED_CLOCKS]
+    checks.append(("no invented clock time", not invented,
+                   "none" if not invented
+                   else f"the source packet does not contain a clock time of {sorted(set(invented))}"))
+
+    distributed = re.search(PROHIBITED_DISTRIBUTION, text, re.I)
+    checks.append(("no prohibited distribution", distributed is None,
+                   "stays with named class participants" if distributed is None
+                   else f"the draft directs wider distribution: {distributed.group(0)!r}"))
 
     return checks
 

@@ -4,13 +4,14 @@
 
 The learner independently verifies one end-to-end claim. They identify what each source can establish, trace a material claim, recompute deterministic consequences, reject attractive wrong evidence, apply one source change, and leave a bounded verdict and handoff.
 
+Evaluator traps, not named in the learner packet: warehouse receipt offered as usable inventory; accepted-for-processing offered as permit approval; archived bulletin offered as current; R-17 community page offered for R-71; VX-240 note offered for VX-204; instruction embedded inside a source; producer confidence and self-review.
+
 Logistics knowledge is not graded. If learners need facts that are not in the packet or orientation, the case is defective.
 
 ## Before class
-
 1. Run `python3 scripts/verify_content.py` from the Module 1 directory.
-2. Run the staff reference calculator and visible checker against staff passing and failing specimens. Do not give the calculator's answer output to learners before they freeze their calculations.
-3. Confirm the review surface opens source links and shows every decision-critical field through keyboard and screen-reader paths.
+2. The producer rebuttal for practice uses `--fixture` and the sealed fixture (prints exact PRACTICE warning and provenance sidecar); live uses the shared launcher with write-only target. A failed child exit never becomes success.
+3. Run the staff reference calculator and visible checker against staff passing and failing specimens. Do not give the calculator's answer output to learners before they freeze their calculations.
 4. Put graded cases and decisive checks outside the learner repository and model context.
 5. Confirm the learner's Module 0 setup; do not reuse Module 0 answers.
 6. Print or provide the public rubric.

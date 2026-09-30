@@ -1,655 +1,339 @@
 # Module 0 · Give AI a clear, limited job
 
-One AI command-line tool drafts a short email from a supplied set of facts. You check the draft against the source yourself, prove your own check is capable of failing, change one supplied fact and rerun, then decide whether anyone may read the result.
+You will ask one bounded AI tool to draft an internal email, check the actual file against its sources, demonstrate a failing check, and decide whether the result may be used. You will then change one supplied fact without silently changing the rest of the task.
 
-The case is fictional. Your draft stays with named course participants. Do not publish it, send it to a real operations list, or present it as a public movement order.
+North Shelf is fictional. The email stays with named class participants. It is not a release, vehicle assignment, permit, receipt, dispatch, or public movement order. `HOLD` is a valid outcome when a prerequisite, material fact, or decision owner is unresolved.
 
-`HOLD` is a result you are allowed to record. It means you stopped and wrote down why, instead of producing something you cannot stand behind. If a tool or a file you need is missing, write `HOLD`, save the exact error text, and ask for help. Do not spend your working time rebuilding your machine.
+Aim for a first checked draft within 60 minutes. That is a planning target, not a measured completion promise or a penalty for using an accessible method. Allow further time for the falsifier, changed input, comparison, and handoff.
 
-## Timebox
+## 1. Create the four-file work folder
 
-| Work | Time |
-|---|---:|
-| Work folder, and the control that decides acceptance | 10 minutes |
-| The case and the practice checker, read in full | 10 minutes |
-| Delegation split and responsibility screen | 10 minutes |
-| Frozen direction brief | 10 minutes |
-| First draft and the practice check on it | 15 minutes |
-| One material claim traced to the source | 15 minutes |
-| Falsifier run against a deliberately wrong copy | 10 minutes |
-| Capability-limit statement | 10 minutes |
-| Sharing decision | 5 minutes |
-| Changed input applied and the difference compared | 20 minutes |
-| Handoff | 5 minutes |
+Finish the appropriate [setup path](../README.md) first. Use an ordinary terminal with the verified interpreter and checkout. These commands work from any directory and create a new external attempt. `W` holds work; sibling `E` holds evidence. Earlier attempts remain untouched.
 
-Your first checked draft must exist within 60 minutes of starting.
-
-## 1. Set up the work folder
-
-Everything you produce goes in one folder outside the course repository, so that your work and the course files never get confused with each other.
-
-Create a folder named `module-00-work` in your home folder.
-
-**Windows PowerShell — normal user. No administrator rights are needed.**
-
-```powershell
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\module-00-work" | Out-Null
-Set-Location "$env:USERPROFILE\module-00-work"
-Get-Location
-```
-
-**macOS Terminal, Ubuntu, Arch Linux, or Ubuntu on WSL — normal user.**
+**Terminal: Bash or zsh, ordinary user.**
 
 ```bash
-mkdir -p "$HOME/module-00-work"
-cd "$HOME/module-00-work"
-pwd
+R="$HOME/AI_Harness_Bootcamp"
+PY="$(for candidate in python3.12 python3 python; do "$candidate" -c 'import sys; sys.exit(1) if sys.version_info < (3, 12) else print(sys.executable)' 2>/dev/null && break; done)"
+M="$R/reformation/AI_Harness_Bootcamp_2/module-00-setup"
+RUN="$(date -u +%Y%m%dT%H%M%SZ)-$$"
+W="$HOME/course-evidence/module-00-$RUN/work"
+E="$HOME/course-evidence/module-00-$RUN/evidence"
+"$PY" -c "from pathlib import Path; import shutil,sys; source,w,e=map(Path,sys.argv[1:]); w.mkdir(parents=True,exist_ok=False); e.mkdir(parents=True,exist_ok=False); names=('SOURCE_PACKET.md','REQUEST.md','CHANGED_INPUT.md','check_artifact.py'); [shutil.copyfile(source/name,w/name) for name in names]; print('\n'.join(sorted(p.name for p in w.iterdir())))" "$M/shared/case" "$W" "$E"
 ```
 
-The last line prints the folder you are now working in. The first part is your own home folder, so yours will read something like one of these:
-
-```text
-C:\Users\yourname\module-00-work
-/Users/yourname/module-00-work
-/home/yourname/module-00-work
-```
-
-Every command in the rest of this lab runs in that folder. If you open a new terminal later, move back into it first with the `Set-Location` or `cd` line above.
-
-Copy the source packet, request, changed input, and practice checker into the folder. The originals stay where they are and stay unchanged.
-
-**Windows PowerShell — normal user.**
+**Terminal: PowerShell, ordinary user.**
 
 ```powershell
-Set-Location "$env:USERPROFILE\module-00-work"
-$casedir = Join-Path $env:USERPROFILE 'course\AI_Harness_Bootcamp\reformation\AI_Harness_Bootcamp_2\module-00-setup\shared\case'
-Copy-Item -Destination . -Path (Join-Path $casedir 'SOURCE_PACKET.md'), (Join-Path $casedir 'REQUEST.md'), (Join-Path $casedir 'CHANGED_INPUT.md'), (Join-Path $casedir 'check_artifact.py')
-Get-ChildItem -Name
+$R = "$HOME\AI_Harness_Bootcamp"
+$PY = $(foreach ($candidate in 'python3.12','python3','python') { try { $resolved = & $candidate -c 'import sys; sys.exit(1) if sys.version_info < (3,12) else print(sys.executable)' 2>$null; if ($LASTEXITCODE -eq 0 -and $resolved) { $resolved.Trim(); break } } catch {} })
+if (-not $PY) { throw 'HOLD: Python 3.12 or newer is required.' }
+$M = "$R\reformation\AI_Harness_Bootcamp_2\module-00-setup"
+$RUN = [guid]::NewGuid().ToString('N')
+$W = "$HOME\course-evidence\module-00-$RUN\work"
+$E = "$HOME\course-evidence\module-00-$RUN\evidence"
+& $PY -c "from pathlib import Path; import shutil,sys; source,w,e=map(Path,sys.argv[1:]); w.mkdir(parents=True,exist_ok=False); e.mkdir(parents=True,exist_ok=False); names=('SOURCE_PACKET.md','REQUEST.md','CHANGED_INPUT.md','check_artifact.py'); [shutil.copyfile(source/name,w/name) for name in names]; print('\n'.join(sorted(p.name for p in w.iterdir())))" "$M\shared\case" "$W" "$E"
 ```
 
-**macOS Terminal, Ubuntu, Arch Linux, or Ubuntu on WSL — normal user.**
+**Expected:** The work folder contains exactly `SOURCE_PACKET.md`, `REQUEST.md`, `CHANGED_INPUT.md`, and `check_artifact.py`.
 
-```bash
-cd "$HOME/module-00-work"
-casedir="$HOME/course/AI_Harness_Bootcamp/reformation/AI_Harness_Bootcamp_2/module-00-setup/shared/case"
-cp "$casedir/SOURCE_PACKET.md" "$casedir/REQUEST.md" "$casedir/CHANGED_INPUT.md" "$casedir/check_artifact.py" .
-ls -1
-```
+**Stop:** A destination exists, copying fails, or a source is missing.
 
-You should see exactly these four names, in whatever order your system sorts them:
+**Recovery:** Preserve the partial attempt. Repair the path or prerequisite, then repeat the block with a new `RUN`. Do not delete earlier work or change the source checkout.
 
-```text
-CHANGED_INPUT.md
-REQUEST.md
-SOURCE_PACKET.md
-check_artifact.py
-```
+## 2. Identify who decides acceptance
 
-If the copy reports that a path does not exist, your course repository is somewhere else. Find it, use its path in place of the one above, and write down the path you used.
+Open `W/check_artifact.py` and the [public rubric](../assessment/PUBLIC_RUBRIC.md). The local checker is inspectable practice software. Its output cannot independently certify the meaning of your email, your judgment, or human qualification. Editing a practice checker does not make a draft more defensible.
 
-The finished work is those four copies plus twelve files you write:
+Create `W/acceptance-control.md` in your editor. Name the practice checker, the decision owner, the published standard, and two qualities the checker cannot establish. If an assessment is being used, identify the actual independent evaluator and decisive task/result custody. If those are unavailable, record qualification as `HOLD`; do not assume that files in a public checkout are secret controls.
 
-```text
-module-00-work/
-├── acceptance-control.md
-├── direction-brief.md
-├── minimum-screen.md
-├── prompt.txt
-├── artifact.md
-├── source-check.md
-├── falsifier-probe.md
-├── capability-limit.md
-├── decision.md
-├── changed-input-prediction.md
-├── artifact-changed.md
-└── handoff.md
-```
+![The draft producer and acceptance decision have different roles](figures/m00-independent-accept.svg)
 
-## 2. Confirm what decides acceptance
+**Figure text:** The producer supplies a draft. You inspect its evidence; an independent evaluator is needed for any separate qualification claim.
 
-Find out what will judge your work before you produce any of it. Otherwise you are writing toward a standard you have only guessed at.
+**Expected:** Your record distinguishes a mechanical practice result from a supported use decision and from qualification.
 
-![The producer cannot grade its own work](figures/m00-independent-accept.svg)
+**Stop:** You cannot identify who owns the decision or what evidence they require.
 
-*Run the protected check yourself and read the result.*
+**Recovery:** Resolve that responsibility before drafting. Do not let the producing model declare itself qualified.
 
-<details>
-<summary>Figure text</summary>
+## 3. Read the packet and checker in full
 
-The system that wrote the draft cannot edit or bypass the check that accepts it.
+Open `W/SOURCE_PACKET.md`, `W/REQUEST.md`, and `W/check_artifact.py` in your editor. Leave `CHANGED_INPUT.md` unopened until stage 13.
 
-</details>
+The packet distinguishes a request, custody, paperwork availability, and release authority. The request requires a 130–190-word email with a subject and contact line. The checker recognizes selected facts and prohibited claims, but it can miss meanings expressed in unfamiliar wording.
 
-The checker you just copied is the practice check. You are meant to read it. Print its opening lines.
+In `acceptance-control.md`, add one example of a claim that still needs your reading even if the checker passes. Do not infer pickup readiness, a vehicle, a permit, or a confirmed receipt from a count or a paperwork window.
 
-**Windows PowerShell — normal user.**
+**Expected:** You can point to the source of each material requirement and explain at least one mechanical-check limitation.
 
-```powershell
-Set-Location "$env:USERPROFILE\module-00-work"
-Get-Content .\check_artifact.py -TotalCount 16
-```
+**Stop:** A required fact is absent or you are treating a true fact as authority for a different action.
 
-**macOS Terminal, Ubuntu, Arch Linux, or Ubuntu on WSL — normal user.**
+**Recovery:** Keep the claim unresolved. Do not fill a gap with a model guess.
 
-```bash
-cd "$HOME/module-00-work"
-head -n 16 check_artifact.py
-```
+## 4. Divide drafting, judgment, and prohibited action
 
-Among the lines it prints are these three:
+Create `W/direction-brief.md`. State what AI may draft, what judgment remains yours, and what it must not do. The AI may reorganize supplied facts into the requested email. You retain source interpretation, acceptance, disclosure, and the sharing decision. A real send, release, or invented service is outside scope.
 
-```text
-You are meant to read this file. It is not hidden from you, and editing it changes
-nothing that decides your result -- the control that decides acceptance is held by
-your evaluator and is not on this machine.
-```
+![Separate delegated work from retained judgment and prohibited action](figures/m00-delegation.svg)
 
-Your result is decided by a protected acceptance control that your evaluator runs and that is not on this machine. You cannot read it or change it, and editing the practice checker in front of you moves nothing. The standard that control applies is the published rubric, which you can read in full before you start.
+**Figure text:** Delegate the bounded draft. Keep acceptance and consequential decisions with the named human owner. Refuse invented authority and external action.
 
-Write `acceptance-control.md`:
+**Expected:** The three responsibilities are explicit and fit this request.
 
-```markdown
-# Protected acceptance control
+**Stop:** Your delegation would let the model authorize a movement or decide a real operational policy.
 
-Checkers present on this machine (file names):
-What the practice checker's own header says decides acceptance:
-Where the protected acceptance control runs, and who runs it:
-Published standard it applies, and where I read it:
-What changes for my result if I edit the practice checker:
-Two qualities of a draft the practice checker cannot judge:
-```
-
-Leave the last line until you have read the checker in the next step.
-
-## 3. Read the case and the practice checker
-
-Open these files in your work folder:
-
-- `SOURCE_PACKET.md` — the only facts you may use
-- `REQUEST.md` — what the email must do
-- `CHANGED_INPUT.md` — do not open this one yet
-- `check_artifact.py` — the practice check, in full
-
-Read the checker's body, not only its header. It looks for a set of visible, mechanical things: a subject line, a word count, particular facts stated rather than denied, and services the source does not confirm.
-
-Then notice what it cannot decide: whether the email is clear, whether an unsupported promise would harm the reader, whether the audience is right, and whether the draft should be used at all.
-
-Now fill in the last line of `acceptance-control.md` with two of those qualities. Anything you write there is a quality nobody and nothing on your machine will check for you.
-
-## 4. Choose what AI should and should not do
-
-Start `direction-brief.md` with this section:
-
-![What AI may do, what you keep, what you refuse](figures/m00-delegation.svg)
-
-*Name what AI may draft, what you keep, and what you refuse.*
-
-<details>
-<summary>Figure text</summary>
-
-AI may draft from the supplied files. You keep acceptance, disclosure, and the stop. Refuse a consequential send and any invented fact.
-
-</details>
-
-```markdown
-## Delegation decision
-
-AI may:
-
-Human judgment stays with me for:
-
-AI must not:
-
-Why this split fits the case:
-```
-
-A sound split lets AI draft and reorganize the supplied facts. You still decide what the source means, whether the email meets the request, and whether anyone may use it. If you choose a different split, name who makes each of those three decisions.
-
-**Write `HOLD` if:** the task would require the model to invent missing services, decide real dispatch policy, or contact real depot personnel.
+**Recovery:** Narrow the task before any call. If it cannot be narrowed without changing the mission, hold it.
 
 ## 5. Complete the minimum responsibility screen
 
-Answer these questions before you generate anything, because two of them can end the work. Write `minimum-screen.md`:
+Create `W/minimum-screen.md` and answer each line from what you inspected:
 
-![Two answers can stop the work](figures/m00-minimum-screen.svg)
-
-*Answer source, data, audience, disclosure, authority, and owner before you generate.*
-
-<details>
-<summary>Figure text</summary>
-
-Answer source authority, sensitive data, audience, disclosure, consequential authority, and owner before you generate. Two of those answers can stop the work.
-
-</details>
-
-```markdown
-# Minimum responsibility screen
-
+```text
 Source and data authority:
-Sensitive data in this case:
+Sensitive data present:
 Affected audience or person:
-Disclosure needed inside this exercise:
-Real-world decision this draft cannot make:
+Disclosure needed:
+Consequential action this draft cannot authorize:
 Human decision owner:
 Unresolved item:
-Decision: PROCEED TO CLASS DRAFT / HOLD
+Decision to proceed with a class draft, or HOLD:
 ```
 
-If any line is unresolved, write `HOLD`. Do not draft until you know the source may be used and who makes the final decision.
+**Expected:** You have permission to use the fictional sources, know the audience, and can name the person who owns the bounded decision.
 
-## 6. Freeze the direction brief
+**Stop:** Source/data authority or decision ownership is unresolved.
 
-Pin down every part of the request that the model could otherwise satisfy in several incompatible ways. Complete the rest of `direction-brief.md` and save it before you run anything:
+**Recovery:** Resolve the missing authority with its actual owner. Do not draft while assuming someone else will accept the responsibility later.
 
-![Freeze the request before you run anything](figures/m00-direction-contract.svg)
+## 6. Freeze a testable direction
 
-*Write outcome, audience, constraints, acceptance, prohibited result, stop condition, and owner before any run.*
+Complete `direction-brief.md` with the outcome, audience, allowed sources, material constraints, acceptance condition, prohibited result, stop condition, and decision owner. Include a specific **falsifier**: an observation that would disprove a material claim or defeat acceptance. “The email might be wrong” is not specific enough.
 
-<details>
-<summary>Figure text</summary>
+Set a limit of two deliberate correction attempts before `HOLD`. A correction requires a diagnosed cause and a fresh retained attempt; this is not permission for automatic retries until a favorable answer appears.
 
-Outcome, audience, constraints, acceptance, prohibited result, stop condition, and owner exist in the brief before any run.
+In your editor, save the following instruction as `W/prompt.txt`. Keep your own direction brief beside it.
+
+```text
+Read direction-brief.md, minimum-screen.md, REQUEST.md, and SOURCE_PACKET.md.
+Use only SOURCE_PACKET.md as factual authority for this first draft. Do not read
+CHANGED_INPUT.md yet. Draft the requested internal email within the brief's bounds
+and write it to artifact.md using course_write. Do not change another file or take
+an external action. After writing, report the path only.
+```
+
+**Expected:** Your direction and prompt exist before the first call, with testable constraints and a concrete failure observation.
+
+**Stop:** The direction leaves a consequential choice to the model or conflicts with the supplied request.
+
+**Recovery:** Correct the brief before running. Preserve any earlier version and its reason for change.
+
+## 7. Produce one actual tool-written draft
+
+Use the shared launcher, not a personal agent profile. It exposes only the declared course tools and permits only the new `artifact.md` output. The child receipt directory must not exist already.
+
+**Terminal: Bash or zsh, ordinary user.**
+
+```bash
+"$PY" "$R/reformation/shared/run_omp.py" --workdir "$W" --prompt "$W/prompt.txt" --evidence "$E/first-draft" --allow-write artifact.md
+```
+
+**Terminal: PowerShell, ordinary user.**
+
+```powershell
+& $PY "$R\reformation\shared\run_omp.py" --workdir "$W" --prompt "$W\prompt.txt" --evidence "$E\first-draft" --allow-write artifact.md
+```
+
+**Expected:** A complete turn produces the actual file and matching policy, tool, guard, and filesystem receipts. Launcher exit 0 establishes completion within that boundary, not correctness of the email.
+
+**Stop:** Exit 2 means a prerequisite failed before a valid turn; exit 1 means attempted work was incomplete or violated a required check. Missing key, no actual file, mismatched identity, or a forbidden effect keeps this stage on `HOLD`.
+
+**Recovery:** Preserve the first failure and any partial file. Restore the prerequisite or diagnose the instruction problem before beginning a fresh retained attempt. Do not manufacture `artifact.md`, overwrite it, or rerun into the same receipt child.
+
+## 8. Read the disk file, count words, and check
+
+Open `W/artifact.md` in your editor and read it, rather than relying on the assistant's path claim. The checker uses its own documented word-count rule; ordinary editor counts may differ slightly around punctuation.
+
+**Terminal: Bash or zsh, ordinary user.**
+
+```bash
+"$PY" "$W/check_artifact.py" "$W/artifact.md"
+```
+
+**Terminal: PowerShell, ordinary user.**
+
+```powershell
+& $PY "$W\check_artifact.py" "$W\artifact.md"
+```
+
+**Expected:** The output reports the actual word count and each mechanical observation. A suitable original draft has 130–190 words and passes those checks.
+
+**Stop:** The file is missing, a mechanical condition fails, or your reading finds a contradiction that the checker missed.
+
+**Recovery:** Retain the draft and failed result. Explain the cause before using one of your two fresh correction attempts. Do not edit the checker to accept a bad draft.
+
+## 9. Trace material claims yourself
+
+Create `W/source-check.md`. Quote each material statement about quantity, custody, paperwork timing, authority, and prohibited clinic action, then give its exact supporting packet line or paragraph. Mark unsupported implications as well as plainly wrong facts.
+
+**Expected:** The email's material claims are supported, and the distinctions between custody/release and paperwork/pickup remain explicit.
+
+**Stop:** A statement is true but is being used to justify a different action, or no exact support exists.
+
+**Recovery:** Hold the draft and name the missing or overextended authority. A green mechanical check does not settle this judgment.
+
+## 10. Make a failing copy without changing the original
+
+Test whether the visible check can reject a known wrong count. The following block changes the original on-hand number only in a separate falsifier file. It also records the original draft's hash for the later unchanged-file check.
+
+**Terminal: Bash or zsh, ordinary user.**
+
+```bash
+"$PY" -c "from pathlib import Path; import hashlib,re,sys; w,e=map(Path,sys.argv[1:]); raw=(w/'artifact.md').read_bytes(); bad,n=re.subn(r'\b27\b','28',raw.decode('utf-8')); n or sys.exit('HOLD: original count was not found'); f=(w/'falsifier-probe.md').open('x',encoding='utf-8'); f.write(bad); f.close(); h=(e/'original-artifact.sha256').open('x'); h.write(hashlib.sha256(raw).hexdigest()+'\n'); h.close()" "$W" "$E" &&
+"$PY" "$W/check_artifact.py" "$W/falsifier-probe.md"
+```
+
+**Terminal: PowerShell, ordinary user.**
+
+```powershell
+& $PY -c "from pathlib import Path; import hashlib,re,sys; w,e=map(Path,sys.argv[1:]); raw=(w/'artifact.md').read_bytes(); bad,n=re.subn(r'\b27\b','28',raw.decode('utf-8')); n or sys.exit('HOLD: original count was not found'); f=(w/'falsifier-probe.md').open('x',encoding='utf-8'); f.write(bad); f.close(); h=(e/'original-artifact.sha256').open('x'); h.write(hashlib.sha256(raw).hexdigest()+'\n'); h.close()" "$W" "$E"
+if ($LASTEXITCODE -ne 0) { throw 'Falsifier preparation stopped.' }
+& $PY "$W\check_artifact.py" "$W\falsifier-probe.md"
+```
+
+**Expected:** Exit 1 and the failed on-hand check are the desired negative observation. `artifact.md` is unchanged. Save the exact failed condition in `W/falsifier-observation.md` and compare it with the falsifier you predicted.
+
+**Stop:** The wrong copy passes, preparation overwrites an existing file, or you cannot connect the failure to the deliberate change.
+
+**Recovery:** Keep the unexpected result and explain the check's limit. Do not keep inventing a different error until a passing demonstration appears.
+
+## 11. Describe an observed capability and limit
+
+Create `W/capability-limit.md`. Distinguish the model's text, the terminal/file interface, the harness's enforced permissions and recorded checks, and the human decision. Name one capability and one limitation supported by this attempt's evidence.
+
+**Expected:** Your claims refer to actual behavior rather than a general claim that AI is reliable or unreliable.
+
+**Stop:** The claimed capability was never exercised, or a chat statement is being used as proof of an action.
+
+**Recovery:** Narrow the claim to the observation you have. Mark an unavailable live turn as blocked, not simulated success.
+
+## 12. Make the bounded human decision
+
+In `W/decision.md`, choose `PASS FOR CLASS REVIEW` or `HOLD`, name the owner, and explain the supporting evidence and remaining limit. This is not permission to send the email to a real operations list.
+
+**Expected:** The decision respects the source trace, responsibility screen, observed falsifier, and class-only audience.
+
+**Stop:** Any material concern remains unresolved or the audience extends beyond the supplied authority.
+
+**Recovery:** Keep the draft on hold and name who must resolve the issue. Mechanical success and model authorship do not certify a human operator.
+
+## 13. Apply the changed input, compare, and hand off
+
+Now open `W/CHANGED_INPUT.md`. Before running again, create `W/changed-input-prediction.md`: record what must change, what must stay unchanged, and why. The changed input replaces the on-hand count; it does not grant new authority.
+
+Save this as `W/prompt-changed.txt` in your editor:
+
+```text
+Read direction-brief.md, REQUEST.md, SOURCE_PACKET.md, and CHANGED_INPUT.md.
+Apply only the supplied changed input. Preserve all other supported facts,
+unknowns, and authority/sharing limits. Write the revised 130–190-word email to
+artifact-changed.md using course_write. Leave artifact.md and every other file
+unchanged. After writing, report the new path only.
+```
+
+**Terminal: Bash or zsh, ordinary user.**
+
+```bash
+"$PY" "$R/reformation/shared/run_omp.py" --workdir "$W" --prompt "$W/prompt-changed.txt" --evidence "$E/changed-draft" --allow-write artifact-changed.md
+```
+
+**Terminal: PowerShell, ordinary user.**
+
+```powershell
+& $PY "$R\reformation\shared\run_omp.py" --workdir "$W" --prompt "$W\prompt-changed.txt" --evidence "$E\changed-draft" --allow-write artifact-changed.md
+```
+
+**Expected:** A complete new turn writes a separate revised email using the new count. The original file remains intact.
+
+**Stop:** The launcher holds, the original changes, or the revised email changes authority or a fact not named by the changed input.
+
+**Recovery:** Preserve both versions and the failed turn. Diagnose the unsupported change; do not silently replace the original or broaden the task.
+
+Run the original checker on the changed draft, then compare the two files. The checker still expects the original count; its stale-count failure is intentional.
+
+**Terminal: Bash or zsh, ordinary user.**
+
+```bash
+"$PY" "$W/check_artifact.py" "$W/artifact-changed.md"
+```
+
+**Terminal: PowerShell, ordinary user.**
+
+```powershell
+& $PY "$W\check_artifact.py" "$W\artifact-changed.md"
+```
+
+**Expected:** The old on-hand-27 condition fails on a correct 19-count revision. Other mechanical conditions should remain satisfied. This is a changed-input observation, not permission to ignore unrelated failures.
+
+**Stop:** The old count still appears as current, an unrelated condition fails, or the original checker was edited to hide the stale requirement.
+
+**Recovery:** Preserve the failure and trace it to the changed or unchanged source fact. Keep the original checker unchanged.
+
+**Terminal: Bash or zsh, ordinary user.**
+
+```bash
+"$PY" -c "from pathlib import Path; import difflib,hashlib,sys; w,e=map(Path,sys.argv[1:]); original=(w/'artifact.md').read_bytes(); same=hashlib.sha256(original).hexdigest()==(e/'original-artifact.sha256').read_text().strip(); print('ORIGINAL UNCHANGED' if same else 'HOLD: original changed'); print(''.join(difflib.unified_diff(original.decode('utf-8').splitlines(True),(w/'artifact-changed.md').read_text().splitlines(True),fromfile='original',tofile='changed'))); sys.exit(not same)" "$W" "$E"
+```
+
+**Terminal: PowerShell, ordinary user.**
+
+```powershell
+& $PY -c "from pathlib import Path; import difflib,hashlib,sys; w,e=map(Path,sys.argv[1:]); original=(w/'artifact.md').read_bytes(); same=hashlib.sha256(original).hexdigest()==(e/'original-artifact.sha256').read_text().strip(); print('ORIGINAL UNCHANGED' if same else 'HOLD: original changed'); print(''.join(difflib.unified_diff(original.decode('utf-8').splitlines(True),(w/'artifact-changed.md').read_text().splitlines(True),fromfile='original',tofile='changed'))); sys.exit(not same)" "$W" "$E"
+```
+
+**Expected:** The original hash matches. Read every material change in the diff and compare it with your prediction; changed wording is not automatically a changed fact.
+
+**Stop:** A material difference is unsupported or an expected nonchange did not survive.
+
+**Recovery:** Record the mismatch in `W/changed-input-comparison.md` and hold the revised draft. Do not treat a diff as a substitute for reading its meaning.
+
+Write `W/handoff.md` with the purpose, source boundary, draft locations, actual checks, decision, observed limit, unresolved owner, and first file the next reader should inspect. Keep work and receipts outside the checkout.
+
+<details markdown="1">
+<summary>Optional stretch: remove an unsupported readiness implication</summary>
+
+## Repair an implication, not merely a number
+
+Consider this draft sentence. It is an example to examine, not an additional source fact:
+
+> The 19 kits are counted and staged in pen 4 for Field Clinic S-3, and the Thursday and Friday window is available for paperwork.
+
+Explain how a hurried reader could promote custody or paperwork availability into pickup readiness. Do not assume your own correct draft already contains that flaw.
+
+In your editor, create a separate `W/artifact-stretch.md` from the changed draft. Repair the implication within the same 130–190-word email. State custody-not-release and paperwork-not-pickup explicitly, using only the original packet and changed input. Keep both original artifacts unchanged.
+
+In `W/stretch-trace.md`, quote every material change and its source support, then list the material facts and authority limits that did not change. Count the new draft with the unchanged practice checker, remembering that its 27-count condition is stale for this input.
+
+**Terminal: Bash or zsh, ordinary user.**
+
+```bash
+"$PY" "$W/check_artifact.py" "$W/artifact-stretch.md"
+```
+
+**Terminal: PowerShell, ordinary user.**
+
+```powershell
+& $PY "$W\check_artifact.py" "$W\artifact-stretch.md"
+```
+
+**Expected:** The word-count and unchanged mechanical conditions remain satisfied; the original count condition still fails as expected. Your source trace, not the checker alone, establishes whether the unsupported implication was removed.
+
+**Stop:** The repair creates new authority, changes another fact, exceeds the word bound, or silently alters either retained artifact.
+
+**Recovery:** Preserve the stretch attempt and name the unsupported change. Revise only after identifying its source or deciding it must be removed. A mechanical result cannot certify the reader's interpretation or human qualification.
 
 </details>
 
-```markdown
-# Direction brief
+After a machine change, open a new terminal and run the setup check in it. Keep the request, sharing limit, source comparison, and exact first error with the attempt.
 
-Audience:
-Draft and where classmates will read it:
-Outcome:
-Allowed sources:
-
-## Material constraints
-
-1.
-2.
-3.
-
-Precedence when instructions conflict:
-Acceptance condition:
-Plausible falsifier:
-Prohibited result:
-Stop condition:
-Correction limit:
-Decision owner:
-```
-
-Make each of these testable by someone who was not there:
-
-- only the supplied source packet may establish facts;
-- the draft is a 130–190 word email with a subject line and a contact line;
-- unknown services stay unknown rather than becoming promises;
-- no public or consequential use is allowed;
-- the work stops if a material fact cannot be traced, or if a correction would change the mission.
-
-For **Plausible falsifier**, do not write "the email is wrong." Write the specific observation that would show a named claim in your draft is wrong — for example, "a coordinator reading this email sends staff to a locked door." You will run it in step 9, so write one you can actually carry out.
-
-For **Correction limit**, write two correction attempts, then `HOLD`.
-
-If you find a problem in the brief later, keep this first version and record what you changed and why.
-
-## 7. Produce the first draft
-
-Point the tool at the frozen brief and the supplied files rather than restating the facts in the prompt, so the files stay the single source of the facts. Writing the instruction into a file also means you still have it afterwards, word for word.
-
-In any text editor, save this as `prompt.txt` in your work folder:
-
-```text
-Read direction-brief.md, REQUEST.md, and SOURCE_PACKET.md. Follow the brief's source
-and sharing limits. Draft the requested email and write it to artifact.md. Do not use
-facts from outside the supplied files. After writing, report the path only.
-```
-
-Now run one of the AI command-line tools on your machine.
-
-**macOS Terminal, Ubuntu, Arch Linux, or Ubuntu on WSL — normal user.**
-
-```bash
-cd "$HOME/module-00-work"
-codex exec --sandbox workspace-write --skip-git-repo-check "$(cat prompt.txt)"
-```
-
-**Windows PowerShell — normal user.**
-
-```powershell
-Set-Location "$env:USERPROFILE\module-00-work"
-codex exec --sandbox workspace-write --skip-git-repo-check (Get-Content .\prompt.txt -Raw)
-```
-
-If you set up `opencode` or `goose` instead, the equivalent calls are `opencode run -m xai/grok-4.5 "<instruction>"` and `goose run --no-session --provider xai --model grok-4.5 -t "<instruction>"`.
-
-The tool's closing message is its own report of what it did. Ask the file system instead.
-
-**Windows PowerShell — normal user.**
-
-```powershell
-Set-Location "$env:USERPROFILE\module-00-work"
-Get-Item .\artifact.md | Format-List Name, Length, LastWriteTime
-```
-
-**macOS Terminal, Ubuntu, Arch Linux, or Ubuntu on WSL — normal user.**
-
-```bash
-cd "$HOME/module-00-work"
-ls -l artifact.md
-wc -w artifact.md
-```
-
-You should see a size of roughly 800 to 1,300 bytes for a 130–190 word email, a write time within the last few minutes, and a word count in that range. If the command instead reports that the file does not exist, the run failed, whatever the tool said. Record it as a failed operation. Do not create the missing file by hand and call the run successful.
-
-Then open `artifact.md` in your editor and read it end to end before any check touches it.
-
-The practice check runs on Python 3.12 or newer. Print the version of the interpreter you are about to use, and read the number it prints.
-
-**Windows PowerShell — normal user.**
-
-```powershell
-Set-Location "$env:USERPROFILE\module-00-work"
-python --version
-```
-
-**macOS Terminal — normal user.**
-
-```bash
-cd "$HOME/module-00-work"
-python3.12 --version
-```
-
-**Ubuntu, Arch Linux, or Ubuntu on WSL — normal user.**
-
-```bash
-cd "$HOME/module-00-work"
-python3 --version
-```
-
-You should see `Python 3.12.` followed by a patch number, or a higher version such as `Python 3.13.2`. If the number is 3.11 or lower, or the command is not found, this shell is not the one your setup path prepared: open a new terminal, move back to the work folder, and run it again. If it is still below 3.12, write `HOLD` and save the version line exactly as it printed.
-
-The name that printed 3.12 or newer is the one you use for every check that follows. Run the check on your draft.
-
-**Windows PowerShell — normal user.**
-
-```powershell
-Set-Location "$env:USERPROFILE\module-00-work"
-python .\check_artifact.py .\artifact.md
-```
-
-**macOS Terminal — normal user.**
-
-```bash
-cd "$HOME/module-00-work"
-python3.12 check_artifact.py artifact.md
-```
-
-**Ubuntu, Arch Linux, or Ubuntu on WSL — normal user.**
-
-```bash
-cd "$HOME/module-00-work"
-python3 check_artifact.py artifact.md
-```
-
-Each requirement prints its own line. The last line you are looking for is:
-
-```text
-PASS: mechanical requirements passed; this is practice only
-```
-
-If instead the last line begins `HOLD:`, save the whole output before you touch anything. Ask the AI tool for one correction, then run the check again. Stop after two correction attempts. If it still fails, write `HOLD`, keep the saved output, and hand the failure and the output to your evaluator.
-
-## 8. Check one material claim at the source
-
-Choose the claim most likely to change what a reader does: hours, entrance, eligibility, or capacity. Open the source packet and compare it yourself. Do not ask the model that produced the claim whether the claim is supported.
-
-![Open the source yourself](figures/m00-claim-to-source.svg)
-
-*Open the source and quote the supporting text yourself.*
-
-<details>
-<summary>Figure text</summary>
-
-Choose the claim that would change what a reader does. Open the source. Quote the text. Do not ask the producing model whether it is supported.
-
-</details>
-
-Write `source-check.md`:
-
-```markdown
-# Source check
-
-Claim in the draft:
-Source location and exact supporting text:
-Interpretation:
-What would falsify the claim:
-Result: PASS / HOLD
-```
-
-Then read every sentence of the draft for services the source does not confirm: meals, medical care, overnight shelter, chargers, childcare, or a shuttle. The source packet names those as unconfirmed, so a sentence that promises one has invented it.
-
-## 9. Run your falsifier
-
-Make the mistake on purpose and watch your check catch it. Until you have seen it fail once, you cannot tell whether it passed your draft because the draft is right or because it never looks at that claim.
-
-![Watch the check fail on purpose](figures/m00-falsifier.svg)
-
-*The check is trusted only after you have seen it fail.*
-
-<details>
-<summary>Figure text</summary>
-
-Make the mistake on purpose. The check must fail on the probe before you trust a pass on the draft.
-
-</details>
-
-Copy your draft, then edit the copy so that the one claim you checked in step 8 is stated wrongly — send readers to the Yard Street doors, or move the hours, or require identification, or change the capacity.
-
-**Windows PowerShell — normal user.**
-
-```powershell
-Set-Location "$env:USERPROFILE\module-00-work"
-Copy-Item .\artifact.md .\falsifier-probe.md
-```
-
-**macOS Terminal, Ubuntu, Arch Linux, or Ubuntu on WSL — normal user.**
-
-```bash
-cd "$HOME/module-00-work"
-cp artifact.md falsifier-probe.md
-```
-
-Edit `falsifier-probe.md` — one claim, one sentence. Leave everything else alone.
-
-Now run your falsifier against the probe. If your falsifier is a reading rather than a command — "open the probe and see which door it sends people to" — carry out that reading and write down the sentence you read. If it is something the practice checker already tests, run the checker:
-
-**Windows PowerShell — normal user.**
-
-```powershell
-Set-Location "$env:USERPROFILE\module-00-work"
-python .\check_artifact.py .\falsifier-probe.md
-```
-
-**macOS Terminal — normal user.**
-
-```bash
-cd "$HOME/module-00-work"
-python3.12 check_artifact.py falsifier-probe.md
-```
-
-**Ubuntu, Arch Linux, or Ubuntu on WSL — normal user.**
-
-```bash
-cd "$HOME/module-00-work"
-python3 check_artifact.py falsifier-probe.md
-```
-
-You should see one requirement fail and name the sentence or number it found. If you inverted the entrance, the line reads like this, with your own sentence at the end:
-
-```text
-FAIL: entrance — the draft denies it: Please use the Yard Street doors.
-```
-
-and the run ends:
-
-```text
-HOLD: 1 mechanical requirement(s) failed; this is practice only
-```
-
-Add this to the bottom of `source-check.md`:
-
-```markdown
-## Falsifier run
-
-Claim I attacked:
-Exact change I made in falsifier-probe.md:
-Command I ran:
-Observed failure, copied exactly:
-Requirements that stayed PASS:
-What this tells me the check can and cannot catch:
-```
-
-If nothing failed, your falsifier does not reach the claim you care about. That is worth more than a green result: it means the check would not have caught the same mistake in your real draft either. Say so in the record, and say which claims are therefore unverified.
-
-Keep `falsifier-probe.md`. Do not use it as your draft, and do not let any later step overwrite `artifact.md` with it.
-
-## 10. Write the capability-limit statement
-
-Four different things acted in the run you just did, and they fail in different ways. Separating them is how you know what to fix when something goes wrong, and what you can rely on next time.
-
-![Four layers that can fail separately](figures/m00-four-layers.svg)
-
-*Separate model output, product surface, harness controls, and the human decision before you name the fault.*
-
-<details>
-<summary>Figure text</summary>
-
-Model output, the product surface, harness controls, and the human decision fail in different ways. Separate them before you decide what to fix.
-
-</details>
-
-Write `capability-limit.md` from what you saw in your own run — not from what you have read about these tools:
-
-```markdown
-# Capability and limit
-
-What the model output produced:
-What the product around it did (the command-line tool, its sandbox — the limits the tool was given — which folders it may write, which network it may use — its file writing):
-What the harness controlled (the direction brief, the checks, the work folder):
-What stayed a human decision:
-
-One capability observed in this run:
-One limitation observed in this run:
-```
-
-Both of the last two lines must name something you watched happen in this run. Instead of "it can summarize well", write what you saw: "it reorganized eleven confirmed facts into a 164-word email in one pass, with no fact from outside the packet." For the limitation, instead of "it sometimes hallucinates", write "it wrote that chargers were available, which the packet lists as unconfirmed, and the practice check caught it."
-
-## 11. Decide whether classmates may review the draft
-
-Write `decision.md`:
-
-```markdown
-# Decision
-
-Practice-check result, last line of the output copied exactly:
-Material source-check result, and the source text it rests on:
-Falsifier-run result, failure line copied exactly:
-Minimum-screen result, and any item still open:
-Known limitation:
-Residual risk:
-Decision owner:
-Decision: PASS FOR CLASS REVIEW / HOLD
-Reason:
-```
-
-`PASS FOR CLASS REVIEW` means only named course participants may read the draft. It cannot be published or used to direct real depot operations.
-
-Choose `HOLD` if a claim that affects the reader has no source, a responsibility question is still open, two corrections have failed, a file is missing, or a real official would have to approve the result.
-
-## 12. Apply the changed input
-
-Open `CHANGED_INPUT.md` now. Before you run anything, write `changed-input-prediction.md`:
-
-![Predict, then change one fact](figures/m00-changed-input.svg)
-
-*Write the prediction first. Only the field you named may move.*
-
-<details>
-<summary>Figure text</summary>
-
-Write the prediction first. Change one supplied fact. Only the field you named may move.
-
-</details>
-
-```markdown
-# Changed-input prediction
-
-Material statements that must change:
-Material statements that must not change:
-Checks to rerun:
-Unexpected change that would cause HOLD:
-```
-
-Ask the AI tool to write `artifact-changed.md` from the original draft and the changed input. Name the new file in the instruction so it cannot overwrite `artifact.md`.
-
-Run the practice check against the changed draft, using the same command name that printed 3.12 or newer in step 7 and naming `artifact-changed.md` in place of `artifact.md`. The checker expects capacity 60, so a correct revision to 45 makes it fail that one requirement:
-
-```text
-FAIL: capacity 60 — the draft attaches [45] to capacity, not 60
-```
-
-That failure is correct. The checker still describes the original case. Do not edit it to make the failure go away — a check you edit to fit the answer stops being a check.
-
-Now look at the difference yourself:
-
-**Windows PowerShell — normal user.**
-
-```powershell
-Set-Location "$env:USERPROFILE\module-00-work"
-Compare-Object (Get-Content .\artifact.md) (Get-Content .\artifact-changed.md)
-```
-
-**macOS Terminal, Ubuntu, Arch Linux, or Ubuntu on WSL — normal user.**
-
-```bash
-cd "$HOME/module-00-work"
-diff -u artifact.md artifact-changed.md
-```
-
-Record whether the capacity moved from 60 to 45 as you predicted, and record every other change the comparison shows, including any that would change what a reader does.
-
-## 13. Write the handoff
-
-Write `handoff.md`:
-
-```markdown
-# Module 0 handoff
-
-Purpose and audience:
-Sources used and excluded:
-Current decision:
-How to run the visible practice check:
-Strongest evidence:
-Known limitation:
-Stop condition:
-Falsifier and what it caught:
-Changed-input result:
-What the next owner should inspect first:
-```
-
-Someone else should be able to find the draft, its source, the check results, your decision, and the known limit without asking you where anything is.
-
-## Completion check
-
-You are done when:
-
-- the four copied case files and the twelve files you write are all in `module-00-work`;
-- `acceptance-control.md` records that the deciding control is off this machine and names the standard it applies;
-- the first checked draft appeared within 60 minutes, or the record says why it did not;
-- the delegation decision, minimum screen, and direction brief were saved before the first AI run;
-- the material claim is traced to exact supplied source text;
-- your falsifier ran against `falsifier-probe.md` and `source-check.md` records the observed failure;
-- `capability-limit.md` separates model output, product surface, harness control, and human decision, and names one capability and one limitation you watched happen;
-- no more than two correction attempts were made, and the first failed output is preserved;
-- the decision is `PASS FOR CLASS REVIEW` or `HOLD`;
-- the changed-input prediction was written before the second run, `artifact.md` is unchanged, and the delta is the one you predicted; and
-- the handoff names the limitation and the first thing to inspect.
-
-Keep the work folder where you made it, so the next person to look at this work finds every file in one place. Keep it out of the shared repository: nothing you produced here belongs in the clone.
+Continue with [Module 1 · Verify sources and outputs](../../module-01-mission-thread/README.md).

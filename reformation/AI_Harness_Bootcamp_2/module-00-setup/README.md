@@ -1,6 +1,6 @@
 # Module 0 · Set up the harness and direct bounded work
 
-Plan for 1–3 hours of machine setup. Setup is finished only after you reopen the terminal and the tools still work. You will watch each AI tool write a real file, then use the same setup to draft and check a short email against a supplied set of facts.
+Plan for 1–3 hours of machine setup. Setup is finished only after you reopen the terminal and the tools still work. You will watch the AI tool write a real file using the course launcher, then use the same setup to draft and check a short email against a supplied set of facts.
 
 ## Start here
 
@@ -19,15 +19,10 @@ If you are unsure which Windows path to use, choose WSL when your organization p
 ## What you will install
 
 - Git and a copy of this course (a repository: a folder Git can version).
-- Node.js 24 LTS and npm
 - Python 3.12 or newer
-- Codex command-line tool (CLI)
-- OpenCode 1.18.17
-- goose CLI from the Agentic AI Foundation
-- n8n 2.34.5
-- Obsidian
+- Oh My Pi (`omp`) CLI pinned at version 18.3.5
 
-The AI CLIs make short provider-billed proof calls. Before you enter any credential, ask whoever owns your AI provider accounts which account, provider, and model to use.
+The AI tool makes a short provider-billed proof call through the course launcher. Before you enter any credential, ask whoever owns your AI provider accounts which account, provider, and model to use.
 
 ## Before the first command
 
@@ -61,30 +56,26 @@ Setup is finished when a terminal you opened after the last install shows these 
 
 ![Setup is finished only after a new terminal proves it](shared/figures/m00-setup-chain.svg)
 
-*Read each proof file from a terminal you opened after the last install.*
+*Read the proof file from a terminal you opened after the last install.*
 
 <details>
 <summary>Figure text</summary>
 
-Install the tools. Authenticate. Open a new terminal. Read each proof file from disk. A tool saying done is not the same as a file on disk.
+Install the tools. Open a new terminal. Set the OpenRouter key in that terminal. Run the tool-write proof and read its file from disk. A tool saying done is not the same as a file on disk.
 
 </details>
 
-- `origin` reporting `https://github.com/TheHolofex/AI_Harness_Bootcamp.git`, `git rev-parse HEAD` reporting a 40-character id (the setup check prints the first 12), and `git status --short` printing nothing at all;
-- `node --version` printing a version that starts with `v24.`, and Python reporting 3.12 or higher (macOS uses `python3.12 --version`; Ubuntu, Arch, and WSL use `python3 --version`; PowerShell-only uses `python --version`);
-- `opencode --version` and `n8n --version` printing the pinned versions listed above;
-- the Codex and goose version strings, and the absolute path each command resolved to, as printed by the setup check;
-- `codex login status` finishing without an error, with no account detail copied anywhere;
-- the word `SET` from the key check in that same terminal — macOS prints it as `XAI_API_KEY=SET` — and the key value itself printed nowhere;
-- three proof files read back from disk, each one written by the tool that claimed to write it;
-- `PASS: n8n answered its health check at http://127.0.0.1:5678`;
-- the course files listed in Obsidian's file pane, and `git status --short` still printing nothing after you close it;
-- the same absolute tool paths and the same file-writing results you saw in the terminal where you installed everything; and
+- `origin` reporting `https://github.com/TheHolofex/AI_Harness_Bootcamp.git`, `git rev-parse HEAD` reporting a 40-character id (the setup check prints the first 12); `git status --short` is reported for information only — unrelated changes are preserved and do not block setup or QA;
+- Python reporting 3.12 or higher (macOS uses `python3.12 --version`; Ubuntu, Arch, and WSL use `python3 --version`; PowerShell-only uses `python --version`);
+- the Oh My Pi version string `omp/18.3.5`, and the absolute path the command resolved to, as printed by the setup check;
+- the word `SET` from the key check in that same terminal — and the key value itself printed nowhere;
+- one proof file — `from-omp.txt` — read back from disk, written by the tool through the course launcher;
+- the same absolute tool path and the same file-writing result you saw in the terminal where you installed everything; and
 - a setup report saved outside the Git clone with no key, token, or password in it.
 
-The setup check reports each of these as PASS with the value it observed, WARN when the value is outside the expected set but the work can go on, or FAIL when the value blocks later work.
+The setup check reports the version, path, repository and key-presence observations as PASS, WARN or FAIL. The separate `verify_tool_proof.py` command checks the tool-written file, its token and the saved execution evidence. A passing setup report does not replace that proof.
 
-Open each proof file and read it back before you accept it: a tool saying “done” is not the same as a file on disk.
+Open the proof file and read it back before you accept it: a tool saying “done” is not the same as a file on disk.
 
 ## After setup
 

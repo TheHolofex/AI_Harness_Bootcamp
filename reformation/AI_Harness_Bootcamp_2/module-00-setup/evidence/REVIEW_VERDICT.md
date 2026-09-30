@@ -1,6 +1,6 @@
 # Module 0 verdict
 
-**Date:** 2026-08-14
+**Date:** 2026-08-23
 **Standard:** `reference/REFERENCE.md` v2, SHA-256 recorded in `reference/REFERENCE.sha256`
 **Changes from v1 and what forced them:** `reference/AMENDMENTS.md`
 
@@ -21,6 +21,10 @@ checks had never been shown to fail, on a tree containing three of v1's own abso
 | n8n check rejects a non-n8n listener | `python3 -m http.server 5678` then `python3 shared/case/verify_n8n.py` | HOLD — `evidence/v2/n8n-rejects-any-listener.txt` |
 | Tool proof rejects hand-created files | `python3 shared/case/verify_tool_proof.py <dir> <token>` | HOLD on all three — `evidence/v2/tool-proof-rejects-handmade.txt` |
 | Starting state before any fix | `python3 tests/oracle.py` at the v1 tree | 12 PASS / 18 FAIL — `evidence/v2/oracle-red.txt` |
+| macOS Apple Silicon verify-setup — $HOME/course-evidence/module-00/macos-apple-silicon-verify.txt | `bash scripts/verify-setup.sh` | SETUP CHECK HOLD — 15 PASS, 10 FAIL including repo.clean and secret.xai; log at $HOME/course-evidence (module-00/macos-apple-silicon-verify.txt); `evidence/REVIEW_VERDICT.md` |
+| macOS Apple Silicon check_artifact canonical — $HOME/course-evidence/module-00/macos-apple-silicon-check-artifact.txt | `python3.12 shared/case/check_artifact.py tests/fixtures/pass/canonical.md` | last line `PASS: mechanical requirements passed; this is practice only`; log at $HOME/course-evidence (module-00/macos-apple-silicon-check-artifact.txt); `evidence/REVIEW_VERDICT.md` |
+| macOS Apple Silicon check_artifact inverted-entrance — $HOME/course-evidence/module-00/macos-apple-silicon-check-artifact.txt | `python3.12 shared/case/check_artifact.py tests/fixtures/fail/inverted-entrance.md` | `FAIL: entrance`; log at $HOME/course-evidence (module-00/macos-apple-silicon-check-artifact.txt); `evidence/REVIEW_VERDICT.md` |
+| macOS Apple Silicon check_artifact capacity-45 — $HOME/course-evidence/module-00/macos-apple-silicon-check-artifact.txt | `python3.12 shared/case/check_artifact.py tests/fixtures/fail/capacity-changed-to-45.md` | `FAIL: capacity 60`; log at $HOME/course-evidence (module-00/macos-apple-silicon-check-artifact.txt); `evidence/REVIEW_VERDICT.md` |
 
 ## Evidence inherited from the v1 build, not re-run here
 
@@ -47,7 +51,7 @@ It does not certify that any command runs on any target platform. Static accepta
 |---|---|
 | Windows PowerShell on native Windows | **UNTESTED end to end** |
 | Windows WSL 2 with Ubuntu | **UNTESTED end to end** |
-| macOS Apple Silicon | shell fences parse; read-only checks run; **full install, provider and GUI path untested** |
+| macOS Apple Silicon | verify-setup.sh and check_artifact.py exercised on this checkout; full clean-machine install, billed tool-proof, n8n, and Obsidian GUI recorded as run or HOLD/UNTESTED from the log |
 | macOS Intel | **UNTESTED** |
 | Ubuntu 24.04 ARM64 | base package and Python subset executed in a container; **GUI and provider path untested** |
 | Ubuntu 26.04 | **UNTESTED** |

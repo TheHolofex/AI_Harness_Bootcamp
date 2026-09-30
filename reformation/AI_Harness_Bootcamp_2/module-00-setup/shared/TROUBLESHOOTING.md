@@ -1,97 +1,76 @@
 # When setup stops
 
-Start with the first check that failed. Save its error message before you change anything, and do not reinstall everything.
+Start with the first failed action. Save its exact error and the last known-good observation before changing anything. Do not reinstall every tool or discard an existing checkout.
 
-## 1. Find the first failed check
+## Choose the next action from the observed failure
 
-| What you observed | Do this first |
+| Observation | Next action |
 |---|---|
-| The package manager command is missing | Open the terminal your platform guide names, not another one, and run its version command: `brew --version`, `winget --version`, `apt --version`, or `pacman --version`. If it still reports "not found", the package manager is absent or blocked by policy; save the exact message and use the support packet. |
-| The installer finished, and the command is still missing | Open a new terminal and run `command -v <tool>` — `Get-Command <tool>` in PowerShell. Empty output means the folder holding the tool is not on PATH. Redo the "Put user tools on PATH" step in your platform guide, then open another new terminal and run `command -v <tool>` again. |
-| The command runs and authentication fails | Run `codex login status` and compare the reported method against the one whoever owns the account told you to use. If that is right, check the provider name, the model ID, and whether the key is set in this process. A corporate proxy shows up as a timeout or a certificate error, not as a rejected credential. |
-| The AI tool answers and no file appears | Run `pwd` and `ls` — `Get-Location` and `Get-ChildItem` — in the folder you told the tool to write into, and open any file it lists. If the folder is empty, run the tool again from inside that folder and watch for a permission prompt you dismissed. |
-| The file appears in the wrong place | Print the working directory before you run the tool again. On Windows with WSL, a path starting `/mnt/c/` means a Linux command wrote to the Windows disk; the course clone belongs under your Linux home. |
-| The old terminal works and a new one fails | The setting exists only in the old process. Put it in the shell profile your platform guide names, then prove it in a third terminal you open afterwards. |
-| A new shell finds the tools but not the xAI key | Expected. The course key is session-only. Enter it again with the hidden-input step in your platform guide. |
-| A step has printed nothing for far longer than your guide said it would take | Do not press Ctrl+C yet, and do not close the window. Work through "When a step goes silent" below: find out whether the machine is still doing the work before you interrupt it. |
-| Output stopped, the screen is full, and the bottom line shows `:` or `(END)`, and what you type does not appear | A pager is showing you a file — `less` on macOS and Linux, `more` on Windows. Press `q` to return to the prompt. Nothing was cancelled and nothing was installed by looking. `Space` moves down a page, `b` moves back. |
-| Windows says "running scripts is disabled on this system" | PowerShell is refusing to run a `.ps1` file. Run `Get-ExecutionPolicy -List`. If `MachinePolicy` or `UserPolicy` shows any value, IT controls this: stop, send them that output, and do not weaken it. If both are `Undefined`, use the scoped change named in the PowerShell guide and record the old value first. |
-| A downloaded Linux application will not start | Start it from the terminal so you can read the error instead of double-clicking. For an AppImage: `chmod +x` the file first; "AppImages require FUSE to run" means installing `libfuse2` — `libfuse2t64` on Ubuntu 24.04 and later — or running the file once with `--appimage-extract-and-run`. If there is no message at all, run `echo "$DISPLAY$WAYLAND_DISPLAY"`; empty output means no desktop session, and a desktop application cannot open there. |
-| n8n will not start, or the n8n check reports that something else is listening on port 5678 | Find what holds the port: `lsof -i :5678` on macOS, `ss -ltnp 'sport = :5678'` on Linux, `Get-NetTCPConnection -LocalPort 5678` in PowerShell. Usually it is an earlier `n8n start` still running or a leftover container. Stop that process and start n8n again. Do not move n8n to another port; the check reads 5678. |
-| A download fails with certificate or proxy text | A network or proxy setting, not a broken download. Retry on a different network if you can, and send the exact text to IT. Do not disable TLS verification. |
-| `permission denied` under npm | The global npm folder is not yours. Run `npm config get prefix`; it must be a folder inside your home directory. Redo the npm prefix step. Do not add `sudo`. |
-| WSL work is slow under `/mnt/c` | Cross-filesystem access is the cost. Move the clone into the Linux home directory and work there. |
-| An Arch package transaction reports conflicts | Stop and resolve a full system upgrade with `pacman -Syu` before installing anything else. Syncing the database without the upgrade leaves a mismatched system. |
+| Git or Python is missing | Return to the named platform's prerequisite step. On a managed device, stop when policy blocks installation and send the support packet below. |
+| A download fails | Keep the HTTP, proxy, or certificate error. Use the official release URLs. Do not disable TLS verification or execute an incomplete download. |
+| The checksum fails or the selected asset has no unique checksum entry | Do not install or execute the binary. Retain the failed download separately and investigate the filename, release, and source before downloading into a new directory. |
+| `omp` is not found | Check the resolved command path below. Add only the user-bin directory named by your platform guide, then check again in the intended terminal. |
+| `omp` reports a different version | Keep the observed path and version. Do not overwrite a different installation silently. Use the verified course binary and confirm that PATH resolves to it. |
+| A course directory already exists | Confirm that it is the intended checkout. Use it without reset, pull, or clean when it is valid; otherwise leave it untouched and resolve the path conflict. |
+| The new terminal has tools but the key is `MISSING` | This is expected for independently opened terminals. Enter the key through the hidden-input step in that terminal. Never put the key in a shell profile. |
+| A new process reports an unexpected `SET` | Determine whether it inherited the environment from a parent. `SET` alone does not prove persistence or exposure. Do not dump the environment into evidence. |
+| The launcher exits 2 | Read its prerequisite message. Missing key, wrong OMP version, missing input, conflicting permissions, or an existing attempt can stop before a provider request. No live success has occurred. |
+| The launcher exits 1 | Retain the entire attempted run. Inspect `result.json` and the raw receipts; an incomplete turn is not rescued by a file left behind. |
+| The provider returns 401 or 403 | Confirm the participant key and model access in OpenRouter without printing the key. Do not try a direct-provider login or silently switch models. |
+| The provider returns 402, a spending-limit error, or 429 | Stop paid work. Preserve the response and resolve credit, the approved limit, or rate availability before an explicit new attempt. Do not raise the spending ceiling or loop retries. |
+| The assistant claims it wrote a file, but the file or receipt is absent | Record `HOLD`. Check the declared work root and authorized filename. Do not manufacture the file or substitute chat text as a tool-write receipt. |
+| A write or evidence destination already exists | Preserve that attempt. Start with new work/output and receipt paths after documenting the cause; changing only E does not make an existing output new. |
+| A Windows script is blocked by managed execution policy | Save the policy error and ask the device owner. Do not bypass organizational policy or request broad machine-wide weakening. |
+| WSL paths point under `/mnt/c` | Use the Linux home directory and Linux OMP asset in Ubuntu. Do not mix Windows executable/configuration paths with the WSL attempt. |
 
-**PATH is the list of folders your terminal searches, in order, when you type a command name.** If the folder an installer wrote to is not in that list, the file exists on disk and the command still reports "not found" — which is why an installer can report success and the tool still be missing. Each platform guide's PATH step adds the folder and writes it into your shell profile so that terminals you open later inherit it. A terminal opened before that change keeps the old list until you close it and open a new one.
+## Confirm the command you are actually running
 
-### When a step goes silent
+These checks make no provider call and print no credential. Run the block in the same terminal that failed.
 
-Your platform guide gives each slow step a duration and tells you a minute of silence inside one is normal. Here is where silence stops being normal. Treat these as estimates from ordinary machines and connections, not as measurements of yours:
-
-- a package download or install the guide sizes at 5 to 20 minutes: about 30 minutes with nothing new on screen;
-- a full Arch upgrade, sized at 5 to 40 minutes: about an hour;
-- a first `n8n start`, sized at 1 to 3 minutes: about 10 minutes;
-- anything the guide does not call slow: about 5 minutes.
-
-Two questions separate a slow step from a stuck one. Answer both from a second terminal window, because the running command holds the first.
-
-**First: does the process still exist?**
-
-**Terminal: a second window of the terminal your platform guide names · normal user.**
+**Terminal: Bash or zsh, ordinary user.**
 
 ```bash
-pgrep -a -f 'apt|dpkg|pacman|brew|npm|node|curl|wget'
+command -v omp && omp --version
 ```
 
-**PowerShell:**
+**Terminal: PowerShell, ordinary user.**
 
 ```powershell
-Get-Process node, npm, winget, curl, msiexec -ErrorAction SilentlyContinue | Format-Table Name, Id, CPU
+$ompCommand = Get-Command omp -CommandType Application -ErrorAction Stop
+$ompCommand.Source
+& $ompCommand.Source --version
 ```
 
-**You should see:** one line for each matching process, with the command it is running. No lines at all means the command has already ended — go back to the first window and press Return to see whether the prompt is back.
+**Expected:** The path is the installation you verified, and the version is exactly `omp/18.3.5`.
 
-**Second: is the machine still working for it?** Run the command above again a minute later. In PowerShell the `CPU` column counts seconds of processor time, so a number that has grown means work is happening. Elsewhere, open Activity Monitor on macOS, System Monitor or `top` on Linux, or Task Manager on Windows, find the process by name, and read its CPU, disk and network figures twice a minute apart. Figures that move mean a slow step. Figures at zero in both readings mean a stuck one. For a download, running `ls -l` — `Get-ChildItem` — in the folder twice a minute apart answers the same question: a file whose size is growing is still arriving.
+**Stop:** The command is missing, resolves to an unexpected installation, fails to run, or reports another version.
 
-When it is stuck, press Ctrl+C in the first window, save the last lines it printed, and run the same command again; package installs and npm pick up where they left off, and a second run usually gets past a dropped connection. If it stops at the same point twice, that point is your first error: capture the packet below and stop there.
+**Recovery:** Correct only the installation or PATH issue identified by the output. Preserve other installations and repeat the check before a paid turn.
 
-## 2. Capture a support packet
+**PATH** is the ordered list of directories searched for a command name. Changing it does not install a program, and an already open terminal does not automatically receive later configuration changes. Credential variables have a different lifecycle: keep the key process-local even if you save a non-secret PATH setting.
 
-Save this without secrets:
+## Distinguish slow work from a stopped process
+
+Keep the original terminal visible. Use Activity Monitor on macOS, Task Manager on Windows, or your Linux system monitor to inspect the named download or package-manager process and its current CPU, disk, and network activity. No activity in one observation is not proof of a hang.
+
+Follow the package manager's own recovery instructions if installation was interrupted; do not kill or restart a transaction blindly. For a provider turn, the launcher has a bounded timeout and records an incomplete attempt. Let that boundary report the failure rather than launch a second paid process to see whether it is faster.
+
+## Capture a support packet
 
 ```text
-Platform and version:
-Architecture:
+Platform, version, and architecture:
 Terminal and privilege level:
-Current directory:
 Step title:
-Command or UI action:
-Exact first error:
-What you expected:
-What changed immediately before it:
-Can the prior checkpoint still pass? yes / no / unknown
+Command or UI action, with no key value:
+Resolved tool path and version:
+First error and exit code:
+Expected observation:
+Last known-good observation:
+What changed immediately before the failure:
+External attempt/report location:
+Whether any output or forbidden effect appeared:
 ```
 
-For command output, redact usernames, organization names, account IDs, internal hosts, and tokens. Do not redact the command name, exit code, package version, or first error line.
+Redact personal paths, account IDs, internal hosts, and credentials from the copy you share. Keep command names, versions, exit codes, and the first error. An exposed key must be revoked; deleting it from a screenshot does not revoke access.
 
-## 3. Make one correction
-
-Change only the setting or tool named by the error, then rerun:
-
-1. the failed check;
-2. the preceding known-good check; and
-3. the fresh-shell check if PATH or the environment changed.
-
-If the correction fails, undo it before trying another. Stop after two unsuccessful corrections, an undo that fails, or a message controlled by company policy. Record `HOLD` and send the saved details to whoever supports your machine.
-
-## Do not use these shortcuts
-
-- `curl -k`, `--insecure`, or disabling certificate checks;
-- machine-wide execution-policy weakening;
-- disabling Gatekeeper or antivirus;
-- installing global npm packages with `sudo`;
-- `chmod -R 777`;
-- deleting an existing course folder without inspecting or backing it up;
-- moving WSL work onto the Windows filesystem to make paths look familiar;
-- pasting a key into a support ticket.
+Make one targeted correction and repeat the failed check. If a correction cannot be explained, a rollback fails, or device policy blocks the action, record `HOLD` and contact the responsible owner. Do not disable certificate checks, Gatekeeper, antivirus, or protected filesystem permissions to force progress.

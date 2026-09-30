@@ -1,4 +1,4 @@
-# S02 · Warehouse receipt RCPT-8821
+# Warehouse receipt RCPT-8821
 
 **Issuer:** Red Mesa Warehouse Management  
 **Recorded:** 2026-10-06 13:42 MDT  

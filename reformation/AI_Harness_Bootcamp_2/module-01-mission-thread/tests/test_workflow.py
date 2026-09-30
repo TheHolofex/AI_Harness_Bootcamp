@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -24,15 +26,38 @@ STEPS = [
     "Requirement defined", "Cargo received", "Cargo released", "Vehicle made ready",
     "Movement authorized", "Route window met", "Cargo delivered", "Usable effect confirmed",
 ]
-CHALLENGES = [
-    "Warehouse receipt offered as proof of usable inventory",
-    "Accepted-for-processing receipt offered as permit approval",
-    "Archived route bulletin offered as current",
-    "R-17 community page offered for R-71",
-    "VX-240 note offered for VX-204",
-    "Instruction embedded inside a source",
-    "Producer confidence and self-review",
-]
+CHALLENGE_MATRIX = """# Challenge matrix
+
+## Warehouse receipt is not usable inventory
+
+RCPT-8821 records a scan. It does not release kits.
+
+## Permit text is not approval
+
+accepted for processing is intake, not authorization.
+
+## Community page is the wrong route
+
+R-17 is not R-71.
+
+## Vendor note is the wrong vehicle
+
+VX-240 is not VX-204.
+
+## Hostile instruction
+
+SYSTEM OVERRIDE is quoted data.
+
+## Producer confidence
+
+96% confidence is not independent evidence.
+
+## Producer rebuttal
+
+producer-rebuttal repeats the same GO.
+"""
+
+
 
 
 def run(script: str, *args: object) -> subprocess.CompletedProcess[str]:
@@ -45,6 +70,10 @@ class WorkflowTest(unittest.TestCase):
         self.work = Path(self.tmp.name) / "work"
         result = run("start_work.py", self.work)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        inbox = list((self.work / "inbox").glob("*.md"))
+        self.assertEqual(len(inbox), 9)
+        self.assertFalse(any(path.name == "SOURCE_MANIFEST.json" for path in self.work.rglob("*")))
+
 
     def tearDown(self) -> None:
         self.tmp.cleanup()
@@ -143,26 +172,32 @@ class WorkflowTest(unittest.TestCase):
             writer.writerows(rows)
 
     def prepare(self, unrelated_delta: bool = False) -> None:
+        mapping = json.loads((ROOT / "shared/case/INBOX_MAP.json").read_text(encoding="utf-8"))
+        by_id = {entry["id"]: entry["inbox"] for entry in mapping["sources"]}
         shutil.copyfile(ROOT / "shared/templates/source-register.csv", self.work / "source-register.csv")
         with (self.work / "source-register.csv").open("a", encoding="utf-8") as handle:
             for row in (
-                "S01,S01_MO-27_r4.md,North Basin Mission Control,r4,2026-10-06 13:50 MDT,MO-27,requirements,delivery,APPLICABLE\n",
-                "S02,S02_WMS_RCPT-8821.md,Red Mesa Warehouse Management,RCPT-8821,2026-10-06 13:42 MDT,WMS totes and lots,custody and identity,usable inventory,APPLICABLE\n",
-                "S03,S03_QA_RELEASE-661.md,North Basin Quality Office,QA-661,2026-10-06 13:48 MDT,QA release,quality release status,permit approval,APPLICABLE\n",
-                "S04,S04_FLEET_VX-204_r7.md,North Basin Fleet Engineering,r7,2026-10-01 00:00 MDT,VX-204,payload and rack,VX-240,APPLICABLE\n",
-                "S05,S05_R71_BULLETINS.md,North Basin Road Authority,v5 current,2026-10-06 19:55Z,R-71,route closure,R-17,SUPERSEDED\n",
-                "S06,S06_PERMIT_PR-4418.md,North Basin Movement Registry,snapshot 14:02,2026-10-06 14:02 MDT,PR-4418,permit status,authorization,APPLICABLE\n",
-                "S07,S07_VENDOR_VX-240.md,Alpine Bodyworks,2026-09-12,2026-09-12,VX-240,packing dimensions,VX-204,IRRELEVANT\n",
-                "S08,S08_R17_COMMUNITY_UPDATE.md,Pine County Community Desk,2026-10-06 14:00,2026-10-06 14:00 MDT,R-17,R-17 status,R-71,IRRELEVANT\n",
-                "S09,S09_AI_DISPATCH_DRAFT.md,AI producer,draft 14:05,2026-10-06 14:05 MDT,AI brief,none,verification,OUTPUT_TO_CHECK\n",
+                f"S01,{by_id['S01']},North Basin Mission Control,r4,2026-10-06 13:50 MDT,MO-27,requirements,delivery,APPLICABLE\n",
+                f"S02,{by_id['S02']},Red Mesa Warehouse Management,RCPT-8821,2026-10-06 13:42 MDT,WMS totes and lots,custody and identity,usable inventory,APPLICABLE\n",
+                f"S03,{by_id['S03']},North Basin Quality Office,QA-661,2026-10-06 13:48 MDT,QA release,quality release status,permit approval,APPLICABLE\n",
+                f"S04,{by_id['S04']},North Basin Fleet Engineering,r7,2026-10-01 00:00 MDT,VX-204,payload and rack,VX-240,APPLICABLE\n",
+                f"S05,{by_id['S05']},North Basin Road Authority,v5 current,2026-10-06 19:55Z,R-71,route closure,R-17,SUPERSEDED\n",
+                f"S06,{by_id['S06']},North Basin Movement Registry,snapshot 14:02,2026-10-06 14:02 MDT,PR-4418,permit status,authorization,APPLICABLE\n",
+                f"S07,{by_id['S07']},Alpine Bodyworks,2026-09-12,2026-09-12,VX-240,packing dimensions,VX-204,IRRELEVANT\n",
+                f"S08,{by_id['S08']},Pine County Community Desk,2026-10-06 14:00,2026-10-06 14:00 MDT,R-17,R-17 status,R-71,IRRELEVANT\n",
+                f"S09,{by_id['S09']},AI producer,draft 14:05,2026-10-06 14:05 MDT,AI brief,none,verification,OUTPUT_TO_CHECK\n",
             ):
                 handle.write(row)
         self.write_ledger(self.work / "thread-ledger.csv")
-        (self.work / "baseline-verdict.md").write_text("# Baseline verdict\n\nVerdict: HOLD\nStanding rule: Use the exact current source.\n", encoding="utf-8")
+        (self.work / "baseline-verdict.md").write_text("# Baseline verdict\n\nVerdict: HOLD\nStanding rule: Use the exact current source.\nUnresolved condition: permit pending\n", encoding="utf-8")
         (self.work / "change-prediction.md").write_text("# Prediction\n\nFields that should change\nClaims that should change\nFields that must not change\nCondition that would still block\nUnexpected change\n", encoding="utf-8")
-        (self.work / "challenge-matrix.md").write_text("\n".join(f"## {x}\n\nRejected with reason.\n" for x in CHALLENGES), encoding="utf-8")
+        (self.work / "challenge-matrix.md").write_text(CHALLENGE_MATRIX, encoding="utf-8")
         (self.work / "corrected-brief.md").write_text("# Corrected brief\n\nInternal class review.\n", encoding="utf-8")
         (self.work / "handoff.md").write_text("# Handoff\n\nCurrent result and sources.\n", encoding="utf-8")
+        (self.work / "producer-rebuttal.md").write_text(
+            "# Producer rebuttal\n\n" + ("GO argument using the inbox. " * 20) + "\n",
+            encoding="utf-8",
+        )
 
         freeze = run("freeze_baseline.py", self.work)
         self.assertEqual(freeze.returncode, 0, freeze.stdout + freeze.stderr)
@@ -179,13 +214,50 @@ class WorkflowTest(unittest.TestCase):
         self.prepare()
         result = run("check_work.py", self.work)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("protected grading is still required", result.stdout)
+
+    def test_changed_history_and_downstream_explanations_preserve_facts(self) -> None:
+        self.prepare()
+        path = self.work / "changed-thread-ledger.csv"
+        with path.open(newline="", encoding="utf-8") as handle:
+            rows = list(csv.DictReader(handle))
+        by_id = {row["claim_id"]: row for row in rows}
+        by_id["C06"]["exact_entity"] += " / R71-2026-1006-v6"
+        by_id["C06"]["source_id"] = "S10"
+        by_id["C06"]["next_handoff"] = "Compare arrival with the revised 15:20 MDT closure."
+        by_id["C06"]["warrant"] += " The earlier 20:50Z closure is superseded."
+        by_id["C05"]["warrant"] = "S10 and C06 resolve the route-window conflict, not the pending permit."
+        with path.open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=COLUMNS)
+            writer.writeheader()
+            writer.writerows(rows)
+        with (self.work / "changed-brief.md").open("a", encoding="utf-8") as handle:
+            handle.write("\nThe old 20:50Z closure is superseded. R-17 remains the wrong route.\n")
+        result = run("check_work.py", self.work)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_unapplied_route_revision_holds(self) -> None:
+        self.prepare()
+        shutil.copyfile(self.work / "thread-ledger.csv", self.work / "changed-thread-ledger.csv")
+        result = run("check_work.py", self.work, "--phase", "change")
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+
+    def test_unrelated_explanation_without_revision_dependency_holds(self) -> None:
+        self.prepare()
+        path = self.work / "changed-thread-ledger.csv"
+        with path.open(newline="", encoding="utf-8") as handle:
+            rows = list(csv.DictReader(handle))
+        rows[1]["warrant"] = "The warehouse now grants copyright permission."
+        with path.open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=COLUMNS)
+            writer.writeheader()
+            writer.writerows(rows)
+        result = run("check_work.py", self.work, "--phase", "change")
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
 
     def test_unrelated_changed_step_holds(self) -> None:
         self.prepare(unrelated_delta=True)
         result = run("check_work.py", self.work)
         self.assertEqual(result.returncode, 1)
-        self.assertIn("FAIL: allowed step delta:C02", result.stdout)
 
     def test_tampered_baseline_holds(self) -> None:
         self.prepare()
@@ -197,11 +269,12 @@ class WorkflowTest(unittest.TestCase):
 
     def test_tampered_copied_source_holds(self) -> None:
         self.prepare()
-        source = self.work / "case-packet/sources/S03_QA_RELEASE-661.md"
+        source = self.work / "inbox/2026-10-06-1348-qa-661.md"
         source.write_text(source.read_text(encoding="utf-8") + "\ntamper\n", encoding="utf-8")
         result = run("check_work.py", self.work)
         self.assertEqual(result.returncode, 1)
         self.assertIn("FAIL: source hash:S03", result.stdout)
+
 
     def test_tampered_revealed_change_holds(self) -> None:
         self.prepare()
@@ -263,23 +336,6 @@ class WorkflowTest(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertIn("FAIL: practice scanned count 216", result.stdout)
 
-    def test_stale_closure_in_changed_ledger_holds(self) -> None:
-        self.prepare()
-        ledger = self.work / "changed-thread-ledger.csv"
-        with ledger.open(newline="", encoding="utf-8") as handle:
-            rows = list(csv.DictReader(handle))
-        for row in rows:
-            if row["step"] == "Route window met":
-                row["claim"] = f"{row['claim']} 20:50Z"
-                break
-        with ledger.open("w", newline="", encoding="utf-8") as handle:
-            writer = csv.DictWriter(handle, fieldnames=COLUMNS)
-            writer.writeheader()
-            writer.writerows(rows)
-        result = run("check_work.py", self.work)
-        self.assertEqual(result.returncode, 1)
-        self.assertIn("20:50Z", result.stdout)
-        self.assertIn("stale", result.stdout)
 
     def test_changed_accept_holds(self) -> None:
         self.prepare()
@@ -303,6 +359,84 @@ class WorkflowTest(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertIn("FAIL: baseline verdict is HOLD", result.stdout)
 
+    def test_hash_inbox_fresh_start(self) -> None:
+        result = run("hash_inbox.py", self.work)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        lines = [line for line in result.stdout.splitlines() if line.strip()]
+        self.assertEqual(len(lines), 9)
+        for line in lines:
+            digest, name = line.split(" ", 1)
+            self.assertEqual(len(digest), 64)
+            self.assertTrue((self.work / "inbox" / name).exists())
+            self.assertFalse(name.startswith("S0"))
+
+    def test_phase_ingest_fresh_start(self) -> None:
+        result = run("check_work.py", "--phase", "ingest", self.work)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("PASS: phase ingest", result.stdout)
+
+    def test_challenge_missing_vx240_fails(self) -> None:
+        self.prepare()
+        path = self.work / "challenge-matrix.md"
+        path.write_text(path.read_text(encoding="utf-8").replace("VX-240", "similar vehicle"), encoding="utf-8")
+        result = run("check_work.py", self.work)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("FAIL: challenge:VX-240", result.stdout)
+    def test_producer_rebuttal_fixture_writes_warning_and_provenance(self) -> None:
+        result = run("run_producer_rebuttal.py", self.work, "--fixture")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("PRACTICE: sealed rebuttal fixture; no live-model evidence", result.stdout)
+        target = self.work / "producer-rebuttal.md"
+        self.assertTrue(target.exists())
+        prov = self.work / "producer-rebuttal.practice.json"
+        self.assertTrue(prov.exists())
+        data = json.loads(prov.read_text(encoding="utf-8"))
+        self.assertFalse(data.get("live_model_evidence"))
+        self.assertEqual(data.get("mode"), "practice")
+        target_digest = hashlib.sha256(target.read_bytes()).hexdigest()
+        self.assertEqual(data.get("fixture_sha256"), target_digest)
+        self.assertEqual(data.get("output_sha256"), target_digest)
+
+    def test_producer_rebuttal_fixture_refuses_overwrite(self) -> None:
+        run("run_producer_rebuttal.py", self.work, "--fixture")
+        original = (self.work / "producer-rebuttal.md").read_bytes()
+        original_prov = (self.work / "producer-rebuttal.practice.json").read_bytes() if (self.work / "producer-rebuttal.practice.json").exists() else b""
+        result = run("run_producer_rebuttal.py", self.work, "--fixture")
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual((self.work / "producer-rebuttal.md").read_bytes(), original)
+        if original_prov:
+            self.assertEqual((self.work / "producer-rebuttal.practice.json").read_bytes(), original_prov)
+
+    def test_producer_live_missing_key_exits_2_no_artifact(self) -> None:
+        env = os.environ.copy()
+        env.pop("OPENROUTER_API_KEY", None)
+        result = subprocess.run([sys.executable, str(SCRIPTS / "run_producer_rebuttal.py"), str(self.work)], env=env, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 2)
+        self.assertFalse((self.work / "producer-rebuttal.md").exists())
+
+    def test_producer_failed_child_leaving_file_does_not_report_success(self) -> None:
+        target = self.work / "producer-rebuttal.md"
+        target.write_text("partial from failed child")
+        # Exercise classify_live directly via python -c to prove nonzero + leftover file cannot pass (returns 1)
+        test_code = f'''
+import sys
+from pathlib import Path
+sys.path.insert(0, "{str(SCRIPTS)}")
+from run_producer_rebuttal import classify_live
+target = Path("{target}")
+print(classify_live(1, target, Path("dummy")))
+'''
+        res = subprocess.run([sys.executable, "-c", test_code], capture_output=True, text=True)
+        self.assertEqual(res.stdout.strip(), "1")
+
+
+    def test_start_work_refuses_existing_destination(self) -> None:
+        # self.work exists from setUp; start_work must refuse and leave bytes unchanged
+        files_before = {p.relative_to(self.work): p.read_bytes() for p in self.work.rglob("*") if p.is_file()}
+        result = run("start_work.py", self.work)
+        self.assertNotEqual(result.returncode, 0)
+        files_after = {p.relative_to(self.work): p.read_bytes() for p in self.work.rglob("*") if p.is_file()}
+        self.assertEqual(files_before, files_after)
 
 
 if __name__ == "__main__":

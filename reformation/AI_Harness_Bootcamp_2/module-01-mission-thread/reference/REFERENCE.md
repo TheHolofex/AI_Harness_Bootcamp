@@ -161,7 +161,7 @@ The module goes deep by making the learner reopen any unsupported row. It does n
 
 ## 6. Source packet design
 
-The baseline practice packet contains nine compact, accessible local files.
+The baseline practice packet contains nine compact, accessible local files. The work starter copies each file into `inbox/` under a dump name from `INBOX_MAP.json`. `inbox/INCOMING.txt` is a received-time list only: `received`, a tab, and the dump filename, sorted by the received string. It names no issuer, no authorized use, and no S0x id.
 
 | ID | Source | Authorized use | Designed challenge |
 |---|---|---|---|
@@ -221,11 +221,11 @@ The visible practice checker may verify the exact arithmetic and required record
 
 ### Phase 1 — See the whole claim
 
-The learner reads the request, the AI brief, and a one-page thread map. Before opening all sources, they mark which words would have to be true for `GO` to be defensible.
+The learner opens `REQUEST.md` and every file under `inbox/`. They do not open a labeled S0x index. Before trusting a filename, they mark which words would have to be true for `GO` to be defensible.
 
-### Phase 2 — Freeze identity and source boundary
+### Phase 2 — Hash the inbox and freeze identity
 
-The learner records the mission, route, vehicle, clinic, permit, lot range, decision time, time zones, source IDs, versions, and each source's allowed use. Similar identifiers remain visible so rejection is demonstrated rather than avoided.
+The learner hashes every inbox markdown file, then fills the source register from the files themselves: dump filename, issuer, version, time, and allowed use. Similar identifiers remain visible so rejection is demonstrated rather than avoided.
 
 ### Phase 3 — Decompose the thread
 
@@ -245,22 +245,17 @@ Each claim is labeled:
 
 The learner calculates usable quantity, payload, UTC/local time, earliest gate arrival, and clinic arrival from supported premises. Copying the AI brief's number does not count.
 
-### Phase 6 — Challenge the attractive wrong sources
+### Phase 6 — Write a challenge matrix from the inbox
 
-The learner must explicitly reject:
+The learner authors the challenge matrix. No heading list is supplied. Each unused file must say what it proves, what it cannot prove, the mismatch, and who would have to speak.
 
-- the warehouse receipt as proof of QA release;
-- “accepted for processing” as permit approval;
-- the archived route bulletin;
-- the R-17 community page for an R-71 claim;
-- VX-240 data for VX-204; and
-- the embedded instruction in the vendor note.
+### Phase 6b — Run the producer rebuttal
 
-Noticing is insufficient. The learner states why each source cannot establish the claim.
+The learner runs `run_producer_rebuttal.py`. If a live producer is unavailable, the script writes the sealed fluent `GO` fixture. The learner adds one challenge block for any claim still unrejected. They do not ask that tool whether its `GO` is right.
 
-### Phase 7 — Inspect the real decision surface
+### Phase 7 — Inspect the desk packet
 
-The learner places the corrected brief and thread ledger in the supplied local review surface. From that surface, another person must be able to answer:
+The learner renders `review.html` as the decision surface: a Cold Lantern desk packet with the verdict, thread strip, blockers, standing rule, and five questions. From that page, another person must be able to answer:
 
 - What can proceed?
 - What cannot proceed?
@@ -281,6 +276,7 @@ Before opening v6, the learner predicts the fields that would change if route cl
 ### Phase 10 — Leave a standing rule and handoff
 
 The learner writes one reusable rule in ordinary language and leaves a handoff containing the thread, source boundary, traced claim, rejected sources, changed-source delta, current verdict, and next check.
+
 
 ## 9. Time and cognitive budgets
 

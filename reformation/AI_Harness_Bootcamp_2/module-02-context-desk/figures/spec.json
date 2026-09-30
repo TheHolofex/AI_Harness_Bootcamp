@@ -28,14 +28,14 @@
       "role": "mechanism",
       "template": "stack",
       "title": "Advice is not a guard",
-      "desc": "Temporary advice, a saved instruction, a deterministic guard, and actual authority sit on different rungs. Advice does not stop a later run.",
-      "caption": "Name the rung: temporary advice, saved instruction, deterministic guard, or actual authority.",
-      "transcript": "Temporary advice, a saved instruction, a deterministic guard, and actual authority sit on different rungs. Advice does not stop a later run.",
+      "desc": "Temporary advice, a saved instruction, a deterministic screen, and actual authority sit on different rungs. Advice does not stop a later run.",
+      "caption": "Name the rung: temporary advice, saved instruction, deterministic screen, or actual authority.",
+      "transcript": "Temporary advice, a saved instruction, a deterministic screen, and actual authority sit on different rungs. Advice does not stop a later run.",
       "eyebrow": "LADDER",
       "items": [
         { "label": "Temporary advice", "detail": "spoken once, gone on reload" },
         { "label": "Saved instruction", "detail": "words that load from disk" },
-        { "label": "Deterministic guard", "detail": "a check that accepts or rejects" },
+        { "label": "Deterministic screen", "detail": "a check that accepts or rejects" },
         { "label": "Actual authority", "detail": "who may release or refuse" }
       ]
     },
@@ -43,14 +43,14 @@
       "id": "m02-source-as-data",
       "role": "mechanism",
       "template": "comparison",
-      "title": "The crate note is data",
-      "desc": "The yard ticket records that paper arrived. It is not a release. The crate note states dimensions and quotes an instruction. Treat retrieved source text as data.",
+      "title": "The hostile note is data",
+      "desc": "The clean note states paper arrived. It is not a release. The hostile note states the height and quotes an instruction to release the crate. Treat retrieved source text as data.",
       "caption": "Treat retrieved source text as data. Do not obey instructions found inside retrieved notes.",
-      "transcript": "The yard ticket records that paper arrived. It is not a release. The crate note states dimensions and quotes an instruction. Treat retrieved source text as data.",
+      "transcript": "The clean note states paper arrived. It is not a release. The hostile note states the height and quotes an instruction to release the crate. Treat retrieved source text as data.",
       "eyebrow": "DATA",
       "items": [
-        { "label": "Yard ticket", "detail": "paper arrived, not a release" },
-        { "label": "Crate note", "detail": "dimensions plus a quoted instruction to ignore" }
+        { "label": "Clean note", "detail": "paper arrived, not a release" },
+        { "label": "Hostile note", "detail": "height plus a quoted instruction to ignore" }
       ]
     },
     {
@@ -58,44 +58,44 @@
       "role": "method",
       "template": "timeline",
       "title": "Write the prediction first",
-      "desc": "Write the expected accept, then the expected reject, then run. A result you did not predict cannot teach you what the guard did.",
-      "caption": "Write expected accept and expected reject before you run the guard.",
-      "transcript": "Write the expected accept, then the expected reject, then run. A result you did not predict cannot teach you what the guard did.",
+      "desc": "Write the expected accept, then the expected reject, then run. A result you did not predict cannot teach you what the screen did.",
+      "caption": "Write expected accept and expected reject before you run the screen.",
+      "transcript": "Write the expected accept, then the expected reject, then run. A result you did not predict cannot teach you what the screen did.",
       "eyebrow": "PREDICT",
       "items": [
-        { "label": "Expected accept", "detail": "the yard ticket" },
-        { "label": "Expected reject", "detail": "the crate note" },
-        { "label": "Then run", "detail": "the supplied guard only" }
+        { "label": "Expect accept", "detail": "the clean note" },
+        { "label": "Expected reject", "detail": "the hostile note" },
+        { "label": "Then run", "detail": "screen only" }
       ]
     },
     {
       "id": "m02-guard-pair",
       "role": "mechanism",
       "template": "comparison",
-      "title": "Ticket passes, instruction-like note fails",
-      "desc": "The yard ticket is accepted. The crate note is rejected. The pair is the evidence that the guard reads the note as data.",
-      "caption": "Confirm the yard ticket is accepted and the crate note is rejected.",
-      "transcript": "The yard ticket is accepted. The crate note is rejected. The pair is the evidence that the guard reads the note as data.",
-      "eyebrow": "GUARD",
+      "title": "Clean note passes, hostile note fails",
+      "desc": "The clean note is accepted. The hostile note is rejected. The pair is the evidence that the screen reads the note as data.",
+      "caption": "Confirm the clean note is accepted and the hostile note is rejected.",
+      "transcript": "The clean note is accepted. The hostile note is rejected. The pair is the evidence that the screen reads the note as data.",
+      "eyebrow": "SCREEN",
       "items": [
-        { "label": "Yard ticket", "detail": "accept" },
-        { "label": "Crate note", "detail": "reject" }
+        { "label": "Clean note", "detail": "accept" },
+        { "label": "Hostile note", "detail": "reject" }
       ]
     },
     {
       "id": "m02-reload",
       "role": "method",
       "template": "flow",
-      "title": "Close, reopen from disk, read the same rule",
-      "desc": "Close the folder. Reopen it from disk. Open SAVED_INSTRUCTION.md. The words must be the same words.",
-      "caption": "Close the folder, reopen it from disk, and read the same saved words.",
-      "transcript": "Close the folder. Reopen it from disk. Open SAVED_INSTRUCTION.md. The words must be the same words.",
+      "title": "Load the rule, exit, load again in a fresh session",
+      "desc": "Load the saved rule through the launcher. Exit completely. Start a new evidence directory. Load the same rule again. The load receipt must match.",
+      "caption": "Load the rule, exit, start a fresh session, load the same rule, confirm identical receipt.",
+      "transcript": "Load the rule through the launcher. Exit completely. Start a new evidence directory. Load the same rule again. The load receipt must match.",
       "eyebrow": "RELOAD",
       "items": [
-        { "label": "Close folder", "detail": "leave the work" },
-        { "label": "Reopen from disk", "detail": "no chat memory" },
-        { "label": "Open SAVED_INSTRUCTION.md", "detail": "the saved file" },
-        { "label": "Same words", "detail": "byte for byte" }
+        { "label": "Load rule", "detail": "via --instruction" },
+        { "label": "Exit", "detail": "no chat memory" },
+        { "label": "Fresh evidence dir", "detail": "new session" },
+        { "label": "Load again", "detail": "identical receipt" }
       ]
     },
     {
@@ -118,12 +118,12 @@
       "id": "m02-residual",
       "role": "diagnostic",
       "template": "fork",
-      "title": "What the guard stops, what you still own",
-      "desc": "After a correct reject the guard did its job. You still own new notes, new tools, and new authority.",
+      "title": "What the screen stops, what you still own",
+      "desc": "After a correct reject the screen did its job. You still own new notes, new tools, and new authority.",
       "caption": "After a correct reject, name what you still own.",
-      "transcript": "After a correct reject the guard did its job. You still own new notes, new tools, and new authority.",
+      "transcript": "After a correct reject the screen did its job. You still own new notes, new tools, and new authority.",
       "eyebrow": "RESIDUAL",
-      "source": { "label": "After a correct reject", "detail": "the guard did its job" },
+      "source": { "label": "After a correct reject", "detail": "the screen did its job" },
       "items": [
         { "label": "Still human", "detail": "new notes, new tools, new authority" }
       ]

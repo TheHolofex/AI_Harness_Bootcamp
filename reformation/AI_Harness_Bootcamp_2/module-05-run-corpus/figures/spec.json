@@ -98,13 +98,13 @@
       "role": "mechanism",
       "template": "comparison",
       "title": "Only a decidable defect becomes a predicate",
-      "desc": "A semantic judgment stays a note. Only a decidable defect becomes a predicate. 20:50Z present or absent is decidable.",
+      "desc": "A semantic judgment stays a note. Only a decidable defect becomes a predicate. Two literal strings under all_present are decidable by the supplied control.",
       "caption": "Promote only a decidable defect to a predicate.",
-      "transcript": "A semantic judgment stays a note. Only a decidable defect becomes a predicate. 20:50Z present or absent is decidable.",
+      "transcript": "A semantic judgment stays a note. Only a decidable defect becomes a predicate. Two literal strings under all_present are decidable by the supplied control.",
       "eyebrow": "PREDICATE",
       "items": [
         { "label": "Semantic note", "detail": "stays a written judgment" },
-        { "label": "Decidable defect", "detail": "20:50Z present or absent" }
+        { "label": "Decidable defect", "detail": "two configured literals" }
       ]
     },
     {
@@ -112,14 +112,14 @@
       "role": "method",
       "template": "stack",
       "title": "Input, pass, fail, missing",
-      "desc": "Exact input is one run file. Pass when the token is absent. Fail when 20:50Z is present. Missing path prints HOLD: missing input.",
+      "desc": "Exact input is one run file plus --config. Pass when at least one literal is absent. Fail when both literals are present as case-sensitive substrings. Missing path prints HOLD: missing input. Malformed config prints HOLD: malformed config.",
       "caption": "Confirm input, pass, fail, and missing before you run the control.",
-      "transcript": "Exact input is one run file. Pass when the token is absent. Fail when 20:50Z is present. Missing path prints HOLD: missing input.",
+      "transcript": "Exact input is one run file plus --config. Pass when at least one literal is absent. Fail when both literals are present as case-sensitive substrings. Missing path prints HOLD: missing input. Malformed config prints HOLD: malformed config.",
       "eyebrow": "SPEC",
       "items": [
-        { "label": "Exact input", "detail": "one run file" },
-        { "label": "Pass when the token is absent", "detail": "20:50Z not in the file" },
-        { "label": "Fail when 20:50Z is present", "detail": "the token is enough" },
+        { "label": "Exact input", "detail": "one run file --config file" },
+        { "label": "Pass when at least one literal absent", "detail": "substring match fails" },
+        { "label": "Fail when both literals present", "detail": "the two strings are enough" },
         { "label": "Missing path prints HOLD: missing input", "detail": "no file, no guess" }
       ]
     },

@@ -1,0 +1,1633 @@
+{
+  "schema_version": 1,
+  "run_id": "20260930T072626-5a1d821c",
+  "generated_at_utc": "2026-09-30T20:32:53.093941+00:00",
+  "implementation_status": "passed",
+  "external_acceptance_status": "blocked",
+  "scope": "Permanent changes restricted to reformation/. No commit, deployment, root legacy cutover, destructive reset or credential-store search.",
+  "evidence_root": "$HOME/course-evidence/reformation-qa/20260930T072626-5a1d821c",
+  "path_resolution": "Resolve artifact hrefs relative to evidence_root. $CHECKOUT is the checkout; $HOME/$TMPDIR are deliberately redacted. Raw external artifacts remain local. Published JSON snapshots are redacted; raw_sha256 and snapshot sha256 are distinct.",
+  "runtime": {
+    "omp": "18.3.5",
+    "model_selector": "openrouter/anthropic/claude-sonnet-4.6",
+    "credential": "OPENROUTER_API_KEY",
+    "real_credential_present": false,
+    "paid_model_calls_observed": 0,
+    "provider_billing_measured": false,
+    "host": "Darwin25.6 arm64",
+    "python": "3.12.13 (uv);3.12.14 also observed",
+    "powershell": "7.6.6 on macOS, Legacy argument transport; not Windows5.1 proof",
+    "verified_release": {
+      "asset": "omp-darwin-arm64",
+      "version": "v18.3.5",
+      "download_url": "https://github.com/can1357/oh-my-pi/releases/download/v18.3.5/omp-darwin-arm64",
+      "checksum_url": "https://github.com/can1357/oh-my-pi/releases/download/v18.3.5/SHA256SUMS.txt",
+      "expected_sha256": "3ad34e91a474ea239674b593a5ff1544727a22f7afd3c8a8729260128a5febd1",
+      "observed_sha256": "3ad34e91a474ea239674b593a5ff1544727a22f7afd3c8a8729260128a5febd1",
+      "verified_before_execution": true
+    }
+  },
+  "current_source_hashes": {
+    "href": "published-evidence/current-source-hashes.json",
+    "sha256": "2d0140bca3e2f5b13c1842c04f4d278c0beab68a36053c8dba3fd0a33ecdbf09",
+    "bytes": 20444
+  },
+  "verification": {
+    "scoped_gates": {
+      "status": "passed",
+      "count": 28,
+      "record": {
+        "source": "gates-final.json",
+        "href": "published-evidence/records/gates-final.json",
+        "sha256": "59cc3ed4c13a90c1bb168972570772a12c8583b6dde8229ce80f82bcc7491d89",
+        "bytes": 67448,
+        "raw_sha256": "45dd88cb59b727726096a89a4ba24373a71b2c5cd54cb47cc8cef6ec91fc85a1"
+      }
+    },
+    "publication": {
+      "source_pages": 52,
+      "browser_urls_including_root_alias": 53,
+      "downloads": 664,
+      "generated_figures": 81,
+      "linked_svg_geometry_checked": 20
+    },
+    "browser": {
+      "status": "passed",
+      "desktop_pages": 53,
+      "mobile_390_pages": 53,
+      "native_200_percent_pages": 53,
+      "no_javascript_pages": 53,
+      "card_and_return_routes": 10,
+      "linked_local_http_resources": 131,
+      "broken_links": 0,
+      "page_overflow": 0,
+      "copy": "Raw DOM textContent equals actual clipboard, including trailing newline.",
+      "skip_link": "Enter changes to #main; next Tab enters main content. Main itself is not focusable.",
+      "zoom": "Native settingsPrivate default zoom2 set in the same browser instance; every Page.getLayoutMetrics cssVisualViewport.zoom observed2. Defaults restored to1.",
+      "figures": "Actual browser SVG text geometry found and repaired three clipped labels, plus visual recovery-label overlap and outdated sign-in sequence. All20linkedSVGs have no text overlap or viewBox clipping after repair. Final setup SVG raster views inspected.",
+      "capture_limit": "Initial/final some Chromium screenshot calls stalled. Retained successful desktop/mobile/200%/review/figure captures; final changed SVGs checked by browser geometry and direct SVG raster view rather than claiming a new full-page screenshot.",
+      "screen_reader": "not_measured",
+      "human_review_speed": "not_measured"
+    },
+    "shell_syntax": {
+      "bash_blocks": 208,
+      "bash_and_zsh_parse_runs": 416,
+      "parse_failures": 0,
+      "powershell_blocks": 163,
+      "powershell_parse_failures": 0,
+      "constant_python_programs_transported_and_compiled_under_legacy": 70,
+      "transport_failures": 0
+    },
+    "timing": {
+      "status": "not_measured",
+      "targets_only": [
+        "M00first useful result60minutes",
+        "practice120minutes per session",
+        "terminology15minutes/eightterms",
+        "M01human reviewthree minutes"
+      ],
+      "measured_command_durations_are_not_learner_timings": true
+    },
+    "platforms": {
+      "macos_arm64": "passed within exercised native offline/deterministic paths",
+      "powershell_on_macos": "passed parser/transport and selected actual operations; not Windows proof",
+      "native_windows": "blocked: no native host exercised",
+      "native_windows_arm64": "blocked: release asset source-verified, not executed",
+      "wsl": "blocked: no native WSL host exercised",
+      "ubuntu": "blocked: no native Ubuntu host exercised",
+      "arch": "blocked: no native Arch host exercised"
+    },
+    "parallel_review": {
+      "status": "passed",
+      "reviewers": 2,
+      "findings_repaired": 4,
+      "blockers_found": 0,
+      "record_group": "artifacts.review",
+      "scope": "Read-only technical/safety and learner/progression critiques; neither is a human qualification or paid provider test."
+    }
+  },
+  "modules": [
+    {
+      "id": "00",
+      "case": "North Shelf",
+      "lanes": {
+        "core": {
+          "status": "blocked",
+          "scope": "Preparation and checker practice passed; live useful-artifact/tool-proof stages blocked."
+        },
+        "stretch": {
+          "status": "blocked",
+          "scope": "Required completed live turns unavailable; exact preflight failures retained."
+        },
+        "live_provider": {
+          "status": "blocked",
+          "reason": "OPENROUTER_API_KEY unavailable; no paid model call; provider-side US$40cap not configured or measured."
+        },
+        "platform": {
+          "status": "blocked",
+          "observed": "Darwin arm64 native Bash/zsh; selected PowerShell7 helper/transport checks on macOS only.",
+          "missing": "Native Windows/Windows ARM64, WSL, Ubuntu and Arch execution."
+        },
+        "accessibility": {
+          "status": "passed",
+          "scope": "Browser structural and direct-interaction checks only: desktop,390px,native200%zoom,no-JS,keyboard/copy,images/links. Not screen-reader usability or novice timing."
+        },
+        "peer_review": {
+          "status": "not_measured",
+          "reason": "No human peer-review observation; AI technical reviewers do not substitute."
+        },
+        "human_qualification": {
+          "status": "blocked",
+          "reason": "No eligible human/evaluator-held unseen case and original outcome ledger; agent replay cannot award mastery."
+        }
+      },
+      "observed": [
+        "Native macOS verified-first OMP18.3.5 install and fresh-shell resolution observed.",
+        "Missing key exits2 before creating the live output/evidence child.",
+        "Current checker passes faithful practice drafts and rejects25 corruptions plus nine polarity/contradiction boundaries.",
+        "No live draft, token-bound from-omp.txt, changed-count19 response or same-packet live stretch was produced."
+      ],
+      "friction_and_repairs": [
+        "Nine contradictory/negative-fact checker boundaries repaired and exercised.",
+        "Verified-first native install and cold-zsh PATH observed; setup verifier exit1 is the expected missing-key HOLD, not a pass.",
+        "Separated setup-report claims from token/tool-written-file verification.",
+        "Reordered the setup diagram to fresh terminal then process-local key; removed a sign-in implication and an overlapping recovery label."
+      ],
+      "attempts": [
+        {
+          "shell_key": "00:bash",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/module-00-20260930T164521Z-90446/work",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/module-00-20260930T164521Z-90446/evidence"
+        },
+        {
+          "shell_key": "00:zsh:/platforms/macos.html",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/setup-proof-20260930T174734Z-81257/proof",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/setup-proof-20260930T174734Z-81257/receipts"
+        }
+      ],
+      "literal_record_indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        39
+      ],
+      "command_record_indices": [
+        64,
+        65,
+        102,
+        103,
+        104,
+        105,
+        106,
+        108,
+        111,
+        112,
+        126,
+        130,
+        138,
+        186,
+        187,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        227,
+        332,
+        367,
+        374
+      ],
+      "older_format_command_indices": [
+        130,
+        138
+      ],
+      "recorded_command_seconds": 334.409,
+      "timing_limit": "Associated recorded command durations include retries, negatives and shared gates; not exclusive module runtime or human practice time.",
+      "human_completion_seconds": null,
+      "current_input_control_output_hashes": {
+        "href": "published-evidence/module-00-current-files.json",
+        "sha256": "a79b34b78f36f6a354dc3f246918b081c42d42e92de7f787d06ec0ecdd47ffe2",
+        "bytes": 2366
+      }
+    },
+    {
+      "id": "01",
+      "case": "Cold Lantern",
+      "lanes": {
+        "core": {
+          "status": "passed",
+          "scope": "Technical public-practice branch only; live rebuttal, classmate and human defense are separate blocked lanes."
+        },
+        "stretch": {
+          "status": "passed",
+          "scope": "Technical deterministic/public-practice stretch observed; no human award."
+        },
+        "live_provider": {
+          "status": "blocked",
+          "reason": "OPENROUTER_API_KEY unavailable; no paid model call; provider-side US$40cap not configured or measured."
+        },
+        "platform": {
+          "status": "blocked",
+          "observed": "Darwin arm64 native Bash/zsh; selected PowerShell7 helper/transport checks on macOS only.",
+          "missing": "Native Windows/Windows ARM64, WSL, Ubuntu and Arch execution."
+        },
+        "accessibility": {
+          "status": "passed",
+          "scope": "Browser structural and direct-interaction checks only: desktop,390px,native200%zoom,no-JS,keyboard/copy,images/links. Not screen-reader usability or novice timing."
+        },
+        "peer_review": {
+          "status": "blocked",
+          "reason": "No real classmate/independent recipient supplied."
+        },
+        "human_qualification": {
+          "status": "blocked",
+          "reason": "No eligible human/evaluator-held unseen case and original outcome ledger; agent replay cannot award mastery."
+        }
+      },
+      "observed": [
+        "29 source-grounded ledger rows; all seven technical check_work phases pass.",
+        "Baseline freeze precedes S10 reveal; route-dependent claims and downstream warrants updated without backdating the14:10 bulletin to14:05.",
+        "Class-only HOLD retained; live rebuttal replaced only by the explicitly labeled public practice branch.",
+        "Generated review.html inspected at desktop and390px; actual S10 source link opened REVEALED_CHANGE.md."
+      ],
+      "friction_and_repairs": [
+        "Failed producer children cannot report success from a leftover file.",
+        "Dependent-row/freeze/source identity regressions and all seven technical phases exercised.",
+        "Removed learner-facing package-custody meta commentary; shortened a clipped changed-source diagram label."
+      ],
+      "attempts": [
+        {
+          "shell_key": "01:bash",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/module-01-20260930T164522Z-90452/work"
+        }
+      ],
+      "literal_record_indices": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        60,
+        61,
+        63,
+        65,
+        72
+      ],
+      "command_record_indices": [
+        26,
+        27,
+        28,
+        66,
+        67,
+        68,
+        85,
+        86,
+        87,
+        102,
+        109,
+        131,
+        169,
+        170,
+        171,
+        172,
+        173,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        248,
+        249,
+        251,
+        253,
+        260,
+        332,
+        367,
+        374
+      ],
+      "older_format_command_indices": [
+        131,
+        169,
+        170,
+        171,
+        172,
+        173
+      ],
+      "recorded_command_seconds": 100.367,
+      "timing_limit": "Associated recorded command durations include retries, negatives and shared gates; not exclusive module runtime or human practice time.",
+      "human_completion_seconds": null,
+      "current_input_control_output_hashes": {
+        "href": "published-evidence/module-01-current-files.json",
+        "sha256": "27179f800a2eedd241d48723fbf2ee04607ae94be424609f93a67dc364ea5a3d",
+        "bytes": 6704
+      }
+    },
+    {
+      "id": "02",
+      "case": "Ledger Pike",
+      "lanes": {
+        "core": {
+          "status": "blocked",
+          "scope": "Deterministic screen and native offline instruction loading passed; completed live operation blocked."
+        },
+        "stretch": {
+          "status": "blocked",
+          "scope": "Required completed live turns unavailable; exact preflight failures retained."
+        },
+        "live_provider": {
+          "status": "blocked",
+          "reason": "OPENROUTER_API_KEY unavailable; no paid model call; provider-side US$40cap not configured or measured."
+        },
+        "platform": {
+          "status": "blocked",
+          "observed": "Darwin arm64 native Bash/zsh; selected PowerShell7 helper/transport checks on macOS only.",
+          "missing": "Native Windows/Windows ARM64, WSL, Ubuntu and Arch execution."
+        },
+        "accessibility": {
+          "status": "passed",
+          "scope": "Browser structural and direct-interaction checks only: desktop,390px,native200%zoom,no-JS,keyboard/copy,images/links. Not screen-reader usability or novice timing."
+        },
+        "peer_review": {
+          "status": "not_measured",
+          "reason": "No human peer-review observation; AI technical reviewers do not substitute."
+        },
+        "human_qualification": {
+          "status": "blocked",
+          "reason": "No eligible human/evaluator-held unseen case and original outcome ledger; agent replay cannot award mastery."
+        }
+      },
+      "observed": [
+        "All40DN notes inspected; clean screen exits0, each of three hostile notes exits1, missing note exits1.",
+        "Two fresh native offline load observations plus a third after earlier processes exited show the same saved-rule identity.",
+        "Missing-rule refusal and restoration observed; no completed model turn or model40-note read claimed."
+      ],
+      "friction_and_repairs": [
+        "Legacy PowerShell quoting replaced with native stdin programs; all rendered constant Python transports checked.",
+        "Missing saved rule refuses before provider preflight; exact raw and trimmed instruction hashes observed in separate native processes.",
+        "Removed the false assertion that conflict text exists only in the current prompt; a rule-only comparison now requires checking that conflict files were not read.",
+        "Shortened two clipped prediction-diagram labels."
+      ],
+      "attempts": [
+        {
+          "shell_key": "02:bash",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/reformation-qa/20260930T175324Z-5a53a5da0253446491a7ade304fb40bd/module-02/work",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/reformation-qa/20260930T175324Z-5a53a5da0253446491a7ade304fb40bd/module-02/receipts"
+        }
+      ],
+      "literal_record_indices": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "command_record_indices": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        29,
+        30,
+        102,
+        143,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        367,
+        374
+      ],
+      "older_format_command_indices": [
+        143
+      ],
+      "recorded_command_seconds": 131.384,
+      "timing_limit": "Associated recorded command durations include retries, negatives and shared gates; not exclusive module runtime or human practice time.",
+      "human_completion_seconds": null,
+      "current_input_control_output_hashes": {
+        "href": "published-evidence/module-02-current-files.json",
+        "sha256": "12214ccdc9d989e590c57f13c301a13eaa47d987cad7280c8858ad180643dc85",
+        "bytes": 13667
+      }
+    },
+    {
+      "id": "03",
+      "case": "Kiln Hold",
+      "lanes": {
+        "core": {
+          "status": "blocked",
+          "scope": "Source judgments, deterministic operation and declared-path revocation passed; composed live operation blocked."
+        },
+        "stretch": {
+          "status": "blocked",
+          "scope": "Required completed live turns unavailable; exact preflight failures retained."
+        },
+        "live_provider": {
+          "status": "blocked",
+          "reason": "OPENROUTER_API_KEY unavailable; no paid model call; provider-side US$40cap not configured or measured."
+        },
+        "platform": {
+          "status": "blocked",
+          "observed": "Darwin arm64 native Bash/zsh; selected PowerShell7 helper/transport checks on macOS only.",
+          "missing": "Native Windows/Windows ARM64, WSL, Ubuntu and Arch execution."
+        },
+        "accessibility": {
+          "status": "passed",
+          "scope": "Browser structural and direct-interaction checks only: desktop,390px,native200%zoom,no-JS,keyboard/copy,images/links. Not screen-reader usability or novice timing."
+        },
+        "peer_review": {
+          "status": "not_measured",
+          "reason": "No human peer-review observation; AI technical reviewers do not substitute."
+        },
+        "human_qualification": {
+          "status": "blocked",
+          "reason": "No eligible human/evaluator-held unseen case and original outcome ledger; agent replay cannot award mastery."
+        }
+      },
+      "observed": [
+        "All80 original/changed source documents inspected. Both decisions are no-release; changed REL-006 withdraws photo authority only,39otherdocuments unchanged.",
+        "Allowed REL-001 SHA-256 agrees across packets; sibling sentinel returns HOLD1.",
+        "Work inventories remain unchanged during hash-only operation; renamed declared hash script refuses direct and adapter calls.",
+        "Disconnect record is retrospective technical evidence, not a human timestamp or running-model-session disconnection."
+      ],
+      "friction_and_repairs": [
+        "Both source packets judged from their actual documents; current authority separated from stale license-list claims.",
+        "Declared-path revocation observed for original and changed packets; running live-session revocation remains blocked."
+      ],
+      "attempts": [
+        {
+          "shell_key": "03:bash",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/module-03-20260930T181407Z-987/work",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/module-03-20260930T181407Z-987/evidence",
+          "BASE": "$EVIDENCE_ROOT/learner-home/course-evidence/module-03-20260930T181407Z-987"
+        }
+      ],
+      "literal_record_indices": [
+        53,
+        69,
+        71,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        84,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92
+      ],
+      "command_record_indices": [
+        31,
+        32,
+        69,
+        70,
+        88,
+        89,
+        102,
+        109,
+        241,
+        257,
+        259,
+        261,
+        262,
+        263,
+        264,
+        265,
+        266,
+        276,
+        278,
+        279,
+        280,
+        281,
+        282,
+        283,
+        284,
+        367,
+        374
+      ],
+      "older_format_command_indices": [],
+      "recorded_command_seconds": 82.743,
+      "timing_limit": "Associated recorded command durations include retries, negatives and shared gates; not exclusive module runtime or human practice time.",
+      "human_completion_seconds": null,
+      "current_input_control_output_hashes": {
+        "href": "published-evidence/module-03-current-files.json",
+        "sha256": "e2c58a6e9bce249fd5f49afe83dc46c66c2ba2a60617cbb89729b4db26b216bc",
+        "bytes": 21770
+      }
+    },
+    {
+      "id": "04",
+      "case": "Copper Span",
+      "lanes": {
+        "core": {
+          "status": "passed",
+          "scope": "Complete repaired deterministic core, including independent fresh work-copy recovery."
+        },
+        "stretch": {
+          "status": "passed",
+          "scope": "Technical deterministic/public-practice stretch observed; no human award."
+        },
+        "live_provider": {
+          "status": "not_measured",
+          "reason": "This deterministic exercise does not require a paid model call; none made."
+        },
+        "platform": {
+          "status": "blocked",
+          "observed": "Darwin arm64 native Bash/zsh; selected PowerShell7 helper/transport checks on macOS only.",
+          "missing": "Native Windows/Windows ARM64, WSL, Ubuntu and Arch execution."
+        },
+        "accessibility": {
+          "status": "passed",
+          "scope": "Browser structural and direct-interaction checks only: desktop,390px,native200%zoom,no-JS,keyboard/copy,images/links. Not screen-reader usability or novice timing."
+        },
+        "peer_review": {
+          "status": "not_measured",
+          "reason": "No human peer-review observation; AI technical reviewers do not substitute."
+        },
+        "human_qualification": {
+          "status": "blocked",
+          "reason": "No eligible human/evaluator-held unseen case and original outcome ledger; agent replay cannot award mastery."
+        }
+      },
+      "observed": [
+        "Source omission, wrong source revision and renderer omission separated; probe exit0 means comparison completed, not recovery acceptance.",
+        "VariantA omits permit; variantB omits gate. Baseline restore, focused, complete, fresh-session and spaced-path runs succeed after repair.",
+        "Modified baseline is refused; same-ID later revision is detected; invalid UTF-8 review produces HOLD rather than traceback."
+      ],
+      "friction_and_repairs": [
+        "Preserved the copied-renderer and stretch recovery failures; supplied baseline-first and distinct-output recovery steps.",
+        "Probe now compares source revisions as well as IDs and holds on unreadable review text.",
+        "Both omission faults, competing causes, unrelated cwd, spaced paths and tampered-baseline refusal exercised.",
+        "Complete repaired native-zsh core/stretch replay retained, not only unit checks."
+      ],
+      "attempts": [
+        {
+          "shell_key": "04:bash",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/module-04-20260930T184557Z-40171/work",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/module-04-20260930T184557Z-40171/evidence"
+        },
+        {
+          "shell_key": "04:zsh",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/module-04-20260930T191919Z-70337/work",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/module-04-20260930T191919Z-70337/evidence"
+        }
+      ],
+      "literal_record_indices": [
+        80,
+        82,
+        93,
+        96,
+        99,
+        100,
+        102,
+        103,
+        104,
+        105,
+        108,
+        109,
+        110,
+        111,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142
+      ],
+      "command_record_indices": [
+        0,
+        43,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        54,
+        55,
+        90,
+        91,
+        135,
+        136,
+        137,
+        271,
+        273,
+        285,
+        288,
+        291,
+        292,
+        294,
+        295,
+        296,
+        297,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        317,
+        320,
+        321,
+        323,
+        337,
+        338,
+        339,
+        340,
+        341,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352,
+        367,
+        374
+      ],
+      "older_format_command_indices": [
+        135
+      ],
+      "recorded_command_seconds": 83.973,
+      "timing_limit": "Associated recorded command durations include retries, negatives and shared gates; not exclusive module runtime or human practice time.",
+      "human_completion_seconds": null,
+      "current_input_control_output_hashes": {
+        "href": "published-evidence/module-04-current-files.json",
+        "sha256": "25dab5ce17bdd7f2a9602f840b74fcbe141a904bf12a788c17379edf56792802",
+        "bytes": 13850
+      }
+    },
+    {
+      "id": "05",
+      "case": "Blue Gauge",
+      "lanes": {
+        "core": {
+          "status": "passed",
+          "scope": "Source-grounded sample/control procedure and corrected bounded predicate; no human qualification inferred."
+        },
+        "stretch": {
+          "status": "passed",
+          "scope": "Technical deterministic/public-practice stretch observed; no human award."
+        },
+        "live_provider": {
+          "status": "not_measured",
+          "reason": "This deterministic exercise does not require a paid model call; none made."
+        },
+        "platform": {
+          "status": "blocked",
+          "observed": "Darwin arm64 native Bash/zsh; selected PowerShell7 helper/transport checks on macOS only.",
+          "missing": "Native Windows/Windows ARM64, WSL, Ubuntu and Arch execution."
+        },
+        "accessibility": {
+          "status": "passed",
+          "scope": "Browser structural and direct-interaction checks only: desktop,390px,native200%zoom,no-JS,keyboard/copy,images/links. Not screen-reader usability or novice timing."
+        },
+        "peer_review": {
+          "status": "not_measured",
+          "reason": "No human peer-review observation; AI technical reviewers do not substitute."
+        },
+        "human_qualification": {
+          "status": "blocked",
+          "reason": "No eligible human/evaluator-held unseen case and original outcome ledger; agent replay cannot award mastery."
+        }
+      },
+      "observed": [
+        "All16sample runs judged before counts: five documented promotions,11other/no-proven-completion; no proven successful completion.",
+        "All64held-out semantic judgments and128lexical predictions frozen before labels/batch output.",
+        "A: TP2 FP0 FN2 TN60; precision1, recall0.5. B: TP2 FP1 FN2 TN59; precision2/3, recall0.5.",
+        "R-033/R-044 demonstrate case-sensitive misses; R-052 demonstrates RELEASED inside UNRELEASED.",
+        "An early contrast proposal was amended before freezing; do not describe that preliminary proposal as byte-immutable. Frozen configs/predictions were not changed after results.",
+        "After result-name repair, partial output remains byte-identical and a fresh complete128-row comparison succeeds. Actual PowerShell7 Legacy comparison also succeeds on macOS."
+      ],
+      "friction_and_repairs": [
+        "Contaminated initial attempt retained and excluded from preregistration.",
+        "Initial predicate missed the known-bad control; its failure and separately frozen repair retained.",
+        "Frozen configs and prediction commitments use exclusive creation; 64 placeholder rows now hold.",
+        "Observed partial A-success/B-failure could not restart with fixed result filenames; each invocation now uses fresh result filenames and preserves the first partial result.",
+        "PowerShell QA wrapper had an incorrect executable path and duplicate case-insensitive ASSET keys; those harness errors were repaired without attributing them to course commands."
+      ],
+      "attempts": [
+        {
+          "shell_key": "05:bash",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/module-05-20260930T175015Z-82790/work",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/module-05-20260930T175015Z-82790/evidence"
+        },
+        {
+          "shell_key": "05:pwsh",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/module-05-20260930T175015Z-82790/work",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/module-05-20260930T175015Z-82790/evidence"
+        }
+      ],
+      "literal_record_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        54,
+        62,
+        64,
+        66,
+        67,
+        85,
+        95,
+        98,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        143,
+        144,
+        145,
+        146
+      ],
+      "command_record_indices": [
+        71,
+        72,
+        92,
+        93,
+        102,
+        109,
+        120,
+        122,
+        123,
+        125,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        242,
+        250,
+        252,
+        254,
+        255,
+        267,
+        268,
+        270,
+        277,
+        287,
+        290,
+        322,
+        328,
+        329,
+        330,
+        331,
+        334,
+        335,
+        336,
+        353,
+        354,
+        355,
+        361,
+        364,
+        365,
+        366,
+        367,
+        374
+      ],
+      "older_format_command_indices": [],
+      "recorded_command_seconds": 109.229,
+      "timing_limit": "Associated recorded command durations include retries, negatives and shared gates; not exclusive module runtime or human practice time.",
+      "human_completion_seconds": null,
+      "current_input_control_output_hashes": {
+        "href": "published-evidence/module-05-current-files.json",
+        "sha256": "dffa42e6cce8afe2f4c6f949658b3369817c6b7dde3d2531ae97c8c9348b2f25",
+        "bytes": 25379
+      }
+    },
+    {
+      "id": "06",
+      "case": "White Rack",
+      "lanes": {
+        "core": {
+          "status": "passed",
+          "scope": "Exact rule-change and byte-restore operation observed."
+        },
+        "stretch": {
+          "status": "passed",
+          "scope": "Technical deterministic/public-practice stretch observed; no human award."
+        },
+        "live_provider": {
+          "status": "not_measured",
+          "reason": "This deterministic exercise does not require a paid model call; none made."
+        },
+        "platform": {
+          "status": "blocked",
+          "observed": "Darwin arm64 native Bash/zsh; selected PowerShell7 helper/transport checks on macOS only.",
+          "missing": "Native Windows/Windows ARM64, WSL, Ubuntu and Arch execution."
+        },
+        "accessibility": {
+          "status": "passed",
+          "scope": "Browser structural and direct-interaction checks only: desktop,390px,native200%zoom,no-JS,keyboard/copy,images/links. Not screen-reader usability or novice timing."
+        },
+        "peer_review": {
+          "status": "not_measured",
+          "reason": "No human peer-review observation; AI technical reviewers do not substitute."
+        },
+        "human_qualification": {
+          "status": "blocked",
+          "reason": "No eligible human/evaluator-held unseen case and original outcome ledger; agent replay cannot award mastery."
+        }
+      },
+      "observed": [
+        "All240source rows inspected. A single OPEN to NOT_AUTHORIZED rule-line edit moves only LW-12/LW-28/LW-41 in each original wave;77rows unchanged.",
+        "LW-19/LW-55 remain hold,RESOURCE_CONFLICT.",
+        "Changed-input movers are LW-12/LW-44/LW-60; policy movers on that input are LW-28/LW-41/LW-44/LW-60.",
+        "640complete serialized row comparisons agree with the source-grounded expectations; original waves restore byte-identically and active rule ends OPEN."
+      ],
+      "friction_and_repairs": [
+        "Serialized row comparisons cover all fields, not only status counts.",
+        "Original and changed-input effects separated, with byte-identical restore evidence."
+      ],
+      "attempts": [
+        {
+          "shell_key": "06:bash",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/module-06-20260930T164522Z-90457/work",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/module-06-20260930T164522Z-90457/evidence"
+        }
+      ],
+      "literal_record_indices": [
+        70,
+        79,
+        81,
+        83,
+        94,
+        97,
+        101
+      ],
+      "command_record_indices": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        73,
+        74,
+        94,
+        95,
+        102,
+        109,
+        110,
+        132,
+        258,
+        269,
+        272,
+        274,
+        286,
+        289,
+        293,
+        318,
+        319,
+        367,
+        374
+      ],
+      "older_format_command_indices": [
+        132
+      ],
+      "recorded_command_seconds": 98.373,
+      "timing_limit": "Associated recorded command durations include retries, negatives and shared gates; not exclusive module runtime or human practice time.",
+      "human_completion_seconds": null,
+      "current_input_control_output_hashes": {
+        "href": "published-evidence/module-06-current-files.json",
+        "sha256": "15009fe9a014492deeb06ae3963e81ae05037665fed50ef836836789552056d5",
+        "bytes": 4685
+      }
+    },
+    {
+      "id": "07",
+      "case": "Slope Brief",
+      "lanes": {
+        "core": {
+          "status": "passed",
+          "scope": "Deterministic evaluation of authored briefs only; not a measurement of model variation."
+        },
+        "stretch": {
+          "status": "blocked",
+          "scope": "Required completed live turns unavailable; exact preflight failures retained."
+        },
+        "live_provider": {
+          "status": "blocked",
+          "reason": "OPENROUTER_API_KEY unavailable; no paid model call; provider-side US$40cap not configured or measured."
+        },
+        "platform": {
+          "status": "blocked",
+          "observed": "Darwin arm64 native Bash/zsh; selected PowerShell7 helper/transport checks on macOS only.",
+          "missing": "Native Windows/Windows ARM64, WSL, Ubuntu and Arch execution."
+        },
+        "accessibility": {
+          "status": "passed",
+          "scope": "Browser structural and direct-interaction checks only: desktop,390px,native200%zoom,no-JS,keyboard/copy,images/links. Not screen-reader usability or novice timing."
+        },
+        "peer_review": {
+          "status": "not_measured",
+          "reason": "No human peer-review observation; AI technical reviewers do not substitute."
+        },
+        "human_qualification": {
+          "status": "blocked",
+          "reason": "No eligible human/evaluator-held unseen case and original outcome ledger; agent replay cannot award mastery."
+        }
+      },
+      "observed": [
+        "40packets/200sources/120authored briefs evaluated; all40baseline outputs pass.",
+        "A fails PC-03/11/27 sourced_mass; B fails PC-02/14/35 labeled_gate_time. Each has37passes; both rejected.",
+        "PC-40 legitimate20:40 passes.120baseline identities restore byte-identically.",
+        "The36-call preregistered advanced comparison and two restored controls are blocked before attempts by the missing key/budget."
+      ],
+      "friction_and_repairs": [
+        "Malformed-source/brief and missing-key runner failures retained; candidate gate failures are not averaged away.",
+        "Manual expectations were written after inspecting authored briefs; not blind model predictions."
+      ],
+      "attempts": [
+        {
+          "shell_key": "07:bash",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/module-07-20260930T175019Z-82839/work",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/module-07-20260930T175019Z-82839/evidence"
+        }
+      ],
+      "literal_record_indices": [
+        22,
+        55,
+        56,
+        57,
+        58,
+        59,
+        68
+      ],
+      "command_record_indices": [
+        58,
+        59,
+        60,
+        61,
+        62,
+        77,
+        78,
+        80,
+        81,
+        96,
+        97,
+        133,
+        162,
+        163,
+        168,
+        206,
+        243,
+        244,
+        245,
+        246,
+        247,
+        256,
+        367,
+        374
+      ],
+      "older_format_command_indices": [
+        133
+      ],
+      "recorded_command_seconds": 97.027,
+      "timing_limit": "Associated recorded command durations include retries, negatives and shared gates; not exclusive module runtime or human practice time.",
+      "human_completion_seconds": null,
+      "current_input_control_output_hashes": {
+        "href": "published-evidence/module-07-current-files.json",
+        "sha256": "406fa991c55252d14c46bb381c253b74c1d88cd49dc03836d9ff4ecb884ad0cc",
+        "bytes": 61355
+      }
+    },
+    {
+      "id": "08",
+      "case": "Night Desk",
+      "lanes": {
+        "core": {
+          "status": "blocked",
+          "scope": "Only setup/preflight and independent offline native guard mechanics observed; live core blocked."
+        },
+        "stretch": {
+          "status": "blocked",
+          "scope": "Required completed live turns unavailable; exact preflight failures retained."
+        },
+        "live_provider": {
+          "status": "blocked",
+          "reason": "OPENROUTER_API_KEY unavailable; no paid model call; provider-side US$40cap not configured or measured."
+        },
+        "platform": {
+          "status": "blocked",
+          "observed": "Darwin arm64 native Bash/zsh; selected PowerShell7 helper/transport checks on macOS only.",
+          "missing": "Native Windows/Windows ARM64, WSL, Ubuntu and Arch execution."
+        },
+        "accessibility": {
+          "status": "passed",
+          "scope": "Browser structural and direct-interaction checks only: desktop,390px,native200%zoom,no-JS,keyboard/copy,images/links. Not screen-reader usability or novice timing."
+        },
+        "peer_review": {
+          "status": "not_measured",
+          "reason": "No human peer-review observation; AI technical reviewers do not substitute."
+        },
+        "human_qualification": {
+          "status": "blocked",
+          "reason": "No eligible human/evaluator-held unseen case and original outcome ledger; agent replay cannot award mastery."
+        }
+      },
+      "observed": [
+        "Declaration and outside sentinel frozen before attempts; all reachable core/stretch live commands stop at missing-key preflight.",
+        "Missing receipt directory returns HOLD; not an observed model denial.",
+        "Separate realOMP host-invoked execute smoke denies relative,absolute,sibling-prefix and symlink escapes; permitted inside write succeeds; both outside sentinels unchanged.",
+        "That offline smoke correctly fails complete-turn audit. It is not an assistant tool call, live planted-note answer, Windows junction proof or provider proof."
+      ],
+      "friction_and_repairs": [
+        "Keyword-only false acceptance replaced with raw event/guard/disk joins and exact probe/target binding.",
+        "Native offline execute smoke rejects four escape forms and permits one in-root write, while the complete-turn audit correctly remains HOLD.",
+        "Policy freeze wording refers to post-freeze changes, not impossible local-file immutability."
+      ],
+      "attempts": [
+        {
+          "shell_key": "08:bash",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/module-08-20260930T190325Z-55673/work",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/module-08-20260930T190325Z-55673/receipts",
+          "BASE": "$EVIDENCE_ROOT/learner-home/course-evidence/module-08-20260930T190325Z-55673"
+        }
+      ],
+      "literal_record_indices": [
+        106,
+        107,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118
+      ],
+      "command_record_indices": [
+        1,
+        63,
+        82,
+        178,
+        298,
+        299,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        367,
+        374
+      ],
+      "older_format_command_indices": [],
+      "recorded_command_seconds": 79.07,
+      "timing_limit": "Associated recorded command durations include retries, negatives and shared gates; not exclusive module runtime or human practice time.",
+      "human_completion_seconds": null,
+      "current_input_control_output_hashes": {
+        "href": "published-evidence/module-08-current-files.json",
+        "sha256": "86d539092dd7bf14f8089a2237c43e18608ab25993d6004d7a998f287ab36988",
+        "bytes": 13377
+      }
+    },
+    {
+      "id": "09",
+      "case": "Last Count",
+      "lanes": {
+        "core": {
+          "status": "blocked",
+          "scope": "Technical package operation passed; core independent-person transfer still requires an eligible real recipient."
+        },
+        "stretch": {
+          "status": "passed",
+          "scope": "Technical deterministic/public-practice stretch observed; no human award."
+        },
+        "live_provider": {
+          "status": "not_measured",
+          "reason": "This deterministic exercise does not require a paid model call; none made."
+        },
+        "platform": {
+          "status": "blocked",
+          "observed": "Darwin arm64 native Bash/zsh; selected PowerShell7 helper/transport checks on macOS only.",
+          "missing": "Native Windows/Windows ARM64, WSL, Ubuntu and Arch execution."
+        },
+        "accessibility": {
+          "status": "passed",
+          "scope": "Browser structural and direct-interaction checks only: desktop,390px,native200%zoom,no-JS,keyboard/copy,images/links. Not screen-reader usability or novice timing."
+        },
+        "peer_review": {
+          "status": "blocked",
+          "reason": "No real classmate/independent recipient supplied."
+        },
+        "human_qualification": {
+          "status": "blocked",
+          "reason": "No eligible human/evaluator-held unseen case and original outcome ledger; agent replay cannot award mastery."
+        }
+      },
+      "observed": [
+        "Only13declared package files copied to fresh spaced-path recipients; no author R/M/W/E environment supplied.",
+        "Actual Bash and PowerShell-on-mac run/check/stop/restore/changed flows exercised.",
+        "Baseline custody160, usable120; changed RC-012HELD gives usable110 and10shortfall/HOLD while custody stays160.",
+        "Three baseline/restored output files match bytes;13package members unchanged. No independent human recipient or private evaluator case was invented."
+      ],
+      "friction_and_repairs": [
+        "Package commands now include executable stop and hashed restore; package-only fresh-session replay exercised.",
+        "Public practice distinguished from actual external evaluator custody and independent-person transfer."
+      ],
+      "attempts": [
+        {
+          "capture": "Earlier command-record schema; paths observed from the retained transfer attempt.",
+          "W": "$EVIDENCE_ROOT/learner-home/course-evidence/module-09-20260930T165549Z-23830/work",
+          "E": "$EVIDENCE_ROOT/learner-home/course-evidence/module-09-20260930T165549Z-23830/evidence",
+          "F": "$EVIDENCE_ROOT/learner-home/course-evidence/module-09-20260930T165549Z-23830/received package",
+          "powershell_recipient": "$EVIDENCE_ROOT/learner-home/course-evidence/module-09-20260930T165549Z-23830/received PowerShell package"
+        }
+      ],
+      "literal_record_indices": [],
+      "command_record_indices": [
+        44,
+        51,
+        52,
+        53,
+        56,
+        57,
+        75,
+        76,
+        98,
+        99,
+        102,
+        109,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        127,
+        128,
+        134,
+        139,
+        140,
+        141,
+        142,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        367,
+        374
+      ],
+      "older_format_command_indices": [
+        134,
+        139,
+        140,
+        141,
+        142,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161
+      ],
+      "recorded_command_seconds": 151.121,
+      "timing_limit": "Associated recorded command durations include retries, negatives and shared gates; not exclusive module runtime or human practice time.",
+      "human_completion_seconds": null,
+      "current_input_control_output_hashes": {
+        "href": "published-evidence/module-09-current-files.json",
+        "sha256": "12c72e683b47ae7bc000abc46d5692dfce569b741eb51ecb1a17fc75e46a9d89",
+        "bytes": 12823
+      }
+    }
+  ],
+  "execution_records": {
+    "commands": {
+      "href": "published-evidence/commands.json",
+      "sha256": "c7421ef0ded05ccfa0f06794a97135673dd53a82b1fbb880522c718bf1a3496c",
+      "bytes": 725414,
+      "count": 377
+    },
+    "rendered_literal_replays": {
+      "href": "published-evidence/literal-replays.json",
+      "sha256": "b96590e1f501ae0b0310c7f61229e72881ebd458676f1aaf021eb901fb3e3f2f",
+      "bytes": 212383,
+      "count": 147
+    },
+    "shell_states": {
+      "href": "published-evidence/shell-states.json",
+      "sha256": "fcbd732c01a722a1d7c0b600b4172c2565dfba27e7d26f790fae16eb9fc12071",
+      "bytes": 11810
+    },
+    "notes": "Records preserve exact command/argv, cwd, exits, stdout/stderr, elapsed seconds and page/block/command hashes when captured. Older rows use step/command/elapsed_seconds. Referenced state files preserve shell variables. No missing timestamp or input-before hash is invented."
+  },
+  "artifacts": {
+    "runtime": [
+      {
+        "source": "native-release-verification.json",
+        "href": "published-evidence/records/native-release-verification.json",
+        "sha256": "79075016513d95593645fe07c3383a5c4f28ca5767745d9d66d7d1a5c5d723f6",
+        "bytes": 471,
+        "raw_sha256": "79075016513d95593645fe07c3383a5c4f28ca5767745d9d66d7d1a5c5d723f6"
+      },
+      {
+        "source": "native-runtime-summary.json",
+        "href": "published-evidence/records/native-runtime-summary.json",
+        "sha256": "d0a1b3c8de855b0375c3ff0b0739d6c479c0c1ed0ca1792c12bbbd374bc4c056",
+        "bytes": 1613,
+        "raw_sha256": "d0a1b3c8de855b0375c3ff0b0739d6c479c0c1ed0ca1792c12bbbd374bc4c056"
+      },
+      {
+        "source": "offline-startup-failures/summary.json",
+        "href": "published-evidence/records/offline-startup-failures/summary.json",
+        "sha256": "67d47cf7229491fc1748a10588de0399b70f8ab5850fec40105f1850a5c61009",
+        "bytes": 3085,
+        "raw_sha256": "18a631934cf9a594113e12e330a344618d05a2c0ea4d5205a8eaf4f32804fc37"
+      },
+      {
+        "source": "offline-native-omp-rerun/offline-result.json",
+        "href": "published-evidence/records/offline-native-omp-rerun/offline-result.json",
+        "sha256": "b91489e0d07df22d7f5b3e3288bb2479e604b4654e533a6dac7300bc8f9bee43",
+        "bytes": 877,
+        "raw_sha256": "55ddf1c79d8d60b1587e6f6041fbed866d85f3b0f18de1b1e7303f3fd0f44823"
+      },
+      {
+        "source": "native-context-before/observation.json",
+        "href": "published-evidence/records/native-context-before/observation.json",
+        "sha256": "ef48880bc108c279be007ab913e733fa07ac3c6d610869d590fa01415b5f4406",
+        "bytes": 283,
+        "raw_sha256": "0b02715daa44ed1c6fbfdf3431548009206686de81c6df443cd567415019849e"
+      },
+      {
+        "source": "native-context-after/observation.json",
+        "href": "published-evidence/records/native-context-after/observation.json",
+        "sha256": "f888ef34a6ae363aec7988f4d7892aa067ee3a1868b17845f4c5b1d1384d8f49",
+        "bytes": 287,
+        "raw_sha256": "4d3fd6ebb89fd61e904ddd66c76f7f24c54240712fa7cd5c2fbd9f34b08c4ca8"
+      },
+      {
+        "source": "native-guard-paths/observation.json",
+        "href": "published-evidence/records/native-guard-paths/observation.json",
+        "sha256": "1e35e7c99bb2b6dd6c6e620e20c2c18cba431afebe377dc35eb5298a02a9a1a6",
+        "bytes": 1447,
+        "raw_sha256": "c8305c8c51427a2455102c530c23c137ddd3127ede8da0650d07d0bc05c0aa30"
+      }
+    ],
+    "publication": [
+      {
+        "source": "gates-final.json",
+        "href": "published-evidence/records/gates-final.json",
+        "sha256": "59cc3ed4c13a90c1bb168972570772a12c8583b6dde8229ce80f82bcc7491d89",
+        "bytes": 67448,
+        "raw_sha256": "45dd88cb59b727726096a89a4ba24373a71b2c5cd54cb47cc8cef6ec91fc85a1"
+      },
+      {
+        "source": "browser-card-navigation.json",
+        "href": "published-evidence/records/browser-card-navigation.json",
+        "sha256": "b605acd918c996fe66fa3824b0867855ece5dc58ca296dd40dadc6dce51353e7",
+        "bytes": 2356,
+        "raw_sha256": "e4c5255eeb6aec085c76b8e33b23c8daf661beb0415f114c1722583cf32634ae"
+      },
+      {
+        "source": "browser-desktop-final.json",
+        "href": "published-evidence/records/browser-desktop-final.json",
+        "sha256": "efdd56c65b86b97e07dca4fb9f6a3d4edf17f52b943306bc4ad7752c37c04d7f",
+        "bytes": 407014,
+        "raw_sha256": "1549ce7901006a8292013b2123945669aee9f61484afe70c1fc7710efde82c63"
+      },
+      {
+        "source": "browser-mobile-final.json",
+        "href": "published-evidence/records/browser-mobile-final.json",
+        "sha256": "bb00bc5ae1a1fc0b2b2ae0e7e633c024690512f440f46d38820d1d9bfc9b8511",
+        "bytes": 17273,
+        "raw_sha256": "aac799c083fb888577f6b544f0f27104d0751007160e4847fa630edf419b9cab"
+      },
+      {
+        "source": "browser-native-200-final.json",
+        "href": "published-evidence/records/browser-native-200-final.json",
+        "sha256": "8cb316c1faad131c07e61f6f3b6f5409ec3340a3b8d626565032c69d07d847bb",
+        "bytes": 62170,
+        "raw_sha256": "14a9e2d476e8115f443ac25afdfbd0430a43db7757c6e24e4a4bd0820bfdfea8"
+      },
+      {
+        "source": "browser-no-js-final.json",
+        "href": "published-evidence/records/browser-no-js-final.json",
+        "sha256": "3f87337be93dd56c2683b39f6519a4b43f456820b92a81d31d5d712deb6bc570",
+        "bytes": 11325,
+        "raw_sha256": "44a0bbe225ca9ca03d03f02d65e92948dffe21d0089c72ed820dc85fb6ac6d02"
+      },
+      {
+        "source": "browser-link-proof.json",
+        "href": "published-evidence/records/browser-link-proof.json",
+        "sha256": "0b5df9f2d1d8ed0a5ace897348964981b8e8d65e147d69c83c49e8aed01d1de1",
+        "bytes": 37714,
+        "raw_sha256": "d6c10fa2640a733b869e7a15d9540b9fc5e5ef6e654e88d85be058d934560877"
+      },
+      {
+        "source": "browser-interaction-proof.json",
+        "href": "published-evidence/records/browser-interaction-proof.json",
+        "sha256": "300aea160f935fb95f3f67a0a8c40d51bb0d8e8c172c7be22fb4245a809a1e73",
+        "bytes": 695,
+        "raw_sha256": "a1356102ca4b6727f55e9e0e638c6a4ce0f5547f506f9520be150b20ef6b6dce"
+      },
+      {
+        "source": "browser-staff-exclusion.json",
+        "href": "published-evidence/records/browser-staff-exclusion.json",
+        "sha256": "f61fb3da1884a4788430b842b0f0634f8ec1fdd19160288d698862060a599e30",
+        "bytes": 228,
+        "raw_sha256": "c79fe4173bdf0315dccc451af5e1061559368f224a2b199c408a141e8de60c92"
+      },
+      {
+        "source": "browser-svg-geometry.json",
+        "href": "published-evidence/records/browser-svg-geometry.json",
+        "sha256": "b216d52d427cde1797d6b0b5831c32a489e351cca067fdf8ec32d4ead345474c",
+        "bytes": 3697,
+        "raw_sha256": "fbdf7696ffcde4c295aa02766b5e7c1d83c9dc70aba9ac7f2fc249111214abab"
+      },
+      {
+        "source": "browser-svg-geometry-final.json",
+        "href": "published-evidence/records/browser-svg-geometry-final.json",
+        "sha256": "1c34247b05abe0fd3b3b89d213fd551575129b0da3a8ccbec09a18eb3a82ac70",
+        "bytes": 3248,
+        "raw_sha256": "86710095d40cc659d80daca4d863abc4bf88bfd44ff6403d698de302d0a94a70"
+      },
+      {
+        "source": "shell-syntax-final.json",
+        "href": "published-evidence/records/shell-syntax-final.json",
+        "sha256": "6d7cdcca0d174073d77f9b473c29656a6bc43505ae51774a9b8b7758663db286",
+        "bytes": 121977,
+        "raw_sha256": "bbd1b3a1cc117834b26274427bcc388d92e6d9e1128ae225caafc87de8f59a40"
+      },
+      {
+        "source": "powershell-final-transport-proof.json",
+        "href": "published-evidence/records/powershell-final-transport-proof.json",
+        "sha256": "077bdb9d47d86f94798c2926d7ff60f79947b872b2e96c20ffdd650f63402821",
+        "bytes": 52310,
+        "raw_sha256": "e12d464a27cded155ca2883cd846ccd84bc7c91760e406f24155e9b1d3910d39"
+      },
+      {
+        "source": "browser-final-figure-reflow.json",
+        "href": "published-evidence/records/browser-final-figure-reflow.json",
+        "sha256": "ad6f0ac4b8d84d8f04f8b4ba32ae91cf52c60dcb41c468ab65c89853eb13423f",
+        "bytes": 2665,
+        "raw_sha256": "6f8101a9858c29f37152872271d1e50b1a5bb21bb4a8cc8e547f480fb5ab7d55"
+      }
+    ],
+    "review": [
+      {
+        "source": "reviews/final-runtime-safety.json",
+        "href": "published-evidence/records/reviews/final-runtime-safety.json",
+        "sha256": "5e7b117d1f7cd3f411bec26230108512ed42528d72a18c4d9f7b5192b4810089",
+        "bytes": 4542,
+        "raw_sha256": "3847d49a2c693361dafd36522a2db8eb3497468b0241f83a6c9bca097ad01236"
+      },
+      {
+        "source": "reviews/final-learner-progression.json",
+        "href": "published-evidence/records/reviews/final-learner-progression.json",
+        "sha256": "2ca5d808b93a8d52694d3551a15172c99662a80e2b42f6cd69d38e407cf0e7df",
+        "bytes": 4930,
+        "raw_sha256": "32fc01c85d837b076a3ef8650decb9844fc49f3a7bc95c54317b389aa47d2788"
+      }
+    ],
+    "exercise_boundaries": [
+      {
+        "source": "expectation-corrections.json",
+        "href": "published-evidence/records/expectation-corrections.json",
+        "sha256": "f8d2287f32c121601f8d54bf9855d0551138400d80b7c9232d8d969d8442159d",
+        "bytes": 608,
+        "raw_sha256": "f8d2287f32c121601f8d54bf9855d0551138400d80b7c9232d8d969d8442159d"
+      },
+      {
+        "source": "module-04/boundaries-recorded-before/results.json",
+        "href": "published-evidence/records/module-04/boundaries-recorded-before/results.json",
+        "sha256": "4a4ddf2198f4e380d93535441131879bddcc443278d41892f46fc8d46f29b161",
+        "bytes": 8382,
+        "raw_sha256": "fe140cc307fc1c1bda61928796d41d32a6839c13155569fbcda20fb4ea1341cb"
+      },
+      {
+        "source": "module-04/boundaries-after/results.json",
+        "href": "published-evidence/records/module-04/boundaries-after/results.json",
+        "sha256": "c0ac870fd85a1acee31a3061a187fbb0b16d7c89776a0b07027d25723cca88d2",
+        "bytes": 8879,
+        "raw_sha256": "e0d32d956b8d4fb06fbc770f69a945d8f8a642dd76e3633968e8e9d79c118633"
+      },
+      {
+        "source": "module-05/contaminated-attempt.json",
+        "href": "published-evidence/records/module-05/contaminated-attempt.json",
+        "sha256": "17d64009f9f4f665c36a6f8fdc1513ad3e6241c9cee9b97d428586b8c41bd968",
+        "bytes": 500,
+        "raw_sha256": "93553a3e0a8fe376c46712255263fa2860e3ea654445cdd965d6a6dba657f8e9"
+      },
+      {
+        "source": "module-05/heldout-recovery-before/observation.json",
+        "href": "published-evidence/records/module-05/heldout-recovery-before/observation.json",
+        "sha256": "ea492a582ff8e8d756805529bafdc71537e4d619339a79defc6a90008884a410",
+        "bytes": 2165,
+        "raw_sha256": "a75610d7068b429a1651253a77d0f7f25647bf9c035c662106ba389fba3acd95"
+      },
+      {
+        "source": "module-05/heldout-recovery-after/observation.json",
+        "href": "published-evidence/records/module-05/heldout-recovery-after/observation.json",
+        "sha256": "bf5781d18a814f73df2d71342a2fb3afbfb40281669bb0c0fec381d219606a54",
+        "bytes": 2523,
+        "raw_sha256": "aeb9744691cdb9d84ed091105f78e02510e282897eb8e5d8492871fc3358a437"
+      },
+      {
+        "source": "browser-cold-lantern-final.json",
+        "href": "published-evidence/records/browser-cold-lantern-final.json",
+        "sha256": "bdd8b2fb057f86162e150987e0b6cea11e10241d5b66a9d5a04e96d90ebc59ac",
+        "bytes": 14510,
+        "raw_sha256": "7f90f8347ca2accd488f494678172c474717073aa44705d1c71a4bb2394e58fe"
+      },
+      {
+        "source": "browser-s10-source-link.json",
+        "href": "published-evidence/records/browser-s10-source-link.json",
+        "sha256": "1ef1490fdd976a647e6f75293147d313276a0016c21c17886915342965bd1101",
+        "bytes": 609,
+        "raw_sha256": "a70ceafced1e0478357a6618a7155047533c8c2ba71fd05b52f42775e1717533"
+      },
+      {
+        "source": "module-05/powershell-result-comparison.json",
+        "href": "published-evidence/records/module-05/powershell-result-comparison.json",
+        "sha256": "8d79a9ec43c7da5979950561dfebf9b41973c10a1648183bda748df0453872e3",
+        "bytes": 811,
+        "raw_sha256": "fa21d6e3c35ede305f924a55efc382e09623eab250683cb8637998bf765ffd1f"
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "href": "screenshots/cards-desktop.png",
+      "raw_sha256": "eddc7e4ed0eeb57336d411dcfb08e7f4039bb35c0c068d8c6017c69fe56cafcb",
+      "bytes": 196955
+    },
+    {
+      "href": "screenshots/cards-native-200.png",
+      "raw_sha256": "7c0b1cec9160a0ccdb8a2c9c6001fc68b444281d96159421e8598fa1d5e8c7dc",
+      "bytes": 218572
+    },
+    {
+      "href": "screenshots/cold-lantern-desktop.png",
+      "raw_sha256": "8e480e5f951f37f709506fffa2ad0623d91e312c863af221c0e1a7e03d9c86e0",
+      "bytes": 231284
+    },
+    {
+      "href": "screenshots/cold-lantern-mobile.png",
+      "raw_sha256": "8b46680cb37cb1d3385fda58da71dbe8c88f4c58e36aba276d8dd3c83ee871e7",
+      "bytes": 67190
+    },
+    {
+      "href": "screenshots/figure-transcript.png",
+      "raw_sha256": "610c5c584610a00e29d46a8ab86e873ba7c99d1df9f3aab78127195cdb7a335a",
+      "bytes": 139153
+    },
+    {
+      "href": "screenshots/stretch-keyboard.png",
+      "raw_sha256": "35b5f2e04c3a250018d716aef5c9563fc1bdc1a3dd67f59e98a43f67685f6cd4",
+      "bytes": 198344
+    }
+  ],
+  "residual_risks": [
+    "No completed OpenRouter/Sonnet turn. Actual model-driven tool_call/tool_execution/agent_end payload compatibility and planted-note response remain unverified; offline native execution is not a substitute.",
+    "Local receipts are consistency evidence under operator custody, not cryptographic evidence against an operator rewriting the whole bundle or swapping/restoring guard code.",
+    "OMP catches some before_provider_request handler errors; a late identity failure may still cost one request before HOLD. This live edge is unmeasured.",
+    "Native Windows case-different output paths may fail closed as unreceipted outputs; native filesystem and junction behavior remain unverified.",
+    "M00changed input/checker and M02conflict files remain readable under the declared work root. Prompt restrictions are not filesystem isolation; inspect actual reads before claiming a matched/unseen condition.",
+    "Real classmate review, independent recipient, evaluator custody, unseen transfer and original human outcome ledger remain prerequisites. No human qualification awarded.",
+    "No actual learner completion-time, terminology-time, screen-reader or billed-cost pilot evidence."
+  ],
+  "first_failures_retained": [
+    "gates-initial-failure.txt",
+    "publication-source-errors.json",
+    "powershell-blocks-before.json",
+    "native-context-before/",
+    "module-04/boundaries-recorded-before/",
+    "module-05/contaminated-attempt.json",
+    "module-05/heldout-recovery-before/",
+    "module-08/probe-binding-before/"
+  ],
+  "qa_expectation_corrections": [
+    "Expected-negative exits are successes when matching the exercise: setup checker HOLD1, M04diagnostic completion0, M05final missing-input negative1.",
+    "Initial clipboard comparison used a text helper that trimmed one newline; raw DOM textContent and clipboard match exactly.",
+    "Skip-link body activeElement is not a failure: the subsequent Tab enters main content.",
+    "PowerShell wrapper failures are retained separately from published-command behavior."
+  ]
+}

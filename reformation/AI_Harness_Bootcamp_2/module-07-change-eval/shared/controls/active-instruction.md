@@ -1,0 +1,1 @@
+Fill the three-row table in brief.md exactly from the authoritative locators in the adjacent sources.json for this case. Use only the values stated in the source text. Output only the title and the table. Do not add other rows or prose.

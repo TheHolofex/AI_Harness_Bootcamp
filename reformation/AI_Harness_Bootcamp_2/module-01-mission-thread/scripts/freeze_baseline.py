@@ -17,6 +17,7 @@ REQUIRED = (
     "corrected-brief.md",
     "baseline-verdict.md",
     "change-prediction.md",
+    "producer-rebuttal.md",
 )
 
 

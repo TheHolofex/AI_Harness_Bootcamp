@@ -1,4 +1,4 @@
-# S06 · Permit packet PR-4418
+# Permit packet PR-4418
 
 **Applies to:** VX-204 on Route R-71, 6 October 2026  
 **Permit authority:** North Basin Movement Registry

@@ -1,7 +1,7 @@
 <!-- GENERATED from resources/figures; edit the JSON spec, not this plate. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 280" width="1120" height="280" role="img" aria-labelledby="m05-predicate-title m05-predicate-desc">
   <title id="m05-predicate-title">Input, pass, fail, missing</title>
-  <desc id="m05-predicate-desc">Exact input is one run file. Pass when the token is absent. Fail when 20:50Z is present. Missing path prints HOLD: missing input.</desc>
+  <desc id="m05-predicate-desc">Exact input is one run file plus --config. Pass when at least one literal is absent. Fail when both literals are present as case-sensitive substrings. Missing path prints HOLD: missing input. Malformed config prints HOLD: malformed config.</desc>
   <style>
     text { font-family: Inter, "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; fill: #0A0A0A; }
     .eyebrow, .step, .micro { font-size: 14px; font-weight: 650; letter-spacing: 1.7px; }
@@ -18,15 +18,15 @@
   <text class="step" x="36" y="115.25">01</text>
   <rect x="205" y="94" width="880" height="32.5" rx="2" fill="#FAFAF8" stroke="#A58650" />
   <text class="label" x="223" y="115.25">Exact input</text>
-  <text class="body" x="1067" y="115.25" text-anchor="end">one run file</text>
+  <text class="body" x="1067" y="115.25" text-anchor="end">one run file --config file</text>
   <text class="step" x="36" y="155.75">02</text>
   <rect x="205" y="134.5" width="880" height="32.5" rx="2" fill="#FFFFFF" stroke="#D0D0D0" />
-  <text class="label" x="223" y="155.75">Pass when the token is absent</text>
-  <text class="body" x="1067" y="155.75" text-anchor="end">20:50Z not in the file</text>
+  <text class="label" x="223" y="155.75">Pass when at least one literal absent</text>
+  <text class="body" x="1067" y="155.75" text-anchor="end">substring match fails</text>
   <text class="step" x="36" y="196.25">03</text>
   <rect x="205" y="175" width="880" height="32.5" rx="2" fill="#FFFFFF" stroke="#D0D0D0" />
-  <text class="label" x="223" y="196.25">Fail when 20:50Z is present</text>
-  <text class="body" x="1067" y="196.25" text-anchor="end">the token is enough</text>
+  <text class="label" x="223" y="196.25">Fail when both literals present</text>
+  <text class="body" x="1067" y="196.25" text-anchor="end">the two strings are enough</text>
   <text class="step" x="36" y="236.75">04</text>
   <rect x="205" y="215.5" width="880" height="32.5" rx="2" fill="#FFFFFF" stroke="#D0D0D0" />
   <text class="label" x="223" y="236.75">Missing path prints HOLD: missing input</text>

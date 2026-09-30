@@ -33,3 +33,7 @@ Put this constraint in the brief of any subagent or generator writing learner-fa
 ## Repository shape
 
 The website is the course. Do not add learner-facing Markdown pages — core instruction goes in the owning pre-work or module HTML page, optional depth goes through the resource build system, and a raw file is added only when working with that file is part of the exercise. See [`README.md`](README.md) for the path map.
+
+## Reformation scenario memory
+
+Mission-thread doctrine and the ten session project specs live in `reformation/MISSION_THREAD_SCENARIOS.md`. Read that file before researching mission threads, Cold Lantern, or a Reformation morning or afternoon scenario. Re-open a listed source only when the question is not answered there.

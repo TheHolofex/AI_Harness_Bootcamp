@@ -22,6 +22,8 @@ Every hard gate must pass. A strong summary cannot compensate for a material sou
 
 ## Visible practice check
 
+The visible checker can inspect the seven phases (ingest through change), nine sources, six calculations, baseline freeze before reveal, dependent-only deltas, and the --fixture practice rebuttal (with PRACTICE warning). The five-question review surface is for a real classmate who did not observe the work. An agent replay is technical inspection only. 
+
 The visible checker can inspect:
 
 - required files and columns;
@@ -29,7 +31,7 @@ The visible checker can inspect:
 - source-manifest hashes;
 - allowed statement and result labels;
 - deterministic practice arithmetic;
-- required challenge headings;
+- required challenge evidence quoted from the inbox;
 - baseline preservation;
 - predicted and actual changed fields; and
 - stale-value or unrelated-change errors.

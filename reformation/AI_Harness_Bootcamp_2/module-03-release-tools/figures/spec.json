@@ -7,12 +7,12 @@
       "role": "orientation",
       "template": "comparison",
       "title": "Decision and connection are both required",
-      "desc": "The decision branch records whether the note may be published or dispatched. The connection branch inspects, runs, and revokes the hash tool. Both branches are required.",
+      "desc": "The decision branch records whether the packet may be published or dispatched. The connection branch inspects, runs, and revokes the hash tool. Both branches are required.",
       "caption": "Record the release decision and complete the tool branch.",
-      "transcript": "The decision branch records whether the note may be published or dispatched. The connection branch inspects, runs, and revokes the hash tool. Both branches are required.",
+      "transcript": "The decision branch records whether the packet may be published or dispatched. The connection branch inspects, runs, and revokes the hash tool. Both branches are required.",
       "eyebrow": "BRANCHES",
       "items": [
-        { "label": "Decision", "detail": "publish, send, or no-release" },
+        { "label": "Decision", "detail": "publish, send, or hold" },
         { "label": "Connection", "detail": "inspect, hash, stop, revoke" }
       ]
     },
@@ -40,13 +40,13 @@
       "role": "mechanism",
       "template": "fork",
       "title": "Class-only means no-release",
-      "desc": "The sharing limit is class-only and no outside owner exists. Record no-release. Still hash: the tool branch is not optional.",
-      "caption": "Record no-release, then still hash the supplied note.",
-      "transcript": "The sharing limit is class-only and no outside owner exists. Record no-release. Still hash: the tool branch is not optional.",
+      "desc": "The sharing limit is class-only and no outside owner exists. Record the supported position. Still hash: the tool branch is not optional.",
+      "caption": "Record the supported position, then still hash the supplied file.",
+      "transcript": "The sharing limit is class-only and no outside owner exists. Record the supported position. Still hash: the tool branch is not optional.",
       "eyebrow": "RELEASE",
       "source": { "label": "Sharing limit", "detail": "class-only, no outside owner" },
       "items": [
-        { "label": "no-release", "detail": "do not publish or dispatch" },
+        { "label": "supported position", "detail": "do not publish or dispatch" },
         { "label": "Still hash", "detail": "the tool branch is not optional" }
       ]
     },
@@ -69,12 +69,12 @@
       "role": "method",
       "template": "flow",
       "title": "Read one file, write nothing",
-      "desc": "Point the tool at the supplied note. It reads that one file and writes nothing. A refused path prints HOLD and exits 1.",
-      "caption": "Hash the supplied note. A refused path prints HOLD and exits 1.",
-      "transcript": "Point the tool at the supplied note. It reads that one file and writes nothing. A refused path prints HOLD and exits 1.",
+      "desc": "Point the tool at the supplied file. It reads that one file and writes nothing. A refused path prints HOLD and exits 1.",
+      "caption": "Hash the supplied file. A refused path prints HOLD and exits 1.",
+      "transcript": "Point the tool at the supplied file. It reads that one file and writes nothing. A refused path prints HOLD and exits 1.",
       "eyebrow": "HASH",
       "items": [
-        { "label": "Point at the supplied note", "detail": "one allowed path" },
+        { "label": "Point at the supplied file", "detail": "one allowed path" },
         { "label": "Read that file", "detail": "no second path" },
         { "label": "Write nothing", "detail": "stdout only" },
         { "label": "Refuse any other path", "detail": "HOLD, exit 1" }
@@ -91,7 +91,7 @@
       "eyebrow": "APPROVAL",
       "items": [
         { "label": "Inspect the script", "detail": "before any run" },
-        { "label": "Run the allowed path", "detail": "the supplied note" },
+        { "label": "Run the allowed path", "detail": "the supplied file" },
         { "label": "Record the printed line", "detail": "sha256 plus the filename" },
         { "label": "Prove the refuse path", "detail": "HOLD: path not allowed" }
       ]
